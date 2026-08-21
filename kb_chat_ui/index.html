@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conversador APOS</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#12192a;--panel2:#0f1524;--panel3:#10182a;--text:#e7ecf3;--muted:#98a5bd;
+      --border:#25304a;--accent:#7cc4ff;--accent2:#122540;--user:#17304f;--assistant:#101a2f;--chip:#18233b;
+      --ok:#12331d;--warn:#3a2d14;--shadow:0 12px 34px rgba(0,0,0,.35)
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;overflow:hidden}
+    .app{display:grid;grid-template-columns:minmax(0,1fr) auto;height:100vh;min-height:0}
+    .chat{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-width:0;min-height:0;height:100vh;border-right:1px solid var(--border)}
+    .topbar,.sidehead{padding:14px 18px;border-bottom:1px solid var(--border);background:var(--panel)}
+    .title{font-size:14px;font-weight:800}.sub,.meta{font-size:12px;color:var(--muted);margin-top:4px}
+    .messages{min-height:0;overflow-y:auto;overflow-x:hidden;padding:18px;display:grid;gap:16px;align-content:start}
+    .turn{display:grid;gap:10px}
+    .msg{max-width:920px;border:1px solid var(--border);border-radius:14px;padding:14px 16px;line-height:1.65;box-shadow:var(--shadow)}
+    .msg.user{justify-self:end;background:var(--user)}
+    .msg.assistant{justify-self:start;background:var(--assistant);cursor:pointer;position:relative}
+    .msg.assistant.selected{outline:2px solid var(--accent);background:#10213d}
+    .role{font-size:11px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:700;letter-spacing:.04em}
+    .body h1,.body h2,.body h3{line-height:1.2}.body h1{font-size:22px}.body h2{font-size:18px}.body h3{font-size:15px}
+    .body code{background:#0d1424;border:1px solid #22304b;padding:2px 6px;border-radius:6px}.body pre{overflow:auto;background:#0d1424;border:1px solid #22304b;padding:12px;border-radius:12px}
+    .turnmeta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.pill{background:var(--chip);border:1px solid #2a395b;color:#c6d5e8;border-radius:999px;padding:4px 8px;font-size:11px}
+    .pill.link{background:var(--accent2);border-color:#34527b;color:#9fd5ff}
+    .composer{padding:14px;border-top:1px solid var(--border);background:var(--panel);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px}
+    textarea{resize:none;height:92px;border:1px solid var(--border);border-radius:12px;background:var(--panel2);color:var(--text);padding:12px;outline:none}
+    textarea:focus{border-color:var(--accent)}
+    button{border:1px solid var(--border);background:var(--accent);color:#07111f;font-weight:800;border-radius:12px;padding:0 16px;cursor:pointer}
+    button[disabled]{opacity:.6;cursor:wait}
+    .side-shell{position:relative;height:100vh;display:flex}
+    .sidebar-toggle{position:absolute;left:-42px;top:16px;z-index:5;width:32px;height:32px;border-radius:10px;background:var(--panel);color:var(--text);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+    .side{width:0;overflow:hidden;transition:width .18s ease;border-left:1px solid transparent;background:var(--panel);height:100vh}
+    .side.open{width:460px;border-left-color:var(--border)}
+    .side-inner{display:grid;grid-template-rows:auto minmax(0,1fr);height:100%;min-height:0}
+    .sidebody{min-height:0;overflow:auto;padding:16px;display:grid;gap:12px}
+    .empty{color:var(--muted);font-size:14px}
+    .section{border:1px solid var(--border);border-radius:14px;background:var(--panel3);overflow:hidden}
+    .section-head{padding:12px 14px;display:flex;justify-content:space-between;gap:10px;align-items:center;cursor:pointer;background:#111a2d}
+    .section-title{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800}
+    .section-body{display:none;padding:14px}.section.open .section-body{display:block}
+    .summary-grid{display:grid;gap:10px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{background:var(--chip);border:1px solid #2a395b;color:#c6d5e8;border-radius:999px;padding:4px 8px;font-size:11px}.chip.ok{background:var(--ok);border-color:#1f5831}.chip.warn{background:var(--warn);border-color:#6c5627}
+    .atom-row{border:1px solid var(--border);border-radius:12px;padding:10px;background:#0d1526;display:grid;gap:8px}.atom-name{font-size:13px;font-weight:800;line-height:1.35}.atom-sub{font-size:11px;color:var(--muted)}
+    .tag-group{display:grid;gap:8px}.tag-group-row{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0d1526}
+    .toc-summary{display:grid;gap:8px;font-size:13px}
+    .toc-line{padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:#0d1526}
+    .linkish{background:var(--accent2);color:#9fd5ff;border:1px solid #34527b;border-radius:999px;padding:6px 10px;font:12px ui-monospace,monospace;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+    .refs{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    .atom-link{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;margin:0 2px;border-radius:999px;border:1px solid #34527b;background:#122540;color:#9fd5ff;text-decoration:none;font:12px ui-monospace,monospace;cursor:pointer}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:40;padding:24px}
+    .modal-backdrop.open{display:flex}.modal{width:min(900px,100%);max-height:85vh;background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);display:grid;grid-template-rows:auto minmax(0,1fr)}
+    .modal-head{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:12px;align-items:center}.modal-body{padding:16px;overflow:auto;min-height:0}
+    .close{background:transparent;color:var(--text);border:1px solid var(--border);height:34px;min-width:34px;padding:0 10px}
+    @media (max-width:1200px){.side.open{width:420px}}
+    @media (max-width:1024px){.app{grid-template-columns:1fr}.side-shell{position:fixed;right:0;top:0;z-index:20}.side.open{width:min(92vw,460px)}.sidebar-toggle{left:-38px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <section class="chat">
+    <div class="topbar">
+      <div class="title">Conversador APOS</div>
+      <div class="sub">Selecciona una respuesta para inspeccionar su mesa. El sidebar derecho es independiente y colapsable.</div>
+    </div>
+    <div class="messages" id="messages"></div>
+    <div class="composer">
+      <textarea id="input" placeholder="Ej: ¿Qué dice la base sobre encapsulación en APOS?"></textarea>
+      <button id="send">Enviar</button>
+    </div>
+  </section>
+
+  <div class="side-shell">
+    <button class="sidebar-toggle" id="sidebarToggle" title="Abrir/cerrar contexto">◧</button>
+    <aside class="side" id="sidebar">
+      <div class="side-inner">
+        <div class="sidehead">
+          <div class="title">Inspector de mesa</div>
+          <div class="meta" id="sideMeta">Selecciona una respuesta del asistente.</div>
+        </div>
+        <div class="sidebody" id="sideBody">
+          <div class="empty">Aquí aparecerá el contexto versionado de la respuesta seleccionada.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="title" id="modalTitle">Detalle</div>
+      <button class="close" id="modalClose">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const messagesEl = document.getElementById('messages');
+const inputEl = document.getElementById('input');
+const sendBtn = document.getElementById('send');
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const sideMeta = document.getElementById('sideMeta');
+const sideBody = document.getElementById('sideBody');
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+
+let sessionId = localStorage.getItem('kb_chat_session') || null;
+let turns = [];
+let selectedTurnId = null;
+const atomRegex = /\b(atom-[a-z0-9-]+)\b/g;
+marked.setOptions({gfm:true, breaks:true});
+
+function escapeHtml(s=''){return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');}
+function enhanceAtomRefs(html){return html.replace(atomRegex,'<a class="atom-link" data-atom="$1">$1</a>');}
+function extractRefs(text){return [...new Set((text.match(atomRegex)||[]))];}
+function openSidebar(){sidebar.classList.add('open');}
+function closeSidebar(){sidebar.classList.remove('open');}
+function toggleSidebar(){sidebar.classList.toggle('open');}
+function openModal(title, html){modalTitle.textContent=title;modalBody.innerHTML=html;modalBackdrop.classList.add('open');}
+function closeModal(){modalBackdrop.classList.remove('open');}
+
+function renderTurns(){
+  messagesEl.innerHTML='';
+  for(const turn of turns){
+    const refs = extractRefs(turn.assistant_message || '');
+    const selected = turn.turn_id === selectedTurnId;
+    const turnEl = document.createElement('div');
+    turnEl.className = 'turn';
+    turnEl.innerHTML = `
+      <div class="msg user"><div class="role">usuario</div><div class="body">${enhanceAtomRefs(marked.parse(turn.user_message || ''))}</div></div>
+      <div class="msg assistant ${selected ? 'selected' : ''}" data-turn-id="${turn.turn_id}">
+        <div class="role">asistente · ${turn.turn_id}</div>
+        <div class="body">${enhanceAtomRefs(marked.parse(turn.assistant_message || ''))}</div>
+        <div class="turnmeta">
+          <span class="pill">${(turn.mesa?.atom_ids || []).length} atoms</span>
+          <span class="pill">${(turn.mesa?.include_tags || []).length} tags</span>
+          <span class="pill">+${(turn.mesa?.added_atom_ids || []).length}</span>
+          <span class="pill">=${(turn.mesa?.retained_atom_ids || []).length}</span>
+          <span class="pill">-${(turn.mesa?.removed_atom_ids || []).length}</span>
+          <span class="pill link">ver mesa</span>
+        </div>
+        ${refs.length ? `<div class="refs">${refs.map(r=>`<button class="linkish" data-atom="${r}" data-turn-id="${turn.turn_id}">${r}</button>`).join('')}</div>` : ''}
+      </div>`;
+    messagesEl.appendChild(turnEl);
+  }
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+function summarizeTags(items){
+  const counts = {};
+  for(const item of items||[]){
+    for(const tag of item.tags||[]){counts[tag]=(counts[tag]||0)+1;}
+  }
+  return Object.entries(counts).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
+}
+
+function renderTurnInspector(turn, focusAtomId=null){
+  if(!turn){
+    sideMeta.textContent='Selecciona una respuesta del asistente.';
+    sideBody.innerHTML='<div class="empty">Aquí aparecerá el contexto versionado de la respuesta seleccionada.</div>';
+    return;
+  }
+  const mesa = turn.mesa || {};
+  sideMeta.textContent = `${turn.turn_id} · ${mesa.mesa_id} · ${(mesa.atom_ids||[]).length} atoms`;
+  const tagCounts = summarizeTags(mesa.items||[]);
+  const atomRows = (mesa.items||[]).map(item => `
+    <div class="atom-row" id="atom-row-${item.atom_id}">
+      <div class="atom-name">${escapeHtml(item.title)}</div>
+      <div class="atom-sub">${escapeHtml(item.atom_id)} · ${escapeHtml(item.role)} · score ${item.score}</div>
+      <div class="chips">${(item.tags||[]).map(t=>`<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
+      <div class="refs">
+        <button class="linkish" data-open-atom="${item.atom_id}">abrir atom</button>
+      </div>
+    </div>`).join('');
+
+  sideBody.innerHTML = `
+    <div class="section open">
+      <div class="section-head" data-toggle-section>
+        <div>
+          <div class="section-title">Resumen</div>
+          <div class="meta">Mesa asociada a la respuesta seleccionada</div>
+        </div>
+        <div>▾</div>
+      </div>
+      <div class="section-body">
+        <div class="summary-grid">
+          <div><strong>Pregunta:</strong> ${escapeHtml(turn.user_message || '')}</div>
+          <div><strong>Tags activos:</strong> <div class="chips" style="margin-top:6px">${(mesa.include_tags||[]).map(t=>`<span class="chip">${escapeHtml(t)}</span>`).join('') || '<span class="empty">sin tags</span>'}</div></div>
+          <div><strong>Added:</strong> ${(mesa.added_atom_ids||[]).map(x=>`<span class="chip">${escapeHtml(x)}</span>`).join(' ') || '<span class="empty">ninguno</span>'}</div>
+          <div><strong>Retained:</strong> ${(mesa.retained_atom_ids||[]).map(x=>`<span class="chip ok">${escapeHtml(x)}</span>`).join(' ') || '<span class="empty">ninguno</span>'}</div>
+          <div><strong>Removed:</strong> ${(mesa.removed_atom_ids||[]).map(x=>`<span class="chip warn">${escapeHtml(x)}</span>`).join(' ') || '<span class="empty">ninguno</span>'}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" data-toggle-section>
+        <div>
+          <div class="section-title">Train of thought</div>
+          <div class="meta">Resumen del razonamiento bibliotecario</div>
+        </div>
+        <div>▸</div>
+      </div>
+      <div class="section-body">
+        <div class="toc-summary">
+          ${(mesa.reasoning_summary||[]).map(line=>`<div class="toc-line">${escapeHtml(line)}</div>`).join('') || '<div class="empty">sin resumen</div>'}
+        </div>
+        <div class="refs" style="margin-top:12px">
+          <button class="linkish" data-open-reasoning="${turn.turn_id}">ver log completo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head" data-toggle-section>
+        <div>
+          <div class="section-title">Atoms</div>
+          <div class="meta">Vista compacta del contexto atómico</div>
+        </div>
+        <div>▸</div>
+      </div>
+      <div class="section-body">
+        <div class="summary-grid" style="margin-bottom:12px">
+          <div><strong>Total:</strong> ${(mesa.atom_ids||[]).length}</div>
+          <div><strong>Top tags:</strong></div>
+          <div class="tag-group">${tagCounts.slice(0,8).map(([tag,count])=>`<div class="tag-group-row"><span>${escapeHtml(tag)}</span><span>${count}</span></div>`).join('') || '<div class="empty">sin tags</div>'}</div>
+        </div>
+        <div class="summary-grid">${atomRows}</div>
+      </div>
+    </div>`;
+
+  openSidebar();
+  if(focusAtomId){
+    setTimeout(()=>{
+      const el = document.getElementById(`atom-row-${focusAtomId}`);
+      if(el) el.scrollIntoView({block:'nearest', behavior:'smooth'});
+    }, 0);
+  }
+}
+
+function selectTurn(turnId, focusAtomId=null){
+  selectedTurnId = turnId;
+  renderTurns();
+  const turn = turns.find(t => t.turn_id === turnId);
+  renderTurnInspector(turn, focusAtomId);
+}
+
+async function openAtomModal(atomId){
+  const res = await fetch(`/api/atom/${atomId}`);
+  if(!res.ok){openModal('Atom', '<div class="empty">No se pudo cargar el atom.</div>');return;}
+  const atom = await res.json();
+  openModal(atom.id, `
+    <div class="summary-grid">
+      <div><strong>Título:</strong> ${escapeHtml(atom.title || '')}</div>
+      <div><strong>Path:</strong> <code>${escapeHtml(atom.path || '')}</code></div>
+      <div><strong>Tags:</strong> <div class="chips" style="margin-top:6px">${(atom.tags||[]).map(t=>`<span class="chip">${escapeHtml(t)}</span>`).join('')}</div></div>
+      <div><strong>Pregunta:</strong> ${escapeHtml(atom.question || '-')}</div>
+      <div><strong>Respuesta:</strong> ${marked.parse(atom.answer || '_Sin respuesta_')}</div>
+      <div><strong>Procedencia:</strong> ${marked.parse(atom.provenance || atom.provenance_field || '_Sin procedencia_')}</div>
+    </div>`);
+}
+
+function openReasoningModal(turnId){
+  const turn = turns.find(t => t.turn_id === turnId);
+  if(!turn) return;
+  const log = turn.mesa?.reasoning_log || [];
+  openModal(`Reasoning · ${turnId}`, `<pre>${escapeHtml(JSON.stringify(log, null, 2))}</pre>`);
+}
+
+async function sendMessage(){
+  const message = inputEl.value.trim();
+  if(!message) return;
+  inputEl.value='';
+  sendBtn.disabled=true;
+  const ghostId = `ghost-${Date.now()}`;
+  turns.push({turn_id:ghostId,user_message:message,assistant_message:'_Compilando mesa y respondiendo..._',mesa:{atom_ids:[],include_tags:[],added_atom_ids:[],retained_atom_ids:[],removed_atom_ids:[]},pending:true});
+  selectedTurnId = ghostId;
+  renderTurns();
+  try{
+    const res = await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,session_id:sessionId})});
+    const data = await res.json();
+    sessionId = data.session_id;
+    localStorage.setItem('kb_chat_session', sessionId);
+    turns = turns.filter(t=>t.turn_id!==ghostId);
+    turns.push(data.turn);
+    selectTurn(data.turn.turn_id);
+  }catch(err){
+    turns = turns.filter(t=>t.turn_id!==ghostId);
+    turns.push({turn_id:`err-${Date.now()}`,user_message:message,assistant_message:`Error: ${err.message || err}`,mesa:{atom_ids:[],include_tags:[],added_atom_ids:[],retained_atom_ids:[],removed_atom_ids:[]}});
+    renderTurns();
+  }finally{
+    sendBtn.disabled=false;
+    inputEl.focus();
+  }
+}
+
+sidebarToggle.onclick = toggleSidebar;
+sendBtn.onclick = sendMessage;
+inputEl.addEventListener('keydown',(e)=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}});
+modalClose.onclick = closeModal;
+modalBackdrop.addEventListener('click',(e)=>{if(e.target===modalBackdrop) closeModal();});
+
+document.addEventListener('click',(e)=>{
+  const turnCard = e.target.closest('.msg.assistant[data-turn-id]');
+  if(turnCard){ selectTurn(turnCard.getAttribute('data-turn-id')); return; }
+  const atomRef = e.target.closest('[data-atom]');
+  if(atomRef){
+    const atomId = atomRef.getAttribute('data-atom');
+    const turnId = atomRef.getAttribute('data-turn-id') || selectedTurnId;
+    if(turnId) selectTurn(turnId, atomId);
+    return;
+  }
+  const toggle = e.target.closest('[data-toggle-section]');
+  if(toggle){
+    const section = toggle.closest('.section');
+    section.classList.toggle('open');
+    toggle.lastElementChild.textContent = section.classList.contains('open') ? '▾' : '▸';
+    return;
+  }
+  const openAtom = e.target.closest('[data-open-atom]');
+  if(openAtom){ openAtomModal(openAtom.getAttribute('data-open-atom')); return; }
+  const openReasoning = e.target.closest('[data-open-reasoning]');
+  if(openReasoning){ openReasoningModal(openReasoning.getAttribute('data-open-reasoning')); return; }
+});
+
+turns.push({
+  turn_id:'turn-000',
+  user_message:'',
+  assistant_message:'Hola. Pregúntame algo sobre APOS. Cada respuesta queda ligada a su propia mesa y puedes inspeccionarla a la derecha.',
+  mesa:{mesa_id:'mesa-demo',atom_ids:[],include_tags:[],added_atom_ids:[],retained_atom_ids:[],removed_atom_ids:[],reasoning_summary:[],reasoning_log:[],items:[]}
+});
+renderTurns();
+</script>
+</body>
+</html>
