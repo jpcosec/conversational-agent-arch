@@ -1,0 +1,13 @@
+name: RitualDoc
+model_ref: deskops.models:RitualDoc
+path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/ritual.py
+documents_index: .sldb/core/documents/RitualDoc.yaml
+sections_index: ''
+hash_b: ''
+version: 1
+canonical: false
+family: null
+semantics:
+- type.workflow.ritual
+- workspace.desk
+base_models: []

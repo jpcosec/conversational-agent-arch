@@ -1,0 +1,11 @@
+{
+  "project_identity": "gemini_test",
+  "versions": {
+    "desk_format": "1.0.0",
+    "model_version": "1.0.0"
+  },
+  "sandbox": {
+    "enabled": false,
+    "sandbox_root": ".tmp/deskops-sandbox"
+  }
+}

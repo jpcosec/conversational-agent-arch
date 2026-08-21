@@ -1,0 +1,13 @@
+name: InboxNoteDoc
+model_ref: deskops.models:InboxNoteDoc
+path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/inbox.py
+documents_index: .sldb/core/documents/InboxNoteDoc.yaml
+sections_index: ''
+hash_b: ''
+version: 1
+canonical: false
+family: null
+semantics:
+- type.desk.inbox-note
+- workspace.desk.inbox
+base_models: []

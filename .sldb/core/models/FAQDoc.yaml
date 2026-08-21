@@ -1,0 +1,13 @@
+name: FAQDoc
+model_ref: deskops.models:FAQDoc
+path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/faq.py
+documents_index: .sldb/core/documents/FAQDoc.yaml
+sections_index: ''
+hash_b: ''
+version: 1
+canonical: false
+family: null
+semantics:
+- type.documentation.faq
+- workspace.docs.faq
+base_models: []

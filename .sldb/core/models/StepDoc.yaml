@@ -1,0 +1,13 @@
+name: StepDoc
+model_ref: deskops.models:StepDoc
+path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/step.py
+documents_index: .sldb/core/documents/StepDoc.yaml
+sections_index: ''
+hash_b: ''
+version: 1
+canonical: false
+family: null
+semantics:
+- type.workflow.step
+- workspace.desk
+base_models: []
