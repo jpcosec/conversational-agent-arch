@@ -1,0 +1,801 @@
+documents:
+- doc_name: atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  sections:
+  - path: atom-xxx-unique-identifier
+    title: atom-xxx, unique identifier
+    breadcrumbs:
+    - atom-xxx, unique identifier
+    about:
+    - atom-xxx, unique identifier
+    - atom xxx unique identifier
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: atom-xxx-unique-identifier
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: short-descriptive-title
+    title: Short, descriptive title
+    breadcrumbs:
+    - Short, descriptive title
+    about:
+    - Short, descriptive title
+    - short descriptive title
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: short-descriptive-title
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: what-why-how-how-not-when-where-for-whom
+    title: what | why | how | how_not | when | where | for_whom
+    breadcrumbs:
+    - what | why | how | how_not | when | where | for_whom
+    about:
+    - what | why | how | how_not | when | where | for_whom
+    - what why how how not when where for whom
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: what-why-how-how-not-when-where-for-whom
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: e-g-system-deskops-topic-templates
+    title: e.g., system:deskops, topic:templates
+    breadcrumbs:
+    - e.g., system:deskops, topic:templates
+    about:
+    - e.g., system:deskops, topic:templates
+    - e g system deskops topic templates
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: e-g-system-deskops-topic-templates
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    title: Optional URL or path to the authoritative source of this knowledge
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-agent-py
+    title: 'provenance: kb_agent/agent.py'
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/agent.py'
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/agent.py'
+    - provenance kb agent agent py
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: provenance-kb-agent-agent-py
+    level: 2
+    line_start: 15
+    line_end: 17
+  - path: conversador-apos-delegates-retrieval-to-bibliotecario
+    title: conversador_apos delegates retrieval to bibliotecario
+    breadcrumbs:
+    - conversador_apos delegates retrieval to bibliotecario
+    about:
+    - conversador_apos delegates retrieval to bibliotecario
+    - conversador apos delegates retrieval to bibliotecario
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: conversador-apos-delegates-retrieval-to-bibliotecario
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: conversador-apos-delegates-retrieval-to-bibliotecario/answer
+    title: Answer
+    breadcrumbs:
+    - conversador_apos delegates retrieval to bibliotecario
+    - Answer
+    about:
+    - conversador_apos delegates retrieval to bibliotecario
+    - conversador apos delegates retrieval to bibliotecario
+    - Answer
+    - answer
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 20
+    line_end: 21
+- doc_name: atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  sections:
+  - path: atom-xxx-unique-identifier
+    title: atom-xxx, unique identifier
+    breadcrumbs:
+    - atom-xxx, unique identifier
+    about:
+    - atom-xxx, unique identifier
+    - atom xxx unique identifier
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: atom-xxx-unique-identifier
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: short-descriptive-title
+    title: Short, descriptive title
+    breadcrumbs:
+    - Short, descriptive title
+    about:
+    - Short, descriptive title
+    - short descriptive title
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: short-descriptive-title
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: what-why-how-how-not-when-where-for-whom
+    title: what | why | how | how_not | when | where | for_whom
+    breadcrumbs:
+    - what | why | how | how_not | when | where | for_whom
+    about:
+    - what | why | how | how_not | when | where | for_whom
+    - what why how how not when where for whom
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: what-why-how-how-not-when-where-for-whom
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: e-g-system-deskops-topic-templates
+    title: e.g., system:deskops, topic:templates
+    breadcrumbs:
+    - e.g., system:deskops, topic:templates
+    about:
+    - e.g., system:deskops, topic:templates
+    - e g system deskops topic templates
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: e-g-system-deskops-topic-templates
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    title: Optional URL or path to the authoritative source of this knowledge
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-kb-tools-py
+    title: 'provenance: kb_agent/kb_tools.py'
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/kb_tools.py'
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/kb_tools.py'
+    - provenance kb agent kb tools py
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: provenance-kb-agent-kb-tools-py
+    level: 2
+    line_start: 15
+    line_end: 17
+  - path: kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+    title: kb_tools wrap the sldb CLI as retrieval tools
+    breadcrumbs:
+    - kb_tools wrap the sldb CLI as retrieval tools
+    about:
+    - kb_tools wrap the sldb CLI as retrieval tools
+    - kb tools wrap the sldb cli as retrieval tools
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: kb-tools-wrap-the-sldb-cli-as-retrieval-tools/answer
+    title: Answer
+    breadcrumbs:
+    - kb_tools wrap the sldb CLI as retrieval tools
+    - Answer
+    about:
+    - kb_tools wrap the sldb CLI as retrieval tools
+    - kb tools wrap the sldb cli as retrieval tools
+    - Answer
+    - answer
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 20
+    line_end: 21
+- doc_name: atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  sections:
+  - path: atom-xxx-unique-identifier
+    title: atom-xxx, unique identifier
+    breadcrumbs:
+    - atom-xxx, unique identifier
+    about:
+    - atom-xxx, unique identifier
+    - atom xxx unique identifier
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: atom-xxx-unique-identifier
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: short-descriptive-title
+    title: Short, descriptive title
+    breadcrumbs:
+    - Short, descriptive title
+    about:
+    - Short, descriptive title
+    - short descriptive title
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: short-descriptive-title
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: what-why-how-how-not-when-where-for-whom
+    title: what | why | how | how_not | when | where | for_whom
+    breadcrumbs:
+    - what | why | how | how_not | when | where | for_whom
+    about:
+    - what | why | how | how_not | when | where | for_whom
+    - what why how how not when where for whom
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: what-why-how-how-not-when-where-for-whom
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: e-g-system-deskops-topic-templates
+    title: e.g., system:deskops, topic:templates
+    breadcrumbs:
+    - e.g., system:deskops, topic:templates
+    about:
+    - e.g., system:deskops, topic:templates
+    - e g system deskops topic templates
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: e-g-system-deskops-topic-templates
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    title: Optional URL or path to the authoritative source of this knowledge
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-agent-py
+    title: 'provenance: kb_agent/agent.py'
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/agent.py'
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/agent.py'
+    - provenance kb agent agent py
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: provenance-kb-agent-agent-py
+    level: 2
+    line_start: 15
+    line_end: 17
+  - path: gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+    title: Gemini 2.5 Flash on Vertex AI is the model boundary
+    breadcrumbs:
+    - Gemini 2.5 Flash on Vertex AI is the model boundary
+    about:
+    - Gemini 2.5 Flash on Vertex AI is the model boundary
+    - gemini 2 5 flash on vertex ai is the model boundary
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: gemini-2-5-flash-on-vertex-ai-is-the-model-boundary/answer
+    title: Answer
+    breadcrumbs:
+    - Gemini 2.5 Flash on Vertex AI is the model boundary
+    - Answer
+    about:
+    - Gemini 2.5 Flash on Vertex AI is the model boundary
+    - gemini 2 5 flash on vertex ai is the model boundary
+    - Answer
+    - answer
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 20
+    line_end: 21
+- doc_name: atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  sections:
+  - path: atom-xxx-unique-identifier
+    title: atom-xxx, unique identifier
+    breadcrumbs:
+    - atom-xxx, unique identifier
+    about:
+    - atom-xxx, unique identifier
+    - atom xxx unique identifier
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: atom-xxx-unique-identifier
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: short-descriptive-title
+    title: Short, descriptive title
+    breadcrumbs:
+    - Short, descriptive title
+    about:
+    - Short, descriptive title
+    - short descriptive title
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: short-descriptive-title
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: what-why-how-how-not-when-where-for-whom
+    title: what | why | how | how_not | when | where | for_whom
+    breadcrumbs:
+    - what | why | how | how_not | when | where | for_whom
+    about:
+    - what | why | how | how_not | when | where | for_whom
+    - what why how how not when where for whom
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: what-why-how-how-not-when-where-for-whom
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: e-g-system-deskops-topic-templates
+    title: e.g., system:deskops, topic:templates
+    breadcrumbs:
+    - e.g., system:deskops, topic:templates
+    about:
+    - e.g., system:deskops, topic:templates
+    - e g system deskops topic templates
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: e-g-system-deskops-topic-templates
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    title: Optional URL or path to the authoritative source of this knowledge
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-kb-tools-py
+    title: 'provenance: kb_agent/kb_tools.py'
+    breadcrumbs:
+    - Optional URL or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/kb_tools.py'
+    about:
+    - Optional URL or path to the authoritative source of this knowledge
+    - optional url or path to the authoritative source of this knowledge
+    - 'provenance: kb_agent/kb_tools.py'
+    - provenance kb agent kb tools py
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: provenance-kb-agent-kb-tools-py
+    level: 2
+    line_start: 15
+    line_end: 17
+  - path: kb-root-parameterizes-the-reusable-knowledge-base-target
+    title: KB_ROOT parameterizes the reusable knowledge-base target
+    breadcrumbs:
+    - KB_ROOT parameterizes the reusable knowledge-base target
+    about:
+    - KB_ROOT parameterizes the reusable knowledge-base target
+    - kb root parameterizes the reusable knowledge base target
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: kb-root-parameterizes-the-reusable-knowledge-base-target
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: kb-root-parameterizes-the-reusable-knowledge-base-target/answer
+    title: Answer
+    breadcrumbs:
+    - KB_ROOT parameterizes the reusable knowledge-base target
+    - Answer
+    about:
+    - KB_ROOT parameterizes the reusable knowledge-base target
+    - kb root parameterizes the reusable knowledge base target
+    - Answer
+    - answer
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 20
+    line_end: 21

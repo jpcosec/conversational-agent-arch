@@ -1,2 +1,75 @@
-tags: {}
-documents: {}
+tags:
+  domain:knowledge-management:
+  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  layer:runtime:
+  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  system:kb-agent-runtime:
+  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  topic:configuration:
+  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  topic:delegation:
+  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  topic:llm-boundary:
+  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  topic:retrieval:
+  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  type.knowledge.atom:
+  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  workspace.desk.atoms:
+  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+documents:
+  atom-conversador-apos-delegates-retrieval-to-bibliotecario:
+    model: AtomDoc
+    path: desk/atoms/atom-conversador-apos-delegates-retrieval-to-bibliotecario.md
+    tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:delegation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools:
+    model: AtomDoc
+    path: desk/atoms/atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools.md
+    tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary:
+    model: AtomDoc
+    path: desk/atoms/atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary.md
+    tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:llm-boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-kb-root-parameterizes-the-reusable-knowledge-base-target:
+    model: AtomDoc
+    path: desk/atoms/atom-kb-root-parameterizes-the-reusable-knowledge-base-target.md
+    tags:
+    - domain:knowledge-management
+    - layer:runtime
+    - system:kb-agent-runtime
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms

@@ -1,0 +1,73 @@
+id: kb-agent-vista-01-contexto
+title: KB Agent Runtime · Vista 01 · Contexto de arquitectura
+type: component
+version: '1.0'
+metadata:
+  author: antonIA
+  description: 'Arquitectura de contexto del runtime reusable de retrieval sobre una base de conocimiento SLDB usando Google ADK y Gemini 2.5 Flash.'
+data:
+  nodes:
+    user:
+      label: Usuario experto
+      kind: actor
+
+    chat_ui:
+      label: Chat UI / ADK web
+      kind: channel
+
+    conversador_apos:
+      label: conversador_apos\n(root LlmAgent)
+      kind: agent
+
+    bibliotecario:
+      label: bibliotecario\n(sub-agent)
+      kind: agent
+
+    kb_tools:
+      label: kb_tools\n(wrapper CLI sldb)
+      kind: tool
+
+    sldb_store:
+      label: SLDB store / KB_ROOT
+      kind: datastore
+
+    vertex_ai:
+      label: Vertex AI / gemini-2.5-flash
+      kind: llm
+
+  edges:
+    - from: user
+      to: chat_ui
+      relation: consulta_y_recibe_respuesta
+
+    - from: chat_ui
+      to: conversador_apos
+      relation: entrega_prompt
+
+    - from: conversador_apos
+      to: bibliotecario
+      relation: delega_retrieval
+
+    - from: conversador_apos
+      to: vertex_ai
+      relation: genera_respuesta_con_llm
+
+    - from: bibliotecario
+      to: vertex_ai
+      relation: ejecuta_razonamiento_de_retrieval
+
+    - from: bibliotecario
+      to: kb_tools
+      relation: invoca_tools
+
+    - from: kb_tools
+      to: sldb_store
+      relation: consulta_cli_sldb_en_kb_root
+
+    - from: bibliotecario
+      to: conversador_apos
+      relation: retorna_atom_ids_y_hallazgos
+
+    - from: conversador_apos
+      to: chat_ui
+      relation: responde_en_lenguaje_natural

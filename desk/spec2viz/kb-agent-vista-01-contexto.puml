@@ -1,0 +1,19 @@
+@startuml
+component "Usuario experto" as user <<actor>>
+component "Chat UI / ADK web" as chat_ui <<channel>>
+component "conversador_apos\n(root LlmAgent)" as conversador_apos <<agent>>
+component "bibliotecario\n(sub-agent)" as bibliotecario <<agent>>
+component "kb_tools\n(wrapper CLI sldb)" as kb_tools <<tool>>
+component "SLDB store / KB_ROOT" as sldb_store <<datastore>>
+component "Vertex AI / gemini-2.5-flash" as vertex_ai <<llm>>
+
+user --> chat_ui : consulta_y_recibe_respuesta
+chat_ui --> conversador_apos : entrega_prompt
+conversador_apos --> bibliotecario : delega_retrieval
+conversador_apos --> vertex_ai : genera_respuesta_con_llm
+bibliotecario --> vertex_ai : ejecuta_razonamiento_de_retrieval
+bibliotecario --> kb_tools : invoca_tools
+kb_tools --> sldb_store : consulta_cli_sldb_en_kb_root
+bibliotecario --> conversador_apos : retorna_atom_ids_y_hallazgos
+conversador_apos --> chat_ui : responde_en_lenguaje_natural
+@enduml

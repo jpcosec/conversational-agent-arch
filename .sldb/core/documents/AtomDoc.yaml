@@ -1,1 +1,45 @@
-documents: []
+documents:
+- name: atom-conversador-apos-delegates-retrieval-to-bibliotecario
+  path: desk/atoms/atom-conversador-apos-delegates-retrieval-to-bibliotecario.md
+  hash_c: 93f3589325d5ef6067fcbb2158b1b82915552a677660c018124226e53556bdd4
+  hash_d: 1cdabbbf298cc87cef29c279dc446c0c998909beb99827541bedeeb9b3980a06
+  semantic_tags:
+  - domain:knowledge-management
+  - layer:runtime
+  - system:kb-agent-runtime
+  - topic:delegation
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  path: desk/atoms/atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools.md
+  hash_c: 88cf206fb65698b154b747167fa6ce9de5a318b9ffb7c39c1f8d4346a58c8a0d
+  hash_d: 2742f8b8c4eeea51b515bf77011c619235c68e861b00b83086f3c46f4cf6d13f
+  semantic_tags:
+  - domain:knowledge-management
+  - layer:runtime
+  - system:kb-agent-runtime
+  - topic:retrieval
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  path: desk/atoms/atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary.md
+  hash_c: c171b927f85d1b01ed2235ce0b7f0e223631fd639c218e26eaa2a3367da52fc0
+  hash_d: 951caa6c584d17b448e7b6d015af65aea1ee7fae4db7d0a48ba763007f46761e
+  semantic_tags:
+  - domain:knowledge-management
+  - layer:runtime
+  - system:kb-agent-runtime
+  - topic:llm-boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+  path: desk/atoms/atom-kb-root-parameterizes-the-reusable-knowledge-base-target.md
+  hash_c: 4cdfb4f75d383fb29383055c1b758b73467bfe0f6748f3dc4715c3393591067b
+  hash_d: a3a1eacab2c445d1eedc9b6bf25f9af27cf66e232a7ad9958df24121073f046d
+  semantic_tags:
+  - domain:knowledge-management
+  - layer:runtime
+  - system:kb-agent-runtime
+  - topic:configuration
+  - type.knowledge.atom
+  - workspace.desk.atoms
