@@ -28,6 +28,8 @@ class SessionState(Base):
         default=SessionNode.IDLE,
     )
     active_domain: Mapped[str | None] = mapped_column(String, nullable=True)
+    flow_node: Mapped[str | None] = mapped_column(String, nullable=True)
+    flow_slots: Mapped[dict[str, object] | None] = mapped_column(JSON, nullable=True)
     buffer: Mapped[dict[str, list[object]]] = mapped_column(
         JSON,
         nullable=False,

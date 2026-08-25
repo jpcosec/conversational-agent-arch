@@ -205,8 +205,18 @@ class Orchestrator:
             else:
                 kind = "nl"
 
-            # 4) Persistir SessionState + turno en ChatHistory (scrubbeado)
+            # 4) Persistir SessionState (dominio + flujo) + ChatHistory
             session_state.active_domain = scenario_effective or None
+            flow_node = compiled.get("flow_node") if isinstance(compiled, dict) else getattr(compiled, "flow_node", None)
+            if flow_node:
+                session_state.flow_node = flow_node
+            flow_transitions = compiled.get("allowed_transitions", []) if isinstance(compiled, dict) else getattr(compiled, "allowed_transitions", [])
+            flow_missing = compiled.get("missing_slots", []) if isinstance(compiled, dict) else getattr(compiled, "missing_slots", [])
+            if flow_transitions or flow_missing:
+                session_state.flow_slots = {
+                    "allowed_transitions": flow_transitions,
+                    "missing_slots": flow_missing,
+                }
             session_state.current_node = SessionNode.IDLE
             session_state.updated_at = datetime.now(timezone.utc)
             reply_text = json.dumps(response, ensure_ascii=False) if isinstance(response, dict) else str(response)
