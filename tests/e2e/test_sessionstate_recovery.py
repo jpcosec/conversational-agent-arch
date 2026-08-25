@@ -88,7 +88,13 @@ def test_sessionstate_recovery_real_sqlite_file(tmp_path: Path) -> None:
         encoding="utf-8",
     )
 
-    assert turn_2["scenario_effective"] == "pizzeria"
+    # DIENTES: el store tiene DOS dominios (heladeria, pizzeria). El default del
+    # compilador es 'heladeria' (alfabetico). Por lo tanto, si scenario_effective
+    # sale 'pizzeria' en el turno 2 SIN argumento, la UNICA via posible es haberlo
+    # recuperado de SessionState. Si la recuperacion se rompe, caeria en 'heladeria'.
+    assert turn_2["scenario_effective"] == "pizzeria", (
+        f"scenario no recuperado de SessionState; cayo en default: {turn_2['scenario_effective']}"
+    )
     assert turn_2["scenario_source"] == "session_state"
     assert active_domain_after_restart == "pizzeria"
     assert turn_2["reply"] != CANONICAL_FALLBACK_RESPONSE

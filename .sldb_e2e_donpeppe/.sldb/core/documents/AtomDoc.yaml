@@ -59,3 +59,13 @@ documents:
   - source:e2e
   - type.knowledge.atom
   - workspace.desk.atoms
+- name: atom-heladeria-carta
+  path: .sldb_e2e_donpeppe/atoms/atom-heladeria-carta.md
+  hash_c: d8135fc339ac928a1bd2f60a643ce38e17600d9f3be0c7be704d163cbc8c2e5b
+  hash_d: 543a81b139136c30804a156b47eea8a6ac462dba742b192bdce9ef79bca4de78
+  semantic_tags:
+  - atom_type:domain
+  - domain:heladeria
+  - source:e2e
+  - type.knowledge.atom
+  - workspace.desk.atoms

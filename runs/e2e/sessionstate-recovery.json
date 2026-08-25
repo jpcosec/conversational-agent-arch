@@ -1,0 +1,21 @@
+{
+  "db_file": "/tmp/pytest-of-jp/pytest-44/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
+  "user_id": 1,
+  "before_restart": {
+    "active_domain": "pizzeria",
+    "turn": {
+      "scenario_effective": "pizzeria",
+      "scenario_source": "argument",
+      "kind": "nl"
+    }
+  },
+  "after_restart": {
+    "active_domain": "pizzeria",
+    "turn": {
+      "scenario_effective": "pizzeria",
+      "scenario_source": "session_state",
+      "kind": "nl",
+      "reply": "Para hoy, le recomendamos la pizza Margherita."
+    }
+  }
+}
