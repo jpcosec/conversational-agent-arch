@@ -9,7 +9,8 @@ routine: routine-task-implementar-modelos-de-sesión-e-historial
 current_node: checklist-task-implementar-modelos-de-sesión-e-historial-execution-ready
 history: []
 references: []
-depends_on: []
+depends_on:
+- task-implementar-modelos-de-identidad-sql
 pills: []
 files: []
 checklists:
@@ -29,9 +30,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Persiste el estado del nodo de la máquina de estados por usuario y el historial de turnos que alimenta al Reflector.
 
 ## Goal
 
@@ -41,22 +40,24 @@ Tablas SessionState y ChatHistory.
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Modelos `SessionState` y `ChatHistory`.
+FUERA: la lógica de scrubbing de PII (tarea aparte), lectura batch.
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_agent/models_sql/session.py`
 
+Contrato de esquema:
+- `SessionState`: user_id (FK->Users.id, unique), current_node (str — uno de: idle, buffering, evaluating_context, drafting_response, waiting_tool), buffer (JSON — mensajes retenidos por debounce), updated_at.
+- `ChatHistory`: id (PK), user_id (FK->Users.id), role (str: user|assistant|system), content (str), pii_scrubbed (bool, default False), created_at. Indice por (user_id, created_at).
 
+Ambigüedad resuelta: `current_node` usa exactamente los nombres de nodo de la SM del router; `pii_scrubbed` marca si la fila ya pasó por el scrubber (el Reflector SOLO lee filas con pii_scrubbed=True).
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- `pytest` en SQLite `:memory:`: crear sesión, transicionar current_node y afirmar persistencia.
+- Afirmar que ChatHistory por defecto nace con pii_scrubbed=False.
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+Ambas tablas crean schema; los tests de transición de nodo y default de pii_scrubbed pasan.

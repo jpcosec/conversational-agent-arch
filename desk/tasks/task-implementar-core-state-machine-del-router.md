@@ -28,9 +28,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Es el esqueleto de orquestación. Sin la SM base, ni debounce ni pausa de tools tienen dónde engancharse.
 
 ## Goal
 
@@ -40,22 +38,25 @@ Conectar las transiciones básicas idle -> eval -> draft -> idle.
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Definición de nodos y transiciones base + enganche del trigger sintético (CRON).
+FUERA: buffering (debounce) y pausa por tools (tareas hijas).
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_chat_ui/state_machine.py`
 
-
+Ambigüedad resuelta — definición exacta de nodos:
+- `idle`: sin turno activo; único nodo que acepta trigger sintético CRON.
+- `evaluating_context` (eval): invoca al Ontologizador para compilar contexto.
+- `drafting_response` (draft): invoca al Conversador con el contexto compilado.
+Transiciones: idle -> evaluating_context (por input de usuario o CRON) -> drafting_response -> idle.
+El trigger CRON entra SOLO en idle y fuerza evaluating_context con un escenario proactivo.
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- `pytest`: simular input de usuario en idle y afirmar la secuencia idle->eval->draft->idle.
+- Afirmar que un trigger CRON en un nodo distinto de idle es ignorado/encolado (no interrumpe turno activo).
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+Las 3 transiciones base pasan y el trigger CRON respeta la regla de solo-idle.

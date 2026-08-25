@@ -9,7 +9,9 @@ routine: routine-task-implementar-batch-reader-del-reflector
 current_node: checklist-task-implementar-batch-reader-del-reflector-execution-ready
 history: []
 references: []
-depends_on: []
+depends_on:
+- task-implementar-modelos-de-sesión-e-historial
+- task-implementar-scrubber-de-pii
 pills: []
 files: []
 checklists:
@@ -29,9 +31,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Alimenta al Reflector con historial limpio en lotes, sin exponer PII ni bloquear el runtime.
 
 ## Goal
 
@@ -41,22 +41,24 @@ Leer lotes históricos limpios desde SQL.
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Job que lee ChatHistory en lotes filtrando pii_scrubbed=True.
+FUERA: detección de patrones y escritura de átomos (tarea generador).
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_agent/reflector/reader.py`
 
-
+Ambigüedad resuelta:
+- Query OBLIGATORIA: `WHERE pii_scrubbed = True` (nunca lee filas sin scrubbear).
+- Paginación por lotes (`BATCH_SIZE`, default 500) para no cargar todo en memoria.
+- Marca un checkpoint (último created_at procesado) para no reprocesar.
+- Disparo por CRON (no en el hilo de respuesta).
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- `pytest` SQLite `:memory:`: sembrar filas mixtas (scrubbed y no) y afirmar que el reader devuelve SOLO las scrubbed.
+- Afirmar que el checkpoint evita reprocesar en una 2ª corrida.
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+El reader entrega solo historial limpio, paginado, y respeta el checkpoint.

@@ -5,12 +5,6 @@ id: board-001
 scope: desk
 # List of task-xxx paths
 tasks:
-- desk/tasks/task-implementar-router-de-máquina-de-estados.md
-- desk/tasks/task-alinear-agente-conversador-a-nueva-arquitectura.md
-- desk/tasks/task-implementar-capa-relacional-sql.md
-- desk/tasks/task-implementar-perfilador-asincrono.md
-- desk/tasks/task-implementar-reflector-batch.md
-- desk/tasks/task-implementar-ontologizador-context-compiler.md
 - desk/tasks/task-implementar-core-state-machine-del-router.md
 - desk/tasks/task-implementar-debounce-buffer-en-router.md
 - desk/tasks/task-implementar-pausa-de-tools-en-router.md
@@ -42,9 +36,7 @@ tags:
 
 ## Purpose
 
-_Explain what this board routes and why it exists._
-
-
+Rutea la implementación del agente conversacional de 4 motores (Conversador, Ontologizador, Perfilador, Reflector) sobre almacenamiento híbrido SQL+SLDB. Indexa 14 tareas atómicas con orden de dependencias declarado.
 
 ## Notes
 
@@ -63,6 +55,7 @@ _Add short operational notes about the current routed set._
 - Implementar Listener Asíncrono del Perfilador [draft] - Conectar un worker que consuma eventos de turnos en background.
 - Implementar Extractor de Traits [draft] - Analizar texto y mapear a TraitAtoms en la tabla SQL.
 - Implementar Batch Reader del Reflector [draft] - Leer lotes históricos limpios desde SQL.
+- Implementar Generador de Átomos SLDB [draft] - Convertir patrones históricos en archivos físicos .md.
 
 ## Task Details
 

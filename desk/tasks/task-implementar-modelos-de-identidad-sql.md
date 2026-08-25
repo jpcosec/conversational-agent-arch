@@ -9,7 +9,7 @@ routine: routine-task-implementar-modelos-de-identidad-sql
 current_node: checklist-task-implementar-modelos-de-identidad-sql-execution-ready
 history: []
 references: []
-depends_on: []
+depends_on: []  # base: sin dependencias
 pills: []
 files: []
 checklists:
@@ -27,9 +27,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Aísla la identidad transaccional (PII) del conocimiento semántico. Es la tabla base sobre la que se apoyan sesión, historial y perfilado.
 
 ## Goal
 
@@ -39,22 +37,22 @@ Tablas Users y UserTraits en SQLAlchemy.
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Modelos SQLAlchemy `Users` y `UserTraits`.
+FUERA: SessionState, ChatHistory (otra tarea), lógica de extracción de traits.
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_agent/models_sql/identity.py`
 
-
+Contrato de esquema:
+- `Users`: id (PK, int), external_id (str, unique — el ID del canal ej. wa:+569...), channel (str), created_at (datetime).
+- `UserTraits`: tabla N:M. user_id (FK->Users.id), trait_id (str, apunta al id de un TraitAtom en SLDB, NO es FK), confidence (float 0-1), source (str), created_at. PK compuesta (user_id, trait_id).
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- `pytest` levanta SQLite `:memory:`, crea un User + 2 UserTraits al mismo user_id y afirma la relación N:M.
+- Afirmar que trait_id acepta strings arbitrarios (no valida contra SLDB en esta capa).
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+Los modelos crean el schema sin errores y el test N:M en memoria pasa en verde.

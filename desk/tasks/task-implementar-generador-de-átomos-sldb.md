@@ -9,7 +9,9 @@ routine: routine-task-implementar-generador-de-átomos-sldb
 current_node: checklist-task-implementar-generador-de-átomos-sldb-execution-ready
 history: []
 references: []
-depends_on: []
+depends_on:
+- task-implementar-batch-reader-del-reflector
+- task-implementar-conector-sldb-del-ontologizador
 pills: []
 files: []
 checklists:
@@ -28,9 +30,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Engrosa la base de conocimiento de forma autónoma materializando patrones recurrentes como átomos tipados.
 
 ## Goal
 
@@ -40,22 +40,23 @@ Convertir patrones históricos en archivos físicos .md.
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Detectar patrones en los lotes limpios y escribir nuevos DomainAtom/RuleAtom en SLDB.
+FUERA: lectura de historial (batch-reader), consumo por el Ontologizador.
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_agent/reflector/generator.py`
 
-
+Ambigüedad resuelta:
+- Escribe átomos usando la MISMA vía que el CLI (`deskops add atom` / API SLDB), respetando tag-namespaces válidos.
+- Todo átomo generado nace con tag `source:reflector` y estado `proposed` (requiere revisión humana antes de activarse — no auto-publica a producción).
+- Deduplicación: no crea un átomo si ya existe uno con el mismo contenido semántico.
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- `pytest`: alimentar un lote sintético con un patrón claro y afirmar que se escribió un archivo .md nuevo en `.sldb_test/` con tag source:reflector y estado proposed.
+- Afirmar que reejecutar con el mismo patrón NO duplica el átomo.
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+Genera átomos tipados marcados como proposed, sin duplicar, en el store de prueba.

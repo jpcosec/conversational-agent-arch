@@ -29,9 +29,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Aisla la lectura de SLDB del resto del sistema. Es la fuente de conocimiento semántico para compilar contexto.
 
 ## Goal
 
@@ -41,22 +39,24 @@ Leer de forma segura rules, tools y domains desde SLDB.
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Cliente de lectura que trae RuleAtoms, ToolAtoms y DomainAtoms desde SLDB.
+FUERA: la lógica de filtrado/compilación del subgrafo (tarea compilador).
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_agent/ontologizador/sldb_reader.py`
 
-
+Ambigüedad resuelta:
+- Usa el CLI/API de SLDB (no lee .md a mano).
+- Expone `fetch(atom_type, filters) -> list[Atom]` para type in {rule, tool, domain, trait}.
+- Cada Atom retornado incluye: id, type, tags, body. Los ToolAtoms además exponen su JSON schema crudo.
+- Config `KB_ROOT` parametriza el store SLDB destino (permite swap multi-dominio).
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- `pytest` contra un `.sldb_test/` sembrado: afirmar que fetch('tool') devuelve solo ToolAtoms con su JSON schema legible.
+- Afirmar que cambiar KB_ROOT cambia el set de átomos leído (multi-dominio).
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+fetch() lee cada tipo de átomo desde SLDB y el test contra el store sembrado pasa.

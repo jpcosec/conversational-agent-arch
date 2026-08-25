@@ -27,9 +27,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Desacopla el perfilado del turno conversacional para no sumar latencia a la respuesta del usuario.
 
 ## Goal
 
@@ -39,22 +37,23 @@ Conectar un worker que consuma eventos de turnos en background.
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Worker asincrónico que consume eventos de "turno cerrado" y despacha al extractor.
+FUERA: la lógica de extracción de traits (tarea aparte).
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_agent/perfilador/listener.py`
 
-
+Ambigüedad resuelta:
+- Mecanismo de disparo: cola en proceso (`asyncio.Queue`) para v1; interfaz abstracta `EventBus` para permitir swap a Redis después sin tocar el extractor.
+- Evento publicado por el router al cerrar un turno (drafting_response -> idle): `{user_id, turn_text}`.
+- El worker NUNCA bloquea el hilo de respuesta; si falla, reintenta con backoff y loguea.
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- `pytest` async: publicar un evento en la cola y afirmar que el handler del extractor fue invocado con el user_id/turn_text correctos.
+- Afirmar que una excepción en el handler no propaga al productor.
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+El worker consume eventos de forma no bloqueante y aisla fallos del hilo principal.

@@ -9,7 +9,8 @@ routine: routine-task-implementar-fallback-estricto-del-conversador
 current_node: checklist-task-implementar-fallback-estricto-del-conversador-execution-ready
 history: []
 references: []
-depends_on: []
+depends_on:
+- task-implementar-compilador-de-contexto
 pills:
 - desk/contexts/pill-conversador-jamas-alucina-sin-contexto.md
 files: []
@@ -28,9 +29,7 @@ atoms:
 
 ## Rationale
 
-_Explain why this task exists or the business driver behind it._
-
-Not provided.
+Garantiza cero alucinación: si no hay contexto, el bot admite no saber en lugar de inventar.
 
 ## Goal
 
@@ -40,22 +39,23 @@ Forzar salida 'No sé' si el contexto es vacío (cero alucinación).
 
 ## Scope
 
-_State what is in scope and what is out of scope._
-
-
+EN: Lógica de fallback cuando el Contexto Compilado llega con `is_empty=true`.
+FUERA: emisión de tools (tarea aparte), compilación de contexto.
 
 ## Implementation Path
 
-_Outline the expected implementation route or affected surface._
+`kb_agent/agent.py` (conversador_apos)
 
--
+Ambigüedad resuelta:
+- Detonante exacto: payload.is_empty == true (NO heurística de confianza del LLM).
+- Comportamiento: responder con un mensaje de desconocimiento honesto ("no lo sé / lo averiguaré"), sin intentar responder la pregunta de fondo.
+- El system prompt debe prohibir explícitamente responder fuera del domain_facts/rules recibidos.
 
 ## Validation
 
-_List the checks required before this task can close._
-
-- 
+- Test de matriz (promptfoo/DeepEval): inyectar payload con is_empty=true y afirmar por regex que la respuesta es de desconocimiento; FALLA si intenta responder el fondo.
+- Inyectar payload con domain_facts y afirmar que la respuesta usa esos hechos.
 
 ## Done When
 
-_Name the observable condition that makes the task complete._
+El fallback se dispara SOLO por is_empty y el test de no-alucinación pasa.
