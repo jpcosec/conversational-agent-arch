@@ -204,9 +204,9 @@ class Orchestrator:
             session_state.active_domain = scenario_effective or None
             session_state.current_node = SessionNode.IDLE
             session_state.updated_at = datetime.now(timezone.utc)
-            session.add(ChatHistory(user_id=user.id, role="user", content=scrub(message), pii_scrubbed=True))
             reply_text = json.dumps(response, ensure_ascii=False) if isinstance(response, dict) else str(response)
-            session.add(ChatHistory(user_id=user.id, role="assistant", content=reply_text, pii_scrubbed=True))
+            self._persist_chat_history(session, user_id=user.id, role="user", content=message)
+            self._persist_chat_history(session, user_id=user.id, role="assistant", content=reply_text)
             session.commit()
 
             # 5) Perfilador async REAL: extrae traits con Gemini y persiste
@@ -253,6 +253,11 @@ class Orchestrator:
             session.add(state)
             session.commit()
         return state
+
+    def _persist_chat_history(self, session: Session, *, user_id: int, role: str, content: str) -> ChatHistory:
+        row = ChatHistory(user_id=user_id, role=role, content=scrub(content), pii_scrubbed=True)
+        session.add(row)
+        return row
 
     def _current_traits(self, session: Session, user_id: int) -> list[str]:
         rows = session.query(UserTraits.trait_id).filter_by(user_id=user_id).order_by(UserTraits.trait_id).all()

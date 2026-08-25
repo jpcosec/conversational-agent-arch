@@ -1,0 +1,21 @@
+Task: task-scrub-completo-del-assistant-y-marca-veraz
+Title: Scrub Completo del Assistant y Marca Veraz
+Status: draft
+Current node: checklist-task-scrub-completo-del-assistant-y-marca-veraz-execution-ready
+Task type: test
+Phase: execution
+Required ritual:
+- desk/rituals/execution.md
+Required pills:
+- desk/contexts/pills.md
+Next actions:
+1. Make the active task, scope, touched files, and validation targets explicit.
+2. Run a fresh-context subagent review.
+3. Bind matching board and task pills.
+4. Start implementation only after the initialization gate is satisfied.
+Advance when:
+- Execution gate obligations are recorded or satisfied.
+Sources:
+- task: desk/tasks/task-scrub-completo-del-assistant-y-marca-veraz.md
+- board: desk/tasks/Board.md
+- workflow: spec/workflows/task_lifecycle.yaml

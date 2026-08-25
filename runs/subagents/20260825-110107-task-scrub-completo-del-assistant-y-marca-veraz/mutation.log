@@ -1,0 +1,52 @@
+/home/jp/anaconda3/lib/python3.13/site-packages/pytest_asyncio/plugin.py:252: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_assistant_history_is_scrubbed_before_marking_pii_scrubbed ________
+
+tmp_path = PosixPath('/tmp/pytest-of-jp/pytest-56/test_assistant_history_is_scru0')
+
+    def test_assistant_history_is_scrubbed_before_marking_pii_scrubbed(tmp_path: Path) -> None:
+        db_file = tmp_path / "assistant-scrub.sqlite"
+        evidence_path = PROJECT_ROOT / "runs" / "e2e" / "assistant-scrub-check.json"
+        evidence_path.parent.mkdir(parents=True, exist_ok=True)
+    
+        raw_assistant = "Contáctame en test@example.com o al +56912345678 para confirmar."
+    
+        orch = Orchestrator(kb_root=STORE_ROOT, db_url=f"sqlite:///{db_file}")
+        try:
+            session = orch.SessionLocal()
+            try:
+                helper_user = orch.ensure_user(session, HELPER_USER)
+                orch._persist_chat_history(session, user_id=helper_user.id, role="assistant", content=raw_assistant)
+                session.commit()
+    
+                persisted_helper = session.scalar(
+                    select(ChatHistory)
+                    .where(ChatHistory.user_id == helper_user.id, ChatHistory.role == "assistant")
+                    .order_by(ChatHistory.id.desc())
+                )
+                assert persisted_helper is not None
+                assert persisted_helper.pii_scrubbed is True
+>               assert "test@example.com" not in persisted_helper.content
+E               AssertionError: assert 'test@example.com' not in 'Contáctame ...a confirmar.'
+E                 
+E                 'test@example.com' is contained here:
+E                 ?               ^
+E                   Contáctame en test@example.com o al +56912345678 para confirmar.
+E                 ?               ^^^^^^^^^^^^^^ +++
+
+tests/e2e/test_assistant_scrub.py:46: AssertionError
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/e2e/test_assistant_scrub.py::test_assistant_history_is_scrubbed_before_marking_pii_scrubbed
+1 failed, 4 warnings in 2.19s

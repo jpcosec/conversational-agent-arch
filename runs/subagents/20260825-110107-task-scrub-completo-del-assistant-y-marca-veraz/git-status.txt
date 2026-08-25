@@ -1,0 +1,4 @@
+## conversational-agent-arch
+ M kb_agent/orchestrator.py
+?? runs/subagents/20260825-110107-task-scrub-completo-del-assistant-y-marca-veraz/
+?? tests/e2e/test_assistant_scrub.py
