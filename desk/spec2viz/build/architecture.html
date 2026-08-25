@@ -508,10 +508,13 @@
   <div class="board">
     <pre class="mermaid">
       graph TD
-          subgraph browser [&quot;Navegador (usuario experto)&quot;]
+          subgraph browser [&quot;Navegador (Web UI)&quot;]
               kb_chat_ui_html[&quot;kb_chat_ui/index.html (chat + inspector de mesa)&quot;]
               visor_wiki_html[&quot;Visor de átomos (wiki/sldb)&quot;]
               visor_grafo_html[&quot;Visor de grafo (kgdb)&quot;]
+          end
+          subgraph webhook_channels [&quot;Canales Externos (Twilio, WhatsApp)&quot;]
+              twilio_webhook[&quot;WhatsApp / SMS (Webhook)&quot;]
           end
           subgraph app_server [&quot;App Server · FastAPI (kb_chat_ui.main)&quot;]
               chat_api[&quot;FastAPI /api/chat /api/atom /api/session&quot;]
@@ -531,6 +534,8 @@
               gemini_llm[&quot;gemini-2.5-flash (endpoint)&quot;]
           end
           kb_chat_ui_html --&gt;|&quot;fetch /api/chat (HTTP)&quot;| chat_api
+          twilio_webhook --&gt;|&quot;POST webhook&quot;| chat_api
+          chat_api --&gt;|&quot;envia mensaje (SDK Twilio)&quot;| twilio_webhook
           visor_wiki_html --&gt;|&quot;fetch atoms.json (estático)&quot;| sldb_store
           visor_grafo_html --&gt;|&quot;fetch graph (estático)&quot;| relational_db
           chat_api --&gt;|&quot;compila mesa&quot;| composicion_sldb

@@ -11,12 +11,17 @@ metadata:
 data:
   nodes:
     browser:
-      label: Navegador (usuario experto)
+      label: Navegador (Web UI)
       kind: client
       contains:
         - kb_chat_ui_html
         - visor_wiki_html
         - visor_grafo_html
+    webhook_channels:
+      label: Canales Externos (Twilio, WhatsApp)
+      kind: client
+      contains:
+        - twilio_webhook
     app_server:
       label: App Server · FastAPI (kb_chat_ui.main)
       kind: server
@@ -53,6 +58,9 @@ data:
     visor_grafo_html:
       label: Visor de grafo (kgdb)
       kind: frontend
+    twilio_webhook:
+      label: WhatsApp / SMS (Webhook)
+      kind: external
     chat_api:
       label: FastAPI /api/chat /api/atom /api/session
       kind: backend
@@ -85,6 +93,12 @@ data:
     - from: kb_chat_ui_html
       to: chat_api
       protocol: fetch /api/chat (HTTP)
+    - from: twilio_webhook
+      to: chat_api
+      protocol: POST webhook
+    - from: chat_api
+      to: twilio_webhook
+      protocol: envia mensaje (SDK Twilio)
     - from: visor_wiki_html
       to: sldb_store
       protocol: fetch atoms.json (estático)
