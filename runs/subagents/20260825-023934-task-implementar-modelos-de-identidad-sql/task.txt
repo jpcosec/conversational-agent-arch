@@ -1,0 +1,12 @@
+Task: task-implementar-modelos-de-identidad-sql
+Title: Implementar Modelos de Identidad SQL
+Status: draft
+Current node: checklist-task-implementar-modelos-de-identidad-sql-execution-ready
+Task type: implementation
+Routine: routine-task-implementar-modelos-de-identidad-sql
+Effective atoms:
+- atom-sql-capa-identidad-y-estado
+Checklist status:
+- checklist-task-implementar-modelos-de-identidad-sql-execution-ready: complete
+- checklist-task-implementar-modelos-de-identidad-sql-testing-ready: pending
+- checklist-task-implementar-modelos-de-identidad-sql-closeout-ready: pending

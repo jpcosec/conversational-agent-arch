@@ -4,5 +4,7 @@ __pycache__/
 *.db
 .adk/session.db
 node_modules/
-runs/
+runs/*
+!runs/subagents/
+!runs/subagents/**
 spec2viz_serve.log
