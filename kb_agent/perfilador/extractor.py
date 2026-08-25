@@ -71,10 +71,15 @@ class TraitExtractor:
         return matches
 
     def _load_candidates(self) -> list[TraitCandidate]:
-        return [
-            TraitCandidate(id=atom.id, body=atom.body)
-            for atom in self.reader.fetch("trait")
-        ]
+        """Carga los trait atoms desde SLDB (dict o objeto)."""
+        traits = self.reader.fetch("trait")
+        result = []
+        for t in traits:
+            if isinstance(t, dict):
+                result.append(TraitCandidate(id=t["id"], body=t.get("answer", "")))
+            else:
+                result.append(TraitCandidate(id=t.id, body=t.body))
+        return result
 
     def _upsert_trait(self, *, user_id: int, match: TraitMatch) -> None:
         persisted = self.identity_session.get(

@@ -116,10 +116,12 @@ class ReflectorAtomGenerator:
 
         for atom_type in ("domain", "rule"):
             for atom in self._reader.fetch(atom_type):
-                seen_docs.add(atom.id)
-                if atom.body:
-                    normalized.add(normalize_text(atom.body))
-                normalized.add(normalize_text(atom.id))
+                atom_id = atom["id"] if isinstance(atom, dict) else atom.id
+                atom_body = atom.get("answer", "") if isinstance(atom, dict) else atom.body
+                seen_docs.add(atom_id)
+                if atom_body:
+                    normalized.add(normalize_text(atom_body))
+                normalized.add(normalize_text(atom_id))
 
         docs_payload = json.loads(self._run_sldb("docs", "list", "--format", "json"))
         for doc in docs_payload.get("documents", []):

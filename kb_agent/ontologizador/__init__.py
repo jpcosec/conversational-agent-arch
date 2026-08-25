@@ -1,12 +1,12 @@
+from .compiled_document import CompiledDocument
 from .compiler import ContextCompiler, compile_context
-from .sldb_reader import Atom, SLDBReader, SUPPORTED_ATOM_TYPES, ToolAtom, fetch
+from .kgdb_reader import KGDBReader
+from .sldb_reader import SLDBReader
 
 __all__ = [
-    "Atom",
+    "CompiledDocument",
     "ContextCompiler",
+    "KGDBReader",
     "SLDBReader",
-    "SUPPORTED_ATOM_TYPES",
-    "ToolAtom",
     "compile_context",
-    "fetch",
 ]

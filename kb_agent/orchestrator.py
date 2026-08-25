@@ -164,11 +164,12 @@ class Orchestrator:
                     trigger=trigger,
                     session_state=session_state,
                 )
-                compiled["user_id"] = user_id
-                return compiled
+                d = compiled.to_dict()
+                d["user_id"] = user_id
+                return d
 
             def draft_with_real_conversador(compiled_context: dict[str, Any]) -> Any:
-                if "system_turn" in compiled_context:
+                if compiled_context.get("system_turn"):
                     return self.conversador.draft_nl(compiled_context)
 
                 decision = draft_conversador_response(compiled_context)

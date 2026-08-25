@@ -120,7 +120,8 @@ def test_compile_context_filters_only_matching_domain_atoms(
         identity_session=identity_session,
     )
 
-    assert payload == {
+    d = payload.to_dict()
+    expected = {
         "scenario": "pizza",
         "question": "¿Qué opciones vegetarianas tienen y hasta qué hora atienden?",
         "user_traits": ["trait-prefiere-borde-relleno", "trait-vegetariano"],
@@ -143,6 +144,10 @@ def test_compile_context_filters_only_matching_domain_atoms(
         ],
         "is_empty": False,
     }
+    for k, v in expected.items():
+        assert d.get(k) == v, f"field {k!r} mismatch"
+    assert d.get("grounding_atoms") == []
+    assert d.get("flow_node") is None
     assert llm_calls == []
 
 
@@ -155,7 +160,8 @@ def test_compile_context_marks_empty_when_scenario_has_no_atoms(seeded_pizzeria_
         reader=SLDBReader(kb_root=seeded_pizzeria_root, store_name=".sldb_test"),
     )
 
-    assert payload == {
+    d = payload.to_dict()
+    assert d == {
         "scenario": "biblioteca",
         "question": "¿Qué promociones tienen?",
         "user_traits": [],
@@ -163,6 +169,11 @@ def test_compile_context_marks_empty_when_scenario_has_no_atoms(seeded_pizzeria_
         "domain_facts": [],
         "tools": [],
         "is_empty": True,
+        "grounding_atoms": [],
+        "flow_node": None,
+        "allowed_transitions": [],
+        "missing_slots": [],
+        "system_turn": None,
     }
 
 
