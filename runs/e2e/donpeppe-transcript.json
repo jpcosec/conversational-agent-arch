@@ -1,0 +1,33 @@
+[
+  {
+    "question": "A que hora abren el sabado?",
+    "scenario": "pizzeria",
+    "is_empty": false,
+    "kind": "nl",
+    "reply": "¡Hola! Los sábados abrimos a las 19:00."
+  },
+  {
+    "question": "Tienen sucursal en Paris?",
+    "scenario": "paris",
+    "is_empty": true,
+    "kind": "fallback",
+    "reply": "No tengo esa información a mano, la averiguaré."
+  },
+  {
+    "question": "Quiero reservar mesa para 4 personas el viernes a las 20:00 a nombre de Rojas",
+    "scenario": "pizzeria",
+    "is_empty": false,
+    "kind": "tool_call",
+    "reply": {
+      "function_call": {
+        "name": "crear_reserva",
+        "args": {
+          "fecha": "viernes",
+          "hora": "20:00",
+          "personas": 4,
+          "nombre": "Rojas"
+        }
+      }
+    }
+  }
+]

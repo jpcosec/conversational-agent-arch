@@ -8,3 +8,4 @@ runs/*
 !runs/subagents/
 !runs/subagents/**
 spec2viz_serve.log
+.sldb_e2e_donpeppe/.sldb/runtime/

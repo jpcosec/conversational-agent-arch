@@ -1,0 +1,41 @@
+documents:
+- name: atom-donpeppe-horarios
+  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-horarios.md
+  hash_c: d13d67c1d999547da3a0a21746c67c22ab2481ef61e6b4c7f9db478061f368e3
+  hash_d: 9c38a823a30b7b561400561a70c56b5a8e9f5bb99b1528f1c8092b3d0abb84ea
+  semantic_tags:
+  - atom_type:domain
+  - domain:pizzeria
+  - source:e2e
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-donpeppe-carta
+  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-carta.md
+  hash_c: 11a2a647f6b3bed032b9ddfa0a1375d05a6f443c66e04e73ecd5fe4ca161d3b5
+  hash_d: 944c83a4c6c9db3760cad6c1495dfe4a0e5cf7b276d58a65b1439aed534f1c4f
+  semantic_tags:
+  - atom_type:domain
+  - domain:pizzeria
+  - source:e2e
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-donpeppe-regla-reservas
+  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-regla-reservas.md
+  hash_c: 704630fe718a83b74e383a5abc3ae31a50016e1b69e7c5b9719c0e8ee5297041
+  hash_d: 04da084eeadc9d39794f25856d0059784b25c3d7d35005b61fd5e62792d596f6
+  semantic_tags:
+  - atom_type:rule
+  - domain:pizzeria
+  - source:e2e
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-donpeppe-tool-reserva
+  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-tool-reserva.md
+  hash_c: 4d566298128a9113b61b1219d14815412d9548122bb0dc5c74b9be74675cdbc9
+  hash_d: 4225f5e067cb625cf8c2d4d32e9a23d25d9441ea26100281a02ca9269a278692
+  semantic_tags:
+  - atom_type:tool
+  - domain:pizzeria
+  - source:e2e
+  - type.knowledge.atom
+  - workspace.desk.atoms

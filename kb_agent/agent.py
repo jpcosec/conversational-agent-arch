@@ -190,8 +190,17 @@ def _normalize_function_declaration(raw_tool: Any) -> dict[str, Any] | None:
     if not tool_id:
         return None
 
-    parameters = dict(schema_source)
-    parameters.pop("name", None)
+    # El ToolAtom del KB puede venir en dos formas:
+    #  (a) plano: {name, properties, required, type}
+    #  (b) anidado: {name, parameters: {type, properties, required}}
+    # Normalizamos ambas a un unico nivel de parameters con properties.
+    inner = schema_source.get("parameters")
+    if isinstance(inner, Mapping) and "properties" in inner:
+        parameters = dict(inner)
+    else:
+        parameters = dict(schema_source)
+        parameters.pop("name", None)
+        parameters.pop("parameters", None)
     return {
         "name": str(tool_id),
         "description": str(raw_tool.get("body") or schema_source.get("description") or ""),
