@@ -48,7 +48,7 @@ Cablear los 10 modulos al entrypoint y correr una conversacion REAL end-to-end c
 
 _State what is in scope and what is out of scope._
 
-kb_chat_ui/main.py (wiring real), tests/e2e/, .sldb_e2e_donpeppe/ store real
+tests/e2e/ (runner + chat real), .sldb_e2e_donpeppe/ store real
 
 ## Implementation Path
 
@@ -93,5 +93,5 @@ Recupera y ejecuta los niveles 2, 3 y 4 de la estrategia original — TODO con d
 
 ## Regla dura
 - PROHIBIDO mock, dummy, stub, monkeypatch del LLM, o fake del SLDBReader.
-- Si el módulo no está cableado al entrypoint, CABLEARLO es parte de esta tarea (los 10 módulos hoy son islas: main.py usa MesaCompiler viejo, no el RouterStateMachine/compiler/agent nuevos).
+- Los 10 módulos nuevos se integran vía el runner E2E (tests/e2e/run_donpeppe.py y chat_donpeppe.py): SLDBReader real -> ContextCompiler real -> Conversador (Gemini real). Ese es el entrypoint de la nueva arquitectura.
 - La corrida usa Gemini real vía Vertex ADC (ya funcional en este repo).

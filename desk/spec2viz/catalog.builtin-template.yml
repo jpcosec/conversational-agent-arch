@@ -16,7 +16,7 @@ vistas:
     category: Backend
     nav: Componentes backend
     title: Backend · Componentes
-    desc: FastAPI + MesaCompiler + agentes ADK + wrapper sldb.
+    desc: Ontologizador + Conversador + agentes ADK + wrapper sldb.
     type: component
     src: build/component.backend.mmd
     specs: [backend/component.backend.yml]
@@ -34,7 +34,7 @@ vistas:
     category: Backend
     nav: Secuencia /api/chat
     title: Backend · Secuencia · Turno /api/chat
-    desc: Compilación de mesa + prompt + Gemini.
+    desc: Compilación de contexto + prompt + Gemini.
     type: sequence
     src: build/sequence.chat-turn.mmd
     specs: [backend/sequence.chat-turn.yml]
@@ -57,15 +57,6 @@ vistas:
     src: build/state.chat-session.mmd
     specs: [backend/state.chat-session.yml]
     tags: [layer:backend, view:state]
-  - id: activity-mesa-compile
-    category: Backend
-    nav: Actividad MesaCompiler
-    title: Backend · Actividad · MesaCompiler.compile()
-    desc: Ranking determinista de átomos y selección top-5.
-    type: activity
-    src: build/activity.mesa-compile.mmd
-    specs: [backend/activity.mesa-compile.yml]
-    tags: [layer:backend, view:activity]
   - id: ast-kb-agent
     category: Backend · AST real (código)
     nav: AST kb_agent
@@ -74,15 +65,6 @@ vistas:
     type: component
     src: build/ast.kb_agent.mmd
     specs: [backend/ast.kb_agent.yml]
-    tags: [layer:backend, source:ast]
-  - id: ast-kb-chat-ui
-    category: Backend · AST real (código)
-    nav: AST kb_chat_ui
-    title: AST real · kb_chat_ui
-    desc: Grafo módulos/clases/imports extraído del código.
-    type: component
-    src: build/ast.kb_chat_ui.mmd
-    specs: [backend/ast.kb_chat_ui.yml]
     tags: [layer:backend, source:ast]
   - id: ast-research-writer
     category: Backend · AST real (código)

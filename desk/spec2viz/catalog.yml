@@ -82,16 +82,6 @@ vistas:
     src: build/ast.kb_agent.mmd
     specs: [backend/ast.kb_agent.yml]
     tags: [layer:backend, source:ast]
-  - id: ast-kb-chat-ui
-    category: Backend · AST real (código)
-    nav: AST kb_chat_ui
-    title: AST real · kb_chat_ui
-    desc: Grafo módulos/clases/imports extraído del código.
-    type: component
-    src: build/ast.kb_chat_ui.mmd
-    specs: [backend/ast.kb_chat_ui.yml]
-    tags: [layer:backend, source:ast]
-
   # ── Frontend ────────────────────────────────────────
   - id: component-frontend
     category: Frontend

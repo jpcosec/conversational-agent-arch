@@ -23,7 +23,7 @@ data:
       contains:
         - twilio_webhook
     app_server:
-      label: App Server · FastAPI (kb_chat_ui.main)
+      label: App Server · Runner E2E (tests/e2e/run_donpeppe)
       kind: server
       contains:
         - chat_api
@@ -50,7 +50,7 @@ data:
 
   artifacts:
     kb_chat_ui_html:
-      label: kb_chat_ui/index.html (chat + inspector de mesa)
+      label: kb_chat_ui/index.html (chat + inspector)
       kind: frontend
     visor_wiki_html:
       label: Visor de átomos (wiki/sldb)
@@ -107,7 +107,7 @@ data:
       protocol: fetch graph (estático)
     - from: chat_api
       to: composicion_sldb
-      protocol: compila mesa
+      protocol: compila contexto (Ontologizador)
     - from: chat_api
       to: gemini_llm
       protocol: generate_content

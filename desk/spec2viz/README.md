@@ -18,8 +18,8 @@ desk/spec2viz/
 
 ## Backend vs Frontend
 
-- **Backend** = Python: FastAPI (`kb_chat_ui`), agentes ADK (`kb_agent`), `MesaCompiler`, wrapper CLI `sldb`.
-- **Frontend** = HTML/JS estático sin build: `kb_chat_ui/index.html` (chat + inspector de mesa) y `kb_agent_ui/index.html` (visor de átomos).
+- **Backend** = Python: agentes ADK (`kb_agent`), pipeline Ontologizador/Conversador, wrapper CLI `sldb`.
+- **Frontend** = HTML/JS estático sin build: `kb_chat_ui/index.html` (chat + inspector) y `kb_agent_ui/index.html` (visor de átomos).
 - La frontera se ve en `deployment.backend-frontend.yml` (`artifacts.kind: frontend|backend`).
 
 ## Vistas (15)
@@ -36,7 +36,6 @@ desk/spec2viz/
 | `backend/sequence.chat-turn.yml` | sequence |
 | `backend/sequence.agent-retrieval.yml` | sequence |
 | `backend/state.chat-session.yml` | state |
-| `backend/activity.mesa-compile.yml` | activity |
 
 ### Backend · AST real (código)
 Generados con `spec2viz diagram generate` (módulos/clases/imports reales).
@@ -44,7 +43,6 @@ Generados con `spec2viz diagram generate` (módulos/clases/imports reales).
 | Spec | Fuente |
 |---|---|
 | `backend/ast.kb_agent.yml` | `kb_agent/` |
-| `backend/ast.kb_chat_ui.yml` | `kb_chat_ui/` |
 
 ### Frontend
 | Spec | Tipo |
@@ -58,7 +56,6 @@ Generados con `spec2viz diagram generate` (módulos/clases/imports reales).
 ### AST real de código (documentación real)
 ```bash
 spec2viz diagram generate kb_agent           --out desk/spec2viz/backend/ast.kb_agent.yml       --id ast-kb-agent
-spec2viz diagram generate kb_chat_ui         --out desk/spec2viz/backend/ast.kb_chat_ui.yml     --id ast-kb-chat-ui
 ```
 Nota: no usar `--package` (filtra por ruta y da 0 nodos aquí).
 
