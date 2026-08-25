@@ -1,0 +1,112 @@
+id: ast-kb-chat-ui
+title: kb_chat_ui · AST real (código)
+type: component
+version: '1.0'
+data:
+  nodes:
+    module_main:
+      label: main
+      kind: module
+    class_main_ChatRequest:
+      label: ChatRequest
+      kind: class
+    class_main_ChatResponse:
+      label: ChatResponse
+      kind: class
+    module_table_compiler:
+      label: table_compiler
+      kind: module
+    class_table_compiler_MesaCompiler:
+      label: MesaCompiler
+      kind: class
+    module___future__:
+      label: ''
+      kind: external
+    module_pathlib:
+      label: pathlib
+      kind: external
+    module_uuid:
+      label: uuid
+      kind: external
+    module_dotenv:
+      label: dotenv
+      kind: external
+    module_fastapi:
+      label: fastapi
+      kind: external
+    module_fastapi_middleware_cors:
+      label: cors
+      kind: external
+    module_fastapi_responses:
+      label: responses
+      kind: external
+    module_fastapi_staticfiles:
+      label: staticfiles
+      kind: external
+    module_pydantic:
+      label: pydantic
+      kind: external
+    module_google:
+      label: google
+      kind: external
+    module_kb_chat_ui_table_compiler:
+      label: compiler
+      kind: external
+    module_typing:
+      label: typing
+      kind: external
+  edges:
+  - from: module_main
+    to: class_main_ChatRequest
+    relation: defines
+  - from: module_main
+    to: class_main_ChatResponse
+    relation: defines
+  - from: module_main
+    to: module___future__
+    relation: imports
+  - from: module_main
+    to: module_pathlib
+    relation: imports
+  - from: module_main
+    to: module_uuid
+    relation: imports
+  - from: module_main
+    to: module_dotenv
+    relation: imports
+  - from: module_main
+    to: module_fastapi
+    relation: imports
+  - from: module_main
+    to: module_fastapi_middleware_cors
+    relation: imports
+  - from: module_main
+    to: module_fastapi_responses
+    relation: imports
+  - from: module_main
+    to: module_fastapi_staticfiles
+    relation: imports
+  - from: module_main
+    to: module_pydantic
+    relation: imports
+  - from: module_main
+    to: module_google
+    relation: imports
+  - from: module_main
+    to: module_kb_chat_ui_table_compiler
+    relation: imports
+  - from: module_table_compiler
+    to: class_table_compiler_MesaCompiler
+    relation: defines
+  - from: module_table_compiler
+    to: module___future__
+    relation: imports
+  - from: module_table_compiler
+    to: module_pathlib
+    relation: imports
+  - from: module_table_compiler
+    to: module_typing
+    relation: imports
+  - from: module_table_compiler
+    to: module_uuid
+    relation: imports

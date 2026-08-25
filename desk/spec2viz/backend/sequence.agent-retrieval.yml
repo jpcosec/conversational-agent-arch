@@ -1,0 +1,67 @@
+id: sequence-agent-retrieval
+title: Backend · Secuencia · Retrieval vía agentes ADK
+type: sequence
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Ruta ADK (kb_agent): conversador_apos delega en bibliotecario, que usa
+    kb_tools sobre el CLI sldb real del store tutor_apoe.
+data:
+  participants:
+    - id: User
+      kind: actor
+    - id: Conversador
+      kind: component
+    - id: Bibliotecario
+      kind: component
+    - id: KbTools
+      kind: component
+    - id: SldbCLI
+      kind: boundary
+    - id: LLM
+      kind: boundary
+  messages:
+    - from: User
+      to: Conversador
+      message: consulta en español
+    - from: Conversador
+      to: LLM
+      message: razona / decide delegar
+      kind: sync
+    - from: Conversador
+      to: Bibliotecario
+      message: delega retrieval
+      kind: sync
+    - from: Bibliotecario
+      to: KbTools
+      message: list_topics()
+      kind: sync
+    - from: KbTools
+      to: SldbCLI
+      message: lee semantic_index.yaml
+      kind: sync
+    - from: Bibliotecario
+      to: KbTools
+      message: search_knowledge(query, mode)
+      kind: sync
+    - from: KbTools
+      to: SldbCLI
+      message: sldb find --in semantic/physical --format json
+      kind: sync
+    - from: Bibliotecario
+      to: KbTools
+      message: read_atom(atom_name)
+      kind: sync
+    - from: KbTools
+      to: SldbCLI
+      message: sldb docs show <name>
+      kind: sync
+    - from: Bibliotecario
+      to: Conversador
+      message: atom_ids + hallazgos
+      kind: return
+    - from: Conversador
+      to: User
+      message: respuesta NL con ids atom-...
+      kind: return

@@ -1,0 +1,58 @@
+id: sequence-chat-turn
+title: Backend · Secuencia · Un turno de /api/chat
+type: sequence
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Flujo real de un turno en kb_chat_ui.main.chat(): compilación determinista
+    de la mesa, armado de prompt y llamada a Gemini.
+data:
+  participants:
+    - id: UI
+      kind: actor
+    - id: ChatAPI
+      kind: component
+    - id: MesaCompiler
+      kind: component
+    - id: AtomsJson
+      kind: boundary
+    - id: Gemini
+      kind: boundary
+  messages:
+    - from: UI
+      to: ChatAPI
+      message: POST /api/chat {message, session_id?}
+    - from: ChatAPI
+      to: ChatAPI
+      message: get_session() / previous_turn
+    - from: ChatAPI
+      to: MesaCompiler
+      message: compile(message, previous_turn)
+      kind: sync
+    - from: MesaCompiler
+      to: AtomsJson
+      message: carga átomos (una vez)
+      kind: sync
+    - from: MesaCompiler
+      to: ChatAPI
+      message: mesa + prompt_mesa (items rankeados)
+      kind: return
+    - from: ChatAPI
+      to: ChatAPI
+      message: build_prompt(message, prompt_mesa)
+    - from: ChatAPI
+      to: Gemini
+      message: generate_content(gemini-2.5-flash, prompt)
+      kind: sync
+    - from: Gemini
+      to: ChatAPI
+      message: reply (texto)
+      kind: return
+    - from: ChatAPI
+      to: ChatAPI
+      message: append turn a session
+    - from: ChatAPI
+      to: UI
+      message: ChatResponse {session_id, turn}
+      kind: return

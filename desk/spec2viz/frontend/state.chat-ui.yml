@@ -1,0 +1,45 @@
+id: state-chat-ui
+title: Frontend · Estado · UI del chat (kb_chat_ui)
+type: state
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Estados de la interacción en kb_chat_ui/index.html: envío, espera de
+    respuesta, selección de turno para inspeccionar su mesa y modales.
+data:
+  entity: ChatUI
+  initial: idle
+  states:
+    - id: idle
+      label: Idle (esperando input)
+    - id: enviando
+      label: Enviando (botón disabled)
+    - id: turno_activo
+      label: Turno renderizado
+    - id: inspeccionando
+      label: Inspector abierto (turno seleccionado)
+    - id: modal
+      label: Modal átomo / reasoning
+  transitions:
+    - from: idle
+      to: enviando
+      "on": sendMessage (Enter/click)
+    - from: enviando
+      to: turno_activo
+      "on": respuesta /api/chat
+    - from: turno_activo
+      to: idle
+      "on": listo para nuevo input
+    - from: turno_activo
+      to: inspeccionando
+      "on": click en respuesta assistant
+    - from: inspeccionando
+      to: modal
+      "on": click atom-link / reasoning
+    - from: modal
+      to: inspeccionando
+      "on": cerrar modal
+    - from: inspeccionando
+      to: turno_activo
+      "on": deseleccionar

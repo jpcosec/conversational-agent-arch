@@ -1,0 +1,28 @@
+graph TD
+    subgraph fastapi_app ["FastAPI app (kb_chat_ui.main)"]
+        route_chat["POST /api/chat"]
+        route_atom["GET /api/atom/{id}"]
+        route_session["GET /api/session /api/turn"]
+        build_prompt["build_prompt()"]
+    end
+    subgraph mesa_compiler ["MesaCompiler (table_compiler)"]
+        compile_mesa["compile()"]
+        rank_atoms["_rank_atoms()"]
+        extract_tags["_extract_tags() + ALIASES/EXPANSIONS"]
+    end
+    conversador["conversador_apos (root LlmAgent)"]
+    bibliotecario["bibliotecario (sub-agent)"]
+    kb_tools["kb_tools (search/read/list)"]
+    sldb_cli["sldb CLI"]
+    genai_client["google.genai Client"]
+    atoms_json["atoms.json (90 átomos)"]
+    sldb_store[".sldb store (tutor_apoe)"]
+    route_chat -->|"compila"| mesa_compiler
+    route_chat -->|"arma_prompt"| build_prompt
+    route_chat -->|"generate_content"| genai_client
+    mesa_compiler -->|"lee"| atoms_json
+    route_atom -->|"lee"| atoms_json
+    conversador -->|"delega"| bibliotecario
+    bibliotecario -->|"invoca"| kb_tools
+    kb_tools -->|"subprocess"| sldb_cli
+    sldb_cli -->|"consulta"| sldb_store

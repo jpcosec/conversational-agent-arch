@@ -1,0 +1,9 @@
+@startuml
+start
+:fetch ./atoms.json;
+if (¿carga correcta??) then (yes)
+else (no)
+:mostrar "No se pudo cargar atoms.json" (fin);
+endif
+stop
+@enduml

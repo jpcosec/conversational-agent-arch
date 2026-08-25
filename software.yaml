@@ -1,0 +1,7 @@
+software_name: kb-agent-runtime
+status: active
+kind: shared-backend
+versions_enabled: true
+consumers: []
+source_docs_dir: source_docs/software/kb-agent-runtime/
+current_version: unspecified

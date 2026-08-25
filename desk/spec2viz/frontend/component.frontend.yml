@@ -1,0 +1,77 @@
+id: component-frontend
+title: KB Agent Runtime · Frontend · Componentes
+type: component
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Frontend = HTML/JS estático (sin build). Dos UIs: el chat con inspector de
+    mesa (kb_chat_ui/index.html) y el visor de átomos (kb_agent_ui/index.html).
+style:
+  kinds:
+    core:
+      plantuml:
+        background: "#D8ECFF"
+        border: "#4C78A8"
+        font: "#16324F"
+    boundary:
+      plantuml:
+        background: "#FCECC9"
+        border: "#D4A73C"
+        font: "#5E450B"
+data:
+  nodes:
+    chat_ui:
+      label: kb_chat_ui/index.html
+      kind: core
+      contains:
+        - chat_pane
+        - inspector
+        - atom_modal
+        - marked_lib
+    chat_pane:
+      label: Panel de chat (renderTurns)
+      kind: core
+    inspector:
+      label: Inspector de mesa (renderTurnInspector)
+      kind: core
+    atom_modal:
+      label: Modal de átomo / reasoning
+      kind: core
+    marked_lib:
+      label: marked.min.js (CDN, markdown)
+      kind: boundary
+    atom_viewer:
+      label: kb_agent_ui/index.html
+      kind: core
+      contains:
+        - atom_list
+        - atom_filter
+    atom_list:
+      label: Lista de átomos (renderAtoms)
+      kind: core
+    atom_filter:
+      label: Filtro (applyFilter)
+      kind: core
+    chat_api:
+      label: FastAPI /api/*
+      kind: boundary
+    atoms_json:
+      label: atoms.json
+      kind: boundary
+  edges:
+    - from: chat_pane
+      to: chat_api
+      relation: fetch /api/chat
+    - from: atom_modal
+      to: chat_api
+      relation: fetch /api/atom/{id}
+    - from: chat_ui
+      to: marked_lib
+      relation: renderiza markdown
+    - from: atom_list
+      to: atoms_json
+      relation: fetch ./atoms.json
+    - from: atom_filter
+      to: atom_list
+      relation: filtra

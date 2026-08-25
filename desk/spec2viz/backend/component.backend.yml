@@ -1,0 +1,113 @@
+id: component-backend
+title: KB Agent Runtime · Backend · Componentes
+type: component
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Componentes del backend: la app FastAPI (kb_chat_ui) con su compilador de
+    mesa determinista, los agentes ADK (kb_agent) y el wrapper del CLI sldb.
+style:
+  kinds:
+    boundary:
+      plantuml:
+        background: "#FCECC9"
+        border: "#D4A73C"
+        font: "#5E450B"
+    core:
+      plantuml:
+        background: "#D8ECFF"
+        border: "#4C78A8"
+        font: "#16324F"
+    database:
+      plantuml:
+        background: "#E7F5E1"
+        border: "#5A9E4B"
+        font: "#1E3A17"
+data:
+  nodes:
+    fastapi_app:
+      label: FastAPI app (kb_chat_ui.main)
+      kind: boundary
+      contains:
+        - route_chat
+        - route_atom
+        - route_session
+        - build_prompt
+    route_chat:
+      label: POST /api/chat
+      kind: core
+    route_atom:
+      label: GET /api/atom/{id}
+      kind: core
+    route_session:
+      label: GET /api/session /api/turn
+      kind: core
+    build_prompt:
+      label: build_prompt()
+      kind: core
+    mesa_compiler:
+      label: MesaCompiler (table_compiler)
+      kind: core
+      contains:
+        - compile_mesa
+        - rank_atoms
+        - extract_tags
+    compile_mesa:
+      label: compile()
+      kind: core
+    rank_atoms:
+      label: _rank_atoms()
+      kind: core
+    extract_tags:
+      label: _extract_tags() + ALIASES/EXPANSIONS
+      kind: core
+    conversador:
+      label: conversador_apos (root LlmAgent)
+      kind: core
+    bibliotecario:
+      label: bibliotecario (sub-agent)
+      kind: core
+    kb_tools:
+      label: kb_tools (search/read/list)
+      kind: boundary
+    sldb_cli:
+      label: sldb CLI
+      kind: boundary
+    genai_client:
+      label: google.genai Client
+      kind: boundary
+    atoms_json:
+      label: atoms.json (90 átomos)
+      kind: database
+    sldb_store:
+      label: .sldb store (tutor_apoe)
+      kind: database
+  edges:
+    - from: route_chat
+      to: mesa_compiler
+      relation: compila
+    - from: route_chat
+      to: build_prompt
+      relation: arma_prompt
+    - from: route_chat
+      to: genai_client
+      relation: generate_content
+    - from: mesa_compiler
+      to: atoms_json
+      relation: lee
+    - from: route_atom
+      to: atoms_json
+      relation: lee
+    - from: conversador
+      to: bibliotecario
+      relation: delega
+    - from: bibliotecario
+      to: kb_tools
+      relation: invoca
+    - from: kb_tools
+      to: sldb_cli
+      relation: subprocess
+    - from: sldb_cli
+      to: sldb_store
+      relation: consulta

@@ -1,0 +1,18 @@
+graph TD
+    subgraph chat_ui ["kb_chat_ui/index.html"]
+        chat_pane["Panel de chat (renderTurns)"]
+        inspector["Inspector de mesa (renderTurnInspector)"]
+        atom_modal["Modal de átomo / reasoning"]
+        marked_lib["marked.min.js (CDN, markdown)"]
+    end
+    subgraph atom_viewer ["kb_agent_ui/index.html"]
+        atom_list["Lista de átomos (renderAtoms)"]
+        atom_filter["Filtro (applyFilter)"]
+    end
+    chat_api["FastAPI /api/*"]
+    atoms_json["atoms.json"]
+    chat_pane -->|"fetch /api/chat"| chat_api
+    atom_modal -->|"fetch /api/atom/{id}"| chat_api
+    chat_ui -->|"renderiza markdown"| marked_lib
+    atom_list -->|"fetch ./atoms.json"| atoms_json
+    atom_filter -->|"filtra"| atom_list

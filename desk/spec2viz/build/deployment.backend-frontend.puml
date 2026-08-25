@@ -1,0 +1,34 @@
+@startuml
+node "Navegador (usuario experto)" as browser {
+  artifact "kb_chat_ui/index.html (chat + inspector de mesa)" as kb_chat_ui_html
+  artifact "kb_agent_ui/index.html (visor de átomos)" as kb_agent_ui_html
+}
+node "App Server · FastAPI (kb_chat_ui.main)" as app_server {
+  artifact "FastAPI /api/chat /api/atom /api/session" as chat_api
+  artifact "MesaCompiler (ranking/expansión de tags)" as table_compiler
+}
+node "ADK Runtime (adk web / agentes)" as adk_runtime {
+  artifact "conversador_apos (root LlmAgent)" as conversador_apos
+  artifact "bibliotecario (sub-agent retrieval)" as bibliotecario
+  artifact "kb_tools (wrapper CLI sldb)" as kb_tools_wrapper
+}
+node "KB host · tutor_apoe" as kb_store_host {
+  artifact "sldb CLI (find / docs show)" as sldb_cli
+  artifact ".sldb store + semantic_index.yaml" as sldb_store
+}
+node "Vertex AI · gemini-2.5-flash" as vertex {
+  artifact "gemini-2.5-flash (endpoint)" as gemini_llm
+}
+
+kb_chat_ui_html --> chat_api : fetch /api/chat (HTTP)
+kb_agent_ui_html --> sldb_store : fetch atoms.json (estático)
+chat_api --> table_compiler : compila mesa
+chat_api --> gemini_llm : generate_content
+table_compiler --> sldb_store : lee atoms.json
+conversador_apos --> bibliotecario : delega retrieval
+bibliotecario --> kb_tools_wrapper : invoca tools
+conversador_apos --> gemini_llm : LLM
+bibliotecario --> gemini_llm : LLM
+kb_tools_wrapper --> sldb_cli : subprocess
+sldb_cli --> sldb_store : consulta store
+@enduml

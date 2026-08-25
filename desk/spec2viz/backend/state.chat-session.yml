@@ -1,0 +1,39 @@
+id: state-chat-session
+title: Backend · Estado · Sesión de chat en memoria
+type: state
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Ciclo de vida de una sesión en kb_chat_ui (sessions dict en memoria). El
+    followup reusa tags de la mesa previa (MesaCompiler._is_followup).
+data:
+  entity: ChatSession
+  initial: nueva
+  states:
+    - id: nueva
+      label: Nueva (sin turns)
+    - id: activa
+      label: Activa (>=1 turn)
+    - id: followup
+      label: Turno followup (reusa tags previos)
+    - id: cerrada
+      label: Cerrada (proceso termina)
+  transitions:
+    - from: nueva
+      to: activa
+      "on": primer POST /api/chat
+    - from: activa
+      to: activa
+      "on": nuevo tag detectado
+    - from: activa
+      to: followup
+      "on": query corta / marcador de continuación
+      guard: hay previous_mesa.include_tags
+    - from: followup
+      to: activa
+      "on": nuevo turno con tags propios
+    - from: activa
+      to: cerrada
+      "on": reinicio del servidor
+      guard: estado no persistido

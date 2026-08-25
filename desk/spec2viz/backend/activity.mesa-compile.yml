@@ -1,0 +1,49 @@
+id: activity-mesa-compile
+title: Backend · Actividad · MesaCompiler.compile()
+type: activity
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Lógica determinista de ranking en table_compiler.MesaCompiler.compile():
+    extracción de tags, followup, expansión, scoring y selección top-5.
+data:
+  start: normalize
+  steps:
+    normalize:
+      label: normalizar query (NFKD, lower)
+      next: extract_tags
+    extract_tags:
+      label: extraer tags por ALIASES
+      next: has_tags
+    has_tags:
+      label: ¿hay tags?
+      kind: decision
+      branches:
+        "no": is_followup
+        "si": ensure_apos
+    is_followup:
+      label: ¿es followup? (marcador / <=4 palabras)
+      kind: decision
+      branches:
+        "si": reuse_prev_tags
+        "no": ensure_apos
+    reuse_prev_tags:
+      label: reusar include_tags de la mesa previa
+      next: ensure_apos
+    ensure_apos:
+      label: forzar system:apos
+      next: expand
+    expand:
+      label: expandir tags (EXPANSIONS)
+      next: rank
+    rank:
+      label: _rank_atoms (exact 100 / expanded 30 / lexical 8 / retained 18)
+      next: select
+    select:
+      label: top-5 + diff (retained/removed/added)
+      next: build_prompt_mesa
+    build_prompt_mesa:
+      label: construir mesa + prompt_mesa (retorna {mesa, prompt_mesa})
+      next: end
+  end: end

@@ -1,0 +1,32 @@
+graph TD
+    subgraph browser ["Navegador (usuario experto)"]
+        kb_chat_ui_html["kb_chat_ui/index.html (chat + inspector de mesa)"]
+        kb_agent_ui_html["kb_agent_ui/index.html (visor de átomos)"]
+    end
+    subgraph app_server ["App Server · FastAPI (kb_chat_ui.main)"]
+        chat_api["FastAPI /api/chat /api/atom /api/session"]
+        table_compiler["MesaCompiler (ranking/expansión de tags)"]
+    end
+    subgraph adk_runtime ["ADK Runtime (adk web / agentes)"]
+        conversador_apos["conversador_apos (root LlmAgent)"]
+        bibliotecario["bibliotecario (sub-agent retrieval)"]
+        kb_tools_wrapper["kb_tools (wrapper CLI sldb)"]
+    end
+    subgraph kb_store_host ["KB host · tutor_apoe"]
+        sldb_cli["sldb CLI (find / docs show)"]
+        sldb_store[".sldb store + semantic_index.yaml"]
+    end
+    subgraph vertex ["Vertex AI · gemini-2.5-flash"]
+        gemini_llm["gemini-2.5-flash (endpoint)"]
+    end
+    kb_chat_ui_html -->|"fetch /api/chat (HTTP)"| chat_api
+    kb_agent_ui_html -->|"fetch atoms.json (estático)"| sldb_store
+    chat_api -->|"compila mesa"| table_compiler
+    chat_api -->|"generate_content"| gemini_llm
+    table_compiler -->|"lee atoms.json"| sldb_store
+    conversador_apos -->|"delega retrieval"| bibliotecario
+    bibliotecario -->|"invoca tools"| kb_tools_wrapper
+    conversador_apos -->|"LLM"| gemini_llm
+    bibliotecario -->|"LLM"| gemini_llm
+    kb_tools_wrapper -->|"subprocess"| sldb_cli
+    sldb_cli -->|"consulta store"| sldb_store

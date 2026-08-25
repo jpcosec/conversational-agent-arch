@@ -1,0 +1,40 @@
+id: activity-atom-viewer
+title: Frontend · Actividad · Visor de átomos (kb_agent_ui)
+type: activity
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Flujo de kb_agent_ui/index.html: carga atoms.json, renderiza sidebar,
+    filtra y abre el átomo seleccionado como markdown en el panel principal.
+data:
+  start: load_atoms
+  steps:
+    load_atoms:
+      label: fetch ./atoms.json
+      next: ok
+    ok:
+      label: ¿carga correcta?
+      kind: decision
+      branches:
+        "no": error
+        "si": render_atoms
+    error:
+      label: mostrar 'No se pudo cargar atoms.json' (fin)
+      next: end
+    render_atoms:
+      label: renderAtoms() en sidebar
+      next: wait
+    wait:
+      label: esperar interacción
+      kind: decision
+      branches:
+        "filtrar": apply_filter
+        "abrir": open_atom
+    apply_filter:
+      label: applyFilter (título/tag/id/path/contenido)
+      next: wait
+    open_atom:
+      label: atomToMarkdown + renderMarkdown en panel
+      next: wait
+  end: end

@@ -1,0 +1,109 @@
+id: deployment-backend-frontend
+title: KB Agent Runtime · Despliegue · Backend vs Frontend
+type: deployment
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Separación explícita backend/frontend del runtime kb-agent. El frontend son
+    UIs estáticas (HTML) servidas al navegador; el backend es FastAPI + agentes
+    ADK/Gemini y el CLI sldb sobre el store de conocimiento.
+data:
+  nodes:
+    browser:
+      label: Navegador (usuario experto)
+      kind: client
+      contains:
+        - kb_chat_ui_html
+        - kb_agent_ui_html
+    app_server:
+      label: App Server · FastAPI (kb_chat_ui.main)
+      kind: server
+      contains:
+        - chat_api
+        - table_compiler
+    adk_runtime:
+      label: ADK Runtime (adk web / agentes)
+      kind: server
+      contains:
+        - conversador_apos
+        - bibliotecario
+        - kb_tools_wrapper
+    kb_store_host:
+      label: KB host · tutor_apoe
+      kind: server
+      contains:
+        - sldb_cli
+        - sldb_store
+    vertex:
+      label: Vertex AI · gemini-2.5-flash
+      kind: cloud
+      contains:
+        - gemini_llm
+
+  artifacts:
+    kb_chat_ui_html:
+      label: kb_chat_ui/index.html (chat + inspector de mesa)
+      kind: frontend
+    kb_agent_ui_html:
+      label: kb_agent_ui/index.html (visor de átomos)
+      kind: frontend
+    chat_api:
+      label: FastAPI /api/chat /api/atom /api/session
+      kind: backend
+    table_compiler:
+      label: MesaCompiler (ranking/expansión de tags)
+      kind: backend
+    conversador_apos:
+      label: conversador_apos (root LlmAgent)
+      kind: backend
+    bibliotecario:
+      label: bibliotecario (sub-agent retrieval)
+      kind: backend
+    kb_tools_wrapper:
+      label: kb_tools (wrapper CLI sldb)
+      kind: backend
+    sldb_cli:
+      label: sldb CLI (find / docs show)
+      kind: backend
+    sldb_store:
+      label: .sldb store + semantic_index.yaml
+      kind: database
+    gemini_llm:
+      label: gemini-2.5-flash (endpoint)
+      kind: backend
+
+  connections:
+    - from: kb_chat_ui_html
+      to: chat_api
+      protocol: fetch /api/chat (HTTP)
+    - from: kb_agent_ui_html
+      to: sldb_store
+      protocol: fetch atoms.json (estático)
+    - from: chat_api
+      to: table_compiler
+      protocol: compila mesa
+    - from: chat_api
+      to: gemini_llm
+      protocol: generate_content
+    - from: table_compiler
+      to: sldb_store
+      protocol: lee atoms.json
+    - from: conversador_apos
+      to: bibliotecario
+      protocol: delega retrieval
+    - from: bibliotecario
+      to: kb_tools_wrapper
+      protocol: invoca tools
+    - from: conversador_apos
+      to: gemini_llm
+      protocol: LLM
+    - from: bibliotecario
+      to: gemini_llm
+      protocol: LLM
+    - from: kb_tools_wrapper
+      to: sldb_cli
+      protocol: subprocess
+    - from: sldb_cli
+      to: sldb_store
+      protocol: consulta store
