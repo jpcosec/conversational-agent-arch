@@ -1,0 +1,4 @@
+run_id=50472743
+child_agent=deskops-executor
+parent_session=01a036dd-40f5-756e-b528-5a26a71ea757
+cwd=/home/jp/proyectos/gemini_test

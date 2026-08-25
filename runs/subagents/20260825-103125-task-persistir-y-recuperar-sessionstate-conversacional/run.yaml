@@ -1,0 +1,5 @@
+run_dir: runs/subagents/20260825-103125-task-persistir-y-recuperar-sessionstate-conversacional
+run_id: '50472743'
+session: runs/subagents/20260825-103125-task-persistir-y-recuperar-sessionstate-conversacional/session.txt
+session_sha256: 07a8c25d40c45c488af4a9d3516a255b1bc84cc2f9a455e6caf84595e6207029
+task_id: task-persistir-y-recuperar-sessionstate-conversacional

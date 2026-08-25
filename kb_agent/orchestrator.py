@@ -14,6 +14,7 @@ from __future__ import annotations
 import asyncio
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -24,7 +25,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from kb_agent.agent import CANONICAL_FALLBACK_RESPONSE, draft_conversador_response
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas
-from kb_agent.models_sql.session import ChatHistory, SessionState
+from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
 from kb_agent.ontologizador.compiler import ContextCompiler
 from kb_agent.ontologizador.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitCandidate, TraitExtractor
@@ -127,14 +128,28 @@ class Orchestrator:
             session.commit()
         return user
 
-    def handle_turn(self, *, external_id: str, message: str, scenario: str = "pizzeria") -> dict[str, Any]:
+    def handle_turn(self, *, external_id: str, message: str, scenario: str | None = None) -> dict[str, Any]:
         session = self.SessionLocal()
         try:
             user = self.ensure_user(session, external_id)
+            session_state = self._load_or_create_session_state(session, user.id)
+
+            if scenario is not None:
+                scenario_source = "argument"
+            elif session_state.active_domain:
+                scenario_source = "session_state"
+            else:
+                scenario_source = "default"
 
             # 1) Ontologizador REAL con traits del usuario desde SQL
             compiler = ContextCompiler(reader=self.reader, identity_session=session)
-            compiled = compiler.compile(question=message, user_id=user.id, scenario=scenario)
+            compiled = compiler.compile(
+                question=message,
+                user_id=user.id,
+                scenario=scenario,
+                session_state=session_state,
+            )
+            scenario_effective = str(compiled.get("scenario", ""))
 
             # 2) Conversador: decision determinista (fallback/tool) + Gemini para NL
             decision = draft_conversador_response(compiled)
@@ -149,7 +164,10 @@ class Orchestrator:
             else:
                 kind, reply = "nl", self.conversador.draft_nl(compiled)
 
-            # 4) Persistir turno en ChatHistory (scrubbeado)
+            # 4) Persistir SessionState + turno en ChatHistory (scrubbeado)
+            session_state.active_domain = scenario_effective or None
+            session_state.current_node = SessionNode.IDLE
+            session_state.updated_at = datetime.now(timezone.utc)
             session.add(ChatHistory(user_id=user.id, role="user", content=scrub(message), pii_scrubbed=True))
             reply_text = json.dumps(reply, ensure_ascii=False) if isinstance(reply, dict) else str(reply)
             session.add(ChatHistory(user_id=user.id, role="assistant", content=reply_text, pii_scrubbed=True))
@@ -169,6 +187,8 @@ class Orchestrator:
                 "traits_before": traits_before,
                 "traits_after": traits_after,
                 "used_traits_in_context": compiled.get("user_traits", []),
+                "scenario_effective": scenario_effective,
+                "scenario_source": scenario_source,
             }
         finally:
             session.close()
@@ -188,6 +208,14 @@ class Orchestrator:
             extractor.extract(user_id=event.user_id, turn_text=event.turn_text_scrubbed)
         finally:
             session.close()
+
+    def _load_or_create_session_state(self, session: Session, user_id: int) -> SessionState:
+        state = session.get(SessionState, user_id)
+        if state is None:
+            state = SessionState(user_id=user_id, current_node=SessionNode.IDLE)
+            session.add(state)
+            session.commit()
+        return state
 
     def _current_traits(self, session: Session, user_id: int) -> list[str]:
         rows = session.query(UserTraits.trait_id).filter_by(user_id=user_id).order_by(UserTraits.trait_id).all()
