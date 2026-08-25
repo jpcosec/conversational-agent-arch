@@ -1,0 +1,14 @@
+Task: task-implementar-modelos-de-sesión-e-historial
+Title: Implementar Modelos de Sesión e Historial
+Status: draft
+Current node: checklist-task-implementar-modelos-de-sesión-e-historial-execution-ready
+Task type: implementation
+Routine: routine-task-implementar-modelos-de-sesión-e-historial
+Effective atoms:
+- atom-sql-capa-identidad-y-estado
+- atom-historial-de-conversacion-sin-pii
+- atom-aislamiento-estricto-de-pii
+Checklist status:
+- checklist-task-implementar-modelos-de-sesión-e-historial-execution-ready: complete
+- checklist-task-implementar-modelos-de-sesión-e-historial-testing-ready: pending
+- checklist-task-implementar-modelos-de-sesión-e-historial-closeout-ready: pending
