@@ -1,0 +1,2 @@
+$ deskops show task external-kb-agent-runtime --root .
+No task found for external-kb-agent-runtime

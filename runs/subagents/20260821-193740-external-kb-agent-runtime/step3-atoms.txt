@@ -1,0 +1,15 @@
+$ deskops add atom --root . --title "conversador_apos delegates retrieval to bibliotecario" --five-wh-one-plus what --answer "The root LlmAgent conversador_apos handles user conversation but delegates every knowledge retrieval request to the bibliotecario sub-agent, which is the only agent configured to call retrieval tools. This preserves a two-step boundary: conversational mediation in the root agent and evidence-grounded lookup in the specialist sub-agent." --tags system:kb-agent-runtime topic:delegation layer:runtime domain:knowledge-management --provenance kb_agent/agent.py
+Created atom atom-conversador-apos-delegates-retrieval-to-bibliotecario
+Path: /home/jp/proyectos/gemini_test/desk/atoms/atom-conversador-apos-delegates-retrieval-to-bibliotecario.md
+
+$ deskops add atom --root . --title "kb_tools wrap the sldb CLI as retrieval tools" --five-wh-one-plus what --answer "The runtime exposes retrieval through Python tools that wrap real sldb CLI commands instead of implementing an independent search engine. list_topics reads the semantic index, search_knowledge runs sldb find, and read_atom runs sldb docs show inside the configured knowledge-base root." --tags system:kb-agent-runtime topic:retrieval layer:runtime domain:knowledge-management --provenance kb_agent/kb_tools.py
+Created atom atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+Path: /home/jp/proyectos/gemini_test/desk/atoms/atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools.md
+
+$ deskops add atom --root . --title "Gemini 2.5 Flash on Vertex AI is the model boundary" --five-wh-one-plus what --answer "Both conversador_apos and bibliotecario are configured as Google ADK LlmAgent instances that use gemini-2.5-flash. The runtime therefore depends on Vertex AI as its model-serving boundary while keeping retrieval logic and knowledge storage outside the model provider." --tags system:kb-agent-runtime topic:llm-boundary layer:runtime domain:knowledge-management --provenance kb_agent/agent.py
+Created atom atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+Path: /home/jp/proyectos/gemini_test/desk/atoms/atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary.md
+
+$ deskops add atom --root . --title "KB_ROOT parameterizes the reusable knowledge-base target" --five-wh-one-plus what --answer "The retrieval runtime is reusable because the sldb execution target is centralized in KB_ROOT and STORE within kb_tools.py. Changing that root repoints the same agent runtime toward a different SLDB-backed knowledge base without changing the agent delegation pattern or tool surface." --tags system:kb-agent-runtime topic:configuration layer:runtime domain:knowledge-management --provenance kb_agent/kb_tools.py
+Created atom atom-kb-root-parameterizes-the-reusable-knowledge-base-target
+Path: /home/jp/proyectos/gemini_test/desk/atoms/atom-kb-root-parameterizes-the-reusable-knowledge-base-target.md

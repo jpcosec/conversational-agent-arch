@@ -1,0 +1,14 @@
+$ deskops graph build --root .
+Ingested 13 nodes to /home/jp/proyectos/gemini_test/.sldb/runtime/knowledge_graph.nx.json
+Graph snapshot written: /home/jp/proyectos/gemini_test/.sldb/runtime/knowledge_graph.kg.json
+
+$ deskops graph missing --root .
+No missing graph references found.
+
+$ sldb stores update --store .sldb --pythonpath .
+Updated store at /home/jp/proyectos/gemini_test/.sldb
+Semantic index: 4 processed, 0 missing
+Sections index: 4 processed, 0 missing, 0 empty, 0 unparseable headings
+
+$ sldb stores check --store .sldb
+PASS: store integrity

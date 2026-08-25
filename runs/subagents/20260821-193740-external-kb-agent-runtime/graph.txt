@@ -1,0 +1,2 @@
+$ deskops graph missing --root .
+No missing graph references found.

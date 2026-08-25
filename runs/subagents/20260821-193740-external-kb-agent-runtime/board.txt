@@ -1,0 +1,2 @@
+$ deskops show board Board --root .
+Error: No artifact.board file found for selector 'Board' in /home/jp/proyectos/gemini_test/desk/tasks

@@ -1,0 +1,1 @@
+Error: No artifact.task file found for selector 'task-package-kb-agent-as-reusable-rental-plus-pack' in /home/jp/Upla/tutor_apoe/desk/tasks

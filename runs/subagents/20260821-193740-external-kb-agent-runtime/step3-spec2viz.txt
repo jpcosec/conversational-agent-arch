@@ -1,0 +1,33 @@
+$ spec2viz --help
+Usage: spec2viz [OPTIONS] COMMAND [ARGS]...
+
+  spec2viz CLI.
+
+  Taxonomy: - diagram: semantic diagram specs (render, validate, schema) -
+  catalog: HTML bundles and hierarchical diagram stores (build, schema)
+
+  Legacy top-level commands remain available for compatibility.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  build     Build catalog HTML from a vistas registry or diagram store.
+  catalog   Work with diagram catalogs, vistas registries, and...
+  diagram   Work with semantic diagram specs.
+  lint      Lint rendered mermaid for browser-breaking syntax.
+  render    Render diagram specs to output files.
+  schema    Export JSON Schema for semantic specs.
+  validate  Validate semantic diagram spec files.
+
+$ spec2viz validate desk/spec2viz/kb-agent-vista-01-contexto.yml
+kb-agent-vista-01-contexto.yml: OK
+
+$ spec2viz render --renderer mermaid --out desk/spec2viz desk/spec2viz/kb-agent-vista-01-contexto.yml
+Rendered kb-agent-vista-01-contexto.yml -> desk/spec2viz/kb-agent-vista-01-contexto.mmd
+
+$ spec2viz render --renderer plantuml --out desk/spec2viz desk/spec2viz/kb-agent-vista-01-contexto.yml
+Rendered kb-agent-vista-01-contexto.yml -> desk/spec2viz/kb-agent-vista-01-contexto.puml
+
+$ spec2viz render --renderer antonia-html --out desk/spec2viz desk/spec2viz/kb-agent-vista-01-contexto.yml
+Rendered kb-agent-vista-01-contexto.yml -> desk/spec2viz/kb-agent-vista-01-contexto.html
