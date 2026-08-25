@@ -15,19 +15,20 @@ data:
       kind: client
       contains:
         - kb_chat_ui_html
-        - kb_agent_ui_html
+        - visor_wiki_html
+        - visor_grafo_html
     app_server:
       label: App Server · FastAPI (kb_chat_ui.main)
       kind: server
       contains:
         - chat_api
-        - table_compiler
+        - composicion_sldb
     adk_runtime:
       label: ADK Runtime (adk web / agentes)
       kind: server
       contains:
-        - conversador_apos
-        - bibliotecario
+        - agente_conversacional
+        - ontological_context_compiler
         - kb_tools_wrapper
     kb_store_host:
       label: KB host · tutor_apoe
@@ -35,6 +36,7 @@ data:
       contains:
         - sldb_cli
         - sldb_store
+        - relational_db
     vertex:
       label: Vertex AI · gemini-2.5-flash
       kind: cloud
@@ -45,20 +47,23 @@ data:
     kb_chat_ui_html:
       label: kb_chat_ui/index.html (chat + inspector de mesa)
       kind: frontend
-    kb_agent_ui_html:
-      label: kb_agent_ui/index.html (visor de átomos)
+    visor_wiki_html:
+      label: Visor de átomos (wiki/sldb)
+      kind: frontend
+    visor_grafo_html:
+      label: Visor de grafo (kgdb)
       kind: frontend
     chat_api:
       label: FastAPI /api/chat /api/atom /api/session
       kind: backend
-    table_compiler:
-      label: MesaCompiler (ranking/expansión de tags)
+    composicion_sldb:
+      label: Composición SLDB
       kind: backend
-    conversador_apos:
-      label: conversador_apos (root LlmAgent)
+    agente_conversacional:
+      label: Agente Conversacional (LlmAgent)
       kind: backend
-    bibliotecario:
-      label: bibliotecario (sub-agent retrieval)
+    ontological_context_compiler:
+      label: Ontological Context Compiler
       kind: backend
     kb_tools_wrapper:
       label: kb_tools (wrapper CLI sldb)
@@ -69,6 +74,9 @@ data:
     sldb_store:
       label: .sldb store + semantic_index.yaml
       kind: database
+    relational_db:
+      label: Base de Datos (Relacional)
+      kind: database
     gemini_llm:
       label: gemini-2.5-flash (endpoint)
       kind: backend
@@ -77,28 +85,31 @@ data:
     - from: kb_chat_ui_html
       to: chat_api
       protocol: fetch /api/chat (HTTP)
-    - from: kb_agent_ui_html
+    - from: visor_wiki_html
       to: sldb_store
       protocol: fetch atoms.json (estático)
+    - from: visor_grafo_html
+      to: relational_db
+      protocol: fetch graph (estático)
     - from: chat_api
-      to: table_compiler
+      to: composicion_sldb
       protocol: compila mesa
     - from: chat_api
       to: gemini_llm
       protocol: generate_content
-    - from: table_compiler
+    - from: composicion_sldb
       to: sldb_store
       protocol: lee atoms.json
-    - from: conversador_apos
-      to: bibliotecario
+    - from: agente_conversacional
+      to: ontological_context_compiler
       protocol: delega retrieval
-    - from: bibliotecario
+    - from: ontological_context_compiler
       to: kb_tools_wrapper
       protocol: invoca tools
-    - from: conversador_apos
+    - from: agente_conversacional
       to: gemini_llm
       protocol: LLM
-    - from: bibliotecario
+    - from: ontological_context_compiler
       to: gemini_llm
       protocol: LLM
     - from: kb_tools_wrapper
@@ -107,3 +118,6 @@ data:
     - from: sldb_cli
       to: sldb_store
       protocol: consulta store
+    - from: sldb_cli
+      to: relational_db
+      protocol: consulta bd

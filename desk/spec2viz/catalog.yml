@@ -1,4 +1,4 @@
-template: template.html
+template: __builtin_default__.html
 title: KB Agent Runtime · Catálogo de arquitectura
 brand_name: KB Agent Runtime
 project_name: kb-agent-runtime

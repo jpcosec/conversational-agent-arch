@@ -7,8 +7,7 @@ flowchart TD
     reuse_prev_tags["reusar include_tags de la mesa previa"]
     ensure_apos["forzar system:apos"]
     expand["expandir tags (EXPANSIONS)"]
-    rank["_rank_atoms (exact 100 / expanded 30 / lexical 8 / retained 18)"]
-    select["top-5 + diff (retained/removed/added)"]
+    comp_sldb["Componer átomos (Delegado al Context Compiler sin ranking manual)"]
     build_prompt_mesa["construir mesa + prompt_mesa (retorna {mesa, prompt_mesa})"]
     __end([End])
     __start --> normalize
@@ -20,7 +19,6 @@ flowchart TD
     is_followup -->|"no"| ensure_apos
     reuse_prev_tags --> ensure_apos
     ensure_apos --> expand
-    expand --> rank
-    rank --> select
-    select --> build_prompt_mesa
+    expand --> comp_sldb
+    comp_sldb --> build_prompt_mesa
     build_prompt_mesa --> __end

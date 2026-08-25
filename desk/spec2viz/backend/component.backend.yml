@@ -47,26 +47,22 @@ data:
       label: build_prompt()
       kind: core
     mesa_compiler:
-      label: MesaCompiler (table_compiler)
+      label: Composición SLDB (table_compiler)
       kind: core
       contains:
         - compile_mesa
-        - rank_atoms
         - extract_tags
     compile_mesa:
       label: compile()
-      kind: core
-    rank_atoms:
-      label: _rank_atoms()
       kind: core
     extract_tags:
       label: _extract_tags() + ALIASES/EXPANSIONS
       kind: core
     conversador:
-      label: conversador_apos (root LlmAgent)
+      label: Agente Conversacional (LlmAgent)
       kind: core
     bibliotecario:
-      label: bibliotecario (sub-agent)
+      label: Ontological Context Compiler (sub-agent)
       kind: core
     kb_tools:
       label: kb_tools (search/read/list)
@@ -82,6 +78,9 @@ data:
       kind: database
     sldb_store:
       label: .sldb store (tutor_apoe)
+      kind: database
+    relational_db:
+      label: Base de Datos (Relacional)
       kind: database
   edges:
     - from: route_chat
@@ -111,3 +110,6 @@ data:
     - from: sldb_cli
       to: sldb_store
       relation: consulta
+    - from: sldb_cli
+      to: relational_db
+      relation: lee / escribe

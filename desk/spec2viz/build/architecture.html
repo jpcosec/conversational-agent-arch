@@ -510,35 +510,39 @@
       graph TD
           subgraph browser [&quot;Navegador (usuario experto)&quot;]
               kb_chat_ui_html[&quot;kb_chat_ui/index.html (chat + inspector de mesa)&quot;]
-              kb_agent_ui_html[&quot;kb_agent_ui/index.html (visor de átomos)&quot;]
+              visor_wiki_html[&quot;Visor de átomos (wiki/sldb)&quot;]
+              visor_grafo_html[&quot;Visor de grafo (kgdb)&quot;]
           end
           subgraph app_server [&quot;App Server · FastAPI (kb_chat_ui.main)&quot;]
               chat_api[&quot;FastAPI /api/chat /api/atom /api/session&quot;]
-              table_compiler[&quot;MesaCompiler (ranking/expansión de tags)&quot;]
+              composicion_sldb[&quot;Composición SLDB&quot;]
           end
           subgraph adk_runtime [&quot;ADK Runtime (adk web / agentes)&quot;]
-              conversador_apos[&quot;conversador_apos (root LlmAgent)&quot;]
-              bibliotecario[&quot;bibliotecario (sub-agent retrieval)&quot;]
+              agente_conversacional[&quot;Agente Conversacional (LlmAgent)&quot;]
+              ontological_context_compiler[&quot;Ontological Context Compiler&quot;]
               kb_tools_wrapper[&quot;kb_tools (wrapper CLI sldb)&quot;]
           end
           subgraph kb_store_host [&quot;KB host · tutor_apoe&quot;]
               sldb_cli[&quot;sldb CLI (find / docs show)&quot;]
               sldb_store[&quot;.sldb store + semantic_index.yaml&quot;]
+              relational_db[&quot;Base de Datos (Relacional)&quot;]
           end
           subgraph vertex [&quot;Vertex AI · gemini-2.5-flash&quot;]
               gemini_llm[&quot;gemini-2.5-flash (endpoint)&quot;]
           end
           kb_chat_ui_html --&gt;|&quot;fetch /api/chat (HTTP)&quot;| chat_api
-          kb_agent_ui_html --&gt;|&quot;fetch atoms.json (estático)&quot;| sldb_store
-          chat_api --&gt;|&quot;compila mesa&quot;| table_compiler
+          visor_wiki_html --&gt;|&quot;fetch atoms.json (estático)&quot;| sldb_store
+          visor_grafo_html --&gt;|&quot;fetch graph (estático)&quot;| relational_db
+          chat_api --&gt;|&quot;compila mesa&quot;| composicion_sldb
           chat_api --&gt;|&quot;generate_content&quot;| gemini_llm
-          table_compiler --&gt;|&quot;lee atoms.json&quot;| sldb_store
-          conversador_apos --&gt;|&quot;delega retrieval&quot;| bibliotecario
-          bibliotecario --&gt;|&quot;invoca tools&quot;| kb_tools_wrapper
-          conversador_apos --&gt;|&quot;LLM&quot;| gemini_llm
-          bibliotecario --&gt;|&quot;LLM&quot;| gemini_llm
+          composicion_sldb --&gt;|&quot;lee atoms.json&quot;| sldb_store
+          agente_conversacional --&gt;|&quot;delega retrieval&quot;| ontological_context_compiler
+          ontological_context_compiler --&gt;|&quot;invoca tools&quot;| kb_tools_wrapper
+          agente_conversacional --&gt;|&quot;LLM&quot;| gemini_llm
+          ontological_context_compiler --&gt;|&quot;LLM&quot;| gemini_llm
           kb_tools_wrapper --&gt;|&quot;subprocess&quot;| sldb_cli
           sldb_cli --&gt;|&quot;consulta store&quot;| sldb_store
+          sldb_cli --&gt;|&quot;consulta bd&quot;| relational_db
     </pre>
   </div>
 </section></div>
@@ -556,18 +560,18 @@
               route_session[&quot;GET /api/session /api/turn&quot;]
               build_prompt[&quot;build_prompt()&quot;]
           end
-          subgraph mesa_compiler [&quot;MesaCompiler (table_compiler)&quot;]
+          subgraph mesa_compiler [&quot;Composición SLDB (table_compiler)&quot;]
               compile_mesa[&quot;compile()&quot;]
-              rank_atoms[&quot;_rank_atoms()&quot;]
               extract_tags[&quot;_extract_tags() + ALIASES/EXPANSIONS&quot;]
           end
-          conversador[&quot;conversador_apos (root LlmAgent)&quot;]
-          bibliotecario[&quot;bibliotecario (sub-agent)&quot;]
+          conversador[&quot;Agente Conversacional (LlmAgent)&quot;]
+          bibliotecario[&quot;Ontological Context Compiler (sub-agent)&quot;]
           kb_tools[&quot;kb_tools (search/read/list)&quot;]
           sldb_cli[&quot;sldb CLI&quot;]
           genai_client[&quot;google.genai Client&quot;]
           atoms_json[&quot;atoms.json (90 átomos)&quot;]
           sldb_store[&quot;.sldb store (tutor_apoe)&quot;]
+          relational_db[&quot;Base de Datos (Relacional)&quot;]
           route_chat --&gt;|&quot;compila&quot;| mesa_compiler
           route_chat --&gt;|&quot;arma_prompt&quot;| build_prompt
           route_chat --&gt;|&quot;generate_content&quot;| genai_client
@@ -577,6 +581,7 @@
           bibliotecario --&gt;|&quot;invoca&quot;| kb_tools
           kb_tools --&gt;|&quot;subprocess&quot;| sldb_cli
           sldb_cli --&gt;|&quot;consulta&quot;| sldb_store
+          sldb_cli --&gt;|&quot;lee / escribe&quot;| relational_db
     </pre>
   </div>
 </section><section id="sequence-chat-turn-6bd7dee7" data-spec="backend/sequence.chat-turn.yml" data-type="sequence" data-project="" data-category="Backend" data-tags="layer:backend view:sequence type:sequence" data-view-id="sequence-chat-turn" class="catalog-item">
@@ -663,8 +668,7 @@
           reuse_prev_tags[&quot;reusar include_tags de la mesa previa&quot;]
           ensure_apos[&quot;forzar system:apos&quot;]
           expand[&quot;expandir tags (EXPANSIONS)&quot;]
-          rank[&quot;_rank_atoms (exact 100 / expanded 30 / lexical 8 / retained 18)&quot;]
-          select[&quot;top-5 + diff (retained/removed/added)&quot;]
+          comp_sldb[&quot;Componer átomos (Delegado al Context Compiler sin ranking manual)&quot;]
           build_prompt_mesa[&quot;construir mesa + prompt_mesa (retorna {mesa, prompt_mesa})&quot;]
           __end([End])
           __start --&gt; normalize
@@ -676,9 +680,8 @@
           is_followup --&gt;|&quot;no&quot;| ensure_apos
           reuse_prev_tags --&gt; ensure_apos
           ensure_apos --&gt; expand
-          expand --&gt; rank
-          rank --&gt; select
-          select --&gt; build_prompt_mesa
+          expand --&gt; comp_sldb
+          comp_sldb --&gt; build_prompt_mesa
           build_prompt_mesa --&gt; __end
     </pre>
   </div>
