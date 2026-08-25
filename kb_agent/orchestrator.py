@@ -31,6 +31,7 @@ from kb_agent.ontologizador.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitCandidate, TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
 from kb_agent.pii.scrubber import scrub
+from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
 from kb_chat_ui.state_machine import RouterStateMachine
 
 MODEL = "gemini-2.5-flash"
@@ -119,11 +120,14 @@ def execute_tool(session: Session, user_id: int | None, function_call: dict[str,
 # ─────────────────────────── Orquestador ───────────────────────────
 class Orchestrator:
     def __init__(self, *, kb_root: Path, db_url: str = "sqlite:///:memory:") -> None:
+        self.kb_root = Path(kb_root).resolve()
+        self.repo_root = Path(__file__).resolve().parents[1]
         self.engine = create_engine(db_url, future=True)
         Base.metadata.create_all(self.engine)
         self.SessionLocal = sessionmaker(bind=self.engine, future=True)
 
-        self.reader = SLDBReader(kb_root=kb_root, store_name=".sldb")
+        self.reader = SLDBReader(kb_root=self.kb_root, store_name=".sldb")
+        self._reflector_checkpoint_store = InMemoryCheckpointStore()
         self.client = genai.Client()
         self.conversador = GeminiConversador(self.client)
         self.trait_mapper = GeminiTraitMapper(self.client)
@@ -245,6 +249,30 @@ class Orchestrator:
             extractor.extract(user_id=event.user_id, turn_text=event.turn_text_scrubbed)
         finally:
             session.close()
+
+    def run_reflector(self) -> list[dict[str, Any]]:
+        reader = ReflectorBatchReaderJob(
+            self.SessionLocal,
+            self._reflector_checkpoint_store,
+        )
+        rows = reader.run(trigger="cron")
+        generator = ReflectorAtomGenerator(
+            kb_root=self.repo_root,
+            store_name=str(self.kb_root / ".sldb"),
+            output_dir=self.kb_root / "atoms",
+            pythonpath=self.repo_root,
+        )
+        generated = generator.generate(rows)
+        return [
+            {
+                "atom_id": atom.atom_id,
+                "atom_type": atom.atom_type,
+                "path": str(atom.path),
+                "normalized_text": atom.normalized_text,
+                "count": atom.count,
+            }
+            for atom in generated
+        ]
 
     def _load_or_create_session_state(self, session: Session, user_id: int) -> SessionState:
         state = session.get(SessionState, user_id)
