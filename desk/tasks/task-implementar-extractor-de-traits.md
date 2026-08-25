@@ -21,6 +21,7 @@ inherits_from: []
 inherit_acceptance_context: false
 atoms:
 - atom-trait-atom
+- atom-aislamiento-estricto-de-pii
 ---
 
 # Implementar Extractor de Traits

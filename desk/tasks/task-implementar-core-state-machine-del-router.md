@@ -21,6 +21,7 @@ inherits_from: []
 inherit_acceptance_context: false
 atoms:
 - atom-api-gateway-y-state-router
+- atom-trigger-sintetico-cron
 ---
 
 # Implementar Core State Machine del Router

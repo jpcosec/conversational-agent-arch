@@ -21,6 +21,8 @@ inherits_from: []
 inherit_acceptance_context: false
 atoms:
 - atom-ontologizador-context-compiler
+- atom-sldb-base-conocimiento-semantica
+- atom-tool-atom
 ---
 
 # Implementar Conector SLDB del Ontologizador

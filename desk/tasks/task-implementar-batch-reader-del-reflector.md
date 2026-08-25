@@ -21,6 +21,8 @@ inherits_from: []
 inherit_acceptance_context: false
 atoms:
 - atom-reflector-batch
+- atom-historial-de-conversacion-sin-pii
+- atom-aislamiento-estricto-de-pii
 ---
 
 # Implementar Batch Reader del Reflector

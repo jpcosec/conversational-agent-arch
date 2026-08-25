@@ -21,6 +21,8 @@ inherits_from: []
 inherit_acceptance_context: false
 atoms:
 - atom-sql-capa-identidad-y-estado
+- atom-historial-de-conversacion-sin-pii
+- atom-aislamiento-estricto-de-pii
 ---
 
 # Implementar Modelos de Sesión e Historial

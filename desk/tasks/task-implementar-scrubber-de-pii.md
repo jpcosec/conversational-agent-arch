@@ -19,7 +19,9 @@ checklists:
 task_type: implementation
 inherits_from: []
 inherit_acceptance_context: false
-atoms: []
+atoms:
+- atom-aislamiento-estricto-de-pii
+- atom-historial-de-conversacion-sin-pii
 ---
 
 # Implementar Scrubber de PII
