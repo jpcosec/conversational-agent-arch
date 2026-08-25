@@ -1,6 +1,45 @@
 nodes:
+- id: domain:external_libs
+  parents: []
+- id: domain:external_libs.sldb
+  parents:
+  - domain:external_libs
+- id: domain:self
+  parents: []
+- id: domain:self.architecture
+  parents:
+  - domain:self
+- id: domain:self.architecture.backend
+  parents:
+  - domain:self.architecture
+- id: domain:self.architecture.integration
+  parents:
+  - domain:self.architecture
+- id: domain:self.data
+  parents:
+  - domain:self
+- id: domain:self.data.persistence
+  parents:
+  - domain:self.data
+- id: domain:standards
+  parents: []
+- id: domain:standards.privacy
+  parents:
+  - domain:standards
+- id: domain:standards.taxonomy
+  parents:
+  - domain:standards
+- id: domain:standards.taxonomy.atoms
+  parents:
+  - domain:standards.taxonomy
 - id: type
   parents: []
+- id: type.desk
+  parents:
+  - type
+- id: type.desk.inbox-note
+  parents:
+  - type.desk
 - id: type.knowledge
   parents:
   - type
@@ -13,6 +52,9 @@ nodes:
   parents:
   - workspace
 - id: workspace.desk.atoms
+  parents:
+  - workspace.desk
+- id: workspace.desk.inbox
   parents:
   - workspace.desk
 equivalences: {}

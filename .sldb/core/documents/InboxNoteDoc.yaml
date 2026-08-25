@@ -1,1 +1,8 @@
-documents: []
+documents:
+- name: 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260825-020103-suggestion-ritual-zero-context-subagent-stress-test.md
+  hash_c: 7fa245cacef6dd1c68c3d0ca6bccea85f58875382ff325630a8b7c34867dd38c
+  hash_d: c807572ddaa28b0581afc25c0f7d52e2361ffeca0d8a0daf5840aff742a82c35
+  semantic_tags:
+  - type.desk.inbox-note
+  - workspace.desk.inbox

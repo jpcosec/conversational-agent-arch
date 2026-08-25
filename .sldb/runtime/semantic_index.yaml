@@ -1,75 +1,328 @@
 tags:
-  domain:knowledge-management:
-  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
-  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  domain:external_libs.sldb:
+  - atom-sldb-base-conocimiento-semantica
+  domain:self.architecture.backend:
+  - atom-agente-conversador
+  - atom-api-gateway-y-state-router
+  - atom-contexto-compilado
+  - atom-debounce-buffer-agrupacion
+  - atom-ontologizador-context-compiler
+  - atom-perfilador-asincrono
+  - atom-reflector-batch
+  - atom-trigger-sintetico-cron
+  - atom-turno-de-sistema-system-turn
+  domain:self.architecture.integration:
+  - atom-apis-externas-integracion
+  domain:self.data.persistence:
+  - atom-historial-de-conversacion-sin-pii
+  - atom-sql-capa-identidad-y-estado
+  domain:standards.privacy:
+  - atom-aislamiento-estricto-de-pii
+  domain:standards.taxonomy.atoms:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-tool-atom
+  - atom-trait-atom
+  layer:document-model:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sql-capa-identidad-y-estado
+  - atom-tool-atom
+  - atom-trait-atom
+  layer:persistence:
+  - atom-aislamiento-estricto-de-pii
+  - atom-historial-de-conversacion-sin-pii
+  - atom-reflector-batch
+  - atom-sldb-base-conocimiento-semantica
   layer:runtime:
-  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
-  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
-  system:kb-agent-runtime:
-  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
-  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
-  topic:configuration:
-  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  topic:delegation:
-  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
-  topic:llm-boundary:
-  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+  - atom-agente-conversador
+  - atom-api-gateway-y-state-router
+  - atom-apis-externas-integracion
+  - atom-contexto-compilado
+  - atom-debounce-buffer-agrupacion
+  - atom-ontologizador-context-compiler
+  - atom-perfilador-asincrono
+  - atom-trigger-sintetico-cron
+  - atom-turno-de-sistema-system-turn
+  system:cron:
+  - atom-trigger-sintetico-cron
+  system:kb-agent:
+  - atom-agente-conversador
+  - atom-api-gateway-y-state-router
+  - atom-apis-externas-integracion
+  - atom-contexto-compilado
+  - atom-debounce-buffer-agrupacion
+  - atom-ontologizador-context-compiler
+  - atom-perfilador-asincrono
+  - atom-reflector-batch
+  - atom-turno-de-sistema-system-turn
+  system:sldb:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-tool-atom
+  - atom-trait-atom
+  system:sql:
+  - atom-aislamiento-estricto-de-pii
+  - atom-historial-de-conversacion-sin-pii
+  - atom-sql-capa-identidad-y-estado
+  topic:consolidation:
+  - atom-reflector-batch
+  topic:context:
+  - atom-contexto-compilado
+  topic:generation:
+  - atom-agente-conversador
+  topic:history:
+  - atom-historial-de-conversacion-sin-pii
+  topic:identity:
+  - atom-sql-capa-identidad-y-estado
+  topic:ontology:
+  - atom-domain-atom
+  - atom-sldb-base-conocimiento-semantica
+  topic:pii:
+  - atom-aislamiento-estricto-de-pii
+  topic:proactivity:
+  - atom-trigger-sintetico-cron
+  topic:profiling:
+  - atom-perfilador-asincrono
+  - atom-trait-atom
   topic:retrieval:
-  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  - atom-ontologizador-context-compiler
+  topic:routing:
+  - atom-api-gateway-y-state-router
+  - atom-debounce-buffer-agrupacion
+  topic:rules:
+  - atom-rule-atom
+  topic:tool-calling:
+  - atom-apis-externas-integracion
+  - atom-tool-atom
+  - atom-turno-de-sistema-system-turn
+  type.desk.inbox-note:
+  - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
   type.knowledge.atom:
-  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
-  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  - atom-agente-conversador
+  - atom-aislamiento-estricto-de-pii
+  - atom-api-gateway-y-state-router
+  - atom-apis-externas-integracion
+  - atom-contexto-compilado
+  - atom-debounce-buffer-agrupacion
+  - atom-domain-atom
+  - atom-historial-de-conversacion-sin-pii
+  - atom-ontologizador-context-compiler
+  - atom-perfilador-asincrono
+  - atom-reflector-batch
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-sql-capa-identidad-y-estado
+  - atom-tool-atom
+  - atom-trait-atom
+  - atom-trigger-sintetico-cron
+  - atom-turno-de-sistema-system-turn
   workspace.desk.atoms:
-  - atom-conversador-apos-delegates-retrieval-to-bibliotecario
-  - atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-  - atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  - atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+  - atom-agente-conversador
+  - atom-aislamiento-estricto-de-pii
+  - atom-api-gateway-y-state-router
+  - atom-apis-externas-integracion
+  - atom-contexto-compilado
+  - atom-debounce-buffer-agrupacion
+  - atom-domain-atom
+  - atom-historial-de-conversacion-sin-pii
+  - atom-ontologizador-context-compiler
+  - atom-perfilador-asincrono
+  - atom-reflector-batch
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-sql-capa-identidad-y-estado
+  - atom-tool-atom
+  - atom-trait-atom
+  - atom-trigger-sintetico-cron
+  - atom-turno-de-sistema-system-turn
+  workspace.desk.inbox:
+  - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
 documents:
-  atom-conversador-apos-delegates-retrieval-to-bibliotecario:
-    model: AtomDoc
-    path: desk/atoms/atom-conversador-apos-delegates-retrieval-to-bibliotecario.md
+  20260825-020103-suggestion-ritual-zero-context-subagent-stress-test:
+    model: InboxNoteDoc
+    path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260825-020103-suggestion-ritual-zero-context-subagent-stress-test.md
     tags:
-    - domain:knowledge-management
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+  atom-api-gateway-y-state-router:
+    model: AtomDoc
+    path: desk/atoms/atom-api-gateway-y-state-router.md
+    tags:
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
+    - system:kb-agent
+    - topic:routing
     - type.knowledge.atom
     - workspace.desk.atoms
-  atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools:
+  atom-agente-conversador:
     model: AtomDoc
-    path: desk/atoms/atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools.md
+    path: desk/atoms/atom-agente-conversador.md
     tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
+    - system:kb-agent
+    - topic:generation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-ontologizador-context-compiler:
+    model: AtomDoc
+    path: desk/atoms/atom-ontologizador-context-compiler.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
     - topic:retrieval
     - type.knowledge.atom
     - workspace.desk.atoms
-  atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary:
+  atom-perfilador-asincrono:
     model: AtomDoc
-    path: desk/atoms/atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary.md
+    path: desk/atoms/atom-perfilador-asincrono.md
     tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
+    - system:kb-agent
+    - topic:profiling
     - type.knowledge.atom
     - workspace.desk.atoms
-  atom-kb-root-parameterizes-the-reusable-knowledge-base-target:
+  atom-reflector-batch:
     model: AtomDoc
-    path: desk/atoms/atom-kb-root-parameterizes-the-reusable-knowledge-base-target.md
+    path: desk/atoms/atom-reflector-batch.md
     tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
+    - layer:persistence
+    - system:kb-agent
+    - topic:consolidation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-sql-capa-identidad-y-estado:
+    model: AtomDoc
+    path: desk/atoms/atom-sql-capa-identidad-y-estado.md
+    tags:
+    - domain:self.data.persistence
+    - layer:document-model
+    - system:sql
+    - topic:identity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-sldb-base-conocimiento-semantica:
+    model: AtomDoc
+    path: desk/atoms/atom-sldb-base-conocimiento-semantica.md
+    tags:
+    - domain:external_libs.sldb
+    - layer:persistence
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-apis-externas-integracion:
+    model: AtomDoc
+    path: desk/atoms/atom-apis-externas-integracion.md
+    tags:
+    - domain:self.architecture.integration
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-domain-atom:
+    model: AtomDoc
+    path: desk/atoms/atom-domain-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-trait-atom:
+    model: AtomDoc
+    path: desk/atoms/atom-trait-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:profiling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-rule-atom:
+    model: AtomDoc
+    path: desk/atoms/atom-rule-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:rules
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-tool-atom:
+    model: AtomDoc
+    path: desk/atoms/atom-tool-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-contexto-compilado:
+    model: AtomDoc
+    path: desk/atoms/atom-contexto-compilado.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:context
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-turno-de-sistema-system-turn:
+    model: AtomDoc
+    path: desk/atoms/atom-turno-de-sistema-system-turn.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-trigger-sintetico-cron:
+    model: AtomDoc
+    path: desk/atoms/atom-trigger-sintetico-cron.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:cron
+    - topic:proactivity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-debounce-buffer-agrupacion:
+    model: AtomDoc
+    path: desk/atoms/atom-debounce-buffer-agrupacion.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:routing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-aislamiento-estricto-de-pii:
+    model: AtomDoc
+    path: desk/atoms/atom-aislamiento-estricto-de-pii.md
+    tags:
+    - domain:standards.privacy
+    - layer:persistence
+    - system:sql
+    - topic:pii
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-historial-de-conversacion-sin-pii:
+    model: AtomDoc
+    path: desk/atoms/atom-historial-de-conversacion-sin-pii.md
+    tags:
+    - domain:self.data.persistence
+    - layer:persistence
+    - system:sql
+    - topic:history
     - type.knowledge.atom
     - workspace.desk.atoms

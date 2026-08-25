@@ -5,3 +5,4 @@ __pycache__/
 .adk/session.db
 node_modules/
 runs/
+spec2viz_serve.log

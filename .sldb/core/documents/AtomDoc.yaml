@@ -43,3 +43,201 @@ documents:
   - topic:configuration
   - type.knowledge.atom
   - workspace.desk.atoms
+- name: atom-api-gateway-y-state-router
+  path: desk/atoms/atom-api-gateway-y-state-router.md
+  hash_c: 82b7513b54a794c7e6b7189f021bf0e341f7ec185ae17844fc465b575405730f
+  hash_d: 0a2572ae126a1f103152a52ae1def6c62359c361f8986ea4c2aa462939eca3e1
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:routing
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-agente-conversador
+  path: desk/atoms/atom-agente-conversador.md
+  hash_c: 1d8c0515a147566fd9c1c0c1aedf15128f6865e29cc534e0909ec071442affd9
+  hash_d: 33cb17789e3ea95ef45bfd1c7392948aa8fb98d411d5764dc746311d43d58bc4
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:generation
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-ontologizador-context-compiler
+  path: desk/atoms/atom-ontologizador-context-compiler.md
+  hash_c: c432a45e90833616c00c85ca514e871eed0f4040a51f0b30eff9e96462318173
+  hash_d: 73b890f97a527a9a4f17d7dec0737f807e31e786d011ba4a3ebdb2f975611af9
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:retrieval
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-perfilador-asincrono
+  path: desk/atoms/atom-perfilador-asincrono.md
+  hash_c: e883a4855c8ada613d73714dc67c48cdc591ab3db7b4fcfbe99c010328b91286
+  hash_d: 14c68c30c1b2ce9cc3a46c0dae972909e857a9b2c9222b63a0670846db743f43
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:profiling
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-reflector-batch
+  path: desk/atoms/atom-reflector-batch.md
+  hash_c: c56fcc32f02326afd321490fc003fd2208288414243505a59c627958e1f04560
+  hash_d: 67f13f44bb68a45254ab1c2c53a050604229215caaadc8d13c74c6f2ac895f13
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:persistence
+  - system:kb-agent
+  - topic:consolidation
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-sql-capa-identidad-y-estado
+  path: desk/atoms/atom-sql-capa-identidad-y-estado.md
+  hash_c: e554e6715a185b27ec3e0917b8d2dc8ff8729e90ef12a484fd407637793b5be0
+  hash_d: 51bc9fc6e036cb1ab28ff42dc7a8e15a923e5830cde3a756b24ab484a0cd575c
+  semantic_tags:
+  - domain:self.data.persistence
+  - layer:document-model
+  - system:sql
+  - topic:identity
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-sldb-base-conocimiento-semantica
+  path: desk/atoms/atom-sldb-base-conocimiento-semantica.md
+  hash_c: 716a32a54e2bb1620da55c028ef8877f7d9c52754f61fc4256316e9476b08e10
+  hash_d: 9b5a122cfc036b8b35a8bc6f0eaa0bb66c2f72c6de69bb41a0c9c10df2bad198
+  semantic_tags:
+  - domain:external_libs.sldb
+  - layer:persistence
+  - system:sldb
+  - topic:ontology
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-apis-externas-integracion
+  path: desk/atoms/atom-apis-externas-integracion.md
+  hash_c: b4020cd4279eb726e7f46d8867e67fc49172fbf3a5ae741091a1351405850842
+  hash_d: 3f33945e897a4f7b2e4d1f73c4ea7c54b70dfc46cd3942567153be1486e4e6cd
+  semantic_tags:
+  - domain:self.architecture.integration
+  - layer:runtime
+  - system:kb-agent
+  - topic:tool-calling
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-domain-atom
+  path: desk/atoms/atom-domain-atom.md
+  hash_c: 6f0d8f52e2c1a2e9ecad5419d040a4df146603bd63c6ca42cb7694a555ab34d4
+  hash_d: 4f6035965a5ff9b36ccdc15387b7fc5d4f2b3f028f400c5cd59e69c5b748a528
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:ontology
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-trait-atom
+  path: desk/atoms/atom-trait-atom.md
+  hash_c: 72f9afe730b12f34a17fec6ff36bacaa48ecf6c5e0766b6d9172a3e0231b8e4a
+  hash_d: 1b559fa1801dffe06ed2c0f8578f281d9fe50f0828d9887e1ccb04e7ef826740
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:profiling
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-rule-atom
+  path: desk/atoms/atom-rule-atom.md
+  hash_c: fe59679fcc846d7f1b7528eaffc682ad085720731121b0d8b96387b52a53f890
+  hash_d: 419348f84a25380ba37a6df342eacc8e898318fdbabdf358672c351c3b47d67a
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:rules
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-tool-atom
+  path: desk/atoms/atom-tool-atom.md
+  hash_c: 5fe855a88b8f8b976b347212efcc18928ac8aa464d53c4cea2b81f2cf9ad1208
+  hash_d: 60a019571ec39313812495912c15f5fc50ea2dfb3c9bf09e504ad4f7ce3bcd0b
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:tool-calling
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-contexto-compilado
+  path: desk/atoms/atom-contexto-compilado.md
+  hash_c: 47a3d778b268f069aad335a2a37c914c76e18c15cb43877fbab0f1718491ca69
+  hash_d: a3a2c1df4ae037165e3c4a317c0fe5d7c365fe42b3b649fe0ca46e395e063411
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:context
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-turno-de-sistema-system-turn
+  path: desk/atoms/atom-turno-de-sistema-system-turn.md
+  hash_c: cd7b63fe529440fcb548ad1e878f3109010a057331525a21e0c23184797f23dc
+  hash_d: 9d453c5e058235de419baa79aa02312fc15d35211faf292df4024063f9cda35e
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:tool-calling
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-trigger-sintetico-cron
+  path: desk/atoms/atom-trigger-sintetico-cron.md
+  hash_c: f2a2c26568350e5fef58b18e18fb782ed08508c3bf16e8be74fc9042292f5f80
+  hash_d: acb365ac7fa4fa76851ece193810e303ea00a7688a7d64d3d7c198eb28e97f25
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:cron
+  - topic:proactivity
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-debounce-buffer-agrupacion
+  path: desk/atoms/atom-debounce-buffer-agrupacion.md
+  hash_c: d4c5a20ce08ec1b514e106dd9439908f8c6571e796e8afd317210105952709e1
+  hash_d: 897595264a571ccfa0c47465e524ee25723a5257b0113cd297392449a5fa1c59
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:routing
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-aislamiento-estricto-de-pii
+  path: desk/atoms/atom-aislamiento-estricto-de-pii.md
+  hash_c: af1be9f5bd1fb71dad0e6d99ab901bdc7d08b2858799407cfdb7d7dd50e928d2
+  hash_d: c32b685ba74e17548f525dfa277d7774a1a6cb09f573049457cae26e4d557ef2
+  semantic_tags:
+  - domain:standards.privacy
+  - layer:persistence
+  - system:sql
+  - topic:pii
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-historial-de-conversacion-sin-pii
+  path: desk/atoms/atom-historial-de-conversacion-sin-pii.md
+  hash_c: 0023741198e5d3276cebe689f5493431056cbc4e6262336ea60e370458b9987d
+  hash_d: 7991333e4e24449319a834651c2acdc08fc9b13ee6c9ce371e8cf027b3995130
+  semantic_tags:
+  - domain:self.data.persistence
+  - layer:persistence
+  - system:sql
+  - topic:history
+  - type.knowledge.atom
+  - workspace.desk.atoms
