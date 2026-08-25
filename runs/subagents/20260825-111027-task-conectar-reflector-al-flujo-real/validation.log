@@ -1,0 +1,20 @@
+..                                                                       [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2 passed, 4 warnings in 21.09s
+.............................................                            [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+45 passed, 4 warnings in 88.03s (0:01:28)
