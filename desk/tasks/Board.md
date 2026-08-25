@@ -19,6 +19,7 @@ tasks:
 - desk/tasks/task-implementar-extractor-de-traits.md
 - desk/tasks/task-implementar-batch-reader-del-reflector.md
 - desk/tasks/task-implementar-generador-de-átomos-sldb.md
+- desk/tasks/task-integracion-total-end-to-end-con-corrida-real.md
 # List of pill-xxx paths
 pills:
 - desk/contexts/pills.md
@@ -36,7 +37,9 @@ tags:
 
 ## Purpose
 
-Rutea la implementación del agente conversacional de 4 motores (Conversador, Ontologizador, Perfilador, Reflector) sobre almacenamiento híbrido SQL+SLDB. Indexa 14 tareas atómicas con orden de dependencias declarado.
+_Explain what this board routes and why it exists._
+
+
 
 ## Notes
 
@@ -61,17 +64,18 @@ _Add short operational notes about the current routed set._
 
 _Generated from the task references above._
 
-- Implementar Core State Machine del Router [draft] - Conectar las transiciones básicas idle -> eval -> draft -> idle.
-- Implementar Debounce Buffer en Router [draft] - Retener mensajes por 1s para agrupar ráfagas antes de transicionar.
-- Implementar Pausa de Tools en Router [draft] - Pausar la SM en waiting_tool y reanudar con System Turn.
-- Implementar Modelos de Identidad SQL [draft] - Tablas Users y UserTraits en SQLAlchemy.
-- Implementar Modelos de Sesión e Historial [draft] - Tablas SessionState y ChatHistory.
-- Implementar Scrubber de PII [draft] - Filtro que limpia ChatHistory antes de exponerlo a otros motores.
-- Implementar Conector SLDB del Ontologizador [draft] - Leer de forma segura rules, tools y domains desde SLDB.
-- Implementar Compilador de Contexto [draft] - Filtrar el subgrafo exacto y generar el payload JSON.
-- Implementar Fallback Estricto del Conversador [draft] - Forzar salida 'No sé' si el contexto es vacío (cero alucinación).
-- Implementar Tool Calling Estructurado [draft] - Emitir function_call JSON en lugar de texto si hay ToolAtoms.
-- Implementar Listener Asíncrono del Perfilador [draft] - Conectar un worker que consuma eventos de turnos en background.
-- Implementar Extractor de Traits [draft] - Analizar texto y mapear a TraitAtoms en la tabla SQL.
-- Implementar Batch Reader del Reflector [draft] - Leer lotes históricos limpios desde SQL.
-- Implementar Generador de Átomos SLDB [draft] - Convertir patrones históricos en archivos físicos .md.
+- Implementar Core State Machine del Router [draft] - 
+- Implementar Debounce Buffer en Router [draft] - 
+- Implementar Pausa de Tools en Router [draft] - 
+- Implementar Modelos de Identidad SQL [draft] - 
+- Implementar Modelos de Sesión e Historial [draft] - 
+- Implementar Scrubber de PII [draft] - 
+- Implementar Conector SLDB del Ontologizador [draft] - 
+- Implementar Compilador de Contexto [draft] - 
+- Implementar Fallback Estricto del Conversador [draft] - 
+- Implementar Tool Calling Estructurado [draft] - 
+- Implementar Listener Asíncrono del Perfilador [draft] - 
+- Implementar Extractor de Traits [draft] - 
+- Implementar Batch Reader del Reflector [draft] - 
+- Implementar Generador de Átomos SLDB [draft] - 
+- Integracion Total End-to-End con Corrida Real [draft] - Cablear los 10 modulos al entrypoint y correr una conversacion REAL end-to-end contra Gemini real (Vertex ADC), SLDB real sembrado y SQL real. CERO mock, CERO dummy, CERO stub.
