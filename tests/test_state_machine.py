@@ -2,7 +2,7 @@ import logging
 
 import pytest
 
-from kb_chat_ui.state_machine import DEBOUNCE_MS, CronTriggerPayload, RouterNode, RouterStateMachine
+from kb_chat_ui.state_machine import DEBOUNCE_MS, TOOL_TIMEOUT_MS, CronTriggerPayload, RouterNode, RouterStateMachine
 
 
 def test_user_turn_flows_idle_eval_draft_idle():
@@ -200,3 +200,129 @@ def test_debounce_isolated_message_flushes_after_exactly_one_second():
     ]
     assert sm.current_node is RouterNode.IDLE
     assert sm.session_state.buffer["debounce"] == []
+
+
+def test_tool_result_resumes_drafting_with_system_turn():
+    compiler_calls = []
+    drafted_contexts = []
+    clock = {"now": 0}
+    responses = iter(
+        [
+            {"function_call": {"name": "calendar.lookup", "args": {"date": "tomorrow"}}},
+            "respuesta final",
+        ]
+    )
+
+    def compile_context(**payload):
+        compiler_calls.append(payload)
+        return {"question": payload["question"], "history": [], "is_empty": False}
+
+    def draft_response(compiled_context):
+        drafted_contexts.append(compiled_context)
+        return next(responses)
+
+    sm = RouterStateMachine(
+        compile_context=compile_context,
+        draft_response=draft_response,
+        now_ms=lambda: clock["now"],
+    )
+
+    first_result = sm.handle_user_message("reserva mañana", user_id=7)
+
+    assert first_result is not None
+    assert first_result.response == {"function_call": {"name": "calendar.lookup", "args": {"date": "tomorrow"}}}
+    assert compiler_calls == [
+        {
+            "question": "reserva mañana",
+            "user_id": 7,
+            "scenario": None,
+            "trigger": "user",
+        }
+    ]
+    assert sm.current_node is RouterNode.WAITING_TOOL
+    assert sm.session_state.current_node is RouterNode.WAITING_TOOL
+
+    resumed = sm.handle_tool_result({"slots": ["10:00"]})
+
+    assert resumed.response == "respuesta final"
+    assert drafted_contexts[-1]["system_turn"]["role"] == "system"
+    assert drafted_contexts[-1]["history"][-1]["role"] == "system"
+    assert drafted_contexts[-1]["history"][-1]["content"] == '{"slots": ["10:00"]}'
+    assert resumed.compiled_context["system_turn"]["role"] == "system"
+    assert resumed.state_trace == [RouterNode.WAITING_TOOL, RouterNode.DRAFTING_RESPONSE, RouterNode.IDLE]
+    assert sm.current_node is RouterNode.IDLE
+
+
+def test_waiting_tool_timeout_resumes_with_error_system_turn():
+    drafted_contexts = []
+    clock = {"now": 0}
+    responses = iter(
+        [
+            {"function_call": {"name": "calendar.lookup", "args": {"date": "tomorrow"}}},
+            "tool failed",
+        ]
+    )
+
+    def compile_context(**payload):
+        return {"question": payload["question"], "history": [], "is_empty": False}
+
+    def draft_response(compiled_context):
+        drafted_contexts.append(compiled_context)
+        return next(responses)
+
+    sm = RouterStateMachine(
+        compile_context=compile_context,
+        draft_response=draft_response,
+        now_ms=lambda: clock["now"],
+    )
+
+    first_result = sm.handle_user_message("reserva mañana", user_id=7)
+
+    assert first_result is not None
+    assert sm.current_node is RouterNode.WAITING_TOOL
+
+    clock["now"] = TOOL_TIMEOUT_MS - 1
+    assert sm.process_timeouts() is None
+    assert sm.current_node is RouterNode.WAITING_TOOL
+
+    clock["now"] = TOOL_TIMEOUT_MS
+    resumed = sm.process_timeouts()
+
+    assert resumed is not None
+    assert resumed.response == "tool failed"
+    assert drafted_contexts[-1]["system_turn"]["role"] == "system"
+    assert '"error": "tool_timeout"' in drafted_contexts[-1]["system_turn"]["content"]
+    assert f'"Tool call timed out after {TOOL_TIMEOUT_MS}ms"' in drafted_contexts[-1]["system_turn"]["content"]
+    assert resumed.state_trace == [RouterNode.WAITING_TOOL, RouterNode.DRAFTING_RESPONSE, RouterNode.IDLE]
+    assert sm.current_node is RouterNode.IDLE
+
+
+def test_user_messages_are_queued_in_tool_wait_while_waiting_tool():
+    compiler_calls = []
+
+    def compile_context(**payload):
+        compiler_calls.append(payload)
+        return {"question": payload["question"], "is_empty": False}
+
+    sm = RouterStateMachine(
+        compile_context=compile_context,
+        draft_response=lambda _: {"function_call": {"name": "calendar.lookup", "args": {"date": "tomorrow"}}},
+    )
+
+    first_result = sm.handle_user_message("reserva mañana", user_id=7)
+
+    assert first_result is not None
+    assert sm.current_node is RouterNode.WAITING_TOOL
+    assert sm.handle_user_message("y para las 11") is None
+    assert sm.handle_user_message("confirma por favor") is None
+    assert sm.session_state.buffer["tool_wait"] == ["y para las 11", "confirma por favor"]
+    assert sm.session_state.buffer["debounce"] == []
+    assert compiler_calls == [
+        {
+            "question": "reserva mañana",
+            "user_id": 7,
+            "scenario": None,
+            "trigger": "user",
+        }
+    ]
+    assert sm.current_node is RouterNode.WAITING_TOOL
