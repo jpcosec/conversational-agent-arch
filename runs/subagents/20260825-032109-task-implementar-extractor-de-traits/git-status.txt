@@ -1,0 +1,2 @@
+## pi-parallel-6f22c433-0
+?? runs/subagents/20260825-032109-task-implementar-extractor-de-traits/
