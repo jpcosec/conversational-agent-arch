@@ -1,5 +1,5 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-44/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-51/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
   "user_id": 1,
   "before_restart": {
     "active_domain": "pizzeria",
@@ -15,7 +15,7 @@
       "scenario_effective": "pizzeria",
       "scenario_source": "session_state",
       "kind": "nl",
-      "reply": "Para hoy, le recomendamos la pizza Margherita."
+      "reply": "¡Hola! Don Peppe abre de martes a domingo, de 19:00 a 23:30.\n\nPara usted, que es vegetariano, le podemos recomendar la pizza Margherita ($8900) o la Cuatro Quesos ($11200)."
     }
   }
 }
