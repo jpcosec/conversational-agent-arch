@@ -832,7 +832,7 @@
     const popoverSnippet = document.getElementById('popover-snippet');
     const annoBtn = document.getElementById('anno-btn');
     const clearAnnoBtn = document.getElementById('clear-anno-btn');
-    const ANNO_SEL = '.mermaid .node, .mermaid g.classGroup, .mermaid g.stateGroup, .mermaid rect.actor, .mermaid g.cluster';
+    const ANNO_SEL = '.mermaid .node, .mermaid g.classGroup, .mermaid g.stateGroup, .mermaid rect.actor, .mermaid g.actor, .mermaid .messageText, .mermaid .noteText, .mermaid g.cluster';
     const ANNO_STORE_KEY = 'spec2viz.catalog.annotations.v1';
     let annoMode = false;
     let annoCache = [];
@@ -1018,9 +1018,12 @@
       if (el.matches('g.cluster')) {
         return el.id || (el.querySelector('.cluster-label')?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 120);
       }
-      if (el.matches('rect.actor')) {
-        const t = el.parentElement.querySelector('text.actor');
-        if (t) return t.textContent.replace(/\s+/g, ' ').trim().slice(0, 120);
+      if (el.matches('.actor')) {
+        const textEl = el.tagName === 'rect' ? el.parentElement.querySelector('text.actor') : el;
+        if (textEl) return textEl.textContent.replace(/\s+/g, ' ').trim().slice(0, 120);
+      }
+      if (el.matches('.messageText, .noteText')) {
+        return el.textContent.replace(/\s+/g, ' ').trim().slice(0, 120);
       }
       const t = el.querySelector('.nodeLabel, .label, foreignObject, text');
       return ((t ? (t.innerText || t.textContent) : (el.innerText || el.textContent)) || '').replace(/\s+/g, ' ').trim().slice(0, 120);
@@ -1065,14 +1068,14 @@
         sec.querySelectorAll(ANNO_SEL).forEach(el => {
           if (annoLabel(el) !== a.label) return;
           el.classList.add('anno-marked');
-          if (!el.matches('g.node, g.classGroup, g.stateGroup, g.cluster, rect.actor')) return;
-          const svg = el.ownerSVGElement;
+          if (!el.matches('g.node, g.classGroup, g.stateGroup, g.cluster, .actor, .messageText, .noteText')) return;
+          const svg = el.ownerSVGElement || el.closest('svg');
           if (!svg || !el.getBBox) return;
           const bbox = el.getBBox();
           const warn = document.createElementNS('http://www.w3.org/2000/svg', 'text');
           warn.textContent = '✎';
-          warn.setAttribute('x', bbox.x - 8);
-          warn.setAttribute('y', bbox.y + 10);
+          warn.setAttribute('x', bbox.x - (el.matches('.messageText') ? 0 : 8));
+          warn.setAttribute('y', bbox.y + (el.matches('.messageText') ? 0 : 10));
           warn.setAttribute('fill', '#d4a574');
           warn.setAttribute('font-size', '14');
           warn.setAttribute('class', 'anno-pin');
