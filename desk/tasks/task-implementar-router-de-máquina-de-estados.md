@@ -62,3 +62,6 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
+- [ ] Implementar transición de Error/Timeout si una API externa se queda pegada en 'waiting_tool'.
+- [ ] Manejar concurrencia: retener en cola (buffer) los mensajes del usuario si llegan mientras la máquina está bloqueada compilando o en 'waiting_tool'.
+- [ ] Resolver colisiones: lógica determinista si el trigger sintético del CRON coincide en el mismo instante que un input de usuario.

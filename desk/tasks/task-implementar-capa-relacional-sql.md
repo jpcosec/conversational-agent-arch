@@ -59,3 +59,6 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
+- [ ] Crear tabla de SessionState para registrar el nodo activo de la máquina de estados.
+- [ ] Crear tabla ChatHistory (logs de conversación).
+- [ ] Implementar mecanismo robusto de limpieza de PII en ChatHistory para consumo seguro del Reflector.

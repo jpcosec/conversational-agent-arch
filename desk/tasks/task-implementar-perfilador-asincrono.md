@@ -59,3 +59,4 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
+- [ ] Definir y configurar el mecanismo exacto de disparo asíncrono (ej. Event Bus o Redis Queue).

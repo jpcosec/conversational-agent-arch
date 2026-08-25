@@ -60,3 +60,4 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
+- [ ] Definir el contrato exacto (JSON Schema) del payload 'Contexto Compilado' entre Ontologizador y Conversador.

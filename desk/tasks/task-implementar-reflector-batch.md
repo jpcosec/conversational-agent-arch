@@ -60,3 +60,4 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
+- [ ] Conectar la lectura explícitamente a la tabla ChatHistory (ya purgada de PII) en la BD SQL.
