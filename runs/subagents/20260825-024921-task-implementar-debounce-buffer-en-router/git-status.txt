@@ -1,0 +1,2 @@
+## pi-parallel-65d670cc-1
+?? runs/subagents/20260825-024921-task-implementar-debounce-buffer-en-router/

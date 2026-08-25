@@ -2,7 +2,7 @@ import logging
 
 import pytest
 
-from kb_chat_ui.state_machine import CronTriggerPayload, RouterNode, RouterStateMachine
+from kb_chat_ui.state_machine import DEBOUNCE_MS, CronTriggerPayload, RouterNode, RouterStateMachine
 
 
 def test_user_turn_flows_idle_eval_draft_idle():
@@ -107,3 +107,96 @@ def test_cron_trigger_in_idle_propagates_scenario_to_compiler():
         RouterNode.DRAFTING_RESPONSE,
         RouterNode.IDLE,
     ]
+
+
+def test_debounce_enters_buffering_and_fires_once_for_burst_messages():
+    compiler_calls = []
+    clock = {"now": 0}
+
+    def compile_context(**payload):
+        compiler_calls.append(payload)
+        return {
+            "question": payload["question"],
+            "user_id": payload["user_id"],
+            "scenario": payload["scenario"],
+            "is_empty": False,
+        }
+
+    sm = RouterStateMachine(
+        compile_context=compile_context,
+        draft_response=lambda _: "respuesta",
+        debounce_enabled=True,
+        now_ms=lambda: clock["now"],
+    )
+
+    assert sm.handle_user_message("m1", user_id=7) is None
+    assert sm.current_node is RouterNode.BUFFERING
+    assert sm.session_state.buffer["debounce"] == ["m1"]
+    first_deadline = sm._debounce_deadline_ms
+    assert first_deadline == DEBOUNCE_MS
+
+    for index, at_ms in enumerate([100, 250, 400, 700], start=2):
+        clock["now"] = at_ms
+        assert sm.handle_user_message(f"m{index}", user_id=7) is None
+        assert sm.current_node is RouterNode.BUFFERING
+        assert sm._debounce_deadline_ms == at_ms + DEBOUNCE_MS
+
+    clock["now"] = 1699
+    assert sm.process_timeouts() is None
+    assert compiler_calls == []
+
+    clock["now"] = 1700
+    result = sm.process_timeouts()
+
+    assert result is not None
+    assert compiler_calls == [
+        {
+            "question": "m1 m2 m3 m4 m5",
+            "user_id": 7,
+            "scenario": None,
+            "trigger": "user",
+        }
+    ]
+    assert sm.current_node is RouterNode.IDLE
+    assert sm.session_state.buffer["debounce"] == []
+    assert sm.process_timeouts() is None
+    assert len(compiler_calls) == 1
+
+
+def test_debounce_isolated_message_flushes_after_exactly_one_second():
+    compiler_calls = []
+    clock = {"now": 0}
+
+    def compile_context(**payload):
+        compiler_calls.append(payload)
+        return {"question": payload["question"], "is_empty": False}
+
+    sm = RouterStateMachine(
+        compile_context=compile_context,
+        draft_response=lambda _: "ok",
+        debounce_enabled=True,
+        now_ms=lambda: clock["now"],
+    )
+
+    assert sm.handle_user_message("hola", user_id=3) is None
+    assert sm.current_node is RouterNode.BUFFERING
+
+    clock["now"] = DEBOUNCE_MS - 1
+    assert sm.process_timeouts() is None
+    assert compiler_calls == []
+    assert sm.current_node is RouterNode.BUFFERING
+
+    clock["now"] = DEBOUNCE_MS
+    result = sm.process_timeouts()
+
+    assert result is not None
+    assert compiler_calls == [
+        {
+            "question": "hola",
+            "user_id": 3,
+            "scenario": None,
+            "trigger": "user",
+        }
+    ]
+    assert sm.current_node is RouterNode.IDLE
+    assert sm.session_state.buffer["debounce"] == []
