@@ -15,18 +15,14 @@ data:
       label: Idle / Esperando
     - id: buffering
       label: Buffering (Debounce multi-mensaje)
-    - id: greeting
-      label: "Escenario: Saludo / Inicio"
-    - id: presentation
-      label: "Escenario: Presentación"
-    - id: questioning
-      label: "Escenario: Preguntas (Q&A)"
-    - id: activation
-      label: "Escenario: Protocolos de Activación"
+    - id: evaluating_context
+      label: Evaluando Estado y Contexto (Ontologizador)
+    - id: drafting_response
+      label: Redactando Respuesta (Conversador)
     - id: waiting_tool
       label: Ejecutando Tool Externa (Pausa)
     - id: breakpoint_miss
-      label: Punto de Quiebre (Context Miss / No sé)
+      label: Punto de Quiebre (Context Miss / Fallback)
     - id: interrupted
       label: Interrumpido (Timeout)
   transitions:
@@ -34,51 +30,43 @@ data:
       to: buffering
       "on": mensaje_usuario
     - from: idle
-      to: activation
+      to: evaluating_context
       "on": trigger_sintetico_cron
       guard: proactividad
     - from: buffering
       to: buffering
       "on": mensaje_adicional
     - from: buffering
-      to: greeting
+      to: evaluating_context
       "on": timeout_buffer
-      guard: primera_interaccion
-    - from: buffering
-      to: questioning
-      "on": timeout_buffer
-      guard: sesion_activa
+      guard: envía_inputs_al_router
     - from: interrupted
-      to: questioning
+      to: evaluating_context
       "on": mensaje_retoma
-      guard: inyecta_contexto_retoma
-    - from: greeting
-      to: presentation
-      "on": saludo_completado
-    - from: presentation
-      to: questioning
-      "on": consulta_usuario
-    - from: questioning
+      guard: inyecta_tiempo_transcurrido
+    - from: evaluating_context
       to: waiting_tool
       "on": requiere_api_externa
-      guard: Ontologizador inyecta ToolAtom
+      guard: ToolAtom inyectado
     - from: waiting_tool
-      to: questioning
+      to: evaluating_context
       "on": json_api_recibido
-      guard: se_inyecta_como_turno
-    - from: questioning
+      guard: inyecta_resultado
+    - from: evaluating_context
+      to: drafting_response
+      "on": contexto_resuelto
+      guard: Escenario (ej. Saludo, Q&A) definido en context
+    - from: evaluating_context
       to: breakpoint_miss
       "on": contexto_vacio
-      guard: Conversador admite desconocimiento
+      guard: fuera de dominio
     - from: breakpoint_miss
-      to: questioning
-      "on": reformulacion
-    - from: questioning
-      to: activation
-      "on": intencion_accion
-    - from: activation
-      to: questioning
-      "on": protocolo_completado
-    - from: questioning
+      to: drafting_response
+      "on": aplica_fallback
+      guard: Conversador admite desconocimiento
+    - from: drafting_response
+      to: idle
+      "on": respuesta_enviada
+    - from: idle
       to: interrupted
       "on": inactividad_prolongada

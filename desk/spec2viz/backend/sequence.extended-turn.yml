@@ -68,4 +68,4 @@ data:
       kind: sync
     - from: Perfilador
       to: Perfilador
-      message: Extrae características y vincula en SQL
+      message: Extrae características y vincula en SQL y SLDB

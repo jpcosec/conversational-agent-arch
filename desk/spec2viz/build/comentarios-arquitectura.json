@@ -1,0 +1,30 @@
+[
+  {
+    "key": "sequence-extended-turn-6bd7dee7::Extrae caracter\u00edsticas y vincula en SQL",
+    "vista": "sequence-extended-turn-6bd7dee7",
+    "label": "Extrae caracter\u00edsticas y vincula en SQL",
+    "comentario": "vincula en sql y en sldb",
+    "ts": "2026-08-25 04:57"
+  },
+  {
+    "key": "component-knowledge-ontology-6bd7dee7::Tabla Users (PII, Identidad)",
+    "vista": "component-knowledge-ontology-6bd7dee7",
+    "label": "Tabla Users (PII, Identidad)",
+    "comentario": "Creo que este diagrama completo ganar\u00eda mas de tener sldb y sql en secciones separadas.",
+    "ts": "2026-08-25 04:58"
+  },
+  {
+    "key": "state-conversation-flow-6bd7dee7::greeting",
+    "vista": "state-conversation-flow-6bd7dee7",
+    "label": "greeting",
+    "comentario": "Eso no deberia estar asi de harcodeado. Lo que hay ahi deberia ser un  estado de la conversacion y segun eso se crea la respuesta.  Creo que esto se puede arreglar para ser mas simple y mas cercano a como de verdad vamos a hacer esto.",
+    "ts": "2026-08-25 05:00"
+  },
+  {
+    "key": "component-knowledge-ontology-6bd7dee7::Tabla Users (PII, Identidad)",
+    "vista": "component-knowledge-ontology-6bd7dee7",
+    "label": "Tabla Users (PII, Identidad)",
+    "comentario": "Creo que seria bueno tener los domains base de sldb aca, de ahi deber\u00edan salir las proyecciones.",
+    "ts": "2026-08-25 05:01"
+  }
+]

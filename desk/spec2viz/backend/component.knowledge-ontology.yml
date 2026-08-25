@@ -6,7 +6,7 @@ metadata:
   author: antonIA
   description: >-
     Muestra cómo el SQL gestiona identidades y mapeos, mientras que SLDB almacena el
-    conocimiento puramente abstracto (Traits, Dominio, Rules, Tools).
+    conocimiento puramente abstracto (Traits, Dominio, Rules, Tools) en sus dominios base.
 style:
   kinds:
     sql:
@@ -19,39 +19,94 @@ style:
         background: "#D8ECFF"
         border: "#4C78A8"
         font: "#16324F"
+    boundary:
+      plantuml:
+        background: "#F5F5F5"
+        border: "#CCCCCC"
+        font: "#333333"
 data:
   nodes:
+    layer_sql:
+      label: Capa SQL (Identidad y Mapeo)
+      kind: boundary
+      contains:
+        - sql_users
+        - sql_user_traits
     sql_users:
       label: Tabla Users (PII, Identidad)
       kind: sql
     sql_user_traits:
-      label: Tabla UserTraits (Muchos a Muchos)
+      label: Tabla UserTraits (N:M)
       kind: sql
+
+    layer_sldb:
+      label: Capa SLDB (Knowledge Base)
+      kind: boundary
+      contains:
+        - sldb_core_domains
+        - trait_atom
+        - domain_atom
+        - rule_atom
+        - tool_atom
+
+    sldb_core_domains:
+      label: Dominios Base SLDB (core/models, core/documents)
+      kind: atom
+
     trait_atom:
-      label: Indexable Characteristic Atom (Ej. "Experto en Python")
+      label: Indexable Characteristic Atom
       kind: atom
     domain_atom:
-      label: Domain Atom (Ej. "Depto Disponible", "Fármaco")
+      label: Domain Atom (Funcional)
       kind: atom
     rule_atom:
-      label: Conversational Rule Atom (Ej. "Si enojo -> Empatizar")
+      label: Conversational Rule Atom
       kind: atom
     tool_atom:
-      label: Tool Atom (Esquema API Calendario)
+      label: Tool Atom (Esquema API)
       kind: atom
+
+    layer_projections:
+      label: Capa de Proyecciones
+      kind: boundary
+      contains:
+        - projections_ui
+
+    projections_ui:
+      label: Proyecciones (Views, Catalogs, UI)
+      kind: atom
+
   edges:
     - from: sql_users
       to: sql_user_traits
       relation: "1 : N"
     - from: sql_user_traits
       to: trait_atom
-      relation: "N : 1 (Apunta a ID en SLDB)"
+      relation: "Apunta a ID en SLDB"
+    
+    - from: sldb_core_domains
+      to: trait_atom
+      relation: rige
+    - from: sldb_core_domains
+      to: domain_atom
+      relation: rige
+    - from: sldb_core_domains
+      to: rule_atom
+      relation: rige
+    - from: sldb_core_domains
+      to: tool_atom
+      relation: rige
+    
     - from: trait_atom
       to: domain_atom
-      relation: Relación semántica abstracta
+      relation: Relación semántica
     - from: domain_atom
       to: rule_atom
-      relation: Reglas específicas de dominio
+      relation: Reglas de dominio
     - from: rule_atom
       to: tool_atom
-      relation: Requiere ejecución de tool
+      relation: Llama tool
+
+    - from: sldb_core_domains
+      to: projections_ui
+      relation: "generan / proyectan"

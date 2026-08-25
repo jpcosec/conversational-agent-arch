@@ -584,20 +584,17 @@
       stateDiagram-v2
           [*] --&gt; idle
           idle --&gt; buffering : mensaje_usuario
-          idle --&gt; activation : trigger_sintetico_cron [proactividad]
+          idle --&gt; evaluating_context : trigger_sintetico_cron [proactividad]
           buffering --&gt; buffering : mensaje_adicional
-          buffering --&gt; greeting : timeout_buffer [primera_interaccion]
-          buffering --&gt; questioning : timeout_buffer [sesion_activa]
-          interrupted --&gt; questioning : mensaje_retoma [inyecta_contexto_retoma]
-          greeting --&gt; presentation : saludo_completado
-          presentation --&gt; questioning : consulta_usuario
-          questioning --&gt; waiting_tool : requiere_api_externa [Ontologizador inyecta ToolAtom]
-          waiting_tool --&gt; questioning : json_api_recibido [se_inyecta_como_turno]
-          questioning --&gt; breakpoint_miss : contexto_vacio [Conversador admite desconocimiento]
-          breakpoint_miss --&gt; questioning : reformulacion
-          questioning --&gt; activation : intencion_accion
-          activation --&gt; questioning : protocolo_completado
-          questioning --&gt; interrupted : inactividad_prolongada
+          buffering --&gt; evaluating_context : timeout_buffer [envía_inputs_al_router]
+          interrupted --&gt; evaluating_context : mensaje_retoma [inyecta_tiempo_transcurrido]
+          evaluating_context --&gt; waiting_tool : requiere_api_externa [ToolAtom inyectado]
+          waiting_tool --&gt; evaluating_context : json_api_recibido [inyecta_resultado]
+          evaluating_context --&gt; drafting_response : contexto_resuelto [Escenario (ej. Saludo, Q#amp;A) definido en context]
+          evaluating_context --&gt; breakpoint_miss : contexto_vacio [fuera de dominio]
+          breakpoint_miss --&gt; drafting_response : aplica_fallback [Conversador admite desconocimiento]
+          drafting_response --&gt; idle : respuesta_enviada
+          idle --&gt; interrupted : inactividad_prolongada
     </pre>
   </div>
 </section><section id="sequence-extended-turn-6bd7dee7" data-spec="backend/sequence.extended-turn.yml" data-type="sequence" data-project="" data-category="Backend" data-tags="layer:backend view:sequence type:sequence" data-view-id="sequence-extended-turn" class="catalog-item">
@@ -626,7 +623,7 @@
           Conversador--&gt;&gt;Router: Respuesta Generada
           Router--&gt;&gt;User_Cron: Respuesta enviada
           Router-&gt;&gt;Perfilador: Emite evento de turno (Async)
-          Perfilador-&gt;&gt;Perfilador: Extrae características y vincula en SQL
+          Perfilador-&gt;&gt;Perfilador: Extrae características y vincula en SQL y SLDB
     </pre>
   </div>
 </section><section id="component-knowledge-ontology-6bd7dee7" data-spec="backend/component.knowledge-ontology.yml" data-type="component" data-project="" data-category="Backend" data-tags="layer:backend view:component type:component" data-view-id="component-knowledge-ontology" class="catalog-item">
@@ -637,17 +634,30 @@
   <div class="board">
     <pre class="mermaid">
       graph TD
-          sql_users[&quot;Tabla Users (PII, Identidad)&quot;]
-          sql_user_traits[&quot;Tabla UserTraits (Muchos a Muchos)&quot;]
-          trait_atom[&quot;Indexable Characteristic Atom (Ej. #quot;Experto en Python#quot;)&quot;]
-          domain_atom[&quot;Domain Atom (Ej. #quot;Depto Disponible#quot;, #quot;Fármaco#quot;)&quot;]
-          rule_atom[&quot;Conversational Rule Atom (Ej. #quot;Si enojo -#gt; Empatizar#quot;)&quot;]
-          tool_atom[&quot;Tool Atom (Esquema API Calendario)&quot;]
+          subgraph layer_sql [&quot;Capa SQL (Identidad y Mapeo)&quot;]
+              sql_users[&quot;Tabla Users (PII, Identidad)&quot;]
+              sql_user_traits[&quot;Tabla UserTraits (N:M)&quot;]
+          end
+          subgraph layer_sldb [&quot;Capa SLDB (Knowledge Base)&quot;]
+              sldb_core_domains[&quot;Dominios Base SLDB (core/models, core/documents)&quot;]
+              trait_atom[&quot;Indexable Characteristic Atom&quot;]
+              domain_atom[&quot;Domain Atom (Funcional)&quot;]
+              rule_atom[&quot;Conversational Rule Atom&quot;]
+              tool_atom[&quot;Tool Atom (Esquema API)&quot;]
+          end
+          subgraph layer_projections [&quot;Capa de Proyecciones&quot;]
+              projections_ui[&quot;Proyecciones (Views, Catalogs, UI)&quot;]
+          end
           sql_users --&gt;|&quot;1 : N&quot;| sql_user_traits
-          sql_user_traits --&gt;|&quot;N : 1 (Apunta a ID en SLDB)&quot;| trait_atom
-          trait_atom --&gt;|&quot;Relación semántica abstracta&quot;| domain_atom
-          domain_atom --&gt;|&quot;Reglas específicas de dominio&quot;| rule_atom
-          rule_atom --&gt;|&quot;Requiere ejecución de tool&quot;| tool_atom
+          sql_user_traits --&gt;|&quot;Apunta a ID en SLDB&quot;| trait_atom
+          sldb_core_domains --&gt;|&quot;rige&quot;| trait_atom
+          sldb_core_domains --&gt;|&quot;rige&quot;| domain_atom
+          sldb_core_domains --&gt;|&quot;rige&quot;| rule_atom
+          sldb_core_domains --&gt;|&quot;rige&quot;| tool_atom
+          trait_atom --&gt;|&quot;Relación semántica&quot;| domain_atom
+          domain_atom --&gt;|&quot;Reglas de dominio&quot;| rule_atom
+          rule_atom --&gt;|&quot;Llama tool&quot;| tool_atom
+          sldb_core_domains --&gt;|&quot;generan / proyectan&quot;| projections_ui
     </pre>
   </div>
 </section></div>

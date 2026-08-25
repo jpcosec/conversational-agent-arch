@@ -1,17 +1,14 @@
 stateDiagram-v2
     [*] --> idle
     idle --> buffering : mensaje_usuario
-    idle --> activation : trigger_sintetico_cron [proactividad]
+    idle --> evaluating_context : trigger_sintetico_cron [proactividad]
     buffering --> buffering : mensaje_adicional
-    buffering --> greeting : timeout_buffer [primera_interaccion]
-    buffering --> questioning : timeout_buffer [sesion_activa]
-    interrupted --> questioning : mensaje_retoma [inyecta_contexto_retoma]
-    greeting --> presentation : saludo_completado
-    presentation --> questioning : consulta_usuario
-    questioning --> waiting_tool : requiere_api_externa [Ontologizador inyecta ToolAtom]
-    waiting_tool --> questioning : json_api_recibido [se_inyecta_como_turno]
-    questioning --> breakpoint_miss : contexto_vacio [Conversador admite desconocimiento]
-    breakpoint_miss --> questioning : reformulacion
-    questioning --> activation : intencion_accion
-    activation --> questioning : protocolo_completado
-    questioning --> interrupted : inactividad_prolongada
+    buffering --> evaluating_context : timeout_buffer [envía_inputs_al_router]
+    interrupted --> evaluating_context : mensaje_retoma [inyecta_tiempo_transcurrido]
+    evaluating_context --> waiting_tool : requiere_api_externa [ToolAtom inyectado]
+    waiting_tool --> evaluating_context : json_api_recibido [inyecta_resultado]
+    evaluating_context --> drafting_response : contexto_resuelto [Escenario (ej. Saludo, Q#amp;A) definido en context]
+    evaluating_context --> breakpoint_miss : contexto_vacio [fuera de dominio]
+    breakpoint_miss --> drafting_response : aplica_fallback [Conversador admite desconocimiento]
+    drafting_response --> idle : respuesta_enviada
+    idle --> interrupted : inactividad_prolongada
