@@ -1,0 +1,12 @@
+Task: task-implementar-compilador-de-contexto
+Title: Implementar Compilador de Contexto
+Status: draft
+Current node: checklist-task-implementar-compilador-de-contexto-execution-ready
+Task type: implementation
+Routine: routine-task-implementar-compilador-de-contexto
+Effective atoms:
+- atom-contexto-compilado
+Checklist status:
+- checklist-task-implementar-compilador-de-contexto-execution-ready: complete
+- checklist-task-implementar-compilador-de-contexto-testing-ready: pending
+- checklist-task-implementar-compilador-de-contexto-closeout-ready: pending

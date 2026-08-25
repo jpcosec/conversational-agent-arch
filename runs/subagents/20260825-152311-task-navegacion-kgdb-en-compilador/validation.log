@@ -1,0 +1,50 @@
+nodes 22
+edges 49
+semantic_tags 13
+documents 7
+.                                                                        [100%]
+1 passed in 0.33s
+mutation_check=expected_failure
+message=mutation should break navigation
+.......                                                                  [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+7 passed, 4 warnings in 61.33s (0:01:01)
+............................................                             [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+44 passed, 4 warnings in 31.61s
+.                                                                        [100%]
+1 passed in 0.31s
+.......                                                                  [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+7 passed, 4 warnings in 68.81s (0:01:08)
+............................................                             [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+44 passed, 4 warnings in 30.95s
