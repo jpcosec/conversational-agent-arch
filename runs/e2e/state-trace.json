@@ -1,13 +1,18 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-50/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-3/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
   "nl_turn": {
     "kind": "nl",
-    "reply": "¡Hola! Para opciones vegetarianas, te recomendamos la pizza Margherita a $8900 o la Cuatro Quesos a $11200.",
-    "state_trace": []
+    "reply": "¡Hola! De nuestras pizzas, la Margherita a 8900 pesos y la Cuatro Quesos a 11200 pesos son vegetarianas.",
+    "state_trace": [
+      "idle",
+      "evaluating_context",
+      "drafting_response",
+      "idle"
+    ]
   },
   "tool_turn": {
     "kind": "tool_call",
-    "reply": "¡Hola! Su reserva a nombre de Rojas para 4 personas el viernes a las 20:00 ha sido confirmada. ¡Le esperamos!",
+    "reply": "¡Perfecto! Su reserva a nombre de Rojas para 4 personas el viernes a las 20:00 está confirmada. El ID es 1. ¡Le esperamos en Don Peppe!",
     "system_turn": {
       "tool": "crear_reserva",
       "status": "ok",
