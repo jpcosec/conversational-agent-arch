@@ -61,7 +61,7 @@ Ambigüedad resuelta — contrato del payload "Contexto Compilado" (JSON):
 Regla clave: `is_empty=true` cuando `rules` Y `domain_facts` quedan ambos vacíos → el router transiciona a breakpoint_miss.
 
 Ambigüedad resuelta — algoritmo de selección del subgrafo (determinista, sin embeddings en v1):
-- `scenario` (str): etiqueta de dominio activa. Origen: para turno normal = tag de dominio de la sesión (SessionState); para CRON = el escenario proactivo inyectado por el trigger. Si la sesión no tiene dominio fijado, se usa el/los `domain:*` tags del store (KB_ROOT) por defecto.
+- `scenario` (str): etiqueta de dominio activa. Origen: para turno normal = `SessionState.active_domain` (campo str nullable; ver task-implementar-modelos-de-sesión-e-historial); para CRON = el campo `scenario` del payload del trigger sintético `{scenario: str, user_id: int}` (ver atom-trigger-sintetico-cron). Si `active_domain` es null (o el trigger no fija scenario), se usa el/los `domain:*` tags del store (KB_ROOT) por defecto.
 - Selección: un Atom es relevante si sus tags de dominio hacen match con `scenario` (match exacto de tag `domain:<scenario>` o prefijo jerárquico, ej. scenario=pizza matchea domain:pizza y domain:pizza.horarios).
 - `rules`/`domain_facts`: RuleAtoms y DomainAtoms cuyo tag de dominio matchea scenario.
 - `tools`: ToolAtoms marcados como disponibles para ese scenario.

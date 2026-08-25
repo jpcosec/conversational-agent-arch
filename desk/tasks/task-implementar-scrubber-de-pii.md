@@ -39,7 +39,7 @@ Filtro que limpia ChatHistory antes de exponerlo a otros motores.
 
 ## Scope
 
-EN: Función `scrub(text) -> text` y worker que marca ChatHistory.pii_scrubbed=True.
+EN: Función `scrub(text) -> text` (síncrona, pura, reutilizable inline por otros motores) y worker que marca ChatHistory.pii_scrubbed=True.
 FUERA: definición de tablas (ya existen), consumo por Reflector.
 
 ## Implementation Path
@@ -49,6 +49,9 @@ FUERA: definición de tablas (ya existen), consumo por Reflector.
 Contrato / ambigüedad resuelta:
 - Categorías PII a enmascarar (mínimo): teléfono, email, nombre propio, dirección, RUT/ID nacional, número de tarjeta.
 - Estrategia: tokenización reemplazando por placeholders estables (`<PHONE_1>`, `<EMAIL_1>`) NO borrado, para preservar co-referencia dentro del turno.
+- Dos consumidores de la MISMA función `scrub(text)`:
+  1. Inline/síncrono: otros motores (ej. el listener del Perfilador) importan y llaman `scrub(text)` directamente antes de publicar, sin pasar por la tabla. `scrub(text)` no debe tener efectos secundarios ni tocar la BD.
+  2. Worker/barrido: recorre filas de ChatHistory con pii_scrubbed=False, reescribe content aplicando `scrub` y setea pii_scrubbed=True.
 - El worker recorre filas con pii_scrubbed=False, reescribe content y setea pii_scrubbed=True.
 
 ## Validation

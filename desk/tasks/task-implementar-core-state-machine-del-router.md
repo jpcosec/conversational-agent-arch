@@ -56,12 +56,17 @@ Transiciones base: idle -> [buffering] -> evaluating_context -> (drafting_respon
 El input de usuario entra a `buffering` cuando la tarea de debounce está activa; si no, va directo a evaluating_context.
 El trigger CRON entra SOLO en idle y fuerza evaluating_context con un escenario proactivo.
 
+Ambigüedad resuelta — contrato del trigger sintético CRON (ver atom-trigger-sintetico-cron): el CRON inyecta el payload `{scenario: str, user_id: int}` donde `scenario` es un tag de dominio válido. Al entrar en `idle`, ese `scenario` se propaga al Compilador de Contexto como el escenario proactivo del turno (mismo campo que consume el compilador).
+
+Ambigüedad resuelta — conducta determinista del CRON en nodo no-idle: si el trigger CRON llega cuando `current_node` != `idle`, se DESCARTA (drop silencioso con log de nivel info); NO se encola ni se reintenta. Un turno activo nunca es interrumpido por un trigger proactivo.
+
 Nota: este enum de 6 nodos es la fuente de verdad; SessionState.current_node debe incluir buffering, waiting_tool y breakpoint_miss.
 
 ## Validation
 
 - `pytest`: simular input de usuario en idle y afirmar la secuencia idle->eval->draft->idle.
-- Afirmar que un trigger CRON en un nodo distinto de idle es ignorado/encolado (no interrumpe turno activo).
+- Afirmar que un trigger CRON con payload `{scenario, user_id}` en `idle` propaga `scenario` al compilador y arranca el turno proactivo.
+- Afirmar que un trigger CRON recibido en un nodo != idle es DESCARTADO (drop silencioso): no cambia current_node, no se encola, y el turno activo sigue intacto.
 
 ## Done When
 

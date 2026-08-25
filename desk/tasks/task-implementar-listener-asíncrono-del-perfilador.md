@@ -47,7 +47,7 @@ FUERA: la lógica de extracción de traits (tarea aparte), la implementación de
 
 Ambigüedad resuelta:
 - Mecanismo de disparo: cola en proceso (`asyncio.Queue`) para v1; interfaz abstracta `EventBus` para permitir swap a Redis después sin tocar el extractor.
-- Evento publicado por el router al cerrar un turno (drafting_response -> idle): `{user_id, turn_text_scrubbed}`. IMPORTANTE: el texto se pasa por el scrubber de PII ANTES de publicarse (cumple atom-aislamiento-estricto-de-pii). El Perfilador jamás ve PII cruda.
+- Evento publicado por el router al cerrar un turno (drafting_response -> idle): `{user_id, turn_text_scrubbed}`. IMPORTANTE — orden anti-race: el productor llama `scrub(text)` INLINE (función síncrona reutilizable del scrubber; ver task-implementar-scrubber-de-pii) y publica el resultado YA scrubbeado. NO depende del worker/barrido asíncrono que marca ChatHistory.pii_scrubbed; ese barrido corre por separado para la tabla. Así se elimina cualquier ventana en que el Perfilador pudiera leer PII cruda. El Perfilador jamás ve PII cruda.
 - El worker NUNCA bloquea el hilo de respuesta; si falla, reintenta con backoff y loguea.
 
 ## Validation

@@ -50,7 +50,7 @@ Ambigüedad resuelta:
 - Al emitir un function_call, drafting_response -> waiting_tool (SM pausada, no acepta nuevo turno de usuario: se encola).
 - El retorno JSON de la tool se inserta en ChatHistory con role='system' (System Turn) y se reanuda waiting_tool -> drafting_response.
 - TIMEOUT: si la tool no responde en `TOOL_TIMEOUT_MS` (default 15000), transicionar waiting_tool -> drafting_response con un System Turn de error, para que el Conversador informe la falla sin colgarse.
-- Concurrencia: mensajes de usuario que lleguen en waiting_tool se guardan en SessionState.buffer, no se procesan hasta volver a idle.
+- Concurrencia: mensajes de usuario que lleguen en waiting_tool se guardan en `SessionState.buffer["tool_wait"]` (lista), no se procesan hasta volver a idle. Esta tarea escribe SOLO en la clave `tool_wait`; la clave `debounce` es propiedad exclusiva de task-implementar-debounce-buffer-en-router.
 
 ## Validation
 
