@@ -1,12 +1,20 @@
 graph TD
-    api_gateway["API Gateway / State Router"]
-    conversador["Conversador (LlmAgent)"]
-    ontologizador["Ontologizador (Context Compiler)"]
-    perfilador["Perfilador (Feature Extractor)"]
-    reflector["Reflector (KB Thickener)"]
-    sql_db["SQL DB (Identidad, Estado, Cron)"]
-    sldb_kb["SLDB (Knowledge Base / Atoms)"]
-    external_tools["External APIs (Calendario, CRM)"]
+    subgraph layer_routing ["Capa de Enrutamiento"]
+        api_gateway["API Gateway / State Router"]
+    end
+    subgraph layer_engines ["Agentes y Motores Cognitivos"]
+        conversador["Conversador (LlmAgent)"]
+        ontologizador["Ontologizador (Context Compiler)"]
+        perfilador["Perfilador (Feature Extractor)"]
+        reflector["Reflector (KB Thickener)"]
+    end
+    subgraph layer_data ["Capa de Persistencia"]
+        sql_db["SQL DB (Identidad, Estado, Cron)"]
+        sldb_kb["SLDB (Knowledge Base / Atoms)"]
+    end
+    subgraph layer_external ["Servicios Externos"]
+        external_tools["External APIs (Calendario, CRM)"]
+    end
     api_gateway -->|"lee/escribe estado y sesión"| sql_db
     api_gateway -->|"enruta flujo"| conversador
     conversador -->|"solicita contexto p()"| ontologizador

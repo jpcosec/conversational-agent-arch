@@ -29,8 +29,38 @@ style:
         background: "#FCECC9"
         border: "#D4A73C"
         font: "#5E450B"
+    boundary:
+      plantuml:
+        background: "#F5F5F5"
+        border: "#CCCCCC"
+        font: "#333333"
 data:
   nodes:
+    layer_routing:
+      label: Capa de Enrutamiento
+      kind: boundary
+      contains:
+        - api_gateway
+    layer_engines:
+      label: Agentes y Motores Cognitivos
+      kind: boundary
+      contains:
+        - conversador
+        - ontologizador
+        - perfilador
+        - reflector
+    layer_data:
+      label: Capa de Persistencia
+      kind: boundary
+      contains:
+        - sql_db
+        - sldb_kb
+    layer_external:
+      label: Servicios Externos
+      kind: boundary
+      contains:
+        - external_tools
+
     api_gateway:
       label: API Gateway / State Router
       kind: api

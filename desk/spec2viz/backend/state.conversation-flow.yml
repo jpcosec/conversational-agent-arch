@@ -14,17 +14,17 @@ data:
     - id: idle
       label: Idle / Esperando
     - id: buffering
-      label: Buffering (Debounce multi-mensaje)
+      label: "Buffering\n(Debounce multi-mensaje)"
     - id: evaluating_context
-      label: Evaluando Estado y Contexto (Ontologizador)
+      label: "Evaluando Estado\ny Contexto (Ontologizador)"
     - id: drafting_response
-      label: Redactando Respuesta (Conversador)
+      label: "Redactando Respuesta\n(Conversador)"
     - id: waiting_tool
-      label: Ejecutando Tool Externa (Pausa)
+      label: "Ejecutando Tool\nExterna (Pausa)"
     - id: breakpoint_miss
-      label: Punto de Quiebre (Context Miss / Fallback)
+      label: "Punto de Quiebre\n(Context Miss / Fallback)"
     - id: interrupted
-      label: Interrumpido (Timeout)
+      label: "Interrumpido\n(Timeout)"
   transitions:
     - from: idle
       to: buffering

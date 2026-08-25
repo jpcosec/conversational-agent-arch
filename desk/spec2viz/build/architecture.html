@@ -560,14 +560,22 @@
   <div class="board">
     <pre class="mermaid">
       graph TD
-          api_gateway[&quot;API Gateway / State Router&quot;]
-          conversador[&quot;Conversador (LlmAgent)&quot;]
-          ontologizador[&quot;Ontologizador (Context Compiler)&quot;]
-          perfilador[&quot;Perfilador (Feature Extractor)&quot;]
-          reflector[&quot;Reflector (KB Thickener)&quot;]
-          sql_db[&quot;SQL DB (Identidad, Estado, Cron)&quot;]
-          sldb_kb[&quot;SLDB (Knowledge Base / Atoms)&quot;]
-          external_tools[&quot;External APIs (Calendario, CRM)&quot;]
+          subgraph layer_routing [&quot;Capa de Enrutamiento&quot;]
+              api_gateway[&quot;API Gateway / State Router&quot;]
+          end
+          subgraph layer_engines [&quot;Agentes y Motores Cognitivos&quot;]
+              conversador[&quot;Conversador (LlmAgent)&quot;]
+              ontologizador[&quot;Ontologizador (Context Compiler)&quot;]
+              perfilador[&quot;Perfilador (Feature Extractor)&quot;]
+              reflector[&quot;Reflector (KB Thickener)&quot;]
+          end
+          subgraph layer_data [&quot;Capa de Persistencia&quot;]
+              sql_db[&quot;SQL DB (Identidad, Estado, Cron)&quot;]
+              sldb_kb[&quot;SLDB (Knowledge Base / Atoms)&quot;]
+          end
+          subgraph layer_external [&quot;Servicios Externos&quot;]
+              external_tools[&quot;External APIs (Calendario, CRM)&quot;]
+          end
           api_gateway --&gt;|&quot;lee/escribe estado y sesión&quot;| sql_db
           api_gateway --&gt;|&quot;enruta flujo&quot;| conversador
           conversador --&gt;|&quot;solicita contexto p()&quot;| ontologizador
