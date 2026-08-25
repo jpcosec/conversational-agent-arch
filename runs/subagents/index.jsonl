@@ -8,3 +8,4 @@
 {"task_id": "task-scrub-completo-del-assistant-y-marca-veraz", "run_id": null, "run_dir": "runs/subagents/20260825-110107-task-scrub-completo-del-assistant-y-marca-veraz", "commit": "8c1783d3c08a5899e90c8ab3780fa27aebc84fc8", "session_sha256": null}
 {"task_id": "task-conectar-reflector-al-flujo-real", "run_id": null, "run_dir": "runs/subagents/20260825-111027-task-conectar-reflector-al-flujo-real", "commit": "b6cc6a4d3621fe10190d897de4fa097d069fd905", "session_sha256": null}
 {"task_id": "task-conectar-reflector-al-flujo-real", "run_id": null, "run_dir": "runs/subagents/20260825-111027-task-conectar-reflector-al-flujo-real", "commit": "c14ce590a4a5c5c939a3ac20d3007449c99a4967", "session_sha256": null}
+{"task_id": "task-conectar-maquina-de-estados-al-orquestador", "run_id": null, "run_dir": "runs/subagents/20260825-152311-task-navegacion-kgdb-en-compilador", "commit": "c8994dbf31aeb54c32b9b1c975787bdc6d70f6ee", "session_sha256": null}

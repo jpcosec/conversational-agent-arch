@@ -27,6 +27,7 @@ from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
 from kb_agent.ontologizador.compiler import ContextCompiler
+from kb_agent.ontologizador.kgdb_reader import KGDBReader
 from kb_agent.ontologizador.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitCandidate, TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
@@ -127,6 +128,10 @@ class Orchestrator:
         self.SessionLocal = sessionmaker(bind=self.engine, future=True)
 
         self.reader = SLDBReader(kb_root=self.kb_root, store_name=".sldb")
+        try:
+            self.kgdb = KGDBReader.from_sldb(self.kb_root / ".sldb")
+        except Exception:
+            self.kgdb = None
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
         self.client = genai.Client()
         self.conversador = GeminiConversador(self.client)
@@ -154,7 +159,7 @@ class Orchestrator:
             else:
                 scenario_source = "default"
 
-            compiler = ContextCompiler(reader=self.reader, identity_session=session)
+            compiler = ContextCompiler(reader=self.reader, kgdb=self.kgdb, identity_session=session)
 
             def compile_context(*, question: str, user_id: int | None, scenario: str | None, trigger: str) -> dict[str, Any]:
                 compiled = compiler.compile(
