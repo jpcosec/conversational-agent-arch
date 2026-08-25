@@ -1,0 +1,24 @@
+flowchart TD
+    __start([Start])
+    whatsapp_in["Twilio: 'Quiero hora para limpieza mañana'"]
+    buffering["State Router espera 2s (Debounce)"]
+    ontologizador["Ontologizador compila Contexto: p(pregunta, perfil)"]
+    match_kb{"¿Qué extrae de SLDB?"}
+    context_ready["Contexto = [Horarios] + [Tool Calendar] + [Regla No-Show]"]
+    conversador_eval{"Conversador recibe contexto"}
+    call_tool["Estado: Ejecutando Tool (check_availability)"]
+    tool_return["API retorna: slots [15:00, 16:30]"]
+    conversador_draft["Conversador redacta (aplica Regla No-Show y slots)"]
+    send_twilio["Envía: 'Tengo a las 15 y 16:30. Como faltaste antes, confírmame con un SÍ seguro.'"]
+    __end([End])
+    __start --> whatsapp_in
+    whatsapp_in --> buffering
+    buffering --> ontologizador
+    ontologizador --> match_kb
+    match_kb -->|"-#gt;"| context_ready
+    context_ready --> conversador_eval
+    conversador_eval -->|"Requiere Calendario"| call_tool
+    call_tool --> tool_return
+    tool_return --> conversador_draft
+    conversador_draft --> send_twilio
+    send_twilio --> __end

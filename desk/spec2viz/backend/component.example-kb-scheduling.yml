@@ -1,0 +1,72 @@
+id: component-example-kb-scheduling
+title: Ejemplos · KB · Taxonomía para Bot de Agendamiento
+type: component
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Ejemplo aplicado: Ontología de Átomos SLDB para un negocio (Clínica/Servicios).
+    Muestra cómo reglas de negocio y perfiles se convierten en átomos indexables independientes.
+style:
+  kinds:
+    user:
+      plantuml:
+        background: "#FCECC9"
+        border: "#D4A73C"
+        font: "#5E450B"
+    domain:
+      plantuml:
+        background: "#D8ECFF"
+        border: "#4C78A8"
+        font: "#16324F"
+    rule:
+      plantuml:
+        background: "#E6E6FA"
+        border: "#9370DB"
+        font: "#4B0082"
+    tool:
+      plantuml:
+        background: "#E7F5E1"
+        border: "#5A9E4B"
+        font: "#1E3A17"
+    trait:
+      plantuml:
+        background: "#FFDAB9"
+        border: "#DAA520"
+        font: "#8B4500"
+data:
+  nodes:
+    user_juan:
+      label: "SQL: Usuario Juan Pérez"
+      kind: user
+    trait_no_show:
+      label: "TraitAtom: [Historial Inasistencia]\n'Faltó a cita previa'"
+      kind: trait
+    trait_vip:
+      label: "TraitAtom: [Cliente Frecuente]\n'Ofrecer descuento'"
+      kind: trait
+    domain_horario:
+      label: "DomainAtom: [Horarios]\n'Lun-Vie 09:00 a 18:00'"
+      kind: domain
+    domain_servicios:
+      label: "DomainAtom: [Catálogo]\n'Limpieza Dental $30'"
+      kind: domain
+    rule_confirmacion:
+      label: "RuleAtom: [Política No-Show]\n'Exigir confirmación doble'"
+      kind: rule
+    tool_calendar:
+      label: "ToolAtom: [Google Calendar]\n'check_availability()'"
+      kind: tool
+  edges:
+    - from: user_juan
+      to: trait_no_show
+      relation: "perfil posee"
+    - from: trait_no_show
+      to: rule_confirmacion
+      relation: "gatilla regla"
+    - from: domain_horario
+      to: tool_calendar
+      relation: "filtra búsqueda"
+    - from: domain_servicios
+      to: tool_calendar
+      relation: "define duración cita"

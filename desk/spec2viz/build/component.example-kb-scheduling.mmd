@@ -1,0 +1,18 @@
+graph TD
+    user_juan["SQL: Usuario Juan Pérez"]
+    trait_no_show["TraitAtom: [Historial Inasistencia]
+'Faltó a cita previa'"]
+    trait_vip["TraitAtom: [Cliente Frecuente]
+'Ofrecer descuento'"]
+    domain_horario["DomainAtom: [Horarios]
+'Lun-Vie 09:00 a 18:00'"]
+    domain_servicios["DomainAtom: [Catálogo]
+'Limpieza Dental $30'"]
+    rule_confirmacion["RuleAtom: [Política No-Show]
+'Exigir confirmación doble'"]
+    tool_calendar["ToolAtom: [Google Calendar]
+'check_availability()'"]
+    user_juan -->|"perfil posee"| trait_no_show
+    trait_no_show -->|"gatilla regla"| rule_confirmacion
+    domain_horario -->|"filtra búsqueda"| tool_calendar
+    domain_servicios -->|"define duración cita"| tool_calendar

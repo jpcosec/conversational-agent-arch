@@ -1,0 +1,47 @@
+id: activity-example-flow-scheduling
+title: Ejemplos · Flujo · Turno de Agendamiento
+type: activity
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Ejemplo aplicado: Traza de la Máquina de Estados para la consulta
+    "quiero hora para limpieza dental mañana".
+data:
+  start: whatsapp_in
+  steps:
+    whatsapp_in:
+      label: "Twilio: 'Quiero hora para limpieza mañana'"
+      next: buffering
+    buffering:
+      label: State Router espera 2s (Debounce)
+      next: ontologizador
+    ontologizador:
+      label: "Ontologizador compila Contexto: p(pregunta, perfil)"
+      next: match_kb
+    match_kb:
+      label: "¿Qué extrae de SLDB?"
+      kind: decision
+      branches:
+        "->": context_ready
+    context_ready:
+      label: "Contexto = [Horarios] + [Tool Calendar] + [Regla No-Show]"
+      next: conversador_eval
+    conversador_eval:
+      label: Conversador recibe contexto
+      kind: decision
+      branches:
+        "Requiere Calendario": call_tool
+    call_tool:
+      label: "Estado: Ejecutando Tool (check_availability)"
+      next: tool_return
+    tool_return:
+      label: "API retorna: slots [15:00, 16:30]"
+      next: conversador_draft
+    conversador_draft:
+      label: "Conversador redacta (aplica Regla No-Show y slots)"
+      next: send_twilio
+    send_twilio:
+      label: "Envía: 'Tengo a las 15 y 16:30. Como faltaste antes, confírmame con un SÍ seguro.'"
+      next: end
+  end: end

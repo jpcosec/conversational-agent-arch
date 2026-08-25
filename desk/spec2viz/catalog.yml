@@ -52,6 +52,26 @@ vistas:
     specs: [backend/component.knowledge-ontology.yml]
     tags: [layer:backend, view:component]
 
+  # ── Ejemplos Aplicados ──────────────────────────────
+  - id: component-example-kb-scheduling
+    category: Ejemplos Prácticos
+    nav: Taxonomía de Agendamiento
+    title: Ejemplos · KB · Taxonomía para Bot de Agendamiento
+    desc: Cómo las reglas, horarios y perfiles se vuelven átomos para agendar horas.
+    type: component
+    src: build/component.example-kb-scheduling.mmd
+    specs: [backend/component.example-kb-scheduling.yml]
+    tags: [layer:examples, view:component]
+  - id: activity-example-flow-scheduling
+    category: Ejemplos Prácticos
+    nav: Flujo de Agendamiento
+    title: Ejemplos · Flujo · Turno de Agendamiento
+    desc: Traza paso a paso del estado desde WhatsApp hasta la respuesta usando Tools.
+    type: activity
+    src: build/activity.example-flow-scheduling.mmd
+    specs: [backend/activity.example-flow-scheduling.yml]
+    tags: [layer:examples, view:activity]
+
   # ── Backend · AST real (código) ─────────────────────
   - id: ast-kb-agent
     category: Backend · AST real (código)
