@@ -34,36 +34,35 @@ def test_persistence_lifecycle_real_sqlite_file(tmp_path: Path) -> None:
     evidence_path.parent.mkdir(parents=True, exist_ok=True)
 
     orch = Orchestrator(kb_root=STORE_ROOT, db_url=f"sqlite:///{db_file}")
-    first_turn = orch.handle_turn(
+
+    # Turno 1: el cliente revela un trait -> el PERFILADOR real (Gemini) debe
+    # aprenderlo y persistirlo. NADA de inserciones a mano.
+    profiling_turn = orch.handle_turn(
+        external_id=USER,
+        message="Hola, soy vegetariano, que me recomiendan?",
+        scenario="pizzeria",
+    )
+    assert TRAIT_ID in profiling_turn["traits_after"], (
+        "el perfilador real no aprendio el trait desde el mensaje"
+    )
+
+    # Turno 2: reserva real -> tool dispatcher persiste en SQL
+    reserva_turn = orch.handle_turn(
         external_id=USER,
         message="reservar mesa para 4 el viernes a las 20:00 a nombre de Rojas",
         scenario="pizzeria",
     )
-
-    assert first_turn["kind"] == "tool_call"
-    assert first_turn["system_turn"] is not None
-    assert first_turn["system_turn"]["status"] == "ok"
-
-    session = orch.SessionLocal()
-    try:
-        session.add(
-            UserTraits(
-                user_id=first_turn["user_id"],
-                trait_id=TRAIT_ID,
-                confidence=1.0,
-                source="test_persistence_lifecycle",
-            )
-        )
-        session.commit()
-    finally:
-        session.close()
+    assert reserva_turn["kind"] == "tool_call"
+    assert reserva_turn["system_turn"] is not None
+    assert reserva_turn["system_turn"]["status"] == "ok"
+    user_id = profiling_turn["user_id"]
 
     before_restart = {
         "db_url": f"sqlite:///{db_file}",
         "db_file": str(db_file),
-        "user_id": first_turn["user_id"],
+        "user_id": user_id,
         "count_reservas": orch.count_reservas(),
-        "traits": _sorted_traits(orch, first_turn["user_id"]),
+        "traits": _sorted_traits(orch, user_id),
     }
 
     orch.engine.dispose()
@@ -74,7 +73,7 @@ def test_persistence_lifecycle_real_sqlite_file(tmp_path: Path) -> None:
         "db_url": f"sqlite:///{db_file}",
         "db_file": str(db_file),
         "count_reservas": orch_restarted.count_reservas(),
-        "traits": _sorted_traits(orch_restarted, first_turn["user_id"]),
+        "traits": _sorted_traits(orch_restarted, user_id),
     }
 
     evidence_path.write_text(
