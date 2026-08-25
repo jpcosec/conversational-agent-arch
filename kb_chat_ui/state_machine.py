@@ -8,6 +8,9 @@ from enum import Enum
 from typing import Any, Callable
 
 
+TurnClosedPublisher = Callable[[int | None, str], Any]
+
+
 DEBOUNCE_MS = 1000
 TOOL_TIMEOUT_MS = int(os.getenv("TOOL_TIMEOUT_MS", "15000"))
 
@@ -44,6 +47,7 @@ class RouterTurnResult:
 class RouterStateMachine:
     compile_context: Callable[..., dict[str, Any]]
     draft_response: Callable[[dict[str, Any]], Any]
+    turn_closed_publisher: TurnClosedPublisher | None = None
     logger: logging.Logger = field(default_factory=lambda: logging.getLogger(__name__))
     current_node: RouterNode = RouterNode.IDLE
     state_trace: list[RouterNode] = field(default_factory=lambda: [RouterNode.IDLE])
@@ -188,6 +192,7 @@ class RouterStateMachine:
             self._transition_to(RouterNode.WAITING_TOOL)
             self._arm_tool_timer()
         else:
+            self._publish_turn_closed(user_id=user_id, question=question)
             self._transition_to(RouterNode.IDLE)
 
         return RouterTurnResult(
@@ -213,6 +218,10 @@ class RouterStateMachine:
         self._transition_to(RouterNode.DRAFTING_RESPONSE)
         response = self.draft_response(resumed_context)
         self._paused_compiled_context = None
+        self._publish_turn_closed(
+            user_id=self._coerce_user_id(resumed_context.get("user_id")),
+            question=str(resumed_context.get("question") or ""),
+        )
         self._transition_to(RouterNode.IDLE)
         return RouterTurnResult(
             compiled_context=resumed_context,
@@ -233,6 +242,14 @@ class RouterStateMachine:
         if isinstance(payload, str):
             return payload
         return json.dumps(payload, sort_keys=True)
+
+    def _publish_turn_closed(self, *, user_id: int | None, question: str) -> None:
+        if self.turn_closed_publisher is None or not question:
+            return
+        self.turn_closed_publisher(user_id, question)
+
+    def _coerce_user_id(self, value: Any) -> int | None:
+        return value if isinstance(value, int) else None
 
     def _transition_to(self, node: RouterNode) -> None:
         self.current_node = node
