@@ -1,11 +1,17 @@
 ---
 id: atom-trait-atom
-title: Trait Atom (Átomo de Característica Indexable)
+title: Trait Atom
 five_wh_one_plus: what
 tags:
-  - atom_type:trait
-  - domain:profiling
+- domain:standards.taxonomy.atoms
+- layer:document-model
+- system:sldb
+- topic:profiling
+provenance: null
 ---
+
+# Trait Atom
+
 ## Answer
 
-Un átomo en SLDB que encapsula un rasgo de comportamiento, preferencia o estado cognitivo reutilizable (ej. "Cliente Frecuente", "Entiende LISP", "No-show"). A diferencia de un perfil tradicional, es un nodo universal en el grafo. Múltiples usuarios en la BD SQL pueden "apuntar" a este mismo `TraitAtom`, facilitando un contexto enriquecido y despersonalizado.
+Átomo en SLDB que encapsula una característica cognitiva o de comportamiento. Múltiples usuarios en SQL pueden apuntar a un mismo TraitAtom, permitiendo un perfilado despersonalizado y global.

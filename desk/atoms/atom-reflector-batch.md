@@ -1,11 +1,17 @@
 ---
 id: atom-reflector-batch
-title: Reflector (KB Thickener)
+title: Reflector Batch
 five_wh_one_plus: what
 tags:
-  - component:reflector
-  - layer:background
+- domain:self.architecture.backend
+- layer:persistence
+- system:kb-agent
+- topic:consolidation
+provenance: null
 ---
+
+# Reflector Batch
+
 ## Answer
 
-Es un proceso batch (trabajo por lotes) encargado de engrosar la base de conocimiento SLDB. Lee historiales de conversación consolidados (limpios de PII) para identificar patrones recurrentes, nuevos conceptos funcionales o reglas conversacionales implícitas, destilándolas y materializándolas como nuevos átomos tipados de forma autónoma.
+Proceso por lotes que lee historiales sin PII para identificar patrones recurrentes, materializándolos como nuevos átomos tipados (Reglas o Dominios) en SLDB de forma autónoma.

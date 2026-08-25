@@ -1,11 +1,17 @@
 ---
 id: atom-domain-atom
-title: Domain Atom (Átomo de Dominio)
+title: Domain Atom
 five_wh_one_plus: what
 tags:
-  - atom_type:domain
-  - domain:ontology
+- domain:standards.taxonomy.atoms
+- layer:document-model
+- system:sldb
+- topic:ontology
+provenance: null
 ---
+
+# Domain Atom
+
 ## Answer
 
-Es la unidad de conocimiento fundamental en SLDB que describe realidades funcionales o de negocio. Puede representar catálogos, horarios, explicaciones de productos, conceptos médicos, o infraestructura. El sistema es agnóstico; intercambiar los `DomainAtoms` cambia el propósito del bot sin alterar el código de los motores.
+Unidad de conocimiento en SLDB que describe realidades de negocio (ej. horarios, catálogos de servicios). Intercambiarlos permite reusar la arquitectura en distintos dominios sin cambiar código.

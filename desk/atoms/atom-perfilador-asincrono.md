@@ -1,11 +1,17 @@
 ---
 id: atom-perfilador-asincrono
-title: Perfilador (Feature Extractor)
+title: Perfilador Asincrono
 five_wh_one_plus: what
 tags:
-  - component:perfilador
-  - layer:background
+- domain:self.architecture.backend
+- layer:runtime
+- system:kb-agent
+- topic:profiling
+provenance: null
 ---
+
+# Perfilador Asincrono
+
 ## Answer
 
-Es un agente que opera de forma asíncrona en segundo plano, escuchando la conversación sin añadir latencia al chat. Su propósito es inferir comportamientos o características del usuario (ej. preferencias, nivel de expertise) explícitas en el texto y convertirlas en punteros (edges relacionales) hacia `TraitAtoms` en SLDB, guardando esta asociación en la capa SQL.
+Agente que opera en segundo plano escuchando la conversación. Infiere características explícitas del usuario y las convierte en punteros relacionales hacia TraitAtoms de SLDB en la base de datos SQL.

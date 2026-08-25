@@ -1,11 +1,17 @@
 ---
 id: atom-apis-externas-integracion
-title: APIs Externas (Integración)
+title: APIs Externas Integracion
 five_wh_one_plus: what
 tags:
-  - component:api
-  - layer:external
+- domain:self.architecture.integration
+- layer:runtime
+- system:kb-agent
+- topic:tool-calling
+provenance: null
 ---
+
+# APIs Externas Integracion
+
 ## Answer
 
-Representa los servicios de terceros (Google Calendar, CRMs, Twilio, bases de datos externas) que interactúan con la arquitectura. Su ejecución obliga a la Máquina de Estados a pausarse (`waiting_tool`) y sus retornos (JSON) se inyectan siempre de vuelta al contexto de la conversación como "System Turns" para que el Conversador redacte una conclusión.
+Servicios de terceros (Calendar, Twilio, CRM). Su ejecución obliga a la Máquina de Estados a pausarse y sus retornos JSON se reinyectan al contexto como System Turns.

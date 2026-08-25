@@ -1,11 +1,17 @@
 ---
 id: atom-sldb-base-conocimiento-semantica
-title: SLDB (Knowledge Base / Atoms)
+title: SLDB Base Conocimiento Semantica
 five_wh_one_plus: what
 tags:
-  - component:sldb
-  - layer:persistence
+- domain:external_libs.sldb
+- layer:persistence
+- system:sldb
+- topic:ontology
+provenance: null
 ---
+
+# SLDB Base Conocimiento Semantica
+
 ## Answer
 
-El repositorio estructurado y semántico del sistema. Contiene el conocimiento universal y multi-dominio en forma de Átomos tipados (Markdown con YAML frontmatter). No contiene información personal, solo heurísticas, reglas de negocio, esquemas de herramientas y definiciones de características indexables. Es la única fuente de verdad para el Ontologizador.
+Repositorio estructurado multi-dominio. Contiene conocimiento universal abstracto (Traits, Reglas, Dominios) en forma de átomos tipados. Es la única fuente de verdad para el Ontologizador.
