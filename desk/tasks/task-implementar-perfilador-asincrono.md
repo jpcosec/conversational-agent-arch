@@ -60,3 +60,8 @@ _List the checks required before this task can close._
 
 _Name the observable condition that makes the task complete._
 - [ ] Definir y configurar el mecanismo exacto de disparo asíncrono (ej. Event Bus o Redis Queue).
+
+## Estrategia de Testing Asignada
+- [ ] **Test de Extracción Asíncrona**: Inyectar un *Golden Transcript* (log simulado) donde el usuario revela una característica explícita (ej. 'soy vegetariano').
+- [ ] Ejecutar el worker del Perfilador sobre el log.
+- [ ] Realizar una consulta SQL para afirmar (`assert`) que el grafo relacional creó exitosamente el edge `user_id -> trait-vegetariano`.

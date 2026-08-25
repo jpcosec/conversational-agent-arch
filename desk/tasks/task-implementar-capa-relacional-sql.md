@@ -62,3 +62,8 @@ _Name the observable condition that makes the task complete._
 - [ ] Crear tabla de SessionState para registrar el nodo activo de la máquina de estados.
 - [ ] Crear tabla ChatHistory (logs de conversación).
 - [ ] Implementar mecanismo robusto de limpieza de PII en ChatHistory para consumo seguro del Reflector.
+
+## Estrategia de Testing Asignada
+- [ ] **Pruebas en Memoria**: Levantar SQLite en `:memory:` para los tests.
+- [ ] **Aserciones de Mapeo**: Insertar relaciones N:M y verificar la consistencia referencial.
+- [ ] **Auditoría de PII**: Hacer assert de que los métodos que exponen datos hacia el Reflector enmascaran o eliminan correctamente los campos sensibles.

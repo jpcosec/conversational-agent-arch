@@ -61,3 +61,8 @@ _List the checks required before this task can close._
 
 _Name the observable condition that makes the task complete._
 - [ ] Conectar la lectura explícitamente a la tabla ChatHistory (ya purgada de PII) en la BD SQL.
+
+## Estrategia de Testing Asignada
+- [ ] **Simulación Batch**: Alimentar el Reflector con un lote de historiales falsos pre-procesados (sin PII).
+- [ ] Ejecutar el ciclo de consolidación.
+- [ ] Hacer `assert` comprobando que se escribieron físicamente nuevos archivos Markdown (nuevos `DomainAtom` o `RuleAtom`) en un directorio `.sldb_test/` de prueba.

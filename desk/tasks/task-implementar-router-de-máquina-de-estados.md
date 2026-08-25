@@ -65,3 +65,7 @@ _Name the observable condition that makes the task complete._
 - [ ] Implementar transición de Error/Timeout si una API externa se queda pegada en 'waiting_tool'.
 - [ ] Manejar concurrencia: retener en cola (buffer) los mensajes del usuario si llegan mientras la máquina está bloqueada compilando o en 'waiting_tool'.
 - [ ] Resolver colisiones: lógica determinista si el trigger sintético del CRON coincide en el mismo instante que un input de usuario.
+
+## Estrategia de Testing Asignada
+- [ ] **Test de Debounce**: Mockear el backend e inyectar 5 requests concurrentes de `/api/chat` en <1 segundo. Hacer `assert` de que el Router llamó al Ontologizador exactamente una vez tras el timeout, concatenando los 5 strings.
+- [ ] **Test de Timeout API**: Simular que una llamada externa se queda colgada y afirmar que el Router transiciona a un estado de error/interrupción sin bloquear el loop principal.

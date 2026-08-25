@@ -61,3 +61,7 @@ _List the checks required before this task can close._
 
 _Name the observable condition that makes the task complete._
 - [ ] Definir el contrato exacto (JSON Schema) del payload 'Contexto Compilado' entre Ontologizador y Conversador.
+
+## Estrategia de Testing Asignada
+- [ ] **Boundary Test (Quiebre)**: Inyectar un contexto vacío por la fuerza y validar mediante regex que la respuesta es explícitamente de desconocimiento ('No sé / Averiguaré'), fallando si hay alucinación.
+- [ ] **Tool-Call Test**: Proveer un contexto con un ToolAtom y validar que el output del modelo sea estrictamente un JSON de `function_call` y no texto libre.
