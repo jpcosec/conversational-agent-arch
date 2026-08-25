@@ -85,6 +85,25 @@
       text-transform:uppercase;
       color:var(--amber);
       margin-bottom:12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .sidebar-card-title::after {
+      content: '▾';
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+    .sidebar-card.collapsed .sidebar-card-title {
+      margin-bottom: 0;
+    }
+    .sidebar-card.collapsed .sidebar-card-title::after {
+      transform: rotate(-90deg);
+    }
+    .sidebar-card.collapsed > :not(.sidebar-card-title) {
+      display: none !important;
     }
 
     nav{display:flex;flex-direction:column;gap:10px}
@@ -1427,7 +1446,16 @@
       }
     }
 
+    function initSidebarAccordions() {
+      document.querySelectorAll('.sidebar-card-title').forEach(title => {
+        title.addEventListener('click', () => {
+          title.parentElement.classList.toggle('collapsed');
+        });
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', async () => {
+      initSidebarAccordions();
       buildNavAccordion();
       initAnnotations();
       document.querySelectorAll('.catalog-toolbar select, #catalog-search').forEach(el => {
