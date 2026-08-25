@@ -46,16 +46,17 @@ FUERA: emisión de tools (tarea aparte), compilación de contexto.
 
 `kb_agent/agent.py` (conversador_apos)
 
-Ambigüedad resuelta:
-- Detonante exacto: payload.is_empty == true (NO heurística de confianza del LLM).
-- Comportamiento: responder con un mensaje de desconocimiento honesto ("no lo sé / lo averiguaré"), sin intentar responder la pregunta de fondo.
-- El system prompt debe prohibir explícitamente responder fuera del domain_facts/rules recibidos.
+Ambigüedad resuelta — reparto SM vs agente:
+- La TRANSICIÓN a `breakpoint_miss` la hace el router (core SM) cuando payload.is_empty==true. Esta tarea NO define el nodo, solo el comportamiento del Conversador DENTRO de él.
+- Estando en breakpoint_miss, el Conversador emite una frase de desconocimiento y NO intenta responder el fondo (cero parámetrico).
+- Frase canónica única (usar EXACTA para test determinista): `"No tengo esa información a mano, la averiguaré."`
+- El system prompt prohibe explícitamente responder fuera de domain_facts/rules recibidos.
 
 ## Validation
 
-- Test de matriz (promptfoo/DeepEval): inyectar payload con is_empty=true y afirmar por regex que la respuesta es de desconocimiento; FALLA si intenta responder el fondo.
-- Inyectar payload con domain_facts y afirmar que la respuesta usa esos hechos.
+- Test de matriz (promptfoo/DeepEval): inyectar payload con is_empty=true y afirmar salida == la frase canónica exacta; FALLA si aparece cualquier intento de responder el fondo.
+- Inyectar payload con domain_facts y afirmar que la respuesta usa esos hechos (no la frase canónica).
 
 ## Done When
 
-El fallback se dispara SOLO por is_empty y el test de no-alucinación pasa.
+En breakpoint_miss el Conversador emite la frase canónica exacta y nunca alucina.

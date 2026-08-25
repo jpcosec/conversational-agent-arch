@@ -48,7 +48,7 @@ FUERA: la lógica de scrubbing de PII (tarea aparte), lectura batch.
 `kb_agent/models_sql/session.py`
 
 Contrato de esquema:
-- `SessionState`: user_id (FK->Users.id, unique), current_node (str — uno de: idle, buffering, evaluating_context, drafting_response, waiting_tool), buffer (JSON — mensajes retenidos por debounce), updated_at.
+- `SessionState`: user_id (FK->Users.id, unique), current_node (str — uno de: idle, buffering, evaluating_context, drafting_response, waiting_tool, breakpoint_miss), buffer (JSON — mensajes retenidos por debounce), updated_at.
 - `ChatHistory`: id (PK), user_id (FK->Users.id), role (str: user|assistant|system), content (str), pii_scrubbed (bool, default False), created_at. Indice por (user_id, created_at).
 
 Ambigüedad resuelta: `current_node` usa exactamente los nombres de nodo de la SM del router; `pii_scrubbed` marca si la fila ya pasó por el scrubber (el Reflector SOLO lee filas con pii_scrubbed=True).

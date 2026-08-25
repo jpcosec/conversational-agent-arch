@@ -45,12 +45,18 @@ FUERA: buffering (debounce) y pausa por tools (tareas hijas).
 
 `kb_chat_ui/state_machine.py`
 
-Ambigüedad resuelta — definición exacta de nodos:
+Ambigüedad resuelta — definición exacta de nodos (enum canónico compartido con SessionState.current_node):
 - `idle`: sin turno activo; único nodo que acepta trigger sintético CRON.
+- `buffering`: reteniendo mensajes en ventana debounce (definido en su tarea hija).
 - `evaluating_context` (eval): invoca al Ontologizador para compilar contexto.
 - `drafting_response` (draft): invoca al Conversador con el contexto compilado.
-Transiciones: idle -> evaluating_context (por input de usuario o CRON) -> drafting_response -> idle.
+- `waiting_tool`: pausa por function_call (definido en su tarea hija).
+- `breakpoint_miss`: nodo de quiebre cuando el contexto compilado llega con is_empty=true; el Conversador admite desconocimiento y NO alucina. Se entra desde evaluating_context (is_empty=true) y se sale a drafting_response para emitir la respuesta de desconocimiento.
+Transiciones base: idle -> [buffering] -> evaluating_context -> (drafting_response | breakpoint_miss -> drafting_response) -> idle.
+El input de usuario entra a `buffering` cuando la tarea de debounce está activa; si no, va directo a evaluating_context.
 El trigger CRON entra SOLO en idle y fuerza evaluating_context con un escenario proactivo.
+
+Nota: este enum de 6 nodos es la fuente de verdad; SessionState.current_node debe incluir buffering, waiting_tool y breakpoint_miss.
 
 ## Validation
 

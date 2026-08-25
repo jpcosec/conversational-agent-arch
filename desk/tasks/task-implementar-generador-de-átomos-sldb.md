@@ -50,7 +50,8 @@ FUERA: lectura de historial (batch-reader), consumo por el Ontologizador.
 Ambigüedad resuelta:
 - Escribe átomos usando la MISMA vía que el CLI (`deskops add atom` / API SLDB), respetando tag-namespaces válidos.
 - Todo átomo generado nace con tag `source:reflector` y estado `proposed` (requiere revisión humana antes de activarse — no auto-publica a producción).
-- Deduplicación: no crea un átomo si ya existe uno con el mismo contenido semántico.
+- Definición de "patrón recurrente" (v1, determinista): una misma pregunta/intención normalizada que aparece en ≥ `PATTERN_MIN_COUNT` (default 5) turnos distintos dentro del lote, sin RuleAtom/DomainAtom que ya la cubra.
+- Deduplicación: NO crea el átomo si ya existe uno (activo o proposed) cuyo texto normalizado (lowercase, sin puntuación, trim) sea idéntico. Sin similitud semántica difusa en v1.
 
 ## Validation
 

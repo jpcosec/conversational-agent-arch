@@ -58,7 +58,15 @@ Ambigüedad resuelta — contrato del payload "Contexto Compilado" (JSON):
   "is_empty": bool             // true si no hay ni rules ni domain_facts
 }
 ```
-Regla clave: `is_empty=true` cuando el subgrafo no aporta conocimiento → el Conversador debe caer en fallback.
+Regla clave: `is_empty=true` cuando `rules` Y `domain_facts` quedan ambos vacíos → el router transiciona a breakpoint_miss.
+
+Ambigüedad resuelta — algoritmo de selección del subgrafo (determinista, sin embeddings en v1):
+- `scenario` (str): etiqueta de dominio activa. Origen: para turno normal = tag de dominio de la sesión (SessionState); para CRON = el escenario proactivo inyectado por el trigger. Si la sesión no tiene dominio fijado, se usa el/los `domain:*` tags del store (KB_ROOT) por defecto.
+- Selección: un Atom es relevante si sus tags de dominio hacen match con `scenario` (match exacto de tag `domain:<scenario>` o prefijo jerárquico, ej. scenario=pizza matchea domain:pizza y domain:pizza.horarios).
+- `rules`/`domain_facts`: RuleAtoms y DomainAtoms cuyo tag de dominio matchea scenario.
+- `tools`: ToolAtoms marcados como disponibles para ese scenario.
+- `user_traits`: se leen tal cual desde UserTraits (SQL) por user_id, sin filtrar por scenario.
+- Sin ranking semántico en v1: filtrado por match de tags, 100% determinista y testeable.
 
 ## Validation
 
