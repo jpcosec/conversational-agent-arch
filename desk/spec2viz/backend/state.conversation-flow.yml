@@ -13,18 +13,26 @@ data:
   states:
     - id: idle
       label: Idle / Esperando
+    - id: active_turn
+      label: "Turno Activo (Core Loop)"
+      contains:
+        - buffering
+        - evaluating_context
+        - drafting_response
+        - waiting_tool
+        - breakpoint_miss
     - id: buffering
-      label: "Buffering\n(Debounce multi-mensaje)"
+      label: "Buffering\\n(Debounce multi-mensaje)"
     - id: evaluating_context
-      label: "Evaluando Estado\ny Contexto (Ontologizador)"
+      label: "Evaluando Estado\\ny Contexto (Ontologizador)"
     - id: drafting_response
-      label: "Redactando Respuesta\n(Conversador)"
+      label: "Redactando Respuesta\\n(Conversador)"
     - id: waiting_tool
-      label: "Ejecutando Tool\nExterna (Pausa)"
+      label: "Ejecutando Tool\\nExterna (Pausa)"
     - id: breakpoint_miss
-      label: "Punto de Quiebre\n(Context Miss / Fallback)"
+      label: "Punto de Quiebre\\n(Context Miss / Fallback)"
     - id: interrupted
-      label: "Interrumpido\n(Timeout)"
+      label: "Interrumpido\\n(Timeout)"
   transitions:
     - from: idle
       to: buffering

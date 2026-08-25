@@ -596,6 +596,15 @@
   <div class="board">
     <pre class="mermaid">
       stateDiagram-v2
+          state &quot;Idle / Esperando&quot; as idle
+          state &quot;Turno Activo (Core Loop)&quot; as active_turn {
+              state &quot;Buffering\n(Debounce multi-mensaje)&quot; as buffering
+              state &quot;Evaluando Estado\ny Contexto (Ontologizador)&quot; as evaluating_context
+              state &quot;Redactando Respuesta\n(Conversador)&quot; as drafting_response
+              state &quot;Ejecutando Tool\nExterna (Pausa)&quot; as waiting_tool
+              state &quot;Punto de Quiebre\n(Context Miss / Fallback)&quot; as breakpoint_miss
+          }
+          state &quot;Interrumpido\n(Timeout)&quot; as interrupted
           [*] --&gt; idle
           idle --&gt; buffering : mensaje_usuario
           idle --&gt; evaluating_context : trigger_sintetico_cron [proactividad]

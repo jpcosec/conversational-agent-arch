@@ -1,4 +1,13 @@
 stateDiagram-v2
+    state "Idle / Esperando" as idle
+    state "Turno Activo (Core Loop)" as active_turn {
+        state "Buffering\n(Debounce multi-mensaje)" as buffering
+        state "Evaluando Estado\ny Contexto (Ontologizador)" as evaluating_context
+        state "Redactando Respuesta\n(Conversador)" as drafting_response
+        state "Ejecutando Tool\nExterna (Pausa)" as waiting_tool
+        state "Punto de Quiebre\n(Context Miss / Fallback)" as breakpoint_miss
+    }
+    state "Interrumpido\n(Timeout)" as interrupted
     [*] --> idle
     idle --> buffering : mensaje_usuario
     idle --> evaluating_context : trigger_sintetico_cron [proactividad]
