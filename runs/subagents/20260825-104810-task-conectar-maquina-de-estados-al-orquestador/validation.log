@@ -1,0 +1,93 @@
+............                                                             [100%]
+12 passed in 0.02s
+.                                                                        [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 4 warnings in 37.60s
+.............................................                            [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+45 passed, 4 warnings in 61.79s (0:01:01)
+/home/jp/anaconda3/lib/python3.13/site-packages/pytest_asyncio/plugin.py:252: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_orchestrator_routes_turns_through_real_state_machine ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-jp/pytest-47/test_orchestrator_routes_turns0')
+
+    def test_orchestrator_routes_turns_through_real_state_machine(tmp_path: Path) -> None:
+        db_file = tmp_path / "statemachine-wiring.sqlite"
+        evidence_path = PROJECT_ROOT / "runs" / "e2e" / "state-trace.json"
+        evidence_path.parent.mkdir(parents=True, exist_ok=True)
+    
+        orch = Orchestrator(kb_root=STORE_ROOT, db_url=f"sqlite:///{db_file}")
+        try:
+            nl_turn = orch.handle_turn(
+                external_id=USER_NL,
+                message="Hola, que pizzas vegetarianas recomiendan?",
+                scenario="pizzeria",
+            )
+            tool_turn = orch.handle_turn(
+                external_id=USER_TOOL,
+                message="reservar mesa para 4 el viernes a las 20:00 a nombre de Rojas",
+                scenario="pizzeria",
+            )
+    
+            payload = {
+                "db_file": str(db_file),
+                "nl_turn": {
+                    "kind": nl_turn["kind"],
+                    "reply": nl_turn["reply"],
+>                   "state_trace": nl_turn["state_trace"],
+                },
+                "tool_turn": {
+                    "kind": tool_turn["kind"],
+                    "reply": tool_turn["reply"],
+                    "system_turn": tool_turn["system_turn"],
+                    "state_trace": tool_turn["state_trace"],
+                },
+            }
+E           KeyError: 'state_trace'
+
+tests/e2e/test_statemachine_wiring.py:44: KeyError
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/e2e/test_statemachine_wiring.py::test_orchestrator_routes_turns_through_real_state_machine
+1 failed, 4 warnings in 35.26s
+mutation test failed as expected
+/home/jp/anaconda3/lib/python3.13/site-packages/pytest_asyncio/plugin.py:252: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+.                                                                        [100%]
+=============================== warnings summary ===============================
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+<frozen abc>:106
+  <frozen abc>:106: DeprecationWarning: BaseAgentConfig is deprecated and will be removed in future versions.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 4 warnings in 40.36s
