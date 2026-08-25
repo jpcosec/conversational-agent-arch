@@ -1,47 +1,58 @@
 id: activity-example-flow-scheduling
-title: Ejemplos · Flujo · Turno de Agendamiento
+title: Ejemplos · Flujo · Turno de Agendamiento Complejo
 type: activity
 version: '1.0'
 metadata:
   author: antonIA
   description: >-
-    Ejemplo aplicado: Traza de la Máquina de Estados para la consulta
-    "quiero hora para limpieza dental mañana".
+    Ejemplo aplicado complejo: Muestra buffering, lectura de perfil en SQL,
+    compilación de contexto cruzado en SLDB, ejecución de tool externa
+    y el rol asíncrono del Perfilador.
 data:
   start: whatsapp_in
   steps:
     whatsapp_in:
-      label: "Twilio: 'Quiero hora para limpieza mañana'"
+      label: "Twilio webhook: 'Quiero hora para mañana'"
       next: buffering
     buffering:
-      label: State Router espera 2s (Debounce)
+      label: "State Router: debounce (agrupa mensajes múltiples)"
+      next: read_profile
+    read_profile:
+      label: "Router: Lee user_id en SQL -> obtiene trait_ids [trait-no-show]"
       next: ontologizador
     ontologizador:
-      label: "Ontologizador compila Contexto: p(pregunta, perfil)"
-      next: match_kb
-    match_kb:
-      label: "¿Qué extrae de SLDB?"
+      label: "Ontologizador: Ejecuta p(pregunta, traits)"
+      next: sldb_fetch
+    sldb_fetch:
+      label: "Ontologizador: Recupera Átomos de SLDB"
       kind: decision
       branches:
-        "->": context_ready
-    context_ready:
-      label: "Contexto = [Horarios] + [Tool Calendar] + [Regla No-Show]"
+        "->": compile_context
+    compile_context:
+      label: "Contexto = [Horarios] + [Regla No-Show] + [Tool Calendar]"
       next: conversador_eval
     conversador_eval:
-      label: Conversador recibe contexto
+      label: Conversador evalúa el Contexto
       kind: decision
       branches:
-        "Requiere Calendario": call_tool
+        "Faltan Datos": clarify
+        "Puede Operar": call_tool
+    clarify:
+      label: "Conversador: Pide aclaración (Ej. ¿En la mañana o tarde?)"
+      next: end
     call_tool:
-      label: "Estado: Ejecutando Tool (check_availability)"
+      label: "Máquina de Estados: Pausa -> Ejecuta Tool check_availability()"
       next: tool_return
     tool_return:
-      label: "API retorna: slots [15:00, 16:30]"
+      label: "API JSON inyectado como Turno de Sistema: [15:00, 16:30]"
       next: conversador_draft
     conversador_draft:
-      label: "Conversador redacta (aplica Regla No-Show y slots)"
+      label: "Conversador redacta aplicando [Regla No-Show]"
       next: send_twilio
     send_twilio:
-      label: "Envía: 'Tengo a las 15 y 16:30. Como faltaste antes, confírmame con un SÍ seguro.'"
+      label: "Envía: 'Tengo a las 15:00. Al faltar antes, debes confirmarme con un SÍ seguro.'"
+      next: perfilador_async
+    perfilador_async:
+      label: "Perfilador (Async): Analiza el turno. ¿Surge un nuevo Trait?"
       next: end
   end: end

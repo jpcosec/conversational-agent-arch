@@ -675,23 +675,35 @@
   <div class="board">
     <pre class="mermaid">
       graph TD
-          user_juan[&quot;SQL: Usuario Juan Pérez&quot;]
-          trait_no_show[&quot;TraitAtom: [Historial Inasistencia]
-      &#x27;Faltó a cita previa&#x27;&quot;]
-          trait_vip[&quot;TraitAtom: [Cliente Frecuente]
-      &#x27;Ofrecer descuento&#x27;&quot;]
-          domain_horario[&quot;DomainAtom: [Horarios]
-      &#x27;Lun-Vie 09:00 a 18:00&#x27;&quot;]
-          domain_servicios[&quot;DomainAtom: [Catálogo]
-      &#x27;Limpieza Dental $30&#x27;&quot;]
-          rule_confirmacion[&quot;RuleAtom: [Política No-Show]
-      &#x27;Exigir confirmación doble&#x27;&quot;]
-          tool_calendar[&quot;ToolAtom: [Google Calendar]
-      &#x27;check_availability()&#x27;&quot;]
-          user_juan --&gt;|&quot;perfil posee&quot;| trait_no_show
-          trait_no_show --&gt;|&quot;gatilla regla&quot;| rule_confirmacion
-          domain_horario --&gt;|&quot;filtra búsqueda&quot;| tool_calendar
-          domain_servicios --&gt;|&quot;define duración cita&quot;| tool_calendar
+          atom_schema[&quot;Esquema Base (AtomDoc)
+      ---
+      id: str
+      title: str
+      five_wh_one_plus: Enum
+      tags: List[str]
+      provenance: str
+      ## Answer&quot;]
+          atom_horario[&quot;atom-horarios-clinica.md
+      ---
+      five_wh_one_plus: what
+      tags: [domain:agenda]
+      ## Answer
+      Lun-Vie de 09:00 a 18:00.&quot;]
+          atom_regla[&quot;atom-regla-no-show.md
+      ---
+      five_wh_one_plus: how
+      tags: [domain:agenda, rule:penalidad]
+      ## Answer
+      Exigir doble confirmación.&quot;]
+          atom_tool[&quot;atom-tool-calendar.md
+      ---
+      five_wh_one_plus: how
+      tags: [system:tool, integration:google]
+      ## Answer
+      Schema check_availability().&quot;]
+          atom_schema --&gt;|&quot;instancia&quot;| atom_horario
+          atom_schema --&gt;|&quot;instancia&quot;| atom_regla
+          atom_schema --&gt;|&quot;instancia&quot;| atom_tool
     </pre>
   </div>
 </section><section id="activity-example-flow-scheduling-6bd7dee7" data-spec="backend/activity.example-flow-scheduling.yml" data-type="activity" data-project="" data-category="Ejemplos Prácticos" data-tags="layer:examples view:activity type:activity" data-view-id="activity-example-flow-scheduling" class="catalog-item">
@@ -703,28 +715,35 @@
     <pre class="mermaid">
       flowchart TD
           __start([Start])
-          whatsapp_in[&quot;Twilio: &#x27;Quiero hora para limpieza mañana&#x27;&quot;]
-          buffering[&quot;State Router espera 2s (Debounce)&quot;]
-          ontologizador[&quot;Ontologizador compila Contexto: p(pregunta, perfil)&quot;]
-          match_kb{&quot;¿Qué extrae de SLDB?&quot;}
-          context_ready[&quot;Contexto = [Horarios] + [Tool Calendar] + [Regla No-Show]&quot;]
-          conversador_eval{&quot;Conversador recibe contexto&quot;}
-          call_tool[&quot;Estado: Ejecutando Tool (check_availability)&quot;]
-          tool_return[&quot;API retorna: slots [15:00, 16:30]&quot;]
-          conversador_draft[&quot;Conversador redacta (aplica Regla No-Show y slots)&quot;]
-          send_twilio[&quot;Envía: &#x27;Tengo a las 15 y 16:30. Como faltaste antes, confírmame con un SÍ seguro.&#x27;&quot;]
+          whatsapp_in[&quot;Twilio webhook: &#x27;Quiero hora para mañana&#x27;&quot;]
+          buffering[&quot;State Router: debounce (agrupa mensajes múltiples)&quot;]
+          read_profile[&quot;Router: Lee user_id en SQL -#gt; obtiene trait_ids [trait-no-show]&quot;]
+          ontologizador[&quot;Ontologizador: Ejecuta p(pregunta, traits)&quot;]
+          sldb_fetch{&quot;Ontologizador: Recupera Átomos de SLDB&quot;}
+          compile_context[&quot;Contexto = [Horarios] + [Regla No-Show] + [Tool Calendar]&quot;]
+          conversador_eval{&quot;Conversador evalúa el Contexto&quot;}
+          clarify[&quot;Conversador: Pide aclaración (Ej. ¿En la mañana o tarde?)&quot;]
+          call_tool[&quot;Máquina de Estados: Pausa -#gt; Ejecuta Tool check_availability()&quot;]
+          tool_return[&quot;API JSON inyectado como Turno de Sistema: [15:00, 16:30]&quot;]
+          conversador_draft[&quot;Conversador redacta aplicando [Regla No-Show]&quot;]
+          send_twilio[&quot;Envía: &#x27;Tengo a las 15:00. Al faltar antes, debes confirmarme con un SÍ seguro.&#x27;&quot;]
+          perfilador_async[&quot;Perfilador (Async): Analiza el turno. ¿Surge un nuevo Trait?&quot;]
           __end([End])
           __start --&gt; whatsapp_in
           whatsapp_in --&gt; buffering
-          buffering --&gt; ontologizador
-          ontologizador --&gt; match_kb
-          match_kb --&gt;|&quot;-#gt;&quot;| context_ready
-          context_ready --&gt; conversador_eval
-          conversador_eval --&gt;|&quot;Requiere Calendario&quot;| call_tool
+          buffering --&gt; read_profile
+          read_profile --&gt; ontologizador
+          ontologizador --&gt; sldb_fetch
+          sldb_fetch --&gt;|&quot;-#gt;&quot;| compile_context
+          compile_context --&gt; conversador_eval
+          conversador_eval --&gt;|&quot;Faltan Datos&quot;| clarify
+          conversador_eval --&gt;|&quot;Puede Operar&quot;| call_tool
+          clarify --&gt; __end
           call_tool --&gt; tool_return
           tool_return --&gt; conversador_draft
           conversador_draft --&gt; send_twilio
-          send_twilio --&gt; __end
+          send_twilio --&gt; perfilador_async
+          perfilador_async --&gt; __end
     </pre>
   </div>
 </section></div>

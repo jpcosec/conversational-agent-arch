@@ -1,18 +1,30 @@
 graph TD
-    user_juan["SQL: Usuario Juan Pérez"]
-    trait_no_show["TraitAtom: [Historial Inasistencia]
-'Faltó a cita previa'"]
-    trait_vip["TraitAtom: [Cliente Frecuente]
-'Ofrecer descuento'"]
-    domain_horario["DomainAtom: [Horarios]
-'Lun-Vie 09:00 a 18:00'"]
-    domain_servicios["DomainAtom: [Catálogo]
-'Limpieza Dental $30'"]
-    rule_confirmacion["RuleAtom: [Política No-Show]
-'Exigir confirmación doble'"]
-    tool_calendar["ToolAtom: [Google Calendar]
-'check_availability()'"]
-    user_juan -->|"perfil posee"| trait_no_show
-    trait_no_show -->|"gatilla regla"| rule_confirmacion
-    domain_horario -->|"filtra búsqueda"| tool_calendar
-    domain_servicios -->|"define duración cita"| tool_calendar
+    atom_schema["Esquema Base (AtomDoc)
+---
+id: str
+title: str
+five_wh_one_plus: Enum
+tags: List[str]
+provenance: str
+## Answer"]
+    atom_horario["atom-horarios-clinica.md
+---
+five_wh_one_plus: what
+tags: [domain:agenda]
+## Answer
+Lun-Vie de 09:00 a 18:00."]
+    atom_regla["atom-regla-no-show.md
+---
+five_wh_one_plus: how
+tags: [domain:agenda, rule:penalidad]
+## Answer
+Exigir doble confirmación."]
+    atom_tool["atom-tool-calendar.md
+---
+five_wh_one_plus: how
+tags: [system:tool, integration:google]
+## Answer
+Schema check_availability()."]
+    atom_schema -->|"instancia"| atom_horario
+    atom_schema -->|"instancia"| atom_regla
+    atom_schema -->|"instancia"| atom_tool

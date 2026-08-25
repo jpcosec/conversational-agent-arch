@@ -1,24 +1,31 @@
 flowchart TD
     __start([Start])
-    whatsapp_in["Twilio: 'Quiero hora para limpieza mañana'"]
-    buffering["State Router espera 2s (Debounce)"]
-    ontologizador["Ontologizador compila Contexto: p(pregunta, perfil)"]
-    match_kb{"¿Qué extrae de SLDB?"}
-    context_ready["Contexto = [Horarios] + [Tool Calendar] + [Regla No-Show]"]
-    conversador_eval{"Conversador recibe contexto"}
-    call_tool["Estado: Ejecutando Tool (check_availability)"]
-    tool_return["API retorna: slots [15:00, 16:30]"]
-    conversador_draft["Conversador redacta (aplica Regla No-Show y slots)"]
-    send_twilio["Envía: 'Tengo a las 15 y 16:30. Como faltaste antes, confírmame con un SÍ seguro.'"]
+    whatsapp_in["Twilio webhook: 'Quiero hora para mañana'"]
+    buffering["State Router: debounce (agrupa mensajes múltiples)"]
+    read_profile["Router: Lee user_id en SQL -#gt; obtiene trait_ids [trait-no-show]"]
+    ontologizador["Ontologizador: Ejecuta p(pregunta, traits)"]
+    sldb_fetch{"Ontologizador: Recupera Átomos de SLDB"}
+    compile_context["Contexto = [Horarios] + [Regla No-Show] + [Tool Calendar]"]
+    conversador_eval{"Conversador evalúa el Contexto"}
+    clarify["Conversador: Pide aclaración (Ej. ¿En la mañana o tarde?)"]
+    call_tool["Máquina de Estados: Pausa -#gt; Ejecuta Tool check_availability()"]
+    tool_return["API JSON inyectado como Turno de Sistema: [15:00, 16:30]"]
+    conversador_draft["Conversador redacta aplicando [Regla No-Show]"]
+    send_twilio["Envía: 'Tengo a las 15:00. Al faltar antes, debes confirmarme con un SÍ seguro.'"]
+    perfilador_async["Perfilador (Async): Analiza el turno. ¿Surge un nuevo Trait?"]
     __end([End])
     __start --> whatsapp_in
     whatsapp_in --> buffering
-    buffering --> ontologizador
-    ontologizador --> match_kb
-    match_kb -->|"-#gt;"| context_ready
-    context_ready --> conversador_eval
-    conversador_eval -->|"Requiere Calendario"| call_tool
+    buffering --> read_profile
+    read_profile --> ontologizador
+    ontologizador --> sldb_fetch
+    sldb_fetch -->|"-#gt;"| compile_context
+    compile_context --> conversador_eval
+    conversador_eval -->|"Faltan Datos"| clarify
+    conversador_eval -->|"Puede Operar"| call_tool
+    clarify --> __end
     call_tool --> tool_return
     tool_return --> conversador_draft
     conversador_draft --> send_twilio
-    send_twilio --> __end
+    send_twilio --> perfilador_async
+    perfilador_async --> __end

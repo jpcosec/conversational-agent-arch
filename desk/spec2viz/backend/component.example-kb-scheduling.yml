@@ -1,72 +1,44 @@
 id: component-example-kb-scheduling
-title: Ejemplos · KB · Taxonomía para Bot de Agendamiento
+title: Ejemplos · KB · Estructura de Átomos SLDB (Agendamiento)
 type: component
 version: '1.0'
 metadata:
   author: antonIA
   description: >-
-    Ejemplo aplicado: Ontología de Átomos SLDB para un negocio (Clínica/Servicios).
-    Muestra cómo reglas de negocio y perfiles se convierten en átomos indexables independientes.
+    Muestra cómo el conocimiento de agendamiento se plasma en verdaderos
+    Átomos SLDB (Markdown + YAML Frontmatter con 5WH1+ y namespaces).
 style:
   kinds:
-    user:
-      plantuml:
-        background: "#FCECC9"
-        border: "#D4A73C"
-        font: "#5E450B"
-    domain:
+    atom:
       plantuml:
         background: "#D8ECFF"
         border: "#4C78A8"
         font: "#16324F"
-    rule:
-      plantuml:
-        background: "#E6E6FA"
-        border: "#9370DB"
-        font: "#4B0082"
-    tool:
-      plantuml:
-        background: "#E7F5E1"
-        border: "#5A9E4B"
-        font: "#1E3A17"
-    trait:
-      plantuml:
-        background: "#FFDAB9"
-        border: "#DAA520"
-        font: "#8B4500"
 data:
   nodes:
-    user_juan:
-      label: "SQL: Usuario Juan Pérez"
-      kind: user
-    trait_no_show:
-      label: "TraitAtom: [Historial Inasistencia]\n'Faltó a cita previa'"
-      kind: trait
-    trait_vip:
-      label: "TraitAtom: [Cliente Frecuente]\n'Ofrecer descuento'"
-      kind: trait
-    domain_horario:
-      label: "DomainAtom: [Horarios]\n'Lun-Vie 09:00 a 18:00'"
-      kind: domain
-    domain_servicios:
-      label: "DomainAtom: [Catálogo]\n'Limpieza Dental $30'"
-      kind: domain
-    rule_confirmacion:
-      label: "RuleAtom: [Política No-Show]\n'Exigir confirmación doble'"
-      kind: rule
-    tool_calendar:
-      label: "ToolAtom: [Google Calendar]\n'check_availability()'"
-      kind: tool
+    atom_schema:
+      label: "Esquema Base (AtomDoc)\n---\nid: str\ntitle: str\nfive_wh_one_plus: Enum\ntags: List[str]\nprovenance: str\n## Answer"
+      kind: atom
+    
+    atom_horario:
+      label: "atom-horarios-clinica.md\n---\nfive_wh_one_plus: what\ntags: [domain:agenda]\n## Answer\nLun-Vie de 09:00 a 18:00."
+      kind: atom
+
+    atom_regla:
+      label: "atom-regla-no-show.md\n---\nfive_wh_one_plus: how\ntags: [domain:agenda, rule:penalidad]\n## Answer\nExigir doble confirmación."
+      kind: atom
+
+    atom_tool:
+      label: "atom-tool-calendar.md\n---\nfive_wh_one_plus: how\ntags: [system:tool, integration:google]\n## Answer\nSchema check_availability()."
+      kind: atom
+
   edges:
-    - from: user_juan
-      to: trait_no_show
-      relation: "perfil posee"
-    - from: trait_no_show
-      to: rule_confirmacion
-      relation: "gatilla regla"
-    - from: domain_horario
-      to: tool_calendar
-      relation: "filtra búsqueda"
-    - from: domain_servicios
-      to: tool_calendar
-      relation: "define duración cita"
+    - from: atom_schema
+      to: atom_horario
+      relation: "instancia"
+    - from: atom_schema
+      to: atom_regla
+      relation: "instancia"
+    - from: atom_schema
+      to: atom_tool
+      relation: "instancia"
