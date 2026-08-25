@@ -1,0 +1,19 @@
+graph TD
+    api_gateway["API Gateway / State Router"]
+    conversador["Conversador (LlmAgent)"]
+    ontologizador["Ontologizador (Context Compiler)"]
+    perfilador["Perfilador (Feature Extractor)"]
+    reflector["Reflector (KB Thickener)"]
+    sql_db["SQL DB (Identidad, Estado, Cron)"]
+    sldb_kb["SLDB (Knowledge Base / Atoms)"]
+    external_tools["External APIs (Calendario, CRM)"]
+    api_gateway -->|"lee/escribe estado y sesión"| sql_db
+    api_gateway -->|"enruta flujo"| conversador
+    conversador -->|"solicita contexto p()"| ontologizador
+    ontologizador -->|"lee trait_ids del usuario"| sql_db
+    ontologizador -->|"extrae subgrafos (Traits, Rules, Tools)"| sldb_kb
+    conversador -->|"ejecuta tool si el contexto lo permite"| external_tools
+    perfilador -->|"escucha turnos asíncronamente"| api_gateway
+    perfilador -->|"asocia user_id con nuevos trait_ids"| sql_db
+    reflector -->|"procesa historial en batch"| sql_db
+    reflector -->|"materializa nuevos átomos de conocimiento"| sldb_kb

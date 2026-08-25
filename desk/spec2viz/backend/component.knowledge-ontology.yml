@@ -1,0 +1,57 @@
+id: component-knowledge-ontology
+title: Backend · Datos · Ontología Universal y Perfiles
+type: component
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Muestra cómo el SQL gestiona identidades y mapeos, mientras que SLDB almacena el
+    conocimiento puramente abstracto (Traits, Dominio, Rules, Tools).
+style:
+  kinds:
+    sql:
+      plantuml:
+        background: "#FCECC9"
+        border: "#D4A73C"
+        font: "#5E450B"
+    atom:
+      plantuml:
+        background: "#D8ECFF"
+        border: "#4C78A8"
+        font: "#16324F"
+data:
+  nodes:
+    sql_users:
+      label: Tabla Users (PII, Identidad)
+      kind: sql
+    sql_user_traits:
+      label: Tabla UserTraits (Muchos a Muchos)
+      kind: sql
+    trait_atom:
+      label: Indexable Characteristic Atom (Ej. "Experto en Python")
+      kind: atom
+    domain_atom:
+      label: Domain Atom (Ej. "Depto Disponible", "Fármaco")
+      kind: atom
+    rule_atom:
+      label: Conversational Rule Atom (Ej. "Si enojo -> Empatizar")
+      kind: atom
+    tool_atom:
+      label: Tool Atom (Esquema API Calendario)
+      kind: atom
+  edges:
+    - from: sql_users
+      to: sql_user_traits
+      relation: "1 : N"
+    - from: sql_user_traits
+      to: trait_atom
+      relation: "N : 1 (Apunta a ID en SLDB)"
+    - from: trait_atom
+      to: domain_atom
+      relation: Relación semántica abstracta
+    - from: domain_atom
+      to: rule_atom
+      relation: Reglas específicas de dominio
+    - from: rule_atom
+      to: tool_atom
+      relation: Requiere ejecución de tool

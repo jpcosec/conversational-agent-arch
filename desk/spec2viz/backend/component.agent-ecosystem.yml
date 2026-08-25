@@ -1,0 +1,88 @@
+id: component-agent-ecosystem
+title: Backend · Componentes · Ecosistema de Motores y Agentes
+type: component
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    Muestra la separación de los 4 modelos (Conversador, Ontologizador, Perfilador, Reflector)
+    y cómo interactúan con la base relacional (SQL) y la base de conocimiento semántica (SLDB).
+style:
+  kinds:
+    engine:
+      plantuml:
+        background: "#D8ECFF"
+        border: "#4C78A8"
+        font: "#16324F"
+    background_agent:
+      plantuml:
+        background: "#E6E6FA"
+        border: "#9370DB"
+        font: "#4B0082"
+    database:
+      plantuml:
+        background: "#E7F5E1"
+        border: "#5A9E4B"
+        font: "#1E3A17"
+    api:
+      plantuml:
+        background: "#FCECC9"
+        border: "#D4A73C"
+        font: "#5E450B"
+data:
+  nodes:
+    api_gateway:
+      label: API Gateway / State Router
+      kind: api
+    conversador:
+      label: Conversador (LlmAgent)
+      kind: engine
+    ontologizador:
+      label: Ontologizador (Context Compiler)
+      kind: engine
+    perfilador:
+      label: Perfilador (Feature Extractor)
+      kind: background_agent
+    reflector:
+      label: Reflector (KB Thickener)
+      kind: background_agent
+    sql_db:
+      label: SQL DB (Identidad, Estado, Cron)
+      kind: database
+    sldb_kb:
+      label: SLDB (Knowledge Base / Atoms)
+      kind: database
+    external_tools:
+      label: External APIs (Calendario, CRM)
+      kind: api
+  edges:
+    - from: api_gateway
+      to: sql_db
+      relation: lee/escribe estado y sesión
+    - from: api_gateway
+      to: conversador
+      relation: enruta flujo
+    - from: conversador
+      to: ontologizador
+      relation: solicita contexto p()
+    - from: ontologizador
+      to: sql_db
+      relation: lee trait_ids del usuario
+    - from: ontologizador
+      to: sldb_kb
+      relation: extrae subgrafos (Traits, Rules, Tools)
+    - from: conversador
+      to: external_tools
+      relation: ejecuta tool si el contexto lo permite
+    - from: perfilador
+      to: api_gateway
+      relation: escucha turnos asíncronamente
+    - from: perfilador
+      to: sql_db
+      relation: asocia user_id con nuevos trait_ids
+    - from: reflector
+      to: sql_db
+      relation: procesa historial en batch
+    - from: reflector
+      to: sldb_kb
+      relation: materializa nuevos átomos de conocimiento

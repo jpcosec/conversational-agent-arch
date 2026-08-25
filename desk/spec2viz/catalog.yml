@@ -15,51 +15,42 @@ vistas:
     tags: [layer:global, view:deployment]
 
   # ── Backend · Semántico ─────────────────────────────
-  - id: component-backend
+  - id: component-agent-ecosystem
     category: Backend
-    nav: Componentes backend
-    title: Backend · Componentes
-    desc: FastAPI + MesaCompiler + agentes ADK + wrapper sldb.
+    nav: Ecosistema de Agentes
+    title: Backend · Componentes · Ecosistema de Motores y Agentes
+    desc: Los 4 actores (Conversador, Ontologizador, Perfilador, Reflector) y DBs.
     type: component
-    src: build/component.backend.mmd
-    specs: [backend/component.backend.yml]
+    src: build/component.agent-ecosystem.mmd
+    specs: [backend/component.agent-ecosystem.yml]
     tags: [layer:backend, view:component]
-  - id: sequence-chat-turn
+  - id: state-conversation-flow
     category: Backend
-    nav: Secuencia /api/chat
-    title: Backend · Secuencia · Turno /api/chat
-    desc: Compilación de mesa + prompt + Gemini.
-    type: sequence
-    src: build/sequence.chat-turn.mmd
-    specs: [backend/sequence.chat-turn.yml]
-    tags: [layer:backend, view:sequence]
-  - id: sequence-agent-retrieval
-    category: Backend
-    nav: Secuencia retrieval ADK
-    title: Backend · Secuencia · Retrieval ADK
-    desc: conversador → bibliotecario → kb_tools → sldb CLI.
-    type: sequence
-    src: build/sequence.agent-retrieval.mmd
-    specs: [backend/sequence.agent-retrieval.yml]
-    tags: [layer:backend, view:sequence]
-  - id: state-chat-session
-    category: Backend
-    nav: Estado sesión
-    title: Backend · Estado · Sesión de chat
-    desc: Ciclo de vida de la sesión en memoria + followup.
+    nav: Flujo de Conversación
+    title: Backend · Estado · Máquina de Estados de la Conversación
+    desc: Diagrama del flujo de la conversación, buffering y estados.
     type: state
-    src: build/state.chat-session.mmd
-    specs: [backend/state.chat-session.yml]
+    src: build/state.conversation-flow.mmd
+    specs: [backend/state.conversation-flow.yml]
     tags: [layer:backend, view:state]
-  - id: activity-mesa-compile
+  - id: sequence-extended-turn
     category: Backend
-    nav: Actividad MesaCompiler
-    title: Backend · Actividad · MesaCompiler.compile()
-    desc: Ranking determinista de átomos y selección top-5.
-    type: activity
-    src: build/activity.mesa-compile.mmd
-    specs: [backend/activity.mesa-compile.yml]
-    tags: [layer:backend, view:activity]
+    nav: Secuencia de Turno Extendido
+    title: Backend · Secuencia · Ciclo de Vida del Turno Extendido
+    desc: Flujo del mensaje a través de los motores y tools externas.
+    type: sequence
+    src: build/sequence.extended-turn.mmd
+    specs: [backend/sequence.extended-turn.yml]
+    tags: [layer:backend, view:sequence]
+  - id: component-knowledge-ontology
+    category: Backend
+    nav: Ontología de Datos y Perfiles
+    title: Backend · Datos · Ontología Universal y Perfiles
+    desc: Separación de SQL (Identidad) vs SLDB (Átomos Semánticos).
+    type: component
+    src: build/component.knowledge-ontology.mmd
+    specs: [backend/component.knowledge-ontology.yml]
+    tags: [layer:backend, view:component]
 
   # ── Backend · AST real (código) ─────────────────────
   - id: ast-kb-agent
