@@ -76,3 +76,45 @@ def test_conversador_asks_for_missing_required_arg_instead_of_emitting_function_
     assert isinstance(response, str)
     assert response == "¿Qué fecha necesitas?"
     assert "function_call" not in response
+
+
+
+def test_conversador_extracts_integer_time_and_name_for_real_reservation_schema() -> None:
+    compiled_context = {
+        "scenario": "calendar",
+        "question": "Quiero reservar mesa para 4 personas el viernes a las 20:00 a nombre de Rojas",
+        "rules": [],
+        "domain_facts": [],
+        "tools": [
+            {
+                "id": "crear_reserva",
+                "json_schema": {
+                    "type": "object",
+                    "description": "Crea una reserva de mesa.",
+                    "properties": {
+                        "fecha": {"type": "string"},
+                        "hora": {"type": "string"},
+                        "personas": {"type": "integer"},
+                        "nombre": {"type": "string"},
+                    },
+                    "required": ["fecha", "hora", "personas"],
+                },
+            }
+        ],
+        "is_empty": True,
+    }
+
+    response = draft_conversador_response(compiled_context)
+
+    assert response == {
+        "function_call": {
+            "name": "crear_reserva",
+            "args": {
+                "fecha": "viernes",
+                "hora": "20:00",
+                "personas": 4,
+                "nombre": "Rojas",
+            },
+        }
+    }
+    assert isinstance(response["function_call"]["args"]["personas"], int)

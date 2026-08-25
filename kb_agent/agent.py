@@ -30,8 +30,30 @@ _DATE_VALUE_PATTERNS = (
     r"mañana",
     r"manana",
     r"hoy",
+    r"lunes",
+    r"martes",
+    r"miércoles",
+    r"miercoles",
+    r"jueves",
+    r"viernes",
+    r"sábado",
+    r"sabado",
+    r"domingo",
     r"\d{1,2}/\d{1,2}(?:/\d{2,4})?",
     r"\d{4}-\d{2}-\d{2}",
+)
+_TIME_VALUE_PATTERN = r"\b\d{1,2}:\d{2}\b"
+_INTEGER_VALUE_PATTERN = r"\b\d+\b"
+_NAME_CAPTURE_STOP_WORDS = (
+    " el ",
+    " la ",
+    " los ",
+    " las ",
+    " a las ",
+    " al ",
+    " de ",
+    " del ",
+    " para ",
 )
 
 
@@ -254,6 +276,21 @@ def _extract_arg_value(question: str, arg_name: str, arg_schema: Mapping[str, An
             if match:
                 return match.group(0)
 
+    if normalized_name in {"hora", "time"}:
+        match = re.search(_TIME_VALUE_PATTERN, question)
+        if match:
+            return match.group(0)
+
+    if arg_schema.get("type") == "integer":
+        match = re.search(_INTEGER_VALUE_PATTERN, question)
+        if match:
+            return int(match.group(0))
+
+    if normalized_name in {"nombre", "name"}:
+        extracted_name = _extract_name_value(question)
+        if extracted_name:
+            return extracted_name
+
     if normalized_name in {"service", "servicio"}:
         lowered_question = _normalize_text(question)
         for marker in ("para ", "de "):
@@ -263,6 +300,30 @@ def _extract_arg_value(question: str, arg_name: str, arg_schema: Mapping[str, An
                     return service
 
     return None
+
+
+def _extract_name_value(question: str) -> str | None:
+    for pattern in (
+        r"a\s+nombre\s+de\s+(.+)$",
+        r"nombre\s+(?:de\s+)?(.+)$",
+        r"para\s+([A-ZÁÉÍÓÚÑ][\wÁÉÍÓÚÑáéíóúñ' -]*)$",
+    ):
+        match = re.search(pattern, question, flags=re.IGNORECASE)
+        if not match:
+            continue
+        candidate = _clean_name_candidate(match.group(1))
+        if candidate:
+            return candidate
+    return None
+
+
+def _clean_name_candidate(candidate: str) -> str:
+    cleaned = candidate.strip(" .,!?;:")
+    lowered = cleaned.casefold()
+    cut_positions = [lowered.find(stop_word) for stop_word in _NAME_CAPTURE_STOP_WORDS if lowered.find(stop_word) > 0]
+    if cut_positions:
+        cleaned = cleaned[: min(cut_positions)].strip(" .,!?;:")
+    return cleaned
 
 
 def _missing_required_args(args: Mapping[str, Any], schema: Mapping[str, Any]) -> list[str]:
