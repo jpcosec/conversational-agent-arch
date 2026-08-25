@@ -30,4 +30,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: 76f3e0da8ea9988bf4526d80147a5f8baca81189baa52cdab709339a519c8f3d
+hash_a: e9fc53029d95ad3ac531c269b303551d2651cffede5b908f9de4a030031fbdc7

@@ -39,3 +39,23 @@ documents:
   - source:e2e
   - type.knowledge.atom
   - workspace.desk.atoms
+- name: atom-trait-vegetariano
+  path: .sldb_e2e_donpeppe/atoms/atom-trait-vegetariano.md
+  hash_c: 78bbffeef6c37d02df75aa97f9aadd1002231c840b16bb1e6a1e67179fcaee06
+  hash_d: 822471b9503d41096fd3a2c978cf336ae72ffa40e7058508fcd83854d812a7d4
+  semantic_tags:
+  - atom_type:trait
+  - domain:pizzeria
+  - source:e2e
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-trait-sin-gluten
+  path: .sldb_e2e_donpeppe/atoms/atom-trait-sin-gluten.md
+  hash_c: 4792087a2683de5cbfcefe866525a1129297649c424ab2cbac290bd198fc95f5
+  hash_d: 6bd527e2b73e580b62fad8c1132758b817606bfc598aa671fa6566d5abb97383
+  semantic_tags:
+  - atom_type:trait
+  - domain:pizzeria
+  - source:e2e
+  - type.knowledge.atom
+  - workspace.desk.atoms
