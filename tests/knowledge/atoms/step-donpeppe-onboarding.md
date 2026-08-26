@@ -2,6 +2,7 @@
 id: step-donpeppe-onboarding
 title: Onboarding — atención general
 atom_type: step
+kind: interaccion_simple
 tags:
 - conversation:steps.onboarding
 - system:donpeppe

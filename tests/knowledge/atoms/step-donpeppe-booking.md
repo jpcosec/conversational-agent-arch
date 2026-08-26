@@ -2,6 +2,7 @@
 id: step-donpeppe-booking
 title: Reserva de mesa
 atom_type: step
+kind: llamado_tool
 tags:
 - conversation:steps.booking
 - system:donpeppe

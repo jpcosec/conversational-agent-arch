@@ -19,3 +19,8 @@ INFO:     127.0.0.1:38530 - "POST /api/chat HTTP/1.1" 200 OK
 INFO:     127.0.0.1:39204 - "GET /api/atom/atom-donpeppe-carta HTTP/1.1" 200 OK
 INFO:     127.0.0.1:37342 - "GET /api/atom/atom-donpeppe-horarios HTTP/1.1" 200 OK
 INFO:     127.0.0.1:51018 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55802 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [253746]
