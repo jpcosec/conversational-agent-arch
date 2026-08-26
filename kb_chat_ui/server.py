@@ -5,9 +5,11 @@ pasa por: SLDBReader -> ContextCompiler (SLDB+KGDB) -> RouterStateMachine ->
 Conversador (Gemini real) -> Tool dispatcher (SQL real) -> Perfilador async.
 
 Endpoints:
-  POST /api/chat        -> corre un turno real, devuelve el turno enriquecido
-  GET  /api/atom/{id}   -> devuelve un atom del store SLDB
-  GET  /                -> sirve la UI (index.html)
+  POST /api/chat                       -> corre un turno real, devuelve el turno enriquecido
+  GET  /api/atom/{id}                  -> devuelve un atom del store SLDB
+  GET  /                               -> sirve la UI de chat (index.html)
+  GET  /conversation_flow_editor       -> sirve el editor de flujo conversacional
+  GET  /api/flow                       -> grafo de ConversationStep del store (JSON en vivo)
 
 Uso:
   uvicorn kb_chat_ui.server:app --reload --port 8000
@@ -30,10 +32,14 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
 
 from kb_agent.orchestrator import MODEL, Orchestrator
+
+EDITOR_DIR = PROJECT_ROOT / "conversation_flow_editor"
+# Store del que el editor lee los ConversationStep (deshardcodeable via env).
+FLOW_KB_ROOT = os.getenv("FLOW_KB_ROOT", "tests/knowledge_antonia")
 
 # ── configuracion ────────────────────────────────────────────
 # KB_ROOT puede venir de env (deshardcodeo). Default: KB tipada Don Peppe.
@@ -144,6 +150,21 @@ def get_atom(atom_id: str) -> dict:
 @app.get("/")
 def index() -> FileResponse:
     return FileResponse(str(BASE_DIR / "index.html"))
+
+
+@app.get("/conversation_flow_editor")
+@app.get("/conversation_flow_editor/")
+def flow_editor() -> FileResponse:
+    return FileResponse(str(EDITOR_DIR / "index.html"))
+
+
+@app.get("/api/flow")
+@app.get("/conversation_flow_editor/flow.json")
+def flow_graph() -> JSONResponse:
+    """Genera el grafo de ConversationStep del store en vivo."""
+    from conversation_flow_editor.export_flow import export
+
+    return JSONResponse(export(FLOW_KB_ROOT))
 
 
 @app.get("/api/health")

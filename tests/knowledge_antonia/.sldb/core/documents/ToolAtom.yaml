@@ -1,1 +1,11 @@
-documents: []
+documents:
+- name: tool-antonia-agendar-recordatorio
+  path: atoms/tool-antonia-agendar-recordatorio.md
+  hash_c: 3835cf3500f060448b9ce62434ee4529e9e10ca6bcb4a48df4462c4960da2c36
+  hash_d: eebef0b7d1f52af8d858e4435df9b20ea39482fbdefc3f8530d360d8a846c6c1
+  semantic_tags:
+  - conversation:steps.agendar_recordatorio
+  - self:tools
+  - system:laboratorio-chile
+  - type.knowledge.tool
+  - workspace.knowledge

@@ -9,14 +9,26 @@ tags:
   conversation:security:
   - boundary-antonia-manipulacion
   - rule-antonia-anti-alucinacion
+  conversation:steps.agendar_recordatorio:
+  - step-antonia-agendar-recordatorio
+  - tool-antonia-agendar-recordatorio
   conversation:steps.booking:
   - atom-antonia-aplicacion
   - atom-antonia-recompra
-  - step-antonia-booking
+  conversation:steps.despedida:
+  - step-antonia-despedida
+  conversation:steps.evento_adverso:
+  - step-antonia-evento-adverso
   conversation:steps.onboarding:
   - atom-antonia-bienvenida
   - atom-antonia-primeras-semanas
   - step-antonia-onboarding
+  conversation:steps.recompra:
+  - step-antonia-recompra
+  conversation:steps.registro_estado:
+  - step-antonia-registro-estado
+  conversation:steps.saludo:
+  - step-antonia-saludo
   conversation:strategy:
   - strategy-antonia
   domain:clinico:
@@ -37,6 +49,8 @@ tags:
   self:limites:
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
+  self:tools:
+  - tool-antonia-agendar-recordatorio
   self:whoami:
   - self-antonia
   system:laboratorio-chile:
@@ -50,10 +64,16 @@ tags:
   - rule-antonia-anti-alucinacion
   - rule-antonia-eventos-adversos
   - self-antonia
-  - step-antonia-booking
+  - step-antonia-agendar-recordatorio
+  - step-antonia-despedida
+  - step-antonia-evento-adverso
   - step-antonia-onboarding
+  - step-antonia-recompra
+  - step-antonia-registro-estado
+  - step-antonia-saludo
   - strategy-antonia
   - style-antonia
+  - tool-antonia-agendar-recordatorio
   type.knowledge.boundary:
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
@@ -70,12 +90,19 @@ tags:
   type.knowledge.self:
   - self-antonia
   type.knowledge.step:
-  - step-antonia-booking
+  - step-antonia-agendar-recordatorio
+  - step-antonia-despedida
+  - step-antonia-evento-adverso
   - step-antonia-onboarding
+  - step-antonia-recompra
+  - step-antonia-registro-estado
+  - step-antonia-saludo
   type.knowledge.strategy:
   - strategy-antonia
   type.knowledge.style:
   - style-antonia
+  type.knowledge.tool:
+  - tool-antonia-agendar-recordatorio
   workspace.knowledge:
   - atom-antonia-aplicacion
   - atom-antonia-bienvenida
@@ -87,10 +114,16 @@ tags:
   - rule-antonia-anti-alucinacion
   - rule-antonia-eventos-adversos
   - self-antonia
-  - step-antonia-booking
+  - step-antonia-agendar-recordatorio
+  - step-antonia-despedida
+  - step-antonia-evento-adverso
   - step-antonia-onboarding
+  - step-antonia-recompra
+  - step-antonia-registro-estado
+  - step-antonia-saludo
   - strategy-antonia
   - style-antonia
+  - tool-antonia-agendar-recordatorio
 documents:
   atom-antonia-bienvenida:
     model: DomainAtom
@@ -146,6 +179,23 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.rule
     - workspace.knowledge
+  tool-antonia-agendar-recordatorio:
+    model: ToolAtom
+    path: atoms/tool-antonia-agendar-recordatorio.md
+    tags:
+    - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+  step-antonia-saludo:
+    model: ConversationStep
+    path: atoms/step-antonia-saludo.md
+    tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
   step-antonia-onboarding:
     model: ConversationStep
     path: atoms/step-antonia-onboarding.md
@@ -154,11 +204,43 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
-  step-antonia-booking:
+  step-antonia-registro-estado:
     model: ConversationStep
-    path: atoms/step-antonia-booking.md
+    path: atoms/step-antonia-registro-estado.md
     tags:
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-evento-adverso:
+    model: ConversationStep
+    path: atoms/step-antonia-evento-adverso.md
+    tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-agendar-recordatorio:
+    model: ConversationStep
+    path: atoms/step-antonia-agendar-recordatorio.md
+    tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-recompra:
+    model: ConversationStep
+    path: atoms/step-antonia-recompra.md
+    tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-despedida:
+    model: ConversationStep
+    path: atoms/step-antonia-despedida.md
+    tags:
+    - conversation:steps.despedida
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
