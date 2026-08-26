@@ -3,15 +3,13 @@ id: atom-agente-conversador
 title: Agente Conversador
 five_wh_one_plus: what
 tags:
-- domain:self.architecture.backend
 - layer:runtime
-- system:kb-agent
-- topic:generation
-provenance: null
+- role:engine
+provenance: architecture-audit
 ---
 
 # Agente Conversador
 
 ## Answer
 
-Motor generativo (LlmAgent). Recibe el contexto validado desde el Ontologizador y redacta respuestas en lenguaje natural o emite llamadas a herramientas externas. Tiene estrictamente prohibido alucinar sin contexto.
+Motor generativo de lenguaje natural (`GeminiConversador`). Recibe el contexto validado (y el resultado de una tool si la hubo) y redacta la respuesta final usando el LLM externo. No alucina ni toma decisiones de flujo; obedece la identidad, estilo y límites provistos por el Ontologizador.

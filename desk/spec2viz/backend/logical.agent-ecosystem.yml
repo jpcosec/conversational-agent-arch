@@ -1,0 +1,193 @@
+id: logical-agent-ecosystem
+title: Backend · Lógico · Ecosistema de Motores (cómo funciona HOY)
+type: component
+version: "2.0"
+metadata:
+  author: antonIA
+  description: >-
+    Modelo lógico del runtime, más alto nivel que el código pero fiel al
+    cableado real (cada edge verificado contra el código). Correcciones clave
+    vs el diseño original: la policy decide_turn es PURA (no llama LLM ni
+    tools; el Orquestador ejecuta según su decisión); el Perfilador no llama
+    al gateway (el Orquestador publica al EventBus al cierre del turno); las
+    tools son handlers locales que escriben SQL (no hay APIs externas hoy);
+    el Reflector escribe atoms 'proposed' directo vía sldb (no pasa por
+    knowledge_base.operations). Incluye actores omitidos antes: KGDB,
+    scrubber PII, EventBus, Gemini como servicio externo, y los 3 canales
+    de entrada (chat UI, webhook Twilio, CLI).
+style:
+  kinds:
+    engine:
+      plantuml: {background: "#D8ECFF", border: "#4C78A8", font: "#16324F"}
+    background_agent:
+      plantuml: {background: "#E6E6FA", border: "#9370DB", font: "#4B0082"}
+    database:
+      plantuml: {background: "#E7F5E1", border: "#5A9E4B", font: "#1E3A17"}
+    api:
+      plantuml: {background: "#FCECC9", border: "#D4A73C", font: "#5E450B"}
+    boundary:
+      plantuml: {background: "#F5F5F5", border: "#CCCCCC", font: "#333333"}
+    port:
+      plantuml: {background: "#FDE8EF", border: "#D45C8A", font: "#5E1B34"}
+    external_system:
+      plantuml: {background: "#EFE6FA", border: "#8A63B8", font: "#3A1F5E"}
+data:
+  nodes:
+    layer_channels:
+      label: "Canales de entrada"
+      kind: boundary
+      contains:
+        - chat_api
+        - twilio_webhook
+        - cli_local
+    layer_hub:
+      label: "Orquestación"
+      kind: boundary
+      contains:
+        - orchestrator
+        - state_machine
+        - scrubber
+    layer_engines:
+      label: "Motores Cognitivos"
+      kind: boundary
+      contains:
+        - ontologizador
+        - policy_decide_turn
+        - conversador
+        - perfilador
+        - reflector
+    layer_ports:
+      label: "Puertos LLM (Protocol)"
+      kind: boundary
+      contains:
+        - port_conversador
+        - port_trait_mapper
+    layer_tools:
+      label: "Tools del negocio"
+      kind: boundary
+      contains:
+        - tool_registry
+        - tool_handlers
+    layer_async:
+      label: "Cierre de turno (async)"
+      kind: boundary
+      contains:
+        - event_bus
+    layer_config:
+      label: "Configuración"
+      kind: boundary
+      contains:
+        - project_config
+    layer_data:
+      label: "Capa de Persistencia"
+      kind: boundary
+      contains:
+        - sql_db
+        - sldb_kb
+        - kgdb_graph
+    layer_external:
+      label: "Servicios externos"
+      kind: boundary
+      contains:
+        - gemini
+
+    chat_api:
+      label: "Chat UI · POST /api/chat"
+      kind: api
+    twilio_webhook:
+      label: "WhatsApp/SMS · POST /webhooks/twilio"
+      kind: api
+    cli_local:
+      label: "CLI local (kb_agent.cli)"
+      kind: api
+    orchestrator:
+      label: "Orchestrator.handle_turn (hub: cablea todo, ejecuta la decisión)"
+      kind: api
+    state_machine:
+      label: "RouterStateMachine (6 estados; pausa en WAITING_TOOL)"
+      kind: api
+    scrubber:
+      label: "PII Scrubber (scrub antes de persistir y de perfilar)"
+      kind: boundary
+    ontologizador:
+      label: "Ontologizador (compila contexto: KB tipada + traits + paso de flujo)"
+      kind: engine
+    policy_decide_turn:
+      label: "decide_turn (policy PURA: tool_call | fallback | nl; no llama nada)"
+      kind: engine
+    conversador:
+      label: "Conversador (redacta NL desde el contexto compilado)"
+      kind: engine
+    perfilador:
+      label: "Perfilador (extrae traits del turno cerrado)"
+      kind: background_agent
+    reflector:
+      label: "Reflector (batch: patrones del historial → atoms 'proposed')"
+      kind: background_agent
+    port_conversador:
+      label: "Conversador (Protocol): draft_nl()"
+      kind: port
+    port_trait_mapper:
+      label: "TraitMapper (Protocol): extract_traits()"
+      kind: port
+    tool_registry:
+      label: "execute_tool (recibe handlers ya resueltos)"
+      kind: api
+    tool_handlers:
+      label: "Handlers locales (crear_reserva, agendar_recordatorio → SQL)"
+      kind: api
+    event_bus:
+      label: "InProcessEventBus (publish_turn_closed; scrubbea el turno)"
+      kind: boundary
+    project_config:
+      label: "project.config.yaml (kb_root, model, tools, marca)"
+      kind: boundary
+    sql_db:
+      label: "SQL (Users, UserTraits, SessionState, ChatHistory, reservas/recordatorios)"
+      kind: database
+    sldb_kb:
+      label: "SLDB (KB: 10 modelos tipados)"
+      kind: database
+    kgdb_graph:
+      label: "KGDB (grafo de flujo: ConversationStep, flows_to, grounding)"
+      kind: database
+    gemini:
+      label: "Google Gemini (generate_content)"
+      kind: external_system
+
+  edges:
+    # canales → hub
+    - {from: chat_api, to: orchestrator, label: "handle_turn"}
+    - {from: twilio_webhook, to: orchestrator, label: "handle_turn"}
+    - {from: cli_local, to: orchestrator, label: "handle_turn + /reflect"}
+    # config → hub (no al revés)
+    - {from: project_config, to: orchestrator, label: "kb_root, model, tool_handlers"}
+    # hub ↔ router
+    - {from: orchestrator, to: state_machine, label: "handle_user_message"}
+    - {from: state_machine, to: ontologizador, label: "compile_context (inyectado)"}
+    - {from: state_machine, to: policy_decide_turn, label: "draft (closure del orquestador)"}
+    # ontologizador → datos
+    - {from: ontologizador, to: sldb_kb, label: "atoms tipados"}
+    - {from: ontologizador, to: kgdb_graph, label: "flow_node, transiciones, grounding"}
+    - {from: ontologizador, to: sql_db, label: "UserTraits"}
+    # la policy DECIDE; el orquestador EJECUTA
+    - {from: policy_decide_turn, to: orchestrator, label: "kind: tool_call | fallback | nl"}
+    - {from: orchestrator, to: conversador, label: "draft_nl (si nl o post-tool)"}
+    - {from: orchestrator, to: tool_registry, label: "execute_tool (si tool_call)"}
+    - {from: tool_registry, to: tool_handlers, label: "handler(session, args)"}
+    - {from: tool_handlers, to: sql_db, label: "reservas / recordatorios"}
+    # conversador → LLM vía puerto
+    - {from: conversador, to: port_conversador}
+    - {from: port_conversador, to: gemini, label: "GeminiConversador"}
+    # persistencia con scrub
+    - {from: orchestrator, to: scrubber, label: "scrub(content)"}
+    - {from: scrubber, to: sql_db, label: "ChatHistory (pii_scrubbed)"}
+    # cierre de turno → perfilador vía event bus
+    - {from: orchestrator, to: event_bus, label: "publish_turn_closed"}
+    - {from: event_bus, to: perfilador, label: "TurnClosedEvent (texto scrubbeado)"}
+    - {from: perfilador, to: port_trait_mapper}
+    - {from: port_trait_mapper, to: gemini, label: "GeminiTraitMapper"}
+    - {from: perfilador, to: sql_db, label: "upsert UserTraits"}
+    # reflector batch
+    - {from: reflector, to: sql_db, label: "lee ChatHistory scrubbeada"}
+    - {from: reflector, to: sldb_kb, label: "escribe atoms 'proposed' (sldb docs create)"}

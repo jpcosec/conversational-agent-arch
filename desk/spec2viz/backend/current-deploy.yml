@@ -1,0 +1,41 @@
+id: current-deploy
+title: "Deploy · Modal App (current codebase)"
+type: component
+version: "1.0"
+metadata:
+  author: antonIA
+  description: >-
+    Superficie de despliegue del runtime: deploy/modal_app.py empaqueta el
+    código (kb_agent, frontends, knowledge_base) + la KB real y sirve el ASGI
+    app de frontends.chat.app en Modal. Refleja el codebase actual.
+data:
+  nodes:
+    ModalApp:
+      label: deploy.modal_app
+      kind: core
+      contains:
+        - ModalImage
+        - ModalServe
+    ModalImage:
+      label: "image (add_local_dir: kb_agent, frontends, knowledge_base, knowledge/)"
+      kind: core
+    ModalServe:
+      label: "serve() @asgi_app -> create_app()"
+      kind: core
+
+    ChatApp:
+      label: frontends.chat.app.create_app
+      kind: boundary
+    ReleaseGate:
+      label: "deploy/release.sh (offline suite -> deploy -> tag -> production)"
+      kind: boundary
+
+  edges:
+    - from: ModalServe
+      to: ChatApp
+      relation: imports
+      label: builds ASGI app
+    - from: ReleaseGate
+      to: ModalApp
+      relation: invokes
+      label: modal deploy

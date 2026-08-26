@@ -1,0 +1,80 @@
+id: matrix-ui-semantic-surface
+title: Frontend · Matriz · UI × Superficie Semántica (datos + config)
+type: component_view_matrix
+version: "0.1"
+metadata:
+  author: antonIA
+  description: >-
+    Cruza las 5 UIs (frontends/*) contra los valores semánticos que operan.
+    Dos vistas: (1) Datos KB editados/mostrados, agrupados por las 4 familias
+    reales del modelo (self/domain/conversation/user, de __family__ en
+    kb_agent/models/knowledge/*); (2) Config de la KB expuesta a las UIs por
+    /api/config (project_config.to_public_dict). Filas = UIs, columnas =
+    familia de dato o aspecto de config. Responde de un vistazo: qué superficie
+    toca qué conocimiento y de qué config depende. Barras derivadas de los
+    endpoints reales (frontends/chat/app.py) y del MODEL_MAP de /api/taxonomy.
+data:
+  views:
+    - id: data
+      label: Datos KB (familias)
+      stages:
+        - id: self
+          label: self
+        - id: domain
+          label: domain
+        - id: conversation
+          label: conversation
+        - id: user
+          label: user
+    - id: config
+      label: Config KB (/api/config)
+      stages:
+        - id: identity
+          label: identity
+        - id: kb_label
+          label: kb_label
+        - id: model
+          label: model
+        - id: greeting
+          label: greeting
+        - id: mode
+          label: mode
+
+  components:
+    - name: Frontends
+      kind: boundary
+      label: 5 UIs (frontends/*)
+      stages:
+        data: [self, domain, conversation, user]
+        config: [identity, kb_label, model, greeting, mode]
+      children:
+        - name: ChatUI
+          kind: ui
+          label: "chat (chat + inspector de átomos)"
+          stages:
+            data: [self, domain, conversation, user]
+            config: [identity, kb_label, model, greeting, mode]
+        - name: TaxonomyUI
+          kind: ui
+          label: "taxonomy (árbol familias×atoms, edita/comenta)"
+          stages:
+            data: [self, domain, conversation, user]
+            config: [identity, kb_label]
+        - name: FlowEditorUI
+          kind: ui
+          label: "flow_editor (grafo de ConversationStep)"
+          stages:
+            data: [conversation]
+            config: [identity, kb_label]
+        - name: ProfilingUI
+          kind: ui
+          label: "profiling (UserTraits × TraitAtom)"
+          stages:
+            data: [user]
+            config: [identity, kb_label]
+        - name: VizUI
+          kind: ui
+          label: "viz (grafo atoms+embeddings PCA)"
+          stages:
+            data: [self, domain, conversation, user]
+            config: [identity, kb_label]

@@ -1,36 +1,32 @@
 namespaces:
-  domain:
-    do_not_use_when: A more specific system, topic, layer, or pattern tag applies.
-    examples:
-    - domain:knowledge-management
-    - domain:task-execution
-    meaning: Problem domain or durable area of concern.
-    use_when: The atom belongs to a reusable problem domain.
+  # Capa de arquitectura (alineada con las 3 secciones del catálogo spec2viz + negocio/ops)
   layer:
-    do_not_use_when: The tag names only a broad topic or system.
+    meaning: "Capa arquitectónica, de negocio u operativa donde vive el concepto."
     examples:
-    - layer:document-model
-    - layer:runtime
-    - layer:cli
-    meaning: Architectural layer where the atom applies.
-    use_when: The atom is scoped to a layer of the system.
-  source:
-    do_not_use_when: The tag expresses the atom subject instead of where it originated.
+      - layer:runtime       # kb_agent/* (motor conversacional)
+      - layer:knowledge     # knowledge_base/*, modelos, taxonomy
+      - layer:frontend      # frontends/* (UIs estáticas)
+      - layer:business      # Reglas de producto, valor, glosario
+      - layer:ops           # Operaciones, despliegue, testing, gobernanza
+    use_when: "Aplica a todos los átomos para ubicarlos en el plano general del proyecto."
+
+  # Rol en el ciclo del runtime
+  role:
+    meaning: "Función del actor dentro de la arquitectura del runtime."
     examples:
-    - source:reflector
-    meaning: Provenance channel or producer that originated the atom draft.
-    use_when: The atom is machine- or workflow-generated and needs source attribution.
-  system:
-    do_not_use_when: The tag is only a general topic.
+      - role:engine         # Ontologizador, Conversador, Policy
+      - role:background     # Perfilador, Reflector
+      - role:boundary       # Orquestador, EventBus, Config, Scrubber
+      - role:data           # SQL, SLDB, KGDB
+    use_when: "El átomo describe un componente vivo del diagrama lógico."
+
+  # Familia semántica (alineada con los 10 modelos de la KB + conceptos transversales)
+  family:
+    meaning: "Familia de conocimiento tipado sobre la que opera el átomo."
     examples:
-    - system:deskops
-    - system:sldb
-    meaning: System, project, or tool the atom belongs to.
-    use_when: The atom is about a specific system.
-  topic:
-    do_not_use_when: The atom describes a reusable implementation shape.
-    examples:
-    - topic:atoms
-    - topic:composition
-    meaning: Subject area discussed by the atom.
-    use_when: The atom is about a conceptual topic.
+      - family:self         # identidad, estilo, límites, tools
+      - family:domain       # reglas de negocio, hechos
+      - family:conversation # flujo, estrategia, fallback
+      - family:user         # perfiles, traits
+      - family:concepts     # conceptos abstractos, definiciones de negocio
+    use_when: "El átomo documenta un modelo de datos o un concepto transversal."
