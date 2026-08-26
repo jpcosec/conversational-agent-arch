@@ -101,12 +101,3 @@ vistas:
     src: build/state.chat-ui.mmd
     specs: [frontend/state.chat-ui.yml]
     tags: [layer:frontend, view:state]
-  - id: activity-atom-viewer
-    category: Frontend
-    nav: Actividad visor átomos
-    title: Frontend · Actividad · Visor de átomos
-    desc: carga atoms.json, filtra y abre átomo como markdown.
-    type: activity
-    src: build/activity.atom-viewer.mmd
-    specs: [frontend/activity.atom-viewer.yml]
-    tags: [layer:frontend, view:activity]

@@ -1,12 +1,14 @@
 id: component-frontend
 title: KB Agent Runtime · Frontend · Componentes
 type: component
-version: '1.0'
+version: '1.1'
 metadata:
   author: antonIA
   description: >-
-    Frontend = HTML/JS estático (sin build). Dos UIs: el chat con inspector de
-    mesa (kb_chat_ui/index.html) y el visor de átomos (kb_agent_ui/index.html).
+    Frontend = HTML/JS estático (sin build) bajo frontends/. Tres UIs servidas
+    por el mismo FastAPI (frontends/chat/server.py): chat con inspector
+    (frontends/chat/index.html), editor de flujo (frontends/flow_editor) y
+    visor de perfilado (frontends/profiling).
 style:
   kinds:
     core:
@@ -22,7 +24,7 @@ style:
 data:
   nodes:
     chat_ui:
-      label: kb_chat_ui/index.html
+      label: frontends/chat/index.html
       kind: core
       contains:
         - chat_pane
@@ -41,23 +43,28 @@ data:
     marked_lib:
       label: marked.min.js (CDN, markdown)
       kind: boundary
-    atom_viewer:
-      label: kb_agent_ui/index.html
+    flow_editor_ui:
+      label: frontends/flow_editor/index.html
       kind: core
       contains:
-        - atom_list
-        - atom_filter
-    atom_list:
-      label: Lista de átomos (renderAtoms)
+        - flow_graph_view
+        - react_flow_lib
+    flow_graph_view:
+      label: Grafo de ConversationStep (nodos + allowed_transitions)
       kind: core
-    atom_filter:
-      label: Filtro (applyFilter)
+    react_flow_lib:
+      label: React Flow (CDN, sin build)
+      kind: boundary
+    profiling_ui:
+      label: frontends/profiling/index.html
+      kind: core
+      contains:
+        - trait_fichas
+    trait_fichas:
+      label: Fichas de rasgo (UserTraits SQL ↔ TraitAtom SLDB)
       kind: core
     chat_api:
-      label: FastAPI /api/*
-      kind: boundary
-    atoms_json:
-      label: atoms.json
+      label: FastAPI (frontends/chat/server.py) /api/*
       kind: boundary
   edges:
     - from: chat_pane
@@ -69,9 +76,12 @@ data:
     - from: chat_ui
       to: marked_lib
       relation: renderiza markdown
-    - from: atom_list
-      to: atoms_json
-      relation: fetch ./atoms.json
-    - from: atom_filter
-      to: atom_list
-      relation: filtra
+    - from: flow_graph_view
+      to: chat_api
+      relation: fetch /api/flow
+    - from: flow_editor_ui
+      to: react_flow_lib
+      relation: renderiza grafo
+    - from: trait_fichas
+      to: chat_api
+      relation: fetch /api/profiles

@@ -253,9 +253,6 @@ data:
     module_google_adk_agents:
       label: agents
       kind: external
-    module_kb_tools:
-      label: tools
-      kind: external
     module_pathlib:
       label: pathlib
       kind: external
@@ -390,7 +387,7 @@ data:
     to: module_google_adk_agents
     relation: imports
   - from: module_agent
-    to: module_kb_tools
+    to: module_tools
     relation: imports
   - from: module_cli
     to: module___future__

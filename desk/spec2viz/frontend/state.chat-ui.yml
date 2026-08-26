@@ -1,11 +1,11 @@
 id: state-chat-ui
-title: Frontend · Estado · UI del chat (kb_chat_ui)
+title: Frontend · Estado · UI del chat (frontends/chat)
 type: state
-version: '1.0'
+version: '1.1'
 metadata:
   author: antonIA
   description: >-
-    Estados de la interacción en kb_chat_ui/index.html: envío, espera de
+    Estados de la interacción en frontends/chat/index.html: envío, espera de
     respuesta, selección de turno para inspeccionar su mesa y modales.
 data:
   entity: ChatUI
