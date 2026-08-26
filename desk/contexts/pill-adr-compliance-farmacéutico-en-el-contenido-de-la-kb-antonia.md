@@ -38,7 +38,7 @@ knowledge/atoms/ — en particular los átomos nuevos de clasificación, MedInfo
 
 _Describe the correct way to apply this guidance._
 
-Antes de dar por bueno un átomo: leerlo contra los 6 puntos del what. Verificar que las derivaciones (FV, MedInfo, médico tratante) coinciden con el flujo del spec psp-flujo-atencion-chatbot.yml. Mantener el tono de style-antonia: cálido, cercano, claro, sin tecnicismos innecesarios.
+Antes de dar por bueno un átomo, leerlo contra los 6 puntos del what. Verificar que las derivaciones (FV, MedInfo, médico tratante) coinciden con el flujo del spec psp-flujo-atencion-chatbot.yml. Mantener el tono de style-antonia — cálido, cercano, claro, sin tecnicismos innecesarios. CORPUS — el folleto ISP y el material Medical NO están disponibles en ningún repo local (verificado). Fallback obligatorio mientras no exista el corpus — para átomos que requieren contenido clínico aprobado (atom-antonia-molecula), redactar solo el marco no-clínico (qué es el programa, que la molécula es semaglutida como dato del spec PSP, derivación al médico para todo lo demás) y marcar el átomo con provenance pendiente y un TODO explícito en el answer indicando que el contenido clínico se completará cuando Medical entregue el corpus. NUNCA rellenar con conocimiento general del LLM.
 
 ## How Not
 

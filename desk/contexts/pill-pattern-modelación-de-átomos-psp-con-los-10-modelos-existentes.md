@@ -38,7 +38,7 @@ knowledge/atoms/*.md; taxonomía en knowledge_base/taxonomy/modelation-guide.md 
 
 _Describe the correct way to apply this guidance._
 
-Cada átomo lleva: id con prefijo del tipo (rule-antonia-*, step-antonia-*, atom-antonia-*), title claro, atom_type del modelo, tags con eje correcto, summary de una frase, y los campos del modelo en secciones Markdown (## Answer, ## Conditions, ## Instructions, etc.). Steps además llevan kind (interaccion_simple / obtencion_datos / llamado_tool / handout) y domain_ref: psp-selfix.
+Cada átomo lleva id con prefijo del tipo (rule-antonia-*, step-antonia-*, gate-antonia-*, atom-antonia-*), title claro, atom_type del modelo, tags con eje correcto, summary de una frase — OBLIGATORIO en todos los modelos porque IndexProxies.summary es campo requerido — y los campos del modelo en secciones Markdown (Answer, Conditions, Instructions, etc.). RuleAtom y DomainAtom exigen además five_wh_one_plus (uno de what/why/how/how_not/when/where/for_whom). Steps además llevan kind (interaccion_simple / obtencion_datos / llamado_tool / handout) y domain_ref psp-selfix. Para GateCriterion calcar la estructura de boundary.py — herencia de IndexProxies, template con marcadores rev/optrev, AtomTag. Registro literal del modelo nuevo — `sldb models add kb_agent.models.knowledge:GateCriterion --store knowledge/.sldb --pythonpath .`; luego 'sldb stores update --store knowledge/.sldb --pythonpath .' para reindexar. Los embedding de átomos existentes están precalculados offline; los nuevos se dejan con embedding null (frontmatter listo para el pipeline).
 
 ## How Not
 
