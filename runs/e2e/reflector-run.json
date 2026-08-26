@@ -1,18 +1,18 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-101/test_run_reflector_materialize0/reflector.sqlite",
-  "copied_store": "/tmp/pytest-of-jp/pytest-101/test_run_reflector_materialize0/knowledge",
+  "db_file": "/tmp/pytest-of-jp/pytest-104/test_run_reflector_materialize0/reflector.sqlite",
+  "copied_store": "/tmp/pytest-of-jp/pytest-104/test_run_reflector_materialize0/knowledge",
   "first_generated": [
     {
       "atom_id": "atom-domain-hacen-delivery",
       "atom_type": "domain",
-      "path": "/tmp/pytest-of-jp/pytest-101/test_run_reflector_materialize0/knowledge/atoms/atom-domain-hacen-delivery.md",
+      "path": "/tmp/pytest-of-jp/pytest-104/test_run_reflector_materialize0/knowledge/atoms/atom-domain-hacen-delivery.md",
       "normalized_text": "hacen delivery",
       "count": 5
     }
   ],
   "second_generated": [],
-  "generated_atom_path": "/tmp/pytest-of-jp/pytest-101/test_run_reflector_materialize0/knowledge/atoms/atom-domain-hacen-delivery.md",
+  "generated_atom_path": "/tmp/pytest-of-jp/pytest-104/test_run_reflector_materialize0/knowledge/atoms/atom-domain-hacen-delivery.md",
   "new_files": [
-    "/tmp/pytest-of-jp/pytest-101/test_run_reflector_materialize0/knowledge/atoms/atom-domain-hacen-delivery.md"
+    "/tmp/pytest-of-jp/pytest-104/test_run_reflector_materialize0/knowledge/atoms/atom-domain-hacen-delivery.md"
   ]
 }

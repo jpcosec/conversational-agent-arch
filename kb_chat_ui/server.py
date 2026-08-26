@@ -35,19 +35,22 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
 
-from kb_agent.orchestrator import MODEL, Orchestrator
+from kb_agent.orchestrator import Orchestrator
+from kb_agent.project_config import load_project_config
 
 EDITOR_DIR = PROJECT_ROOT / "conversation_flow_editor"
 PROFILING_DIR = PROJECT_ROOT / "profiling_viewer"
-# Store del que el editor lee los ConversationStep (deshardcodeable via env).
-FLOW_KB_ROOT = os.getenv("FLOW_KB_ROOT", "tests/knowledge_antonia")
-# DB SQL con los perfiles de usuario (UserTraits). Default: seed de demo.
-PROFILING_DB = os.getenv("PROFILING_DB", str(PROJECT_ROOT / "runs" / "profiling-demo.sqlite"))
+
+# Config del proyecto/negocio activo. Fuente unica: project.config.yaml
+# (+ overrides por entorno). Cambiar de negocio = editar ese archivo.
+CFG = load_project_config()
+FLOW_KB_ROOT = str(CFG.flow_kb_root)
+PROFILING_DB = str(CFG.profiling_db)
+MODEL = CFG.model
 
 # ── configuracion ────────────────────────────────────────────
-# KB_ROOT puede venir de env (deshardcodeo). Default: KB tipada Don Peppe.
-KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / "tests" / "knowledge")))
-DB_PATH = PROJECT_ROOT / "runs" / "ui-chat.sqlite"
+KB_ROOT = CFG.kb_root
+DB_PATH = CFG.chat_db
 
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
@@ -148,6 +151,12 @@ def get_atom(atom_id: str) -> dict:
         "five_wh_one_plus": doc.get("five_wh_one_plus"),
         "path": doc.get("path"),
     }
+
+
+@app.get("/api/config")
+def config() -> JSONResponse:
+    """Config publica del negocio activo (marca, greeting, modelo) para las UIs."""
+    return JSONResponse(CFG.to_public_dict())
 
 
 @app.get("/")

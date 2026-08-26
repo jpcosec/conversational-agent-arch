@@ -67,7 +67,7 @@
 <body>
   <div class="top">
     <div>
-      <div class="brand"><em>Perfilado</em> · Antonia</div>
+      <div class="brand"><em>Perfilado</em> · <span id="bizName">…</span></div>
       <div class="brand-sub">UserTraits (SQL) ↔ TraitAtom (SLDB)</div>
     </div>
     <div class="userbar" id="userbar"></div>
@@ -88,6 +88,10 @@ const ICON = { behavior:'🧠', preference:'⭐', dietary:'🥗', demographic:'�
 let DATA = null, current = 0;
 
 async function load(){
+  try{
+    const cfg = await fetch('/api/config').then(r=>r.json());
+    if(cfg.name){ document.getElementById('bizName').textContent = cfg.name; document.title = 'Perfilado · ' + cfg.name; }
+  }catch(e){ document.getElementById('bizName').textContent = ''; }
   const r = await fetch('/api/profiles');
   DATA = await r.json();
   renderUserbar();

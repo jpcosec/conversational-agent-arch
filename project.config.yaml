@@ -1,0 +1,31 @@
+# Configuración del proyecto/negocio activo del runtime.
+#
+# Doctrina: una KB = un negocio. Este archivo define QUÉ negocio corre el
+# runtime y sus rutas/marca, para no hardcodear nombres ni paths en el código
+# ni en las UIs. Cambiar de negocio = cambiar este archivo (o la env PROJECT_CONFIG).
+#
+# Cada valor admite override por variable de entorno (ver kb_agent/project_config.py):
+#   KB_ROOT, FLOW_KB_ROOT, PROFILING_DB, CHAT_DB, GEMINI_MODEL
+
+project:
+  # Identidad del negocio
+  name: "Don Peppe"                 # nombre visible en las UIs
+  slug: donpeppe                    # identificador corto (sin espacios)
+
+  # Rutas de datos (una KB = un negocio: kb_root y flow_kb_root deben coincidir)
+  kb_root: tests/knowledge          # store SLDB del negocio (atoms tipados)
+  flow_kb_root: tests/knowledge     # store que lee el editor de flujo (mismo negocio)
+  chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
+  profiling_db: runs/ui-chat.sqlite # SQLite que lee el visualizador de perfiles
+
+  # Modelo LLM
+  model: gemini-2.5-flash
+
+  # Presentación (UIs)
+  ui:
+    runtime_title: "Auditable Agent Runtime"
+    kb_label: "Don Peppe · KB"
+    greeting: >-
+      Hola. Soy el asistente de **Don Peppe**. Pregúntame por la carta,
+      horarios o pide una reserva. Cada respuesta queda ligada a su contexto
+      atómico real — selecciónala para auditar el turno.

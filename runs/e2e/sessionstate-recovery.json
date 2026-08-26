@@ -1,5 +1,5 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-101/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-104/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
   "user_id": 1,
   "before_restart": {
     "active_domain": "pizzeria",
@@ -15,7 +15,7 @@
       "scenario_effective": "pizzeria",
       "scenario_source": "session_state",
       "kind": "nl",
-      "reply": "¡Hola! Qué buena pregunta. Si eres vegetariano, para hoy te recomiendo con gusto nuestra clásica **Margherita** o la cremosa **Cuatro Quesos**. Ambas son opciones deliciosas que te van a encantar."
+      "reply": "¡Hola! Viendo que eres vegetariano, para hoy te recomiendo dos clásicos deliciosos: la Margherita o nuestra cremosa Cuatro Quesos. ¡Ambas son opciones fantásticas!"
     }
   }
 }

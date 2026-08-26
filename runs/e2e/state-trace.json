@@ -1,8 +1,8 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-101/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-104/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
   "nl_turn": {
     "kind": "nl",
-    "reply": "¡Hola! ¡Qué buena pregunta! En Don Peppe tenemos dos opciones vegetarianas clásicas y deliciosas que te van a encantar:\n\n*   **Margherita:** Con la combinación perfecta de tomate, mozzarella y albahaca fresca.\n*   **Cuatro Quesos:** Una mezcla exquisita para los amantes del queso.\n\nAmbas son muy ricas, ¡depende de lo que más te apetezca hoy!",
+    "reply": "¡Hola! Para opciones vegetarianas, te recomiendo nuestra clásica Margherita, simple y deliciosa, o la Cuatro Quesos si te encanta el sabor de varios quesos. ¡Ambas son exquisitas!",
     "state_trace": [
       "idle",
       "evaluating_context",
@@ -12,7 +12,7 @@
   },
   "tool_turn": {
     "kind": "tool_call",
-    "reply": "¡Excelente! Tu reserva a nombre de Rojas para 4 personas el viernes a las 20:00 hrs está confirmada.\n\nEl ID de tu reserva es 1. ¡Te esperamos en Don Peppe para disfrutar unas ricas pizzas!",
+    "reply": "¡Listo! Tu reserva para el viernes a las 20:00, a nombre de Rojas y para 4 personas, está confirmada.\n\n¡Qué rico que nos visites! Te esperamos en Don Peppe.",
     "system_turn": {
       "tool": "crear_reserva",
       "status": "ok",

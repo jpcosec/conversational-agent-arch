@@ -16,6 +16,17 @@ with sync_playwright() as p:
     page.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
     page.on("pageerror", lambda e: errors.append(str(e)))
 
+    # ── 0. Project config endpoint ─────────────────────────
+    cresp = page.request.get(f"{BASE}/api/config")
+    check("config: /api/config 200", cresp.status == 200, f"status={cresp.status}")
+    try:
+        cj = cresp.json()
+        check("config: exposes name+greeting+model",
+              all(k in cj for k in ["name", "greeting", "model", "kb_label"]),
+              cj.get("name", ""))
+    except Exception as e:
+        check("config: json", False, str(e)[:60])
+
     # ── 1. Chat dashboard ──────────────────────────────────
     page.goto(BASE, wait_until="networkidle")
     check("chat: title present", "Auditable Agent Runtime" in page.content()

@@ -43,7 +43,7 @@ tailwind.config = {
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-background/80 backdrop-blur-xl border-b border-white/10">
   <div class="flex items-center gap-2">
     <span class="msym text-primary text-2xl">hub</span>
-    <h1 class="text-2xl font-bold text-on-surface tracking-tight">Auditable Agent Runtime</h1>
+    <h1 id="runtimeTitle" class="text-2xl font-bold text-on-surface tracking-tight">Auditable Agent Runtime</h1>
   </div>
   <div class="flex items-center gap-4">
     <span id="kbLabel" class="text-on-surface-variant font-mono text-xs">Don Peppe · KB</span>
@@ -82,7 +82,7 @@ tailwind.config = {
     <!-- Left: Chat Timeline -->
     <section class="flex-1 border-r border-white/5 flex flex-col overflow-hidden bg-surface">
       <header class="px-6 pt-6 pb-4 flex justify-between items-center border-b border-white/10">
-        <h2 class="text-2xl text-on-surface flex items-center gap-2"><span class="msym text-primary">forum</span>Session: Don Peppe</h2>
+        <h2 class="text-2xl text-on-surface flex items-center gap-2"><span class="msym text-primary">forum</span><span id="sessionTitle">Session: Don Peppe</span></h2>
         <span id="sessionBadge" class="font-mono text-xs text-on-surface-variant px-2 py-1 bg-surface-container-high rounded border border-outline-variant">ID: —</span>
       </header>
       <div id="messages" class="flex-1 overflow-y-auto custom-scrollbar px-6 py-6 flex flex-col gap-6 relative"></div>
@@ -129,6 +129,8 @@ const inspectorEl = document.getElementById('inspector');
 const sessionBadge = document.getElementById('sessionBadge');
 const healthIcon = document.getElementById('healthIcon');
 const kbLabel = document.getElementById('kbLabel');
+const runtimeTitle = document.getElementById('runtimeTitle');
+const sessionTitle = document.getElementById('sessionTitle');
 const modalBackdrop = document.getElementById('modalBackdrop');
 const modalTitle = document.getElementById('modalTitle');
 const modalBody = document.getElementById('modalBody');
@@ -375,22 +377,30 @@ document.addEventListener('click', e=>{
   if(ref){ openAtomModal(ref.getAttribute('data-atom')); return; }
 });
 
-// health + greeting
+// config del negocio + health + greeting (todo desde el server, sin hardcode)
 (async ()=>{
+  let cfg = {};
+  try{
+    cfg = await fetch('/api/config').then(r=>r.json());
+  }catch(e){ /* usa defaults del markup */ }
   try{
     const h = await fetch('/api/health').then(r=>r.json());
     health = h;
     healthIcon.textContent = 'cloud_done';
     healthIcon.className = 'msym text-emerald-500 text-xl';
-    kbLabel.textContent = (h.kb_root||'').split('/').pop() + ' · ' + (h.model||'');
   }catch(e){
     healthIcon.textContent = 'cloud_off';
     healthIcon.className = 'msym text-error text-xl';
   }
+  // marca del negocio desde config
+  const bizName = cfg.name || 'Agente';
+  if(cfg.runtime_title){ runtimeTitle.textContent = cfg.runtime_title; document.title = cfg.runtime_title + ' · ' + bizName; }
+  kbLabel.textContent = cfg.kb_label || ((health.kb_root||'').split('/').pop() + ' · ' + (health.model||''));
+  sessionTitle.textContent = 'Session: ' + bizName;
   if(sessionId) sessionBadge.textContent = 'ID: ' + sessionId;
   turns.push({
     turn_id:'turn-000', user_message:'',
-    assistant_message:'Hola. Soy el asistente de **Don Peppe**. Pregúntame por la carta, horarios o pide una reserva. Cada respuesta queda ligada a su contexto atómico real — selecciónala para auditar el turno.',
+    assistant_message: cfg.greeting || ('Hola. Soy el asistente de **'+bizName+'**. ¿En qué te puedo ayudar?'),
     kind:'nl', context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]}
   });
   renderTurns();
