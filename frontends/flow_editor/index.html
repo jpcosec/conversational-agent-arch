@@ -18,20 +18,23 @@
 }
 </script>
 <link rel="stylesheet" href="https://esm.sh/@xyflow/react@12.11.5/dist/style.css">
+<link rel="stylesheet" href="/static/theme.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body,#root{height:100%;width:100%}
+  html,body{height:100%;width:100%}
   body{
     font-family:'Inter',sans-serif;
     background:#0a0a0f;
     color:#f5f0e8;
     overflow:hidden;
+    display:flex;
+    flex-direction:column;
   }
 
   /* ── Layout ── */
-  .app{display:flex;height:100vh;width:100vw}
+  .app{display:flex;flex:1;min-height:0;width:100%}
   .sidebar{
     width:280px;min-width:280px;
     background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));
@@ -212,7 +215,30 @@
 </style>
 </head>
 <body>
+  <header class="app-topbar">
+    <span class="app-topbar-brand" id="appBrand">Agente</span>
+    <nav class="app-nav" id="appNav">
+      <a href="/">Chat</a>
+      <a href="/conversation_flow_editor">Flow Editor</a>
+      <a href="/taxonomy_explorer">Taxonomía</a>
+      <a href="/viz">Embeddings</a>
+      <a href="/profiling_viewer">Perfilado</a>
+    </nav>
+  </header>
 <div id="root"></div>
+<script>
+  (function () {
+    var path = location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('#appNav a').forEach(function (a) {
+      var href = a.getAttribute('href').replace(/\/$/, '') || '/';
+      if (href === path) a.classList.add('active');
+    });
+    fetch('/api/config').then(function (r) { return r.json(); }).then(function (cfg) {
+      var b = document.getElementById('appBrand');
+      if (b) b.textContent = cfg.runtime_title || cfg.name || 'Agente';
+    }).catch(function () {});
+  })();
+</script>
 
 <script type="module">
 import React, { useState, useCallback, useMemo, useRef } from 'react';
@@ -250,12 +276,15 @@ function layoutGraph(nodes, edges) {
   });
 }
 
-/* ── Step KINDS: comportamiento del paso (fijo). El nombre es libre. ── */
+/* ── Step KINDS: comportamiento del paso (fijo). El nombre es libre. ──
+   Colores reusados de la paleta de familias (self/domain/conversation/user)
+   que ya usan taxonomy/viz, para que un mismo color signifique lo mismo
+   en todo el runtime. */
 const STEP_KINDS = {
-  interaccion_simple: { label: 'Interacción simple', dot: '#42a5f5', border: 'rgba(66,165,245,.5)', bg: 'rgba(66,165,245,.07)', icon: '💬' },
-  obtencion_datos:    { label: 'Obtención de datos', dot: '#66bb6a', border: 'rgba(102,187,106,.5)', bg: 'rgba(102,187,106,.07)', icon: '📝' },
-  handout:            { label: 'Handout',            dot: '#ffa726', border: 'rgba(255,167,38,.5)', bg: 'rgba(255,167,38,.07)', icon: '🤝' },
-  llamado_tool:       { label: 'Llamado a tool',     dot: '#ef5350', border: 'rgba(239,83,80,.5)', bg: 'rgba(239,83,80,.07)', icon: '⚙️' },
+  interaccion_simple: { label: 'Interacción simple', dot: '#e6a85c', border: 'rgba(230,168,92,.5)', bg: 'rgba(230,168,92,.07)', icon: '💬' },   // conversation
+  obtencion_datos:    { label: 'Obtención de datos', dot: '#c97db9', border: 'rgba(201,125,185,.5)', bg: 'rgba(201,125,185,.07)', icon: '📝' },   // user
+  handout:            { label: 'Handout',            dot: '#7fb3d5', border: 'rgba(127,179,213,.5)', bg: 'rgba(127,179,213,.07)', icon: '🤝' },   // domain
+  llamado_tool:       { label: 'Llamado a tool',     dot: '#7cba7c', border: 'rgba(124,186,124,.5)', bg: 'rgba(124,186,124,.07)', icon: '⚙️' },   // self
 };
 
 /* qué campos muestra el inspector según el kind */
@@ -278,7 +307,7 @@ function StepNode({ data, selected }) {
       border: `2px solid ${selected ? c.border : 'rgba(212,165,116,.12)'}`,
       borderLeft: `4px solid ${c.border}`,
       background: c.bg,
-      borderRadius: 10,
+      borderRadius: 12,
       padding: '10px 14px',
       minWidth: 190,
       cursor: 'pointer',

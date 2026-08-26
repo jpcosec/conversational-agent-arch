@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Perfilado</title>
+<link rel="stylesheet" href="/static/theme.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
@@ -18,7 +19,7 @@
   .brand{font-size:18px;font-weight:600}
   .brand em{color:var(--accent);font-style:italic}
   .brand-sub{font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.05em}
-  .userbar{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .userbar{display:flex;gap:8px;align-items:center}
   .user-chip{font-family:var(--mono);font-size:11px;padding:6px 12px;border-radius:8px;
     border:1px solid var(--border2);background:var(--panel2);color:var(--muted);cursor:pointer;
     transition:all .15s}
@@ -70,6 +71,13 @@
       <div class="brand"><em>Perfilado</em> · <span id="bizName">…</span></div>
       <div class="brand-sub">UserTraits (SQL) ↔ TraitAtom (SLDB)</div>
     </div>
+    <nav class="app-nav" id="appNav">
+      <a href="/">Chat</a>
+      <a href="/conversation_flow_editor">Flow Editor</a>
+      <a href="/taxonomy_explorer">Taxonomía</a>
+      <a href="/viz">Embeddings</a>
+      <a href="/profiling_viewer">Perfilado</a>
+    </nav>
     <div class="userbar" id="userbar"></div>
   </div>
   <div class="layout">
@@ -87,7 +95,16 @@
 const ICON = { behavior:'🧠', preference:'⭐', dietary:'🥗', demographic:'👤', default:'🏷️' };
 let DATA = null, current = 0;
 
+function markActiveNav(){
+  const path = location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('#appNav a').forEach(a=>{
+    const href = a.getAttribute('href').replace(/\/$/, '') || '/';
+    if(href === path) a.classList.add('active');
+  });
+}
+
 async function load(){
+  markActiveNav();
   try{
     const cfg = await fetch('/api/config').then(r=>r.json());
     if(cfg.name){ document.getElementById('bizName').textContent = cfg.name; document.title = 'Perfilado · ' + cfg.name; }
@@ -114,6 +131,11 @@ function select(i){
   current = i;
   renderUserbar();
   const u = DATA.users[i];
+  if(!u){
+    document.getElementById('json').innerHTML = '<span class="j-punct">// sin usuarios perfilados aun</span>';
+    document.getElementById('fichas').innerHTML = '<div class="empty">Sin usuarios perfilados todavia.</div>';
+    return;
+  }
   renderJson(u);
   renderFichas(u);
 }

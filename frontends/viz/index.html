@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KB Atoms & Embeddings</title>
   <link rel="stylesheet" href="https://esm.sh/reactflow@11.11.4/dist/style.css" />
+  <link rel="stylesheet" href="/static/theme.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body, #root { height: 100%; width: 100%; }
-    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #f5f0e8; overflow: hidden; }
+    html, body { height: 100%; width: 100%; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #f5f0e8; overflow: hidden; display: flex; flex-direction: column; }
+    #root { flex: 1; min-height: 0; width: 100%; position: relative; }
     .react-flow__attribution { display: none; }
 
     .toolbar {
@@ -50,7 +52,30 @@
   </style>
 </head>
 <body>
+  <header class="app-topbar">
+    <span class="app-topbar-brand" id="appBrand">Agente</span>
+    <nav class="app-nav" id="appNav">
+      <a href="/">Chat</a>
+      <a href="/conversation_flow_editor">Flow Editor</a>
+      <a href="/taxonomy_explorer">Taxonomía</a>
+      <a href="/viz">Embeddings</a>
+      <a href="/profiling_viewer">Perfilado</a>
+    </nav>
+  </header>
   <div id="root"></div>
+  <script>
+    (function () {
+      var path = location.pathname.replace(/\/$/, '') || '/';
+      document.querySelectorAll('#appNav a').forEach(function (a) {
+        var href = a.getAttribute('href').replace(/\/$/, '') || '/';
+        if (href === path) a.classList.add('active');
+      });
+      fetch('/api/config').then(function (r) { return r.json(); }).then(function (cfg) {
+        var b = document.getElementById('appBrand');
+        if (b) b.textContent = cfg.runtime_title || cfg.name || 'Agente';
+      }).catch(function () {});
+    })();
+  </script>
 
   <script type="importmap">
   {

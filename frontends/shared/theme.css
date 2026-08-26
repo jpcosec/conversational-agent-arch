@@ -1,0 +1,171 @@
+/*
+ * Shared design tokens for the five frontends (chat, flow editor, taxonomy,
+ * viz/embeddings, profiling). Reference look = frontends/viz + frontends/taxonomy:
+ * dark navy/near-black background, cream text, warm gold accent, four family
+ * colors (self/domain/conversation/user), Inter + JetBrains Mono.
+ *
+ * Pages that already define local CSS with the same literal hex values keep
+ * their own <style> block declared AFTER this stylesheet's <link>, so local
+ * rules win the cascade on ties and nothing regresses. New shared pieces
+ * (top nav, badges, generic panel) are additive.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* surfaces */
+  --bg: #0a0a0f;
+  --panel: #0d1526;
+  --panel-2: #111a2e;
+  --panel-3: #16223a;
+  --panel-4: #1c2b45;
+
+  /* borders */
+  --border: rgba(245, 240, 232, .08);
+  --border-strong: rgba(245, 240, 232, .14);
+  --border-accent: rgba(212, 165, 116, .18);
+  --border-solid: #22304b;
+
+  /* text */
+  --text: #f5f0e8;
+  --muted: rgba(245, 240, 232, .45);
+  --muted-2: rgba(245, 240, 232, .55);
+
+  /* accent + semantic */
+  --accent: #d4a574;
+  --accent-hover: #e6a85c;
+  --danger: #e06c5a;
+
+  /* the four knowledge families (self / domain / conversation / user) */
+  --fam-self: #7cba7c;
+  --fam-domain: #7fb3d5;
+  --fam-conversation: #e6a85c;
+  --fam-user: #c97db9;
+  --fam-none: #9aa7bd;
+
+  /* type */
+  --sans: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  /* radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --app-topbar-h: 44px;
+}
+
+.mono { font-family: var(--mono); }
+
+/* ── shared top navigation ───────────────────────────────────────────── */
+.app-topbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: var(--app-topbar-h);
+  min-height: var(--app-topbar-h);
+  padding: 0 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border-strong);
+  font-family: var(--sans);
+  color: var(--text);
+  box-sizing: border-box;
+}
+.app-topbar-brand {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-topbar-brand em { color: var(--accent); font-style: italic; }
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+.app-nav a {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted-2);
+  padding: 6px 11px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: .15s;
+  white-space: nowrap;
+}
+.app-nav a:hover { color: var(--text); background: rgba(245, 240, 232, .06); }
+.app-nav a.active {
+  color: var(--accent);
+  background: rgba(212, 165, 116, .12);
+  border-color: rgba(212, 165, 116, .35);
+}
+
+/* ── generic panel / card surface ────────────────────────────────────── */
+.panel {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text);
+}
+
+/* ── generic buttons / inputs (opt-in) ───────────────────────────────── */
+.btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-accent);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: .15s;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--bg); }
+
+.input, textarea.input, select.input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 8px 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+}
+.input:focus { outline: none; border-color: var(--accent); }
+
+/* ── family badges (atoms, steps, traits) ────────────────────────────── */
+.badge-family-self,
+.badge-family-domain,
+.badge-family-conversation,
+.badge-family-user,
+.badge-family-none {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+}
+.badge-family-self { color: var(--fam-self); border-color: rgba(124, 186, 124, .4); background: rgba(124, 186, 124, .1); }
+.badge-family-domain { color: var(--fam-domain); border-color: rgba(127, 179, 213, .4); background: rgba(127, 179, 213, .1); }
+.badge-family-conversation { color: var(--fam-conversation); border-color: rgba(230, 168, 92, .4); background: rgba(230, 168, 92, .1); }
+.badge-family-user { color: var(--fam-user); border-color: rgba(201, 125, 185, .4); background: rgba(201, 125, 185, .1); }
+.badge-family-none { color: var(--fam-none); border-color: rgba(154, 167, 189, .4); background: rgba(154, 167, 189, .1); }

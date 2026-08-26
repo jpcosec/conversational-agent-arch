@@ -18,17 +18,42 @@
 }
 </script>
 <link rel="stylesheet" href="https://esm.sh/@xyflow/react@12.11.5/dist/style.css">
+<link rel="stylesheet" href="/static/theme.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body,#root{height:100%;width:100%}
-  body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden}
+  html,body{height:100%;width:100%}
+  body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden;display:flex;flex-direction:column}
+  #root{flex:1;min-height:0;width:100%;position:relative}
   .react-flow__attribution{display:none}
   input,textarea,select{font-family:inherit}
 </style>
 </head>
 <body>
+  <header class="app-topbar">
+    <span class="app-topbar-brand" id="appBrand">Agente</span>
+    <nav class="app-nav" id="appNav">
+      <a href="/">Chat</a>
+      <a href="/conversation_flow_editor">Flow Editor</a>
+      <a href="/taxonomy_explorer">Taxonomía</a>
+      <a href="/viz">Embeddings</a>
+      <a href="/profiling_viewer">Perfilado</a>
+    </nav>
+  </header>
 <div id="root"></div>
+<script>
+  (function () {
+    var path = location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('#appNav a').forEach(function (a) {
+      var href = a.getAttribute('href').replace(/\/$/, '') || '/';
+      if (href === path) a.classList.add('active');
+    });
+    fetch('/api/config').then(function (r) { return r.json(); }).then(function (cfg) {
+      var b = document.getElementById('appBrand');
+      if (b) b.textContent = cfg.runtime_title || cfg.name || 'Agente';
+    }).catch(function () {});
+  })();
+</script>
 
 <script type="module">
 import React, { useState, useCallback, useEffect, useRef } from 'react';
@@ -262,7 +287,7 @@ function btn(primary, small) {
 /* ── Leyenda (JSX) ── */
 function Legend() {
   return html`
-    <div style=${{ position: 'fixed', top: 14, right: 22, zIndex: 30, display: 'flex', gap: 14 }}>
+    <div style=${{ position: 'fixed', top: 58, right: 22, zIndex: 30, display: 'flex', gap: 14 }}>
       ${Object.entries(FAM).map(([k, v]) => html`
         <div key=${k} style=${{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: "'JetBrains Mono',monospace", fontSize: 10, textTransform: 'uppercase', letterSpacing: '.06em', color: 'rgba(245,240,232,.55)' }}>
           <span style=${{ width: 9, height: 9, borderRadius: 3, background: v.color }}></span>${v.icon} ${k}
@@ -321,7 +346,7 @@ function App() {
 
   return html`
     <div style=${{ width: '100vw', height: '100vh' }}>
-      <div style=${{ position: 'fixed', top: 14, left: 22, zIndex: 30 }}>
+      <div style=${{ position: 'fixed', top: 58, left: 22, zIndex: 30 }}>
         <div style=${{ fontSize: 16, fontWeight: 600 }}><em style=${{ color: '#d4a574', fontStyle: 'italic' }}>Taxonomía</em> · Mindmap</div>
         <div style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, letterSpacing: '.06em', color: 'rgba(245,240,232,.45)' }}>doble-click edita · click comenta</div>
       </div>

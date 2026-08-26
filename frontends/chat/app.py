@@ -30,6 +30,7 @@ from fastapi import FastAPI, HTTPException, Request, Response
 from starlette.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -46,6 +47,7 @@ EDITOR_DIR = PROJECT_ROOT / "frontends" / "flow_editor"
 PROFILING_DIR = PROJECT_ROOT / "frontends" / "profiling"
 TAXONOMY_DIR = PROJECT_ROOT / "frontends" / "taxonomy"
 VIZ_DIR = PROJECT_ROOT / "frontends" / "viz"
+SHARED_DIR = PROJECT_ROOT / "frontends" / "shared"
 
 UI_CHANNEL = "ui"
 
@@ -126,6 +128,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     app.state.cfg = cfg
     app.state.orchestrator = orchestrator
     app.state.turn_counters = {}
+    app.mount("/static", StaticFiles(directory=str(SHARED_DIR)), name="static")
 
     def _orch() -> Orchestrator:
         return app.state.orchestrator

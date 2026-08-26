@@ -42,6 +42,23 @@ def test_static_uis_are_served(client: TestClient, path: str) -> None:
     assert res.status_code == 200 and "<!doctype html>" in res.text.lower()
 
 
+def test_shared_theme_css_is_served(client: TestClient) -> None:
+    res = client.get("/static/theme.css")
+    assert res.status_code == 200
+    assert "--bg" in res.text
+
+
+NAV_LINKS = ["/", "/conversation_flow_editor", "/taxonomy_explorer", "/viz", "/profiling_viewer"]
+
+
+@pytest.mark.parametrize("path", ["/", "/conversation_flow_editor", "/profiling_viewer", "/taxonomy_explorer", "/viz"])
+def test_pages_link_shared_theme_and_nav(client: TestClient, path: str) -> None:
+    html = client.get(path).text
+    assert '/static/theme.css' in html
+    for link in NAV_LINKS:
+        assert f'href="{link}"' in html
+
+
 def test_atom_endpoint_reads_store(client: TestClient) -> None:
     atom = client.get("/api/atom/atom-donpeppe-carta").json()
     assert atom["atom_id"] == "atom-donpeppe-carta" and "Margherita" in atom["body"] and "domain:catalogo" in atom["tags"]
