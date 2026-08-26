@@ -1,0 +1,1 @@
+Error: No artifact.board file found for selector 'gemini_test Board' in /home/jp/proyectos/_worktrees/gt-ui-tidy/desk/tasks
