@@ -1,6 +1,6 @@
 ---
 id: task-recomponer-la-base-de-spec2viz-y-atoms
-status: active
+status: complete
 summary: ''
 tags:
 - workspace:desk
