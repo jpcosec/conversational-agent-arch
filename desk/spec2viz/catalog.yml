@@ -114,6 +114,19 @@ vistas:
   - layer:backend
   - view:current
   - source:ast
+- id: matrix-agents-kb-consumption
+  category: Backend · Knowledge
+  nav: Agentes × Familias KB
+  title: Backend · Matriz · Agentes × Familias de la KB
+  desc: Qué familia de conocimiento (self/domain/conversation/user) lee o produce cada motor cognitivo.
+  type: component_view_matrix
+  src: build/matrix.agents-kb-consumption.html
+  specs:
+  - backend/matrix.agents-kb-consumption.yml
+  tags:
+  - layer:backend
+  - view:matrix
+  - area:knowledge
 - id: current-frontends
   category: Frontend
   nav: frontends (UIs)
@@ -139,3 +152,15 @@ vistas:
   tags:
   - layer:frontend
   - view:state
+- id: matrix-ui-semantic-surface
+  category: Frontend
+  nav: UI × Superficie Semántica
+  title: Frontend · Matriz · UI × Superficie Semántica
+  desc: Cruza las 5 UIs contra las familias de datos KB que editan y la config que consumen (/api/config).
+  type: component_view_matrix
+  src: build/matrix.ui-semantic-surface.html
+  specs:
+  - backend/matrix.ui-semantic-surface.yml
+  tags:
+  - layer:frontend
+  - view:matrix
