@@ -1,12 +1,14 @@
 namespaces:
-  # Capa de arquitectura (alineada con las 3 secciones del catálogo spec2viz)
+  # Capa de arquitectura (alineada con las 3 secciones del catálogo spec2viz + negocio/ops)
   layer:
-    meaning: "Capa arquitectónica donde vive o ejecuta el componente."
+    meaning: "Capa arquitectónica, de negocio u operativa donde vive el concepto."
     examples:
       - layer:runtime       # kb_agent/* (motor conversacional)
       - layer:knowledge     # knowledge_base/*, modelos, taxonomy
       - layer:frontend      # frontends/* (UIs estáticas)
-    use_when: "Aplica a todos los átomos de arquitectura para ubicarlos visualmente."
+      - layer:business      # Reglas de producto, valor, glosario
+      - layer:ops           # Operaciones, despliegue, testing, gobernanza
+    use_when: "Aplica a todos los átomos para ubicarlos en el plano general del proyecto."
 
   # Rol en el ciclo del runtime
   role:
@@ -18,7 +20,7 @@ namespaces:
       - role:data           # SQL, SLDB, KGDB
     use_when: "El átomo describe un componente vivo del diagrama lógico."
 
-  # Familia semántica (alineada con los 10 modelos de la KB)
+  # Familia semántica (alineada con los 10 modelos de la KB + conceptos transversales)
   family:
     meaning: "Familia de conocimiento tipado sobre la que opera el átomo."
     examples:
@@ -26,4 +28,5 @@ namespaces:
       - family:domain       # reglas de negocio, hechos
       - family:conversation # flujo, estrategia, fallback
       - family:user         # perfiles, traits
-    use_when: "El átomo documenta un modelo de datos o un actor muy acoplado a una familia."
+      - family:concepts     # conceptos abstractos, definiciones de negocio
+    use_when: "El átomo documenta un modelo de datos o un concepto transversal."
