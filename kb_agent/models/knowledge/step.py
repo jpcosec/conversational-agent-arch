@@ -3,11 +3,11 @@ from typing import Annotated
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class ConversationStep(StructuredNLDoc):
+class ConversationStep(IndexProxies):
     """Nodo del diagrama de conversación.
 
     Define un paso en el flujo conversacional: qué debe hacer
@@ -25,6 +25,10 @@ title: ⸢rev•title⸥
 atom_type: step
 tags: ⸢rev•tags⸥
 domain_ref: ⸢optrev•domain_ref⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

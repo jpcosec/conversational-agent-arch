@@ -3,11 +3,11 @@ from typing import Annotated
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomQuestion, AtomTag
 
-
-class RuleAtom(StructuredNLDoc):
+class RuleAtom(IndexProxies):
     """Heurística o restricción de comportamiento.
 
     Define condiciones bajo las cuales el agente debe actuar
@@ -27,6 +27,10 @@ atom_type: rule
 tags: ⸢rev•tags⸥
 applies_to: ⸢optrev•applies_to⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

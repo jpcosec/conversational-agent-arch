@@ -2,7 +2,7 @@ documents:
 - name: atom-donpeppe-carta
   path: atoms/atom-donpeppe-carta.md
   hash_c: ee2023e6384d1bfd4948e551030e42ee765b9db32cf59407e1a1757f5b252f70
-  hash_d: ab8f76ffe7ad6e15905109d75bc3c4fb7ece9709dcdb2044d17dfe52a506f20f
+  hash_d: 14205a5b5b23a5ac360c1f959b6854d05c60ffc3d740ed36a9245b56c7e54703
   semantic_tags:
   - conversation:steps.onboarding
   - domain:catalogo
@@ -12,7 +12,7 @@ documents:
 - name: atom-donpeppe-horarios
   path: atoms/atom-donpeppe-horarios.md
   hash_c: a01e8094aa4e21bdf412e4e62902a6e9ec582b4a64181b04458eb70b780951c3
-  hash_d: 52ddb271bea446cbf4bf22cce55a2f5f1867b0ea4c453c8cc11a7128ab15689f
+  hash_d: c91e968e412476ad3c7905c3e5a62f330e378bccf5e19f6abf9d748e8a5a48b1
   semantic_tags:
   - conversation:steps.onboarding
   - domain:horarios
@@ -22,7 +22,7 @@ documents:
 - name: atom-donpeppe-ubicacion
   path: atoms/atom-donpeppe-ubicacion.md
   hash_c: d4b3d99e075f4c7a4ac1bb0149e9505677e5d34047d391f41b15b785d6540954
-  hash_d: 7becc19b3dd4414f2ad43f4f1c70a7bff1f1616dfeae8c5979828008811a5a8f
+  hash_d: 23ecf5792bc5328fb387e6037c89b7b34f646006a93f4783ba61c7291cf5dae7
   semantic_tags:
   - conversation:steps.onboarding
   - domain:ubicacion
@@ -32,7 +32,7 @@ documents:
 - name: atom-donpeppe-promos
   path: atoms/atom-donpeppe-promos.md
   hash_c: bee6108c08188a8368f84ea064c1c2bc6e57ef3f52132e3948c0d8a36e93bcde
-  hash_d: 37ef15e56f85f4cd3229c18de13421f348fbc86467efee48618156fe38ea9d9d
+  hash_d: e37c7eef581572325ffafce1833da0496a68def4e6ab60d4946e131e27f7dd7e
   semantic_tags:
   - conversation:steps.booking
   - domain:promociones

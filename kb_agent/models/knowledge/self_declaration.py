@@ -1,11 +1,11 @@
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class SelfDeclaration(StructuredNLDoc):
+class SelfDeclaration(IndexProxies):
     """Declaración de identidad del agente (whoami).
 
     Responde "quién soy, qué soy, para quién trabajo".
@@ -22,6 +22,10 @@ title: ⸢rev•title⸥
 atom_type: self
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

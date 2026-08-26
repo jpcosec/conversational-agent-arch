@@ -2,7 +2,7 @@ documents:
 - name: fallback-antonia
   path: atoms/fallback-antonia.md
   hash_c: fe466ae6cdbef49b470e729e935c667b8b8198139f4bbe16532b014c29655e64
-  hash_d: 6469e769eca43a37f7df18cdfe64e3eced00c3bdb70a5302bdad5c8d7ce62ced
+  hash_d: f7e425ea2dcda1f5acd06cc1c5a7c54bcf4dc854498f2253b5cd77bb2d55814b
   semantic_tags:
   - conversation:fallback
   - system:laboratorio-chile

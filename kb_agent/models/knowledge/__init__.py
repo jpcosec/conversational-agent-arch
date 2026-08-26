@@ -17,6 +17,7 @@ Taxonomy:
   fallback   → FallbackRule      — empty-context fallback messages
 """
 
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 from .boundary import CapabilityBoundary
 from .domain import DomainAtom, AtomQuestion, AtomTag
 from .fallback import FallbackRule
@@ -35,6 +36,8 @@ __all__ = [
     "ConversationStep",
     "DomainAtom",
     "FallbackRule",
+    "IndexProxies",
+    "INDEX_PROXY_TEMPLATE",
     "RuleAtom",
     "SelfDeclaration",
     "StrategyRule",

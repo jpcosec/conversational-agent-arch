@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:TraitAtom
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/trait.py
 documents_index: .sldb/core/documents/TraitAtom.yaml
 sections_index: .sldb/runtime/sections/TraitAtom.yaml
-hash_b: 71500b91f742089be5c2f0122cca1e8d6094cb1a00d7c8fcf665e589a1e6f8da
+hash_b: 9bcacfff0ab46ddba0b16090997cccc1119424c7bdc31ac343629b5b762b964d
 version: 1
 canonical: false
 family: null

@@ -3,11 +3,11 @@ from typing import Annotated
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class ToolAtom(StructuredNLDoc):
+class ToolAtom(IndexProxies):
     """Esquema JSON de una API o función externa.
 
     El Ontologizador convierte estos átomos en function_declarations
@@ -24,6 +24,10 @@ title: ⸢rev•title⸥
 atom_type: tool
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

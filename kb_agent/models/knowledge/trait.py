@@ -3,11 +3,11 @@ from typing import Annotated
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class TraitAtom(StructuredNLDoc):
+class TraitAtom(IndexProxies):
     """Descriptor de una característica cognitiva o de comportamiento del usuario.
 
     No tiene 'answer' — es un identificador reutilizable que múltiples
@@ -26,6 +26,10 @@ atom_type: trait
 tags: ⸢rev•tags⸥
 category: ⸢optrev•category⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

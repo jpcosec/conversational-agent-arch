@@ -2,7 +2,7 @@ documents:
 - name: step-antonia-onboarding
   path: atoms/step-antonia-onboarding.md
   hash_c: e1f728e7bb58bb5e0b6ab3bdc96622be635a3bb7be600bcc606c36d30fc4d62e
-  hash_d: 3f5435908461515fa66b8a812631c0c898582cb2a8628fddd9e23aff9049b45d
+  hash_d: 3e1b0d42594c34275ffd68c859f9f53de0f8318c8383ed0b813c9735c69c6a77
   semantic_tags:
   - conversation:steps.onboarding
   - system:laboratorio-chile
@@ -11,7 +11,7 @@ documents:
 - name: step-antonia-booking
   path: atoms/step-antonia-booking.md
   hash_c: b05350bb0b3430b8ad857cf931669a4a5d7b3a1dcd26878f619ee1a1c4495dfe
-  hash_d: 9e2c6e903f10c76faddcc1c991c425bf9e165ea55d54f27c0f0b4157a546cc24
+  hash_d: d386e3ba174585ddd3b7196755a7cffd9363c8aa7cae8065f60de9fcdc989ce5
   semantic_tags:
   - conversation:steps.booking
   - system:laboratorio-chile
