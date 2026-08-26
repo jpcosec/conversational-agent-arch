@@ -1,1 +1,10 @@
-documents: []
+documents:
+- name: fallback-antonia
+  path: atoms/fallback-antonia.md
+  hash_c: 24420cc5475306b4c6022ec07cd3f1dd293e8e0d5f359333e894dbdfc5d20d1f
+  hash_d: 514e2ed7f33960a2757e3489bea443705e7c8d884d5abcfe723216067345eec1
+  semantic_tags:
+  - conversation:fallback
+  - system:laboratorio-chile
+  - type.knowledge.fallback
+  - workspace.knowledge

@@ -1,56 +1,41 @@
 documents:
-- name: atom-domain-atom
-  path: atoms/atom-domain-atom.md
-  hash_c: f6a81ccf554fb457c5c2ebeb233747106945e022f9c14d39ae54f1e7d7fd590b
-  hash_d: 65e9f875cba33e9dc6d655ff4effa858d55c32c996471fbafcf0eb4ade9c7816
+- name: atom-antonia-bienvenida
+  path: atoms/atom-antonia-bienvenida.md
+  hash_c: 3d3fffd71c0a06ad708efd64b4f95c8082d8547ff6eb9f815258500a17964fcf
+  hash_d: ee348c080931d64378210ec203108685c17e0a046bcd75ebc088074384eee12e
   semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
-  - topic:ontology
+  - conversation:steps.onboarding
+  - domain:programa
+  - system:laboratorio-chile
   - type.knowledge.domain
   - workspace.knowledge
-- name: atom-rule-atom
-  path: atoms/atom-rule-atom.md
-  hash_c: 3f9c16260f59160190265526e9b7bc4b893b60e512c3d95c59e57e72e4ae1837
-  hash_d: 1a2ed76b20ccd86c44fd4aae10a22803b1600e24a6916622bdc41de20abc7e61
+- name: atom-antonia-aplicacion
+  path: atoms/atom-antonia-aplicacion.md
+  hash_c: 5f461dda448303761e01ec73e8206b5b78a4b57a0b36c0f6dce22b93d64a5a4a
+  hash_d: cf166a4e10d00bc03d4781800d7d3b548f52c65db9be3d3a1bb0a9cbbd2751b6
   semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
-  - topic:rules
+  - conversation:steps.recompra
+  - domain:tratamiento
+  - system:laboratorio-chile
   - type.knowledge.domain
   - workspace.knowledge
-- name: atom-tool-atom
-  path: atoms/atom-tool-atom.md
-  hash_c: 3f4770f3ebf47aa638b241e52f17c99813396dcc304e9a5c04aa97ba5a2640f2
-  hash_d: 34ca5be2f194143281eb87dffa43f7453c45b047070d06c6be9a89c980d82c3c
+- name: atom-antonia-primeras-semanas
+  path: atoms/atom-antonia-primeras-semanas.md
+  hash_c: f74bb7f037cf4bea36445a5073412fe741c37d2566e1e52856bffe99e93389d1
+  hash_d: 23146629e712d4447d08b6f6ab683bc9dad4c4274da1a8953bdc1952f317bf77
   semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
-  - topic:tool-calling
+  - conversation:steps.onboarding
+  - domain:tratamiento
+  - system:laboratorio-chile
   - type.knowledge.domain
   - workspace.knowledge
-- name: atom-trait-atom
-  path: atoms/atom-trait-atom.md
-  hash_c: 87f2c9e4e9848c57e10e9da0a361b71e2f42b4fd32b8a8160c33e473e8818f92
-  hash_d: 5fff4aa903d8007458c3623a3043e6993779fe2d7c3928368ab579aebeb4de55
+- name: atom-antonia-recompra
+  path: atoms/atom-antonia-recompra.md
+  hash_c: 31bc485ee0687d2eeeea0b2c19ffdfac31edc955f1e95aec22cff76b07083e95
+  hash_d: dab7b4e6512ff97f54b36086fba058556fcd55c42ce4d8573fa7f1ef079828ea
   semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
-  - topic:profiling
-  - type.knowledge.domain
-  - workspace.knowledge
-- name: atom-sldb-base-conocimiento-semantica
-  path: atoms/atom-sldb-base-conocimiento-semantica.md
-  hash_c: 9b3478710c326bd08185ec92a6c661c37d9e48c245fa4eb154d8246752dc2d02
-  hash_d: 7ebd631b6473974e0e238907d8b8ff0112c06448f322464a727aa2ccc939bf37
-  semantic_tags:
-  - domain:external_libs.sldb
-  - layer:persistence
-  - system:sldb
-  - topic:ontology
+  - conversation:steps.recompra
+  - domain:logistica
+  - system:laboratorio-chile
   - type.knowledge.domain
   - workspace.knowledge

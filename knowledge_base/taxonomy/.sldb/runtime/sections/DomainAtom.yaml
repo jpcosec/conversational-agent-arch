@@ -1,0 +1,266 @@
+documents:
+- doc_name: atom-domain-atom
+  sections:
+  - path: domain-atom
+    title: Domain Atom
+    breadcrumbs:
+    - Domain Atom
+    about:
+    - Domain Atom
+    - domain atom
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: domain-atom
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: domain-atom/answer
+    title: Answer
+    breadcrumbs:
+    - Domain Atom
+    - Answer
+    about:
+    - Domain Atom
+    - domain atom
+    - Answer
+    - answer
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: atom-rule-atom
+  sections:
+  - path: rule-atom
+    title: Rule Atom
+    breadcrumbs:
+    - Rule Atom
+    about:
+    - Rule Atom
+    - rule atom
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:rules
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:rules
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: rule-atom
+    level: 1
+    line_start: 788
+    line_end: 789
+  - path: rule-atom/answer
+    title: Answer
+    breadcrumbs:
+    - Rule Atom
+    - Answer
+    about:
+    - Rule Atom
+    - rule atom
+    - Answer
+    - answer
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:rules
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:rules
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 790
+    line_end: 791
+- doc_name: atom-tool-atom
+  sections:
+  - path: tool-atom
+    title: Tool Atom
+    breadcrumbs:
+    - Tool Atom
+    about:
+    - Tool Atom
+    - tool atom
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:tool-calling
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:tool-calling
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: tool-atom
+    level: 1
+    line_start: 788
+    line_end: 789
+  - path: tool-atom/answer
+    title: Answer
+    breadcrumbs:
+    - Tool Atom
+    - Answer
+    about:
+    - Tool Atom
+    - tool atom
+    - Answer
+    - answer
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:tool-calling
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:tool-calling
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 790
+    line_end: 791
+- doc_name: atom-trait-atom
+  sections:
+  - path: trait-atom
+    title: Trait Atom
+    breadcrumbs:
+    - Trait Atom
+    about:
+    - Trait Atom
+    - trait atom
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:profiling
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:profiling
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: trait-atom
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: trait-atom/answer
+    title: Answer
+    breadcrumbs:
+    - Trait Atom
+    - Answer
+    about:
+    - Trait Atom
+    - trait atom
+    - Answer
+    - answer
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:profiling
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:profiling
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: atom-sldb-base-conocimiento-semantica
+  sections:
+  - path: sldb-base-conocimiento-semantica
+    title: SLDB Base Conocimiento Semantica
+    breadcrumbs:
+    - SLDB Base Conocimiento Semantica
+    about:
+    - SLDB Base Conocimiento Semantica
+    - sldb base conocimiento semantica
+    - domain:external_libs.sldb
+    - layer:persistence
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:external_libs.sldb
+    - layer:persistence
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: sldb-base-conocimiento-semantica
+    level: 1
+    line_start: 788
+    line_end: 789
+  - path: sldb-base-conocimiento-semantica/answer
+    title: Answer
+    breadcrumbs:
+    - SLDB Base Conocimiento Semantica
+    - Answer
+    about:
+    - SLDB Base Conocimiento Semantica
+    - sldb base conocimiento semantica
+    - Answer
+    - answer
+    - domain:external_libs.sldb
+    - layer:persistence
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:external_libs.sldb
+    - layer:persistence
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 790
+    line_end: 791

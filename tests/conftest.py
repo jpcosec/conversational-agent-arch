@@ -22,8 +22,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-DONPEPPE_KB = REPO_ROOT / "tests" / "knowledge"
-ANTONIA_KB = REPO_ROOT / "tests" / "knowledge_antonia"
+DONPEPPE_KB = REPO_ROOT / "tests" / "knowledge"       # KB de prueba (atoms tipados)
+ANTONIA_KB = REPO_ROOT / "knowledge"                  # KB REAL del negocio desplegado
 
 
 # ── gating por entorno ────────────────────────────────────────────────────────

@@ -1,0 +1,93 @@
+tags:
+  domain:external_libs.sldb:
+  - atom-sldb-base-conocimiento-semantica
+  domain:standards.taxonomy.atoms:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-tool-atom
+  - atom-trait-atom
+  layer:document-model:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-tool-atom
+  - atom-trait-atom
+  layer:persistence:
+  - atom-sldb-base-conocimiento-semantica
+  system:sldb:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-tool-atom
+  - atom-trait-atom
+  topic:ontology:
+  - atom-domain-atom
+  - atom-sldb-base-conocimiento-semantica
+  topic:profiling:
+  - atom-trait-atom
+  topic:rules:
+  - atom-rule-atom
+  topic:tool-calling:
+  - atom-tool-atom
+  type.knowledge.domain:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-tool-atom
+  - atom-trait-atom
+  workspace.knowledge:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-tool-atom
+  - atom-trait-atom
+documents:
+  atom-domain-atom:
+    model: DomainAtom
+    path: atoms/atom-domain-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-rule-atom:
+    model: DomainAtom
+    path: atoms/atom-rule-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:rules
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-tool-atom:
+    model: DomainAtom
+    path: atoms/atom-tool-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:tool-calling
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-trait-atom:
+    model: DomainAtom
+    path: atoms/atom-trait-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:profiling
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-sldb-base-conocimiento-semantica:
+    model: DomainAtom
+    path: atoms/atom-sldb-base-conocimiento-semantica.md
+    tags:
+    - domain:external_libs.sldb
+    - layer:persistence
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.domain
+    - workspace.knowledge

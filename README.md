@@ -22,12 +22,14 @@ desk/                      # Workflow harness del proyecto (tasks, rituals, desk
   atoms/                   #   Átomos de arquitectura del agente runtime
   tasks/ rituals/ ...
 
-knowledge/                 # Knowledge Base del agente (modelo de conocimiento)
-  atoms/                   #   Taxonomía: domain, rule, tool, trait + tag-namespaces
+knowledge/                 # KB REAL del negocio desplegado (Antonia · PSP Selfix)
+  atoms/                   #   atoms del negocio (self, domain, rules, tools, steps, traits)
+
+knowledge_base/            # CLI + operaciones de la KB
+  taxonomy/                #   meta-taxonomía: tipos de atom + guías de modelación
 
 tests/
   knowledge/               #   KB de prueba: Don Peppe (pizzería)
-  knowledge_antonia/       #   KB de prueba: Antonia (programa de pacientes)
   unit/ integration/ e2e/ ui/   # suite (ver "Tests")
 
 kb_agent/                  # Runtime del agente conversacional
@@ -40,7 +42,7 @@ frontends/                 # UIs estáticas + entrypoint HTTP
 project.config.yaml        # QUÉ negocio corre: KB, modelo, tools, server, marca
 ```
 
-**Regla**: `desk/` es solo workflow. `knowledge/` es la KB reutilizable. `tests/knowledge*/` son KBs de prueba. Nada del negocio (nombres, paths, tools, modelo) vive en el código: todo sale de la KB o de `project.config.yaml`.
+**Regla**: `desk/` es solo workflow. `knowledge/` es la KB REAL del negocio desplegado (Antonia). `tests/knowledge/` es la KB de prueba (Don Peppe). La meta-taxonomía (tipos de atom + guías) vive en `knowledge_base/taxonomy/`. Nada del negocio (nombres, paths, tools, modelo) vive en el código: todo sale de la KB o de `project.config.yaml`.
 
 ## Componentes
 

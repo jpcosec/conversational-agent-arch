@@ -1,5 +1,13 @@
 stores: []
 models:
+- name: AtomDoc
+  model_ref: deskops.models:AtomDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/atom.py
+  models_index: .sldb/core/models/AtomDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
 - name: DomainAtom
   model_ref: kb_agent.models.knowledge:DomainAtom
   path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/domain.py
@@ -48,6 +56,14 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: FallbackRule
+  model_ref: kb_agent.models.knowledge:FallbackRule
+  path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/fallback.py
+  models_index: .sldb/core/models/FallbackRule.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
 - name: StyleGuide
   model_ref: kb_agent.models.knowledge:StyleGuide
   path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/style.py
@@ -68,14 +84,6 @@ models:
   model_ref: kb_agent.models.knowledge:StrategyRule
   path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/strategy.py
   models_index: .sldb/core/models/StrategyRule.yaml
-  version: 1
-  canonical: false
-  family: null
-  semantics: []
-- name: FallbackRule
-  model_ref: kb_agent.models.knowledge:FallbackRule
-  path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/fallback.py
-  models_index: .sldb/core/models/FallbackRule.yaml
   version: 1
   canonical: false
   family: null
@@ -102,4 +110,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: 42358c0d682f8da6afaad1eb56073730b9d179fa87133bd32a7471a39ec691ca
+hash_a: 354c0bd872df2b9d359654640c1fd21b89aed299512e20b073d168f4c56c8b9d

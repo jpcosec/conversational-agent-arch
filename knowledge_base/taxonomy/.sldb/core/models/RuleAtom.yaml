@@ -2,8 +2,8 @@ name: RuleAtom
 model_ref: kb_agent.models.knowledge:RuleAtom
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/rule.py
 documents_index: .sldb/core/documents/RuleAtom.yaml
-sections_index: .sldb/runtime/sections/RuleAtom.yaml
-hash_b: 71e4e9254a2e837df3a6e331eac7d4433d08af0a89a775af110eaa0024068f44
+sections_index: ''
+hash_b: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
 version: 1
 canonical: false
 family: null

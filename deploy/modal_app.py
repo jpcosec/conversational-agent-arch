@@ -107,10 +107,12 @@ image = (
                     ignore=_PYCACHE_IGNORE)
     .add_local_dir(str(REPO_ROOT / "knowledge_base"), f"{REMOTE_APP_DIR}/knowledge_base", copy=True,
                     ignore=_PYCACHE_IGNORE)
+    # KB REAL servida en produccion (Antonia): project.config.yaml -> kb_root: knowledge
+    .add_local_dir(str(REPO_ROOT / "knowledge"), f"{REMOTE_APP_DIR}/knowledge", copy=True,
+                    ignore=[*_PYCACHE_IGNORE, ".embedding_cache", ".embedding_cache/**", ".knowledge.db"])
+    # KB de prueba (Don Peppe), incluida por si se apunta ahi con PROJECT_CONFIG/KB_ROOT
     .add_local_dir(str(REPO_ROOT / "tests" / "knowledge"), f"{REMOTE_APP_DIR}/tests/knowledge", copy=True,
                     ignore=[*_PYCACHE_IGNORE, ".embedding_cache", ".embedding_cache/**", "desk", "desk/**"])
-    .add_local_dir(str(REPO_ROOT / "tests" / "knowledge_antonia"), f"{REMOTE_APP_DIR}/tests/knowledge_antonia",
-                    copy=True, ignore=_PYCACHE_IGNORE)
     .add_local_file(str(REPO_ROOT / "project.config.yaml"), f"{REMOTE_APP_DIR}/project.config.yaml", copy=True)
 )
 

@@ -20,8 +20,8 @@ project:
   #                   Apunta aqui al store externo/productivo del negocio.
   #   test_kb_root -> store de PRUEBA del repo, usado bajo pytest (auto) o
   #                   con mode="test". Mantiene los tests aislados del real.
-  kb_root: tests/knowledge_antonia  # (cambiar por la ruta al KB externo real)
-  test_kb_root: tests/knowledge     # KB de prueba del repo (atoms tipados)
+  kb_root: knowledge                # KB REAL del negocio desplegado (Antonia)
+  test_kb_root: tests/knowledge     # KB de prueba del repo (Don Peppe, atoms tipados)
 
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
   profiling_db: runs/ui-chat.sqlite # SQLite que lee el visualizador de perfiles

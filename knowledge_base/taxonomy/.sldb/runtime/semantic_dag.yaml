@@ -1,0 +1,28 @@
+nodes:
+- id: domain:external_libs
+  parents: []
+- id: domain:external_libs.sldb
+  parents:
+  - domain:external_libs
+- id: domain:standards
+  parents: []
+- id: domain:standards.taxonomy
+  parents:
+  - domain:standards
+- id: domain:standards.taxonomy.atoms
+  parents:
+  - domain:standards.taxonomy
+- id: type
+  parents: []
+- id: type.knowledge
+  parents:
+  - type
+- id: type.knowledge.domain
+  parents:
+  - type.knowledge
+- id: workspace
+  parents: []
+- id: workspace.knowledge
+  parents:
+  - workspace
+equivalences: {}

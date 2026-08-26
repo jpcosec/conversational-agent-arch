@@ -17,7 +17,7 @@ UI para visualizar y editar el grafo de flujo conversacional (`ConversationStep`
 ## Regenerar el grafo desde el store
 
 ```bash
-PYTHONPATH=. python frontends/flow_editor/export_flow.py tests/knowledge_antonia
+PYTHONPATH=. python frontends/flow_editor/export_flow.py knowledge
 # escribe frontends/flow_editor/flow.json
 ```
 

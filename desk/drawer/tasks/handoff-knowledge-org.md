@@ -124,7 +124,7 @@ def derive_path(kb_root: Path, atom_id: str, tags: list[str]) -> Path:
 ## Validación
 
 - `tests/test_knowledge_cli.py` — test unitario de `derive_path()` con múltiples tags
-- `knowledge organize --dry-run` contra `tests/knowledge/` y `tests/knowledge_antonia/`
+- `knowledge organize --dry-run` contra `tests/knowledge/` (Don Peppe) y `knowledge/` (Antonia)
 - Verificar que SLDB re-track funciona: `sldb find <atom>` después de organizar
 
 ## Contexto técnico
@@ -134,5 +134,5 @@ def derive_path(kb_root: Path, atom_id: str, tags: list[str]) -> Path:
 - Para trackear: `sldb docs track <path> --model <Model> --store <store> --pythonpath .`
 - Para untrack: `sldb docs untrack <id> --store <store>`
 - Tags excluidos de la ruta: `type.*`, `workspace.*`, `source:*`
-- Tags de ejemplo en `tests/knowledge/` y `tests/knowledge_antonia/`
+- Tags de ejemplo en `tests/knowledge/` (Don Peppe) y `knowledge/` (Antonia)
 - CLI existente en `knowledge_base/` — agregar comando `organize`

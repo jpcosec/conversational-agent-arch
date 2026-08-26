@@ -1,266 +1,197 @@
 documents:
-- doc_name: atom-domain-atom
+- doc_name: atom-antonia-bienvenida
   sections:
-  - path: domain-atom
-    title: Domain Atom
+  - path: bienvenida-al-programa
+    title: Bienvenida al programa
     breadcrumbs:
-    - Domain Atom
+    - Bienvenida al programa
     about:
-    - Domain Atom
-    - domain atom
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:ontology
+    - Bienvenida al programa
+    - bienvenida al programa
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:ontology
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
-    slug: domain-atom
+    slug: bienvenida-al-programa
     level: 1
+    line_start: 788
+    line_end: 789
+  - path: bienvenida-al-programa/answer
+    title: Answer
+    breadcrumbs:
+    - Bienvenida al programa
+    - Answer
+    about:
+    - Bienvenida al programa
+    - bienvenida al programa
+    - Answer
+    - answer
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 790
+    line_end: 791
+- doc_name: atom-antonia-aplicacion
+  sections:
+  - path: administraci-n-de-selfix
+    title: "Administraci\xF3n de Selfix"
+    breadcrumbs:
+    - "Administraci\xF3n de Selfix"
+    about:
+    - "Administraci\xF3n de Selfix"
+    - administraci n de selfix
+    - conversation:steps.recompra
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: administraci-n-de-selfix
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: administraci-n-de-selfix/answer
+    title: Answer
+    breadcrumbs:
+    - "Administraci\xF3n de Selfix"
+    - Answer
+    about:
+    - "Administraci\xF3n de Selfix"
+    - administraci n de selfix
+    - Answer
+    - answer
+    - conversation:steps.recompra
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
     line_start: 789
     line_end: 790
-  - path: domain-atom/answer
-    title: Answer
+- doc_name: atom-antonia-primeras-semanas
+  sections:
+  - path: qu-esperar-las-primeras-semanas
+    title: "Qu\xE9 esperar las primeras semanas"
     breadcrumbs:
-    - Domain Atom
-    - Answer
+    - "Qu\xE9 esperar las primeras semanas"
     about:
-    - Domain Atom
-    - domain atom
-    - Answer
-    - answer
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:ontology
+    - "Qu\xE9 esperar las primeras semanas"
+    - qu esperar las primeras semanas
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:ontology
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: qu-esperar-las-primeras-semanas
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: qu-esperar-las-primeras-semanas/answer
+    title: Answer
+    breadcrumbs:
+    - "Qu\xE9 esperar las primeras semanas"
+    - Answer
+    about:
+    - "Qu\xE9 esperar las primeras semanas"
+    - qu esperar las primeras semanas
+    - Answer
+    - answer
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 791
-    line_end: 792
-- doc_name: atom-rule-atom
-  sections:
-  - path: rule-atom
-    title: Rule Atom
-    breadcrumbs:
-    - Rule Atom
-    about:
-    - Rule Atom
-    - rule atom
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:rules
-    - type.knowledge.domain
-    - workspace.knowledge
-    semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:rules
-    - type.knowledge.domain
-    - workspace.knowledge
-    slug: rule-atom
-    level: 1
-    line_start: 788
-    line_end: 789
-  - path: rule-atom/answer
-    title: Answer
-    breadcrumbs:
-    - Rule Atom
-    - Answer
-    about:
-    - Rule Atom
-    - rule atom
-    - Answer
-    - answer
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:rules
-    - type.knowledge.domain
-    - workspace.knowledge
-    semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:rules
-    - type.knowledge.domain
-    - workspace.knowledge
-    slug: answer
-    level: 2
-    line_start: 790
-    line_end: 791
-- doc_name: atom-tool-atom
-  sections:
-  - path: tool-atom
-    title: Tool Atom
-    breadcrumbs:
-    - Tool Atom
-    about:
-    - Tool Atom
-    - tool atom
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:tool-calling
-    - type.knowledge.domain
-    - workspace.knowledge
-    semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:tool-calling
-    - type.knowledge.domain
-    - workspace.knowledge
-    slug: tool-atom
-    level: 1
-    line_start: 788
-    line_end: 789
-  - path: tool-atom/answer
-    title: Answer
-    breadcrumbs:
-    - Tool Atom
-    - Answer
-    about:
-    - Tool Atom
-    - tool atom
-    - Answer
-    - answer
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:tool-calling
-    - type.knowledge.domain
-    - workspace.knowledge
-    semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:tool-calling
-    - type.knowledge.domain
-    - workspace.knowledge
-    slug: answer
-    level: 2
-    line_start: 790
-    line_end: 791
-- doc_name: atom-trait-atom
-  sections:
-  - path: trait-atom
-    title: Trait Atom
-    breadcrumbs:
-    - Trait Atom
-    about:
-    - Trait Atom
-    - trait atom
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:profiling
-    - type.knowledge.domain
-    - workspace.knowledge
-    semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:profiling
-    - type.knowledge.domain
-    - workspace.knowledge
-    slug: trait-atom
-    level: 1
     line_start: 789
     line_end: 790
-  - path: trait-atom/answer
-    title: Answer
-    breadcrumbs:
-    - Trait Atom
-    - Answer
-    about:
-    - Trait Atom
-    - trait atom
-    - Answer
-    - answer
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:profiling
-    - type.knowledge.domain
-    - workspace.knowledge
-    semantic_tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:profiling
-    - type.knowledge.domain
-    - workspace.knowledge
-    slug: answer
-    level: 2
-    line_start: 791
-    line_end: 792
-- doc_name: atom-sldb-base-conocimiento-semantica
+- doc_name: atom-antonia-recompra
   sections:
-  - path: sldb-base-conocimiento-semantica
-    title: SLDB Base Conocimiento Semantica
+  - path: recompra-y-renovaci-n-de-receta
+    title: "Recompra y renovaci\xF3n de receta"
     breadcrumbs:
-    - SLDB Base Conocimiento Semantica
+    - "Recompra y renovaci\xF3n de receta"
     about:
-    - SLDB Base Conocimiento Semantica
-    - sldb base conocimiento semantica
-    - domain:external_libs.sldb
-    - layer:persistence
-    - system:sldb
-    - topic:ontology
+    - "Recompra y renovaci\xF3n de receta"
+    - recompra y renovaci n de receta
+    - conversation:steps.recompra
+    - domain:logistica
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - domain:external_libs.sldb
-    - layer:persistence
-    - system:sldb
-    - topic:ontology
+    - conversation:steps.recompra
+    - domain:logistica
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
-    slug: sldb-base-conocimiento-semantica
+    slug: recompra-y-renovaci-n-de-receta
     level: 1
-    line_start: 788
-    line_end: 789
-  - path: sldb-base-conocimiento-semantica/answer
+    line_start: 787
+    line_end: 788
+  - path: recompra-y-renovaci-n-de-receta/answer
     title: Answer
     breadcrumbs:
-    - SLDB Base Conocimiento Semantica
+    - "Recompra y renovaci\xF3n de receta"
     - Answer
     about:
-    - SLDB Base Conocimiento Semantica
-    - sldb base conocimiento semantica
+    - "Recompra y renovaci\xF3n de receta"
+    - recompra y renovaci n de receta
     - Answer
     - answer
-    - domain:external_libs.sldb
-    - layer:persistence
-    - system:sldb
-    - topic:ontology
+    - conversation:steps.recompra
+    - domain:logistica
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - domain:external_libs.sldb
-    - layer:persistence
-    - system:sldb
-    - topic:ontology
+    - conversation:steps.recompra
+    - domain:logistica
+    - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 790
-    line_end: 791
+    line_start: 789
+    line_end: 790
