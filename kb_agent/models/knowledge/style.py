@@ -1,11 +1,11 @@
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class StyleGuide(StructuredNLDoc):
+class StyleGuide(IndexProxies):
     """Guia de estilo conversacional del agente.
 
     Define tono, registro, preferencias de fraseo, longitud
@@ -22,6 +22,10 @@ title: ⸢rev•title⸥
 atom_type: style
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

@@ -124,6 +124,40 @@ def render_compiled_context(compiled_context: Mapping[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def decide_turn(compiled_context: Mapping[str, Any]) -> dict[str, Any]:
+    """Policy PURA de decision del tipo de turno (brecha #1).
+
+    Separa DECIDIR de REDACTAR: no llama al LLM ni arma texto NL. Devuelve solo
+    que clase de turno corresponde, para que el ORQUESTADOR conduzca:
+
+    - {"kind": "tool_call", "function_call": {...}}  cuando hay tool + args validos
+    - {"kind": "fallback"}                            cuando is_empty o sin grounding
+    - {"kind": "nl"}                                  en caso contrario (redacta el conversador)
+
+    Es deterministica y testeable sin Gemini. El orquestador la invoca y decide
+    la accion (ejecutar tool / usar conversation:fallback / llamar draft_nl).
+    """
+    function_declarations = build_function_declarations(compiled_context)
+    question = str(compiled_context.get("question") or "")
+    selected_tool = _select_relevant_tool(question, function_declarations)
+    if selected_tool is not None:
+        args = _extract_function_args(question, selected_tool["parameters"])
+        if not _missing_required_args(args, selected_tool["parameters"]) and _args_match_schema(
+            args, selected_tool["parameters"]
+        ):
+            return {"kind": "tool_call", "function_call": {"name": selected_tool["name"], "args": args}}
+
+    if bool(compiled_context.get("is_empty")):
+        return {"kind": "fallback"}
+
+    rules = _normalize_items(compiled_context.get("rules"))
+    domain_facts = _normalize_items(compiled_context.get("domain_facts"))
+    if not rules and not domain_facts:
+        return {"kind": "fallback"}
+
+    return {"kind": "nl"}
+
+
 def draft_conversador_response(compiled_context: Mapping[str, Any]) -> Any:
     """Devuelve la salida del Conversador para el payload compilado.
 

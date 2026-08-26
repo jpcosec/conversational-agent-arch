@@ -4,6 +4,7 @@ from typing import Annotated
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 
 class AtomQuestion(StrEnum):
@@ -25,7 +26,7 @@ AtomTag = Annotated[
 ]
 
 
-class DomainAtom(StructuredNLDoc):
+class DomainAtom(IndexProxies):
     """Hecho de conocimiento factual de negocio.
 
     Describe realidades de negocio: catálogo de productos,
@@ -36,7 +37,7 @@ class DomainAtom(StructuredNLDoc):
         "type": ["knowledge", "domain"],
         "workspace": ["knowledge"],
     }
-    __template__ = """---
+    __template__ = f"""---
 id: ⸢rev•id⸥
 title: ⸢rev•title⸥
 five_wh_one_plus: ⸢rev•five_wh_one_plus⸥
@@ -44,6 +45,7 @@ atom_type: domain
 tags: ⸢rev•tags⸥
 domain_ref: ⸢optrev•domain_ref⸥
 provenance: ⸢optrev•provenance⸥
+{INDEX_PROXY_TEMPLATE}
 ---
 
 # ⸢render•title⸥

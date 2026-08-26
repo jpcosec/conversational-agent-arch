@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:FallbackRule
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/fallback.py
 documents_index: .sldb/core/documents/FallbackRule.yaml
 sections_index: .sldb/runtime/sections/FallbackRule.yaml
-hash_b: 2bfd98f4b7fc0d21077dc579500d118fcd0f07ff81a7f8380b752f9d5f50193f
+hash_b: 7179983c47da6364105ee4df04b67245d68bbca571a790b1b410e3475996d6be
 version: 1
 canonical: false
 family: null

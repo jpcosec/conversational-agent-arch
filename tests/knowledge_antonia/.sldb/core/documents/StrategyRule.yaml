@@ -2,7 +2,7 @@ documents:
 - name: strategy-antonia
   path: atoms/strategy-antonia.md
   hash_c: 40b7910085e28cf4a097fe28f53e7c085ae5f0fa5057e1b3f3c97508273d0a67
-  hash_d: 94be9951b53b5390c21464ec83bf0a09533662b14a6ee88f29d6b7a5c27be98f
+  hash_d: 03407a569836112f3b6e66ffbef1793e8dc5a09524c7a6146f1ae18758dde329
   semantic_tags:
   - conversation:strategy
   - system:laboratorio-chile

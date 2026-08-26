@@ -1,11 +1,11 @@
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class StrategyRule(StructuredNLDoc):
+class StrategyRule(IndexProxies):
     """Estrategia general de interacción conversacional.
 
     Define el enfoque, objetivos y prioridades que guían
@@ -24,6 +24,10 @@ title: ⸢rev•title⸥
 atom_type: strategy
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

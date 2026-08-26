@@ -4,9 +4,9 @@ from typing import Annotated
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
-
 
 class StepKind(StrEnum):
     """Comportamiento del paso conversacional.
@@ -21,7 +21,7 @@ class StepKind(StrEnum):
     LLAMADO_TOOL = "llamado_tool"
 
 
-class ConversationStep(StructuredNLDoc):
+class ConversationStep(IndexProxies):
     """Nodo del diagrama de conversación.
 
     Define un paso en el flujo conversacional: qué debe hacer
@@ -40,6 +40,10 @@ atom_type: step
 kind: ⸢rev•kind⸥
 tags: ⸢rev•tags⸥
 domain_ref: ⸢optrev•domain_ref⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

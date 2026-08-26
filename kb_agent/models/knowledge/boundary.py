@@ -1,11 +1,11 @@
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class CapabilityBoundary(StructuredNLDoc):
+class CapabilityBoundary(IndexProxies):
     """Límite o restricción de capacidad del agente.
 
     Define qué no puede hacer el agente, bajo qué condiciones,
@@ -22,6 +22,10 @@ title: ⸢rev•title⸥
 atom_type: boundary
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

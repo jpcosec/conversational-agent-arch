@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:StrategyRule
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/strategy.py
 documents_index: .sldb/core/documents/StrategyRule.yaml
 sections_index: .sldb/runtime/sections/StrategyRule.yaml
-hash_b: 8d8d12f880c212b4f11a225e0106b64f627adf980fc935981bda60c15946beb3
+hash_b: e7e4b947ffbd038514a4a43cc8eda724b50b3dcc13ad4b2465544f8e2cf33efc
 version: 1
 canonical: false
 family: null

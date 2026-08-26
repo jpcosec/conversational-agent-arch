@@ -3,11 +3,11 @@ from typing import Annotated
 from pydantic import Field
 
 from sldb import StructuredNLDoc
+from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 
 from .domain import AtomTag
 
-
-class FallbackRule(StructuredNLDoc):
+class FallbackRule(IndexProxies):
     """Regla de fallback: qué hacer cuando no hay contexto suficiente.
 
     Caso especial de RuleAtom. Cuando el Ontologizador produce
@@ -25,6 +25,10 @@ title: ⸢rev•title⸥
 atom_type: fallback
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
+summary: ⸢optrev•summary⸥
+embedding: ⸢optrev•embedding⸥
+parent: ⸢optrev•parent⸥
+semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥
