@@ -29,6 +29,7 @@ class ConversationStep(IndexProxies):
     puede transicionar, y qué átomos groundean este step.
     """
 
+    __family__ = "conversation"
     __semantics__ = {
         "type": ["knowledge", "step"],
         "workspace": ["knowledge"],

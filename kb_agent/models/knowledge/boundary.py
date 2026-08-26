@@ -12,6 +12,7 @@ class CapabilityBoundary(IndexProxies):
     y cómo debe comunicarlo.
     """
 
+    __family__ = "self"
     __semantics__ = {
         "type": ["knowledge", "boundary"],
         "workspace": ["knowledge"],

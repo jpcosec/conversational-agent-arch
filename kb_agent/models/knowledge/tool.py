@@ -14,6 +14,7 @@ class ToolAtom(IndexProxies):
     para el LLM en tiempo real.
     """
 
+    __family__ = "self"
     __semantics__ = {
         "type": ["knowledge", "tool"],
         "workspace": ["knowledge"],
