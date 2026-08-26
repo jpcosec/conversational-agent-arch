@@ -4,10 +4,16 @@ nodes:
 - id: conversation:steps.agendar_recordatorio
   parents:
   - conversation:steps
+- id: conversation:steps.derivacion_medinfo
+  parents:
+  - conversation:steps
 - id: conversation:steps.despedida
   parents:
   - conversation:steps
 - id: conversation:steps.evento_adverso
+  parents:
+  - conversation:steps
+- id: conversation:steps.journey_operativo
   parents:
   - conversation:steps
 - id: conversation:steps.onboarding
@@ -19,9 +25,23 @@ nodes:
 - id: conversation:steps.registro_estado
   parents:
   - conversation:steps
+- id: conversation:steps.revision_humana
+  parents:
+  - conversation:steps
 - id: conversation:steps.saludo
   parents:
   - conversation:steps
+- id: conversation:steps.validacion_policy_gate
+  parents:
+  - conversation:steps
+- id: gate:regulatorio
+  parents: []
+- id: gate:regulatorio.diagnostico
+  parents:
+  - gate:regulatorio
+- id: gate:regulatorio.dosis
+  parents:
+  - gate:regulatorio
 - id: type
   parents: []
 - id: type.knowledge
@@ -34,6 +54,9 @@ nodes:
   parents:
   - type.knowledge
 - id: type.knowledge.fallback
+  parents:
+  - type.knowledge
+- id: type.knowledge.gate
   parents:
   - type.knowledge
 - id: type.knowledge.rule

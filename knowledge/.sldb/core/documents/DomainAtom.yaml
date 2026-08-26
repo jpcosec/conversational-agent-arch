@@ -39,3 +39,48 @@ documents:
   - system:laboratorio-chile
   - type.knowledge.domain
   - workspace.knowledge
+- name: atom-antonia-medinfo
+  path: atoms/atom-antonia-medinfo.md
+  hash_c: 72f619908746f1eeca9db8aea76ad4f3cff9cd274dad7608e288898f636b35dd
+  hash_d: 51df40ebb35cce13c19aa14de61a060ad820160ba23e86722dcd9fbb733c8fac
+  semantic_tags:
+  - domain:medinfo
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-farmacovigilancia
+  path: atoms/atom-antonia-farmacovigilancia.md
+  hash_c: 613218426ec8bc0831b6a16fa8a347dca5b5919e4891c1662c475601ab3a80d0
+  hash_d: 4ab4bc99ab1da344ac293c258d04c154082a8a53eb3b63e54afee00354eee794
+  semantic_tags:
+  - domain:seguridad
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-journeys
+  path: atoms/atom-antonia-journeys.md
+  hash_c: 148255bfaad187286bdae2df9682dcb88d998591d9d740ea20e0959109c86692
+  hash_d: 3defd9672676933e05dd11cf0847e420a080e9bc5c8fe2a7251bc16452762c3c
+  semantic_tags:
+  - domain:programa
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-titulacion
+  path: atoms/atom-antonia-titulacion.md
+  hash_c: fdff40745b08c7c7a4860b7f4c24b6910d765db13a3efeffbb007038c2b38a52
+  hash_d: 12fa959424a184b98f96f48945ad6ad2d0a4f8937fd043f72861534551ce52de
+  semantic_tags:
+  - domain:tratamiento
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-molecula
+  path: atoms/atom-antonia-molecula.md
+  hash_c: 1146e7ac4354289888f11bfba05f2e4aeb0d48d33d9956dab07f942d8fbf98c9
+  hash_d: d320be3b97bbaf526697d3e71c29afd54957090800632b3a2db2ddafd6ccbb29
+  semantic_tags:
+  - domain:tratamiento
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge

@@ -147,3 +147,207 @@ documents:
     level: 2
     line_start: 793
     line_end: 794
+- doc_name: rule-antonia-clasificacion-operacional
+  sections:
+  - path: clasificaci-n-operacional-del-programa
+    title: "Clasificaci\xF3n operacional del programa"
+    breadcrumbs:
+    - "Clasificaci\xF3n operacional del programa"
+    about:
+    - "Clasificaci\xF3n operacional del programa"
+    - clasificaci n operacional del programa
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: clasificaci-n-operacional-del-programa
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: clasificaci-n-operacional-del-programa/answer
+    title: Answer
+    breadcrumbs:
+    - "Clasificaci\xF3n operacional del programa"
+    - Answer
+    about:
+    - "Clasificaci\xF3n operacional del programa"
+    - clasificaci n operacional del programa
+    - Answer
+    - answer
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: clasificaci-n-operacional-del-programa/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Clasificaci\xF3n operacional del programa"
+    - Conditions
+    about:
+    - "Clasificaci\xF3n operacional del programa"
+    - clasificaci n operacional del programa
+    - Conditions
+    - conditions
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+- doc_name: rule-antonia-clasificacion-medinfo
+  sections:
+  - path: clasificaci-n-de-consulta-m-dica-medinfo
+    title: "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    breadcrumbs:
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    about:
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - clasificaci n de consulta m dica medinfo
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: clasificaci-n-de-consulta-m-dica-medinfo
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: clasificaci-n-de-consulta-m-dica-medinfo/answer
+    title: Answer
+    breadcrumbs:
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Answer
+    about:
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - clasificaci n de consulta m dica medinfo
+    - Answer
+    - answer
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: clasificaci-n-de-consulta-m-dica-medinfo/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Conditions
+    about:
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - clasificaci n de consulta m dica medinfo
+    - Conditions
+    - conditions
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+- doc_name: rule-antonia-clasificacion-tratamiento
+  sections:
+  - path: clasificaci-n-de-dudas-de-tratamiento
+    title: "Clasificaci\xF3n de dudas de tratamiento"
+    breadcrumbs:
+    - "Clasificaci\xF3n de dudas de tratamiento"
+    about:
+    - "Clasificaci\xF3n de dudas de tratamiento"
+    - clasificaci n de dudas de tratamiento
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: clasificaci-n-de-dudas-de-tratamiento
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: clasificaci-n-de-dudas-de-tratamiento/answer
+    title: Answer
+    breadcrumbs:
+    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Answer
+    about:
+    - "Clasificaci\xF3n de dudas de tratamiento"
+    - clasificaci n de dudas de tratamiento
+    - Answer
+    - answer
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: clasificaci-n-de-dudas-de-tratamiento/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Conditions
+    about:
+    - "Clasificaci\xF3n de dudas de tratamiento"
+    - clasificaci n de dudas de tratamiento
+    - Conditions
+    - conditions
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24

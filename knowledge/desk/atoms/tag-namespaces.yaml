@@ -6,6 +6,13 @@ namespaces:
     - domain:task-execution
     meaning: Problem domain or durable area of concern.
     use_when: The atom belongs to a reusable problem domain.
+  gate:
+    do_not_use_when: The tag describes a conversation step, user trait, or general topic instead of a post-draft validation criterion.
+    examples:
+    - gate:regulatorio.dosis
+    - gate:corpus
+    meaning: Post-draft policy-gate criterion evaluated over the agent response.
+    use_when: The atom defines a validation or rejection criterion for the gate family.
   layer:
     do_not_use_when: The tag names only a broad topic or system.
     examples:

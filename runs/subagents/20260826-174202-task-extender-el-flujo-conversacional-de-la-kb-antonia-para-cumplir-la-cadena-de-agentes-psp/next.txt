@@ -1,0 +1,24 @@
+Task: task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+Title: Extender el flujo conversacional de la KB Antonia para cumplir la cadena de agentes PSP
+Status: draft
+Current node: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+Task type: design
+Phase: execution
+Required ritual:
+- desk/rituals/execution.md
+Required pills:
+- desk/contexts/pills.md
+- desk/contexts/pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible.md
+- desk/contexts/pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes.md
+- desk/contexts/pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia.md
+Next actions:
+1. Make the active task, scope, touched files, and validation targets explicit.
+2. Run a fresh-context subagent review.
+3. Bind matching board and task pills.
+4. Start implementation only after the initialization gate is satisfied.
+Advance when:
+- Execution gate obligations are recorded or satisfied.
+Sources:
+- task: desk/tasks/task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+- board: desk/tasks/Board.md
+- workflow: spec/workflows/task_lifecycle.yaml

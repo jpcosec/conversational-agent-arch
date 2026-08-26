@@ -1,0 +1,456 @@
+documents:
+- doc_name: gate-antonia-dosis
+  sections:
+  - path: gate-regulatorio-dosis
+    title: "Gate regulatorio \u2014 dosis"
+    breadcrumbs:
+    - "Gate regulatorio \u2014 dosis"
+    about:
+    - "Gate regulatorio \u2014 dosis"
+    - gate regulatorio dosis
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-dosis
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: gate-regulatorio-dosis/criterion
+    title: Criterion
+    breadcrumbs:
+    - "Gate regulatorio \u2014 dosis"
+    - Criterion
+    about:
+    - "Gate regulatorio \u2014 dosis"
+    - gate regulatorio dosis
+    - Criterion
+    - criterion
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: gate-regulatorio-dosis/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - "Gate regulatorio \u2014 dosis"
+    - Approval Condition
+    about:
+    - "Gate regulatorio \u2014 dosis"
+    - gate regulatorio dosis
+    - Approval Condition
+    - approval condition
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: gate-regulatorio-dosis/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - "Gate regulatorio \u2014 dosis"
+    - Rejection Action
+    about:
+    - "Gate regulatorio \u2014 dosis"
+    - gate regulatorio dosis
+    - Rejection Action
+    - rejection action
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 25
+    line_end: 26
+- doc_name: gate-antonia-diagnostico
+  sections:
+  - path: gate-regulatorio-diagn-stico
+    title: "Gate regulatorio \u2014 diagn\xF3stico"
+    breadcrumbs:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    about:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    - gate regulatorio diagn stico
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-diagn-stico
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: gate-regulatorio-diagn-stico/criterion
+    title: Criterion
+    breadcrumbs:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    - Criterion
+    about:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    - gate regulatorio diagn stico
+    - Criterion
+    - criterion
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: gate-regulatorio-diagn-stico/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    - Approval Condition
+    about:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    - gate regulatorio diagn stico
+    - Approval Condition
+    - approval condition
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: gate-regulatorio-diagn-stico/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    - Rejection Action
+    about:
+    - "Gate regulatorio \u2014 diagn\xF3stico"
+    - gate regulatorio diagn stico
+    - Rejection Action
+    - rejection action
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 25
+    line_end: 26
+- doc_name: gate-antonia-corpus
+  sections:
+  - path: gate-regulatorio-corpus-aprobado
+    title: "Gate regulatorio \u2014 corpus aprobado"
+    breadcrumbs:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    about:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    - gate regulatorio corpus aprobado
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-corpus-aprobado
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: gate-regulatorio-corpus-aprobado/criterion
+    title: Criterion
+    breadcrumbs:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    - Criterion
+    about:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    - gate regulatorio corpus aprobado
+    - Criterion
+    - criterion
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: gate-regulatorio-corpus-aprobado/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    - Approval Condition
+    about:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    - gate regulatorio corpus aprobado
+    - Approval Condition
+    - approval condition
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: gate-regulatorio-corpus-aprobado/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    - Rejection Action
+    about:
+    - "Gate regulatorio \u2014 corpus aprobado"
+    - gate regulatorio corpus aprobado
+    - Rejection Action
+    - rejection action
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 25
+    line_end: 26
+- doc_name: gate-antonia-derivacion
+  sections:
+  - path: gate-regulatorio-derivaci-n-correcta
+    title: "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    breadcrumbs:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    about:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    - gate regulatorio derivaci n correcta
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-derivaci-n-correcta
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: gate-regulatorio-derivaci-n-correcta/criterion
+    title: Criterion
+    breadcrumbs:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    - Criterion
+    about:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    - gate regulatorio derivaci n correcta
+    - Criterion
+    - criterion
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: gate-regulatorio-derivaci-n-correcta/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    - Approval Condition
+    about:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    - gate regulatorio derivaci n correcta
+    - Approval Condition
+    - approval condition
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: gate-regulatorio-derivaci-n-correcta/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    - Rejection Action
+    about:
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
+    - gate regulatorio derivaci n correcta
+    - Rejection Action
+    - rejection action
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 25
+    line_end: 26
+- doc_name: gate-antonia-promesas
+  sections:
+  - path: gate-regulatorio-promesas
+    title: "Gate regulatorio \u2014 promesas"
+    breadcrumbs:
+    - "Gate regulatorio \u2014 promesas"
+    about:
+    - "Gate regulatorio \u2014 promesas"
+    - gate regulatorio promesas
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-promesas
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: gate-regulatorio-promesas/criterion
+    title: Criterion
+    breadcrumbs:
+    - "Gate regulatorio \u2014 promesas"
+    - Criterion
+    about:
+    - "Gate regulatorio \u2014 promesas"
+    - gate regulatorio promesas
+    - Criterion
+    - criterion
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: gate-regulatorio-promesas/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - "Gate regulatorio \u2014 promesas"
+    - Approval Condition
+    about:
+    - "Gate regulatorio \u2014 promesas"
+    - gate regulatorio promesas
+    - Approval Condition
+    - approval condition
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: gate-regulatorio-promesas/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - "Gate regulatorio \u2014 promesas"
+    - Rejection Action
+    about:
+    - "Gate regulatorio \u2014 promesas"
+    - gate regulatorio promesas
+    - Rejection Action
+    - rejection action
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 25
+    line_end: 26

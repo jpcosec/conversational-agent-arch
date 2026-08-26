@@ -1,0 +1,23 @@
+## task/psp-kb-flow
+ M knowledge/.sldb/core/documents/ConversationStep.yaml
+ M knowledge/.sldb/core/documents/GateCriterion.yaml
+ M knowledge/.sldb/core/models/ConversationStep.yaml
+ M knowledge/.sldb/core/models/GateCriterion.yaml
+ M knowledge/.sldb/core/store_index.yaml
+ M knowledge/.sldb/runtime/sections/ConversationStep.yaml
+ M knowledge/.sldb/runtime/semantic_dag.yaml
+ M knowledge/.sldb/runtime/semantic_index.yaml
+ M knowledge/atoms/step-antonia-registro-estado.md
+ M knowledge/atoms/step-antonia-saludo.md
+ M tests/integration/test_flow_export.py
+?? knowledge/.sldb/runtime/sections/GateCriterion.yaml
+?? knowledge/atoms/gate-antonia-corpus.md
+?? knowledge/atoms/gate-antonia-derivacion.md
+?? knowledge/atoms/gate-antonia-diagnostico.md
+?? knowledge/atoms/gate-antonia-dosis.md
+?? knowledge/atoms/gate-antonia-promesas.md
+?? knowledge/atoms/step-antonia-derivacion-medinfo.md
+?? knowledge/atoms/step-antonia-journey-operativo.md
+?? knowledge/atoms/step-antonia-revision-humana.md
+?? knowledge/atoms/step-antonia-validacion-policy-gate.md
+?? runs/subagents/20260826-180809-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp/

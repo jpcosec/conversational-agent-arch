@@ -5,22 +5,24 @@ knowledge type in the KB. Models are registered in their own
 .knowledge/ store, separate from deskops models.
 
 Taxonomy:
-  domain     → DomainAtom       — factual business knowledge
+  domain     → DomainAtom        — factual business knowledge
   rule       → RuleAtom          — conditional behavior heuristics
   tool       → ToolAtom          — JSON-schema tool definitions
   trait      → TraitAtom         — reusable user characteristic descriptors
   step       → ConversationStep  — conversation flow nodes with slots/transitions
   self       → SelfDeclaration   — identity statement (whoami)
   style      → StyleGuide        — tone, register, phrasing, length
-  boundary   → CapabilityBoundary— limitations and escalation rules
+  boundary   → CapabilityBoundary — limitations and escalation rules
   strategy   → StrategyRule      — high-level interaction strategy
   fallback   → FallbackRule      — empty-context fallback messages
+  gate       → GateCriterion     — post-draft policy checks kept invisible to the current turn compiler
 """
 
 from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
 from .boundary import CapabilityBoundary
 from .domain import DomainAtom, AtomQuestion, AtomTag
 from .fallback import FallbackRule
+from .gate import GateCriterion
 from .rule import RuleAtom
 from .self_declaration import SelfDeclaration
 from .step import ConversationStep
@@ -36,6 +38,7 @@ __all__ = [
     "ConversationStep",
     "DomainAtom",
     "FallbackRule",
+    "GateCriterion",
     "IndexProxies",
     "INDEX_PROXY_TEMPLATE",
     "RuleAtom",
