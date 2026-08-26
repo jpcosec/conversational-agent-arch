@@ -65,14 +65,17 @@ ya scrubbeada, detecta patrones recurrentes (≥5 turnos), y propone atoms nuevo
 
 ---
 
-## 4. Índice de vistas del catálogo (13)
+## 4. Índice de vistas del catálogo (14)
 
-Abrir `build/architecture.html`. Tres secciones:
+Abrir `build/architecture.html`. Tres secciones. **Niveles**: `logical.*` = cómo
+está pensado (fiel al cableado real) · `current-*` = cómo está escrito ·
+state/sequence/matrix = cómo se comporta.
 
 ### Backend · Runtime (el motor)
 
 | Vista | Qué muestra | Cuándo mirarla |
 |---|---|---|
+| **logical-agent-ecosystem** | el modelo lógico: canales → orquestador-hub → motores → 3 DBs, con policy pura, event bus, scrubber y Gemini | **empezar aquí**: entender el sistema sin ruido de módulos |
 | **current-kb-agent** | los ~40 módulos reales de `kb_agent/` con su jerarquía e imports | ubicar un módulo o entender la estructura del runtime |
 | **state-conversation-flow** | máquina de estados del turno (6 nodos de `RouterNode`) | entender los estados y transiciones (buffering, pausa por tool) |
 | **sequence-extended-turn** | el turno en orden temporal (mensaje → motores → tool → respuesta → perfilado) | seguir el flujo paso a paso |

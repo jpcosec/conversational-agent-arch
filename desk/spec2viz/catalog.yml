@@ -3,6 +3,18 @@ title: KB Agent Runtime · Catálogo de arquitectura
 brand_name: KB Agent Runtime
 project_name: kb-agent-runtime
 vistas:
+- id: logical-agent-ecosystem
+  category: Backend · Runtime
+  nav: Modelo lógico (motores)
+  title: Backend · Lógico · Ecosistema de Motores
+  desc: 'Cómo funciona el runtime a alto nivel, fiel al cableado real: canales, orquestador-hub, policy pura, motores, event bus, scrubber, 3 DBs y Gemini.'
+  type: component
+  src: build/logical.agent-ecosystem.mmd
+  specs:
+  - backend/logical.agent-ecosystem.yml
+  tags:
+  - layer:backend
+  - view:logical
 - id: current-kb-agent
   category: Backend · Runtime
   nav: kb_agent (runtime)

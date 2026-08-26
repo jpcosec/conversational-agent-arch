@@ -28,7 +28,7 @@ desk/spec2viz/
   `frontends/viz` (grafo de embeddings).
 - La frontera se ve en `deployment.backend-frontend.yml` (`artifacts.kind: frontend|backend`).
 
-## Vistas (13)
+## Vistas (14)
 Registro activo: `catalog.yml`. Explicación de cada una y del sistema completo:
 **[`current-system-overview.md`](current-system-overview.md)**.
 
@@ -37,6 +37,7 @@ Tres secciones (una área grande por categoría; backend dividido por concern):
 ### Backend · Runtime (el motor conversacional)
 | Spec | Tipo |
 |---|---|
+| `backend/logical.agent-ecosystem.yml` | component (modelo lógico, cableado verificado) |
 | `backend/current-kb-agent.yml` | component (código real) |
 | `backend/state.conversation-flow.yml` | state |
 | `backend/sequence.extended-turn.yml` | sequence |
