@@ -169,6 +169,7 @@ def _atom_markdown(atom: dict[str, object]) -> str:
     if "five_wh" in atom:
         lines.append(f"five_wh_one_plus: {atom['five_wh']}")
     lines.append(f"atom_type: {tipo}")
+    lines.append(f"summary: {atom.get('summary', atom['title'])}")
     lines.append("tags:")
     lines.append(tags)
     if tipo == "domain":

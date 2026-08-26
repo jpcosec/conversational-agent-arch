@@ -197,6 +197,7 @@ def _atom_markdown(atom: dict[str, object]) -> str:
         f"id: {atom['id']}\n"
         f"title: {atom['title']}\n"
         "atom_type: trait\n"
+        f"summary: {atom.get('summary', atom['title'])}\n"
         "tags:\n"
         f"{tags}\n"
         "category: dietary\n"

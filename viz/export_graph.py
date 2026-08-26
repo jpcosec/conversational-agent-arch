@@ -1,0 +1,180 @@
+"""Exporta atoms + embeddings a un grafo 2D para visualizar con ReactFlow.
+
+Proyecta los embeddings 768-dim a 2D via PCA (numpy puro, sin sklearn),
+colorea por familia semantica y crea edges entre pares con alta similitud
+coseno. Escribe un JSON consumido por el HTML de ReactFlow.
+
+Uso:
+    python -m viz.export_graph --kb tests/knowledge --out viz/graph-donpeppe.json
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from pathlib import Path
+
+import numpy as np
+
+from knowledge_base.operations import KnowledgeOperations, ALL_MODELS
+from sldb.runtime.validation import extract_model_data
+
+# Paleta alineada con kb-ui (taxonomy_explorer).
+FAMILY_COLORS = {
+    "self": "#7cba7c",          # verde salvia
+    "domain": "#7fb3d5",        # azul acero
+    "conversation": "#e6a85c",  # ambar
+    "user": "#c97db9",          # magenta suave
+    None: "#9aa7bd",            # gris azulado (sin familia)
+}
+
+
+def _load_atoms(kb: str, pythonpath: str) -> list[dict]:
+    ops = KnowledgeOperations(kb, pythonpath=pythonpath)
+    by_class = {cls.__name__.lower(): cls for cls in ALL_MODELS}
+    kb_root = Path(kb)
+    atoms = []
+    for r in ops._find_records():
+        if r.kind != "doc" or not r.path:
+            continue
+        model_cls = by_class.get((r.model_name or "").lower())
+        if model_cls is None:
+            continue
+        doc_path = kb_root / r.path
+        if not doc_path.exists():
+            continue
+        try:
+            payload = extract_model_data(model_cls, doc_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        emb = payload.get("embedding")
+        if not emb:
+            continue
+        family = model_cls.family()
+        atoms.append({
+            "id": r.name,
+            "title": payload.get("title", r.name),
+            "summary": payload.get("summary", ""),
+            "model": model_cls.__name__,
+            "family": family,
+            "tags": payload.get("tags", []),
+            "embedding": np.asarray(emb, dtype=np.float64),
+        })
+    return atoms
+
+
+def _pca_2d(mat: np.ndarray) -> np.ndarray:
+    """PCA a 2D via SVD. mat: (n, d) -> (n, 2)."""
+    centered = mat - mat.mean(axis=0, keepdims=True)
+    # SVD: filas de Vt son componentes principales
+    _, _, vt = np.linalg.svd(centered, full_matrices=False)
+    coords = centered @ vt[:2].T
+    return coords
+
+
+def _normalize_coords(coords: np.ndarray, scale: float = 900.0) -> np.ndarray:
+    """Reescala a un canvas [0, scale] en ambos ejes."""
+    mn = coords.min(axis=0, keepdims=True)
+    mx = coords.max(axis=0, keepdims=True)
+    span = np.where((mx - mn) == 0, 1.0, mx - mn)
+    return (coords - mn) / span * scale
+
+
+def _cosine_sim_matrix(mat: np.ndarray) -> np.ndarray:
+    norms = np.linalg.norm(mat, axis=1, keepdims=True)
+    norms = np.where(norms == 0, 1.0, norms)
+    unit = mat / norms
+    return unit @ unit.T
+
+
+def build_graph(kb: str, pythonpath: str, edge_threshold: float, max_edges_per_node: int) -> dict:
+    atoms = _load_atoms(kb, pythonpath)
+    if not atoms:
+        return {"nodes": [], "edges": [], "meta": {"count": 0}}
+
+    mat = np.vstack([a["embedding"] for a in atoms])
+    coords = _normalize_coords(_pca_2d(mat))
+    sims = _cosine_sim_matrix(mat)
+
+    nodes = []
+    for i, a in enumerate(atoms):
+        nodes.append({
+            "id": a["id"],
+            "position": {"x": float(coords[i, 0]), "y": float(coords[i, 1])},
+            "data": {
+                "label": a["title"],
+                "summary": a["summary"],
+                "model": a["model"],
+                "family": a["family"] or "none",
+                "tags": a["tags"],
+            },
+            "style": {
+                "background": "rgba(18,18,26,.95)",
+                "color": "#f5f0e8",
+                "border": f"2px solid {FAMILY_COLORS.get(a['family'], FAMILY_COLORS[None])}",
+                "borderLeft": f"4px solid {FAMILY_COLORS.get(a['family'], FAMILY_COLORS[None])}",
+                "borderRadius": "12px",
+                "padding": "7px 13px",
+                "fontSize": "11px",
+                "width": 160,
+            },
+        })
+
+    edges = []
+    n = len(atoms)
+    for i in range(n):
+        # top-k vecinos por similitud (excluye si mismo)
+        order = np.argsort(-sims[i])
+        added = 0
+        for j in order:
+            if j == i:
+                continue
+            s = float(sims[i, j])
+            if s < edge_threshold:
+                break
+            if added >= max_edges_per_node:
+                break
+            a_id, b_id = atoms[i]["id"], atoms[j]["id"]
+            key = tuple(sorted((a_id, b_id)))
+            eid = f"{key[0]}__{key[1]}"
+            if any(e["id"] == eid for e in edges):
+                continue
+            edges.append({
+                "id": eid,
+                "source": a_id,
+                "target": b_id,
+                "data": {"similarity": round(s, 3)},
+                "style": {"stroke": "#3a4358", "strokeWidth": max(0.5, (s - edge_threshold) * 8)},
+            })
+            added += 1
+
+    return {
+        "nodes": nodes,
+        "edges": edges,
+        "meta": {
+            "count": n,
+            "edge_threshold": edge_threshold,
+            "families": sorted({(a["family"] or "none") for a in atoms}),
+            "kb": kb,
+        },
+    }
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description="Exporta atoms+embeddings a grafo ReactFlow.")
+    ap.add_argument("--kb", required=True, help="Ruta de la KB (ej. tests/knowledge)")
+    ap.add_argument("--pythonpath", default=".", help="Pythonpath para modelos")
+    ap.add_argument("--out", required=True, help="Ruta del JSON de salida")
+    ap.add_argument("--edge-threshold", type=float, default=0.55, help="Similitud coseno minima para edge")
+    ap.add_argument("--max-edges-per-node", type=int, default=3, help="Edges maximos por nodo")
+    args = ap.parse_args()
+
+    graph = build_graph(args.kb, args.pythonpath, args.edge_threshold, args.max_edges_per_node)
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(graph, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Grafo: {graph['meta']['count']} nodos, {len(graph['edges'])} edges -> {out}")
+
+
+if __name__ == "__main__":
+    main()
