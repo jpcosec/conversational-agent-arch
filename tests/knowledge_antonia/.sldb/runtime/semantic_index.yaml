@@ -74,6 +74,11 @@ tags:
   - strategy-antonia
   - style-antonia
   - tool-antonia-agendar-recordatorio
+  - trait-antonia-ansioso-aplicacion
+  - trait-antonia-buena-adherencia
+  - trait-antonia-dudas-efectos
+  - trait-antonia-prefiere-recordatorios
+  - trait-antonia-primera-vez
   type.knowledge.boundary:
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
@@ -103,6 +108,22 @@ tags:
   - style-antonia
   type.knowledge.tool:
   - tool-antonia-agendar-recordatorio
+  type.knowledge.trait:
+  - trait-antonia-ansioso-aplicacion
+  - trait-antonia-buena-adherencia
+  - trait-antonia-dudas-efectos
+  - trait-antonia-prefiere-recordatorios
+  - trait-antonia-primera-vez
+  user:traits.ansioso_aplicacion:
+  - trait-antonia-ansioso-aplicacion
+  user:traits.buena_adherencia:
+  - trait-antonia-buena-adherencia
+  user:traits.dudas_efectos:
+  - trait-antonia-dudas-efectos
+  user:traits.prefiere_recordatorios:
+  - trait-antonia-prefiere-recordatorios
+  user:traits.primera_vez:
+  - trait-antonia-primera-vez
   workspace.knowledge:
   - atom-antonia-aplicacion
   - atom-antonia-bienvenida
@@ -124,6 +145,11 @@ tags:
   - strategy-antonia
   - style-antonia
   - tool-antonia-agendar-recordatorio
+  - trait-antonia-ansioso-aplicacion
+  - trait-antonia-buena-adherencia
+  - trait-antonia-dudas-efectos
+  - trait-antonia-prefiere-recordatorios
+  - trait-antonia-primera-vez
 documents:
   atom-antonia-bienvenida:
     model: DomainAtom
@@ -187,6 +213,46 @@ documents:
     - self:tools
     - system:laboratorio-chile
     - type.knowledge.tool
+    - workspace.knowledge
+  trait-antonia-primera-vez:
+    model: TraitAtom
+    path: atoms/trait-antonia-primera-vez.md
+    tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.primera_vez
+    - workspace.knowledge
+  trait-antonia-ansioso-aplicacion:
+    model: TraitAtom
+    path: atoms/trait-antonia-ansioso-aplicacion.md
+    tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.ansioso_aplicacion
+    - workspace.knowledge
+  trait-antonia-buena-adherencia:
+    model: TraitAtom
+    path: atoms/trait-antonia-buena-adherencia.md
+    tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.buena_adherencia
+    - workspace.knowledge
+  trait-antonia-dudas-efectos:
+    model: TraitAtom
+    path: atoms/trait-antonia-dudas-efectos.md
+    tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.dudas_efectos
+    - workspace.knowledge
+  trait-antonia-prefiere-recordatorios:
+    model: TraitAtom
+    path: atoms/trait-antonia-prefiere-recordatorios.md
+    tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.prefiere_recordatorios
     - workspace.knowledge
   step-antonia-saludo:
     model: ConversationStep

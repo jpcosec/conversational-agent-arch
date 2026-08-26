@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Perfilado · Antonia</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0a0f; --panel:#0d1526; --panel2:#111a2e; --border:rgba(245,240,232,.08);
+    --border2:rgba(245,240,232,.14); --text:#f5f0e8; --muted:rgba(245,240,232,.45);
+    --accent:#d4a574; --mono:'JetBrains Mono',monospace; --sans:'Inter',sans-serif;
+  }
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh;overflow:hidden}
+  .top{height:60px;border-bottom:1px solid var(--border);display:flex;align-items:center;
+    padding:0 24px;gap:16px;background:var(--panel)}
+  .brand{font-size:18px;font-weight:600}
+  .brand em{color:var(--accent);font-style:italic}
+  .brand-sub{font-size:11px;color:var(--muted);font-family:var(--mono);letter-spacing:.05em}
+  .userbar{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .user-chip{font-family:var(--mono);font-size:11px;padding:6px 12px;border-radius:8px;
+    border:1px solid var(--border2);background:var(--panel2);color:var(--muted);cursor:pointer;
+    transition:all .15s}
+  .user-chip:hover{border-color:var(--accent);color:var(--text)}
+  .user-chip.active{border-color:var(--accent);background:rgba(212,165,116,.12);color:var(--accent)}
+  .layout{display:grid;grid-template-columns:420px 1fr;height:calc(100vh - 60px)}
+  .col{overflow-y:auto;padding:24px}
+  .col-left{border-right:1px solid var(--border);background:var(--panel)}
+  .col-head{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--accent);margin-bottom:14px}
+  .col-head span{color:var(--muted)}
+  /* JSON */
+  pre.json{font-family:var(--mono);font-size:12px;line-height:1.7;white-space:pre-wrap;
+    color:rgba(245,240,232,.75)}
+  .j-key{color:#7fb3d5}.j-str{color:#9ece9e}.j-num{color:#e6a85c}.j-punct{color:var(--muted)}
+  .j-trait{cursor:pointer;border-radius:4px;padding:1px 3px;margin:-1px -3px;transition:background .12s}
+  .j-trait:hover{background:rgba(212,165,116,.14)}
+  .j-trait.hi{background:rgba(212,165,116,.22);outline:1px solid rgba(212,165,116,.5)}
+  /* fichas */
+  .fichas{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));align-content:start}
+  .ficha{border:1px solid var(--border2);border-radius:14px;padding:16px;background:var(--panel);
+    transition:all .18s;scroll-margin:24px}
+  .ficha.hi{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 8px 30px rgba(212,165,116,.12)}
+  .ficha.dim{opacity:.32}
+  .ficha-top{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .ficha-icon{font-size:18px}
+  .ficha-title{font-size:15px;font-weight:600;line-height:1.2}
+  .ficha-cat{margin-left:auto;font-family:var(--mono);font-size:9px;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--accent);border:1px solid rgba(212,165,116,.35);
+    border-radius:6px;padding:3px 7px}
+  .ficha-desc{font-size:13px;line-height:1.55;color:rgba(245,240,232,.72);margin-bottom:12px}
+  .ficha-id{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:12px;word-break:break-all}
+  .conf-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .conf-bar{flex:1;height:6px;border-radius:3px;background:rgba(245,240,232,.08);overflow:hidden}
+  .conf-fill{height:100%;background:linear-gradient(90deg,#d4a574,#e6a85c);border-radius:3px}
+  .conf-val{font-family:var(--mono);font-size:12px;color:var(--accent);min-width:38px;text-align:right}
+  .conf-src{font-family:var(--mono);font-size:10px;color:var(--muted)}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .tag{font-family:var(--mono);font-size:10px;color:var(--muted);border:1px solid var(--border);
+    border-radius:6px;padding:2px 7px}
+  .empty{color:var(--muted);font-size:13px;padding:40px 0;text-align:center}
+  .missing{border-color:#e06c5a !important}
+  .missing .ficha-title{color:#e06c5a}
+</style>
+</head>
+<body>
+  <div class="top">
+    <div>
+      <div class="brand"><em>Perfilado</em> · Antonia</div>
+      <div class="brand-sub">UserTraits (SQL) ↔ TraitAtom (SLDB)</div>
+    </div>
+    <div class="userbar" id="userbar"></div>
+  </div>
+  <div class="layout">
+    <div class="col col-left">
+      <div class="col-head">Perfil del usuario <span>· SQL</span></div>
+      <pre class="json" id="json"></pre>
+    </div>
+    <div class="col col-right">
+      <div class="col-head">Fichas de rasgo <span>· SLDB · TraitAtom</span></div>
+      <div class="fichas" id="fichas"></div>
+    </div>
+  </div>
+
+<script>
+const ICON = { behavior:'🧠', preference:'⭐', dietary:'🥗', demographic:'👤', default:'🏷️' };
+let DATA = null, current = 0;
+
+async function load(){
+  const r = await fetch('/api/profiles');
+  DATA = await r.json();
+  renderUserbar();
+  select(0);
+}
+
+function renderUserbar(){
+  const bar = document.getElementById('userbar');
+  bar.innerHTML = '';
+  DATA.users.forEach((u,i)=>{
+    const el = document.createElement('div');
+    el.className = 'user-chip' + (i===current?' active':'');
+    el.textContent = u.external_id + ' · ' + u.traits.length;
+    el.onclick = ()=>select(i);
+    bar.appendChild(el);
+  });
+}
+
+function select(i){
+  current = i;
+  renderUserbar();
+  const u = DATA.users[i];
+  renderJson(u);
+  renderFichas(u);
+}
+
+function renderJson(u){
+  const el = document.getElementById('json');
+  const K=(s)=>`<span class="j-key">"${s}"</span>`;
+  const S=(s)=>`<span class="j-str">"${s}"</span>`;
+  const N=(n)=>`<span class="j-num">${n}</span>`;
+  const P=(s)=>`<span class="j-punct">${s}</span>`;
+  let out = P('{')+'\n';
+  out += `  ${K('user_id')}${P(':')} ${N(u.user_id)}${P(',')}\n`;
+  out += `  ${K('external_id')}${P(':')} ${S(u.external_id)}${P(',')}\n`;
+  out += `  ${K('channel')}${P(':')} ${S(u.channel)}${P(',')}\n`;
+  out += `  ${K('traits')}${P(': [')}\n`;
+  u.traits.forEach((t,j)=>{
+    const comma = j<u.traits.length-1 ? P(',') : '';
+    out += `    <span class="j-trait" data-tid="${t.trait_id}" `
+         + `onmouseenter="hi('${t.trait_id}')" onmouseleave="unhi()" `
+         + `onclick="jump('${t.trait_id}')">`+P('{')+'\n';
+    out += `      ${K('trait_id')}${P(':')} ${S(t.trait_id)}${P(',')}\n`;
+    out += `      ${K('confidence')}${P(':')} ${N(t.confidence)}${P(',')}\n`;
+    out += `      ${K('source')}${P(':')} ${S(t.source)}\n`;
+    out += `    `+P('}')+comma+'</span>\n';
+  });
+  out += `  ${P(']')}\n`+P('}');
+  el.innerHTML = out;
+}
+
+function renderFichas(u){
+  const el = document.getElementById('fichas');
+  el.innerHTML = '';
+  if(!u.traits.length){ el.innerHTML='<div class="empty">Sin rasgos perfilados.</div>'; return; }
+  u.traits.forEach(t=>{
+    const f = DATA.fichas[t.trait_id];
+    const card = document.createElement('div');
+    card.className = 'ficha' + (f?'':' missing');
+    card.id = 'ficha-'+t.trait_id;
+    if(f){
+      const icon = ICON[f.category]||ICON.default;
+      const pct = Math.round(t.confidence*100);
+      card.innerHTML = `
+        <div class="ficha-top">
+          <span class="ficha-icon">${icon}</span>
+          <span class="ficha-title">${f.title}</span>
+          ${f.category?`<span class="ficha-cat">${f.category}</span>`:''}
+        </div>
+        <div class="ficha-id">${f.id}</div>
+        <div class="conf-row">
+          <div class="conf-bar"><div class="conf-fill" style="width:${pct}%"></div></div>
+          <div class="conf-val">${t.confidence.toFixed(2)}</div>
+        </div>
+        <div class="conf-src">source: ${t.source}</div>
+        <div class="ficha-desc" style="margin-top:12px">${f.description||''}</div>
+        <div class="tags">${(f.tags||[]).map(x=>`<span class="tag">${x}</span>`).join('')}</div>`;
+    } else {
+      card.innerHTML = `
+        <div class="ficha-top">
+          <span class="ficha-icon">⚠️</span>
+          <span class="ficha-title">${t.trait_id}</span>
+        </div>
+        <div class="ficha-desc">Sin ficha TraitAtom en el store SLDB (referencia colgante).</div>`;
+    }
+    el.appendChild(card);
+  });
+}
+
+function hi(tid){
+  document.querySelectorAll('.ficha').forEach(f=>{
+    if(f.id==='ficha-'+tid){ f.classList.add('hi'); f.classList.remove('dim'); }
+    else f.classList.add('dim');
+  });
+  document.querySelectorAll('.j-trait').forEach(j=>{
+    j.classList.toggle('hi', j.dataset.tid===tid);
+  });
+}
+function unhi(){
+  document.querySelectorAll('.ficha').forEach(f=>{f.classList.remove('hi','dim');});
+  document.querySelectorAll('.j-trait').forEach(j=>j.classList.remove('hi'));
+}
+function jump(tid){
+  const f = document.getElementById('ficha-'+tid);
+  if(f) f.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+load();
+</script>
+</body>
+</html>

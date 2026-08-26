@@ -1,0 +1,226 @@
+documents:
+- doc_name: trait-antonia-primera-vez
+  sections:
+  - path: primera-vez-con-inyecciones
+    title: Primera vez con inyecciones
+    breadcrumbs:
+    - Primera vez con inyecciones
+    about:
+    - Primera vez con inyecciones
+    - primera vez con inyecciones
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.primera_vez
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.primera_vez
+    - workspace.knowledge
+    slug: primera-vez-con-inyecciones
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: primera-vez-con-inyecciones/description
+    title: Description
+    breadcrumbs:
+    - Primera vez con inyecciones
+    - Description
+    about:
+    - Primera vez con inyecciones
+    - primera vez con inyecciones
+    - Description
+    - description
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.primera_vez
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.primera_vez
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 18
+    line_end: 19
+- doc_name: trait-antonia-ansioso-aplicacion
+  sections:
+  - path: ansioso-a-con-la-aplicaci-n
+    title: "Ansioso/a con la aplicaci\xF3n"
+    breadcrumbs:
+    - "Ansioso/a con la aplicaci\xF3n"
+    about:
+    - "Ansioso/a con la aplicaci\xF3n"
+    - ansioso a con la aplicaci n
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.ansioso_aplicacion
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.ansioso_aplicacion
+    - workspace.knowledge
+    slug: ansioso-a-con-la-aplicaci-n
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: ansioso-a-con-la-aplicaci-n/description
+    title: Description
+    breadcrumbs:
+    - "Ansioso/a con la aplicaci\xF3n"
+    - Description
+    about:
+    - "Ansioso/a con la aplicaci\xF3n"
+    - ansioso a con la aplicaci n
+    - Description
+    - description
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.ansioso_aplicacion
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.ansioso_aplicacion
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 18
+    line_end: 19
+- doc_name: trait-antonia-buena-adherencia
+  sections:
+  - path: buena-adherencia-al-tratamiento
+    title: Buena adherencia al tratamiento
+    breadcrumbs:
+    - Buena adherencia al tratamiento
+    about:
+    - Buena adherencia al tratamiento
+    - buena adherencia al tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.buena_adherencia
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.buena_adherencia
+    - workspace.knowledge
+    slug: buena-adherencia-al-tratamiento
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: buena-adherencia-al-tratamiento/description
+    title: Description
+    breadcrumbs:
+    - Buena adherencia al tratamiento
+    - Description
+    about:
+    - Buena adherencia al tratamiento
+    - buena adherencia al tratamiento
+    - Description
+    - description
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.buena_adherencia
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.buena_adherencia
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 18
+    line_end: 19
+- doc_name: trait-antonia-dudas-efectos
+  sections:
+  - path: dudas-sobre-efectos-secundarios
+    title: Dudas sobre efectos secundarios
+    breadcrumbs:
+    - Dudas sobre efectos secundarios
+    about:
+    - Dudas sobre efectos secundarios
+    - dudas sobre efectos secundarios
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.dudas_efectos
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.dudas_efectos
+    - workspace.knowledge
+    slug: dudas-sobre-efectos-secundarios
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: dudas-sobre-efectos-secundarios/description
+    title: Description
+    breadcrumbs:
+    - Dudas sobre efectos secundarios
+    - Description
+    about:
+    - Dudas sobre efectos secundarios
+    - dudas sobre efectos secundarios
+    - Description
+    - description
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.dudas_efectos
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.dudas_efectos
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 18
+    line_end: 19
+- doc_name: trait-antonia-prefiere-recordatorios
+  sections:
+  - path: prefiere-recordatorios-activos
+    title: Prefiere recordatorios activos
+    breadcrumbs:
+    - Prefiere recordatorios activos
+    about:
+    - Prefiere recordatorios activos
+    - prefiere recordatorios activos
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.prefiere_recordatorios
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.prefiere_recordatorios
+    - workspace.knowledge
+    slug: prefiere-recordatorios-activos
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: prefiere-recordatorios-activos/description
+    title: Description
+    breadcrumbs:
+    - Prefiere recordatorios activos
+    - Description
+    about:
+    - Prefiere recordatorios activos
+    - prefiere recordatorios activos
+    - Description
+    - description
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.prefiere_recordatorios
+    - workspace.knowledge
+    semantic_tags:
+    - system:laboratorio-chile
+    - type.knowledge.trait
+    - user:traits.prefiere_recordatorios
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 18
+    line_end: 19

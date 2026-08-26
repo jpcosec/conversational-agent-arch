@@ -38,8 +38,11 @@ from pydantic import BaseModel
 from kb_agent.orchestrator import MODEL, Orchestrator
 
 EDITOR_DIR = PROJECT_ROOT / "conversation_flow_editor"
+PROFILING_DIR = PROJECT_ROOT / "profiling_viewer"
 # Store del que el editor lee los ConversationStep (deshardcodeable via env).
 FLOW_KB_ROOT = os.getenv("FLOW_KB_ROOT", "tests/knowledge_antonia")
+# DB SQL con los perfiles de usuario (UserTraits). Default: seed de demo.
+PROFILING_DB = os.getenv("PROFILING_DB", str(PROJECT_ROOT / "runs" / "profiling-demo.sqlite"))
 
 # ── configuracion ────────────────────────────────────────────
 # KB_ROOT puede venir de env (deshardcodeo). Default: KB tipada Don Peppe.
@@ -165,6 +168,72 @@ def flow_graph() -> JSONResponse:
     from conversation_flow_editor.export_flow import export
 
     return JSONResponse(export(FLOW_KB_ROOT))
+
+
+@app.get("/profiling_viewer")
+@app.get("/profiling_viewer/")
+def profiling_viewer() -> FileResponse:
+    return FileResponse(str(PROFILING_DIR / "index.html"))
+
+
+@app.get("/api/profiles")
+def profiles() -> JSONResponse:
+    """Perfilado: cruza UserTraits (SQL) con TraitAtom (SLDB).
+
+    Devuelve, por usuario, el JSON del perfil (trait_id/confidence/source) y
+    el catalogo de fichas TraitAtom a las que apuntan esos trait_id.
+    """
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    from kb_agent.models_sql.identity import Users, UserTraits
+
+    engine = create_engine(f"sqlite:///{PROFILING_DB}", future=True)
+    Session = sessionmaker(bind=engine, future=True)
+
+    users_out: list[dict] = []
+    trait_ids: set[str] = set()
+    with Session() as s:
+        for u in s.query(Users).all():
+            rows = s.query(UserTraits).filter(UserTraits.user_id == u.id).all()
+            traits = []
+            for r in rows:
+                trait_ids.add(r.trait_id)
+                traits.append({
+                    "trait_id": r.trait_id,
+                    "confidence": r.confidence,
+                    "source": r.source,
+                    "created_at": r.created_at.isoformat() if r.created_at else None,
+                })
+            traits.sort(key=lambda t: t["confidence"], reverse=True)
+            users_out.append({
+                "user_id": u.id,
+                "external_id": u.external_id,
+                "channel": u.channel,
+                "traits": traits,
+            })
+
+    # Fichas TraitAtom del store (catalogo referenciado por trait_id).
+    reader = orchestrator.reader
+    fichas: dict[str, dict] = {}
+    for doc in reader.find("type.knowledge.trait"):
+        tid = doc.get("id")
+        if tid is None:
+            continue
+        fichas[tid] = {
+            "id": tid,
+            "title": doc.get("title") or tid,
+            "description": doc.get("description", ""),
+            "category": doc.get("category"),
+            "tags": doc.get("tags", []),
+        }
+    # Marca trait_ids referenciados desde SQL que no tienen ficha en SLDB.
+    missing = sorted(trait_ids - set(fichas.keys()))
+
+    return JSONResponse({
+        "users": users_out,
+        "fichas": fichas,
+        "missing_fichas": missing,
+    })
 
 
 @app.get("/api/health")
