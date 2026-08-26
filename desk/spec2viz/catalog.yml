@@ -4,7 +4,7 @@ brand_name: KB Agent Runtime
 project_name: kb-agent-runtime
 vistas:
 - id: current-kb-agent
-  category: Codebase actual
+  category: Backend · Runtime
   nav: kb_agent (runtime)
   title: Codebase · kb_agent · Componentes reales
   desc: Los ~40 módulos reales de kb_agent/ con su jerarquía de subpaquetes e imports reales.
@@ -16,34 +16,8 @@ vistas:
   - layer:backend
   - view:current
   - source:ast
-- id: current-frontends
-  category: Codebase actual
-  nav: frontends (UIs)
-  title: Codebase · frontends · Componentes reales
-  desc: chat.app como hub FastAPI + las 5 UIs + proyectores de KB (export_flow, export_graph).
-  type: component
-  src: build/current-frontends.mmd
-  specs:
-  - backend/current-frontends.yml
-  tags:
-  - layer:frontend
-  - view:current
-  - source:ast
-- id: current-knowledge-base
-  category: Codebase actual
-  nav: knowledge_base (CLI)
-  title: Codebase · knowledge_base · Componentes reales
-  desc: CLI de la KB — parser (11 subcomandos) + KnowledgeOperations (organize, propose, reflect...).
-  type: component
-  src: build/current-knowledge-base.mmd
-  specs:
-  - backend/current-knowledge-base.yml
-  tags:
-  - layer:backend
-  - view:current
-  - source:ast
 - id: current-deploy
-  category: Codebase actual
+  category: Backend · Runtime
   nav: deploy (Modal)
   title: Codebase · deploy · Modal App
   desc: modal_app empaqueta código + KB real y sirve el ASGI de frontends.chat.app; release.sh gate.
@@ -55,7 +29,7 @@ vistas:
   - layer:deploy
   - view:current
 - id: current-tests
-  category: Codebase actual
+  category: Backend · Runtime
   nav: tests (suite)
   title: Codebase · tests · Suite por capas
   desc: unit / integration / e2e / ui + support + conftest (gating, aislamiento de DBs).
@@ -67,7 +41,7 @@ vistas:
   - layer:testing
   - view:current
 - id: deployment-backend-frontend
-  category: Global
+  category: Backend · Runtime
   nav: Despliegue backend/frontend
   title: Despliegue · Backend vs Frontend
   desc: Separación explícita backend/frontend del runtime.
@@ -79,7 +53,7 @@ vistas:
   - layer:global
   - view:deployment
 - id: state-conversation-flow
-  category: Backend
+  category: Backend · Runtime
   nav: Flujo de Conversación
   title: Backend · Estado · Máquina de Estados de la Conversación
   desc: Diagrama del flujo de la conversación, buffering y estados.
@@ -91,7 +65,7 @@ vistas:
   - layer:backend
   - view:state
 - id: sequence-extended-turn
-  category: Backend
+  category: Backend · Runtime
   nav: Secuencia de Turno Extendido
   title: Backend · Secuencia · Ciclo de Vida del Turno Extendido
   desc: Flujo del mensaje a través de los motores y tools externas.
@@ -103,7 +77,7 @@ vistas:
   - layer:backend
   - view:sequence
 - id: matrix-component-turn-lifecycle
-  category: Backend
+  category: Backend · Runtime
   nav: Matriz Componentes × Turno
   title: Backend · Matriz · Componentes × Ciclo de Vida del Turno
   desc: Qué componente participa en cada stage del turno síncrono y de los agentes asíncronos (vega matrix).
@@ -115,7 +89,7 @@ vistas:
   - layer:backend
   - view:matrix
 - id: activity-simulation-harness
-  category: Testing
+  category: Backend · Runtime
   nav: Harness de Simulación
   title: Testing · Flujo · Harness de Simulación Agente-vs-Agente
   desc: SimulatedUser <-> Orchestrator turno a turno, checks deterministas y Judge LLM (KB como verdad); known_gap -> xfail estricto.
@@ -127,6 +101,32 @@ vistas:
   - layer:backend
   - view:activity
   - area:testing
+- id: current-knowledge-base
+  category: Backend · Knowledge
+  nav: knowledge_base (CLI)
+  title: Codebase · knowledge_base · Componentes reales
+  desc: CLI de la KB — parser (11 subcomandos) + KnowledgeOperations (organize, propose, reflect...).
+  type: component
+  src: build/current-knowledge-base.mmd
+  specs:
+  - backend/current-knowledge-base.yml
+  tags:
+  - layer:backend
+  - view:current
+  - source:ast
+- id: current-frontends
+  category: Frontend
+  nav: frontends (UIs)
+  title: Codebase · frontends · Componentes reales
+  desc: chat.app como hub FastAPI + las 5 UIs + proyectores de KB (export_flow, export_graph).
+  type: component
+  src: build/current-frontends.mmd
+  specs:
+  - backend/current-frontends.yml
+  tags:
+  - layer:frontend
+  - view:current
+  - source:ast
 - id: state-chat-ui
   category: Frontend
   nav: Estado UI chat
