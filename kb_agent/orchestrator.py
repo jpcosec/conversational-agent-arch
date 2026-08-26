@@ -28,6 +28,7 @@ from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE, decide_turn
 from kb_agent.llm import Conversador, GeminiConversador, GeminiTraitMapper, TraitMapper, make_gemini_client
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
+from kb_agent.models_sql.recordatorios import Recordatorios  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
 from kb_agent.ontologizador.compiler import ContextCompiler
 from kb_agent.ontologizador.kgdb_reader import KGDBReader

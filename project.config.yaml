@@ -10,8 +10,8 @@
 
 project:
   # Identidad del negocio
-  name: "Don Peppe"                 # nombre visible en las UIs
-  slug: donpeppe                    # identificador corto (sin espacios)
+  name: "Antonia"                   # nombre visible en las UIs
+  slug: antonia                     # identificador corto (sin espacios)
 
   # KB del negocio (una KB = un negocio; el editor de flujo y el compilador
   # leen SIEMPRE este mismo store).
@@ -20,7 +20,7 @@ project:
   #                   Apunta aqui al store externo/productivo del negocio.
   #   test_kb_root -> store de PRUEBA del repo, usado bajo pytest (auto) o
   #                   con mode="test". Mantiene los tests aislados del real.
-  kb_root: tests/knowledge          # (cambiar por la ruta al KB externo real)
+  kb_root: tests/knowledge_antonia  # (cambiar por la ruta al KB externo real)
   test_kb_root: tests/knowledge     # KB de prueba del repo (atoms tipados)
 
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
@@ -30,12 +30,15 @@ project:
   model: gemini-2.5-flash
 
   # Fallback de ultimo recurso si la KB no declara un FallbackRule.
-  # (La KB de Don Peppe SI lo declara: fallback-donpeppe. Esto solo aplica si falta.)
+  # (La KB de Antonia SI lo declara: fallback-antonia. Esto solo aplica si falta.)
   # fallback_message: "No tengo esa información a mano."
 
   # Tools del negocio: {nombre declarado en el ToolAtom: "modulo:funcion"}.
   # El ToolAtom de la KB define el schema; aqui se registra quien lo ejecuta.
+  # Un handler registrado pero no declarado por la KB activa simplemente no se
+  # usa (Don Peppe declara crear_reserva; Antonia declara agendar_recordatorio).
   tools:
+    agendar_recordatorio: kb_agent.tools.recordatorios:agendar_recordatorio
     crear_reserva: kb_agent.tools.reservas:crear_reserva
 
   # Servidor HTTP (kb_chat_ui)
@@ -46,8 +49,9 @@ project:
   # Presentación (UIs)
   ui:
     runtime_title: "Auditable Agent Runtime"
-    kb_label: "Don Peppe · KB"
+    kb_label: "Antonia · KB"
     greeting: >-
-      Hola. Soy el asistente de **Don Peppe**. Pregúntame por la carta,
-      horarios o pide una reserva. Cada respuesta queda ligada a su contexto
-      atómico real — selecciónala para auditar el turno.
+      Hola. Soy **Antonia**, del Programa de Acompañamiento de Selfix.
+      Pregúntame sobre tu tratamiento, cómo aplicarte o agenda un recordatorio
+      de aplicación. Cada respuesta queda ligada a su contexto atómico real —
+      selecciónala para auditar el turno.

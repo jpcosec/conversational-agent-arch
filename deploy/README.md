@@ -8,9 +8,9 @@ que corre localmente.
 ## Qué se empaqueta
 
 - **Código**: `kb_agent/`, `frontends/`, `knowledge_base/`, `project.config.yaml`.
-- **KB servida**: `tests/knowledge` (Don Peppe — la KB que apunta
-  `project.config.yaml: kb_root`), más `tests/knowledge_antonia` (KB de prueba
-  secundaria, pequeña, incluida por si se quiere apuntar ahí).
+- **KB servida**: `tests/knowledge_antonia` (Antonia — la KB que apunta
+  `project.config.yaml: kb_root`), más `tests/knowledge` (Don Peppe, KB
+  secundaria, incluida por si se quiere apuntar ahí).
   **No** se copia `tests/knowledge/.embedding_cache` (~600 MB de blobs de un
   modelo de embeddings): `/api/viz/graph` sólo lee embeddings ya calculados
   del frontmatter de cada atom, nunca los recalcula en vivo.
@@ -90,8 +90,8 @@ imagen.
 ```bash
 URL=https://<workspace>--kb-agent-runtime-serve.modal.run
 
-curl -s "$URL/api/health"                  # {"status":"ok","kb_root":".../tests/knowledge",...}
-curl -s "$URL/api/config"                  # {"name":"Don Peppe",...}
+curl -s "$URL/api/health"                  # {"status":"ok","kb_root":".../tests/knowledge_antonia",...}
+curl -s "$URL/api/config"                  # {"name":"Antonia",...}
 curl -s "$URL/api/viz/graph" | head -c 200 # nodes/edges del grafo de embeddings
 curl -s "$URL/api/flow" | head -c 200      # grafo de ConversationStep
 curl -s -X POST "$URL/api/chat" \
