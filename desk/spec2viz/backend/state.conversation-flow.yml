@@ -1,13 +1,12 @@
 id: state-conversation-flow
-title: "Backend · Estado · Máquina de Estados de la Conversación"
+title: Backend · Estado · Máquina de Estados de la Conversación
 type: state
-version: '1.1'
+version: '1.0'
 metadata:
   author: antonIA
   description: >-
     Diagrama de la Máquina de Estados que rige el flujo de la conversación, manejando
-    buffers de entrada, debounce, ejecución de tools, timeouts y retomas.
-    Basado en el RouterNode enum de kb_agent/state_machine.py.
+    buffers de entrada, escenarios de negocio, interrupciones, ejecución de tools y retomas.
 data:
   entity: AgentConversation
   initial: idle
@@ -46,31 +45,27 @@ data:
     - from: buffering
       to: evaluating_context
       "on": timeout_buffer
-      guard: envia_inputs_al_router
+      guard: envía_inputs_al_router
     - from: evaluating_context
       to: waiting_tool
       "on": requiere_api_externa
       guard: ToolAtom inyectado
-    - from: evaluating_context
-      to: drafting_response
-      "on": contexto_resuelto
-      guard: Escenario definido en context
-    - from: evaluating_context
-      to: breakpoint_miss
-      "on": contexto_vacio
-      guard: fuera_de_dominio
-    - from: breakpoint_miss
-      to: drafting_response
-      "on": aplica_fallback
-      guard: Conversador admite desconocimiento
     - from: waiting_tool
       to: drafting_response
       "on": json_api_recibido
       guard: inyecta_resultado_como_system_turn
-    - from: waiting_tool
+    - from: evaluating_context
       to: drafting_response
-      "on": timeout_herramienta
-      guard: devuelve_error_de_timeout
+      "on": contexto_resuelto
+      guard: Escenario (ej. Saludo, Q&A) definido en context
+    - from: evaluating_context
+      to: breakpoint_miss
+      "on": contexto_vacio
+      guard: fuera de dominio
+    - from: breakpoint_miss
+      to: drafting_response
+      "on": aplica_fallback
+      guard: Conversador admite desconocimiento
     - from: drafting_response
       to: idle
       "on": respuesta_enviada

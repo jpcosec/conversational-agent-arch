@@ -50,6 +50,7 @@ project:
   ui:
     runtime_title: "Auditable Agent Runtime"
     kb_label: "Antonia · KB"
+    input_placeholder: "Escribe tu mensaje..."
     greeting: >-
       Hola. Soy **Antonia**, del Programa de Acompañamiento de Selfix.
       Pregúntame sobre tu tratamiento, cómo aplicarte o agenda un recordatorio

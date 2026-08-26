@@ -1,0 +1,82 @@
+id: matrix-agents-kb-consumption
+title: Backend · Matriz · Agentes × Modelos de la KB que consumen
+type: component_view_matrix
+version: "0.2"
+metadata:
+  author: antonIA
+  description: >-
+    Qué modelo tipado de conocimiento lee o produce cada motor cognitivo del
+    runtime. Stages = los 10 modelos reales de kb_agent/models/knowledge/*
+    (ordenados por su __family__: self→domain→conversation→user). Dos vistas:
+    (1) Lee — modelos que entran al motor; (2) Produce — modelos que escribe.
+    Barras derivadas del código: Ontologizador (compiler._MODEL_TYPES +
+    _extract_persona self/style/boundary + _find_atoms domain/rule +
+    _find_tools + strategy/fallback + trait + step vía KGDB); Conversador
+    (llm.draft_nl usa persona self/style/boundary + strategy + domain/rule +
+    user_traits); Perfilador (extractor lee y upserta trait); Reflector
+    (generator.fetch domain/rule y propone domain/rule 'proposed').
+data:
+  views:
+    - id: reads
+      label: Lee (consume)
+      stages:
+        - id: self
+          label: "self · self"
+        - id: style
+          label: "self · style"
+        - id: boundary
+          label: "self · boundary"
+        - id: tool
+          label: "self · tool"
+        - id: domain
+          label: "domain · domain"
+        - id: rule
+          label: "domain · rule"
+        - id: step
+          label: "conv · step"
+        - id: strategy
+          label: "conv · strategy"
+        - id: fallback
+          label: "conv · fallback"
+        - id: trait
+          label: "user · trait"
+    - id: writes
+      label: Produce (escribe)
+      stages:
+        - id: domain_w
+          label: "domain · domain"
+        - id: rule_w
+          label: "domain · rule"
+        - id: trait_w
+          label: "user · trait"
+
+  components:
+    - name: Engines
+      kind: core
+      label: Motores Cognitivos (kb_agent/*)
+      stages:
+        reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait]
+        writes: [domain_w, rule_w, trait_w]
+      children:
+        - name: Ontologizador
+          kind: engine
+          label: "Ontologizador (compile_context: lee TODA la KB tipada + step vía KGDB)"
+          stages:
+            reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait]
+        - name: Conversador
+          kind: engine
+          label: "Conversador (draft_nl: persona self/style/boundary + strategy + domain/rule + traits)"
+          stages:
+            reads: [self, style, boundary, domain, rule, strategy, fallback, trait]
+        - name: Perfilador
+          kind: service
+          label: "Perfilador (extractor: lee trait candidatos → upsert UserTrait)"
+          stages:
+            reads: [trait]
+            writes: [trait_w]
+        - name: Reflector
+          kind: service
+          label: "Reflector (KB Thickener: fetch domain/rule → propone domain/rule 'proposed')"
+          stages:
+            reads: [domain, rule]
+            writes: [domain_w, rule_w]

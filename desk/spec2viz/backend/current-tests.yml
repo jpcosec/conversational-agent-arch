@@ -1,0 +1,149 @@
+id: current-tests
+title: "Tests · Suite por capas (current codebase)"
+type: component
+version: "1.0"
+metadata:
+  author: antonIA
+  description: >-
+    Estructura real de la suite tests/: cuatro capas (unit, integration, e2e,
+    ui) + support (fakes, seed) + conftest (gating por credenciales/Playwright,
+    aislamiento de DBs). Refleja el codebase actual, no un plan.
+data:
+  nodes:
+    Suite:
+      label: tests/ (suite por capas)
+      kind: core
+      contains:
+        - Conftest
+        - Support
+        - Unit
+        - Integration
+        - E2E
+        - UI
+
+    Conftest:
+      label: "conftest (gating llm/ui, aislamiento CHAT_DB/PROFILING_DB, fixtures donpeppe_kb/antonia_kb)"
+      kind: boundary
+
+    Support:
+      label: tests.support
+      kind: core
+      contains:
+        - SupportFakes
+        - SupportSeed
+    SupportFakes:
+      label: "support.fakes (FakeConversador, FakeTraitMapper, RecordingToolHandler)"
+      kind: core
+    SupportSeed:
+      label: "support.sldb_seed (seed_store, minimal_business_atoms)"
+      kind: core
+
+    Unit:
+      label: "tests/unit (18 archivos, sin red)"
+      kind: core
+      contains:
+        - UnitPolicy
+        - UnitCompiler
+        - UnitStateMachine
+        - UnitModels
+        - UnitOrchestrator
+        - UnitEngines
+        - UnitKnowledgeCli
+        - UnitSimulation
+    UnitPolicy:
+      label: "test_turn_policy (decide_turn)"
+      kind: core
+    UnitCompiler:
+      label: "test_context_compiler / test_sldb_reader / test_kgdb_reader"
+      kind: core
+    UnitStateMachine:
+      label: "test_state_machine (RouterStateMachine)"
+      kind: core
+    UnitModels:
+      label: "test_models_sql / test_pii_scrubber"
+      kind: core
+    UnitOrchestrator:
+      label: "test_orchestrator_wiring (LLM fake, puertos inyectados)"
+      kind: core
+    UnitEngines:
+      label: "test_trait_extractor / test_perfilador_listener / test_reflector_batch_reader / test_reflector_generator / test_llm_prompts / test_tools_registry"
+      kind: core
+    UnitKnowledgeCli:
+      label: "test_knowledge_cli (organize, derive_path, propose)"
+      kind: core
+    UnitSimulation:
+      label: "test_simulation_harness (sin red)"
+      kind: core
+
+    Integration:
+      label: "tests/integration (5 archivos, stores reales, sin LLM)"
+      kind: core
+      contains:
+        - IntChatApi
+        - IntReflector
+        - IntFlowExport
+    IntChatApi:
+      label: "test_chat_api (FastAPI: chat, config, health, profiles, Twilio)"
+      kind: core
+    IntReflector:
+      label: "test_reflector_wiring"
+      kind: core
+    IntFlowExport:
+      label: "test_flow_export (export del grafo ConversationStep)"
+      kind: core
+
+    E2E:
+      label: "tests/e2e (Gemini real, marker llm)"
+      kind: core
+      contains:
+        - E2ESmoke
+        - E2ESimulation
+    E2ESmoke:
+      label: "test_live_smoke (NL cita la KB, perfilador aprende)"
+      kind: core
+    E2ESimulation:
+      label: "simulation/ (agente-vs-usuario-simulado + Judge LLM)"
+      kind: core
+
+    UI:
+      label: "tests/ui (Playwright + Chromium, marker ui)"
+      kind: core
+      contains:
+        - UIPlaywright
+    UIPlaywright:
+      label: "test_playwright_smoke (app in-process, LLM fake)"
+      kind: core
+
+    Runtime:
+      label: kb_agent (sistema bajo prueba)
+      kind: boundary
+
+  edges:
+    - from: UnitOrchestrator
+      to: SupportFakes
+      relation: uses
+      label: puertos LLM fake
+    - from: UnitCompiler
+      to: SupportSeed
+      relation: uses
+      label: seed store
+    - from: Unit
+      to: Runtime
+      relation: tests
+      label: policy/compiler/state machine
+    - from: Integration
+      to: Runtime
+      relation: tests
+      label: FastAPI + wiring
+    - from: E2E
+      to: Runtime
+      relation: tests
+      label: Gemini real end-to-end
+    - from: UI
+      to: Runtime
+      relation: tests
+      label: UIs in-process
+    - from: Conftest
+      to: Support
+      relation: uses
+      label: fixtures + fakes

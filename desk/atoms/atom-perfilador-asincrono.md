@@ -3,15 +3,14 @@ id: atom-perfilador-asincrono
 title: Perfilador Asincrono
 five_wh_one_plus: what
 tags:
-- domain:self.architecture.backend
 - layer:runtime
-- system:kb-agent
-- topic:profiling
-provenance: null
+- role:background
+- family:user
+provenance: architecture-audit
 ---
 
 # Perfilador Asincrono
 
 ## Answer
 
-Agente que opera en segundo plano escuchando la conversación. Infiere características explícitas del usuario y las convierte en punteros relacionales hacia TraitAtoms de SLDB en la base de datos SQL.
+Background worker (`TraitExtractor`) que consume eventos de turno cerrado desde el EventBus. Usa el LLM para inferir características del usuario contra los `TraitAtom` candidatos y hace un upsert (SQL `UserTraits`). Opera fuera del tiempo de respuesta del usuario.

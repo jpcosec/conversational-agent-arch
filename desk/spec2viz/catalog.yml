@@ -3,121 +3,176 @@ title: KB Agent Runtime · Catálogo de arquitectura
 brand_name: KB Agent Runtime
 project_name: kb-agent-runtime
 vistas:
-  # ── Global ──────────────────────────────────────────
-  - id: deployment-backend-frontend
-    category: Global
-    nav: Despliegue backend/frontend
-    title: Despliegue · Backend vs Frontend
-    desc: Separación explícita backend/frontend del runtime.
-    type: deployment
-    src: build/deployment.backend-frontend.mmd
-    specs: [deployment.backend-frontend.yml]
-    tags: [layer:global, view:deployment]
-
-  # ── Backend · Semántico ─────────────────────────────
-  - id: component-agent-ecosystem
-    category: Backend
-    nav: Ecosistema de Agentes
-    title: Backend · Componentes · Ecosistema de Motores y Agentes
-    desc: "Los 5 roles (Orquestador, Conversador, Ontologizador, Perfilador, Reflector) y DBs."
-    type: component
-    src: build/component.agent-ecosystem.mmd
-    specs: [backend/component.agent-ecosystem.yml]
-    tags: [layer:backend, view:component]
-  - id: state-conversation-flow
-    category: Backend
-    nav: Flujo de Conversación
-    title: Backend · Estado · Máquina de Estados de la Conversación
-    desc: Diagrama del flujo de la conversación, buffering y estados.
-    type: state
-    src: build/state.conversation-flow.mmd
-    specs: [backend/state.conversation-flow.yml]
-    tags: [layer:backend, view:state]
-  - id: sequence-extended-turn
-    category: Backend
-    nav: Secuencia de Turno Extendido
-    title: Backend · Secuencia · Ciclo de Vida del Turno Extendido
-    desc: Flujo del mensaje a través de los motores y tools externas.
-    type: sequence
-    src: build/sequence.extended-turn.mmd
-    specs: [backend/sequence.extended-turn.yml]
-    tags: [layer:backend, view:sequence]
-  - id: component-knowledge-ontology
-    category: Backend
-    nav: Ontología de Datos y Perfiles
-    title: Backend · Datos · Ontología Universal y Perfiles
-    desc: Separación de SQL (Identidad) vs SLDB (Átomos Semánticos).
-    type: component
-    src: build/component.knowledge-ontology.mmd
-    specs: [backend/component.knowledge-ontology.yml]
-    tags: [layer:backend, view:component]
-  - id: matrix-component-turn-lifecycle
-    category: Backend
-    nav: Matriz Componentes × Turno
-    title: Backend · Matriz · Componentes × Ciclo de Vida del Turno
-    desc: Qué componente participa en cada stage del turno síncrono y de los agentes asíncronos (vega matrix).
-    type: component_view_matrix
-    src: build/matrix.component-turn-lifecycle.html
-    specs: [backend/matrix.component-turn-lifecycle.yml]
-    tags: [layer:backend, view:matrix]
-
-  # ── Ejemplos Aplicados ──────────────────────────────
-  - id: component-example-kb-scheduling
-    category: Ejemplos Prácticos
-    nav: Taxonomía de Agendamiento
-    title: Ejemplos · KB · Taxonomía para Bot de Agendamiento
-    desc: Cómo las reglas, horarios y perfiles se vuelven átomos para agendar horas.
-    type: component
-    src: build/component.example-kb-scheduling.mmd
-    specs: [backend/component.example-kb-scheduling.yml]
-    tags: [layer:examples, view:component]
-  - id: activity-example-flow-scheduling
-    category: Ejemplos Prácticos
-    nav: Flujo de Agendamiento
-    title: Ejemplos · Flujo · Turno de Agendamiento
-    desc: Traza paso a paso del estado desde WhatsApp hasta la respuesta usando Tools.
-    type: activity
-    src: build/activity.example-flow-scheduling.mmd
-    specs: [backend/activity.example-flow-scheduling.yml]
-    tags: [layer:examples, view:activity]
-
-  # ── Testing ─────────────────────────────────────────
-  - id: activity-simulation-harness
-    category: Testing
-    nav: Harness de Simulación
-    title: Testing · Flujo · Harness de Simulación Agente-vs-Agente
-    desc: SimulatedUser <-> Orchestrator turno a turno, checks deterministas y Judge LLM (KB como verdad); known_gap -> xfail estricto.
-    type: activity
-    src: build/activity.simulation-harness.mmd
-    specs: [backend/activity.simulation-harness.yml]
-    tags: [layer:backend, view:activity, area:testing]
-
-  # ── Backend · AST real (código) ─────────────────────
-  - id: ast-kb-agent
-    category: Backend · AST real (código)
-    nav: AST kb_agent
-    title: AST real · kb_agent
-    desc: Grafo módulos/clases/imports extraído del código.
-    type: component
-    src: build/ast.kb_agent.mmd
-    specs: [backend/ast.kb_agent.yml]
-    tags: [layer:backend, source:ast]
-  # ── Frontend ────────────────────────────────────────
-  - id: component-frontend
-    category: Frontend
-    nav: Componentes frontend
-    title: Frontend · Componentes
-    desc: UIs HTML/JS estáticas (chat + visor de átomos).
-    type: component
-    src: build/component.frontend.mmd
-    specs: [frontend/component.frontend.yml]
-    tags: [layer:frontend, view:component]
-  - id: state-chat-ui
-    category: Frontend
-    nav: Estado UI chat
-    title: Frontend · Estado · UI del chat
-    desc: idle → enviando → turno → inspector → modal.
-    type: state
-    src: build/state.chat-ui.mmd
-    specs: [frontend/state.chat-ui.yml]
-    tags: [layer:frontend, view:state]
+- id: logical-agent-ecosystem
+  category: Backend · Runtime
+  nav: Modelo lógico (motores)
+  title: Backend · Lógico · Ecosistema de Motores
+  desc: 'Cómo funciona el runtime a alto nivel, fiel al cableado real: canales, orquestador-hub, policy pura, motores, event bus, scrubber, 3 DBs y Gemini.'
+  type: component
+  src: build/logical.agent-ecosystem.mmd
+  specs:
+  - backend/logical.agent-ecosystem.yml
+  tags:
+  - layer:backend
+  - view:logical
+- id: current-kb-agent
+  category: Backend · Runtime
+  nav: kb_agent (runtime)
+  title: Codebase · kb_agent · Componentes reales
+  desc: Los ~40 módulos reales de kb_agent/ con su jerarquía de subpaquetes e imports reales.
+  type: component
+  src: build/current-kb-agent.mmd
+  specs:
+  - backend/current-kb-agent.yml
+  tags:
+  - layer:backend
+  - view:current
+  - source:ast
+- id: current-deploy
+  category: Backend · Runtime
+  nav: deploy (Modal)
+  title: Codebase · deploy · Modal App
+  desc: modal_app empaqueta código + KB real y sirve el ASGI de frontends.chat.app; release.sh gate.
+  type: component
+  src: build/current-deploy.mmd
+  specs:
+  - backend/current-deploy.yml
+  tags:
+  - layer:deploy
+  - view:current
+- id: current-tests
+  category: Backend · Runtime
+  nav: tests (suite)
+  title: Codebase · tests · Suite por capas
+  desc: unit / integration / e2e / ui + support + conftest (gating, aislamiento de DBs).
+  type: component
+  src: build/current-tests.mmd
+  specs:
+  - backend/current-tests.yml
+  tags:
+  - layer:testing
+  - view:current
+- id: deployment-backend-frontend
+  category: Backend · Runtime
+  nav: Despliegue backend/frontend
+  title: Despliegue · Backend vs Frontend
+  desc: Separación explícita backend/frontend del runtime.
+  type: deployment
+  src: build/deployment.backend-frontend.mmd
+  specs:
+  - deployment.backend-frontend.yml
+  tags:
+  - layer:global
+  - view:deployment
+- id: state-conversation-flow
+  category: Backend · Runtime
+  nav: Flujo de Conversación
+  title: Backend · Estado · Máquina de Estados de la Conversación
+  desc: Diagrama del flujo de la conversación, buffering y estados.
+  type: state
+  src: build/state.conversation-flow.mmd
+  specs:
+  - backend/state.conversation-flow.yml
+  tags:
+  - layer:backend
+  - view:state
+- id: sequence-extended-turn
+  category: Backend · Runtime
+  nav: Secuencia de Turno Extendido
+  title: Backend · Secuencia · Ciclo de Vida del Turno Extendido
+  desc: Flujo del mensaje a través de los motores y tools externas.
+  type: sequence
+  src: build/sequence.extended-turn.mmd
+  specs:
+  - backend/sequence.extended-turn.yml
+  tags:
+  - layer:backend
+  - view:sequence
+- id: matrix-component-turn-lifecycle
+  category: Backend · Runtime
+  nav: Matriz Componentes × Turno
+  title: Backend · Matriz · Componentes × Ciclo de Vida del Turno
+  desc: Qué componente participa en cada stage del turno síncrono y de los agentes asíncronos (vega matrix).
+  type: component_view_matrix
+  src: build/matrix.component-turn-lifecycle.html
+  specs:
+  - backend/matrix.component-turn-lifecycle.yml
+  tags:
+  - layer:backend
+  - view:matrix
+- id: activity-simulation-harness
+  category: Backend · Runtime
+  nav: Harness de Simulación
+  title: Testing · Flujo · Harness de Simulación Agente-vs-Agente
+  desc: SimulatedUser <-> Orchestrator turno a turno, checks deterministas y Judge LLM (KB como verdad); known_gap -> xfail estricto.
+  type: activity
+  src: build/activity.simulation-harness.mmd
+  specs:
+  - backend/activity.simulation-harness.yml
+  tags:
+  - layer:backend
+  - view:activity
+  - area:testing
+- id: current-knowledge-base
+  category: Backend · Knowledge
+  nav: knowledge_base (CLI)
+  title: Codebase · knowledge_base · Componentes reales
+  desc: CLI de la KB — parser (11 subcomandos) + KnowledgeOperations (organize, propose, reflect...).
+  type: component
+  src: build/current-knowledge-base.mmd
+  specs:
+  - backend/current-knowledge-base.yml
+  tags:
+  - layer:backend
+  - view:current
+  - source:ast
+- id: matrix-agents-kb-consumption
+  category: Backend · Knowledge
+  nav: Agentes × Familias KB
+  title: Backend · Matriz · Agentes × Familias de la KB
+  desc: Qué familia de conocimiento (self/domain/conversation/user) lee o produce cada motor cognitivo.
+  type: component_view_matrix
+  src: build/matrix.agents-kb-consumption.html
+  specs:
+  - backend/matrix.agents-kb-consumption.yml
+  tags:
+  - layer:backend
+  - view:matrix
+  - area:knowledge
+- id: current-frontends
+  category: Frontend
+  nav: frontends (UIs)
+  title: Codebase · frontends · Componentes reales
+  desc: chat.app como hub FastAPI + las 5 UIs + proyectores de KB (export_flow, export_graph).
+  type: component
+  src: build/current-frontends.mmd
+  specs:
+  - backend/current-frontends.yml
+  tags:
+  - layer:frontend
+  - view:current
+  - source:ast
+- id: state-chat-ui
+  category: Frontend
+  nav: Estado UI chat
+  title: Frontend · Estado · UI del chat
+  desc: idle → enviando → turno → inspector → modal.
+  type: state
+  src: build/state.chat-ui.mmd
+  specs:
+  - frontend/state.chat-ui.yml
+  tags:
+  - layer:frontend
+  - view:state
+- id: matrix-ui-semantic-surface
+  category: Frontend
+  nav: UI × Superficie Semántica
+  title: Frontend · Matriz · UI × Superficie Semántica
+  desc: Cruza las 5 UIs contra las familias de datos KB que editan y la config que consumen (/api/config).
+  type: component_view_matrix
+  src: build/matrix.ui-semantic-surface.html
+  specs:
+  - backend/matrix.ui-semantic-surface.yml
+  tags:
+  - layer:frontend
+  - view:matrix
