@@ -1,63 +1,109 @@
 /*
- * Shared design tokens for the five frontends (chat, flow editor, taxonomy,
- * viz/embeddings, profiling). Reference look = frontends/viz + frontends/taxonomy:
- * dark navy/near-black background, cream text, warm gold accent, four family
- * colors (self/domain/conversation/user), Inter + JetBrains Mono.
- *
- * Pages that already define local CSS with the same literal hex values keep
- * their own <style> block declared AFTER this stylesheet's <link>, so local
- * rules win the cascade on ties and nothing regresses. New shared pieces
- * (top nav, badges, generic panel) are additive.
+ * Shared design tokens and primitives for all frontends.
+ * Reference look: frontends/flow_editor/index.html and UI-GUIDE §0.
  */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 :root {
-  /* surfaces */
-  --bg: #0a0a0f;
-  --panel: #0d1526;
-  --panel-2: #111a2e;
-  --panel-3: #16223a;
-  --panel-4: #1c2b45;
-
-  /* borders */
-  --border: rgba(245, 240, 232, .08);
-  --border-strong: rgba(245, 240, 232, .14);
-  --border-accent: rgba(212, 165, 116, .18);
-  --border-solid: #22304b;
-
-  /* text */
-  --text: #f5f0e8;
-  --muted: rgba(245, 240, 232, .45);
-  --muted-2: rgba(245, 240, 232, .55);
-
-  /* accent + semantic */
+  /* UI-GUIDE §0 standardized tokens */
+  --bg-page: #0a0a0f;
+  --bg-panel: #0d1526;
+  --bg-panel2: linear-gradient(180deg, rgba(18, 18, 26, 0.98), rgba(10, 10, 15, 0.98));
+  --border: rgba(245, 240, 232, 0.08);
+  --border-accent: rgba(212, 165, 116, 0.18);
+  --text-primary: #f5f0e8;
+  --text-muted: rgba(245, 240, 232, 0.45);
   --accent: #d4a574;
   --accent-hover: #e6a85c;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-card: 14px;
+  --radius-tag: 8px;
+  --transition: all 0.18s ease;
+
+  /* shared semantic/support tokens */
+  --bg-panel-solid: #111a2e;
+  --bg-panel-elevated: #16223a;
+  --bg-panel-strong: #1c2b45;
+  --border-strong: rgba(245, 240, 232, 0.14);
+  --text-muted-2: rgba(245, 240, 232, 0.55);
   --danger: #e06c5a;
 
-  /* the four knowledge families (self / domain / conversation / user) */
-  --fam-self: #7cba7c;
-  --fam-domain: #7fb3d5;
-  --fam-conversation: #e6a85c;
-  --fam-user: #c97db9;
-  --fam-none: #9aa7bd;
+  /* knowledge families */
+  --family-self: #7cba7c;
+  --family-domain: #7fb3d5;
+  --family-conversation: #e6a85c;
+  --family-user: #c97db9;
+  --family-none: #9aa7bd;
 
-  /* type */
-  --sans: 'Inter', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
+  --app-topbar-h: 44px;
+  --scrollbar-size: 10px;
 
-  /* radii */
-  --radius-sm: 8px;
+  /* compatibility aliases for existing frontends */
+  --bg: var(--bg-page);
+  --panel: var(--bg-panel);
+  --panel2: var(--bg-panel-solid);
+  --panel-2: var(--bg-panel-solid);
+  --panel-3: var(--bg-panel-elevated);
+  --panel-4: var(--bg-panel-strong);
+  --text: var(--text-primary);
+  --muted: var(--text-muted);
+  --muted-2: var(--text-muted-2);
+  --sans: var(--font-sans);
+  --mono: var(--font-mono);
+  --border2: var(--border-accent);
+  --border-strong-solid: #22304b;
+  --radius-sm: var(--radius-tag);
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-pill: 999px;
-
-  --app-topbar-h: 44px;
 }
 
-.mono { font-family: var(--mono); }
+html {
+  color-scheme: dark;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 165, 116, 0.35) rgba(13, 21, 38, 0.9);
+}
 
-/* ── shared top navigation ───────────────────────────────────────────── */
+body {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 165, 116, 0.35) rgba(13, 21, 38, 0.9);
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(13, 21, 38, 0.9);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(212, 165, 116, 0.35);
+  border-radius: 999px;
+  border: 2px solid rgba(13, 21, 38, 0.9);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 165, 116, 0.55);
+}
+
+*::-webkit-scrollbar-corner {
+  background: rgba(13, 21, 38, 0.9);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
 .app-topbar {
   display: flex;
   align-items: center;
@@ -65,12 +111,13 @@
   height: var(--app-topbar-h);
   min-height: var(--app-topbar-h);
   padding: 0 16px;
-  background: var(--panel);
+  background: var(--bg-panel);
   border-bottom: 1px solid var(--border-strong);
-  font-family: var(--sans);
-  color: var(--text);
   box-sizing: border-box;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
 }
+
 .app-topbar-brand {
   font-size: 14px;
   font-weight: 600;
@@ -78,7 +125,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.app-topbar-brand em { color: var(--accent); font-style: italic; }
+
+.app-topbar-brand em {
+  color: var(--accent);
+  font-style: italic;
+}
 
 .app-nav {
   display: flex;
@@ -87,68 +138,99 @@
   margin-left: auto;
   flex-wrap: wrap;
 }
+
 .app-nav a {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--muted-2);
-  padding: 6px 11px;
-  border-radius: var(--radius-sm);
+  color: var(--text-muted-2);
+  padding: 6px 12px;
+  border-radius: var(--radius-tag);
   border: 1px solid transparent;
-  transition: .15s;
+  transition: var(--transition);
   white-space: nowrap;
 }
-.app-nav a:hover { color: var(--text); background: rgba(245, 240, 232, .06); }
-.app-nav a.active {
+
+.app-nav a:hover {
+  color: var(--text-primary);
+  background: rgba(245, 240, 232, 0.06);
+}
+
+.app-nav a.active,
+.app-nav a[data-active='true'] {
   color: var(--accent);
-  background: rgba(212, 165, 116, .12);
-  border-color: rgba(212, 165, 116, .35);
+  background: rgba(212, 165, 116, 0.12);
+  border-color: rgba(212, 165, 116, 0.35);
 }
 
-/* ── generic panel / card surface ────────────────────────────────────── */
-.panel {
-  background: var(--panel-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  color: var(--text);
+.panel,
+.card {
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-card);
+  color: var(--text-primary);
+  padding: 16px;
+  transition: var(--transition);
 }
 
-/* ── generic buttons / inputs (opt-in) ───────────────────────────────── */
+.card:hover,
+.panel:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 28px rgba(212, 165, 116, 0.12);
+}
+
 .btn {
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: var(--radius-tag);
   border: 1px solid var(--border-accent);
   background: transparent;
-  color: var(--text);
+  color: var(--text-primary);
   cursor: pointer;
-  transition: .15s;
+  transition: var(--transition);
 }
-.btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .btn-primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: var(--bg);
+  color: var(--bg-page);
 }
-.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--bg); }
 
-.input, textarea.input, select.input {
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--bg-page);
+}
+
+.input,
+textarea.input,
+select.input {
   width: 100%;
-  background: var(--bg);
+  background: var(--bg-page);
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  color: var(--text);
+  border-radius: var(--radius-tag);
+  color: var(--text-primary);
   padding: 8px 10px;
-  font-family: var(--sans);
+  font-family: var(--font-sans);
   font-size: 13px;
 }
-.input:focus { outline: none; border-color: var(--accent); }
 
-/* ── family badges (atoms, steps, traits) ────────────────────────────── */
+.input:focus,
+textarea.input:focus,
+select.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
 .badge-family-self,
 .badge-family-domain,
 .badge-family-conversation,
@@ -157,15 +239,40 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .04em;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
   padding: 2px 9px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-tag);
   border: 1px solid;
 }
-.badge-family-self { color: var(--fam-self); border-color: rgba(124, 186, 124, .4); background: rgba(124, 186, 124, .1); }
-.badge-family-domain { color: var(--fam-domain); border-color: rgba(127, 179, 213, .4); background: rgba(127, 179, 213, .1); }
-.badge-family-conversation { color: var(--fam-conversation); border-color: rgba(230, 168, 92, .4); background: rgba(230, 168, 92, .1); }
-.badge-family-user { color: var(--fam-user); border-color: rgba(201, 125, 185, .4); background: rgba(201, 125, 185, .1); }
-.badge-family-none { color: var(--fam-none); border-color: rgba(154, 167, 189, .4); background: rgba(154, 167, 189, .1); }
+
+.badge-family-self {
+  color: var(--family-self);
+  border-color: rgba(124, 186, 124, 0.4);
+  background: rgba(124, 186, 124, 0.1);
+}
+
+.badge-family-domain {
+  color: var(--family-domain);
+  border-color: rgba(127, 179, 213, 0.4);
+  background: rgba(127, 179, 213, 0.1);
+}
+
+.badge-family-conversation {
+  color: var(--family-conversation);
+  border-color: rgba(230, 168, 92, 0.4);
+  background: rgba(230, 168, 92, 0.1);
+}
+
+.badge-family-user {
+  color: var(--family-user);
+  border-color: rgba(201, 125, 185, 0.4);
+  background: rgba(201, 125, 185, 0.1);
+}
+
+.badge-family-none {
+  color: var(--family-none);
+  border-color: rgba(154, 167, 189, 0.4);
+  background: rgba(154, 167, 189, 0.1);
+}
