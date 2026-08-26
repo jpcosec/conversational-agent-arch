@@ -1,16 +1,18 @@
 name: ci
 
-# Gate liviano que SI corre en un runner limpio de GitHub.
+# Dos capas:
+#   static  -> gate liviano sin deps (compila, config, no-hardcode).
+#   suite   -> suite offline real (unit + integration) instalando las 3 deps
+#              locales (sldb, kgdb, deskops) por git. Se pudo habilitar al
+#              publicar kgdb (jpcosec/kgdb); antes no habia remoto y solo
+#              corria el gate estatico.
 #
-# La suite completa (unit/integration) depende de sldb + kgdb, y kgdb no tiene
-# remoto publicable -> un runner limpio no puede instalarla. Por eso el gate
-# autoritativo (suite + deploy + tag) vive en deploy/release.sh y corre en el
-# entorno del dev. Aqui solo validamos lo que NO necesita esas deps: que el
-# codigo parsea, que project.config.yaml es coherente y que no se colo un
-# hardcode de negocio.
+# El gate AUTORITATIVO de release (suite + deploy Modal + tag + rama
+# production) sigue en deploy/release.sh: corre en el entorno del dev, unica
+# fuente de verdad de "que hay arriba".
 on:
   push:
-    branches: [conversational-agent-arch, main, production]
+    branches: [main, dev, production]
   pull_request:
 
 jobs:
@@ -65,3 +67,33 @@ jobs:
               sys.exit(1)
           print("ok: kb_agent/ no hardcodea negocios (comentarios y docstrings se ignoran)")
           PY
+
+  suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Instalar deps locales del ecosistema (git, repos publicos)
+        run: |
+          python -m pip install --upgrade pip
+          pip install \
+            "git+https://github.com/jpcosec/sldb.git" \
+            "git+https://github.com/jpcosec/kgdb.git" \
+            "git+https://github.com/jpcosec/opsys.git#egg=deskops"
+
+      - name: Instalar deps de runtime
+        run: |
+          pip install \
+            "fastapi==0.135.2" "starlette==1.3.1" "uvicorn[standard]==0.42.0" \
+            "python-multipart==0.0.26" "twilio==9.10.9" "python-dotenv==1.0.1" \
+            "networkx==3.6.1" "numpy==2.1.3" "PyYAML==6.0.3" \
+            "SQLAlchemy==2.0.49" "pydantic==2.13.4" \
+            "httpx" "pytest" "pytest-asyncio"
+
+      - name: Suite offline (unit + integration, sin LLM)
+        env:
+          SKIP_LLM_TESTS: "1"
+        run: python -m pytest tests/unit tests/integration -q
