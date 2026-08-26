@@ -224,16 +224,38 @@ Ciertos conceptos del modelo no son intuitivos (p.ej. `handout`,
 frontend, el mismo tooltip sirve en Flow, Mindmap (kinds de atom), y en
 cualquier vista que muestre conceptos del modelo.
 
+### 5.7 Hotkeys (compartidas con Mindmap)
+
+Ver sección 6.8 para la tabla completa de hotkeys. Flow y Mindmap comparten
+el mismo sistema de atajos de teclado (Ctrl+F buscar, Delete borrar, Tab
+agregar hijo, Enter hermano, L link horizontal, Space collapse, F centrar,
+1/2/3 layouts, Esc cancelar, ? ayuda). Asegurar que Flow cumpla la misma
+tabla.
+
 ---
 
 ## 6. Mindmap (ex Taxonomía + Embeddings)
 
 Renombrar a `mindmap`. Ruta `/mindmap`.
-**Taxonomía + Embeddings se fusionan**: Mindmap es la vista base (árbol
-familias→atoms con editor inline). Embeddings es un **toggle/switch** que
-superpone la proyección PCA 2D sobre el mismo árbol, coloreado por familia.
-React Flow es la base común. Colores por familia: self=verde salvia,
-domain=azul acero, conversation=ámbar, user=magenta suave.
+**Taxonomía y Embeddings NO son vistas separadas.** Mindmap es la única vista,
+con múltiples layouts que cambian cómo se disponen los nodos en el canvas:
+
+| Layout | Comportamiento |
+|---|---|
+| **árbol** (default) | jerarquía familias→subpaths→atoms, dagre rankdir LR |
+| **top-down** | misma jerarquía pero dagre rankdir TB (vertical) |
+| **embeddings** | proyección PCA 2D coloreada por familia (el antiguo `/viz`).
+  El layout se calcula desde las coordenadas de embedding de cada nodo.
+  Al activarlo: los nodos se reposicionan según su similitud semántica,
+  la jerarquía de árbol se oculta, y se dibujan edges de similitud (coseno)
+  entre nodos cercanos. Toggle para ver/ocultar nombres de familia. |
+
+**Orden de prioridad:** árbol default, top-down segundo, embeddings tercero.
+
+Colores por familia (compartidos con Flow): self=verde salvia, domain=azul
+acero, conversation=ámbar, user=magenta suave.
+
+React Flow es la base común (ya importado en ambos).
 
 ### 6.1 Sidebar izquierdo — filtro por rama
 
@@ -258,7 +280,7 @@ domain=azul acero, conversation=ámbar, user=magenta suave.
   moverlos sin querer.
 - Adicionalmente, botón `collapse children` en el mismo nodo.
 
-### 6.4 Node toolbar
+### 6.4 Node toolbar + horizontal links
 
 Usar `NodeToolbar` de React Flow
 (https://reactflow.dev/examples/nodes/node-toolbar) — toolbar flotante que
@@ -266,6 +288,10 @@ aparece al hover/select sobre un nodo, con:
 - **Borrar** (delete node).
 - **Agregar hijo** (create child atom bajo este).
 - **Agregar hermano** (create sibling atom al mismo nivel).
+- **Link horizontal** → crea un edge cross-family a otro nodo seleccionado.
+  Al hacer click, el nodo entra en modo "linking": click en otro nodo del
+  canvas crea el edge horizontal entre ambos (dashed, color distinto al
+  jerárquico). Esc = cancelar.
 - **Dejar comentario agente** (placeholder: "coming soon" — abre un textarea
   que persiste un comentario de agente asociado al atom, para que otro
   agente lo lea).
@@ -280,12 +306,58 @@ familias (ej: `trait-cardiaco` → `domain-procedimientos-especiales`).
 - Agregar un **filtro de relaciones**: toggle/selector que active la
   visualización de cross-family edges.
 - Por defecto **NO** se muestran (solo jerarquía).
-- Al activarlos, se dibujan edges entre atoms que comparten tags, o que
-  tienen relaciones explícitas en el modelo (si existen).
+- Al activarlos en layout árbol o top-down, se dibujan edges entre atoms que
+  tienen relaciones horizontales explícitas.
+- En layout **embeddings**, estos edges se ven naturalmente por la
+  proximidad PCA + edges de similitud coseno. La vista embeddings es el
+  mejor lugar para explorar cross-family links.
 - Mecanismo de resolución a definir: ¿desde el backend (nuevo endpoint que
   devuelva relaciones) o desde el frontend (match por tags compartidos)?
   → decidir al implementar.
-- Visualmente: edges con línea dashed y color distinto a los jerárquicos.
+- Visualmente: edges con línea dashed y color violeta/púrpura para
+  distinguirlos de los jerárquicos y los de embeddings.
+
+### 6.6 Node search (búsqueda de nodos)
+
+Usar `NodeSearch` de React Flow
+(https://reactflow.dev/ui/components/node-search) — barra de búsqueda
+(global o en sidebar) que filtra/centra nodos por nombre, id, tag o familia.
+Match difuso (no exacto). Click en un resultado → centra el canvas en ese
+nodo (fitView con zoom). Hotkey `Ctrl+F` o `/` para enfocar la búsqueda.
+
+### 6.7 Focus en nodo (embeddings)
+
+En layout embeddings: al hacer doble-click en un nodo, o click en "Centrar"
+desde su toolbar o menú contextual:
+- El nodo seleccionado se centra en el viewport (fitView con animación).
+- Opcional: se resaltan sus vecinos directos (edges de similitud) y se
+  atenúa el resto (dim).
+- Vincular desde el inspector del chat: click en un atom-link → abre mindmap
+  en layout embeddings centrado en ese atom. (Opcional avanzado).
+
+### 6.8 Hotkeys globales en mindmap y flow
+
+Toda acción debe tener un atajo de teclado, válido en mindmap y flow (y
+idealmente compartido). Mínimo:
+
+| Acción | Hotkey |
+|---|---|
+| Buscar nodo | `Ctrl+F` o `/` |
+| Borrar nodo seleccionado | `Delete` o `Backspace` |
+| Agregar hijo | `Tab` con nodo seleccionado |
+| Agregar hermano | `Enter` con nodo seleccionado |
+| Link horizontal | `L` con nodo seleccionado (entra en modo linking) |
+| Collapse/expand | `Space` con nodo seleccionado |
+| Cambiar layout (árbol/top-down/embeddings) | `1`, `2`, `3` |
+| Centrar en nodo seleccionado | `F` |
+| Escape / cancelar modo | `Esc` |
+| Ayuda de hotkeys | `?` o `Shift+?` — muestra overlay con todas las hotkeys |
+
+Las hotkeys deben funcionar sin que un input/textarea tenga el foco. Mapa
+visible desde el overlay de ayuda. Registrar en localStorage preferencias si
+aplica.
+
+---
 
 ---
 
@@ -384,7 +456,6 @@ fixture `base_url` levanta uvicorn in-process — reusar.
 
 ## Preguntas abiertas (resolver al picar)
 
-1. Embeddings como toggle dentro de mindmap vs vista separada accesible desde mindmap.
-2. Razonamiento por agente: ¿acordeón inline dentro del inspector o modal?
-3. Sidebar izquierdo: ¿panel único (navegación + estado) o 2 paneles separados?
-4. Rutas viejas (`/conversation_flow_editor`, `/taxonomy_explorer`, `/profiling_viewer`, `/viz`): ¿redirect a las nuevas?
+1. Razonamiento por agente: ¿acordeón inline dentro del inspector o modal?
+2. Sidebar izquierdo: ¿panel único (navegación + estado) o 2 paneles separados?
+3. Rutas viejas (`/conversation_flow_editor`, `/taxonomy_explorer`, `/profiling_viewer`, `/viz`): ¿redirect a las nuevas?
