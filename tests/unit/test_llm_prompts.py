@@ -1,0 +1,63 @@
+"""Puertos LLM: el prompt del Conversador se arma SOLO desde el contexto compilado."""
+from __future__ import annotations
+
+from kb_agent.llm import GeminiConversador, GeminiTraitMapper, build_nl_prompt, parse_trait_json
+from kb_agent.perfilador.extractor import TraitCandidate
+
+
+class _Resp:
+    def __init__(self, text: str) -> None:
+        self.text = text
+
+
+class _FakeClient:
+    def __init__(self, text: str) -> None:
+        self.text = text
+        self.calls: list[dict] = []
+
+        class _Models:
+            def generate_content(inner, **kw):
+                self.calls.append(kw)
+                return _Resp(self.text)
+
+        self.models = _Models()
+
+
+def test_nl_prompt_uses_kb_persona_strategy_grounding_and_traits() -> None:
+    prompt = build_nl_prompt({
+        "question": "¿Qué me recomiendan?",
+        "persona": {"whoami": "Soy el asistente de X.", "estilo": "Breve.", "limites": "No invento."},
+        "strategy": "Primero responder.",
+        "domain_facts": [{"id": "a", "body": "Margherita 8900."}],
+        "rules": [{"id": "r", "body": "Reservas con 1 dia de anticipacion."}],
+        "user_traits": ["trait-vegetariano"],
+    })
+    for fragment in ("Soy el asistente de X.", "Estilo: Breve.", "Limites: No invento.", "Estrategia: Primero responder.",
+                     "- Margherita 8900.", "- Reservas con 1 dia de anticipacion.", "PERFIL DEL CLIENTE (traits): trait-vegetariano",
+                     "PREGUNTA: ¿Qué me recomiendan?"):
+        assert fragment in prompt
+    assert "RESULTADO DE TOOL" not in prompt
+
+
+def test_nl_prompt_includes_tool_result_when_system_turn_present() -> None:
+    prompt = build_nl_prompt({"question": "reserva", "system_turn": {"role": "system", "content": '{"reserva_id": 1}'}})
+    assert 'RESULTADO DE TOOL (System Turn JSON crudo):\n{"reserva_id": 1}' in prompt
+
+
+def test_nl_prompt_falls_back_to_generic_identity_only_without_persona() -> None:
+    prompt = build_nl_prompt({"question": "hola"})
+    assert prompt.startswith("Eres un asistente.")
+
+
+def test_parse_trait_json_is_robust() -> None:
+    assert parse_trait_json('```json\n[{"trait_id": "t", "confidence": 0.9}]\n```') == [{"trait_id": "t", "confidence": 0.9}]
+    assert parse_trait_json("sin json") == []
+    assert parse_trait_json("[no valido") == []
+    assert parse_trait_json("") == []
+
+
+def test_gemini_ports_send_configured_model() -> None:
+    client = _FakeClient('[{"trait_id": "trait-x", "confidence": 0.8}]')
+    assert GeminiConversador(client, "modelo-a").draft_nl({"question": "q"}) == '[{"trait_id": "trait-x", "confidence": 0.8}]'
+    assert GeminiTraitMapper(client, "modelo-b").extract_traits(turn_text="t", candidates=[TraitCandidate("trait-x", "x")], instructions="") == [{"trait_id": "trait-x", "confidence": 0.8}]
+    assert [c["model"] for c in client.calls] == ["modelo-a", "modelo-b"]

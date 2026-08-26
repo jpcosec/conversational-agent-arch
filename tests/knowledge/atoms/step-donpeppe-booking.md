@@ -19,6 +19,14 @@ Guiar la reserva de mesa recolectando fecha, hora y cantidad de personas, una pr
 
 fecha, hora, personas, nombre
 
+## Handout Target
+
+no aplica
+
+## Tool
+
+crear_reserva
+
 ## Allowed Transitions
 
 conversation:steps.onboarding

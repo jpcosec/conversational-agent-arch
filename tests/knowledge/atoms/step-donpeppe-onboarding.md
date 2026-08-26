@@ -19,6 +19,14 @@ Saludar una vez y ponerse a disposición. Responder consultas sobre la carta, ho
 
 consulta de la persona
 
+## Handout Target
+
+no aplica
+
+## Tool
+
+no aplica
+
 ## Allowed Transitions
 
 conversation:steps.booking

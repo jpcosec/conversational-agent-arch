@@ -67,6 +67,52 @@ documents:
     level: 2
     line_start: 18
     line_end: 19
+  - path: onboarding-atenci-n-general/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - Handout Target
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - Handout Target
+    - handout target
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: onboarding-atenci-n-general/tool
+    title: Tool
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - Tool
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - Tool
+    - tool
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
   - path: onboarding-atenci-n-general/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -88,8 +134,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 30
+    line_end: 31
   - path: onboarding-atenci-n-general/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -111,8 +157,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 34
+    line_end: 35
   - path: onboarding-atenci-n-general/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -134,8 +180,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 30
-    line_end: 31
+    line_start: 38
+    line_end: 39
 - doc_name: step-donpeppe-booking
   sections:
   - path: reserva-de-mesa
@@ -204,6 +250,52 @@ documents:
     level: 2
     line_start: 18
     line_end: 19
+  - path: reserva-de-mesa/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Reserva de mesa
+    - Handout Target
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - Handout Target
+    - handout target
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: reserva-de-mesa/tool
+    title: Tool
+    breadcrumbs:
+    - Reserva de mesa
+    - Tool
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - Tool
+    - tool
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
   - path: reserva-de-mesa/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -225,8 +317,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 30
+    line_end: 31
   - path: reserva-de-mesa/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -248,8 +340,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 34
+    line_end: 35
   - path: reserva-de-mesa/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -271,5 +363,5 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 30
-    line_end: 31
+    line_start: 38
+    line_end: 39

@@ -1,9 +1,0 @@
-{
-  "db_file": "/tmp/pytest-of-jp/pytest-108/test_assistant_history_is_scru0/assistant-scrub.sqlite",
-  "raw_assistant": "Contáctame en test@example.com o al +56912345678 para confirmar.",
-  "persisted_helper_content": "Contáctame en <EMAIL_1> o al +<PHONE_1> para confirmar.",
-  "persisted_helper_pii_scrubbed": true,
-  "real_turn_kind": "nl",
-  "real_turn_assistant_content": "¡Hola! ¡Qué buena pregunta! <NAME_1> tenemos opciones deliciosas para ti.\n\nTe recomiendo nuestra clásica **Margherita**, la **<NAME_2>** para los amantes de los sabores intensos, y la **Napolitana**, que nunca falla.\n\n¡Cualquiera de ellas es una excelente elección!",
-  "real_turn_assistant_pii_scrubbed": true
-}

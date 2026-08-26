@@ -1,0 +1,171 @@
+"""knowledge CLI (operaciones in-process): explore, show, step next, traits, self, context, propose."""
+from __future__ import annotations
+
+import shutil
+from pathlib import Path
+
+import pytest
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+from kb_agent.models_sql.identity import Base, UserTraits, Users
+from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
+from knowledge_base.operations import KnowledgeOperations
+from tests.support.sldb_seed import DEFAULT_NAMESPACES_REGISTRY, REPO_ROOT, seed_store
+
+USER = "wa:+56900000000"
+ATOMS = [
+    {"type": "self", "id": "self-bot", "title": "Bot Identity", "tags": ["self:whoami", "system:test"], "fields": {"statement": "Soy un bot de prueba para el sistema de conocimiento."}},
+    {"type": "style", "id": "style-bot", "title": "Bot Style", "tags": ["self:estilo", "system:test"], "fields": {"tone": "Amable y conciso.", "language_register": "Formal, trato de usted.", "phrase_preferences": "", "length_guidelines": ""}},
+    {"type": "boundary", "id": "boundary-bot", "title": "Bot Limits", "tags": ["self:limites", "system:test"], "fields": {"restriction": "No puedo dar consejo legal.", "conditions": "", "escalation": "Derivar a un abogado."}},
+    {"type": "domain", "id": "atom-carta", "title": "Carta", "tags": ["domain:catalogo", "system:test"], "five_wh": "what", "domain_ref": "test-biz", "fields": {"answer": "Pizza Margherita 8900, Napolitana 9800."}},
+    {"type": "trait", "id": "trait-vegetariano", "title": "Vegetariano", "tags": ["user:traits.vegetariano", "system:test"], "category": "dietary", "fields": {"description": "Cliente que no consume carne."}},
+    {"type": "step", "id": "step-onboarding", "title": "Onboarding", "kind": "interaccion_simple", "tags": ["conversation:steps.onboarding", "system:test"], "domain_ref": "test-biz",
+     "fields": {"instructions": "Dar la bienvenida.", "required_slots": "nombre", "allowed_transitions": "conversation:steps.booking", "grounding_atoms": "atom-carta", "completion_condition": "Usuario saludado."}},
+]
+
+
+@pytest.fixture(scope="module")
+def kb_store(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return seed_store(
+        tmp_path_factory.mktemp("kb") / "store",
+        ATOMS,
+        namespaces_registry=DEFAULT_NAMESPACES_REGISTRY,
+    )
+
+
+def _seed_db(db_url: str, *, flow_node: str | None = "conversation:steps.onboarding", flow_slots: dict | None = {"missing_slots": ["nombre"]}, history: bool = False) -> None:
+    engine = create_engine(db_url)
+    Base.metadata.create_all(engine)
+    session = sessionmaker(bind=engine)()
+    try:
+        user = Users(external_id=USER, channel="whatsapp")
+        session.add(user)
+        session.flush()
+        session.add(SessionState(user_id=user.id, current_node=SessionNode.IDLE, flow_node=flow_node, flow_slots=flow_slots))
+        session.add(UserTraits(user_id=user.id, trait_id="trait-vegetariano", confidence=0.9, source="perfilador"))
+        if history:
+            session.add_all([
+                ChatHistory(user_id=user.id, role="user", content="hola", pii_scrubbed=True),
+                ChatHistory(user_id=user.id, role="assistant", content="¿cómo estás?", pii_scrubbed=True),
+            ])
+        session.commit()
+    finally:
+        session.close()
+        engine.dispose()
+
+
+@pytest.fixture()
+def seeded_db(tmp_path: Path) -> str:
+    url = f"sqlite:///{tmp_path / 'test.db'}"
+    _seed_db(url)
+    return url
+
+
+def _ops(kb_store: Path, db_url: str | None = None) -> KnowledgeOperations:
+    return KnowledgeOperations(kb_store, db_url, pythonpath=str(REPO_ROOT))
+
+
+# ── explore / show ────────────────────────────────────────────────────────────
+
+def test_explore_root_tag_leaf_and_atom(kb_store: Path) -> None:
+    ops = _ops(kb_store)
+    root = ops.explore()
+    assert root["mode"] == "root" and "system:test" in {r["tag"] for r in root["root_tags"]}
+
+    tag = ops.explore(tag="conversation:steps")
+    assert tag["mode"] == "tag" and "conversation:steps.onboarding" in tag["children"]
+    assert "step-onboarding" in ops.explore(tag="conversation:steps.onboarding")["docs"]
+
+    atom = ops.explore(atom="step-onboarding")
+    assert atom["mode"] == "atom" and "conversation:steps.onboarding" in atom["tags"]
+    assert not any(t.startswith(("type.", "workspace.")) for t in atom["tags"])
+
+
+def test_show_returns_typed_document_or_none(kb_store: Path) -> None:
+    ops = _ops(kb_store)
+    doc = ops.show("self-bot")
+    assert doc["id"] == "self-bot" and doc["_model"] == "SelfDeclaration" and "bot de prueba" in doc["statement"]
+    assert ops.show("atom-carta")["_model"] == "DomainAtom"
+    assert ops.show("does-not-exist") is None
+
+
+# ── step next ─────────────────────────────────────────────────────────────────
+
+def test_step_next_reads_flow_node_and_slots_from_sql(kb_store: Path, seeded_db: str) -> None:
+    result = _ops(kb_store, seeded_db).step_next(USER)
+    assert result["flow_node"] == "conversation:steps.onboarding"
+    assert result["missing_slots"] == ["nombre"]
+
+
+@pytest.mark.parametrize(
+    "db_kwargs",
+    [
+        pytest.param({"flow_node": None}, id="flow_node-None"),
+        pytest.param({"flow_slots": None}, id="flow_slots-None"),
+    ],
+)
+def test_step_next_tolerates_null_session_fields(kb_store: Path, tmp_path: Path, db_kwargs: dict) -> None:
+    url = f"sqlite:///{tmp_path / 'edge.db'}"
+    _seed_db(url, **db_kwargs)
+    result = _ops(kb_store, url).step_next(USER)
+    assert result["flow_node"] is not None  # None -> fallback a busqueda semantica
+    assert isinstance(result["missing_slots"], list)
+
+
+@pytest.mark.parametrize("db_url", [None, "sqlite:///{tmp}/noexiste.db"], ids=["sin-db", "db-inexistente"])
+def test_step_next_and_traits_degrade_gracefully_without_sql(kb_store: Path, tmp_path: Path, db_url: str | None) -> None:
+    url = db_url.format(tmp=tmp_path) if db_url else None
+    ops = _ops(kb_store, url)
+    assert ops.step_next("unknown-user")["flow_node"] is not None
+    assert ops.traits("unknown-user") == []
+
+
+# ── traits / self / context ───────────────────────────────────────────────────
+
+def test_traits_resolve_sql_rows_against_trait_atoms(kb_store: Path, seeded_db: str) -> None:
+    [trait] = _ops(kb_store, seeded_db).traits(USER)
+    assert (trait["trait_id"], trait["title"], trait["category"], trait["confidence"]) == ("trait-vegetariano", "Vegetariano", "dietary", 0.9)
+    assert _ops(kb_store, seeded_db).traits("wa:+56999999999") == []
+
+
+def test_self_context_compiles_identity_style_boundaries(kb_store: Path) -> None:
+    result = _ops(kb_store).self_context()
+    assert result["identity"][0]["id"] == "self-bot"
+    assert result["style"][0]["tone"] == "Amable y conciso."
+    assert "consejo legal" in result["boundaries"][0]["restriction"]
+
+
+def test_context_aggregates_step_traits_self(kb_store: Path, seeded_db: str) -> None:
+    result = _ops(kb_store, seeded_db).context(USER)
+    assert set(result) == {"step", "traits", "self"}
+    assert result["step"]["flow_node"] == "conversation:steps.onboarding"
+    assert len(result["traits"]) == 1 and len(result["self"]["identity"]) == 1
+
+
+# ── propose / reflect ─────────────────────────────────────────────────────────
+
+def test_propose_writes_proposed_atom_in_isolated_copy(kb_store: Path, tmp_path: Path) -> None:
+    isolated = tmp_path / "kb_propose"
+    shutil.copytree(kb_store, isolated)
+    result = _ops(isolated).propose("domain", "id: atom-nueva\ntitle: Nueva\nfive_wh_one_plus: what\nanswer: Contenido\ntags:\n- domain:test\n")
+    assert (result["status"], result["source"]) == ("proposed", "reflector")
+    content = Path(result["path"]).read_text(encoding="utf-8")
+    assert "status:proposed" in content and "source:reflector" in content
+
+
+def test_propose_validates_model_and_body(kb_store: Path) -> None:
+    with pytest.raises(ValueError, match="Unknown model"):
+        _ops(kb_store).propose("nonexistent", "id: x\ntitle: y")
+    with pytest.raises(ValueError, match="must be a YAML"):
+        _ops(kb_store).propose("domain", "just a string")
+
+
+def test_reflect_reads_chat_history_and_returns_list(kb_store: Path, tmp_path: Path) -> None:
+    url = f"sqlite:///{tmp_path / 'reflect.db'}"
+    _seed_db(url, history=True)
+    isolated = tmp_path / "kb_reflect"
+    shutil.copytree(kb_store, isolated)
+    assert _ops(isolated, url).reflect() == []  # < PATTERN_MIN_COUNT repeticiones
+    with pytest.raises(ValueError, match="--db"):
+        _ops(isolated).reflect()
