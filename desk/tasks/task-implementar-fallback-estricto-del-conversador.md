@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-implementar-fallback-estricto-del-conversador
-current_node: checklist-task-implementar-fallback-estricto-del-conversador-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on:
@@ -29,34 +29,34 @@ atoms:
 
 ## Rationale
 
-Garantiza cero alucinación: si no hay contexto, el bot admite no saber en lugar de inventar.
+_Explain why this task exists or the business driver behind it._
+
+
 
 ## Goal
 
 _Describe the concrete result this task must produce._
 
-Forzar salida 'No sé' si el contexto es vacío (cero alucinación).
+
 
 ## Scope
 
-EN: Lógica de fallback cuando el Contexto Compilado llega con `is_empty=true`.
-FUERA: emisión de tools (tarea aparte), compilación de contexto.
+_State what is in scope and what is out of scope._
+
+
 
 ## Implementation Path
 
-`kb_agent/agent.py` (conversador_apos)
+_Outline the expected implementation route or affected surface._
 
-Ambigüedad resuelta — reparto SM vs agente:
-- La TRANSICIÓN a `breakpoint_miss` la hace el router (core SM) cuando payload.is_empty==true. Esta tarea NO define el nodo, solo el comportamiento del Conversador DENTRO de él.
-- Estando en breakpoint_miss, el Conversador emite una frase de desconocimiento y NO intenta responder el fondo (cero parámetrico).
-- Frase canónica única (usar EXACTA para test determinista): `"No tengo esa información a mano, la averiguaré."`
-- El system prompt prohibe explícitamente responder fuera de domain_facts/rules recibidos.
+
 
 ## Validation
 
-- Test de matriz (promptfoo/DeepEval): inyectar payload con is_empty=true y afirmar salida == la frase canónica exacta; FALLA si aparece cualquier intento de responder el fondo.
-- Inyectar payload con domain_facts y afirmar que la respuesta usa esos hechos (no la frase canónica).
+_List the checks required before this task can close._
+
+- 
 
 ## Done When
 
-En breakpoint_miss el Conversador emite la frase canónica exacta y nunca alucina.
+_Name the observable condition that makes the task complete._

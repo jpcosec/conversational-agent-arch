@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-persistir-y-recuperar-sessionstate-conversacional
-current_node: checklist-task-persistir-y-recuperar-sessionstate-conversacional-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on: []
@@ -59,5 +59,3 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
-
-TEST E2E DOMINIO-PEGAJOSO: turno 1 fija active_domain='pizzeria' en SessionState; en un proceso/sesion NUEVA (sin pasar scenario explicito) el turno 2 recupera active_domain de la BD y el compilador lo usa. Assertar que compiled['scenario']=='pizzeria' vino de SessionState, no de un argumento. Evidencia: runs/e2e/sessionstate-recovery.json.

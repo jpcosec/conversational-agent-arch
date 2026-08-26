@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-implementar-extractor-de-traits
-current_node: checklist-task-implementar-extractor-de-traits-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on:
@@ -31,37 +31,34 @@ atoms:
 
 ## Rationale
 
-Convierte señales explícitas del usuario en punteros a TraitAtoms universales, sin guardar PII.
+_Explain why this task exists or the business driver behind it._
+
+
 
 ## Goal
 
 _Describe the concrete result this task must produce._
 
-Analizar texto y mapear a TraitAtoms en la tabla SQL.
+
 
 ## Scope
 
-EN: Analizar texto de turno, mapear a trait_ids existentes y hacer UPSERT en UserTraits.
-FUERA: creación de nuevos TraitAtoms (eso es del Reflector), consumo del listener.
+_State what is in scope and what is out of scope._
+
+
 
 ## Implementation Path
 
-`kb_agent/perfilador/extractor.py`
+_Outline the expected implementation route or affected surface._
 
-Ambigüedad resuelta — contrato de mapeo:
-- Entrada: turn_text YA scrubbeado (sin PII).
-- SOLO extrae características EXPLÍCITAS ("soy vegetariano"), no infiere PII ni datos sensibles.
-- Fuente de candidatos: la lista de TraitAtoms candidatos (id + body) se obtiene vía `fetch(type='trait')` del conector SLDB (ver task-implementar-conector-sldb-del-ontologizador); el extractor NO lee SLDB a mano ni mantiene su propio catálogo.
-- Mecanismo de mapeo (v1): LLM con salida estructurada que recibe esa lista de TraitAtoms candidatos (id + body) y devuelve `[{trait_id, confidence}]` eligiendo SOLO ids de esa lista. Si no hay match, devuelve lista vacía (no inventa traits).
-- Regla de `confidence`: la asigna el LLM en rango 0-1; se descarta todo lo que venga con confidence < 0.7 (umbral `TRAIT_MIN_CONFIDENCE`). Aserción explícita usada en negocio: solo se persiste ≥ 0.7.
-- Escribe en UserTraits (user_id, trait_id, confidence, source='perfilador'); UPSERT idempotente (si ya existe, actualiza confidence al máximo entre el viejo y el nuevo).
+
 
 ## Validation
 
-- `pytest` con SQLite `:memory:` + `.sldb_test/` con trait-vegetariano: inyectar "soy vegetariano" y afirmar edge user_id -> trait-vegetariano.
-- Afirmar que una señal sin TraitAtom correspondiente NO crea fila.
-- Afirmar idempotencia (mismo input 2 veces = 1 fila).
+_List the checks required before this task can close._
+
+- 
 
 ## Done When
 
-Mapea señales explícitas a traits existentes, es idempotente y no inventa traits.
+_Name the observable condition that makes the task complete._

@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-implementar-listener-asíncrono-del-perfilador
-current_node: checklist-task-implementar-listener-asíncrono-del-perfilador-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on:
@@ -28,33 +28,34 @@ atoms:
 
 ## Rationale
 
-Desacopla el perfilado del turno conversacional para no sumar latencia a la respuesta del usuario.
+_Explain why this task exists or the business driver behind it._
+
+
 
 ## Goal
 
 _Describe the concrete result this task must produce._
 
-Conectar un worker que consuma eventos de turnos en background.
+
 
 ## Scope
 
-EN: Worker asincrónico que consume eventos de "turno cerrado" (ya scrubbeados) y despacha al extractor.
-FUERA: la lógica de extracción de traits (tarea aparte), la implementación del scrubber (tarea aparte).
+_State what is in scope and what is out of scope._
+
+
 
 ## Implementation Path
 
-`kb_agent/perfilador/listener.py`
+_Outline the expected implementation route or affected surface._
 
-Ambigüedad resuelta:
-- Mecanismo de disparo: cola en proceso (`asyncio.Queue`) para v1; interfaz abstracta `EventBus` para permitir swap a Redis después sin tocar el extractor.
-- Evento publicado por el router al cerrar un turno (drafting_response -> idle): `{user_id, turn_text_scrubbed}`. IMPORTANTE — orden anti-race: el productor llama `scrub(text)` INLINE (función síncrona reutilizable del scrubber; ver task-implementar-scrubber-de-pii) y publica el resultado YA scrubbeado. NO depende del worker/barrido asíncrono que marca ChatHistory.pii_scrubbed; ese barrido corre por separado para la tabla. Así se elimina cualquier ventana en que el Perfilador pudiera leer PII cruda. El Perfilador jamás ve PII cruda.
-- El worker NUNCA bloquea el hilo de respuesta; si falla, reintenta con backoff y loguea.
+
 
 ## Validation
 
-- `pytest` async: publicar un evento en la cola y afirmar que el handler del extractor fue invocado con el user_id/turn_text correctos.
-- Afirmar que una excepción en el handler no propaga al productor.
+_List the checks required before this task can close._
+
+- 
 
 ## Done When
 
-El worker consume eventos de forma no bloqueante y aisla fallos del hilo principal.
+_Name the observable condition that makes the task complete._

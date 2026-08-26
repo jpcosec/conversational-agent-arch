@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-implementar-conector-sldb-del-ontologizador
-current_node: checklist-task-implementar-conector-sldb-del-ontologizador-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on: []
@@ -29,34 +29,34 @@ atoms:
 
 ## Rationale
 
-Aisla la lectura de SLDB del resto del sistema. Es la fuente de conocimiento semántico para compilar contexto.
+_Explain why this task exists or the business driver behind it._
+
+
 
 ## Goal
 
 _Describe the concrete result this task must produce._
 
-Leer de forma segura rules, tools y domains desde SLDB.
+
 
 ## Scope
 
-EN: Cliente de lectura que trae RuleAtoms, ToolAtoms y DomainAtoms desde SLDB.
-FUERA: la lógica de filtrado/compilación del subgrafo (tarea compilador).
+_State what is in scope and what is out of scope._
+
+
 
 ## Implementation Path
 
-`kb_agent/ontologizador/sldb_reader.py`
+_Outline the expected implementation route or affected surface._
 
-Ambigüedad resuelta:
-- Usa el CLI/API de SLDB (no lee .md a mano).
-- Expone `fetch(atom_type, filters) -> list[Atom]` para type in {rule, tool, domain, trait}.
-- Cada Atom retornado incluye: id, type, tags, body. Los ToolAtoms además exponen su JSON schema crudo.
-- Config `KB_ROOT` parametriza el store SLDB destino (permite swap multi-dominio).
+
 
 ## Validation
 
-- `pytest` contra un `.sldb_test/` sembrado: afirmar que fetch('tool') devuelve solo ToolAtoms con su JSON schema legible.
-- Afirmar que cambiar KB_ROOT cambia el set de átomos leído (multi-dominio).
+_List the checks required before this task can close._
+
+- 
 
 ## Done When
 
-fetch() lee cada tipo de átomo desde SLDB y el test contra el store sembrado pasa.
+_Name the observable condition that makes the task complete._

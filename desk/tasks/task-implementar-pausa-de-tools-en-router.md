@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-implementar-pausa-de-tools-en-router
-current_node: checklist-task-implementar-pausa-de-tools-en-router-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on:
@@ -29,35 +29,34 @@ atoms:
 
 ## Rationale
 
-Permite que el Conversador use herramientas externas (APIs) sin romper el flujo determinista de la conversación.
+_Explain why this task exists or the business driver behind it._
+
+
 
 ## Goal
 
 _Describe the concrete result this task must produce._
 
-Pausar la SM en waiting_tool y reanudar con System Turn.
+
 
 ## Scope
 
-EN: Nodo `waiting_tool`, pausa/reanudación, reinyección del JSON como System Turn, y timeout.
-FUERA: la ejecución real de las APIs (eso vive en tool-calling estructurado).
+_State what is in scope and what is out of scope._
+
+
 
 ## Implementation Path
 
-`kb_chat_ui/state_machine.py` (extiende la SM base)
+_Outline the expected implementation route or affected surface._
 
-Ambigüedad resuelta:
-- Al emitir un function_call, drafting_response -> waiting_tool (SM pausada, no acepta nuevo turno de usuario: se encola).
-- El retorno JSON de la tool se inserta en ChatHistory con role='system' (System Turn) y se reanuda waiting_tool -> drafting_response.
-- TIMEOUT: si la tool no responde en `TOOL_TIMEOUT_MS` (default 15000), transicionar waiting_tool -> drafting_response con un System Turn de error, para que el Conversador informe la falla sin colgarse.
-- Concurrencia: mensajes de usuario que lleguen en waiting_tool se guardan en `SessionState.buffer["tool_wait"]` (lista), no se procesan hasta volver a idle. Esta tarea escribe SOLO en la clave `tool_wait`; la clave `debounce` es propiedad exclusiva de task-implementar-debounce-buffer-en-router.
+
 
 ## Validation
 
-- `pytest`: simular function_call, inyectar retorno JSON y afirmar reanudación con System Turn role='system'.
-- Simular tool colgada y afirmar transición por timeout a drafting_response con System Turn de error.
-- Afirmar que un mensaje de usuario en waiting_tool queda encolado, no procesado.
+_List the checks required before this task can close._
+
+- 
 
 ## Done When
 
-Pausa/reanudación, timeout y encolado de concurrencia pasan sus tests.
+_Name the observable condition that makes the task complete._

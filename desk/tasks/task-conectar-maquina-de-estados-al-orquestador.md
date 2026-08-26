@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-conectar-maquina-de-estados-al-orquestador
-current_node: checklist-task-conectar-maquina-de-estados-al-orquestador-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on: []
@@ -59,5 +59,3 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
-
-TEST E2E TRAZA-DE-NODOS: correr un turno real y assertar que state_trace == [idle, evaluating_context, drafting_response, idle] leido de la SM real; y en un tool-call, que la traza incluye waiting_tool. Evidencia: runs/e2e/state-trace.json con la secuencia real de nodos.

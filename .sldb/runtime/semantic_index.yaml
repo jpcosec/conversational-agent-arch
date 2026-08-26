@@ -97,6 +97,7 @@ tags:
   - atom-capa-frontend-del-runtime
   type.desk.inbox-note:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
+  - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
   type.knowledge.atom:
   - atom-agente-conversador
   - atom-aislamiento-estricto-de-pii
@@ -135,10 +136,17 @@ tags:
   - atom-turno-de-sistema-system-turn
   workspace.desk.inbox:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
+  - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
 documents:
   20260825-020103-suggestion-ritual-zero-context-subagent-stress-test:
     model: InboxNoteDoc
     path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260825-020103-suggestion-ritual-zero-context-subagent-stress-test.md
+    tags:
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+  20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente:
+    model: InboxNoteDoc
+    path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente.md
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox

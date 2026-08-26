@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-conectar-reflector-al-flujo-real
-current_node: checklist-task-conectar-reflector-al-flujo-real-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on: []
@@ -59,5 +59,3 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
-
-TEST E2E ENGROSAMIENTO: sembrar ChatHistory real con >=5 turnos de la misma intencion (ej. 'hacen delivery?'), correr el Reflector real, y assertar que aparecio un archivo .md nuevo en el store SLDB con tag source:reflector y estado proposed. Evidencia: runs/e2e/reflector-run.json + el atom generado.

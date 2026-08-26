@@ -6,7 +6,7 @@ tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-scrub-completo-del-assistant-y-marca-veraz
-current_node: checklist-task-scrub-completo-del-assistant-y-marca-veraz-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on: []
@@ -58,5 +58,3 @@ _List the checks required before this task can close._
 ## Done When
 
 _Name the observable condition that makes the task complete._
-
-TEST E2E FUGA-CERO: inyectar una respuesta del assistant que contenga un telefono/email de prueba, persistir el turno, y assertar que en ChatHistory el contenido del assistant esta enmascarado (sin el valor original) y pii_scrubbed=True es verdad verificable. Evidencia: runs/e2e/assistant-scrub-check.json.
