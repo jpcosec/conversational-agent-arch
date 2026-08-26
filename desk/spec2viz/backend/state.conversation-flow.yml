@@ -31,8 +31,6 @@ data:
       label: "Ejecutando Tool\\nExterna (Pausa)"
     - id: breakpoint_miss
       label: "Punto de Quiebre\\n(Context Miss / Fallback)"
-    - id: interrupted
-      label: "Interrumpido\\n(Timeout)"
   transitions:
     - from: idle
       to: buffering
@@ -48,10 +46,6 @@ data:
       to: evaluating_context
       "on": timeout_buffer
       guard: envía_inputs_al_router
-    - from: interrupted
-      to: evaluating_context
-      "on": mensaje_retoma
-      guard: inyecta_tiempo_transcurrido
     - from: evaluating_context
       to: waiting_tool
       "on": requiere_api_externa
@@ -75,6 +69,3 @@ data:
     - from: drafting_response
       to: idle
       "on": respuesta_enviada
-    - from: idle
-      to: interrupted
-      "on": inactividad_prolongada
