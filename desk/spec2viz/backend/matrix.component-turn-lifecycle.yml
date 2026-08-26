@@ -75,9 +75,9 @@ data:
               label: Ontologizador (Context Compiler)
               stages:
                 turn: [context]
-            - name: DecideTurn
+            - name: Orquestador
               kind: engine
-              label: decide_turn (policy pura, agent.py)
+              label: "Orquestador (decide_turn, agent.py)"
               stages:
                 turn: [decide]
             - name: Conversador

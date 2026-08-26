@@ -1,12 +1,15 @@
 id: component-knowledge-ontology
-title: Backend · Datos · Ontología Universal y Perfiles
+title: "Backend · Datos · Ontología Universal y Perfiles"
 type: component
-version: '1.0'
+version: '1.1'
 metadata:
   author: antonIA
   description: >-
-    Muestra cómo el SQL gestiona identidades y mapeos, mientras que SLDB almacena el
-    conocimiento puramente abstracto (Traits, Dominio, Rules, Tools) en sus dominios base.
+    Muestra la separación entre SQL (Identidad, Estado, Sesión) y SLDB (Knowledge Base)
+    con sus 11+1 modelos tipados. Los 5 ejes de activación definen qué se recupera según
+    contexto: self:* siempre, domain:* por relevancia, conversation:* por estado, user:traits.*
+    por identidad, source:* nunca. La familia gate (GateCriterion) pertenece al eje post-draft
+    y es invisible al compilador de turno.
 style:
   kinds:
     sql:
@@ -24,47 +27,65 @@ style:
         background: "#F5F5F5"
         border: "#CCCCCC"
         font: "#333333"
+    gate:
+      plantuml:
+        background: "#F0FFF0"
+        border: "#8FBC8F"
+        font: "#006400"
+        style: dashed
 data:
   nodes:
     layer_sql:
-      label: Capa SQL (Identidad y Mapeo)
+      label: Capa SQL (Identidad, Estado, Sesión)
       kind: boundary
       contains:
         - sql_users
         - sql_user_traits
+        - sql_session_state
+        - sql_chat_history
     sql_users:
       label: Tabla Users (PII, Identidad)
       kind: sql
     sql_user_traits:
       label: Tabla UserTraits (N:M)
       kind: sql
+    sql_session_state:
+      label: Tabla SessionState (flow_node, dominio activo)
+      kind: sql
+    sql_chat_history:
+      label: Tabla ChatHistory (turnos, PII scrubbed)
+      kind: sql
 
     layer_sldb:
-      label: Capa SLDB (Knowledge Base)
+      label: "Capa SLDB (Knowledge Base) — 11+1 modelos"
       kind: boundary
       contains:
         - sldb_core_domains
-        - trait_atom
-        - domain_atom
-        - rule_atom
-        - tool_atom
+        - family_self
+        - family_domain
+        - family_conversation
+        - family_user
+        - family_gate
 
     sldb_core_domains:
-      label: Dominios Base SLDB (core/models, core/documents)
+      label: "Store SLDB: core/models/ + core/documents/"
       kind: atom
 
-    trait_atom:
-      label: Indexable Characteristic Atom
+    family_self:
+      label: "Familia self (siempre activa): SelfDeclaration, StyleGuide, CapabilityBoundary, ToolAtom"
       kind: atom
-    domain_atom:
-      label: Domain Atom (Funcional)
+    family_domain:
+      label: "Familia domain (por relevancia): DomainAtom, RuleAtom"
       kind: atom
-    rule_atom:
-      label: Conversational Rule Atom
+    family_conversation:
+      label: "Familia conversation (por estado): ConversationStep, StrategyRule, FallbackRule"
       kind: atom
-    tool_atom:
-      label: Tool Atom (Esquema API)
+    family_user:
+      label: "Familia user (por identidad): TraitAtom"
       kind: atom
+    family_gate:
+      label: "Familia gate (post-draft, planeada): GateCriterion"
+      kind: gate
 
     layer_projections:
       label: Capa de Proyecciones
@@ -81,31 +102,35 @@ data:
       to: sql_user_traits
       relation: "1 : N"
     - from: sql_user_traits
-      to: trait_atom
-      relation: "Apunta a ID en SLDB"
-    
+      to: family_user
+      relation: "Apunta a ID en SLDB (TraitAtom)"
+    - from: sql_session_state
+      to: family_conversation
+      relation: flow_node determina ConversationStep activo
     - from: sldb_core_domains
-      to: trait_atom
+      to: family_self
       relation: rige
     - from: sldb_core_domains
-      to: domain_atom
+      to: family_domain
       relation: rige
     - from: sldb_core_domains
-      to: rule_atom
+      to: family_conversation
       relation: rige
     - from: sldb_core_domains
-      to: tool_atom
+      to: family_user
       relation: rige
-    
-    - from: trait_atom
-      to: domain_atom
-      relation: Relación semántica
-    - from: domain_atom
-      to: rule_atom
-      relation: Reglas de dominio
-    - from: rule_atom
-      to: tool_atom
-      relation: Llama tool
+    - from: sldb_core_domains
+      to: family_gate
+      relation: "rige (invisible al compilador _MODEL_TYPES)"
+    - from: family_domain
+      to: family_conversation
+      relation: "DomainAtom groundea ConversationStep"
+    - from: family_domain
+      to: family_self
+      relation: "CapabilityBoundary limita DomainAtom"
+    - from: family_self
+      to: family_conversation
+      relation: "persona + estilo guían strategy"
 
     - from: sldb_core_domains
       to: projections_ui

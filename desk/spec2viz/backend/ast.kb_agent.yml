@@ -97,6 +97,12 @@ data:
     class_models_knowledge_trait_TraitAtom:
       label: TraitAtom
       kind: class
+    module_models_knowledge_gate:
+      label: models.knowledge.gate
+      kind: module
+    class_models_knowledge_gate_GateCriterion:
+      label: GateCriterion
+      kind: class
     module_models_sql_identity:
       label: models_sql.identity
       kind: module
@@ -114,6 +120,12 @@ data:
       kind: module
     class_models_sql_reservas_Reservas:
       label: Reservas
+      kind: class
+    module_models_sql_recordatorios:
+      label: models_sql.recordatorios
+      kind: module
+    class_models_sql_recordatorios_Recordatorios:
+      label: Recordatorios
       kind: class
     module_models_sql_session:
       label: models_sql.session
@@ -252,6 +264,9 @@ data:
       kind: class
     module_tools_reservas:
       label: tools.reservas
+      kind: module
+    module_tools_recordatorios:
+      label: tools.recordatorios
       kind: module
     module___future__:
       label: ''
@@ -1072,4 +1087,16 @@ data:
     relation: imports
   - from: module_tools_reservas
     to: module_kb_agent_models_sql_reservas
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module___future__
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module_typing
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module_kb_agent_models_sql_recordatorios
     relation: imports

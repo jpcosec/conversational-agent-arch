@@ -19,7 +19,7 @@ vistas:
     category: Backend
     nav: Ecosistema de Agentes
     title: Backend · Componentes · Ecosistema de Motores y Agentes
-    desc: Los 4 actores (Conversador, Ontologizador, Perfilador, Reflector) y DBs.
+    desc: "Los 5 roles (Orquestador, Conversador, Ontologizador, Perfilador, Reflector) y DBs."
     type: component
     src: build/component.agent-ecosystem.mmd
     specs: [backend/component.agent-ecosystem.yml]
