@@ -42,8 +42,8 @@ EDITOR_DIR = PROJECT_ROOT / "conversation_flow_editor"
 FLOW_KB_ROOT = os.getenv("FLOW_KB_ROOT", "tests/knowledge_antonia")
 
 # ── configuracion ────────────────────────────────────────────
-# KB_ROOT puede venir de env (deshardcodeo). Default: store Don Peppe local.
-KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / ".sldb_e2e_donpeppe")))
+# KB_ROOT puede venir de env (deshardcodeo). Default: store Antonia (PSP Selfix).
+KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / "tests" / "knowledge_antonia")))
 DB_PATH = PROJECT_ROOT / "runs" / "ui-chat.sqlite"
 
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
