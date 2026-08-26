@@ -1,0 +1,21 @@
+documents:
+- name: boundary-antonia-clinico
+  path: atoms/boundary-antonia-clinico.md
+  hash_c: 94f54a6f625865af1ae634dd020aa43eaba992e5af96ead56eddf1a277cc871a
+  hash_d: 1a5b51e4582f809c82006f2c673703f322254246dfe7386703ac9ee5cf6beb42
+  semantic_tags:
+  - domain:clinico
+  - self:limites
+  - system:laboratorio-chile
+  - type.knowledge.boundary
+  - workspace.knowledge
+- name: boundary-antonia-manipulacion
+  path: atoms/boundary-antonia-manipulacion.md
+  hash_c: c46b3cfef90da973e388a6309d5884108bfdf6dcc17a8605e22f34a24ca7fa73
+  hash_d: abe6b0f4e9733ef3bbedeed01c62f8e7da11d760cb618be48325c7e1dabb57da
+  semantic_tags:
+  - conversation:security
+  - self:limites
+  - system:laboratorio-chile
+  - type.knowledge.boundary
+  - workspace.knowledge

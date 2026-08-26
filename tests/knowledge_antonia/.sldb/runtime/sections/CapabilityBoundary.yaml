@@ -1,0 +1,199 @@
+documents:
+- doc_name: boundary-antonia-clinico
+  sections:
+  - path: l-mites-cl-nicos-absolutos
+    title: "L\xEDmites cl\xEDnicos absolutos"
+    breadcrumbs:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    about:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    - l mites cl nicos absolutos
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: l-mites-cl-nicos-absolutos
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: l-mites-cl-nicos-absolutos/restriction
+    title: Restriction
+    breadcrumbs:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    - Restriction
+    about:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    - l mites cl nicos absolutos
+    - Restriction
+    - restriction
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: l-mites-cl-nicos-absolutos/conditions
+    title: Conditions
+    breadcrumbs:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    - Conditions
+    about:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    - l mites cl nicos absolutos
+    - Conditions
+    - conditions
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: l-mites-cl-nicos-absolutos/escalation
+    title: Escalation
+    breadcrumbs:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    - Escalation
+    about:
+    - "L\xEDmites cl\xEDnicos absolutos"
+    - l mites cl nicos absolutos
+    - Escalation
+    - escalation
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 22
+    line_end: 23
+- doc_name: boundary-antonia-manipulacion
+  sections:
+  - path: anti-manipulaci-n
+    title: "Anti-manipulaci\xF3n"
+    breadcrumbs:
+    - "Anti-manipulaci\xF3n"
+    about:
+    - "Anti-manipulaci\xF3n"
+    - anti manipulaci n
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: anti-manipulaci-n
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: anti-manipulaci-n/restriction
+    title: Restriction
+    breadcrumbs:
+    - "Anti-manipulaci\xF3n"
+    - Restriction
+    about:
+    - "Anti-manipulaci\xF3n"
+    - anti manipulaci n
+    - Restriction
+    - restriction
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: anti-manipulaci-n/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Anti-manipulaci\xF3n"
+    - Conditions
+    about:
+    - "Anti-manipulaci\xF3n"
+    - anti manipulaci n
+    - Conditions
+    - conditions
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: anti-manipulaci-n/escalation
+    title: Escalation
+    breadcrumbs:
+    - "Anti-manipulaci\xF3n"
+    - Escalation
+    about:
+    - "Anti-manipulaci\xF3n"
+    - anti manipulaci n
+    - Escalation
+    - escalation
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 22
+    line_end: 23

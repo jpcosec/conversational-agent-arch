@@ -1,0 +1,109 @@
+tags:
+  atom_type:domain:
+  - atom-donpeppe-carta
+  - atom-donpeppe-horarios
+  - atom-heladeria-carta
+  atom_type:rule:
+  - atom-donpeppe-regla-reservas
+  atom_type:tool:
+  - atom-donpeppe-tool-reserva
+  atom_type:trait:
+  - atom-trait-sin-gluten
+  - atom-trait-vegetariano
+  domain:heladeria:
+  - atom-heladeria-carta
+  domain:pizzeria:
+  - atom-donpeppe-carta
+  - atom-donpeppe-horarios
+  - atom-donpeppe-regla-reservas
+  - atom-donpeppe-tool-reserva
+  - atom-trait-sin-gluten
+  - atom-trait-vegetariano
+  source:e2e:
+  - atom-donpeppe-carta
+  - atom-donpeppe-horarios
+  - atom-donpeppe-regla-reservas
+  - atom-donpeppe-tool-reserva
+  - atom-heladeria-carta
+  - atom-trait-sin-gluten
+  - atom-trait-vegetariano
+  type.knowledge.atom:
+  - atom-donpeppe-carta
+  - atom-donpeppe-horarios
+  - atom-donpeppe-regla-reservas
+  - atom-donpeppe-tool-reserva
+  - atom-heladeria-carta
+  - atom-trait-sin-gluten
+  - atom-trait-vegetariano
+  workspace.desk.atoms:
+  - atom-donpeppe-carta
+  - atom-donpeppe-horarios
+  - atom-donpeppe-regla-reservas
+  - atom-donpeppe-tool-reserva
+  - atom-heladeria-carta
+  - atom-trait-sin-gluten
+  - atom-trait-vegetariano
+documents:
+  atom-donpeppe-carta:
+    model: AtomDoc
+    path: atoms/atom-donpeppe-carta.md
+    tags:
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-donpeppe-horarios:
+    model: AtomDoc
+    path: atoms/atom-donpeppe-horarios.md
+    tags:
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-donpeppe-regla-reservas:
+    model: AtomDoc
+    path: atoms/atom-donpeppe-regla-reservas.md
+    tags:
+    - atom_type:rule
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-donpeppe-tool-reserva:
+    model: AtomDoc
+    path: atoms/atom-donpeppe-tool-reserva.md
+    tags:
+    - atom_type:tool
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-heladeria-carta:
+    model: AtomDoc
+    path: atoms/atom-heladeria-carta.md
+    tags:
+    - atom_type:domain
+    - domain:heladeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-trait-sin-gluten:
+    model: AtomDoc
+    path: atoms/atom-trait-sin-gluten.md
+    tags:
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-trait-vegetariano:
+    model: AtomDoc
+    path: atoms/atom-trait-vegetariano.md
+    tags:
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms

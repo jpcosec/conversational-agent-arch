@@ -10,7 +10,7 @@ Uso:
     transitions = reader.get_next_transitions("reserva_pedir_personas")
 
 O desde SLDB:
-    reader = KGDBReader.from_sldb(store_path=Path(".sldb_e2e_donpeppe/.sldb"))
+    reader = KGDBReader.from_sldb(store_path=Path("tests/knowledge/.sldb"))
 """
 from __future__ import annotations
 

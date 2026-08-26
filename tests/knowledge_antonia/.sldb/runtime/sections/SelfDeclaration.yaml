@@ -1,0 +1,50 @@
+documents:
+- doc_name: self-antonia
+  sections:
+  - path: antonia-psp-selfix
+    title: "Antonia \u2014 PSP Selfix"
+    breadcrumbs:
+    - "Antonia \u2014 PSP Selfix"
+    about:
+    - "Antonia \u2014 PSP Selfix"
+    - antonia psp selfix
+    - domain:salud
+    - self:whoami
+    - system:laboratorio-chile
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - domain:salud
+    - self:whoami
+    - system:laboratorio-chile
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: antonia-psp-selfix
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: antonia-psp-selfix/statement
+    title: Statement
+    breadcrumbs:
+    - "Antonia \u2014 PSP Selfix"
+    - Statement
+    about:
+    - "Antonia \u2014 PSP Selfix"
+    - antonia psp selfix
+    - Statement
+    - statement
+    - domain:salud
+    - self:whoami
+    - system:laboratorio-chile
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - domain:salud
+    - self:whoami
+    - system:laboratorio-chile
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: statement
+    level: 2
+    line_start: 14
+    line_end: 15

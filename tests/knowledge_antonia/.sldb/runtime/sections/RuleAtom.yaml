@@ -1,0 +1,149 @@
+documents:
+- doc_name: rule-antonia-anti-alucinacion
+  sections:
+  - path: anti-alucinaci-n-contexto-estricto
+    title: "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    breadcrumbs:
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    about:
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - anti alucinaci n contexto estricto
+    - conversation:fallback
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: anti-alucinaci-n-contexto-estricto
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: anti-alucinaci-n-contexto-estricto/answer
+    title: Answer
+    breadcrumbs:
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Answer
+    about:
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - anti alucinaci n contexto estricto
+    - Answer
+    - answer
+    - conversation:fallback
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+  - path: anti-alucinaci-n-contexto-estricto/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Conditions
+    about:
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - anti alucinaci n contexto estricto
+    - Conditions
+    - conditions
+    - conversation:fallback
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: rule-antonia-eventos-adversos
+  sections:
+  - path: detecci-n-de-eventos-adversos
+    title: "Detecci\xF3n de eventos adversos"
+    breadcrumbs:
+    - "Detecci\xF3n de eventos adversos"
+    about:
+    - "Detecci\xF3n de eventos adversos"
+    - detecci n de eventos adversos
+    - conversation:pharmacovigilance
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:pharmacovigilance
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: detecci-n-de-eventos-adversos
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: detecci-n-de-eventos-adversos/answer
+    title: Answer
+    breadcrumbs:
+    - "Detecci\xF3n de eventos adversos"
+    - Answer
+    about:
+    - "Detecci\xF3n de eventos adversos"
+    - detecci n de eventos adversos
+    - Answer
+    - answer
+    - conversation:pharmacovigilance
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:pharmacovigilance
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: detecci-n-de-eventos-adversos/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Detecci\xF3n de eventos adversos"
+    - Conditions
+    about:
+    - "Detecci\xF3n de eventos adversos"
+    - detecci n de eventos adversos
+    - Conditions
+    - conditions
+    - conversation:pharmacovigilance
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:pharmacovigilance
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 20
+    line_end: 21

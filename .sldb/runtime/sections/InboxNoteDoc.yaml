@@ -1,0 +1,54 @@
+documents:
+- doc_name: 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
+  sections:
+  - path: kind-suggestion-sender-project-gemini-test-created-at-2026-08-25t02-01-03-status-open
+    title: 'kind: suggestion
+
+      sender_project: gemini_test
+
+      created_at: 2026-08-25T02:01:03
+
+      status: open'
+    breadcrumbs:
+    - 'kind: suggestion
+
+      sender_project: gemini_test
+
+      created_at: 2026-08-25T02:01:03
+
+      status: open'
+    about:
+    - 'kind: suggestion
+
+      sender_project: gemini_test
+
+      created_at: 2026-08-25T02:01:03
+
+      status: open'
+    - kind suggestion sender project gemini test created at 2026 08 25t02 01 03 status
+      open
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+    semantic_tags:
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+    slug: kind-suggestion-sender-project-gemini-test-created-at-2026-08-25t02-01-03-status-open
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: ritual-zero-context-subagent-stress-test
+    title: 'Ritual: Zero-context subagent stress test'
+    breadcrumbs:
+    - 'Ritual: Zero-context subagent stress test'
+    about:
+    - 'Ritual: Zero-context subagent stress test'
+    - ritual zero context subagent stress test
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+    semantic_tags:
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+    slug: ritual-zero-context-subagent-stress-test
+    level: 1
+    line_start: 8
+    line_end: 9

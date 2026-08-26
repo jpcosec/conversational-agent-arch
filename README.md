@@ -15,6 +15,25 @@ Agente conversacional multi-dominio con arquitectura de 4 motores cognitivos, al
 - **SLDB** — conocimiento semántico (atoms, facts, rules, tools, traits)
 - **KGDB** — grafo de relaciones y flujo conversacional
 
+## Estructura del repositorio
+
+```
+desk/                      # Workflow harness del proyecto (tasks, rituals, deskops)
+  atoms/                   #   Átomos de arquitectura del agente runtime
+  tasks/ rituals/ ...
+
+knowledge/                 # Knowledge Base del agente (modelo de conocimiento)
+  atoms/                   #   Taxonomía: domain, rule, tool, trait + tag-namespaces
+
+tests/
+  knowledge/               #   KB de prueba (Don Peppe — dominio de testing)
+    atoms/                 #     cartas, horarios, reglas, tools, traits
+
+kb_agent/                  # Runtime del agente conversacional
+```
+
+**Regla**: `desk/` es solo workflow. `knowledge/` es la KB reutilizable. `tests/knowledge/` es data de prueba para E2E.
+
 ## Componentes
 
 ```
@@ -37,9 +56,7 @@ kb_agent/
 
 ```bash
 # chat local real (requiere credenciales Gemini/Vertex en .env)
-python -m kb_agent.chat_local --kb .sldb_e2e_donpeppe --scenario pizzeria
-
-# comandos: /exit, /scenario <dominio>, /reflect
+python -m kb_agent.chat_local --kb tests/knowledge --scenario pizzeria
 ```
 
 ## Tests

@@ -1,0 +1,13 @@
+name: ConversationStep
+model_ref: kb_agent.models.knowledge:ConversationStep
+path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/step.py
+documents_index: .sldb/core/documents/ConversationStep.yaml
+sections_index: .sldb/runtime/sections/ConversationStep.yaml
+hash_b: 05d49d3e7db9c77044c3698a8c1c73267eb10700211cca1a30601c3bf9ea3fce
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.step
+- workspace.knowledge
+base_models: []

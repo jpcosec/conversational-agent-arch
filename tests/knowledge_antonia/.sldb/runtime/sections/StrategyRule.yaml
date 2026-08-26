@@ -1,0 +1,92 @@
+documents:
+- doc_name: strategy-antonia
+  sections:
+  - path: estrategia-de-acompa-amiento
+    title: "Estrategia de acompa\xF1amiento"
+    breadcrumbs:
+    - "Estrategia de acompa\xF1amiento"
+    about:
+    - "Estrategia de acompa\xF1amiento"
+    - estrategia de acompa amiento
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: estrategia-de-acompa-amiento
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: estrategia-de-acompa-amiento/goal
+    title: Goal
+    breadcrumbs:
+    - "Estrategia de acompa\xF1amiento"
+    - Goal
+    about:
+    - "Estrategia de acompa\xF1amiento"
+    - estrategia de acompa amiento
+    - Goal
+    - goal
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: goal
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: estrategia-de-acompa-amiento/approach
+    title: Approach
+    breadcrumbs:
+    - "Estrategia de acompa\xF1amiento"
+    - Approach
+    about:
+    - "Estrategia de acompa\xF1amiento"
+    - estrategia de acompa amiento
+    - Approach
+    - approach
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: approach
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: estrategia-de-acompa-amiento/priorities
+    title: Priorities
+    breadcrumbs:
+    - "Estrategia de acompa\xF1amiento"
+    - Priorities
+    about:
+    - "Estrategia de acompa\xF1amiento"
+    - estrategia de acompa amiento
+    - Priorities
+    - priorities
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: priorities
+    level: 2
+    line_start: 21
+    line_end: 22

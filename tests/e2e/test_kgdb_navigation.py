@@ -11,7 +11,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from kb_agent.ontologizador.kgdb_reader import KGDBReader
 
-STORE_ROOT = PROJECT_ROOT / ".sldb_e2e_donpeppe"
+STORE_ROOT = PROJECT_ROOT / "tests/knowledge"
 
 
 def test_kgdb_reader_builds_navigable_graph_from_real_sldb_store(tmp_path: Path) -> None:

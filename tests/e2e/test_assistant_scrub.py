@@ -16,7 +16,7 @@ from kb_agent.models_sql.session import ChatHistory
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.pii.scrubber import scrub
 
-STORE_ROOT = PROJECT_ROOT / ".sldb_e2e_donpeppe"
+STORE_ROOT = PROJECT_ROOT / "tests/knowledge"
 USER = "wa:+56925555555"
 HELPER_USER = "wa:+56926666666"
 

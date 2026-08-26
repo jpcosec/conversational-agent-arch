@@ -1,0 +1,13 @@
+name: CapabilityBoundary
+model_ref: kb_agent.models.knowledge:CapabilityBoundary
+path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/boundary.py
+documents_index: .sldb/core/documents/CapabilityBoundary.yaml
+sections_index: .sldb/runtime/sections/CapabilityBoundary.yaml
+hash_b: a87e16403c490a73c6ce9004026147aa9f90e08f7d490fd856bb7056c311f7ca
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.boundary
+- workspace.knowledge
+base_models: []

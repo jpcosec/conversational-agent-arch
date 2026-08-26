@@ -1,0 +1,13 @@
+name: StrategyRule
+model_ref: kb_agent.models.knowledge:StrategyRule
+path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/strategy.py
+documents_index: .sldb/core/documents/StrategyRule.yaml
+sections_index: .sldb/runtime/sections/StrategyRule.yaml
+hash_b: e259464f0bbcdce7c21c7b1c0202762d3b897afdb924cfd1c1750438267de813
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.strategy
+- workspace.knowledge
+base_models: []

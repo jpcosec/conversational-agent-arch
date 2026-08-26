@@ -1,0 +1,344 @@
+documents:
+- doc_name: atom-donpeppe-carta
+  sections:
+  - path: carta-don-peppe
+    title: Carta Don Peppe
+    breadcrumbs:
+    - Carta Don Peppe
+    about:
+    - Carta Don Peppe
+    - carta don peppe
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: carta-don-peppe
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: carta-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Carta Don Peppe
+    - Answer
+    about:
+    - Carta Don Peppe
+    - carta don peppe
+    - Answer
+    - answer
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-donpeppe-horarios
+  sections:
+  - path: horarios-don-peppe
+    title: Horarios Don Peppe
+    breadcrumbs:
+    - Horarios Don Peppe
+    about:
+    - Horarios Don Peppe
+    - horarios don peppe
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: horarios-don-peppe
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: horarios-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Horarios Don Peppe
+    - Answer
+    about:
+    - Horarios Don Peppe
+    - horarios don peppe
+    - Answer
+    - answer
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:domain
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-donpeppe-regla-reservas
+  sections:
+  - path: regla-de-reservas-don-peppe
+    title: Regla de reservas Don Peppe
+    breadcrumbs:
+    - Regla de reservas Don Peppe
+    about:
+    - Regla de reservas Don Peppe
+    - regla de reservas don peppe
+    - atom_type:rule
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:rule
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: regla-de-reservas-don-peppe
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: regla-de-reservas-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Regla de reservas Don Peppe
+    - Answer
+    about:
+    - Regla de reservas Don Peppe
+    - regla de reservas don peppe
+    - Answer
+    - answer
+    - atom_type:rule
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:rule
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-donpeppe-tool-reserva
+  sections:
+  - path: tool-crear-reserva-don-peppe
+    title: Tool crear reserva Don Peppe
+    breadcrumbs:
+    - Tool crear reserva Don Peppe
+    about:
+    - Tool crear reserva Don Peppe
+    - tool crear reserva don peppe
+    - atom_type:tool
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:tool
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: tool-crear-reserva-don-peppe
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: tool-crear-reserva-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Tool crear reserva Don Peppe
+    - Answer
+    about:
+    - Tool crear reserva Don Peppe
+    - tool crear reserva don peppe
+    - Answer
+    - answer
+    - atom_type:tool
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:tool
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-heladeria-carta
+  sections:
+  - path: carta-heladeria-polo
+    title: Carta Heladeria Polo
+    breadcrumbs:
+    - Carta Heladeria Polo
+    about:
+    - Carta Heladeria Polo
+    - carta heladeria polo
+    - atom_type:domain
+    - domain:heladeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:domain
+    - domain:heladeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: carta-heladeria-polo
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: carta-heladeria-polo/answer
+    title: Answer
+    breadcrumbs:
+    - Carta Heladeria Polo
+    - Answer
+    about:
+    - Carta Heladeria Polo
+    - carta heladeria polo
+    - Answer
+    - answer
+    - atom_type:domain
+    - domain:heladeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:domain
+    - domain:heladeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-trait-sin-gluten
+  sections:
+  - path: cliente-celiaco-sin-gluten
+    title: Cliente celiaco / sin gluten
+    breadcrumbs:
+    - Cliente celiaco / sin gluten
+    about:
+    - Cliente celiaco / sin gluten
+    - cliente celiaco sin gluten
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: cliente-celiaco-sin-gluten
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: cliente-celiaco-sin-gluten/answer
+    title: Answer
+    breadcrumbs:
+    - Cliente celiaco / sin gluten
+    - Answer
+    about:
+    - Cliente celiaco / sin gluten
+    - cliente celiaco sin gluten
+    - Answer
+    - answer
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-trait-vegetariano
+  sections:
+  - path: cliente-vegetariano
+    title: Cliente vegetariano
+    breadcrumbs:
+    - Cliente vegetariano
+    about:
+    - Cliente vegetariano
+    - cliente vegetariano
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: cliente-vegetariano
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: cliente-vegetariano/answer
+    title: Answer
+    breadcrumbs:
+    - Cliente vegetariano
+    - Answer
+    about:
+    - Cliente vegetariano
+    - cliente vegetariano
+    - Answer
+    - answer
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - atom_type:trait
+    - domain:pizzeria
+    - source:e2e
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
