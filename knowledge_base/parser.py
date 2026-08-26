@@ -82,7 +82,7 @@ def _add_index_commands(subparsers: argparse._SubParsersAction) -> None:
     s = p.add_subparsers(dest="index_command", required=True)
 
     pe = s.add_parser("embeddings", help="Calcula embeddings offline para DomainAtom y RuleAtom")
-    pe.add_argument("--model", default="jinaai/jina-embeddings-v2-base-es", help="Modelo de embeddings (default: jina-embeddings-v2-base-es)")
+    pe.add_argument("--model", default=None, help="Modelo de embeddings (default: KnowledgeOperations.EMBED_MODEL)")
 
     s.add_parser("hierarchy", help="Construye jerarquía enciclopédica en el semantic DAG")
 

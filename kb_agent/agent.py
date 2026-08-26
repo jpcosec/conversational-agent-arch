@@ -1,17 +1,31 @@
+"""Policy PURA de turno del Conversador.
+
+Este modulo NO llama a ningun LLM ni conoce el negocio. Solo decide, de forma
+deterministica y testeable, que clase de turno corresponde a partir del
+Contexto Compilado (``CompiledDocument.to_dict()``):
+
+- ``{"kind": "tool_call", "function_call": {...}}`` cuando hay tool relevante
+  y los argumentos requeridos pudieron extraerse del mensaje;
+- ``{"kind": "fallback"}`` cuando el contexto viene vacio o sin grounding;
+- ``{"kind": "nl"}`` en cualquier otro caso (redacta el Conversador con LLM).
+
+El texto del fallback vive en la KB (``FallbackRule``); ``DEFAULT_FALLBACK_MESSAGE``
+es solo el ultimo recurso si la KB no declara uno y el proyecto tampoco.
+"""
 from __future__ import annotations
 
 import re
 import unicodedata
 from collections.abc import Mapping, Sequence
-from textwrap import dedent
 from typing import Any
 
-from google.adk.agents import LlmAgent
+#: Ultimo recurso si ni la KB (FallbackRule) ni project.config.yaml definen fallback.
+DEFAULT_FALLBACK_MESSAGE = "No tengo esa información a mano, la averiguaré."
 
-from .kb_tools import list_topics, read_atom, search_knowledge
-
-
-CANONICAL_FALLBACK_RESPONSE = "No tengo esa información a mano, la averiguaré."
+# ── heuristicas lexicas de intencion de tool (es) ─────────────────────────────
+# Son deliberadamente simples: la policy debe ser barata y sin LLM. Cubren el
+# vocabulario de "agendar/reservar" en espanol; una KB con tools de otra
+# naturaleza deberia extender estas listas (o reemplazar la policy).
 _TOOL_INTENT_KEYWORDS = (
     "agenda",
     "agendar",
@@ -23,7 +37,13 @@ _TOOL_INTENT_KEYWORDS = (
     "calendar",
     "calendario",
     "disponibilidad",
+    "recordatorio",
 )
+_TOOL_AFFINITY_TOKENS = ("calendar", "calendario", "agenda", "cita", "book", "booking", "reserva", "recordatorio")
+_DATE_ARG_NAMES = {"date", "fecha", "day", "dia"}
+_TIME_ARG_NAMES = {"hora", "time"}
+_NAME_ARG_NAMES = {"nombre", "name"}
+_SERVICE_ARG_NAMES = {"service", "servicio"}
 _DATE_VALUE_PATTERNS = (
     r"pasado\s+mañana",
     r"pasado\s+manana",
@@ -57,86 +77,8 @@ _NAME_CAPTURE_STOP_WORDS = (
 )
 
 
-def build_conversador_system_instruction(
-    _readonly_context: Any | None = None,
-    *,
-    compiled_context: Mapping[str, Any] | None = None,
-) -> str:
-    """Construye el system prompt del Conversador con guardrails estrictos.
-
-    El prompt deja explícito que el agente solo puede responder usando
-    ``domain_facts`` y ``rules`` del Contexto Compilado. Cuando el payload
-    llega vacío, la frase canónica se resuelve fuera del modelo con
-    ``draft_conversador_response``.
-    """
-    prompt = dedent(
-        f"""
-        Eres el conversador de una base de conocimiento APOS/APOE.
-
-        Tu función es conversar con una persona experta y mediar el acceso a la base.
-        Para recuperar conocimiento debes usar SIEMPRE al sub-agente bibliotecario.
-
-        Reglas críticas:
-        - Responde en español.
-        - Está PROHIBIDO responder con conocimiento paramétrico, memoria general o inferencias externas al payload recibido.
-        - SOLO puedes usar los `domain_facts` y `rules` del Contexto Compilado actual.
-        - Si faltan datos en `domain_facts`/`rules`, dilo sin completar huecos ni inventar información.
-        - Si `is_empty=true`, la respuesta final debe ser EXACTAMENTE: "{CANONICAL_FALLBACK_RESPONSE}"
-        - Conserva los ids `atom-...` solo si vienen en `domain_facts`/`rules`.
-        - Mantén la respuesta corta: máximo 180 palabras.
-
-        Comportamiento:
-        - Si la consulta es ambigua, primero aclárala brevemente.
-        - No guardas notas todavía. En esta etapa solo retrieval.
-        - Después de recuperar, explica en lenguaje natural y con buena estructura.
-
-        Estilo:
-        - conciso
-        - directo
-        - útil para una conversación con experto
-        """
-    ).strip()
-
-    if compiled_context is None:
-        return prompt
-
-    return f"{prompt}\n\nContexto compilado actual:\n{render_compiled_context(compiled_context)}"
-
-
-def render_compiled_context(compiled_context: Mapping[str, Any]) -> str:
-    rules = _normalize_items(compiled_context.get("rules"))
-    domain_facts = _normalize_items(compiled_context.get("domain_facts"))
-    function_declarations = build_function_declarations(compiled_context)
-    lines = [
-        f"scenario: {compiled_context.get('scenario') or ''}",
-        f"question: {compiled_context.get('question') or ''}",
-        f"is_empty: {bool(compiled_context.get('is_empty'))}",
-        "rules:",
-        *[f"- {item['id']}: {item['body']}" for item in rules],
-        "domain_facts:",
-        *[f"- {item['id']}: {item['body']}" for item in domain_facts],
-        "function_declarations:",
-        *[
-            f"- {declaration['name']}: required={declaration['parameters'].get('required', [])}"
-            for declaration in function_declarations
-        ],
-    ]
-    return "\n".join(lines)
-
-
 def decide_turn(compiled_context: Mapping[str, Any]) -> dict[str, Any]:
-    """Policy PURA de decision del tipo de turno (brecha #1).
-
-    Separa DECIDIR de REDACTAR: no llama al LLM ni arma texto NL. Devuelve solo
-    que clase de turno corresponde, para que el ORQUESTADOR conduzca:
-
-    - {"kind": "tool_call", "function_call": {...}}  cuando hay tool + args validos
-    - {"kind": "fallback"}                            cuando is_empty o sin grounding
-    - {"kind": "nl"}                                  en caso contrario (redacta el conversador)
-
-    Es deterministica y testeable sin Gemini. El orquestador la invoca y decide
-    la accion (ejecutar tool / usar conversation:fallback / llamar draft_nl).
-    """
+    """Decide el tipo de turno sin redactar ni llamar al LLM."""
     function_declarations = build_function_declarations(compiled_context)
     question = str(compiled_context.get("question") or "")
     selected_tool = _select_relevant_tool(question, function_declarations)
@@ -158,45 +100,8 @@ def decide_turn(compiled_context: Mapping[str, Any]) -> dict[str, Any]:
     return {"kind": "nl"}
 
 
-def draft_conversador_response(compiled_context: Mapping[str, Any]) -> Any:
-    """Devuelve la salida del Conversador para el payload compilado.
-
-    - Si ``is_empty`` es ``True`` y no hay tool calling aplicable, corta por lo
-      sano y devuelve la frase canónica.
-    - Si hay tools relevantes y la intención las requiere, emite un
-      ``function_call`` estructurado.
-    - Si hay grounding disponible, construye una respuesta estrictamente basada
-      en ``rules`` y ``domain_facts`` sin introducir contenido extra.
-    """
-    function_declarations = build_function_declarations(compiled_context)
-    question = str(compiled_context.get("question") or "")
-    selected_tool = _select_relevant_tool(question, function_declarations)
-    if selected_tool is not None:
-        args = _extract_function_args(question, selected_tool["parameters"])
-        missing_required_args = _missing_required_args(args, selected_tool["parameters"])
-        if missing_required_args:
-            return _build_missing_args_question(missing_required_args, selected_tool["parameters"])
-        if _args_match_schema(args, selected_tool["parameters"]):
-            return {"function_call": {"name": selected_tool["name"], "args": args}}
-
-    if bool(compiled_context.get("is_empty")):
-        return CANONICAL_FALLBACK_RESPONSE
-
-    rules = _normalize_items(compiled_context.get("rules"))
-    domain_facts = _normalize_items(compiled_context.get("domain_facts"))
-    grounded_lines: list[str] = []
-    if rules:
-        grounded_lines.extend(item["body"] for item in rules)
-    if domain_facts:
-        grounded_lines.extend(item["body"] for item in domain_facts)
-
-    if not grounded_lines:
-        return CANONICAL_FALLBACK_RESPONSE
-
-    return "\n".join(grounded_lines)
-
-
 def build_function_declarations(compiled_context: Mapping[str, Any] | None) -> list[dict[str, Any]]:
+    """Normaliza los ToolAtom del contexto a function_declarations planas."""
     if compiled_context is None:
         return []
 
@@ -273,7 +178,7 @@ def _select_relevant_tool(question: str, function_declarations: Sequence[Mapping
             " ".join(str(name) for name in candidate.get("parameters", {}).get("properties", {}).keys()),
         ])))
         score = len(question_tokens & candidate_tokens)
-        if any(token in candidate_tokens for token in ("calendar", "calendario", "agenda", "cita", "book", "booking")):
+        if any(token in candidate_tokens for token in _TOOL_AFFINITY_TOKENS):
             score += 2
         ranked.append((score, candidate))
 
@@ -304,6 +209,21 @@ def _extract_function_args(question: str, schema: Mapping[str, Any]) -> dict[str
     return extracted
 
 
+def _mask_date_and_time_spans(question: str) -> str:
+    """Blank out date/time substrings so integer extraction ignores their digits.
+
+    E.g. ``"2026-09-10"`` (an ISO date) or ``"20:00"`` (a time) contain digits
+    that must not be mistaken for a standalone integer argument (like a
+    party size). Matches are replaced with ``#`` of the same length so span
+    positions and non-digit context (spaces, punctuation) are preserved.
+    """
+
+    masked = question
+    for pattern in (*_DATE_VALUE_PATTERNS, _TIME_VALUE_PATTERN):
+        masked = re.sub(pattern, lambda m: "#" * len(m.group(0)), masked, flags=re.IGNORECASE)
+    return masked
+
+
 def _extract_arg_value(question: str, arg_name: str, arg_schema: Mapping[str, Any]) -> Any | None:
     normalized_name = _normalize_text(arg_name)
     enum_values = arg_schema.get("enum")
@@ -313,28 +233,29 @@ def _extract_arg_value(question: str, arg_name: str, arg_schema: Mapping[str, An
             if _normalize_text(text) in _normalize_text(question):
                 return text
 
-    if normalized_name in {"date", "fecha", "day"}:
+    if normalized_name in _DATE_ARG_NAMES:
         for pattern in _DATE_VALUE_PATTERNS:
             match = re.search(pattern, question, flags=re.IGNORECASE)
             if match:
                 return match.group(0)
 
-    if normalized_name in {"hora", "time"}:
+    if normalized_name in _TIME_ARG_NAMES:
         match = re.search(_TIME_VALUE_PATTERN, question)
         if match:
             return match.group(0)
 
     if arg_schema.get("type") == "integer":
-        match = re.search(_INTEGER_VALUE_PATTERN, question)
+        masked_question = _mask_date_and_time_spans(question)
+        match = re.search(_INTEGER_VALUE_PATTERN, masked_question)
         if match:
             return int(match.group(0))
 
-    if normalized_name in {"nombre", "name"}:
+    if normalized_name in _NAME_ARG_NAMES:
         extracted_name = _extract_name_value(question)
         if extracted_name:
             return extracted_name
 
-    if normalized_name in {"service", "servicio"}:
+    if normalized_name in _SERVICE_ARG_NAMES:
         lowered_question = _normalize_text(question)
         for marker in ("para ", "de "):
             if marker in lowered_question:
@@ -404,27 +325,6 @@ def _args_match_schema(args: Mapping[str, Any], schema: Mapping[str, Any]) -> bo
     return True
 
 
-def _build_missing_args_question(missing_args: Sequence[str], schema: Mapping[str, Any]) -> str:
-    properties = schema.get("properties") if isinstance(schema.get("properties"), Mapping) else {}
-    prompts = [_arg_prompt(arg_name, properties.get(arg_name, {})) for arg_name in missing_args]
-    if len(prompts) == 1:
-        return prompts[0]
-    return "Necesito estos datos para continuar: " + "; ".join(prompts)
-
-
-def _arg_prompt(arg_name: str, arg_schema: Any) -> str:
-    normalized_name = _normalize_text(arg_name)
-    if normalized_name in {"date", "fecha", "day"}:
-        return "¿Qué fecha necesitas?"
-    if normalized_name in {"service", "servicio"}:
-        return "¿Qué servicio necesitas reservar?"
-    if isinstance(arg_schema, Mapping):
-        title = arg_schema.get("title") or arg_schema.get("description")
-        if title:
-            return f"Necesito este dato: {title}."
-    return f"Necesito el dato '{arg_name}' para continuar."
-
-
 def _has_non_empty_value(value: Any) -> bool:
     if value is None:
         return False
@@ -441,39 +341,3 @@ def _tokenize(text: str) -> list[str]:
 def _normalize_text(text: str) -> str:
     normalized = unicodedata.normalize("NFKD", str(text))
     return "".join(ch for ch in normalized if not unicodedata.combining(ch)).casefold()
-
-
-bibliotecario = LlmAgent(
-    name="bibliotecario",
-    model="gemini-2.5-flash",
-    instruction="""
-        Eres el bibliotecario de una base de conocimiento APOS construida sobre SLDB.
-
-        Tu trabajo es SOLO retrieval.
-
-        Herramientas:
-        - list_topics: lista los tags/topics disponibles.
-        - search_knowledge: busca átomos por tag semántico o por nombre literal.
-        - read_atom: abre un átomo específico y devuelve su contenido estructurado.
-
-        Reglas:
-        1. Primero orienta la búsqueda: si el usuario pide un concepto, intenta buscar por tag semántico.
-        2. Si no sabes qué tag usar, llama list_topics antes de buscar.
-        3. Nunca inventes contenido que no venga de los átomos recuperados.
-        4. Abre solo los 2-4 átomos más relevantes.
-        5. Responde breve: máximo 6 bullets y máximo 220 palabras.
-        6. Siempre menciona explícitamente los ids `atom-...` usados.
-        7. Si la búsqueda no devuelve nada, dilo en una línea y sugiere un tag cercano.
-
-        Tu rol NO es corregir, escribir ni guardar nada. Solo recuperar y explicar.
-    """,
-    tools=[list_topics, search_knowledge, read_atom],
-)
-
-
-root_agent = LlmAgent(
-    name="conversador_apos",
-    model="gemini-2.5-flash",
-    instruction=build_conversador_system_instruction,
-    sub_agents=[bibliotecario],
-)

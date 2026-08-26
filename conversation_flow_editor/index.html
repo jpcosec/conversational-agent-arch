@@ -322,8 +322,7 @@ function App() {
       });
       // construir tag->id para labels de aristas
       flow.nodes.forEach((s) => {
-        const stepTag = `conversation:steps.${s.id.replace('step-antonia-', '').replace(/-/g, '_')}`;
-        tagToId[stepTag] = s.id;
+        if (s.step_tag) tagToId[s.step_tag] = s.id;
       });
       setSteps(stepMap);
 

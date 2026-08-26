@@ -103,22 +103,6 @@ class TraitExtractor:
         persisted.source = PROFILER_SOURCE
 
 
-def extract_traits(
-    *,
-    user_id: int | None,
-    turn_text: str,
-    identity_session: Session,
-    llm_mapper: StructuredTraitMapper,
-    reader: SLDBReader | None = None,
-) -> list[TraitMatch]:
-    extractor = TraitExtractor(
-        reader=reader or SLDBReader(),
-        identity_session=identity_session,
-        llm_mapper=llm_mapper,
-    )
-    return extractor.extract(user_id=user_id, turn_text=turn_text)
-
-
 def build_trait_mapping_instructions(turn_text: str, candidates: Sequence[TraitCandidate]) -> str:
     candidate_lines = "\n".join(f"- {candidate.id}: {candidate.body}" for candidate in candidates)
     return dedent(

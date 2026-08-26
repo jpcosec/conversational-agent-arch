@@ -1,163 +1,76 @@
-"""Orquestador REAL end-to-end: cablea TODOS los modulos.
+"""Orquestador end-to-end: cablea TODOS los modulos.
 
 Flujo por turno:
-  usuario -> RouterStateMachine -> Ontologizador (compile_context real, con traits del user)
-          -> Conversador (Gemini real: NL / fallback / function_call)
-          -> [si function_call] Tool dispatcher REAL que persiste en SQL
-          -> ChatHistory (scrubbed) + publish turn -> Perfilador async (Gemini real)
+  usuario -> RouterStateMachine -> Ontologizador (compile_context, con traits del user)
+          -> policy decide_turn (pura) -> Conversador (LLM: NL) | fallback (KB) | function_call
+          -> [si function_call] Tool dispatcher (registry inyectado) que persiste en SQL
+          -> ChatHistory (scrubbed) + publish turn -> Perfilador (LLM)
           -> traits persistidos en UserTraits -> disponibles en el siguiente turno
 
-SIN mock, SIN dummy, SIN stub. LLM real via Vertex ADC, SQL real, SLDB real.
+Nada del negocio vive aqui: KB, modelo, tools y fallback llegan por
+``project.config.yaml`` (``Orchestrator.from_config``) o por inyeccion
+explicita en el constructor (tests, otros canales).
 """
 from __future__ import annotations
 
 import asyncio
 import json
 import os
-import re
+from collections.abc import Mapping
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from google import genai
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
-from kb_agent.agent import CANONICAL_FALLBACK_RESPONSE, decide_turn
+from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE, decide_turn
+from kb_agent.llm import Conversador, GeminiConversador, GeminiTraitMapper, TraitMapper, make_gemini_client
 from kb_agent.models_sql.identity import Base, Users, UserTraits
-from kb_agent.models_sql.reservas import Reservas
+from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
 from kb_agent.ontologizador.compiler import ContextCompiler
 from kb_agent.ontologizador.kgdb_reader import KGDBReader
 from kb_agent.ontologizador.sldb_reader import SLDBReader
-from kb_agent.perfilador.extractor import TraitCandidate, TraitExtractor
+from kb_agent.perfilador.extractor import TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
 from kb_agent.pii.scrubber import scrub
+from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, load_project_config
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
+from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
 from kb_chat_ui.state_machine import RouterStateMachine
 
-# Modelo LLM: externalizado a env (deshardcodeo H5). Default estable si no se define.
-MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+#: Canal cuando el external_id no trae prefijo reconocible ("<canal>:<id>").
+UNKNOWN_CHANNEL = "unknown"
 
 
-# ─────────────────────────── LLM real: Conversador NL ───────────────────────────
-class GeminiConversador:
-    def __init__(self, client: genai.Client) -> None:
-        self._client = client
-
-    def draft_nl(self, compiled: dict[str, Any]) -> str:
-        # Identidad/estilo/limites vienen de la KB (self:*), NO hardcodeados.
-        persona = compiled.get("persona", {}) or {}
-        strategy = compiled.get("strategy", "")
-        identity_lines = []
-        if persona.get("whoami"):
-            identity_lines.append(persona["whoami"])
-        if persona.get("estilo"):
-            identity_lines.append(f"Estilo: {persona['estilo']}")
-        if persona.get("limites"):
-            identity_lines.append(f"Limites: {persona['limites']}")
-        if strategy:
-            identity_lines.append(f"Estrategia: {strategy}")
-        # Fallback razonable solo si la KB no define persona (no debe pasar).
-        identity = "\n".join(identity_lines) or (
-            "Eres un asistente. Responde en espanol, breve y amable, usando "
-            "EXCLUSIVAMENTE los datos provistos."
-        )
-
-        facts = [f["body"] for f in compiled.get("domain_facts", [])]
-        rules = [r["body"] for r in compiled.get("rules", [])]
-        traits = compiled.get("user_traits", [])
-        grounding = "\n".join(f"- {t}" for t in facts + rules)
-        perfil = f"\nPERFIL DEL CLIENTE (traits): {', '.join(traits)}" if traits else ""
-        system_turn = compiled.get("system_turn")
-        system_turn_prompt = ""
-        if isinstance(system_turn, dict) and system_turn.get("content"):
-            system_turn_prompt = (
-                "\n\nRESULTADO DE TOOL (System Turn JSON crudo):\n"
-                f"{system_turn['content']}\n"
-                "Usa este resultado para responder al cliente sin inventar datos fuera del JSON ni del grounding."
-            )
-        prompt = (
-            f"{identity}\n\n"
-            "Responde usando EXCLUSIVAMENTE los datos de abajo. "
-            "Si hay traits del cliente, adapta la sugerencia a su perfil. "
-            "No inventes nada fuera de estos datos.\n\n"
-            f"DATOS:\n{grounding}{perfil}{system_turn_prompt}\n\n"
-            f"PREGUNTA: {compiled['question']}\n\nRESPUESTA:"
-        )
-        resp = self._client.models.generate_content(model=MODEL, contents=prompt)
-        return (resp.text or "").strip()
+def channel_from_external_id(external_id: str) -> str:
+    """Deriva el canal del prefijo del external_id (``whatsapp:+56...`` -> ``whatsapp``)."""
+    prefix, sep, _ = external_id.partition(":")
+    if sep and prefix and " " not in prefix:
+        return prefix.lower()
+    return UNKNOWN_CHANNEL
 
 
-# ─────────────────────────── LLM real: Trait mapper ───────────────────────────
-class GeminiTraitMapper:
-    """StructuredTraitMapper real: usa Gemini para mapear texto -> trait_ids."""
-
-    def __init__(self, client: genai.Client) -> None:
-        self._client = client
-
-    def extract_traits(self, *, turn_text: str, candidates: list[TraitCandidate], instructions: str) -> list[dict[str, Any]]:
-        catalogo = "\n".join(f"- {c.id}: {c.body}" for c in candidates)
-        prompt = (
-            "Analiza el mensaje del cliente y determina si revela EXPLICITAMENTE "
-            "alguna de las caracteristicas del catalogo. Solo caracteristicas dichas "
-            "explicitamente, no inferencias.\n\n"
-            f"CATALOGO DE TRAITS:\n{catalogo}\n\n"
-            f"MENSAJE: {turn_text}\n\n"
-            "Responde SOLO un array JSON con los traits detectados, formato: "
-            '[{\"trait_id\": \"<id exacto del catalogo>\", \"confidence\": <0..1>}]. '
-            "Si no hay ninguno, responde []."
-        )
-        resp = self._client.models.generate_content(model=MODEL, contents=prompt)
-        text = (resp.text or "").strip()
-        match = re.search(r"\[.*\]", text, flags=re.DOTALL)
-        if not match:
-            return []
-        try:
-            return json.loads(match.group(0))
-        except json.JSONDecodeError:
-            return []
-
-
-# ─────────────────────────── Tool dispatcher REAL ───────────────────────────
-# Registry de handlers de tools (deshardcodeo H6). Cada tool declarada en la KB
-# (atom_type:tool) que el orquestador quiera ejecutar registra aqui su handler.
-# El name debe coincidir con el "name" del schema JSON del tool atom.
-def _tool_crear_reserva(session: Session, user_id: int | None, args: dict[str, Any]) -> dict[str, Any]:
-    reserva = Reservas(
-        user_id=user_id,
-        fecha=str(args.get("fecha", "")),
-        hora=str(args.get("hora", "")),
-        personas=int(args.get("personas", 0)),
-        nombre=args.get("nombre"),
-    )
-    session.add(reserva)
-    session.commit()
-    return {"reserva_id": reserva.id}
-
-
-# name (del schema JSON en la KB) -> handler que ejecuta y persiste.
-TOOL_HANDLERS: dict[str, Any] = {
-    "crear_reserva": _tool_crear_reserva,
-}
-
-
-def execute_tool(session: Session, user_id: int | None, function_call: dict[str, Any]) -> dict[str, Any]:
-    """Ejecuta la tool via registry y PERSISTE. Devuelve el System Turn (JSON)."""
-    name = function_call.get("name")
-    args = function_call.get("args", {})
-    handler = TOOL_HANDLERS.get(str(name))
-    if handler is None:
-        return {"tool": name, "status": "unknown_tool", "args": args}
-    result = handler(session, user_id, args)
-    return {"tool": name, "status": "ok", "args": args, **result}
-
-
-# ─────────────────────────── Orquestador ───────────────────────────
 class Orchestrator:
-    def __init__(self, *, kb_root: Path, db_url: str = "sqlite:///:memory:") -> None:
+    def __init__(
+        self,
+        *,
+        kb_root: Path | str,
+        db_url: str = "sqlite:///:memory:",
+        model: str | None = None,
+        tool_handlers: Mapping[str, ToolHandler] | None = None,
+        fallback_message: str | None = None,
+        conversador: Conversador | None = None,
+        trait_mapper: TraitMapper | None = None,
+        client: Any | None = None,
+    ) -> None:
         self.kb_root = Path(kb_root).resolve()
         self.repo_root = Path(__file__).resolve().parents[1]
+        self.model = model or os.getenv("GEMINI_MODEL") or DEFAULT_MODEL
+        self.tool_handlers: dict[str, ToolHandler] = dict(tool_handlers or {})
+        self.fallback_message = fallback_message or DEFAULT_FALLBACK_MESSAGE
+
         self.engine = create_engine(db_url, future=True)
         Base.metadata.create_all(self.engine)
         self.SessionLocal = sessionmaker(bind=self.engine, future=True)
@@ -168,23 +81,49 @@ class Orchestrator:
         except Exception:
             self.kgdb = None
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
-        self.client = genai.Client()
-        self.conversador = GeminiConversador(self.client)
-        self.trait_mapper = GeminiTraitMapper(self.client)
+
+        # LLM: solo se crea el cliente real si no inyectaron ambos puertos.
+        if conversador is None or trait_mapper is None:
+            client = client or make_gemini_client()
+        self.conversador: Conversador = conversador or GeminiConversador(client, self.model)
+        self.trait_mapper: TraitMapper = trait_mapper or GeminiTraitMapper(client, self.model)
         self.event_bus = InProcessEventBus()
 
-    def ensure_user(self, session: Session, external_id: str) -> Users:
+    @classmethod
+    def from_config(cls, cfg: ProjectConfig | None = None, *, db_url: str | None = None, **overrides: Any) -> "Orchestrator":
+        """Construye el orquestador del negocio declarado en project.config.yaml."""
+        cfg = cfg or load_project_config()
+        params: dict[str, Any] = {
+            "kb_root": cfg.kb_root,
+            "db_url": db_url or cfg.chat_db_url,
+            "model": cfg.model,
+            "tool_handlers": load_tool_handlers(cfg.tool_handlers),
+            "fallback_message": cfg.fallback_message,
+        }
+        params.update(overrides)
+        return cls(**params)
+
+    # ── identidad ─────────────────────────────────────────────────────────
+    def ensure_user(self, session: Session, external_id: str, channel: str | None = None) -> Users:
         user = session.query(Users).filter_by(external_id=external_id).one_or_none()
         if user is None:
-            user = Users(external_id=external_id, channel="e2e")
+            user = Users(external_id=external_id, channel=channel or channel_from_external_id(external_id))
             session.add(user)
             session.commit()
         return user
 
-    def handle_turn(self, *, external_id: str, message: str, scenario: str | None = None) -> dict[str, Any]:
+    # ── turno ─────────────────────────────────────────────────────────────
+    def handle_turn(
+        self,
+        *,
+        external_id: str,
+        message: str,
+        scenario: str | None = None,
+        channel: str | None = None,
+    ) -> dict[str, Any]:
         session = self.SessionLocal()
         try:
-            user = self.ensure_user(session, external_id)
+            user = self.ensure_user(session, external_id, channel=channel)
             session_state = self._load_or_create_session_state(session, user.id)
 
             if scenario is not None:
@@ -208,11 +147,10 @@ class Orchestrator:
                 d["user_id"] = user_id
                 return d
 
-            def draft_with_real_conversador(compiled_context: dict[str, Any]) -> Any:
-                # Brecha #1: el ORQUESTADOR decide el tipo de turno con una policy
-                # pura (decide_turn), y SOLO despues actua. Decidir != redactar.
+            def draft(compiled_context: dict[str, Any]) -> Any:
+                # El ORQUESTADOR decide el tipo de turno con una policy pura
+                # (decide_turn) y SOLO despues actua. Decidir != redactar.
                 if compiled_context.get("system_turn"):
-                    # Ya hay resultado de tool: redactar la respuesta final.
                     return self.conversador.draft_nl(compiled_context)
 
                 decision = decide_turn(compiled_context)
@@ -220,16 +158,10 @@ class Orchestrator:
                 if kind == "tool_call":
                     return {"function_call": decision["function_call"]}
                 if kind == "fallback":
-                    # Fallback desde conversation:fallback (KB); constante = ultimo recurso.
-                    kb_fallback = (compiled_context.get("fallback_text") or "").strip()
-                    return kb_fallback or CANONICAL_FALLBACK_RESPONSE
-                # kind == "nl": redacta el conversador con grounding real.
+                    return self._fallback_text(compiled_context)
                 return self.conversador.draft_nl(compiled_context)
 
-            router = RouterStateMachine(
-                compile_context=compile_context,
-                draft_response=draft_with_real_conversador,
-            )
+            router = RouterStateMachine(compile_context=compile_context, draft_response=draft)
             turn_result = router.handle_user_message(message, user_id=user.id, scenario=scenario)
             if turn_result is None:
                 raise RuntimeError("router did not produce a turn result for immediate user turn")
@@ -242,7 +174,7 @@ class Orchestrator:
             system_turn = None
             if isinstance(response, dict) and "function_call" in response:
                 kind = "tool_call"
-                system_turn = execute_tool(session, user.id, response["function_call"])
+                system_turn = execute_tool(session, user.id, response["function_call"], self.tool_handlers)
                 resumed_result = router.handle_tool_result(system_turn)
                 response = resumed_result.response
                 compiled = resumed_result.compiled_context
@@ -252,13 +184,13 @@ class Orchestrator:
             else:
                 kind = "nl"
 
-            # 4) Persistir SessionState (dominio + flujo) + ChatHistory
+            # Persistir SessionState (dominio + flujo) + ChatHistory
             session_state.active_domain = scenario_effective or None
-            flow_node = compiled.get("flow_node") if isinstance(compiled, dict) else getattr(compiled, "flow_node", None)
+            flow_node = compiled.get("flow_node")
             if flow_node:
                 session_state.flow_node = flow_node
-            flow_transitions = compiled.get("allowed_transitions", []) if isinstance(compiled, dict) else getattr(compiled, "allowed_transitions", [])
-            flow_missing = compiled.get("missing_slots", []) if isinstance(compiled, dict) else getattr(compiled, "missing_slots", [])
+            flow_transitions = compiled.get("allowed_transitions", [])
+            flow_missing = compiled.get("missing_slots", [])
             if flow_transitions or flow_missing:
                 session_state.flow_slots = {
                     "allowed_transitions": flow_transitions,
@@ -271,14 +203,10 @@ class Orchestrator:
             self._persist_chat_history(session, user_id=user.id, role="assistant", content=reply_text)
             session.commit()
 
-            # 5) Perfilador async REAL: extrae traits con Gemini y persiste
+            # Perfilador: extrae traits con LLM y persiste (sesion propia)
             traits_before = self._current_traits(session, user.id)
             asyncio.run(self._run_profiler(user.id, message))
             traits_after = self._current_traits(session, user.id)
-
-            # 6) Contexto atomico del turno (reemplaza el viejo "mesa" de MesaCompiler):
-            #    los atoms REALES que el compilador uso para fundamentar la respuesta.
-            context = self._build_turn_context(compiled)
 
             return {
                 "user_id": user.id,
@@ -296,38 +224,31 @@ class Orchestrator:
                 "flow_node": flow_node,
                 "allowed_transitions": flow_transitions,
                 "missing_slots": flow_missing,
-                "context": context,
+                "context": self._build_turn_context(compiled),
             }
         finally:
             session.close()
 
-    @staticmethod
-    def _is_fallback_response(response: Any, compiled: Any) -> bool:
-        """True si la respuesta es el fallback (constante o texto de la KB).
+    # ── fallback ──────────────────────────────────────────────────────────
+    def _fallback_text(self, compiled: Mapping[str, Any]) -> str:
+        """Texto de fallback: FallbackRule de la KB > config del proyecto > constante."""
+        kb_fallback = (compiled.get("fallback_text") or "").strip()
+        return kb_fallback or self.fallback_message
 
-        Con el deshardcodeo, el fallback puede ser el texto de
-        ``conversation:fallback`` en vez de la constante canonica.
-        """
+    def _is_fallback_response(self, response: Any, compiled: Mapping[str, Any]) -> bool:
         if not isinstance(response, str):
             return False
-        if response == CANONICAL_FALLBACK_RESPONSE:
-            return True
-        kb_fallback = ""
-        if isinstance(compiled, dict):
-            kb_fallback = (compiled.get("fallback_text") or "").strip()
-        else:
-            kb_fallback = (getattr(compiled, "fallback_text", "") or "").strip()
-        return bool(kb_fallback) and response == kb_fallback
+        return response == self._fallback_text(compiled)
 
+    # ── contexto del turno (para UIs) ─────────────────────────────────────
     @staticmethod
     def _semantic_role(tags: list[str], fallback: str) -> str:
         """Deriva el rol semantico del atom desde su eje de tag (doctrina KB).
 
         self:* -> identidad/estilo/limites; domain:* -> conocimiento del negocio;
         conversation:* -> flujo. El eje de negocio (domain:*) prima sobre el de
-        flujo (conversation:*): un DomainAtom etiquetado con el step al que
-        pertenece sigue siendo un domain_fact. Si no hay eje reconocible, usa el
-        fallback por atom_type (domain_fact / rule).
+        flujo (conversation:*). Si no hay eje reconocible, usa el fallback por
+        atom_type (domain_fact / rule).
         """
         for t in tags:
             if t.startswith("self:"):
@@ -340,26 +261,19 @@ class Orchestrator:
                 return f"conversation.{t.split(':', 1)[1]}"
         return fallback
 
-    def _build_turn_context(self, compiled: dict[str, Any]) -> dict[str, Any]:
-        """Arma el contexto atomico del turno desde el CompiledDocument (dict).
+    def _build_turn_context(self, compiled: Mapping[str, Any]) -> dict[str, Any]:
+        """Atoms reales (facts + rules) que fundamentaron la respuesta, con rol y tags.
 
-        Reemplaza el objeto 'mesa' que antes producia MesaCompiler: expone los
-        atoms reales (facts + rules) que fundamentaron la respuesta, con su rol
-        semantico (self/conversation/domain), tags y scoring, para que la UI
-        inspeccione el turno. Marca ademas cuales atoms groundean el step actual
-        del diagrama de conversacion (grounding del flow_node en KGDB).
-
-        Brecha #2: NO re-lee el store. El compilador ya entrego tags y title en
-        cada atom (domain_facts/rules), asi que el orquestador solo los consume.
+        NO re-lee el store: el compilador ya entrego tags y title en cada atom.
         """
         items: list[dict[str, Any]] = []
         atom_ids: list[str] = []
         include_tags: set[str] = set()
         grounding = set(compiled.get("grounding_atoms", []))
 
-        def _add(atom: dict[str, Any], fallback_role: str) -> None:
+        def _add(atom: Mapping[str, Any], fallback_role: str) -> None:
             atom_id = atom.get("id", "")
-            tags = atom.get("tags", [])
+            tags = list(atom.get("tags", []))
             items.append({
                 "atom_id": atom_id,
                 "title": atom.get("title") or atom_id,
@@ -390,11 +304,11 @@ class Orchestrator:
             "is_empty": compiled.get("is_empty", False),
         }
 
+    # ── perfilador ────────────────────────────────────────────────────────
     async def _run_profiler(self, user_id: int, turn_text: str) -> None:
         # scrub inline antes de que el perfilador vea nada (regla PII)
         publish_turn_closed(self.event_bus, user_id=user_id, turn_text=turn_text)
         event = await self.event_bus.get()
-        # el extractor usa SU PROPIA session (worker independiente)
         session = self.SessionLocal()
         try:
             extractor = TraitExtractor(
@@ -406,11 +320,9 @@ class Orchestrator:
         finally:
             session.close()
 
+    # ── reflector ─────────────────────────────────────────────────────────
     def run_reflector(self) -> list[dict[str, Any]]:
-        reader = ReflectorBatchReaderJob(
-            self.SessionLocal,
-            self._reflector_checkpoint_store,
-        )
+        reader = ReflectorBatchReaderJob(self.SessionLocal, self._reflector_checkpoint_store)
         rows = reader.run(trigger="cron")
         generator = ReflectorAtomGenerator(
             kb_root=self.repo_root,
@@ -430,6 +342,7 @@ class Orchestrator:
             for atom in generated
         ]
 
+    # ── persistencia ──────────────────────────────────────────────────────
     def _load_or_create_session_state(self, session: Session, user_id: int) -> SessionState:
         state = session.get(SessionState, user_id)
         if state is None:
@@ -453,3 +366,6 @@ class Orchestrator:
             return session.query(Reservas).count()
         finally:
             session.close()
+
+    def close(self) -> None:
+        self.engine.dispose()

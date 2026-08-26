@@ -6,7 +6,6 @@ from .extractor import (
     TraitExtractor,
     TraitMatch,
     build_trait_mapping_instructions,
-    extract_traits,
 )
 from .listener import AsyncProfilingListener, EventBus, InProcessEventBus, TurnClosedEvent, publish_turn_closed
 
@@ -22,6 +21,5 @@ __all__ = [
     "TraitMatch",
     "TurnClosedEvent",
     "build_trait_mapping_instructions",
-    "extract_traits",
     "publish_turn_closed",
 ]

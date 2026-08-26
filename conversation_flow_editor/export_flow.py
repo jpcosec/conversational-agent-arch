@@ -5,7 +5,7 @@ Aristas = allowed_transitions (tag conversation:steps.<x> -> step id)
 
 Uso:
     PYTHONPATH=. python conversation_flow_editor/export_flow.py [kb_root] [out.json]
-    # default: kb_root=tests/knowledge_antonia  out=conversation_flow_editor/flow.json
+    # default: kb_root=project.config.yaml (kb_root)  out=conversation_flow_editor/flow.json
 """
 from __future__ import annotations
 
@@ -36,8 +36,10 @@ def export(kb_root: str) -> dict:
     nodes = []
     edges = []
     for s in steps:
+        step_tag = next((t for t in s.get("tags", []) if t.startswith("conversation:steps.")), None)
         nodes.append({
             "id": s["id"],
+            "step_tag": step_tag,
             "title": s.get("title", s["id"]),
             "kind": s.get("kind", "interaccion_simple"),
             "instructions": s.get("instructions", ""),
@@ -56,7 +58,9 @@ def export(kb_root: str) -> dict:
 
 
 if __name__ == "__main__":
-    kb = sys.argv[1] if len(sys.argv) > 1 else "tests/knowledge_antonia"
+    from kb_agent.project_config import load_project_config
+
+    kb = sys.argv[1] if len(sys.argv) > 1 else str(load_project_config().flow_kb_root)
     data = json.dumps(export(kb), indent=2, ensure_ascii=False)
     if len(sys.argv) > 2:
         with open(sys.argv[2], "w", encoding="utf-8") as f:

@@ -70,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "index":
             if args.index_command == "embeddings":
-                result = ops.index_embeddings()
+                result = ops.index_embeddings(model=getattr(args, "model", None))
                 print(f"Embeddings: {result['processed']} processed, {result['skipped']} skipped, {result['errors']} errors")
                 return 0
             if args.index_command == "hierarchy":

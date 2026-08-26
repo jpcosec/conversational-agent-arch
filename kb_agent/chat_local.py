@@ -1,8 +1,8 @@
-"""CLI local real para conversar con el agente.
+"""CLI local para conversar con el agente del negocio activo (project.config.yaml).
 
 Uso:
   python -m kb_agent.chat_local
-  python -m kb_agent.chat_local --db runs/local-chat.sqlite --kb .sldb_e2e_donpeppe --user wa:+56900000000 --scenario pizzeria
+  python -m kb_agent.chat_local --db runs/local-chat.sqlite --kb /ruta/a/otra/kb --user wa:+56900000000
 """
 from __future__ import annotations
 
@@ -13,20 +13,19 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from kb_agent.agent import CANONICAL_FALLBACK_RESPONSE
 from kb_agent.orchestrator import Orchestrator
+from kb_agent.project_config import REPO_ROOT, load_project_config
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-load_dotenv(PROJECT_ROOT / ".env")
-DEFAULT_KB_ROOT = PROJECT_ROOT / "tests/knowledge"
-DEFAULT_DB_PATH = PROJECT_ROOT / "runs" / "local-chat.sqlite"
+load_dotenv(REPO_ROOT / ".env")
+
 DEFAULT_USER = "local:demo"
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Chat local real con el orquestador")
-    parser.add_argument("--kb", default=str(DEFAULT_KB_ROOT), help="Ruta al root del KB (default: tests/knowledge)")
-    parser.add_argument("--db", default=str(DEFAULT_DB_PATH), help="Ruta al sqlite local persistente")
+    cfg = load_project_config()
+    parser = argparse.ArgumentParser(description=f"Chat local con el orquestador ({cfg.name})")
+    parser.add_argument("--kb", default=str(cfg.kb_root), help=f"Ruta al root del KB (default: {cfg.kb_root})")
+    parser.add_argument("--db", default=str(REPO_ROOT / "runs" / "local-chat.sqlite"), help="Ruta al sqlite local persistente")
     parser.add_argument("--user", default=DEFAULT_USER, help="external_id persistente del usuario local")
     parser.add_argument("--scenario", default=None, help="Scenario inicial opcional; luego se recupera desde SessionState")
     return parser
@@ -41,14 +40,15 @@ def _format_reply(turn: dict) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    cfg = load_project_config()
     kb_root = Path(args.kb).resolve()
     db_path = Path(args.db).resolve()
     db_path.parent.mkdir(parents=True, exist_ok=True)
 
-    orch = Orchestrator(kb_root=kb_root, db_url=f"sqlite:///{db_path}")
+    orch = Orchestrator.from_config(cfg, db_url=f"sqlite:///{db_path}", kb_root=kb_root)
 
     print("=" * 60)
-    print("  Chat local real — Orchestrator + Gemini + SLDB + SQLite")
+    print(f"  Chat local — {cfg.name} ({cfg.model})")
     print(f"  KB: {kb_root}")
     print(f"  DB: {db_path}")
     print(f"  User: {args.user}")
@@ -78,11 +78,7 @@ def main(argv: list[str] | None = None) -> int:
                 print(json.dumps({"generated": generated}, ensure_ascii=False, indent=2))
                 continue
 
-            turn = orch.handle_turn(
-                external_id=args.user,
-                message=msg,
-                scenario=scenario,
-            )
+            turn = orch.handle_turn(external_id=args.user, message=msg, scenario=scenario)
             scenario = None
 
             print(f"Bot > {_format_reply(turn)}")
@@ -100,10 +96,8 @@ def main(argv: list[str] | None = None) -> int:
                     indent=2,
                 )
             )
-            if turn.get("reply") == CANONICAL_FALLBACK_RESPONSE:
-                continue
     finally:
-        orch.engine.dispose()
+        orch.close()
 
 
 if __name__ == "__main__":

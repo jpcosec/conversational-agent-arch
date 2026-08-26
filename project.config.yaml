@@ -1,11 +1,12 @@
 # Configuración del proyecto/negocio activo del runtime.
 #
 # Doctrina: una KB = un negocio. Este archivo define QUÉ negocio corre el
-# runtime y sus rutas/marca, para no hardcodear nombres ni paths en el código
-# ni en las UIs. Cambiar de negocio = cambiar este archivo (o la env PROJECT_CONFIG).
+# runtime y sus rutas/marca/tools, para no hardcodear nombres ni paths en el
+# código ni en las UIs. Cambiar de negocio = cambiar este archivo (o la env
+# PROJECT_CONFIG).
 #
 # Cada valor admite override por variable de entorno (ver kb_agent/project_config.py):
-#   KB_ROOT, PROFILING_DB, CHAT_DB, GEMINI_MODEL, PROJECT_CONFIG
+#   KB_ROOT, PROFILING_DB, CHAT_DB, GEMINI_MODEL, HOST, PORT, PROJECT_CONFIG
 
 project:
   # Identidad del negocio
@@ -25,8 +26,22 @@ project:
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
   profiling_db: runs/ui-chat.sqlite # SQLite que lee el visualizador de perfiles
 
-  # Modelo LLM
+  # Modelo LLM (Conversador + Perfilador)
   model: gemini-2.5-flash
+
+  # Fallback de ultimo recurso si la KB no declara un FallbackRule.
+  # (La KB de Don Peppe SI lo declara: fallback-donpeppe. Esto solo aplica si falta.)
+  # fallback_message: "No tengo esa información a mano."
+
+  # Tools del negocio: {nombre declarado en el ToolAtom: "modulo:funcion"}.
+  # El ToolAtom de la KB define el schema; aqui se registra quien lo ejecuta.
+  tools:
+    crear_reserva: kb_agent.tools.reservas:crear_reserva
+
+  # Servidor HTTP (kb_chat_ui)
+  server:
+    host: 127.0.0.1
+    port: 8000
 
   # Presentación (UIs)
   ui:

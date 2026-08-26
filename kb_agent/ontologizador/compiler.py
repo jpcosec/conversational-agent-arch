@@ -316,16 +316,18 @@ class ContextCompiler:
 def compile_context(
     question: str,
     user_id: int | None,
+    *,
+    reader: SLDBReader,
     scenario: str | None = None,
     trigger: str = "user",
     session_state: SessionStateLike | None = None,
-    reader: SLDBReader | None = None,
     identity_session: Session | None = None,
     session_state_loader: Callable[[int], SessionStateLike | None] | None = None,
     kgdb: KGDBReader | None = None,
 ) -> CompiledDocument:
+    """Atajo funcional sobre ``ContextCompiler`` (el reader es obligatorio)."""
     compiler = ContextCompiler(
-        reader=reader or SLDBReader(kb_root="."),
+        reader=reader,
         identity_session=identity_session,
         session_state_loader=session_state_loader,
         kgdb=kgdb,

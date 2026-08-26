@@ -115,16 +115,16 @@ class KnowledgeOperations:
 
     EMBED_MODEL = "jinaai/jina-embeddings-v2-base-es"  # español, 768 dim
 
-    def index_embeddings(self) -> dict[str, Any]:
+    def index_embeddings(self, model: str | None = None) -> dict[str, Any]:
         """Calcula embeddings offline para DomainAtom y RuleAtom.
 
         Lee cada atom, computa embedding del summary (o answer si no hay summary),
-        y escribe el vector al frontmatter.
+        y escribe el vector al frontmatter. ``model`` reemplaza ``EMBED_MODEL``.
         """
-        from fastembed import TextEmbedding
-
-        # Cargar modelo (descarga en primera corrida, cachea después)
-        embedder = TextEmbedding(model_name=self.EMBED_MODEL, cache_dir=str(self._kb_root / ".embedding_cache"))
+        if model:
+            self.EMBED_MODEL = model
+            self._embedder_cache = None
+        embedder = self._embedder()
 
         records = self._find_records()
         stats = {"processed": 0, "skipped": 0, "errors": 0}
@@ -350,7 +350,7 @@ class KnowledgeOperations:
         if self._embedder_cache is None:
             from fastembed import TextEmbedding
             self._embedder_cache = TextEmbedding(
-                model_name="jinaai/jina-embeddings-v2-base-es",
+                model_name=self.EMBED_MODEL,
                 cache_dir=str(self._kb_root / ".embedding_cache"),
             )
         return self._embedder_cache
