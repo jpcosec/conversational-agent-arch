@@ -30,10 +30,12 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 load_dotenv(PROJECT_ROOT / ".env")
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
+from twilio.request_validator import RequestValidator
+from twilio.twiml.messaging_response import MessagingResponse
 
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import load_project_config
@@ -136,6 +138,23 @@ def chat(req: ChatRequest) -> ChatResponse:
         scenario=req.scenario,
     )
     return ChatResponse(session_id=session_id, turn=_to_ui_turn(session_id, raw))
+
+
+@app.post("/webhooks/twilio")
+async def twilio_inbound(request: Request) -> Response:
+    form = {key: value for key, value in (await request.form()).items()}
+    validator = RequestValidator(os.environ["TWILIO_AUTH_TOKEN"])
+    signature = request.headers.get("X-Twilio-Signature", "")
+    if not validator.validate(str(request.url), form, signature):
+        raise HTTPException(status_code=403, detail="invalid twilio signature")
+
+    result = orchestrator.handle_turn(
+        external_id=form.get("From", ""),
+        message=(form.get("Body", "") or "").strip(),
+    )
+    twiml = MessagingResponse()
+    twiml.message(result.get("reply_text") or result.get("reply") or "")
+    return Response(str(twiml), media_type="application/xml")
 
 
 @app.get("/api/atom/{atom_id}")

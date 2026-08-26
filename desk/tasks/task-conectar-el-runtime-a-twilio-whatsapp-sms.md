@@ -1,13 +1,15 @@
 ---
 id: task-conectar-el-runtime-a-twilio-whatsapp-sms
-status: draft
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-conectar-el-runtime-a-twilio-whatsapp-sms
-current_node: checklist-task-conectar-el-runtime-a-twilio-whatsapp-sms-execution-ready
-history: []
+current_node: checklist-task-conectar-el-runtime-a-twilio-whatsapp-sms-closeout-ready
+history:
+- operator-task-conectar-el-runtime-a-twilio-whatsapp-sms-activate
+- operator-task-conectar-el-runtime-a-twilio-whatsapp-sms-ready-for-testing
 references: []
 depends_on: []
 pills: []
@@ -20,6 +22,7 @@ task_type: implementation
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
 ---
 
 # Conectar el runtime a Twilio (WhatsApp/SMS)
