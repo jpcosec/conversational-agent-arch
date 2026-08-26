@@ -10,6 +10,8 @@ offline los rellena después.
 """
 from __future__ import annotations
 
+from typing import ClassVar
+
 from pydantic import Field
 
 from sldb import StructuredNLDoc
@@ -28,6 +30,17 @@ class IndexProxies(StructuredNLDoc):
     Hereda de StructuredNLDoc para que los modelos concretos puedan
     heredar de esta clase directamente y obtener los campos.
     """
+
+    # Familia semántica raíz que este modelo ocupa en el árbol de tags.
+    # Uno de: "self" | "conversation" | "domain" | "user".
+    # Recupera el origen taxonómico que tenían los átomos originales
+    # (namespace antes del ':'). Se declara por clase, no se deriva en runtime.
+    __family__: ClassVar[str | None] = None
+
+    @classmethod
+    def family(cls) -> str | None:
+        """Rama raíz del árbol de tags que este modelo ocupa."""
+        return cls.__family__
 
     summary: str | None = Field(
         default=None,

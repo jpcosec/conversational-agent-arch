@@ -12,6 +12,7 @@ class StyleGuide(IndexProxies):
     de respuestas y otras directrices de comunicacion.
     """
 
+    __family__ = "self"
     __semantics__ = {
         "type": ["knowledge", "style"],
         "workspace": ["knowledge"],

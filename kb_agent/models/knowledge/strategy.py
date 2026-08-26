@@ -14,6 +14,7 @@ class StrategyRule(IndexProxies):
     estratégica de alto nivel.
     """
 
+    __family__ = "conversation"
     __semantics__ = {
         "type": ["knowledge", "strategy"],
         "workspace": ["knowledge"],
