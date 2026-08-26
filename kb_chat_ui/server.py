@@ -39,6 +39,7 @@ from kb_agent.orchestrator import MODEL, Orchestrator
 
 EDITOR_DIR = PROJECT_ROOT / "conversation_flow_editor"
 PROFILING_DIR = PROJECT_ROOT / "profiling_viewer"
+TAXONOMY_DIR = PROJECT_ROOT / "taxonomy_explorer"
 # Store del que el editor lee los ConversationStep (deshardcodeable via env).
 FLOW_KB_ROOT = os.getenv("FLOW_KB_ROOT", "tests/knowledge_antonia")
 # DB SQL con los perfiles de usuario (UserTraits). Default: seed de demo.
@@ -170,6 +171,12 @@ def flow_graph() -> JSONResponse:
     return JSONResponse(export(FLOW_KB_ROOT))
 
 
+@app.get("/taxonomy_explorer")
+@app.get("/taxonomy_explorer/")
+def taxonomy_explorer() -> FileResponse:
+    return FileResponse(str(TAXONOMY_DIR / "index.html"))
+
+
 @app.get("/profiling_viewer")
 @app.get("/profiling_viewer/")
 def profiling_viewer() -> FileResponse:
@@ -234,6 +241,96 @@ def profiles() -> JSONResponse:
         "fichas": fichas,
         "missing_fichas": missing,
     })
+
+
+@app.get("/api/taxonomy")
+def taxonomy() -> JSONResponse:
+    """Arbol taxonomico completo: familias → subpaths → atoms.
+    
+    Cada doc tiene un tag type.knowledge.{model_name}.
+    Los tags con prefijo de su familia definen la jerarquia.
+    """
+    # tag type.knowledge.{model_name} → (atom_type, family)
+    # NOTA: nombres cortos del tag (step, domain, trait…), NO nombres de clase.
+    MODEL_MAP = {
+        "self": ("self", "self"),
+        "style": ("style", "self"),
+        "boundary": ("boundary", "self"),
+        "tool": ("tool", "self"),
+        "domain": ("domain", "domain"),
+        "rule": ("rule", "domain"),
+        "step": ("step", "conversation"),
+        "fallback": ("fallback", "conversation"),
+        "strategy": ("strategy", "conversation"),
+        "trait": ("trait", "user"),
+    }
+
+    reader = orchestrator.reader
+    families: dict[str, dict] = {f: {"name": f, "children": {}, "orphans": []}
+                                 for f in ("self", "domain", "conversation", "user")}
+
+    for doc in reader.find("type.knowledge."):
+        tags: list[str] = doc.get("tags") or []
+        type_tag = next((t for t in tags if t.startswith("type.knowledge.")), None)
+        if not type_tag:
+            continue
+        model_name = type_tag.split(".", 2)[-1]
+        mapping = MODEL_MAP.get(model_name)
+        if not mapping:
+            continue
+        atype, fam = mapping
+        atom_id = doc.get("id")
+        entry = {
+            "id": atom_id,
+            "title": doc.get("title") or atom_id,
+            "atom_type": atype,
+            "summary": doc.get("summary"),
+            "five_wh_one_plus": doc.get("five_wh_one_plus"),
+            "tags": tags,
+        }
+
+        fam_tags = [t for t in tags if t.startswith(fam + ":")]
+        if not fam_tags:
+            families[fam]["orphans"].append(entry)
+            continue
+
+        for tag in fam_tags:
+            path = tag[len(fam) + 1:]
+            segments = path.split(".")
+            node = families[fam]["children"]
+            # navega por los segmentos, creando sub-nodos en la rama children
+            for seg in segments[:-1]:
+                if seg not in node:
+                    node[seg] = {"children": {}, "atoms": []}
+                node = node[seg]["children"]
+            # ultimo segmento: coloca el atom en este nodo
+            last = segments[-1]
+            if last not in node:
+                node[last] = {"children": {}, "atoms": []}
+            node[last]["atoms"].append(entry)
+
+    result = {}
+    for fam, data in families.items():
+        result[fam] = {
+            "children": _tree_to_list(data["children"], fam),
+            "orphans": data["orphans"],
+            "label": fam,
+        }
+    return JSONResponse(result)
+
+
+def _tree_to_list(children: dict, parent_key: str) -> list[dict]:
+    """Convierte arbol anidado a lista plana con depth."""
+    out = []
+    for name, node in sorted(children.items()):
+        entry = {
+            "name": name,
+            "path": f"{parent_key}.{name}" if parent_key else name,
+            "atoms": node.get("atoms", []),
+            "children": _tree_to_list(node.get("children", {}), f"{parent_key}.{name}"),
+        }
+        out.append(entry)
+    return out
 
 
 @app.get("/api/health")

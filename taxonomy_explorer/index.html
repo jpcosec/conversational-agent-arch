@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Taxonomía · KB</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0a0f; --panel:#0d1526; --panel2:#111a2e;
+    --border:rgba(245,240,232,.08); --border2:rgba(245,240,232,.14);
+    --text:#f5f0e8; --muted:rgba(245,240,232,.45); --accent:#d4a574;
+    --mono:'JetBrains Mono',monospace; --sans:'Inter',sans-serif;
+    --fam-self:#7cba7c; --fam-domain:#7fb3d5; --fam-conversation:#e6a85c; --fam-user:#c97db9;
+  }
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh;overflow:hidden}
+  .top{height:60px;border-bottom:1px solid var(--border);display:flex;align-items:center;
+    padding:0 24px;gap:12px;background:var(--panel);flex-shrink:0}
+  .brand{font-size:17px;font-weight:600}
+  .brand em{color:var(--accent);font-style:italic}
+  .brand-sub{font-size:10px;color:var(--muted);font-family:var(--mono);letter-spacing:.06em}
+  .layout{display:grid;grid-template-columns:1fr 380px;height:calc(100vh - 60px)}
+  .tree-pane{overflow:auto;padding:20px 24px 40px}
+  .side-pane{border-left:1px solid var(--border);background:var(--panel);
+    overflow:hidden;display:flex;flex-direction:column}
+  .side-head{padding:16px 18px;border-bottom:1px solid var(--border);
+    font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+  .side-scroll{flex:1;overflow-y:auto;padding:14px 18px 20px}
+  /* tree */
+  .tree-root{margin-bottom:20px}
+  .tree-root~.tree-root{margin-top:12px}
+  .fam-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;
+    padding:6px 10px;border-radius:8px;display:inline-block;margin-bottom:8px;
+    cursor:pointer;user-select:none;transition:background .15s}
+  .fam-label:hover{background:rgba(255,255,255,.04)}
+  .fam-badge{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:8px}
+  .tree-line{padding-left:18px;border-left:1px solid var(--border);margin-left:4px}
+  .tree-node{display:flex;align-items:center;gap:6px;padding:3px 6px;
+    border-radius:6px;cursor:default;transition:background .12s;min-height:26px}
+  .tree-node:hover{background:rgba(245,240,232,.04)}
+  .tree-node.has-atoms:hover{background:rgba(212,165,116,.08)}
+  .toggle{width:16px;height:16px;display:flex;align-items:center;justify-content:center;
+    font-size:8px;color:var(--muted);cursor:pointer;flex-shrink:0;border-radius:3px;
+    transition:all .12s;user-select:none}
+  .toggle:hover{background:rgba(245,240,232,.08);color:var(--text)}
+  .toggle.empty{visibility:hidden}
+  .node-name{font-size:13px;font-weight:500;color:rgba(245,240,232,.72)}
+  .node-count{font-size:10px;font-family:var(--mono);color:var(--muted);margin-left:auto}
+  /* atom leaf */
+  .atom-leaf{display:flex;align-items:center;gap:6px;padding:5px 6px;border-radius:8px;
+    margin:1px 0;cursor:default;transition:all .12s;border:1px solid transparent}
+  .atom-leaf:hover{border-color:rgba(212,165,116,.25);background:rgba(212,165,116,.05)}
+  .atom-leaf.selected{border-color:var(--accent);background:rgba(212,165,116,.1)}
+  .atom-icon{font-size:12px;width:18px;text-align:center;flex-shrink:0}
+  .atom-title{font-size:12px;font-weight:500;color:var(--text);line-height:1.2}
+  .atom-id{font-size:9px;font-family:var(--mono);color:var(--muted);margin-left:auto}
+  .atom-leaf .add-btn{opacity:0;width:16px;height:16px;border-radius:4px;
+    display:flex;align-items:center;justify-content:center;font-size:12px;line-height:1;
+    cursor:pointer;color:var(--muted);transition:all .15s;flex-shrink:0}
+  .atom-leaf:hover .add-btn{opacity:1}
+  .atom-leaf .add-btn:hover{background:rgba(212,165,116,.15);color:var(--accent)}
+  .children{collapse:var(--state)}
+  .children.open{--state:collapse}
+  .children.closed{display:none}
+  /* tooltip */
+  .tooltip{position:fixed;z-index:100;background:rgba(10,10,15,.95);border:1px solid var(--border2);
+    border-radius:10px;padding:12px 14px;max-width:320px;font-size:12px;line-height:1.5;
+    pointer-events:none;backdrop-filter:blur(8px);display:none}
+  .tooltip.show{display:block}
+  .tooltip .tt-id{font-family:var(--mono);font-size:9px;color:var(--muted);margin-bottom:4px}
+  .tooltip .tt-5wh{color:var(--accent);font-family:var(--mono);font-size:10px;
+    text-transform:uppercase;letter-spacing:.08em}
+  .tooltip .tt-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+  .tooltip .tt-tag{font-family:var(--mono);font-size:9px;padding:2px 5px;border-radius:4px;
+    background:rgba(245,240,232,.06);color:var(--muted)}
+  /* modal */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);
+    backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
+  .modal-overlay.show{display:flex}
+  .modal{background:var(--panel2);border:1px solid var(--border2);border-radius:16px;
+    width:640px;max-height:80vh;overflow-y:auto;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.6)}
+  .modal h2{font-size:16px;font-weight:600;margin-bottom:16px}
+  .modal-field{margin-bottom:14px}
+  .modal-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--accent);font-family:var(--mono);margin-bottom:4px;display:block}
+  .modal input,.modal textarea,.modal select{width:100%;background:var(--bg);
+    border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);
+    font-family:var(--sans);font-size:13px;outline:none;transition:border-color .12s}
+  .modal input:focus,.modal textarea:focus,.modal select:focus{border-color:var(--accent)}
+  .modal textarea{min-height:120px;resize:vertical;font-family:var(--mono);font-size:12px}
+  .modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+  .modal-actions button{padding:8px 18px;border-radius:10px;border:1px solid var(--border2);
+    background:transparent;color:var(--text);font-family:var(--sans);font-size:12px;
+    font-weight:600;cursor:pointer;transition:all .12s}
+  .modal-actions .btn-save{background:var(--accent);color:#0a0a0f;border-color:var(--accent)}
+  .modal-actions .btn-save:hover{opacity:.85}
+  .modal-actions .btn-cancel:hover{background:rgba(245,240,232,.06)}
+  /* comment */
+  .comment-area{background:var(--bg);border:1px solid var(--border);border-radius:10px;
+    padding:10px;margin-top:16px}
+  .comment-area textarea{width:100%;background:transparent;border:none;color:var(--text);
+    font-family:var(--sans);font-size:12px;outline:none;resize:vertical;min-height:50px}
+  .comment-area .cmt-label{font-size:9px;font-family:var(--mono);text-transform:uppercase;
+    letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand"><em>Taxonomía</em> · KB</div>
+  <div class="brand-sub">mindmap de la base de conocimiento</div>
+</div>
+<div class="layout">
+  <div class="tree-pane" id="tree"></div>
+  <div class="side-pane">
+    <div class="side-head" id="side-head">Selecciona un atom</div>
+    <div class="side-scroll" id="side-detail"></div>
+  </div>
+</div>
+<div class="tooltip" id="tooltip"></div>
+<div class="modal-overlay" id="modal"><div class="modal"></div></div>
+
+<script>
+const FAM_ICON = { self:'🧬', domain:'📖', conversation:'💬', user:'👤' };
+const FAM_COLOR = { self:'#7cba7c', domain:'#7fb3d5', conversation:'#e6a85c', user:'#c97db9' };
+const FIVEWH_ICON = { what:'❓', when:'📅', where:'📍', who:'👤', how:'🔧', why:'🤔' };
+let TAX = null, selectedId = null, modalAtom = null;
+
+async function load(){ const r=await fetch('/api/taxonomy'); TAX=await r.json(); renderTree(); }
+
+function renderTree(){
+  const el=document.getElementById('tree'); el.innerHTML='';
+  for(const[fam,data] of Object.entries(TAX)){
+    const root=document.createElement('div'); root.className='tree-root';
+    const lbl=document.createElement('div'); lbl.className='fam-label';
+    lbl.innerHTML=`<span class="fam-badge" style="background:${FAM_COLOR[fam]}"></span>
+      ${FAM_ICON[fam]} ${fam} <span style="color:var(--muted);font-size:10px">· ${countFamily(data)}</span>`;
+    lbl.onclick=()=>toggleChildren(lbl.nextElementSibling);
+    root.appendChild(lbl);
+    const cont=document.createElement('div'); cont.className='tree-line children open';
+    renderChildren(data.children, cont, fam, 1);
+    // orphan atoms (no tag)
+    if(data.orphans&&data.orphans.length){
+      const orph=document.createElement('div'); orph.style.cssText='padding:6px 0 4px;font-size:10px;color:var(--muted);font-family:var(--mono)';
+      orph.textContent=`sin tag (${data.orphans.length})`;
+      cont.appendChild(orph);
+    }
+    root.appendChild(cont);
+    el.appendChild(root);
+  }
+}
+
+function countFamily(data){
+  let n=0;
+  function walk(ch){ for(const c of ch){ n+=c.atoms.length; walk(c.children); } }
+  walk(data.children); n+=data.orphans?.length||0; return n;
+}
+
+function renderChildren(children, parent, parentPath, depth){
+  for(const node of children){
+    const hasKids=node.children.length>0;
+    const wrap=document.createElement('div');
+    const row=document.createElement('div'); row.className='tree-node'+(node.atoms.length?' has-atoms':'');
+    const tog=document.createElement('span'); tog.className='toggle'+(hasKids?'':' empty');
+    tog.textContent=hasKids?'▾':'·';
+    if(hasKids) tog.onclick=()=>toggleChildren(tog.parentElement.nextElementSibling);
+    const name=document.createElement('span'); name.className='node-name';
+    name.textContent=node.name;
+    const cnt=document.createElement('span'); cnt.className='node-count';
+    cnt.textContent=node.atoms.length?'·'+node.atoms.length:'';
+    row.append(tog,name,cnt);
+    wrap.appendChild(row);
+    const sub=document.createElement('div'); sub.className='children'+(hasKids?' open':'');
+    renderChildren(node.children, sub, node.path, depth+1);
+    // render atoms at this node
+    for(const a of node.atoms){
+      const leaf=document.createElement('div'); leaf.className='atom-leaf';
+      leaf.dataset.id=a.id;
+      const ico=document.createElement('span'); ico.className='atom-icon';
+      ico.textContent=FIVEWH_ICON[a.five_wh_one_plus]||'📄';
+      const tit=document.createElement('span'); tit.className='atom-title'; tit.textContent=a.title;
+      const aid=document.createElement('span'); aid.className='atom-id'; aid.textContent=a.id;
+      const add=document.createElement('span'); add.className='add-btn'; add.textContent='+';
+      add.title='Agregar sibling';
+      add.onclick=(e)=>{e.stopPropagation(); addAtom(a.id);};
+      leaf.append(ico,tit,aid,add);
+      leaf.onmouseenter=(e)=>{showTooltip(e,a);};
+      leaf.onmouseleave=()=>{hideTooltip();};
+      leaf.ondblclick=()=>{editAtom(a);};
+      leaf.onclick=(e)=>{selectAtom(a.id); leaveComment(a);};
+      sub.appendChild(leaf);
+    }
+    wrap.appendChild(sub);
+    parent.appendChild(wrap);
+  }
+}
+
+function toggleChildren(el){
+  if(!el) return;
+  el.classList.toggle('open'); el.classList.toggle('closed');
+  const tog=el.previousElementSibling?.querySelector('.toggle');
+  if(tog) tog.textContent=el.classList.contains('open')?'▾':'▸';
+}
+
+function countAtoms(node){
+  let n=node.atoms.length;
+  for(const c of node.children) n+=countAtoms(c);
+  return n;
+}
+
+function selectAtom(id){
+  selectedId=id;
+  document.querySelectorAll('.atom-leaf').forEach(l=>l.classList.toggle('selected',l.dataset.id===id));
+}
+
+/* tooltip */
+function showTooltip(e, a){
+  const tt=document.getElementById('tooltip');
+  tt.className='tooltip show';
+  let h=`<div class="tt-id">${a.id}</div><div class="tt-title" style="font-weight:600;margin-bottom:4px">${a.title}</div>`;
+  if(a.five_wh_one_plus) h+=`<span class="tt-5wh">${FIVEWH_ICON[a.five_wh_one_plus]||''} ${a.five_wh_one_plus}</span>`;
+  if(a.summary) h+=`<div style="margin-top:6px;color:rgba(245,240,232,.6)">${a.summary}</div>`;
+  if(a.tags&&a.tags.length) h+=`<div class="tt-tags">${a.tags.map(t=>`<span class="tt-tag">${t}</span>`).join('')}</div>`;
+  tt.innerHTML=h;
+  const rect=e.target.getBoundingClientRect();
+  let x=rect.right+12, y=rect.top;
+  if(x+320>window.innerWidth) x=rect.left-322;
+  if(y+200>window.innerHeight) y=window.innerHeight-210;
+  tt.style.left=x+'px'; tt.style.top=y+'px';
+}
+function hideTooltip(){ document.getElementById('tooltip').className='tooltip'; }
+
+/* detail panel + comment */
+function leaveComment(a){
+  const head=document.getElementById('side-head'); head.textContent=a.title;
+  const el=document.getElementById('side-detail');
+  el.innerHTML=`
+    <div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:12px">${a.id}</div>
+    <div style="margin-bottom:10px">
+      <span class="tt-5wh">${FIVEWH_ICON[a.five_wh_one_plus]||'📄'} ${a.five_wh_one_plus||'—'}</span>
+    </div>
+    <div class="comment-area">
+      <div class="cmt-label">📝 Comentario (para agente reflector)</div>
+      <textarea placeholder="Deja una nota sobre este atom…" id="cmt-text"></textarea>
+    </div>`;
+  el.innerHTML+=`<div class="tags" style="display:flex;flex-wrap:wrap;gap:4px;margin-top:10px">
+    ${(a.tags||[]).map(t=>`<span class="tt-tag">${t}</span>`).join('')}</div>`;
+}
+
+/* modal edit */
+function editAtom(a){
+  modalAtom=a;
+  const ov=document.getElementById('modal'); const m=ov.querySelector('.modal');
+  m.innerHTML=`
+    <h2>✏️ ${a.title}</h2>
+    <div class="modal-field"><label class="modal-label">ID</label><input value="${a.id}" disabled/></div>
+    <div class="modal-field"><label class="modal-label">Título</label><input id="me-title" value="${a.title}"/></div>
+    <div class="modal-field"><label class="modal-label">5WH1+</label>
+      <select id="me-5wh">${['what','when','where','who','how','why'].map(v=>
+        `<option value="${v}"${v===a.five_wh_one_plus?' selected':''}>${FIVEWH_ICON[v]||''} ${v}</option>`).join('')}</select></div>
+    <div class="modal-field"><label class="modal-label">Tags (uno por línea)</label>
+      <textarea id="me-tags" style="min-height:60px">${(a.tags||[]).join('\n')}</textarea></div>
+    <div class="modal-field"><label class="modal-label">Summary</label>
+      <textarea id="me-summary">${a.summary||''}</textarea></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="document.getElementById('modal').classList.remove('show')">Cancelar</button>
+      <button class="btn-save" onclick="saveEdit()">Guardar</button>
+    </div>`;
+  ov.classList.add('show');
+}
+
+function saveEdit(){
+  // TODO: POST to /api/atom/save — persistir en SLDB
+  // Por ahora solo feedback
+  const m=document.getElementById('modal');
+  alert('Guardado no implementado aún — será POST /api/atom/save');
+  m.classList.remove('show');
+}
+
+function addAtom(siblingId){
+  alert(`Agregar atom ${siblingId ? 'hermano de '+siblingId : 'hijo de nodo'} — formulario en construcción`);
+}
+load();
+</script>
+</body>
+</html>
