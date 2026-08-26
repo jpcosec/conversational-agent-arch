@@ -1,16 +1,16 @@
 ---
 id: trait-sin-gluten
-title: Cliente celiaco / sin gluten
-five_wh_one_plus: what
+title: Cliente celíaco / sin gluten
+atom_type: trait
 tags:
-- atom_type:trait
-- domain:pizzeria
-- source:e2e
+- user:traits.celiaco
+- system:donpeppe
+category: dietary
 provenance: null
 ---
 
-# Cliente celiaco / sin gluten
+# Cliente celíaco / sin gluten
 
-## Answer
+## Description
 
-El cliente requiere opciones sin gluten (celiaco). Advertir que las pizzas estandar contienen gluten.
+La persona requiere opciones sin gluten (celíaca). Advertir que las pizzas estándar contienen gluten y ofrecer alternativas sin gluten cuando existan.

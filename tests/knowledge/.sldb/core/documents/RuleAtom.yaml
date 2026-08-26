@@ -1,1 +1,11 @@
-documents: []
+documents:
+- name: atom-donpeppe-regla-reservas
+  path: atoms/atom-donpeppe-regla-reservas.md
+  hash_c: 876cdadac13b4c0276becb2835388fb0b210d3898bbe3b137cbedeaccd811db2
+  hash_d: 002884c272100e670c565e21672c54c880ed6ea25b97512913f1c869e6555ad7
+  semantic_tags:
+  - conversation:steps.booking
+  - domain:reglas.reservas
+  - system:donpeppe
+  - type.knowledge.rule
+  - workspace.knowledge

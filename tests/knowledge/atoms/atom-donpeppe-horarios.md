@@ -1,11 +1,13 @@
 ---
 id: atom-donpeppe-horarios
 title: Horarios Don Peppe
-five_wh_one_plus: what
+five_wh_one_plus: when
+atom_type: domain
 tags:
-- atom_type:domain
-- domain:pizzeria
-- source:e2e
+- domain:horarios
+- conversation:steps.onboarding
+- system:donpeppe
+domain_ref: don-peppe
 provenance: null
 ---
 

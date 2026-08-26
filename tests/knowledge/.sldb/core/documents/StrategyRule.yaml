@@ -1,1 +1,10 @@
-documents: []
+documents:
+- name: strategy-donpeppe
+  path: atoms/strategy-donpeppe.md
+  hash_c: e5a6fb0f37de6ba704e6506e0451b6f80920b911fe3e7f20076c5e48239d3463
+  hash_d: 2bca35bb77602ab7e87973e520f9149c470b5f5543d225308984dae9179871bf
+  semantic_tags:
+  - conversation:strategy
+  - system:donpeppe
+  - type.knowledge.strategy
+  - workspace.knowledge

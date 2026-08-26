@@ -1,0 +1,125 @@
+documents:
+- doc_name: style-donpeppe
+  sections:
+  - path: estilo-conversacional-don-peppe
+    title: Estilo conversacional Don Peppe
+    breadcrumbs:
+    - Estilo conversacional Don Peppe
+    about:
+    - Estilo conversacional Don Peppe
+    - estilo conversacional don peppe
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: estilo-conversacional-don-peppe
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: estilo-conversacional-don-peppe/tone
+    title: Tone
+    breadcrumbs:
+    - Estilo conversacional Don Peppe
+    - Tone
+    about:
+    - Estilo conversacional Don Peppe
+    - estilo conversacional don peppe
+    - Tone
+    - tone
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: tone
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: estilo-conversacional-don-peppe/language-register
+    title: Language Register
+    breadcrumbs:
+    - Estilo conversacional Don Peppe
+    - Language Register
+    about:
+    - Estilo conversacional Don Peppe
+    - estilo conversacional don peppe
+    - Language Register
+    - language register
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: language-register
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: estilo-conversacional-don-peppe/phrase-preferences
+    title: Phrase Preferences
+    breadcrumbs:
+    - Estilo conversacional Don Peppe
+    - Phrase Preferences
+    about:
+    - Estilo conversacional Don Peppe
+    - estilo conversacional don peppe
+    - Phrase Preferences
+    - phrase preferences
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: phrase-preferences
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: estilo-conversacional-don-peppe/length-guidelines
+    title: Length Guidelines
+    breadcrumbs:
+    - Estilo conversacional Don Peppe
+    - Length Guidelines
+    about:
+    - Estilo conversacional Don Peppe
+    - estilo conversacional don peppe
+    - Length Guidelines
+    - length guidelines
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: length-guidelines
+    level: 2
+    line_start: 26
+    line_end: 27

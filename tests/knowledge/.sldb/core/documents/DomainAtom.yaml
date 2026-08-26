@@ -1,1 +1,41 @@
-documents: []
+documents:
+- name: atom-donpeppe-carta
+  path: atoms/atom-donpeppe-carta.md
+  hash_c: ee2023e6384d1bfd4948e551030e42ee765b9db32cf59407e1a1757f5b252f70
+  hash_d: ab8f76ffe7ad6e15905109d75bc3c4fb7ece9709dcdb2044d17dfe52a506f20f
+  semantic_tags:
+  - conversation:steps.onboarding
+  - domain:catalogo
+  - system:donpeppe
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-donpeppe-horarios
+  path: atoms/atom-donpeppe-horarios.md
+  hash_c: a01e8094aa4e21bdf412e4e62902a6e9ec582b4a64181b04458eb70b780951c3
+  hash_d: 52ddb271bea446cbf4bf22cce55a2f5f1867b0ea4c453c8cc11a7128ab15689f
+  semantic_tags:
+  - conversation:steps.onboarding
+  - domain:horarios
+  - system:donpeppe
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-donpeppe-ubicacion
+  path: atoms/atom-donpeppe-ubicacion.md
+  hash_c: d4b3d99e075f4c7a4ac1bb0149e9505677e5d34047d391f41b15b785d6540954
+  hash_d: 7becc19b3dd4414f2ad43f4f1c70a7bff1f1616dfeae8c5979828008811a5a8f
+  semantic_tags:
+  - conversation:steps.onboarding
+  - domain:ubicacion
+  - system:donpeppe
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-donpeppe-promos
+  path: atoms/atom-donpeppe-promos.md
+  hash_c: bee6108c08188a8368f84ea064c1c2bc6e57ef3f52132e3948c0d8a36e93bcde
+  hash_d: 37ef15e56f85f4cd3229c18de13421f348fbc86467efee48618156fe38ea9d9d
+  semantic_tags:
+  - conversation:steps.booking
+  - domain:promociones
+  - system:donpeppe
+  - type.knowledge.domain
+  - workspace.knowledge

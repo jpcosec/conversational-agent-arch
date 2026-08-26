@@ -1,109 +1,227 @@
 tags:
-  atom_type:domain:
+  channel:whatsapp:
+  - style-donpeppe
+  conversation:fallback:
+  - fallback-donpeppe
+  conversation:steps.booking:
+  - atom-donpeppe-promos
+  - atom-donpeppe-regla-reservas
+  - atom-donpeppe-tool-reserva
+  - step-donpeppe-booking
+  conversation:steps.onboarding:
   - atom-donpeppe-carta
   - atom-donpeppe-horarios
-  - atom-heladeria-carta
-  atom_type:rule:
-  - atom-donpeppe-regla-reservas
-  atom_type:tool:
-  - atom-donpeppe-tool-reserva
-  atom_type:trait:
-  - atom-trait-sin-gluten
-  - atom-trait-vegetariano
-  domain:heladeria:
-  - atom-heladeria-carta
+  - atom-donpeppe-ubicacion
+  - step-donpeppe-onboarding
+  conversation:strategy:
+  - strategy-donpeppe
+  domain:catalogo:
+  - atom-donpeppe-carta
+  domain:horarios:
+  - atom-donpeppe-horarios
   domain:pizzeria:
+  - self-donpeppe
+  domain:promociones:
+  - atom-donpeppe-promos
+  domain:reglas.reservas:
+  - atom-donpeppe-regla-reservas
+  domain:ubicacion:
+  - atom-donpeppe-ubicacion
+  self:estilo:
+  - style-donpeppe
+  self:limites:
+  - boundary-donpeppe
+  self:tools:
+  - atom-donpeppe-tool-reserva
+  self:whoami:
+  - self-donpeppe
+  system:donpeppe:
   - atom-donpeppe-carta
   - atom-donpeppe-horarios
+  - atom-donpeppe-promos
   - atom-donpeppe-regla-reservas
   - atom-donpeppe-tool-reserva
+  - atom-donpeppe-ubicacion
   - atom-trait-sin-gluten
   - atom-trait-vegetariano
-  source:e2e:
+  - boundary-donpeppe
+  - fallback-donpeppe
+  - self-donpeppe
+  - step-donpeppe-booking
+  - step-donpeppe-onboarding
+  - strategy-donpeppe
+  - style-donpeppe
+  type.knowledge.boundary:
+  - boundary-donpeppe
+  type.knowledge.domain:
   - atom-donpeppe-carta
   - atom-donpeppe-horarios
+  - atom-donpeppe-promos
+  - atom-donpeppe-ubicacion
+  type.knowledge.fallback:
+  - fallback-donpeppe
+  type.knowledge.rule:
   - atom-donpeppe-regla-reservas
+  type.knowledge.self:
+  - self-donpeppe
+  type.knowledge.step:
+  - step-donpeppe-booking
+  - step-donpeppe-onboarding
+  type.knowledge.strategy:
+  - strategy-donpeppe
+  type.knowledge.style:
+  - style-donpeppe
+  type.knowledge.tool:
   - atom-donpeppe-tool-reserva
-  - atom-heladeria-carta
+  type.knowledge.trait:
   - atom-trait-sin-gluten
   - atom-trait-vegetariano
-  type.knowledge.atom:
+  user:traits.celiaco:
+  - atom-trait-sin-gluten
+  user:traits.vegetariano:
+  - atom-trait-vegetariano
+  workspace.knowledge:
   - atom-donpeppe-carta
   - atom-donpeppe-horarios
+  - atom-donpeppe-promos
   - atom-donpeppe-regla-reservas
   - atom-donpeppe-tool-reserva
-  - atom-heladeria-carta
+  - atom-donpeppe-ubicacion
   - atom-trait-sin-gluten
   - atom-trait-vegetariano
-  workspace.desk.atoms:
-  - atom-donpeppe-carta
-  - atom-donpeppe-horarios
-  - atom-donpeppe-regla-reservas
-  - atom-donpeppe-tool-reserva
-  - atom-heladeria-carta
-  - atom-trait-sin-gluten
-  - atom-trait-vegetariano
+  - boundary-donpeppe
+  - fallback-donpeppe
+  - self-donpeppe
+  - step-donpeppe-booking
+  - step-donpeppe-onboarding
+  - strategy-donpeppe
+  - style-donpeppe
 documents:
   atom-donpeppe-carta:
-    model: AtomDoc
+    model: DomainAtom
     path: atoms/atom-donpeppe-carta.md
     tags:
-    - atom_type:domain
-    - domain:pizzeria
-    - source:e2e
-    - type.knowledge.atom
-    - workspace.desk.atoms
+    - conversation:steps.onboarding
+    - domain:catalogo
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
   atom-donpeppe-horarios:
-    model: AtomDoc
+    model: DomainAtom
     path: atoms/atom-donpeppe-horarios.md
     tags:
-    - atom_type:domain
-    - domain:pizzeria
-    - source:e2e
-    - type.knowledge.atom
-    - workspace.desk.atoms
+    - conversation:steps.onboarding
+    - domain:horarios
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-donpeppe-ubicacion:
+    model: DomainAtom
+    path: atoms/atom-donpeppe-ubicacion.md
+    tags:
+    - conversation:steps.onboarding
+    - domain:ubicacion
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-donpeppe-promos:
+    model: DomainAtom
+    path: atoms/atom-donpeppe-promos.md
+    tags:
+    - conversation:steps.booking
+    - domain:promociones
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
   atom-donpeppe-regla-reservas:
-    model: AtomDoc
+    model: RuleAtom
     path: atoms/atom-donpeppe-regla-reservas.md
     tags:
-    - atom_type:rule
-    - domain:pizzeria
-    - source:e2e
-    - type.knowledge.atom
-    - workspace.desk.atoms
+    - conversation:steps.booking
+    - domain:reglas.reservas
+    - system:donpeppe
+    - type.knowledge.rule
+    - workspace.knowledge
   atom-donpeppe-tool-reserva:
-    model: AtomDoc
+    model: ToolAtom
     path: atoms/atom-donpeppe-tool-reserva.md
     tags:
-    - atom_type:tool
-    - domain:pizzeria
-    - source:e2e
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-heladeria-carta:
-    model: AtomDoc
-    path: atoms/atom-heladeria-carta.md
-    tags:
-    - atom_type:domain
-    - domain:heladeria
-    - source:e2e
-    - type.knowledge.atom
-    - workspace.desk.atoms
+    - conversation:steps.booking
+    - self:tools
+    - system:donpeppe
+    - type.knowledge.tool
+    - workspace.knowledge
   atom-trait-sin-gluten:
-    model: AtomDoc
+    model: TraitAtom
     path: atoms/atom-trait-sin-gluten.md
     tags:
-    - atom_type:trait
-    - domain:pizzeria
-    - source:e2e
-    - type.knowledge.atom
-    - workspace.desk.atoms
+    - system:donpeppe
+    - type.knowledge.trait
+    - user:traits.celiaco
+    - workspace.knowledge
   atom-trait-vegetariano:
-    model: AtomDoc
+    model: TraitAtom
     path: atoms/atom-trait-vegetariano.md
     tags:
-    - atom_type:trait
+    - system:donpeppe
+    - type.knowledge.trait
+    - user:traits.vegetariano
+    - workspace.knowledge
+  step-donpeppe-onboarding:
+    model: ConversationStep
+    path: atoms/step-donpeppe-onboarding.md
+    tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+  step-donpeppe-booking:
+    model: ConversationStep
+    path: atoms/step-donpeppe-booking.md
+    tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+  self-donpeppe:
+    model: SelfDeclaration
+    path: atoms/self-donpeppe.md
+    tags:
     - domain:pizzeria
-    - source:e2e
-    - type.knowledge.atom
-    - workspace.desk.atoms
+    - self:whoami
+    - system:donpeppe
+    - type.knowledge.self
+    - workspace.knowledge
+  fallback-donpeppe:
+    model: FallbackRule
+    path: atoms/fallback-donpeppe.md
+    tags:
+    - conversation:fallback
+    - system:donpeppe
+    - type.knowledge.fallback
+    - workspace.knowledge
+  style-donpeppe:
+    model: StyleGuide
+    path: atoms/style-donpeppe.md
+    tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:donpeppe
+    - type.knowledge.style
+    - workspace.knowledge
+  boundary-donpeppe:
+    model: CapabilityBoundary
+    path: atoms/boundary-donpeppe.md
+    tags:
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+  strategy-donpeppe:
+    model: StrategyRule
+    path: atoms/strategy-donpeppe.md
+    tags:
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge

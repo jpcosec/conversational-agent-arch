@@ -2,10 +2,12 @@
 id: atom-donpeppe-carta
 title: Carta Don Peppe
 five_wh_one_plus: what
+atom_type: domain
 tags:
-- atom_type:domain
-- domain:pizzeria
-- source:e2e
+- domain:catalogo
+- conversation:steps.onboarding
+- system:donpeppe
+domain_ref: don-peppe
 provenance: null
 ---
 

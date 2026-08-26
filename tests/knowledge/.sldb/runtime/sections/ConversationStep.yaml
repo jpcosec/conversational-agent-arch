@@ -1,0 +1,275 @@
+documents:
+- doc_name: step-donpeppe-onboarding
+  sections:
+  - path: onboarding-atenci-n-general
+    title: "Onboarding \u2014 atenci\xF3n general"
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: onboarding-atenci-n-general
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: onboarding-atenci-n-general/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - Instructions
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - Instructions
+    - instructions
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: onboarding-atenci-n-general/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - Required Slots
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - Required Slots
+    - required slots
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: onboarding-atenci-n-general/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - Allowed Transitions
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: onboarding-atenci-n-general/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - Grounding Atoms
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: onboarding-atenci-n-general/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - Completion Condition
+    about:
+    - "Onboarding \u2014 atenci\xF3n general"
+    - onboarding atenci n general
+    - Completion Condition
+    - completion condition
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 29
+    line_end: 30
+- doc_name: step-donpeppe-booking
+  sections:
+  - path: reserva-de-mesa
+    title: Reserva de mesa
+    breadcrumbs:
+    - Reserva de mesa
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: reserva-de-mesa
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: reserva-de-mesa/instructions
+    title: Instructions
+    breadcrumbs:
+    - Reserva de mesa
+    - Instructions
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - Instructions
+    - instructions
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: reserva-de-mesa/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Reserva de mesa
+    - Required Slots
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - Required Slots
+    - required slots
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: reserva-de-mesa/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Reserva de mesa
+    - Allowed Transitions
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: reserva-de-mesa/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Reserva de mesa
+    - Grounding Atoms
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: reserva-de-mesa/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Reserva de mesa
+    - Completion Condition
+    about:
+    - Reserva de mesa
+    - reserva de mesa
+    - Completion Condition
+    - completion condition
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:donpeppe
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 29
+    line_end: 30

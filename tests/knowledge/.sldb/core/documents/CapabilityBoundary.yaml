@@ -1,1 +1,10 @@
-documents: []
+documents:
+- name: boundary-donpeppe
+  path: atoms/boundary-donpeppe.md
+  hash_c: 358b619432b89b5ee985c10d8e5dda081a91d2e063495cdb52d08cc9882e07b2
+  hash_d: 79bd187d8fdc57717bc6dd9ea8582e3e30be7904a781d0fe02c73e0bb72c49df
+  semantic_tags:
+  - self:limites
+  - system:donpeppe
+  - type.knowledge.boundary
+  - workspace.knowledge

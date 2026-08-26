@@ -1,18 +1,63 @@
 nodes:
+- id: conversation:steps
+  parents: []
+- id: conversation:steps.booking
+  parents:
+  - conversation:steps
+- id: conversation:steps.onboarding
+  parents:
+  - conversation:steps
+- id: domain:reglas
+  parents: []
+- id: domain:reglas.reservas
+  parents:
+  - domain:reglas
 - id: type
   parents: []
 - id: type.knowledge
   parents:
   - type
-- id: type.knowledge.atom
+- id: type.knowledge.boundary
   parents:
   - type.knowledge
+- id: type.knowledge.domain
+  parents:
+  - type.knowledge
+- id: type.knowledge.fallback
+  parents:
+  - type.knowledge
+- id: type.knowledge.rule
+  parents:
+  - type.knowledge
+- id: type.knowledge.self
+  parents:
+  - type.knowledge
+- id: type.knowledge.step
+  parents:
+  - type.knowledge
+- id: type.knowledge.strategy
+  parents:
+  - type.knowledge
+- id: type.knowledge.style
+  parents:
+  - type.knowledge
+- id: type.knowledge.tool
+  parents:
+  - type.knowledge
+- id: type.knowledge.trait
+  parents:
+  - type.knowledge
+- id: user:traits
+  parents: []
+- id: user:traits.celiaco
+  parents:
+  - user:traits
+- id: user:traits.vegetariano
+  parents:
+  - user:traits
 - id: workspace
   parents: []
-- id: workspace.desk
+- id: workspace.knowledge
   parents:
   - workspace
-- id: workspace.desk.atoms
-  parents:
-  - workspace.desk
 equivalences: {}

@@ -2,8 +2,8 @@ name: SelfDeclaration
 model_ref: kb_agent.models.knowledge:SelfDeclaration
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/self_declaration.py
 documents_index: .sldb/core/documents/SelfDeclaration.yaml
-sections_index: ''
-hash_b: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+sections_index: .sldb/runtime/sections/SelfDeclaration.yaml
+hash_b: 68dd50be733452cceda167e6407d8718d45354d2dae0f2f11a94354d55d03f14
 version: 1
 canonical: false
 family: null

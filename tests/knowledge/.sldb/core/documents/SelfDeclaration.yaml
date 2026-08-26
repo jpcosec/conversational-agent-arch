@@ -1,1 +1,11 @@
-documents: []
+documents:
+- name: self-donpeppe
+  path: atoms/self-donpeppe.md
+  hash_c: ec4ef7d0122b07d42f064743331c0650d844fee015e0b11abffe198eaa12b6e3
+  hash_d: 31a40cda2bdd72429b6db4ee037b76454d1b936f79c45e86bef5083b682234bb
+  semantic_tags:
+  - domain:pizzeria
+  - self:whoami
+  - system:donpeppe
+  - type.knowledge.self
+  - workspace.knowledge

@@ -1,16 +1,16 @@
 ---
 id: trait-vegetariano
 title: Cliente vegetariano
-five_wh_one_plus: what
+atom_type: trait
 tags:
-- atom_type:trait
-- domain:pizzeria
-- source:e2e
+- user:traits.vegetariano
+- system:donpeppe
+category: dietary
 provenance: null
 ---
 
 # Cliente vegetariano
 
-## Answer
+## Description
 
-El cliente es vegetariano: no consume carne. Priorizar pizzas sin ingredientes carnicos (Margherita, Cuatro Quesos).
+La persona es vegetariana: no consume carne. Priorizar pizzas sin ingredientes cárnicos (Margherita, Cuatro Quesos).
