@@ -21,7 +21,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 from fastapi.testclient import TestClient
 
-import kb_chat_ui.server as server
+from frontends.chat import server as server
 
 
 @pytest.fixture(scope="module")

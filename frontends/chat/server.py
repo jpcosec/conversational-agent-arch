@@ -12,8 +12,8 @@ Endpoints:
   GET  /api/flow                       -> grafo de ConversationStep del store (JSON en vivo)
 
 Uso:
-  uvicorn kb_chat_ui.server:app --reload --port 8000
-  # o: python -m kb_chat_ui.server
+  uvicorn frontends.chat.server:app --reload --port 8000
+  # o: python -m frontends.chat.server
 """
 from __future__ import annotations
 

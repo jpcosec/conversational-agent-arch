@@ -10,3 +10,6 @@ runs/*
 spec2viz_serve.log
 .sldb_e2e_donpeppe/.sldb/runtime/
 .embedding_cache/
+*.log
+.deskops.log
+desk/spec2viz/build/

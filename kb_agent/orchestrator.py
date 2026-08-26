@@ -34,7 +34,7 @@ from kb_agent.perfilador.extractor import TraitCandidate, TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
 from kb_agent.pii.scrubber import scrub
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
-from kb_chat_ui.state_machine import RouterStateMachine
+from kb_agent.state_machine import RouterStateMachine
 
 # Modelo LLM: externalizado a env (deshardcodeo H5). Default estable si no se define.
 MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")

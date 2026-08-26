@@ -1,9 +1,0 @@
-@startuml
-[*] --> nueva
-
-nueva --> activa : primer POST /api/chat
-activa --> activa : nuevo tag detectado
-activa --> followup : query corta / marcador de continuación [hay previous_mesa.include_tags]
-followup --> activa : nuevo turno con tags propios
-activa --> cerrada : reinicio del servidor [estado no persistido]
-@enduml

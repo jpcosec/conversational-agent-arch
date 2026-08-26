@@ -8,7 +8,7 @@ from typing import Any
 
 from google.adk.agents import LlmAgent
 
-from .kb_tools import list_topics, read_atom, search_knowledge
+from .tools import list_topics, read_atom, search_knowledge
 
 
 CANONICAL_FALLBACK_RESPONSE = "No tengo esa información a mano, la averiguaré."

@@ -1,8 +1,8 @@
 """CLI local real para conversar con el agente.
 
 Uso:
-  python -m kb_agent.chat_local
-  python -m kb_agent.chat_local --db runs/local-chat.sqlite --kb .sldb_e2e_donpeppe --user wa:+56900000000 --scenario pizzeria
+  python -m kb_agent.cli
+  python -m kb_agent.cli --db runs/local-chat.sqlite --kb tests/knowledge --user wa:+56900000000 --scenario pizzeria
 """
 from __future__ import annotations
 
