@@ -1,0 +1,374 @@
+id: current-kb-agent
+title: "kb_agent · Runtime Components (current codebase)"
+type: component
+version: "1.0"
+metadata:
+  author: antonIA
+  description: >-
+    Arquitectura real del runtime conversacional kb_agent, módulo por módulo.
+    Orchestrator.handle_turn es el hub que cablea la policy pura (agent.decide_turn),
+    los puertos LLM (llm: Conversador/TraitMapper Protocols + impls Gemini), la
+    máquina de estados técnica (state_machine.RouterStateMachine), el compilador de
+    contexto (ontologizador), el perfilador y reflector asíncronos, el registro de
+    tools, el scrubber PII y la persistencia SQL (models_sql). Los modelos tipados
+    de conocimiento (models/knowledge) definen el contrato de los atoms en SLDB.
+    Refleja el codebase actual; labels = ruta real, edges = imports reales.
+data:
+  nodes:
+    # ── Núcleo del turno (módulos raíz) ─────────────────────────────
+    Orchestrator:
+      label: "orchestrator (Orchestrator.handle_turn) · hub"
+      kind: core
+    Agent:
+      label: "agent (decide_turn: policy pura tool_call/fallback/nl)"
+      kind: core
+    StateMachine:
+      label: "state_machine (RouterStateMachine, RouterNode, CronTriggerPayload)"
+      kind: core
+    ProjectConfig:
+      label: "project_config (ProjectConfig, load_project_config)"
+      kind: boundary
+    CLI:
+      label: "cli (build_parser, main)"
+      kind: boundary
+
+    # ── Puertos LLM ─────────────────────────────────────────────────
+    LLMPorts:
+      label: "llm.* (puertos + impl Gemini)"
+      kind: core
+      contains:
+        - LLMConversadorPort
+        - LLMTraitMapperPort
+        - LLMGeminiConversador
+        - LLMGeminiTraitMapper
+    LLMConversadorPort:
+      label: "llm.Conversador (Protocol): draft_nl()"
+      kind: interface
+    LLMTraitMapperPort:
+      label: "llm.TraitMapper (Protocol): extract_traits()"
+      kind: interface
+    LLMGeminiConversador:
+      label: "llm.GeminiConversador"
+      kind: core
+    LLMGeminiTraitMapper:
+      label: "llm.GeminiTraitMapper"
+      kind: core
+
+    # ── Ontologizador (compilación de contexto) ─────────────────────
+    Ontologizador:
+      label: "ontologizador.* (Context Compiler)"
+      kind: core
+      contains:
+        - OntoCompiler
+        - OntoSldbReader
+        - OntoKgdbReader
+        - OntoCompiledDocument
+    OntoCompiler:
+      label: "ontologizador.compiler (ContextCompiler, SessionStateLike)"
+      kind: core
+    OntoSldbReader:
+      label: "ontologizador.sldb_reader (SLDBReader)"
+      kind: core
+    OntoKgdbReader:
+      label: "ontologizador.kgdb_reader (KGDBReader)"
+      kind: core
+    OntoCompiledDocument:
+      label: "ontologizador.compiled_document (CompiledDocument)"
+      kind: core
+
+    # ── Perfilador (async) ──────────────────────────────────────────
+    Perfilador:
+      label: "perfilador.* (Feature Extractor async)"
+      kind: core
+      contains:
+        - PerfExtractor
+        - PerfListener
+    PerfExtractor:
+      label: "perfilador.extractor (TraitExtractor, StructuredTraitMapper, TraitCandidate, TraitMatch)"
+      kind: core
+    PerfListener:
+      label: "perfilador.listener (AsyncProfilingListener, EventBus, InProcessEventBus, TurnClosedEvent)"
+      kind: core
+
+    # ── Reflector (batch) ───────────────────────────────────────────
+    Reflector:
+      label: "reflector.* (KB Thickener batch)"
+      kind: core
+      contains:
+        - ReflReader
+        - ReflGenerator
+    ReflReader:
+      label: "reflector.reader (ReflectorBatchReaderJob, CheckpointStore, InMemoryCheckpointStore)"
+      kind: core
+    ReflGenerator:
+      label: "reflector.generator (ReflectorAtomGenerator, RecurrentPattern, GeneratedAtom)"
+      kind: core
+
+    # ── Tools (handlers de negocio) ─────────────────────────────────
+    Tools:
+      label: "tools.* (execute_tool, load_tool_handlers)"
+      kind: core
+      contains:
+        - ToolReservas
+        - ToolRecordatorios
+    ToolReservas:
+      label: "tools.reservas (crear_reserva)"
+      kind: core
+    ToolRecordatorios:
+      label: "tools.recordatorios (agendar_recordatorio)"
+      kind: core
+
+    # ── PII ─────────────────────────────────────────────────────────
+    PiiScrubber:
+      label: "pii.scrubber (scrub, _PlaceholderRegistry)"
+      kind: core
+
+    # ── Persistencia SQL ────────────────────────────────────────────
+    ModelsSql:
+      label: "models_sql.* (SQLAlchemy ORM)"
+      kind: database
+      contains:
+        - SqlIdentity
+        - SqlSession
+        - SqlReservas
+        - SqlRecordatorios
+    SqlIdentity:
+      label: "models_sql.identity (Base, Users, UserTraits)"
+      kind: database
+    SqlSession:
+      label: "models_sql.session (ChatHistory, SessionState, SessionNode)"
+      kind: database
+    SqlReservas:
+      label: "models_sql.reservas (Reservas)"
+      kind: database
+    SqlRecordatorios:
+      label: "models_sql.recordatorios (Recordatorios)"
+      kind: database
+
+    # ── Modelos tipados de conocimiento (contrato de atoms en SLDB) ──
+    ModelsKnowledge:
+      label: "models.knowledge.* (10 modelos tipados de atoms)"
+      kind: interface
+      contains:
+        - MkDomain
+        - MkRule
+        - MkTool
+        - MkTrait
+        - MkStep
+        - MkSelf
+        - MkStyle
+        - MkStrategy
+        - MkFallback
+        - MkBoundary
+        - MkIndexProxies
+    MkDomain:
+      label: "models.knowledge.domain (DomainAtom, AtomQuestion)"
+      kind: interface
+    MkRule:
+      label: "models.knowledge.rule (RuleAtom)"
+      kind: interface
+    MkTool:
+      label: "models.knowledge.tool (ToolAtom)"
+      kind: interface
+    MkTrait:
+      label: "models.knowledge.trait (TraitAtom)"
+      kind: interface
+    MkStep:
+      label: "models.knowledge.step (ConversationStep, StepKind)"
+      kind: interface
+    MkSelf:
+      label: "models.knowledge.self_declaration (SelfDeclaration)"
+      kind: interface
+    MkStyle:
+      label: "models.knowledge.style (StyleGuide)"
+      kind: interface
+    MkStrategy:
+      label: "models.knowledge.strategy (StrategyRule)"
+      kind: interface
+    MkFallback:
+      label: "models.knowledge.fallback (FallbackRule)"
+      kind: interface
+    MkBoundary:
+      label: "models.knowledge.boundary (CapabilityBoundary)"
+      kind: interface
+    MkIndexProxies:
+      label: "models.knowledge.index_proxies (IndexProxies)"
+      kind: interface
+
+    # ── Dependencias externas ───────────────────────────────────────
+    ExtSldb:
+      label: "sldb (find/iter_search_records)"
+      kind: database
+    ExtKgdb:
+      label: "kgdb (graph/ingest/query)"
+      kind: database
+    ExtGemini:
+      label: "google-genai (Vertex ADC)"
+      kind: boundary
+    ExtSqlAlchemy:
+      label: "sqlalchemy (ORM engine)"
+      kind: boundary
+    ExtDeskops:
+      label: "deskops.atom_tags (validación namespaces)"
+      kind: boundary
+
+  edges:
+    # Entradas al hub
+    - from: CLI
+      to: Orchestrator
+      relation: uses
+      label: local chat loop
+    - from: Orchestrator
+      to: ProjectConfig
+      relation: uses
+      label: from_config (kb_root, model, tools)
+
+    # Hub -> policy + máquina de estados + puertos
+    - from: Orchestrator
+      to: StateMachine
+      relation: delegates
+      label: ejecuta el turno técnico
+    - from: Orchestrator
+      to: Agent
+      relation: uses
+      label: decide_turn (tool_call/fallback/nl)
+    - from: Orchestrator
+      to: LLMPorts
+      relation: uses
+      label: Conversador/TraitMapper (inyectables)
+    - from: Agent
+      to: LLMPorts
+      relation: uses
+      label: build_function_declarations
+    - from: LLMConversadorPort
+      to: LLMGeminiConversador
+      relation: implemented_by
+      label: impl real
+    - from: LLMTraitMapperPort
+      to: LLMGeminiTraitMapper
+      relation: implemented_by
+      label: impl real
+    - from: LLMPorts
+      to: ExtGemini
+      relation: uses
+      label: make_gemini_client
+    - from: LLMPorts
+      to: PerfExtractor
+      relation: uses
+      label: TraitCandidate
+
+    # Hub -> ontologizador -> lectura de conocimiento
+    - from: Orchestrator
+      to: OntoCompiler
+      relation: uses
+      label: compila contexto del turno
+    - from: OntoCompiler
+      to: OntoSldbReader
+      relation: uses
+      label: extrae atoms
+    - from: OntoCompiler
+      to: OntoKgdbReader
+      relation: uses
+      label: navega grafo
+    - from: OntoCompiler
+      to: OntoCompiledDocument
+      relation: produces
+      label: CompiledDocument
+    - from: OntoCompiler
+      to: SqlIdentity
+      relation: reads
+      label: trait_ids del usuario
+    - from: OntoSldbReader
+      to: ExtSldb
+      relation: reads
+      label: search records
+    - from: OntoKgdbReader
+      to: ExtKgdb
+      relation: reads
+      label: neighborhood/ingest
+
+    # Hub -> perfilador async
+    - from: Orchestrator
+      to: PerfExtractor
+      relation: uses
+      label: TraitExtractor
+    - from: Orchestrator
+      to: PerfListener
+      relation: publishes
+      label: publish_turn_closed (EventBus)
+    - from: PerfExtractor
+      to: OntoSldbReader
+      relation: uses
+      label: catálogo de TraitAtoms
+    - from: PerfExtractor
+      to: SqlIdentity
+      relation: writes
+      label: user_id -> trait_ids
+    - from: PerfListener
+      to: PiiScrubber
+      relation: uses
+      label: scrub del turno
+
+    # Hub -> reflector batch
+    - from: Orchestrator
+      to: Reflector
+      relation: uses
+      label: run_reflector (batch)
+    - from: ReflGenerator
+      to: ReflReader
+      relation: uses
+      label: lee ChatHistory por checkpoint
+    - from: ReflGenerator
+      to: OntoSldbReader
+      relation: uses
+      label: materializa atoms nuevos
+    - from: ReflGenerator
+      to: ExtDeskops
+      relation: uses
+      label: valida namespaces de tags
+    - from: ReflReader
+      to: SqlSession
+      relation: reads
+      label: ChatHistory
+
+    # Hub -> tools -> persistencia
+    - from: Orchestrator
+      to: Tools
+      relation: uses
+      label: execute_tool (handlers de project.config)
+    - from: ToolReservas
+      to: SqlReservas
+      relation: writes
+      label: crear_reserva
+    - from: ToolRecordatorios
+      to: SqlRecordatorios
+      relation: writes
+      label: agendar_recordatorio
+
+    # Hub -> PII + persistencia base
+    - from: Orchestrator
+      to: PiiScrubber
+      relation: uses
+      label: scrub user/assistant
+    - from: PiiScrubber
+      to: SqlSession
+      relation: writes
+      label: ChatHistory sin PII
+    - from: Orchestrator
+      to: SqlIdentity
+      relation: reads_writes
+      label: identidad/estado/sesión
+    - from: ModelsSql
+      to: ExtSqlAlchemy
+      relation: uses
+      label: mapped ORM
+
+    # Modelos tipados definen el contrato leído por el reader
+    - from: OntoSldbReader
+      to: ModelsKnowledge
+      relation: uses
+      label: contrato de atoms
+    - from: ModelsKnowledge
+      to: ExtSldb
+      relation: uses
+      label: StructuredNLDoc base

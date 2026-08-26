@@ -1,0 +1,212 @@
+id: current-knowledge-base
+title: "Knowledge Base CLI (current codebase)"
+type: component
+version: "1.0"
+metadata:
+  author: antonIA
+  description: >-
+    Componentes reales del paquete knowledge_base/: el CLI (entrypoint + dispatch),
+    el parser (11 subcomandos argparse), y la capa de operaciones
+    (KnowledgeOperations) que envuelve acceso a SLDB, KGDB y SQL en comandos
+    semánticos. Refleja el codebase actual módulo por módulo; los subcomandos
+    listados son los declarados en build_parser() y despachados en cli.main().
+data:
+  nodes:
+    KnowledgeCLI:
+      label: knowledge_base CLI
+      kind: core
+      contains:
+        - Entrypoint
+        - CLIDispatch
+        - Parser
+        - Operations
+
+    Entrypoint:
+      label: __main__ (python -m knowledge_base)
+      kind: core
+
+    CLIDispatch:
+      label: cli.main (argparse -> KnowledgeOperations)
+      kind: core
+
+    # ── parser.py: build_parser + subcomandos ────────────────────
+    Parser:
+      label: parser.build_parser
+      kind: core
+      contains:
+        - CmdExplore
+        - CmdShow
+        - CmdStep
+        - CmdTraits
+        - CmdSelf
+        - CmdContext
+        - CmdPropose
+        - CmdIndex
+        - CmdPromote
+        - CmdReflect
+
+    CmdExplore:
+      label: "explore (--tag / --atom / query)"
+      kind: interface
+    CmdShow:
+      label: "show <atom_id>"
+      kind: interface
+    CmdStep:
+      label: "step next --user"
+      kind: interface
+    CmdTraits:
+      label: "traits --user"
+      kind: interface
+    CmdSelf:
+      label: self
+      kind: interface
+    CmdContext:
+      label: "context --user"
+      kind: interface
+    CmdPropose:
+      label: "propose --model --body"
+      kind: interface
+    CmdIndex:
+      label: "index embeddings / index hierarchy"
+      kind: interface
+    CmdPromote:
+      label: "promote <atom_id>"
+      kind: interface
+    CmdReflect:
+      label: "reflect --db"
+      kind: interface
+
+    # ── operations.py: KnowledgeOperations ───────────────────────
+    Operations:
+      label: operations.KnowledgeOperations
+      kind: core
+      contains:
+        - OpsRetrieval
+        - OpsSession
+        - OpsPropose
+        - OpsOrganize
+        - OpsIndex
+        - OpsReflect
+        - ModelMap
+
+    OpsRetrieval:
+      label: "explore / explore_multi / show (SLDB search)"
+      kind: core
+    OpsSession:
+      label: "step_next / traits / self_context / context (KGDB + SQL)"
+      kind: core
+    OpsPropose:
+      label: "propose / promote (proposed -> active atom)"
+      kind: core
+    OpsOrganize:
+      label: "organize / derive_path (flat atoms -> tag-derived dirs)"
+      kind: core
+    OpsIndex:
+      label: "index_embeddings / index_hierarchy (offline)"
+      kind: core
+    OpsReflect:
+      label: "reflect (ChatHistory -> proposed atoms)"
+      kind: core
+    ModelMap:
+      label: "MODEL_MAP / ALL_MODELS (10 typed KB models)"
+      kind: core
+
+    # ── dependencias reales (edges de import) ─────────────────────
+    SldbFind:
+      label: "sldb.cli.commands.find (iter_search_records, search_records)"
+      kind: external
+    SldbValidation:
+      label: "sldb.runtime.validation (extract_model_data, render_model_markdown)"
+      kind: external
+    SldbStore:
+      label: "sldb.store.io / sldb.store.layout"
+      kind: external
+    KBModels:
+      label: "kb_agent.models.knowledge (DomainAtom, RuleAtom, ToolAtom, TraitAtom, ...)"
+      kind: external
+    KBSqlModels:
+      label: "kb_agent.models_sql (identity: Users/UserTraits · session: SessionState)"
+      kind: external
+    KGDBReader:
+      label: "kb_agent.ontologizador.kgdb_reader.KGDBReader"
+      kind: external
+    ReflectorPkg:
+      label: "kb_agent.reflector (BatchReaderJob, AtomGenerator, CheckpointStore)"
+      kind: external
+    FastEmbed:
+      label: "fastembed.TextEmbedding (jina-embeddings-v2-base-es)"
+      kind: external
+    SqlAlchemy:
+      label: "sqlalchemy (create_engine, Session)"
+      kind: external
+
+    SldbStoreFiles:
+      label: ".sldb store (atoms + semantic indexes)"
+      kind: database
+    KnowledgeDb:
+      label: ".knowledge.db (SQLite: users, traits, session)"
+      kind: database
+
+  edges:
+    - from: Entrypoint
+      to: CLIDispatch
+      relation: imports
+      label: main()
+    - from: CLIDispatch
+      to: Parser
+      relation: uses
+      label: build_parser()
+    - from: CLIDispatch
+      to: Operations
+      relation: uses
+      label: dispatch to KnowledgeOperations
+
+    - from: OpsRetrieval
+      to: SldbFind
+      relation: uses
+      label: search records
+    - from: OpsRetrieval
+      to: SldbValidation
+      relation: uses
+      label: extract/render model
+    - from: OpsRetrieval
+      to: KBModels
+      relation: uses
+      label: typed atom models
+    - from: OpsSession
+      to: KGDBReader
+      relation: uses
+      label: flow graph navigation
+    - from: OpsSession
+      to: KBSqlModels
+      relation: reads
+      label: user traits + session state
+    - from: OpsPropose
+      to: SldbValidation
+      relation: uses
+      label: render proposed atom
+    - from: OpsIndex
+      to: FastEmbed
+      relation: uses
+      label: compute embeddings
+    - from: OpsIndex
+      to: SldbStore
+      relation: uses
+      label: rewrite store indexes
+    - from: OpsReflect
+      to: ReflectorPkg
+      relation: uses
+      label: batch reader + atom generator
+    - from: OpsReflect
+      to: SqlAlchemy
+      relation: uses
+      label: read ChatHistory
+
+    - from: Operations
+      to: SldbStoreFiles
+      relation: reads_writes
+      label: atoms + indexes
+    - from: OpsSession
+      to: KnowledgeDb
+      relation: reads
+      label: SQL session/traits

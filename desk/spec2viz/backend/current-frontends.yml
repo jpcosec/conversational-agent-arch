@@ -1,0 +1,210 @@
+id: current-frontends
+title: "Frontends · UIs + App Factory (current codebase)"
+type: component
+version: "1.0"
+metadata:
+  author: antonIA
+  description: >-
+    Superficie frontend del runtime tal como está en el codebase. El hub es
+    frontends/chat/app.py (create_app): una FastAPI factory que sirve las 5 UIs
+    estáticas, expone la API JSON (/api/*), el webhook de Twilio y monta
+    /static desde shared/. server.py es el entrypoint uvicorn. Dos módulos
+    Python auxiliares (flow_editor.export_flow, viz.export_graph) proyectan la
+    KB en vivo para /api/flow y /api/viz/graph. Refleja imports y rutas reales.
+data:
+  nodes:
+    ChatApp:
+      label: chat.app.create_app (FastAPI factory · hub)
+      kind: core
+      contains:
+        - ChatServer
+        - ApiChat
+        - ApiConfig
+        - ApiHealth
+        - ApiAtom
+        - ApiFlow
+        - ApiTaxonomy
+        - ApiVizGraph
+        - ApiProfiles
+        - TwilioWebhook
+        - StaticMount
+    ChatServer:
+      label: chat.server (entrypoint uvicorn · load_dotenv + create_app)
+      kind: core
+
+    # ── API JSON (endpoints servidos por create_app) ────────────────────
+    ApiChat:
+      label: "POST /api/chat -> orchestrator.handle_turn"
+      kind: interface
+    ApiConfig:
+      label: "GET /api/config (marca/greeting/modelo)"
+      kind: interface
+    ApiHealth:
+      label: "GET /api/health"
+      kind: interface
+    ApiAtom:
+      label: "GET /api/atom/{id} (store SLDB)"
+      kind: interface
+    ApiFlow:
+      label: "GET /api/flow (grafo ConversationStep en vivo)"
+      kind: interface
+    ApiTaxonomy:
+      label: "GET /api/taxonomy (familias x atoms)"
+      kind: interface
+    ApiVizGraph:
+      label: "GET /api/viz/graph (atoms + embeddings PCA 2D)"
+      kind: interface
+    ApiProfiles:
+      label: "GET /api/profiles (UserTraits SQL x TraitAtom SLDB)"
+      kind: interface
+    TwilioWebhook:
+      label: "POST /webhooks/twilio (TwiML, valida firma)"
+      kind: interface
+    StaticMount:
+      label: "mount /static -> shared/"
+      kind: interface
+
+    # ── UIs estáticas (HTML servidas por create_app) ────────────────────
+    ChatUI:
+      label: "chat.index.html (chat + inspector de átomos · GET /)"
+      kind: boundary
+    FlowEditorUI:
+      label: "flow_editor.index.html (editor ReactFlow · /conversation_flow_editor)"
+      kind: boundary
+    TaxonomyUI:
+      label: "taxonomy.index.html (explorador de taxonomía · /taxonomy_explorer)"
+      kind: boundary
+    VizUI:
+      label: "viz.index.html (grafo embeddings ReactFlow · /viz)"
+      kind: boundary
+    ProfilingUI:
+      label: "profiling.index.html (viewer de traits · /profiling_viewer)"
+      kind: boundary
+
+    # ── Módulos Python auxiliares (proyectan la KB) ─────────────────────
+    ExportFlow:
+      label: "flow_editor.export_flow.export (SLDBReader -> ConversationStep)"
+      kind: core
+    ExportGraph:
+      label: "viz.export_graph.build_graph (KB + embeddings + PCA)"
+      kind: core
+
+    # ── Assets compartidos ──────────────────────────────────────────────
+    SharedTheme:
+      label: "shared/theme.css (tema unificado + nav)"
+      kind: boundary
+
+    # ── Dependencias del runtime (backend) ──────────────────────────────
+    Orchestrator:
+      label: kb_agent.orchestrator.Orchestrator
+      kind: boundary
+    ProjectConfig:
+      label: kb_agent.project_config (load_project_config)
+      kind: boundary
+    SLDBReader:
+      label: kb_agent.ontologizador.sldb_reader.SLDBReader
+      kind: boundary
+    KnowledgeOps:
+      label: knowledge_base.operations (KnowledgeOperations)
+      kind: boundary
+
+  edges:
+    # entrypoint construye la app
+    - from: ChatServer
+      to: ChatApp
+      relation: imports
+      label: create_app(cfg)
+    - from: ChatServer
+      to: ProjectConfig
+      relation: imports
+      label: load_project_config
+
+    # el hub corre turnos y lee config
+    - from: ApiChat
+      to: Orchestrator
+      relation: uses
+      label: handle_turn
+    - from: TwilioWebhook
+      to: Orchestrator
+      relation: uses
+      label: handle_turn (threadpool)
+    - from: ChatApp
+      to: ProjectConfig
+      relation: uses
+      label: Orchestrator.from_config
+
+    # el hub sirve las 5 UIs estáticas
+    - from: ChatApp
+      to: ChatUI
+      relation: serves
+      label: "GET /"
+    - from: ChatApp
+      to: FlowEditorUI
+      relation: serves
+      label: FileResponse
+    - from: ChatApp
+      to: TaxonomyUI
+      relation: serves
+      label: FileResponse
+    - from: ChatApp
+      to: VizUI
+      relation: serves
+      label: FileResponse
+    - from: ChatApp
+      to: ProfilingUI
+      relation: serves
+      label: FileResponse
+
+    # cada UI consume /api/config + /static/theme.css, y su endpoint propio
+    - from: ChatUI
+      to: ApiChat
+      relation: fetch
+      label: "/api/chat, /api/atom"
+    - from: FlowEditorUI
+      to: ApiFlow
+      relation: fetch
+      label: /api/flow
+    - from: TaxonomyUI
+      to: ApiTaxonomy
+      relation: fetch
+      label: /api/taxonomy
+    - from: VizUI
+      to: ApiVizGraph
+      relation: fetch
+      label: /api/viz/graph
+    - from: ProfilingUI
+      to: ApiProfiles
+      relation: fetch
+      label: /api/profiles
+    - from: StaticMount
+      to: SharedTheme
+      relation: serves
+      label: /static/theme.css
+
+    # los endpoints dinámicos delegan en los proyectores de KB
+    - from: ApiFlow
+      to: ExportFlow
+      relation: uses
+      label: export(kb_root)
+    - from: ApiVizGraph
+      to: ExportGraph
+      relation: uses
+      label: build_graph(kb_root)
+    - from: ApiTaxonomy
+      to: SLDBReader
+      relation: reads
+      label: reader.find(type.knowledge.*)
+    - from: ApiAtom
+      to: SLDBReader
+      relation: reads
+      label: reader.get_doc
+
+    # los proyectores leen la KB real
+    - from: ExportFlow
+      to: SLDBReader
+      relation: reads
+      label: ConversationStep
+    - from: ExportGraph
+      to: KnowledgeOps
+      relation: reads
+      label: atoms + embeddings

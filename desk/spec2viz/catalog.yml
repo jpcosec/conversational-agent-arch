@@ -3,6 +3,53 @@ title: KB Agent Runtime · Catálogo de arquitectura
 brand_name: KB Agent Runtime
 project_name: kb-agent-runtime
 vistas:
+  # ── Codebase actual (current-*: refleja el repo HOY, módulo por módulo) ──
+  - id: current-kb-agent
+    category: Codebase actual
+    nav: kb_agent (runtime)
+    title: Codebase · kb_agent · Componentes reales
+    desc: Los ~40 módulos reales de kb_agent/ con su jerarquía de subpaquetes e imports reales.
+    type: component
+    src: build/current-kb-agent.mmd
+    specs: [backend/current-kb-agent.yml]
+    tags: [layer:backend, view:current, source:ast]
+  - id: current-frontends
+    category: Codebase actual
+    nav: frontends (UIs)
+    title: Codebase · frontends · Componentes reales
+    desc: chat.app como hub FastAPI + las 5 UIs + proyectores de KB (export_flow, export_graph).
+    type: component
+    src: build/current-frontends.mmd
+    specs: [backend/current-frontends.yml]
+    tags: [layer:frontend, view:current, source:ast]
+  - id: current-knowledge-base
+    category: Codebase actual
+    nav: knowledge_base (CLI)
+    title: Codebase · knowledge_base · Componentes reales
+    desc: CLI de la KB — parser (11 subcomandos) + KnowledgeOperations (organize, propose, reflect...).
+    type: component
+    src: build/current-knowledge-base.mmd
+    specs: [backend/current-knowledge-base.yml]
+    tags: [layer:backend, view:current, source:ast]
+  - id: current-deploy
+    category: Codebase actual
+    nav: deploy (Modal)
+    title: Codebase · deploy · Modal App
+    desc: modal_app empaqueta código + KB real y sirve el ASGI de frontends.chat.app; release.sh gate.
+    type: component
+    src: build/current-deploy.mmd
+    specs: [backend/current-deploy.yml]
+    tags: [layer:deploy, view:current]
+  - id: current-tests
+    category: Codebase actual
+    nav: tests (suite)
+    title: Codebase · tests · Suite por capas
+    desc: unit / integration / e2e / ui + support + conftest (gating, aislamiento de DBs).
+    type: component
+    src: build/current-tests.mmd
+    specs: [backend/current-tests.yml]
+    tags: [layer:testing, view:current]
+
   # ── Global ──────────────────────────────────────────
   - id: deployment-backend-frontend
     category: Global
