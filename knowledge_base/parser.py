@@ -90,4 +90,3 @@ def _add_index_commands(subparsers: argparse._SubParsersAction) -> None:
     p.add_argument("atom_id", help="Id del atom a promover")
 
     p = subparsers.add_parser("reflect", help="Reflector: propone atoms desde ChatHistory")
-    p.add_argument("--db", default=None, help="URL de la base de datos SQL (default: la del --kb)")
