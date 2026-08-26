@@ -284,6 +284,50 @@ class KnowledgeOperations:
 
         return {"id": atom_id, "status": "active", "old_tags": tags, "new_tags": payload["tags"]}
 
+# ── offline: reflect ────────────────────────────────────────
+
+    def reflect(self, db_url: str | None = None) -> list[dict[str, Any]]:
+        """Corre el Reflector: lee ChatHistory y propone atoms nuevos.
+
+        Requiere SQLite con tabla chat_history poblada.
+        """
+        from kb_agent.reflector import (
+            InMemoryCheckpointStore,
+            ReflectorAtomGenerator,
+            ReflectorBatchReaderJob,
+        )
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+
+        actual_db = db_url or self._db_url
+        if not actual_db:
+            raise ValueError("Se requiere --db para connectar a la base de datos SQL")
+
+        engine = create_engine(actual_db)
+        SessionLocal = sessionmaker(bind=engine)
+
+        reader = ReflectorBatchReaderJob(SessionLocal, InMemoryCheckpointStore())
+        rows = reader.run()
+
+        generator = ReflectorAtomGenerator(
+            kb_root=self._kb_root,
+            store_name=".sldb",
+            output_dir=self._kb_root / "atoms",
+            pythonpath=self._pythonpath,
+        )
+        generated = generator.generate(rows)
+
+        return [
+            {
+                "atom_id": atom.atom_id,
+                "atom_type": atom.atom_type,
+                "path": str(atom.path),
+                "normalized_text": atom.normalized_text,
+                "count": atom.count,
+            }
+            for atom in generated
+        ]
+
     # ── helper: sldb subprocess call ────────────────────────────
 
     def _run_sldb(self, *args: str) -> None:
@@ -295,6 +339,143 @@ class KnowledgeOperations:
         project_root = Path(__file__).resolve().parents[1]
         cmd = ["sldb", *args, "--store", str(self._store_path), "--pythonpath", str(project_root)]
         subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=60, cwd=project_root)
+
+
+    # ── runtime: embedder ─────────────────────────────────────────
+
+    _embedder_cache: Any = None
+
+    def _embedder(self):
+        """Lazy embedder (fastembed, español)."""
+        if self._embedder_cache is None:
+            from fastembed import TextEmbedding
+            self._embedder_cache = TextEmbedding(
+                model_name="jinaai/jina-embeddings-v2-base-es",
+                cache_dir=str(self._kb_root / ".embedding_cache"),
+            )
+        return self._embedder_cache
+
+    @staticmethod
+    def _cosine_sim(a: list[float], b: list[float]) -> float:
+        dot = sum(x * y for x, y in zip(a, b))
+        na = sum(x * x for x in a) ** 0.5
+        nb = sum(y * y for y in b) ** 0.5
+        return dot / (na * nb) if na and nb else 0.0
+
+    def _semantic_search(self, query: str, threshold: float = 0.5) -> list[dict[str, Any]]:
+        """Busca por similitud coseno entre query y embeddings de atoms."""
+        from kb_agent.models.knowledge import DomainAtom, RuleAtom
+
+        embedder = self._embedder()
+        query_emb = list(embedder.embed([query]))[0]
+        qv = [float(v) for v in query_emb]
+
+        records = self._find_records()
+        results = []
+        for r in records:
+            if r.kind != "doc":
+                continue
+            mn = (r.model_name or "").lower()
+            if mn not in ("domainatom", "ruleatom"):
+                continue
+            doc = self._read_doc(r.name)
+            if not doc:
+                continue
+            emb = doc.get("embedding")
+            if not emb or not isinstance(emb, list) or len(emb) < 2:
+                continue
+            score = self._cosine_sim(qv, [float(v) for v in emb])
+            if score < threshold:
+                continue
+            results.append({
+                "id": r.name,
+                "model": r.model_name,
+                "score": round(score, 4),
+                "tags": list(r.semantic or []),
+                "path": r.path,
+                "title": doc.get("title", ""),
+            })
+        return sorted(results, key=lambda x: x["score"], reverse=True)
+
+    def _fuzzy_search(self, query: str) -> list[dict[str, Any]]:
+        """Busca por substring en tags, title, answer, semantic_anchors."""
+        records = self._find_records()
+        q = query.lower()
+        results = []
+        seen = set()
+        for r in records:
+            if r.kind != "doc":
+                continue
+            if r.name in seen:
+                continue
+            seen.add(r.name)
+
+            tags = [t.lower() for t in (r.semantic or [])]
+            if any(q in t for t in tags):
+                results.append({
+                    "id": r.name, "model": r.model_name, "score": 0.8,
+                    "match": "semantic_tag", "tags": list(r.semantic or []), "path": r.path,
+                })
+                continue
+
+            doc = self._read_doc(r.name)
+            if not doc:
+                continue
+            title = str(doc.get("title", "")).lower()
+            answer = str(doc.get("answer", "")).lower()
+            anchors = [str(a).lower() for a in (doc.get("semantic_anchors") or [])]
+            if q in title or q in answer or any(q in a for a in anchors):
+                results.append({
+                    "id": r.name, "model": r.model_name, "score": 0.7,
+                    "match": "title_answer_anchor", "tags": list(r.semantic or []), "path": r.path,
+                })
+        return results
+
+    # ── runtime: explore multi-estrategia ─────────────────────────
+
+    def explore_multi(
+        self,
+        query: str,
+        semantic_threshold: float = 0.3,
+        max_results: int = 10,
+    ) -> dict[str, Any]:
+        """Explore multi-estrategia: embeds query, busca por similitud + fuzzy + KGDB."""
+        semantic = self._semantic_search(query, threshold=semantic_threshold)
+        fuzzy = self._fuzzy_search(query)
+
+        seen = set()
+        merged = []
+        for item in semantic:
+            seen.add(item["id"])
+            merged.append(item)
+        for item in fuzzy:
+            if item["id"] not in seen:
+                seen.add(item["id"])
+                item["score"] = round(item["score"] * 0.85, 4)
+                merged.append(item)
+
+        merged.sort(key=lambda x: x["score"], reverse=True)
+        merged = merged[:max_results]
+
+        kgdb_enriched = []
+        try:
+            kgdb = self._kgdb()
+            for item in merged:
+                siblings = kgdb.sibling_docs(item["id"])[:3]
+                item["siblings"] = siblings
+                kgdb_enriched.append(item)
+        except Exception:
+            kgdb_enriched = merged
+
+        top_score = merged[0]["score"] if merged else 0.0
+        return {
+            "query": query,
+            "results": merged,
+            "top_score": top_score,
+            "results_count": len(merged),
+            "is_empty": top_score == 0.0 or len(merged) == 0,
+        }
+
 
     def _kgdb(self):
         """Lazy KGDB reader."""
