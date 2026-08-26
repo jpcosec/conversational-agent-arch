@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 
 from kb_agent.models_sql.identity import Base, UserTraits, Users
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
-from knowledge_base.operations import KnowledgeOperations
+from knowledge_base.operations import KnowledgeOperations, derive_path
 from tests.support.sldb_seed import DEFAULT_NAMESPACES_REGISTRY, REPO_ROOT, seed_store
 
 USER = "wa:+56900000000"
@@ -150,6 +150,7 @@ def test_propose_writes_proposed_atom_in_isolated_copy(kb_store: Path, tmp_path:
     shutil.copytree(kb_store, isolated)
     result = _ops(isolated).propose("domain", "id: atom-nueva\ntitle: Nueva\nsummary: Nueva atom de dominio para test.\nfive_wh_one_plus: what\nanswer: Contenido\ntags:\n- domain:test\n")
     assert (result["status"], result["source"]) == ("proposed", "reflector")
+    assert Path(result["path"]) == derive_path(isolated, "atom-nueva", ["domain:test", "status:proposed", "source:reflector"])
     content = Path(result["path"]).read_text(encoding="utf-8")
     assert "status:proposed" in content and "source:reflector" in content
 
@@ -169,3 +170,35 @@ def test_reflect_reads_chat_history_and_returns_list(kb_store: Path, tmp_path: P
     assert _ops(isolated, url).reflect() == []  # < PATTERN_MIN_COUNT repeticiones
     with pytest.raises(ValueError, match="--db"):
         _ops(isolated).reflect()
+
+
+def test_organize_dry_run_reports_semantic_destinations(kb_store: Path) -> None:
+    result = _ops(kb_store).organize(dry_run=True)
+    destinations = {item["id"]: Path(item["destination"]) for item in result["moves"]}
+    assert destinations["self-bot"] == kb_store / "self" / "whoami" / "self-bot.md"
+    assert destinations["step-onboarding"] == kb_store / "conversation" / "steps" / "onboarding" / "step-onboarding.md"
+    assert destinations["atom-carta"] == kb_store / "domain" / "catalogo" / "atom-carta.md"
+
+
+# ── derive_path (funcion pura) ────────────────────────────────────────────────
+
+def test_derive_path_uses_single_semantic_tag() -> None:
+    assert derive_path(Path("/kb"), "step-onboarding", ["conversation:steps.onboarding"]) == Path(
+        "/kb/conversation/steps/onboarding/step-onboarding.md"
+    )
+
+
+def test_derive_path_skips_excluded_namespaces_and_uses_first_significant_tag() -> None:
+    assert derive_path(
+        Path("/kb"),
+        "trait-vegetariano",
+        ["type.knowledge.trait", "workspace:tests", "source:reflector", "user:traits.vegetariano", "domain:catalogo"],
+    ) == Path("/kb/user/traits/vegetariano/trait-vegetariano.md")
+
+
+def test_derive_path_falls_back_to_flat_atoms_when_only_excluded_tags_exist() -> None:
+    assert derive_path(
+        Path("/kb"),
+        "orphan-atom",
+        ["type.knowledge.domain", "workspace:desk", "source:x"],
+    ) == Path("/kb/atoms/orphan-atom.md")

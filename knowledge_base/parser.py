@@ -17,6 +17,7 @@ Commands:
   context --user <id>    Estado completo de la sesión (todo-en-uno)
   propose --model <m>    Propuesta de atom (para el Reflector)
          --body <yaml>
+  organize --kb <path>   Reorganiza atoms planos según tags semánticos
 
 Offline (fortalecimiento de la KB):
   index embeddings       Calcula embeddings para DomainAtom y RuleAtom
@@ -70,6 +71,10 @@ def build_parser() -> argparse.ArgumentParser:
     p = subparsers.add_parser("propose", help="Propuesta de atom (para el Reflector)")
     p.add_argument("--model", required=True, help=f"Modelo del atom: {', '.join(['domain','rule','tool','trait','step','self','style','boundary','strategy','fallback'])}")
     p.add_argument("--body", required=True, help="Contenido del atom en YAML/JSON")
+
+    # organize
+    p = subparsers.add_parser("organize", help="Reorganiza atoms planos usando tags semánticos")
+    p.add_argument("--dry-run", action="store_true", help="Muestra los movimientos sin modificar archivos ni store")
 
     # add index subcommands
     _add_index_commands(subparsers)
