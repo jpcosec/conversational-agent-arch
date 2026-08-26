@@ -10,3 +10,7 @@ runs/*
 spec2viz_serve.log
 .sldb_e2e_donpeppe/.sldb/runtime/
 .embedding_cache/
+
+# logs/indices de workflow generados por deskops (no versionar)
+.deskops.log
+runs/subagents/index.jsonl
