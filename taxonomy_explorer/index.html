@@ -23,91 +23,19 @@
   *{margin:0;padding:0;box-sizing:border-box}
   html,body,#root{height:100%;width:100%}
   body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden}
-  .topbar{position:fixed;top:0;left:0;right:0;height:52px;z-index:30;
-    background:rgba(10,10,15,.88);backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(212,165,116,.18);
-    display:flex;align-items:center;padding:0 22px;gap:14px}
-  .brand{font-size:16px;font-weight:600}
-  .brand em{color:#d4a574;font-style:italic}
-  .brand-sub{font-family:'JetBrains Mono',monospace;font-size:10px;
-    letter-spacing:.06em;color:rgba(245,240,232,.45)}
-  .legend{margin-left:auto;display:flex;gap:14px}
-  .legend-item{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;
-    font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:rgba(245,240,232,.55)}
-  .legend-dot{width:9px;height:9px;border-radius:3px}
   .react-flow__attribution{display:none}
-  /* tooltip */
-  .tt{position:fixed;z-index:100;background:rgba(10,10,15,.96);
-    border:1px solid rgba(245,240,232,.14);border-radius:10px;padding:11px 13px;
-    max-width:300px;font-size:12px;line-height:1.5;pointer-events:none;
-    backdrop-filter:blur(8px);display:none;box-shadow:0 12px 40px rgba(0,0,0,.5)}
-  .tt.show{display:block}
-  .tt-id{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(245,240,232,.45);margin-bottom:3px}
-  .tt-title{font-weight:600;margin-bottom:4px}
-  .tt-5wh{color:#d4a574;font-family:'JetBrains Mono',monospace;font-size:10px;
-    text-transform:uppercase;letter-spacing:.08em}
-  .tt-sum{margin-top:5px;color:rgba(245,240,232,.62)}
-  .tt-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
-  .tt-tag{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;
-    border-radius:4px;background:rgba(245,240,232,.06);color:rgba(245,240,232,.5)}
-  /* modal */
-  .modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);
-    backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center}
-  .modal-ov.show{display:flex}
-  .modal{background:#111a2e;border:1px solid rgba(245,240,232,.14);border-radius:16px;
-    width:600px;max-height:82vh;overflow-y:auto;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,.6)}
-  .modal h2{font-size:16px;font-weight:600;margin-bottom:16px}
-  .mf{margin-bottom:13px}
-  .ml{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#d4a574;
-    font-family:'JetBrains Mono',monospace;margin-bottom:4px;display:block}
-  .modal input,.modal textarea,.modal select{width:100%;background:#0a0a0f;
-    border:1px solid rgba(245,240,232,.1);border-radius:8px;padding:8px 10px;color:#f5f0e8;
-    font-family:'Inter',sans-serif;font-size:13px;outline:none;transition:border-color .12s}
-  .modal input:focus,.modal textarea:focus,.modal select:focus{border-color:#d4a574}
-  .modal textarea{min-height:90px;resize:vertical;font-family:'JetBrains Mono',monospace;font-size:12px}
-  .modal input:disabled{opacity:.5;cursor:not-allowed}
-  .ma{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
-  .ma button{padding:8px 18px;border-radius:10px;border:1px solid rgba(245,240,232,.14);
-    background:transparent;color:#f5f0e8;font-family:'Inter',sans-serif;font-size:12px;
-    font-weight:600;cursor:pointer;transition:all .12s}
-  .ma .save{background:#d4a574;color:#0a0a0f;border-color:#d4a574}
-  .ma .save:hover{opacity:.85}
-  .ma .cancel:hover{background:rgba(245,240,232,.06)}
-  /* comment popover */
-  .cmt{position:fixed;z-index:150;background:#111a2e;border:1px solid rgba(212,165,116,.3);
-    border-radius:12px;padding:12px;width:280px;box-shadow:0 16px 44px rgba(0,0,0,.55);display:none}
-  .cmt.show{display:block}
-  .cmt-l{font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;
-    letter-spacing:.08em;color:rgba(245,240,232,.5);margin-bottom:6px}
-  .cmt textarea{width:100%;background:#0a0a0f;border:1px solid rgba(245,240,232,.1);
-    border-radius:8px;padding:8px;color:#f5f0e8;font-family:'Inter',sans-serif;font-size:12px;
-    outline:none;resize:vertical;min-height:56px}
-  .cmt textarea:focus{border-color:#d4a574}
-  .cmt-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:8px}
-  .cmt-actions button{padding:5px 12px;border-radius:8px;border:1px solid rgba(245,240,232,.14);
-    background:transparent;color:#f5f0e8;font-size:11px;font-weight:600;cursor:pointer}
-  .cmt-actions .save{background:#d4a574;color:#0a0a0f;border-color:#d4a574}
+  input,textarea,select{font-family:inherit}
 </style>
 </head>
 <body>
-<div class="topbar">
-  <div>
-    <div class="brand"><em>Taxonomía</em> · Mindmap</div>
-    <div class="brand-sub">árbol de conocimiento · doble-click edita · click comenta</div>
-  </div>
-  <div class="legend" id="legend"></div>
-</div>
 <div id="root"></div>
-<div class="tt" id="tooltip"></div>
-<div class="modal-ov" id="modal"><div class="modal"></div></div>
-<div class="cmt" id="cmt"></div>
 
 <script type="module">
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ReactFlow, ReactFlowProvider, Background, Controls, MiniMap,
-  Handle, Position, useNodesState, useEdgesState, useReactFlow,
+  Handle, Position, useNodesState, useEdgesState, useReactFlow, NodeToolbar,
 } from '@xyflow/react';
 import htm from 'htm';
 import dagre from 'dagre';
@@ -115,66 +43,45 @@ const html = htm.bind(React.createElement);
 
 /* ── familias: color por raíz ── */
 const FAM = {
-  self:         { color:'#7cba7c', icon:'🧬', label:'self' },
-  domain:       { color:'#7fb3d5', icon:'📖', label:'domain' },
-  conversation: { color:'#e6a85c', icon:'💬', label:'conversation' },
-  user:         { color:'#c97db9', icon:'👤', label:'user' },
+  self:         { color:'#7cba7c', icon:'🧬' },
+  domain:       { color:'#7fb3d5', icon:'📖' },
+  conversation: { color:'#e6a85c', icon:'💬' },
+  user:         { color:'#c97db9', icon:'👤' },
 };
 const FIVEWH = { what:'❓', when:'📅', where:'📍', who:'👤', how:'🔧', why:'🤔' };
 
-/* leyenda */
-const leg = document.getElementById('legend');
-for (const [k, v] of Object.entries(FAM)) {
-  const el = document.createElement('div'); el.className = 'legend-item';
-  el.innerHTML = `<span class="legend-dot" style="background:${v.color}"></span>${v.icon} ${k}`;
-  leg.appendChild(el);
-}
-
-/* ── nodo del mindmap: burbuja/pill ── */
+/* ── nodo del mindmap: burbuja/pill (presentacional puro) ── */
 function MindNode({ data, selected }) {
   const fam = FAM[data.family] || FAM.domain;
   const isRoot = data.kind === 'root';
   const isAtom = data.kind === 'atom';
-  const bg = isRoot ? fam.color
-    : isAtom ? 'rgba(18,18,26,.95)'
-    : `${fam.color}18`;
-  const border = selected ? '#d4a574'
-    : isRoot ? fam.color
-    : `${fam.color}66`;
+  const bg = isRoot ? fam.color : isAtom ? 'rgba(18,18,26,.95)' : `${fam.color}18`;
+  const border = selected ? '#d4a574' : isRoot ? fam.color : `${fam.color}66`;
   return html`
-    <div
-      onMouseEnter=${(e) => data.onHover?.(e, data)}
-      onMouseLeave=${() => data.onHoverEnd?.()}
-      onDoubleClick=${() => data.onEdit?.(data)}
-      onClick=${(e) => data.onComment?.(e, data)}
-      style=${{
-        border: `2px solid ${border}`,
-        borderLeft: isAtom ? `4px solid ${fam.color}` : `2px solid ${border}`,
-        background: bg,
-        borderRadius: isRoot ? 20 : 12,
-        padding: isRoot ? '10px 18px' : '7px 13px',
-        minWidth: isRoot ? 130 : 90,
-        maxWidth: 240,
-        cursor: 'pointer',
-        transition: '.15s',
-        boxShadow: selected ? '0 0 18px rgba(212,165,116,.25)' : 'none',
-        display: 'flex', alignItems: 'center', gap: 7,
-      }}>
+    <div style=${{
+      border: `2px solid ${border}`,
+      borderLeft: isAtom ? `4px solid ${fam.color}` : `2px solid ${border}`,
+      background: bg,
+      borderRadius: isRoot ? 20 : 12,
+      padding: isRoot ? '10px 18px' : '7px 13px',
+      minWidth: isRoot ? 130 : 90, maxWidth: 240,
+      cursor: 'pointer', transition: '.15s',
+      boxShadow: selected ? '0 0 18px rgba(212,165,116,.25)' : 'none',
+      display: 'flex', alignItems: 'center', gap: 7,
+    }}>
       <${Handle} type="target" position=${Position.Left}
         style=${{ background: fam.color, width: 7, height: 7, border: '2px solid #0a0a0f', opacity: isRoot ? 0 : 1 }} />
       ${isRoot && html`<span style=${{ fontSize: 15 }}>${fam.icon}</span>`}
       ${isAtom && html`<span style=${{ fontSize: 12 }}>${FIVEWH[data.five_wh] || '📄'}</span>`}
       <div style=${{ minWidth: 0 }}>
         <div style=${{
-          fontSize: isRoot ? 14 : 12,
-          fontWeight: isRoot ? 700 : 500,
-          color: isRoot ? '#0a0a0f' : '#f5f0e8',
-          lineHeight: 1.2,
+          fontSize: isRoot ? 14 : 12, fontWeight: isRoot ? 700 : 500,
+          color: isRoot ? '#0a0a0f' : '#f5f0e8', lineHeight: 1.2,
           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
         }}>${data.label}</div>
         ${isAtom && html`<div style=${{
-          fontSize: 8, fontFamily: "'JetBrains Mono',monospace",
-          color: fam.color, opacity: .8, marginTop: 1, textTransform: 'uppercase', letterSpacing: '.06em',
+          fontSize: 8, fontFamily: "'JetBrains Mono',monospace", color: fam.color,
+          opacity: .8, marginTop: 1, textTransform: 'uppercase', letterSpacing: '.06em',
         }}>${data.atom_type}</div>`}
       </div>
       <${Handle} type="source" position=${Position.Right}
@@ -186,191 +93,259 @@ const nodeTypes = { mind: MindNode };
 
 /* ── construir nodos+edges desde el árbol taxonómico ── */
 let NID = 0;
-function buildGraph(tax, handlers) {
+function buildGraph(tax) {
   const nodes = [], edges = [];
-  const families = Object.keys(tax);
-  families.forEach((fam) => {
+  Object.keys(tax).forEach((fam) => {
     const rootId = `root-${fam}`;
-    nodes.push({
-      id: rootId, type: 'mind', position: { x: 0, y: 0 },
-      data: { label: fam, family: fam, kind: 'root', ...handlers },
-    });
-    // recorre subpaths (branches) y atoms
-    function walk(children, parentId, orphans) {
-      children.forEach((node) => {
-        const bid = `b-${NID++}`;
-        nodes.push({
-          id: bid, type: 'mind', position: { x: 0, y: 0 },
-          data: { label: node.name, family: fam, kind: 'branch', path: node.path, ...handlers },
-        });
-        edges.push(mkEdge(parentId, bid, fam));
-        // atoms colgando de este branch
-        node.atoms.forEach((a) => {
-          const aid = `a-${NID++}`;
-          nodes.push({
-            id: aid, type: 'mind', position: { x: 0, y: 0 },
-            data: {
-              label: a.title, family: fam, kind: 'atom',
-              atom_id: a.id, atom_type: a.atom_type, five_wh: a.five_wh_one_plus,
-              summary: a.summary, tags: a.tags, ...handlers,
-            },
-          });
-          edges.push(mkEdge(bid, aid, fam));
-        });
-        if (node.children?.length) walk(node.children, bid, []);
-      });
-    }
-    walk(tax[fam].children, rootId, tax[fam].orphans);
-    // orphans directos de la familia
-    (tax[fam].orphans || []).forEach((a) => {
+    nodes.push({ id: rootId, type: 'mind', position: { x: 0, y: 0 },
+      data: { label: fam, family: fam, kind: 'root' } });
+    const pushAtom = (a, parentId) => {
       const aid = `a-${NID++}`;
-      nodes.push({
-        id: aid, type: 'mind', position: { x: 0, y: 0 },
+      nodes.push({ id: aid, type: 'mind', position: { x: 0, y: 0 },
         data: {
           label: a.title, family: fam, kind: 'atom',
           atom_id: a.id, atom_type: a.atom_type, five_wh: a.five_wh_one_plus,
-          summary: a.summary, tags: a.tags, ...handlers,
-        },
+          summary: a.summary, tags: a.tags,
+        } });
+      edges.push(mkEdge(parentId, aid, fam));
+    };
+    function walk(children, parentId) {
+      children.forEach((node) => {
+        const bid = `b-${NID++}`;
+        nodes.push({ id: bid, type: 'mind', position: { x: 0, y: 0 },
+          data: { label: node.name, family: fam, kind: 'branch', path: node.path } });
+        edges.push(mkEdge(parentId, bid, fam));
+        node.atoms.forEach((a) => pushAtom(a, bid));
+        if (node.children?.length) walk(node.children, bid);
       });
-      edges.push(mkEdge(rootId, aid, fam));
-    });
+    }
+    walk(tax[fam].children, rootId);
+    (tax[fam].orphans || []).forEach((a) => pushAtom(a, rootId));
   });
   return { nodes, edges };
 }
 function mkEdge(source, target, fam) {
-  return {
-    id: `e-${source}-${target}`, source, target,
-    type: 'bezier',
-    style: { stroke: `${FAM[fam].color}55`, strokeWidth: 1.8 },
-  };
+  return { id: `e-${source}-${target}`, source, target, type: 'bezier',
+    style: { stroke: `${FAM[fam].color}55`, strokeWidth: 1.8 } };
 }
 
-/* ── layout dagre: LR, cada familia apilada verticalmente ── */
+/* ── layout dagre: LR, familias apiladas verticalmente ── */
 function layout(nodes, edges) {
-  // agrupa por familia
   const byFam = {};
   nodes.forEach((n) => { (byFam[n.data.family] ||= []).push(n); });
-  const famOrder = ['self', 'domain', 'conversation', 'user'];
-  let yOffset = 0;
-  const positioned = {};
-  famOrder.forEach((fam) => {
-    const famNodes = (byFam[fam] || []);
-    if (!famNodes.length) return;
-    const famIds = new Set(famNodes.map((n) => n.id));
-    const famEdges = edges.filter((e) => famIds.has(e.source) && famIds.has(e.target));
+  const order = ['self', 'domain', 'conversation', 'user'];
+  let yOffset = 0; const pos = {};
+  order.forEach((fam) => {
+    const fn = byFam[fam] || []; if (!fn.length) return;
+    const ids = new Set(fn.map((n) => n.id));
+    const fe = edges.filter((e) => ids.has(e.source) && ids.has(e.target));
     const g = new dagre.graphlib.Graph();
     g.setDefaultEdgeLabel(() => ({}));
     g.setGraph({ rankdir: 'LR', nodesep: 22, ranksep: 90, marginx: 20, marginy: 20 });
-    famNodes.forEach((n) => {
-      const w = n.data.kind === 'root' ? 150 : n.data.kind === 'atom' ? 200 : 110;
-      g.setNode(n.id, { width: w, height: 40 });
-    });
-    famEdges.forEach((e) => g.setEdge(e.source, e.target));
+    const W = (n) => n.data.kind === 'root' ? 150 : n.data.kind === 'atom' ? 200 : 110;
+    fn.forEach((n) => g.setNode(n.id, { width: W(n), height: 40 }));
+    fe.forEach((e) => g.setEdge(e.source, e.target));
     dagre.layout(g);
-    // altura de esta familia
-    let maxY = 0;
-    famNodes.forEach((n) => { const p = g.node(n.id); maxY = Math.max(maxY, p.y); });
-    famNodes.forEach((n) => {
-      const p = g.node(n.id);
-      const w = n.data.kind === 'root' ? 150 : n.data.kind === 'atom' ? 200 : 110;
-      positioned[n.id] = { x: p.x - w / 2, y: p.y - 20 + yOffset };
-    });
-    yOffset += maxY + 120; // separación entre familias
+    let maxY = 0; fn.forEach((n) => { maxY = Math.max(maxY, g.node(n.id).y); });
+    fn.forEach((n) => { const p = g.node(n.id); pos[n.id] = { x: p.x - W(n) / 2, y: p.y - 20 + yOffset }; });
+    yOffset += maxY + 120;
   });
-  return nodes.map((n) => ({ ...n, position: positioned[n.id] || { x: 0, y: 0 } }));
+  return nodes.map((n) => ({ ...n, position: pos[n.id] || { x: 0, y: 0 } }));
 }
 
-/* ── tooltip / modal / comment ── */
-function showTooltip(e, data) {
-  if (data.kind !== 'atom') return;
-  const tt = document.getElementById('tooltip');
-  tt.className = 'tt show';
-  let h = `<div class="tt-id">${data.atom_id}</div><div class="tt-title">${data.label}</div>`;
-  if (data.five_wh) h += `<span class="tt-5wh">${FIVEWH[data.five_wh] || ''} ${data.five_wh}</span>`;
-  if (data.summary) h += `<div class="tt-sum">${data.summary}</div>`;
-  if (data.tags?.length) h += `<div class="tt-tags">${data.tags.filter(t => t.includes(':')).map(t => `<span class="tt-tag">${t}</span>`).join('')}</div>`;
-  tt.innerHTML = h;
-  let x = e.clientX + 16, y = e.clientY + 8;
-  if (x + 300 > innerWidth) x = e.clientX - 316;
-  if (y + 180 > innerHeight) y = innerHeight - 190;
-  tt.style.left = x + 'px'; tt.style.top = y + 'px';
-}
-function hideTooltip() { document.getElementById('tooltip').className = 'tt'; }
-
-function openEdit(data) {
-  if (data.kind !== 'atom') return;
-  hideTooltip();
-  const ov = document.getElementById('modal'); const m = ov.querySelector('.modal');
-  m.innerHTML = `
-    <h2>✏️ ${data.label}</h2>
-    <div class="mf"><label class="ml">ID</label><input value="${data.atom_id}" disabled/></div>
-    <div class="mf"><label class="ml">Título</label><input id="me-title" value="${data.label}"/></div>
-    <div class="mf"><label class="ml">5WH1+</label>
-      <select id="me-5wh">${['', 'what','when','where','who','how','why'].map(v =>
-        `<option value="${v}"${v === data.five_wh ? ' selected' : ''}>${FIVEWH[v] || '—'} ${v}</option>`).join('')}</select></div>
-    <div class="mf"><label class="ml">Tags (uno por línea)</label>
-      <textarea id="me-tags" style="min-height:64px">${(data.tags || []).filter(t => t.includes(':')).join('\n')}</textarea></div>
-    <div class="mf"><label class="ml">Summary</label><textarea id="me-sum">${data.summary || ''}</textarea></div>
-    <div class="ma">
-      <button class="cancel" onclick="document.getElementById('modal').classList.remove('show')">Cancelar</button>
-      <button class="save" onclick="alert('POST /api/atom/save — persistencia pendiente'); document.getElementById('modal').classList.remove('show')">Guardar</button>
-    </div>`;
-  ov.classList.add('show');
+/* ── Tooltip (JSX, sigue al cursor) ── */
+function Tooltip({ atom, pos }) {
+  if (!atom) return null;
+  const S = {
+    position: 'fixed', zIndex: 100, left: pos.x, top: pos.y,
+    background: 'rgba(10,10,15,.96)', border: '1px solid rgba(245,240,232,.14)',
+    borderRadius: 10, padding: '11px 13px', maxWidth: 300, fontSize: 12, lineHeight: 1.5,
+    pointerEvents: 'none', backdropFilter: 'blur(8px)', boxShadow: '0 12px 40px rgba(0,0,0,.5)',
+  };
+  const tags = (atom.tags || []).filter((t) => t.includes(':'));
+  return html`
+    <div style=${S}>
+      <div style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 9, color: 'rgba(245,240,232,.45)', marginBottom: 3 }}>${atom.atom_id}</div>
+      <div style=${{ fontWeight: 600, marginBottom: 4 }}>${atom.label}</div>
+      ${atom.five_wh && html`<span style=${{ color: '#d4a574', fontFamily: "'JetBrains Mono',monospace", fontSize: 10, textTransform: 'uppercase', letterSpacing: '.08em' }}>${FIVEWH[atom.five_wh] || ''} ${atom.five_wh}</span>`}
+      ${atom.summary && html`<div style=${{ marginTop: 5, color: 'rgba(245,240,232,.62)' }}>${atom.summary}</div>`}
+      ${tags.length > 0 && html`<div style=${{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
+        ${tags.map((t) => html`<span key=${t} style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 9, padding: '2px 5px', borderRadius: 4, background: 'rgba(245,240,232,.06)', color: 'rgba(245,240,232,.5)' }}>${t}</span>`)}
+      </div>`}
+    </div>
+  `;
 }
 
-function openComment(e, data) {
-  if (data.kind !== 'atom') return;
-  const c = document.getElementById('cmt');
-  c.className = 'cmt show';
-  c.innerHTML = `
-    <div class="cmt-l">📝 Comentario · ${data.atom_id}</div>
-    <textarea placeholder="Nota para el agente reflector…" id="cmt-text"></textarea>
-    <div class="cmt-actions">
-      <button onclick="document.getElementById('cmt').classList.remove('show')">Cerrar</button>
-      <button class="save" onclick="alert('Comentario guardado en metadata (pendiente POST)'); document.getElementById('cmt').classList.remove('show')">Guardar</button>
-    </div>`;
-  let x = e.clientX + 12, y = e.clientY + 8;
-  if (x + 280 > innerWidth) x = e.clientX - 292;
-  if (y + 160 > innerHeight) y = innerHeight - 170;
-  c.style.left = x + 'px'; c.style.top = y + 'px';
-  setTimeout(() => document.getElementById('cmt-text')?.focus(), 50);
+/* ── Modal de edición (JSX + estado controlado) ── */
+function EditModal({ atom, onClose, onSave }) {
+  const [title, setTitle] = useState(atom.label);
+  const [fiveWh, setFiveWh] = useState(atom.five_wh || '');
+  const [tagsText, setTagsText] = useState((atom.tags || []).filter((t) => t.includes(':')).join('\n'));
+  const [summary, setSummary] = useState(atom.summary || '');
+  const inp = {
+    width: '100%', background: '#0a0a0f', border: '1px solid rgba(245,240,232,.1)',
+    borderRadius: 8, padding: '8px 10px', color: '#f5f0e8', fontSize: 13, outline: 'none',
+  };
+  const lbl = {
+    fontSize: 10, textTransform: 'uppercase', letterSpacing: '.08em', color: '#d4a574',
+    fontFamily: "'JetBrains Mono',monospace", marginBottom: 4, display: 'block',
+  };
+  const field = { marginBottom: 13 };
+  return html`
+    <div onClick=${onClose} style=${{
+      position: 'fixed', inset: 0, background: 'rgba(0,0,0,.72)', backdropFilter: 'blur(4px)',
+      zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center',
+    }}>
+      <div onClick=${(e) => e.stopPropagation()} style=${{
+        background: '#111a2e', border: '1px solid rgba(245,240,232,.14)', borderRadius: 16,
+        width: 600, maxHeight: '82vh', overflowY: 'auto', padding: 24, boxShadow: '0 24px 60px rgba(0,0,0,.6)',
+      }}>
+        <h2 style=${{ fontSize: 16, fontWeight: 600, marginBottom: 16 }}>✏️ ${atom.label}</h2>
+        <div style=${field}><label style=${lbl}>ID</label>
+          <input value=${atom.atom_id} disabled style=${{ ...inp, opacity: .5 }} /></div>
+        <div style=${field}><label style=${lbl}>Título</label>
+          <input value=${title} onChange=${(e) => setTitle(e.target.value)} style=${inp} /></div>
+        <div style=${field}><label style=${lbl}>5WH1+</label>
+          <select value=${fiveWh} onChange=${(e) => setFiveWh(e.target.value)} style=${inp}>
+            ${['', 'what', 'when', 'where', 'who', 'how', 'why'].map((v) =>
+              html`<option key=${v} value=${v}>${FIVEWH[v] || '—'} ${v}</option>`)}
+          </select></div>
+        <div style=${field}><label style=${lbl}>Tags (uno por línea)</label>
+          <textarea value=${tagsText} onChange=${(e) => setTagsText(e.target.value)}
+            style=${{ ...inp, minHeight: 64, resize: 'vertical', fontFamily: "'JetBrains Mono',monospace", fontSize: 12 }} /></div>
+        <div style=${field}><label style=${lbl}>Summary</label>
+          <textarea value=${summary} onChange=${(e) => setSummary(e.target.value)}
+            style=${{ ...inp, minHeight: 80, resize: 'vertical', fontFamily: "'JetBrains Mono',monospace", fontSize: 12 }} /></div>
+        <div style=${{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 18 }}>
+          <button onClick=${onClose} style=${btn(false)}>Cancelar</button>
+          <button onClick=${() => onSave({ atom_id: atom.atom_id, title, five_wh: fiveWh, tags: tagsText.split('\n').filter(Boolean), summary })}
+            style=${btn(true)}>Guardar</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+/* ── Popover de comentario (anclado con NodeToolbar sería ideal; aquí flotante controlado) ── */
+function CommentPopover({ atom, pos, onClose, onSave }) {
+  const [text, setText] = useState('');
+  const ref = useRef(null);
+  useEffect(() => { ref.current?.focus(); }, []);
+  return html`
+    <div style=${{
+      position: 'fixed', zIndex: 150, left: pos.x, top: pos.y,
+      background: '#111a2e', border: '1px solid rgba(212,165,116,.3)', borderRadius: 12,
+      padding: 12, width: 280, boxShadow: '0 16px 44px rgba(0,0,0,.55)',
+    }}>
+      <div style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 9, textTransform: 'uppercase', letterSpacing: '.08em', color: 'rgba(245,240,232,.5)', marginBottom: 6 }}>📝 Comentario · ${atom.atom_id}</div>
+      <textarea ref=${ref} value=${text} onChange=${(e) => setText(e.target.value)}
+        placeholder="Nota para el agente reflector…"
+        style=${{ width: '100%', background: '#0a0a0f', border: '1px solid rgba(245,240,232,.1)', borderRadius: 8, padding: 8, color: '#f5f0e8', fontSize: 12, outline: 'none', resize: 'vertical', minHeight: 56 }} />
+      <div style=${{ display: 'flex', gap: 6, justifyContent: 'flex-end', marginTop: 8 }}>
+        <button onClick=${onClose} style=${btn(false, true)}>Cerrar</button>
+        <button onClick=${() => onSave(atom.atom_id, text)} style=${btn(true, true)}>Guardar</button>
+      </div>
+    </div>
+  `;
+}
+
+function btn(primary, small) {
+  return {
+    padding: small ? '5px 12px' : '8px 18px', borderRadius: small ? 8 : 10,
+    border: `1px solid ${primary ? '#d4a574' : 'rgba(245,240,232,.14)'}`,
+    background: primary ? '#d4a574' : 'transparent',
+    color: primary ? '#0a0a0f' : '#f5f0e8',
+    fontSize: small ? 11 : 12, fontWeight: 600, cursor: 'pointer',
+  };
+}
+
+/* ── Leyenda (JSX) ── */
+function Legend() {
+  return html`
+    <div style=${{ position: 'fixed', top: 14, right: 22, zIndex: 30, display: 'flex', gap: 14 }}>
+      ${Object.entries(FAM).map(([k, v]) => html`
+        <div key=${k} style=${{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: "'JetBrains Mono',monospace", fontSize: 10, textTransform: 'uppercase', letterSpacing: '.06em', color: 'rgba(245,240,232,.55)' }}>
+          <span style=${{ width: 9, height: 9, borderRadius: 3, background: v.color }}></span>${v.icon} ${k}
+        </div>`)}
+    </div>
+  `;
 }
 
 /* ── App ── */
 function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [hover, setHover] = useState(null);       // { atom, pos }
+  const [editing, setEditing] = useState(null);   // atom data
+  const [comment, setComment] = useState(null);   // { atom, pos }
   const { fitView } = useReactFlow();
 
   useEffect(() => {
     fetch('/api/taxonomy').then((r) => r.json()).then((tax) => {
-      const handlers = {
-        onHover: showTooltip, onHoverEnd: hideTooltip,
-        onEdit: openEdit, onComment: openComment,
-      };
       NID = 0;
-      const { nodes: rawNodes, edges: rawEdges } = buildGraph(tax, handlers);
-      setNodes(layout(rawNodes, rawEdges));
-      setEdges(rawEdges);
+      const { nodes: rn, edges: re } = buildGraph(tax);
+      setNodes(layout(rn, re));
+      setEdges(re);
       setTimeout(() => fitView({ padding: 0.1, duration: 400 }), 150);
     }).catch((err) => console.error('No se pudo cargar taxonomy', err));
   }, [setNodes, setEdges, fitView]);
 
+  /* handlers nativos de React Flow */
+  const onNodeMouseEnter = useCallback((e, node) => {
+    if (node.data.kind !== 'atom') return;
+    setHover({ atom: node.data, pos: { x: e.clientX + 16, y: e.clientY + 8 } });
+  }, []);
+  const onNodeMouseLeave = useCallback(() => setHover(null), []);
+  const onNodeDoubleClick = useCallback((e, node) => {
+    if (node.data.kind !== 'atom') return;
+    setHover(null); setComment(null);
+    setEditing(node.data);
+  }, []);
+  const onNodeClick = useCallback((e, node) => {
+    if (node.data.kind !== 'atom') return;
+    setHover(null);
+    setComment({ atom: node.data, pos: { x: e.clientX + 12, y: e.clientY + 8 } });
+  }, []);
+  const onPaneClick = useCallback(() => { setHover(null); setComment(null); }, []);
+
+  const saveEdit = useCallback((patch) => {
+    // TODO: POST /api/atom/save (persistir en SLDB)
+    console.log('save edit', patch);
+    setEditing(null);
+  }, []);
+  const saveComment = useCallback((atomId, text) => {
+    // TODO: POST /api/atom/comment (metadata para reflector)
+    console.log('save comment', atomId, text);
+    setComment(null);
+  }, []);
+
   return html`
-    <div style=${{ width: '100vw', height: '100vh', paddingTop: 52 }}>
+    <div style=${{ width: '100vw', height: '100vh' }}>
+      <div style=${{ position: 'fixed', top: 14, left: 22, zIndex: 30 }}>
+        <div style=${{ fontSize: 16, fontWeight: 600 }}><em style=${{ color: '#d4a574', fontStyle: 'italic' }}>Taxonomía</em> · Mindmap</div>
+        <div style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, letterSpacing: '.06em', color: 'rgba(245,240,232,.45)' }}>doble-click edita · click comenta</div>
+      </div>
+      <${Legend} />
       <${ReactFlow}
         nodes=${nodes} edges=${edges}
         onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange}
         nodeTypes=${nodeTypes}
+        onNodeMouseEnter=${onNodeMouseEnter}
+        onNodeMouseLeave=${onNodeMouseLeave}
+        onNodeClick=${onNodeClick}
+        onNodeDoubleClick=${onNodeDoubleClick}
+        onPaneClick=${onPaneClick}
         fitView minZoom=${0.1} maxZoom=${2}
         proOptions=${{ hideAttribution: true }}
-        onPaneClick=${() => { hideTooltip(); document.getElementById('cmt').classList.remove('show'); }}
       >
         <${Background} color="rgba(212,165,116,.06)" gap=${28} />
         <${Controls} showInteractive=${false} />
         <${MiniMap} nodeColor=${(n) => FAM[n.data?.family]?.color || '#555'}
           maskColor="rgba(10,10,15,.7)" style=${{ background: '#0d1526', border: '1px solid rgba(212,165,116,.2)' }} />
       </${ReactFlow}>
+      ${hover && html`<${Tooltip} atom=${hover.atom} pos=${hover.pos} />`}
+      ${comment && html`<${CommentPopover} atom=${comment.atom} pos=${comment.pos} onClose=${() => setComment(null)} onSave=${saveComment} />`}
+      ${editing && html`<${EditModal} atom=${editing} onClose=${() => setEditing(null)} onSave=${saveEdit} />`}
     </div>
   `;
 }
