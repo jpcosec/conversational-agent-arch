@@ -1,0 +1,6 @@
+## task/ui-tidy
+ M frontends/shared/theme.css
+?? frontends/shared/glossary.js
+?? frontends/shared/hotkeys.js
+?? frontends/shared/tooltip.js
+?? runs/subagents/20260826-190843-task-ui-foundations/

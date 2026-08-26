@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Perfilado</title>
+<title>Users</title>
 <link rel="stylesheet" href="/static/theme.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -13,7 +13,7 @@
     --border2:rgba(245,240,232,.14); --text:#f5f0e8; --muted:rgba(245,240,232,.45);
     --accent:#d4a574; --mono:'JetBrains Mono',monospace; --sans:'Inter',sans-serif;
   }
-  body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh;overflow:hidden}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh;overflow:hidden;display:flex;flex-direction:column}
   .top{height:60px;border-bottom:1px solid var(--border);display:flex;align-items:center;
     padding:0 24px;gap:16px;background:var(--panel)}
   .brand{font-size:18px;font-weight:600}
@@ -25,7 +25,7 @@
     transition:all .15s}
   .user-chip:hover{border-color:var(--accent);color:var(--text)}
   .user-chip.active{border-color:var(--accent);background:rgba(212,165,116,.12);color:var(--accent)}
-  .layout{display:grid;grid-template-columns:420px 1fr;height:calc(100vh - 60px)}
+  .layout{display:grid;grid-template-columns:420px 1fr;flex:1;min-height:0}
   .col{overflow-y:auto;padding:24px}
   .col-left{border-right:1px solid var(--border);background:var(--panel)}
   .col-head{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;
@@ -66,20 +66,63 @@
 </style>
 </head>
 <body>
+  <header class="app-topbar" data-testid='nav-topbar'>
+    <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
+    <nav class="app-nav" id="appNav">
+      <a data-testid="nav-chat" href="/">Chat</a>
+      <a data-testid="nav-flow" href="/flow">Flow</a>
+      <a data-testid="nav-mindmap" href="/mindmap">Mindmap</a>
+      <a data-testid="nav-users" href="/users">Users</a>
+    </nav>
+    <div class="app-topbar-meta">
+      <span class="app-topbar-chip" id="kbLabel">KB</span>
+      <span class="app-topbar-chip" id="healthLabel">—</span>
+    </div>
+  </header>
   <div class="top">
     <div>
-      <div class="brand"><em>Perfilado</em> · <span id="bizName">…</span></div>
+      <div class="brand"><em>Users</em> · <span id="bizName">…</span></div>
       <div class="brand-sub">UserTraits (SQL) ↔ TraitAtom (SLDB)</div>
     </div>
-    <nav class="app-nav" id="appNav">
-      <a href="/">Chat</a>
-      <a href="/conversation_flow_editor">Flow Editor</a>
-      <a href="/taxonomy_explorer">Taxonomía</a>
-      <a href="/viz">Embeddings</a>
-      <a href="/profiling_viewer">Perfilado</a>
-    </nav>
     <div class="userbar" id="userbar"></div>
   </div>
+<script>
+  (function () {
+    var path = location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('#appNav a').forEach(function (a) {
+      var href = a.getAttribute('href').replace(/\/$/, '') || '/';
+      var active = href === path;
+      a.classList.toggle('active', active);
+      if (active) a.setAttribute('data-active', 'true');
+      else a.removeAttribute('data-active');
+    });
+    Promise.all([
+      fetch('/api/config').then(function (r) { return r.json(); }).catch(function () { return {}; }),
+      fetch('/api/health').then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    ]).then(function (results) {
+      var cfg = results[0] || {};
+      var health = results[1] || {};
+      var brand = document.getElementById('appBrand');
+      var kb = document.getElementById('kbLabel');
+      var healthLabel = document.getElementById('healthLabel');
+      var navLabels = cfg.nav_labels || {};
+      if (brand) brand.textContent = cfg.runtime_title || cfg.name || 'Agente';
+      if (kb) kb.textContent = cfg.kb_label || cfg.name || 'KB';
+      if (healthLabel) healthLabel.textContent = health.status || 'unknown';
+      var linkMap = {
+        chat: document.querySelector('[data-testid="nav-chat"]'),
+        flow: document.querySelector('[data-testid="nav-flow"]'),
+        mindmap: document.querySelector('[data-testid="nav-mindmap"]'),
+        users: document.querySelector('[data-testid="nav-users"]'),
+      };
+      if (linkMap.chat) linkMap.chat.textContent = navLabels.chat || 'Chat';
+      if (linkMap.flow) linkMap.flow.textContent = navLabels.flow || 'Flow';
+      if (linkMap.mindmap) linkMap.mindmap.textContent = navLabels.mindmap || 'Mindmap';
+      if (linkMap.users) linkMap.users.textContent = navLabels.users || 'Users';
+    });
+  })();
+</script>
+
   <div class="layout">
     <div class="col col-left">
       <div class="col-head">Perfil del usuario <span>· SQL</span></div>
@@ -95,19 +138,10 @@
 const ICON = { behavior:'🧠', preference:'⭐', dietary:'🥗', demographic:'👤', default:'🏷️' };
 let DATA = null, current = 0;
 
-function markActiveNav(){
-  const path = location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('#appNav a').forEach(a=>{
-    const href = a.getAttribute('href').replace(/\/$/, '') || '/';
-    if(href === path) a.classList.add('active');
-  });
-}
-
 async function load(){
-  markActiveNav();
   try{
     const cfg = await fetch('/api/config').then(r=>r.json());
-    if(cfg.name){ document.getElementById('bizName').textContent = cfg.name; document.title = 'Perfilado · ' + cfg.name; }
+    if(cfg.name){ document.getElementById('bizName').textContent = cfg.name; }
   }catch(e){ document.getElementById('bizName').textContent = ''; }
   const r = await fetch('/api/profiles');
   DATA = await r.json();

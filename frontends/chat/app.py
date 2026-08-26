@@ -13,7 +13,7 @@ Endpoints:
   GET  /api/taxonomy                   -> arbol taxonomico completo (familias x atoms)
   GET  /api/viz/graph                  -> grafo de atoms+embeddings (PCA 2D) del store en vivo
   GET  /api/health
-  GET  /, /conversation_flow_editor, /profiling_viewer, /taxonomy_explorer, /viz -> UIs estaticas
+  GET  /, /flow, /mindmap, /users (+ redirects legacy) -> UIs estaticas
 
 La app NO instancia nada al importar el modulo: ``create_app`` recibe (o
 construye desde ``project.config.yaml``) el orquestador y lo deja en
@@ -30,6 +30,7 @@ from fastapi import FastAPI, HTTPException, Request, Response
 from starlette.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
+from starlette.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sqlalchemy import create_engine
@@ -192,8 +193,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     def index() -> FileResponse:
         return FileResponse(str(BASE_DIR / "index.html"))
 
-    @app.get("/conversation_flow_editor")
-    @app.get("/conversation_flow_editor/")
+    @app.get("/flow")
+    @app.get("/flow/")
     def flow_editor() -> FileResponse:
         return FileResponse(str(EDITOR_DIR / "index.html"))
 
@@ -205,8 +206,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
         return JSONResponse(export(str(cfg.flow_kb_root)))
 
-    @app.get("/taxonomy_explorer")
-    @app.get("/taxonomy_explorer/")
+    @app.get("/mindmap")
+    @app.get("/mindmap/")
     def taxonomy_explorer() -> FileResponse:
         return FileResponse(str(TAXONOMY_DIR / "index.html"))
 
@@ -285,10 +286,10 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             }
         return JSONResponse(result)
 
-    @app.get("/viz")
-    @app.get("/viz/")
-    def viz_explorer() -> FileResponse:
-        return FileResponse(str(VIZ_DIR / "index.html"))
+    @app.get("/users")
+    @app.get("/users/")
+    def profiling_viewer() -> FileResponse:
+        return FileResponse(str(PROFILING_DIR / "index.html"))
 
     @app.get("/api/viz/graph")
     def viz_graph(edge_threshold: float | None = None, max_edges_per_node: int | None = None) -> JSONResponse:
@@ -318,10 +319,21 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
         return JSONResponse({"kb": cfg.name, **graph})
 
-    @app.get("/profiling_viewer")
-    @app.get("/profiling_viewer/")
-    def profiling_viewer() -> FileResponse:
-        return FileResponse(str(PROFILING_DIR / "index.html"))
+    OLD_ROUTES = {
+        "/conversation_flow_editor": "/flow",
+        "/taxonomy_explorer": "/mindmap",
+        "/viz": "/mindmap",
+        "/profiling_viewer": "/users",
+    }
+
+    def _redirect_factory(dest: str):
+        async def _redirect() -> RedirectResponse:
+            return RedirectResponse(url=dest, status_code=301)
+        return _redirect
+
+    for old_path, new_path in OLD_ROUTES.items():
+        app.add_api_route(old_path, _redirect_factory(new_path), methods=["GET"])
+        app.add_api_route(old_path + "/", _redirect_factory(new_path), methods=["GET"])
 
     @app.get("/api/profiles")
     def profiles() -> JSONResponse:
