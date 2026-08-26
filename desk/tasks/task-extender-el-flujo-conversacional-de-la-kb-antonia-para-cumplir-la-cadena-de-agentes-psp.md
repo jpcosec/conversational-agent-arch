@@ -1,13 +1,15 @@
 ---
 id: task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
-status: draft
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
-current_node: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
-history: []
+current_node: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+history:
+- operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+- operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
 references: []
 depends_on: []
 pills:
@@ -52,6 +54,7 @@ atoms:
 - atom-policy-gate-como-agente-separado-con-rama-kb-propia
 - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
 - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
+closeout_evidence_verified: false
 ---
 
 # Extender el flujo conversacional de la KB Antonia para cumplir la cadena de agentes PSP

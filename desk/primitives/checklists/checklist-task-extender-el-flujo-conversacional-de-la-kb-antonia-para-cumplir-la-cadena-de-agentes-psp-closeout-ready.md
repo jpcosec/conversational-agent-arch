@@ -2,7 +2,7 @@
 # checklist-xxx
 id: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
 # draft | active | complete | archived
-status: active
+status: complete
 # List of condition-xxx paths
 condition_refs:
 - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
