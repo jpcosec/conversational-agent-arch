@@ -36,7 +36,7 @@ def test_health_and_config_reflect_project_config(client: TestClient) -> None:
     assert client.get("/api/config").json() == cfg.to_public_dict()
 
 
-@pytest.mark.parametrize("path", ["/", "/conversation_flow_editor", "/profiling_viewer"])
+@pytest.mark.parametrize("path", ["/", "/conversation_flow_editor", "/profiling_viewer", "/taxonomy_explorer", "/viz"])
 def test_static_uis_are_served(client: TestClient, path: str) -> None:
     res = client.get(path)
     assert res.status_code == 200 and "<!doctype html>" in res.text.lower()
@@ -53,6 +53,24 @@ def test_flow_graph_exposes_steps_and_transitions(client: TestClient) -> None:
     by_id = {n["id"]: n for n in flow["nodes"]}
     assert by_id["step-donpeppe-onboarding"]["step_tag"] == "conversation:steps.onboarding"
     assert {"source": "step-donpeppe-onboarding", "target": "step-donpeppe-booking", "relation": "flows_to"} in flow["edges"]
+
+
+def test_viz_graph_is_built_from_active_kb(client: TestClient) -> None:
+    graph = client.get("/api/viz/graph").json()
+    cfg = client.app.state.cfg
+    assert graph["kb"] == cfg.name
+    assert graph["nodes"]
+    node_ids = {n["id"] for n in graph["nodes"]}
+    assert "atom-donpeppe-carta" in node_ids
+    assert graph["edges"]
+    for edge in graph["edges"]:
+        assert edge["source"] in node_ids and edge["target"] in node_ids
+
+    limited = client.get("/api/viz/graph", params={"max_edges_per_node": 1}).json()
+    counts: dict[str, int] = {}
+    for edge in limited["edges"]:
+        counts[edge["source"]] = counts.get(edge["source"], 0) + 1
+    assert counts and max(counts.values()) <= 1
 
 
 def test_chat_turn_contract_and_session_continuity(client: TestClient) -> None:

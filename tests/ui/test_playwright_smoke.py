@@ -96,3 +96,16 @@ def test_profiling_viewer_lists_users(page, base_url: str) -> None:
     page.goto(f"{base_url}/profiling_viewer", wait_until="networkidle")
     assert len(page.content()) > 200
     assert page.errors == [], page.errors  # type: ignore[attr-defined]
+
+
+def test_viz_graph_renders_from_active_kb(page, base_url: str) -> None:
+    graph = page.request.get(f"{base_url}/api/viz/graph").json()
+    assert graph["nodes"]
+    page.goto(f"{base_url}/viz", wait_until="networkidle")
+    page.wait_for_selector(".react-flow__node, svg", timeout=20000)
+    assert page.errors == [], page.errors  # type: ignore[attr-defined]
+
+
+def test_chat_sidebar_links_to_viz(page, base_url: str) -> None:
+    page.goto(base_url, wait_until="networkidle")
+    assert page.query_selector("a[href='/viz']") is not None

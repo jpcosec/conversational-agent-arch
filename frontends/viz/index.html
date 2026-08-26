@@ -18,9 +18,8 @@
       padding: 12px 16px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
       backdrop-filter: blur(8px);
     }
-    .toolbar select {
-      background: #0a0a0f; color: #f5f0e8; border: 1px solid #22304b; border-radius: 8px;
-      padding: 5px 10px; font-size: 13px; font-family: inherit;
+    .toolbar .kb-label {
+      font-size: 13px; font-weight: 600; color: #f5f0e8; white-space: nowrap;
     }
     .toolbar .stats { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #9aa7bd; }
 
@@ -81,11 +80,6 @@
       user:         { color: "#c97db9", icon: "👤" },
       none:         { color: "#9aa7bd", icon: "•" },
     };
-    const KBS = [
-      { file: "graph-donpeppe.json", label: "Don Peppe (pizzería)" },
-      { file: "graph-antonia.json",  label: "Antonia (PSP Selfix)" },
-      { file: "graph-reusable.json", label: "Reusable (arquitectura)" },
-    ];
 
     function Panel({ node, onCenter }) {
       if (!node) return html`<div class="panel"><span class="muted">Click un nodo para ver detalle y centrar la vista.</span></div>`;
@@ -106,19 +100,20 @@
     }
 
     function Flow() {
-      const [raw, setRaw] = useState({ nodes: [], edges: [], meta: {} });
+      const [raw, setRaw] = useState({ kb: "", nodes: [], edges: [], meta: {} });
+      const [businessName, setBusinessName] = useState("");
       const [selected, setSelected] = useState(null);
-      const [kb, setKb] = useState(KBS[0].file);
       const [active, setActive] = useState(() => new Set(Object.keys(FAM)));
       const rf = useReactFlow();
 
       useEffect(() => {
-        fetch(kb).then(r => r.json()).then(g => {
+        fetch("/api/config").then(r => r.json()).then(c => setBusinessName(c.name || ""));
+        fetch("/api/viz/graph").then(r => r.json()).then(g => {
           setRaw(g); setSelected(null);
           setActive(new Set(g.meta.families || Object.keys(FAM)));
           setTimeout(() => rf.fitView({ padding: 0.15, duration: 400 }), 50);
         });
-      }, [kb]);
+      }, []);
 
       const nodes = useMemo(
         () => raw.nodes.filter(n => active.has(n.data.family)),
@@ -149,9 +144,7 @@
       return html`
         <${React.Fragment}>
           <div class="toolbar">
-            <select value=${kb} onChange=${e => setKb(e.target.value)}>
-              ${KBS.map(k => html`<option key=${k.file} value=${k.file}>${k.label}</option>`)}
-            </select>
+            <span class="kb-label">${businessName || "KB"}</span>
             <div class="fams">
               ${famList.map(f => {
                 const fam = FAM[f] || FAM.none;

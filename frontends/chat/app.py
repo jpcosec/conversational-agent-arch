@@ -11,8 +11,9 @@ Endpoints:
   GET  /api/flow                       -> grafo de ConversationStep del store (JSON en vivo)
   GET  /api/profiles                   -> UserTraits(SQL) x TraitAtom(SLDB)
   GET  /api/taxonomy                   -> arbol taxonomico completo (familias x atoms)
+  GET  /api/viz/graph                  -> grafo de atoms+embeddings (PCA 2D) del store en vivo
   GET  /api/health
-  GET  /, /conversation_flow_editor, /profiling_viewer, /taxonomy_explorer -> UIs estaticas
+  GET  /, /conversation_flow_editor, /profiling_viewer, /taxonomy_explorer, /viz -> UIs estaticas
 
 La app NO instancia nada al importar el modulo: ``create_app`` recibe (o
 construye desde ``project.config.yaml``) el orquestador y lo deja en
@@ -44,6 +45,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 EDITOR_DIR = PROJECT_ROOT / "frontends" / "flow_editor"
 PROFILING_DIR = PROJECT_ROOT / "frontends" / "profiling"
 TAXONOMY_DIR = PROJECT_ROOT / "frontends" / "taxonomy"
+VIZ_DIR = PROJECT_ROOT / "frontends" / "viz"
 
 UI_CHANNEL = "ui"
 
@@ -279,6 +281,39 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                 "label": fam,
             }
         return JSONResponse(result)
+
+    @app.get("/viz")
+    @app.get("/viz/")
+    def viz_explorer() -> FileResponse:
+        return FileResponse(str(VIZ_DIR / "index.html"))
+
+    @app.get("/api/viz/graph")
+    def viz_graph(edge_threshold: float | None = None, max_edges_per_node: int | None = None) -> JSONResponse:
+        """Grafo de atoms+embeddings (PCA 2D, similitud coseno) de la KB activa.
+
+        Nunca lee los JSON estaticos historicos: se recalcula del store en vivo
+        (misma doctrina que /api/flow y /api/taxonomy). Cachea por (kb_root,
+        edge_threshold, max_edges_per_node) en app.state porque el calculo
+        (embeddings + PCA + similitud) no es instantaneo.
+        """
+        from frontends.viz.export_graph import (
+            DEFAULT_EDGE_THRESHOLD,
+            DEFAULT_MAX_EDGES_PER_NODE,
+            build_graph,
+        )
+
+        threshold = DEFAULT_EDGE_THRESHOLD if edge_threshold is None else edge_threshold
+        max_edges = DEFAULT_MAX_EDGES_PER_NODE if max_edges_per_node is None else max_edges_per_node
+
+        cache: dict[tuple[str, float, int], dict] = getattr(app.state, "viz_cache", None) or {}
+        key = (str(cfg.kb_root), threshold, max_edges)
+        graph = cache.get(key)
+        if graph is None:
+            graph = build_graph(str(cfg.kb_root), pythonpath=str(PROJECT_ROOT), edge_threshold=threshold, max_edges_per_node=max_edges)
+            cache[key] = graph
+            app.state.viz_cache = cache
+
+        return JSONResponse({"kb": cfg.name, **graph})
 
     @app.get("/profiling_viewer")
     @app.get("/profiling_viewer/")

@@ -4,8 +4,13 @@ Proyecta los embeddings 768-dim a 2D via PCA (numpy puro, sin sklearn),
 colorea por familia semantica y crea edges entre pares con alta similitud
 coseno. Escribe un JSON consumido por el HTML de ReactFlow.
 
+El runtime lo consume en vivo via ``GET /api/viz/graph`` (ver
+``frontends/chat/app.py``); este CLI queda para exportar un JSON offline
+(debug, artefactos, ci) sin depender del servidor.
+
 Uso:
-    python -m frontends.viz.export_graph --kb tests/knowledge --out frontends/viz/graph-donpeppe.json
+    python -m frontends.viz.export_graph --out frontends/viz/graph.json
+    python -m frontends.viz.export_graph --kb tests/knowledge --out /tmp/graph.json
 """
 from __future__ import annotations
 
@@ -27,6 +32,10 @@ FAMILY_COLORS = {
     "user": "#c97db9",          # magenta suave
     None: "#9aa7bd",            # gris azulado (sin familia)
 }
+
+#: Defaults compartidos entre el CLI y GET /api/viz/graph (frontends/chat/app.py).
+DEFAULT_EDGE_THRESHOLD = 0.55
+DEFAULT_MAX_EDGES_PER_NODE = 3
 
 
 def _load_atoms(kb: str, pythonpath: str) -> list[dict]:
@@ -162,14 +171,20 @@ def build_graph(kb: str, pythonpath: str, edge_threshold: float, max_edges_per_n
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Exporta atoms+embeddings a grafo ReactFlow.")
-    ap.add_argument("--kb", required=True, help="Ruta de la KB (ej. tests/knowledge)")
+    ap.add_argument("--kb", default=None, help="Ruta de la KB (default: kb_root de project.config.yaml)")
     ap.add_argument("--pythonpath", default=".", help="Pythonpath para modelos")
     ap.add_argument("--out", required=True, help="Ruta del JSON de salida")
-    ap.add_argument("--edge-threshold", type=float, default=0.55, help="Similitud coseno minima para edge")
-    ap.add_argument("--max-edges-per-node", type=int, default=3, help="Edges maximos por nodo")
+    ap.add_argument("--edge-threshold", type=float, default=DEFAULT_EDGE_THRESHOLD, help="Similitud coseno minima para edge")
+    ap.add_argument("--max-edges-per-node", type=int, default=DEFAULT_MAX_EDGES_PER_NODE, help="Edges maximos por nodo")
     args = ap.parse_args()
 
-    graph = build_graph(args.kb, args.pythonpath, args.edge_threshold, args.max_edges_per_node)
+    kb = args.kb
+    if kb is None:
+        from kb_agent.project_config import load_project_config
+
+        kb = str(load_project_config().kb_root)
+
+    graph = build_graph(kb, args.pythonpath, args.edge_threshold, args.max_edges_per_node)
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(graph, ensure_ascii=False, indent=2), encoding="utf-8")
