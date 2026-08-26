@@ -65,12 +65,64 @@ y el mapa léxico de tooltips listo para usar.
 ## Scope OUT
 
 - NO modificar el contenido del chat inspector (sección 2) — es task B.
-- NO modificar el contenido de mindmap (sección 4) — es task C.
-- NO modificar flow (sección 3) ni users (sección 5).
+- NO modificar el contenido interno de mindmap (árbol, layouts, search,
+  toolbar — sección 4) — es task C.
+- NO modificar el contenido interno de flow (subflows, edición, palette,
+  tools — sección 3) — es task D.
+- NO modificar el contenido de users (perfil, eventos, conversaciones —
+  sección 5) — es task E.
 - NO implementar subflows ni drag & drop ni tools list en flow.
-- NO fusionar embeddings con mindmap (solo crear rutas).
+- NO fusionar embeddings con mindmap como contenido (esa fusión es task C).
+  Esta task solo crea la RUTA `/mindmap` y redirige `/viz` → `/mindmap`.
+
+**SÍ se permite** en flow/mindmap/users:
+- Añadir `<script src="/static/hotkeys.js">` y `<script
+  src="/static/glossary.js">` al `<head>` del HTML.
+- Reemplazar la topbar/header existente por la nueva topbar compartida.
+- Añadir `data-testid` a la topbar.
+- NO tocar el cuerpo, el canvas, el inspector, los nodos, ni la lógica JS
+  de cada vista (excepto importar y llamar `initHotkeys()`).
 
 ## Implementation Path
+
+### Convenciones compartidas
+
+Los archivos en `frontends/shared/` se sirven bajo `/static/` gracias a
+`app.py` línea ~131 (`app.mount("/static", StaticFiles(directory=SHARED_DIR))`).
+En cada HTML usar:
+```html
+<script src="/static/hotkeys.js"></script>
+<script src="/static/glossary.js"></script>
+<script src="/static/tooltip.js"></script>
+```
+
+El brand y labels se obtienen con `fetch('/api/config')` client-side al
+cargar la página y se reemplazan en el DOM (sin template engine).
+
+Los `<title>` se editan DIRECTAMENTE en cada archivo `.html` (no server-side).
+
+**hotkeys.js API (contrato entre shared/* y cada vista):**
+```
+function initHotkeys(options: {
+  element: HTMLElement,
+  onSearch: () => void,     onDelete: () => void,
+  onAddChild: () => void,   onAddSibling: () => void,
+  onLinkHorizontal: () => void, onCollapse: () => void,
+  onFocus: () => void,      onLayout: (n: 1|2|3) => void,
+  onHelp: () => void,       onCancel: () => void,
+}): void
+```
+No capturar hotkeys si un input/textarea tiene el foco.
+Overlay de ayuda con `data-testid="hotkey-overlay"`.
+
+**glossary.js estructura:**
+```
+// window.__glossary: { [concept: string]: string }
+// conceptos required: handout, interaccion_simple, obtencion_datos,
+// llamado_tool, grounding_atoms, completion_condition, allowed_transitions,
+// required_slots, system_turn, tool_call, fallback, breakpoint_miss,
+// context_compilation, scenario
+```
 
 Fase 1 — Sistema de diseño + hotkeys + glossary:
 ```
@@ -92,19 +144,51 @@ Fase 2 — Navegación + renombres:
 6. Editar frontends/viz/index.html: topbar nueva (aunque se fusione luego).
 ```
 
+```
+from starlette.responses import RedirectResponse
+
+# En create_app(), tras las rutas existentes:
+OLD_ROUTES = {
+    "/conversation_flow_editor": "/flow",
+    "/taxonomy_explorer": "/mindmap",
+    "/profiling_viewer": "/users",
+    "/viz": "/mindmap",
+}
+for old_path, new_path in OLD_ROUTES.items():
+    @app.get(old_path)
+    @app.get(old_path + "/")
+    async def _redirect(request: Request, dest: str = new_path):
+        return RedirectResponse(url=dest, status_code=301)
+```
+
 Fase 3 — Placeholder:
 ```
-1. Agregar ui.input_placeholder a project.config.yaml (default "Escribe tu
-   mensaje...").
-2. Agregar a ProjectConfig.to_public_dict() en kb_agent/project_config.py.
-3. Editar frontends/chat/index.html: leer de /api/config y setear placeholder.
+1. En project.config.yaml, bajo ui: agregar: input_placeholder: "Escribe tu mensaje..."
+2. En kb_agent/project_config.py, en ProjectConfig:
+
+@dataclass
+class ProjectConfig:
+    ...
+    input_placeholder: str = "Escribe tu mensaje..."
+
+   En to_public_dict() agregar: "input_placeholder": self.input_placeholder,
 ```
 
 Fase 4 — Tests:
 ```
-1. En tests/ui/test_ui_guide.py: xfail en tests de secciones 0, 1, 6, 7, 8.
-2. SKIP_LLM_TESTS=1 pytest tests/ui/test_ui_guide.py -q — deben fallar
-   (xfail) o pasar si la UI ya está implementada parcialmente.
+1. En tests/ui/test_ui_guide.py: envolver los tests de secciones 0, 1, 6, 7, 8
+   con @pytest.mark.xfail(reason="UI no redisenada — se implementa en esta task").
+   Los tests de secciones 2 (chat), 3 (flow), 4 (mindmap), 5 (users) NO se
+   marcan xfail y FALLARAN — eso es esperado y aceptable para esta task.
+   Done When NO exige que esos tests pasen; solo que los xfail reporten
+   como xfail (ninguno pasa inesperadamente).
+
+   Usar xfail individual por funcion (no pytestmark de modulo), para no marcar
+   toda la suite.
+
+2. Ejecutar: SKIP_LLM_TESTS=1 python -m pytest tests/ui/test_ui_guide.py -q
+   — los xfail deben aparecer como "xfailed" (no "passed", no "failed").
+   Los no-xfail de secciones 2-5 fallaran (reporte: X failed, X xfailed).
 ```
 
 ## Validation
@@ -114,22 +198,17 @@ Antes de cada fase:
 SKIP_LLM_TESTS=1 python -m pytest tests/unit tests/integration -q  # 141+ pasan
 ```
 
-Después de cada fase:
+Después de cada fase (puerto aleatorio del fixture — NO se fija manualmente):
 ```bash
-SKIP_LLM_TESTS=1 python -m pytest tests/ui/test_ui_guide.py -q --tb=short -x -k "seccion_0 or seccion_1 or test_config_"
-# Deben fallar con xfail (la UI no está implementada)
-# Si pasan inesperadamente, la task está hecha
+SKIP_LLM_TESTS=1 python -m pytest tests/ui/test_ui_guide.py -q --tb=short -k "test_config_ or test_nav or test_hotkey or test_api_tools or test_api_events"
+# Los xfail de secciones 0/1/6/7/8 deben salir como "xfailed" (no "PASSED")
+# Los no-xfallidos de las demas secciones (api_tools, api_events, ...) deben
+# salir como pasados si el endpoint existe, o fallar si no — aceptable
 
-# Verificar redirects:
-curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:<port>/conversation_flow_editor  # 301
-curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:<port>/flow                      # 200
-
-# Verificar placeholder:
-curl -s http://127.0.0.1:<port>/api/config | python3 -c "import sys,json; d=json.load(sys.stdin); assert 'input_placeholder' in d, 'falta placeholder en config'"
-
-# Verificar hotkeys global:
-curl -s http://127.0.0.1:<port>/flow  | grep -c "hotkeys.js"  # 1
-curl -s http://127.0.0.1:<port>/mindmap | grep -c "hotkeys.js"  # 1
+# Verificar import de shared/ en HTML (sin servidor):
+# grep -c "hotkeys.js" frontends/flow_editor/index.html  → 1
+# grep -c "hotkeys.js" frontends/taxonomy/index.html     → 1 (mindmap)
+# grep -c "hotkeys.js" frontends/viz/index.html          → 1 (redirige a mindmap)
 ```
 
 ## Done When
