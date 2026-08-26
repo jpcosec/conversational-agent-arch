@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KB Atoms & Embeddings</title>
+  <title>Mindmap</title>
   <link rel="stylesheet" href="https://esm.sh/reactflow@11.11.4/dist/style.css" />
   <link rel="stylesheet" href="/static/theme.css" />
   <style>
@@ -52,30 +52,56 @@
   </style>
 </head>
 <body>
-  <header class="app-topbar">
-    <span class="app-topbar-brand" id="appBrand">Agente</span>
+  <header class="app-topbar" data-testid='nav-topbar'>
+    <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
     <nav class="app-nav" id="appNav">
-      <a href="/">Chat</a>
-      <a href="/conversation_flow_editor">Flow Editor</a>
-      <a href="/taxonomy_explorer">Taxonomía</a>
-      <a href="/viz">Embeddings</a>
-      <a href="/profiling_viewer">Perfilado</a>
+      <a data-testid="nav-chat" href="/">Chat</a>
+      <a data-testid="nav-flow" href="/flow">Flow</a>
+      <a data-testid="nav-mindmap" href="/mindmap">Mindmap</a>
+      <a data-testid="nav-users" href="/users">Users</a>
     </nav>
+    <div class="app-topbar-meta">
+      <span class="app-topbar-chip" id="kbLabel">KB</span>
+      <span class="app-topbar-chip" id="healthLabel">—</span>
+    </div>
   </header>
   <div id="root"></div>
-  <script>
-    (function () {
-      var path = location.pathname.replace(/\/$/, '') || '/';
-      document.querySelectorAll('#appNav a').forEach(function (a) {
-        var href = a.getAttribute('href').replace(/\/$/, '') || '/';
-        if (href === path) a.classList.add('active');
-      });
-      fetch('/api/config').then(function (r) { return r.json(); }).then(function (cfg) {
-        var b = document.getElementById('appBrand');
-        if (b) b.textContent = cfg.runtime_title || cfg.name || 'Agente';
-      }).catch(function () {});
-    })();
-  </script>
+<script>
+  (function () {
+    var path = location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('#appNav a').forEach(function (a) {
+      var href = a.getAttribute('href').replace(/\/$/, '') || '/';
+      var active = href === path;
+      a.classList.toggle('active', active);
+      if (active) a.setAttribute('data-active', 'true');
+      else a.removeAttribute('data-active');
+    });
+    Promise.all([
+      fetch('/api/config').then(function (r) { return r.json(); }).catch(function () { return {}; }),
+      fetch('/api/health').then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    ]).then(function (results) {
+      var cfg = results[0] || {};
+      var health = results[1] || {};
+      var brand = document.getElementById('appBrand');
+      var kb = document.getElementById('kbLabel');
+      var healthLabel = document.getElementById('healthLabel');
+      var navLabels = cfg.nav_labels || {};
+      if (brand) brand.textContent = cfg.runtime_title || cfg.name || 'Agente';
+      if (kb) kb.textContent = cfg.kb_label || cfg.name || 'KB';
+      if (healthLabel) healthLabel.textContent = health.status || 'unknown';
+      var linkMap = {
+        chat: document.querySelector('[data-testid="nav-chat"]'),
+        flow: document.querySelector('[data-testid="nav-flow"]'),
+        mindmap: document.querySelector('[data-testid="nav-mindmap"]'),
+        users: document.querySelector('[data-testid="nav-users"]'),
+      };
+      if (linkMap.chat) linkMap.chat.textContent = navLabels.chat || 'Chat';
+      if (linkMap.flow) linkMap.flow.textContent = navLabels.flow || 'Flow';
+      if (linkMap.mindmap) linkMap.mindmap.textContent = navLabels.mindmap || 'Mindmap';
+      if (linkMap.users) linkMap.users.textContent = navLabels.users || 'Users';
+    });
+  })();
+</script>
 
   <script type="importmap">
   {

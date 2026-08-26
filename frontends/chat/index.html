@@ -2,7 +2,7 @@
 <html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Auditable Agent Runtime</title>
+<title>Chat</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -43,53 +43,24 @@ tailwind.config = {
 </head>
 <body class="bg-background text-on-surface font-body h-screen overflow-hidden flex flex-col">
 
-<!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-background/80 backdrop-blur-xl border-b border-white/10 gap-4">
-  <div class="flex items-center gap-2 flex-shrink-0">
-    <span class="msym text-primary text-2xl">hub</span>
-    <h1 id="runtimeTitle" class="text-2xl font-bold text-on-surface tracking-tight">Auditable Agent Runtime</h1>
-  </div>
-  <nav class="app-nav" id="appNav" style="margin-left:0">
-    <a href="/">Chat</a>
-    <a href="/conversation_flow_editor">Flow Editor</a>
-    <a href="/taxonomy_explorer">Taxonomía</a>
-    <a href="/viz">Embeddings</a>
-    <a href="/profiling_viewer">Perfilado</a>
-  </nav>
-  <div class="flex items-center gap-4 flex-shrink-0">
-    <span id="kbLabel" class="text-on-surface-variant font-mono text-xs">KB</span>
-    <div class="flex items-center gap-3">
-      <span id="healthIcon" class="msym text-error text-xl" title="Backend status">cloud_off</span>
-      <span class="msym text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-xl">settings</span>
-      <span class="msym text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-xl">account_circle</span>
+  <header class="app-topbar" data-testid='nav-topbar'>
+    <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
+    <nav class="app-nav" id="appNav">
+      <a data-testid="nav-chat" href="/">Chat</a>
+      <a data-testid="nav-flow" href="/flow">Flow</a>
+      <a data-testid="nav-mindmap" href="/mindmap">Mindmap</a>
+      <a data-testid="nav-users" href="/users">Users</a>
+    </nav>
+    <div class="app-topbar-meta">
+      <span class="app-topbar-chip" id="kbLabel">KB</span>
+      <span class="app-topbar-chip" id="healthLabel">—</span>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="flex flex-1 mt-16 h-[calc(100vh-64px)] overflow-hidden">
-
-  <!-- SideNavBar -->
-  <nav class="fixed left-0 top-16 h-[calc(100vh-64px)] flex flex-col p-4 bg-surface-container-low border-r border-white/5 w-64 flex-shrink-0 z-40">
-    <div class="mb-8 px-2">
-      <h2 class="text-2xl font-bold text-on-surface">Workbench</h2>
-      <p class="font-mono text-xs text-on-surface-variant">arch: conversational-agent</p>
-    </div>
-    <div class="text-on-surface-variant font-mono text-[10px] uppercase tracking-wider px-3 mb-2">Herramientas KB</div>
-    <ul class="flex flex-col gap-1">
-      <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all font-mono text-xs" href="/conversation_flow_editor"><span class="msym">account_tree</span>Flow Editor</a></li>
-      <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all font-mono text-xs" href="/taxonomy_explorer"><span class="msym">hub</span>Taxonomía</a></li>
-      <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all font-mono text-xs" href="/profiling_viewer"><span class="msym">badge</span>Perfilado</a></li>
-      <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all font-mono text-xs" href="/viz"><span class="msym">scatter_plot</span>Embeddings</a></li>
-    </ul>
-    <div class="mt-auto border-t border-white/5 pt-4">
-      <ul class="flex flex-col gap-1">
-        <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-mono text-xs" href="/docs" target="_blank"><span class="msym">menu_book</span>API Docs</a></li>
-      </ul>
-    </div>
-  </nav>
+<div class="flex flex-1 min-h-0 overflow-hidden">
 
   <!-- Main -->
-  <main class="ml-64 flex-1 flex flex-col md:flex-row h-full overflow-hidden bg-background">
+  <main class="flex-1 flex flex-col md:flex-row h-full overflow-hidden bg-background">
 
     <!-- Left: Chat Timeline -->
     <section class="flex-1 border-r border-white/5 flex flex-col overflow-hidden bg-surface">
@@ -122,6 +93,43 @@ tailwind.config = {
   </main>
 </div>
 
+<script>
+  (function () {
+    var path = location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('#appNav a').forEach(function (a) {
+      var href = a.getAttribute('href').replace(/\/$/, '') || '/';
+      var active = href === path;
+      a.classList.toggle('active', active);
+      if (active) a.setAttribute('data-active', 'true');
+      else a.removeAttribute('data-active');
+    });
+    Promise.all([
+      fetch('/api/config').then(function (r) { return r.json(); }).catch(function () { return {}; }),
+      fetch('/api/health').then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    ]).then(function (results) {
+      var cfg = results[0] || {};
+      var health = results[1] || {};
+      var brand = document.getElementById('appBrand');
+      var kb = document.getElementById('kbLabel');
+      var healthLabel = document.getElementById('healthLabel');
+      var navLabels = cfg.nav_labels || {};
+      if (brand) brand.textContent = cfg.runtime_title || cfg.name || 'Agente';
+      if (kb) kb.textContent = cfg.kb_label || cfg.name || 'KB';
+      if (healthLabel) healthLabel.textContent = health.status || 'unknown';
+      var linkMap = {
+        chat: document.querySelector('[data-testid="nav-chat"]'),
+        flow: document.querySelector('[data-testid="nav-flow"]'),
+        mindmap: document.querySelector('[data-testid="nav-mindmap"]'),
+        users: document.querySelector('[data-testid="nav-users"]'),
+      };
+      if (linkMap.chat) linkMap.chat.textContent = navLabels.chat || 'Chat';
+      if (linkMap.flow) linkMap.flow.textContent = navLabels.flow || 'Flow';
+      if (linkMap.mindmap) linkMap.mindmap.textContent = navLabels.mindmap || 'Mindmap';
+      if (linkMap.users) linkMap.users.textContent = navLabels.users || 'Users';
+    });
+  })();
+</script>
+
 <!-- Modal atom -->
 <div id="modalBackdrop" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[60] p-6">
   <div class="w-[min(900px,100%)] max-h-[85vh] bg-surface-container border border-white/10 rounded-xl flex flex-col">
@@ -139,9 +147,7 @@ const inputEl = document.getElementById('input');
 const sendBtn = document.getElementById('send');
 const inspectorEl = document.getElementById('inspector');
 const sessionBadge = document.getElementById('sessionBadge');
-const healthIcon = document.getElementById('healthIcon');
 const kbLabel = document.getElementById('kbLabel');
-const runtimeTitle = document.getElementById('runtimeTitle');
 const sessionTitle = document.getElementById('sessionTitle');
 const modalBackdrop = document.getElementById('modalBackdrop');
 const modalTitle = document.getElementById('modalTitle');
@@ -389,15 +395,6 @@ document.addEventListener('click', e=>{
   if(ref){ openAtomModal(ref.getAttribute('data-atom')); return; }
 });
 
-// nav compartida: resalta la pagina actual
-(()=>{
-  const path = location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('#appNav a').forEach(a=>{
-    const href = a.getAttribute('href').replace(/\/$/, '') || '/';
-    if(href === path) a.classList.add('active');
-  });
-})();
-
 // config del negocio + health + greeting (todo desde el server, sin hardcode)
 (async ()=>{
   let cfg = {};
@@ -405,17 +402,10 @@ document.addEventListener('click', e=>{
     cfg = await fetch('/api/config').then(r=>r.json());
   }catch(e){ /* usa defaults del markup */ }
   try{
-    const h = await fetch('/api/health').then(r=>r.json());
-    health = h;
-    healthIcon.textContent = 'cloud_done';
-    healthIcon.className = 'msym text-emerald-500 text-xl';
-  }catch(e){
-    healthIcon.textContent = 'cloud_off';
-    healthIcon.className = 'msym text-error text-xl';
-  }
+    health = await fetch('/api/health').then(r=>r.json());
+  }catch(e){ /* estado ya reflejado en la topbar */ }
   // marca del negocio desde config
   const bizName = cfg.name || 'Agente';
-  if(cfg.runtime_title){ runtimeTitle.textContent = cfg.runtime_title; document.title = cfg.runtime_title + ' · ' + bizName; }
   kbLabel.textContent = cfg.kb_label || ((health.kb_root||'').split('/').pop() + ' · ' + (health.model||''));
   sessionTitle.textContent = 'Session: ' + bizName;
   if(sessionId) sessionBadge.textContent = 'ID: ' + sessionId;
