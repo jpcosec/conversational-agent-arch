@@ -1,0 +1,67 @@
+name: ci
+
+# Gate liviano que SI corre en un runner limpio de GitHub.
+#
+# La suite completa (unit/integration) depende de sldb + kgdb, y kgdb no tiene
+# remoto publicable -> un runner limpio no puede instalarla. Por eso el gate
+# autoritativo (suite + deploy + tag) vive en deploy/release.sh y corre en el
+# entorno del dev. Aqui solo validamos lo que NO necesita esas deps: que el
+# codigo parsea, que project.config.yaml es coherente y que no se colo un
+# hardcode de negocio.
+on:
+  push:
+    branches: [conversational-agent-arch, main, production]
+  pull_request:
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Sintaxis (todo el arbol compila)
+        run: python -m compileall -q kb_agent knowledge_base frontends deploy
+
+      - name: project.config.yaml es YAML valido y declara negocio activo
+        run: |
+          pip install pyyaml
+          python - <<'PY'
+          import yaml, sys
+          cfg = yaml.safe_load(open("project.config.yaml"))["project"]
+          assert cfg.get("name"), "falta project.name"
+          assert cfg.get("kb_root"), "falta project.kb_root"
+          assert cfg.get("tools"), "falta project.tools"
+          print(f"negocio activo: {cfg['name']} (kb_root={cfg['kb_root']})")
+          PY
+
+      - name: No hay hardcodes de negocio en el runtime
+        run: |
+          python - <<'PY'
+          import ast, pathlib, sys
+          MARKERS = ("don peppe", "donpeppe", "antonia")
+          def docstring_nodes(tree):
+              ids = set()
+              for node in ast.walk(tree):
+                  if isinstance(node, (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                      body = getattr(node, "body", [])
+                      if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant) and isinstance(body[0].value.value, str):
+                          ids.add(id(body[0].value))
+              return ids
+          hits = []
+          for p in pathlib.Path("kb_agent").rglob("*.py"):
+              tree = ast.parse(p.read_text(encoding="utf-8"))
+              ds = docstring_nodes(tree)
+              for node in ast.walk(tree):
+                  if isinstance(node, ast.Constant) and isinstance(node.value, str) and id(node) not in ds:
+                      if any(m in node.value.lower() for m in MARKERS):
+                          hits.append(f"{p}:{node.lineno}: {node.value!r}")
+          if hits:
+              print("ERROR: nombre de negocio hardcodeado en un string-literal vivo de kb_agent/")
+              print("       (debe venir de la KB o de project.config.yaml)")
+              print("\n".join(hits))
+              sys.exit(1)
+          print("ok: kb_agent/ no hardcodea negocios (comentarios y docstrings se ignoran)")
+          PY
