@@ -1,1 +1,46 @@
-documents: []
+documents:
+- name: trait-antonia-primera-vez
+  path: atoms/trait-antonia-primera-vez.md
+  hash_c: 37976108513ff4df41344ca93e72cf87ca8d37d29312abb29e60f0aae98075b9
+  hash_d: 12768792ecc1e280d211919535da2d01c38c376b6676bca82193b6bd48724b27
+  semantic_tags:
+  - system:laboratorio-chile
+  - type.knowledge.trait
+  - user:traits.primera_vez
+  - workspace.knowledge
+- name: trait-antonia-ansioso-aplicacion
+  path: atoms/trait-antonia-ansioso-aplicacion.md
+  hash_c: 36737acd30c0abae022ebda0bab6164814786927165091a7e7b414b3e2a75985
+  hash_d: 9f2406aa01f3df90c8606a4cc66419004da6759fa551c143a558b9ec4b0aecc0
+  semantic_tags:
+  - system:laboratorio-chile
+  - type.knowledge.trait
+  - user:traits.ansioso_aplicacion
+  - workspace.knowledge
+- name: trait-antonia-buena-adherencia
+  path: atoms/trait-antonia-buena-adherencia.md
+  hash_c: 3d3248f1eee027d5d4a460f307d086fdf92fc05e849e3714ced2cbf70626d481
+  hash_d: 725b518134cea07b8b59e48f34be55b8451d60bb79f8414456d2d3bbb3a849aa
+  semantic_tags:
+  - system:laboratorio-chile
+  - type.knowledge.trait
+  - user:traits.buena_adherencia
+  - workspace.knowledge
+- name: trait-antonia-dudas-efectos
+  path: atoms/trait-antonia-dudas-efectos.md
+  hash_c: 7871167e955bc7c4607b267a509f3126d99cfb3b2b7c7e0a92e7912fa37de8d8
+  hash_d: f46d0c8a194904e5ea45e1782b143857687d4cc5cb35bfbf0f82928589b77837
+  semantic_tags:
+  - system:laboratorio-chile
+  - type.knowledge.trait
+  - user:traits.dudas_efectos
+  - workspace.knowledge
+- name: trait-antonia-prefiere-recordatorios
+  path: atoms/trait-antonia-prefiere-recordatorios.md
+  hash_c: bc96382545c97763a930b5833c55f72a85e82a5a1f5a4225c793434b8fac7b48
+  hash_d: 3b6eb930dcf3bb923518db0f512da4231be89230488048723e5e790130a5a84c
+  semantic_tags:
+  - system:laboratorio-chile
+  - type.knowledge.trait
+  - user:traits.prefiere_recordatorios
+  - workspace.knowledge
