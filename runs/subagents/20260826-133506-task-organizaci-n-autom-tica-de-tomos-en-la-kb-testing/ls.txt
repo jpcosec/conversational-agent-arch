@@ -1,0 +1,14 @@
+deploy
+desk
+frontends
+kb_agent
+knowledge
+knowledge_base
+project.config.yaml
+pytest.ini
+README.md
+result-summary.md
+runs
+software.yaml
+spec2viz_serve.log
+tests
