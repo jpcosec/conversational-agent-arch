@@ -28,54 +28,49 @@ desk/spec2viz/
   `frontends/viz` (grafo de embeddings).
 - La frontera se ve en `deployment.backend-frontend.yml` (`artifacts.kind: frontend|backend`).
 
-## Vistas (12)
-Registro activo: `catalog.yml`.
+## Vistas (13)
+Registro activo: `catalog.yml`. Explicación de cada una y del sistema completo:
+**[`current-system-overview.md`](current-system-overview.md)**.
 
-### Global
+Tres secciones (una área grande por categoría; backend dividido por concern):
+
+### Backend · Runtime (el motor conversacional)
 | Spec | Tipo |
 |---|---|
-| `deployment.backend-frontend.yml` | deployment |
-
-### Backend · semántico
-| Spec | Tipo |
-|---|---|
-| `backend/component.agent-ecosystem.yml` | component |
+| `backend/current-kb-agent.yml` | component (código real) |
 | `backend/state.conversation-flow.yml` | state |
 | `backend/sequence.extended-turn.yml` | sequence |
-| `backend/component.knowledge-ontology.yml` | component |
 | `backend/matrix.component-turn-lifecycle.yml` | component_view_matrix |
-
-### Ejemplos aplicados
-| Spec | Tipo |
-|---|---|
-| `backend/component.example-kb-scheduling.yml` | component |
-| `backend/activity.example-flow-scheduling.yml` | activity |
-
-### Testing
-| Spec | Tipo |
-|---|---|
+| `backend/current-deploy.yml` | component (código real) |
+| `backend/current-tests.yml` | component (código real) |
+| `deployment.backend-frontend.yml` | deployment |
 | `backend/activity.simulation-harness.yml` | activity |
 
-### Backend · AST real (código)
-Generado con `spec2viz diagram generate` (módulos/clases/imports reales).
-
-| Spec | Fuente |
-|---|---|
-| `backend/ast.kb_agent.yml` | `kb_agent/` |
-
-### Frontend
+### Backend · Knowledge (el subsistema de conocimiento)
 | Spec | Tipo |
 |---|---|
-| `frontend/component.frontend.yml` | component |
+| `backend/current-knowledge-base.yml` | component (código real) |
+| `backend/matrix.agents-kb-consumption.yml` | component_view_matrix |
+
+### Frontend (las UIs)
+| Spec | Tipo |
+|---|---|
+| `frontend/current-frontends.yml` | component (código real) |
 | `frontend/state.chat-ui.yml` | state |
+| `backend/matrix.ui-semantic-surface.yml` | component_view_matrix |
+
+Los specs `current-*` reflejan el código HOY (generados con
+`spec2viz diagram generate` desde el AST y luego curados a jerarquía
+`contains:` + imports reales).
 
 ## Regenerar
 
-### AST real de código (documentación real)
+### Specs de código real (`current-*`)
 ```bash
-spec2viz diagram generate kb_agent           --out desk/spec2viz/backend/ast.kb_agent.yml       --id ast-kb-agent
+spec2viz diagram generate kb_agent --out /tmp/ast.yml --id current-kb-agent
 ```
-Nota: no usar `--package` (filtra por ruta y da 0 nodos aquí).
+Genera el AST crudo (módulos/clases/imports); luego se cura a mano a jerarquía
+`contains:` + edges. No usar `--package` (filtra por ruta y da 0 nodos aquí).
 
 ### Validar + renderizar
 ```bash

@@ -15,6 +15,11 @@ Agente conversacional multi-dominio con arquitectura de 4 motores cognitivos, al
 - **SLDB** — conocimiento semántico (atoms, facts, rules, tools, traits)
 - **KGDB** — grafo de relaciones y flujo conversacional
 
+> **Cómo funciona el sistema, en detalle** — flujo de un turno de punta a punta,
+> capas de datos, y para qué sirve cada diagrama:
+> [`desk/spec2viz/current-system-overview.md`](desk/spec2viz/current-system-overview.md).
+> Catálogo visual navegable: `desk/spec2viz/build/architecture.html` (13 vistas).
+
 ## Estructura del repositorio
 
 ```
