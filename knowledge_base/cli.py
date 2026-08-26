@@ -68,6 +68,11 @@ def main(argv: list[str] | None = None) -> int:
             _print_json(result)
             return 0
 
+        if args.command == "organize":
+            result = ops.organize(dry_run=args.dry_run)
+            _print_json(result)
+            return 0
+
         if args.command == "index":
             if args.index_command == "embeddings":
                 result = ops.index_embeddings(model=getattr(args, "model", None))

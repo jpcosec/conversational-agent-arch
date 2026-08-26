@@ -6,6 +6,7 @@ into semantic commands for agent consumption.
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 from typing import Any
 
@@ -35,6 +36,42 @@ MODEL_MAP = {
 }
 
 ALL_MODELS = list(MODEL_MAP.values())
+EXCLUDED_ROUTE_NAMESPACES = {"type", "workspace", "source"}
+MODEL_NAME_BY_ATOM_TYPE = {
+    "domain": "DomainAtom",
+    "rule": "RuleAtom",
+    "tool": "ToolAtom",
+    "trait": "TraitAtom",
+    "step": "ConversationStep",
+    "self": "SelfDeclaration",
+    "style": "StyleGuide",
+    "boundary": "CapabilityBoundary",
+    "strategy": "StrategyRule",
+    "fallback": "FallbackRule",
+}
+
+
+def derive_path(kb_root: Path, atom_id: str, tags: list[str]) -> Path:
+    """Derive the destination path for an atom from its first significant tag.
+
+    Tags whose namespace is ``type``, ``workspace``, or ``source`` are ignored,
+    regardless of whether they use ``:`` or ``.`` as namespace separator.
+    When no significant tag is present, the atom remains in the flat
+    ``<kb>/atoms/`` fallback directory.
+    """
+    for tag in tags:
+        if not isinstance(tag, str):
+            continue
+        stripped = tag.strip()
+        if not stripped:
+            continue
+        namespace = stripped.split(":", 1)[0].split(".", 1)[0]
+        if namespace in EXCLUDED_ROUTE_NAMESPACES:
+            continue
+        route = stripped.replace(":", "/").replace(".", "/").strip("/")
+        if route:
+            return kb_root / route / f"{atom_id}.md"
+    return kb_root / "atoms" / f"{atom_id}.md"
 
 
 class KnowledgeOperations:
@@ -349,12 +386,69 @@ class KnowledgeOperations:
     def _run_sldb(self, *args: str) -> None:
         """Corre un comando sldb con el store y pythonpath correctos."""
         import subprocess
-        import os
         from pathlib import Path
         # pythonpath debe apuntar al project root, no al parent del kb
         project_root = Path(__file__).resolve().parents[1]
         cmd = ["sldb", *args, "--store", str(self._store_path), "--pythonpath", str(project_root)]
         subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=60, cwd=project_root)
+
+    def _load_frontmatter(self, doc_path: Path) -> dict[str, Any]:
+        text = doc_path.read_text(encoding="utf-8")
+        if not text.startswith("---"):
+            raise ValueError(f"Document '{doc_path}' does not start with YAML frontmatter")
+        parts = text.split("---", 2)
+        if len(parts) < 3:
+            raise ValueError(f"Document '{doc_path}' has invalid YAML frontmatter")
+        data = yaml.safe_load(parts[1]) or {}
+        if not isinstance(data, dict):
+            raise ValueError(f"Document '{doc_path}' frontmatter must be a mapping")
+        return data
+
+    def organize(self, dry_run: bool = False) -> dict[str, Any]:
+        """Organize flat KB atoms into semantic directories derived from tags."""
+        atoms_dir = self._kb_root / "atoms"
+        if not atoms_dir.exists():
+            return {"kb_root": str(self._kb_root), "dry_run": dry_run, "moves": [], "processed": 0}
+
+        moves: list[dict[str, Any]] = []
+        for doc_path in sorted(atoms_dir.glob("*.md")):
+            frontmatter = self._load_frontmatter(doc_path)
+            atom_id = str(frontmatter.get("id") or doc_path.stem)
+            tags = list(frontmatter.get("tags") or [])
+            atom_type = str(frontmatter.get("atom_type") or "").strip().lower()
+            model_name = MODEL_NAME_BY_ATOM_TYPE.get(atom_type)
+            if model_name is None:
+                raise ValueError(f"Unknown atom_type '{atom_type}' in {doc_path}")
+
+            destination = derive_path(self._kb_root, atom_id, tags)
+            action = "move" if destination != doc_path else "keep"
+            move_record = {
+                "id": atom_id,
+                "model": model_name,
+                "source": str(doc_path),
+                "destination": str(destination),
+                "action": action,
+                "tags": tags,
+            }
+            moves.append(move_record)
+
+            if dry_run or destination == doc_path:
+                continue
+
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(str(doc_path), str(destination))
+            self._run_sldb("docs", "untrack", atom_id)
+            self._run_sldb("docs", "track", str(destination), "--model", model_name)
+
+        if not dry_run and any(move["action"] == "move" for move in moves):
+            self._run_sldb("stores", "update")
+
+        return {
+            "kb_root": str(self._kb_root),
+            "dry_run": dry_run,
+            "processed": len(moves),
+            "moves": moves,
+        }
 
 
     # ── runtime: embedder ─────────────────────────────────────────
@@ -715,7 +809,7 @@ class KnowledgeOperations:
             payload["tags"].append("source:reflector")
 
         doc_id = payload.get("id", f"proposed-{model_name}")
-        atom_path = self._kb_root / "atoms" / f"{doc_id}.md"
+        atom_path = derive_path(self._kb_root, doc_id, list(payload.get("tags") or []))
 
         md = render_model_markdown(model_cls, payload)
         atom_path.parent.mkdir(parents=True, exist_ok=True)
