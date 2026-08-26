@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: onboarding-atenci-n-general
     level: 1
-    line_start: 11
-    line_end: 12
+    line_start: 12
+    line_end: 13
   - path: onboarding-atenci-n-general/instructions
     title: Instructions
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 13
-    line_end: 14
+    line_start: 14
+    line_end: 15
   - path: onboarding-atenci-n-general/required-slots
     title: Required Slots
     breadcrumbs:
@@ -65,8 +65,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 18
+    line_end: 19
   - path: onboarding-atenci-n-general/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -88,8 +88,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 22
+    line_end: 23
   - path: onboarding-atenci-n-general/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -111,8 +111,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 26
+    line_end: 27
   - path: onboarding-atenci-n-general/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -134,8 +134,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 30
+    line_end: 31
 - doc_name: step-donpeppe-booking
   sections:
   - path: reserva-de-mesa
@@ -156,8 +156,8 @@ documents:
     - workspace.knowledge
     slug: reserva-de-mesa
     level: 1
-    line_start: 11
-    line_end: 12
+    line_start: 12
+    line_end: 13
   - path: reserva-de-mesa/instructions
     title: Instructions
     breadcrumbs:
@@ -179,8 +179,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 13
-    line_end: 14
+    line_start: 14
+    line_end: 15
   - path: reserva-de-mesa/required-slots
     title: Required Slots
     breadcrumbs:
@@ -202,8 +202,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 18
+    line_end: 19
   - path: reserva-de-mesa/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -225,8 +225,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 22
+    line_end: 23
   - path: reserva-de-mesa/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -248,8 +248,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 26
+    line_end: 27
   - path: reserva-de-mesa/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -271,5 +271,5 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 30
+    line_end: 31

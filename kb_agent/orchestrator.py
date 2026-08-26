@@ -323,17 +323,21 @@ class Orchestrator:
     def _semantic_role(tags: list[str], fallback: str) -> str:
         """Deriva el rol semantico del atom desde su eje de tag (doctrina KB).
 
-        self:* -> identidad/estilo/limites; conversation:* -> flujo; domain:* ->
-        conocimiento del negocio. Si no hay eje reconocible, usa el fallback por
-        atom_type (domain_fact / rule).
+        self:* -> identidad/estilo/limites; domain:* -> conocimiento del negocio;
+        conversation:* -> flujo. El eje de negocio (domain:*) prima sobre el de
+        flujo (conversation:*): un DomainAtom etiquetado con el step al que
+        pertenece sigue siendo un domain_fact. Si no hay eje reconocible, usa el
+        fallback por atom_type (domain_fact / rule).
         """
         for t in tags:
             if t.startswith("self:"):
                 return f"self.{t.split(':', 1)[1]}"
-            if t.startswith("conversation:"):
-                return f"conversation.{t.split(':', 1)[1]}"
+        for t in tags:
             if t.startswith("domain:"):
                 return "domain_fact"
+        for t in tags:
+            if t.startswith("conversation:"):
+                return f"conversation.{t.split(':', 1)[1]}"
         return fallback
 
     def _build_turn_context(self, compiled: dict[str, Any]) -> dict[str, Any]:

@@ -111,7 +111,371 @@ class KnowledgeOperations:
                     return {"id": atom_id, "raw_path": str(doc_path), "error": str(exc)}
         return None
 
-    # ── commands ───────────────────────────────────────────────
+    # ── offline: index embeddings ───────────────────────────────
+
+    EMBED_MODEL = "jinaai/jina-embeddings-v2-base-es"  # español, 768 dim
+
+    def index_embeddings(self) -> dict[str, Any]:
+        """Calcula embeddings offline para DomainAtom y RuleAtom.
+
+        Lee cada atom, computa embedding del summary (o answer si no hay summary),
+        y escribe el vector al frontmatter.
+        """
+        from fastembed import TextEmbedding
+
+        # Cargar modelo (descarga en primera corrida, cachea después)
+        embedder = TextEmbedding(model_name=self.EMBED_MODEL, cache_dir=str(self._kb_root / ".embedding_cache"))
+
+        records = self._find_records()
+        stats = {"processed": 0, "skipped": 0, "errors": 0}
+
+        for r in records:
+            if r.kind != "doc":
+                continue
+            model_name = (r.model_name or "").lower()
+            if model_name not in ("domainatom", "ruleatom"):
+                continue
+            if not r.path:
+                stats["skipped"] += 1
+                continue
+
+            doc_path = self._kb_root / r.path
+            if not doc_path.exists():
+                stats["skipped"] += 1
+                continue
+
+            model_cls = DomainAtom if model_name == "domainatom" else RuleAtom
+            try:
+                payload = extract_model_data(model_cls, doc_path.read_text(encoding="utf-8"))
+            except Exception:
+                stats["errors"] += 1
+                continue
+
+            # Texto a embedder: summary > answer > title
+            text = payload.get("summary") or payload.get("answer") or payload.get("title", "")
+            if not text:
+                stats["skipped"] += 1
+                continue
+
+            try:
+                emb_list = list(embedder.embed([text]))
+                if not emb_list:
+                    stats["errors"] += 1
+                    continue
+                vector = [round(float(v), 6) for v in emb_list[0]]
+            except Exception:
+                stats["errors"] += 1
+                continue
+
+            # Escribir embedding al frontmatter
+            payload["embedding"] = vector
+            md = render_model_markdown(model_cls, payload)
+            doc_path.write_text(md + "\n", encoding="utf-8")
+            stats["processed"] += 1
+
+        # Actualizar store
+        self._run_sldb("stores", "update")
+
+        stats["dimension"] = len(vector) if vector else 0
+        return stats
+
+    # ── offline: index hierarchy ────────────────────────────────
+
+    def index_hierarchy(self) -> dict[str, Any]:
+        """Construye jerarquía enciclopédica en el semantic DAG.
+
+        Para cada tag con namespacing por puntos (ej. conversation:steps.onboarding),
+        deriva el padre (conversation:steps) y añade relación semantic_parent
+        si el padre existe como tag.
+        """
+        from sldb.store.io import load_store_index, save_store_index, load_models_index, save_models_index
+        from sldb.store.layout import store_exists
+        import yaml
+
+        if not store_exists(self._store_path):
+            return {"error": "No store at " + str(self._store_path)}
+
+        store_idx = load_store_index(self._store_path)
+        root = self._store_path.parent
+
+        # Leer semantic_dag actual
+        dag_path = self._store_path / "runtime" / "semantic_dag.yaml"
+        if not dag_path.exists():
+            return {"error": "semantic_dag.yaml not found"}
+
+        raw = yaml.safe_load(dag_path.read_text(encoding="utf-8")) or {}
+        nodes = raw.get("nodes", []) or []
+        equivalences = raw.get("equivalences", {}) or {}
+
+        # Colectar todos los tags existentes
+        existing_tags = set()
+        for node in nodes:
+            nid = str(node.get("id", "")).strip()
+            if nid and nid.startswith("sldb://semantic_tag/"):
+                existing_tags.add(nid)
+
+        # Derivar jerarquía: si un tag tiene puntos, truncar al último
+        # conversation:steps.onboarding → conversation:steps
+        new_edges = 0
+        for tag_node in sorted(existing_tags):
+            tag = tag_node.replace("sldb://semantic_tag/", "", 1)
+            parts = tag.split(":", 1)
+            if len(parts) != 2:
+                continue
+            namespace, value = parts[0], parts[1]
+            if "." not in value:
+                continue
+
+            # Parent: truncar último segmento
+            parent_value = value.rsplit(".", 1)[0]
+            parent_tag = f"{namespace}:{parent_value}"
+            parent_node = f"sldb://semantic_tag/{parent_tag}"
+
+            if parent_node not in existing_tags:
+                continue
+
+            # Verificar si ya existe la relación semantic_parent
+            already = False
+            for node in nodes:
+                if str(node.get("id", "")).strip() == tag_node:
+                    if parent_node in [str(p).strip() for p in (node.get("parents", []) or [])]:
+                        already = True
+                    break
+
+            if not already:
+                for node in nodes:
+                    if str(node.get("id", "")).strip() == tag_node:
+                        node.setdefault("parents", []).append(parent_node)
+                        new_edges += 1
+                        break
+
+        if new_edges > 0:
+            raw["nodes"] = nodes
+            dag_path.write_text(yaml.safe_dump(raw, allow_unicode=True, sort_keys=False), encoding="utf-8")
+
+        return {"tags": len(existing_tags), "new_parent_relations": new_edges}
+
+    # ── offline: promote ────────────────────────────────────────
+
+    def promote(self, atom_id: str) -> dict[str, Any]:
+        """Promueve un atom propuesto: cambia status:proposed → status:active."""
+        payload = self._read_doc(atom_id)
+        if payload is None:
+            raise ValueError(f"Atom '{atom_id}' not found")
+
+        model_name = payload.get("_model", "")
+        model_cls = next((m for m in ALL_MODELS if m.__name__ == model_name), None)
+        if model_cls is None:
+            raise ValueError(f"Unknown model '{model_name}' for atom {atom_id}")
+
+        tags = payload.get("tags", [])
+        if "status:proposed" not in tags:
+            return {"id": atom_id, "status": "already_active", "message": "atom is not proposed"}
+
+        # Replace proposed with active
+        new_tags = [t for t in tags if t != "status:proposed"]
+        if "status:active" not in new_tags:
+            new_tags.append("status:active")
+        payload["tags"] = new_tags
+
+        doc_path = Path(payload["_path"])
+        md = render_model_markdown(model_cls, payload)
+        doc_path.write_text(md + "\n", encoding="utf-8")
+
+        return {"id": atom_id, "status": "active", "old_tags": tags, "new_tags": payload["tags"]}
+
+# ── offline: reflect ────────────────────────────────────────
+
+    def reflect(self, db_url: str | None = None) -> list[dict[str, Any]]:
+        """Corre el Reflector: lee ChatHistory y propone atoms nuevos.
+
+        Requiere SQLite con tabla chat_history poblada.
+        """
+        from kb_agent.reflector import (
+            InMemoryCheckpointStore,
+            ReflectorAtomGenerator,
+            ReflectorBatchReaderJob,
+        )
+        from sqlalchemy import create_engine
+        from sqlalchemy.orm import sessionmaker
+
+        actual_db = db_url or self._db_url
+        if not actual_db:
+            raise ValueError("Se requiere --db para connectar a la base de datos SQL")
+
+        engine = create_engine(actual_db)
+        SessionLocal = sessionmaker(bind=engine)
+
+        reader = ReflectorBatchReaderJob(SessionLocal, InMemoryCheckpointStore())
+        rows = reader.run()
+
+        generator = ReflectorAtomGenerator(
+            kb_root=self._kb_root,
+            store_name=".sldb",
+            output_dir=self._kb_root / "atoms",
+            pythonpath=self._pythonpath,
+        )
+        generated = generator.generate(rows)
+
+        return [
+            {
+                "atom_id": atom.atom_id,
+                "atom_type": atom.atom_type,
+                "path": str(atom.path),
+                "normalized_text": atom.normalized_text,
+                "count": atom.count,
+            }
+            for atom in generated
+        ]
+
+    # ── helper: sldb subprocess call ────────────────────────────
+
+    def _run_sldb(self, *args: str) -> None:
+        """Corre un comando sldb con el store y pythonpath correctos."""
+        import subprocess
+        import os
+        from pathlib import Path
+        # pythonpath debe apuntar al project root, no al parent del kb
+        project_root = Path(__file__).resolve().parents[1]
+        cmd = ["sldb", *args, "--store", str(self._store_path), "--pythonpath", str(project_root)]
+        subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=60, cwd=project_root)
+
+
+    # ── runtime: embedder ─────────────────────────────────────────
+
+    _embedder_cache: Any = None
+
+    def _embedder(self):
+        """Lazy embedder (fastembed, español)."""
+        if self._embedder_cache is None:
+            from fastembed import TextEmbedding
+            self._embedder_cache = TextEmbedding(
+                model_name="jinaai/jina-embeddings-v2-base-es",
+                cache_dir=str(self._kb_root / ".embedding_cache"),
+            )
+        return self._embedder_cache
+
+    @staticmethod
+    def _cosine_sim(a: list[float], b: list[float]) -> float:
+        dot = sum(x * y for x, y in zip(a, b))
+        na = sum(x * x for x in a) ** 0.5
+        nb = sum(y * y for y in b) ** 0.5
+        return dot / (na * nb) if na and nb else 0.0
+
+    def _semantic_search(self, query: str, threshold: float = 0.5) -> list[dict[str, Any]]:
+        """Busca por similitud coseno entre query y embeddings de atoms."""
+        from kb_agent.models.knowledge import DomainAtom, RuleAtom
+
+        embedder = self._embedder()
+        query_emb = list(embedder.embed([query]))[0]
+        qv = [float(v) for v in query_emb]
+
+        records = self._find_records()
+        results = []
+        for r in records:
+            if r.kind != "doc":
+                continue
+            mn = (r.model_name or "").lower()
+            if mn not in ("domainatom", "ruleatom"):
+                continue
+            doc = self._read_doc(r.name)
+            if not doc:
+                continue
+            emb = doc.get("embedding")
+            if not emb or not isinstance(emb, list) or len(emb) < 2:
+                continue
+            score = self._cosine_sim(qv, [float(v) for v in emb])
+            if score < threshold:
+                continue
+            results.append({
+                "id": r.name,
+                "model": r.model_name,
+                "score": round(score, 4),
+                "tags": list(r.semantic or []),
+                "path": r.path,
+                "title": doc.get("title", ""),
+            })
+        return sorted(results, key=lambda x: x["score"], reverse=True)
+
+    def _fuzzy_search(self, query: str) -> list[dict[str, Any]]:
+        """Busca por substring en tags, title, answer, semantic_anchors."""
+        records = self._find_records()
+        q = query.lower()
+        results = []
+        seen = set()
+        for r in records:
+            if r.kind != "doc":
+                continue
+            if r.name in seen:
+                continue
+            seen.add(r.name)
+
+            tags = [t.lower() for t in (r.semantic or [])]
+            if any(q in t for t in tags):
+                results.append({
+                    "id": r.name, "model": r.model_name, "score": 0.8,
+                    "match": "semantic_tag", "tags": list(r.semantic or []), "path": r.path,
+                })
+                continue
+
+            doc = self._read_doc(r.name)
+            if not doc:
+                continue
+            title = str(doc.get("title", "")).lower()
+            answer = str(doc.get("answer", "")).lower()
+            anchors = [str(a).lower() for a in (doc.get("semantic_anchors") or [])]
+            if q in title or q in answer or any(q in a for a in anchors):
+                results.append({
+                    "id": r.name, "model": r.model_name, "score": 0.7,
+                    "match": "title_answer_anchor", "tags": list(r.semantic or []), "path": r.path,
+                })
+        return results
+
+    # ── runtime: explore multi-estrategia ─────────────────────────
+
+    def explore_multi(
+        self,
+        query: str,
+        semantic_threshold: float = 0.3,
+        max_results: int = 10,
+    ) -> dict[str, Any]:
+        """Explore multi-estrategia: embeds query, busca por similitud + fuzzy + KGDB."""
+        semantic = self._semantic_search(query, threshold=semantic_threshold)
+        fuzzy = self._fuzzy_search(query)
+
+        seen = set()
+        merged = []
+        for item in semantic:
+            seen.add(item["id"])
+            merged.append(item)
+        for item in fuzzy:
+            if item["id"] not in seen:
+                seen.add(item["id"])
+                item["score"] = round(item["score"] * 0.85, 4)
+                merged.append(item)
+
+        merged.sort(key=lambda x: x["score"], reverse=True)
+        merged = merged[:max_results]
+
+        kgdb_enriched = []
+        try:
+            kgdb = self._kgdb()
+            for item in merged:
+                siblings = kgdb.sibling_docs(item["id"])[:3]
+                item["siblings"] = siblings
+                kgdb_enriched.append(item)
+        except Exception:
+            kgdb_enriched = merged
+
+        top_score = merged[0]["score"] if merged else 0.0
+        return {
+            "query": query,
+            "results": merged,
+            "top_score": top_score,
+            "results_count": len(merged),
+            "is_empty": top_score == 0.0 or len(merged) == 0,
+        }
+
 
     def _kgdb(self):
         """Lazy KGDB reader."""

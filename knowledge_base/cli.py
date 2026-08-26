@@ -24,8 +24,12 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         if args.command == "explore":
-            results = ops.explore(tag=args.tag, atom=args.atom)
-            _print_json(results)
+            if args.query:
+                result = ops.explore_multi(query=args.query)
+                _print_json(result)
+            else:
+                results = ops.explore(tag=args.tag, atom=args.atom)
+                _print_json(results)
             return 0
 
         if args.command == "show":
@@ -61,6 +65,26 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "propose":
             result = ops.propose(args.model, args.body)
+            _print_json(result)
+            return 0
+
+        if args.command == "index":
+            if args.index_command == "embeddings":
+                result = ops.index_embeddings()
+                print(f"Embeddings: {result['processed']} processed, {result['skipped']} skipped, {result['errors']} errors")
+                return 0
+            if args.index_command == "hierarchy":
+                result = ops.index_hierarchy()
+                print(f"Hierarchy: {result.get('tags', 0)} tags, {result.get('new_parent_relations', 0)} new relations")
+                return 0
+
+        if args.command == "promote":
+            result = ops.promote(args.atom_id)
+            _print_json(result)
+            return 0
+
+        if args.command == "reflect":
+            result = ops.reflect(db_url=args.db)
             _print_json(result)
             return 0
 

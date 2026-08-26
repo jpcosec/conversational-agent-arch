@@ -9,6 +9,7 @@ Commands:
   explore                Entry points: tags raíz del grafo KGDB
   explore --tag <t>      Expande un tag: padre + hijos + docs
   explore --atom <id>    Vecindario de un doc: tags + hermanos
+  explore <query>        Búsqueda multi-estrategia: embeddings + fuzzy + KGDB
   show <atom_id>         Muestra un atom completo por su id
   step next --user <id>  Siguiente paso conversacional desde sesión + KGDB
   traits --user <id>     Traits del usuario resueltos contra SLDB
@@ -16,6 +17,12 @@ Commands:
   context --user <id>    Estado completo de la sesión (todo-en-uno)
   propose --model <m>    Propuesta de atom (para el Reflector)
          --body <yaml>
+
+Offline (fortalecimiento de la KB):
+  index embeddings       Calcula embeddings para DomainAtom y RuleAtom
+  index hierarchy        Construye jerarquía enciclopédica en semantic DAG
+  reflect --db <sql>     Reflector: propone atoms desde ChatHistory
+  promote <atom_id>      Promueve un atom propuesto a activo
 """
 
 
@@ -33,9 +40,10 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     # explore
-    p = subparsers.add_parser("explore", help="Navegación del grafo KGDB de la KB")
+    p = subparsers.add_parser("explore", help="Navegación del grafo KGDB de la KB / búsqueda multi-estrategia")
     p.add_argument("--tag", default=None, help="Expande un tag: padre + hijos + docs")
     p.add_argument("--atom", default=None, help="Vecindario de un doc: tags + hermanos")
+    p.add_argument("query", nargs="?", default=None, help="Consulta en lenguaje natural (multi-estrategia: embeddings + fuzzy + KGDB)")
 
     # show
     p = subparsers.add_parser("show", help="Muestra un atom completo")
@@ -63,4 +71,22 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--model", required=True, help=f"Modelo del atom: {', '.join(['domain','rule','tool','trait','step','self','style','boundary','strategy','fallback'])}")
     p.add_argument("--body", required=True, help="Contenido del atom en YAML/JSON")
 
+    # add index subcommands
+    _add_index_commands(subparsers)
+
     return parser
+
+
+def _add_index_commands(subparsers: argparse._SubParsersAction) -> None:
+    p = subparsers.add_parser("index", help="Pipeline offline de fortalecimiento de la KB")
+    s = p.add_subparsers(dest="index_command", required=True)
+
+    pe = s.add_parser("embeddings", help="Calcula embeddings offline para DomainAtom y RuleAtom")
+    pe.add_argument("--model", default="jinaai/jina-embeddings-v2-base-es", help="Modelo de embeddings (default: jina-embeddings-v2-base-es)")
+
+    s.add_parser("hierarchy", help="Construye jerarquía enciclopédica en el semantic DAG")
+
+    p = subparsers.add_parser("promote", help="Promueve un atom propuesto a activo")
+    p.add_argument("atom_id", help="Id del atom a promover")
+
+    p = subparsers.add_parser("reflect", help="Reflector: propone atoms desde ChatHistory")

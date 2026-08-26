@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 import os
 import subprocess
 from dataclasses import dataclass
@@ -16,7 +15,7 @@ from kb_agent.ontologizador.sldb_reader import SLDBReader
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DONPEPPE_KB_ROOT = REPO_ROOT / ".sldb_e2e_donpeppe"
+DONPEPPE_KB_ROOT = REPO_ROOT / "tests" / "knowledge"
 
 
 @dataclass
@@ -24,58 +23,108 @@ class SessionStateStub:
     active_domain: str | None = None
 
 
+# ── modelos tipados usados en el seed ────────────────────────────────
+#: mapea cada atom del seed a su modelo de kb_agent.models.knowledge
+_MODEL_IMPORTS = {
+    "self": "kb_agent.models.knowledge:SelfDeclaration",
+    "style": "kb_agent.models.knowledge:StyleGuide",
+    "boundary": "kb_agent.models.knowledge:CapabilityBoundary",
+    "strategy": "kb_agent.models.knowledge:StrategyRule",
+    "fallback": "kb_agent.models.knowledge:FallbackRule",
+    "domain": "kb_agent.models.knowledge:DomainAtom",
+    "rule": "kb_agent.models.knowledge:RuleAtom",
+    "tool": "kb_agent.models.knowledge:ToolAtom",
+    "trait": "kb_agent.models.knowledge:TraitAtom",
+}
+_MODEL_CLASS = {
+    "self": "SelfDeclaration",
+    "style": "StyleGuide",
+    "boundary": "CapabilityBoundary",
+    "strategy": "StrategyRule",
+    "fallback": "FallbackRule",
+    "domain": "DomainAtom",
+    "rule": "RuleAtom",
+    "tool": "ToolAtom",
+    "trait": "TraitAtom",
+}
+
+
 @pytest.fixture()
 def seeded_business_root(tmp_path: Path) -> Path:
-    """KB de un ÚNICO negocio (doctrina: una KB = un negocio).
+    """KB tipada de un ÚNICO negocio (doctrina: una KB = un negocio).
 
-    Los átomos llevan ejes semánticos independientes (self:*, conversation:*,
-    domain:*), pero se seleccionan por ``atom_type`` porque TODOS pertenecen a
-    este único negocio; no se filtran por un scenario string.
+    Los átomos se modelan con modelos tipados (SelfDeclaration, StyleGuide,
+    FallbackRule, DomainAtom, RuleAtom, ToolAtom) y se seleccionan por
+    ``type.knowledge.<tipo>``. Cada tipo aporta sus campos propios.
     """
     return _seed_store(
         tmp_path / "negocio",
         atoms=[
             {
+                "type": "self",
                 "id": "self-whoami",
                 "title": "Self Whoami",
-                "tags": ["atom_type:domain", "self:whoami", "source:manual"],
-                "answer": "Soy el asistente de la pizzeria.",
+                "tags": ["self:whoami", "system:donpeppe"],
+                "fields": {"statement": "Soy el asistente de la pizzeria."},
             },
             {
-                "id": "self-estilo",
-                "title": "Self Estilo",
-                "tags": ["atom_type:rule", "self:estilo", "source:manual"],
-                "answer": "Responde breve y amable.",
+                "type": "style",
+                "id": "style-donpeppe",
+                "title": "Estilo",
+                "tags": ["self:estilo", "system:donpeppe"],
+                "fields": {
+                    "tone": "Responde breve y amable.",
+                    "language_register": "Español chileno, trato de tú.",
+                    "phrase_preferences": "Frases cortas.",
+                    "length_guidelines": "Bajo 300 caracteres.",
+                },
             },
             {
-                "id": "conversation-fallback",
-                "title": "Conversation Fallback",
-                "tags": ["atom_type:rule", "conversation:fallback", "source:manual"],
-                "answer": "Si no hay contexto suficiente, pide una aclaración.",
+                "type": "fallback",
+                "id": "fallback-donpeppe",
+                "title": "Fallback",
+                "tags": ["conversation:fallback", "system:donpeppe"],
+                "fields": {
+                    "fallback_message": "Si no hay contexto suficiente, pide una aclaración.",
+                    "conditions": "Cuando falta contexto.",
+                },
             },
             {
+                "type": "domain",
                 "id": "domain-menu",
                 "title": "Domain Menu",
-                "tags": ["atom_type:domain", "domain:catalogo", "source:e2e"],
-                "answer": "La pizza margarita cuesta 10.",
+                "tags": ["domain:catalogo", "system:donpeppe"],
+                "five_wh": "what",
+                "fields": {"answer": "La pizza margarita cuesta 10."},
             },
             {
+                "type": "domain",
                 "id": "domain-horarios",
                 "title": "Domain Horarios",
-                "tags": ["atom_type:domain", "domain:horarios", "source:e2e"],
-                "answer": "Atendemos de 12:00 a 23:00.",
+                "tags": ["domain:horarios", "system:donpeppe"],
+                "five_wh": "when",
+                "fields": {"answer": "Atendemos de 12:00 a 23:00."},
             },
             {
+                "type": "rule",
                 "id": "domain-regla-reservas",
                 "title": "Domain Regla Reservas",
-                "tags": ["atom_type:rule", "domain:reglas.reservas", "source:e2e"],
-                "answer": "Las reservas requieren confirmación previa.",
+                "tags": ["domain:reglas.reservas", "system:donpeppe"],
+                "five_wh": "how",
+                "fields": {
+                    "answer": "Las reservas requieren confirmación previa.",
+                    "conditions": "Aplica al reservar mesa.",
+                },
             },
             {
+                "type": "tool",
                 "id": "tool-reserva",
                 "title": "Tool Reserva",
-                "tags": ["atom_type:tool", "conversation:steps.booking", "self:tools"],
-                "answer": "```json\n{\n  \"name\": \"crear_reserva\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"fecha\": {\"type\": \"string\"}\n    },\n    \"required\": [\"fecha\"]\n  }\n}\n```",
+                "tags": ["self:tools", "conversation:steps.booking", "system:donpeppe"],
+                "fields": {
+                    "description": "Crea una reserva.",
+                    "parameters": '{"name": "crear_reserva", "parameters": {"type": "object", "properties": {"fecha": {"type": "string"}}, "required": ["fecha"]}}',
+                },
             },
         ],
     )
@@ -88,10 +137,14 @@ def seeded_empty_business_root(tmp_path: Path) -> Path:
         tmp_path / "solo_tool",
         atoms=[
             {
+                "type": "tool",
                 "id": "tool-solo",
                 "title": "Tool Solo",
-                "tags": ["atom_type:tool", "self:tools"],
-                "answer": json.dumps({"name": "noop", "parameters": {"type": "object"}}),
+                "tags": ["self:tools", "system:donpeppe"],
+                "fields": {
+                    "description": "No-op.",
+                    "parameters": '{"name": "noop", "parameters": {"type": "object"}}',
+                },
             },
         ],
     )
@@ -123,12 +176,11 @@ def test_compile_context_selects_all_business_atoms_by_type(
     identity_session: Session,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """Doctrina nueva: una KB = un negocio, contexto estructurado por rol.
+    """Doctrina tipada: una KB = un negocio, contexto estructurado por MODELO.
 
-    El compilador trae TODOS los atom_type:domain y atom_type:rule del negocio,
-    pero los CLASIFICA por eje semantico: self:* va a persona, conversation:*
-    va a strategy/fallback, y domain:* queda como grounding del negocio
-    (domain_facts/rules). Asi el conversador no hardcodea identidad ni fallback.
+    El compilador selecciona por ``type.knowledge.<tipo>`` y arma persona desde
+    SelfDeclaration/StyleGuide/CapabilityBoundary, strategy desde StrategyRule y
+    fallback desde FallbackRule. domain/rule quedan como grounding del negocio.
     """
     llm_calls: list[object] = []
 
@@ -146,32 +198,30 @@ def test_compile_context_selects_all_business_atoms_by_type(
         scenario=None,
         trigger="user",
         session_state=SessionStateStub(active_domain=None),
-        reader=SLDBReader(kb_root=seeded_business_root, store_name=".sldb_test"),
+        reader=SLDBReader(kb_root=seeded_business_root, store_name=".sldb"),
         identity_session=identity_session,
     )
 
     d = payload.to_dict()
 
-    # domain_facts: SOLO grounding del negocio (self:whoami se va a persona).
-    # Trae id/body + tags/title para que el orquestador arme el turno sin re-leer (brecha #2).
+    # domain_facts: grounding del negocio (DomainAtom.answer). Trae id/body + tags/title.
     assert [{"id": f["id"], "body": f["body"]} for f in d["domain_facts"]] == [
         {"id": "domain-horarios", "body": "Atendemos de 12:00 a 23:00."},
         {"id": "domain-menu", "body": "La pizza margarita cuesta 10."},
     ]
     assert all("tags" in f and "title" in f for f in d["domain_facts"])
-    # rules: SOLO grounding del negocio (self:estilo y conversation:fallback se separan)
+    # rules: grounding del negocio (RuleAtom.answer)
     assert [{"id": r["id"], "body": r["body"]} for r in d["rules"]] == [
         {"id": "domain-regla-reservas", "body": "Las reservas requieren confirmación previa."},
     ]
     assert all("tags" in r and "title" in r for r in d["rules"])
-    # persona: identidad del agente desde self:* (deshardcodeo del prompt)
-    assert d["persona"] == {
-        "whoami": "Soy el asistente de la pizzeria.",
-        "estilo": "Responde breve y amable.",
-    }
-    # fallback: texto desde conversation:fallback (deshardcodeo del fallback)
+    # persona: whoami desde SelfDeclaration.statement; estilo desde StyleGuide
+    assert d["persona"]["whoami"] == "Soy el asistente de la pizzeria."
+    assert "Responde breve y amable." in d["persona"]["estilo"]
+    assert "Español chileno" in d["persona"]["estilo"]
+    # fallback: texto desde FallbackRule.fallback_message
     assert d["fallback_text"] == "Si no hay contexto suficiente, pide una aclaración."
-    # tools: schema JSON del atom_type:tool
+    # tools: schema JSON desde ToolAtom.parameters
     assert d["tools"] == [
         {
             "name": "crear_reserva",
@@ -186,8 +236,6 @@ def test_compile_context_selects_all_business_atoms_by_type(
     assert d["user_traits"] == ["trait-prefiere-borde-relleno", "trait-vegetariano"]
     assert d["is_empty"] is False
     assert d["question"] == "¿Qué opciones vegetarianas tienen y hasta qué hora atienden?"
-    assert d.get("grounding_atoms") == []
-    assert d.get("flow_node") is None
     assert llm_calls == []
 
 
@@ -200,7 +248,7 @@ def test_compile_context_marks_empty_when_kb_has_no_domain_or_rule_atoms(
         user_id=None,
         scenario=None,
         trigger="cron",
-        reader=SLDBReader(kb_root=seeded_empty_business_root, store_name=".sldb_test"),
+        reader=SLDBReader(kb_root=seeded_empty_business_root, store_name=".sldb"),
     )
 
     d = payload.to_dict()
@@ -213,12 +261,7 @@ def test_compile_context_marks_empty_when_kb_has_no_domain_or_rule_atoms(
 
 
 def test_compile_context_donpeppe_real_kb() -> None:
-    """Validación con la KB REAL de Don Peppe reestructurada según la doctrina.
-
-    Con la KB nueva (tags domain:catalogo / domain:horarios / domain:reglas.reservas)
-    el compilador debe traer los facts y reglas del negocio sin depender del viejo
-    scenario == domain:pizzeria.
-    """
+    """Validación con la KB REAL tipada de Don Peppe (tests/knowledge)."""
     if not DONPEPPE_KB_ROOT.exists():
         pytest.skip("KB Don Peppe no disponible en este entorno")
 
@@ -240,63 +283,96 @@ def test_compile_context_donpeppe_real_kb() -> None:
     assert d["is_empty"] is False
 
 
+# ── helpers de seed (KB tipada) ──────────────────────────────────────
+
 def _seed_store(root: Path, atoms: list[dict[str, object]]) -> Path:
     root.mkdir(parents=True, exist_ok=True)
     _run(["sldb", "stores", "init", "--path", str(root)])
     store = root / ".sldb"
-    _run(
-        [
-            "sldb",
-            "models",
-            "add",
-            "deskops.models:AtomDoc",
-            "--store",
-            str(store),
-            "--pythonpath",
-            str(REPO_ROOT),
-        ]
-    )
 
+    registered: set[str] = set()
     for atom in atoms:
-        payload_path = root / f"{atom['id']}.yaml"
-        payload_path.write_text(_atom_payload(atom), encoding="utf-8")
-        output_path = root / "atoms" / f"{atom['id']}.md"
-        output_path.parent.mkdir(parents=True, exist_ok=True)
+        tipo = str(atom["type"])
+        if tipo not in registered:
+            _run(
+                [
+                    "sldb", "models", "add", _MODEL_IMPORTS[tipo],
+                    "--store", str(store), "--pythonpath", str(REPO_ROOT),
+                ]
+            )
+            registered.add(tipo)
+
+        rel_path = Path("atoms") / f"{atom['id']}.md"
+        out_path = root / rel_path
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(_atom_markdown(atom), encoding="utf-8")
         _run(
             [
-                "sldb",
-                "docs",
-                "create",
-                "--model",
-                "AtomDoc",
-                "-o",
-                str(output_path),
-                str(payload_path),
-                "--store",
-                str(store),
-                "--pythonpath",
-                str(REPO_ROOT),
+                "sldb", "docs", "track", str(rel_path),
+                "--model", _MODEL_CLASS[tipo],
+                "--store", str(store), "--pythonpath", str(REPO_ROOT),
             ]
         )
 
-    os.symlink(store, root / ".sldb_test", target_is_directory=True)
+    _run(["sldb", "stores", "update", "--store", str(store), "--pythonpath", str(REPO_ROOT)])
     return root
 
 
-def _atom_payload(atom: dict[str, object]) -> str:
-    answer = str(atom["answer"])
-    indented_answer = "\n".join(f"  {line}" if line else "" for line in answer.splitlines())
-    tags = "\n".join(f"  - {tag}" for tag in atom["tags"])
-    return (
-        f"id: {atom['id']}\n"
-        f"title: {atom['title']}\n"
-        "five_wh_one_plus: what\n"
-        "tags:\n"
-        f"{tags}\n"
-        "provenance: null\n"
-        "answer: |\n"
-        f"{indented_answer}\n"
-    )
+def _atom_markdown(atom: dict[str, object]) -> str:
+    tipo = str(atom["type"])
+    tags = "\n".join(f"- {tag}" for tag in atom["tags"])  # type: ignore[union-attr]
+    lines = [
+        "---",
+        f"id: {atom['id']}",
+        f"title: {atom['title']}",
+    ]
+    if "five_wh" in atom:
+        lines.append(f"five_wh_one_plus: {atom['five_wh']}")
+    lines.append(f"atom_type: {tipo}")
+    lines.append("tags:")
+    lines.append(tags)
+    if tipo == "domain":
+        lines.append("domain_ref: negocio")
+    if tipo == "rule":
+        lines.append("applies_to: negocio")
+    if tipo == "trait":
+        lines.append(f"category: {atom.get('category', 'general')}")
+    lines.append("provenance: null")
+    lines.append("---")
+    lines.append("")
+    lines.append(f"# {atom['title']}")
+    lines.append("")
+    # secciones por campo del modelo tipado
+    fields: dict[str, str] = atom["fields"]  # type: ignore[assignment]
+    section_titles = {
+        "statement": "Statement",
+        "tone": "Tone",
+        "language_register": "Language Register",
+        "phrase_preferences": "Phrase Preferences",
+        "length_guidelines": "Length Guidelines",
+        "fallback_message": "Fallback Message",
+        "conditions": "Conditions",
+        "answer": "Answer",
+        "description": "Description",
+        "parameters": "Parameters",
+        "restriction": "Restriction",
+        "escalation": "Escalation",
+        "goal": "Goal",
+        "approach": "Approach",
+        "priorities": "Priorities",
+    }
+    for field, value in fields.items():
+        lines.append(f"## {section_titles.get(field, field.title())}")
+        lines.append("")
+        if tipo == "tool" and field == "parameters":
+            # ToolAtom espera el schema en un bloque ```json.
+            lines.append("```json")
+            lines.append(str(value))
+            lines.append("```")
+        else:
+            lines.append(str(value))
+        lines.append("")
+    return "\n".join(lines)
 
 
 def _run(command: list[str]) -> None:

@@ -48,8 +48,8 @@ def test_explicit_trait_signal_creates_user_trait_row(tmp_path: Path) -> None:
             {
                 "id": "trait-vegetariano",
                 "title": "Trait Vegetariano",
-                "tags": ["atom_type:trait", "topic:profiling"],
-                "answer": "soy vegetariano",
+                "tags": ["user:traits.vegetariano", "system:donpeppe"],
+                "description": "soy vegetariano",
             }
         ],
     )
@@ -86,8 +86,8 @@ def test_signal_without_matching_trait_atom_does_not_persist_row(tmp_path: Path)
             {
                 "id": "trait-vegetariano",
                 "title": "Trait Vegetariano",
-                "tags": ["atom_type:trait", "topic:profiling"],
-                "answer": "soy vegetariano",
+                "tags": ["user:traits.vegetariano", "system:donpeppe"],
+                "description": "soy vegetariano",
             }
         ],
     )
@@ -118,8 +118,8 @@ def test_reprocessing_same_signal_is_idempotent_and_keeps_max_confidence(tmp_pat
             {
                 "id": "trait-vegetariano",
                 "title": "Trait Vegetariano",
-                "tags": ["atom_type:trait", "topic:profiling"],
-                "answer": "soy vegetariano",
+                "tags": ["user:traits.vegetariano", "system:donpeppe"],
+                "description": "soy vegetariano",
             }
         ],
     )
@@ -161,61 +161,53 @@ def _build_identity_session() -> tuple[Session, int]:
 
 
 def _seed_store(root: Path, atoms: list[dict[str, object]]) -> Path:
+    """Seed de un TraitAtom tipado (seleccionable por type.knowledge.trait)."""
     root.mkdir(parents=True, exist_ok=True)
     _run(["sldb", "stores", "init", "--path", str(root)])
     store = root / ".sldb"
     _run(
         [
-            "sldb",
-            "models",
-            "add",
-            "deskops.models:AtomDoc",
-            "--store",
-            str(store),
-            "--pythonpath",
-            str(REPO_ROOT),
+            "sldb", "models", "add", "kb_agent.models.knowledge:TraitAtom",
+            "--store", str(store), "--pythonpath", str(REPO_ROOT),
         ]
     )
 
     for atom in atoms:
-        payload_path = root / f"{atom['id']}.yaml"
-        payload_path.write_text(_atom_payload(atom), encoding="utf-8")
-        output_path = root / "atoms" / f"{atom['id']}.md"
-        output_path.parent.mkdir(parents=True, exist_ok=True)
+        rel_path = Path("atoms") / f"{atom['id']}.md"
+        out_path = root / rel_path
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(_atom_markdown(atom), encoding="utf-8")
         _run(
             [
-                "sldb",
-                "docs",
-                "create",
-                "--model",
-                "AtomDoc",
-                "-o",
-                str(output_path),
-                str(payload_path),
-                "--store",
-                str(store),
-                "--pythonpath",
-                str(REPO_ROOT),
+                "sldb", "docs", "track", str(rel_path),
+                "--model", "TraitAtom",
+                "--store", str(store), "--pythonpath", str(REPO_ROOT),
             ]
         )
 
+    _run(["sldb", "stores", "update", "--store", str(store), "--pythonpath", str(REPO_ROOT)])
     os.symlink(store, root / ".sldb_test", target_is_directory=True)
     return root
 
 
-def _atom_payload(atom: dict[str, object]) -> str:
-    answer = str(atom["answer"])
-    indented_answer = "\n".join(f"  {line}" if line else "" for line in answer.splitlines())
-    tags = "\n".join(f"  - {tag}" for tag in atom["tags"])
+def _atom_markdown(atom: dict[str, object]) -> str:
+    tags = "\n".join(f"- {tag}" for tag in atom["tags"])  # type: ignore[union-attr]
     return (
+        "---\n"
         f"id: {atom['id']}\n"
         f"title: {atom['title']}\n"
-        "five_wh_one_plus: what\n"
+        "atom_type: trait\n"
         "tags:\n"
         f"{tags}\n"
+        "category: dietary\n"
         "provenance: null\n"
-        "answer: |\n"
-        f"{indented_answer}\n"
+        "---\n"
+        "\n"
+        f"# {atom['title']}\n"
+        "\n"
+        "## Description\n"
+        "\n"
+        f"{atom['description']}\n"
     )
 
 

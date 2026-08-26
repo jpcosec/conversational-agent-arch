@@ -51,8 +51,13 @@ class SLDBReader:
         return None
 
     def fetch(self, atom_type: str) -> list[dict[str, Any]]:
-        """Compatibilidad con API anterior: filtra por atom_type en tags."""
-        return self.find(f"atom_type:{atom_type}", search_in="semantic")
+        """Selecciona atoms por MODELO tipado (type.knowledge.<tipo>).
+
+        La KB usa modelos tipados: ``atom_type`` es un campo del modelo, no un
+        tag. La selección es por el eje ``type.knowledge.<tipo>`` derivado del
+        ``__semantics__`` de cada modelo.
+        """
+        return self.find(f"type.knowledge.{atom_type}", search_in="semantic")
 
     def refresh(self) -> None:
         """Recarga el índice (útil si cambian los documentos fuente)."""

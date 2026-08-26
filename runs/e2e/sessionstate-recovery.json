@@ -1,5 +1,5 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-56/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-90/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
   "user_id": 1,
   "before_restart": {
     "active_domain": "pizzeria",
@@ -15,7 +15,7 @@
       "scenario_effective": "pizzeria",
       "scenario_source": "session_state",
       "kind": "nl",
-      "reply": "¡Claro! Para hoy, y pensando en tus gustos, te sugiero nuestra deliciosa Margherita por $8900 o la cremosa Cuatro Quesos por $11200. Ambas son excelentes opciones vegetarianas para disfrutar."
+      "reply": "¡Hola! Qué gusto ayudarte. Siendo vegetariano, te sugiero la clásica Margherita ($8.900), la deliciosa Cuatro Quesos ($11.200) o la Napolitana ($9.800).\n\nY ojo, si es martes o miércoles, ¡la Margherita está 2x1! 🍕✨"
     }
   }
 }

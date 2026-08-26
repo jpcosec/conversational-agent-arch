@@ -138,6 +138,7 @@ Cliente que no consume carne.
 id: step-onboarding
 title: Onboarding
 atom_type: step
+kind: interaccion_simple
 tags:
 - conversation:steps.onboarding
 - system:test

@@ -1,8 +1,8 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-56/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-90/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
   "nl_turn": {
     "kind": "nl",
-    "reply": "¡Hola! Para opciones vegetarianas, te recomiendo nuestra clásica Margherita, la exquisita Cuatro Quesos o la deliciosa Napolitana. Todas son opciones sin carne y muy sabrosas. ¡Espero que disfrutes tu elección!",
+    "reply": "¡Hola! Para opciones vegetarianas, te recomiendo la clásica **Margherita** y nuestra deliciosa **Cuatro Quesos**. ¡Son un éxito entre nuestros clientes!",
     "state_trace": [
       "idle",
       "evaluating_context",
@@ -12,7 +12,7 @@
   },
   "tool_turn": {
     "kind": "tool_call",
-    "reply": "¡Claro que sí! Su reserva para 4 personas a nombre de Rojas para el viernes a las 20:00 horas ha sido confirmada con éxito. El número de su reserva es el 1.\n\n¡Le esperamos en Don Peppe!",
+    "reply": "¡Perfecto! Tu reserva en Don Peppe está confirmada.\n\nTe esperamos el viernes a las 20:00, a nombre de Rojas, para 4 personas. Tu ID de reserva es el 1.\n\n¡Prepárate para disfrutar unas ricas pizzas!",
     "system_turn": {
       "tool": "crear_reserva",
       "status": "ok",
