@@ -7,6 +7,9 @@ nodes:
 - id: domain:self.architecture.backend
   parents:
   - domain:self.architecture
+- id: domain:self.architecture.frontend
+  parents:
+  - domain:self.architecture
 - id: domain:self.architecture.integration
   parents:
   - domain:self.architecture

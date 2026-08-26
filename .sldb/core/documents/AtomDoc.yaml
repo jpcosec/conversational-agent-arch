@@ -1,8 +1,8 @@
 documents:
 - name: atom-api-gateway-y-state-router
   path: desk/atoms/atom-api-gateway-y-state-router.md
-  hash_c: 82b7513b54a794c7e6b7189f021bf0e341f7ec185ae17844fc465b575405730f
-  hash_d: 0a2572ae126a1f103152a52ae1def6c62359c361f8986ea4c2aa462939eca3e1
+  hash_c: c97052c440cac18b39374eb9aa4d3e24cb62983c8974b39d4f990fa193b8b59b
+  hash_d: 98141041e9921bacdd1b9e208a3cdc7bfa341d606d7987cde06d793b03899e1d
   semantic_tags:
   - domain:self.architecture.backend
   - layer:runtime
@@ -140,5 +140,49 @@ documents:
   - layer:persistence
   - system:sql
   - topic:history
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-modelos-de-conocimiento-tipados
+  path: desk/atoms/atom-modelos-de-conocimiento-tipados.md
+  hash_c: 9ec06b1dc3c9f3d5ebf19abd87925f10aff64d2229f6236d6fd0ecd77c0f32e0
+  hash_d: d0e2a069fcf799dfabad36bbe8184db66708c794e9bdb02cc76174d6472fe49a
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:document-model
+  - system:sldb
+  - topic:knowledge-models
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-grafo-de-flujo-conversacional
+  path: desk/atoms/atom-grafo-de-flujo-conversacional.md
+  hash_c: ebe35e41a9d54610ea892943ed99342ed4d4a1c006d3fd8ef43d7e6d9313d0ee
+  hash_d: 58bb3fcef558ec7f79e63da665ea0446730fafc2e4a716c0210281dc989c149f
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:runtime
+  - system:kb-agent
+  - topic:conversation-flow
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-capa-frontend-del-runtime
+  path: desk/atoms/atom-capa-frontend-del-runtime.md
+  hash_c: 22498d1d043734f01ba4787123bd2b5e440b0f6dc33994fdc8e92cf3f2f081a8
+  hash_d: 776cbef0ee4b0c14f2d2ce980b82e344d2be848d9e2e874dd4e6bc01f64b41a5
+  semantic_tags:
+  - domain:self.architecture.frontend
+  - layer:frontend
+  - system:kb-agent
+  - topic:ui
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-knowledge-base-cli
+  path: desk/atoms/atom-knowledge-base-cli.md
+  hash_c: e2bd022d8c86ec0a3327e6c55f7df8a853a797684ec18c7e65f8927608ce0759
+  hash_d: af2d73ba4e2772201c19e61ec0154c2fe71d3215f4ffe738a1b3e351cf47f17c
+  semantic_tags:
+  - domain:self.architecture.backend
+  - layer:cli
+  - system:kb-agent
+  - topic:retrieval
   - type.knowledge.atom
   - workspace.desk.atoms
