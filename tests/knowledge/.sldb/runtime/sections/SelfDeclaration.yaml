@@ -1,0 +1,50 @@
+documents:
+- doc_name: self-donpeppe
+  sections:
+  - path: asistente-de-don-peppe
+    title: Asistente de Don Peppe
+    breadcrumbs:
+    - Asistente de Don Peppe
+    about:
+    - Asistente de Don Peppe
+    - asistente de don peppe
+    - domain:pizzeria
+    - self:whoami
+    - system:donpeppe
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - domain:pizzeria
+    - self:whoami
+    - system:donpeppe
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: asistente-de-don-peppe
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: asistente-de-don-peppe/statement
+    title: Statement
+    breadcrumbs:
+    - Asistente de Don Peppe
+    - Statement
+    about:
+    - Asistente de Don Peppe
+    - asistente de don peppe
+    - Statement
+    - statement
+    - domain:pizzeria
+    - self:whoami
+    - system:donpeppe
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - domain:pizzeria
+    - self:whoami
+    - system:donpeppe
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: statement
+    level: 2
+    line_start: 14
+    line_end: 15

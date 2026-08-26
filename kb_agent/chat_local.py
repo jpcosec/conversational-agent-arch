@@ -18,14 +18,14 @@ from kb_agent.orchestrator import Orchestrator
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
-DEFAULT_KB_ROOT = PROJECT_ROOT / ".sldb_e2e_donpeppe"
+DEFAULT_KB_ROOT = PROJECT_ROOT / "tests/knowledge"
 DEFAULT_DB_PATH = PROJECT_ROOT / "runs" / "local-chat.sqlite"
 DEFAULT_USER = "local:demo"
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Chat local real con el orquestador")
-    parser.add_argument("--kb", default=str(DEFAULT_KB_ROOT), help="Ruta al root del KB (default: .sldb_e2e_donpeppe)")
+    parser.add_argument("--kb", default=str(DEFAULT_KB_ROOT), help="Ruta al root del KB (default: tests/knowledge)")
     parser.add_argument("--db", default=str(DEFAULT_DB_PATH), help="Ruta al sqlite local persistente")
     parser.add_argument("--user", default=DEFAULT_USER, help="external_id persistente del usuario local")
     parser.add_argument("--scenario", default=None, help="Scenario inicial opcional; luego se recupera desde SessionState")

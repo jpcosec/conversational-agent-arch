@@ -1,0 +1,197 @@
+documents:
+- doc_name: atom-donpeppe-carta
+  sections:
+  - path: carta-don-peppe
+    title: Carta Don Peppe
+    breadcrumbs:
+    - Carta Don Peppe
+    about:
+    - Carta Don Peppe
+    - carta don peppe
+    - conversation:steps.onboarding
+    - domain:catalogo
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:catalogo
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: carta-don-peppe
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: carta-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Carta Don Peppe
+    - Answer
+    about:
+    - Carta Don Peppe
+    - carta don peppe
+    - Answer
+    - answer
+    - conversation:steps.onboarding
+    - domain:catalogo
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:catalogo
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+- doc_name: atom-donpeppe-horarios
+  sections:
+  - path: horarios-don-peppe
+    title: Horarios Don Peppe
+    breadcrumbs:
+    - Horarios Don Peppe
+    about:
+    - Horarios Don Peppe
+    - horarios don peppe
+    - conversation:steps.onboarding
+    - domain:horarios
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:horarios
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: horarios-don-peppe
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: horarios-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Horarios Don Peppe
+    - Answer
+    about:
+    - Horarios Don Peppe
+    - horarios don peppe
+    - Answer
+    - answer
+    - conversation:steps.onboarding
+    - domain:horarios
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:horarios
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+- doc_name: atom-donpeppe-ubicacion
+  sections:
+  - path: ubicaci-n-don-peppe
+    title: "Ubicaci\xF3n Don Peppe"
+    breadcrumbs:
+    - "Ubicaci\xF3n Don Peppe"
+    about:
+    - "Ubicaci\xF3n Don Peppe"
+    - ubicaci n don peppe
+    - conversation:steps.onboarding
+    - domain:ubicacion
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:ubicacion
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: ubicaci-n-don-peppe
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: ubicaci-n-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - "Ubicaci\xF3n Don Peppe"
+    - Answer
+    about:
+    - "Ubicaci\xF3n Don Peppe"
+    - ubicaci n don peppe
+    - Answer
+    - answer
+    - conversation:steps.onboarding
+    - domain:ubicacion
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:ubicacion
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+- doc_name: atom-donpeppe-promos
+  sections:
+  - path: promociones-don-peppe
+    title: Promociones Don Peppe
+    breadcrumbs:
+    - Promociones Don Peppe
+    about:
+    - Promociones Don Peppe
+    - promociones don peppe
+    - conversation:steps.booking
+    - domain:promociones
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:promociones
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: promociones-don-peppe
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: promociones-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Promociones Don Peppe
+    - Answer
+    about:
+    - Promociones Don Peppe
+    - promociones don peppe
+    - Answer
+    - answer
+    - conversation:steps.booking
+    - domain:promociones
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:promociones
+    - system:donpeppe
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17

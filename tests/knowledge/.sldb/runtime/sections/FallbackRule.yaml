@@ -1,0 +1,69 @@
+documents:
+- doc_name: fallback-donpeppe
+  sections:
+  - path: fallback-sin-contexto-suficiente
+    title: "Fallback \u2014 sin contexto suficiente"
+    breadcrumbs:
+    - "Fallback \u2014 sin contexto suficiente"
+    about:
+    - "Fallback \u2014 sin contexto suficiente"
+    - fallback sin contexto suficiente
+    - conversation:fallback
+    - system:donpeppe
+    - type.knowledge.fallback
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:donpeppe
+    - type.knowledge.fallback
+    - workspace.knowledge
+    slug: fallback-sin-contexto-suficiente
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: fallback-sin-contexto-suficiente/fallback-message
+    title: Fallback Message
+    breadcrumbs:
+    - "Fallback \u2014 sin contexto suficiente"
+    - Fallback Message
+    about:
+    - "Fallback \u2014 sin contexto suficiente"
+    - fallback sin contexto suficiente
+    - Fallback Message
+    - fallback message
+    - conversation:fallback
+    - system:donpeppe
+    - type.knowledge.fallback
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:donpeppe
+    - type.knowledge.fallback
+    - workspace.knowledge
+    slug: fallback-message
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: fallback-sin-contexto-suficiente/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Fallback \u2014 sin contexto suficiente"
+    - Conditions
+    about:
+    - "Fallback \u2014 sin contexto suficiente"
+    - fallback sin contexto suficiente
+    - Conditions
+    - conditions
+    - conversation:fallback
+    - system:donpeppe
+    - type.knowledge.fallback
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:donpeppe
+    - type.knowledge.fallback
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 17
+    line_end: 18

@@ -1,0 +1,75 @@
+documents:
+- doc_name: atom-donpeppe-regla-reservas
+  sections:
+  - path: regla-de-reservas-don-peppe
+    title: Regla de reservas Don Peppe
+    breadcrumbs:
+    - Regla de reservas Don Peppe
+    about:
+    - Regla de reservas Don Peppe
+    - regla de reservas don peppe
+    - conversation:steps.booking
+    - domain:reglas.reservas
+    - system:donpeppe
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:reglas.reservas
+    - system:donpeppe
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-de-reservas-don-peppe
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: regla-de-reservas-don-peppe/answer
+    title: Answer
+    breadcrumbs:
+    - Regla de reservas Don Peppe
+    - Answer
+    about:
+    - Regla de reservas Don Peppe
+    - regla de reservas don peppe
+    - Answer
+    - answer
+    - conversation:steps.booking
+    - domain:reglas.reservas
+    - system:donpeppe
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:reglas.reservas
+    - system:donpeppe
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: regla-de-reservas-don-peppe/conditions
+    title: Conditions
+    breadcrumbs:
+    - Regla de reservas Don Peppe
+    - Conditions
+    about:
+    - Regla de reservas Don Peppe
+    - regla de reservas don peppe
+    - Conditions
+    - conditions
+    - conversation:steps.booking
+    - domain:reglas.reservas
+    - system:donpeppe
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:reglas.reservas
+    - system:donpeppe
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 20
+    line_end: 21

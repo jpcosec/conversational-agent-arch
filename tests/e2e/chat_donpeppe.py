@@ -21,7 +21,7 @@ from kb_agent.agent import CANONICAL_FALLBACK_RESPONSE, draft_conversador_respon
 from kb_agent.ontologizador.compiler import ContextCompiler
 from kb_agent.ontologizador.sldb_reader import SLDBReader
 
-STORE_ROOT = PROJECT_ROOT / ".sldb_e2e_donpeppe"
+STORE_ROOT = PROJECT_ROOT / "tests/knowledge"
 MODEL = "gemini-2.5-flash"
 _client = genai.Client()
 

@@ -1,0 +1,11 @@
+documents:
+- name: atom-donpeppe-tool-reserva
+  path: atoms/atom-donpeppe-tool-reserva.md
+  hash_c: c7bd9c21d05d26977e4bac403875d45ee7e0fb1b35cf720e102177152e189e37
+  hash_d: c0b4df23cf79d5898c2e0c5ff09e1ade1e9db485bdf8fff635eb98e310ce65ff
+  semantic_tags:
+  - conversation:steps.booking
+  - self:tools
+  - system:donpeppe
+  - type.knowledge.tool
+  - workspace.knowledge

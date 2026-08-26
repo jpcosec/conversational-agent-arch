@@ -1,0 +1,11 @@
+documents:
+- name: style-antonia
+  path: atoms/style-antonia.md
+  hash_c: 10054a5ef3128b52639b19eec4525d78015083d375fac5fb2e48b26e9c3e6c17
+  hash_d: 43c508f69021a67466ef673ee77c8f5199cc7b6a7ecf105563b241ff735b1e2e
+  semantic_tags:
+  - channel:whatsapp
+  - self:estilo
+  - system:laboratorio-chile
+  - type.knowledge.style
+  - workspace.knowledge

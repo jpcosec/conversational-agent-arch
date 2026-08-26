@@ -1,6 +1,4 @@
 tags:
-  domain:external_libs.sldb:
-  - atom-sldb-base-conocimiento-semantica
   domain:self.architecture.backend:
   - atom-agente-conversador
   - atom-api-gateway-y-state-router
@@ -18,22 +16,12 @@ tags:
   - atom-sql-capa-identidad-y-estado
   domain:standards.privacy:
   - atom-aislamiento-estricto-de-pii
-  domain:standards.taxonomy.atoms:
-  - atom-domain-atom
-  - atom-rule-atom
-  - atom-tool-atom
-  - atom-trait-atom
   layer:document-model:
-  - atom-domain-atom
-  - atom-rule-atom
   - atom-sql-capa-identidad-y-estado
-  - atom-tool-atom
-  - atom-trait-atom
   layer:persistence:
   - atom-aislamiento-estricto-de-pii
   - atom-historial-de-conversacion-sin-pii
   - atom-reflector-batch
-  - atom-sldb-base-conocimiento-semantica
   layer:runtime:
   - atom-agente-conversador
   - atom-api-gateway-y-state-router
@@ -56,12 +44,6 @@ tags:
   - atom-perfilador-asincrono
   - atom-reflector-batch
   - atom-turno-de-sistema-system-turn
-  system:sldb:
-  - atom-domain-atom
-  - atom-rule-atom
-  - atom-sldb-base-conocimiento-semantica
-  - atom-tool-atom
-  - atom-trait-atom
   system:sql:
   - atom-aislamiento-estricto-de-pii
   - atom-historial-de-conversacion-sin-pii
@@ -76,26 +58,19 @@ tags:
   - atom-historial-de-conversacion-sin-pii
   topic:identity:
   - atom-sql-capa-identidad-y-estado
-  topic:ontology:
-  - atom-domain-atom
-  - atom-sldb-base-conocimiento-semantica
   topic:pii:
   - atom-aislamiento-estricto-de-pii
   topic:proactivity:
   - atom-trigger-sintetico-cron
   topic:profiling:
   - atom-perfilador-asincrono
-  - atom-trait-atom
   topic:retrieval:
   - atom-ontologizador-context-compiler
   topic:routing:
   - atom-api-gateway-y-state-router
   - atom-debounce-buffer-agrupacion
-  topic:rules:
-  - atom-rule-atom
   topic:tool-calling:
   - atom-apis-externas-integracion
-  - atom-tool-atom
   - atom-turno-de-sistema-system-turn
   type.desk.inbox-note:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
@@ -106,16 +81,11 @@ tags:
   - atom-apis-externas-integracion
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
-  - atom-domain-atom
   - atom-historial-de-conversacion-sin-pii
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-reflector-batch
-  - atom-rule-atom
-  - atom-sldb-base-conocimiento-semantica
   - atom-sql-capa-identidad-y-estado
-  - atom-tool-atom
-  - atom-trait-atom
   - atom-trigger-sintetico-cron
   - atom-turno-de-sistema-system-turn
   workspace.desk.atoms:
@@ -125,16 +95,11 @@ tags:
   - atom-apis-externas-integracion
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
-  - atom-domain-atom
   - atom-historial-de-conversacion-sin-pii
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-reflector-batch
-  - atom-rule-atom
-  - atom-sldb-base-conocimiento-semantica
   - atom-sql-capa-identidad-y-estado
-  - atom-tool-atom
-  - atom-trait-atom
   - atom-trigger-sintetico-cron
   - atom-turno-de-sistema-system-turn
   workspace.desk.inbox:
@@ -206,16 +171,6 @@ documents:
     - topic:identity
     - type.knowledge.atom
     - workspace.desk.atoms
-  atom-sldb-base-conocimiento-semantica:
-    model: AtomDoc
-    path: desk/atoms/atom-sldb-base-conocimiento-semantica.md
-    tags:
-    - domain:external_libs.sldb
-    - layer:persistence
-    - system:sldb
-    - topic:ontology
-    - type.knowledge.atom
-    - workspace.desk.atoms
   atom-apis-externas-integracion:
     model: AtomDoc
     path: desk/atoms/atom-apis-externas-integracion.md
@@ -223,46 +178,6 @@ documents:
     - domain:self.architecture.integration
     - layer:runtime
     - system:kb-agent
-    - topic:tool-calling
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-domain-atom:
-    model: AtomDoc
-    path: desk/atoms/atom-domain-atom.md
-    tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:ontology
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-trait-atom:
-    model: AtomDoc
-    path: desk/atoms/atom-trait-atom.md
-    tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:profiling
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-rule-atom:
-    model: AtomDoc
-    path: desk/atoms/atom-rule-atom.md
-    tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
-    - topic:rules
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-tool-atom:
-    model: AtomDoc
-    path: desk/atoms/atom-tool-atom.md
-    tags:
-    - domain:standards.taxonomy.atoms
-    - layer:document-model
-    - system:sldb
     - topic:tool-calling
     - type.knowledge.atom
     - workspace.desk.atoms

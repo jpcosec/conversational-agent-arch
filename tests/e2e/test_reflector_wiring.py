@@ -14,11 +14,11 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 from kb_agent.orchestrator import Orchestrator
 
-STORE_ROOT = PROJECT_ROOT / ".sldb_e2e_donpeppe"
+STORE_ROOT = PROJECT_ROOT / "tests/knowledge"
 
 
 def test_run_reflector_materializes_proposed_atom_without_duplicates(tmp_path: Path) -> None:
-    copied_store = tmp_path / ".sldb_e2e_donpeppe"
+    copied_store = tmp_path / "knowledge"
     shutil.copytree(STORE_ROOT, copied_store)
     db_file = tmp_path / "reflector.sqlite"
     evidence_path = PROJECT_ROOT / "runs" / "e2e" / "reflector-run.json"
@@ -74,7 +74,7 @@ def test_run_reflector_materializes_proposed_atom_without_duplicates(tmp_path: P
 
 
 def test_run_reflector_does_not_generate_atoms_below_pattern_threshold(tmp_path: Path) -> None:
-    copied_store = tmp_path / ".sldb_e2e_donpeppe"
+    copied_store = tmp_path / "knowledge"
     shutil.copytree(STORE_ROOT, copied_store)
     db_file = tmp_path / "reflector-below-threshold.sqlite"
     before_files = _atom_files(copied_store)

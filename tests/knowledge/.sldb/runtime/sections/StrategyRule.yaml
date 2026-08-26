@@ -1,0 +1,92 @@
+documents:
+- doc_name: strategy-donpeppe
+  sections:
+  - path: estrategia-de-atenci-n-don-peppe
+    title: "Estrategia de atenci\xF3n Don Peppe"
+    breadcrumbs:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    about:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    - estrategia de atenci n don peppe
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: estrategia-de-atenci-n-don-peppe
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: estrategia-de-atenci-n-don-peppe/goal
+    title: Goal
+    breadcrumbs:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    - Goal
+    about:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    - estrategia de atenci n don peppe
+    - Goal
+    - goal
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: goal
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: estrategia-de-atenci-n-don-peppe/approach
+    title: Approach
+    breadcrumbs:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    - Approach
+    about:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    - estrategia de atenci n don peppe
+    - Approach
+    - approach
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: approach
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: estrategia-de-atenci-n-don-peppe/priorities
+    title: Priorities
+    breadcrumbs:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    - Priorities
+    about:
+    - "Estrategia de atenci\xF3n Don Peppe"
+    - estrategia de atenci n don peppe
+    - Priorities
+    - priorities
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:donpeppe
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: priorities
+    level: 2
+    line_start: 21
+    line_end: 22

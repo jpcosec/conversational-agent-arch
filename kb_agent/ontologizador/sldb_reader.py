@@ -5,7 +5,7 @@ consulta el store indexado de SLDB mediante búsqueda semántica y
 extrae los campos ya resueltos por el modelo.
 
 Uso:
-    reader = SLDBReader(kb_root=Path(".sldb_e2e_donpeppe"), store_name=".sldb")
+    reader = SLDBReader(kb_root=Path("tests/knowledge"), store_name=".sldb")
     atoms = reader.find("domain:pizzeria")      # búsqueda semántica
     atom  = reader.get_doc("atom-donpeppe-carta")  # fields ya resueltos
 """

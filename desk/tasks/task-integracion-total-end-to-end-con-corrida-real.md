@@ -48,7 +48,7 @@ Cablear los 10 modulos al entrypoint y correr una conversacion REAL end-to-end c
 
 _State what is in scope and what is out of scope._
 
-tests/e2e/ (runner + chat real), .sldb_e2e_donpeppe/ store real
+tests/e2e/ (runner + chat real), tests/knowledge/ store real
 
 ## Implementation Path
 
@@ -77,7 +77,7 @@ Recupera y ejecuta los niveles 2, 3 y 4 de la estrategia original — TODO con d
 - Assert: la respuesta es EXACTAMENTE "No tengo esa información a mano, la averiguaré." (Gemini real, no mock).
 
 ### Nivel 3 — Simulador End-to-End con subgrafo REAL en SLDB
-- Sembrar un store SLDB real `.sldb_e2e_donpeppe/` con átomos reales de la pizzería Don Peppe:
+- Sembrar un store SLDB real `tests/knowledge/` con átomos reales de la pizzería Don Peppe:
   - DomainAtom horarios: "Don Peppe abre de martes a domingo, 19:00 a 23:30. Lunes cerrado."
   - DomainAtom carta: "Pizzas: Margherita 8900, Pepperoni 10500, Cuatro Quesos 11200. Napolitana 9800."
   - RuleAtom reservas: "Reservas mínimo 2 personas, máximo 8. No se aceptan reservas el mismo día."

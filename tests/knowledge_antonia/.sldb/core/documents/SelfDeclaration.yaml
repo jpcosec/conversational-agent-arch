@@ -1,0 +1,11 @@
+documents:
+- name: self-antonia
+  path: atoms/self-antonia.md
+  hash_c: 955aec014e630718011656abf701836313109195fc44eb4b82a17a225dcba457
+  hash_d: 6852aa7c27574409e0728ce70c5ceed6b4fa68f85fb37d7c2c95646aff5f5894
+  semantic_tags:
+  - domain:salud
+  - self:whoami
+  - system:laboratorio-chile
+  - type.knowledge.self
+  - workspace.knowledge

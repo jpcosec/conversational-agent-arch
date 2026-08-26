@@ -1,0 +1,93 @@
+tags:
+  domain:external_libs.sldb:
+  - atom-sldb-base-conocimiento-semantica
+  domain:standards.taxonomy.atoms:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-tool-atom
+  - atom-trait-atom
+  layer:document-model:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-tool-atom
+  - atom-trait-atom
+  layer:persistence:
+  - atom-sldb-base-conocimiento-semantica
+  system:sldb:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-tool-atom
+  - atom-trait-atom
+  topic:ontology:
+  - atom-domain-atom
+  - atom-sldb-base-conocimiento-semantica
+  topic:profiling:
+  - atom-trait-atom
+  topic:rules:
+  - atom-rule-atom
+  topic:tool-calling:
+  - atom-tool-atom
+  type.knowledge.atom:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-tool-atom
+  - atom-trait-atom
+  workspace.desk.atoms:
+  - atom-domain-atom
+  - atom-rule-atom
+  - atom-sldb-base-conocimiento-semantica
+  - atom-tool-atom
+  - atom-trait-atom
+documents:
+  atom-domain-atom:
+    model: AtomDoc
+    path: atoms/atom-domain-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-rule-atom:
+    model: AtomDoc
+    path: atoms/atom-rule-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:rules
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-sldb-base-conocimiento-semantica:
+    model: AtomDoc
+    path: atoms/atom-sldb-base-conocimiento-semantica.md
+    tags:
+    - domain:external_libs.sldb
+    - layer:persistence
+    - system:sldb
+    - topic:ontology
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-tool-atom:
+    model: AtomDoc
+    path: atoms/atom-tool-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-trait-atom:
+    model: AtomDoc
+    path: atoms/atom-trait-atom.md
+    tags:
+    - domain:standards.taxonomy.atoms
+    - layer:document-model
+    - system:sldb
+    - topic:profiling
+    - type.knowledge.atom
+    - workspace.desk.atoms

@@ -10,7 +10,7 @@ Uso:
     transitions = reader.get_next_transitions("reserva_pedir_personas")
 
 O desde SLDB:
-    reader = KGDBReader.from_sldb(store_path=Path(".sldb_e2e_donpeppe/.sldb"))
+    reader = KGDBReader.from_sldb(store_path=Path("tests/knowledge/.sldb"))
 """
 from __future__ import annotations
 
@@ -224,21 +224,112 @@ class KGDBReader:
                 result.append(node_id)
         return result
 
-    # ── navegacion tag-centrica (grafo generado desde SLDB) ──────
+    # ── navegacion tag-centrica (grafo generado desde SLDB, para explore) ──
     #
     # El grafo que produce sldb_semantic_export_to_snapshot es tag-centrico:
     #   sldb://semantic_tag/<tag>              nodo de tag
     #   sldb://document/<doc>  --tagged_as-->  sldb://semantic_tag/<tag>
     #   <tag.hijo>             --semantic_parent--> <tag.padre>
     # El "diagrama de conversacion" vive en la jerarquia conversation:steps.*.
-    # Estos helpers navegan esa estructura real (no nodos conversation_flow_node,
-    # que no existen en el export automatico).
 
-    _TAG_PREFIX = "sldb://semantic_tag/"
-    _DOC_PREFIX = "sldb://document/"
+    TAG_PREFIX = "sldb://semantic_tag/"
+    DOC_PREFIX = "sldb://document/"
 
     def _tag_node(self, tag: str) -> str:
-        return f"{self._TAG_PREFIX}{tag}"
+        """Normaliza un tag a su node_id en el grafo."""
+        if tag.startswith(self.TAG_PREFIX):
+            return tag
+        return f"{self.TAG_PREFIX}{tag}"
+
+    def _strip_tag(self, node_id: str) -> str:
+        return node_id[len(self.TAG_PREFIX):] if node_id.startswith(self.TAG_PREFIX) else node_id
+
+    def _strip_doc(self, node_id: str) -> str:
+        return node_id[len(self.DOC_PREFIX):] if node_id.startswith(self.DOC_PREFIX) else node_id
+
+    def list_tags(self) -> list[str]:
+        """Lista todos los tags semánticos del grafo (sin prefijo)."""
+        return sorted(
+            self._strip_tag(n)
+            for n, d in self._graph.nodes(data=True)
+            if d.get("type") == "semantic_tag"
+        )
+
+    def root_tags(self) -> list[str]:
+        """Lista tags raíz (sin semantic_parent saliente)."""
+        roots = []
+        for n, d in self._graph.nodes(data=True):
+            if d.get("type") != "semantic_tag":
+                continue
+            has_parent = any(
+                data.get("relation") == "semantic_parent"
+                for _, _, data in self._graph.out_edges(n, data=True)
+            )
+            if not has_parent:
+                roots.append(self._strip_tag(n))
+        return sorted(roots)
+
+    def child_tags(self, tag: str) -> list[str]:
+        """Lista tags hijos de un tag (via semantic_parent entrante)."""
+        node = self._tag_node(tag)
+        if node not in self._graph:
+            return []
+        children = []
+        for pred, _, data in self._graph.in_edges(node, data=True):
+            if data.get("relation") == "semantic_parent":
+                children.append(self._strip_tag(pred))
+        return sorted(children)
+
+    def parent_tag(self, tag: str) -> str | None:
+        """Devuelve el tag padre (via semantic_parent saliente)."""
+        node = self._tag_node(tag)
+        if node not in self._graph:
+            return None
+        for _, target, data in self._graph.out_edges(node, data=True):
+            if data.get("relation") == "semantic_parent":
+                return self._strip_tag(target)
+        return None
+
+    # meta-tags demasiado amplios para navegación útil
+    _META_TAG_PREFIXES = ("type.", "workspace.")
+
+    def docs_for_tag(self, tag: str) -> list[str]:
+        """Lista documentos etiquetados con un tag (via tagged_as entrante)."""
+        node = self._tag_node(tag)
+        if node not in self._graph:
+            return []
+        docs = []
+        for pred, _, data in self._graph.in_edges(node, data=True):
+            if data.get("relation") == "tagged_as" and pred.startswith(self.DOC_PREFIX):
+                docs.append(self._strip_doc(pred))
+        return sorted(docs)
+
+    def tags_for_doc(self, doc_id: str, include_meta: bool = False) -> list[str]:
+        """Lista tags de un documento (via tagged_as saliente).
+
+        Por defecto excluye meta-tags (type.*, workspace.*) que no sirven
+        para navegación semántica.
+        """
+        node = doc_id if doc_id.startswith(self.DOC_PREFIX) else f"{self.DOC_PREFIX}{doc_id}"
+        if node not in self._graph:
+            return []
+        tags = []
+        for _, target, data in self._graph.out_edges(node, data=True):
+            if data.get("relation") == "tagged_as":
+                tag = self._strip_tag(target)
+                if not include_meta and tag.startswith(self._META_TAG_PREFIXES):
+                    continue
+                tags.append(tag)
+        return sorted(tags)
+
+    def sibling_docs(self, doc_id: str) -> list[str]:
+        """Documentos que comparten al menos un tag semántico (no meta) con este doc."""
+        siblings: set[str] = set()
+        for tag in self.tags_for_doc(doc_id):
+            for other in self.docs_for_tag(tag):
+                if other != doc_id:
+                    siblings.add(other)
+        return sorted(siblings)
 
     def has_tag(self, tag: str) -> bool:
         """True si el grafo conoce el tag semantico."""
@@ -248,27 +339,16 @@ class KGDBReader:
         """Lista los steps hijos de un tag raiz (ej. conversation:steps).
 
         Devuelve los tags de step completos (conversation:steps.booking, ...)
-        ordenados, derivados de las aristas semantic_parent del grafo real.
+        derivados de las aristas semantic_parent del grafo real.
         """
-        root_node = self._tag_node(root_tag)
-        if root_node not in self._graph:
+        node = self._tag_node(root_tag)
+        if node not in self._graph:
             return []
         children = []
-        for source, target, data in self._graph.in_edges(root_node, data=True):
-            if data.get("relation") == "semantic_parent" and source.startswith(self._TAG_PREFIX):
-                children.append(source[len(self._TAG_PREFIX):])
+        for pred, _, data in self._graph.in_edges(node, data=True):
+            if data.get("relation") == "semantic_parent" and pred.startswith(self.TAG_PREFIX):
+                children.append(self._strip_tag(pred))
         return sorted(children)
-
-    def docs_for_tag(self, tag: str) -> list[str]:
-        """Ids de documentos SLDB etiquetados con un tag (relacion tagged_as)."""
-        tag_node = self._tag_node(tag)
-        if tag_node not in self._graph:
-            return []
-        docs = []
-        for source, target, data in self._graph.in_edges(tag_node, data=True):
-            if data.get("relation") == "tagged_as" and source.startswith(self._DOC_PREFIX):
-                docs.append(source[len(self._DOC_PREFIX):])
-        return sorted(docs)
 
     @property
     def graph(self) -> nx.DiGraph:

@@ -1,801 +1,690 @@
 documents:
-- doc_name: atom-conversador-apos-delegates-retrieval-to-bibliotecario
+- doc_name: atom-api-gateway-y-state-router
   sections:
-  - path: atom-xxx-unique-identifier
-    title: atom-xxx, unique identifier
+  - path: api-gateway-y-state-router
+    title: API Gateway y State Router
     breadcrumbs:
-    - atom-xxx, unique identifier
+    - API Gateway y State Router
     about:
-    - atom-xxx, unique identifier
-    - atom xxx unique identifier
-    - domain:knowledge-management
+    - API Gateway y State Router
+    - api gateway y state router
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
+    - system:kb-agent
+    - topic:routing
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
+    - system:kb-agent
+    - topic:routing
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: atom-xxx-unique-identifier
+    slug: api-gateway-y-state-router
     level: 1
-    line_start: 2
-    line_end: 3
-  - path: short-descriptive-title
-    title: Short, descriptive title
-    breadcrumbs:
-    - Short, descriptive title
-    about:
-    - Short, descriptive title
-    - short descriptive title
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: short-descriptive-title
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: what-why-how-how-not-when-where-for-whom
-    title: what | why | how | how_not | when | where | for_whom
-    breadcrumbs:
-    - what | why | how | how_not | when | where | for_whom
-    about:
-    - what | why | how | how_not | when | where | for_whom
-    - what why how how not when where for whom
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: what-why-how-how-not-when-where-for-whom
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: e-g-system-deskops-topic-templates
-    title: e.g., system:deskops, topic:templates
-    breadcrumbs:
-    - e.g., system:deskops, topic:templates
-    about:
-    - e.g., system:deskops, topic:templates
-    - e g system deskops topic templates
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: e-g-system-deskops-topic-templates
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    title: Optional URL or path to the authoritative source of this knowledge
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    level: 1
-    line_start: 14
-    line_end: 15
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-agent-py
-    title: 'provenance: kb_agent/agent.py'
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/agent.py'
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/agent.py'
-    - provenance kb agent agent py
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: provenance-kb-agent-agent-py
-    level: 2
-    line_start: 15
-    line_end: 17
-  - path: conversador-apos-delegates-retrieval-to-bibliotecario
-    title: conversador_apos delegates retrieval to bibliotecario
-    breadcrumbs:
-    - conversador_apos delegates retrieval to bibliotecario
-    about:
-    - conversador_apos delegates retrieval to bibliotecario
-    - conversador apos delegates retrieval to bibliotecario
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: conversador-apos-delegates-retrieval-to-bibliotecario
-    level: 1
-    line_start: 18
-    line_end: 19
-  - path: conversador-apos-delegates-retrieval-to-bibliotecario/answer
+    line_start: 13
+    line_end: 14
+  - path: api-gateway-y-state-router/answer
     title: Answer
     breadcrumbs:
-    - conversador_apos delegates retrieval to bibliotecario
+    - API Gateway y State Router
     - Answer
     about:
-    - conversador_apos delegates retrieval to bibliotecario
-    - conversador apos delegates retrieval to bibliotecario
+    - API Gateway y State Router
+    - api gateway y state router
     - Answer
     - answer
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
+    - system:kb-agent
+    - topic:routing
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:delegation
+    - system:kb-agent
+    - topic:routing
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 20
-    line_end: 21
-- doc_name: atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
-  sections:
-  - path: atom-xxx-unique-identifier
-    title: atom-xxx, unique identifier
-    breadcrumbs:
-    - atom-xxx, unique identifier
-    about:
-    - atom-xxx, unique identifier
-    - atom xxx unique identifier
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: atom-xxx-unique-identifier
-    level: 1
-    line_start: 2
-    line_end: 3
-  - path: short-descriptive-title
-    title: Short, descriptive title
-    breadcrumbs:
-    - Short, descriptive title
-    about:
-    - Short, descriptive title
-    - short descriptive title
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: short-descriptive-title
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: what-why-how-how-not-when-where-for-whom
-    title: what | why | how | how_not | when | where | for_whom
-    breadcrumbs:
-    - what | why | how | how_not | when | where | for_whom
-    about:
-    - what | why | how | how_not | when | where | for_whom
-    - what why how how not when where for whom
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: what-why-how-how-not-when-where-for-whom
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: e-g-system-deskops-topic-templates
-    title: e.g., system:deskops, topic:templates
-    breadcrumbs:
-    - e.g., system:deskops, topic:templates
-    about:
-    - e.g., system:deskops, topic:templates
-    - e g system deskops topic templates
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: e-g-system-deskops-topic-templates
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    title: Optional URL or path to the authoritative source of this knowledge
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    level: 1
-    line_start: 14
-    line_end: 15
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-kb-tools-py
-    title: 'provenance: kb_agent/kb_tools.py'
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/kb_tools.py'
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/kb_tools.py'
-    - provenance kb agent kb tools py
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: provenance-kb-agent-kb-tools-py
-    level: 2
     line_start: 15
-    line_end: 17
-  - path: kb-tools-wrap-the-sldb-cli-as-retrieval-tools
-    title: kb_tools wrap the sldb CLI as retrieval tools
+    line_end: 16
+- doc_name: atom-agente-conversador
+  sections:
+  - path: agente-conversador
+    title: Agente Conversador
     breadcrumbs:
-    - kb_tools wrap the sldb CLI as retrieval tools
+    - Agente Conversador
     about:
-    - kb_tools wrap the sldb CLI as retrieval tools
-    - kb tools wrap the sldb cli as retrieval tools
-    - domain:knowledge-management
+    - Agente Conversador
+    - agente conversador
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
+    - system:kb-agent
+    - topic:generation
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:retrieval
+    - system:kb-agent
+    - topic:generation
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: kb-tools-wrap-the-sldb-cli-as-retrieval-tools
+    slug: agente-conversador
     level: 1
-    line_start: 18
-    line_end: 19
-  - path: kb-tools-wrap-the-sldb-cli-as-retrieval-tools/answer
+    line_start: 13
+    line_end: 14
+  - path: agente-conversador/answer
     title: Answer
     breadcrumbs:
-    - kb_tools wrap the sldb CLI as retrieval tools
+    - Agente Conversador
     - Answer
     about:
-    - kb_tools wrap the sldb CLI as retrieval tools
-    - kb tools wrap the sldb cli as retrieval tools
+    - Agente Conversador
+    - agente conversador
     - Answer
     - answer
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
+    - system:kb-agent
+    - topic:generation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:generation
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-ontologizador-context-compiler
+  sections:
+  - path: ontologizador-context-compiler
+    title: Ontologizador Context Compiler
+    breadcrumbs:
+    - Ontologizador Context Compiler
+    about:
+    - Ontologizador Context Compiler
+    - ontologizador context compiler
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
     - topic:retrieval
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
+    - system:kb-agent
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: ontologizador-context-compiler
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: ontologizador-context-compiler/answer
+    title: Answer
+    breadcrumbs:
+    - Ontologizador Context Compiler
+    - Answer
+    about:
+    - Ontologizador Context Compiler
+    - ontologizador context compiler
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
     - topic:retrieval
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 20
-    line_end: 21
-- doc_name: atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-  sections:
-  - path: atom-xxx-unique-identifier
-    title: atom-xxx, unique identifier
-    breadcrumbs:
-    - atom-xxx, unique identifier
-    about:
-    - atom-xxx, unique identifier
-    - atom xxx unique identifier
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: atom-xxx-unique-identifier
-    level: 1
-    line_start: 2
-    line_end: 3
-  - path: short-descriptive-title
-    title: Short, descriptive title
-    breadcrumbs:
-    - Short, descriptive title
-    about:
-    - Short, descriptive title
-    - short descriptive title
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: short-descriptive-title
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: what-why-how-how-not-when-where-for-whom
-    title: what | why | how | how_not | when | where | for_whom
-    breadcrumbs:
-    - what | why | how | how_not | when | where | for_whom
-    about:
-    - what | why | how | how_not | when | where | for_whom
-    - what why how how not when where for whom
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: what-why-how-how-not-when-where-for-whom
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: e-g-system-deskops-topic-templates
-    title: e.g., system:deskops, topic:templates
-    breadcrumbs:
-    - e.g., system:deskops, topic:templates
-    about:
-    - e.g., system:deskops, topic:templates
-    - e g system deskops topic templates
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: e-g-system-deskops-topic-templates
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    title: Optional URL or path to the authoritative source of this knowledge
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    level: 1
-    line_start: 14
-    line_end: 15
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-agent-py
-    title: 'provenance: kb_agent/agent.py'
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/agent.py'
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/agent.py'
-    - provenance kb agent agent py
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: provenance-kb-agent-agent-py
-    level: 2
     line_start: 15
-    line_end: 17
-  - path: gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-    title: Gemini 2.5 Flash on Vertex AI is the model boundary
+    line_end: 16
+- doc_name: atom-perfilador-asincrono
+  sections:
+  - path: perfilador-asincrono
+    title: Perfilador Asincrono
     breadcrumbs:
-    - Gemini 2.5 Flash on Vertex AI is the model boundary
+    - Perfilador Asincrono
     about:
-    - Gemini 2.5 Flash on Vertex AI is the model boundary
-    - gemini 2 5 flash on vertex ai is the model boundary
-    - domain:knowledge-management
+    - Perfilador Asincrono
+    - perfilador asincrono
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
+    - system:kb-agent
+    - topic:profiling
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
+    - system:kb-agent
+    - topic:profiling
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
+    slug: perfilador-asincrono
     level: 1
-    line_start: 18
-    line_end: 19
-  - path: gemini-2-5-flash-on-vertex-ai-is-the-model-boundary/answer
+    line_start: 13
+    line_end: 14
+  - path: perfilador-asincrono/answer
     title: Answer
     breadcrumbs:
-    - Gemini 2.5 Flash on Vertex AI is the model boundary
+    - Perfilador Asincrono
     - Answer
     about:
-    - Gemini 2.5 Flash on Vertex AI is the model boundary
-    - gemini 2 5 flash on vertex ai is the model boundary
+    - Perfilador Asincrono
+    - perfilador asincrono
     - Answer
     - answer
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
+    - system:kb-agent
+    - topic:profiling
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
+    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent-runtime
-    - topic:llm-boundary
+    - system:kb-agent
+    - topic:profiling
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 20
-    line_end: 21
-- doc_name: atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  sections:
-  - path: atom-xxx-unique-identifier
-    title: atom-xxx, unique identifier
-    breadcrumbs:
-    - atom-xxx, unique identifier
-    about:
-    - atom-xxx, unique identifier
-    - atom xxx unique identifier
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: atom-xxx-unique-identifier
-    level: 1
-    line_start: 2
-    line_end: 3
-  - path: short-descriptive-title
-    title: Short, descriptive title
-    breadcrumbs:
-    - Short, descriptive title
-    about:
-    - Short, descriptive title
-    - short descriptive title
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: short-descriptive-title
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: what-why-how-how-not-when-where-for-whom
-    title: what | why | how | how_not | when | where | for_whom
-    breadcrumbs:
-    - what | why | how | how_not | when | where | for_whom
-    about:
-    - what | why | how | how_not | when | where | for_whom
-    - what why how how not when where for whom
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: what-why-how-how-not-when-where-for-whom
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: e-g-system-deskops-topic-templates
-    title: e.g., system:deskops, topic:templates
-    breadcrumbs:
-    - e.g., system:deskops, topic:templates
-    about:
-    - e.g., system:deskops, topic:templates
-    - e g system deskops topic templates
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: e-g-system-deskops-topic-templates
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    title: Optional URL or path to the authoritative source of this knowledge
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: optional-url-or-path-to-the-authoritative-source-of-this-knowledge
-    level: 1
-    line_start: 14
-    line_end: 15
-  - path: optional-url-or-path-to-the-authoritative-source-of-this-knowledge/provenance-kb-agent-kb-tools-py
-    title: 'provenance: kb_agent/kb_tools.py'
-    breadcrumbs:
-    - Optional URL or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/kb_tools.py'
-    about:
-    - Optional URL or path to the authoritative source of this knowledge
-    - optional url or path to the authoritative source of this knowledge
-    - 'provenance: kb_agent/kb_tools.py'
-    - provenance kb agent kb tools py
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: provenance-kb-agent-kb-tools-py
-    level: 2
     line_start: 15
-    line_end: 17
-  - path: kb-root-parameterizes-the-reusable-knowledge-base-target
-    title: KB_ROOT parameterizes the reusable knowledge-base target
+    line_end: 16
+- doc_name: atom-reflector-batch
+  sections:
+  - path: reflector-batch
+    title: Reflector Batch
     breadcrumbs:
-    - KB_ROOT parameterizes the reusable knowledge-base target
+    - Reflector Batch
     about:
-    - KB_ROOT parameterizes the reusable knowledge-base target
-    - kb root parameterizes the reusable knowledge base target
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
+    - Reflector Batch
+    - reflector batch
+    - domain:self.architecture.backend
+    - layer:persistence
+    - system:kb-agent
+    - topic:consolidation
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
+    - domain:self.architecture.backend
+    - layer:persistence
+    - system:kb-agent
+    - topic:consolidation
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: kb-root-parameterizes-the-reusable-knowledge-base-target
+    slug: reflector-batch
     level: 1
-    line_start: 18
-    line_end: 19
-  - path: kb-root-parameterizes-the-reusable-knowledge-base-target/answer
+    line_start: 13
+    line_end: 14
+  - path: reflector-batch/answer
     title: Answer
     breadcrumbs:
-    - KB_ROOT parameterizes the reusable knowledge-base target
+    - Reflector Batch
     - Answer
     about:
-    - KB_ROOT parameterizes the reusable knowledge-base target
-    - kb root parameterizes the reusable knowledge base target
+    - Reflector Batch
+    - reflector batch
     - Answer
     - answer
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
+    - domain:self.architecture.backend
+    - layer:persistence
+    - system:kb-agent
+    - topic:consolidation
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:knowledge-management
-    - layer:runtime
-    - system:kb-agent-runtime
-    - topic:configuration
+    - domain:self.architecture.backend
+    - layer:persistence
+    - system:kb-agent
+    - topic:consolidation
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 15
+    line_end: 16
+- doc_name: atom-sql-capa-identidad-y-estado
+  sections:
+  - path: sql-capa-identidad-y-estado
+    title: SQL Capa Identidad y Estado
+    breadcrumbs:
+    - SQL Capa Identidad y Estado
+    about:
+    - SQL Capa Identidad y Estado
+    - sql capa identidad y estado
+    - domain:self.data.persistence
+    - layer:document-model
+    - system:sql
+    - topic:identity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.data.persistence
+    - layer:document-model
+    - system:sql
+    - topic:identity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: sql-capa-identidad-y-estado
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: sql-capa-identidad-y-estado/answer
+    title: Answer
+    breadcrumbs:
+    - SQL Capa Identidad y Estado
+    - Answer
+    about:
+    - SQL Capa Identidad y Estado
+    - sql capa identidad y estado
+    - Answer
+    - answer
+    - domain:self.data.persistence
+    - layer:document-model
+    - system:sql
+    - topic:identity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.data.persistence
+    - layer:document-model
+    - system:sql
+    - topic:identity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-apis-externas-integracion
+  sections:
+  - path: apis-externas-integracion
+    title: APIs Externas Integracion
+    breadcrumbs:
+    - APIs Externas Integracion
+    about:
+    - APIs Externas Integracion
+    - apis externas integracion
+    - domain:self.architecture.integration
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.integration
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: apis-externas-integracion
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: apis-externas-integracion/answer
+    title: Answer
+    breadcrumbs:
+    - APIs Externas Integracion
+    - Answer
+    about:
+    - APIs Externas Integracion
+    - apis externas integracion
+    - Answer
+    - answer
+    - domain:self.architecture.integration
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.integration
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-contexto-compilado
+  sections:
+  - path: contexto-compilado
+    title: Contexto Compilado
+    breadcrumbs:
+    - Contexto Compilado
+    about:
+    - Contexto Compilado
+    - contexto compilado
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:context
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:context
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: contexto-compilado
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: contexto-compilado/answer
+    title: Answer
+    breadcrumbs:
+    - Contexto Compilado
+    - Answer
+    about:
+    - Contexto Compilado
+    - contexto compilado
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:context
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:context
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-turno-de-sistema-system-turn
+  sections:
+  - path: turno-de-sistema-system-turn
+    title: Turno de Sistema System Turn
+    breadcrumbs:
+    - Turno de Sistema System Turn
+    about:
+    - Turno de Sistema System Turn
+    - turno de sistema system turn
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: turno-de-sistema-system-turn
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: turno-de-sistema-system-turn/answer
+    title: Answer
+    breadcrumbs:
+    - Turno de Sistema System Turn
+    - Answer
+    about:
+    - Turno de Sistema System Turn
+    - turno de sistema system turn
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:tool-calling
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-trigger-sintetico-cron
+  sections:
+  - path: trigger-sintetico-cron
+    title: Trigger Sintetico Cron
+    breadcrumbs:
+    - Trigger Sintetico Cron
+    about:
+    - Trigger Sintetico Cron
+    - trigger sintetico cron
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:cron
+    - topic:proactivity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:cron
+    - topic:proactivity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: trigger-sintetico-cron
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: trigger-sintetico-cron/answer
+    title: Answer
+    breadcrumbs:
+    - Trigger Sintetico Cron
+    - Answer
+    about:
+    - Trigger Sintetico Cron
+    - trigger sintetico cron
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:cron
+    - topic:proactivity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:cron
+    - topic:proactivity
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-debounce-buffer-agrupacion
+  sections:
+  - path: debounce-buffer-agrupacion
+    title: Debounce Buffer Agrupacion
+    breadcrumbs:
+    - Debounce Buffer Agrupacion
+    about:
+    - Debounce Buffer Agrupacion
+    - debounce buffer agrupacion
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:routing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:routing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: debounce-buffer-agrupacion
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: debounce-buffer-agrupacion/answer
+    title: Answer
+    breadcrumbs:
+    - Debounce Buffer Agrupacion
+    - Answer
+    about:
+    - Debounce Buffer Agrupacion
+    - debounce buffer agrupacion
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:routing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:routing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-aislamiento-estricto-de-pii
+  sections:
+  - path: aislamiento-estricto-de-pii
+    title: Aislamiento Estricto de PII
+    breadcrumbs:
+    - Aislamiento Estricto de PII
+    about:
+    - Aislamiento Estricto de PII
+    - aislamiento estricto de pii
+    - domain:standards.privacy
+    - layer:persistence
+    - system:sql
+    - topic:pii
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:standards.privacy
+    - layer:persistence
+    - system:sql
+    - topic:pii
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: aislamiento-estricto-de-pii
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: aislamiento-estricto-de-pii/answer
+    title: Answer
+    breadcrumbs:
+    - Aislamiento Estricto de PII
+    - Answer
+    about:
+    - Aislamiento Estricto de PII
+    - aislamiento estricto de pii
+    - Answer
+    - answer
+    - domain:standards.privacy
+    - layer:persistence
+    - system:sql
+    - topic:pii
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:standards.privacy
+    - layer:persistence
+    - system:sql
+    - topic:pii
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-historial-de-conversacion-sin-pii
+  sections:
+  - path: historial-de-conversacion-sin-pii
+    title: Historial de Conversacion sin PII
+    breadcrumbs:
+    - Historial de Conversacion sin PII
+    about:
+    - Historial de Conversacion sin PII
+    - historial de conversacion sin pii
+    - domain:self.data.persistence
+    - layer:persistence
+    - system:sql
+    - topic:history
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.data.persistence
+    - layer:persistence
+    - system:sql
+    - topic:history
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: historial-de-conversacion-sin-pii
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: historial-de-conversacion-sin-pii/answer
+    title: Answer
+    breadcrumbs:
+    - Historial de Conversacion sin PII
+    - Answer
+    about:
+    - Historial de Conversacion sin PII
+    - historial de conversacion sin pii
+    - Answer
+    - answer
+    - domain:self.data.persistence
+    - layer:persistence
+    - system:sql
+    - topic:history
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.data.persistence
+    - layer:persistence
+    - system:sql
+    - topic:history
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16

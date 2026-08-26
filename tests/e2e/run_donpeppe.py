@@ -5,7 +5,7 @@ Integra los modulos reales (SIN mock, SIN dummy, SIN stub):
 
 Niveles recuperados de la estrategia de testing:
   Nivel 2: fallback estricto contra LLM real
-  Nivel 3: subgrafo REAL en SLDB (.sldb_e2e_donpeppe)
+  Nivel 3: subgrafo REAL en SLDB (tests/knowledge)
   Nivel 4: golden transcript real de 3 turnos
 
 Uso: python tests/e2e/run_donpeppe.py
@@ -28,7 +28,7 @@ from kb_agent.agent import CANONICAL_FALLBACK_RESPONSE, draft_conversador_respon
 from kb_agent.ontologizador.compiler import ContextCompiler
 from kb_agent.ontologizador.sldb_reader import SLDBReader
 
-STORE_ROOT = PROJECT_ROOT / ".sldb_e2e_donpeppe"
+STORE_ROOT = PROJECT_ROOT / "tests/knowledge"
 MODEL = "gemini-2.5-flash"
 
 _client = genai.Client()

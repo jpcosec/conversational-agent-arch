@@ -1,0 +1,75 @@
+documents:
+- doc_name: atom-donpeppe-tool-reserva
+  sections:
+  - path: tool-crear-reserva-don-peppe
+    title: Tool crear reserva Don Peppe
+    breadcrumbs:
+    - Tool crear reserva Don Peppe
+    about:
+    - Tool crear reserva Don Peppe
+    - tool crear reserva don peppe
+    - conversation:steps.booking
+    - self:tools
+    - system:donpeppe
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - self:tools
+    - system:donpeppe
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: tool-crear-reserva-don-peppe
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: tool-crear-reserva-don-peppe/description
+    title: Description
+    breadcrumbs:
+    - Tool crear reserva Don Peppe
+    - Description
+    about:
+    - Tool crear reserva Don Peppe
+    - tool crear reserva don peppe
+    - Description
+    - description
+    - conversation:steps.booking
+    - self:tools
+    - system:donpeppe
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - self:tools
+    - system:donpeppe
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: tool-crear-reserva-don-peppe/parameters
+    title: Parameters
+    breadcrumbs:
+    - Tool crear reserva Don Peppe
+    - Parameters
+    about:
+    - Tool crear reserva Don Peppe
+    - tool crear reserva don peppe
+    - Parameters
+    - parameters
+    - conversation:steps.booking
+    - self:tools
+    - system:donpeppe
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - self:tools
+    - system:donpeppe
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: parameters
+    level: 2
+    line_start: 18
+    line_end: 19

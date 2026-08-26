@@ -1,0 +1,11 @@
+documents:
+- name: style-donpeppe
+  path: atoms/style-donpeppe.md
+  hash_c: 38d09e6737eb2c41eb6a30f044fc49ec36a81eb114115ebe1ccaaff3a9af0bb3
+  hash_d: 9ce6791aa88377bb579cdc8a3ea24e7093537e9273f5b0e39f5f17625b4e5af2
+  semantic_tags:
+  - channel:whatsapp
+  - self:estilo
+  - system:donpeppe
+  - type.knowledge.style
+  - workspace.knowledge

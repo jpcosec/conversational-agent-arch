@@ -1,0 +1,275 @@
+documents:
+- doc_name: step-antonia-onboarding
+  sections:
+  - path: onboarding-primera-interacci-n
+    title: "Onboarding \u2014 primera interacci\xF3n"
+    breadcrumbs:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    about:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - onboarding primera interacci n
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: onboarding-primera-interacci-n
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: onboarding-primera-interacci-n/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - Instructions
+    about:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - onboarding primera interacci n
+    - Instructions
+    - instructions
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: onboarding-primera-interacci-n/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - Required Slots
+    about:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - onboarding primera interacci n
+    - Required Slots
+    - required slots
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: onboarding-primera-interacci-n/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - Allowed Transitions
+    about:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - onboarding primera interacci n
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: onboarding-primera-interacci-n/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - Grounding Atoms
+    about:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - onboarding primera interacci n
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: onboarding-primera-interacci-n/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - Completion Condition
+    about:
+    - "Onboarding \u2014 primera interacci\xF3n"
+    - onboarding primera interacci n
+    - Completion Condition
+    - completion condition
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 29
+    line_end: 30
+- doc_name: step-antonia-booking
+  sections:
+  - path: seguimiento-de-aplicaci-n-y-recompra
+    title: "Seguimiento de aplicaci\xF3n y recompra"
+    breadcrumbs:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    about:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - seguimiento de aplicaci n y recompra
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: seguimiento-de-aplicaci-n-y-recompra
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: seguimiento-de-aplicaci-n-y-recompra/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - Instructions
+    about:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - seguimiento de aplicaci n y recompra
+    - Instructions
+    - instructions
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: seguimiento-de-aplicaci-n-y-recompra/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - Required Slots
+    about:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - seguimiento de aplicaci n y recompra
+    - Required Slots
+    - required slots
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: seguimiento-de-aplicaci-n-y-recompra/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - Allowed Transitions
+    about:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - seguimiento de aplicaci n y recompra
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: seguimiento-de-aplicaci-n-y-recompra/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - Grounding Atoms
+    about:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - seguimiento de aplicaci n y recompra
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: seguimiento-de-aplicaci-n-y-recompra/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - Completion Condition
+    about:
+    - "Seguimiento de aplicaci\xF3n y recompra"
+    - seguimiento de aplicaci n y recompra
+    - Completion Condition
+    - completion condition
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 29
+    line_end: 30

@@ -1,0 +1,197 @@
+documents:
+- doc_name: atom-antonia-bienvenida
+  sections:
+  - path: bienvenida-al-programa
+    title: Bienvenida al programa
+    breadcrumbs:
+    - Bienvenida al programa
+    about:
+    - Bienvenida al programa
+    - bienvenida al programa
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: bienvenida-al-programa
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: bienvenida-al-programa/answer
+    title: Answer
+    breadcrumbs:
+    - Bienvenida al programa
+    - Answer
+    about:
+    - Bienvenida al programa
+    - bienvenida al programa
+    - Answer
+    - answer
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+- doc_name: atom-antonia-aplicacion
+  sections:
+  - path: administraci-n-de-selfix
+    title: "Administraci\xF3n de Selfix"
+    breadcrumbs:
+    - "Administraci\xF3n de Selfix"
+    about:
+    - "Administraci\xF3n de Selfix"
+    - administraci n de selfix
+    - conversation:steps.booking
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: administraci-n-de-selfix
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: administraci-n-de-selfix/answer
+    title: Answer
+    breadcrumbs:
+    - "Administraci\xF3n de Selfix"
+    - Answer
+    about:
+    - "Administraci\xF3n de Selfix"
+    - administraci n de selfix
+    - Answer
+    - answer
+    - conversation:steps.booking
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+- doc_name: atom-antonia-primeras-semanas
+  sections:
+  - path: qu-esperar-las-primeras-semanas
+    title: "Qu\xE9 esperar las primeras semanas"
+    breadcrumbs:
+    - "Qu\xE9 esperar las primeras semanas"
+    about:
+    - "Qu\xE9 esperar las primeras semanas"
+    - qu esperar las primeras semanas
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: qu-esperar-las-primeras-semanas
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: qu-esperar-las-primeras-semanas/answer
+    title: Answer
+    breadcrumbs:
+    - "Qu\xE9 esperar las primeras semanas"
+    - Answer
+    about:
+    - "Qu\xE9 esperar las primeras semanas"
+    - qu esperar las primeras semanas
+    - Answer
+    - answer
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17
+- doc_name: atom-antonia-recompra
+  sections:
+  - path: recompra-y-renovaci-n-de-receta
+    title: "Recompra y renovaci\xF3n de receta"
+    breadcrumbs:
+    - "Recompra y renovaci\xF3n de receta"
+    about:
+    - "Recompra y renovaci\xF3n de receta"
+    - recompra y renovaci n de receta
+    - conversation:steps.booking
+    - domain:logistica
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:logistica
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: recompra-y-renovaci-n-de-receta
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: recompra-y-renovaci-n-de-receta/answer
+    title: Answer
+    breadcrumbs:
+    - "Recompra y renovaci\xF3n de receta"
+    - Answer
+    about:
+    - "Recompra y renovaci\xF3n de receta"
+    - recompra y renovaci n de receta
+    - Answer
+    - answer
+    - conversation:steps.booking
+    - domain:logistica
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.booking
+    - domain:logistica
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 16
+    line_end: 17

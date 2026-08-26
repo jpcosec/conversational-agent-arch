@@ -1,0 +1,92 @@
+documents:
+- doc_name: boundary-donpeppe
+  sections:
+  - path: l-mites-del-asistente-don-peppe
+    title: "L\xEDmites del asistente Don Peppe"
+    breadcrumbs:
+    - "L\xEDmites del asistente Don Peppe"
+    about:
+    - "L\xEDmites del asistente Don Peppe"
+    - l mites del asistente don peppe
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: l-mites-del-asistente-don-peppe
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: l-mites-del-asistente-don-peppe/restriction
+    title: Restriction
+    breadcrumbs:
+    - "L\xEDmites del asistente Don Peppe"
+    - Restriction
+    about:
+    - "L\xEDmites del asistente Don Peppe"
+    - l mites del asistente don peppe
+    - Restriction
+    - restriction
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: l-mites-del-asistente-don-peppe/conditions
+    title: Conditions
+    breadcrumbs:
+    - "L\xEDmites del asistente Don Peppe"
+    - Conditions
+    about:
+    - "L\xEDmites del asistente Don Peppe"
+    - l mites del asistente don peppe
+    - Conditions
+    - conditions
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: l-mites-del-asistente-don-peppe/escalation
+    title: Escalation
+    breadcrumbs:
+    - "L\xEDmites del asistente Don Peppe"
+    - Escalation
+    about:
+    - "L\xEDmites del asistente Don Peppe"
+    - l mites del asistente don peppe
+    - Escalation
+    - escalation
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:donpeppe
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 21
+    line_end: 22

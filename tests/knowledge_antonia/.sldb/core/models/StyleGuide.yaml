@@ -1,0 +1,13 @@
+name: StyleGuide
+model_ref: kb_agent.models.knowledge:StyleGuide
+path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/style.py
+documents_index: .sldb/core/documents/StyleGuide.yaml
+sections_index: .sldb/runtime/sections/StyleGuide.yaml
+hash_b: 04d868685ba3009140dff6ceaaf3cc6b604be215a8740b220ad094f52656bb48
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.style
+- workspace.knowledge
+base_models: []

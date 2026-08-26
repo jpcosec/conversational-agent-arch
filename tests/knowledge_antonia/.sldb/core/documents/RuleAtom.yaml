@@ -1,0 +1,21 @@
+documents:
+- name: rule-antonia-anti-alucinacion
+  path: atoms/rule-antonia-anti-alucinacion.md
+  hash_c: c413dfb2e92def739f5938766327aaec72efda1e2224ac6526d618bc8dbbf9dc
+  hash_d: b045dafdadc1231657ec5d0cb19e367ca9f735a72f493c870e56a773e99c2bb7
+  semantic_tags:
+  - conversation:fallback
+  - conversation:security
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-eventos-adversos
+  path: atoms/rule-antonia-eventos-adversos.md
+  hash_c: 1852caf9a3fd8ea28f3223e9ad6ab77724793c0d626554a681ef3d3184724ca8
+  hash_d: 52a93e0d5ab876666b80a9d3eeec5d163be3156837153353e28fce5e31de182a
+  semantic_tags:
+  - conversation:pharmacovigilance
+  - domain:seguridad
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge

@@ -1,0 +1,125 @@
+documents:
+- doc_name: style-antonia
+  sections:
+  - path: estilo-whatsapp-antonia
+    title: Estilo WhatsApp Antonia
+    breadcrumbs:
+    - Estilo WhatsApp Antonia
+    about:
+    - Estilo WhatsApp Antonia
+    - estilo whatsapp antonia
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: estilo-whatsapp-antonia
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: estilo-whatsapp-antonia/tone
+    title: Tone
+    breadcrumbs:
+    - Estilo WhatsApp Antonia
+    - Tone
+    about:
+    - Estilo WhatsApp Antonia
+    - estilo whatsapp antonia
+    - Tone
+    - tone
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: tone
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: estilo-whatsapp-antonia/language-register
+    title: Language Register
+    breadcrumbs:
+    - Estilo WhatsApp Antonia
+    - Language Register
+    about:
+    - Estilo WhatsApp Antonia
+    - estilo whatsapp antonia
+    - Language Register
+    - language register
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: language-register
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: estilo-whatsapp-antonia/phrase-preferences
+    title: Phrase Preferences
+    breadcrumbs:
+    - Estilo WhatsApp Antonia
+    - Phrase Preferences
+    about:
+    - Estilo WhatsApp Antonia
+    - estilo whatsapp antonia
+    - Phrase Preferences
+    - phrase preferences
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: phrase-preferences
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: estilo-whatsapp-antonia/length-guidelines
+    title: Length Guidelines
+    breadcrumbs:
+    - Estilo WhatsApp Antonia
+    - Length Guidelines
+    about:
+    - Estilo WhatsApp Antonia
+    - estilo whatsapp antonia
+    - Length Guidelines
+    - length guidelines
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: length-guidelines
+    level: 2
+    line_start: 26
+    line_end: 27

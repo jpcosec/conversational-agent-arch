@@ -1,0 +1,216 @@
+tags:
+  channel:whatsapp:
+  - style-antonia
+  conversation:fallback:
+  - fallback-antonia
+  - rule-antonia-anti-alucinacion
+  conversation:pharmacovigilance:
+  - rule-antonia-eventos-adversos
+  conversation:security:
+  - boundary-antonia-manipulacion
+  - rule-antonia-anti-alucinacion
+  conversation:steps.booking:
+  - atom-antonia-aplicacion
+  - atom-antonia-recompra
+  - step-antonia-booking
+  conversation:steps.onboarding:
+  - atom-antonia-bienvenida
+  - atom-antonia-primeras-semanas
+  - step-antonia-onboarding
+  conversation:strategy:
+  - strategy-antonia
+  domain:clinico:
+  - boundary-antonia-clinico
+  domain:logistica:
+  - atom-antonia-recompra
+  domain:programa:
+  - atom-antonia-bienvenida
+  domain:salud:
+  - self-antonia
+  domain:seguridad:
+  - rule-antonia-eventos-adversos
+  domain:tratamiento:
+  - atom-antonia-aplicacion
+  - atom-antonia-primeras-semanas
+  self:estilo:
+  - style-antonia
+  self:limites:
+  - boundary-antonia-clinico
+  - boundary-antonia-manipulacion
+  self:whoami:
+  - self-antonia
+  system:laboratorio-chile:
+  - atom-antonia-aplicacion
+  - atom-antonia-bienvenida
+  - atom-antonia-primeras-semanas
+  - atom-antonia-recompra
+  - boundary-antonia-clinico
+  - boundary-antonia-manipulacion
+  - fallback-antonia
+  - rule-antonia-anti-alucinacion
+  - rule-antonia-eventos-adversos
+  - self-antonia
+  - step-antonia-booking
+  - step-antonia-onboarding
+  - strategy-antonia
+  - style-antonia
+  type.knowledge.boundary:
+  - boundary-antonia-clinico
+  - boundary-antonia-manipulacion
+  type.knowledge.domain:
+  - atom-antonia-aplicacion
+  - atom-antonia-bienvenida
+  - atom-antonia-primeras-semanas
+  - atom-antonia-recompra
+  type.knowledge.fallback:
+  - fallback-antonia
+  type.knowledge.rule:
+  - rule-antonia-anti-alucinacion
+  - rule-antonia-eventos-adversos
+  type.knowledge.self:
+  - self-antonia
+  type.knowledge.step:
+  - step-antonia-booking
+  - step-antonia-onboarding
+  type.knowledge.strategy:
+  - strategy-antonia
+  type.knowledge.style:
+  - style-antonia
+  workspace.knowledge:
+  - atom-antonia-aplicacion
+  - atom-antonia-bienvenida
+  - atom-antonia-primeras-semanas
+  - atom-antonia-recompra
+  - boundary-antonia-clinico
+  - boundary-antonia-manipulacion
+  - fallback-antonia
+  - rule-antonia-anti-alucinacion
+  - rule-antonia-eventos-adversos
+  - self-antonia
+  - step-antonia-booking
+  - step-antonia-onboarding
+  - strategy-antonia
+  - style-antonia
+documents:
+  atom-antonia-bienvenida:
+    model: DomainAtom
+    path: atoms/atom-antonia-bienvenida.md
+    tags:
+    - conversation:steps.onboarding
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-antonia-aplicacion:
+    model: DomainAtom
+    path: atoms/atom-antonia-aplicacion.md
+    tags:
+    - conversation:steps.booking
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-antonia-primeras-semanas:
+    model: DomainAtom
+    path: atoms/atom-antonia-primeras-semanas.md
+    tags:
+    - conversation:steps.onboarding
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-antonia-recompra:
+    model: DomainAtom
+    path: atoms/atom-antonia-recompra.md
+    tags:
+    - conversation:steps.booking
+    - domain:logistica
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  rule-antonia-anti-alucinacion:
+    model: RuleAtom
+    path: atoms/rule-antonia-anti-alucinacion.md
+    tags:
+    - conversation:fallback
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-eventos-adversos:
+    model: RuleAtom
+    path: atoms/rule-antonia-eventos-adversos.md
+    tags:
+    - conversation:pharmacovigilance
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  step-antonia-onboarding:
+    model: ConversationStep
+    path: atoms/step-antonia-onboarding.md
+    tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-booking:
+    model: ConversationStep
+    path: atoms/step-antonia-booking.md
+    tags:
+    - conversation:steps.booking
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  self-antonia:
+    model: SelfDeclaration
+    path: atoms/self-antonia.md
+    tags:
+    - domain:salud
+    - self:whoami
+    - system:laboratorio-chile
+    - type.knowledge.self
+    - workspace.knowledge
+  style-antonia:
+    model: StyleGuide
+    path: atoms/style-antonia.md
+    tags:
+    - channel:whatsapp
+    - self:estilo
+    - system:laboratorio-chile
+    - type.knowledge.style
+    - workspace.knowledge
+  boundary-antonia-clinico:
+    model: CapabilityBoundary
+    path: atoms/boundary-antonia-clinico.md
+    tags:
+    - domain:clinico
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+  boundary-antonia-manipulacion:
+    model: CapabilityBoundary
+    path: atoms/boundary-antonia-manipulacion.md
+    tags:
+    - conversation:security
+    - self:limites
+    - system:laboratorio-chile
+    - type.knowledge.boundary
+    - workspace.knowledge
+  strategy-antonia:
+    model: StrategyRule
+    path: atoms/strategy-antonia.md
+    tags:
+    - conversation:strategy
+    - system:laboratorio-chile
+    - type.knowledge.strategy
+    - workspace.knowledge
+  fallback-antonia:
+    model: FallbackRule
+    path: atoms/fallback-antonia.md
+    tags:
+    - conversation:fallback
+    - system:laboratorio-chile
+    - type.knowledge.fallback
+    - workspace.knowledge

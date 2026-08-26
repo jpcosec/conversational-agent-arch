@@ -13,7 +13,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 from kb_agent.orchestrator import Orchestrator
 
-STORE_ROOT = PROJECT_ROOT / ".sldb_e2e_donpeppe"
+STORE_ROOT = PROJECT_ROOT / "tests/knowledge"
 USER_NL = "wa:+56924444441"
 USER_TOOL = "wa:+56924444442"
 

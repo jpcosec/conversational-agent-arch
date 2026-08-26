@@ -1,48 +1,4 @@
 documents:
-- name: atom-conversador-apos-delegates-retrieval-to-bibliotecario
-  path: desk/atoms/atom-conversador-apos-delegates-retrieval-to-bibliotecario.md
-  hash_c: 93f3589325d5ef6067fcbb2158b1b82915552a677660c018124226e53556bdd4
-  hash_d: 1cdabbbf298cc87cef29c279dc446c0c998909beb99827541bedeeb9b3980a06
-  semantic_tags:
-  - domain:knowledge-management
-  - layer:runtime
-  - system:kb-agent-runtime
-  - topic:delegation
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools
-  path: desk/atoms/atom-kb-tools-wrap-the-sldb-cli-as-retrieval-tools.md
-  hash_c: 88cf206fb65698b154b747167fa6ce9de5a318b9ffb7c39c1f8d4346a58c8a0d
-  hash_d: 2742f8b8c4eeea51b515bf77011c619235c68e861b00b83086f3c46f4cf6d13f
-  semantic_tags:
-  - domain:knowledge-management
-  - layer:runtime
-  - system:kb-agent-runtime
-  - topic:retrieval
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary
-  path: desk/atoms/atom-gemini-2-5-flash-on-vertex-ai-is-the-model-boundary.md
-  hash_c: c171b927f85d1b01ed2235ce0b7f0e223631fd639c218e26eaa2a3367da52fc0
-  hash_d: 951caa6c584d17b448e7b6d015af65aea1ee7fae4db7d0a48ba763007f46761e
-  semantic_tags:
-  - domain:knowledge-management
-  - layer:runtime
-  - system:kb-agent-runtime
-  - topic:llm-boundary
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-kb-root-parameterizes-the-reusable-knowledge-base-target
-  path: desk/atoms/atom-kb-root-parameterizes-the-reusable-knowledge-base-target.md
-  hash_c: 4cdfb4f75d383fb29383055c1b758b73467bfe0f6748f3dc4715c3393591067b
-  hash_d: a3a1eacab2c445d1eedc9b6bf25f9af27cf66e232a7ad9958df24121073f046d
-  semantic_tags:
-  - domain:knowledge-management
-  - layer:runtime
-  - system:kb-agent-runtime
-  - topic:configuration
-  - type.knowledge.atom
-  - workspace.desk.atoms
 - name: atom-api-gateway-y-state-router
   path: desk/atoms/atom-api-gateway-y-state-router.md
   hash_c: 82b7513b54a794c7e6b7189f021bf0e341f7ec185ae17844fc465b575405730f
@@ -109,17 +65,6 @@ documents:
   - topic:identity
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: atom-sldb-base-conocimiento-semantica
-  path: desk/atoms/atom-sldb-base-conocimiento-semantica.md
-  hash_c: 716a32a54e2bb1620da55c028ef8877f7d9c52754f61fc4256316e9476b08e10
-  hash_d: 9b5a122cfc036b8b35a8bc6f0eaa0bb66c2f72c6de69bb41a0c9c10df2bad198
-  semantic_tags:
-  - domain:external_libs.sldb
-  - layer:persistence
-  - system:sldb
-  - topic:ontology
-  - type.knowledge.atom
-  - workspace.desk.atoms
 - name: atom-apis-externas-integracion
   path: desk/atoms/atom-apis-externas-integracion.md
   hash_c: b4020cd4279eb726e7f46d8867e67fc49172fbf3a5ae741091a1351405850842
@@ -128,50 +73,6 @@ documents:
   - domain:self.architecture.integration
   - layer:runtime
   - system:kb-agent
-  - topic:tool-calling
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-domain-atom
-  path: desk/atoms/atom-domain-atom.md
-  hash_c: 6f0d8f52e2c1a2e9ecad5419d040a4df146603bd63c6ca42cb7694a555ab34d4
-  hash_d: 4f6035965a5ff9b36ccdc15387b7fc5d4f2b3f028f400c5cd59e69c5b748a528
-  semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
-  - topic:ontology
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-trait-atom
-  path: desk/atoms/atom-trait-atom.md
-  hash_c: 72f9afe730b12f34a17fec6ff36bacaa48ecf6c5e0766b6d9172a3e0231b8e4a
-  hash_d: 1b559fa1801dffe06ed2c0f8578f281d9fe50f0828d9887e1ccb04e7ef826740
-  semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
-  - topic:profiling
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-rule-atom
-  path: desk/atoms/atom-rule-atom.md
-  hash_c: fe59679fcc846d7f1b7528eaffc682ad085720731121b0d8b96387b52a53f890
-  hash_d: 419348f84a25380ba37a6df342eacc8e898318fdbabdf358672c351c3b47d67a
-  semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
-  - topic:rules
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-tool-atom
-  path: desk/atoms/atom-tool-atom.md
-  hash_c: 5fe855a88b8f8b976b347212efcc18928ac8aa464d53c4cea2b81f2cf9ad1208
-  hash_d: 60a019571ec39313812495912c15f5fc50ea2dfb3c9bf09e504ad4f7ce3bcd0b
-  semantic_tags:
-  - domain:standards.taxonomy.atoms
-  - layer:document-model
-  - system:sldb
   - topic:tool-calling
   - type.knowledge.atom
   - workspace.desk.atoms
@@ -199,8 +100,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-trigger-sintetico-cron
   path: desk/atoms/atom-trigger-sintetico-cron.md
-  hash_c: f2a2c26568350e5fef58b18e18fb782ed08508c3bf16e8be74fc9042292f5f80
-  hash_d: acb365ac7fa4fa76851ece193810e303ea00a7688a7d64d3d7c198eb28e97f25
+  hash_c: 659c2be71d715bddc596a3f026eb53082f7dfea7b7854108924c2560e47f420e
+  hash_d: 12e434e00d41faae839df14682bae6c3761809a74c4f143c08c303a185c6a4c0
   semantic_tags:
   - domain:self.architecture.backend
   - layer:runtime

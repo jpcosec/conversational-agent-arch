@@ -1,9 +1,4 @@
 nodes:
-- id: domain:external_libs
-  parents: []
-- id: domain:external_libs.sldb
-  parents:
-  - domain:external_libs
 - id: domain:self
   parents: []
 - id: domain:self.architecture
@@ -26,12 +21,6 @@ nodes:
 - id: domain:standards.privacy
   parents:
   - domain:standards
-- id: domain:standards.taxonomy
-  parents:
-  - domain:standards
-- id: domain:standards.taxonomy.atoms
-  parents:
-  - domain:standards.taxonomy
 - id: type
   parents: []
 - id: type.desk
