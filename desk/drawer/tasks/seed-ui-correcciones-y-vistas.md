@@ -120,7 +120,7 @@ Mostrar:
 | Chat | **chat-inspector** | `/` (sigue siendo landing) | El nombre distingue que no es solo chat |
 | Flow Editor | **flow** | `/flow` | "Editor" es ruido |
 | Taxonomía | **mindmap** | `/mindmap` | El `<title>` ya dice "Mindmap" |
-| Perfilado | **user profiling** | `/profiling` | Inglés consistente |
+| Perfilado | **users** | `/users` | Unifica perfil + eventos + conversaciones |
 | Embeddings | → mod de mindmap | (no es vista separada) | Comparte React Flow, es toggle |
 
 **Side-wide rename:**
@@ -386,13 +386,82 @@ solo el ID. Revisar este y otros casos similares.
 **Criterio de aceptación:** un usuario nuevo sin contexto del modelo interno
 debe poder entender cada sección de la UI sin abrir documentación externa.
 
----"}]
+---
 
-## 7. User Profiling (ex Perfilado)
+## 7. Users (ex Perfilado + nueva vista SQL de eventos/conversaciones)
 
-- Renombrar a `user profiling`. Ruta `/profiling`.
-- Mantener funcionalidad actual (fichas de usuario × traits candidatos).
-- Sin cambios de contenido en este scope.
+**Renombrar a `users`.** Vista unificada que combina el perfilado de traits
+con usuarios, eventos, y conversaciones. Ruta `/users`.
+
+### 7.1 Cambio en el modelo de usuario
+
+En adelante, el endpoint `/api/profiles` devuelve el usuario con su
+información ya cargada (no hay que pedirla aparte):
+- `user_id`, `external_id`, `channel`.
+- **Perfil**: nombre/alias, fecha registro, última actividad, conteo turnos.
+- **Traits aprendidos** (`UserTraits × TraitAtom` con confidence).
+- **Eventos recientes** (mood, peso, respuestas — ver 7.4).
+- **Conversaciones guardadas** con metadatos (ver 7.5).
+
+### 7.2 Layout general de `/users`
+
+Dos columnas:
+- **Izquierda**: info personal del usuario arriba, debajo un **selector de
+  vista** (Perfil / Eventos / Conversaciones). La lista de usuarios se
+  mantiene como lateral (chips, misma funcionalidad que hoy).
+- **Derecha**: panel que cambia según la vista seleccionada.
+
+### 7.3 Lista de usuarios (sidebar izquierdo)
+
+- Se mantienen los chips de usuario actuales.
+- Cada chip muestra más datos: última actividad, traits aprendidos, conteo
+  de turnos, indicador activo/inactivo.
+- Más fichas visibles: iconos, metadata, resumen de traits.
+
+### 7.4 Perfil — detalle del usuario
+
+Dos sub-columnas dentro del panel derecho:
+
+**Izquierda — KPIs generales:**
+- Gráficos de líneas o barras compactos (card cada uno):
+  - **Ánimo** (mood) en el tiempo.
+  - **Pérdida de peso** / métrica relevante al negocio.
+  - **Frecuencia de respuestas** al chatbot (turnos/día, rachas).
+- Resumen numérico: total turnos, traits descubiertos, última actividad,
+  días desde registro.
+
+**Derecha — Traits:**
+- Fichas de traits (TraitAtom × confidence), más compactas y legibles.
+- Nombre del trait más visible.
+- Opción de ver histórico de confidence de ese trait en el tiempo.
+
+### 7.5 Eventos — KPIs en el tiempo
+
+Serie temporal de eventos del usuario:
+- Gráfico de líneas principal (mood / peso / adherencia). Dropdown para
+  seleccionar qué métrica graficar.
+- Timeline de eventos: cada interacción con el bot (tool, trait detectado,
+  cambio de estado) como puntos en la línea.
+- Línea de referencia para promedios del negocio o metas.
+
+Datos: `ChatHistory` + `UserTraits` + tools del negocio. Puede requerir un
+nuevo endpoint `/api/events` por `user_id`.
+
+### 7.6 Conversaciones — lista + link a chat-inspector
+
+- Lista de conversaciones del usuario, ordenadas por fecha (desc).
+- Cada una muestra: fecha, resumen (primer mensaje), conteo de turnos,
+  resultado.
+- **Clickeable**: al hacer click → navega a `/` (chat-inspector) con la
+  sesión cargada (`session_id` como query param o state).
+- Puede requerir que el chat soporte carga de historial por `session_id`.
+- Origen: `ChatHistory` agrupado por `session_id` o `user_id`.
+
+### 7.7 Navegación cruzada
+
+- Desde `/users` se navega a una conversación en el chat.
+- Desde el chat se puede navegar al perfil del usuario activo.
+- Nav global incluye link a Users.
 
 ---
 
@@ -431,9 +500,13 @@ Cobertura faltante (la interfaz nueva debe poder testearse):
 - [ ] mindmap: toggle embeddings → grafo PCA superpuesto.
 - [ ] flow: carga grafo ConversationStep.
 - [ ] flow: click en nodo → inspector.
-- [ ] user profiling: carga y click en usuario → fichas de traits.
+- [ ] users: perfil con KPIs generales (gráficos) + traits a la derecha.
+- [ ] users: eventos con timeline y drop down de métrica.
+- [ ] users: click en conversación → navega a chat-inspector con sesión.
 - [ ] navegación: links funcionan, nombres nuevos.
 - [ ] placeholder: viene de config, no hardcodeado.
+- [ ] hotkeys: Ctrl+F busca, Delete borra, Tab hijo, Enter hermano, etc.
+- [ ] node search: busca y centra nodo en canvas.
 
 Cada test debe usar fixture `offline_orchestrator` (LLM fake, ya existe en
 `tests/support/fakes.py`). El conftest ya tiene `playwright_available()` y el
