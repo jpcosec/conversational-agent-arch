@@ -313,7 +313,7 @@ function App() {
 
   /* carga flow.json y arma el grafo con dagre */
   React.useEffect(() => {
-    fetch('./flow.json').then((r) => r.json()).then((flow) => {
+    fetch('/api/flow').then((r) => r.json()).then((flow) => {
       const stepMap = {};
       const tagToId = {};
       flow.nodes.forEach((s) => {
