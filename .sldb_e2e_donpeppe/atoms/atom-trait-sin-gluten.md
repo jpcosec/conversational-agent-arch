@@ -4,7 +4,7 @@ title: Cliente celiaco / sin gluten
 five_wh_one_plus: what
 tags:
 - atom_type:trait
-- domain:pizzeria
+- user:traits.celiaco
 - source:e2e
 provenance: null
 ---

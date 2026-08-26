@@ -224,6 +224,52 @@ class KGDBReader:
                 result.append(node_id)
         return result
 
+    # ── navegacion tag-centrica (grafo generado desde SLDB) ──────
+    #
+    # El grafo que produce sldb_semantic_export_to_snapshot es tag-centrico:
+    #   sldb://semantic_tag/<tag>              nodo de tag
+    #   sldb://document/<doc>  --tagged_as-->  sldb://semantic_tag/<tag>
+    #   <tag.hijo>             --semantic_parent--> <tag.padre>
+    # El "diagrama de conversacion" vive en la jerarquia conversation:steps.*.
+    # Estos helpers navegan esa estructura real (no nodos conversation_flow_node,
+    # que no existen en el export automatico).
+
+    _TAG_PREFIX = "sldb://semantic_tag/"
+    _DOC_PREFIX = "sldb://document/"
+
+    def _tag_node(self, tag: str) -> str:
+        return f"{self._TAG_PREFIX}{tag}"
+
+    def has_tag(self, tag: str) -> bool:
+        """True si el grafo conoce el tag semantico."""
+        return self._tag_node(tag) in self._graph
+
+    def steps_under(self, root_tag: str = "conversation:steps") -> list[str]:
+        """Lista los steps hijos de un tag raiz (ej. conversation:steps).
+
+        Devuelve los tags de step completos (conversation:steps.booking, ...)
+        ordenados, derivados de las aristas semantic_parent del grafo real.
+        """
+        root_node = self._tag_node(root_tag)
+        if root_node not in self._graph:
+            return []
+        children = []
+        for source, target, data in self._graph.in_edges(root_node, data=True):
+            if data.get("relation") == "semantic_parent" and source.startswith(self._TAG_PREFIX):
+                children.append(source[len(self._TAG_PREFIX):])
+        return sorted(children)
+
+    def docs_for_tag(self, tag: str) -> list[str]:
+        """Ids de documentos SLDB etiquetados con un tag (relacion tagged_as)."""
+        tag_node = self._tag_node(tag)
+        if tag_node not in self._graph:
+            return []
+        docs = []
+        for source, target, data in self._graph.in_edges(tag_node, data=True):
+            if data.get("relation") == "tagged_as" and source.startswith(self._DOC_PREFIX):
+                docs.append(source[len(self._DOC_PREFIX):])
+        return sorted(docs)
+
     @property
     def graph(self) -> nx.DiGraph:
         return self._graph

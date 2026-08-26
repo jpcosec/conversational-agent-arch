@@ -28,13 +28,20 @@ def test_kgdb_reader_builds_navigable_graph_from_real_sldb_store(tmp_path: Path)
     assert semantic_tags
     assert documents
 
-    pizzeria_tag = next(node_id for node_id in semantic_tags if "domain:pizzeria" in node_id)
-    neighborhood = reader.get_neighborhood(pizzeria_tag, depth=1)
-    reachable_documents = sorted(
-        node_id
-        for node_id in neighborhood
-        if node_id in documents and "donpeppe" in node_id.lower()
+    # Doctrina nueva (KB-DOCTRINE.md): el escenario ya no es un tag monolitico
+    # domain:pizzeria. El diagrama de conversacion vive en conversation:steps.*.
+    # Navegamos el step de reserva y verificamos que alcanza sus documentos
+    # grounding via el traversal tag -> documento del grafo KGDB.
+    booking_tag = next(
+        node_id for node_id in semantic_tags if "conversation:steps.booking" in node_id
     )
+    neighborhood = reader.get_neighborhood(booking_tag, depth=1)
+    reachable_documents = sorted(
+        node_id for node_id in neighborhood if node_id in documents
+    )
+
+    # El helper tag-centrico debe resolver los mismos documentos por id corto.
+    grounded_docs = reader.docs_for_tag("conversation:steps.booking")
 
     evidence_path = PROJECT_ROOT / "runs" / "e2e" / "kgdb-navigation.json"
     evidence_path.parent.mkdir(parents=True, exist_ok=True)
@@ -46,8 +53,9 @@ def test_kgdb_reader_builds_navigable_graph_from_real_sldb_store(tmp_path: Path)
                 "edges_total": graph.number_of_edges(),
                 "semantic_tag_count": len(semantic_tags),
                 "document_count": len(documents),
-                "pizzeria_tag": pizzeria_tag,
-                "reachable_documents_from_pizzeria": reachable_documents,
+                "booking_tag": booking_tag,
+                "reachable_documents_from_booking": reachable_documents,
+                "grounded_docs_for_booking": grounded_docs,
             },
             ensure_ascii=False,
             indent=2,
@@ -55,4 +63,6 @@ def test_kgdb_reader_builds_navigable_graph_from_real_sldb_store(tmp_path: Path)
         encoding="utf-8",
     )
 
-    assert reachable_documents, "domain:pizzeria must reach at least one Don Peppe document via KGDB neighborhood traversal"
+    assert reachable_documents, "conversation:steps.booking must reach at least one document via KGDB neighborhood traversal"
+    assert "conversation-steps-booking" in grounded_docs
+    assert "atom-donpeppe-tool-reserva" in grounded_docs

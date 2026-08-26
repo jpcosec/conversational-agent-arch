@@ -6,7 +6,13 @@ from typing import Any
 
 @dataclass
 class CompiledDocument:
-    """Documento compilado producido por el compilador, consumido por el conversador."""
+    """Documento compilado producido por el compilador, consumido por el conversador.
+
+    El contexto viene ESTRUCTURADO POR ROL SEMANTICO (doctrina KB), no como una
+    bolsa plana de texto. El conversador arma su prompt desde ``persona`` (self:*)
+    y ``strategy`` (conversation:strategy); el orquestador usa ``fallback_text``
+    (conversation:fallback) cuando no hay contexto. Nada de esto se hardcodea.
+    """
 
     scenario: str
     question: str
@@ -20,6 +26,10 @@ class CompiledDocument:
     missing_slots: list[str] = field(default_factory=list)
     system_turn: dict | None = None
     is_empty: bool = False
+    # ── contexto estructurado por rol semantico (deshardcodeo) ──
+    persona: dict[str, str] = field(default_factory=dict)   # self:whoami / estilo / limites
+    strategy: str = ""                                       # conversation:strategy
+    fallback_text: str = ""                                  # conversation:fallback
 
     def to_dict(self) -> dict[str, Any]:
         return {k: v for k, v in self.__dict__.items()}

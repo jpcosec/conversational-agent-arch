@@ -4,7 +4,8 @@ title: Tool crear reserva Don Peppe
 five_wh_one_plus: what
 tags:
 - atom_type:tool
-- domain:pizzeria
+- self:tools
+- conversation:steps.booking
 - source:e2e
 provenance: null
 ---

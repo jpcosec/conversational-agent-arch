@@ -1,71 +1,132 @@
 documents:
-- name: atom-donpeppe-horarios
-  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-horarios.md
-  hash_c: d13d67c1d999547da3a0a21746c67c22ab2481ef61e6b4c7f9db478061f368e3
-  hash_d: 9c38a823a30b7b561400561a70c56b5a8e9f5bb99b1528f1c8092b3d0abb84ea
+- name: atom-donpeppe-carta
+  path: atoms/atom-donpeppe-carta.md
+  hash_c: df46626372bb769331ecf6f9167fd114b01e8db0e741e2a73152e00934ccc0f0
+  hash_d: 4a1d9be99ab9ce134ded79e429111d853156234ff09f0011a9a5eabccfad603a
   semantic_tags:
   - atom_type:domain
-  - domain:pizzeria
+  - domain:catalogo
   - source:e2e
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: atom-donpeppe-carta
-  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-carta.md
-  hash_c: 11a2a647f6b3bed032b9ddfa0a1375d05a6f443c66e04e73ecd5fe4ca161d3b5
-  hash_d: 944c83a4c6c9db3760cad6c1495dfe4a0e5cf7b276d58a65b1439aed534f1c4f
+- name: atom-donpeppe-horarios
+  path: atoms/atom-donpeppe-horarios.md
+  hash_c: 1bef9e5937876f5440bec96ee69499b5e78ce619497bae62b148aa587f178f57
+  hash_d: 6c3863e4ceecd5176694d750c47841dffd7d54d2003954708e4015bade27420b
   semantic_tags:
   - atom_type:domain
-  - domain:pizzeria
+  - domain:horarios
   - source:e2e
   - type.knowledge.atom
   - workspace.desk.atoms
 - name: atom-donpeppe-regla-reservas
-  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-regla-reservas.md
-  hash_c: 704630fe718a83b74e383a5abc3ae31a50016e1b69e7c5b9719c0e8ee5297041
-  hash_d: 04da084eeadc9d39794f25856d0059784b25c3d7d35005b61fd5e62792d596f6
+  path: atoms/atom-donpeppe-regla-reservas.md
+  hash_c: 5c4e9b52daee625b507b6e220f95cac2373d104da8f3ffcbc3859ed368801ffb
+  hash_d: 7c9a90fd1b646211fb86c84e7cb5cfd408e9191ca620eba6b313ea9bcffd3998
   semantic_tags:
   - atom_type:rule
-  - domain:pizzeria
+  - domain:reglas.reservas
   - source:e2e
   - type.knowledge.atom
   - workspace.desk.atoms
 - name: atom-donpeppe-tool-reserva
-  path: .sldb_e2e_donpeppe/atoms/atom-donpeppe-tool-reserva.md
-  hash_c: 4d566298128a9113b61b1219d14815412d9548122bb0dc5c74b9be74675cdbc9
-  hash_d: 4225f5e067cb625cf8c2d4d32e9a23d25d9441ea26100281a02ca9269a278692
+  path: atoms/atom-donpeppe-tool-reserva.md
+  hash_c: 4ee4f99bfe222d336793ceb1f73e3a7180ffd57cdc4a82e982d9cf42476e1268
+  hash_d: e6680a87e03030126329515b49ec54b374af01065e526e299ee304c6ca2ecd77
   semantic_tags:
   - atom_type:tool
-  - domain:pizzeria
-  - source:e2e
-  - type.knowledge.atom
-  - workspace.desk.atoms
-- name: atom-trait-vegetariano
-  path: .sldb_e2e_donpeppe/atoms/atom-trait-vegetariano.md
-  hash_c: 78bbffeef6c37d02df75aa97f9aadd1002231c840b16bb1e6a1e67179fcaee06
-  hash_d: 822471b9503d41096fd3a2c978cf336ae72ffa40e7058508fcd83854d812a7d4
-  semantic_tags:
-  - atom_type:trait
-  - domain:pizzeria
+  - conversation:steps.booking
+  - self:tools
   - source:e2e
   - type.knowledge.atom
   - workspace.desk.atoms
 - name: atom-trait-sin-gluten
-  path: .sldb_e2e_donpeppe/atoms/atom-trait-sin-gluten.md
-  hash_c: 4792087a2683de5cbfcefe866525a1129297649c424ab2cbac290bd198fc95f5
-  hash_d: 6bd527e2b73e580b62fad8c1132758b817606bfc598aa671fa6566d5abb97383
+  path: atoms/atom-trait-sin-gluten.md
+  hash_c: 22df6b4c457a0ed066fc94577d4828f432e55320c9374965a139692ad7a76e50
+  hash_d: 8dd2172ea52e45b686e7f1ef8ebb55b2ab5bd18e67d7e892e774be92b74edef7
   semantic_tags:
   - atom_type:trait
-  - domain:pizzeria
   - source:e2e
   - type.knowledge.atom
+  - user:traits.celiaco
   - workspace.desk.atoms
-- name: atom-heladeria-carta
-  path: .sldb_e2e_donpeppe/atoms/atom-heladeria-carta.md
-  hash_c: d8135fc339ac928a1bd2f60a643ce38e17600d9f3be0c7be704d163cbc8c2e5b
-  hash_d: 543a81b139136c30804a156b47eea8a6ac462dba742b192bdce9ef79bca4de78
+- name: atom-trait-vegetariano
+  path: atoms/atom-trait-vegetariano.md
+  hash_c: bac9a14eafc649849d573650f3799d9071444b25fd00a98aa7bc6ee53bffa4be
+  hash_d: ab643630c6901316bd865800447833bd8aeb80dfe84748e9718e1b5474a321cc
+  semantic_tags:
+  - atom_type:trait
+  - source:e2e
+  - type.knowledge.atom
+  - user:traits.vegetariano
+  - workspace.desk.atoms
+- name: conversation-fallback
+  path: atoms/conversation-fallback.md
+  hash_c: 629c240ef8f1cda609bbbf116f38bf4feda2420541f7588161b3efd60f0a6a01
+  hash_d: 8afea5570350046d6610c85da82a82b08118208164e2e6a111e986e8f4484120
+  semantic_tags:
+  - atom_type:rule
+  - conversation:fallback
+  - source:manual
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: conversation-steps-booking
+  path: atoms/conversation-steps-booking.md
+  hash_c: 8bbe01c70ed433376f19b637bc3caec10b45b7124fbd1e8a6218957f22ca6a7a
+  hash_d: e0b1a5b345b4a467e946f43ebcc28c53fd4d10b7c1274e95c985772144933c86
+  semantic_tags:
+  - atom_type:rule
+  - conversation:steps.booking
+  - source:manual
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: conversation-steps-onboarding
+  path: atoms/conversation-steps-onboarding.md
+  hash_c: 72ff689f4ddf4808f0d413aefbb012284a7aae89b4fb30af82adcc28f698be46
+  hash_d: 7a92a0349948ab608f5ebfb340757646373d4298edd19bb19337d0218ce5848e
+  semantic_tags:
+  - atom_type:rule
+  - conversation:steps.onboarding
+  - source:manual
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: conversation-strategy
+  path: atoms/conversation-strategy.md
+  hash_c: bb520c8f81d6ce02b20c7492c53c2d89a05510e08267a394e9784c1970a13f6b
+  hash_d: b35c2cecc7c2e0d0fa549721974d2c42fe4e50d2bc9ca3da1ef5b893517a6ccb
+  semantic_tags:
+  - atom_type:rule
+  - conversation:strategy
+  - source:manual
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: self-estilo
+  path: atoms/self-estilo.md
+  hash_c: 94bd221f5ef2b2ea87dd7d768bf4eb3a414f5c601af0c3a5c12720af17b2d014
+  hash_d: f4b3d56c4ae3945cdae2f9d2ebe3ac7a8efe1ca512115d562f0a0a5c6d80472f
+  semantic_tags:
+  - atom_type:rule
+  - self:estilo
+  - source:manual
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: self-limites
+  path: atoms/self-limites.md
+  hash_c: ec4c6d8767d62d8d4666d8952bb81e70c2c8969827e10f82e24cba55cc1385ee
+  hash_d: f01574cd7c0557cd773419746fbed988df4847d0ed211bda3c14a4fbbab9c2ea
+  semantic_tags:
+  - atom_type:rule
+  - self:limites
+  - source:manual
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: self-whoami
+  path: atoms/self-whoami.md
+  hash_c: 3052b57829beee875d13ebbb08e1950f86fb2ba2224630f5be2d1370792e5174
+  hash_d: 2c1b87e62ab3544a8fadc3fe2a7bd32e29796db16fa31d499eb092528ff22402
   semantic_tags:
   - atom_type:domain
-  - domain:heladeria
-  - source:e2e
+  - self:whoami
+  - source:manual
   - type.knowledge.atom
   - workspace.desk.atoms

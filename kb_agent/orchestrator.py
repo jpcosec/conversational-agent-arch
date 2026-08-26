@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,7 +23,7 @@ from google import genai
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
-from kb_agent.agent import CANONICAL_FALLBACK_RESPONSE, draft_conversador_response
+from kb_agent.agent import CANONICAL_FALLBACK_RESPONSE, decide_turn
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
@@ -35,7 +36,8 @@ from kb_agent.pii.scrubber import scrub
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
 from kb_chat_ui.state_machine import RouterStateMachine
 
-MODEL = "gemini-2.5-flash"
+# Modelo LLM: externalizado a env (deshardcodeo H5). Default estable si no se define.
+MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 
 # ─────────────────────────── LLM real: Conversador NL ───────────────────────────
@@ -44,6 +46,24 @@ class GeminiConversador:
         self._client = client
 
     def draft_nl(self, compiled: dict[str, Any]) -> str:
+        # Identidad/estilo/limites vienen de la KB (self:*), NO hardcodeados.
+        persona = compiled.get("persona", {}) or {}
+        strategy = compiled.get("strategy", "")
+        identity_lines = []
+        if persona.get("whoami"):
+            identity_lines.append(persona["whoami"])
+        if persona.get("estilo"):
+            identity_lines.append(f"Estilo: {persona['estilo']}")
+        if persona.get("limites"):
+            identity_lines.append(f"Limites: {persona['limites']}")
+        if strategy:
+            identity_lines.append(f"Estrategia: {strategy}")
+        # Fallback razonable solo si la KB no define persona (no debe pasar).
+        identity = "\n".join(identity_lines) or (
+            "Eres un asistente. Responde en espanol, breve y amable, usando "
+            "EXCLUSIVAMENTE los datos provistos."
+        )
+
         facts = [f["body"] for f in compiled.get("domain_facts", [])]
         rules = [r["body"] for r in compiled.get("rules", [])]
         traits = compiled.get("user_traits", [])
@@ -58,8 +78,8 @@ class GeminiConversador:
                 "Usa este resultado para responder al cliente sin inventar datos fuera del JSON ni del grounding."
             )
         prompt = (
-            "Eres el asistente de la pizzeria Don Peppe. Responde en espanol, "
-            "breve y amable, usando EXCLUSIVAMENTE los datos de abajo. "
+            f"{identity}\n\n"
+            "Responde usando EXCLUSIVAMENTE los datos de abajo. "
             "Si hay traits del cliente, adapta la sugerencia a su perfil. "
             "No inventes nada fuera de estos datos.\n\n"
             f"DATOS:\n{grounding}{perfil}{system_turn_prompt}\n\n"
@@ -100,22 +120,37 @@ class GeminiTraitMapper:
 
 
 # ─────────────────────────── Tool dispatcher REAL ───────────────────────────
+# Registry de handlers de tools (deshardcodeo H6). Cada tool declarada en la KB
+# (atom_type:tool) que el orquestador quiera ejecutar registra aqui su handler.
+# El name debe coincidir con el "name" del schema JSON del tool atom.
+def _tool_crear_reserva(session: Session, user_id: int | None, args: dict[str, Any]) -> dict[str, Any]:
+    reserva = Reservas(
+        user_id=user_id,
+        fecha=str(args.get("fecha", "")),
+        hora=str(args.get("hora", "")),
+        personas=int(args.get("personas", 0)),
+        nombre=args.get("nombre"),
+    )
+    session.add(reserva)
+    session.commit()
+    return {"reserva_id": reserva.id}
+
+
+# name (del schema JSON en la KB) -> handler que ejecuta y persiste.
+TOOL_HANDLERS: dict[str, Any] = {
+    "crear_reserva": _tool_crear_reserva,
+}
+
+
 def execute_tool(session: Session, user_id: int | None, function_call: dict[str, Any]) -> dict[str, Any]:
-    """Ejecuta la tool de verdad y PERSISTE. Devuelve el System Turn (JSON)."""
+    """Ejecuta la tool via registry y PERSISTE. Devuelve el System Turn (JSON)."""
     name = function_call.get("name")
     args = function_call.get("args", {})
-    if name == "crear_reserva":
-        reserva = Reservas(
-            user_id=user_id,
-            fecha=str(args.get("fecha", "")),
-            hora=str(args.get("hora", "")),
-            personas=int(args.get("personas", 0)),
-            nombre=args.get("nombre"),
-        )
-        session.add(reserva)
-        session.commit()
-        return {"tool": name, "status": "ok", "reserva_id": reserva.id, "args": args}
-    return {"tool": name, "status": "unknown_tool", "args": args}
+    handler = TOOL_HANDLERS.get(str(name))
+    if handler is None:
+        return {"tool": name, "status": "unknown_tool", "args": args}
+    result = handler(session, user_id, args)
+    return {"tool": name, "status": "ok", "args": args, **result}
 
 
 # ─────────────────────────── Orquestador ───────────────────────────
@@ -174,14 +209,21 @@ class Orchestrator:
                 return d
 
             def draft_with_real_conversador(compiled_context: dict[str, Any]) -> Any:
+                # Brecha #1: el ORQUESTADOR decide el tipo de turno con una policy
+                # pura (decide_turn), y SOLO despues actua. Decidir != redactar.
                 if compiled_context.get("system_turn"):
+                    # Ya hay resultado de tool: redactar la respuesta final.
                     return self.conversador.draft_nl(compiled_context)
 
-                decision = draft_conversador_response(compiled_context)
-                if isinstance(decision, dict) and "function_call" in decision:
-                    return decision
-                if decision == CANONICAL_FALLBACK_RESPONSE:
-                    return decision
+                decision = decide_turn(compiled_context)
+                kind = decision.get("kind")
+                if kind == "tool_call":
+                    return {"function_call": decision["function_call"]}
+                if kind == "fallback":
+                    # Fallback desde conversation:fallback (KB); constante = ultimo recurso.
+                    kb_fallback = (compiled_context.get("fallback_text") or "").strip()
+                    return kb_fallback or CANONICAL_FALLBACK_RESPONSE
+                # kind == "nl": redacta el conversador con grounding real.
                 return self.conversador.draft_nl(compiled_context)
 
             router = RouterStateMachine(
@@ -205,7 +247,7 @@ class Orchestrator:
                 response = resumed_result.response
                 compiled = resumed_result.compiled_context
                 state_trace = [node.value for node in router.state_trace]
-            elif response == CANONICAL_FALLBACK_RESPONSE:
+            elif self._is_fallback_response(response, compiled):
                 kind = "fallback"
             else:
                 kind = "nl"
@@ -234,11 +276,16 @@ class Orchestrator:
             asyncio.run(self._run_profiler(user.id, message))
             traits_after = self._current_traits(session, user.id)
 
+            # 6) Contexto atomico del turno (reemplaza el viejo "mesa" de MesaCompiler):
+            #    los atoms REALES que el compilador uso para fundamentar la respuesta.
+            context = self._build_turn_context(compiled)
+
             return {
                 "user_id": user.id,
                 "question": message,
                 "kind": kind,
                 "reply": response,
+                "reply_text": reply_text,
                 "system_turn": system_turn,
                 "traits_before": traits_before,
                 "traits_after": traits_after,
@@ -246,9 +293,98 @@ class Orchestrator:
                 "scenario_effective": scenario_effective,
                 "scenario_source": scenario_source,
                 "state_trace": state_trace,
+                "flow_node": flow_node,
+                "allowed_transitions": flow_transitions,
+                "missing_slots": flow_missing,
+                "context": context,
             }
         finally:
             session.close()
+
+    @staticmethod
+    def _is_fallback_response(response: Any, compiled: Any) -> bool:
+        """True si la respuesta es el fallback (constante o texto de la KB).
+
+        Con el deshardcodeo, el fallback puede ser el texto de
+        ``conversation:fallback`` en vez de la constante canonica.
+        """
+        if not isinstance(response, str):
+            return False
+        if response == CANONICAL_FALLBACK_RESPONSE:
+            return True
+        kb_fallback = ""
+        if isinstance(compiled, dict):
+            kb_fallback = (compiled.get("fallback_text") or "").strip()
+        else:
+            kb_fallback = (getattr(compiled, "fallback_text", "") or "").strip()
+        return bool(kb_fallback) and response == kb_fallback
+
+    @staticmethod
+    def _semantic_role(tags: list[str], fallback: str) -> str:
+        """Deriva el rol semantico del atom desde su eje de tag (doctrina KB).
+
+        self:* -> identidad/estilo/limites; conversation:* -> flujo; domain:* ->
+        conocimiento del negocio. Si no hay eje reconocible, usa el fallback por
+        atom_type (domain_fact / rule).
+        """
+        for t in tags:
+            if t.startswith("self:"):
+                return f"self.{t.split(':', 1)[1]}"
+            if t.startswith("conversation:"):
+                return f"conversation.{t.split(':', 1)[1]}"
+            if t.startswith("domain:"):
+                return "domain_fact"
+        return fallback
+
+    def _build_turn_context(self, compiled: dict[str, Any]) -> dict[str, Any]:
+        """Arma el contexto atomico del turno desde el CompiledDocument (dict).
+
+        Reemplaza el objeto 'mesa' que antes producia MesaCompiler: expone los
+        atoms reales (facts + rules) que fundamentaron la respuesta, con su rol
+        semantico (self/conversation/domain), tags y scoring, para que la UI
+        inspeccione el turno. Marca ademas cuales atoms groundean el step actual
+        del diagrama de conversacion (grounding del flow_node en KGDB).
+
+        Brecha #2: NO re-lee el store. El compilador ya entrego tags y title en
+        cada atom (domain_facts/rules), asi que el orquestador solo los consume.
+        """
+        items: list[dict[str, Any]] = []
+        atom_ids: list[str] = []
+        include_tags: set[str] = set()
+        grounding = set(compiled.get("grounding_atoms", []))
+
+        def _add(atom: dict[str, Any], fallback_role: str) -> None:
+            atom_id = atom.get("id", "")
+            tags = atom.get("tags", [])
+            items.append({
+                "atom_id": atom_id,
+                "title": atom.get("title") or atom_id,
+                "role": self._semantic_role(tags, fallback_role),
+                "score": 1.0,
+                "tags": tags,
+                "grounds_step": atom_id in grounding,
+                "body": atom.get("body", ""),
+            })
+            atom_ids.append(atom_id)
+            include_tags.update(tags)
+
+        for fact in compiled.get("domain_facts", []):
+            _add(fact, "domain_fact")
+        for rule in compiled.get("rules", []):
+            _add(rule, "rule")
+
+        return {
+            "scenario": compiled.get("scenario", ""),
+            "atom_ids": atom_ids,
+            "include_tags": sorted(include_tags),
+            "items": items,
+            "tools": compiled.get("tools", []),
+            "user_traits": compiled.get("user_traits", []),
+            "grounding_atoms": compiled.get("grounding_atoms", []),
+            "flow_node": compiled.get("flow_node"),
+            "allowed_transitions": compiled.get("allowed_transitions", []),
+            "is_empty": compiled.get("is_empty", False),
+        }
 
     async def _run_profiler(self, user_id: int, turn_text: str) -> None:
         # scrub inline antes de que el perfilador vea nada (regla PII)

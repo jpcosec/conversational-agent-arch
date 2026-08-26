@@ -1,10 +1,10 @@
 ---
 id: atom-donpeppe-regla-reservas
 title: Regla de reservas Don Peppe
-five_wh_one_plus: what
+five_wh_one_plus: how
 tags:
 - atom_type:rule
-- domain:pizzeria
+- domain:reglas.reservas
 - source:e2e
 provenance: null
 ---

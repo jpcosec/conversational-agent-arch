@@ -1,5 +1,5 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-31/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-56/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
   "user_id": 1,
   "before_restart": {
     "active_domain": "pizzeria",
@@ -15,7 +15,7 @@
       "scenario_effective": "pizzeria",
       "scenario_source": "session_state",
       "kind": "nl",
-      "reply": "Don Peppe abre de martes a domingo. Si es hoy uno de esos días, para tu perfil vegetariano te podemos recomendar la pizza Margherita (8900), la Cuatro Quesos (11200) o la Napolitana (9800)."
+      "reply": "¡Claro! Para hoy, y pensando en tus gustos, te sugiero nuestra deliciosa Margherita por $8900 o la cremosa Cuatro Quesos por $11200. Ambas son excelentes opciones vegetarianas para disfrutar."
     }
   }
 }

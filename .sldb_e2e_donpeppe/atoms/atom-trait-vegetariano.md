@@ -4,7 +4,7 @@ title: Cliente vegetariano
 five_wh_one_plus: what
 tags:
 - atom_type:trait
-- domain:pizzeria
+- user:traits.vegetariano
 - source:e2e
 provenance: null
 ---

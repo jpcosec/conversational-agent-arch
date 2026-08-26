@@ -1,8 +1,8 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-31/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-56/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
   "nl_turn": {
     "kind": "nl",
-    "reply": "¡Claro! En Don Peppe le recomendamos nuestras deliciosas pizzas vegetarianas:\n*   Margherita por $8900\n*   Cuatro Quesos por $11200",
+    "reply": "¡Hola! Para opciones vegetarianas, te recomiendo nuestra clásica Margherita, la exquisita Cuatro Quesos o la deliciosa Napolitana. Todas son opciones sin carne y muy sabrosas. ¡Espero que disfrutes tu elección!",
     "state_trace": [
       "idle",
       "evaluating_context",
@@ -12,17 +12,17 @@
   },
   "tool_turn": {
     "kind": "tool_call",
-    "reply": "Su reserva para el viernes a las 20:00, para 4 personas a nombre de Rojas, ha sido confirmada.",
+    "reply": "¡Claro que sí! Su reserva para 4 personas a nombre de Rojas para el viernes a las 20:00 horas ha sido confirmada con éxito. El número de su reserva es el 1.\n\n¡Le esperamos en Don Peppe!",
     "system_turn": {
       "tool": "crear_reserva",
       "status": "ok",
-      "reserva_id": 1,
       "args": {
         "fecha": "viernes",
         "hora": "20:00",
         "personas": 4,
         "nombre": "Rojas"
-      }
+      },
+      "reserva_id": 1
     },
     "state_trace": [
       "idle",
