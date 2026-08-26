@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: anti-alucinaci-n-contexto-estricto
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 787
+    line_end: 788
   - path: anti-alucinaci-n-contexto-estricto/answer
     title: Answer
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 789
+    line_end: 790
   - path: anti-alucinaci-n-contexto-estricto/conditions
     title: Conditions
     breadcrumbs:
@@ -71,8 +71,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 793
+    line_end: 794
 - doc_name: rule-antonia-eventos-adversos
   sections:
   - path: detecci-n-de-eventos-adversos
@@ -95,8 +95,8 @@ documents:
     - workspace.knowledge
     slug: detecci-n-de-eventos-adversos
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
   - path: detecci-n-de-eventos-adversos/answer
     title: Answer
     breadcrumbs:
@@ -120,8 +120,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 789
+    line_end: 790
   - path: detecci-n-de-eventos-adversos/conditions
     title: Conditions
     breadcrumbs:
@@ -145,5 +145,5 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 793
+    line_end: 794

@@ -1,5 +1,5 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-108/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-183/test_sessionstate_recovery_rea0/sessionstate-recovery.sqlite",
   "user_id": 1,
   "before_restart": {
     "active_domain": "pizzeria",
@@ -15,7 +15,7 @@
       "scenario_effective": "pizzeria",
       "scenario_source": "session_state",
       "kind": "nl",
-      "reply": "¡Hola! Pensando en que eres vegetariano, te sugiero la clásica Margherita o la Cuatro Quesos, ¡ambas son buenísimas!\nRecuerda que abrimos de martes a domingo, de 19:00 a 23:30 hrs."
+      "reply": "¡Hola! No tengo una recomendación específica \"para hoy\", pero te puedo contar sobre nuestras ricas pizzas. ¡Todas son una delicia! ¿Te gustaría que te las detalle?"
     }
   }
 }

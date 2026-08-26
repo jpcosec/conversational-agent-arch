@@ -1,8 +1,8 @@
 documents:
 - name: step-donpeppe-onboarding
   path: atoms/step-donpeppe-onboarding.md
-  hash_c: 9f69f65540252f57508807297d377a4d7963bd5d461112bdfb67076e06a4e06a
-  hash_d: daf7d2bbc2ff0b203f1527944ff305c8a177af47ccacc221db3cc285298b0c91
+  hash_c: 9cb070cff11051db89196eb76b2f7254cf4241431a6cab6544e2b36ac2a8146f
+  hash_d: 5d1dda02a5d030f79697ebe2b143d53a76e1c9d3f7bc36079b4342dbc4a60d18
   semantic_tags:
   - conversation:steps.onboarding
   - system:donpeppe
@@ -10,8 +10,8 @@ documents:
   - workspace.knowledge
 - name: step-donpeppe-booking
   path: atoms/step-donpeppe-booking.md
-  hash_c: 6cc8fd76ff124c7be2d7605b3a43db0978635ecff8b0865ec635f5a117b6b459
-  hash_d: c0e5b1c09bb8382a4a07628a0653666a6c3f1e341b43a59292190a543d7ca31e
+  hash_c: eab6288e91d59c6024540241a4eb2700f4761d8d808a04e96a404726f633855c
+  hash_d: 9b01284ac14da80fb5746bd03158ca0e36ff832b04ab39fce35f2f506a3a770c
   semantic_tags:
   - conversation:steps.booking
   - system:donpeppe

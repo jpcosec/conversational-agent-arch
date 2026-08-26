@@ -1,8 +1,8 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-108/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-183/test_orchestrator_routes_turns0/statemachine-wiring.sqlite",
   "nl_turn": {
     "kind": "nl",
-    "reply": "¡Hola! Qué buena pregunta. En Don Peppe tenemos varias opciones vegetarianas que son una delicia.\n\nTe recomiendo la clásica **Margherita** ($8.900) y nuestra sabrosa **Cuatro Quesos** ($11.200). ¡Ambas son perfectas!",
+    "reply": "¡Hola! Si buscas opciones vegetarianas, te recomiendo nuestra clásica **Margherita** o la riquísima **Cuatro Quesos**. ¡Son una delicia para disfrutar! 🍕",
     "state_trace": [
       "idle",
       "evaluating_context",
@@ -12,7 +12,7 @@
   },
   "tool_turn": {
     "kind": "tool_call",
-    "reply": "¡Excelente! Tu reserva a nombre de Rojas para 4 personas el viernes a las 20:00 hrs. está confirmada.\n\nTu código de reserva es el 1. ¡Te esperamos en Don Peppe! 😊",
+    "reply": "¡Excelente! Tu reserva en Don Peppe ha quedado confirmada.\nMesa para 4 personas a nombre de Rojas, para este viernes a las 20:00.\n¡Te esperamos para disfrutar de una rica pizza! 🍕",
     "system_turn": {
       "tool": "crear_reserva",
       "status": "ok",

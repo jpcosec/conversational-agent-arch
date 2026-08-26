@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:CapabilityBoundary
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/boundary.py
 documents_index: .sldb/core/documents/CapabilityBoundary.yaml
 sections_index: .sldb/runtime/sections/CapabilityBoundary.yaml
-hash_b: 25f5e0632ae3c06e67c183c2304088a43a7670e1325cbe2a15cfef83b25fdfcd
+hash_b: 1d55602af6e14d2c69d76812bfb063ec31294c805e5e47c84be5a65d9417af98
 version: 1
 canonical: false
 family: null

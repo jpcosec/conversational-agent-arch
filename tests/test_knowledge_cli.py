@@ -39,6 +39,7 @@ tags:
 - self:whoami
 - system:test
 provenance: null
+summary: Identidad del bot de prueba del sistema de conocimiento.
 ---
 
 # Bot Identity
@@ -55,6 +56,7 @@ tags:
 - self:estilo
 - system:test
 provenance: null
+summary: Estilo del bot, amable, conciso y formal con trato de usted.
 ---
 
 # Bot Style
@@ -83,6 +85,7 @@ tags:
 - self:limites
 - system:test
 provenance: null
+summary: Límites del bot, no da consejo legal y deriva a un abogado.
 ---
 
 # Bot Limits
@@ -109,6 +112,7 @@ tags:
 five_wh_one_plus: what
 domain_ref: test-biz
 provenance: null
+summary: Carta con Pizza Margherita y Napolitana con sus precios.
 ---
 
 # Carta
@@ -126,6 +130,7 @@ tags:
 - system:test
 category: dietary
 provenance: null
+summary: Cliente vegetariano que no consume carne.
 ---
 
 # Vegetariano
@@ -143,6 +148,7 @@ tags:
 - conversation:steps.onboarding
 - system:test
 domain_ref: test-biz
+summary: Paso de onboarding que da la bienvenida al usuario.
 ---
 
 # Onboarding
@@ -369,6 +375,7 @@ id: atom-nueva-propuesta
 title: Nueva Propuesta
 five_wh_one_plus: what
 answer: Contenido propuesto
+summary: Resumen de la propuesta de prueba.
 tags:
 - domain:test
 """)

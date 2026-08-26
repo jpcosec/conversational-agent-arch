@@ -9,20 +9,22 @@ documents:
     - Tool crear reserva Don Peppe
     - tool crear reserva don peppe
     - conversation:steps.booking
+    - domain:pizzeria
     - self:tools
     - system:donpeppe
     - type.knowledge.tool
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - self:tools
     - system:donpeppe
     - type.knowledge.tool
     - workspace.knowledge
     slug: tool-crear-reserva-don-peppe
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 786
+    line_end: 787
   - path: tool-crear-reserva-don-peppe/description
     title: Description
     breadcrumbs:
@@ -34,20 +36,22 @@ documents:
     - Description
     - description
     - conversation:steps.booking
+    - domain:pizzeria
     - self:tools
     - system:donpeppe
     - type.knowledge.tool
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - self:tools
     - system:donpeppe
     - type.knowledge.tool
     - workspace.knowledge
     slug: description
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 788
+    line_end: 789
   - path: tool-crear-reserva-don-peppe/parameters
     title: Parameters
     breadcrumbs:
@@ -59,17 +63,19 @@ documents:
     - Parameters
     - parameters
     - conversation:steps.booking
+    - domain:pizzeria
     - self:tools
     - system:donpeppe
     - type.knowledge.tool
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - self:tools
     - system:donpeppe
     - type.knowledge.tool
     - workspace.knowledge
     slug: parameters
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 792
+    line_end: 793

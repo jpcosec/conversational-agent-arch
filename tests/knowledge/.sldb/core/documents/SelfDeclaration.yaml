@@ -1,8 +1,8 @@
 documents:
 - name: self-donpeppe
   path: atoms/self-donpeppe.md
-  hash_c: ec4ef7d0122b07d42f064743331c0650d844fee015e0b11abffe198eaa12b6e3
-  hash_d: 1ae2dadd155ce9e57d63734274aeeec215b9fd18731a1be421bd1ffc0f3ea342
+  hash_c: e3837511853cfcd86542600585167e7e9a1a30bb49fe61aa9003a320ec752fe3
+  hash_d: dc5e1bd8136a8304a7f0eda9ad05cc5b32c81d40278395526bf63d7269947234
   semantic_tags:
   - domain:pizzeria
   - self:whoami

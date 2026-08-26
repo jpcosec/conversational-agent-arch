@@ -20,6 +20,12 @@ tags:
   domain:horarios:
   - atom-donpeppe-horarios
   domain:pizzeria:
+  - atom-donpeppe-carta
+  - atom-donpeppe-horarios
+  - atom-donpeppe-promos
+  - atom-donpeppe-regla-reservas
+  - atom-donpeppe-tool-reserva
+  - atom-donpeppe-ubicacion
   - self-donpeppe
   domain:promociones:
   - atom-donpeppe-promos
@@ -49,7 +55,6 @@ tags:
   - step-donpeppe-onboarding
   - strategy-donpeppe
   - style-donpeppe
-  - trait-sin-gluten
   - trait-vegetariano
   type.knowledge.boundary:
   - boundary-donpeppe
@@ -74,10 +79,7 @@ tags:
   type.knowledge.tool:
   - atom-donpeppe-tool-reserva
   type.knowledge.trait:
-  - trait-sin-gluten
   - trait-vegetariano
-  user:traits.celiaco:
-  - trait-sin-gluten
   user:traits.vegetariano:
   - trait-vegetariano
   workspace.knowledge:
@@ -94,7 +96,6 @@ tags:
   - step-donpeppe-onboarding
   - strategy-donpeppe
   - style-donpeppe
-  - trait-sin-gluten
   - trait-vegetariano
 documents:
   atom-donpeppe-carta:
@@ -103,6 +104,7 @@ documents:
     tags:
     - conversation:steps.onboarding
     - domain:catalogo
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
@@ -112,6 +114,7 @@ documents:
     tags:
     - conversation:steps.onboarding
     - domain:horarios
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
@@ -120,6 +123,7 @@ documents:
     path: atoms/atom-donpeppe-ubicacion.md
     tags:
     - conversation:steps.onboarding
+    - domain:pizzeria
     - domain:ubicacion
     - system:donpeppe
     - type.knowledge.domain
@@ -129,6 +133,7 @@ documents:
     path: atoms/atom-donpeppe-promos.md
     tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:promociones
     - system:donpeppe
     - type.knowledge.domain
@@ -138,6 +143,7 @@ documents:
     path: atoms/atom-donpeppe-regla-reservas.md
     tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:reglas.reservas
     - system:donpeppe
     - type.knowledge.rule
@@ -147,6 +153,7 @@ documents:
     path: atoms/atom-donpeppe-tool-reserva.md
     tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - self:tools
     - system:donpeppe
     - type.knowledge.tool
@@ -158,14 +165,6 @@ documents:
     - system:donpeppe
     - type.knowledge.trait
     - user:traits.vegetariano
-    - workspace.knowledge
-  trait-sin-gluten:
-    model: TraitAtom
-    path: atoms/trait-sin-gluten.md
-    tags:
-    - system:donpeppe
-    - type.knowledge.trait
-    - user:traits.celiaco
     - workspace.knowledge
   step-donpeppe-onboarding:
     model: ConversationStep

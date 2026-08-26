@@ -23,7 +23,7 @@ title: ⸢rev•title⸥
 atom_type: self
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

@@ -7,7 +7,7 @@ tags:
 - system:laboratorio-chile
 category: behavior
 provenance: null
-summary: null
+summary: Persona que cumple dosis y horarios de forma consistente; reforzar el habito y mantener recordatorios ligeros.
 embedding: null
 parent: null
 semantic_anchors: null

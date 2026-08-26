@@ -7,7 +7,7 @@ tags:
 - system:laboratorio-chile
 category: behavior
 provenance: null
-summary: null
+summary: Persona que nunca se ha auto-inyectado; requiere guia paso a paso, refuerzo positivo y validar cada etapa sin asumir conocimiento previo.
 embedding: null
 parent: null
 semantic_anchors: null

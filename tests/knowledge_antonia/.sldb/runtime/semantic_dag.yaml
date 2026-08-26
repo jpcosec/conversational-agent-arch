@@ -4,25 +4,10 @@ nodes:
 - id: conversation:steps.agendar_recordatorio
   parents:
   - conversation:steps
-- id: conversation:steps.booking
-  parents:
-  - conversation:steps
-- id: conversation:steps.despedida
-  parents:
-  - conversation:steps
-- id: conversation:steps.evento_adverso
-  parents:
-  - conversation:steps
 - id: conversation:steps.onboarding
   parents:
   - conversation:steps
 - id: conversation:steps.recompra
-  parents:
-  - conversation:steps
-- id: conversation:steps.registro_estado
-  parents:
-  - conversation:steps
-- id: conversation:steps.saludo
   parents:
   - conversation:steps
 - id: type

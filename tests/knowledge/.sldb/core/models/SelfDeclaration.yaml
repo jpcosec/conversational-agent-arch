@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:SelfDeclaration
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/self_declaration.py
 documents_index: .sldb/core/documents/SelfDeclaration.yaml
 sections_index: .sldb/runtime/sections/SelfDeclaration.yaml
-hash_b: ee09d963cee428c384058a569f98112c394896e8653b51b220aff447ed9a4a03
+hash_b: 5c54f87596de4f44c060083be95d1d4e280cded77173895b56b67f3bbf12fe19
 version: 1
 canonical: false
 family: null

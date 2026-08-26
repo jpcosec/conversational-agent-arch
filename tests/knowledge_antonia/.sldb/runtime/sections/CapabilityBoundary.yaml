@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: l-mites-cl-nicos-absolutos
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 785
+    line_end: 786
   - path: l-mites-cl-nicos-absolutos/restriction
     title: Restriction
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: restriction
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
   - path: l-mites-cl-nicos-absolutos/conditions
     title: Conditions
     breadcrumbs:
@@ -71,8 +71,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 791
+    line_end: 792
   - path: l-mites-cl-nicos-absolutos/escalation
     title: Escalation
     breadcrumbs:
@@ -96,8 +96,8 @@ documents:
     - workspace.knowledge
     slug: escalation
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 795
+    line_end: 796
 - doc_name: boundary-antonia-manipulacion
   sections:
   - path: anti-manipulaci-n
@@ -120,8 +120,8 @@ documents:
     - workspace.knowledge
     slug: anti-manipulaci-n
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 785
+    line_end: 786
   - path: anti-manipulaci-n/restriction
     title: Restriction
     breadcrumbs:
@@ -145,8 +145,8 @@ documents:
     - workspace.knowledge
     slug: restriction
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
   - path: anti-manipulaci-n/conditions
     title: Conditions
     breadcrumbs:
@@ -170,8 +170,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 791
+    line_end: 792
   - path: anti-manipulaci-n/escalation
     title: Escalation
     breadcrumbs:
@@ -195,5 +195,5 @@ documents:
     - workspace.knowledge
     slug: escalation
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 795
+    line_end: 796

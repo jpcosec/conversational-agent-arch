@@ -3,6 +3,7 @@ id: step-antonia-evento-adverso
 title: Evento adverso — derivacion
 atom_type: step
 kind: handout
+summary: Responde con calidez ante un evento adverso, registra el reporte textual para farmacovigilancia y deriva a un profesional sin dar indicaciones clinicas.
 tags:
 - conversation:steps.evento_adverso
 - system:laboratorio-chile

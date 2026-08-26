@@ -3,6 +3,7 @@ id: step-antonia-onboarding
 title: Onboarding — primera interaccion
 atom_type: step
 kind: obtencion_datos
+summary: Paso de onboarding; da la bienvenida, explica el acompañamiento, pregunta si es primera vez con Selfix, ofrece el video y anticipa las primeras semanas.
 tags:
 - conversation:steps.onboarding
 - system:laboratorio-chile

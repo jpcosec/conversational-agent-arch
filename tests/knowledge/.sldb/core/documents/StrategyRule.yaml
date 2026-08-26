@@ -1,8 +1,8 @@
 documents:
 - name: strategy-donpeppe
   path: atoms/strategy-donpeppe.md
-  hash_c: e5a6fb0f37de6ba704e6506e0451b6f80920b911fe3e7f20076c5e48239d3463
-  hash_d: 5ff1e4115ddd07650710b74d54726f7d3d29711837898ac3a6a06c932dfcfa10
+  hash_c: a6095f3b7840eb2bfddcd55b51d402c4f5c472cf34470357cf542b00d5374418
+  hash_d: 582fdc6e0aa04b27c4a1f36a0328b7fabddc6ac0b39064332ef224f1857c4cda
   semantic_tags:
   - conversation:strategy
   - system:donpeppe

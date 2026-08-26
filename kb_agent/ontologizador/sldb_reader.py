@@ -51,13 +51,22 @@ class SLDBReader:
         return None
 
     def fetch(self, atom_type: str) -> list[dict[str, Any]]:
-        """Selecciona atoms por MODELO tipado (type.knowledge.<tipo>).
+        """Filtra por tipo de atom, soportando ambas convenciones de tag.
 
-        La KB usa modelos tipados: ``atom_type`` es un campo del modelo, no un
-        tag. La selección es por el eje ``type.knowledge.<tipo>`` derivado del
-        ``__semantics__`` de cada modelo.
+        - Modelos tipados (migrado): tag 'type.knowledge.<atom_type>'.
+        - API/atoms legacy: tag 'atom_type:<atom_type>'.
         """
-        return self.find(f"type.knowledge.{atom_type}", search_in="semantic")
+        typed = self.find(f"type.knowledge.{atom_type}", search_in="semantic")
+        legacy = self.find(f"atom_type:{atom_type}", search_in="semantic")
+        seen: set[str] = set()
+        merged: list[dict[str, Any]] = []
+        for rec in (*typed, *legacy):
+            rid = rec.get("id")
+            if rid in seen:
+                continue
+            seen.add(rid)
+            merged.append(rec)
+        return merged
 
     def refresh(self) -> None:
         """Recarga el índice (útil si cambian los documentos fuente)."""

@@ -18,7 +18,7 @@ from sldb import StructuredNLDoc
 
 # Bloque de template reutilizable: marcadores de frontmatter para los proxies.
 # Se inserta en el frontmatter de cada modelo, antes del cierre `---`.
-INDEX_PROXY_TEMPLATE = """summary: ⸢optrev•summary⸥
+INDEX_PROXY_TEMPLATE = """summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥"""
@@ -42,11 +42,11 @@ class IndexProxies(StructuredNLDoc):
         """Rama raíz del árbol de tags que este modelo ocupa."""
         return cls.__family__
 
-    summary: str | None = Field(
-        default=None,
+    summary: str = Field(
         description=(
-            "Resumen textual corto (proxy). Permite al Compilador evaluar "
-            "relevancia sin leer el body. Calculado offline por 'knowledge index proxies'."
+            "Resumen textual corto (proxy). OBLIGATORIO. Permite al Compilador "
+            "evaluar relevancia sin leer el body. Lo escribe el creador del atom "
+            "(humano o Reflector), no el pipeline offline."
         ),
     )
     embedding: list[float] | None = Field(

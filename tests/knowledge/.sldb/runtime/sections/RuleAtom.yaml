@@ -9,20 +9,22 @@ documents:
     - Regla de reservas Don Peppe
     - regla de reservas don peppe
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:reglas.reservas
     - system:donpeppe
     - type.knowledge.rule
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:reglas.reservas
     - system:donpeppe
     - type.knowledge.rule
     - workspace.knowledge
     slug: regla-de-reservas-don-peppe
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 788
+    line_end: 789
   - path: regla-de-reservas-don-peppe/answer
     title: Answer
     breadcrumbs:
@@ -34,20 +36,22 @@ documents:
     - Answer
     - answer
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:reglas.reservas
     - system:donpeppe
     - type.knowledge.rule
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:reglas.reservas
     - system:donpeppe
     - type.knowledge.rule
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 790
+    line_end: 791
   - path: regla-de-reservas-don-peppe/conditions
     title: Conditions
     breadcrumbs:
@@ -59,17 +63,19 @@ documents:
     - Conditions
     - conditions
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:reglas.reservas
     - system:donpeppe
     - type.knowledge.rule
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:reglas.reservas
     - system:donpeppe
     - type.knowledge.rule
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 792
-    line_end: 793
+    line_start: 794
+    line_end: 795

@@ -7,7 +7,7 @@ tags:
 - system:laboratorio-chile
 category: preference
 provenance: null
-summary: null
+summary: Persona que consulta con frecuencia por efectos adversos; distinguir efectos esperados de señales de alarma y derivar a profesional ante sintomas relevantes.
 embedding: null
 parent: null
 semantic_anchors: null

@@ -3,6 +3,7 @@ id: step-antonia-agendar-recordatorio
 title: Agendar recordatorio de aplicacion
 atom_type: step
 kind: llamado_tool
+summary: Confirma dia y hora del recordatorio semanal y llama a la tool agendar_recordatorio; luego avanza al seguimiento de recompra.
 tags:
 - conversation:steps.agendar_recordatorio
 - system:laboratorio-chile

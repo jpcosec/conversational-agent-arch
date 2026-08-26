@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: estrategia-de-atenci-n-don-peppe
     level: 1
-    line_start: 11
-    line_end: 12
+    line_start: 784
+    line_end: 785
   - path: estrategia-de-atenci-n-don-peppe/goal
     title: Goal
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: goal
     level: 2
-    line_start: 13
-    line_end: 14
+    line_start: 786
+    line_end: 787
   - path: estrategia-de-atenci-n-don-peppe/approach
     title: Approach
     breadcrumbs:
@@ -65,8 +65,8 @@ documents:
     - workspace.knowledge
     slug: approach
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 790
+    line_end: 791
   - path: estrategia-de-atenci-n-don-peppe/priorities
     title: Priorities
     breadcrumbs:
@@ -88,5 +88,5 @@ documents:
     - workspace.knowledge
     slug: priorities
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 794
+    line_end: 795

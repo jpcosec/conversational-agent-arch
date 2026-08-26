@@ -49,9 +49,6 @@ nodes:
   - type.knowledge
 - id: user:traits
   parents: []
-- id: user:traits.celiaco
-  parents:
-  - user:traits
 - id: user:traits.vegetariano
   parents:
   - user:traits

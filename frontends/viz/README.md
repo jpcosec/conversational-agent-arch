@@ -14,9 +14,9 @@ semántica (embeddings) y coloreados por familia.
 ## Regenerar los grafos
 
 ```bash
-python -m viz.export_graph --kb tests/knowledge          --out viz/graph-donpeppe.json --edge-threshold 0.42 --max-edges-per-node 4
-python -m viz.export_graph --kb tests/knowledge_antonia  --out viz/graph-antonia.json  --edge-threshold 0.42 --max-edges-per-node 4
-python -m viz.export_graph --kb knowledge                --out viz/graph-reusable.json --edge-threshold 0.42 --max-edges-per-node 4
+python -m frontends.viz.export_graph --kb tests/knowledge          --out frontends/viz/graph-donpeppe.json --edge-threshold 0.42 --max-edges-per-node 4
+python -m frontends.viz.export_graph --kb tests/knowledge_antonia  --out frontends/viz/graph-antonia.json  --edge-threshold 0.42 --max-edges-per-node 4
+python -m frontends.viz.export_graph --kb knowledge                --out frontends/viz/graph-reusable.json --edge-threshold 0.42 --max-edges-per-node 4
 ```
 
 ## Ver

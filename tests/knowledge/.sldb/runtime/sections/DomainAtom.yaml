@@ -10,19 +10,21 @@ documents:
     - carta don peppe
     - conversation:steps.onboarding
     - domain:catalogo
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.onboarding
     - domain:catalogo
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: carta-don-peppe
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 788
+    line_end: 789
   - path: carta-don-peppe/answer
     title: Answer
     breadcrumbs:
@@ -35,19 +37,21 @@ documents:
     - answer
     - conversation:steps.onboarding
     - domain:catalogo
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.onboarding
     - domain:catalogo
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 790
+    line_end: 791
 - doc_name: atom-donpeppe-horarios
   sections:
   - path: horarios-don-peppe
@@ -59,19 +63,21 @@ documents:
     - horarios don peppe
     - conversation:steps.onboarding
     - domain:horarios
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.onboarding
     - domain:horarios
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: horarios-don-peppe
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 788
+    line_end: 789
   - path: horarios-don-peppe/answer
     title: Answer
     breadcrumbs:
@@ -84,19 +90,21 @@ documents:
     - answer
     - conversation:steps.onboarding
     - domain:horarios
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.onboarding
     - domain:horarios
+    - domain:pizzeria
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 790
+    line_end: 791
 - doc_name: atom-donpeppe-ubicacion
   sections:
   - path: ubicaci-n-don-peppe
@@ -107,20 +115,22 @@ documents:
     - "Ubicaci\xF3n Don Peppe"
     - ubicaci n don peppe
     - conversation:steps.onboarding
+    - domain:pizzeria
     - domain:ubicacion
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.onboarding
+    - domain:pizzeria
     - domain:ubicacion
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: ubicaci-n-don-peppe
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 788
+    line_end: 789
   - path: ubicaci-n-don-peppe/answer
     title: Answer
     breadcrumbs:
@@ -132,20 +142,22 @@ documents:
     - Answer
     - answer
     - conversation:steps.onboarding
+    - domain:pizzeria
     - domain:ubicacion
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.onboarding
+    - domain:pizzeria
     - domain:ubicacion
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 790
+    line_end: 791
 - doc_name: atom-donpeppe-promos
   sections:
   - path: promociones-don-peppe
@@ -156,20 +168,22 @@ documents:
     - Promociones Don Peppe
     - promociones don peppe
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:promociones
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:promociones
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: promociones-don-peppe
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 788
+    line_end: 789
   - path: promociones-don-peppe/answer
     title: Answer
     breadcrumbs:
@@ -181,17 +195,19 @@ documents:
     - Answer
     - answer
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:promociones
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.booking
+    - domain:pizzeria
     - domain:promociones
     - system:donpeppe
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 790
+    line_end: 791

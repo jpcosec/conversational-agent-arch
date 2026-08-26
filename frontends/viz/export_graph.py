@@ -5,7 +5,7 @@ colorea por familia semantica y crea edges entre pares con alta similitud
 coseno. Escribe un JSON consumido por el HTML de ReactFlow.
 
 Uso:
-    python -m viz.export_graph --kb tests/knowledge --out viz/graph-donpeppe.json
+    python -m frontends.viz.export_graph --kb tests/knowledge --out frontends/viz/graph-donpeppe.json
 """
 from __future__ import annotations
 

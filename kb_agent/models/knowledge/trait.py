@@ -27,7 +27,7 @@ atom_type: trait
 tags: ⸢rev•tags⸥
 category: ⸢optrev•category⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

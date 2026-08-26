@@ -3,6 +3,7 @@ id: step-antonia-saludo
 title: Saludo inicial
 atom_type: step
 kind: interaccion_simple
+summary: Saluda con calidez una sola vez; retoma por nombre a personas registradas y avanza a registro de estado, o deriva al onboarding si es nueva.
 tags:
 - conversation:steps.saludo
 - system:laboratorio-chile
