@@ -17,7 +17,7 @@ from kb_agent.orchestrator import Orchestrator
 
 STORE_ROOT = PROJECT_ROOT / "tests/knowledge"
 USER = "wa:+56922222222"
-TRAIT_ID = "atom-trait-vegetariano"
+TRAIT_ID = "trait-vegetariano"
 
 
 def _sorted_traits(orch: Orchestrator, user_id: int) -> list[str]:

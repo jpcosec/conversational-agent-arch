@@ -1,9 +1,9 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-90/test_assistant_history_is_scru0/assistant-scrub.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-101/test_assistant_history_is_scru0/assistant-scrub.sqlite",
   "raw_assistant": "Contáctame en test@example.com o al +56912345678 para confirmar.",
   "persisted_helper_content": "Contáctame en <EMAIL_1> o al +<PHONE_1> para confirmar.",
   "persisted_helper_pii_scrubbed": true,
   "real_turn_kind": "nl",
-  "real_turn_assistant_content": "¡Hola! Entiendo que buscas opciones vegetarianas para hoy. Para darte la información más precisa sobre cuáles de nuestras deliciosas pizzas cumplen con esa característica, lo mejor es que consultes directamente con el equipo en el local. ¡Ellos te ayudarán encantados!",
+  "real_turn_assistant_content": "¡Hola! Para disfrutar de una pizza sin carne, te recomiendo nuestra clásica **Margherita** ($8.900) o la exquisita **<NAME_1>** ($11.200). ¡Ambas son una delicia!",
   "real_turn_assistant_pii_scrubbed": true
 }

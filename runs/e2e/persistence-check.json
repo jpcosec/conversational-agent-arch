@@ -1,19 +1,19 @@
 {
   "before_restart": {
-    "db_url": "sqlite:////tmp/pytest-of-jp/pytest-90/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
-    "db_file": "/tmp/pytest-of-jp/pytest-90/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
+    "db_url": "sqlite:////tmp/pytest-of-jp/pytest-101/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
+    "db_file": "/tmp/pytest-of-jp/pytest-101/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
     "user_id": 1,
     "count_reservas": 1,
     "traits": [
-      "atom-trait-vegetariano"
+      "trait-vegetariano"
     ]
   },
   "after_restart": {
-    "db_url": "sqlite:////tmp/pytest-of-jp/pytest-90/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
-    "db_file": "/tmp/pytest-of-jp/pytest-90/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
+    "db_url": "sqlite:////tmp/pytest-of-jp/pytest-101/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
+    "db_file": "/tmp/pytest-of-jp/pytest-101/test_persistence_lifecycle_rea0/orchestrator-persistence.sqlite",
     "count_reservas": 1,
     "traits": [
-      "atom-trait-vegetariano"
+      "trait-vegetariano"
     ]
   }
 }

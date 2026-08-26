@@ -1,19 +1,19 @@
 documents:
-- name: atom-trait-sin-gluten
-  path: atoms/atom-trait-sin-gluten.md
-  hash_c: cc7cee2c2a9160168cca3c471c24b257bf5ad2a75de8e96449be8ecf1ca9e8d0
-  hash_d: e13a417ca058e14bcd19900c2006bb08081f6a3ebc2ac5a035ee372973615d93
-  semantic_tags:
-  - system:donpeppe
-  - type.knowledge.trait
-  - user:traits.celiaco
-  - workspace.knowledge
-- name: atom-trait-vegetariano
-  path: atoms/atom-trait-vegetariano.md
+- name: trait-vegetariano
+  path: atoms/trait-vegetariano.md
   hash_c: a07347f9c02acaa9f8f7b26d4981bfe2efc8f8f35f19da0ce04bfd099f25c612
   hash_d: d03b07303c383cfa3eb991eac16a548618c6927fbdc51dc72b524bca0cc4e170
   semantic_tags:
   - system:donpeppe
   - type.knowledge.trait
   - user:traits.vegetariano
+  - workspace.knowledge
+- name: trait-sin-gluten
+  path: atoms/trait-sin-gluten.md
+  hash_c: cc7cee2c2a9160168cca3c471c24b257bf5ad2a75de8e96449be8ecf1ca9e8d0
+  hash_d: e13a417ca058e14bcd19900c2006bb08081f6a3ebc2ac5a035ee372973615d93
+  semantic_tags:
+  - system:donpeppe
+  - type.knowledge.trait
+  - user:traits.celiaco
   - workspace.knowledge

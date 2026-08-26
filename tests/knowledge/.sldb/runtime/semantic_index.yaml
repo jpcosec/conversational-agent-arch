@@ -42,8 +42,6 @@ tags:
   - atom-donpeppe-regla-reservas
   - atom-donpeppe-tool-reserva
   - atom-donpeppe-ubicacion
-  - atom-trait-sin-gluten
-  - atom-trait-vegetariano
   - boundary-donpeppe
   - fallback-donpeppe
   - self-donpeppe
@@ -51,6 +49,8 @@ tags:
   - step-donpeppe-onboarding
   - strategy-donpeppe
   - style-donpeppe
+  - trait-sin-gluten
+  - trait-vegetariano
   type.knowledge.boundary:
   - boundary-donpeppe
   type.knowledge.domain:
@@ -74,12 +74,12 @@ tags:
   type.knowledge.tool:
   - atom-donpeppe-tool-reserva
   type.knowledge.trait:
-  - atom-trait-sin-gluten
-  - atom-trait-vegetariano
+  - trait-sin-gluten
+  - trait-vegetariano
   user:traits.celiaco:
-  - atom-trait-sin-gluten
+  - trait-sin-gluten
   user:traits.vegetariano:
-  - atom-trait-vegetariano
+  - trait-vegetariano
   workspace.knowledge:
   - atom-donpeppe-carta
   - atom-donpeppe-horarios
@@ -87,8 +87,6 @@ tags:
   - atom-donpeppe-regla-reservas
   - atom-donpeppe-tool-reserva
   - atom-donpeppe-ubicacion
-  - atom-trait-sin-gluten
-  - atom-trait-vegetariano
   - boundary-donpeppe
   - fallback-donpeppe
   - self-donpeppe
@@ -96,6 +94,8 @@ tags:
   - step-donpeppe-onboarding
   - strategy-donpeppe
   - style-donpeppe
+  - trait-sin-gluten
+  - trait-vegetariano
 documents:
   atom-donpeppe-carta:
     model: DomainAtom
@@ -151,21 +151,21 @@ documents:
     - system:donpeppe
     - type.knowledge.tool
     - workspace.knowledge
-  atom-trait-sin-gluten:
+  trait-vegetariano:
     model: TraitAtom
-    path: atoms/atom-trait-sin-gluten.md
-    tags:
-    - system:donpeppe
-    - type.knowledge.trait
-    - user:traits.celiaco
-    - workspace.knowledge
-  atom-trait-vegetariano:
-    model: TraitAtom
-    path: atoms/atom-trait-vegetariano.md
+    path: atoms/trait-vegetariano.md
     tags:
     - system:donpeppe
     - type.knowledge.trait
     - user:traits.vegetariano
+    - workspace.knowledge
+  trait-sin-gluten:
+    model: TraitAtom
+    path: atoms/trait-sin-gluten.md
+    tags:
+    - system:donpeppe
+    - type.knowledge.trait
+    - user:traits.celiaco
     - workspace.knowledge
   step-donpeppe-onboarding:
     model: ConversationStep
