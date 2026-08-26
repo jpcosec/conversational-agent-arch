@@ -105,7 +105,7 @@ def test_missing_yaml_falls_back_to_defaults(tmp_path: Path) -> None:
 
 def test_public_dict_hides_paths_and_handlers(cfg_path: Path) -> None:
     public = load_project_config(cfg_path, mode="serving", env={}).to_public_dict()
-    assert set(public) == {"name", "slug", "model", "runtime_title", "kb_label", "greeting", "mode"}
+    assert set(public) == {"name", "slug", "model", "runtime_title", "kb_label", "greeting", "mode", "input_placeholder"}
 
 
 def test_repo_config_declares_business_tools_and_test_kb() -> None:

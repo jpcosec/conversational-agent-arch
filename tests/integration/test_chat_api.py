@@ -48,7 +48,7 @@ def test_shared_theme_css_is_served(client: TestClient) -> None:
     assert "--bg" in res.text
 
 
-NAV_LINKS = ["/", "/conversation_flow_editor", "/taxonomy_explorer", "/viz", "/profiling_viewer"]
+NAV_LINKS = ["/", "/flow", "/mindmap", "/users"]
 
 
 @pytest.mark.parametrize("path", ["/", "/conversation_flow_editor", "/profiling_viewer", "/taxonomy_explorer", "/viz"])
