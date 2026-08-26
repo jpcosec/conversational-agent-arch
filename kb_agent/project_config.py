@@ -53,6 +53,7 @@ class ProjectConfig:
     runtime_title: str = "Auditable Agent Runtime"
     kb_label: str = "KB"
     greeting: str = "Hola. ¿En qué te puedo ayudar?"
+    input_placeholder: str = "Escribe tu mensaje..."
     mode: str = "serving"  # "serving" | "test" (informativo)
 
     @property
@@ -73,6 +74,7 @@ class ProjectConfig:
             "runtime_title": self.runtime_title,
             "kb_label": self.kb_label,
             "greeting": self.greeting,
+            "input_placeholder": self.input_placeholder,
             "mode": self.mode,
         }
 
@@ -147,6 +149,8 @@ def load_project_config(
         cfg.kb_label = str(ui["kb_label"])
     if ui.get("greeting"):
         cfg.greeting = str(ui["greeting"]).strip()
+    if ui.get("input_placeholder"):
+        cfg.input_placeholder = str(ui["input_placeholder"]).strip()
 
     # Overrides por entorno (mayor precedencia; ganan sobre test/serving).
     if environ.get("KB_ROOT"):
