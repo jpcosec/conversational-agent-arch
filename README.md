@@ -77,6 +77,14 @@ python -m frontends.chat.server      # host/port desde project.config.yaml o HOS
 Cambiar de negocio = editar `project.config.yaml` (`kb_root`, `model`, `tools`, marca) o usar
 `PROJECT_CONFIG=/ruta/otro.yaml`. Los handlers de tools se declaran ahí como `modulo:funcion`.
 
+## Deploy (Modal)
+
+El runtime (chat UI + editor de flujo + taxonomía + viz + perfilado + webhook
+Twilio) se despliega como app serverless en Modal: `modal deploy
+deploy/modal_app.py`. Ver [`deploy/README.md`](deploy/README.md) para el
+secret de credenciales, qué se empaqueta (código + KB, sin el cache de
+embeddings) y cómo cambiar de negocio en producción.
+
 ## Tests
 
 Cuatro capas, de más rápida a más cara. Solo `e2e` y `ui` necesitan algo externo.
