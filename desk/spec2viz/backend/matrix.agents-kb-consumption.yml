@@ -1,69 +1,82 @@
 id: matrix-agents-kb-consumption
-title: Backend · Matriz · Agentes × Familias de la KB que consumen
+title: Backend · Matriz · Agentes × Modelos de la KB que consumen
 type: component_view_matrix
-version: "0.1"
+version: "0.2"
 metadata:
   author: antonIA
   description: >-
-    Qué familia de conocimiento consume (lee) o produce (escribe) cada motor
-    cognitivo del runtime. Familias reales de __family__ (self/domain/
-    conversation/user). Dos vistas: (1) Lee — qué familias entran al motor;
-    (2) Produce — qué familias escribe/engorda. Barras derivadas del código:
-    Ontologizador._MODEL_TYPES (compila las 4), Conversador recibe el
-    CompiledDocument (persona=self, rules=domain, strategy=conversation,
-    traits=user), Perfilador produce user (traits), Reflector engorda domain.
+    Qué modelo tipado de conocimiento lee o produce cada motor cognitivo del
+    runtime. Stages = los 10 modelos reales de kb_agent/models/knowledge/*
+    (ordenados por su __family__: self→domain→conversation→user). Dos vistas:
+    (1) Lee — modelos que entran al motor; (2) Produce — modelos que escribe.
+    Barras derivadas del código: Ontologizador (compiler._MODEL_TYPES +
+    _extract_persona self/style/boundary + _find_atoms domain/rule +
+    _find_tools + strategy/fallback + trait + step vía KGDB); Conversador
+    (llm.draft_nl usa persona self/style/boundary + strategy + domain/rule +
+    user_traits); Perfilador (extractor lee y upserta trait); Reflector
+    (generator.fetch domain/rule y propone domain/rule 'proposed').
 data:
   views:
     - id: reads
       label: Lee (consume)
       stages:
         - id: self
-          label: self
+          label: "self · self"
+        - id: style
+          label: "self · style"
+        - id: boundary
+          label: "self · boundary"
+        - id: tool
+          label: "self · tool"
         - id: domain
-          label: domain
-        - id: conversation
-          label: conversation
-        - id: user
-          label: user
+          label: "domain · domain"
+        - id: rule
+          label: "domain · rule"
+        - id: step
+          label: "conv · step"
+        - id: strategy
+          label: "conv · strategy"
+        - id: fallback
+          label: "conv · fallback"
+        - id: trait
+          label: "user · trait"
     - id: writes
       label: Produce (escribe)
       stages:
-        - id: self_w
-          label: self
         - id: domain_w
-          label: domain
-        - id: conversation_w
-          label: conversation
-        - id: user_w
-          label: user
+          label: "domain · domain"
+        - id: rule_w
+          label: "domain · rule"
+        - id: trait_w
+          label: "user · trait"
 
   components:
     - name: Engines
       kind: core
       label: Motores Cognitivos (kb_agent/*)
       stages:
-        reads: [self, domain, conversation, user]
-        writes: [domain_w, user_w]
+        reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait]
+        writes: [domain_w, rule_w, trait_w]
       children:
         - name: Ontologizador
           kind: engine
-          label: "Ontologizador (compile_context, lee toda la KB)"
+          label: "Ontologizador (compile_context: lee TODA la KB tipada + step vía KGDB)"
           stages:
-            reads: [self, domain, conversation, user]
+            reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait]
         - name: Conversador
           kind: engine
-          label: "Conversador (redacta NL desde CompiledDocument)"
+          label: "Conversador (draft_nl: persona self/style/boundary + strategy + domain/rule + traits)"
           stages:
-            reads: [self, domain, conversation, user]
+            reads: [self, style, boundary, domain, rule, strategy, fallback, trait]
         - name: Perfilador
           kind: service
-          label: "Perfilador (extrae traits del turno)"
+          label: "Perfilador (extractor: lee trait candidatos → upsert UserTrait)"
           stages:
-            reads: [user]
-            writes: [user_w]
+            reads: [trait]
+            writes: [trait_w]
         - name: Reflector
           kind: service
-          label: "Reflector (KB Thickener: engorda dominio)"
+          label: "Reflector (KB Thickener: fetch domain/rule → propone domain/rule 'proposed')"
           stages:
-            reads: [domain]
-            writes: [domain_w]
+            reads: [domain, rule]
+            writes: [domain_w, rule_w]
