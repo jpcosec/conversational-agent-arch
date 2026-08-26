@@ -1,14 +1,17 @@
 id: component-agent-ecosystem
-title: Backend · Componentes · Ecosistema de Motores y Agentes
+title: "Backend · Componentes · Ecosistema de Roles y Agentes"
 type: component
-version: '1.1'
+version: '1.2'
 metadata:
   author: antonIA
   description: >-
-    Muestra la separación de los 4 actores (Conversador, Ontologizador, Perfilador, Reflector),
-    la policy pura decide_turn (kb_agent/agent.py), los puertos LLM (kb_agent/llm.py) y el
-    registry de tools (kb_agent/tools/, resuelto desde project.config.yaml), y cómo interactúan
-    con la base relacional (SQL) y la base de conocimiento semántica (SLDB).
+    Muestra la separación de los 5 roles (Orquestador, Conversador, Ontologizador,
+    Perfilador, Reflector), el Orquestador (decide_turn en kb_agent/agent.py que decide
+    tool_call/fallback/nl), los puertos LLM (kb_agent/llm.py) y el registry de tools
+    (kb_agent/tools/, resuelto desde project.config.yaml), y cómo interactúan con la
+    base relacional (SQL) y la base de conocimiento semántica (SLDB). El Policy Gate
+    (familia gate, 5 átomos GateCriterion en KB) es un 5to rol conceptual: sus criterios
+    ya existen en el store pero no hay código runtime que los invoque.
 style:
   kinds:
     engine:
@@ -41,6 +44,12 @@ style:
         background: "#FDE8EF"
         border: "#D45C8A"
         font: "#5E1B34"
+    planned:
+      plantuml:
+        background: "#F0FFF0"
+        border: "#8FBC8F"
+        font: "#006400"
+        style: dashed
 data:
   nodes:
     layer_routing:
@@ -50,14 +59,19 @@ data:
         - api_gateway
         - state_machine
     layer_engines:
-      label: Agentes y Motores Cognitivos
+      label: Roles y Motores Cognitivos
       kind: boundary
       contains:
-        - policy_decide_turn
+        - orquestador
         - conversador
         - ontologizador
         - perfilador
         - reflector
+    layer_planned:
+      label: Rol Planeado (sin código runtime)
+      kind: boundary
+      contains:
+        - policy_gate
     layer_ports:
       label: Puertos LLM (kb_agent/llm.py)
       kind: boundary
@@ -92,8 +106,8 @@ data:
     state_machine:
       label: RouterStateMachine (buffering/tool wait)
       kind: api
-    policy_decide_turn:
-      label: "decide_turn (policy pura, kb_agent/agent.py)"
+    orquestador:
+      label: "Orquestador / decide_turn (kb_agent/agent.py)"
       kind: engine
     conversador:
       label: Conversador (redacta NL vía puerto LLM)
@@ -107,6 +121,9 @@ data:
     reflector:
       label: Reflector (KB Thickener)
       kind: background_agent
+    policy_gate:
+      label: "Policy Gate (planeado — criterios en store type.knowledge.gate)"
+      kind: planned
     port_conversador:
       label: "Conversador (Protocol): draft_nl()"
       kind: port
@@ -123,7 +140,7 @@ data:
       label: SQL DB (Identidad, Estado, Cron)
       kind: database
     sldb_kb:
-      label: SLDB (Knowledge Base / Atoms)
+      label: "SLDB (Knowledge Base / 11 tipos: domain, rule, tool, trait, step, self, style, boundary, strategy, fallback, gate)"
       kind: database
     external_tools:
       label: External APIs (Calendario, CRM)
@@ -137,22 +154,28 @@ data:
       relation: delega el turno
     - from: state_machine
       to: ontologizador
-      relation: solicita contexto p()
+      relation: solicita contexto (compile_context)
     - from: ontologizador
       to: sql_db
       relation: lee trait_ids del usuario
     - from: ontologizador
       to: sldb_kb
-      relation: extrae subgrafos (Traits, Rules, Tools)
+      relation: extrae subgrafos (11 tipos, iterados por _MODEL_TYPES)
     - from: state_machine
-      to: policy_decide_turn
+      to: orquestador
       relation: decide tipo de turno (tool_call / fallback / nl)
-    - from: policy_decide_turn
+    - from: orquestador
       to: conversador
       relation: si kind=nl, delega redacción
-    - from: policy_decide_turn
+    - from: orquestador
       to: tool_registry
       relation: si kind=tool_call, emite function_call
+    - from: state_machine
+      to: conversador
+      relation: "si tool timeout, re-draft con error"
+    - from: policy_gate
+      to: sldb_kb
+      relation: "lectura futura: reader.find('type.knowledge.gate')"
     - from: conversador
       to: port_conversador
       relation: implementa

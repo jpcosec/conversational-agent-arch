@@ -1,12 +1,13 @@
 id: state-conversation-flow
-title: Backend · Estado · Máquina de Estados de la Conversación
+title: "Backend · Estado · Máquina de Estados de la Conversación"
 type: state
-version: '1.0'
+version: '1.1'
 metadata:
   author: antonIA
   description: >-
     Diagrama de la Máquina de Estados que rige el flujo de la conversación, manejando
-    buffers de entrada, escenarios de negocio, interrupciones, ejecución de tools y retomas.
+    buffers de entrada, debounce, ejecución de tools, timeouts y retomas.
+    Basado en el RouterNode enum de kb_agent/state_machine.py.
 data:
   entity: AgentConversation
   initial: idle
@@ -31,8 +32,6 @@ data:
       label: "Ejecutando Tool\\nExterna (Pausa)"
     - id: breakpoint_miss
       label: "Punto de Quiebre\\n(Context Miss / Fallback)"
-    - id: interrupted
-      label: "Interrumpido\\n(Timeout)"
   transitions:
     - from: idle
       to: buffering
@@ -47,34 +46,31 @@ data:
     - from: buffering
       to: evaluating_context
       "on": timeout_buffer
-      guard: envía_inputs_al_router
-    - from: interrupted
-      to: evaluating_context
-      "on": mensaje_retoma
-      guard: inyecta_tiempo_transcurrido
+      guard: envia_inputs_al_router
     - from: evaluating_context
       to: waiting_tool
       "on": requiere_api_externa
       guard: ToolAtom inyectado
-    - from: waiting_tool
-      to: drafting_response
-      "on": json_api_recibido
-      guard: inyecta_resultado_como_system_turn
     - from: evaluating_context
       to: drafting_response
       "on": contexto_resuelto
-      guard: Escenario (ej. Saludo, Q&A) definido en context
+      guard: Escenario definido en context
     - from: evaluating_context
       to: breakpoint_miss
       "on": contexto_vacio
-      guard: fuera de dominio
+      guard: fuera_de_dominio
     - from: breakpoint_miss
       to: drafting_response
       "on": aplica_fallback
       guard: Conversador admite desconocimiento
+    - from: waiting_tool
+      to: drafting_response
+      "on": json_api_recibido
+      guard: inyecta_resultado_como_system_turn
+    - from: waiting_tool
+      to: drafting_response
+      "on": timeout_herramienta
+      guard: devuelve_error_de_timeout
     - from: drafting_response
       to: idle
       "on": respuesta_enviada
-    - from: idle
-      to: interrupted
-      "on": inactividad_prolongada
