@@ -46,8 +46,8 @@ FLOW_KB_ROOT = os.getenv("FLOW_KB_ROOT", "tests/knowledge_antonia")
 PROFILING_DB = os.getenv("PROFILING_DB", str(PROJECT_ROOT / "runs" / "profiling-demo.sqlite"))
 
 # ── configuracion ────────────────────────────────────────────
-# KB_ROOT puede venir de env (deshardcodeo). Default: KB tipada Don Peppe.
-KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / "tests" / "knowledge")))
+# KB_ROOT puede venir de env (deshardcodeo). Default: KB Antonia (PSP Selfix).
+KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / "tests" / "knowledge_antonia")))
 DB_PATH = PROJECT_ROOT / "runs" / "ui-chat.sqlite"
 
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
