@@ -1,8 +1,8 @@
 documents:
 - name: atom-donpeppe-regla-reservas
   path: atoms/atom-donpeppe-regla-reservas.md
-  hash_c: 876cdadac13b4c0276becb2835388fb0b210d3898bbe3b137cbedeaccd811db2
-  hash_d: 90c545d75ccfb24433b07a34a2576bf8fbd29589db3488866cb588e5c871be19
+  hash_c: 6e4af333f0ad355ee9e7a8380974898db8eb5120770cbfc129b70a4d66013655
+  hash_d: 452495a67d5a77e9311d6fbebb8c69dd3dadbcee6695e3a08ef293f2d5facee5
   semantic_tags:
   - conversation:steps.booking
   - domain:reglas.reservas

@@ -111,7 +111,190 @@ class KnowledgeOperations:
                     return {"id": atom_id, "raw_path": str(doc_path), "error": str(exc)}
         return None
 
-    # ── commands ───────────────────────────────────────────────
+    # ── offline: index embeddings ───────────────────────────────
+
+    EMBED_MODEL = "jinaai/jina-embeddings-v2-base-es"  # español, 768 dim
+
+    def index_embeddings(self) -> dict[str, Any]:
+        """Calcula embeddings offline para DomainAtom y RuleAtom.
+
+        Lee cada atom, computa embedding del summary (o answer si no hay summary),
+        y escribe el vector al frontmatter.
+        """
+        from fastembed import TextEmbedding
+
+        # Cargar modelo (descarga en primera corrida, cachea después)
+        embedder = TextEmbedding(model_name=self.EMBED_MODEL, cache_dir=str(self._kb_root / ".embedding_cache"))
+
+        records = self._find_records()
+        stats = {"processed": 0, "skipped": 0, "errors": 0}
+
+        for r in records:
+            if r.kind != "doc":
+                continue
+            model_name = (r.model_name or "").lower()
+            if model_name not in ("domainatom", "ruleatom"):
+                continue
+            if not r.path:
+                stats["skipped"] += 1
+                continue
+
+            doc_path = self._kb_root / r.path
+            if not doc_path.exists():
+                stats["skipped"] += 1
+                continue
+
+            model_cls = DomainAtom if model_name == "domainatom" else RuleAtom
+            try:
+                payload = extract_model_data(model_cls, doc_path.read_text(encoding="utf-8"))
+            except Exception:
+                stats["errors"] += 1
+                continue
+
+            # Texto a embedder: summary > answer > title
+            text = payload.get("summary") or payload.get("answer") or payload.get("title", "")
+            if not text:
+                stats["skipped"] += 1
+                continue
+
+            try:
+                emb_list = list(embedder.embed([text]))
+                if not emb_list:
+                    stats["errors"] += 1
+                    continue
+                vector = [round(float(v), 6) for v in emb_list[0]]
+            except Exception:
+                stats["errors"] += 1
+                continue
+
+            # Escribir embedding al frontmatter
+            payload["embedding"] = vector
+            md = render_model_markdown(model_cls, payload)
+            doc_path.write_text(md + "\n", encoding="utf-8")
+            stats["processed"] += 1
+
+        # Actualizar store
+        self._run_sldb("stores", "update")
+
+        stats["dimension"] = len(vector) if vector else 0
+        return stats
+
+    # ── offline: index hierarchy ────────────────────────────────
+
+    def index_hierarchy(self) -> dict[str, Any]:
+        """Construye jerarquía enciclopédica en el semantic DAG.
+
+        Para cada tag con namespacing por puntos (ej. conversation:steps.onboarding),
+        deriva el padre (conversation:steps) y añade relación semantic_parent
+        si el padre existe como tag.
+        """
+        from sldb.store.io import load_store_index, save_store_index, load_models_index, save_models_index
+        from sldb.store.layout import store_exists
+        import yaml
+
+        if not store_exists(self._store_path):
+            return {"error": "No store at " + str(self._store_path)}
+
+        store_idx = load_store_index(self._store_path)
+        root = self._store_path.parent
+
+        # Leer semantic_dag actual
+        dag_path = self._store_path / "runtime" / "semantic_dag.yaml"
+        if not dag_path.exists():
+            return {"error": "semantic_dag.yaml not found"}
+
+        raw = yaml.safe_load(dag_path.read_text(encoding="utf-8")) or {}
+        nodes = raw.get("nodes", []) or []
+        equivalences = raw.get("equivalences", {}) or {}
+
+        # Colectar todos los tags existentes
+        existing_tags = set()
+        for node in nodes:
+            nid = str(node.get("id", "")).strip()
+            if nid and nid.startswith("sldb://semantic_tag/"):
+                existing_tags.add(nid)
+
+        # Derivar jerarquía: si un tag tiene puntos, truncar al último
+        # conversation:steps.onboarding → conversation:steps
+        new_edges = 0
+        for tag_node in sorted(existing_tags):
+            tag = tag_node.replace("sldb://semantic_tag/", "", 1)
+            parts = tag.split(":", 1)
+            if len(parts) != 2:
+                continue
+            namespace, value = parts[0], parts[1]
+            if "." not in value:
+                continue
+
+            # Parent: truncar último segmento
+            parent_value = value.rsplit(".", 1)[0]
+            parent_tag = f"{namespace}:{parent_value}"
+            parent_node = f"sldb://semantic_tag/{parent_tag}"
+
+            if parent_node not in existing_tags:
+                continue
+
+            # Verificar si ya existe la relación semantic_parent
+            already = False
+            for node in nodes:
+                if str(node.get("id", "")).strip() == tag_node:
+                    if parent_node in [str(p).strip() for p in (node.get("parents", []) or [])]:
+                        already = True
+                    break
+
+            if not already:
+                for node in nodes:
+                    if str(node.get("id", "")).strip() == tag_node:
+                        node.setdefault("parents", []).append(parent_node)
+                        new_edges += 1
+                        break
+
+        if new_edges > 0:
+            raw["nodes"] = nodes
+            dag_path.write_text(yaml.safe_dump(raw, allow_unicode=True, sort_keys=False), encoding="utf-8")
+
+        return {"tags": len(existing_tags), "new_parent_relations": new_edges}
+
+    # ── offline: promote ────────────────────────────────────────
+
+    def promote(self, atom_id: str) -> dict[str, Any]:
+        """Promueve un atom propuesto: cambia status:proposed → status:active."""
+        payload = self._read_doc(atom_id)
+        if payload is None:
+            raise ValueError(f"Atom '{atom_id}' not found")
+
+        model_name = payload.get("_model", "")
+        model_cls = next((m for m in ALL_MODELS if m.__name__ == model_name), None)
+        if model_cls is None:
+            raise ValueError(f"Unknown model '{model_name}' for atom {atom_id}")
+
+        tags = payload.get("tags", [])
+        if "status:proposed" not in tags:
+            return {"id": atom_id, "status": "already_active", "message": "atom is not proposed"}
+
+        # Replace proposed with active
+        new_tags = [t for t in tags if t != "status:proposed"]
+        if "status:active" not in new_tags:
+            new_tags.append("status:active")
+        payload["tags"] = new_tags
+
+        doc_path = Path(payload["_path"])
+        md = render_model_markdown(model_cls, payload)
+        doc_path.write_text(md + "\n", encoding="utf-8")
+
+        return {"id": atom_id, "status": "active", "old_tags": tags, "new_tags": payload["tags"]}
+
+    # ── helper: sldb subprocess call ────────────────────────────
+
+    def _run_sldb(self, *args: str) -> None:
+        """Corre un comando sldb con el store y pythonpath correctos."""
+        import subprocess
+        import os
+        from pathlib import Path
+        # pythonpath debe apuntar al project root, no al parent del kb
+        project_root = Path(__file__).resolve().parents[1]
+        cmd = ["sldb", *args, "--store", str(self._store_path), "--pythonpath", str(project_root)]
+        subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=60, cwd=project_root)
 
     def _kgdb(self):
         """Lazy KGDB reader."""
