@@ -36,8 +36,8 @@ from pydantic import BaseModel
 from kb_agent.orchestrator import MODEL, Orchestrator
 
 # ── configuracion ────────────────────────────────────────────
-# KB_ROOT puede venir de env (deshardcodeo). Default: store Don Peppe local.
-KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / ".sldb_e2e_donpeppe")))
+# KB_ROOT puede venir de env (deshardcodeo). Default: KB tipada Don Peppe.
+KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / "tests" / "knowledge")))
 DB_PATH = PROJECT_ROOT / "runs" / "ui-chat.sqlite"
 
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)

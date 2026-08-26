@@ -64,5 +64,5 @@ def test_kgdb_reader_builds_navigable_graph_from_real_sldb_store(tmp_path: Path)
     )
 
     assert reachable_documents, "conversation:steps.booking must reach at least one document via KGDB neighborhood traversal"
-    assert "conversation-steps-booking" in grounded_docs
+    assert "step-donpeppe-booking" in grounded_docs
     assert "atom-donpeppe-tool-reserva" in grounded_docs

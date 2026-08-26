@@ -34,7 +34,8 @@ def test_health_reports_kb_root(client: TestClient) -> None:
     assert res.status_code == 200
     body = res.json()
     assert body["status"] == "ok"
-    assert "donpeppe" in body["kb_root"].lower()
+    # la KB tipada de Don Peppe vive en tests/knowledge
+    assert "knowledge" in body["kb_root"].lower()
 
 
 def test_index_serves_html(client: TestClient) -> None:

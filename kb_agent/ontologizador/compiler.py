@@ -1,21 +1,26 @@
 """Compilador de contexto: navega SLDB + KGDB + SQL para producir CompiledDocument.
 
-Doctrina de selección (ver KB-DOCTRINE.md):
-  - Una KB = un negocio. El concepto viejo de "scenario == domain:<pizzeria>"
-    (donde el escenario ERA el dominio y se usaba para filtrar átomos) ya NO
-    aplica. Los átomos se seleccionan por su eje semántico (self:*,
-    conversation:*, domain:*, user:traits.*) y se tratan según su ``atom_type``.
-  - Como TODOS los átomos de la KB pertenecen al único negocio, el compilador
-    trae TODOS los ``atom_type:domain`` y ``atom_type:rule`` sin filtrarlos por
-    un scenario string. Esto incluye ``self:*`` (identidad/estilo/límites) y
-    ``conversation:*`` (steps/strategy/fallback), que llevan ``atom_type`` de
-    domain o rule y por eso entran naturalmente por tipo.
+Doctrina de selección (ver KB-DOCTRINE.md + modelation-guide.md):
+  - Una KB = un negocio. Los átomos se seleccionan por su MODELO tipado, no por
+    un tag ``atom_type:*``. El eje de selección es ``type.knowledge.<tipo>``,
+    derivado del ``__semantics__`` de cada modelo (DomainAtom, RuleAtom,
+    SelfDeclaration, StyleGuide, CapabilityBoundary, StrategyRule, FallbackRule,
+    ToolAtom, ConversationStep, TraitAtom).
+  - Cada tipo aporta sus CAMPOS tipados, no un ``answer`` genérico:
+      self      -> statement                     (persona.whoami)
+      style     -> tone/register/phrases/length   (persona.estilo)
+      boundary  -> restriction/conditions/escal.  (persona.limites)
+      strategy  -> goal/approach/priorities       (strategy)
+      fallback  -> fallback_message               (fallback_text)
+      domain    -> answer                         (grounding del negocio)
+      rule      -> answer/conditions              (grounding del negocio)
+      tool      -> parameters (JSON schema)       (tools)
   - ``scenario`` se conserva solo como etiqueta informativa del negocio y como
     pista opcional para el enriquecimiento KGDB; NUNCA descarta átomos válidos.
 
 Flujo:
   1. Resuelve scenario (etiqueta informativa; argumento -> session_state -> default)
-  2. Selecciona atoms por ``atom_type`` en SLDB (domain, rule, tool)
+  2. Selecciona atoms por MODELO (type.knowledge.*) en SLDB
   3. Resuelve traits del usuario contra SQL (user:traits.* del catálogo)
   4. [Opcional] Navega grafo KGDB para resolver nodo de flujo, transiciones, slots
   5. Compila a un CompiledDocument con facts, rules, tools, grounding + flujo
@@ -62,23 +67,17 @@ class ContextCompiler:
             session_state=session_state,
         )
 
-        # Doctrina nueva: una KB = un negocio. Todos los atom_type:domain y
-        # atom_type:rule pertenecen a este único negocio. Se traen por atom_type
-        # y luego se CLASIFICAN por eje semántico (self / conversation / domain)
-        # para que el conversador arme su prompt sin hardcodear nada.
-        raw_domain = self._find_atoms("domain")
-        raw_rules = self._find_atoms("rule")
+        # Doctrina tipada: se selecciona por MODELO (type.knowledge.*). Cada tipo
+        # aporta sus campos propios. El conversador arma su prompt desde persona /
+        # strategy / fallback_text sin hardcodear nada del negocio.
+        domain_facts = self._find_atoms("domain")
+        rules = self._find_atoms("rule")
         tools = self._find_tools()
         user_traits = self._load_user_traits(user_id)
 
-        persona = self._extract_persona(raw_domain + raw_rules)
-        strategy = self._extract_by_tag(raw_rules, "conversation:strategy")
-        fallback_text = self._extract_by_tag(raw_rules, "conversation:fallback")
-
-        # domain_facts/rules quedan como grounding del NEGOCIO: se excluye lo que
-        # ya viaja como persona/strategy/fallback (ejes self:* y conversation:*).
-        domain_facts = self._grounding_only(raw_domain)
-        rules = self._grounding_only(raw_rules)
+        persona = self._extract_persona()
+        strategy = self._extract_strategy()
+        fallback_text = self._extract_fallback()
 
         doc = CompiledDocument(
             scenario=resolved_scenario,
@@ -142,92 +141,119 @@ class ContextCompiler:
         top_level = [s for s in scenarios if "." not in s]
         return top_level[0] if top_level else scenarios[0] if scenarios else ""
 
+    #: tipos de la taxonomía knowledge (models/knowledge/*). Se recorren para
+    #: reunir todos los atoms del negocio con independencia del modelo.
+    _MODEL_TYPES = (
+        "domain", "rule", "tool", "trait", "step",
+        "self", "style", "boundary", "strategy", "fallback",
+    )
+
     def _records(self) -> list[dict[str, Any]]:
-        return self.reader.find("type.knowledge.atom", search_in="semantic")
+        """Todos los atoms de la KB (unión de todos los tipos tipados)."""
+        seen: dict[str, dict[str, Any]] = {}
+        for tipo in self._MODEL_TYPES:
+            for m in self.reader.find(f"type.knowledge.{tipo}"):
+                seen[m["id"]] = m
+        return list(seen.values())
 
-    def _find_atoms(self, atom_type: str) -> list[dict[str, Any]]:
-        """Selecciona TODOS los atoms de un ``atom_type`` de la KB del negocio.
+    def _find_by_model(self, tipo: str) -> list[dict[str, Any]]:
+        """Selecciona los atoms de un tipo tipado via ``type.knowledge.<tipo>``.
 
-        No se filtra por scenario: una KB = un negocio, así que todos los
-        ``atom_type:domain`` y ``atom_type:rule`` son conocimiento válido del
-        único negocio (incluye self:* y conversation:*). Se conservan los ``tags``
-        para que el compilador pueda clasificar por eje semántico.
+        Devuelve el doc completo (todos los campos del modelo) resuelto contra
+        el store, ordenado por id para estabilidad.
         """
-        matched = self.reader.find(f"atom_type:{atom_type}")
-        return sorted(
-            [
-                {
-                    "id": m["id"],
-                    "body": m.get("answer", ""),
-                    "tags": m.get("tags", []),
-                    "title": m.get("title") or m["id"],
-                }
-                for m in matched
-            ],
-            key=lambda x: x["id"],
-        )
+        matched = self.reader.find(f"type.knowledge.{tipo}")
+        docs = []
+        for m in matched:
+            doc = self.reader.get_doc(m["id"]) or m
+            docs.append(doc)
+        return sorted(docs, key=lambda d: d.get("id", ""))
 
-    # ── clasificacion por eje semantico (deshardcodeo) ────────────
+    def _find_atoms(self, tipo: str) -> list[dict[str, str]]:
+        """Grounding del negocio: domain/rule con su ``answer`` como body.
 
-    @staticmethod
-    def _has_tag_prefix(atom: dict[str, Any], prefix: str) -> bool:
-        return any(str(t).startswith(prefix) for t in atom.get("tags", []))
-
-    @staticmethod
-    def _has_tag(atom: dict[str, Any], tag: str) -> bool:
-        return tag in atom.get("tags", [])
-
-    def _extract_persona(self, atoms: list[dict[str, Any]]) -> dict[str, str]:
-        """Arma la persona del agente desde los atoms ``self:*``.
-
-        Devuelve un dict {faceta: body} donde faceta es whoami/estilo/limites/...
-        derivado del tag ``self:<faceta>``. Reemplaza el prompt hardcodeado.
-        """
-        persona: dict[str, str] = {}
-        for atom in atoms:
-            for tag in atom.get("tags", []):
-                tag = str(tag)
-                if tag.startswith("self:"):
-                    faceta = tag.split(":", 1)[1]
-                    persona[faceta] = atom.get("body", "")
-        return persona
-
-    def _extract_by_tag(self, atoms: list[dict[str, Any]], tag: str) -> str:
-        """Devuelve el body del primer atom que tenga ``tag`` (o cadena vacía)."""
-        for atom in atoms:
-            if self._has_tag(atom, tag):
-                return atom.get("body", "")
-        return ""
-
-    def _grounding_only(self, atoms: list[dict[str, Any]]) -> list[dict[str, str]]:
-        """Filtra los atoms que son grounding del NEGOCIO (domain:*).
-
-        Excluye self:* y conversation:* porque esos ya viajan como persona,
-        strategy y fallback. Así el grounding que ve el conversador es solo el
-        conocimiento del negocio, no la configuración del agente.
+        Conserva tags y title para que el orquestador arme el contexto del turno
+        sin re-leer el store (brecha #2).
         """
         result = []
-        for atom in atoms:
-            if self._has_tag_prefix(atom, "self:") or self._has_tag_prefix(atom, "conversation:"):
-                continue
-            # Se preservan tags y title para que el orquestador arme el contexto
-            # del turno SIN re-leer el store (brecha #2).
+        for d in self._find_by_model(tipo):
             result.append({
-                "id": atom["id"],
-                "body": atom.get("body", ""),
-                "tags": atom.get("tags", []),
-                "title": atom.get("title") or atom["id"],
+                "id": d.get("id", ""),
+                "body": d.get("answer", ""),
+                "tags": d.get("tags", []),
+                "title": d.get("title") or d.get("id", ""),
             })
         return result
 
+    # ── configuracion del agente desde modelos tipados (deshardcodeo) ──
+
+    def _extract_persona(self) -> dict[str, str]:
+        """Arma la persona desde los modelos tipados self/style/boundary.
+
+        - whoami : SelfDeclaration.statement
+        - estilo : StyleGuide (tone + register + phrases + length)
+        - limites: CapabilityBoundary (restriction + conditions + escalation)
+        """
+        persona: dict[str, str] = {}
+
+        selfs = self._find_by_model("self")
+        if selfs:
+            persona["whoami"] = selfs[0].get("statement", "")
+
+        styles = self._find_by_model("style")
+        if styles:
+            s = styles[0]
+            persona["estilo"] = "\n".join(
+                part for part in (
+                    s.get("tone", ""),
+                    s.get("language_register", ""),
+                    s.get("phrase_preferences", ""),
+                    s.get("length_guidelines", ""),
+                ) if part
+            )
+
+        boundaries = self._find_by_model("boundary")
+        if boundaries:
+            b = boundaries[0]
+            persona["limites"] = "\n".join(
+                part for part in (
+                    b.get("restriction", ""),
+                    b.get("conditions", ""),
+                    b.get("escalation", ""),
+                ) if part
+            )
+
+        return persona
+
+    def _extract_strategy(self) -> str:
+        """Estrategia de atención desde StrategyRule (goal/approach/priorities)."""
+        strategies = self._find_by_model("strategy")
+        if not strategies:
+            return ""
+        s = strategies[0]
+        return "\n".join(
+            part for part in (
+                s.get("goal", ""),
+                s.get("approach", ""),
+                s.get("priorities", ""),
+            ) if part
+        )
+
+    def _extract_fallback(self) -> str:
+        """Mensaje de fallback desde FallbackRule.fallback_message."""
+        fallbacks = self._find_by_model("fallback")
+        if not fallbacks:
+            return ""
+        return fallbacks[0].get("fallback_message", "")
+
     def _find_tools(self) -> list[dict[str, Any]]:
-        """Selecciona TODOS los tool atoms de la KB y devuelve su schema JSON."""
-        matched = self.reader.find("atom_type:tool")
+        """Selecciona los ToolAtom y devuelve su schema JSON (campo parameters)."""
         tools = []
-        for m in matched:
-            answer = m.get("answer", "")
-            schema = self._parse_tool_schema(answer)
-            if schema:
+        for d in self._find_by_model("tool"):
+            schema = d.get("parameters")
+            if isinstance(schema, str):
+                schema = self._parse_tool_schema(schema)
+            if isinstance(schema, dict) and schema:
                 tools.append(schema)
         return sorted(tools, key=lambda t: t.get("name", ""))
 

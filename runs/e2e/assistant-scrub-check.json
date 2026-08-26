@@ -1,9 +1,9 @@
 {
-  "db_file": "/tmp/pytest-of-jp/pytest-56/test_assistant_history_is_scru0/assistant-scrub.sqlite",
+  "db_file": "/tmp/pytest-of-jp/pytest-86/test_assistant_history_is_scru0/assistant-scrub.sqlite",
   "raw_assistant": "Contáctame en test@example.com o al +56912345678 para confirmar.",
   "persisted_helper_content": "Contáctame en <EMAIL_1> o al +<PHONE_1> para confirmar.",
   "persisted_helper_pii_scrubbed": true,
   "real_turn_kind": "nl",
-  "real_turn_assistant_content": "¡Hola! Con gusto te ayudo con eso.\n\nPara opciones vegetarianas, te recomendamos nuestra clásica pizza Margherita, con un valor de $8900, o la deliciosa <NAME_1>, que cuesta $11200. Ambas son excelentes opciones.",
+  "real_turn_assistant_content": "¡Hola! Qué buena pregunta. Si buscas opciones vegetarianas para disfrutar hoy, te recomiendo nuestra clásica **Margherita** o la deliciosa **<NAME_1>**. Ambas son excelentes. 🍕✨",
   "real_turn_assistant_pii_scrubbed": true
 }

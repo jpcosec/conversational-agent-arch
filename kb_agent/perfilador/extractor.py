@@ -76,9 +76,11 @@ class TraitExtractor:
         result = []
         for t in traits:
             if isinstance(t, dict):
-                result.append(TraitCandidate(id=t["id"], body=t.get("answer", "")))
+                # TraitAtom tipado usa ``description``; fallback a ``answer``.
+                body = t.get("description") or t.get("answer", "")
+                result.append(TraitCandidate(id=t["id"], body=body))
             else:
-                result.append(TraitCandidate(id=t.id, body=t.body))
+                result.append(TraitCandidate(id=t.id, body=getattr(t, "body", "")))
         return result
 
     def _upsert_trait(self, *, user_id: int, match: TraitMatch) -> None:
