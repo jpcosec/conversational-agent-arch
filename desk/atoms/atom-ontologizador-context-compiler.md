@@ -1,17 +1,15 @@
 ---
 id: atom-ontologizador-context-compiler
-title: Ontologizador Context Compiler
+title: Ontologizador (Context Compiler)
 five_wh_one_plus: what
 tags:
-- domain:self.architecture.backend
 - layer:runtime
-- system:kb-agent
-- topic:retrieval
-provenance: null
+- role:engine
+provenance: architecture-audit
 ---
 
-# Ontologizador Context Compiler
+# Ontologizador (Context Compiler)
 
 ## Answer
 
-Compilador de contexto determinista. Resuelve la ecuación Contexto = p(Escenario, Pregunta, Perfil) extrayendo el subgrafo exacto de SLDB (reglas, tools, dominio) y se lo inyecta al Conversador.
+Motor de compilación determinista. Lee TODA la base de conocimiento tipada (los 10 modelos) desde SLDB, y extrae el nodo actual del grafo de ConversationStep (desde KGDB) para ensamblar el `CompiledDocument` que representa el estado exacto y los hechos relevantes para el turno.

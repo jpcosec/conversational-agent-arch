@@ -1,0 +1,25 @@
+stores: []
+models: []
+predicates:
+- name: is_solved_by
+  axis: HOW
+  description: Identifies how the source is solved.
+- name: implements
+  axis: HOW
+  description: Identifies what the source implements.
+- name: mathematically_proves
+  axis: WHY
+  description: Provides a mathematical proof.
+- name: explains_failure_of
+  axis: WHY
+  description: Explains why the target fails.
+- name: grounded_by
+  axis: PROVENANCE
+  description: Identifies supporting provenance.
+- name: restricts
+  axis: WHEN_WHERE
+  description: Restricts the target context.
+- name: defines
+  axis: WHAT
+  description: Defines the target concept.
+hash_a: ''
