@@ -1,0 +1,178 @@
+{
+  "nodes": [
+    {
+      "id": "step-antonia-saludo",
+      "title": "Saludo inicial",
+      "kind": "interaccion_simple",
+      "instructions": "Saludar con calidez una sola vez al inicio. Si la persona ya esta registrada, retomar por su nombre y avanzar al registro de estado. Si es nueva o no reconocida, derivar al onboarding. No repetir el saludo en mensajes posteriores.",
+      "required_slots": [
+        "si la persona ya esta registrada"
+      ],
+      "allowed_transitions": [
+        "conversation:steps.onboarding",
+        "conversation:steps.registro_estado"
+      ],
+      "grounding_atoms": [
+        "self-antonia",
+        "style-antonia"
+      ],
+      "completion_condition": "Se determino si la persona es nueva (onboarding) o ya registrada (registro de estado).",
+      "domain_ref": "psp-selfix"
+    },
+    {
+      "id": "step-antonia-onboarding",
+      "title": "Onboarding — primera interaccion",
+      "kind": "obtencion_datos",
+      "instructions": "Dar la bienvenida al programa. Explicar quien soy y en que consiste el acompanamiento. Preguntar si es la primera vez que usan Selfix. Ofrecer el video de primera aplicacion si corresponde. Capturar los datos base de la persona.",
+      "required_slots": [
+        "nombre de la persona",
+        "dia de aplicacion",
+        "si es primera vez"
+      ],
+      "allowed_transitions": [
+        "conversation:steps.registro_estado"
+      ],
+      "grounding_atoms": [
+        "atom-antonia-bienvenida",
+        "atom-antonia-primeras-semanas",
+        "self-antonia"
+      ],
+      "completion_condition": "La persona entendio el acompanamiento y quedaron registrados su nombre y dia de aplicacion.",
+      "domain_ref": "psp-selfix"
+    },
+    {
+      "id": "step-antonia-registro-estado",
+      "title": "Registro de estado — como va el tratamiento",
+      "kind": "obtencion_datos",
+      "instructions": "Preguntar con empatia como va la persona esta semana. Registrar en que semana va, si aplico su dosis y como se ha sentido. Validar emociones. Si reporta cualquier sintoma o reaccion adversa, derivar de inmediato al paso de evento adverso. Si todo va bien, avanzar a agendar el recordatorio.",
+      "required_slots": [
+        "semana de tratamiento",
+        "si aplico la dosis",
+        "como se ha sentido"
+      ],
+      "allowed_transitions": [
+        "conversation:steps.evento_adverso",
+        "conversation:steps.agendar_recordatorio"
+      ],
+      "grounding_atoms": [
+        "atom-antonia-aplicacion",
+        "atom-antonia-primeras-semanas",
+        "rule-antonia-eventos-adversos"
+      ],
+      "completion_condition": "Quedo registrado el estado y se determino si hay un sintoma a derivar o si se avanza a agendar.",
+      "domain_ref": "psp-selfix"
+    },
+    {
+      "id": "step-antonia-evento-adverso",
+      "title": "Evento adverso — derivacion",
+      "kind": "handout",
+      "instructions": "Responder con calidez y sin alarmar. No interpretar la gravedad ni dar indicaciones clinicas. Registrar internamente el evento con fecha, hora y texto textual para derivacion a farmacovigilancia. Indicar que un profesional la contactara y que si es urgente acuda a su medico o urgencia.",
+      "required_slots": [
+        "descripcion del sintoma",
+        "si es urgente"
+      ],
+      "allowed_transitions": [
+        "conversation:steps.despedida"
+      ],
+      "grounding_atoms": [
+        "rule-antonia-eventos-adversos",
+        "boundary-antonia-clinico"
+      ],
+      "completion_condition": "El evento quedo registrado para derivacion y la persona sabe que el equipo la contactara.",
+      "domain_ref": "psp-selfix"
+    },
+    {
+      "id": "step-antonia-agendar-recordatorio",
+      "title": "Agendar recordatorio de aplicacion",
+      "kind": "llamado_tool",
+      "instructions": "Confirmar el dia y hora del recordatorio semanal. Llamar a la tool agendar_recordatorio solo cuando se tienen confirmados dia y hora. Explicar que le llegara un mensaje ese dia. Luego avanzar al seguimiento de recompra.",
+      "required_slots": [
+        "dia de recordatorio",
+        "hora de recordatorio"
+      ],
+      "allowed_transitions": [
+        "conversation:steps.recompra"
+      ],
+      "grounding_atoms": [
+        "atom-antonia-aplicacion"
+      ],
+      "completion_condition": "La tool se ejecuto correctamente y la persona sabe cuando recibira su recordatorio.",
+      "domain_ref": "psp-selfix"
+    },
+    {
+      "id": "step-antonia-recompra",
+      "title": "Seguimiento de recompra y receta",
+      "kind": "interaccion_simple",
+      "instructions": "Revisar cuanto producto le queda. Recordar la recompra o renovacion de receta antes de que se acabe. Ayudar a prepararse para los controles medicos. Cerrar derivando a la despedida con calidez.",
+      "required_slots": [
+        "stock restante"
+      ],
+      "allowed_transitions": [
+        "conversation:steps.despedida"
+      ],
+      "grounding_atoms": [
+        "atom-antonia-recompra"
+      ],
+      "completion_condition": "La persona sabe cuando recomprar o renovar receta y quedo lista para la despedida.",
+      "domain_ref": "psp-selfix"
+    },
+    {
+      "id": "step-antonia-despedida",
+      "title": "Despedida",
+      "kind": "interaccion_simple",
+      "instructions": "Cerrar la conversacion con calidez y cercania. Recordar que puede escribir sus dudas cuando quiera. Reforzar que no esta sola en su tratamiento. No hacer nuevas preguntas.",
+      "required_slots": [
+        "ninguno (paso terminal)"
+      ],
+      "allowed_transitions": [],
+      "grounding_atoms": [
+        "self-antonia",
+        "style-antonia"
+      ],
+      "completion_condition": "La persona se despidio sabiendo que puede volver a escribir cuando lo necesite.",
+      "domain_ref": "psp-selfix"
+    }
+  ],
+  "edges": [
+    {
+      "source": "step-antonia-saludo",
+      "target": "step-antonia-onboarding",
+      "relation": "flows_to"
+    },
+    {
+      "source": "step-antonia-saludo",
+      "target": "step-antonia-registro-estado",
+      "relation": "flows_to"
+    },
+    {
+      "source": "step-antonia-onboarding",
+      "target": "step-antonia-registro-estado",
+      "relation": "flows_to"
+    },
+    {
+      "source": "step-antonia-registro-estado",
+      "target": "step-antonia-evento-adverso",
+      "relation": "flows_to"
+    },
+    {
+      "source": "step-antonia-registro-estado",
+      "target": "step-antonia-agendar-recordatorio",
+      "relation": "flows_to"
+    },
+    {
+      "source": "step-antonia-evento-adverso",
+      "target": "step-antonia-despedida",
+      "relation": "flows_to"
+    },
+    {
+      "source": "step-antonia-agendar-recordatorio",
+      "target": "step-antonia-recompra",
+      "relation": "flows_to"
+    },
+    {
+      "source": "step-antonia-recompra",
+      "target": "step-antonia-despedida",
+      "relation": "flows_to"
+    }
+  ]
+}

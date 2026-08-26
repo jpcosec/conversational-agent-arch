@@ -1,13 +1,196 @@
 documents:
+- doc_name: step-antonia-saludo
+  sections:
+  - path: saludo-inicial
+    title: Saludo inicial
+    breadcrumbs:
+    - Saludo inicial
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: saludo-inicial
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: saludo-inicial/instructions
+    title: Instructions
+    breadcrumbs:
+    - Saludo inicial
+    - Instructions
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Instructions
+    - instructions
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: saludo-inicial/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Saludo inicial
+    - Required Slots
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Required Slots
+    - required slots
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: saludo-inicial/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Saludo inicial
+    - Handout Target
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Handout Target
+    - handout target
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: saludo-inicial/tool
+    title: Tool
+    breadcrumbs:
+    - Saludo inicial
+    - Tool
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Tool
+    - tool
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: saludo-inicial/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Saludo inicial
+    - Allowed Transitions
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: saludo-inicial/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Saludo inicial
+    - Grounding Atoms
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: saludo-inicial/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Saludo inicial
+    - Completion Condition
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Completion Condition
+    - completion condition
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 38
+    line_end: 39
 - doc_name: step-antonia-onboarding
   sections:
-  - path: onboarding-primera-interacci-n
-    title: "Onboarding \u2014 primera interacci\xF3n"
+  - path: onboarding-primera-interaccion
+    title: "Onboarding \u2014 primera interaccion"
     breadcrumbs:
-    - "Onboarding \u2014 primera interacci\xF3n"
+    - "Onboarding \u2014 primera interaccion"
     about:
-    - "Onboarding \u2014 primera interacci\xF3n"
-    - onboarding primera interacci n
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
     - conversation:steps.onboarding
     - system:laboratorio-chile
     - type.knowledge.step
@@ -17,18 +200,18 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
-    slug: onboarding-primera-interacci-n
+    slug: onboarding-primera-interaccion
     level: 1
-    line_start: 11
-    line_end: 12
-  - path: onboarding-primera-interacci-n/instructions
+    line_start: 12
+    line_end: 13
+  - path: onboarding-primera-interaccion/instructions
     title: Instructions
     breadcrumbs:
-    - "Onboarding \u2014 primera interacci\xF3n"
+    - "Onboarding \u2014 primera interaccion"
     - Instructions
     about:
-    - "Onboarding \u2014 primera interacci\xF3n"
-    - onboarding primera interacci n
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
     - Instructions
     - instructions
     - conversation:steps.onboarding
@@ -42,16 +225,16 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 13
-    line_end: 14
-  - path: onboarding-primera-interacci-n/required-slots
+    line_start: 14
+    line_end: 15
+  - path: onboarding-primera-interaccion/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Onboarding \u2014 primera interacci\xF3n"
+    - "Onboarding \u2014 primera interaccion"
     - Required Slots
     about:
-    - "Onboarding \u2014 primera interacci\xF3n"
-    - onboarding primera interacci n
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
     - Required Slots
     - required slots
     - conversation:steps.onboarding
@@ -65,16 +248,62 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 17
-    line_end: 18
-  - path: onboarding-primera-interacci-n/allowed-transitions
+    line_start: 18
+    line_end: 19
+  - path: onboarding-primera-interaccion/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Onboarding \u2014 primera interaccion"
+    - Handout Target
+    about:
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
+    - Handout Target
+    - handout target
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: onboarding-primera-interaccion/tool
+    title: Tool
+    breadcrumbs:
+    - "Onboarding \u2014 primera interaccion"
+    - Tool
+    about:
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
+    - Tool
+    - tool
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: onboarding-primera-interaccion/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Onboarding \u2014 primera interacci\xF3n"
+    - "Onboarding \u2014 primera interaccion"
     - Allowed Transitions
     about:
-    - "Onboarding \u2014 primera interacci\xF3n"
-    - onboarding primera interacci n
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
     - Allowed Transitions
     - allowed transitions
     - conversation:steps.onboarding
@@ -88,16 +317,16 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 21
-    line_end: 22
-  - path: onboarding-primera-interacci-n/grounding-atoms
+    line_start: 30
+    line_end: 31
+  - path: onboarding-primera-interaccion/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Onboarding \u2014 primera interacci\xF3n"
+    - "Onboarding \u2014 primera interaccion"
     - Grounding Atoms
     about:
-    - "Onboarding \u2014 primera interacci\xF3n"
-    - onboarding primera interacci n
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
     - Grounding Atoms
     - grounding atoms
     - conversation:steps.onboarding
@@ -111,16 +340,16 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 25
-    line_end: 26
-  - path: onboarding-primera-interacci-n/completion-condition
+    line_start: 34
+    line_end: 35
+  - path: onboarding-primera-interaccion/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Onboarding \u2014 primera interacci\xF3n"
+    - "Onboarding \u2014 primera interaccion"
     - Completion Condition
     about:
-    - "Onboarding \u2014 primera interacci\xF3n"
-    - onboarding primera interacci n
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
     - Completion Condition
     - completion condition
     - conversation:steps.onboarding
@@ -134,142 +363,920 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 29
-    line_end: 30
-- doc_name: step-antonia-booking
+    line_start: 38
+    line_end: 39
+- doc_name: step-antonia-registro-estado
   sections:
-  - path: seguimiento-de-aplicaci-n-y-recompra
-    title: "Seguimiento de aplicaci\xF3n y recompra"
+  - path: registro-de-estado-como-va-el-tratamiento
+    title: "Registro de estado \u2014 como va el tratamiento"
     breadcrumbs:
-    - "Seguimiento de aplicaci\xF3n y recompra"
+    - "Registro de estado \u2014 como va el tratamiento"
     about:
-    - "Seguimiento de aplicaci\xF3n y recompra"
-    - seguimiento de aplicaci n y recompra
-    - conversation:steps.booking
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
-    slug: seguimiento-de-aplicaci-n-y-recompra
+    slug: registro-de-estado-como-va-el-tratamiento
     level: 1
-    line_start: 11
-    line_end: 12
-  - path: seguimiento-de-aplicaci-n-y-recompra/instructions
+    line_start: 12
+    line_end: 13
+  - path: registro-de-estado-como-va-el-tratamiento/instructions
     title: Instructions
     breadcrumbs:
-    - "Seguimiento de aplicaci\xF3n y recompra"
+    - "Registro de estado \u2014 como va el tratamiento"
     - Instructions
     about:
-    - "Seguimiento de aplicaci\xF3n y recompra"
-    - seguimiento de aplicaci n y recompra
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
     - Instructions
     - instructions
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 13
-    line_end: 14
-  - path: seguimiento-de-aplicaci-n-y-recompra/required-slots
+    line_start: 14
+    line_end: 15
+  - path: registro-de-estado-como-va-el-tratamiento/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Seguimiento de aplicaci\xF3n y recompra"
+    - "Registro de estado \u2014 como va el tratamiento"
     - Required Slots
     about:
-    - "Seguimiento de aplicaci\xF3n y recompra"
-    - seguimiento de aplicaci n y recompra
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
     - Required Slots
     - required slots
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 17
-    line_end: 18
-  - path: seguimiento-de-aplicaci-n-y-recompra/allowed-transitions
-    title: Allowed Transitions
+    line_start: 18
+    line_end: 19
+  - path: registro-de-estado-como-va-el-tratamiento/handout-target
+    title: Handout Target
     breadcrumbs:
-    - "Seguimiento de aplicaci\xF3n y recompra"
-    - Allowed Transitions
+    - "Registro de estado \u2014 como va el tratamiento"
+    - Handout Target
     about:
-    - "Seguimiento de aplicaci\xF3n y recompra"
-    - seguimiento de aplicaci n y recompra
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.booking
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
+    - Handout Target
+    - handout target
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: registro-de-estado-como-va-el-tratamiento/tool
+    title: Tool
+    breadcrumbs:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - Tool
+    about:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
+    - Tool
+    - tool
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: registro-de-estado-como-va-el-tratamiento/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - Allowed Transitions
+    about:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 21
-    line_end: 22
-  - path: seguimiento-de-aplicaci-n-y-recompra/grounding-atoms
+    line_start: 30
+    line_end: 31
+  - path: registro-de-estado-como-va-el-tratamiento/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Seguimiento de aplicaci\xF3n y recompra"
+    - "Registro de estado \u2014 como va el tratamiento"
     - Grounding Atoms
     about:
-    - "Seguimiento de aplicaci\xF3n y recompra"
-    - seguimiento de aplicaci n y recompra
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
     - Grounding Atoms
     - grounding atoms
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 25
-    line_end: 26
-  - path: seguimiento-de-aplicaci-n-y-recompra/completion-condition
+    line_start: 34
+    line_end: 35
+  - path: registro-de-estado-como-va-el-tratamiento/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Seguimiento de aplicaci\xF3n y recompra"
+    - "Registro de estado \u2014 como va el tratamiento"
     - Completion Condition
     about:
-    - "Seguimiento de aplicaci\xF3n y recompra"
-    - seguimiento de aplicaci n y recompra
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
     - Completion Condition
     - completion condition
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.registro_estado
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 38
+    line_end: 39
+- doc_name: step-antonia-evento-adverso
+  sections:
+  - path: evento-adverso-derivacion
+    title: "Evento adverso \u2014 derivacion"
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: evento-adverso-derivacion
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: evento-adverso-derivacion/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Instructions
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Instructions
+    - instructions
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: evento-adverso-derivacion/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Required Slots
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Required Slots
+    - required slots
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: evento-adverso-derivacion/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Handout Target
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Handout Target
+    - handout target
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: evento-adverso-derivacion/tool
+    title: Tool
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Tool
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Tool
+    - tool
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: evento-adverso-derivacion/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Allowed Transitions
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: evento-adverso-derivacion/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Grounding Atoms
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: evento-adverso-derivacion/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Completion Condition
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Completion Condition
+    - completion condition
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 38
+    line_end: 39
+- doc_name: step-antonia-agendar-recordatorio
+  sections:
+  - path: agendar-recordatorio-de-aplicacion
+    title: Agendar recordatorio de aplicacion
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: agendar-recordatorio-de-aplicacion
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: agendar-recordatorio-de-aplicacion/instructions
+    title: Instructions
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Instructions
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Instructions
+    - instructions
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: agendar-recordatorio-de-aplicacion/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Required Slots
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Required Slots
+    - required slots
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: agendar-recordatorio-de-aplicacion/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Handout Target
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Handout Target
+    - handout target
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: agendar-recordatorio-de-aplicacion/tool
+    title: Tool
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Tool
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Tool
+    - tool
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: agendar-recordatorio-de-aplicacion/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Allowed Transitions
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: agendar-recordatorio-de-aplicacion/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Grounding Atoms
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: agendar-recordatorio-de-aplicacion/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Completion Condition
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Completion Condition
+    - completion condition
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 38
+    line_end: 39
+- doc_name: step-antonia-recompra
+  sections:
+  - path: seguimiento-de-recompra-y-receta
+    title: Seguimiento de recompra y receta
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: seguimiento-de-recompra-y-receta
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: seguimiento-de-recompra-y-receta/instructions
+    title: Instructions
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Instructions
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Instructions
+    - instructions
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: seguimiento-de-recompra-y-receta/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Required Slots
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Required Slots
+    - required slots
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: seguimiento-de-recompra-y-receta/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Handout Target
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Handout Target
+    - handout target
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: seguimiento-de-recompra-y-receta/tool
+    title: Tool
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Tool
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Tool
+    - tool
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: seguimiento-de-recompra-y-receta/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Allowed Transitions
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: seguimiento-de-recompra-y-receta/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Grounding Atoms
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: seguimiento-de-recompra-y-receta/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Completion Condition
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Completion Condition
+    - completion condition
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 38
+    line_end: 39
+- doc_name: step-antonia-despedida
+  sections:
+  - path: despedida
+    title: Despedida
+    breadcrumbs:
+    - Despedida
+    about:
+    - Despedida
+    - despedida
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: despedida
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: despedida/instructions
+    title: Instructions
+    breadcrumbs:
+    - Despedida
+    - Instructions
+    about:
+    - Despedida
+    - despedida
+    - Instructions
+    - instructions
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: despedida/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Despedida
+    - Required Slots
+    about:
+    - Despedida
+    - despedida
+    - Required Slots
+    - required slots
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: despedida/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Despedida
+    - Handout Target
+    about:
+    - Despedida
+    - despedida
+    - Handout Target
+    - handout target
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: despedida/tool
+    title: Tool
+    breadcrumbs:
+    - Despedida
+    - Tool
+    about:
+    - Despedida
+    - despedida
+    - Tool
+    - tool
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: despedida/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Despedida
+    - Allowed Transitions
+    about:
+    - Despedida
+    - despedida
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: despedida/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Despedida
+    - Grounding Atoms
+    about:
+    - Despedida
+    - despedida
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: despedida/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Despedida
+    - Completion Condition
+    about:
+    - Despedida
+    - despedida
+    - Completion Condition
+    - completion condition
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 38
+    line_end: 39

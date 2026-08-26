@@ -1,0 +1,75 @@
+documents:
+- doc_name: tool-antonia-agendar-recordatorio
+  sections:
+  - path: tool-agendar-recordatorio-de-aplicaci-n
+    title: "Tool agendar recordatorio de aplicaci\xF3n"
+    breadcrumbs:
+    - "Tool agendar recordatorio de aplicaci\xF3n"
+    about:
+    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - tool agendar recordatorio de aplicaci n
+    - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: tool-agendar-recordatorio-de-aplicaci-n
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: tool-agendar-recordatorio-de-aplicaci-n/description
+    title: Description
+    breadcrumbs:
+    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Description
+    about:
+    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - tool agendar recordatorio de aplicaci n
+    - Description
+    - description
+    - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: tool-agendar-recordatorio-de-aplicaci-n/parameters
+    title: Parameters
+    breadcrumbs:
+    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Parameters
+    about:
+    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - tool agendar recordatorio de aplicaci n
+    - Parameters
+    - parameters
+    - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: parameters
+    level: 2
+    line_start: 18
+    line_end: 19
