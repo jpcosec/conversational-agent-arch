@@ -22,8 +22,15 @@ def test_donpeppe_flow_nodes_edges_and_step_tags(donpeppe_kb: Path) -> None:
 def test_antonia_flow_is_a_graph_with_terminal_step(antonia_kb: Path) -> None:
     flow = export(str(antonia_kb))
     by_id = {n["id"]: n for n in flow["nodes"]}
-    assert len(by_id) == 7
+    assert len(by_id) == 11
     assert by_id["step-antonia-despedida"]["allowed_transitions"] == []  # "ninguna (paso terminal)"
     assert all(n["step_tag"] and n["step_tag"].startswith("conversation:steps.") for n in flow["nodes"])
     targets = {e["source"] for e in flow["edges"] if e["target"] == "step-antonia-despedida"}
-    assert {"step-antonia-recompra", "step-antonia-evento-adverso"} <= targets
+    assert {
+        "step-antonia-recompra",
+        "step-antonia-evento-adverso",
+        "step-antonia-derivacion-medinfo",
+        "step-antonia-revision-humana",
+        "step-antonia-journey-operativo",
+    } <= targets
+    assert "step-antonia-validacion-policy-gate" not in {e["target"] for e in flow["edges"]}

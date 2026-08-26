@@ -16,10 +16,14 @@ tags:
   conversation:steps.agendar_recordatorio:
   - step-antonia-agendar-recordatorio
   - tool-antonia-agendar-recordatorio
+  conversation:steps.derivacion_medinfo:
+  - step-antonia-derivacion-medinfo
   conversation:steps.despedida:
   - step-antonia-despedida
   conversation:steps.evento_adverso:
   - step-antonia-evento-adverso
+  conversation:steps.journey_operativo:
+  - step-antonia-journey-operativo
   conversation:steps.onboarding:
   - atom-antonia-bienvenida
   - atom-antonia-primeras-semanas
@@ -30,8 +34,12 @@ tags:
   - step-antonia-recompra
   conversation:steps.registro_estado:
   - step-antonia-registro-estado
+  conversation:steps.revision_humana:
+  - step-antonia-revision-humana
   conversation:steps.saludo:
   - step-antonia-saludo
+  conversation:steps.validacion_policy_gate:
+  - step-antonia-validacion-policy-gate
   conversation:strategy:
   - strategy-antonia
   domain:clinico:
@@ -53,6 +61,16 @@ tags:
   - atom-antonia-molecula
   - atom-antonia-primeras-semanas
   - atom-antonia-titulacion
+  gate:corpus:
+  - gate-antonia-corpus
+  gate:derivacion:
+  - gate-antonia-derivacion
+  gate:promesas:
+  - gate-antonia-promesas
+  gate:regulatorio.diagnostico:
+  - gate-antonia-diagnostico
+  gate:regulatorio.dosis:
+  - gate-antonia-dosis
   self:estilo:
   - style-antonia
   self:limites:
@@ -75,6 +93,11 @@ tags:
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
   - fallback-antonia
+  - gate-antonia-corpus
+  - gate-antonia-derivacion
+  - gate-antonia-diagnostico
+  - gate-antonia-dosis
+  - gate-antonia-promesas
   - rule-antonia-anti-alucinacion
   - rule-antonia-clasificacion-medinfo
   - rule-antonia-clasificacion-operacional
@@ -82,12 +105,16 @@ tags:
   - rule-antonia-eventos-adversos
   - self-antonia
   - step-antonia-agendar-recordatorio
+  - step-antonia-derivacion-medinfo
   - step-antonia-despedida
   - step-antonia-evento-adverso
+  - step-antonia-journey-operativo
   - step-antonia-onboarding
   - step-antonia-recompra
   - step-antonia-registro-estado
+  - step-antonia-revision-humana
   - step-antonia-saludo
+  - step-antonia-validacion-policy-gate
   - strategy-antonia
   - style-antonia
   - tool-antonia-agendar-recordatorio
@@ -111,6 +138,12 @@ tags:
   - atom-antonia-titulacion
   type.knowledge.fallback:
   - fallback-antonia
+  type.knowledge.gate:
+  - gate-antonia-corpus
+  - gate-antonia-derivacion
+  - gate-antonia-diagnostico
+  - gate-antonia-dosis
+  - gate-antonia-promesas
   type.knowledge.rule:
   - rule-antonia-anti-alucinacion
   - rule-antonia-clasificacion-medinfo
@@ -121,12 +154,16 @@ tags:
   - self-antonia
   type.knowledge.step:
   - step-antonia-agendar-recordatorio
+  - step-antonia-derivacion-medinfo
   - step-antonia-despedida
   - step-antonia-evento-adverso
+  - step-antonia-journey-operativo
   - step-antonia-onboarding
   - step-antonia-recompra
   - step-antonia-registro-estado
+  - step-antonia-revision-humana
   - step-antonia-saludo
+  - step-antonia-validacion-policy-gate
   type.knowledge.strategy:
   - strategy-antonia
   type.knowledge.style:
@@ -162,6 +199,11 @@ tags:
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
   - fallback-antonia
+  - gate-antonia-corpus
+  - gate-antonia-derivacion
+  - gate-antonia-diagnostico
+  - gate-antonia-dosis
+  - gate-antonia-promesas
   - rule-antonia-anti-alucinacion
   - rule-antonia-clasificacion-medinfo
   - rule-antonia-clasificacion-operacional
@@ -169,12 +211,16 @@ tags:
   - rule-antonia-eventos-adversos
   - self-antonia
   - step-antonia-agendar-recordatorio
+  - step-antonia-derivacion-medinfo
   - step-antonia-despedida
   - step-antonia-evento-adverso
+  - step-antonia-journey-operativo
   - step-antonia-onboarding
   - step-antonia-recompra
   - step-antonia-registro-estado
+  - step-antonia-revision-humana
   - step-antonia-saludo
+  - step-antonia-validacion-policy-gate
   - strategy-antonia
   - style-antonia
   - tool-antonia-agendar-recordatorio
@@ -407,6 +453,38 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
+  step-antonia-derivacion-medinfo:
+    model: ConversationStep
+    path: atoms/step-antonia-derivacion-medinfo.md
+    tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-revision-humana:
+    model: ConversationStep
+    path: atoms/step-antonia-revision-humana.md
+    tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-journey-operativo:
+    model: ConversationStep
+    path: atoms/step-antonia-journey-operativo.md
+    tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-validacion-policy-gate:
+    model: ConversationStep
+    path: atoms/step-antonia-validacion-policy-gate.md
+    tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
   self-antonia:
     model: SelfDeclaration
     path: atoms/self-antonia.md
@@ -458,4 +536,44 @@ documents:
     - conversation:fallback
     - system:laboratorio-chile
     - type.knowledge.fallback
+    - workspace.knowledge
+  gate-antonia-dosis:
+    model: GateCriterion
+    path: atoms/gate-antonia-dosis.md
+    tags:
+    - gate:regulatorio.dosis
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-antonia-diagnostico:
+    model: GateCriterion
+    path: atoms/gate-antonia-diagnostico.md
+    tags:
+    - gate:regulatorio.diagnostico
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-antonia-corpus:
+    model: GateCriterion
+    path: atoms/gate-antonia-corpus.md
+    tags:
+    - gate:corpus
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-antonia-derivacion:
+    model: GateCriterion
+    path: atoms/gate-antonia-derivacion.md
+    tags:
+    - gate:derivacion
+    - system:laboratorio-chile
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-antonia-promesas:
+    model: GateCriterion
+    path: atoms/gate-antonia-promesas.md
+    tags:
+    - gate:promesas
+    - system:laboratorio-chile
+    - type.knowledge.gate
     - workspace.knowledge

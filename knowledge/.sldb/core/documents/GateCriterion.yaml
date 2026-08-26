@@ -1,1 +1,46 @@
-documents: []
+documents:
+- name: gate-antonia-dosis
+  path: atoms/gate-antonia-dosis.md
+  hash_c: ce3d8248a2bef7371427e7d23865a411f451287ac7f282ee0080c2e69fb5ed04
+  hash_d: 9c09ddcb2964b2e6917596a94c53f1f6af2507c25c81ee94ca692cd57770cea8
+  semantic_tags:
+  - gate:regulatorio.dosis
+  - system:laboratorio-chile
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-antonia-diagnostico
+  path: atoms/gate-antonia-diagnostico.md
+  hash_c: f92d4225afa223cce595b6143f7dfc374564661bd2120e806ef35a7793497e86
+  hash_d: c301b269afe9a6a74864286bb6ada4fb375b093b9c0fbd18137887dfc7fec4a9
+  semantic_tags:
+  - gate:regulatorio.diagnostico
+  - system:laboratorio-chile
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-antonia-corpus
+  path: atoms/gate-antonia-corpus.md
+  hash_c: 70cfb7b5556dd166796d5de8b9eacd71c64941d30d4a7ef8fea6da9c137e042d
+  hash_d: c5602440268084ebd6e74a0b011c9a0b9eff4c2f1adb7efb4872dc420f3d9b1a
+  semantic_tags:
+  - gate:corpus
+  - system:laboratorio-chile
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-antonia-derivacion
+  path: atoms/gate-antonia-derivacion.md
+  hash_c: f535622f7f5e156df1681ab5ddf4c46058b190e0d7781ad48b923f811d89b7b8
+  hash_d: 87a0fe9ec9dce6f91b863c2d09b126d1faf63d8a086668279eb804cbfab02137
+  semantic_tags:
+  - gate:derivacion
+  - system:laboratorio-chile
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-antonia-promesas
+  path: atoms/gate-antonia-promesas.md
+  hash_c: beed7d4960c1109cc338292c0a1cf6cd756f6aa4305466a4fe93e1845711971c
+  hash_d: ab2711fbfa20d44086985a38f2e7185c760957571f8d96a31b7f74d3bd03297d
+  semantic_tags:
+  - gate:promesas
+  - system:laboratorio-chile
+  - type.knowledge.gate
+  - workspace.knowledge

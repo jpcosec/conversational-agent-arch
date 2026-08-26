@@ -1280,3 +1280,735 @@ documents:
     level: 2
     line_start: 39
     line_end: 40
+- doc_name: step-antonia-derivacion-medinfo
+  sections:
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa
+    title: "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: derivaci-n-medinfo-consulta-m-dica-del-programa
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Instructions
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Instructions
+    - instructions
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Required Slots
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Required Slots
+    - required slots
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Handout Target
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Handout Target
+    - handout target
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/tool
+    title: Tool
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Tool
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Tool
+    - tool
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Allowed Transitions
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Grounding Atoms
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 38
+    line_end: 39
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Completion Condition
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Completion Condition
+    - completion condition
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 42
+    line_end: 43
+- doc_name: step-antonia-revision-humana
+  sections:
+  - path: revisi-n-humana-ticket-pendiente
+    title: "Revisi\xF3n humana \u2014 ticket pendiente"
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: revisi-n-humana-ticket-pendiente
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: revisi-n-humana-ticket-pendiente/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Instructions
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Instructions
+    - instructions
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: revisi-n-humana-ticket-pendiente/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Required Slots
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Required Slots
+    - required slots
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: revisi-n-humana-ticket-pendiente/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Handout Target
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Handout Target
+    - handout target
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: revisi-n-humana-ticket-pendiente/tool
+    title: Tool
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Tool
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Tool
+    - tool
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: revisi-n-humana-ticket-pendiente/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Allowed Transitions
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: revisi-n-humana-ticket-pendiente/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Grounding Atoms
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 38
+    line_end: 39
+  - path: revisi-n-humana-ticket-pendiente/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Completion Condition
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Completion Condition
+    - completion condition
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 42
+    line_end: 43
+- doc_name: step-antonia-journey-operativo
+  sections:
+  - path: journey-operativo-contenido-preaprobado-del-programa
+    title: "Journey operativo \u2014 contenido preaprobado del programa"
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: journey-operativo-contenido-preaprobado-del-programa
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: journey-operativo-contenido-preaprobado-del-programa/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Instructions
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Instructions
+    - instructions
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: journey-operativo-contenido-preaprobado-del-programa/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Required Slots
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Required Slots
+    - required slots
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: journey-operativo-contenido-preaprobado-del-programa/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Handout Target
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Handout Target
+    - handout target
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: journey-operativo-contenido-preaprobado-del-programa/tool
+    title: Tool
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Tool
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Tool
+    - tool
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: journey-operativo-contenido-preaprobado-del-programa/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Allowed Transitions
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: journey-operativo-contenido-preaprobado-del-programa/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Grounding Atoms
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 38
+    line_end: 39
+  - path: journey-operativo-contenido-preaprobado-del-programa/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Completion Condition
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Completion Condition
+    - completion condition
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 42
+    line_end: 43
+- doc_name: step-antonia-validacion-policy-gate
+  sections:
+  - path: validaci-n-policy-gate-autochequeo-post-draft
+    title: "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: validaci-n-policy-gate-autochequeo-post-draft
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: validaci-n-policy-gate-autochequeo-post-draft/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Instructions
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Instructions
+    - instructions
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: validaci-n-policy-gate-autochequeo-post-draft/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Required Slots
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Required Slots
+    - required slots
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: validaci-n-policy-gate-autochequeo-post-draft/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Handout Target
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Handout Target
+    - handout target
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: validaci-n-policy-gate-autochequeo-post-draft/tool
+    title: Tool
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Tool
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Tool
+    - tool
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 30
+    line_end: 31
+  - path: validaci-n-policy-gate-autochequeo-post-draft/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Allowed Transitions
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: validaci-n-policy-gate-autochequeo-post-draft/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Grounding Atoms
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 38
+    line_end: 39
+  - path: validaci-n-policy-gate-autochequeo-post-draft/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Completion Condition
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Completion Condition
+    - completion condition
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 42
+    line_end: 43

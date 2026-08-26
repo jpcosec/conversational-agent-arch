@@ -30,7 +30,7 @@ no aplica
 
 ## Allowed Transitions
 
-conversation:steps.onboarding, conversation:steps.registro_estado
+conversation:steps.onboarding, conversation:steps.registro_estado, conversation:steps.journey_operativo, conversation:steps.derivacion_medinfo
 
 ## Grounding Atoms
 

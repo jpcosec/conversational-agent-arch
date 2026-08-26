@@ -2,8 +2,8 @@ name: GateCriterion
 model_ref: kb_agent.models.knowledge:GateCriterion
 path: /home/jp/proyectos/_worktrees/gt-psp-kb-flow/kb_agent/models/knowledge/gate.py
 documents_index: .sldb/core/documents/GateCriterion.yaml
-sections_index: ''
-hash_b: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+sections_index: .sldb/runtime/sections/GateCriterion.yaml
+hash_b: e71aa7cca153cf3f957872e135656479ad92d741867c97afad8d1bae766e70a9
 version: 1
 canonical: false
 family: null

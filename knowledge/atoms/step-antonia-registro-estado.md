@@ -30,7 +30,7 @@ no aplica
 
 ## Allowed Transitions
 
-conversation:steps.evento_adverso, conversation:steps.agendar_recordatorio
+conversation:steps.evento_adverso, conversation:steps.agendar_recordatorio, conversation:steps.derivacion_medinfo
 
 ## Grounding Atoms
 
