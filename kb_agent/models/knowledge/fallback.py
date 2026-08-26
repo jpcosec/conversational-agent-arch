@@ -15,6 +15,7 @@ class FallbackRule(IndexProxies):
     usa este mensaje en vez de alucinar.
     """
 
+    __family__ = "conversation"
     __semantics__ = {
         "type": ["knowledge", "fallback"],
         "workspace": ["knowledge"],
@@ -25,7 +26,7 @@ title: ⸢rev•title⸥
 atom_type: fallback
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

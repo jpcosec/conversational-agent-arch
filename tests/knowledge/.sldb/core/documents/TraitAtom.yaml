@@ -1,8 +1,8 @@
 documents:
 - name: trait-vegetariano
   path: atoms/trait-vegetariano.md
-  hash_c: a07347f9c02acaa9f8f7b26d4981bfe2efc8f8f35f19da0ce04bfd099f25c612
-  hash_d: d03b07303c383cfa3eb991eac16a548618c6927fbdc51dc72b524bca0cc4e170
+  hash_c: 7888f89ed6099b4dbd29f3722136b2bdf3c78ad2cd3a2564754fc84eccb45057
+  hash_d: 297396842488f20f5c957b50aefa0d7f5b5827088133d674e590920bf30e6396
   semantic_tags:
   - system:donpeppe
   - type.knowledge.trait
@@ -10,8 +10,8 @@ documents:
   - workspace.knowledge
 - name: trait-sin-gluten
   path: atoms/trait-sin-gluten.md
-  hash_c: cc7cee2c2a9160168cca3c471c24b257bf5ad2a75de8e96449be8ecf1ca9e8d0
-  hash_d: e13a417ca058e14bcd19900c2006bb08081f6a3ebc2ac5a035ee372973615d93
+  hash_c: dace91c8680b1af096ab77d6c58ece085cb6ca414c03cd95b307f7736458c6b8
+  hash_d: 74db3fe10df1434475a6e760215dfb718592fe1033563e25cbcd76db9a52a4b1
   semantic_tags:
   - system:donpeppe
   - type.knowledge.trait

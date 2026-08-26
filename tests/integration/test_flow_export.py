@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from conversation_flow_editor.export_flow import export
+from frontends.flow_editor.export_flow import export
 
 
 def test_donpeppe_flow_nodes_edges_and_step_tags(donpeppe_kb: Path) -> None:

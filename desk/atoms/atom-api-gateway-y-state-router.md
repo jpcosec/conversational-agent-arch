@@ -14,4 +14,4 @@ provenance: null
 
 ## Answer
 
-Es el componente de entrada del sistema. Actúa como servidor web (FastAPI) que recibe webhooks (Twilio) o HTTP. Gestiona la Máquina de Estados, manejando el buffering (debounce) y enrutando el flujo al Ontologizador o Conversador.
+Componente de entrada del sistema: un servidor FastAPI (frontends/chat/server.py) que recibe peticiones HTTP y sirve las UIs. Gestiona la Máquina de Estados (kb_agent/state_machine.py) con buffering (debounce) y enruta cada turno al Ontologizador o al Conversador vía el Orchestrator. La ingesta por webhooks externos (Twilio/WhatsApp) es un canal previsto en el despliegue; aún no cableado en runtime.

@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: bienvenida-al-programa
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 788
+    line_end: 789
   - path: bienvenida-al-programa/answer
     title: Answer
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 790
+    line_end: 791
 - doc_name: atom-antonia-aplicacion
   sections:
   - path: administraci-n-de-selfix
@@ -57,21 +57,21 @@ documents:
     about:
     - "Administraci\xF3n de Selfix"
     - administraci n de selfix
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:tratamiento
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:tratamiento
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     slug: administraci-n-de-selfix
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
   - path: administraci-n-de-selfix/answer
     title: Answer
     breadcrumbs:
@@ -82,21 +82,21 @@ documents:
     - administraci n de selfix
     - Answer
     - answer
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:tratamiento
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:tratamiento
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 789
+    line_end: 790
 - doc_name: atom-antonia-primeras-semanas
   sections:
   - path: qu-esperar-las-primeras-semanas
@@ -119,8 +119,8 @@ documents:
     - workspace.knowledge
     slug: qu-esperar-las-primeras-semanas
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
   - path: qu-esperar-las-primeras-semanas/answer
     title: Answer
     breadcrumbs:
@@ -144,8 +144,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 789
+    line_end: 790
 - doc_name: atom-antonia-recompra
   sections:
   - path: recompra-y-renovaci-n-de-receta
@@ -155,21 +155,21 @@ documents:
     about:
     - "Recompra y renovaci\xF3n de receta"
     - recompra y renovaci n de receta
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:logistica
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:logistica
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     slug: recompra-y-renovaci-n-de-receta
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
   - path: recompra-y-renovaci-n-de-receta/answer
     title: Answer
     breadcrumbs:
@@ -180,18 +180,18 @@ documents:
     - recompra y renovaci n de receta
     - Answer
     - answer
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:logistica
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     semantic_tags:
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:logistica
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 789
+    line_end: 790

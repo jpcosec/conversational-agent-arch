@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:DomainAtom
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/domain.py
 documents_index: .sldb/core/documents/DomainAtom.yaml
 sections_index: .sldb/runtime/sections/DomainAtom.yaml
-hash_b: d9dc6cc8eeaa6b88330b226acfb9ce0ef54ed1dc92832591c9731a9699f88c4b
+hash_b: 83ef997046780dad7abcee0145aa193dc327154363371855d1efe757bdc74fb6
 version: 1
 canonical: false
 family: null

@@ -14,9 +14,9 @@ data:
       label: Navegador (Web UI)
       kind: client
       contains:
-        - kb_chat_ui_html
-        - visor_wiki_html
-        - visor_grafo_html
+        - chat_ui_html
+        - flow_editor_html
+        - profiling_html
     webhook_channels:
       label: Canales Externos (Twilio, WhatsApp)
       kind: client
@@ -34,7 +34,7 @@ data:
       contains:
         - agente_conversacional
         - ontological_context_compiler
-        - kb_tools_wrapper
+        - kb_tools_module
     kb_store_host:
       label: KB host · tutor_apoe
       kind: server
@@ -49,14 +49,14 @@ data:
         - gemini_llm
 
   artifacts:
-    kb_chat_ui_html:
-      label: kb_chat_ui/index.html (chat + inspector)
+    chat_ui_html:
+      label: frontends/chat/index.html (chat + inspector)
       kind: frontend
-    visor_wiki_html:
-      label: Visor de átomos (wiki/sldb)
+    flow_editor_html:
+      label: frontends/flow_editor/index.html (editor de flujo)
       kind: frontend
-    visor_grafo_html:
-      label: Visor de grafo (kgdb)
+    profiling_html:
+      label: frontends/profiling/index.html (perfilado)
       kind: frontend
     twilio_webhook:
       label: WhatsApp / SMS (Webhook)
@@ -73,8 +73,8 @@ data:
     ontological_context_compiler:
       label: Ontological Context Compiler
       kind: backend
-    kb_tools_wrapper:
-      label: kb_tools (wrapper CLI sldb)
+    kb_tools_module:
+      label: kb_agent/tools.py (retrieval SLDB)
       kind: backend
     sldb_cli:
       label: sldb CLI (find / docs show)
@@ -90,21 +90,21 @@ data:
       kind: backend
 
   connections:
-    - from: kb_chat_ui_html
+    - from: chat_ui_html
       to: chat_api
       protocol: fetch /api/chat (HTTP)
+    - from: flow_editor_html
+      to: chat_api
+      protocol: fetch /api/flow (HTTP)
+    - from: profiling_html
+      to: chat_api
+      protocol: fetch /api/profiles (HTTP)
     - from: twilio_webhook
       to: chat_api
       protocol: POST webhook
     - from: chat_api
       to: twilio_webhook
       protocol: envia mensaje (SDK Twilio)
-    - from: visor_wiki_html
-      to: sldb_store
-      protocol: fetch atoms.json (estático)
-    - from: visor_grafo_html
-      to: relational_db
-      protocol: fetch graph (estático)
     - from: chat_api
       to: composicion_sldb
       protocol: compila contexto (Ontologizador)
@@ -118,7 +118,7 @@ data:
       to: ontological_context_compiler
       protocol: delega retrieval
     - from: ontological_context_compiler
-      to: kb_tools_wrapper
+      to: kb_tools_module
       protocol: invoca tools
     - from: agente_conversacional
       to: gemini_llm
@@ -126,7 +126,7 @@ data:
     - from: ontological_context_compiler
       to: gemini_llm
       protocol: LLM
-    - from: kb_tools_wrapper
+    - from: kb_tools_module
       to: sldb_cli
       protocol: subprocess
     - from: sldb_cli

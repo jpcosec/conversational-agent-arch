@@ -15,6 +15,7 @@ class RuleAtom(IndexProxies):
     del Conversador.
     """
 
+    __family__ = "domain"
     __semantics__ = {
         "type": ["knowledge", "rule"],
         "workspace": ["knowledge"],
@@ -27,7 +28,7 @@ atom_type: rule
 tags: ⸢rev•tags⸥
 applies_to: ⸢optrev•applies_to⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

@@ -31,6 +31,12 @@ tests/
   unit/ integration/ e2e/ ui/   # suite (ver "Tests")
 
 kb_agent/                  # Runtime del agente conversacional
+frontends/                 # UIs estáticas + entrypoint HTTP
+  chat/                    #   app.py (factory FastAPI) + server.py (entrypoint) + index.html
+  flow_editor/             #   editor visual del grafo de ConversationStep
+  profiling/               #   viewer de perfiles de usuario (traits)
+  taxonomy/                #   explorador de la taxonomía de la KB
+  viz/                     #   visualizador de diagramas (deskops/spec2viz)
 project.config.yaml        # QUÉ negocio corre: KB, modelo, tools, server, marca
 ```
 
@@ -45,7 +51,8 @@ kb_agent/
 ├── orchestrator.py             # cablea SLDB + KGDB + SQL + LLM (inyectable) + tools
 ├── tools/                      # registry de handlers (declarados en project.config.yaml)
 ├── project_config.py           # carga project.config.yaml (+ overrides por env)
-├── chat_local.py               # CLI local
+├── cli.py                      # CLI local
+├── state_machine.py            # RouterStateMachine (ejecución técnica de turno)
 ├── ontologizador/
 │   ├── sldb_reader.py          # lee SLDB via librería real
 │   ├── kgdb_reader.py          # navega grafo KGDB
@@ -61,10 +68,10 @@ kb_agent/
 
 ```bash
 # chat local (negocio de project.config.yaml; requiere credenciales Gemini/Vertex en .env)
-python -m kb_agent.chat_local
+python -m kb_agent.cli
 
-# servidor HTTP (chat UI, editor de flujo, perfilado, webhook Twilio)
-python -m kb_chat_ui.server          # host/port desde project.config.yaml o HOST/PORT
+# servidor HTTP (chat UI, editor de flujo, taxonomía, perfilado, webhook Twilio)
+python -m frontends.chat.server      # host/port desde project.config.yaml o HOST/PORT
 ```
 
 Cambiar de negocio = editar `project.config.yaml` (`kb_root`, `model`, `tools`, marca) o usar

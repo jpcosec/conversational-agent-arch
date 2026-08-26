@@ -12,6 +12,7 @@ class CapabilityBoundary(IndexProxies):
     y cómo debe comunicarlo.
     """
 
+    __family__ = "self"
     __semantics__ = {
         "type": ["knowledge", "boundary"],
         "workspace": ["knowledge"],
@@ -22,7 +23,7 @@ title: ⸢rev•title⸥
 atom_type: boundary
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

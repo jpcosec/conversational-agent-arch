@@ -1,4 +1,4 @@
-"""API FastAPI (``kb_chat_ui.app.create_app``) sobre el orquestador con LLM fake.
+"""API FastAPI (``frontends.chat.app.create_app``) sobre el orquestador con LLM fake.
 
 Cubre el contrato que consumen las UIs (chat dashboard, flow editor, perfilado)
 y el canal Twilio (firma valida/invalida/no configurado). Sin red.
@@ -13,7 +13,7 @@ from twilio.request_validator import RequestValidator
 
 from kb_agent.project_config import load_project_config
 from kb_agent.tools import load_tool_handlers
-from kb_chat_ui.app import create_app
+from frontends.chat.app import create_app
 from tests.support.fakes import offline_orchestrator
 
 TOKEN = "twilio-test-token"

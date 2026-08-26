@@ -33,6 +33,7 @@ class DomainAtom(IndexProxies):
     horarios de atención, ubicación, identidad del negocio.
     """
 
+    __family__ = "domain"
     __semantics__ = {
         "type": ["knowledge", "domain"],
         "workspace": ["knowledge"],

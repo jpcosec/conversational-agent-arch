@@ -2,6 +2,7 @@
 id: agendar_recordatorio
 title: Tool agendar recordatorio de aplicación
 atom_type: tool
+summary: Agenda un recordatorio semanal de aplicacion de Selfix; requiere dia y hora confirmados.
 tags:
 - self:tools
 - conversation:steps.agendar_recordatorio

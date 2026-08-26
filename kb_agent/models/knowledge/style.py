@@ -12,6 +12,7 @@ class StyleGuide(IndexProxies):
     de respuestas y otras directrices de comunicacion.
     """
 
+    __family__ = "self"
     __semantics__ = {
         "type": ["knowledge", "style"],
         "workspace": ["knowledge"],
@@ -22,7 +23,7 @@ title: ⸢rev•title⸥
 atom_type: style
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Auditable Agent Runtime</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "background":"#051424","surface":"#051424","surface-container-lowest":"#010f1f",
+      "surface-container-low":"#0d1c2d","surface-container":"#122131","surface-container-high":"#1c2b3c",
+      "surface-container-highest":"#273647","surface-variant":"#273647","surface-bright":"#2c3a4c",
+      "primary":"#c3c6d4","secondary":"#adc6ff","secondary-container":"#0566d9","on-secondary-container":"#e6ecff",
+      "tertiary":"#ddb7ff","tertiary-container":"#1b0034","on-surface":"#d4e4fa","on-surface-variant":"#c6c6cc",
+      "outline":"#909096","outline-variant":"#46464c","error":"#ffb4ab"
+    },
+    borderRadius:{ "DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem" },
+    fontFamily:{ "body":["Inter"],"mono":["JetBrains Mono"] }
+  } }
+}
+</script>
+<style>
+  .glow-active{ box-shadow:0 0 15px rgba(5,102,217,.2), inset 0 0 10px rgba(5,102,217,.1); border-color:rgba(5,102,217,.5); }
+  .pulse-dot{ animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.5} }
+  .custom-scrollbar::-webkit-scrollbar{ width:6px }
+  .custom-scrollbar::-webkit-scrollbar-track{ background:transparent }
+  .custom-scrollbar::-webkit-scrollbar-thumb{ background-color:rgba(255,255,255,.1); border-radius:10px }
+  .msym{ font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal; line-height:1; letter-spacing:normal; text-transform:none; display:inline-block; white-space:nowrap; direction:ltr; }
+  .prose-chat p{ margin-bottom:.6rem } .prose-chat h1,.prose-chat h2,.prose-chat h3{ line-height:1.2; margin:.4rem 0 }
+  .prose-chat code{ background:#0d1424; border:1px solid #22304b; padding:1px 5px; border-radius:6px; font-family:'JetBrains Mono'; font-size:.85em }
+  .prose-chat pre{ overflow:auto; background:#0d1424; border:1px solid #22304b; padding:10px; border-radius:10px }
+  .atom-link{ cursor:pointer; color:#9fd5ff; border:1px solid #34527b; background:#122540; border-radius:999px; padding:1px 7px; font-family:'JetBrains Mono'; font-size:12px; text-decoration:none; }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body h-screen overflow-hidden flex flex-col">
+
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-background/80 backdrop-blur-xl border-b border-white/10">
+  <div class="flex items-center gap-2">
+    <span class="msym text-primary text-2xl">hub</span>
+    <h1 id="runtimeTitle" class="text-2xl font-bold text-on-surface tracking-tight">Auditable Agent Runtime</h1>
+  </div>
+  <div class="flex items-center gap-4">
+    <span id="kbLabel" class="text-on-surface-variant font-mono text-xs">KB</span>
+    <div class="flex items-center gap-3">
+      <span id="healthIcon" class="msym text-error text-xl" title="Backend status">cloud_off</span>
+      <span class="msym text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-xl">settings</span>
+      <span class="msym text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-xl">account_circle</span>
+    </div>
+  </div>
+</header>
+
+<div class="flex flex-1 mt-16 h-[calc(100vh-64px)] overflow-hidden">
+
+  <!-- SideNavBar -->
+  <nav class="fixed left-0 top-16 h-[calc(100vh-64px)] flex flex-col p-4 bg-surface-container-low border-r border-white/5 w-64 flex-shrink-0 z-40">
+    <div class="mb-8 px-2">
+      <h2 class="text-2xl font-bold text-on-surface">Workbench</h2>
+      <p class="font-mono text-xs text-on-surface-variant">arch: conversational-agent</p>
+    </div>
+    <div class="text-on-surface-variant font-mono text-[10px] uppercase tracking-wider px-3 mb-2">Herramientas KB</div>
+    <ul class="flex flex-col gap-1">
+      <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all font-mono text-xs" href="/conversation_flow_editor"><span class="msym">account_tree</span>Flow Editor</a></li>
+      <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all font-mono text-xs" href="/taxonomy_explorer"><span class="msym">hub</span>Taxonomía</a></li>
+      <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest hover:text-on-surface transition-all font-mono text-xs" href="/profiling_viewer"><span class="msym">badge</span>Perfilado</a></li>
+    </ul>
+    <div class="mt-auto border-t border-white/5 pt-4">
+      <ul class="flex flex-col gap-1">
+        <li><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-all font-mono text-xs" href="/docs" target="_blank"><span class="msym">menu_book</span>API Docs</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="ml-64 flex-1 flex flex-col md:flex-row h-full overflow-hidden bg-background">
+
+    <!-- Left: Chat Timeline -->
+    <section class="flex-1 border-r border-white/5 flex flex-col overflow-hidden bg-surface">
+      <header class="px-6 pt-6 pb-4 flex justify-between items-center border-b border-white/10">
+        <h2 class="text-2xl text-on-surface flex items-center gap-2"><span class="msym text-primary">forum</span><span id="sessionTitle">Session</span></h2>
+        <span id="sessionBadge" class="font-mono text-xs text-on-surface-variant px-2 py-1 bg-surface-container-high rounded border border-outline-variant">ID: —</span>
+      </header>
+      <div id="messages" class="flex-1 overflow-y-auto custom-scrollbar px-6 py-6 flex flex-col gap-6 relative"></div>
+      <!-- Composer -->
+      <div class="p-4 border-t border-white/10 bg-surface-container-low flex gap-3">
+        <textarea id="input" rows="2" placeholder="Ej: ¿qué pizzas hay? · quiero reservar una mesa"
+          class="flex-1 resize-none bg-surface-container-lowest border border-outline-variant rounded-lg p-3 text-on-surface placeholder:text-on-surface-variant/50 focus:border-secondary focus:ring-0 font-body text-sm"></textarea>
+        <button id="send" class="px-5 rounded-lg bg-secondary-container text-on-secondary-container font-semibold hover:brightness-110 transition disabled:opacity-50 disabled:cursor-wait flex items-center gap-2">
+          <span class="msym text-lg">send</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Right: Turn Inspector -->
+    <section class="w-full md:w-[450px] flex-shrink-0 flex flex-col bg-surface-container-lowest overflow-y-auto custom-scrollbar border-l border-white/5">
+      <header class="p-4 border-b border-white/10 bg-surface-container sticky top-0 z-20 flex justify-between items-center">
+        <h3 class="text-2xl text-on-surface">Turn Inspector</h3>
+        <span id="inspectorClear" class="msym text-on-surface-variant cursor-pointer hover:text-white">close</span>
+      </header>
+      <div id="inspector" class="p-4 flex flex-col gap-6">
+        <div class="text-on-surface-variant text-sm">Selecciona una respuesta del asistente para auditar su turno.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Modal atom -->
+<div id="modalBackdrop" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[60] p-6">
+  <div class="w-[min(900px,100%)] max-h-[85vh] bg-surface-container border border-white/10 rounded-xl flex flex-col">
+    <div class="p-4 border-b border-white/10 flex justify-between items-center">
+      <h4 id="modalTitle" class="text-lg font-semibold text-on-surface">Atom</h4>
+      <button id="modalClose" class="msym text-on-surface-variant hover:text-white">close</button>
+    </div>
+    <div id="modalBody" class="p-4 overflow-auto custom-scrollbar prose-chat text-sm text-on-surface"></div>
+  </div>
+</div>
+
+<script>
+const messagesEl = document.getElementById('messages');
+const inputEl = document.getElementById('input');
+const sendBtn = document.getElementById('send');
+const inspectorEl = document.getElementById('inspector');
+const sessionBadge = document.getElementById('sessionBadge');
+const healthIcon = document.getElementById('healthIcon');
+const kbLabel = document.getElementById('kbLabel');
+const runtimeTitle = document.getElementById('runtimeTitle');
+const sessionTitle = document.getElementById('sessionTitle');
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+
+let sessionId = localStorage.getItem('kb_chat_session') || null;
+let turns = [];
+let selectedTurnId = null;
+let health = { model: '—', status: 'unknown' };
+const atomRegex = /\b(atom-[a-z0-9-]+)\b/g;
+marked.setOptions({ gfm:true, breaks:true });
+
+const esc = (s='') => String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+const enhanceAtoms = (html) => html.replace(atomRegex, '<a class="atom-link" data-atom="$1">$1</a>');
+const atomIds = (ctx) => (ctx?.atom_ids || []);
+
+function openModal(title, html){ modalTitle.textContent=title; modalBody.innerHTML=html; modalBackdrop.classList.remove('hidden'); modalBackdrop.classList.add('flex'); }
+function closeModal(){ modalBackdrop.classList.add('hidden'); modalBackdrop.classList.remove('flex'); }
+
+// ── Chat timeline ────────────────────────────────────────
+function renderTurns(){
+  messagesEl.innerHTML = '<div class="absolute left-[38px] top-6 bottom-6 w-px bg-surface-container-highest z-0"></div>';
+  for(const turn of turns){
+    const selected = turn.turn_id === selectedTurnId;
+    const wrap = document.createElement('div');
+    wrap.className = 'flex flex-col gap-4 relative z-10';
+
+    // user bubble (skip if empty greeting)
+    if(turn.user_message){
+      wrap.innerHTML += `
+        <div class="flex gap-4">
+          <div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 border border-outline-variant mt-1">
+            <span class="msym text-sm text-on-surface-variant">person</span>
+          </div>
+          <div class="flex-1 bg-surface-container-low border border-white/5 rounded-lg p-4 prose-chat text-on-surface/90">${enhanceAtoms(marked.parse(turn.user_message))}</div>
+        </div>`;
+    }
+
+    // assistant bubble
+    const kind = turn.kind || 'nl';
+    const kindColor = kind==='fallback' ? 'text-error' : kind==='tool_call' ? 'text-tertiary' : 'text-secondary';
+    const glow = selected ? 'glow-active' : 'border-white/5';
+    const nAtoms = atomIds(turn.context).length;
+    const nTags = (turn.context?.include_tags || []).length;
+    const pulse = turn.pending
+      ? `<span class="font-mono text-xs ${kindColor} flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary pulse-dot"></span>Reasoning…</span>`
+      : `<span class="font-mono text-xs ${kindColor} flex items-center gap-1"><span class="msym text-[14px]">bolt</span>${esc(kind)}</span>`;
+    wrap.innerHTML += `
+      <div class="flex gap-4">
+        <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 border border-secondary mt-1 shadow-[0_0_10px_rgba(5,102,217,0.3)]">
+          <span class="msym text-sm text-on-secondary-container">smart_toy</span>
+        </div>
+        <div class="flex-1 bg-surface-container-high border rounded-lg p-4 cursor-pointer ${glow}" data-turn-id="${turn.turn_id}">
+          <div class="prose-chat text-on-surface/95">${enhanceAtoms(marked.parse(turn.assistant_message || ''))}</div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center">
+            <div class="flex gap-3">
+              <span class="font-mono text-xs text-primary flex items-center gap-1"><span class="msym text-[14px]">memory</span>${esc(turn.flow_node || 'ctx')}</span>
+              <span class="font-mono text-xs text-tertiary flex items-center gap-1"><span class="msym text-[14px]">data_object</span>Atoms: ${nAtoms}</span>
+              <span class="font-mono text-xs text-on-surface-variant flex items-center gap-1"><span class="msym text-[14px]">sell</span>${nTags}</span>
+            </div>
+            ${pulse}
+          </div>
+        </div>
+      </div>`;
+    messagesEl.appendChild(wrap);
+  }
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+// ── Context Mesa diff (real): compara atoms del turno vs turno previo ──
+function contextDiff(turn){
+  const idx = turns.findIndex(t => t.turn_id === turn.turn_id);
+  const prev = idx > 0 ? turns[idx-1] : null;
+  const cur = new Set(atomIds(turn.context));
+  const before = new Set(prev ? atomIds(prev.context) : []);
+  const items = turn.context?.items || [];
+  const titleOf = (id) => (items.find(i => i.atom_id === id)?.title) || id;
+  const retained = [...cur].filter(id => before.has(id));
+  const added = [...cur].filter(id => !before.has(id));
+  const removed = [...before].filter(id => !cur.has(id));
+  return { retained, added, removed, titleOf, prevItems:(prev?.context?.items||[]) };
+}
+
+function mesaRow(kind, id, title, icon, color, strike=false){
+  return `
+    <div class="flex items-start gap-2 p-2 rounded bg-${color}/10 border-l-2 border-${color}">
+      <span class="msym text-[14px] text-${color} mt-0.5">${icon}</span>
+      <div>
+        <span class="text-${color} opacity-80 block text-[10px] mb-0.5">${kind}</span>
+        <span class="text-on-surface ${strike?'line-through opacity-50':''}" data-atom="${esc(id)}" style="cursor:pointer">${esc(id)} · ${esc(title)}</span>
+      </div>
+    </div>`;
+}
+
+function renderInspector(turn){
+  if(!turn){ inspectorEl.innerHTML = '<div class="text-on-surface-variant text-sm">Selecciona una respuesta del asistente para auditar su turno.</div>'; return; }
+  const ctx = turn.context || {};
+  const kind = turn.kind || 'nl';
+  const diff = contextDiff(turn);
+  const prevItemTitle = (id) => (diff.prevItems.find(i=>i.atom_id===id)?.title) || id;
+
+  const mesaHtml = [
+    ...diff.retained.map(id => mesaRow('RETAINED', id, diff.titleOf(id), 'push_pin', 'secondary')),
+    ...diff.added.map(id => mesaRow('ADDED', id, diff.titleOf(id), 'add', 'emerald-500')),
+    ...diff.removed.map(id => mesaRow('REMOVED', id, prevItemTitle(id), 'remove', 'red-500', true)),
+  ].join('') || '<div class="text-on-surface-variant text-xs">Sin atoms en contexto.</div>';
+
+  // Razonamiento: pasos reales derivados del turno
+  const steps = [];
+  steps.push(['Intent → tipo de turno', kind, 'outline-variant']);
+  if(ctx.tools?.length) steps.push(['Tools disponibles', ctx.tools.map(t=>t.name).join(', '), 'primary']);
+  if(turn.flow_node) steps.push(['Flow node', turn.flow_node, 'primary']);
+  if(turn.system_turn) steps.push(['Tool ejecutada', `${turn.system_turn.tool} · ${turn.system_turn.status}`, 'secondary']);
+  (turn.state_trace||[]).forEach(s => steps.push(['State', s, 'outline-variant']));
+  if(turn.allowed_transitions?.length) steps.push(['Transiciones', turn.allowed_transitions.join(' → '), 'primary']);
+
+  const reasoningHtml = steps.map(([label,val,color],i)=>`
+    <div class="relative">
+      <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-${color} ${i===steps.length-1?'pulse-dot':''}"></div>
+      <span class="text-on-surface-variant"><span class="text-on-surface">${esc(label)}:</span> ${esc(val)}</span>
+    </div>`).join('');
+
+  // Atoms detallados
+  const atomsHtml = (ctx.items||[]).map(it=>`
+    <div class="border border-white/5 rounded-lg p-2 bg-surface-container-low">
+      <div class="flex justify-between items-start gap-2">
+        <span class="text-on-surface text-xs font-semibold">${esc(it.title||it.atom_id)}</span>
+        <span class="msym text-[16px] text-secondary cursor-pointer" data-open-atom="${esc(it.atom_id)}">open_in_new</span>
+      </div>
+      <div class="font-mono text-[10px] text-on-surface-variant mt-1">${esc(it.atom_id)} · ${esc(it.role||'-')}${it.grounds_step?' · <span class="text-secondary">grounds step</span>':''}</div>
+      <div class="flex flex-wrap gap-1 mt-2">${(it.tags||[]).map(t=>`<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">${esc(t)}</span>`).join('')}</div>
+    </div>`).join('') || '<div class="text-on-surface-variant text-xs">Sin atoms.</div>';
+
+  const traits = (turn.traits_after||[]);
+
+  inspectorEl.innerHTML = `
+    <!-- Resumen del Turno -->
+    <div class="bg-surface-container-low border border-white/5 rounded-lg p-4">
+      <h4 class="font-mono text-xs text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2"><span class="msym text-[16px]">receipt_long</span>Resumen del Turno</h4>
+      <div class="grid grid-cols-2 gap-4">
+        <div><p class="text-xs text-on-surface-variant mb-1">Latency</p><p class="font-mono text-sm text-on-surface">${turn.latency_ms!=null?turn.latency_ms+'ms':'—'}</p></div>
+        <div><p class="text-xs text-on-surface-variant mb-1">Tipo de turno</p><p class="font-mono text-sm ${kind==='fallback'?'text-error':kind==='tool_call'?'text-tertiary':'text-secondary'}">${esc(kind)}</p></div>
+        <div class="col-span-2"><p class="text-xs text-on-surface-variant mb-1">Model Route</p><p class="font-mono text-sm text-primary">${esc(health.model||'—')}</p></div>
+        <div class="col-span-2"><p class="text-xs text-on-surface-variant mb-1">Pregunta</p><p class="text-sm text-on-surface">${esc(turn.user_message||'—')}</p></div>
+        ${traits.length?`<div class="col-span-2"><p class="text-xs text-on-surface-variant mb-1">Traits del cliente</p><div class="flex flex-wrap gap-1">${traits.map(t=>`<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">${esc(t)}</span>`).join('')}</div></div>`:''}
+      </div>
+    </div>
+
+    <!-- Mesa de Contexto -->
+    <div class="bg-surface-container-low border border-white/5 rounded-lg p-4">
+      <h4 class="font-mono text-xs text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2"><span class="msym text-[16px]">layers</span>Mesa de Contexto</h4>
+      <div class="flex flex-col gap-2 font-mono text-xs">${mesaHtml}</div>
+    </div>
+
+    <!-- Razonamiento -->
+    <div class="bg-surface-container-low border border-white/5 rounded-lg p-4">
+      <h4 class="font-mono text-xs text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2"><span class="msym text-[16px]">psychology</span>Razonamiento</h4>
+      <div class="relative pl-4 border-l border-white/10 flex flex-col gap-3 font-mono text-xs">${reasoningHtml||'<span class="text-on-surface-variant">sin traza</span>'}</div>
+    </div>
+
+    <!-- Atoms -->
+    <div class="bg-surface-container-low border border-white/5 rounded-lg p-4">
+      <h4 class="font-mono text-xs text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2"><span class="msym text-[16px]">database</span>Atoms del contexto (${atomIds(ctx).length})</h4>
+      <div class="flex flex-col gap-2">${atomsHtml}</div>
+    </div>
+
+    <!-- Agent Pulse -->
+    <div class="bg-surface-container-high border border-white/5 rounded-lg p-4 relative overflow-hidden">
+      <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+      <h4 class="font-mono text-xs text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2"><span class="msym text-[16px]">monitor_heart</span>Agent Pulse</h4>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 rounded-full border-2 ${health.status==='ok'?'border-emerald-500 bg-emerald-500/30':'border-outline-variant'}"></div>
+          <span class="font-mono text-sm text-on-surface">Backend Status</span>
+        </div>
+        <span class="font-mono text-xs bg-surface-container-lowest px-2 py-1 rounded border border-white/10 text-on-surface-variant">${health.status==='ok'?'Online':'Offline'}</span>
+      </div>
+    </div>`;
+}
+
+function selectTurn(turnId){
+  selectedTurnId = turnId;
+  renderTurns();
+  renderInspector(turns.find(t=>t.turn_id===turnId));
+}
+
+async function openAtomModal(atomId){
+  try{
+    const res = await fetch(`/api/atom/${atomId}`);
+    if(!res.ok){ openModal('Atom', '<div class="text-on-surface-variant">No se pudo cargar el atom.</div>'); return; }
+    const a = await res.json();
+    openModal(a.atom_id, `
+      <div class="flex flex-col gap-3">
+        <div><span class="text-on-surface-variant">Título:</span> ${esc(a.title||'')}</div>
+        <div><span class="text-on-surface-variant">Path:</span> <code>${esc(a.path||'')}</code></div>
+        <div><span class="text-on-surface-variant">Tags:</span><div class="flex flex-wrap gap-1 mt-1">${(a.tags||[]).map(t=>`<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">${esc(t)}</span>`).join('')}</div></div>
+        <div class="border-t border-white/10 pt-3">${marked.parse(a.body||'_Sin contenido_')}</div>
+      </div>`);
+  }catch(e){ openModal('Atom', `<div class="text-error">${esc(e.message||e)}</div>`); }
+}
+
+async function sendMessage(){
+  const message = inputEl.value.trim();
+  if(!message) return;
+  inputEl.value='';
+  sendBtn.disabled = true;
+  const ghostId = `ghost-${Date.now()}`;
+  turns.push({ turn_id:ghostId, user_message:message, assistant_message:'_Compilando contexto y respondiendo…_', context:{atom_ids:[],include_tags:[],items:[]}, pending:true });
+  selectedTurnId = ghostId;
+  renderTurns();
+  const t0 = performance.now();
+  try{
+    const res = await fetch('/api/chat',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message, session_id:sessionId}) });
+    const data = await res.json();
+    sessionId = data.session_id;
+    localStorage.setItem('kb_chat_session', sessionId);
+    sessionBadge.textContent = 'ID: ' + sessionId;
+    data.turn.latency_ms = Math.round(performance.now() - t0);
+    turns = turns.filter(t=>t.turn_id!==ghostId);
+    turns.push(data.turn);
+    selectTurn(data.turn.turn_id);
+  }catch(err){
+    turns = turns.filter(t=>t.turn_id!==ghostId);
+    turns.push({ turn_id:`err-${Date.now()}`, user_message:message, assistant_message:`**Error:** ${err.message||err}`, kind:'fallback', context:{atom_ids:[],include_tags:[],items:[]} });
+    renderTurns();
+  }finally{
+    sendBtn.disabled = false;
+    inputEl.focus();
+  }
+}
+
+// events
+sendBtn.onclick = sendMessage;
+inputEl.addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); } });
+modalClose.onclick = closeModal;
+modalBackdrop.addEventListener('click', e=>{ if(e.target===modalBackdrop) closeModal(); });
+document.getElementById('inspectorClear').onclick = ()=>{ selectedTurnId=null; renderTurns(); renderInspector(null); };
+document.addEventListener('click', e=>{
+  const card = e.target.closest('[data-turn-id]');
+  if(card && card.getAttribute('data-turn-id')){ selectTurn(card.getAttribute('data-turn-id')); return; }
+  const atom = e.target.closest('[data-open-atom]');
+  if(atom){ openAtomModal(atom.getAttribute('data-open-atom')); return; }
+  const ref = e.target.closest('[data-atom]');
+  if(ref){ openAtomModal(ref.getAttribute('data-atom')); return; }
+});
+
+// config del negocio + health + greeting (todo desde el server, sin hardcode)
+(async ()=>{
+  let cfg = {};
+  try{
+    cfg = await fetch('/api/config').then(r=>r.json());
+  }catch(e){ /* usa defaults del markup */ }
+  try{
+    const h = await fetch('/api/health').then(r=>r.json());
+    health = h;
+    healthIcon.textContent = 'cloud_done';
+    healthIcon.className = 'msym text-emerald-500 text-xl';
+  }catch(e){
+    healthIcon.textContent = 'cloud_off';
+    healthIcon.className = 'msym text-error text-xl';
+  }
+  // marca del negocio desde config
+  const bizName = cfg.name || 'Agente';
+  if(cfg.runtime_title){ runtimeTitle.textContent = cfg.runtime_title; document.title = cfg.runtime_title + ' · ' + bizName; }
+  kbLabel.textContent = cfg.kb_label || ((health.kb_root||'').split('/').pop() + ' · ' + (health.model||''));
+  sessionTitle.textContent = 'Session: ' + bizName;
+  if(sessionId) sessionBadge.textContent = 'ID: ' + sessionId;
+  turns.push({
+    turn_id:'turn-000', user_message:'',
+    assistant_message: cfg.greeting || ('Hola. Soy el asistente de **'+bizName+'**. ¿En qué te puedo ayudar?'),
+    kind:'nl', context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]}
+  });
+  renderTurns();
+})();
+</script>
+</body></html>

@@ -1,40 +1,44 @@
 documents:
 - name: atom-donpeppe-carta
   path: atoms/atom-donpeppe-carta.md
-  hash_c: 3c4f55a9289cb80595eb4e5d91d0f0dc32981efe71dc37e973497f42c396a3f5
-  hash_d: 27a19ee5d035709876e07f4abe1810ef43f7714e4275557cb327a7a1851d3708
+  hash_c: 7d5b50580a23321a26e8808bb443a9ba1519cfe7b640a39fb3d283d4c645c630
+  hash_d: 80c833ffa400a6d2696c9a53f5b568200b9ba860fb7332bbdee2ad95b791793d
   semantic_tags:
   - conversation:steps.onboarding
   - domain:catalogo
+  - domain:pizzeria
   - system:donpeppe
   - type.knowledge.domain
   - workspace.knowledge
 - name: atom-donpeppe-horarios
   path: atoms/atom-donpeppe-horarios.md
-  hash_c: d41877fe41f337aa015bed6a0c2ad41e01eedf41e9806fb24d20e1dfb17754b7
-  hash_d: 071df719a0b12797d370ed36ba3e4ad67ebf1cff3fffaf48227bb269c14cf46b
+  hash_c: 37da8f1fa2ca0281ce49cb75bbc3407964942d11624cdf4adb12fcd5f1decf99
+  hash_d: 8f7a9909ae9262873901ad74af62b95a7efe49ce77804e264e6c136acf7c44b1
   semantic_tags:
   - conversation:steps.onboarding
   - domain:horarios
+  - domain:pizzeria
   - system:donpeppe
   - type.knowledge.domain
   - workspace.knowledge
 - name: atom-donpeppe-ubicacion
   path: atoms/atom-donpeppe-ubicacion.md
-  hash_c: eab48a91ce12836e64ad834537acdab254ace01ba680a2dfce66bd28516717d0
-  hash_d: b02f7fd487e27a32a4878f8ba9684d1aed8db88c88fd35e4d276448c08e9dda6
+  hash_c: ef264d7789df1a498f52e70d0d686d7385ce1af8d2c04ab758fcef76ad858634
+  hash_d: 68cbd278cd73ea0344927e38b778f03db1a2affcbaf041ebe41a5a90f8a53cd8
   semantic_tags:
   - conversation:steps.onboarding
+  - domain:pizzeria
   - domain:ubicacion
   - system:donpeppe
   - type.knowledge.domain
   - workspace.knowledge
 - name: atom-donpeppe-promos
   path: atoms/atom-donpeppe-promos.md
-  hash_c: e83eea987b28fc28c55925a1909cc63c9ed1755d2fa4a8c4bde2dd4fe26bbaba
-  hash_d: 8162f712b36ac125cf85766d5d0f1f0e3c3abdb84394406abcd149bdcee77e62
+  hash_c: 5b5091422b3a12303701685fc1b172d03fd33c7fb26650a74bf1de07c9e3cd29
+  hash_d: 2c4807854c340567cb2d4f1fdbcd8f611d42893856e9f17f2e87c2b12b5adebc
   semantic_tags:
   - conversation:steps.booking
+  - domain:pizzeria
   - domain:promociones
   - system:donpeppe
   - type.knowledge.domain

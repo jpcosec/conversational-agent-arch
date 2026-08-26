@@ -14,6 +14,7 @@ class ToolAtom(IndexProxies):
     para el LLM en tiempo real.
     """
 
+    __family__ = "self"
     __semantics__ = {
         "type": ["knowledge", "tool"],
         "workspace": ["knowledge"],
@@ -24,7 +25,7 @@ title: ⸢rev•title⸥
 atom_type: tool
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

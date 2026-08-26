@@ -7,7 +7,7 @@ tags:
 - system:laboratorio-chile
 category: behavior
 provenance: null
-summary: null
+summary: Persona con miedo o ansiedad ante la auto-inyeccion; requiere tono calmado, normalizar el temor y ofrecer tecnicas concretas sin minimizar.
 embedding: null
 parent: null
 semantic_anchors: null

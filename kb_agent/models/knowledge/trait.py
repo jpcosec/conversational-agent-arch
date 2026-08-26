@@ -15,6 +15,7 @@ class TraitAtom(IndexProxies):
     mapea texto del usuario a TraitAtom vía Gemini.
     """
 
+    __family__ = "user"
     __semantics__ = {
         "type": ["knowledge", "trait"],
         "workspace": ["knowledge"],
@@ -26,7 +27,7 @@ atom_type: trait
 tags: ⸢rev•tags⸥
 category: ⸢optrev•category⸥
 provenance: ⸢optrev•provenance⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

@@ -3,6 +3,7 @@ id: step-antonia-registro-estado
 title: Registro de estado — como va el tratamiento
 atom_type: step
 kind: obtencion_datos
+summary: Pregunta con empatia como va la semana, registra dosis y estado; deriva a evento adverso si hay sintomas, o avanza a agendar recordatorio si todo va bien.
 tags:
 - conversation:steps.registro_estado
 - system:laboratorio-chile

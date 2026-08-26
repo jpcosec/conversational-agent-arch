@@ -10,13 +10,15 @@ offline los rellena después.
 """
 from __future__ import annotations
 
+from typing import ClassVar
+
 from pydantic import Field
 
 from sldb import StructuredNLDoc
 
 # Bloque de template reutilizable: marcadores de frontmatter para los proxies.
 # Se inserta en el frontmatter de cada modelo, antes del cierre `---`.
-INDEX_PROXY_TEMPLATE = """summary: ⸢optrev•summary⸥
+INDEX_PROXY_TEMPLATE = """summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥"""
@@ -29,11 +31,22 @@ class IndexProxies(StructuredNLDoc):
     heredar de esta clase directamente y obtener los campos.
     """
 
-    summary: str | None = Field(
-        default=None,
+    # Familia semántica raíz que este modelo ocupa en el árbol de tags.
+    # Uno de: "self" | "conversation" | "domain" | "user".
+    # Recupera el origen taxonómico que tenían los átomos originales
+    # (namespace antes del ':'). Se declara por clase, no se deriva en runtime.
+    __family__: ClassVar[str | None] = None
+
+    @classmethod
+    def family(cls) -> str | None:
+        """Rama raíz del árbol de tags que este modelo ocupa."""
+        return cls.__family__
+
+    summary: str = Field(
         description=(
-            "Resumen textual corto (proxy). Permite al Compilador evaluar "
-            "relevancia sin leer el body. Calculado offline por 'knowledge index proxies'."
+            "Resumen textual corto (proxy). OBLIGATORIO. Permite al Compilador "
+            "evaluar relevancia sin leer el body. Lo escribe el creador del atom "
+            "(humano o Reflector), no el pipeline offline."
         ),
     )
     embedding: list[float] | None = Field(

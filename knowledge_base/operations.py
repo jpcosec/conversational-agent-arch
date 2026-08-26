@@ -115,11 +115,19 @@ class KnowledgeOperations:
 
     EMBED_MODEL = "jinaai/jina-embeddings-v2-base-es"  # español, 768 dim
 
-    def index_embeddings(self, model: str | None = None) -> dict[str, Any]:
-        """Calcula embeddings offline para DomainAtom y RuleAtom.
+    # Campos de texto por modelo, en orden de preferencia tras 'summary'.
+    _EMBED_TEXT_FIELDS = (
+        "summary", "answer", "statement", "description",
+        "instructions", "restriction", "fallback_message",
+        "tone", "goal", "title",
+    )
 
-        Lee cada atom, computa embedding del summary (o answer si no hay summary),
-        y escribe el vector al frontmatter. ``model`` reemplaza ``EMBED_MODEL``.
+    def index_embeddings(self, model: str | None = None) -> dict[str, Any]:
+        """Calcula embeddings offline para TODOS los modelos de la KB.
+
+        Lee cada atom, computa embedding del summary (o el primer campo de texto
+        disponible según el modelo) y escribe el vector al frontmatter.
+        ``model`` reemplaza ``EMBED_MODEL``.
         """
         if model:
             self.EMBED_MODEL = model
@@ -128,12 +136,16 @@ class KnowledgeOperations:
 
         records = self._find_records()
         stats = {"processed": 0, "skipped": 0, "errors": 0}
+        vector: list[float] = []
+
+        # Resolver model_cls por nombre de clase (case-insensitive).
+        by_class = {cls.__name__.lower(): cls for cls in ALL_MODELS}
 
         for r in records:
             if r.kind != "doc":
                 continue
-            model_name = (r.model_name or "").lower()
-            if model_name not in ("domainatom", "ruleatom"):
+            model_cls = by_class.get((r.model_name or "").lower())
+            if model_cls is None:
                 continue
             if not r.path:
                 stats["skipped"] += 1
@@ -144,15 +156,19 @@ class KnowledgeOperations:
                 stats["skipped"] += 1
                 continue
 
-            model_cls = DomainAtom if model_name == "domainatom" else RuleAtom
             try:
                 payload = extract_model_data(model_cls, doc_path.read_text(encoding="utf-8"))
             except Exception:
                 stats["errors"] += 1
                 continue
 
-            # Texto a embedder: summary > answer > title
-            text = payload.get("summary") or payload.get("answer") or payload.get("title", "")
+            # Texto a embedder: summary primero, luego el primer campo con contenido.
+            text = ""
+            for field in self._EMBED_TEXT_FIELDS:
+                val = payload.get(field)
+                if isinstance(val, str) and val.strip():
+                    text = val.strip()
+                    break
             if not text:
                 stats["skipped"] += 1
                 continue

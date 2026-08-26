@@ -3,6 +3,7 @@ id: step-antonia-despedida
 title: Despedida
 atom_type: step
 kind: interaccion_simple
+summary: Cierra la conversacion con calidez, recuerda que puede escribir sus dudas y refuerza el acompañamiento; paso terminal sin nuevas preguntas.
 tags:
 - conversation:steps.despedida
 - system:laboratorio-chile

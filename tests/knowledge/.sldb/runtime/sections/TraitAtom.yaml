@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: cliente-vegetariano
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 785
+    line_end: 786
   - path: cliente-vegetariano/description
     title: Description
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: description
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
 - doc_name: trait-sin-gluten
   sections:
   - path: cliente-cel-aco-sin-gluten
@@ -64,8 +64,8 @@ documents:
     - workspace.knowledge
     slug: cliente-cel-aco-sin-gluten
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 785
+    line_end: 786
   - path: cliente-cel-aco-sin-gluten/description
     title: Description
     breadcrumbs:
@@ -87,5 +87,5 @@ documents:
     - workspace.knowledge
     slug: description
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788

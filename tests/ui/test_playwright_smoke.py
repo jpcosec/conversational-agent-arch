@@ -16,7 +16,7 @@ import pytest
 
 from kb_agent.project_config import load_project_config
 from kb_agent.tools import load_tool_handlers
-from kb_chat_ui.app import create_app
+from frontends.chat.app import create_app
 from tests.support.fakes import offline_orchestrator
 
 pytestmark = pytest.mark.ui

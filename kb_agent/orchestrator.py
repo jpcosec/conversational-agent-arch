@@ -38,7 +38,7 @@ from kb_agent.pii.scrubber import scrub
 from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, load_project_config
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
 from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
-from kb_chat_ui.state_machine import RouterStateMachine
+from kb_agent.state_machine import RouterStateMachine
 
 #: Canal cuando el external_id no trae prefijo reconocible ("<canal>:<id>").
 UNKNOWN_CHANNEL = "unknown"

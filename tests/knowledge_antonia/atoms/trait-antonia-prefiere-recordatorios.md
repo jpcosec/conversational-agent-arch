@@ -7,7 +7,7 @@ tags:
 - system:laboratorio-chile
 category: preference
 provenance: null
-summary: null
+summary: Persona que valora los recordatorios de aplicacion; priorizar el paso de agendar-recordatorio y confirmar horarios preferidos.
 embedding: null
 parent: null
 semantic_anchors: null

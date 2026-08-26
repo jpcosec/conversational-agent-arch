@@ -688,3 +688,215 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
+- doc_name: atom-modelos-de-conocimiento-tipados
+  sections:
+  - path: modelos-de-conocimiento-tipados
+    title: Modelos de Conocimiento Tipados
+    breadcrumbs:
+    - Modelos de Conocimiento Tipados
+    about:
+    - Modelos de Conocimiento Tipados
+    - modelos de conocimiento tipados
+    - domain:self.architecture.backend
+    - layer:document-model
+    - system:sldb
+    - topic:knowledge-models
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:document-model
+    - system:sldb
+    - topic:knowledge-models
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: modelos-de-conocimiento-tipados
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: modelos-de-conocimiento-tipados/answer
+    title: Answer
+    breadcrumbs:
+    - Modelos de Conocimiento Tipados
+    - Answer
+    about:
+    - Modelos de Conocimiento Tipados
+    - modelos de conocimiento tipados
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:document-model
+    - system:sldb
+    - topic:knowledge-models
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:document-model
+    - system:sldb
+    - topic:knowledge-models
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-grafo-de-flujo-conversacional
+  sections:
+  - path: grafo-de-flujo-conversacional
+    title: Grafo de Flujo Conversacional
+    breadcrumbs:
+    - Grafo de Flujo Conversacional
+    about:
+    - Grafo de Flujo Conversacional
+    - grafo de flujo conversacional
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:conversation-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:conversation-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: grafo-de-flujo-conversacional
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: grafo-de-flujo-conversacional/answer
+    title: Answer
+    breadcrumbs:
+    - Grafo de Flujo Conversacional
+    - Answer
+    about:
+    - Grafo de Flujo Conversacional
+    - grafo de flujo conversacional
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:conversation-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:conversation-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-capa-frontend-del-runtime
+  sections:
+  - path: capa-frontend-del-runtime
+    title: Capa Frontend del Runtime
+    breadcrumbs:
+    - Capa Frontend del Runtime
+    about:
+    - Capa Frontend del Runtime
+    - capa frontend del runtime
+    - domain:self.architecture.frontend
+    - layer:frontend
+    - system:kb-agent
+    - topic:ui
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.frontend
+    - layer:frontend
+    - system:kb-agent
+    - topic:ui
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: capa-frontend-del-runtime
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: capa-frontend-del-runtime/answer
+    title: Answer
+    breadcrumbs:
+    - Capa Frontend del Runtime
+    - Answer
+    about:
+    - Capa Frontend del Runtime
+    - capa frontend del runtime
+    - Answer
+    - answer
+    - domain:self.architecture.frontend
+    - layer:frontend
+    - system:kb-agent
+    - topic:ui
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.frontend
+    - layer:frontend
+    - system:kb-agent
+    - topic:ui
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-knowledge-base-cli
+  sections:
+  - path: knowledge-base-cli
+    title: Knowledge Base CLI
+    breadcrumbs:
+    - Knowledge Base CLI
+    about:
+    - Knowledge Base CLI
+    - knowledge base cli
+    - domain:self.architecture.backend
+    - layer:cli
+    - system:kb-agent
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:cli
+    - system:kb-agent
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: knowledge-base-cli
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: knowledge-base-cli/answer
+    title: Answer
+    breadcrumbs:
+    - Knowledge Base CLI
+    - Answer
+    about:
+    - Knowledge Base CLI
+    - knowledge base cli
+    - Answer
+    - answer
+    - domain:self.architecture.backend
+    - layer:cli
+    - system:kb-agent
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - domain:self.architecture.backend
+    - layer:cli
+    - system:kb-agent
+    - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16

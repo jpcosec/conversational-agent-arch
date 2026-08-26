@@ -1,9 +1,0 @@
-stateDiagram-v2
-    [*] --> idle
-    idle --> enviando : sendMessage (Enter/click)
-    enviando --> turno_activo : respuesta /api/chat
-    turno_activo --> idle : listo para nuevo input
-    turno_activo --> inspeccionando : click en respuesta assistant
-    inspeccionando --> modal : click atom-link / reasoning
-    modal --> inspeccionando : cerrar modal
-    inspeccionando --> turno_activo : deseleccionar

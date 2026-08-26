@@ -176,11 +176,14 @@ class ReflectorAtomGenerator:
         title = f"{atom_label}: {pattern.canonical_text.strip()}"
         tags = [SOURCE_TAG, _topic_tag_for_type(pattern.atom_type)]
         validate_atom_tag_namespaces(tags, default_registry_path(self.kb_root))
+        answer = pattern.canonical_text.strip()
+        summary = answer if len(answer) <= 160 else answer[:157].rstrip() + "..."
         return {
             "id": f"atom-{_slugify(title)}",
             "title": title,
             "five_wh_one_plus": "what",
-            "answer": pattern.canonical_text.strip(),
+            "answer": answer,
+            "summary": summary,
             "tags": tags,
             "provenance": "kb_agent/reflector/generator.py",
         }

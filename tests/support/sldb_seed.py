@@ -85,6 +85,7 @@ def atom_markdown(atom: dict[str, Any]) -> str:
     tipo = str(atom["type"])
     tags = "\n".join(f"- {tag}" for tag in atom.get("tags", []))
     lines = ["---", f"id: {atom['id']}", f"title: {atom['title']}"]
+    lines.append(f"summary: {atom.get('summary') or atom['title']}")
     if atom.get("five_wh"):
         lines.append(f"five_wh_one_plus: {atom['five_wh']}")
     lines.append(f"atom_type: {tipo}")

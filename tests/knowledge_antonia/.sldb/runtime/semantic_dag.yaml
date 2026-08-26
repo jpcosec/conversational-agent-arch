@@ -4,9 +4,6 @@ nodes:
 - id: conversation:steps.agendar_recordatorio
   parents:
   - conversation:steps
-- id: conversation:steps.booking
-  parents:
-  - conversation:steps
 - id: conversation:steps.despedida
   parents:
   - conversation:steps

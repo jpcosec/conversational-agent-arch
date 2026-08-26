@@ -148,7 +148,7 @@ def test_context_aggregates_step_traits_self(kb_store: Path, seeded_db: str) -> 
 def test_propose_writes_proposed_atom_in_isolated_copy(kb_store: Path, tmp_path: Path) -> None:
     isolated = tmp_path / "kb_propose"
     shutil.copytree(kb_store, isolated)
-    result = _ops(isolated).propose("domain", "id: atom-nueva\ntitle: Nueva\nfive_wh_one_plus: what\nanswer: Contenido\ntags:\n- domain:test\n")
+    result = _ops(isolated).propose("domain", "id: atom-nueva\ntitle: Nueva\nsummary: Nueva atom de dominio para test.\nfive_wh_one_plus: what\nanswer: Contenido\ntags:\n- domain:test\n")
     assert (result["status"], result["source"]) == ("proposed", "reflector")
     content = Path(result["path"]).read_text(encoding="utf-8")
     assert "status:proposed" in content and "source:reflector" in content

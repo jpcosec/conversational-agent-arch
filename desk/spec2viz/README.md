@@ -19,10 +19,11 @@ desk/spec2viz/
 ## Backend vs Frontend
 
 - **Backend** = Python: agentes ADK (`kb_agent`), pipeline Ontologizador/Conversador, wrapper CLI `sldb`.
-- **Frontend** = HTML/JS estático sin build: `kb_chat_ui/index.html` (chat + inspector) y `kb_agent_ui/index.html` (visor de átomos).
+- **Frontend** = HTML/JS estático sin build bajo `frontends/`: tres UIs servidas por el mismo FastAPI (`frontends/chat/server.py`): `frontends/chat/index.html` (chat + inspector), `frontends/flow_editor/index.html` (editor de flujo) y `frontends/profiling/index.html` (perfilado).
 - La frontera se ve en `deployment.backend-frontend.yml` (`artifacts.kind: frontend|backend`).
 
-## Vistas (15)
+## Vistas (10)
+Registro activo: `catalog.yml`.
 
 ### Global
 | Spec | Tipo |
@@ -32,13 +33,19 @@ desk/spec2viz/
 ### Backend · semántico
 | Spec | Tipo |
 |---|---|
-| `backend/component.backend.yml` | component |
-| `backend/sequence.chat-turn.yml` | sequence |
-| `backend/sequence.agent-retrieval.yml` | sequence |
-| `backend/state.chat-session.yml` | state |
+| `backend/component.agent-ecosystem.yml` | component |
+| `backend/state.conversation-flow.yml` | state |
+| `backend/sequence.extended-turn.yml` | sequence |
+| `backend/component.knowledge-ontology.yml` | component |
+
+### Ejemplos aplicados
+| Spec | Tipo |
+|---|---|
+| `backend/component.example-kb-scheduling.yml` | component |
+| `backend/activity.example-flow-scheduling.yml` | activity |
 
 ### Backend · AST real (código)
-Generados con `spec2viz diagram generate` (módulos/clases/imports reales).
+Generado con `spec2viz diagram generate` (módulos/clases/imports reales).
 
 | Spec | Fuente |
 |---|---|
@@ -49,7 +56,6 @@ Generados con `spec2viz diagram generate` (módulos/clases/imports reales).
 |---|---|
 | `frontend/component.frontend.yml` | component |
 | `frontend/state.chat-ui.yml` | state |
-| `frontend/activity.atom-viewer.yml` | activity |
 
 ## Regenerar
 
@@ -62,7 +68,7 @@ Nota: no usar `--package` (filtra por ruta y da 0 nodos aquí).
 ### Validar + renderizar
 ```bash
 spec2viz diagram validate desk/spec2viz/**/*.yml
-spec2viz diagram render desk/spec2viz/backend/component.backend.yml --backend mermaid --out desk/spec2viz/build
+spec2viz diagram render desk/spec2viz/backend/component.agent-ecosystem.yml --backend mermaid --out desk/spec2viz/build
 ```
 Renderers: `plantuml, mermaid, vega, d2, antonia-html, tree, graph, json`.
 

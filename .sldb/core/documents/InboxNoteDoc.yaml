@@ -6,3 +6,10 @@ documents:
   semantic_tags:
   - type.desk.inbox-note
   - workspace.desk.inbox
+- name: 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente.md
+  hash_c: 19a403a5fccad0fae8e33186a95ef02b09093da514ae3bfc1860ffcee367d077
+  hash_d: 66d2117ba6c86d42fe228e1557031ce2fded28864bc0e3e17b4c3c7730a43856
+  semantic_tags:
+  - type.desk.inbox-note
+  - workspace.desk.inbox

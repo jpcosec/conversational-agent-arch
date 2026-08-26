@@ -12,9 +12,6 @@ tags:
   conversation:steps.agendar_recordatorio:
   - step-antonia-agendar-recordatorio
   - tool-antonia-agendar-recordatorio
-  conversation:steps.booking:
-  - atom-antonia-aplicacion
-  - atom-antonia-recompra
   conversation:steps.despedida:
   - step-antonia-despedida
   conversation:steps.evento_adverso:
@@ -24,6 +21,8 @@ tags:
   - atom-antonia-primeras-semanas
   - step-antonia-onboarding
   conversation:steps.recompra:
+  - atom-antonia-aplicacion
+  - atom-antonia-recompra
   - step-antonia-recompra
   conversation:steps.registro_estado:
   - step-antonia-registro-estado
@@ -164,7 +163,7 @@ documents:
     model: DomainAtom
     path: atoms/atom-antonia-aplicacion.md
     tags:
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:tratamiento
     - system:laboratorio-chile
     - type.knowledge.domain
@@ -182,7 +181,7 @@ documents:
     model: DomainAtom
     path: atoms/atom-antonia-recompra.md
     tags:
-    - conversation:steps.booking
+    - conversation:steps.recompra
     - domain:logistica
     - system:laboratorio-chile
     - type.knowledge.domain
@@ -254,35 +253,11 @@ documents:
     - type.knowledge.trait
     - user:traits.prefiere_recordatorios
     - workspace.knowledge
-  step-antonia-saludo:
-    model: ConversationStep
-    path: atoms/step-antonia-saludo.md
-    tags:
-    - conversation:steps.saludo
-    - system:laboratorio-chile
-    - type.knowledge.step
-    - workspace.knowledge
   step-antonia-onboarding:
     model: ConversationStep
     path: atoms/step-antonia-onboarding.md
     tags:
     - conversation:steps.onboarding
-    - system:laboratorio-chile
-    - type.knowledge.step
-    - workspace.knowledge
-  step-antonia-registro-estado:
-    model: ConversationStep
-    path: atoms/step-antonia-registro-estado.md
-    tags:
-    - conversation:steps.registro_estado
-    - system:laboratorio-chile
-    - type.knowledge.step
-    - workspace.knowledge
-  step-antonia-evento-adverso:
-    model: ConversationStep
-    path: atoms/step-antonia-evento-adverso.md
-    tags:
-    - conversation:steps.evento_adverso
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
@@ -294,6 +269,22 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
+  step-antonia-despedida:
+    model: ConversationStep
+    path: atoms/step-antonia-despedida.md
+    tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-evento-adverso:
+    model: ConversationStep
+    path: atoms/step-antonia-evento-adverso.md
+    tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
   step-antonia-recompra:
     model: ConversationStep
     path: atoms/step-antonia-recompra.md
@@ -302,11 +293,19 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge
-  step-antonia-despedida:
+  step-antonia-registro-estado:
     model: ConversationStep
-    path: atoms/step-antonia-despedida.md
+    path: atoms/step-antonia-registro-estado.md
     tags:
-    - conversation:steps.despedida
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+  step-antonia-saludo:
+    model: ConversationStep
+    path: atoms/step-antonia-saludo.md
+    tags:
+    - conversation:steps.saludo
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge

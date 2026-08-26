@@ -1,8 +1,8 @@
 documents:
 - name: style-antonia
   path: atoms/style-antonia.md
-  hash_c: 10054a5ef3128b52639b19eec4525d78015083d375fac5fb2e48b26e9c3e6c17
-  hash_d: 43c508f69021a67466ef673ee77c8f5199cc7b6a7ecf105563b241ff735b1e2e
+  hash_c: 0cb03579f590ee1abff8c7f4eea3d9c3f1a2898a951b7d1afa6e6fa53a2c3ff6
+  hash_d: ef0f57d029f9c0fe3222a4f2b748c0052c86cdba4511f6444de0597169fef71e
   semantic_tags:
   - channel:whatsapp
   - self:estilo

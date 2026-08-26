@@ -1,5 +1,5 @@
 id: ast-kb-agent
-title: kb_agent · AST real (código)
+title: ast-kb-agent AST Architecture
 type: component
 version: '1.0'
 data:
@@ -7,28 +7,1003 @@ data:
     module_agent:
       label: agent
       kind: module
-    module_kb_tools:
-      label: kb_tools
+    module_cli:
+      label: cli
       kind: module
-    module_google_adk_agents:
-      label: agents
-      kind: external
+    module_models_knowledge_boundary:
+      label: models.knowledge.boundary
+      kind: module
+    class_models_knowledge_boundary_CapabilityBoundary:
+      label: CapabilityBoundary
+      kind: class
+    module_models_knowledge_domain:
+      label: models.knowledge.domain
+      kind: module
+    class_models_knowledge_domain_AtomQuestion:
+      label: AtomQuestion
+      kind: class
+    class_models_knowledge_domain_DomainAtom:
+      label: DomainAtom
+      kind: class
+    module_models_knowledge_fallback:
+      label: models.knowledge.fallback
+      kind: module
+    class_models_knowledge_fallback_FallbackRule:
+      label: FallbackRule
+      kind: class
+    module_models_knowledge_index_proxies:
+      label: models.knowledge.index_proxies
+      kind: module
+    class_models_knowledge_index_proxies_IndexProxies:
+      label: IndexProxies
+      kind: class
+    module_models_knowledge_rule:
+      label: models.knowledge.rule
+      kind: module
+    class_models_knowledge_rule_RuleAtom:
+      label: RuleAtom
+      kind: class
+    module_models_knowledge_self_declaration:
+      label: models.knowledge.self_declaration
+      kind: module
+    class_models_knowledge_self_declaration_SelfDeclaration:
+      label: SelfDeclaration
+      kind: class
+    module_models_knowledge_step:
+      label: models.knowledge.step
+      kind: module
+    class_models_knowledge_step_StepKind:
+      label: StepKind
+      kind: class
+    class_models_knowledge_step_ConversationStep:
+      label: ConversationStep
+      kind: class
+    module_models_knowledge_strategy:
+      label: models.knowledge.strategy
+      kind: module
+    class_models_knowledge_strategy_StrategyRule:
+      label: StrategyRule
+      kind: class
+    module_models_knowledge_style:
+      label: models.knowledge.style
+      kind: module
+    class_models_knowledge_style_StyleGuide:
+      label: StyleGuide
+      kind: class
+    module_models_knowledge_tool:
+      label: models.knowledge.tool
+      kind: module
+    class_models_knowledge_tool_ToolAtom:
+      label: ToolAtom
+      kind: class
+    module_models_knowledge_trait:
+      label: models.knowledge.trait
+      kind: module
+    class_models_knowledge_trait_TraitAtom:
+      label: TraitAtom
+      kind: class
+    module_models_sql_identity:
+      label: models_sql.identity
+      kind: module
+    class_models_sql_identity_Base:
+      label: Base
+      kind: class
+    class_models_sql_identity_Users:
+      label: Users
+      kind: class
+    class_models_sql_identity_UserTraits:
+      label: UserTraits
+      kind: class
+    module_models_sql_reservas:
+      label: models_sql.reservas
+      kind: module
+    class_models_sql_reservas_Reservas:
+      label: Reservas
+      kind: class
+    module_models_sql_session:
+      label: models_sql.session
+      kind: module
+    class_models_sql_session_SessionNode:
+      label: SessionNode
+      kind: class
+    class_models_sql_session_SessionState:
+      label: SessionState
+      kind: class
+    class_models_sql_session_ChatHistory:
+      label: ChatHistory
+      kind: class
+    module_ontologizador_compiled_document:
+      label: ontologizador.compiled_document
+      kind: module
+    class_ontologizador_compiled_document_CompiledDocument:
+      label: CompiledDocument
+      kind: class
+    module_ontologizador_compiler:
+      label: ontologizador.compiler
+      kind: module
+    class_ontologizador_compiler_SessionStateLike:
+      label: SessionStateLike
+      kind: class
+    class_ontologizador_compiler_ContextCompiler:
+      label: ContextCompiler
+      kind: class
+    module_ontologizador_kgdb_reader:
+      label: ontologizador.kgdb_reader
+      kind: module
+    class_ontologizador_kgdb_reader_KGDBReader:
+      label: KGDBReader
+      kind: class
+    module_ontologizador_sldb_reader:
+      label: ontologizador.sldb_reader
+      kind: module
+    class_ontologizador_sldb_reader_SLDBReader:
+      label: SLDBReader
+      kind: class
+    module_orchestrator:
+      label: orchestrator
+      kind: module
+    class_orchestrator_GeminiConversador:
+      label: GeminiConversador
+      kind: class
+    class_orchestrator_GeminiTraitMapper:
+      label: GeminiTraitMapper
+      kind: class
+    class_orchestrator_Orchestrator:
+      label: Orchestrator
+      kind: class
+    module_perfilador_extractor:
+      label: perfilador.extractor
+      kind: module
+    class_perfilador_extractor_TraitCandidate:
+      label: TraitCandidate
+      kind: class
+    class_perfilador_extractor_TraitMatch:
+      label: TraitMatch
+      kind: class
+    class_perfilador_extractor_StructuredTraitMapper:
+      label: StructuredTraitMapper
+      kind: class
+    class_perfilador_extractor_TraitExtractor:
+      label: TraitExtractor
+      kind: class
+    module_perfilador_listener:
+      label: perfilador.listener
+      kind: module
+    class_perfilador_listener_TurnClosedEvent:
+      label: TurnClosedEvent
+      kind: class
+    class_perfilador_listener_EventBus:
+      label: EventBus
+      kind: class
+    class_perfilador_listener_InProcessEventBus:
+      label: InProcessEventBus
+      kind: class
+    class_perfilador_listener_AsyncProfilingListener:
+      label: AsyncProfilingListener
+      kind: class
+    module_pii_scrubber:
+      label: pii.scrubber
+      kind: module
+    class_pii_scrubber__PlaceholderRegistry:
+      label: _PlaceholderRegistry
+      kind: class
+    module_reflector_generator:
+      label: reflector.generator
+      kind: module
+    class_reflector_generator_RecurrentPattern:
+      label: RecurrentPattern
+      kind: class
+    class_reflector_generator_GeneratedAtom:
+      label: GeneratedAtom
+      kind: class
+    class_reflector_generator_ReflectorAtomGenerator:
+      label: ReflectorAtomGenerator
+      kind: class
+    module_reflector_reader:
+      label: reflector.reader
+      kind: module
+    class_reflector_reader_ReflectorHistoryRow:
+      label: ReflectorHistoryRow
+      kind: class
+    class_reflector_reader_ReaderCheckpoint:
+      label: ReaderCheckpoint
+      kind: class
+    class_reflector_reader_CheckpointStore:
+      label: CheckpointStore
+      kind: class
+    class_reflector_reader_InMemoryCheckpointStore:
+      label: InMemoryCheckpointStore
+      kind: class
+    class_reflector_reader_ReflectorBatchReaderJob:
+      label: ReflectorBatchReaderJob
+      kind: class
+    module_state_machine:
+      label: state_machine
+      kind: module
+    class_state_machine_RouterNode:
+      label: RouterNode
+      kind: class
+    class_state_machine_SessionState:
+      label: SessionState
+      kind: class
+    class_state_machine_CronTriggerPayload:
+      label: CronTriggerPayload
+      kind: class
+    class_state_machine_RouterTurnResult:
+      label: RouterTurnResult
+      kind: class
+    class_state_machine_RouterStateMachine:
+      label: RouterStateMachine
+      kind: class
+    module_tools:
+      label: tools
+      kind: module
     module___future__:
       label: ''
+      kind: external
+    module_collections_abc:
+      label: abc
+      kind: external
+    module_textwrap:
+      label: textwrap
+      kind: external
+    module_typing:
+      label: typing
+      kind: external
+    module_google_adk_agents:
+      label: agents
       kind: external
     module_pathlib:
       label: pathlib
       kind: external
+    module_dotenv:
+      label: dotenv
+      kind: external
+    module_kb_agent_agent:
+      label: agent
+      kind: external
+    module_kb_agent_orchestrator:
+      label: orchestrator
+      kind: external
+    module_pydantic:
+      label: pydantic
+      kind: external
+    module_sldb:
+      label: sldb
+      kind: external
+    module_index_proxies:
+      label: proxies
+      kind: external
+    module_domain:
+      label: domain
+      kind: external
+    module_enum:
+      label: enum
+      kind: external
+    module_datetime:
+      label: datetime
+      kind: external
+    module_sqlalchemy:
+      label: sqlalchemy
+      kind: external
+    module_sqlalchemy_orm:
+      label: orm
+      kind: external
+    module_identity:
+      label: identity
+      kind: external
+    module_dataclasses:
+      label: dataclasses
+      kind: external
+    module_kb_agent_models_sql_identity:
+      label: identity
+      kind: external
+    module_compiled_document:
+      label: document
+      kind: external
+    module_kgdb_reader:
+      label: reader
+      kind: external
+    module_sldb_reader:
+      label: reader
+      kind: external
+    module_kgdb_graph:
+      label: graph
+      kind: external
+    module_kgdb_graph_utils:
+      label: utils
+      kind: external
+    module_kgdb_ingest_sldb:
+      label: sldb
+      kind: external
+    module_kgdb_query_neighborhood:
+      label: neighborhood
+      kind: external
+    module_sldb_store_io:
+      label: io
+      kind: external
+    module_sldb_cli_commands_find:
+      label: find
+      kind: external
+    module_google:
+      label: google
+      kind: external
+    module_kb_agent_models_sql_reservas:
+      label: reservas
+      kind: external
+    module_kb_agent_models_sql_session:
+      label: session
+      kind: external
+    module_kb_agent_ontologizador_compiler:
+      label: compiler
+      kind: external
+    module_kb_agent_ontologizador_kgdb_reader:
+      label: reader
+      kind: external
+    module_kb_agent_ontologizador_sldb_reader:
+      label: reader
+      kind: external
+    module_kb_agent_perfilador_extractor:
+      label: extractor
+      kind: external
+    module_kb_agent_perfilador_listener:
+      label: listener
+      kind: external
+    module_kb_agent_pii_scrubber:
+      label: scrubber
+      kind: external
+    module_kb_agent_reflector:
+      label: reflector
+      kind: external
+    module_kb_agent_state_machine:
+      label: machine
+      kind: external
+    module_abc:
+      label: abc
+      kind: external
+    module_collections:
+      label: collections
+      kind: external
+    module_deskops_atom_tags:
+      label: tags
+      kind: external
+    module_kb_agent_reflector_reader:
+      label: reader
+      kind: external
   edges:
+  - from: module_agent
+    to: module___future__
+    relation: imports
+  - from: module_agent
+    to: module_collections_abc
+    relation: imports
+  - from: module_agent
+    to: module_textwrap
+    relation: imports
+  - from: module_agent
+    to: module_typing
+    relation: imports
   - from: module_agent
     to: module_google_adk_agents
     relation: imports
   - from: module_agent
-    to: module_kb_tools
+    to: module_tools
     relation: imports
-  - from: module_kb_tools
+  - from: module_cli
     to: module___future__
     relation: imports
-  - from: module_kb_tools
+  - from: module_cli
+    to: module_pathlib
+    relation: imports
+  - from: module_cli
+    to: module_dotenv
+    relation: imports
+  - from: module_cli
+    to: module_kb_agent_agent
+    relation: imports
+  - from: module_cli
+    to: module_kb_agent_orchestrator
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: class_models_knowledge_boundary_CapabilityBoundary
+    relation: defines
+  - from: module_models_knowledge_boundary
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: class_models_knowledge_domain_AtomQuestion
+    relation: defines
+  - from: module_models_knowledge_domain
+    to: class_models_knowledge_domain_DomainAtom
+    relation: defines
+  - from: module_models_knowledge_domain
+    to: module_enum
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: class_models_knowledge_fallback_FallbackRule
+    relation: defines
+  - from: module_models_knowledge_fallback
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: class_models_knowledge_index_proxies_IndexProxies
+    relation: defines
+  - from: module_models_knowledge_index_proxies
+    to: module___future__
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: class_models_knowledge_rule_RuleAtom
+    relation: defines
+  - from: module_models_knowledge_rule
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: class_models_knowledge_self_declaration_SelfDeclaration
+    relation: defines
+  - from: module_models_knowledge_self_declaration
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_step
+    to: class_models_knowledge_step_StepKind
+    relation: defines
+  - from: module_models_knowledge_step
+    to: class_models_knowledge_step_ConversationStep
+    relation: defines
+  - from: module_models_knowledge_step
+    to: module_enum
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: class_models_knowledge_strategy_StrategyRule
+    relation: defines
+  - from: module_models_knowledge_strategy
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_style
+    to: class_models_knowledge_style_StyleGuide
+    relation: defines
+  - from: module_models_knowledge_style
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_style
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_style
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_style
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: class_models_knowledge_tool_ToolAtom
+    relation: defines
+  - from: module_models_knowledge_tool
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: class_models_knowledge_trait_TraitAtom
+    relation: defines
+  - from: module_models_knowledge_trait
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_domain
+    relation: imports
+  - from: module_models_sql_identity
+    to: class_models_sql_identity_Base
+    relation: defines
+  - from: module_models_sql_identity
+    to: class_models_sql_identity_Users
+    relation: defines
+  - from: module_models_sql_identity
+    to: class_models_sql_identity_UserTraits
+    relation: defines
+  - from: module_models_sql_identity
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_identity
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_identity
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_identity
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_reservas
+    to: class_models_sql_reservas_Reservas
+    relation: defines
+  - from: module_models_sql_reservas
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_identity
+    relation: imports
+  - from: module_models_sql_session
+    to: class_models_sql_session_SessionNode
+    relation: defines
+  - from: module_models_sql_session
+    to: class_models_sql_session_SessionState
+    relation: defines
+  - from: module_models_sql_session
+    to: class_models_sql_session_ChatHistory
+    relation: defines
+  - from: module_models_sql_session
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_session
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_session
+    to: module_enum
+    relation: imports
+  - from: module_models_sql_session
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_session
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_session
+    to: module_identity
+    relation: imports
+  - from: module_ontologizador_compiled_document
+    to: class_ontologizador_compiled_document_CompiledDocument
+    relation: defines
+  - from: module_ontologizador_compiled_document
+    to: module___future__
+    relation: imports
+  - from: module_ontologizador_compiled_document
+    to: module_dataclasses
+    relation: imports
+  - from: module_ontologizador_compiled_document
+    to: module_typing
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: class_ontologizador_compiler_SessionStateLike
+    relation: defines
+  - from: module_ontologizador_compiler
+    to: class_ontologizador_compiler_ContextCompiler
+    relation: defines
+  - from: module_ontologizador_compiler
+    to: module___future__
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_dataclasses
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_typing
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_compiled_document
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_kgdb_reader
+    relation: imports
+  - from: module_ontologizador_compiler
+    to: module_sldb_reader
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: class_ontologizador_kgdb_reader_KGDBReader
+    relation: defines
+  - from: module_ontologizador_kgdb_reader
+    to: module___future__
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_pathlib
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_typing
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_kgdb_graph
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_kgdb_graph_utils
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_kgdb_ingest_sldb
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_kgdb_query_neighborhood
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_sldb_store_io
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_sldb_store_io
+    relation: imports
+  - from: module_ontologizador_kgdb_reader
+    to: module_sldb_store_io
+    relation: imports
+  - from: module_ontologizador_sldb_reader
+    to: class_ontologizador_sldb_reader_SLDBReader
+    relation: defines
+  - from: module_ontologizador_sldb_reader
+    to: module___future__
+    relation: imports
+  - from: module_ontologizador_sldb_reader
+    to: module_pathlib
+    relation: imports
+  - from: module_ontologizador_sldb_reader
+    to: module_typing
+    relation: imports
+  - from: module_ontologizador_sldb_reader
+    to: module_sldb_cli_commands_find
+    relation: imports
+  - from: module_orchestrator
+    to: class_orchestrator_GeminiConversador
+    relation: defines
+  - from: module_orchestrator
+    to: class_orchestrator_GeminiTraitMapper
+    relation: defines
+  - from: module_orchestrator
+    to: class_orchestrator_Orchestrator
+    relation: defines
+  - from: module_orchestrator
+    to: module___future__
+    relation: imports
+  - from: module_orchestrator
+    to: module_datetime
+    relation: imports
+  - from: module_orchestrator
+    to: module_pathlib
+    relation: imports
+  - from: module_orchestrator
+    to: module_typing
+    relation: imports
+  - from: module_orchestrator
+    to: module_google
+    relation: imports
+  - from: module_orchestrator
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_orchestrator
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_agent
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_reservas
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_ontologizador_compiler
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_ontologizador_kgdb_reader
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_ontologizador_sldb_reader
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_perfilador_extractor
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_perfilador_listener
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_pii_scrubber
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_reflector
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_state_machine
+    relation: imports
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_TraitCandidate
+    relation: defines
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_TraitMatch
+    relation: defines
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_StructuredTraitMapper
+    relation: defines
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_TraitExtractor
+    relation: defines
+  - from: module_perfilador_extractor
+    to: module___future__
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_collections_abc
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_dataclasses
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_textwrap
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_typing
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_kb_agent_ontologizador_sldb_reader
+    relation: imports
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_TurnClosedEvent
+    relation: defines
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_EventBus
+    relation: defines
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_InProcessEventBus
+    relation: defines
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_AsyncProfilingListener
+    relation: defines
+  - from: module_perfilador_listener
+    to: module___future__
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_abc
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_collections_abc
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_dataclasses
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_typing
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_kb_agent_pii_scrubber
+    relation: imports
+  - from: module_pii_scrubber
+    to: class_pii_scrubber__PlaceholderRegistry
+    relation: defines
+  - from: module_pii_scrubber
+    to: module___future__
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_collections_abc
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_reflector_generator
+    to: class_reflector_generator_RecurrentPattern
+    relation: defines
+  - from: module_reflector_generator
+    to: class_reflector_generator_GeneratedAtom
+    relation: defines
+  - from: module_reflector_generator
+    to: class_reflector_generator_ReflectorAtomGenerator
+    relation: defines
+  - from: module_reflector_generator
+    to: module___future__
+    relation: imports
+  - from: module_reflector_generator
+    to: module_collections
+    relation: imports
+  - from: module_reflector_generator
+    to: module_dataclasses
+    relation: imports
+  - from: module_reflector_generator
+    to: module_pathlib
+    relation: imports
+  - from: module_reflector_generator
+    to: module_typing
+    relation: imports
+  - from: module_reflector_generator
+    to: module_deskops_atom_tags
+    relation: imports
+  - from: module_reflector_generator
+    to: module_kb_agent_ontologizador_sldb_reader
+    relation: imports
+  - from: module_reflector_generator
+    to: module_kb_agent_reflector_reader
+    relation: imports
+  - from: module_reflector_reader
+    to: class_reflector_reader_ReflectorHistoryRow
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_ReaderCheckpoint
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_CheckpointStore
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_InMemoryCheckpointStore
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_ReflectorBatchReaderJob
+    relation: defines
+  - from: module_reflector_reader
+    to: module___future__
+    relation: imports
+  - from: module_reflector_reader
+    to: module_collections_abc
+    relation: imports
+  - from: module_reflector_reader
+    to: module_dataclasses
+    relation: imports
+  - from: module_reflector_reader
+    to: module_datetime
+    relation: imports
+  - from: module_reflector_reader
+    to: module_typing
+    relation: imports
+  - from: module_reflector_reader
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_reflector_reader
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_reflector_reader
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_state_machine
+    to: class_state_machine_RouterNode
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_SessionState
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_CronTriggerPayload
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_RouterTurnResult
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_RouterStateMachine
+    relation: defines
+  - from: module_state_machine
+    to: module___future__
+    relation: imports
+  - from: module_state_machine
+    to: module_dataclasses
+    relation: imports
+  - from: module_state_machine
+    to: module_enum
+    relation: imports
+  - from: module_state_machine
+    to: module_typing
+    relation: imports
+  - from: module_tools
+    to: module___future__
+    relation: imports
+  - from: module_tools
     to: module_pathlib
     relation: imports

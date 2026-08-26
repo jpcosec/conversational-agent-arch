@@ -3,6 +3,7 @@ id: step-antonia-recompra
 title: Seguimiento de recompra y receta
 atom_type: step
 kind: interaccion_simple
+summary: Revisa el stock restante, recuerda la recompra o renovacion de receta y prepara los controles medicos antes de derivar a la despedida.
 tags:
 - conversation:steps.recompra
 - system:laboratorio-chile

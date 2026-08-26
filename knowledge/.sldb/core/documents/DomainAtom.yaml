@@ -1,1 +1,56 @@
-documents: []
+documents:
+- name: atom-domain-atom
+  path: atoms/atom-domain-atom.md
+  hash_c: f6a81ccf554fb457c5c2ebeb233747106945e022f9c14d39ae54f1e7d7fd590b
+  hash_d: 65e9f875cba33e9dc6d655ff4effa858d55c32c996471fbafcf0eb4ade9c7816
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:ontology
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-rule-atom
+  path: atoms/atom-rule-atom.md
+  hash_c: 3f9c16260f59160190265526e9b7bc4b893b60e512c3d95c59e57e72e4ae1837
+  hash_d: 1a2ed76b20ccd86c44fd4aae10a22803b1600e24a6916622bdc41de20abc7e61
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:rules
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-tool-atom
+  path: atoms/atom-tool-atom.md
+  hash_c: 3f4770f3ebf47aa638b241e52f17c99813396dcc304e9a5c04aa97ba5a2640f2
+  hash_d: 34ca5be2f194143281eb87dffa43f7453c45b047070d06c6be9a89c980d82c3c
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:tool-calling
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-trait-atom
+  path: atoms/atom-trait-atom.md
+  hash_c: 87f2c9e4e9848c57e10e9da0a361b71e2f42b4fd32b8a8160c33e473e8818f92
+  hash_d: 5fff4aa903d8007458c3623a3043e6993779fe2d7c3928368ab579aebeb4de55
+  semantic_tags:
+  - domain:standards.taxonomy.atoms
+  - layer:document-model
+  - system:sldb
+  - topic:profiling
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-sldb-base-conocimiento-semantica
+  path: atoms/atom-sldb-base-conocimiento-semantica.md
+  hash_c: 9b3478710c326bd08185ec92a6c661c37d9e48c245fa4eb154d8246752dc2d02
+  hash_d: 7ebd631b6473974e0e238907d8b8ff0112c06448f322464a727aa2ccc939bf37
+  semantic_tags:
+  - domain:external_libs.sldb
+  - layer:persistence
+  - system:sldb
+  - topic:ontology
+  - type.knowledge.domain
+  - workspace.knowledge

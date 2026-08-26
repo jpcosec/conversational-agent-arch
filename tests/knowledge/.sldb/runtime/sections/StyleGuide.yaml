@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: estilo-conversacional-don-peppe
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 785
+    line_end: 786
   - path: estilo-conversacional-don-peppe/tone
     title: Tone
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: tone
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 787
+    line_end: 788
   - path: estilo-conversacional-don-peppe/language-register
     title: Language Register
     breadcrumbs:
@@ -71,8 +71,8 @@ documents:
     - workspace.knowledge
     slug: language-register
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 791
+    line_end: 792
   - path: estilo-conversacional-don-peppe/phrase-preferences
     title: Phrase Preferences
     breadcrumbs:
@@ -96,8 +96,8 @@ documents:
     - workspace.knowledge
     slug: phrase-preferences
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 795
+    line_end: 796
   - path: estilo-conversacional-don-peppe/length-guidelines
     title: Length Guidelines
     breadcrumbs:
@@ -121,5 +121,5 @@ documents:
     - workspace.knowledge
     slug: length-guidelines
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 799
+    line_end: 800

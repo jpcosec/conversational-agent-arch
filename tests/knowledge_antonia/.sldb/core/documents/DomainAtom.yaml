@@ -1,8 +1,8 @@
 documents:
 - name: atom-antonia-bienvenida
   path: atoms/atom-antonia-bienvenida.md
-  hash_c: aca31caa9a144637ccc036364dcbc7cac5a23abbf158f24a14c8492979ea33ed
-  hash_d: af3f1369a2c9e165a9f61fdaadf1dc314126e266f85f405f1fd81fa4e4987d33
+  hash_c: 3d3fffd71c0a06ad708efd64b4f95c8082d8547ff6eb9f815258500a17964fcf
+  hash_d: ee348c080931d64378210ec203108685c17e0a046bcd75ebc088074384eee12e
   semantic_tags:
   - conversation:steps.onboarding
   - domain:programa
@@ -11,18 +11,18 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-aplicacion
   path: atoms/atom-antonia-aplicacion.md
-  hash_c: 37c25d34ea2d00e3f5895c626fe154afce3c1a5ee71276d7bf677baa8da7eac5
-  hash_d: 04963b478b15a97069969a666ca24047b0e68122f1a74979322bcbb8c0c614e0
+  hash_c: 5f461dda448303761e01ec73e8206b5b78a4b57a0b36c0f6dce22b93d64a5a4a
+  hash_d: cf166a4e10d00bc03d4781800d7d3b548f52c65db9be3d3a1bb0a9cbbd2751b6
   semantic_tags:
-  - conversation:steps.booking
+  - conversation:steps.recompra
   - domain:tratamiento
   - system:laboratorio-chile
   - type.knowledge.domain
   - workspace.knowledge
 - name: atom-antonia-primeras-semanas
   path: atoms/atom-antonia-primeras-semanas.md
-  hash_c: 62ccfdd3a9d614d999a7543e9ef17d390e2f919ad5a71a424152e73528af7a42
-  hash_d: 620dda83ef4f5b9fdde5e9bd25e2521dad785630474ce78c66282dd6da40ba24
+  hash_c: f74bb7f037cf4bea36445a5073412fe741c37d2566e1e52856bffe99e93389d1
+  hash_d: 23146629e712d4447d08b6f6ab683bc9dad4c4274da1a8953bdc1952f317bf77
   semantic_tags:
   - conversation:steps.onboarding
   - domain:tratamiento
@@ -31,10 +31,10 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-recompra
   path: atoms/atom-antonia-recompra.md
-  hash_c: 9dfdba47eca542e715eff7fd05e7bec4b9eb32a0e271425fea1547af371c01a3
-  hash_d: 9b9cf8b3d27906350e5cadaf54c8c15e2ff967965a7bf6dc94055888dcf2458d
+  hash_c: 31bc485ee0687d2eeeea0b2c19ffdfac31edc955f1e95aec22cff76b07083e95
+  hash_d: dab7b4e6512ff97f54b36086fba058556fcd55c42ce4d8573fa7f1ef079828ea
   semantic_tags:
-  - conversation:steps.booking
+  - conversation:steps.recompra
   - domain:logistica
   - system:laboratorio-chile
   - type.knowledge.domain

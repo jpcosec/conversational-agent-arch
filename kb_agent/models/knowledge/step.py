@@ -29,6 +29,7 @@ class ConversationStep(IndexProxies):
     puede transicionar, y qué átomos groundean este step.
     """
 
+    __family__ = "conversation"
     __semantics__ = {
         "type": ["knowledge", "step"],
         "workspace": ["knowledge"],
@@ -40,7 +41,7 @@ atom_type: step
 kind: ⸢rev•kind⸥
 tags: ⸢rev•tags⸥
 domain_ref: ⸢optrev•domain_ref⸥
-summary: ⸢optrev•summary⸥
+summary: ⸢rev•summary⸥
 embedding: ⸢optrev•embedding⸥
 parent: ⸢optrev•parent⸥
 semantic_anchors: ⸢optrev•semantic_anchors⸥

@@ -2,7 +2,7 @@ import logging
 
 import pytest
 
-from kb_chat_ui.state_machine import DEBOUNCE_MS, TOOL_TIMEOUT_MS, CronTriggerPayload, RouterNode, RouterStateMachine
+from kb_agent.state_machine import DEBOUNCE_MS, TOOL_TIMEOUT_MS, CronTriggerPayload, RouterNode, RouterStateMachine
 
 
 def test_user_turn_flows_idle_eval_draft_idle():

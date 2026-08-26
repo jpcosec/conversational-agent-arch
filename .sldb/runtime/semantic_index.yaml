@@ -4,11 +4,16 @@ tags:
   - atom-api-gateway-y-state-router
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
+  - atom-grafo-de-flujo-conversacional
+  - atom-knowledge-base-cli
+  - atom-modelos-de-conocimiento-tipados
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-reflector-batch
   - atom-trigger-sintetico-cron
   - atom-turno-de-sistema-system-turn
+  domain:self.architecture.frontend:
+  - atom-capa-frontend-del-runtime
   domain:self.architecture.integration:
   - atom-apis-externas-integracion
   domain:self.data.persistence:
@@ -16,8 +21,13 @@ tags:
   - atom-sql-capa-identidad-y-estado
   domain:standards.privacy:
   - atom-aislamiento-estricto-de-pii
+  layer:cli:
+  - atom-knowledge-base-cli
   layer:document-model:
+  - atom-modelos-de-conocimiento-tipados
   - atom-sql-capa-identidad-y-estado
+  layer:frontend:
+  - atom-capa-frontend-del-runtime
   layer:persistence:
   - atom-aislamiento-estricto-de-pii
   - atom-historial-de-conversacion-sin-pii
@@ -28,6 +38,7 @@ tags:
   - atom-apis-externas-integracion
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
+  - atom-grafo-de-flujo-conversacional
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-trigger-sintetico-cron
@@ -38,12 +49,17 @@ tags:
   - atom-agente-conversador
   - atom-api-gateway-y-state-router
   - atom-apis-externas-integracion
+  - atom-capa-frontend-del-runtime
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
+  - atom-grafo-de-flujo-conversacional
+  - atom-knowledge-base-cli
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-reflector-batch
   - atom-turno-de-sistema-system-turn
+  system:sldb:
+  - atom-modelos-de-conocimiento-tipados
   system:sql:
   - atom-aislamiento-estricto-de-pii
   - atom-historial-de-conversacion-sin-pii
@@ -52,12 +68,16 @@ tags:
   - atom-reflector-batch
   topic:context:
   - atom-contexto-compilado
+  topic:conversation-flow:
+  - atom-grafo-de-flujo-conversacional
   topic:generation:
   - atom-agente-conversador
   topic:history:
   - atom-historial-de-conversacion-sin-pii
   topic:identity:
   - atom-sql-capa-identidad-y-estado
+  topic:knowledge-models:
+  - atom-modelos-de-conocimiento-tipados
   topic:pii:
   - atom-aislamiento-estricto-de-pii
   topic:proactivity:
@@ -65,6 +85,7 @@ tags:
   topic:profiling:
   - atom-perfilador-asincrono
   topic:retrieval:
+  - atom-knowledge-base-cli
   - atom-ontologizador-context-compiler
   topic:routing:
   - atom-api-gateway-y-state-router
@@ -72,16 +93,23 @@ tags:
   topic:tool-calling:
   - atom-apis-externas-integracion
   - atom-turno-de-sistema-system-turn
+  topic:ui:
+  - atom-capa-frontend-del-runtime
   type.desk.inbox-note:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
+  - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
   type.knowledge.atom:
   - atom-agente-conversador
   - atom-aislamiento-estricto-de-pii
   - atom-api-gateway-y-state-router
   - atom-apis-externas-integracion
+  - atom-capa-frontend-del-runtime
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
+  - atom-grafo-de-flujo-conversacional
   - atom-historial-de-conversacion-sin-pii
+  - atom-knowledge-base-cli
+  - atom-modelos-de-conocimiento-tipados
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-reflector-batch
@@ -93,9 +121,13 @@ tags:
   - atom-aislamiento-estricto-de-pii
   - atom-api-gateway-y-state-router
   - atom-apis-externas-integracion
+  - atom-capa-frontend-del-runtime
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
+  - atom-grafo-de-flujo-conversacional
   - atom-historial-de-conversacion-sin-pii
+  - atom-knowledge-base-cli
+  - atom-modelos-de-conocimiento-tipados
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-reflector-batch
@@ -104,10 +136,17 @@ tags:
   - atom-turno-de-sistema-system-turn
   workspace.desk.inbox:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
+  - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
 documents:
   20260825-020103-suggestion-ritual-zero-context-subagent-stress-test:
     model: InboxNoteDoc
     path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260825-020103-suggestion-ritual-zero-context-subagent-stress-test.md
+    tags:
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+  20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente:
+    model: InboxNoteDoc
+    path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente.md
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox
@@ -239,5 +278,45 @@ documents:
     - layer:persistence
     - system:sql
     - topic:history
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-modelos-de-conocimiento-tipados:
+    model: AtomDoc
+    path: desk/atoms/atom-modelos-de-conocimiento-tipados.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:document-model
+    - system:sldb
+    - topic:knowledge-models
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-grafo-de-flujo-conversacional:
+    model: AtomDoc
+    path: desk/atoms/atom-grafo-de-flujo-conversacional.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:runtime
+    - system:kb-agent
+    - topic:conversation-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-capa-frontend-del-runtime:
+    model: AtomDoc
+    path: desk/atoms/atom-capa-frontend-del-runtime.md
+    tags:
+    - domain:self.architecture.frontend
+    - layer:frontend
+    - system:kb-agent
+    - topic:ui
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-knowledge-base-cli:
+    model: AtomDoc
+    path: desk/atoms/atom-knowledge-base-cli.md
+    tags:
+    - domain:self.architecture.backend
+    - layer:cli
+    - system:kb-agent
+    - topic:retrieval
     - type.knowledge.atom
     - workspace.desk.atoms
