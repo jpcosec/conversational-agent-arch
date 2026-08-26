@@ -1,12 +1,46 @@
 ---
-id: handoff-knowledge-org
-title: Organización automática de átomos en la KB
-status: open
+id: task-organizaci-n-autom-tica-de-tomos-en-la-kb
+status: active
+summary: ''
 tags:
-- handoff
-- knowledge
-- sldb
+- workspace:desk
+- artifact:task
+- source:drawer
+routine: routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+current_node: checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+history: []
+references:
+- desk/drawer/tasks/handoff-knowledge-org.md
+depends_on: []
+pills: []
+files: []
+checklists:
+- checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+- checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+- checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+task_type: ''
+inherits_from: []
+inherit_acceptance_context: false
+atoms: []
 ---
+
+# Organización automática de átomos en la KB
+
+## Rationale
+
+_Explain why this task exists or the business driver behind it._
+
+Not provided.
+
+## Goal
+
+_Describe the concrete result this task must produce._
+
+Promote deferred work from handoff-knowledge-org.md.
+
+## Scope
+
+_State what is in scope and what is out of scope._
 
 ## Problema
 
@@ -136,3 +170,21 @@ def derive_path(kb_root: Path, atom_id: str, tags: list[str]) -> Path:
 - Tags excluidos de la ruta: `type.*`, `workspace.*`, `source:*`
 - Tags de ejemplo en `tests/knowledge/` (Don Peppe) y `knowledge/` (Antonia)
 - CLI existente en `knowledge_base/` — agregar comando `organize`
+
+## Implementation Path
+
+_Outline the expected implementation route or affected surface._
+
+Promoted from desk/drawer/tasks/handoff-knowledge-org.md.
+
+## Validation
+
+_List the checks required before this task can close._
+
+- pytest
+
+## Done When
+
+_Name the observable condition that makes the task complete._
+
+Promoted work is completed, validated, and closed with a commit.

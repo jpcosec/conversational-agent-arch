@@ -38,6 +38,12 @@ nodes:
 - id: type.knowledge.atom
   parents:
   - type.knowledge
+- id: type.workflow
+  parents:
+  - type
+- id: type.workflow.pill
+  parents:
+  - type.workflow
 - id: workspace
   parents: []
 - id: workspace.desk

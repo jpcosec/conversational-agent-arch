@@ -1,1 +1,17 @@
-documents: []
+documents:
+- name: pill-maquina-de-estados-pausa-en-tool-calling
+  path: desk/drawer/pills/pill-maquina-de-estados-pausa-en-tool-calling.md
+  hash_c: 57caa22ee5b037be8b3a6c5f551b441f56785e799108860d9294ccc9264438cd
+  hash_d: e22ccfc2bf0cafc4c47a5b54b1b7f113a2b3b45a3bba722c6684a3ffad3e9842
+  semantic_tags:
+  - rule:state-machine
+  - type.workflow.pill
+  - workspace.desk
+- name: pill-conversador-jamas-alucina-sin-contexto
+  path: desk/drawer/pills/pill-conversador-jamas-alucina-sin-contexto.md
+  hash_c: f28f93687a8090eee3cede143b3b89b6300be376af9e02acdb1d0d21ddc7b5fa
+  hash_d: 35b74be70f609d6a7a996dd3c6a411176e6e7d2f0a03cebbcc5e413abe48e758
+  semantic_tags:
+  - rule:execution
+  - type.workflow.pill
+  - workspace.desk

@@ -43,6 +43,10 @@ tags:
   - atom-perfilador-asincrono
   - atom-trigger-sintetico-cron
   - atom-turno-de-sistema-system-turn
+  rule:execution:
+  - pill-conversador-jamas-alucina-sin-contexto
+  rule:state-machine:
+  - pill-maquina-de-estados-pausa-en-tool-calling
   system:cron:
   - atom-trigger-sintetico-cron
   system:kb-agent:
@@ -116,6 +120,12 @@ tags:
   - atom-sql-capa-identidad-y-estado
   - atom-trigger-sintetico-cron
   - atom-turno-de-sistema-system-turn
+  type.workflow.pill:
+  - pill-conversador-jamas-alucina-sin-contexto
+  - pill-maquina-de-estados-pausa-en-tool-calling
+  workspace.desk:
+  - pill-conversador-jamas-alucina-sin-contexto
+  - pill-maquina-de-estados-pausa-en-tool-calling
   workspace.desk.atoms:
   - atom-agente-conversador
   - atom-aislamiento-estricto-de-pii
@@ -138,6 +148,20 @@ tags:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
   - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
 documents:
+  pill-maquina-de-estados-pausa-en-tool-calling:
+    model: PillDoc
+    path: desk/drawer/pills/pill-maquina-de-estados-pausa-en-tool-calling.md
+    tags:
+    - rule:state-machine
+    - type.workflow.pill
+    - workspace.desk
+  pill-conversador-jamas-alucina-sin-contexto:
+    model: PillDoc
+    path: desk/drawer/pills/pill-conversador-jamas-alucina-sin-contexto.md
+    tags:
+    - rule:execution
+    - type.workflow.pill
+    - workspace.desk
   20260825-020103-suggestion-ritual-zero-context-subagent-stress-test:
     model: InboxNoteDoc
     path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260825-020103-suggestion-ritual-zero-context-subagent-stress-test.md
