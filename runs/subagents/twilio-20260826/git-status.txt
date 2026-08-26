@@ -1,0 +1,11 @@
+## conversational-agent-arch...origin/conversational-agent-arch [ahead 33]
+ M .deskops.log
+ M desk/tasks/task-conectar-el-runtime-a-twilio-whatsapp-sms.md
+ M kb_chat_ui/server.py
+ M runs/e2e/assistant-scrub-check.json
+ M runs/e2e/persistence-check.json
+ M runs/e2e/reflector-run.json
+ M runs/e2e/sessionstate-recovery.json
+ M runs/e2e/state-trace.json
+?? runs/subagents/twilio-20260826/
+?? tests/e2e/test_twilio_webhook.py

@@ -30,25 +30,30 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 load_dotenv(PROJECT_ROOT / ".env")
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
+from twilio.request_validator import RequestValidator
+from twilio.twiml.messaging_response import MessagingResponse
 
-from kb_agent.orchestrator import MODEL, Orchestrator
+from kb_agent.orchestrator import Orchestrator
+from kb_agent.project_config import load_project_config
 
-EDITOR_DIR = PROJECT_ROOT / "conversation_flow_editor"
-PROFILING_DIR = PROJECT_ROOT / "profiling_viewer"
-TAXONOMY_DIR = PROJECT_ROOT / "taxonomy_explorer"
-# Store del que el editor lee los ConversationStep (deshardcodeable via env).
-FLOW_KB_ROOT = os.getenv("FLOW_KB_ROOT", "tests/knowledge_antonia")
-# DB SQL con los perfiles de usuario (UserTraits). Default: seed de demo.
-PROFILING_DB = os.getenv("PROFILING_DB", str(PROJECT_ROOT / "runs" / "profiling-demo.sqlite"))
+EDITOR_DIR = PROJECT_ROOT / "frontends" / "flow_editor"
+PROFILING_DIR = PROJECT_ROOT / "frontends" / "profiling"
+TAXONOMY_DIR = PROJECT_ROOT / "frontends" / "taxonomy"
+
+# Config del proyecto/negocio activo. Fuente unica: project.config.yaml
+# (+ overrides por entorno). Cambiar de negocio = editar ese archivo.
+CFG = load_project_config()
+FLOW_KB_ROOT = str(CFG.flow_kb_root)
+PROFILING_DB = str(CFG.profiling_db)
+MODEL = CFG.model
 
 # ── configuracion ────────────────────────────────────────────
-# KB_ROOT puede venir de env (deshardcodeo). Default: KB Antonia (PSP Selfix).
-KB_ROOT = Path(os.getenv("KB_ROOT", str(PROJECT_ROOT / "tests" / "knowledge_antonia")))
-DB_PATH = PROJECT_ROOT / "runs" / "ui-chat.sqlite"
+KB_ROOT = CFG.kb_root
+DB_PATH = CFG.chat_db
 
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
@@ -136,6 +141,23 @@ def chat(req: ChatRequest) -> ChatResponse:
     return ChatResponse(session_id=session_id, turn=_to_ui_turn(session_id, raw))
 
 
+@app.post("/webhooks/twilio")
+async def twilio_inbound(request: Request) -> Response:
+    form = {key: value for key, value in (await request.form()).items()}
+    validator = RequestValidator(os.environ["TWILIO_AUTH_TOKEN"])
+    signature = request.headers.get("X-Twilio-Signature", "")
+    if not validator.validate(str(request.url), form, signature):
+        raise HTTPException(status_code=403, detail="invalid twilio signature")
+
+    result = orchestrator.handle_turn(
+        external_id=form.get("From", ""),
+        message=(form.get("Body", "") or "").strip(),
+    )
+    twiml = MessagingResponse()
+    twiml.message(result.get("reply_text") or result.get("reply") or "")
+    return Response(str(twiml), media_type="application/xml")
+
+
 @app.get("/api/atom/{atom_id}")
 def get_atom(atom_id: str) -> dict:
     doc = orchestrator.reader.get_doc(atom_id)
@@ -149,6 +171,12 @@ def get_atom(atom_id: str) -> dict:
         "five_wh_one_plus": doc.get("five_wh_one_plus"),
         "path": doc.get("path"),
     }
+
+
+@app.get("/api/config")
+def config() -> JSONResponse:
+    """Config publica del negocio activo (marca, greeting, modelo) para las UIs."""
+    return JSONResponse(CFG.to_public_dict())
 
 
 @app.get("/")

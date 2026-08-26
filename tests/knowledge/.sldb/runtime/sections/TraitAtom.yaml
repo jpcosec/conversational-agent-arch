@@ -1,50 +1,5 @@
 documents:
-- doc_name: atom-trait-sin-gluten
-  sections:
-  - path: cliente-cel-aco-sin-gluten
-    title: "Cliente cel\xEDaco / sin gluten"
-    breadcrumbs:
-    - "Cliente cel\xEDaco / sin gluten"
-    about:
-    - "Cliente cel\xEDaco / sin gluten"
-    - cliente cel aco sin gluten
-    - system:donpeppe
-    - type.knowledge.trait
-    - user:traits.celiaco
-    - workspace.knowledge
-    semantic_tags:
-    - system:donpeppe
-    - type.knowledge.trait
-    - user:traits.celiaco
-    - workspace.knowledge
-    slug: cliente-cel-aco-sin-gluten
-    level: 1
-    line_start: 12
-    line_end: 13
-  - path: cliente-cel-aco-sin-gluten/description
-    title: Description
-    breadcrumbs:
-    - "Cliente cel\xEDaco / sin gluten"
-    - Description
-    about:
-    - "Cliente cel\xEDaco / sin gluten"
-    - cliente cel aco sin gluten
-    - Description
-    - description
-    - system:donpeppe
-    - type.knowledge.trait
-    - user:traits.celiaco
-    - workspace.knowledge
-    semantic_tags:
-    - system:donpeppe
-    - type.knowledge.trait
-    - user:traits.celiaco
-    - workspace.knowledge
-    slug: description
-    level: 2
-    line_start: 14
-    line_end: 15
-- doc_name: atom-trait-vegetariano
+- doc_name: trait-vegetariano
   sections:
   - path: cliente-vegetariano
     title: Cliente vegetariano
@@ -84,6 +39,51 @@ documents:
     - system:donpeppe
     - type.knowledge.trait
     - user:traits.vegetariano
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: trait-sin-gluten
+  sections:
+  - path: cliente-cel-aco-sin-gluten
+    title: "Cliente cel\xEDaco / sin gluten"
+    breadcrumbs:
+    - "Cliente cel\xEDaco / sin gluten"
+    about:
+    - "Cliente cel\xEDaco / sin gluten"
+    - cliente cel aco sin gluten
+    - system:donpeppe
+    - type.knowledge.trait
+    - user:traits.celiaco
+    - workspace.knowledge
+    semantic_tags:
+    - system:donpeppe
+    - type.knowledge.trait
+    - user:traits.celiaco
+    - workspace.knowledge
+    slug: cliente-cel-aco-sin-gluten
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: cliente-cel-aco-sin-gluten/description
+    title: Description
+    breadcrumbs:
+    - "Cliente cel\xEDaco / sin gluten"
+    - Description
+    about:
+    - "Cliente cel\xEDaco / sin gluten"
+    - cliente cel aco sin gluten
+    - Description
+    - description
+    - system:donpeppe
+    - type.knowledge.trait
+    - user:traits.celiaco
+    - workspace.knowledge
+    semantic_tags:
+    - system:donpeppe
+    - type.knowledge.trait
+    - user:traits.celiaco
     - workspace.knowledge
     slug: description
     level: 2

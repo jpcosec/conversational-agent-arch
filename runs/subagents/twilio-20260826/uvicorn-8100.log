@@ -1,0 +1,21 @@
+INFO:     Started server process [581760]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8100 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58342 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58350 - "GET /api/config HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET /api/config HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET /api/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "POST /api/chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET /conversation_flow_editor HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET /api/flow HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58464 - "GET /api/flow HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET /profiling_viewer HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET /api/config HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58358 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58464 - "GET /api/profiles HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [581760]
