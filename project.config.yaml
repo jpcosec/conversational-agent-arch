@@ -5,16 +5,23 @@
 # ni en las UIs. Cambiar de negocio = cambiar este archivo (o la env PROJECT_CONFIG).
 #
 # Cada valor admite override por variable de entorno (ver kb_agent/project_config.py):
-#   KB_ROOT, FLOW_KB_ROOT, PROFILING_DB, CHAT_DB, GEMINI_MODEL
+#   KB_ROOT, PROFILING_DB, CHAT_DB, GEMINI_MODEL, PROJECT_CONFIG
 
 project:
   # Identidad del negocio
   name: "Don Peppe"                 # nombre visible en las UIs
   slug: donpeppe                    # identificador corto (sin espacios)
 
-  # Rutas de datos (una KB = un negocio: kb_root y flow_kb_root deben coincidir)
-  kb_root: tests/knowledge          # store SLDB del negocio (atoms tipados)
-  flow_kb_root: tests/knowledge     # store que lee el editor de flujo (mismo negocio)
+  # KB del negocio (una KB = un negocio; el editor de flujo y el compilador
+  # leen SIEMPRE este mismo store).
+  #
+  #   kb_root      -> store REAL del negocio, usado al SERVIR el runtime.
+  #                   Apunta aqui al store externo/productivo del negocio.
+  #   test_kb_root -> store de PRUEBA del repo, usado bajo pytest (auto) o
+  #                   con mode="test". Mantiene los tests aislados del real.
+  kb_root: tests/knowledge          # (cambiar por la ruta al KB externo real)
+  test_kb_root: tests/knowledge     # KB de prueba del repo (atoms tipados)
+
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
   profiling_db: runs/ui-chat.sqlite # SQLite que lee el visualizador de perfiles
 
