@@ -25,7 +25,6 @@ tasks:
 - desk/tasks/task-persistir-y-recuperar-sessionstate-conversacional.md
 - desk/tasks/task-conectar-reflector-al-flujo-real.md
 - desk/tasks/task-scrub-completo-del-assistant-y-marca-veraz.md
-- desk/tasks/task-conectar-el-runtime-a-twilio-whatsapp-sms.md
 # List of pill-xxx paths
 pills:
 - desk/contexts/pills.md
@@ -71,6 +70,7 @@ _Add short operational notes about the current routed set._
 - Persistir y Recuperar SessionState Conversacional [draft] - El orquestador escribe SessionState (current_node, active_domain) por usuario y lo recupera al iniciar cada turno
 - Conectar Reflector al Flujo Real [draft] - Un job real del Reflector lee ChatHistory scrubbeado y genera un atom nuevo (proposed) en el store SLDB
 - Scrub Completo del Assistant y Marca Veraz [draft] - Todo texto persistido en ChatHistory pasa por scrub() antes de marcarse pii_scrubbed=True
+- Conectar el runtime a Twilio (WhatsApp/SMS) [draft] - Exponer un webhook POST /webhooks/twilio que traduce mensajes de Twilio a Orchestrator.handle_turn(external_id, message) y devuelve la respuesta como TwiML, con validacion de firma y manejo del timeout de Twilio.
 
 ## Task Details
 
@@ -96,4 +96,3 @@ _Generated from the task references above._
 - Persistir y Recuperar SessionState Conversacional [draft] - El orquestador escribe SessionState (current_node, active_domain) por usuario y lo recupera al iniciar cada turno
 - Conectar Reflector al Flujo Real [draft] - Un job real del Reflector lee ChatHistory scrubbeado y genera un atom nuevo (proposed) en el store SLDB
 - Scrub Completo del Assistant y Marca Veraz [draft] - Todo texto persistido en ChatHistory pasa por scrub() antes de marcarse pii_scrubbed=True
-- Conectar el runtime a Twilio (WhatsApp/SMS) [draft] - Exponer un webhook POST /webhooks/twilio que traduce mensajes de Twilio a Orchestrator.handle_turn(external_id, message) y devuelve la respuesta como TwiML, con validacion de firma y manejo del timeout de Twilio.
