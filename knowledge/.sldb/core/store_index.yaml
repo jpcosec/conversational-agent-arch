@@ -80,6 +80,14 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: GateCriterion
+  model_ref: kb_agent.models.knowledge:GateCriterion
+  path: /home/jp/proyectos/_worktrees/gt-psp-kb-flow/kb_agent/models/knowledge/gate.py
+  models_index: .sldb/core/models/GateCriterion.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
 predicates:
 - name: is_solved_by
   axis: HOW
@@ -102,4 +110,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: 42358c0d682f8da6afaad1eb56073730b9d179fa87133bd32a7471a39ec691ca
+hash_a: 3c6d373b0b667f9146b24dc461287f934e039019dbd1932b86a1a4fa3f8d5901

@@ -1,0 +1,8 @@
+## task/psp-kb-flow
+ M kb_agent/models/knowledge/__init__.py
+ M knowledge/.sldb/core/store_index.yaml
+ M knowledge/desk/atoms/tag-namespaces.yaml
+?? kb_agent/models/knowledge/gate.py
+?? knowledge/.sldb/core/documents/GateCriterion.yaml
+?? knowledge/.sldb/core/models/GateCriterion.yaml
+?? runs/subagents/20260826-174202-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp/
