@@ -28,7 +28,7 @@ desk/spec2viz/
   `frontends/viz` (grafo de embeddings).
 - La frontera se ve en `deployment.backend-frontend.yml` (`artifacts.kind: frontend|backend`).
 
-## Vistas (11)
+## Vistas (12)
 Registro activo: `catalog.yml`.
 
 ### Global
@@ -43,6 +43,7 @@ Registro activo: `catalog.yml`.
 | `backend/state.conversation-flow.yml` | state |
 | `backend/sequence.extended-turn.yml` | sequence |
 | `backend/component.knowledge-ontology.yml` | component |
+| `backend/matrix.component-turn-lifecycle.yml` | component_view_matrix |
 
 ### Ejemplos aplicados
 | Spec | Tipo |
@@ -82,6 +83,19 @@ spec2viz diagram validate desk/spec2viz/**/*.yml
 spec2viz diagram render desk/spec2viz/backend/component.agent-ecosystem.yml --backend mermaid --out desk/spec2viz/build
 ```
 Renderers: `plantuml, mermaid, vega, d2, antonia-html, tree, graph, json`.
+
+### Matriz vistas×stages (`component_view_matrix`)
+spec2viz la renderiza a Vega JSON, pero el catálogo builtin solo embebe
+mermaid/`.svg`/`.html`. El wrapper `wrap_vega.py` envuelve el Vega en un
+fragmento `.html` (vega-embed por CDN + leyenda derivada del spec) que sí se
+embebe. Flujo:
+```bash
+spec2viz diagram render desk/spec2viz/backend/matrix.component-turn-lifecycle.yml --out desk/spec2viz/build
+python desk/spec2viz/wrap_vega.py \
+  desk/spec2viz/build/matrix.component-turn-lifecycle.vega.json \
+  desk/spec2viz/build/matrix.component-turn-lifecycle.html
+```
+El `catalog.yml` referencia el `.html` (no el `.vega.json`).
 
 ### Catálogo HTML
 ```bash

@@ -1,0 +1,132 @@
+id: matrix-component-turn-lifecycle
+title: Backend · Matriz · Componentes × Ciclo de Vida del Turno
+type: component_view_matrix
+version: "0.1"
+metadata:
+  author: antonIA
+  description: >-
+    Matriz vistas×stages que ubica cada componente del runtime en las etapas
+    en que participa. Dos vistas: el turno síncrono (idle → respuesta) y los
+    agentes asíncronos (perfilado + reflexión). Filas = componentes reales del
+    código (kb_agent/*), columnas = stages del pipeline. Complementa el
+    diagrama de componentes (estructura) y el de secuencia (orden temporal):
+    aquí se lee de un vistazo QUÉ toca cada componente en CADA etapa.
+data:
+  views:
+    - id: turn
+      label: Turno Síncrono
+      stages:
+        - id: ingest
+          label: ingest
+        - id: context
+          label: context
+        - id: decide
+          label: decide
+        - id: execute
+          label: execute
+        - id: reply
+          label: reply
+    - id: async
+      label: Agentes Asíncronos
+      stages:
+        - id: listen
+          label: listen
+        - id: extract
+          label: extract
+        - id: batch
+          label: batch
+        - id: thicken
+          label: thicken
+
+  components:
+    - name: Runtime
+      kind: core
+      label: KB Agent Runtime
+      stages:
+        turn: [ingest, context, decide, execute, reply]
+        async: [listen, extract, batch, thicken]
+      children:
+        - name: Routing
+          kind: boundary
+          label: Capa de Enrutamiento
+          stages:
+            turn: [ingest, decide, execute, reply]
+          children:
+            - name: Orchestrator
+              kind: api
+              label: Orchestrator.handle_turn
+              stages:
+                turn: [ingest, reply]
+                async: [listen]
+            - name: RouterStateMachine
+              kind: api
+              label: RouterStateMachine (buffering/tool wait)
+              stages:
+                turn: [ingest, decide, execute]
+        - name: Engines
+          kind: core
+          label: Motores Cognitivos
+          stages:
+            turn: [context, decide, reply]
+            async: [extract, batch, thicken]
+          children:
+            - name: Ontologizador
+              kind: engine
+              label: Ontologizador (Context Compiler)
+              stages:
+                turn: [context]
+            - name: DecideTurn
+              kind: engine
+              label: decide_turn (policy pura, agent.py)
+              stages:
+                turn: [decide]
+            - name: Conversador
+              kind: engine
+              label: Conversador (redacta NL vía puerto LLM)
+              stages:
+                turn: [reply]
+            - name: Perfilador
+              kind: service
+              label: Perfilador (Feature Extractor)
+              stages:
+                async: [extract]
+            - name: Reflector
+              kind: service
+              label: Reflector (KB Thickener)
+              stages:
+                async: [batch, thicken]
+        - name: Tools
+          kind: core
+          label: Registry de Tools
+          stages:
+            turn: [execute]
+          children:
+            - name: ToolRegistry
+              kind: api
+              label: "execute_tool + load_tool_handlers"
+              stages:
+                turn: [execute]
+            - name: ProjectConfig
+              kind: boundary
+              label: "project.config.yaml (kb_root, model, tools)"
+              stages:
+                turn: [execute]
+        - name: Persistence
+          kind: core
+          label: Capa de Persistencia
+          stages:
+            turn: [ingest, context, execute, reply]
+            async: [listen, extract, batch, thicken]
+          children:
+            - name: SQL
+              kind: database
+              label: SQL DB (Identidad, Estado, Historial)
+              stages:
+                turn: [ingest, context, execute, reply]
+                async: [listen, extract, batch]
+            - name: SLDB
+              kind: database
+              label: SLDB (Knowledge Base / Atoms)
+              stages:
+                turn: [context]
+                async: [thicken]

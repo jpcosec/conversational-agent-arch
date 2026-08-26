@@ -51,6 +51,15 @@ vistas:
     src: build/component.knowledge-ontology.mmd
     specs: [backend/component.knowledge-ontology.yml]
     tags: [layer:backend, view:component]
+  - id: matrix-component-turn-lifecycle
+    category: Backend
+    nav: Matriz Componentes × Turno
+    title: Backend · Matriz · Componentes × Ciclo de Vida del Turno
+    desc: Qué componente participa en cada stage del turno síncrono y de los agentes asíncronos (vega matrix).
+    type: component_view_matrix
+    src: build/matrix.component-turn-lifecycle.html
+    specs: [backend/matrix.component-turn-lifecycle.yml]
+    tags: [layer:backend, view:matrix]
 
   # ── Ejemplos Aplicados ──────────────────────────────
   - id: component-example-kb-scheduling
