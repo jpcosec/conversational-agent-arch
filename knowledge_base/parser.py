@@ -16,6 +16,11 @@ Commands:
   context --user <id>    Estado completo de la sesión (todo-en-uno)
   propose --model <m>    Propuesta de atom (para el Reflector)
          --body <yaml>
+
+Offline (fortalecimiento de la KB):
+  index embeddings       Calcula embeddings para DomainAtom y RuleAtom
+  index hierarchy        Construye jerarquía enciclopédica en semantic DAG
+  promote <atom_id>      Promueve un atom propuesto a activo
 """
 
 
@@ -63,4 +68,20 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--model", required=True, help=f"Modelo del atom: {', '.join(['domain','rule','tool','trait','step','self','style','boundary','strategy','fallback'])}")
     p.add_argument("--body", required=True, help="Contenido del atom en YAML/JSON")
 
+    # add index subcommands
+    _add_index_commands(subparsers)
+
     return parser
+
+
+def _add_index_commands(subparsers: argparse._SubParsersAction) -> None:
+    p = subparsers.add_parser("index", help="Pipeline offline de fortalecimiento de la KB")
+    s = p.add_subparsers(dest="index_command", required=True)
+
+    pe = s.add_parser("embeddings", help="Calcula embeddings offline para DomainAtom y RuleAtom")
+    pe.add_argument("--model", default="jinaai/jina-embeddings-v2-base-es", help="Modelo de embeddings (default: jina-embeddings-v2-base-es)")
+
+    s.add_parser("hierarchy", help="Construye jerarquía enciclopédica en el semantic DAG")
+
+    p = subparsers.add_parser("promote", help="Promueve un atom propuesto a activo")
+    p.add_argument("atom_id", help="Id del atom a promover")

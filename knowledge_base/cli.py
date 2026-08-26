@@ -64,6 +64,21 @@ def main(argv: list[str] | None = None) -> int:
             _print_json(result)
             return 0
 
+        if args.command == "index":
+            if args.index_command == "embeddings":
+                result = ops.index_embeddings()
+                print(f"Embeddings: {result['processed']} processed, {result['skipped']} skipped, {result['errors']} errors")
+                return 0
+            if args.index_command == "hierarchy":
+                result = ops.index_hierarchy()
+                print(f"Hierarchy: {result.get('tags', 0)} tags, {result.get('new_parent_relations', 0)} new relations")
+                return 0
+
+        if args.command == "promote":
+            result = ops.promote(args.atom_id)
+            _print_json(result)
+            return 0
+
         print(f"Unknown command: {args.command}", file=sys.stderr)
         return 1
 
