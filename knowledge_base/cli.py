@@ -24,8 +24,12 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         if args.command == "explore":
-            results = ops.explore(tag=args.tag, atom=args.atom)
-            _print_json(results)
+            if args.query:
+                result = ops.explore_multi(query=args.query)
+                _print_json(result)
+            else:
+                results = ops.explore(tag=args.tag, atom=args.atom)
+                _print_json(results)
             return 0
 
         if args.command == "show":
@@ -76,6 +80,11 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "promote":
             result = ops.promote(args.atom_id)
+            _print_json(result)
+            return 0
+
+        if args.command == "reflect":
+            result = ops.reflect(db_url=args.db)
             _print_json(result)
             return 0
 
