@@ -1,14 +1,15 @@
 id: component-frontend
 title: KB Agent Runtime · Frontend · Componentes
 type: component
-version: '1.1'
+version: '2.0'
 metadata:
   author: antonIA
   description: >-
-    Frontend = HTML/JS estático (sin build) bajo frontends/. Tres UIs servidas
-    por el mismo FastAPI (frontends/chat/server.py): chat con inspector
-    (frontends/chat/index.html), editor de flujo (frontends/flow_editor) y
-    visor de perfilado (frontends/profiling).
+    Frontend = HTML/JS estático (sin build) bajo frontends/. Cinco UIs servidas por el mismo
+    FastAPI app factory (frontends/chat/app.py create_app; entrypoint uvicorn en
+    frontends/chat/server.py): chat con inspector (frontends/chat), editor de flujo
+    (frontends/flow_editor), visor de perfilado (frontends/profiling), explorador de taxonomía
+    (frontends/taxonomy) y grafo de embeddings (frontends/viz).
 style:
   kinds:
     core:
@@ -21,10 +22,56 @@ style:
         background: "#FCECC9"
         border: "#D4A73C"
         font: "#5E450B"
+    api:
+      plantuml:
+        background: "#F5F5F5"
+        border: "#999999"
+        font: "#222222"
 data:
   nodes:
+    app_factory:
+      label: "frontends/chat/app.py create_app() (FastAPI, monta las 5 UIs + API)"
+      kind: api
+      contains:
+        - route_chat
+        - route_twilio
+        - route_atom
+        - route_config
+        - route_flow
+        - route_profiles
+        - route_taxonomy
+        - route_viz_graph
+        - route_health
+    route_chat:
+      label: "POST /api/chat"
+      kind: api
+    route_twilio:
+      label: "POST /webhooks/twilio (TwiML, valida firma)"
+      kind: api
+    route_atom:
+      label: "GET /api/atom/{id}"
+      kind: api
+    route_config:
+      label: "GET /api/config"
+      kind: api
+    route_flow:
+      label: "GET /api/flow"
+      kind: api
+    route_profiles:
+      label: "GET /api/profiles"
+      kind: api
+    route_taxonomy:
+      label: "GET /api/taxonomy"
+      kind: api
+    route_viz_graph:
+      label: "GET /api/viz/graph"
+      kind: api
+    route_health:
+      label: "GET /api/health"
+      kind: api
+
     chat_ui:
-      label: frontends/chat/index.html
+      label: "frontends/chat/index.html (GET /)"
       kind: core
       contains:
         - chat_pane
@@ -43,8 +90,9 @@ data:
     marked_lib:
       label: marked.min.js (CDN, markdown)
       kind: boundary
+
     flow_editor_ui:
-      label: frontends/flow_editor/index.html
+      label: "frontends/flow_editor/index.html (GET /conversation_flow_editor)"
       kind: core
       contains:
         - flow_graph_view
@@ -55,33 +103,65 @@ data:
     react_flow_lib:
       label: React Flow (CDN, sin build)
       kind: boundary
+
     profiling_ui:
-      label: frontends/profiling/index.html
+      label: "frontends/profiling/index.html (GET /profiling_viewer)"
       kind: core
       contains:
         - trait_fichas
     trait_fichas:
       label: Fichas de rasgo (UserTraits SQL ↔ TraitAtom SLDB)
       kind: core
-    chat_api:
-      label: FastAPI (frontends/chat/server.py) /api/*
+
+    taxonomy_ui:
+      label: "frontends/taxonomy/index.html (GET /taxonomy_explorer)"
+      kind: core
+      contains:
+        - taxonomy_mindmap
+    taxonomy_mindmap:
+      label: Mindmap de familias/subpaths/atoms (React Flow + dagre, CDN)
+      kind: core
+
+    viz_ui:
+      label: "frontends/viz/index.html (GET /viz)"
+      kind: core
+      contains:
+        - viz_graph_view
+    viz_graph_view:
+      label: Grafo de atoms + embeddings (PCA 2D, React Flow, CDN)
+      kind: core
+
+    twilio_channel:
+      label: Twilio (WhatsApp/SMS)
       kind: boundary
   edges:
     - from: chat_pane
-      to: chat_api
+      to: route_chat
       relation: fetch /api/chat
+    - from: chat_ui
+      to: route_config
+      relation: fetch /api/config
     - from: atom_modal
-      to: chat_api
+      to: route_atom
       relation: fetch /api/atom/{id}
     - from: chat_ui
       to: marked_lib
       relation: renderiza markdown
+    - from: twilio_channel
+      to: route_twilio
+      relation: POST webhook (form + X-Twilio-Signature)
     - from: flow_graph_view
-      to: chat_api
+      to: route_flow
       relation: fetch /api/flow
     - from: flow_editor_ui
       to: react_flow_lib
       relation: renderiza grafo
     - from: trait_fichas
-      to: chat_api
+      to: route_profiles
       relation: fetch /api/profiles
+    - from: taxonomy_mindmap
+      to: route_taxonomy
+      relation: fetch /api/taxonomy
+    - from: viz_graph_view
+      to: route_viz_graph
+      relation: fetch /api/viz/graph

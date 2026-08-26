@@ -10,6 +10,21 @@ data:
     module_cli:
       label: cli
       kind: module
+    module_llm:
+      label: llm
+      kind: module
+    class_llm_Conversador:
+      label: Conversador
+      kind: class
+    class_llm_TraitMapper:
+      label: TraitMapper
+      kind: class
+    class_llm_GeminiConversador:
+      label: GeminiConversador
+      kind: class
+    class_llm_GeminiTraitMapper:
+      label: GeminiTraitMapper
+      kind: class
     module_models_knowledge_boundary:
       label: models.knowledge.boundary
       kind: module
@@ -142,12 +157,6 @@ data:
     module_orchestrator:
       label: orchestrator
       kind: module
-    class_orchestrator_GeminiConversador:
-      label: GeminiConversador
-      kind: class
-    class_orchestrator_GeminiTraitMapper:
-      label: GeminiTraitMapper
-      kind: class
     class_orchestrator_Orchestrator:
       label: Orchestrator
       kind: class
@@ -186,6 +195,12 @@ data:
       kind: module
     class_pii_scrubber__PlaceholderRegistry:
       label: _PlaceholderRegistry
+      kind: class
+    module_project_config:
+      label: project_config
+      kind: module
+    class_project_config_ProjectConfig:
+      label: ProjectConfig
       kind: class
     module_reflector_generator:
       label: reflector.generator
@@ -235,8 +250,8 @@ data:
     class_state_machine_RouterStateMachine:
       label: RouterStateMachine
       kind: class
-    module_tools:
-      label: tools
+    module_tools_reservas:
+      label: tools.reservas
       kind: module
     module___future__:
       label: ''
@@ -244,14 +259,8 @@ data:
     module_collections_abc:
       label: abc
       kind: external
-    module_textwrap:
-      label: textwrap
-      kind: external
     module_typing:
       label: typing
-      kind: external
-    module_google_adk_agents:
-      label: agents
       kind: external
     module_pathlib:
       label: pathlib
@@ -259,11 +268,17 @@ data:
     module_dotenv:
       label: dotenv
       kind: external
-    module_kb_agent_agent:
-      label: agent
-      kind: external
     module_kb_agent_orchestrator:
       label: orchestrator
+      kind: external
+    module_kb_agent_project_config:
+      label: config
+      kind: external
+    module_kb_agent_perfilador_extractor:
+      label: extractor
+      kind: external
+    module_google:
+      label: google
       kind: external
     module_pydantic:
       label: pydantic
@@ -325,8 +340,11 @@ data:
     module_sldb_cli_commands_find:
       label: find
       kind: external
-    module_google:
-      label: google
+    module_kb_agent_agent:
+      label: agent
+      kind: external
+    module_kb_agent_llm:
+      label: llm
       kind: external
     module_kb_agent_models_sql_reservas:
       label: reservas
@@ -343,9 +361,6 @@ data:
     module_kb_agent_ontologizador_sldb_reader:
       label: reader
       kind: external
-    module_kb_agent_perfilador_extractor:
-      label: extractor
-      kind: external
     module_kb_agent_perfilador_listener:
       label: listener
       kind: external
@@ -355,8 +370,14 @@ data:
     module_kb_agent_reflector:
       label: reflector
       kind: external
+    module_kb_agent_tools:
+      label: tools
+      kind: external
     module_kb_agent_state_machine:
       label: machine
+      kind: external
+    module_textwrap:
+      label: textwrap
       kind: external
     module_abc:
       label: abc
@@ -378,16 +399,7 @@ data:
     to: module_collections_abc
     relation: imports
   - from: module_agent
-    to: module_textwrap
-    relation: imports
-  - from: module_agent
     to: module_typing
-    relation: imports
-  - from: module_agent
-    to: module_google_adk_agents
-    relation: imports
-  - from: module_agent
-    to: module_tools
     relation: imports
   - from: module_cli
     to: module___future__
@@ -399,10 +411,37 @@ data:
     to: module_dotenv
     relation: imports
   - from: module_cli
-    to: module_kb_agent_agent
+    to: module_kb_agent_orchestrator
     relation: imports
   - from: module_cli
-    to: module_kb_agent_orchestrator
+    to: module_kb_agent_project_config
+    relation: imports
+  - from: module_llm
+    to: class_llm_Conversador
+    relation: defines
+  - from: module_llm
+    to: class_llm_TraitMapper
+    relation: defines
+  - from: module_llm
+    to: class_llm_GeminiConversador
+    relation: defines
+  - from: module_llm
+    to: class_llm_GeminiTraitMapper
+    relation: defines
+  - from: module_llm
+    to: module___future__
+    relation: imports
+  - from: module_llm
+    to: module_collections_abc
+    relation: imports
+  - from: module_llm
+    to: module_typing
+    relation: imports
+  - from: module_llm
+    to: module_kb_agent_perfilador_extractor
+    relation: imports
+  - from: module_llm
+    to: module_google
     relation: imports
   - from: module_models_knowledge_boundary
     to: class_models_knowledge_boundary_CapabilityBoundary
@@ -463,6 +502,9 @@ data:
     relation: defines
   - from: module_models_knowledge_index_proxies
     to: module___future__
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: module_typing
     relation: imports
   - from: module_models_knowledge_index_proxies
     to: module_pydantic
@@ -753,16 +795,13 @@ data:
     to: module_sldb_cli_commands_find
     relation: imports
   - from: module_orchestrator
-    to: class_orchestrator_GeminiConversador
-    relation: defines
-  - from: module_orchestrator
-    to: class_orchestrator_GeminiTraitMapper
-    relation: defines
-  - from: module_orchestrator
     to: class_orchestrator_Orchestrator
     relation: defines
   - from: module_orchestrator
     to: module___future__
+    relation: imports
+  - from: module_orchestrator
+    to: module_collections_abc
     relation: imports
   - from: module_orchestrator
     to: module_datetime
@@ -774,9 +813,6 @@ data:
     to: module_typing
     relation: imports
   - from: module_orchestrator
-    to: module_google
-    relation: imports
-  - from: module_orchestrator
     to: module_sqlalchemy
     relation: imports
   - from: module_orchestrator
@@ -784,6 +820,9 @@ data:
     relation: imports
   - from: module_orchestrator
     to: module_kb_agent_agent
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_llm
     relation: imports
   - from: module_orchestrator
     to: module_kb_agent_models_sql_identity
@@ -813,7 +852,13 @@ data:
     to: module_kb_agent_pii_scrubber
     relation: imports
   - from: module_orchestrator
+    to: module_kb_agent_project_config
+    relation: imports
+  - from: module_orchestrator
     to: module_kb_agent_reflector
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_tools
     relation: imports
   - from: module_orchestrator
     to: module_kb_agent_state_machine
@@ -901,6 +946,21 @@ data:
     relation: imports
   - from: module_pii_scrubber
     to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_project_config
+    to: class_project_config_ProjectConfig
+    relation: defines
+  - from: module_project_config
+    to: module___future__
+    relation: imports
+  - from: module_project_config
+    to: module_dataclasses
+    relation: imports
+  - from: module_project_config
+    to: module_pathlib
+    relation: imports
+  - from: module_project_config
+    to: module_typing
     relation: imports
   - from: module_reflector_generator
     to: class_reflector_generator_RecurrentPattern
@@ -1001,9 +1061,15 @@ data:
   - from: module_state_machine
     to: module_typing
     relation: imports
-  - from: module_tools
+  - from: module_tools_reservas
     to: module___future__
     relation: imports
-  - from: module_tools
-    to: module_pathlib
+  - from: module_tools_reservas
+    to: module_typing
+    relation: imports
+  - from: module_tools_reservas
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_reservas
+    to: module_kb_agent_models_sql_reservas
     relation: imports

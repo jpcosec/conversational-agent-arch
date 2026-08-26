@@ -1,12 +1,15 @@
 id: sequence-extended-turn
 title: Backend · Secuencia · Ciclo de Vida del Turno Extendido
 type: sequence
-version: '1.0'
+version: '1.1'
 metadata:
   author: antonIA
   description: >-
-    Traza el flujo de un mensaje desde el buffering, la inyección del contexto por el
-    Ontologizador, una posible llamada a Tool Externa por el Conversador, y la actuación asíncrona del Perfilador.
+    Traza el flujo de un mensaje (kb_agent/orchestrator.py Orchestrator.handle_turn) desde el
+    RouterStateMachine, la compilación de contexto por el Ontologizador, la policy pura
+    decide_turn (kb_agent/agent.py) que decide tool_call/fallback/nl, el dispatcher de tools
+    (registry resuelto desde project.config.yaml), el Conversador (puerto LLM) y la actuación
+    asíncrona del Perfilador.
 data:
   participants:
     - id: User_Cron
@@ -15,6 +18,10 @@ data:
       kind: component
     - id: Ontologizador
       kind: component
+    - id: Policy
+      kind: decision_engine
+    - id: ToolRegistry
+      kind: boundary
     - id: Conversador
       kind: component
     - id: API_Ext
@@ -27,33 +34,53 @@ data:
       message: Mensaje o Trigger Proactivo
     - from: Router
       to: Router
-      message: Buffer/Debounce & Carga Estado SQL
+      message: Buffer/Debounce (RouterStateMachine) & Carga SessionState SQL
     - from: Router
       to: Ontologizador
-      message: Compilar p(Escenario, Pregunta, Perfil)
+      message: compile_context(question, user_id, scenario, trigger)
       kind: sync
     - from: Ontologizador
       to: Ontologizador
-      message: Recupera subgrafos KB (Rules, Traits, Tools)
+      message: Recupera subgrafos KB (Rules, Traits, Tools) vía SLDBReader/KGDBReader
     - from: Ontologizador
       to: Router
-      message: Contexto Compilado
+      message: Contexto Compilado (CompiledDocument.to_dict())
       kind: return
     - from: Router
-      to: Conversador
-      message: Generar respuesta / Acción
+      to: Policy
+      message: decide_turn(compiled_context)
       kind: sync
-    - from: Conversador
+    - from: Policy
+      to: Router
+      message: "{kind: tool_call|fallback|nl}"
+      kind: return
+    - from: Router
+      to: ToolRegistry
+      message: "(si kind=tool_call) execute_tool(function_call, handlers)"
+      kind: sync
+      condition: kind == tool_call
+    - from: ToolRegistry
       to: API_Ext
-      message: (Opcional) Llama API externa según ToolAtom
+      message: invoca handler registrado (project.config.yaml tools)
       kind: sync
+      condition: kind == tool_call
     - from: API_Ext
-      to: Conversador
+      to: ToolRegistry
       message: Datos JSON
       kind: return
+      condition: kind == tool_call
+    - from: ToolRegistry
+      to: Router
+      message: System Turn (JSON persistido en SQL)
+      kind: return
+      condition: kind == tool_call
+    - from: Router
+      to: Conversador
+      message: draft_nl(contexto + system_turn)
+      kind: sync
     - from: Conversador
       to: Conversador
-      message: Redacta NL basado en Contexto + JSON
+      message: Redacta NL basado en Contexto (+ System Turn si hubo tool)
     - from: Conversador
       to: Router
       message: Respuesta Generada
@@ -64,8 +91,8 @@ data:
       kind: return
     - from: Router
       to: Perfilador
-      message: Emite evento de turno (Async)
+      message: publish_turn_closed (EventBus, async)
       kind: sync
     - from: Perfilador
       to: Perfilador
-      message: Extrae características y vincula en SQL y SLDB
+      message: extract_traits (puerto TraitMapper) y persiste UserTraits en SQL

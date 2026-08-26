@@ -72,6 +72,17 @@ vistas:
     specs: [backend/activity.example-flow-scheduling.yml]
     tags: [layer:examples, view:activity]
 
+  # ── Testing ─────────────────────────────────────────
+  - id: activity-simulation-harness
+    category: Testing
+    nav: Harness de Simulación
+    title: Testing · Flujo · Harness de Simulación Agente-vs-Agente
+    desc: SimulatedUser <-> Orchestrator turno a turno, checks deterministas y Judge LLM (KB como verdad); known_gap -> xfail estricto.
+    type: activity
+    src: build/activity.simulation-harness.mmd
+    specs: [backend/activity.simulation-harness.yml]
+    tags: [layer:backend, view:activity, area:testing]
+
   # ── Backend · AST real (código) ─────────────────────
   - id: ast-kb-agent
     category: Backend · AST real (código)

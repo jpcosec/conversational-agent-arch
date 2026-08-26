@@ -18,11 +18,17 @@ desk/spec2viz/
 
 ## Backend vs Frontend
 
-- **Backend** = Python: agentes ADK (`kb_agent`), pipeline Ontologizador/Conversador, wrapper CLI `sldb`.
-- **Frontend** = HTML/JS estático sin build bajo `frontends/`: tres UIs servidas por el mismo FastAPI (`frontends/chat/server.py`): `frontends/chat/index.html` (chat + inspector), `frontends/flow_editor/index.html` (editor de flujo) y `frontends/profiling/index.html` (perfilado).
+- **Backend** = Python: `kb_agent` (policy pura `decide_turn` en `agent.py`, puertos LLM en `llm.py`,
+  `Orchestrator` que cablea SLDBReader/KGDBReader/ContextCompiler/RouterStateMachine/tool registry/
+  Perfilador/Reflector), desplegado en Modal (`deploy/modal_app.py`) o local vía uvicorn.
+- **Frontend** = HTML/JS estático sin build bajo `frontends/`: cinco UIs servidas por el mismo
+  FastAPI app factory (`frontends/chat/app.py create_app`, entrypoint `frontends/chat/server.py`):
+  `frontends/chat` (chat + inspector), `frontends/flow_editor` (editor de flujo),
+  `frontends/profiling` (perfilado), `frontends/taxonomy` (explorador de taxonomía) y
+  `frontends/viz` (grafo de embeddings).
 - La frontera se ve en `deployment.backend-frontend.yml` (`artifacts.kind: frontend|backend`).
 
-## Vistas (10)
+## Vistas (11)
 Registro activo: `catalog.yml`.
 
 ### Global
@@ -43,6 +49,11 @@ Registro activo: `catalog.yml`.
 |---|---|
 | `backend/component.example-kb-scheduling.yml` | component |
 | `backend/activity.example-flow-scheduling.yml` | activity |
+
+### Testing
+| Spec | Tipo |
+|---|---|
+| `backend/activity.simulation-harness.yml` | activity |
 
 ### Backend · AST real (código)
 Generado con `spec2viz diagram generate` (módulos/clases/imports reales).

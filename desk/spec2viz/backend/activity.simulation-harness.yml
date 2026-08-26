@@ -1,0 +1,55 @@
+id: activity-simulation-harness
+title: Backend · Flujo · Harness de Simulación Agente-vs-Agente
+type: activity
+version: '1.0'
+metadata:
+  author: antonIA
+  description: >-
+    tests/e2e/simulation: un usuario simulado (LLM con Persona) conversa con el Orchestrator
+    REAL turno a turno hasta cumplir su objetivo o agotar max_turns; luego corren checks
+    deterministas sobre la transcripción/estado del runtime y un Judge LLM evalúa contra la KB
+    compilada como verdad. Escenarios con known_gap quedan xfail estricto (fallan si el defecto
+    se corrige sin quitar la marca).
+data:
+  start: user_next_move
+  steps:
+    user_next_move:
+      label: "SimulatedUser.next_move(transcript) -> UserMove"
+      kind: decision
+      branches:
+        "done=true": end_user_done
+        "done=false": send_to_orchestrator
+    send_to_orchestrator:
+      label: "Orchestrator.handle_turn(external_id, message, scenario)"
+      next: append_transcript
+    append_transcript:
+      label: "Transcript.turns.append(user, assistant, kind, system_turn, traits_after)"
+      kind: decision
+      branches:
+        "max_turns alcanzado": end_max_turns
+        "continua": user_next_move
+    end_user_done:
+      label: "ended_by=user_done (objetivo cumplido o usuario se rinde)"
+      next: run_checks
+    end_max_turns:
+      label: "ended_by=max_turns (se alcanzo el limite del escenario)"
+      next: run_checks
+    run_checks:
+      label: "Checks deterministas (tool_executed, reservation_persisted, trait_learned, no_fallback, ...)"
+      next: judge_evaluate
+    judge_evaluate:
+      label: "Judge.evaluate(transcript, criteria) usando kb_truth_text(kb_root) compilada como verdad"
+      next: verdict_decision
+    verdict_decision:
+      label: "Escenario declara known_gap?"
+      kind: decision
+      branches:
+        "known_gap declarado": xfail_strict
+        "sin known_gap": assert_pass
+    xfail_strict:
+      label: "pytest.mark.xfail(strict=True): el test DEBE fallar; si pasa, xfail estricto rompe la suite (obliga a quitar la marca)"
+      next: end
+    assert_pass:
+      label: "assert not failures (checks + veredicto del juez); transcripcion completa en runs/simulation/<escenario>.json"
+      next: end
+  end: end

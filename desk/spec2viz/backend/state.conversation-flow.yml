@@ -57,9 +57,9 @@ data:
       "on": requiere_api_externa
       guard: ToolAtom inyectado
     - from: waiting_tool
-      to: evaluating_context
+      to: drafting_response
       "on": json_api_recibido
-      guard: inyecta_resultado
+      guard: inyecta_resultado_como_system_turn
     - from: evaluating_context
       to: drafting_response
       "on": contexto_resuelto
