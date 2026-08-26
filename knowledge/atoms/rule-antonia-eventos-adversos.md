@@ -792,4 +792,4 @@ Si la persona reporta cualquier malestar, síntoma o reacción adversa: respondo
 
 ## Conditions
 
-Cuando la persona reporta: dolor de estómago fuerte y persistente, náuseas o vómitos que no pasan, dolor abdominal que llega a la espalda, mareos, hinchazón de cara o dificultad para respirar, signos de baja de azúcar, cambios en la visión, dolor en la parte alta del abdomen con fiebre, piel u ojos amarillos, o cualquier otro malestar o reacción.
+Aplica cuando en la conversación están presentes los 4 criterios mínimos de reporte de farmacovigilancia: una persona identificable como paciente, una persona identificable que reporta, un medicamento sospechoso y un evento o reacción descrita. Como ejemplos de evento o reacción descrita, la persona puede reportar dolor de estómago fuerte y persistente, náuseas o vómitos que no pasan, dolor abdominal que llega a la espalda, mareos, hinchazón de cara o dificultad para respirar, signos de baja de azúcar, cambios en la visión, dolor en la parte alta del abdomen con fiebre, piel u ojos amarillos, o cualquier otro malestar o reacción.

@@ -195,3 +195,228 @@ documents:
     level: 2
     line_start: 789
     line_end: 790
+- doc_name: atom-antonia-medinfo
+  sections:
+  - path: gesti-n-de-informaci-n-m-dica-del-programa
+    title: "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    breadcrumbs:
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    about:
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    - gesti n de informaci n m dica del programa
+    - domain:medinfo
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:medinfo
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: gesti-n-de-informaci-n-m-dica-del-programa
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: gesti-n-de-informaci-n-m-dica-del-programa/answer
+    title: Answer
+    breadcrumbs:
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    - Answer
+    about:
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    - gesti n de informaci n m dica del programa
+    - Answer
+    - answer
+    - domain:medinfo
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:medinfo
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: atom-antonia-farmacovigilancia
+  sections:
+  - path: proceso-de-farmacovigilancia-del-programa
+    title: Proceso de farmacovigilancia del programa
+    breadcrumbs:
+    - Proceso de farmacovigilancia del programa
+    about:
+    - Proceso de farmacovigilancia del programa
+    - proceso de farmacovigilancia del programa
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: proceso-de-farmacovigilancia-del-programa
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: proceso-de-farmacovigilancia-del-programa/answer
+    title: Answer
+    breadcrumbs:
+    - Proceso de farmacovigilancia del programa
+    - Answer
+    about:
+    - Proceso de farmacovigilancia del programa
+    - proceso de farmacovigilancia del programa
+    - Answer
+    - answer
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: atom-antonia-journeys
+  sections:
+  - path: journeys-operativos-del-programa
+    title: Journeys operativos del programa
+    breadcrumbs:
+    - Journeys operativos del programa
+    about:
+    - Journeys operativos del programa
+    - journeys operativos del programa
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: journeys-operativos-del-programa
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: journeys-operativos-del-programa/answer
+    title: Answer
+    breadcrumbs:
+    - Journeys operativos del programa
+    - Answer
+    about:
+    - Journeys operativos del programa
+    - journeys operativos del programa
+    - Answer
+    - answer
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: atom-antonia-titulacion
+  sections:
+  - path: titulaci-n-del-programa-selfix
+    title: "Titulaci\xF3n del programa Selfix"
+    breadcrumbs:
+    - "Titulaci\xF3n del programa Selfix"
+    about:
+    - "Titulaci\xF3n del programa Selfix"
+    - titulaci n del programa selfix
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: titulaci-n-del-programa-selfix
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: titulaci-n-del-programa-selfix/answer
+    title: Answer
+    breadcrumbs:
+    - "Titulaci\xF3n del programa Selfix"
+    - Answer
+    about:
+    - "Titulaci\xF3n del programa Selfix"
+    - titulaci n del programa selfix
+    - Answer
+    - answer
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: atom-antonia-molecula
+  sections:
+  - path: mol-cula-de-selfix
+    title: "Mol\xE9cula de Selfix"
+    breadcrumbs:
+    - "Mol\xE9cula de Selfix"
+    about:
+    - "Mol\xE9cula de Selfix"
+    - mol cula de selfix
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: mol-cula-de-selfix
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: mol-cula-de-selfix/answer
+    title: Answer
+    breadcrumbs:
+    - "Mol\xE9cula de Selfix"
+    - Answer
+    about:
+    - "Mol\xE9cula de Selfix"
+    - mol cula de selfix
+    - Answer
+    - answer
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20

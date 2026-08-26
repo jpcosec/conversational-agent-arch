@@ -11,11 +11,38 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-eventos-adversos
   path: atoms/rule-antonia-eventos-adversos.md
-  hash_c: e46882fe60d7f75b38d31ed4e558efdc1ff5723afc043d8194351036a5a097f1
-  hash_d: 2e2e3ceafc385f8a2ec98e736a36d01b0136a7be31cbe4304f182cebcfbad268
+  hash_c: 304cd7e62db36f3c37d624c0020cb96d4cc8922591d8d701743ddc039157cb52
+  hash_d: 42744bb6fb06e99fd39f25ff55497112276582b24179c7ad586cff704f0d933e
   semantic_tags:
   - conversation:pharmacovigilance
   - domain:seguridad
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-clasificacion-operacional
+  path: atoms/rule-antonia-clasificacion-operacional.md
+  hash_c: 61ae7754fb20a0e4ce7e4b591c3859501e64c1478b993bc8a7ef7cc7fdaaef88
+  hash_d: 1e7979587b186cecad4180e313123268d96d7010165d0dc461f6197939d1f428
+  semantic_tags:
+  - conversation:classification
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-clasificacion-medinfo
+  path: atoms/rule-antonia-clasificacion-medinfo.md
+  hash_c: 64abd8d3d36d8b22522645d26d202f28ae7ef5b13b2d83bb08bb65319938f8eb
+  hash_d: 91b40b8cc532eaf3dd0be57dd1b5d93d9bf50f29ff6861790e56cb2b6fa3bb5e
+  semantic_tags:
+  - conversation:classification
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-clasificacion-tratamiento
+  path: atoms/rule-antonia-clasificacion-tratamiento.md
+  hash_c: cd19023f74946fc269ce932370acc68ba6f1447f71738d79dc42a166bf2ae3b9
+  hash_d: fe7db2d63a97050722499f748fb603b36d67493960d998bb8f2e0fe382241cd9
+  semantic_tags:
+  - conversation:classification
   - system:laboratorio-chile
   - type.knowledge.rule
   - workspace.knowledge

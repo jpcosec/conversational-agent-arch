@@ -1,6 +1,10 @@
 tags:
   channel:whatsapp:
   - style-antonia
+  conversation:classification:
+  - rule-antonia-clasificacion-medinfo
+  - rule-antonia-clasificacion-operacional
+  - rule-antonia-clasificacion-tratamiento
   conversation:fallback:
   - fallback-antonia
   - rule-antonia-anti-alucinacion
@@ -34,15 +38,21 @@ tags:
   - boundary-antonia-clinico
   domain:logistica:
   - atom-antonia-recompra
+  domain:medinfo:
+  - atom-antonia-medinfo
   domain:programa:
   - atom-antonia-bienvenida
+  - atom-antonia-journeys
   domain:salud:
   - self-antonia
   domain:seguridad:
+  - atom-antonia-farmacovigilancia
   - rule-antonia-eventos-adversos
   domain:tratamiento:
   - atom-antonia-aplicacion
+  - atom-antonia-molecula
   - atom-antonia-primeras-semanas
+  - atom-antonia-titulacion
   self:estilo:
   - style-antonia
   self:limites:
@@ -55,12 +65,20 @@ tags:
   system:laboratorio-chile:
   - atom-antonia-aplicacion
   - atom-antonia-bienvenida
+  - atom-antonia-farmacovigilancia
+  - atom-antonia-journeys
+  - atom-antonia-medinfo
+  - atom-antonia-molecula
   - atom-antonia-primeras-semanas
   - atom-antonia-recompra
+  - atom-antonia-titulacion
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
   - fallback-antonia
   - rule-antonia-anti-alucinacion
+  - rule-antonia-clasificacion-medinfo
+  - rule-antonia-clasificacion-operacional
+  - rule-antonia-clasificacion-tratamiento
   - rule-antonia-eventos-adversos
   - self-antonia
   - step-antonia-agendar-recordatorio
@@ -84,12 +102,20 @@ tags:
   type.knowledge.domain:
   - atom-antonia-aplicacion
   - atom-antonia-bienvenida
+  - atom-antonia-farmacovigilancia
+  - atom-antonia-journeys
+  - atom-antonia-medinfo
+  - atom-antonia-molecula
   - atom-antonia-primeras-semanas
   - atom-antonia-recompra
+  - atom-antonia-titulacion
   type.knowledge.fallback:
   - fallback-antonia
   type.knowledge.rule:
   - rule-antonia-anti-alucinacion
+  - rule-antonia-clasificacion-medinfo
+  - rule-antonia-clasificacion-operacional
+  - rule-antonia-clasificacion-tratamiento
   - rule-antonia-eventos-adversos
   type.knowledge.self:
   - self-antonia
@@ -126,12 +152,20 @@ tags:
   workspace.knowledge:
   - atom-antonia-aplicacion
   - atom-antonia-bienvenida
+  - atom-antonia-farmacovigilancia
+  - atom-antonia-journeys
+  - atom-antonia-medinfo
+  - atom-antonia-molecula
   - atom-antonia-primeras-semanas
   - atom-antonia-recompra
+  - atom-antonia-titulacion
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
   - fallback-antonia
   - rule-antonia-anti-alucinacion
+  - rule-antonia-clasificacion-medinfo
+  - rule-antonia-clasificacion-operacional
+  - rule-antonia-clasificacion-tratamiento
   - rule-antonia-eventos-adversos
   - self-antonia
   - step-antonia-agendar-recordatorio
@@ -186,6 +220,46 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.domain
     - workspace.knowledge
+  atom-antonia-medinfo:
+    model: DomainAtom
+    path: atoms/atom-antonia-medinfo.md
+    tags:
+    - domain:medinfo
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-antonia-farmacovigilancia:
+    model: DomainAtom
+    path: atoms/atom-antonia-farmacovigilancia.md
+    tags:
+    - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-antonia-journeys:
+    model: DomainAtom
+    path: atoms/atom-antonia-journeys.md
+    tags:
+    - domain:programa
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-antonia-titulacion:
+    model: DomainAtom
+    path: atoms/atom-antonia-titulacion.md
+    tags:
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+  atom-antonia-molecula:
+    model: DomainAtom
+    path: atoms/atom-antonia-molecula.md
+    tags:
+    - domain:tratamiento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
   rule-antonia-anti-alucinacion:
     model: RuleAtom
     path: atoms/rule-antonia-anti-alucinacion.md
@@ -201,6 +275,30 @@ documents:
     tags:
     - conversation:pharmacovigilance
     - domain:seguridad
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-clasificacion-operacional:
+    model: RuleAtom
+    path: atoms/rule-antonia-clasificacion-operacional.md
+    tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-clasificacion-medinfo:
+    model: RuleAtom
+    path: atoms/rule-antonia-clasificacion-medinfo.md
+    tags:
+    - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-clasificacion-tratamiento:
+    model: RuleAtom
+    path: atoms/rule-antonia-clasificacion-tratamiento.md
+    tags:
+    - conversation:classification
     - system:laboratorio-chile
     - type.knowledge.rule
     - workspace.knowledge
