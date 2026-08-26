@@ -1,4 +1,10 @@
 tags:
+  domain:psp:
+  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+  - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   domain:self.architecture.backend:
   - atom-agente-conversador
   - atom-api-gateway-y-state-router
@@ -47,6 +53,12 @@ tags:
   - pill-conversador-jamas-alucina-sin-contexto
   rule:state-machine:
   - pill-maquina-de-estados-pausa-en-tool-calling
+  system:antonia:
+  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+  - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   system:cron:
   - atom-trigger-sintetico-cron
   system:kb-agent:
@@ -68,12 +80,18 @@ tags:
   - atom-aislamiento-estricto-de-pii
   - atom-historial-de-conversacion-sin-pii
   - atom-sql-capa-identidad-y-estado
+  topic:arquitectura:
+  - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  topic:clasificacion:
+  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   topic:consolidation:
   - atom-reflector-batch
   topic:context:
   - atom-contexto-compilado
   topic:conversation-flow:
   - atom-grafo-de-flujo-conversacional
+  topic:flujo-conversacional:
+  - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   topic:generation:
   - atom-agente-conversador
   topic:history:
@@ -82,8 +100,13 @@ tags:
   - atom-sql-capa-identidad-y-estado
   topic:knowledge-models:
   - atom-modelos-de-conocimiento-tipados
+  topic:modelacion:
+  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   topic:pii:
   - atom-aislamiento-estricto-de-pii
+  topic:policy-gate:
+  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   topic:proactivity:
   - atom-trigger-sintetico-cron
   topic:profiling:
@@ -108,14 +131,19 @@ tags:
   - atom-api-gateway-y-state-router
   - atom-apis-externas-integracion
   - atom-capa-frontend-del-runtime
+  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
+  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - atom-grafo-de-flujo-conversacional
+  - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-historial-de-conversacion-sin-pii
   - atom-knowledge-base-cli
+  - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-modelos-de-conocimiento-tipados
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
+  - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   - atom-reflector-batch
   - atom-sql-capa-identidad-y-estado
   - atom-trigger-sintetico-cron
@@ -132,14 +160,19 @@ tags:
   - atom-api-gateway-y-state-router
   - atom-apis-externas-integracion
   - atom-capa-frontend-del-runtime
+  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - atom-contexto-compilado
   - atom-debounce-buffer-agrupacion
+  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - atom-grafo-de-flujo-conversacional
+  - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-historial-de-conversacion-sin-pii
   - atom-knowledge-base-cli
+  - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-modelos-de-conocimiento-tipados
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
+  - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   - atom-reflector-batch
   - atom-sql-capa-identidad-y-estado
   - atom-trigger-sintetico-cron
@@ -342,5 +375,51 @@ documents:
     - layer:cli
     - system:kb-agent
     - topic:retrieval
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-policy-gate-como-agente-separado-con-rama-kb-propia:
+    model: AtomDoc
+    path: desk/atoms/atom-policy-gate-como-agente-separado-con-rama-kb-propia.md
+    tags:
+    - domain:psp
+    - system:antonia
+    - topic:policy-gate
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia:
+    model: AtomDoc
+    path: desk/atoms/atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia.md
+    tags:
+    - domain:psp
+    - system:antonia
+    - topic:arquitectura
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp":
+    model: AtomDoc
+    path: "desk/atoms/atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp.md"
+    tags:
+    - domain:psp
+    - system:antonia
+    - topic:clasificacion
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas:
+    model: AtomDoc
+    path: desk/atoms/atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas.md
+    tags:
+    - domain:psp
+    - system:antonia
+    - topic:flujo-conversacional
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate":
+    model: AtomDoc
+    path: "desk/atoms/atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md"
+    tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms

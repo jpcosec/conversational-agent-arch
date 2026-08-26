@@ -186,3 +186,54 @@ documents:
   - topic:retrieval
   - type.knowledge.atom
   - workspace.desk.atoms
+- name: atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  path: desk/atoms/atom-policy-gate-como-agente-separado-con-rama-kb-propia.md
+  hash_c: 1595341ba1525b3374425810a55b1d98867310b9a9a6459a21431cb5b2c337a7
+  hash_d: 69a3f26611f1a93270e4d865c84d8ada8d28a8c378940cf12ab1777624180456
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:policy-gate
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  path: desk/atoms/atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia.md
+  hash_c: 18da8f47057e4acef78372fbac550a63706c5e473f5c352713f3659098d52058
+  hash_d: 407225dd9d4a321dc5c4d5d2524f04bc910148bbd79845af4de356b0f4b6d704
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:arquitectura
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  path: "desk/atoms/atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp.md"
+  hash_c: c5c74b85254f74fe819f5c6624259d378afadd540e9bf11e06cf292430a478d7
+  hash_d: cab915ed1bea621a110e4f9d8afcc22aef7adbfdccbf5473495996c7f3791357
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:clasificacion
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+  path: desk/atoms/atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas.md
+  hash_c: 5de37216d69fb569c510c5dc14a8932516613e07e6b1d7a3c64c9ab0b8ef7b07
+  hash_d: a1a516d024bcf00bb684fa85680918cb16bd039fbddaf6c3cc2f5b29929f638a
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:flujo-conversacional
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  path: "desk/atoms/atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md"
+  hash_c: 60c2b9b6bff6c351fc30d6325e24aa4a65409caaa64226fcf4ef8af2090a8cdf
+  hash_d: b65b831c7c7d1a3d33592d9e22785bb26da8ffbb31fc3771d2bafee380a27c03
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:modelacion
+  - topic:policy-gate
+  - type.knowledge.atom
+  - workspace.desk.atoms
