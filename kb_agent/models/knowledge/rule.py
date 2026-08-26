@@ -15,6 +15,7 @@ class RuleAtom(IndexProxies):
     del Conversador.
     """
 
+    __family__ = "domain"
     __semantics__ = {
         "type": ["knowledge", "rule"],
         "workspace": ["knowledge"],

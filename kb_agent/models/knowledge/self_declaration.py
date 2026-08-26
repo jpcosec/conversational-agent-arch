@@ -12,6 +12,7 @@ class SelfDeclaration(IndexProxies):
     No es un hecho de dominio ni una regla.
     """
 
+    __family__ = "self"
     __semantics__ = {
         "type": ["knowledge", "self"],
         "workspace": ["knowledge"],

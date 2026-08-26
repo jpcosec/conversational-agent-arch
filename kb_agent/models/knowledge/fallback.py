@@ -15,6 +15,7 @@ class FallbackRule(IndexProxies):
     usa este mensaje en vez de alucinar.
     """
 
+    __family__ = "conversation"
     __semantics__ = {
         "type": ["knowledge", "fallback"],
         "workspace": ["knowledge"],

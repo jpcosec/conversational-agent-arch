@@ -15,6 +15,7 @@ class TraitAtom(IndexProxies):
     mapea texto del usuario a TraitAtom vía Gemini.
     """
 
+    __family__ = "user"
     __semantics__ = {
         "type": ["knowledge", "trait"],
         "workspace": ["knowledge"],
