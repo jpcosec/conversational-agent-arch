@@ -1,0 +1,17 @@
+documents:
+- name: agent-antonia-gate
+  path: atoms/agent-antonia-gate.md
+  hash_c: ba4c16be8b4a05738b1bb08f0122ba88b013ce254e695382b873a22d41ab01ab
+  hash_d: dff47435dab230a117b07c51e5e438d4dc152b98733adca469904f60bf4c3ca7
+  semantic_tags:
+  - agent:gate
+  - type.knowledge.agent
+  - workspace.knowledge
+- name: agent-antonia-router
+  path: atoms/agent-antonia-router.md
+  hash_c: 587cc69b92dbc78d4c07bb3d10664a8f05e0e9b1fd264fc099368b0908e12daa
+  hash_d: beb0a6b83e99795ca62c03679ec8f0518479ef1808679ac1e5686f11d055f765
+  semantic_tags:
+  - agent:router
+  - type.knowledge.agent
+  - workspace.knowledge

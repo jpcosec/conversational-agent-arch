@@ -59,3 +59,22 @@ project:
       Hola. Soy **Antonia**, del Programa de Acompañamiento de Selfix.
       Pregúntame sobre tu tratamiento, cómo aplicarte o agenda un recordatorio
       de aplicación. Tu médico tratante sigue siendo tu referente clínico.
+
+  # Parámetros de tuning del runtime (antes hardcodeados en el código).
+  # Cada uno admite override por env: MAX_BUNDLE_SIZE, HISTORY_LIMIT,
+  # ROUTER_MAX_RESULTS, TOOL_TIMEOUT_MS.
+  tuning:
+    max_bundle_size: 12       # tope de documentos en el bundle del turno
+    history_limit: 6          # mensajes recientes que entran al contexto
+    router_max_results: 10    # default de explore_multi del ruteador
+    tool_timeout_ms: 15000    # timeout de una tool call
+
+  # Infra de despliegue (Modal). NO es config de negocio; es plataforma.
+  # modal_app_name admite override por env MODAL_APP_NAME (app + volumen
+  # <app>-data). El resto lo lee deploy/modal_app.py desde aquí.
+  deploy:
+    modal_app_name: kb-agent-runtime
+    gcp_secret_name: kb-agent-runtime-gcp   # ADC de Vertex AI (Modal Secret)
+    twilio_secret_name: null                # Secret con TWILIO_AUTH_TOKEN (si existe)
+    min_containers: 1
+    serve_timeout_s: 600

@@ -1,4 +1,8 @@
 tags:
+  agent:gate:
+  - agent-antonia-gate
+  agent:router:
+  - agent-antonia-router
   channel:whatsapp:
   - style-antonia
   conversation:classification:
@@ -199,6 +203,9 @@ tags:
   - atom-antonia-regla-no-codificar
   - atom-antonia-regla-no-diagnosticar
   - atom-antonia-regla-validez
+  type.knowledge.agent:
+  - agent-antonia-gate
+  - agent-antonia-router
   type.knowledge.boundary:
   - boundary-antonia-clinico
   - boundary-antonia-manipulacion
@@ -295,6 +302,8 @@ tags:
   - trait-antonia-primera-vez
   workspace.knowledge:
   - agendar_recordatorio
+  - agent-antonia-gate
+  - agent-antonia-router
   - atom-antonia-aplicacion
   - atom-antonia-bienvenida
   - atom-antonia-ea
@@ -969,4 +978,18 @@ documents:
     - gate:promesas
     - system:laboratorio-chile
     - type.knowledge.gate
+    - workspace.knowledge
+  agent-antonia-gate:
+    model: AgentFraming
+    path: atoms/agent-antonia-gate.md
+    tags:
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+  agent-antonia-router:
+    model: AgentFraming
+    path: atoms/agent-antonia-router.md
+    tags:
+    - agent:router
+    - type.knowledge.agent
     - workspace.knowledge

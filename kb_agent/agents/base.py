@@ -52,12 +52,14 @@ from __future__ import annotations
 import json
 from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
+from enum import StrEnum
 from typing import Any, TypeAlias
 
 from pydantic import BaseModel
 
 __all__ = [
     "Agent",
+    "AgentRole",
     "LlmRequest",
     "LlmResponse",
     "Tool",
@@ -67,6 +69,22 @@ __all__ = [
     "BeforeToolCallback",
     "AfterToolCallback",
 ]
+
+
+class AgentRole(StrEnum):
+    """Roles de los agentes LLM del sistema (categoria centralizada).
+
+    Punto unico de verdad de QUE agentes existen. Lo consume el runtime para
+    resolver el ``AgentFraming`` de la KB por rol (ver
+    ``kb_agent.models.knowledge.AgentFraming`` y los ``render_*`` de este
+    paquete): el texto de encuadre de negocio de cada agente vive en la KB,
+    indexado por uno de estos roles, no hardcodeado por negocio en el codigo.
+    """
+
+    CONVERSADOR = "conversador"
+    ROUTER = "router"
+    ORCHESTRATOR = "orchestrator"
+    GATE = "gate"
 
 
 @dataclass(slots=True)
@@ -253,6 +271,7 @@ class Agent:
     name: str
     client: Any
     model: str
+    role: AgentRole | None = None
     instruction: str = ""
     static_instruction: str = ""
     tools: list[Tool] = field(default_factory=list)

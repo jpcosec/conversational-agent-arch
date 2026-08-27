@@ -19,6 +19,9 @@ El sistema soporta múltiples negocios aislados. Actualmente conviven dos KBs pr
 ## Operaciones y Desarrollo
 > Ver [Guía de Operaciones](docs/OPERATIONS.md).
 
+## Configuración (KB vs YAML) y montar otro negocio
+> Ver [Guía de Configuración](docs/CONFIGURATION.md).
+
 ## Ramas, CI y releases
 > Capas de test, topología Modal y alembic en detalle: [Guía de Operaciones](docs/OPERATIONS.md). Secrets, imagen y volumen: [deploy/README.md](deploy/README.md).
 

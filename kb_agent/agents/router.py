@@ -44,7 +44,7 @@ from typing import TYPE_CHECKING, Any
 
 from pydantic import BaseModel, Field
 
-from kb_agent.agents.base import Agent, Tool
+from kb_agent.agents.base import Agent, AgentRole, Tool
 
 if TYPE_CHECKING:
     from knowledge_base.operations import KnowledgeOperations
@@ -122,17 +122,15 @@ steps.onboarding" -- nunca "grounding de steps.atom-antonia-bienvenida".
   - "similitud <score>" -- relevante por similitud semantica con la \
 pregunta (usa el score real que te devuelve `explore_multi`, con 2 \
 decimales).
-  - Cualquier otro motivo TUYO, explicito y concreto (ejemplo real: si el \
-usuario dice "me da miedo la aguja, es la primera vez que me inyecto", \
-conviene meter el trait de ansiedad Y el de primera aplicacion aunque no \
-sean los de mayor score literal, con un motivo como "el usuario expresa \
-miedo a la aguja, aporta contexto emocional para la respuesta"). Podes \
-meter CUALQUIER documento de CUALQUIER familia si esta justificado -- no \
-estas limitado a domain/rule.
+  - Cualquier otro motivo TUYO, explicito y concreto: si el usuario expresa \
+algo (una emocion, una situacion, una preferencia) que un documento cubre, \
+metelo aunque no sea el de mayor score literal, con un motivo que explique \
+que aporta al turno. Podes meter CUALQUIER documento de CUALQUIER familia \
+si esta justificado -- no estas limitado a domain/rule.
 
-NO hace falta que busques ni repitas el "piso de seguridad": las reglas de \
-farmacovigilancia (tag conversation:security) las agrega el CODIGO despues \
-de tu respuesta, siempre, decidas lo que decidas. Concentrate en lo que \
+NO hace falta que busques ni repitas el "piso de seguridad": las reglas \
+marcadas con el tag conversation:security las agrega el CODIGO despues de \
+tu respuesta, siempre, decidas lo que decidas. Concentrate en lo que \
 depende del contexto de este turno.
 
 Herramientas disponibles -- USALAS, no inventes ids ni contenido:
@@ -155,29 +153,35 @@ herramientas, nunca inventado), `motivo` (obligatorio) y, si los tenes, \
 no hay nada que justifique agregar mas alla de lo que ya carga el sistema."""
 
 
-def render_router_instruction() -> str:
+def render_router_instruction(*, framing: str | None = None) -> str:
     """``static_instruction`` del ``RouterAgent``: como buscar, no que buscar.
 
-    A diferencia de ``render_gate_criteria``/``render_orchestrator_flow``,
-    este prompt NO se arma desde atoms de la KB (no hay un
-    ``RouterCriterion`` tipado): describe la doctrina fija del sistema
-    (familias, motivos, regla de oro) que no cambia por negocio. Se expone
-    como funcion (no una constante inline) para que quede testeable y
-    documentado igual que sus pares.
+    El cuerpo (``_ROUTER_INSTRUCTION``) es la doctrina fija del sistema
+    (familias, motivos, regla de oro) que no cambia por negocio. El
+    ``framing`` (opcional) es el encuadre de negocio -- ejemplos concretos
+    del dominio (que traits meter ante que sintoma, etc.) -- y viene de un
+    ``AgentFraming`` de la KB (rol ``router``). Se antepone como lead-in:
+    guia al ruteador sin ensuciar la doctrina con vocabulario de un negocio
+    puntual.
     """
+    lead_in = (framing or "").strip()
+    if lead_in:
+        return f"{lead_in}\n\n{_ROUTER_INSTRUCTION}"
     return _ROUTER_INSTRUCTION
 
 
-def _explore_multi_tool(knowledge_ops: "KnowledgeOperations") -> Tool:
+def _explore_multi_tool(
+    knowledge_ops: "KnowledgeOperations", *, default_max_results: int = 10
+) -> Tool:
     def handler(args: Mapping[str, Any]) -> dict[str, Any]:
         query = str(args.get("query") or "").strip()
         if not query:
             return {"query": "", "results": [], "top_score": 0.0, "results_count": 0, "is_empty": True}
         raw_max = args.get("max_results")
         try:
-            max_results = int(raw_max) if raw_max is not None else 10
+            max_results = int(raw_max) if raw_max is not None else default_max_results
         except (TypeError, ValueError):
-            max_results = 10
+            max_results = default_max_results
         return knowledge_ops.explore_multi(query, max_results=max(1, max_results))
 
     return Tool(
@@ -193,7 +197,7 @@ def _explore_multi_tool(knowledge_ops: "KnowledgeOperations") -> Tool:
             "type": "object",
             "properties": {
                 "query": {"type": "string", "description": "Texto a buscar (pregunta, concepto, sintoma, etc.)."},
-                "max_results": {"type": "integer", "description": "Tope de resultados (default 10)."},
+                "max_results": {"type": "integer", "description": f"Tope de resultados (default {default_max_results})."},
             },
             "required": ["query"],
         },
@@ -251,7 +255,9 @@ def _show_tool(knowledge_ops: "KnowledgeOperations") -> Tool:
     )
 
 
-def _build_tools(knowledge_ops: "KnowledgeOperations") -> list[Tool]:
+def _build_tools(
+    knowledge_ops: "KnowledgeOperations", *, default_max_results: int = 10
+) -> list[Tool]:
     """Herramientas de busqueda de KB expuestas al MODELO.
 
     Se eligieron 3 de las operaciones de ``KnowledgeOperations`` (el modulo
@@ -275,7 +281,11 @@ def _build_tools(knowledge_ops: "KnowledgeOperations") -> list[Tool]:
     proceso (cachea el embedder de jina, ~1 min en frio) -- estas funciones
     la reusan, nunca instancian una nueva.
     """
-    return [_explore_multi_tool(knowledge_ops), _explore_tool(knowledge_ops), _show_tool(knowledge_ops)]
+    return [
+        _explore_multi_tool(knowledge_ops, default_max_results=default_max_results),
+        _explore_tool(knowledge_ops),
+        _show_tool(knowledge_ops),
+    ]
 
 
 def apply_security_floor(bundle: Sequence[Mapping[str, Any]], security_ids: Iterable[str]) -> list[dict[str, Any]]:
@@ -342,14 +352,17 @@ class RouterAgent:
         client: Any,
         model: str,
         knowledge_ops: "KnowledgeOperations",
+        framing: str | None = None,
+        default_max_results: int = 10,
     ) -> None:
-        self.static_instruction = render_router_instruction()
+        self.static_instruction = render_router_instruction(framing=framing)
         self._agent = Agent(
             name=name,
             client=client,
             model=model,
+            role=AgentRole.ROUTER,
             static_instruction=self.static_instruction,
-            tools=_build_tools(knowledge_ops),
+            tools=_build_tools(knowledge_ops, default_max_results=default_max_results),
             include_contents=True,
             output_schema=RouterDecision,
         )

@@ -88,6 +88,14 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: AgentFraming
+  model_ref: kb_agent.models.knowledge:AgentFraming
+  path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/agent_framing.py
+  models_index: .sldb/core/models/AgentFraming.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
 predicates:
 - name: is_solved_by
   axis: HOW
@@ -110,4 +118,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: 9e4a26a82bf2bf0187b08ae0a547afe7869e1f5ce0c56d98ac545da8f7e86360
+hash_a: 035d860fa293ae609d27592a0b9847617c91a4de281da84684120ddca4fa62b4
