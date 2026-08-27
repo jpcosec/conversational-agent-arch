@@ -121,7 +121,11 @@ function renderInspector(turn){
   '  <h4 class="font-mono text-xs text-on-surface-variant uppercase tracking-wider mb-3 flex items-center gap-2"><span class="msym text-[16px]">receipt_long</span>Summary</h4>',
   '  <div class="grid grid-cols-2 gap-3">',
   '    <div><p class="text-xs text-on-surface-variant">Usuario</p><p class="font-mono text-sm text-on-surface">'+(turn.user_message?'Atendido':'\u2014')+'</p></div>',
-  '    <div><p class="text-xs text-on-surface-variant">Intent</p><p class="font-mono text-sm '+{'fallback':'text-error','tool_call':'text-tertiary','nl':'text-secondary'}[kind]||'text-on-surface'+'">'+esc(kind)+'</p></div>',
+  // Los parentesis alrededor del lookup son necesarios: + liga mas fuerte que
+  // ||, asi que sin ellos la expresion era ('...text-sm '+color) || (resto) y,
+  // al ser truthy la izquierda, se descartaba el '">'+kind+'</p></div>' --el <p>
+  // quedaba sin cerrar y la celda Intent se comia a la de Tool.
+  '    <div><p class="text-xs text-on-surface-variant">Intent</p><p class="font-mono text-sm '+({'fallback':'text-error','tool_call':'text-tertiary','nl':'text-secondary'}[kind]||'text-on-surface')+'">'+esc(kind)+'</p></div>',
   '    <div><p class="text-xs text-on-surface-variant">Tool</p><p class="font-mono text-sm text-on-surface">'+(turn.system_turn?esc(turn.system_turn.tool):'\u2014')+'</p></div>',
   '    <div><p class="text-xs text-on-surface-variant">Step</p><p class="font-mono text-sm text-on-surface">'+esc(turn.flow_node||'\u2014')+'</p></div>',
   '  </div>',
