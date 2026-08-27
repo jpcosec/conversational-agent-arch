@@ -1,0 +1,3 @@
+run_id: runs/subagents/20260826-183620-testing
+child_session_path: runs/subagents/20260826-183620-testing
+session_sha256: 2872fe7e7d014f9e506f92f30ad2eca755eccf8748fb4159ebdeb0ddc608ad7c
