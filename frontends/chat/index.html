@@ -33,8 +33,7 @@
 .chat-sidebar{width:280px;min-width:280px;background:var(--bg-panel2);border-right:1px solid var(--border-accent)}
 .sidebar-block{border:1px solid var(--border-accent);border-radius:10px;padding:12px;background:rgba(18,18,26,.8);transition:var(--transition)}
 .sidebar-block:hover{border-color:var(--accent-hover)}
-.sidebar-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
-.demo-guide{border:1px solid rgba(212,165,116,.18);background:rgba(212,165,116,.06);border-radius:12px;padding:12px 14px}.demo-guide h4{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}.demo-guide ul{margin:0;padding-left:18px;color:rgba(245,240,232,.78);font-size:12px;line-height:1.5}.demo-guide li+li{margin-top:4px}.demo-note{font-size:11px;color:rgba(245,240,232,.55);margin-top:8px}</style>
+.sidebar-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}</style>
 </head><body class="bg-background text-on-surface font-body h-screen overflow-hidden flex flex-col">
 <header class="app-topbar" data-testid='nav-topbar'>
 <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
@@ -73,19 +72,6 @@
       <h2 class="text-2xl text-on-surface flex items-center gap-2"><span class="msym text-primary">forum</span><span id="sessionTitle">Session</span></h2>
       <span id="sessionBadge" class="font-mono text-xs text-on-surface-variant px-2 py-1 bg-surface-container-high rounded border border-outline-variant">ID: —</span>
     </header>
-    <div class="px-6 pt-4">
-      <div class="demo-guide" data-testid="chat-demo-guide">
-        <h4>Cómo leer esta demo</h4>
-        <ul>
-          <li><b>Centro:</b> conversación normal con la usuaria.</li>
-          <li><b>Derecha:</b> auditoría del turno seleccionado.</li>
-          <li><b>Contexto:</b> documentos que entraron a responder.</li>
-          <li><b>Razonamiento:</b> qué hizo cada parte del runtime.</li>
-          <li><b>Links atom-…</b> o cards de contexto: abren el documento fuente.</li>
-        </ul>
-        <div class="demo-note">Prueba frases como “me da miedo la aguja”, “quiero un recordatorio”, “lunes a las 20”, “me mareé después de aplicarlo”.</div>
-      </div>
-    </div>
     <div id="messages" class="flex-1 overflow-y-auto custom-scrollbar px-6 py-6 flex flex-col gap-6 relative"></div>
     <div class="p-4 border-t border-white/10 bg-surface-container-low flex gap-3">
       <textarea id="input" data-testid="chat-input" rows="2" placeholder="Escribe tu mensaje..."
@@ -100,7 +86,7 @@
       <span id="inspectorClear" class="msym text-on-surface-variant cursor-pointer hover:text-white">close</span>
     </header>
     <div id="inspectorBody" class="p-4 flex flex-col gap-6">
-      <div class="demo-guide" data-testid="chat-inspector-guide"><h4>Qué ves aquí</h4><ul><li><b>Summary:</b> intención, step y tool del turno.</li><li><b>Contexto:</b> por qué entró cada atom.</li><li><b>Razonamiento:</b> Ruteador, Orquestador, Conversador, Gate y Perfilador.</li></ul></div><div class="text-on-surface-variant text-sm">Selecciona una respuesta del asistente para auditar su turno.</div>
+      <div class="text-on-surface-variant text-sm">Selecciona una respuesta del asistente para auditar su turno.</div>
     </div>
    </section>
  </main>
@@ -283,4 +269,6 @@ document.addEventListener('click',e=>{
  }catch(e){}}
  renderTurns()})();
 </script>
+<script src="/static/demo-tour.js"></script>
+<script>if(window.DemoTour)DemoTour.run();</script>
 </body></html>

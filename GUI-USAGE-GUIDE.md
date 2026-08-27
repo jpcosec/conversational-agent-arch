@@ -6,24 +6,24 @@ Guía visual detallada de las 4 vistas del sistema. Cada sección describe qué 
 
 ## 0.0 Modo Demo
 
-La app corre en **modo demo** por defecto (flag `app.demo_mode`, desactivable con `DEMO_MODE=0`). En demo:
+La app corre en **modo demo** solo si se pide explícitamente (`DEMO_MODE=1`; el flag queda en `app.demo_mode`). Sin la variable arranca el runtime real con orquestador + LLM. En demo:
 
-- **No se llama al LLM real**: un state machine determinista (`DemoStateMachineConversador` en `tests/support/fakes.py`) redacta las respuestas y avanza el `flow_node` según palabras clave.
+- **No se llama al LLM real**: un state machine determinista (`DemoStateMachineConversador` en `frontends/chat/demo_data.py`) redacta las respuestas y avanza el `flow_node` según palabras clave.
 - **Todos los `/api/*` devuelven datos prefabricados** desde `frontends/chat/demo_data.py` (KB de Antonia sintética).
 - `/api/config` devuelve `runtime_title: "Demo Agent"` e `input_placeholder: "Escribe algo…"`.
 
-### Guías pedagógicas visibles (banners `demo-guide`)
+### Tour guiado (`frontends/shared/demo-tour.js`)
 
-Cada vista muestra una tarjeta que explica qué se está viendo:
+Un único recorrido con cuadros flotantes que apuntan a elementos de las 4 vistas (anillo + flecha). Se carga en cada `index.html` con `<script src="/static/demo-tour.js"></script><script>DemoTour.run()</script>`; el progreso vive en `localStorage` (`demo-tour-idx`, `demo-tour-done`) para sobrevivir el cambio de página. Al agotar los cuadros de una vista navega solo a la siguiente (Chat → Flow → Mindmap → Users).
 
-| Selector | Vista |
+| Selector | Qué es |
 |---|---|
-| `data-testid="chat-demo-guide"` | Chat — cómo leer la demo + frases de ejemplo |
-| `data-testid="chat-inspector-guide"` | Chat — qué es Summary / Contexto / Razonamiento |
-| `data-testid="flow-demo-guide"` | Flow — qué son nodos, flechas, tools |
-| `data-testid="flow-inspector-guide"` | Flow — qué significa cada campo del step |
-| `data-testid="mindmap-demo-guide"` | Mindmap — qué representa cada layout |
-| `data-testid="users-demo-guide"` | Users — qué son perfil / eventos / conversaciones |
+| `data-testid="demo-tour"` | Cuadro flotante del paso actual (`.dt-title`, `.dt-text`) |
+| `.dt-ring` / `.dt-arrow` | Anillo de resaltado y flecha que apuntan al elemento |
+| `data-testid="demo-tour-next"` / `-prev` / `-close` | Botones; también `Enter`/`→`, `←`, `Esc` |
+| `data-testid="demo-tour-launch"` | Botón flotante «❓ Guía demo» para reiniciar el tour |
+
+Para tests que no prueban el tour: `localStorage.setItem('demo-tour-done','1')` antes de interactuar (helper `_open` en `tests/ui/test_demo_e2e.py`).
 
 ### Máquina de estados del chat demo
 

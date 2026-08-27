@@ -36,7 +36,7 @@ input,textarea,select{font-family:inherit}
 .react-flow__controls button:hover{border-color:#d4a574!important;color:#d4a574!important;fill:#d4a574!important}
 .drag-handle{cursor:grab;opacity:.5;font-size:12px;position:absolute;top:-4px;right:2px;color:rgba(245,240,232,.4);user-select:none}
 .drag-handle:hover{opacity:1;color:#d4a574}
-.react-flow__node.selected .drag-handle{opacity:1;color:#d4a574}.demo-guide{border:1px solid rgba(212,165,116,.18);border-radius:12px;background:rgba(212,165,116,.06);padding:12px 14px;max-width:420px}.demo-guide h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#d4a574;margin-bottom:8px}.demo-guide ul{padding-left:18px;font-size:12px;line-height:1.5;color:rgba(245,240,232,.78)}.demo-guide li+li{margin-top:4px}.demo-mini{font-size:11px;color:rgba(245,240,232,.55);margin-top:8px}</style></head><body>
+.react-flow__node.selected .drag-handle{opacity:1;color:#d4a574}</style></head><body>
 <header class="app-topbar" data-testid='nav-topbar'>
 <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
 <nav class="app-nav" id="appNav">
@@ -230,7 +230,6 @@ function App(){
    </aside>
    <div class="mm-canvas">
     <div class="mm-topbar">
-     <div class="demo-guide" data-testid="mindmap-demo-guide"><h4>Cómo leer esta vista</h4><ul><li><b>Árbol:</b> organiza la KB por familias y ramas.</li><li><b>Top-down:</b> misma jerarquía, vertical.</li><li><b>Embeddings:</b> cercanía semántica simulada en 2D.</li><li><b>Click en un nodo:</b> abre su detalle rápido.</li></ul><div class="demo-mini">Usa el sidebar para filtrar una familia y el toggle para ver links horizontales.</div></div>
      <input class="mm-search" data-testid="mindmap-search" placeholder="Buscar nodo (Ctrl+F)…" value=${searchText} onInput=${e=>setSearchText(e.target.value)}/>
      <span style=${{fontSize:10,color:'rgba(245,240,232,.35)',marginLeft:'auto'}}>doble-click edita · click comenta</span>
     </div>
@@ -247,4 +246,7 @@ function App(){
  </div>`
 }
 createRoot(document.getElementById('root')).render(html`<${ReactFlowProvider}><${App}/></${ReactFlowProvider}>`)
-</script></body></html>
+</script>
+<script src="/static/demo-tour.js"></script>
+<script>if(window.DemoTour)DemoTour.run();</script>
+</body></html>
