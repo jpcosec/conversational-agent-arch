@@ -232,3 +232,106 @@ def _migrate_data_volume() -> None:
         # queda en los logs y el turno fallara de forma visible si el esquema
         # quedo atras.
         log.exception("no se pudo migrar el sqlite del volumen")
+
+
+# ── mantenimiento del volumen ─────────────────────────────────────────────
+# Viven aca y no en un modulo aparte porque Modal solo monta ESTE archivo y
+# los directorios de codigo: un `from deploy.modal_app import ...` desde otro
+# modulo revienta dentro del contenedor con ModuleNotFoundError('deploy').
+#
+#     modal run deploy/modal_app.py::inspect_db
+#     modal run deploy/modal_app.py::clean_and_seed
+
+DB_PATH = "/data/ui-chat.sqlite"
+
+
+def _connect():
+    import sqlite3
+
+    return sqlite3.connect(DB_PATH)
+
+
+@app.function(image=image, volumes={"/data": data_volume}, timeout=900)
+def inspect_db() -> None:
+    """Muestra que hay en la base del volumen, sin tocar nada."""
+    import os
+
+    if not os.path.exists(DB_PATH):
+        print(f"{DB_PATH} no existe todavia")
+        return
+
+    con = _connect()
+    try:
+        tablas = sorted(r[0] for r in con.execute(
+            "select name from sqlite_master where type='table'"))
+        print("tablas:", tablas)
+        for t in tablas:
+            n = con.execute(f"select count(*) from {t}").fetchone()[0]
+            print(f"  {t}: {n}")
+
+        print("\nusuarios:")
+        for r in con.execute("select id, external_id, channel from users"):
+            print("   ", r)
+
+        print("\nprimeros mensajes por usuario (para ver de que KB son):")
+        for uid, ext in con.execute("select id, external_id from users"):
+            rows = con.execute(
+                "select role, substr(content,1,90) from chat_history "
+                "where user_id=? order by id limit 4", (uid,)).fetchall()
+            if rows:
+                print(f"  -- {ext}")
+                for role, txt in rows:
+                    print(f"     {role:9} {txt}")
+    finally:
+        con.close()
+
+
+@app.function(image=image, volumes={"/data": data_volume}, timeout=1800)
+def clean_and_seed() -> None:
+    """Borra las conversaciones y siembra los usuarios demo de Antonia.
+
+    Borra en orden de dependencia (hijos antes que ``users``). No toca el
+    esquema: de eso se encarga alembic al arrancar ``serve``.
+    """
+    import os
+    import sys
+
+    if REMOTE_APP_DIR not in sys.path:
+        sys.path.insert(0, REMOTE_APP_DIR)
+    os.chdir(REMOTE_APP_DIR)
+    os.environ["PROJECT_CONFIG"] = f"{REMOTE_APP_DIR}/project.config.yaml"
+
+    con = _connect()
+    try:
+        existentes = {r[0] for r in con.execute(
+            "select name from sqlite_master where type='table'")}
+        # De hijos a padre: turns/chat_history/user_traits/session_state
+        # referencian users.
+        for t in ("turns", "chat_history", "user_traits", "session_state",
+                  "reservas", "recordatorios", "users"):
+            if t in existentes:
+                n = con.execute(f"select count(*) from {t}").fetchone()[0]
+                con.execute(f"delete from {t}")
+                print(f"  borradas {n} filas de {t}")
+        con.commit()
+    finally:
+        con.close()
+
+    from kb_agent.seed_demo_users import seed
+
+    stats = seed(DB_PATH)
+    print("sembrado:", stats)
+
+    con = _connect()
+    try:
+        for t in ("users", "user_traits", "chat_history", "turns"):
+            try:
+                n = con.execute(f"select count(*) from {t}").fetchone()[0]
+                print(f"  {t}: {n}")
+            except Exception as exc:  # tabla ausente en una base vieja
+                print(f"  {t}: {exc}")
+    finally:
+        con.close()
+
+    data_volume.commit()
+    print("volumen commiteado")

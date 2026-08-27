@@ -94,6 +94,15 @@ modal app logs kb-agent-runtime
 `UserTraits` sobreviven a redeploys porque viven en el Volume, no en la
 imagen.
 
+Mantenimiento del sqlite del Volume (funciones en `deploy/modal_app.py`,
+no en un módulo aparte: Modal solo monta ese archivo y `from deploy... import`
+revienta dentro del contenedor):
+
+```bash
+modal run deploy/modal_app.py::inspect_db       # solo lectura: tablas, usuarios, primeros mensajes
+modal run deploy/modal_app.py::clean_and_seed   # BORRA conversaciones y vuelve a sembrar los usuarios demo
+```
+
 ## Verificar que está viva
 
 ```bash
