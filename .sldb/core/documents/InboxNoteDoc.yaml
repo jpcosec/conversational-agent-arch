@@ -13,3 +13,10 @@ documents:
   semantic_tags:
   - type.desk.inbox-note
   - workspace.desk.inbox
+- name: 20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills
+  path: desk/inbox/20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills.md
+  hash_c: cb52e3273711bfb99bea67222d26c9d5941fe764d699c8383183ebd89177d297
+  hash_d: d611457915ad106f8eee9f47fce9fc70d3b6e1efb22511eb2bba3d564be76159
+  semantic_tags:
+  - type.desk.inbox-note
+  - workspace.desk.inbox
