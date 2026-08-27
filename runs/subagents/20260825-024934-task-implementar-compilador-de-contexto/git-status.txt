@@ -1,2 +1,0 @@
-## pi-parallel-65d670cc-3
-?? runs/subagents/20260825-024934-task-implementar-compilador-de-contexto/

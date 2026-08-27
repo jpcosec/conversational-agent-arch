@@ -5,8 +5,6 @@ __pycache__/
 .adk/session.db
 node_modules/
 runs/*
-!runs/subagents/
-!runs/subagents/**
 spec2viz_serve.log
 .sldb_e2e_donpeppe/.sldb/runtime/
 .embedding_cache/
@@ -14,7 +12,6 @@ spec2viz_serve.log
 
 # logs/indices de workflow generados por deskops (no versionar)
 .deskops.log
-runs/subagents/index.jsonl
 desk/spec2viz/build/
 .sldb/runtime/knowledge_graph.nx.json
 .sldb/runtime/knowledge_graph.kg.json

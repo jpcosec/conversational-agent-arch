@@ -1,2 +1,0 @@
-## conversational-agent-arch
-?? runs/subagents/20260825-104810-task-conectar-maquina-de-estados-al-orquestador/

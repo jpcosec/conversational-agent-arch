@@ -1,2 +1,0 @@
-Child executor session artifact for task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.
-Scope executed: create 4 Antonia conversation steps, create 5 Antonia gate criteria, update 2 existing step transition sections, reindex knowledge/.sldb, and adjust the affected integration test expectation so requested validation passes against the expanded graph.

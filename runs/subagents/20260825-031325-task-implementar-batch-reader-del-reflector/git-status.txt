@@ -1,2 +1,0 @@
-## pi-parallel-6f30eb51-0
-?? runs/subagents/20260825-031325-task-implementar-batch-reader-del-reflector/

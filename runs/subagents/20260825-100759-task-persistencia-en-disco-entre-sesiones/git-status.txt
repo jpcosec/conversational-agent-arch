@@ -1,2 +1,0 @@
-## conversational-agent-arch
-?? runs/subagents/20260825-100759-task-persistencia-en-disco-entre-sesiones/

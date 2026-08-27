@@ -1,2 +1,0 @@
-## dev...origin/dev [ahead 5]
-?? runs/subagents/20260826-133506-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing/

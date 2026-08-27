@@ -1,5 +1,0 @@
-## pi-parallel-65d670cc-3
- M kb_agent/ontologizador/__init__.py
-?? kb_agent/ontologizador/compiler.py
-?? runs/subagents/20260825-024934-task-implementar-compilador-de-contexto/
-?? tests/test_context_compiler.py

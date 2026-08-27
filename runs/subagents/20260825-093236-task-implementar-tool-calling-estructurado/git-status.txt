@@ -1,4 +1,0 @@
-## conversational-agent-arch
-?? .sldb_e2e_donpeppe/
-?? runs/subagents/20260825-093236-task-implementar-tool-calling-estructurado/
-?? tests/e2e/

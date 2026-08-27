@@ -1,7 +1,0 @@
-Task: task-ui-foundations
-Title: UI foundations — navegación unificada, estilo flow-editor, hotkeys globales
-Status: draft
-Current node: 
-Task type: 
-Routine: 
-Checklist status:

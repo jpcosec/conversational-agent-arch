@@ -1,2 +1,0 @@
-## conversational-agent-arch
-?? runs/subagents/20260825-025705-task-implementar-pausa-de-tools-en-router/

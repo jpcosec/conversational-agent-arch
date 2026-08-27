@@ -1,2 +1,0 @@
-## pi-parallel-65d670cc-0
-?? runs/subagents/20260825-024918-task-implementar-modelos-de-sesion-e-historial/

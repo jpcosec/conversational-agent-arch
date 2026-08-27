@@ -1,2 +1,0 @@
-## pi-parallel-10cfcd33-1
-?? runs/subagents/20260825-030303-task-implementar-fallback-estricto-del-conversador/

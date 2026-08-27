@@ -1,3 +1,0 @@
-## dev...origin/dev [ahead 1]
-?? context.md
-?? runs/subagents/20260826-184104-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing/

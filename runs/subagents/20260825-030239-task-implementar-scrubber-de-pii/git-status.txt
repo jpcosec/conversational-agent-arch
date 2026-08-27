@@ -1,2 +1,0 @@
-## pi-parallel-10cfcd33-0
-?? runs/subagents/20260825-030239-task-implementar-scrubber-de-pii/

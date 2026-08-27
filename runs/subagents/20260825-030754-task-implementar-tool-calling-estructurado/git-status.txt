@@ -1,2 +1,0 @@
-## conversational-agent-arch
-?? runs/subagents/20260825-030754-task-implementar-tool-calling-estructurado/

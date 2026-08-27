@@ -1,2 +1,0 @@
-$ deskops next external-kb-agent-runtime --root .
-Error: No artifact.task file found for selector 'external-kb-agent-runtime' in /home/jp/proyectos/gemini_test/desk/tasks

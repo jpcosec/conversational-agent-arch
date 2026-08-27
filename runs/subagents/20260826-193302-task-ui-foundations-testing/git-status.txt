@@ -1,7 +1,0 @@
-On branch task/ui-tidy
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	runs/subagents/20260826-192438-task-ui-foundations/
-	runs/subagents/20260826-193302-task-ui-foundations-testing/
-
-nothing added to commit but untracked files present (use "git add" to track)
