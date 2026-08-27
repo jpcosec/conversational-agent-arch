@@ -13,6 +13,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+from kb_agent.db_check import check_db_revision
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import REPO_ROOT, load_project_config
 
@@ -44,8 +45,17 @@ def main(argv: list[str] | None = None) -> int:
     kb_root = Path(args.kb).resolve()
     db_path = Path(args.db).resolve()
     db_path.parent.mkdir(parents=True, exist_ok=True)
+    db_url = f"sqlite:///{db_path}"
 
-    orch = Orchestrator.from_config(cfg, db_url=f"sqlite:///{db_path}", kb_root=kb_root)
+    # Chequeo no bloqueante: create_all() crea tablas que faltan pero nunca
+    # altera una tabla existente. Si la base esta atrasada respecto de
+    # alembic/versions, avisamos ANTES de que reviente en el primer turno
+    # con un OperationalError opaco (ver docs/OPERATIONS.md#migraciones).
+    status = check_db_revision(db_url)
+    if not status.ok:
+        print(f"[WARNING] {status.message}", file=sys.stderr)
+
+    orch = Orchestrator.from_config(cfg, db_url=db_url, kb_root=kb_root)
 
     print("=" * 60)
     print(f"  Chat local — {cfg.name} ({cfg.model})")
