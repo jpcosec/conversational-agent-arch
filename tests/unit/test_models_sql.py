@@ -1,13 +1,15 @@
-"""Modelos SQL: identidad (Users/UserTraits), sesion (SessionState/ChatHistory)."""
+"""Modelos SQL: identidad (Users/UserTraits), sesion (SessionState/ChatHistory), turnos (Turns)."""
 from __future__ import annotations
 
 import pytest
 from sqlalchemy import create_engine, select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from kb_agent.models_sql.identity import Base, UserTraits, Users
 from kb_agent.models_sql.reservas import Reservas
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
+from kb_agent.models_sql.turns import Turns
 
 
 @pytest.fixture()
@@ -91,6 +93,110 @@ def test_chat_history_defaults_to_unscrubbed_and_validates_role(session: Session
     with pytest.raises(Exception):
         session.commit()
     session.rollback()
+
+
+def _turn_kwargs(user_id: int, session_id: str = "sess-1", turn_id: str = "t1") -> dict:
+    return dict(
+        turn_id=turn_id,
+        session_id=session_id,
+        user_id=user_id,
+        step_before="idle",
+        step_after="drafting_response",
+        decision={"action": "responder", "motivo": "saludo"},
+        draft="Hola, en que te puedo ayudar?",
+        gate={"approved": True, "reasons": []},
+        bundle=[{"doc_id": "doc-1", "family": "menu", "motivo": "match directo", "score": 0.9}],
+    )
+
+
+def test_turns_stores_full_audit_trail_of_a_turn(session: Session) -> None:
+    user = _user(session, "wa:+turns-1")
+    turn = Turns(**_turn_kwargs(user.id))
+    session.add(turn)
+    session.commit()
+    session.expire_all()
+
+    reloaded = session.scalar(select(Turns).where(Turns.turn_id == "t1"))
+    assert reloaded.session_id == "sess-1"
+    assert reloaded.user_id == user.id
+    assert (reloaded.step_before, reloaded.step_after) == ("idle", "drafting_response")
+    assert reloaded.decision == {"action": "responder", "motivo": "saludo"}
+    assert reloaded.draft == "Hola, en que te puedo ayudar?"
+    assert reloaded.gate == {"approved": True, "reasons": []}
+    assert reloaded.bundle == [{"doc_id": "doc-1", "family": "menu", "motivo": "match directo", "score": 0.9}]
+    assert reloaded.tool is None
+    assert reloaded.created_at is not None
+
+
+def test_turns_tool_field_is_nullable_and_optional(session: Session) -> None:
+    user = _user(session, "wa:+turns-2")
+    kwargs = _turn_kwargs(user.id, session_id="sess-2")
+    kwargs["tool"] = {"name": "crear_reserva", "result": {"ok": True}}
+    session.add(Turns(**kwargs))
+    session.commit()
+    session.expire_all()
+
+    reloaded = session.scalar(select(Turns).where(Turns.session_id == "sess-2"))
+    assert reloaded.tool == {"name": "crear_reserva", "result": {"ok": True}}
+
+
+def test_turns_step_before_and_after_are_nullable(session: Session) -> None:
+    user = _user(session, "wa:+turns-3")
+    kwargs = _turn_kwargs(user.id, session_id="sess-3")
+    kwargs["step_before"] = None
+    kwargs["step_after"] = None
+    session.add(Turns(**kwargs))
+    session.commit()
+    session.expire_all()
+
+    reloaded = session.scalar(select(Turns).where(Turns.session_id == "sess-3"))
+    assert reloaded.step_before is None and reloaded.step_after is None
+
+
+def test_turns_requires_a_user(session: Session) -> None:
+    kwargs = _turn_kwargs(user_id=None, session_id="sess-4")  # type: ignore[arg-type]
+    session.add(Turns(**kwargs))
+    with pytest.raises(IntegrityError):
+        session.commit()
+    session.rollback()
+
+
+def test_turn_id_is_unique_only_within_its_session(session: Session) -> None:
+    """turn_id tipo "t1" lo genera un contador por-sesion (frontends/chat/app.py),
+    asi que el mismo turn_id puede repetirse en sesiones distintas: la unicidad
+    real es (session_id, turn_id), no turn_id solo."""
+    a, b = _user(session, "wa:+turns-5a"), _user(session, "wa:+turns-5b")
+    session.add(Turns(**_turn_kwargs(a.id, session_id="sess-5a", turn_id="t1")))
+    session.add(Turns(**_turn_kwargs(b.id, session_id="sess-5b", turn_id="t1")))
+    session.commit()
+
+    rows = session.scalars(select(Turns).where(Turns.turn_id == "t1")).all()
+    assert {r.session_id for r in rows} == {"sess-5a", "sess-5b"}
+
+
+def test_turn_id_rejects_duplicates_within_the_same_session(session: Session) -> None:
+    user = _user(session, "wa:+turns-6")
+    session.add(Turns(**_turn_kwargs(user.id, session_id="sess-6", turn_id="t1")))
+    session.commit()
+
+    session.add(Turns(**_turn_kwargs(user.id, session_id="sess-6", turn_id="t1")))
+    with pytest.raises(IntegrityError):
+        session.commit()
+    session.rollback()
+
+
+def test_chat_history_session_id_is_nullable_and_indexable(session: Session) -> None:
+    user = _user(session, "wa:+ch-session")
+    with_session = ChatHistory(user_id=user.id, role="user", content="hola", session_id="sess-7")
+    without_session = ChatHistory(user_id=user.id, role="user", content="legado")
+    session.add_all([with_session, without_session])
+    session.commit()
+    session.expire_all()
+
+    rows = session.scalars(
+        select(ChatHistory).where(ChatHistory.user_id == user.id).order_by(ChatHistory.id)
+    ).all()
+    assert [r.session_id for r in rows] == ["sess-7", None]
 
 
 def test_reservas_table_links_optional_user(session: Session) -> None:

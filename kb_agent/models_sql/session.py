@@ -45,10 +45,14 @@ class SessionState(Base):
 
 class ChatHistory(Base):
     __tablename__ = "chat_history"
-    __table_args__ = (Index("ix_chat_history_user_id_created_at", "user_id", "created_at"),)
+    __table_args__ = (
+        Index("ix_chat_history_user_id_created_at", "user_id", "created_at"),
+        Index("ix_chat_history_user_id_session_id", "user_id", "session_id"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    session_id: Mapped[str | None] = mapped_column(String, nullable=True)
     role: Mapped[str] = mapped_column(
         SqlEnum("user", "assistant", "system", name="chat_history_role", native_enum=False, validate_strings=True),
         nullable=False,
