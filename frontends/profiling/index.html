@@ -54,7 +54,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh
 .conf-bar{flex:1;height:5px;border-radius:3px;background:rgba(245,240,232,.08);overflow:hidden}
 .conf-fill{height:100%;background:linear-gradient(90deg,#d4a574,#e6a85c);border-radius:3px}
 .conf-val{font-family:var(--mono);font-size:11px;color:var(--accent);min-width:34px;text-align:right}
-.empty{color:var(--muted);font-size:13px;padding:40px 0;text-align:center}</style>
+.empty{color:var(--muted);font-size:13px;padding:40px 0;text-align:center}.demo-guide{border:1px solid var(--border2);border-radius:12px;background:rgba(212,165,116,.06);padding:12px 14px;margin-bottom:16px}.demo-guide h4{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px}.demo-guide ul{padding-left:18px;font-size:12px;line-height:1.5;color:rgba(245,240,232,.78)}.demo-guide li+li{margin-top:4px}.demo-mini{font-size:11px;color:var(--muted);margin-top:8px}</style>
 </head><body>
 <header class="app-topbar" data-testid='nav-topbar'>
 <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
@@ -72,6 +72,7 @@ Promise.all([fetch('/api/config').then(function(r){return r.json()}).catch(funct
   <div class="userbar" id="userbar" data-testid="users-list"></div>
  </div>
  <div class="col-right">
+  <div class="demo-guide" data-testid="users-demo-guide"><h4>Cómo leer esta vista</h4><ul><li><b>Perfil:</b> resumen del usuario y sus rasgos detectados.</li><li><b>Eventos:</b> serie temporal sintética del comportamiento.</li><li><b>Conversaciones:</b> sesiones de ejemplo para volver al chat.</li><li><b>Traits:</b> hipótesis del sistema sobre preferencias o estado del usuario.</li></ul><div class="demo-mini">En demo estos datos son prefabricados para poblar la UI completa.</div></div>
   <div class="view-selector" data-testid="users-view-selector">
    <button class="view-btn active" data-view="profile" data-testid="view-profile">Perfil</button>
    <button class="view-btn" data-view="events" data-testid="view-events">Eventos</button>
@@ -176,7 +177,7 @@ var WK=['S1','S2','S3','S4','S5','S6'];
 function renderProfile(u){
  var panel=document.getElementById('detailPanel');var traits=u.traits||[];
  var byCat={};traits.forEach(t=>{var f=FICHAS[t.trait_id];var cat=(f&&f.category)||'general';(byCat[cat]||=[]).push(t)});
- panel.innerHTML='<div class="panel-kpi" data-testid="profile-kpis"><div class="kpi-card"><div class="kpi-label">Turnos</div><div class="kpi-value">'+(u.total_turns||0)+'</div><div class="kpi-sub">total conversaciones</div></div><div class="kpi-card"><div class="kpi-label">Traits</div><div class="kpi-value">'+(traits.length)+'</div><div class="kpi-sub">rasgos aprendidos</div></div><div class="kpi-card"><div class="kpi-label">Última actividad</div><div class="kpi-value" style="font-size:16px">'+(u.last_active?u.last_active.slice(0,10):'—')+'</div></div><div class="chart-card"><div class="chart-title">Actividad semanal</div>'+svgBars(rndSeries(u,11,6,2,12),{labels:WK})+'</div><div class="chart-card"><div class="chart-title">Mensajes por semana</div>'+svgBars(rndSeries(u,29,6,1,9),{labels:WK})+'</div></div><div class="panel-traits" data-testid="profile-traits">'+
+ panel.innerHTML='<div class="panel-kpi" data-testid="profile-kpis"><div class="demo-guide"><h4>Qué ves aquí</h4><ul><li><b>KPIs:</b> resumen rápido del usuario.</li><li><b>Traits:</b> señales aprendidas por el sistema.</li><li><b>Confidence:</b> qué tan fuerte parece ese rasgo.</li></ul></div><div class="kpi-card"><div class="kpi-label">Turnos</div><div class="kpi-value">'+(u.total_turns||0)+'</div><div class="kpi-sub">total conversaciones</div></div><div class="kpi-card"><div class="kpi-label">Traits</div><div class="kpi-value">'+(traits.length)+'</div><div class="kpi-sub">rasgos aprendidos</div></div><div class="kpi-card"><div class="kpi-label">Última actividad</div><div class="kpi-value" style="font-size:16px">'+(u.last_active?u.last_active.slice(0,10):'—')+'</div></div><div class="chart-card"><div class="chart-title">Actividad semanal</div>'+svgBars(rndSeries(u,11,6,2,12),{labels:WK})+'</div><div class="chart-card"><div class="chart-title">Mensajes por semana</div>'+svgBars(rndSeries(u,29,6,1,9),{labels:WK})+'</div></div><div class="panel-traits" data-testid="profile-traits">'+
  (traits.length?traits.map(t=>{var f=FICHAS[t.trait_id];var pct=Math.round((t.confidence||.5)*100);return'<div class="ficha"><div class="ficha-top"><span class="ficha-title">'+esc((f&&f.title)||t.trait_id)+'</span>'+(f&&f.category?'<span class="ficha-cat">'+esc(f.category)+'</span>':'')+'</div><div class="ficha-id">'+esc(t.trait_id)+'</div><div class="conf-row"><div class="conf-bar"><div class="conf-fill" style="width:'+pct+'%"></div></div><div class="conf-val">'+(t.confidence||.5).toFixed(2)+'</div></div><div style="font-size:10px;color:var(--muted);font-family:var(--mono)">source: '+esc(t.source||'extractor')+'</div>'+(f&&f.description?'<div style="margin-top:6px;font-size:12px;color:rgba(245,240,232,.6)">'+esc(f.description)+'</div>':'')+'</div>'}).join(''):'<div class="empty">Sin traits todavía.</div>')+'</div>';}
 
 function renderEvents(u){
@@ -184,12 +185,12 @@ function renderEvents(u){
  var adher=rndSeries(u,3,6,40,100);
  var freq=rndSeries(u,17,6,1,10);
  var mood=rndSeries(u,41,6,2,9);
- panel.innerHTML='<div class="events-chart" data-testid="users-events" style="display:block;padding:0;border:0;background:transparent;min-height:0"><div class="chart-card"><div class="chart-title">Adherencia semanal (%)</div>'+svgLine(adher,{labels:WK,w:600,h:150})+'</div><div class="chart-grid"><div class="chart-card"><div class="chart-title">Frecuencia de contacto</div>'+svgBars(freq,{labels:WK})+'</div><div class="chart-card"><div class="chart-title">Mood estimado</div>'+svgBars(mood,{labels:WK})+'</div></div></div><div class="col-head" style="margin-top:4px">Eventos recientes <span>·</span></div>'+
+ panel.innerHTML='<div class="events-chart" data-testid="users-events" style="display:block;padding:0;border:0;background:transparent;min-height:0"><div class="demo-guide"><h4>Qué ves aquí</h4><ul><li><b>Líneas y barras:</b> evolución sintética de actividad.</li><li><b>Eventos recientes:</b> hitos del usuario, tool o perfilado.</li></ul></div><div class="chart-card"><div class="chart-title">Adherencia semanal (%)</div>'+svgLine(adher,{labels:WK,w:600,h:150})+'</div><div class="chart-grid"><div class="chart-card"><div class="chart-title">Frecuencia de contacto</div>'+svgBars(freq,{labels:WK})+'</div><div class="chart-card"><div class="chart-title">Mood estimado</div>'+svgBars(mood,{labels:WK})+'</div></div></div><div class="col-head" style="margin-top:4px">Eventos recientes <span>·</span></div>'+
  ((u.conversations||[]).slice(0,5).map(c=>'<div class="conv-item" style="cursor:default"><div><div class="conv-date">'+esc(c.created_at||'')+'</div><div class="conv-summary">'+esc(c.summary||'—')+'</div></div><div class="conv-meta">chat</div></div>').join('')||'<div class="empty">Sin eventos todavía.</div>')}
 
 function renderConversations(u){
  var panel=document.getElementById('detailPanel');
- panel.innerHTML='<div class="col-head" style="padding:0;margin-bottom:14px">Conversaciones <span>· '+((u.conversations||[]).length||0)+'</span></div>'+
+ panel.innerHTML='<div class="demo-guide"><h4>Qué ves aquí</h4><ul><li><b>Cada fila</b> representa una conversación demo.</li><li><b>Click</b> abre el chat precargado para ese usuario.</li></ul></div><div class="col-head" style="padding:0;margin-bottom:14px">Conversaciones <span>· '+((u.conversations||[]).length||0)+'</span></div>'+
  // Navega por ?user=<external_id>, no por ?session=: el chat precarga con ese
  // parametro (GET /api/history?external_id=...) y chat_history no tiene columna
  // session_id, asi que el c.session_id que sirve /api/profiles es sintetico

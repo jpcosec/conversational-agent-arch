@@ -42,6 +42,19 @@ from kb_agent.models_sql.identity import Users, UserTraits
 from kb_agent.models_sql.session import ChatHistory
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import ProjectConfig, load_project_config
+from frontends.chat.demo_data import (
+    demo_atom,
+    demo_config,
+    demo_events,
+    demo_flow,
+    demo_health,
+    demo_history,
+    demo_profiles_payload,
+    demo_taxonomy,
+    demo_tools,
+    demo_viz_graph,
+)
+from tests.support.fakes import DemoStateMachineConversador
 
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -129,11 +142,12 @@ def _tree_to_list(children: dict, parent_key: str) -> list[dict]:
 
 def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | None = None) -> FastAPI:
     cfg = cfg or load_project_config()
-    if orchestrator is None:
+    demo_mode = cfg.mode != "test" and os.environ.get("DEMO_MODE", "1") != "0"
+    if orchestrator is None and not demo_mode:
         cfg.chat_db.parent.mkdir(parents=True, exist_ok=True)
         orchestrator = Orchestrator.from_config(cfg)
 
-    app = FastAPI(title=cfg.runtime_title)
+    app = FastAPI(title=(demo_config()["runtime_title"] if demo_mode else cfg.runtime_title))
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -144,9 +158,15 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     app.state.cfg = cfg
     app.state.orchestrator = orchestrator
     app.state.turn_counters = {}
+    app.state.demo_mode = demo_mode
+    app.state.demo_sessions = {}
+    app.state.demo_llm = DemoStateMachineConversador() if demo_mode else None
+    app.demo_mode = demo_mode
     app.mount("/static", StaticFiles(directory=str(SHARED_DIR)), name="static")
 
     def _orch() -> Orchestrator:
+        if app.state.orchestrator is None:
+            raise HTTPException(status_code=503, detail="orchestrator unavailable in demo mode")
         return app.state.orchestrator
 
     @app.post("/api/chat", response_model=ChatResponse)
@@ -155,15 +175,22 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             raise HTTPException(status_code=400, detail="message vacio")
 
         session_id = req.session_id or uuid4().hex[:12]
+        counters: dict[str, int] = app.state.turn_counters
+        counters[session_id] = counters.get(session_id, 0) + 1
+
+        if app.state.demo_mode:
+            sessions: dict[str, dict[str, Any]] = app.state.demo_sessions
+            session = sessions.setdefault(session_id, {"session_id": session_id, "flow_node": "bienvenida", "slots": {}, "traits": [], "history": []})
+            raw = app.state.demo_llm.handle_turn(session, req.message)
+            raw["allowed_transitions"] = next((n["allowed_transitions"] for n in demo_flow()["nodes"] if n["id"] == raw.get("flow_node")), [])
+            return ChatResponse(session_id=session_id, turn=to_ui_turn(f"t{counters[session_id]}", raw))
+
         raw = _orch().handle_turn(
             external_id=_external_id(session_id),
             message=req.message,
-            # Doctrina: una KB = un negocio. scenario NO filtra; es etiqueta opcional.
             scenario=req.scenario,
             channel=UI_CHANNEL,
         )
-        counters: dict[str, int] = app.state.turn_counters
-        counters[session_id] = counters.get(session_id, 0) + 1
         return ChatResponse(session_id=session_id, turn=to_ui_turn(f"t{counters[session_id]}", raw))
 
     @app.post("/webhooks/twilio")
@@ -187,6 +214,18 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/atom/{atom_id}")
     def get_atom(atom_id: str) -> dict:
+        if app.state.demo_mode:
+            doc = demo_atom(atom_id)
+            if doc is None:
+                raise HTTPException(status_code=404, detail=f"atom {atom_id} no encontrado")
+            return {
+                "atom_id": doc.get("atom_id", atom_id),
+                "title": doc.get("title") or atom_id,
+                "body": doc.get("body", ""),
+                "tags": doc.get("tags", []),
+                "five_wh_one_plus": doc.get("five_wh_one_plus"),
+                "path": doc.get("path"),
+            }
         doc = _orch().reader.get_doc(atom_id)
         if doc is None:
             raise HTTPException(status_code=404, detail=f"atom {atom_id} no encontrado")
@@ -202,7 +241,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     @app.get("/api/config")
     def config() -> JSONResponse:
         """Config publica del negocio activo (marca, greeting, modelo) para las UIs."""
-        return JSONResponse(cfg.to_public_dict())
+        return JSONResponse(demo_config() if app.state.demo_mode else cfg.to_public_dict())
 
     @app.get("/")
     def index() -> FileResponse:
@@ -216,7 +255,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     @app.get("/api/flow")
     @app.get("/conversation_flow_editor/flow.json")
     def flow_graph() -> JSONResponse:
-        """Genera el grafo de ConversationStep del store en vivo."""
+        if app.state.demo_mode:
+            return JSONResponse(demo_flow())
         from frontends.flow_editor.export_flow import export
 
         return JSONResponse(export(str(cfg.flow_kb_root)))
@@ -228,13 +268,13 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/taxonomy")
     def taxonomy() -> JSONResponse:
+        if app.state.demo_mode:
+            return JSONResponse(demo_taxonomy())
         """Arbol taxonomico completo: familias -> subpaths -> atoms.
 
         Cada doc tiene un tag type.knowledge.{model_name}.
         Los tags con prefijo de su familia definen la jerarquia.
         """
-        # tag type.knowledge.{model_name} -> (atom_type, family)
-        # NOTA: nombres cortos del tag (step, domain, trait...), NO nombres de clase.
         MODEL_MAP = {
             "self": ("self", "self"),
             "style": ("style", "self"),
@@ -282,12 +322,10 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                 path = tag[len(fam) + 1:]
                 segments = path.split(".")
                 node = families[fam]["children"]
-                # navega por los segmentos, creando sub-nodos en la rama children
                 for seg in segments[:-1]:
                     if seg not in node:
                         node[seg] = {"children": {}, "atoms": []}
                     node = node[seg]["children"]
-                # ultimo segmento: coloca el atom en este nodo
                 last = segments[-1]
                 if last not in node:
                     node[last] = {"children": {}, "atoms": []}
@@ -304,7 +342,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/tools")
     def tools() -> JSONResponse:
-        """Lista de ToolAtoms de la KB activa (nombre, schema, description, tool_id)."""
+        if app.state.demo_mode:
+            return JSONResponse(demo_tools())
         reader = _orch().reader
         tools_list: list[dict] = []
         for doc in reader.find("type.knowledge.tool"):
@@ -327,13 +366,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/viz/graph")
     def viz_graph(edge_threshold: float | None = None, max_edges_per_node: int | None = None) -> JSONResponse:
-        """Grafo de atoms+embeddings (PCA 2D, similitud coseno) de la KB activa.
-
-        Nunca lee los JSON estaticos historicos: se recalcula del store en vivo
-        (misma doctrina que /api/flow y /api/taxonomy). Cachea por (kb_root,
-        edge_threshold, max_edges_per_node) en app.state porque el calculo
-        (embeddings + PCA + similitud) no es instantaneo.
-        """
+        if app.state.demo_mode:
+            return JSONResponse(demo_viz_graph())
         from frontends.viz.export_graph import (
             DEFAULT_EDGE_THRESHOLD,
             DEFAULT_MAX_EDGES_PER_NODE,
@@ -371,7 +405,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/profiles")
     def profiles() -> JSONResponse:
-        """Perfil ampliado: cruza UserTraits (SQL) con TraitAtom (SLDB) + eventos + conversaciones."""
+        if app.state.demo_mode:
+            return JSONResponse(demo_profiles_payload())
         engine = create_engine(f"sqlite:///{cfg.profiling_db}", future=True)
         Session = sessionmaker(bind=engine, future=True)
 
@@ -438,7 +473,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/events")
     def events(user_id: int | None = None) -> JSONResponse:
-        """Serie temporal de eventos de un usuario."""
+        if app.state.demo_mode:
+            return JSONResponse(demo_events(user_id))
         if user_id is None:
             return JSONResponse({"events": []})
         engine = create_engine(f"sqlite:///{cfg.profiling_db}", future=True)
@@ -480,7 +516,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/history")
     def history(external_id: str) -> JSONResponse:
-        """Historial cronologico de ChatHistory de un usuario (para precargar el chat)."""
+        if app.state.demo_mode:
+            return JSONResponse(demo_history(external_id))
         engine = create_engine(f"sqlite:///{cfg.profiling_db}", future=True)
         Session = sessionmaker(bind=engine, future=True)
         msgs: list[dict] = []
@@ -502,6 +539,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/health")
     def health() -> dict:
+        if app.state.demo_mode:
+            return demo_health()
         return {"status": "ok", "kb_root": str(cfg.kb_root), "model": _orch().model}
 
     return app
