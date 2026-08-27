@@ -1,18 +1,28 @@
 id: current-kb-agent
 title: "kb_agent · Runtime Components (current codebase)"
 type: component
-version: "1.0"
+version: "1.1"
 metadata:
   author: antonIA
   description: >-
     Arquitectura real del runtime conversacional kb_agent, módulo por módulo.
-    Orchestrator.handle_turn es el hub que cablea la policy pura (agent.decide_turn),
-    los puertos LLM (llm: Conversador/TraitMapper Protocols + impls Gemini), la
-    máquina de estados técnica (state_machine.RouterStateMachine), el compilador de
-    contexto (ontologizador), el perfilador y reflector asíncronos, el registro de
-    tools, el scrubber PII y la persistencia SQL (models_sql). Los modelos tipados
-    de conocimiento (models/knowledge) definen el contrato de los atoms en SLDB.
-    Refleja el codebase actual; labels = ruta real, edges = imports reales.
+    Orchestrator.handle_turn es el hub que cablea los 4 agentes LLM del paquete
+    agents/ (base.Agent con la superficie de ADK + AgentRole; RouterAgent =
+    ruteador de contexto con tools de KB, OrchestratorAgent = decisión tipada
+    del turno con guardia de transiciones, GateAgent = juez de la respuesta con
+    los GateCriterion de la KB; el Conversador sigue en llm.py), los puertos LLM
+    (llm: Conversador/TraitMapper Protocols + impls Gemini), la máquina de
+    estados técnica (state_machine.RouterStateMachine), el compilador de contexto
+    (ontologizador, que delega el bundle en el RouterAgent con fallback
+    determinístico _build_bundle), el perfilador y reflector asíncronos, el
+    registro de tools, el scrubber PII y la persistencia SQL (models_sql, incl.
+    Turns como rastro por turno). agent.decide_turn queda como fallback
+    determinístico. Los 12 modelos tipados (models/knowledge) definen el contrato
+    de los atoms en SLDB; AgentFraming (familia agent) aporta el encuadre de
+    negocio por AgentRole y GateCriterion los criterios del gate. ProjectConfig
+    trae los bloques tuning (max_bundle_size, history_limit, router_max_results,
+    tool_timeout_ms) y deploy. Refleja el codebase actual; labels = ruta real,
+    edges = imports reales.
 data:
   nodes:
     # ── Núcleo del turno (módulos raíz) ─────────────────────────────
@@ -20,17 +30,39 @@ data:
       label: "orchestrator (Orchestrator.handle_turn) · hub"
       kind: core
     Agent:
-      label: "agent (decide_turn: policy pura tool_call/fallback/nl)"
+      label: "agent (decide_turn: policy determinística tool_call/fallback/nl · fallback del OrchestratorAgent)"
       kind: core
     StateMachine:
       label: "state_machine (RouterStateMachine, RouterNode, CronTriggerPayload)"
       kind: core
     ProjectConfig:
-      label: "project_config (ProjectConfig, load_project_config)"
+      label: "project_config (ProjectConfig + TuningConfig + DeployConfig, load_project_config)"
       kind: boundary
     CLI:
       label: "cli (build_parser, main)"
       kind: boundary
+
+    # ── Agentes LLM (base común con la superficie de ADK) ────────────────
+    Agents:
+      label: "agents.* (4 agentes LLM sobre google-genai)"
+      kind: core
+      contains:
+        - AgentBase
+        - RouterAgent
+        - OrchestratorAgent
+        - GateAgent
+    AgentBase:
+      label: "agents.base (Agent, AgentRole, Tool, LlmRequest/LlmResponse, callbacks before/after model+tool)"
+      kind: core
+    RouterAgent:
+      label: "agents.router (RouterAgent.route -> RouterDecision[BundleEntry]; tools explore_multi/explore/show; apply_security_floor)"
+      kind: core
+    OrchestratorAgent:
+      label: "agents.orchestrator_agent (OrchestratorAgent.decide -> OrchestratorDecision; render_orchestrator_flow; apply_transition_guard)"
+      kind: core
+    GateAgent:
+      label: "agents.gate (GateAgent.evaluate -> GateVerdict; render_gate_criteria; pre-filtro response_claims_completed_action)"
+      kind: core
 
     # ── Puertos LLM ─────────────────────────────────────────────────
     LLMPorts:
@@ -111,11 +143,15 @@ data:
       contains:
         - ToolReservas
         - ToolRecordatorios
+        - ToolEnrolamiento
     ToolReservas:
       label: "tools.reservas (crear_reserva)"
       kind: core
     ToolRecordatorios:
       label: "tools.recordatorios (agendar_recordatorio)"
+      kind: core
+    ToolEnrolamiento:
+      label: "tools.enrolamiento (registrar_enrolamiento)"
       kind: core
 
     # ── PII ─────────────────────────────────────────────────────────
@@ -130,6 +166,7 @@ data:
       contains:
         - SqlIdentity
         - SqlSession
+        - SqlTurns
         - SqlReservas
         - SqlRecordatorios
     SqlIdentity:
@@ -137,6 +174,9 @@ data:
       kind: database
     SqlSession:
       label: "models_sql.session (ChatHistory, SessionState, SessionNode)"
+      kind: database
+    SqlTurns:
+      label: "models_sql.turns (Turns: decision/draft/gate por turno)"
       kind: database
     SqlReservas:
       label: "models_sql.reservas (Reservas)"
@@ -147,9 +187,11 @@ data:
 
     # ── Modelos tipados de conocimiento (contrato de atoms en SLDB) ──
     ModelsKnowledge:
-      label: "models.knowledge.* (10 modelos tipados de atoms)"
+      label: "models.knowledge.* (12 modelos tipados de atoms)"
       kind: interface
       contains:
+        - MkAgentFraming
+        - MkGate
         - MkDomain
         - MkRule
         - MkTool
@@ -161,6 +203,12 @@ data:
         - MkFallback
         - MkBoundary
         - MkIndexProxies
+    MkAgentFraming:
+      label: "models.knowledge.agent_framing (AgentFraming: encuadre de negocio por AgentRole, familia agent)"
+      kind: interface
+    MkGate:
+      label: "models.knowledge.gate (GateCriterion, familia gate)"
+      kind: interface
     MkDomain:
       label: "models.knowledge.domain (DomainAtom, AtomQuestion)"
       kind: interface
@@ -211,6 +259,9 @@ data:
     ExtDeskops:
       label: "deskops.atom_tags (validación namespaces)"
       kind: boundary
+    ExtKnowledgeOps:
+      label: "knowledge_base.operations (KnowledgeOperations: explore_multi/explore/show, embedder cacheado)"
+      kind: boundary
 
   edges:
     # Entradas al hub
@@ -221,7 +272,7 @@ data:
     - from: Orchestrator
       to: ProjectConfig
       relation: uses
-      label: from_config (kb_root, model, tools)
+      label: from_config (kb_root, model, tools, tuning)
 
     # Hub -> policy + máquina de estados + puertos
     - from: Orchestrator
@@ -229,9 +280,69 @@ data:
       relation: delegates
       label: ejecuta el turno técnico
     - from: Orchestrator
+      to: OrchestratorAgent
+      relation: uses
+      label: "decide(compiled) -> kind/tool_call/flow_target"
+    - from: OrchestratorAgent
       to: Agent
       relation: uses
-      label: decide_turn (tool_call/fallback/nl)
+      label: decide_turn (fallback determinístico)
+    - from: Orchestrator
+      to: GateAgent
+      relation: uses
+      label: "_policy_gate: evaluate(draft) fail-open"
+    - from: Orchestrator
+      to: RouterAgent
+      relation: uses
+      label: inyecta router_agent al ContextCompiler
+    - from: Orchestrator
+      to: MkAgentFraming
+      relation: reads
+      label: _load_agent_framing(AgentRole)
+    - from: Orchestrator
+      to: ExtKnowledgeOps
+      relation: uses
+      label: una instancia por proceso
+    - from: RouterAgent
+      to: AgentBase
+      relation: uses
+      label: Agent(role=ROUTER, tools, output_schema)
+    - from: OrchestratorAgent
+      to: AgentBase
+      relation: uses
+      label: Agent(role=ORCHESTRATOR, output_schema)
+    - from: GateAgent
+      to: AgentBase
+      relation: uses
+      label: Agent(role=GATE, include_contents=False)
+    - from: AgentBase
+      to: ExtGemini
+      relation: uses
+      label: client.models.generate_content
+    - from: RouterAgent
+      to: ExtKnowledgeOps
+      relation: uses
+      label: tools explore_multi/explore/show
+    - from: OntoCompiler
+      to: RouterAgent
+      relation: uses
+      label: _build_bundle_via_agent (fallback _build_bundle)
+    - from: GateAgent
+      to: MkGate
+      relation: reads
+      label: "GateCriterion -> static_instruction"
+    - from: OrchestratorAgent
+      to: MkStep
+      relation: reads
+      label: "grafo ConversationStep -> static_instruction"
+    - from: Orchestrator
+      to: SqlTurns
+      relation: writes
+      label: _persist_turn (decision, draft, gate)
+    - from: ToolEnrolamiento
+      to: SqlIdentity
+      relation: writes
+      label: registrar_enrolamiento
     - from: Orchestrator
       to: LLMPorts
       relation: uses

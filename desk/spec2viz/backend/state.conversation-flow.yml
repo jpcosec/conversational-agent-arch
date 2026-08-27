@@ -1,7 +1,7 @@
 id: state-conversation-flow
 title: Backend · Estado · Máquina de Estados de la Conversación
 type: state
-version: '1.0'
+version: '1.1'
 metadata:
   author: antonIA
   description: >-
@@ -24,9 +24,9 @@ data:
     - id: buffering
       label: "Buffering\\n(Debounce multi-mensaje)"
     - id: evaluating_context
-      label: "Evaluando Estado\\ny Contexto (Ontologizador)"
+      label: "Evaluando Estado\\ny Contexto (Ontologizador + Ruteador)"
     - id: drafting_response
-      label: "Redactando Respuesta\\n(Conversador)"
+      label: "Redactando Respuesta\\n(Orquestador decide → Conversador; Gate juzga)"
     - id: waiting_tool
       label: "Ejecutando Tool\\nExterna (Pausa)"
     - id: breakpoint_miss

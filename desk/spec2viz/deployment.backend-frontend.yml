@@ -1,15 +1,18 @@
 id: deployment-backend-frontend
 title: KB Agent Runtime · Despliegue · Backend vs Frontend
 type: deployment
-version: '2.0'
+version: '2.1'
 metadata:
   author: antonIA
   description: >-
-    Separación explícita backend/frontend del runtime kb-agent. El frontend son 5 UIs estáticas
-    (HTML/JS sin build) servidas al navegador; el backend es el mismo FastAPI app factory
+    Separación explícita backend/frontend del runtime kb-agent. El frontend son 5 páginas
+    estáticas (HTML/JS sin build: chat, flow, mindmap, users, dashboard) más el tour guiado
+    (shared/demo-tour.js) servidas al navegador; el backend es el mismo FastAPI app factory
     (frontends/chat/app.py create_app) desplegado en Modal (deploy/modal_app.py, @modal.asgi_app)
-    con un Volume para el SQLite de chat y un Secret para credenciales Vertex ADC, o corrido
-    localmente vía uvicorn (frontends/chat/server.py) para desarrollo.
+    con un Volume `<app>-data` para el SQLite (migrado con alembic al arrancar) y Secrets para
+    Vertex ADC (+ Twilio opcional), o corrido localmente vía uvicorn (frontends/chat/server.py).
+    El nombre de app/volumen/secrets sale del bloque `deploy` de project.config.yaml
+    (override MODAL_APP_NAME → endpoint dev separado).
 data:
   nodes:
     browser:
@@ -18,9 +21,10 @@ data:
       contains:
         - chat_ui_html
         - flow_editor_html
-        - profiling_html
         - taxonomy_html
-        - viz_html
+        - profiling_html
+        - dashboard_html
+        - demo_tour_js
     webhook_channels:
       label: Canales Externos (Twilio WhatsApp/SMS)
       kind: client
@@ -28,15 +32,16 @@ data:
         - twilio_webhook
 
     modal_app:
-      label: Modal App (deploy/modal_app.py, @modal.asgi_app)
+      label: "Modal App <deploy.modal_app_name> (deploy/modal_app.py)"
       kind: server
       contains:
         - modal_image
         - chat_api
         - vertex_adc_secret
+        - maintenance_fns
 
     modal_volume:
-      label: "Modal Volume (/data)"
+      label: "Modal Volume <app>-data (/data)"
       kind: database
       contains:
         - chat_db_sqlite
@@ -56,34 +61,40 @@ data:
 
   artifacts:
     chat_ui_html:
-      label: frontends/chat/index.html (chat + inspector)
+      label: frontends/chat/index.html (chat + Turn Inspector · /)
       kind: frontend
     flow_editor_html:
-      label: frontends/flow_editor/index.html (editor de flujo)
-      kind: frontend
-    profiling_html:
-      label: frontends/profiling/index.html (perfilado)
+      label: frontends/flow_editor/index.html (editor de flujo · /flow)
       kind: frontend
     taxonomy_html:
-      label: frontends/taxonomy/index.html (explorador de taxonomía)
+      label: frontends/taxonomy/index.html (mindmap + layout Embeddings · /mindmap)
       kind: frontend
-    viz_html:
-      label: frontends/viz/index.html (grafo de embeddings)
+    profiling_html:
+      label: frontends/profiling/index.html (perfilado · /users)
+      kind: frontend
+    dashboard_html:
+      label: frontends/dashboard/index.html (mock estático · /dashboard)
+      kind: frontend
+    demo_tour_js:
+      label: frontends/shared/demo-tour.js (tour guiado sobre las 4 vistas)
       kind: frontend
     twilio_webhook:
       label: WhatsApp / SMS (Twilio Webhook)
       kind: external
     modal_image:
-      label: "modal.Image: repo en /root/app + paquetes locales sldb/kgdb/deskops + KB baked-in"
+      label: "modal.Image: repo en /root/app + paquetes locales sldb/kgdb/deskops + KB baked-in + alembic"
       kind: backend
     chat_api:
-      label: create_app() (FastAPI) servido por Modal ASGI
+      label: create_app() (FastAPI) servido por Modal ASGI (serve; alembic upgrade al arrancar)
+      kind: backend
+    maintenance_fns:
+      label: "inspect_db / clean_and_seed (modal run deploy/modal_app.py::<fn>)"
       kind: backend
     vertex_adc_secret:
-      label: "Modal Secret kb-agent-runtime-gcp (Vertex ADC)"
+      label: "Modal Secret deploy.gcp_secret_name (Vertex ADC) + twilio_secret_name opcional"
       kind: backend
     chat_db_sqlite:
-      label: "SQLite CHAT_DB (SessionState, ChatHistory, UserTraits)"
+      label: "SQLite CHAT_DB (SessionState, ChatHistory, UserTraits, Turns) + embedding-cache"
       kind: database_schema
     chat_api_local:
       label: create_app() (FastAPI) servido por uvicorn local
@@ -98,19 +109,22 @@ data:
   connections:
     - from: chat_ui_html
       to: chat_api
-      protocol: fetch /api/chat (HTTPS)
+      protocol: fetch /api/chat, /api/atom, /api/history (HTTPS)
     - from: flow_editor_html
       to: chat_api
-      protocol: fetch /api/flow (HTTPS)
+      protocol: fetch /api/flow, /api/tools (HTTPS)
+    - from: taxonomy_html
+      to: chat_api
+      protocol: fetch /api/taxonomy, /api/viz/graph (HTTPS)
     - from: profiling_html
       to: chat_api
       protocol: fetch /api/profiles (HTTPS)
-    - from: taxonomy_html
+    - from: dashboard_html
       to: chat_api
-      protocol: fetch /api/taxonomy (HTTPS)
-    - from: viz_html
-      to: chat_api
-      protocol: fetch /api/viz/graph (HTTPS)
+      protocol: fetch /api/config, /api/health (HTTPS)
+    - from: demo_tour_js
+      to: chat_ui_html
+      protocol: /static/demo-tour.js (cargado por las 4 vistas)
     - from: twilio_webhook
       to: chat_api
       protocol: POST /webhooks/twilio (form + X-Twilio-Signature)
@@ -122,7 +136,10 @@ data:
       protocol: empaqueta y ejecuta create_app()
     - from: chat_api
       to: chat_db_sqlite
-      protocol: SQLAlchemy (CHAT_DB en Volume /data)
+      protocol: SQLAlchemy (CHAT_DB en Volume /data; alembic head)
+    - from: maintenance_fns
+      to: chat_db_sqlite
+      protocol: sqlite3 directo (inspect / delete + seed + commit)
     - from: chat_api
       to: modal_image
       protocol: lee KB baked-in (SLDBReader/KGDBReader)
@@ -131,7 +148,7 @@ data:
       protocol: credenciales ADC (google-genai Vertex)
     - from: chat_api
       to: gemini_llm
-      protocol: generate_content (Conversador/Perfilador)
+      protocol: generate_content (Conversador/Ruteador/Orquestador/Gate/Perfilador)
     - from: chat_api_local
       to: kb_store_local
       protocol: lee KB local (SLDBReader/KGDBReader, sin Modal)

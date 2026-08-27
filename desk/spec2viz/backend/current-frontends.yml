@@ -1,16 +1,21 @@
 id: current-frontends
-title: "Frontends · UIs + App Factory (current codebase)"
+title: "Frontends · Vistas + App Factory (current codebase)"
 type: component
-version: "1.0"
+version: "1.1"
 metadata:
   author: antonIA
   description: >-
     Superficie frontend del runtime tal como está en el codebase. El hub es
-    frontends/chat/app.py (create_app): una FastAPI factory que sirve las 5 UIs
-    estáticas, expone la API JSON (/api/*), el webhook de Twilio y monta
-    /static desde shared/. server.py es el entrypoint uvicorn. Dos módulos
-    Python auxiliares (flow_editor.export_flow, viz.export_graph) proyectan la
-    KB en vivo para /api/flow y /api/viz/graph. Refleja imports y rutas reales.
+    frontends/chat/app.py (create_app): una FastAPI factory que sirve las 6
+    vistas estáticas (GET / chat, /flow, /mindmap, /users, /dashboard; la sexta
+    es el tour guiado demo-tour.js que cruza las 4 primeras), expone la API
+    JSON (/api/*), el webhook de Twilio y monta /static desde shared/.
+    server.py es el entrypoint uvicorn. Dos módulos Python auxiliares
+    (flow_editor.export_flow, viz.export_graph) proyectan la KB en vivo para
+    /api/flow y /api/viz/graph (frontends/viz ya no tiene index.html: sólo
+    alimenta el layout "Embeddings" del mindmap). DEMO_MODE=1 (opt-in) hace
+    que cada /api/* devuelva datos fabricados por chat.demo_data, sin
+    Orchestrator. Refleja imports y rutas reales.
 data:
   nodes:
     ChatApp:
@@ -18,18 +23,25 @@ data:
       kind: core
       contains:
         - ChatServer
+        - DemoData
         - ApiChat
         - ApiConfig
         - ApiHealth
         - ApiAtom
         - ApiFlow
+        - ApiTools
         - ApiTaxonomy
         - ApiVizGraph
         - ApiProfiles
+        - ApiEvents
+        - ApiHistory
         - TwilioWebhook
         - StaticMount
     ChatServer:
       label: chat.server (entrypoint uvicorn · load_dotenv + create_app)
+      kind: core
+    DemoData:
+      label: "chat.demo_data (DEMO_MODE=1: demo_* + DemoStateMachineConversador, sin orchestrator)"
       kind: core
 
     # ── API JSON (endpoints servidos por create_app) ────────────────────
@@ -37,7 +49,7 @@ data:
       label: "POST /api/chat -> orchestrator.handle_turn"
       kind: interface
     ApiConfig:
-      label: "GET /api/config (marca/greeting/modelo)"
+      label: "GET /api/config (marca/greeting/modelo/nav_labels)"
       kind: interface
     ApiHealth:
       label: "GET /api/health"
@@ -48,8 +60,11 @@ data:
     ApiFlow:
       label: "GET /api/flow (grafo ConversationStep en vivo)"
       kind: interface
+    ApiTools:
+      label: "GET /api/tools (ToolAtoms: schema + tags)"
+      kind: interface
     ApiTaxonomy:
-      label: "GET /api/taxonomy (familias x atoms)"
+      label: "GET /api/taxonomy (familias x subpaths x atoms)"
       kind: interface
     ApiVizGraph:
       label: "GET /api/viz/graph (atoms + embeddings PCA 2D)"
@@ -57,28 +72,37 @@ data:
     ApiProfiles:
       label: "GET /api/profiles (UserTraits SQL x TraitAtom SLDB)"
       kind: interface
+    ApiEvents:
+      label: "GET /api/events?user_id (reservas/recordatorios del usuario)"
+      kind: interface
+    ApiHistory:
+      label: "GET /api/history?session_id|external_id (ChatHistory + rastro Turns)"
+      kind: interface
     TwilioWebhook:
-      label: "POST /webhooks/twilio (TwiML, valida firma)"
+      label: "POST /webhooks/twilio (TwiML, valida firma; 503 sin token)"
       kind: interface
     StaticMount:
       label: "mount /static -> shared/"
       kind: interface
 
-    # ── UIs estáticas (HTML servidas por create_app) ────────────────────
+    # ── Vistas estáticas (HTML servidas por create_app) ─────────────────
     ChatUI:
-      label: "chat.index.html (chat + inspector de átomos · GET /)"
+      label: "chat.index.html (chat + Turn Inspector · GET /)"
       kind: boundary
     FlowEditorUI:
-      label: "flow_editor.index.html (editor ReactFlow · /conversation_flow_editor)"
+      label: "flow_editor.index.html (editor ReactFlow · /flow)"
       kind: boundary
     TaxonomyUI:
-      label: "taxonomy.index.html (explorador de taxonomía · /taxonomy_explorer)"
-      kind: boundary
-    VizUI:
-      label: "viz.index.html (grafo embeddings ReactFlow · /viz)"
+      label: "taxonomy.index.html (mindmap: árbol + layout Embeddings · /mindmap)"
       kind: boundary
     ProfilingUI:
-      label: "profiling.index.html (viewer de traits · /profiling_viewer)"
+      label: "profiling.index.html (viewer de traits · /users)"
+      kind: boundary
+    DashboardUI:
+      label: "dashboard.index.html (mock estático, chip 'Datos de ejemplo' · /dashboard)"
+      kind: boundary
+    DemoTour:
+      label: "shared/demo-tour.js (tour guiado único a través de chat/flow/mindmap/users)"
       kind: boundary
 
     # ── Módulos Python auxiliares (proyectan la KB) ─────────────────────
@@ -86,24 +110,29 @@ data:
       label: "flow_editor.export_flow.export (SLDBReader -> ConversationStep)"
       kind: core
     ExportGraph:
-      label: "viz.export_graph.build_graph (KB + embeddings + PCA)"
+      label: "viz.export_graph.build_graph (KB + embeddings + PCA; sólo backend)"
       kind: core
 
     # ── Assets compartidos ──────────────────────────────────────────────
-    SharedTheme:
-      label: "shared/theme.css (tema unificado + nav)"
+    SharedAssets:
+      label: "shared/ (theme.css, hotkeys.js, tooltip.js, glossary.js, demo-tour.js)"
       kind: boundary
+      contains:
+        - DemoTour
 
     # ── Dependencias del runtime (backend) ──────────────────────────────
     Orchestrator:
       label: kb_agent.orchestrator.Orchestrator
       kind: boundary
     ProjectConfig:
-      label: kb_agent.project_config (load_project_config)
+      label: kb_agent.project_config (load_project_config · demo_mode)
       kind: boundary
     SLDBReader:
       label: kb_agent.ontologizador.sldb_reader.SLDBReader
       kind: boundary
+    ModelsSql:
+      label: kb_agent.models_sql (Users, UserTraits, ChatHistory, Turns)
+      kind: database
     KnowledgeOps:
       label: knowledge_base.operations (KnowledgeOperations)
       kind: boundary
@@ -131,9 +160,13 @@ data:
     - from: ChatApp
       to: ProjectConfig
       relation: uses
-      label: Orchestrator.from_config
+      label: Orchestrator.from_config (salvo DEMO_MODE)
+    - from: ChatApp
+      to: DemoData
+      relation: uses
+      label: "demo_mode: cada /api/* responde demo_*"
 
-    # el hub sirve las 5 UIs estáticas
+    # el hub sirve las 5 páginas estáticas
     - from: ChatApp
       to: ChatUI
       relation: serves
@@ -141,51 +174,59 @@ data:
     - from: ChatApp
       to: FlowEditorUI
       relation: serves
-      label: FileResponse
+      label: "GET /flow"
     - from: ChatApp
       to: TaxonomyUI
       relation: serves
-      label: FileResponse
-    - from: ChatApp
-      to: VizUI
-      relation: serves
-      label: FileResponse
+      label: "GET /mindmap"
     - from: ChatApp
       to: ProfilingUI
       relation: serves
-      label: FileResponse
+      label: "GET /users"
+    - from: ChatApp
+      to: DashboardUI
+      relation: serves
+      label: "GET /dashboard"
 
-    # cada UI consume /api/config + /static/theme.css, y su endpoint propio
+    # cada vista consume /api/config + /api/health + /static, y sus endpoints propios
     - from: ChatUI
       to: ApiChat
       relation: fetch
-      label: "/api/chat, /api/atom"
+      label: "/api/chat, /api/atom, /api/history"
     - from: FlowEditorUI
       to: ApiFlow
       relation: fetch
-      label: /api/flow
+      label: "/api/flow, /api/tools"
     - from: TaxonomyUI
       to: ApiTaxonomy
       relation: fetch
       label: /api/taxonomy
-    - from: VizUI
+    - from: TaxonomyUI
       to: ApiVizGraph
       relation: fetch
-      label: /api/viz/graph
+      label: "/api/viz/graph (layout Embeddings)"
     - from: ProfilingUI
       to: ApiProfiles
       relation: fetch
       label: /api/profiles
+    - from: DashboardUI
+      to: ApiConfig
+      relation: fetch
+      label: "sólo /api/config + /api/health (series sintéticas)"
     - from: StaticMount
-      to: SharedTheme
+      to: SharedAssets
       relation: serves
-      label: /static/theme.css
+      label: /static/*
+    - from: DemoTour
+      to: ChatUI
+      relation: uses
+      label: "pasos por route + selector (localStorage)"
 
     # los endpoints dinámicos delegan en los proyectores de KB
     - from: ApiFlow
       to: ExportFlow
       relation: uses
-      label: export(kb_root)
+      label: export(flow_kb_root)
     - from: ApiVizGraph
       to: ExportGraph
       relation: uses
@@ -194,10 +235,26 @@ data:
       to: SLDBReader
       relation: reads
       label: reader.find(type.knowledge.*)
+    - from: ApiTools
+      to: SLDBReader
+      relation: reads
+      label: reader.find(type.knowledge.tool)
     - from: ApiAtom
       to: SLDBReader
       relation: reads
       label: reader.get_doc
+    - from: ApiProfiles
+      to: ModelsSql
+      relation: reads
+      label: Users x UserTraits
+    - from: ApiEvents
+      to: ModelsSql
+      relation: reads
+      label: reservas/recordatorios
+    - from: ApiHistory
+      to: ModelsSql
+      relation: reads
+      label: ChatHistory + Turns
 
     # los proyectores leen la KB real
     - from: ExportFlow

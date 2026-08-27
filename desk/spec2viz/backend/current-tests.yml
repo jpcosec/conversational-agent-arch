@@ -1,7 +1,7 @@
 id: current-tests
 title: "Tests · Suite por capas (current codebase)"
 type: component
-version: "1.0"
+version: "1.1"
 metadata:
   author: antonIA
   description: >-
@@ -32,16 +32,17 @@ data:
         - SupportFakes
         - SupportSeed
     SupportFakes:
-      label: "support.fakes (FakeConversador, FakeTraitMapper, RecordingToolHandler)"
+      label: "support.fakes (FakeConversador, FakeGate, FakeOrchestratorAgent, FakeRouterAgent, FakeTraitMapper, RecordingToolHandler, FakeEmbedder)"
       kind: core
     SupportSeed:
       label: "support.sldb_seed (seed_store, minimal_business_atoms)"
       kind: core
 
     Unit:
-      label: "tests/unit (18 archivos, sin red)"
+      label: "tests/unit (26 archivos, sin red)"
       kind: core
       contains:
+        - UnitAgents
         - UnitPolicy
         - UnitCompiler
         - UnitStateMachine
@@ -50,8 +51,11 @@ data:
         - UnitEngines
         - UnitKnowledgeCli
         - UnitSimulation
+    UnitAgents:
+      label: "test_agent_base / test_gate_agent / test_orchestrator_agent(_wiring) / test_orchestrator_gate / test_router_agent / test_enrolamiento_tool"
+      kind: core
     UnitPolicy:
-      label: "test_turn_policy (decide_turn)"
+      label: "test_turn_policy (decide_turn, fallback determinístico)"
       kind: core
     UnitCompiler:
       label: "test_context_compiler / test_sldb_reader / test_kgdb_reader"
@@ -76,12 +80,14 @@ data:
       kind: core
 
     Integration:
-      label: "tests/integration (5 archivos, stores reales, sin LLM)"
+      label: "tests/integration (8 archivos, stores reales, sin LLM)"
       kind: core
       contains:
         - IntChatApi
         - IntReflector
         - IntFlowExport
+        - IntRouterFloor
+        - IntMigrations
     IntChatApi:
       label: "test_chat_api (FastAPI: chat, config, health, profiles, Twilio)"
       kind: core
@@ -90,6 +96,12 @@ data:
       kind: core
     IntFlowExport:
       label: "test_flow_export (export del grafo ConversationStep)"
+      kind: core
+    IntRouterFloor:
+      label: "test_router_security_floor / test_enrolamiento_step / test_conversation_grouping"
+      kind: core
+    IntMigrations:
+      label: "test_migration_users_enrolled (alembic) / test_knowledge_cli_subprocess"
       kind: core
 
     E2E:
@@ -110,8 +122,12 @@ data:
       kind: core
       contains:
         - UIPlaywright
+        - UIViews
     UIPlaywright:
-      label: "test_playwright_smoke (app in-process, LLM fake)"
+      label: "test_playwright_smoke / test_ui_guide (app in-process, LLM fake)"
+      kind: core
+    UIViews:
+      label: "test_chat_inspector / test_flow / test_mindmap / test_users / test_demo_e2e (DEMO_MODE)"
       kind: core
 
     Runtime:
@@ -123,6 +139,10 @@ data:
       to: SupportFakes
       relation: uses
       label: puertos LLM fake
+    - from: UnitAgents
+      to: SupportFakes
+      relation: uses
+      label: FakeGate/FakeOrchestratorAgent/FakeRouterAgent
     - from: UnitCompiler
       to: SupportSeed
       relation: uses

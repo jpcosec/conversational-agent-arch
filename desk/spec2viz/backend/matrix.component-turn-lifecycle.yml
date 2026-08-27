@@ -1,14 +1,16 @@
 id: matrix-component-turn-lifecycle
 title: Backend · Matriz · Componentes × Ciclo de Vida del Turno
 type: component_view_matrix
-version: "0.1"
+version: "0.2"
 metadata:
   author: antonIA
   description: >-
     Matriz vistas×stages que ubica cada componente del runtime en las etapas
     en que participa. Dos vistas: el turno síncrono (idle → respuesta) y los
     agentes asíncronos (perfilado + reflexión). Filas = componentes reales del
-    código (kb_agent/*), columnas = stages del pipeline. Complementa el
+    código (kb_agent/*, incl. los 4 agentes LLM de kb_agent/agents + el
+    Conversador), columnas = stages del pipeline (context incluye el ruteo del
+    bundle; gate = juicio de la respuesta redactada antes de reply). Complementa el
     diagrama de componentes (estructura) y el de secuencia (orden temporal):
     aquí se lee de un vistazo QUÉ toca cada componente en CADA etapa.
 data:
@@ -24,6 +26,8 @@ data:
           label: decide
         - id: execute
           label: execute
+        - id: gate
+          label: gate
         - id: reply
           label: reply
     - id: async
@@ -43,7 +47,7 @@ data:
       kind: core
       label: KB Agent Runtime
       stages:
-        turn: [ingest, context, decide, execute, reply]
+        turn: [ingest, context, decide, execute, gate, reply]
         async: [listen, extract, batch, thicken]
       children:
         - name: Routing
@@ -54,9 +58,9 @@ data:
           children:
             - name: Orchestrator
               kind: api
-              label: Orchestrator.handle_turn
+              label: Orchestrator.handle_turn (construye los agentes, ejecuta la decisión, persiste Turns)
               stages:
-                turn: [ingest, reply]
+                turn: [ingest, execute, gate, reply]
                 async: [listen]
             - name: RouterStateMachine
               kind: api
@@ -65,9 +69,9 @@ data:
                 turn: [ingest, decide, execute]
         - name: Engines
           kind: core
-          label: Motores Cognitivos
+          label: Agentes LLM (kb_agent/agents + llm)
           stages:
-            turn: [context, decide, reply]
+            turn: [context, decide, gate, reply]
             async: [extract, batch, thicken]
           children:
             - name: Ontologizador
@@ -75,9 +79,14 @@ data:
               label: Ontologizador (Context Compiler)
               stages:
                 turn: [context]
+            - name: Ruteador
+              kind: decision_engine
+              label: "Ruteador (RouterAgent: bundle justificado + piso de seguridad)"
+              stages:
+                turn: [context]
             - name: Orquestador
-              kind: engine
-              label: "Orquestador (decide_turn, agent.py)"
+              kind: decision_engine
+              label: "Orquestador (OrchestratorAgent.decide + apply_transition_guard; fallback decide_turn)"
               stages:
                 turn: [decide]
             - name: Conversador
@@ -85,6 +94,11 @@ data:
               label: Conversador (redacta NL vía puerto LLM)
               stages:
                 turn: [reply]
+            - name: Gate
+              kind: decision_engine
+              label: "Gate (GateAgent.evaluate vs GateCriterion; fail-open)"
+              stages:
+                turn: [gate]
             - name: Perfilador
               kind: service
               label: Perfilador (Feature Extractor)
@@ -108,25 +122,25 @@ data:
                 turn: [execute]
             - name: ProjectConfig
               kind: boundary
-              label: "project.config.yaml (kb_root, model, tools)"
+              label: "project.config.yaml (kb_root, model, tools, tuning)"
               stages:
-                turn: [execute]
+                turn: [context, execute]
         - name: Persistence
           kind: core
           label: Capa de Persistencia
           stages:
-            turn: [ingest, context, execute, reply]
+            turn: [ingest, context, decide, execute, gate, reply]
             async: [listen, extract, batch, thicken]
           children:
             - name: SQL
               kind: database
-              label: SQL DB (Identidad, Estado, Historial)
+              label: SQL DB (Identidad, Estado, Historial, Turns)
               stages:
                 turn: [ingest, context, execute, reply]
                 async: [listen, extract, batch]
             - name: SLDB
               kind: database
-              label: SLDB (Knowledge Base / Atoms)
+              label: SLDB (Knowledge Base / Atoms, incl. GateCriterion + AgentFraming)
               stages:
-                turn: [context]
+                turn: [context, decide, gate]
                 async: [thicken]

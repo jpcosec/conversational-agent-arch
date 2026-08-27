@@ -1,20 +1,26 @@
 id: logical-agent-ecosystem
-title: Backend · Lógico · Ecosistema de Motores (cómo funciona HOY)
+title: Backend · Lógico · Ecosistema de Agentes (cómo funciona HOY)
 type: component
-version: "2.0"
+version: "3.0"
 metadata:
   author: antonIA
   description: >-
     Modelo lógico del runtime, más alto nivel que el código pero fiel al
-    cableado real (cada edge verificado contra el código). Correcciones clave
-    vs el diseño original: la policy decide_turn es PURA (no llama LLM ni
-    tools; el Orquestador ejecuta según su decisión); el Perfilador no llama
-    al gateway (el Orquestador publica al EventBus al cierre del turno); las
-    tools son handlers locales que escriben SQL (no hay APIs externas hoy);
-    el Reflector escribe atoms 'proposed' directo vía sldb (no pasa por
-    knowledge_base.operations). Incluye actores omitidos antes: KGDB,
-    scrubber PII, EventBus, Gemini como servicio externo, y los 3 canales
-    de entrada (chat UI, webhook Twilio, CLI).
+    cableado real (cada edge verificado contra el código). Estado actual del
+    plan de unificación de agentes: 4 agentes LLM sobre una base común
+    (kb_agent.agents.base.Agent, superficie de ADK sin adoptar su Runner) —
+    Ruteador de contexto (arma el bundle justificado con tools de KB; piso de
+    seguridad forzado por código), Orquestador (decisión tipada
+    tool_call|fallback|nl + step_target, con guardia de transiciones por
+    código; decide_turn queda como fallback determinístico), Conversador
+    (redacta) y Gate (juez de la respuesta contra los GateCriterion de la KB,
+    fail-open). El encuadre de negocio de cada agente sale de la KB
+    (AgentFraming por AgentRole); el código queda neutral de negocio. El
+    Perfilador no llama al gateway (el Orquestador publica al EventBus al
+    cierre del turno); las tools son handlers locales que escriben SQL; el
+    Reflector escribe atoms 'proposed' directo vía sldb. Incluye KGDB,
+    scrubber PII, EventBus, Gemini como servicio externo y los 3 canales de
+    entrada (chat UI, webhook Twilio, CLI).
 style:
   kinds:
     engine:
@@ -41,27 +47,41 @@ data:
         - twilio_webhook
         - cli_local
     layer_hub:
-      label: "Orquestación"
+      label: "Orquestación (hub técnico)"
       kind: boundary
       contains:
         - orchestrator
         - state_machine
         - scrubber
     layer_engines:
-      label: "Motores Cognitivos"
+      label: "Agentes LLM del turno (base común agents.base.Agent)"
       kind: boundary
       contains:
         - ontologizador
+        - router_agent
+        - orchestrator_agent
         - policy_decide_turn
         - conversador
+        - gate_agent
+    layer_background:
+      label: "Agentes de fondo"
+      kind: boundary
+      contains:
         - perfilador
         - reflector
     layer_ports:
-      label: "Puertos LLM (Protocol)"
+      label: "Puertos LLM"
       kind: boundary
       contains:
+        - port_agent_base
         - port_conversador
         - port_trait_mapper
+    layer_guards:
+      label: "Guardas por CÓDIGO (no por prompt)"
+      kind: boundary
+      contains:
+        - guard_security_floor
+        - guard_transitions
     layer_tools:
       label: "Tools del negocio"
       kind: boundary
@@ -85,6 +105,7 @@ data:
         - sql_db
         - sldb_kb
         - kgdb_graph
+        - knowledge_ops
     layer_external:
       label: "Servicios externos"
       kind: boundary
@@ -101,7 +122,7 @@ data:
       label: "CLI local (kb_agent.cli)"
       kind: api
     orchestrator:
-      label: "Orchestrator.handle_turn (hub: cablea todo, ejecuta la decisión)"
+      label: "Orchestrator.handle_turn (hub: construye los agentes una vez, ejecuta la decisión, persiste Turns)"
       kind: api
     state_machine:
       label: "RouterStateMachine (6 estados; pausa en WAITING_TOOL)"
@@ -110,13 +131,22 @@ data:
       label: "PII Scrubber (scrub antes de persistir y de perfilar)"
       kind: boundary
     ontologizador:
-      label: "Ontologizador (compila contexto: KB tipada + traits + paso de flujo)"
+      label: "Ontologizador (ContextCompiler: KB tipada + traits + paso de flujo; delega el bundle al Ruteador)"
+      kind: engine
+    router_agent:
+      label: "Ruteador de contexto (RouterAgent.route: bundle justificado [{doc_id, motivo}] con tools explore_multi/explore/show; cualquier familia, justificada)"
+      kind: engine
+    orchestrator_agent:
+      label: "Orquestador (OrchestratorAgent.decide: kind tool_call|fallback|nl + step_target, salida tipada; grafo de steps en static_instruction)"
       kind: engine
     policy_decide_turn:
-      label: "decide_turn (policy PURA: tool_call | fallback | nl; no llama nada)"
+      label: "decide_turn (policy determinística por keywords: fallback si el OrchestratorAgent falla)"
       kind: engine
     conversador:
       label: "Conversador (redacta NL desde el contexto compilado)"
+      kind: engine
+    gate_agent:
+      label: "Gate (GateAgent.evaluate: juez LLM de la respuesta contra los GateCriterion de la KB; fail-open; rechazo => 'derived')"
       kind: engine
     perfilador:
       label: "Perfilador (extrae traits del turno cerrado)"
@@ -124,32 +154,44 @@ data:
     reflector:
       label: "Reflector (batch: patrones del historial → atoms 'proposed')"
       kind: background_agent
+    port_agent_base:
+      label: "agents.base.Agent (role, static_instruction, tools, output_schema, callbacks) sobre google-genai"
+      kind: port
     port_conversador:
       label: "Conversador (Protocol): draft_nl()"
       kind: port
     port_trait_mapper:
       label: "TraitMapper (Protocol): extract_traits()"
       kind: port
+    guard_security_floor:
+      label: "apply_security_floor (RuleAtom conversation:security SIEMPRE en el bundle)"
+      kind: boundary
+    guard_transitions:
+      label: "apply_transition_guard (step_target fuera de allowed_transitions => vetado)"
+      kind: boundary
     tool_registry:
-      label: "execute_tool (recibe handlers ya resueltos)"
+      label: "execute_tool (recibe handlers ya resueltos; tool_timeout_ms)"
       kind: api
     tool_handlers:
-      label: "Handlers locales (crear_reserva, agendar_recordatorio → SQL)"
+      label: "Handlers locales (crear_reserva, agendar_recordatorio, registrar_enrolamiento → SQL)"
       kind: api
     event_bus:
       label: "InProcessEventBus (publish_turn_closed; scrubbea el turno)"
       kind: boundary
     project_config:
-      label: "project.config.yaml (kb_root, model, tools, marca)"
+      label: "project.config.yaml (kb_root, model, tools, marca, tuning, deploy)"
       kind: boundary
     sql_db:
-      label: "SQL (Users, UserTraits, SessionState, ChatHistory, reservas/recordatorios)"
+      label: "SQL (Users, UserTraits, SessionState, ChatHistory, Turns, reservas/recordatorios)"
       kind: database
     sldb_kb:
-      label: "SLDB (KB: 10 modelos tipados)"
+      label: "SLDB (KB: 12 modelos tipados, incl. GateCriterion y AgentFraming)"
       kind: database
     kgdb_graph:
       label: "KGDB (grafo de flujo: ConversationStep, flows_to, grounding)"
+      kind: database
+    knowledge_ops:
+      label: "KnowledgeOperations (explore/show con embeddings; una instancia por proceso)"
       kind: database
     gemini:
       label: "Google Gemini (generate_content)"
@@ -161,27 +203,43 @@ data:
     - {from: twilio_webhook, to: orchestrator, label: "handle_turn"}
     - {from: cli_local, to: orchestrator, label: "handle_turn + /reflect"}
     # config → hub (no al revés)
-    - {from: project_config, to: orchestrator, label: "kb_root, model, tool_handlers"}
-    # hub ↔ router
+    - {from: project_config, to: orchestrator, label: "kb_root, model, tool_handlers, tuning"}
+    # encuadre de negocio desde la KB
+    - {from: sldb_kb, to: orchestrator, label: "AgentFraming por AgentRole (router/orchestrator/gate)"}
+    # hub ↔ router técnico
     - {from: orchestrator, to: state_machine, label: "handle_user_message"}
     - {from: state_machine, to: ontologizador, label: "compile_context (inyectado)"}
-    - {from: state_machine, to: policy_decide_turn, label: "draft (closure del orquestador)"}
-    # ontologizador → datos
+    - {from: state_machine, to: orchestrator_agent, label: "draft (closure del orquestador)"}
+    # ontologizador → ruteador → datos
+    - {from: ontologizador, to: router_agent, label: "route(question, candidatos, traits, step)"}
+    - {from: router_agent, to: knowledge_ops, label: "tools explore_multi / explore / show"}
+    - {from: router_agent, to: guard_security_floor, label: "bundle del modelo"}
+    - {from: guard_security_floor, to: ontologizador, label: "bundle + piso (fallback: _build_bundle determinístico)"}
     - {from: ontologizador, to: sldb_kb, label: "atoms tipados"}
     - {from: ontologizador, to: kgdb_graph, label: "flow_node, transiciones, grounding"}
     - {from: ontologizador, to: sql_db, label: "UserTraits"}
-    # la policy DECIDE; el orquestador EJECUTA
-    - {from: policy_decide_turn, to: orchestrator, label: "kind: tool_call | fallback | nl"}
+    # el orquestador-agente DECIDE; el hub EJECUTA
+    - {from: orchestrator_agent, to: guard_transitions, label: "step_target propuesto"}
+    - {from: guard_transitions, to: orchestrator, label: "kind: tool_call | fallback | nl (+ flow_target válido)"}
+    - {from: orchestrator_agent, to: policy_decide_turn, label: "fallback si el LLM falla"}
     - {from: orchestrator, to: conversador, label: "draft_nl (si nl o post-tool)"}
     - {from: orchestrator, to: tool_registry, label: "execute_tool (si tool_call)"}
     - {from: tool_registry, to: tool_handlers, label: "handler(session, args)"}
-    - {from: tool_handlers, to: sql_db, label: "reservas / recordatorios"}
-    # conversador → LLM vía puerto
+    - {from: tool_handlers, to: sql_db, label: "reservas / recordatorios / enrolamiento"}
+    # gate sobre la respuesta redactada
+    - {from: conversador, to: gate_agent, label: "respuesta redactada (si nl)"}
+    - {from: gate_agent, to: sldb_kb, label: "GateCriterion (static_instruction)"}
+    - {from: gate_agent, to: orchestrator, label: "GateVerdict approved | reasons => derived"}
+    # agentes → LLM vía puertos
     - {from: conversador, to: port_conversador}
     - {from: port_conversador, to: gemini, label: "GeminiConversador"}
+    - {from: router_agent, to: port_agent_base}
+    - {from: orchestrator_agent, to: port_agent_base}
+    - {from: gate_agent, to: port_agent_base}
+    - {from: port_agent_base, to: gemini, label: "generate_content (tools + response_schema)"}
     # persistencia con scrub
     - {from: orchestrator, to: scrubber, label: "scrub(content)"}
-    - {from: scrubber, to: sql_db, label: "ChatHistory (pii_scrubbed)"}
+    - {from: scrubber, to: sql_db, label: "ChatHistory (pii_scrubbed) + Turns (rastro por agente)"}
     # cierre de turno → perfilador vía event bus
     - {from: orchestrator, to: event_bus, label: "publish_turn_closed"}
     - {from: event_bus, to: perfilador, label: "TurnClosedEvent (texto scrubbeado)"}

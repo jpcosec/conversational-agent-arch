@@ -1,20 +1,24 @@
 id: matrix-agents-kb-consumption
 title: Backend · Matriz · Agentes × Modelos de la KB que consumen
 type: component_view_matrix
-version: "0.2"
+version: "0.3"
 metadata:
   author: antonIA
   description: >-
-    Qué modelo tipado de conocimiento lee o produce cada motor cognitivo del
-    runtime. Stages = los 10 modelos reales de kb_agent/models/knowledge/*
-    (ordenados por su __family__: self→domain→conversation→user). Dos vistas:
-    (1) Lee — modelos que entran al motor; (2) Produce — modelos que escribe.
-    Barras derivadas del código: Ontologizador (compiler._MODEL_TYPES +
-    _extract_persona self/style/boundary + _find_atoms domain/rule +
-    _find_tools + strategy/fallback + trait + step vía KGDB); Conversador
-    (llm.draft_nl usa persona self/style/boundary + strategy + domain/rule +
-    user_traits); Perfilador (extractor lee y upserta trait); Reflector
-    (generator.fetch domain/rule y propone domain/rule 'proposed').
+    Qué modelo tipado de conocimiento lee o produce cada agente del runtime.
+    Stages = los 12 modelos reales de kb_agent/models/knowledge/* (ordenados
+    por su __family__: self→domain→conversation→user→gate→agent). Dos vistas:
+    (1) Lee — modelos que entran al agente; (2) Produce — modelos que escribe.
+    Barras derivadas del código: Ontologizador (compiler._MODEL_TYPES = 10
+    tipos + step vía KGDB); Ruteador (RouterAgent: cualquier documento
+    justificado vía tools explore_multi/explore/show sobre KnowledgeOperations,
+    + AgentFraming rol router); Orquestador (OrchestratorAgent: grafo de
+    ConversationStep en static_instruction + tools declaradas + AgentFraming
+    rol orchestrator; fallback decide_turn); Conversador (llm.draft_nl usa
+    persona self/style/boundary + strategy + domain/rule + user_traits); Gate
+    (GateAgent: GateCriterion en static_instruction + AgentFraming rol gate);
+    Perfilador (extractor lee y upserta trait); Reflector (generator.fetch
+    domain/rule y propone domain/rule 'proposed').
 data:
   views:
     - id: reads
@@ -40,6 +44,10 @@ data:
           label: "conv · fallback"
         - id: trait
           label: "user · trait"
+        - id: gate
+          label: "gate · gate"
+        - id: agent
+          label: "agent · agent (framing)"
     - id: writes
       label: Produce (escribe)
       stages:
@@ -53,21 +61,36 @@ data:
   components:
     - name: Engines
       kind: core
-      label: Motores Cognitivos (kb_agent/*)
+      label: Agentes del runtime (kb_agent/*)
       stages:
-        reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait]
+        reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait, gate, agent]
         writes: [domain_w, rule_w, trait_w]
       children:
         - name: Ontologizador
           kind: engine
-          label: "Ontologizador (compile_context: lee TODA la KB tipada + step vía KGDB)"
+          label: "Ontologizador (compile_context: lee TODA la KB tipada + step vía KGDB; delega el bundle al Ruteador)"
           stages:
             reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait]
+        - name: Ruteador
+          kind: decision_engine
+          label: "Ruteador (RouterAgent: cualquier documento justificado vía explore/show; piso de seguridad rule)"
+          stages:
+            reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait, agent]
+        - name: Orquestador
+          kind: decision_engine
+          label: "Orquestador (OrchestratorAgent: grafo de steps + tools declaradas -> kind/tool_call/step_target)"
+          stages:
+            reads: [tool, step, agent]
         - name: Conversador
           kind: engine
           label: "Conversador (draft_nl: persona self/style/boundary + strategy + domain/rule + traits)"
           stages:
             reads: [self, style, boundary, domain, rule, strategy, fallback, trait]
+        - name: Gate
+          kind: decision_engine
+          label: "Gate (GateAgent: juzga la respuesta contra los GateCriterion)"
+          stages:
+            reads: [gate, agent]
         - name: Perfilador
           kind: service
           label: "Perfilador (extractor: lee trait candidatos → upsert UserTrait)"

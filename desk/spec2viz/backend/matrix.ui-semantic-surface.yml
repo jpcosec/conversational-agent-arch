@@ -1,11 +1,13 @@
 id: matrix-ui-semantic-surface
 title: Frontend · Matriz · UI × Superficie Semántica (datos + config)
 type: component_view_matrix
-version: "0.1"
+version: "0.2"
 metadata:
   author: antonIA
   description: >-
-    Cruza las 5 UIs (frontends/*) contra los valores semánticos que operan.
+    Cruza las 5 páginas (frontends/*: chat /, flow /flow, mindmap /mindmap,
+    users /users, dashboard /dashboard; la sexta vista, el tour guiado
+    demo-tour.js, no toca datos) contra los valores semánticos que operan.
     Dos vistas: (1) Datos KB editados/mostrados, agrupados por las 4 familias
     reales del modelo (self/domain/conversation/user, de __family__ en
     kb_agent/models/knowledge/*); (2) Config de la KB expuesta a las UIs por
@@ -43,7 +45,7 @@ data:
   components:
     - name: Frontends
       kind: boundary
-      label: 5 UIs (frontends/*)
+      label: 5 páginas (frontends/*)
       stages:
         data: [self, domain, conversation, user]
         config: [identity, kb_label, model, greeting, mode]
@@ -56,25 +58,24 @@ data:
             config: [identity, kb_label, model, greeting, mode]
         - name: TaxonomyUI
           kind: ui
-          label: "taxonomy (árbol familias×atoms, edita/comenta)"
+          label: "mindmap · taxonomy (árbol familias×atoms + layout Embeddings vía /api/viz/graph)"
           stages:
             data: [self, domain, conversation, user]
             config: [identity, kb_label]
         - name: FlowEditorUI
           kind: ui
-          label: "flow_editor (grafo de ConversationStep)"
+          label: "flow · flow_editor (grafo de ConversationStep + ToolAtoms de /api/tools)"
           stages:
-            data: [conversation]
+            data: [self, conversation]
             config: [identity, kb_label]
         - name: ProfilingUI
           kind: ui
-          label: "profiling (UserTraits × TraitAtom)"
+          label: "users · profiling (UserTraits × TraitAtom)"
           stages:
             data: [user]
             config: [identity, kb_label]
-        - name: VizUI
+        - name: DashboardUI
           kind: ui
-          label: "viz (grafo atoms+embeddings PCA)"
+          label: "dashboard (mock estático, series sintéticas: sin datos KB)"
           stages:
-            data: [self, domain, conversation, user]
             config: [identity, kb_label]

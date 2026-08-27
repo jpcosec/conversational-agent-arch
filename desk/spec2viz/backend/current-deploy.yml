@@ -1,41 +1,142 @@
 id: current-deploy
-title: "Deploy · Modal App (current codebase)"
+title: "Deploy · Modal App + release gate + CI (current codebase)"
 type: component
-version: "1.0"
+version: "1.1"
 metadata:
   author: antonIA
   description: >-
-    Superficie de despliegue del runtime: deploy/modal_app.py empaqueta el
-    código (kb_agent, frontends, knowledge_base) + la KB real y sirve el ASGI
-    app de frontends.chat.app en Modal. Refleja el codebase actual.
+    Superficie de despliegue del runtime. deploy/modal_app.py empaqueta el
+    código (kb_agent, frontends, knowledge_base, alembic) + la KB real y sirve
+    el ASGI app de frontends.chat.app en Modal. La infra ya no está hardcodeada:
+    sale del bloque `deploy` de project.config.yaml vía ProjectConfig.deploy
+    (modal_app_name, gcp_secret_name, twilio_secret_name, min_containers,
+    serve_timeout_s); MODAL_APP_NAME por env crea una app + volumen
+    `<app>-data` separados (endpoint dev kb-agent-runtime-dev). Tres funciones
+    Modal: serve (ASGI; migra el sqlite del volumen con alembic al arrancar),
+    inspect_db (sólo lectura) y clean_and_seed (borra conversaciones + siembra
+    usuarios demo). deploy/release.sh es el gate a producción (suite offline →
+    modal deploy → rama production + tag); .github/workflows/ci.yml corre los
+    jobs static y suite en push/PR.
 data:
   nodes:
     ModalApp:
-      label: deploy.modal_app
+      label: deploy.modal_app (modal.App(APP_NAME))
       kind: core
       contains:
         - ModalImage
         - ModalServe
+        - MigrateVolume
+        - ModalInspectDb
+        - ModalCleanSeed
     ModalImage:
-      label: "image (add_local_dir: kb_agent, frontends, knowledge_base, knowledge/)"
+      label: "image (pip pins + add_local_dir: sldb/kgdb/deskops, kb_agent, frontends, knowledge_base, knowledge/, tests/knowledge, alembic; env MODAL_APP_NAME)"
       kind: core
     ModalServe:
-      label: "serve() @asgi_app -> create_app()"
+      label: "serve() @asgi_app (secrets GCP [+Twilio], min_containers, timeout) -> create_app()"
+      kind: core
+    MigrateVolume:
+      label: "_migrate_data_volume (alembic stamp baseline / upgrade head sobre /data/ui-chat.sqlite)"
+      kind: core
+    ModalInspectDb:
+      label: "inspect_db() (modal run ::inspect_db · sólo lectura del volumen)"
+      kind: core
+    ModalCleanSeed:
+      label: "clean_and_seed() (borra conversaciones + seed_demo_users.seed + volume.commit)"
+      kind: core
+
+    DeployConfig:
+      label: "project.config.yaml bloque deploy -> ProjectConfig.deploy (DeployConfig)"
+      kind: boundary
+    EnvAppName:
+      label: "MODAL_APP_NAME (override: app + volumen <app>-data, p.ej. kb-agent-runtime-dev)"
+      kind: boundary
+    ModalVolume:
+      label: "modal.Volume <app>-data montado en /data (ui-chat.sqlite, embedding-cache)"
+      kind: database
+    ModalSecrets:
+      label: "modal.Secret gcp_secret_name (ADC Vertex) + twilio_secret_name opcional"
+      kind: boundary
+    Alembic:
+      label: "alembic/ + alembic.ini (migraciones del sqlite)"
       kind: core
 
     ChatApp:
       label: frontends.chat.app.create_app
       kind: boundary
+    SeedDemoUsers:
+      label: kb_agent.seed_demo_users.seed
+      kind: boundary
+
     ReleaseGate:
-      label: "deploy/release.sh (offline suite -> deploy -> tag -> production)"
+      label: "deploy/release.sh (preflight limpio -> suite offline -> modal deploy -> tag release-YYYYMMDD-sha -> rama production)"
+      kind: boundary
+    CI:
+      label: ".github/workflows/ci.yml (push main/dev/production + PR)"
+      kind: boundary
+      contains:
+        - CIStatic
+        - CISuite
+    CIStatic:
+      label: "job static (compileall, project.config.yaml válido, sin hardcodes de negocio en kb_agent/)"
+      kind: boundary
+    CISuite:
+      label: "job suite (sldb/kgdb/deskops por git + pytest tests/unit tests/integration, SKIP_LLM_TESTS=1)"
       kind: boundary
 
   edges:
+    - from: DeployConfig
+      to: ModalApp
+      relation: configures
+      label: APP_NAME, secrets, min_containers, timeout
+    - from: EnvAppName
+      to: DeployConfig
+      relation: overrides
+      label: load_project_config (MODAL_APP_NAME)
+    - from: ModalImage
+      to: Alembic
+      relation: contains
+      label: add_local_dir alembic + alembic.ini
+    - from: ModalServe
+      to: MigrateVolume
+      relation: invokes
+      label: al arrancar el contenedor
+    - from: MigrateVolume
+      to: Alembic
+      relation: uses
+      label: command.stamp / command.upgrade head
+    - from: MigrateVolume
+      to: ModalVolume
+      relation: writes
+      label: esquema del sqlite
     - from: ModalServe
       to: ChatApp
       relation: imports
       label: builds ASGI app
+    - from: ModalServe
+      to: ModalSecrets
+      relation: uses
+      label: GOOGLE_APPLICATION_CREDENTIALS_JSON -> /root/adc.json
+    - from: ModalServe
+      to: ModalVolume
+      relation: uses
+      label: CHAT_DB=PROFILING_DB=/data/ui-chat.sqlite
+    - from: ModalInspectDb
+      to: ModalVolume
+      relation: reads
+      label: tablas, usuarios, mensajes
+    - from: ModalCleanSeed
+      to: ModalVolume
+      relation: writes
+      label: delete + commit
+    - from: ModalCleanSeed
+      to: SeedDemoUsers
+      relation: uses
+      label: seed(DB_PATH)
     - from: ReleaseGate
       to: ModalApp
       relation: invokes
-      label: modal deploy
+      label: modal deploy (MODAL_APP_NAME opcional, SKIP_DEPLOY=1)
+    - from: CISuite
+      to: ReleaseGate
+      relation: mirrors
+      label: misma suite offline que el gate

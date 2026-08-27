@@ -1,15 +1,19 @@
 id: sequence-extended-turn
 title: "Backend · Secuencia · Ciclo de Vida del Turno Extendido"
 type: sequence
-version: '1.2'
+version: '1.3'
 metadata:
   author: antonIA
   description: >-
     Traza el flujo de un mensaje (kb_agent/orchestrator.py Orchestrator.handle_turn) desde el
-    RouterStateMachine, la compilación de contexto por el Ontologizador, el Orquestador
-    (decide_turn en kb_agent/agent.py) que decide tool_call/fallback/nl, el dispatcher de tools
+    RouterStateMachine, la compilación de contexto por el Ontologizador (que delega el bundle
+    justificado en el Ruteador: RouterAgent con tools de KB + piso de seguridad por código), el
+    Orquestador (OrchestratorAgent.decide: salida tipada tool_call/fallback/nl + step_target
+    filtrado por apply_transition_guard; decide_turn como fallback), el dispatcher de tools
     (registry resuelto desde project.config.yaml), el Conversador (puerto LLM), el re-draft
-    post-tool con inyección de system_turn, y la actuación asíncrona del Perfilador.
+    post-tool con inyección de system_turn, el Gate (GateAgent.evaluate contra los GateCriterion
+    de la KB, fail-open; rechazo => respuesta 'derived'), la persistencia del rastro (Turns) y la
+    actuación asíncrona del Perfilador.
 data:
   participants:
     - id: User_Cron
@@ -18,12 +22,16 @@ data:
       kind: component
     - id: Ontologizador
       kind: component
+    - id: Ruteador
+      kind: decision_engine
     - id: Orquestador
       kind: decision_engine
     - id: ToolRegistry
       kind: boundary
     - id: Conversador
       kind: component
+    - id: Gate
+      kind: decision_engine
     - id: API_Ext
       kind: boundary
     - id: Perfilador
@@ -41,18 +49,32 @@ data:
       kind: sync
     - from: Ontologizador
       to: Ontologizador
-      message: Recupera subgrafos KB (11 tipos via _MODEL_TYPES) SLDBReader/KGDBReader
+      message: Recupera KB tipada (10 tipos via _MODEL_TYPES) SLDBReader/KGDBReader + traits + step
+    - from: Ontologizador
+      to: Ruteador
+      message: route(question, candidatos, traits, step) [RouterAgent]
+      kind: sync
+    - from: Ruteador
+      to: Ruteador
+      message: "tools explore_multi/explore/show (KnowledgeOperations) -> RouterDecision [{doc_id, motivo}]"
+    - from: Ruteador
+      to: Ontologizador
+      message: "bundle + apply_security_floor (fallback: _build_bundle determinístico)"
+      kind: return
     - from: Ontologizador
       to: Router
-      message: Contexto Compilado (CompiledDocument.to_dict())
+      message: Contexto Compilado (CompiledDocument.to_dict(), bundle_source agent|deterministic)
       kind: return
     - from: Router
       to: Orquestador
-      message: decide_turn(compiled_context)
+      message: decide(compiled_context) [OrchestratorAgent]
       kind: sync
     - from: Orquestador
+      to: Orquestador
+      message: "LLM salida tipada + apply_transition_guard (fallback: decide_turn)"
+    - from: Orquestador
       to: Router
-      message: "{kind: tool_call|fallback|nl}"
+      message: "{kind: tool_call|fallback|nl, flow_target}"
       kind: return
     - from: Router
       to: ToolRegistry
@@ -101,6 +123,19 @@ data:
       to: Router
       message: Respuesta Generada
       kind: return
+    - from: Router
+      to: Gate
+      message: "(si kind=nl) evaluate(draft, compiled, tools_called) [GateAgent]"
+      kind: sync
+      condition: kind == nl
+    - from: Gate
+      to: Router
+      message: "GateVerdict approved | reasons (rechazo => kind=derived, texto de derivación)"
+      kind: return
+      condition: kind == nl
+    - from: Router
+      to: Router
+      message: "persiste ChatHistory (scrub PII) + Turns (decisiones ruteador/orquestador/gate) + SessionState"
     - from: Router
       to: User_Cron
       message: Respuesta enviada
