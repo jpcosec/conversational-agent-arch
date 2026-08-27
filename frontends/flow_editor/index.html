@@ -124,6 +124,29 @@ function App(){
  const [subflows,setSubflows]=useState([])
  const [linking,setLinking]=useState(null)
  const {fitView}=useReactFlow()
+ const [viewport,setViewport]=useState({x:0,y:0,zoom:1})
+ const fitted=useRef(false)
+
+ // Encuadre inicial con viewport CONTROLADO por props: la via imperativa
+ // (fitView() del hook) no surte efecto en este montaje --se la puede llamar
+ // con los nodos ya medidos en el DOM y el transform se queda en la
+ // identidad--, y el grafo aparecia desbordado por la derecha al cargar.
+ // onViewportChange conserva pan y zoom.
+ const fitGraph=useCallback((nds)=>{
+  const wrap=document.querySelector('.canvas-wrap')
+  if(!wrap||!wrap.clientWidth||!wrap.clientHeight)return
+  let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity
+  nds.forEach(n=>{
+   const el=document.querySelector('.react-flow__node[data-id="'+n.id+'"]')
+   const w=el?el.offsetWidth:190,h=el?el.offsetHeight:55
+   minX=Math.min(minX,n.position.x);minY=Math.min(minY,n.position.y)
+   maxX=Math.max(maxX,n.position.x+w);maxY=Math.max(maxY,n.position.y+h)
+  })
+  if(!isFinite(minX))return
+  const PAD=1.18
+  const zoom=Math.max(0.1,Math.min(wrap.clientWidth/((maxX-minX)*PAD),wrap.clientHeight/((maxY-minY)*PAD),1.3))
+  setViewport({x:(wrap.clientWidth-(maxX+minX)*zoom)/2,y:(wrap.clientHeight-(maxY+minY)*zoom)/2,zoom})
+ },[])
 
  useEffect(()=>{fetch('/api/tools').then(r=>r.json()).then(setTools).catch(()=>{})},[])
 
@@ -136,11 +159,13 @@ function App(){
  },[setNodes,setEdges])
  useEffect(()=>{localStorage.setItem('flow_rankdir',rankdir)},[rankdir])
 
- useEffect(()=>{fetch('/api/flow').then(r=>r.json()).then(flow=>{const m={};flow.nodes.forEach(s=>{m[s.id]=s});setSteps(m);const rn=flow.nodes.map(s=>({id:s.id,type:'step',position:{x:0,y:0},data:{label:(s.title||'').replace(/ —.*$/,'').slice(0,28),stepKind:s.kind||'interaccion_simple',stepId:s.id}}));const re=flow.edges.map((e,i)=>({id:`e-${i}`,source:e.source,target:e.target,animated:true,style:{stroke:'rgba(212,165,116,.3)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.5)'}}));setNodes(layoutGraph(rn,re,rankdir));setEdges(re);setTimeout(()=>fitView({padding:0.15,duration:400}),150)}).catch(e=>console.error('flow err',e))},[setNodes,setEdges,fitView])
+ useEffect(()=>{fetch('/api/flow').then(r=>r.json()).then(flow=>{const m={};flow.nodes.forEach(s=>{m[s.id]=s});setSteps(m);const rn=flow.nodes.map(s=>({id:s.id,type:'step',position:{x:0,y:0},data:{label:(s.title||'').replace(/ —.*$/,'').slice(0,28),stepKind:s.kind||'interaccion_simple',stepId:s.id}}));const re=flow.edges.map((e,i)=>({id:`e-${i}`,source:e.source,target:e.target,animated:true,style:{stroke:'rgba(212,165,116,.3)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.5)'}}));setNodes(layoutGraph(rn,re,rankdir));setEdges(re)}).catch(e=>console.error('flow err',e))},[setNodes,setEdges])
 
  // nodes.length en las deps: los nodos llegan por fetch, asi que en el primer
  // render el grafo esta vacio y `nodesInitialized` ya es true (cero nodos estan
- useEffect(()=>{if(!nodes.length)return;setNodes(layoutGraph(nodes,edges,rankdir))},[rankdir])
+ useEffect(()=>{if(!nodes.length||fitted.current)return;const t=setTimeout(()=>{fitGraph(nodes);fitted.current=true},400);return()=>clearTimeout(t)},[nodes,fitGraph])
+
+ useEffect(()=>{if(!nodes.length)return;const n=layoutGraph(nodes,edges,rankdir);setNodes(n);requestAnimationFrame(()=>fitGraph(n))},[rankdir])
 
  const onConnect=useCallback((params)=>{setEdges(eds=>addEdge({...params,animated:true,style:{stroke:'rgba(212,165,116,.3)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.5'}},eds))},[setEdges])
  const onNodeClick=useCallback((_,node)=>{setSelectedStepId(id=>id===node.data.stepId?null:node.data.stepId);if(linking){setEdges(eds=>[...eds,{id:`e-x-${Date.now()}`,source:linking,target:node.id,animated:true,style:{stroke:'#c97db9',strokeWidth:2,strokeDasharray:'5,5'},markerEnd:{type:MarkerType.ArrowClosed,color:'#c97db9'}}]);setLinking(null)}},[linking])
@@ -169,7 +194,7 @@ function App(){
    <div class="tools-panel" data-testid="flow-tools-panel"><div class="palette-label">Tools (KB)</div>${tools.map(t=>html`<div class="tool-item" data-testid="flow-tool-item" draggable onDragStart=${e=>onToolDragStart(e,t)}><span class="tool-name">${t.name}</span><span class="tool-desc">${(t.description||'').slice(0,50)}</span></div>`)}${!tools.length?html`<div style=${{fontSize:10,color:'rgba(245,240,232,.3)'}}>Sin tools en esta KB</div>`:''}</div>
  </aside>
  <div class="canvas-wrap" onDrop=${onDrop} onDragOver=${onDragOver}>
-   <${ReactFlow} nodes=${nodes} edges=${edges} onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange} onConnect=${onConnect} onNodeClick=${onNodeClick} onPaneClick=${onPaneClick} nodeTypes=${nodeTypes} fitView fitViewOptions=${{padding:0.3}} colorMode="dark" defaultEdgeOptions=${{style:{stroke:'rgba(212,165,116,.2)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.4'}}}>
+   <${ReactFlow} nodes=${nodes} edges=${edges} onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange} onConnect=${onConnect} onNodeClick=${onNodeClick} onPaneClick=${onPaneClick} nodeTypes=${nodeTypes} viewport=${viewport} onViewportChange=${setViewport} colorMode="dark" defaultEdgeOptions=${{style:{stroke:'rgba(212,165,116,.2)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.4'}}}>
      <${Background} color="rgba(212,165,116,.04)" gap=${24}/>
      <${Controls} showInteractive=${false}/>
      <${MiniMap} nodeColor=${()=>'rgba(212,165,116,.2)'} maskColor="rgba(10,10,15,.7)" style=${{background:'rgba(10,10,15,.5)'}}/>

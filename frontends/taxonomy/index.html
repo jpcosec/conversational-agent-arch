@@ -9,7 +9,7 @@
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;width:100%}body{display:flex;flex-direction:column}
 body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden;display:flex;flex-direction:column}
-#root{flex:1;min-height:0;width:100%;position:relative}.react-flow__attribution{display:none}
+#root{display:flex;flex:1;min-height:0;width:100%;position:relative}.react-flow__attribution{display:none}
 input,textarea,select{font-family:inherit}
 .mm-layout{display:flex;flex:1;min-height:0;width:100%}
 .mm-sidebar{width:220px;min-width:220px;background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));border-right:1px solid rgba(212,165,116,.18);display:flex;flex-direction:column;z-index:20;padding:14px;overflow-y:auto}
@@ -48,7 +48,7 @@ input,textarea,select{font-family:inherit}
 <script type="module">
 import React,{useState,useCallback,useEffect,useRef,useMemo}from'react'
 import{createRoot}from'react-dom/client'
-import{ReactFlow,ReactFlowProvider,Background,Controls,MiniMap,Handle,Position,useNodesState,useEdgesState,useReactFlow,NodeToolbar}from'@xyflow/react'
+import{ReactFlow,ReactFlowProvider,Background,Controls,MiniMap,Handle,Position,useNodesState,useEdgesState,useReactFlow,useNodesInitialized,NodeToolbar}from'@xyflow/react'
 import htm from'htm';const html=htm.bind(React.createElement)
 import dagre from'dagre'
 
@@ -122,8 +122,37 @@ function App(){
  const [filterRama,setFilterRama]=useState(null);const [collapsed,setCollapsed]=useState(new Set())
  const [selectedNode,setSelectedNode]=useState(null);const [linking,setLinking]=useState(false);const [taxData,setTaxData]=useState(null)
  const {fitView}=useReactFlow()
+ const [viewport,setViewport]=useState({x:0,y:0,zoom:1})
+ const fitted=useRef(false)
 
- useEffect(()=>{fetch('/api/taxonomy').then(r=>r.json()).then(tax=>{setTaxData(tax);NID=0;const{nodes:rn,edges:re}=buildGraph(tax);setNodes(layoutTree(rn,re,'LR'));setEdges(re);setTimeout(()=>fitView({padding:0.1,duration:400}),150)}).catch(e=>console.error('tax err',e))},[setNodes,setEdges,fitView])
+ useEffect(()=>{fetch('/api/taxonomy').then(r=>r.json()).then(tax=>{setTaxData(tax);NID=0;const{nodes:rn,edges:re}=buildGraph(tax);setNodes(layoutTree(rn,re,'LR'));setEdges(re)}).catch(e=>console.error('tax err',e))},[setNodes,setEdges])
+
+ // Encuadre inicial con viewport CONTROLADO por props.
+ // La via imperativa (fitView() del hook, y tambien setViewport()) no surte
+ // efecto en este montaje: se la puede llamar con los 76 nodos ya medidos en
+ // el DOM y el transform del viewport se queda en la identidad, dejando el
+ // arbol (~2800px de alto) desbordando la pantalla. Controlando el viewport
+ // por prop no dependemos de esa API; onViewportChange conserva pan y zoom.
+ useEffect(()=>{
+  if(!nodes.length||fitted.current)return
+  const t=setTimeout(()=>{
+   const wrap=document.querySelector('.mm-canvas')
+   if(!wrap||!wrap.clientWidth||!wrap.clientHeight)return
+   let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity
+   nodes.forEach(n=>{
+    const el=document.querySelector('.react-flow__node[data-id="'+n.id+'"]')
+    const w=el?el.offsetWidth:160,h=el?el.offsetHeight:34
+    minX=Math.min(minX,n.position.x);minY=Math.min(minY,n.position.y)
+    maxX=Math.max(maxX,n.position.x+w);maxY=Math.max(maxY,n.position.y+h)
+   })
+   if(!isFinite(minX))return
+   const PAD=1.12
+   const zoom=Math.max(0.1,Math.min(wrap.clientWidth/((maxX-minX)*PAD),wrap.clientHeight/((maxY-minY)*PAD),1.2))
+   setViewport({x:(wrap.clientWidth-(maxX+minX)*zoom)/2,y:(wrap.clientHeight-(maxY+minY)*zoom)/2,zoom})
+   fitted.current=true
+  },400)
+  return()=>clearTimeout(t)
+ },[nodes])
 
  const applyLayout=useCallback((lay)=>{setLayoutMode(lay);if(!nodes.length||!taxData)return;if(lay==='embeddings'){fetch('/api/viz/graph').then(r=>r.json()).then(g=>{if(!g.nodes)return;const em=nodes.map(n=>{const e=g.nodes.find(gn=>gn.id===n.data.atom_id||gn.id===n.data.label);return e?{...n,position:{x:e.position?.x||0,y:e.position?.y||0}}:n});setNodes(em);setEdges(prev=>prev)}).catch(()=>{});return}
   const n=layoutTree(nodes,edges,lay==='topdown'?'TB':'LR');setNodes(n);fitView({padding:0.1,duration:400})},[nodes,edges,taxData])
@@ -170,7 +199,7 @@ function App(){
     </div>
     <${ReactFlow} nodes=${searched} edges=${edges} onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange} nodeTypes=${nodeTypes}
      onNodeMouseEnter=${onNodeMouseEnter} onNodeMouseLeave=${onNodeMouseLeave} onNodeClick=${onNodeClick} onNodeDoubleClick=${onNodeDoubleClick} onPaneClick=${onPaneClick}
-     fitView minZoom=${0.1} maxZoom=${2} proOptions=${{hideAttribution:true}} selectionOnDrag>
+     viewport=${viewport} onViewportChange=${setViewport} minZoom=${0.1} maxZoom=${2} proOptions=${{hideAttribution:true}} selectionOnDrag>
      <${Background} color="rgba(212,165,116,.06)" gap=${28}/>
      <${Controls} showInteractive=${false}/>
      <${MiniMap} nodeColor=${n=>FAM[n.data?.family]?.color||'#555'} maskColor="rgba(10,10,15,.7)" style=${{background:'#0d1526',border:'1px solid rgba(212,165,116,.2)'}}/>
