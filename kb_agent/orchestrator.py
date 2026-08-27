@@ -265,6 +265,12 @@ class Orchestrator:
                     "missing_slots": flow_missing,
                 },
                 "ruteador": {
+                    # Bundle justificado del turno (doctrina 1.3): union sin
+                    # duplicados de similitud, grounding, piso de seguridad y
+                    # traits, cada entrada con su motivo. Es lo que hace
+                    # auditable "por que entro este documento" sin abrir la
+                    # KB -- ver ContextCompiler._build_bundle.
+                    "bundle": compiled.get("bundle", []),
                     "atoms": len(turn_context.get("atom_ids", [])),
                     "grounding_atoms": compiled.get("grounding_atoms", []),
                     "user_traits": compiled.get("user_traits", []),
@@ -416,21 +422,32 @@ class Orchestrator:
         """Atoms reales (facts + rules) que fundamentaron la respuesta, con rol y tags.
 
         NO re-lee el store: el compilador ya entrego tags y title en cada atom.
+
+        Cada item se cruza con ``bundle`` (el bundle justificado del turno,
+        ver ``ContextCompiler._build_bundle``) por ``doc_id`` para heredar el
+        ``motivo`` real por el que entro (piso de seguridad, grounding, trait
+        del usuario, similitud) y el ``score`` real de similitud (``None`` si
+        entro sin ranking semantico). Antes el score era 1.0 hardcodeado para
+        todo el mundo -- ya no.
         """
         items: list[dict[str, Any]] = []
         atom_ids: list[str] = []
         include_tags: set[str] = set()
         grounding = set(compiled.get("grounding_atoms", []))
+        bundle = compiled.get("bundle", [])
+        bundle_by_id = {b.get("doc_id"): b for b in bundle if b.get("doc_id")}
 
         def _add(atom: Mapping[str, Any], fallback_role: str) -> None:
             atom_id = atom.get("id", "")
             tags = list(atom.get("tags", []))
+            bundle_entry = bundle_by_id.get(atom_id)
             items.append({
                 "atom_id": atom_id,
                 "title": atom.get("title") or atom_id,
                 "role": self._semantic_role(tags, fallback_role),
                 "family": atom.get("family"),
-                "score": 1.0,
+                "score": bundle_entry.get("score") if bundle_entry else None,
+                "motivo": bundle_entry.get("motivo", "") if bundle_entry else "",
                 "tags": tags,
                 "grounds_step": atom_id in grounding,
                 "body": atom.get("body", ""),
@@ -454,6 +471,11 @@ class Orchestrator:
             "flow_node": compiled.get("flow_node"),
             "allowed_transitions": compiled.get("allowed_transitions", []),
             "is_empty": compiled.get("is_empty", False),
+            # Bundle justificado completo del turno (incluye entradas que no
+            # proyectan a domain_facts/rules, p.ej. traits o steps que
+            # entraron por similitud): auditoria completa, no solo la
+            # proyeccion tipada que arma ``items``.
+            "bundle": bundle,
         }
 
     # ── perfilador ────────────────────────────────────────────────────────

@@ -71,7 +71,20 @@ def _external_id(session_id: str) -> str:
 
 
 def to_ui_turn(turn_id: str, raw: dict[str, Any]) -> dict[str, Any]:
-    """Adapta la salida de handle_turn al contrato que consume la UI."""
+    """Adapta la salida de handle_turn al contrato que consume la UI.
+
+    El bundle justificado del turno (doctrina 1.3: ~12 documentos con motivo,
+    no "todo domain+rule" con score 1.0 hardcodeado) va DENTRO de ``context``,
+    no como bloque ``decisions`` aparte:
+      - cada ``context.items[i]`` ya trae ``motivo`` y el ``score`` real
+        (``None`` si entro por piso de seguridad/grounding/trait, sin
+        similitud) -- eso es lo que consume el Turn Inspector para las
+        cards que YA renderiza (mismo namespace, minimo diff en el JS).
+      - ``context.bundle`` expone la lista completa del bundle (incluye
+        entradas que no proyectan a domain_facts/rules, p.ej. un
+        ConversationStep o un TraitAtom que entraron por similitud) para
+        auditoria completa sin tener que cruzar con ``decisions.ruteador``.
+    """
     context = raw.get("context", {}) or {}
     return {
         "turn_id": turn_id,
@@ -95,6 +108,7 @@ def to_ui_turn(turn_id: str, raw: dict[str, Any]) -> dict[str, Any]:
             "user_traits": context.get("user_traits", []),
             "grounding_atoms": context.get("grounding_atoms", []),
             "is_empty": context.get("is_empty", False),
+            "bundle": context.get("bundle", []),
         },
     }
 
