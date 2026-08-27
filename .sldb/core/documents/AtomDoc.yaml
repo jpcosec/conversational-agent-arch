@@ -88,3 +88,184 @@ documents:
   - topic:policy-gate
   - type.knowledge.atom
   - workspace.desk.atoms
+- name: atom-canales-de-entrada
+  path: desk/atoms/atom-canales-de-entrada.md
+  hash_c: f07c4a5ce5ab7f2f2003bf2d93ceac8357987ff550c1db42eb337ae2654dade2
+  hash_d: b5d55e464e97cf1fba1fd47ed21d348f62a470accadbb7d5e645cac9e7d8c45e
+  semantic_tags:
+  - layer:frontend
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-concepto-atomo-semantico
+  path: desk/atoms/atom-concepto-atomo-semantico.md
+  hash_c: a6888b8dcf5e66dc7d0773a236e5ffd4bd1b0277a21dc68161ee9f12adf7def8
+  hash_d: 0155a39c36c50da21515b06d9cb8b0e5fd8fd50e92c07ecbb888ceccb8b9a0b2
+  semantic_tags:
+  - family:concepts
+  - layer:business
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-concepto-turno-extendido
+  path: desk/atoms/atom-concepto-turno-extendido.md
+  hash_c: f511715ba04744f5824b612d18c66e97d28424defbc9f24b6b8b1fed70c4cb07
+  hash_d: baa1d22e25b3383bc624e566d1e37be86d29a5fbee2123ed08a817bcee5663f4
+  semantic_tags:
+  - family:concepts
+  - layer:business
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-embeddings-como-layout-no-vista
+  path: desk/atoms/atom-embeddings-como-layout-no-vista.md
+  hash_c: 284ff0e7d9639fd6fffec1af4c6566529472b100696c51a1f62a8e023839c635
+  hash_d: 1547614596cf944c530889af6cbcf62557f9dd025c1bb9bd56bdb9b184d68f39
+  semantic_tags:
+  - family:concepts
+  - layer:frontend
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-estrategia-de-testing
+  path: desk/atoms/atom-estrategia-de-testing.md
+  hash_c: 74d2f966bfb7d7b2866a1322b69993476c8dbf46e40c52cf6c8014c57d4e7802
+  hash_d: 164e6087c95a953c75c87b661410009e0705888b9f5bca04c8521b1cd39f45da
+  semantic_tags:
+  - layer:ops
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-garantia-cero-alucinaciones
+  path: desk/atoms/atom-garantia-cero-alucinaciones.md
+  hash_c: 41467f72bcff2a2d88129591e66cf3f4dba33493f26fc63f12da3a8fa0fc9f1d
+  hash_d: 37a7e5f953d73c4e26e00badcf25d56f0f7af453876f65e32c6520fa5c85918b
+  semantic_tags:
+  - family:concepts
+  - layer:business
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-gobernanza-deskops
+  path: desk/atoms/atom-gobernanza-deskops.md
+  hash_c: f71372d1c90ffb24746aa793869c24cd708cae4fd8393df5a93328dfb7f4bc74
+  hash_d: 02864a98bce737503cb943ee4082b8f6e66bc0af052954c60b9692c06d8bddee
+  semantic_tags:
+  - family:concepts
+  - layer:ops
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-in-process-event-bus
+  path: desk/atoms/atom-in-process-event-bus.md
+  hash_c: 397c129444f6e192f71d790eb5b5045a01f1e893e983ac2b6226ea016ac6bd64
+  hash_d: bc1ad0bcfd0d0c8a6540760507d3b9377862eac44253068553d97593fb8d2304
+  semantic_tags:
+  - layer:runtime
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-kgdb-grafo-de-flujo
+  path: desk/atoms/atom-kgdb-grafo-de-flujo.md
+  hash_c: 7d30280ab41df9f9836912c2acda8c2716bf4b4cd66c3964829f5594e7415609
+  hash_d: 6f40d60c0feadaa8bfcd6c40ccc431a2ecf9169b7b6dd20972a77055b4168676
+  semantic_tags:
+  - family:conversation
+  - layer:knowledge
+  - role:data
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-negocios-activos
+  path: desk/atoms/atom-negocios-activos.md
+  hash_c: 18b35a430ef0d7ee025c2ede6d311a77145dd29e169b8e62f3342138bf1f3c58
+  hash_d: 7db75b67a23cecdcdf0a6f5fea0815479924dc03e541d79d4b7726b18402ace9
+  semantic_tags:
+  - family:concepts
+  - layer:business
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-orquestador-hub
+  path: desk/atoms/atom-orquestador-hub.md
+  hash_c: 790c39564732962520751740f9a3015fc534d3a74d5c241cc217b07a35c5ba74
+  hash_d: d8d4d95049f49fd546b9340d4e670fc37adced445862b948e81d87c8fea44566
+  semantic_tags:
+  - layer:runtime
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-persistencia-sql
+  path: desk/atoms/atom-persistencia-sql.md
+  hash_c: 51547df169ed2ce0214f584a15df3907cbf7981f699343d389116068e028a878
+  hash_d: 012958fb1f60af1068379e3c55f4fc6a5c9df8914d2192f5f8bf88c5c9ea23ec
+  semantic_tags:
+  - layer:knowledge
+  - role:data
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-pii-scrubber
+  path: desk/atoms/atom-pii-scrubber.md
+  hash_c: 5a6185d0bff449ac324321b5f98e1e450c28d568adee516daa289a69c878dfd1
+  hash_d: 3f2eaff0da72901129633182ba22ea5b729f07917d3d2f6b312d058eedfe6432
+  semantic_tags:
+  - layer:runtime
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-policy-decide-turn
+  path: desk/atoms/atom-policy-decide-turn.md
+  hash_c: 02f1a5f1966e1d0f27944cd184aa624651a3b02bffa9bc7d710ea7c154142730
+  hash_d: 40f7fb78d1888c0cd25bcd8890c6064145c481ecec2e99f8d7a79748bba5b317
+  semantic_tags:
+  - layer:runtime
+  - role:engine
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-project-config
+  path: desk/atoms/atom-project-config.md
+  hash_c: a4194dc5ba2f326a76745facc04bbc500eab2578bc0bf391875f555e261ca6fe
+  hash_d: d2ef952f49d311d6eb7d288f351588b95f2b3de3d20e4022cafc51b9a305f40e
+  semantic_tags:
+  - layer:knowledge
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-propuesta-de-valor
+  path: desk/atoms/atom-propuesta-de-valor.md
+  hash_c: ac9edaf0677662632eda7b29bfac27b221bc1c773f234641737d8a4b0988bd52
+  hash_d: 6acd5539a96d41944394ee6c249db354b369d07cad4284db6a614447903f1504
+  semantic_tags:
+  - family:concepts
+  - layer:business
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-router-state-machine
+  path: desk/atoms/atom-router-state-machine.md
+  hash_c: 50baf4f4e69787ba72cf2ae4107dbc5fa1e902b30e4dbb1486797997177e0ba5
+  hash_d: 794572a89f790ef5f5e05f408065ef25faac4609fdf99a92d8c305de02ba0ffb
+  semantic_tags:
+  - layer:runtime
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-sldb-knowledge-base
+  path: desk/atoms/atom-sldb-knowledge-base.md
+  hash_c: c85f0053a1aa9c5bb8b3b2e19a0fb5a7484b63617cadc2fa250dbdf0f54e2715
+  hash_d: f99af0dcb3bee5e0cdfc47b5177b56939ddb71bb9fd41fe24d02be7208b0326b
+  semantic_tags:
+  - layer:knowledge
+  - role:data
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-tool-handlers-registry
+  path: desk/atoms/atom-tool-handlers-registry.md
+  hash_c: 4dd23003300bc8cd72d76219e2d35da76be10252fa156ebcee50d22431cb9014
+  hash_d: 9c6833f2c484d71a30ffb3f136fd938878776dd14a493f2e66124542a860a202
+  semantic_tags:
+  - layer:runtime
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-topologia-de-despliegue
+  path: desk/atoms/atom-topologia-de-despliegue.md
+  hash_c: a271911298c8c81601f5cdba611e6596fe8735cc747ef3b6e00d8835c7b9b942
+  hash_d: 5579d4ca883866faaad098c2138e1367a543e8383bd006cd261828ce97663d69
+  semantic_tags:
+  - layer:ops
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms

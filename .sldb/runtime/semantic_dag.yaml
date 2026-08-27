@@ -19,6 +19,9 @@ nodes:
 - id: type.workflow.pill
   parents:
   - type.workflow
+- id: type.workflow.task
+  parents:
+  - type.workflow
 - id: workspace
   parents: []
 - id: workspace.desk

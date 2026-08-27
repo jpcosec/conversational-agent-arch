@@ -1,107 +1,57 @@
 documents:
-- doc_name: 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
+- doc_name: 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   sections:
-  - path: kind-suggestion-sender-project-gemini-test-created-at-2026-08-25t02-01-03-status-open
-    title: 'kind: suggestion
+  - path: kind-unclear-sender-project-gemini-test-created-at-2026-08-27t16-06-57-status-open
+    title: 'kind: unclear
 
       sender_project: gemini_test
 
-      created_at: 2026-08-25T02:01:03
+      created_at: 2026-08-27T16:06:57
 
       status: open'
     breadcrumbs:
-    - 'kind: suggestion
+    - 'kind: unclear
 
       sender_project: gemini_test
 
-      created_at: 2026-08-25T02:01:03
+      created_at: 2026-08-27T16:06:57
 
       status: open'
     about:
-    - 'kind: suggestion
+    - 'kind: unclear
 
       sender_project: gemini_test
 
-      created_at: 2026-08-25T02:01:03
+      created_at: 2026-08-27T16:06:57
 
       status: open'
-    - kind suggestion sender project gemini test created at 2026 08 25t02 01 03 status
+    - kind unclear sender project gemini test created at 2026 08 27t16 06 57 status
       open
     - type.desk.inbox-note
     - workspace.desk.inbox
     semantic_tags:
     - type.desk.inbox-note
     - workspace.desk.inbox
-    slug: kind-suggestion-sender-project-gemini-test-created-at-2026-08-25t02-01-03-status-open
+    slug: kind-unclear-sender-project-gemini-test-created-at-2026-08-27t16-06-57-status-open
     level: 2
     line_start: 2
     line_end: 7
-  - path: ritual-zero-context-subagent-stress-test
-    title: 'Ritual: Zero-context subagent stress test'
+  - path: cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
+    title: 'CLI gaps: inbox --root, promote deja notas tracked huerfanas, sin listado
+      de drawer'
     breadcrumbs:
-    - 'Ritual: Zero-context subagent stress test'
+    - 'CLI gaps: inbox --root, promote deja notas tracked huerfanas, sin listado de
+      drawer'
     about:
-    - 'Ritual: Zero-context subagent stress test'
-    - ritual zero context subagent stress test
+    - 'CLI gaps: inbox --root, promote deja notas tracked huerfanas, sin listado de
+      drawer'
+    - cli gaps inbox root promote deja notas tracked huerfanas sin listado de drawer
     - type.desk.inbox-note
     - workspace.desk.inbox
     semantic_tags:
     - type.desk.inbox-note
     - workspace.desk.inbox
-    slug: ritual-zero-context-subagent-stress-test
-    level: 1
-    line_start: 8
-    line_end: 9
-- doc_name: 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
-  sections:
-  - path: kind-suggestion-sender-project-gemini-test-reordering-created-at-2026-08-26t03-39-33-status-open
-    title: 'kind: suggestion
-
-      sender_project: gemini_test-reordering
-
-      created_at: 2026-08-26T03:39:33
-
-      status: open'
-    breadcrumbs:
-    - 'kind: suggestion
-
-      sender_project: gemini_test-reordering
-
-      created_at: 2026-08-26T03:39:33
-
-      status: open'
-    about:
-    - 'kind: suggestion
-
-      sender_project: gemini_test-reordering
-
-      created_at: 2026-08-26T03:39:33
-
-      status: open'
-    - kind suggestion sender project gemini test reordering created at 2026 08 26t03
-      39 33 status open
-    - type.desk.inbox-note
-    - workspace.desk.inbox
-    semantic_tags:
-    - type.desk.inbox-note
-    - workspace.desk.inbox
-    slug: kind-suggestion-sender-project-gemini-test-reordering-created-at-2026-08-26t03-39-33-status-open
-    level: 2
-    line_start: 2
-    line_end: 7
-  - path: closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
-    title: Closeout de tasks no limpia primitives ni deja status coherente
-    breadcrumbs:
-    - Closeout de tasks no limpia primitives ni deja status coherente
-    about:
-    - Closeout de tasks no limpia primitives ni deja status coherente
-    - closeout de tasks no limpia primitives ni deja status coherente
-    - type.desk.inbox-note
-    - workspace.desk.inbox
-    semantic_tags:
-    - type.desk.inbox-note
-    - workspace.desk.inbox
-    slug: closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
+    slug: cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
     level: 1
     line_start: 8
     line_end: 9

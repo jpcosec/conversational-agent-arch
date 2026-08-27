@@ -1,81 +1,213 @@
 tags:
+  artifact:task:
+  - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   domain:psp:
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  family:concepts:
+  - atom-concepto-atomo-semantico
+  - atom-concepto-turno-extendido
+  - atom-embeddings-como-layout-no-vista
+  - atom-garantia-cero-alucinaciones
+  - atom-gobernanza-deskops
+  - atom-negocios-activos
+  - atom-propuesta-de-valor
+  family:conversation:
+  - atom-kgdb-grafo-de-flujo
   family:domain:
   - atom-reflector-batch
   family:user:
   - atom-perfilador-asincrono
+  layer:business:
+  - atom-concepto-atomo-semantico
+  - atom-concepto-turno-extendido
+  - atom-garantia-cero-alucinaciones
+  - atom-negocios-activos
+  - atom-propuesta-de-valor
+  layer:frontend:
+  - atom-canales-de-entrada
+  - atom-embeddings-como-layout-no-vista
+  layer:knowledge:
+  - atom-kgdb-grafo-de-flujo
+  - atom-persistencia-sql
+  - atom-project-config
+  - atom-sldb-knowledge-base
+  layer:ops:
+  - atom-estrategia-de-testing
+  - atom-gobernanza-deskops
+  - atom-topologia-de-despliegue
   layer:runtime:
   - atom-agente-conversador
+  - atom-in-process-event-bus
   - atom-ontologizador-context-compiler
+  - atom-orquestador-hub
   - atom-perfilador-asincrono
+  - atom-pii-scrubber
+  - atom-policy-decide-turn
   - atom-reflector-batch
+  - atom-router-state-machine
+  - atom-tool-handlers-registry
   role:background:
   - atom-perfilador-asincrono
   - atom-reflector-batch
+  role:boundary:
+  - atom-canales-de-entrada
+  - atom-estrategia-de-testing
+  - atom-in-process-event-bus
+  - atom-orquestador-hub
+  - atom-pii-scrubber
+  - atom-project-config
+  - atom-router-state-machine
+  - atom-tool-handlers-registry
+  - atom-topologia-de-despliegue
+  role:data:
+  - atom-kgdb-grafo-de-flujo
+  - atom-persistencia-sql
+  - atom-sldb-knowledge-base
   role:engine:
   - atom-agente-conversador
   - atom-ontologizador-context-compiler
+  - atom-policy-decide-turn
   rule:execution:
   - pill-conversador-jamas-alucina-sin-contexto
   rule:state-machine:
   - pill-maquina-de-estados-pausa-en-tool-calling
+  source:drawer:
+  - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   system:antonia:
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
   topic:arquitectura:
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   topic:clasificacion:
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  topic:compliance:
+  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  topic:doctrina:
+  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
   topic:flujo-conversacional:
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   topic:modelacion:
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
   topic:policy-gate:
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   type.desk.inbox-note:
-  - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
-  - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   type.knowledge.atom:
   - atom-agente-conversador
+  - atom-canales-de-entrada
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-concepto-atomo-semantico
+  - atom-concepto-turno-extendido
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-embeddings-como-layout-no-vista
+  - atom-estrategia-de-testing
+  - atom-garantia-cero-alucinaciones
+  - atom-gobernanza-deskops
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+  - atom-in-process-event-bus
+  - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-negocios-activos
   - atom-ontologizador-context-compiler
+  - atom-orquestador-hub
   - atom-perfilador-asincrono
+  - atom-persistencia-sql
+  - atom-pii-scrubber
+  - atom-policy-decide-turn
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  - atom-project-config
+  - atom-propuesta-de-valor
   - atom-reflector-batch
+  - atom-router-state-machine
+  - atom-sldb-knowledge-base
+  - atom-tool-handlers-registry
+  - atom-topologia-de-despliegue
   type.workflow.pill:
+  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
   - pill-conversador-jamas-alucina-sin-contexto
+  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
   - pill-maquina-de-estados-pausa-en-tool-calling
+  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  type.workflow.task:
+  - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   workspace.desk:
+  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
   - pill-conversador-jamas-alucina-sin-contexto
+  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
   - pill-maquina-de-estados-pausa-en-tool-calling
+  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   workspace.desk.atoms:
   - atom-agente-conversador
+  - atom-canales-de-entrada
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-concepto-atomo-semantico
+  - atom-concepto-turno-extendido
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-embeddings-como-layout-no-vista
+  - atom-estrategia-de-testing
+  - atom-garantia-cero-alucinaciones
+  - atom-gobernanza-deskops
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+  - atom-in-process-event-bus
+  - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-negocios-activos
   - atom-ontologizador-context-compiler
+  - atom-orquestador-hub
   - atom-perfilador-asincrono
+  - atom-persistencia-sql
+  - atom-pii-scrubber
+  - atom-policy-decide-turn
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  - atom-project-config
+  - atom-propuesta-de-valor
   - atom-reflector-batch
+  - atom-router-state-machine
+  - atom-sldb-knowledge-base
+  - atom-tool-handlers-registry
+  - atom-topologia-de-despliegue
   workspace.desk.inbox:
-  - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
-  - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
+  workspace:desk:
+  - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-organizaci-n-autom-tica-de-tomos-en-la-kb
 documents:
+  task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp:
+    model: TaskDoc
+    path: desk/tasks/task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-organizaci-n-autom-tica-de-tomos-en-la-kb:
+    model: TaskDoc
+    path: desk/tasks/task-organizaci-n-autom-tica-de-tomos-en-la-kb.md
+    tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
   pill-maquina-de-estados-pausa-en-tool-calling:
     model: PillDoc
     path: desk/drawer/pills/pill-maquina-de-estados-pausa-en-tool-calling.md
@@ -90,18 +222,33 @@ documents:
     - rule:execution
     - type.workflow.pill
     - workspace.desk
-  20260825-020103-suggestion-ritual-zero-context-subagent-stress-test:
-    model: InboxNoteDoc
-    path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260825-020103-suggestion-ritual-zero-context-subagent-stress-test.md
+  "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia":
+    model: PillDoc
+    path: "desk/contexts/pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia.md"
     tags:
-    - type.desk.inbox-note
-    - workspace.desk.inbox
-  20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente:
-    model: InboxNoteDoc
-    path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente.md
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+  "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible":
+    model: PillDoc
+    path: "desk/contexts/pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible.md"
     tags:
-    - type.desk.inbox-note
-    - workspace.desk.inbox
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+  "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes":
+    model: PillDoc
+    path: "desk/contexts/pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes.md"
+    tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
   20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer:
     model: InboxNoteDoc
     path: desk/inbox/20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer.md
@@ -186,5 +333,166 @@ documents:
     - system:antonia
     - topic:modelacion
     - topic:policy-gate
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-canales-de-entrada:
+    model: AtomDoc
+    path: desk/atoms/atom-canales-de-entrada.md
+    tags:
+    - layer:frontend
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-concepto-atomo-semantico:
+    model: AtomDoc
+    path: desk/atoms/atom-concepto-atomo-semantico.md
+    tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-concepto-turno-extendido:
+    model: AtomDoc
+    path: desk/atoms/atom-concepto-turno-extendido.md
+    tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-embeddings-como-layout-no-vista:
+    model: AtomDoc
+    path: desk/atoms/atom-embeddings-como-layout-no-vista.md
+    tags:
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-estrategia-de-testing:
+    model: AtomDoc
+    path: desk/atoms/atom-estrategia-de-testing.md
+    tags:
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-garantia-cero-alucinaciones:
+    model: AtomDoc
+    path: desk/atoms/atom-garantia-cero-alucinaciones.md
+    tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-gobernanza-deskops:
+    model: AtomDoc
+    path: desk/atoms/atom-gobernanza-deskops.md
+    tags:
+    - family:concepts
+    - layer:ops
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-in-process-event-bus:
+    model: AtomDoc
+    path: desk/atoms/atom-in-process-event-bus.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-kgdb-grafo-de-flujo:
+    model: AtomDoc
+    path: desk/atoms/atom-kgdb-grafo-de-flujo.md
+    tags:
+    - family:conversation
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-negocios-activos:
+    model: AtomDoc
+    path: desk/atoms/atom-negocios-activos.md
+    tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-orquestador-hub:
+    model: AtomDoc
+    path: desk/atoms/atom-orquestador-hub.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-persistencia-sql:
+    model: AtomDoc
+    path: desk/atoms/atom-persistencia-sql.md
+    tags:
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-pii-scrubber:
+    model: AtomDoc
+    path: desk/atoms/atom-pii-scrubber.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-policy-decide-turn:
+    model: AtomDoc
+    path: desk/atoms/atom-policy-decide-turn.md
+    tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-project-config:
+    model: AtomDoc
+    path: desk/atoms/atom-project-config.md
+    tags:
+    - layer:knowledge
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-propuesta-de-valor:
+    model: AtomDoc
+    path: desk/atoms/atom-propuesta-de-valor.md
+    tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-router-state-machine:
+    model: AtomDoc
+    path: desk/atoms/atom-router-state-machine.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-sldb-knowledge-base:
+    model: AtomDoc
+    path: desk/atoms/atom-sldb-knowledge-base.md
+    tags:
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-tool-handlers-registry:
+    model: AtomDoc
+    path: desk/atoms/atom-tool-handlers-registry.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-topologia-de-despliegue:
+    model: AtomDoc
+    path: desk/atoms/atom-topologia-de-despliegue.md
+    tags:
+    - layer:ops
+    - role:boundary
     - type.knowledge.atom
     - workspace.desk.atoms

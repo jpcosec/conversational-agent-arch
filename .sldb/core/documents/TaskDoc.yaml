@@ -1,1 +1,20 @@
-documents: []
+documents:
+- name: task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  path: desk/tasks/task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+  hash_c: e68a7ccb6d775767a555af7885deabb03fb81cdf3517b704c34f76e3cd3bc416
+  hash_d: 3ed0ce6d2feaa7037f4f3047d3670134a8c072a1c552139a917ae4f1d99a6f9b
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  path: desk/tasks/task-organizaci-n-autom-tica-de-tomos-en-la-kb.md
+  hash_c: ae442db4ea4aa63f5d3e647a467ffdeeeb2b0c0e0e5637ebaa7065994d7b4e1d
+  hash_d: f3af9ed99ada4399a64d2ad9209b5633cd8fb6b81621bf100733bdb14614bb00
+  semantic_tags:
+  - artifact:task
+  - source:drawer
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk

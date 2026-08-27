@@ -436,3 +436,944 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
+- doc_name: atom-canales-de-entrada
+  sections:
+  - path: canales-de-entrada
+    title: Canales de Entrada
+    breadcrumbs:
+    - Canales de Entrada
+    about:
+    - Canales de Entrada
+    - canales de entrada
+    - layer:frontend
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:frontend
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: canales-de-entrada
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: canales-de-entrada/answer
+    title: Answer
+    breadcrumbs:
+    - Canales de Entrada
+    - Answer
+    about:
+    - Canales de Entrada
+    - canales de entrada
+    - Answer
+    - answer
+    - layer:frontend
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:frontend
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-concepto-atomo-semantico
+  sections:
+  - path: tomo-sem-ntico-sldb
+    title: "\xC1tomo Sem\xE1ntico (SLDB)"
+    breadcrumbs:
+    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    about:
+    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - tomo sem ntico sldb
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: tomo-sem-ntico-sldb
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: tomo-sem-ntico-sldb/answer
+    title: Answer
+    breadcrumbs:
+    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Answer
+    about:
+    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - tomo sem ntico sldb
+    - Answer
+    - answer
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-concepto-turno-extendido
+  sections:
+  - path: turno-extendido
+    title: Turno Extendido
+    breadcrumbs:
+    - Turno Extendido
+    about:
+    - Turno Extendido
+    - turno extendido
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: turno-extendido
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: turno-extendido/answer
+    title: Answer
+    breadcrumbs:
+    - Turno Extendido
+    - Answer
+    about:
+    - Turno Extendido
+    - turno extendido
+    - Answer
+    - answer
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-embeddings-como-layout-no-vista
+  sections:
+  - path: decisi-n
+    title: "Decisi\xF3n"
+    breadcrumbs:
+    - "Decisi\xF3n"
+    about:
+    - "Decisi\xF3n"
+    - decisi n
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: decisi-n
+    level: 2
+    line_start: 11
+    line_end: 12
+  - path: por-qu
+    title: "Por qu\xE9"
+    breadcrumbs:
+    - "Por qu\xE9"
+    about:
+    - "Por qu\xE9"
+    - por qu
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: por-qu
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: alternativas-descartadas
+    title: Alternativas descartadas
+    breadcrumbs:
+    - Alternativas descartadas
+    about:
+    - Alternativas descartadas
+    - alternativas descartadas
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: alternativas-descartadas
+    level: 2
+    line_start: 28
+    line_end: 29
+  - path: referencias
+    title: Referencias
+    breadcrumbs:
+    - Referencias
+    about:
+    - Referencias
+    - referencias
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:frontend
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: referencias
+    level: 2
+    line_start: 37
+    line_end: 38
+- doc_name: atom-estrategia-de-testing
+  sections:
+  - path: estrategia-de-testing-de-4-capas
+    title: Estrategia de Testing de 4 Capas
+    breadcrumbs:
+    - Estrategia de Testing de 4 Capas
+    about:
+    - Estrategia de Testing de 4 Capas
+    - estrategia de testing de 4 capas
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: estrategia-de-testing-de-4-capas
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: estrategia-de-testing-de-4-capas/answer
+    title: Answer
+    breadcrumbs:
+    - Estrategia de Testing de 4 Capas
+    - Answer
+    about:
+    - Estrategia de Testing de 4 Capas
+    - estrategia de testing de 4 capas
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-garantia-cero-alucinaciones
+  sections:
+  - path: garant-a-cero-alucinaciones
+    title: "Garant\xEDa Cero Alucinaciones"
+    breadcrumbs:
+    - "Garant\xEDa Cero Alucinaciones"
+    about:
+    - "Garant\xEDa Cero Alucinaciones"
+    - garant a cero alucinaciones
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: garant-a-cero-alucinaciones
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: garant-a-cero-alucinaciones/answer
+    title: Answer
+    breadcrumbs:
+    - "Garant\xEDa Cero Alucinaciones"
+    - Answer
+    about:
+    - "Garant\xEDa Cero Alucinaciones"
+    - garant a cero alucinaciones
+    - Answer
+    - answer
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-gobernanza-deskops
+  sections:
+  - path: gobernanza-deskops
+    title: Gobernanza Deskops
+    breadcrumbs:
+    - Gobernanza Deskops
+    about:
+    - Gobernanza Deskops
+    - gobernanza deskops
+    - family:concepts
+    - layer:ops
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:ops
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: gobernanza-deskops
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: gobernanza-deskops/answer
+    title: Answer
+    breadcrumbs:
+    - Gobernanza Deskops
+    - Answer
+    about:
+    - Gobernanza Deskops
+    - gobernanza deskops
+    - Answer
+    - answer
+    - family:concepts
+    - layer:ops
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:ops
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-in-process-event-bus
+  sections:
+  - path: inprocess-event-bus
+    title: InProcess Event Bus
+    breadcrumbs:
+    - InProcess Event Bus
+    about:
+    - InProcess Event Bus
+    - inprocess event bus
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: inprocess-event-bus
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: inprocess-event-bus/answer
+    title: Answer
+    breadcrumbs:
+    - InProcess Event Bus
+    - Answer
+    about:
+    - InProcess Event Bus
+    - inprocess event bus
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-kgdb-grafo-de-flujo
+  sections:
+  - path: kgdb-grafo-de-flujo
+    title: 'KGDB: Grafo de Flujo'
+    breadcrumbs:
+    - 'KGDB: Grafo de Flujo'
+    about:
+    - 'KGDB: Grafo de Flujo'
+    - kgdb grafo de flujo
+    - family:conversation
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:conversation
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: kgdb-grafo-de-flujo
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: kgdb-grafo-de-flujo/answer
+    title: Answer
+    breadcrumbs:
+    - 'KGDB: Grafo de Flujo'
+    - Answer
+    about:
+    - 'KGDB: Grafo de Flujo'
+    - kgdb grafo de flujo
+    - Answer
+    - answer
+    - family:conversation
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:conversation
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-negocios-activos
+  sections:
+  - path: negocios-activos-kbs
+    title: Negocios Activos (KBs)
+    breadcrumbs:
+    - Negocios Activos (KBs)
+    about:
+    - Negocios Activos (KBs)
+    - negocios activos kbs
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: negocios-activos-kbs
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: negocios-activos-kbs/answer
+    title: Answer
+    breadcrumbs:
+    - Negocios Activos (KBs)
+    - Answer
+    about:
+    - Negocios Activos (KBs)
+    - negocios activos kbs
+    - Answer
+    - answer
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-orquestador-hub
+  sections:
+  - path: orquestador-hub-central
+    title: Orquestador (Hub Central)
+    breadcrumbs:
+    - Orquestador (Hub Central)
+    about:
+    - Orquestador (Hub Central)
+    - orquestador hub central
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: orquestador-hub-central
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: orquestador-hub-central/answer
+    title: Answer
+    breadcrumbs:
+    - Orquestador (Hub Central)
+    - Answer
+    about:
+    - Orquestador (Hub Central)
+    - orquestador hub central
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-persistencia-sql
+  sections:
+  - path: sql-identidad-y-estado
+    title: 'SQL: Identidad y Estado'
+    breadcrumbs:
+    - 'SQL: Identidad y Estado'
+    about:
+    - 'SQL: Identidad y Estado'
+    - sql identidad y estado
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: sql-identidad-y-estado
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: sql-identidad-y-estado/answer
+    title: Answer
+    breadcrumbs:
+    - 'SQL: Identidad y Estado'
+    - Answer
+    about:
+    - 'SQL: Identidad y Estado'
+    - sql identidad y estado
+    - Answer
+    - answer
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-pii-scrubber
+  sections:
+  - path: pii-scrubber
+    title: PII Scrubber
+    breadcrumbs:
+    - PII Scrubber
+    about:
+    - PII Scrubber
+    - pii scrubber
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: pii-scrubber
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: pii-scrubber/answer
+    title: Answer
+    breadcrumbs:
+    - PII Scrubber
+    - Answer
+    about:
+    - PII Scrubber
+    - pii scrubber
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-policy-decide-turn
+  sections:
+  - path: policy-pura-decide-turn
+    title: Policy Pura (decide_turn)
+    breadcrumbs:
+    - Policy Pura (decide_turn)
+    about:
+    - Policy Pura (decide_turn)
+    - policy pura decide turn
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: policy-pura-decide-turn
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: policy-pura-decide-turn/answer
+    title: Answer
+    breadcrumbs:
+    - Policy Pura (decide_turn)
+    - Answer
+    about:
+    - Policy Pura (decide_turn)
+    - policy pura decide turn
+    - Answer
+    - answer
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-project-config
+  sections:
+  - path: configuraci-n-del-negocio
+    title: "Configuraci\xF3n del Negocio"
+    breadcrumbs:
+    - "Configuraci\xF3n del Negocio"
+    about:
+    - "Configuraci\xF3n del Negocio"
+    - configuraci n del negocio
+    - layer:knowledge
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:knowledge
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: configuraci-n-del-negocio
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: configuraci-n-del-negocio/answer
+    title: Answer
+    breadcrumbs:
+    - "Configuraci\xF3n del Negocio"
+    - Answer
+    about:
+    - "Configuraci\xF3n del Negocio"
+    - configuraci n del negocio
+    - Answer
+    - answer
+    - layer:knowledge
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:knowledge
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-propuesta-de-valor
+  sections:
+  - path: propuesta-de-valor
+    title: Propuesta de Valor
+    breadcrumbs:
+    - Propuesta de Valor
+    about:
+    - Propuesta de Valor
+    - propuesta de valor
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: propuesta-de-valor
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: propuesta-de-valor/answer
+    title: Answer
+    breadcrumbs:
+    - Propuesta de Valor
+    - Answer
+    about:
+    - Propuesta de Valor
+    - propuesta de valor
+    - Answer
+    - answer
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-router-state-machine
+  sections:
+  - path: router-state-machine
+    title: Router State Machine
+    breadcrumbs:
+    - Router State Machine
+    about:
+    - Router State Machine
+    - router state machine
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: router-state-machine
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: router-state-machine/answer
+    title: Answer
+    breadcrumbs:
+    - Router State Machine
+    - Answer
+    about:
+    - Router State Machine
+    - router state machine
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-sldb-knowledge-base
+  sections:
+  - path: sldb-base-de-conocimiento
+    title: 'SLDB: Base de Conocimiento'
+    breadcrumbs:
+    - 'SLDB: Base de Conocimiento'
+    about:
+    - 'SLDB: Base de Conocimiento'
+    - sldb base de conocimiento
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: sldb-base-de-conocimiento
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: sldb-base-de-conocimiento/answer
+    title: Answer
+    breadcrumbs:
+    - 'SLDB: Base de Conocimiento'
+    - Answer
+    about:
+    - 'SLDB: Base de Conocimiento'
+    - sldb base de conocimiento
+    - Answer
+    - answer
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:knowledge
+    - role:data
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-tool-handlers-registry
+  sections:
+  - path: tool-handlers-y-registry
+    title: Tool Handlers y Registry
+    breadcrumbs:
+    - Tool Handlers y Registry
+    about:
+    - Tool Handlers y Registry
+    - tool handlers y registry
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: tool-handlers-y-registry
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: tool-handlers-y-registry/answer
+    title: Answer
+    breadcrumbs:
+    - Tool Handlers y Registry
+    - Answer
+    about:
+    - Tool Handlers y Registry
+    - tool handlers y registry
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-topologia-de-despliegue
+  sections:
+  - path: topolog-a-de-despliegue-modal
+    title: "Topolog\xEDa de Despliegue (Modal)"
+    breadcrumbs:
+    - "Topolog\xEDa de Despliegue (Modal)"
+    about:
+    - "Topolog\xEDa de Despliegue (Modal)"
+    - topolog a de despliegue modal
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: topolog-a-de-despliegue-modal
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: topolog-a-de-despliegue-modal/answer
+    title: Answer
+    breadcrumbs:
+    - "Topolog\xEDa de Despliegue (Modal)"
+    - Answer
+    about:
+    - "Topolog\xEDa de Despliegue (Modal)"
+    - topolog a de despliegue modal
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14

@@ -39,3 +39,657 @@ documents:
     level: 1
     line_start: 8
     line_end: 9
+- doc_name: "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  sections:
+  - path: pill-xxx
+    title: pill-xxx
+    breadcrumbs:
+    - pill-xxx
+    about:
+    - pill-xxx
+    - pill xxx
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: pill-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: e-g-language-python-library-pydantic
+    title: e.g., language:python, library:pydantic
+    breadcrumbs:
+    - e.g., language:python, library:pydantic
+    about:
+    - e.g., language:python, library:pydantic
+    - e g language python library pydantic
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: e-g-language-python-library-pydantic
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia
+    title: "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    breadcrumbs:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    about:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - adr compliance farmac utico en el contenido de la kb antonia
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia/what
+    title: What
+    breadcrumbs:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - What
+    about:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - adr compliance farmac utico en el contenido de la kb antonia
+    - What
+    - what
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: what
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia/why
+    title: Why
+    breadcrumbs:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - Why
+    about:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - adr compliance farmac utico en el contenido de la kb antonia
+    - Why
+    - why
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: why
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia/when
+    title: When
+    breadcrumbs:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - When
+    about:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - adr compliance farmac utico en el contenido de la kb antonia
+    - When
+    - when
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: when
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia/where
+    title: Where
+    breadcrumbs:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - Where
+    about:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - adr compliance farmac utico en el contenido de la kb antonia
+    - Where
+    - where
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: where
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia/how
+    title: How
+    breadcrumbs:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - How
+    about:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - adr compliance farmac utico en el contenido de la kb antonia
+    - How
+    - how
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: how
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: adr-compliance-farmac-utico-en-el-contenido-de-la-kb-antonia/how-not
+    title: How Not
+    breadcrumbs:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - How Not
+    about:
+    - "ADR: Compliance farmac\xE9utico en el contenido de la KB Antonia"
+    - adr compliance farmac utico en el contenido de la kb antonia
+    - How Not
+    - how not
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:compliance
+    - type.workflow.pill
+    - workspace.desk
+    slug: how-not
+    level: 2
+    line_start: 43
+    line_end: 44
+- doc_name: "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  sections:
+  - path: pill-xxx
+    title: pill-xxx
+    breadcrumbs:
+    - pill-xxx
+    about:
+    - pill-xxx
+    - pill xxx
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: pill-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: e-g-language-python-library-pydantic
+    title: e.g., language:python, library:pydantic
+    breadcrumbs:
+    - e.g., language:python, library:pydantic
+    about:
+    - e.g., language:python, library:pydantic
+    - e g language python library pydantic
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: e-g-language-python-library-pydantic
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible
+    title: "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    breadcrumbs:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    about:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - guardrail extensi n kb first c digo solo si es imprescindible
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible/what
+    title: What
+    breadcrumbs:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - What
+    about:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - guardrail extensi n kb first c digo solo si es imprescindible
+    - What
+    - what
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: what
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible/why
+    title: Why
+    breadcrumbs:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - Why
+    about:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - guardrail extensi n kb first c digo solo si es imprescindible
+    - Why
+    - why
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: why
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible/when
+    title: When
+    breadcrumbs:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - When
+    about:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - guardrail extensi n kb first c digo solo si es imprescindible
+    - When
+    - when
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: when
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible/where
+    title: Where
+    breadcrumbs:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - Where
+    about:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - guardrail extensi n kb first c digo solo si es imprescindible
+    - Where
+    - where
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: where
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible/how
+    title: How
+    breadcrumbs:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - How
+    about:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - guardrail extensi n kb first c digo solo si es imprescindible
+    - How
+    - how
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: how
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: guardrail-extensi-n-kb-first-c-digo-solo-si-es-imprescindible/how-not
+    title: How Not
+    breadcrumbs:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - How Not
+    about:
+    - "Guardrail: Extensi\xF3n KB-first, c\xF3digo solo si es imprescindible"
+    - guardrail extensi n kb first c digo solo si es imprescindible
+    - How Not
+    - how not
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:doctrina
+    - type.workflow.pill
+    - workspace.desk
+    slug: how-not
+    level: 2
+    line_start: 43
+    line_end: 44
+- doc_name: "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  sections:
+  - path: pill-xxx
+    title: pill-xxx
+    breadcrumbs:
+    - pill-xxx
+    about:
+    - pill-xxx
+    - pill xxx
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: pill-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: e-g-language-python-library-pydantic
+    title: e.g., language:python, library:pydantic
+    breadcrumbs:
+    - e.g., language:python, library:pydantic
+    about:
+    - e.g., language:python, library:pydantic
+    - e g language python library pydantic
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: e-g-language-python-library-pydantic
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes
+    title: "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    breadcrumbs:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    about:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - pattern modelaci n de tomos psp con los 10 modelos existentes
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes/what
+    title: What
+    breadcrumbs:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - What
+    about:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - pattern modelaci n de tomos psp con los 10 modelos existentes
+    - What
+    - what
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: what
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes/why
+    title: Why
+    breadcrumbs:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - Why
+    about:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - pattern modelaci n de tomos psp con los 10 modelos existentes
+    - Why
+    - why
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: why
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes/when
+    title: When
+    breadcrumbs:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - When
+    about:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - pattern modelaci n de tomos psp con los 10 modelos existentes
+    - When
+    - when
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: when
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes/where
+    title: Where
+    breadcrumbs:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - Where
+    about:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - pattern modelaci n de tomos psp con los 10 modelos existentes
+    - Where
+    - where
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: where
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes/how
+    title: How
+    breadcrumbs:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - How
+    about:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - pattern modelaci n de tomos psp con los 10 modelos existentes
+    - How
+    - how
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: how
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: pattern-modelaci-n-de-tomos-psp-con-los-10-modelos-existentes/how-not
+    title: How Not
+    breadcrumbs:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - How Not
+    about:
+    - "Pattern: Modelaci\xF3n de \xE1tomos PSP con los 10 modelos existentes"
+    - pattern modelaci n de tomos psp con los 10 modelos existentes
+    - How Not
+    - how not
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - type.workflow.pill
+    - workspace.desk
+    slug: how-not
+    level: 2
+    line_start: 43
+    line_end: 44

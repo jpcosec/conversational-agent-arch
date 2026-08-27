@@ -15,3 +15,33 @@ documents:
   - rule:execution
   - type.workflow.pill
   - workspace.desk
+- name: "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  path: "desk/contexts/pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia.md"
+  hash_c: af7764314ce074881ac8274bf64946f4f9ed6e87b2ca9c021adf62c4726505dd
+  hash_d: 0aa31049b6a2ba4b2ac4359c9e2e4f36062ebc7220658e92f22b716f52e5e235
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:compliance
+  - type.workflow.pill
+  - workspace.desk
+- name: "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  path: "desk/contexts/pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible.md"
+  hash_c: 638d8ea7bfbb3865d24e9fb0d3e37bc3255efc9f9589cdc8579aad2ccf38cc48
+  hash_d: d694727f51b068d2d83a2505c1551a3c65b5942760f9be489fe7b57bcacbe477
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:doctrina
+  - type.workflow.pill
+  - workspace.desk
+- name: "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  path: "desk/contexts/pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes.md"
+  hash_c: a433d1d5b74fe8ba66d4511e9a8f0674f020ff18a01dc2072204698f00f9183e
+  hash_d: 18a8eeea3db15606fdff7aaa66ce870fcb5a2ed5cceb495e8bba8293cd1ff968
+  semantic_tags:
+  - domain:psp
+  - system:antonia
+  - topic:modelacion
+  - type.workflow.pill
+  - workspace.desk

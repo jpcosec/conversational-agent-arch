@@ -2,8 +2,8 @@ name: TaskDoc
 model_ref: deskops.models:TaskDoc
 path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/task.py
 documents_index: .sldb/core/documents/TaskDoc.yaml
-sections_index: ''
-hash_b: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+sections_index: .sldb/runtime/sections/TaskDoc.yaml
+hash_b: 4c0781b95331605caa3dcb9199f1f652cc226b5c03832a98c7834754c2f9721c
 version: 1
 canonical: false
 family: null

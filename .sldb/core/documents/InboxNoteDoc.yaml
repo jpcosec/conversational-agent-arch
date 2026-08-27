@@ -1,32 +1,4 @@
 documents:
-- name: 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
-  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260825-020103-suggestion-ritual-zero-context-subagent-stress-test.md
-  hash_c: 7fa245cacef6dd1c68c3d0ca6bccea85f58875382ff325630a8b7c34867dd38c
-  hash_d: c807572ddaa28b0581afc25c0f7d52e2361ffeca0d8a0daf5840aff742a82c35
-  semantic_tags:
-  - type.desk.inbox-note
-  - workspace.desk.inbox
-- name: 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
-  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente.md
-  hash_c: 19a403a5fccad0fae8e33186a95ef02b09093da514ae3bfc1860ffcee367d077
-  hash_d: 66d2117ba6c86d42fe228e1557031ce2fded28864bc0e3e17b4c3c7730a43856
-  semantic_tags:
-  - type.desk.inbox-note
-  - workspace.desk.inbox
-- name: 20260827-160608-suggestion-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
-  path: desk/inbox/20260827-160608-suggestion-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento.md
-  hash_c: 1a9965ba43290c4f71c072a5238a40a8cd760c76ec45d4f9a0915f278d1aeab3
-  hash_d: 4089b666652181e63c992baadc1ef4c374289ee671b8dd57e265648971af00a0
-  semantic_tags:
-  - type.desk.inbox-note
-  - workspace.desk.inbox
-- name: 20260827-160609-suggestion-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
-  path: desk/inbox/20260827-160609-suggestion-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara.md
-  hash_c: 9f3fe9bbdace42c0612ee00e3a818ae94ad840a2785a47cfea3fdc89cd5b0928
-  hash_d: d25d44da956f258468ea03cb989bb38e84ad18d440611f277b22d13aeeeb37f4
-  semantic_tags:
-  - type.desk.inbox-note
-  - workspace.desk.inbox
 - name: 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   path: desk/inbox/20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer.md
   hash_c: 5e7343a6314b7da0551029d040b739b126d1443a186d5a50752e9c24de48949e
