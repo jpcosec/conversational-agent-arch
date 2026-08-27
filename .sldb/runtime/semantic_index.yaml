@@ -44,6 +44,7 @@ tags:
   type.desk.inbox-note:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
   - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
+  - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   type.knowledge.atom:
   - atom-agente-conversador
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
@@ -73,6 +74,7 @@ tags:
   workspace.desk.inbox:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
   - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
+  - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
 documents:
   pill-maquina-de-estados-pausa-en-tool-calling:
     model: PillDoc
@@ -97,6 +99,12 @@ documents:
   20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente:
     model: InboxNoteDoc
     path: /home/jp/proyectos/hum-ecosystem/tools/deskops/desk/inbox/20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente.md
+    tags:
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+  20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer:
+    model: InboxNoteDoc
+    path: desk/inbox/20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer.md
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox

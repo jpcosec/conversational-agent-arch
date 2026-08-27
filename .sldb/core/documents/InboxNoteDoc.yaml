@@ -13,3 +13,24 @@ documents:
   semantic_tags:
   - type.desk.inbox-note
   - workspace.desk.inbox
+- name: 20260827-160608-suggestion-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
+  path: desk/inbox/20260827-160608-suggestion-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento.md
+  hash_c: 1a9965ba43290c4f71c072a5238a40a8cd760c76ec45d4f9a0915f278d1aeab3
+  hash_d: 4089b666652181e63c992baadc1ef4c374289ee671b8dd57e265648971af00a0
+  semantic_tags:
+  - type.desk.inbox-note
+  - workspace.desk.inbox
+- name: 20260827-160609-suggestion-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
+  path: desk/inbox/20260827-160609-suggestion-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara.md
+  hash_c: 9f3fe9bbdace42c0612ee00e3a818ae94ad840a2785a47cfea3fdc89cd5b0928
+  hash_d: d25d44da956f258468ea03cb989bb38e84ad18d440611f277b22d13aeeeb37f4
+  semantic_tags:
+  - type.desk.inbox-note
+  - workspace.desk.inbox
+- name: 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
+  path: desk/inbox/20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer.md
+  hash_c: 5e7343a6314b7da0551029d040b739b126d1443a186d5a50752e9c24de48949e
+  hash_d: bedf0b5a403ebacdf5c9f66bf9bff58ea3d59f4e078371ca07dab639f7dd0782
+  semantic_tags:
+  - type.desk.inbox-note
+  - workspace.desk.inbox
