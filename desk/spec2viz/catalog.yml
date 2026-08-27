@@ -5,9 +5,9 @@ project_name: kb-agent-runtime
 vistas:
 - id: logical-agent-ecosystem
   category: Backend · Runtime
-  nav: Modelo lógico (motores)
-  title: Backend · Lógico · Ecosistema de Motores
-  desc: 'Cómo funciona el runtime a alto nivel, fiel al cableado real: canales, orquestador-hub, policy pura, motores, event bus, scrubber, 3 DBs y Gemini.'
+  nav: Modelo lógico (agentes)
+  title: Backend · Lógico · Ecosistema de Agentes
+  desc: 'Cómo funciona el runtime a alto nivel, fiel al cableado real: canales, orquestador-hub, los 4 agentes LLM (Ruteador, Orquestador, Conversador, Gate) con guardas por código, encuadre desde la KB, event bus, scrubber, 3 DBs + KnowledgeOperations y Gemini.'
   type: component
   src: build/logical.agent-ecosystem.mmd
   specs:
@@ -19,7 +19,7 @@ vistas:
   category: Backend · Runtime
   nav: kb_agent (runtime)
   title: Codebase · kb_agent · Componentes reales
-  desc: Los ~40 módulos reales de kb_agent/ con su jerarquía de subpaquetes e imports reales.
+  desc: Los ~45 módulos reales de kb_agent/ (incl. agents/ con Agent base, Router/Orchestrator/Gate) con su jerarquía de subpaquetes e imports reales.
   type: component
   src: build/current-kb-agent.mmd
   specs:
@@ -32,7 +32,7 @@ vistas:
   category: Backend · Runtime
   nav: deploy (Modal)
   title: Codebase · deploy · Modal App
-  desc: modal_app empaqueta código + KB real y sirve el ASGI de frontends.chat.app; release.sh gate.
+  desc: modal_app empaqueta código + KB real y sirve el ASGI de frontends.chat.app; infra desde project.config.yaml (deploy), MODAL_APP_NAME → app/volumen dev, alembic al arrancar, inspect_db/clean_and_seed, release.sh gate + CI.
   type: component
   src: build/current-deploy.mmd
   specs:
@@ -56,7 +56,7 @@ vistas:
   category: Backend · Runtime
   nav: Despliegue backend/frontend
   title: Despliegue · Backend vs Frontend
-  desc: Separación explícita backend/frontend del runtime.
+  desc: Separación explícita backend/frontend del runtime (5 páginas + tour vs Modal App/Volume/Secrets y local uvicorn).
   type: deployment
   src: build/deployment.backend-frontend.mmd
   specs:
@@ -80,7 +80,7 @@ vistas:
   category: Backend · Runtime
   nav: Secuencia de Turno Extendido
   title: Backend · Secuencia · Ciclo de Vida del Turno Extendido
-  desc: Flujo del mensaje a través de los motores y tools externas.
+  desc: Flujo del mensaje a través de Ontologizador → Ruteador → Orquestador → tools → Conversador → Gate → persistencia → Perfilador.
   type: sequence
   src: build/sequence.extended-turn.mmd
   specs:
@@ -92,7 +92,7 @@ vistas:
   category: Backend · Runtime
   nav: Matriz Componentes × Turno
   title: Backend · Matriz · Componentes × Ciclo de Vida del Turno
-  desc: Qué componente participa en cada stage del turno síncrono y de los agentes asíncronos (vega matrix).
+  desc: Qué componente participa en cada stage del turno síncrono (ingest → context → decide → execute → gate → reply) y de los agentes asíncronos (vega matrix).
   type: component_view_matrix
   src: build/matrix.component-turn-lifecycle.html
   specs:
@@ -130,7 +130,7 @@ vistas:
   category: Backend · Knowledge
   nav: Agentes × Familias KB
   title: Backend · Matriz · Agentes × Familias de la KB
-  desc: Qué familia de conocimiento (self/domain/conversation/user) lee o produce cada motor cognitivo.
+  desc: Qué modelo tipado (12, incl. gate y agent) lee o produce cada agente (Ontologizador, Ruteador, Orquestador, Conversador, Gate, Perfilador, Reflector).
   type: component_view_matrix
   src: build/matrix.agents-kb-consumption.html
   specs:
@@ -141,9 +141,9 @@ vistas:
   - area:knowledge
 - id: current-frontends
   category: Frontend
-  nav: frontends (UIs)
+  nav: frontends (vistas)
   title: Codebase · frontends · Componentes reales
-  desc: chat.app como hub FastAPI + las 5 UIs + proyectores de KB (export_flow, export_graph).
+  desc: chat.app como hub FastAPI + las 6 vistas (chat, flow, mindmap, users, dashboard + tour guiado) + proyectores de KB (export_flow, export_graph) + DEMO_MODE.
   type: component
   src: build/current-frontends.mmd
   specs:
@@ -168,7 +168,7 @@ vistas:
   category: Frontend
   nav: UI × Superficie Semántica
   title: Frontend · Matriz · UI × Superficie Semántica
-  desc: Cruza las 5 UIs contra las familias de datos KB que editan y la config que consumen (/api/config).
+  desc: Cruza las 5 páginas (chat, flow, mindmap, users, dashboard) contra las familias de datos KB que muestran/editan y la config que consumen (/api/config).
   type: component_view_matrix
   src: build/matrix.ui-semantic-surface.html
   specs:
