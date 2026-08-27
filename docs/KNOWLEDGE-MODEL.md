@@ -298,14 +298,27 @@ que es el eje del flujo. El archivo de namespaces describe otra KB (la de
 
 ### 4.2 Tipadas: el flujo conversacional
 
-`ConversationStep` declara tres relaciones con semántica propia. KGDB las
-convierte en aristas tipadas:
+`ConversationStep` declara tres relaciones con semántica propia. `KGDBReader`
+tiene métodos para leerlas como aristas tipadas… **pero esas aristas no
+existen en el grafo**:
 
-| Campo del step | Apunta a | Arista KGDB | Método lector |
-|---|---|---|---|
-| `allowed_transitions` | otros steps (por tag) | `REL_FLOWS_TO` | `get_next_transitions(node)` |
-| `grounding_atoms` | ids de `domain`/`self`/... | `REL_GROUNDED_BY` | `get_grounding_atoms(node)` |
-| `tool_ref` | id de `tool` | — | `get_tools_for_node(node)` |
+| Campo del step | Apunta a | Arista que el lector espera | Método lector | ¿Funciona? |
+|---|---|---|---|---|
+| `allowed_transitions` | otros steps (por tag) | `REL_FLOWS_TO` | `get_next_transitions(node)` | **no**, devuelve `[]` |
+| `grounding_atoms` | ids de `domain`/`self`/... | `REL_GROUNDED_BY` | `get_grounding_atoms(node)` | **no**, devuelve `[]` |
+| `tool_ref` | id de `tool` | — | `get_tools_for_node(node)` | no verificado |
+
+El ingest SLDB→KGDB (`kgdb.ingest.sldb`, en `hum-ecosystem/tools/kgdb`) sólo
+produce un grafo **tag-céntrico**: `tagged_as` y `semantic_parent`. Nunca
+emite `flows_to` ni `grounded_by`. Comprobado llamando
+`get_next_transitions()` sobre los 11 steps de `knowledge/.sldb`: `[]` en
+todos.
+
+Por eso la **única fuente real** de las transiciones es el campo tipado
+`ConversationStep.allowed_transitions` leído directamente del documento
+(texto libre: `"conversation:steps.registro_estado"`, o placeholders como
+`"ninguna (paso terminal)"`). Hasta la fase 1.1 sólo lo leía
+`frontends/flow_editor/export_flow.py` para dibujar el editor de flujo.
 
 Y el grafo declarado en los 11 steps, tal como está en los documentos:
 
@@ -338,7 +351,13 @@ ramas de seguridad (`evento_adverso`, `derivacion_medinfo` →
 desde ningún step: es el nodo al que el gate debería saltar, pero nadie
 transiciona a él.
 
-**Hoy — el bug de cableado:** el compilador no usa ninguna de estas
+**Resuelto en fase 1.1** (commit `c82764c`): `_augment_from_kgdb` parsea el
+campo declarado del step vía `SLDBReader`, y `allowed_transitions` pasa a ser
+lo que el step declara. `grounding_atoms` sigue por `docs_for_tag` (esa vía
+sí funciona, es tag-céntrica). El texto que sigue describe el estado previo,
+que era éste:
+
+**Antes — el bug de cableado:** el compilador no usa ninguna de estas
 aristas. `_augment_from_kgdb` (`compiler.py:274-316`) llama a
 `steps_under()` y expone como transiciones permitidas *todos los hermanos*,
 y usa `docs_for_tag()` en vez de `get_grounding_atoms()`. Resultado: desde

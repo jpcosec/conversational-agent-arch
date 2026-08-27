@@ -173,7 +173,7 @@ contrato pide, y **`kb_agent` no lo importa ni una vez**:
 | Operación | Para quién | Qué hace que el compilador no |
 |---|---|---|
 | `explore_multi(query)` | ruteador | embeddings (umbral 0.3) + fuzzy + vecinos KGDB, top-10 **con score** |
-| `step_next(user_id)` | orquestador | `flow_node` de SQL → `get_next_transitions()` + `get_grounding_atoms()` (el grafo **tipado**) |
+| `step_next(user_id)` | orquestador | `flow_node` de SQL → `get_next_transitions()` + `get_grounding_atoms()`. **Ojo:** esos dos devuelven `[]` porque el grafo no tiene aristas tipadas (§4.2 de KNOWLEDGE-MODEL); la fase 1.1 lee el campo del step en su lugar |
 | `traits(user_id)` | ruteador / conversador | resuelve cada `trait_id` contra su `TraitAtom` (título, descripción, categoría) |
 | `self_context()` | conversador | identidad + estilo + límites como base |
 | `context(user_id)` | ruteador | bundle por usuario |
@@ -239,20 +239,27 @@ más de lo que el diseño le asigna, y la decisión no es un agente.
 - ✅ Tools de escritura SQL: `agendar_recordatorio` → `recordatorios`,
   `crear_reserva` → `reservas`, ejecutadas vía `execute_tool`
   (`orchestrator.py:178`).
-- ❌ **"Solo puede avanzar por pasos" no se cumple — pero está modelado.**
+- ✅ **"Solo puede avanzar por pasos" — resuelto en fase 1.1** (`c82764c`).
   Cada `ConversationStep` declara sus transiciones (`## Allowed
   Transitions`: `onboarding → registro_estado`; `despedida` es terminal;
   `saludo → onboarding | registro_estado | journey_operativo |
-  derivacion_medinfo`), y `KGDBReader.get_next_transitions()`
-  (`kgdb_reader.py:183`) las lee como aristas `REL_FLOWS_TO`. El compilador
-  **no llama a ese método**: usa `steps_under()` y expone como permitidos
-  *todos* los hermanos (`compiler.py:~313`,
-  `allowed_transitions = [s for s in steps if s != active]`). Lo mismo con
-  `get_grounding_atoms()` (`kgdb_reader.py:195`) vs `docs_for_tag()`. Es un
-  bug de cableado de dos líneas, no un grafo faltante — y
-  `knowledge_base.KnowledgeOperations.step_next()` ya lo hace bien
-  (`operations.py:660`): lee `flow_node` de SQL y resuelve transiciones y
-  grounding por las aristas tipadas. El runtime no la llama.
+  derivacion_medinfo`) y el compilador ahora las lee del documento.
+  Antes exponía *todos* los hermanos (`allowed_transitions = [s for s in
+  steps if s != active]`): 10 destinos desde cualquier step, incluido el
+  terminal.
+
+  **Corrección a lo que este documento afirmaba antes:** decía que
+  `KGDBReader.get_next_transitions()` ya leía esas aristas y que faltaba
+  llamarlo — un "bug de cableado de dos líneas". Es falso. Ese método existe
+  pero devuelve `[]` para los 11 steps: el ingest SLDB→KGDB nunca emite
+  aristas `flows_to`/`grounded_by`, sólo el grafo tag-céntrico (`tagged_as`,
+  `semantic_parent`). Por lo mismo,
+  `KnowledgeOperations.step_next()` (`operations.py:660`) tampoco resuelve
+  transiciones, aunque su forma sea la correcta. Ver `KNOWLEDGE-MODEL.md`
+  §4.2.
+
+  Falta todavía la mitad de la regla: que el orquestador **no pueda** saltar
+  fuera de esa lista (guardia `before_tool`, fase 2.4).
 - ❌ La decisión es heurística, no un agente. `decide_turn`
   (`kb_agent/agent.py:109`) es una policy pura sin LLM: elige tool con
   `_select_relevant_tool` (matching contra la pregunta) y clasifica el step
@@ -523,7 +530,7 @@ Sobre los cuatro agentes:
 |---|---|---|
 | `before_model` | **Ruteador de contexto** | llama a `knowledge_base`: `self_context()` (base), `step_next(user)` (step + transiciones tipadas + grounding), `traits(user)` (documentos, no ids), `explore_multi(pregunta)` (candidatos con score); arma el bundle `[{doc_id, motivo}]` y lo inyecta en `llm_request`. El motivo va al rastro del turno. |
 | `after_model` | **Gate** | valida `llm_response` contra los `GateCriterion` (contexto fijo, leídos de verdad); si rechaza, devuelve el handoff como `LlmResponse` y registra `gate_rejection`. |
-| `before_tool` | **Orquestador** (guardia) | para la tool `move_step`: veta si el destino no está en `get_next_transitions(step_actual)`. Ahí se cumple "solo puede avanzar por pasos". |
+| `before_tool` | **Orquestador** (guardia) | para la tool `move_step`: veta si el destino no está en las `allowed_transitions` del step activo (las que el compilador ya lee del documento desde la fase 1.1). Ahí se cumple "solo puede avanzar por pasos". |
 | `after_tool` | **Orquestador** (persistencia) | escribe `session_state` / `recordatorios` / `reservas` y el rastro de la tool. Ahí se elimina "te agendé" sin tool. |
 
 Esto cambia la recomendación de §7.3 en un punto: los hooks son la razón
