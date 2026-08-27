@@ -180,6 +180,41 @@ def test_organize_dry_run_reports_semantic_destinations(kb_store: Path) -> None:
     assert destinations["atom-carta"] == kb_store / "domain" / "catalogo" / "atom-carta.md"
 
 
+# ── cache invalidation ──────────────────────────────────────────────────────────
+
+def test_promote_invalidates_cache_for_subsequent_read(tmp_path_factory: pytest.TempPathFactory) -> None:
+    """`KnowledgeOperations` cachea records/docs por instancia (ver `_find_records`,
+    `_read_doc`). `promote` escribe tags nuevos al `.md` del atom: una lectura
+    posterior EN EL MISMO PROCESO (misma instancia de `ops`) debe ver el cambio,
+    no el payload que `show()` ya había cacheado antes del `promote`. Sin la
+    invalidación en `promote` (`self._invalidate_cache()`), este `after` sería
+    idéntico al `before` (todavía con `status:proposed`) porque `_read_doc`
+    devolvería el dict guardado en `self._doc_cache` en vez de releer el store.
+    """
+    root = seed_store(
+        tmp_path_factory.mktemp("kb_promote") / "store",
+        [{
+            "type": "domain", "id": "atom-nueva", "title": "Nueva",
+            "tags": ["domain:test", "status:proposed"], "five_wh": "what",
+            "fields": {"answer": "Contenido"},
+        }],
+        namespaces_registry=DEFAULT_NAMESPACES_REGISTRY,
+    )
+    ops = _ops(root)
+
+    before = ops.show("atom-nueva")
+    assert before is not None
+    assert "status:proposed" in before["tags"]
+
+    result = ops.promote("atom-nueva")
+    assert result["status"] == "active"
+
+    after = ops.show("atom-nueva")
+    assert after is not None
+    assert "status:proposed" not in after["tags"]
+    assert "status:active" in after["tags"]
+
+
 # ── derive_path (funcion pura) ────────────────────────────────────────────────
 
 def test_derive_path_uses_single_semantic_tag() -> None:

@@ -7,12 +7,14 @@ from __future__ import annotations
 
 import json
 import shutil
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import yaml
-from sldb.cli.commands.find import SearchRecord, iter_search_records, search_records
-from sldb.runtime.validation import extract_model_data, render_model_markdown
+from sldb.cli.model_utils import resolve_model_ref
+from sldb.runtime.validation import render_model_markdown
+from sldb.store.query import load_runtime_documents
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -52,6 +54,31 @@ MODEL_NAME_BY_ATOM_TYPE = {
     "fallback": "FallbackRule",
     "gate": "GateCriterion",
 }
+
+
+@dataclass(frozen=True)
+class _DocRecord:
+    """Documento resuelto del store, en la forma que ya esperaban los
+    callers existentes de ``KnowledgeOperations._find_records()`` (p.ej.
+    ``frontends/viz/export_graph.py::_load_atoms``, que llama al método
+    "privado" directamente): ``.kind`` (siempre ``"doc"``, ya que
+    ``_find_records`` solo devuelve documentos), ``.name``, ``.model_name``,
+    ``.path``, ``.semantic`` (tags) y ``.payload`` (ya extraído, sin volver
+    a leer/parsear el ``.md``).
+
+    Es una vista liviana sobre ``sldb.store.query_engine.models.RuntimeDocument``
+    (la fuente real, vía ``load_runtime_documents``), no una reimplementación:
+    solo renombra/expone los campos que los callers de este módulo ya usaban
+    cuando ``_find_records`` devolvía ``SearchRecord`` de
+    ``sldb.cli.commands.find``.
+    """
+
+    kind: str
+    name: str
+    model_name: str
+    path: str
+    semantic: list[str]
+    payload: dict[str, Any]
 
 
 def derive_path(kb_root: Path, atom_id: str, tags: list[str]) -> Path:
@@ -98,6 +125,16 @@ class KnowledgeOperations:
         self._engine: Any = None
         self._SessionLocal: Any = None
 
+        # Cache por INSTANCIA de records/docs del store (ver `_find_records`,
+        # `_read_doc` y `_invalidate_cache`). Sin esto, cada llamada a
+        # `_read_doc` volvía a llamar a `_find_records()` (un rescan
+        # completo del store desde disco), y `_semantic_search`/
+        # `_fuzzy_search` llaman a `_read_doc` una vez por documento dentro
+        # de su loop: O(n²) de I/O que en la KB real (71 docs) tardaba ~4
+        # minutos por consulta.
+        self._records_cache: list[_DocRecord] | None = None
+        self._doc_cache: dict[str, dict[str, Any] | None] = {}
+
     # ── helpers ────────────────────────────────────────────────
 
     def _lazy_sql(self) -> None:
@@ -108,35 +145,95 @@ class KnowledgeOperations:
         self._engine = create_engine(self._db_url)
         self._SessionLocal = sessionmaker(bind=self._engine)
 
-    def _find_records(self) -> list[SearchRecord]:
-        return list(iter_search_records(self._store_path, pythonpath=self._pythonpath))
+    def _invalidate_cache(self) -> None:
+        """Invalida el cache de records/docs de esta instancia.
+
+        Debe llamarse al final de toda operación que ESCRIBE documentos al
+        store (`propose`, `promote`, `organize`, `index_embeddings`), para
+        que una lectura posterior en el MISMO proceso (`explore`,
+        `explore_multi`, `show`, `traits`, ...) vea los cambios en vez de
+        datos cacheados stale. `index_hierarchy` NO necesita invalidar: solo
+        escribe `semantic_dag.yaml`, que `load_runtime_documents` no lee (los
+        RuntimeDocument se arman desde `store_index.yaml` + los `.md` de
+        cada doc); y `_kgdb()` construye un `KGDBReader` nuevo en cada
+        llamada, no está cacheado, así que ya ve el DAG actualizado sin
+        necesidad de invalidar nada acá.
+        """
+        self._records_cache = None
+        self._doc_cache = {}
+
+    def _find_records(self) -> list[_DocRecord]:
+        """Devuelve TODOS los documentos trackeados del store, resueltos.
+
+        Usa la capa de librería real de SLDB (``sldb.store.query``), NO la
+        reimplementación de búsqueda de ``sldb.cli.commands.find`` (pensada
+        para un proceso de un solo disparo: reescanea el store completo en
+        cada llamada). ``load_runtime_documents`` ya deja cada documento con
+        su ``payload`` completamente extraído (``extract_model_data`` corrido
+        una sola vez adentro), así que ni `_read_doc` ni `index_embeddings`
+        necesitan releer/reparsear el ``.md`` por su cuenta. Se envuelve cada
+        ``RuntimeDocument`` en ``_DocRecord`` para no romper callers externos
+        que llaman a este método "privado" directamente esperando la forma
+        del viejo ``SearchRecord`` (ver `_DocRecord`).
+
+        Cacheado por instancia en `self._records_cache` (ver
+        `_invalidate_cache`).
+        """
+        if self._records_cache is None:
+            docs = load_runtime_documents(
+                self._store_path, resolve_model_ref, pythonpath=self._pythonpath,
+            )
+            self._records_cache = [
+                _DocRecord(
+                    kind="doc", name=d.name, model_name=d.model_name, path=d.path,
+                    semantic=list(d.semantic_tags or []), payload=d.payload,
+                )
+                for d in docs
+            ]
+        return self._records_cache
 
     def _search(self, term: str, search_in: str = "semantic") -> list[dict[str, Any]]:
-        records = self._find_records()
-        matched = search_records(records, term, search_in=search_in)
+        """Busca documentos cuyos semantic tags matcheen `term` (igualdad o substring)."""
+        docs = self._find_records()
         results = []
-        for r in matched:
-            if r.kind == "doc":
+        for doc in docs:
+            tags = list(doc.semantic or [])
+            if any(term == t or term in t for t in tags):
                 results.append({
-                    "id": r.name,
-                    "model": r.model_name,
-                    "path": r.path,
-                    "semantic": list(r.semantic or []),
+                    "id": doc.name,
+                    "model": doc.model_name,
+                    "path": doc.path,
+                    "semantic": tags,
                 })
         return results
 
     def _read_doc(self, atom_id: str) -> dict[str, Any] | None:
-        """Read a complete document by id from any model."""
-        records = self._find_records()
-        for r in records:
-            if r.kind == "doc" and r.name == atom_id:
-                if not r.path:
-                    return None
-                doc_path = self._kb_root / r.path
-                if not doc_path.exists():
-                    return None
+        """Read a complete document by id from any model.
 
-                model_name = (r.model_name or "").lower()
+        Memoizado por `atom_id` en `self._doc_cache` (ver `_invalidate_cache`).
+        `_find_records()` ya trae el payload resuelto de CADA documento (via
+        `load_runtime_documents`), así que esto es una búsqueda en memoria +
+        el agregado de `_model`/`_path`, sin I/O propio.
+
+        Devuelve un dict NUEVO en cada llamada (copia superficial del
+        cacheado), no la referencia guardada en `self._doc_cache`: callers
+        como `promote()` reasignan claves del payload devuelto
+        (``payload["tags"] = new_tags``) antes de escribirlo a disco, y si
+        devolviéramos el objeto cacheado por referencia esa mutación
+        corregiría el cache por accidente, encubriendo un `_invalidate_cache`
+        faltante.
+        """
+        if atom_id in self._doc_cache:
+            cached = self._doc_cache[atom_id]
+            return dict(cached) if cached is not None else None
+
+        result: dict[str, Any] | None = None
+        docs = self._find_records()
+        for doc in docs:
+            if doc.name == atom_id:
+                doc_path = self._kb_root / doc.path
+
+                model_name = (doc.model_name or "").lower()
                 model_cls = MODEL_MAP.get(model_name)
                 if model_cls is None:
                     # try nested lookup
@@ -145,16 +242,17 @@ class KnowledgeOperations:
                             model_cls = m_cls
                             break
                 if model_cls is None:
-                    return {"id": atom_id, "raw_path": str(doc_path)}
+                    result = {"id": atom_id, "raw_path": str(doc_path)}
+                    break
 
-                try:
-                    payload = extract_model_data(model_cls, doc_path.read_text(encoding="utf-8"))
-                    payload["_model"] = model_cls.__name__
-                    payload["_path"] = str(doc_path)
-                    return payload
-                except Exception as exc:
-                    return {"id": atom_id, "raw_path": str(doc_path), "error": str(exc)}
-        return None
+                payload = dict(doc.payload)
+                payload["_model"] = model_cls.__name__
+                payload["_path"] = str(doc_path)
+                result = payload
+                break
+
+        self._doc_cache[atom_id] = result
+        return result
 
     # ── offline: index embeddings ───────────────────────────────
 
@@ -179,33 +277,20 @@ class KnowledgeOperations:
             self._embedder_cache = None
         embedder = self._embedder()
 
-        records = self._find_records()
+        docs = self._find_records()
         stats = {"processed": 0, "skipped": 0, "errors": 0}
         vector: list[float] = []
 
         # Resolver model_cls por nombre de clase (case-insensitive).
         by_class = {cls.__name__.lower(): cls for cls in ALL_MODELS}
 
-        for r in records:
-            if r.kind != "doc":
-                continue
-            model_cls = by_class.get((r.model_name or "").lower())
+        for doc in docs:
+            model_cls = by_class.get((doc.model_name or "").lower())
             if model_cls is None:
                 continue
-            if not r.path:
-                stats["skipped"] += 1
-                continue
 
-            doc_path = self._kb_root / r.path
-            if not doc_path.exists():
-                stats["skipped"] += 1
-                continue
-
-            try:
-                payload = extract_model_data(model_cls, doc_path.read_text(encoding="utf-8"))
-            except Exception:
-                stats["errors"] += 1
-                continue
+            doc_path = self._kb_root / doc.path
+            payload = dict(doc.payload)
 
             # Texto a embedder: summary primero, luego el primer campo con contenido.
             text = ""
@@ -242,6 +327,9 @@ class KnowledgeOperations:
                 self._run_sldb("stores", "update")
             except Exception as exc:
                 stats["store_update_error"] = str(exc)
+
+        if stats["processed"]:
+            self._invalidate_cache()
 
         stats["dimension"] = len(vector) if vector else 0
         return stats
@@ -348,6 +436,7 @@ class KnowledgeOperations:
         doc_path = Path(payload["_path"])
         md = render_model_markdown(model_cls, payload)
         doc_path.write_text(md + "\n", encoding="utf-8")
+        self._invalidate_cache()
 
         return {"id": atom_id, "status": "active", "old_tags": tags, "new_tags": payload["tags"]}
 
@@ -456,6 +545,7 @@ class KnowledgeOperations:
 
         if not dry_run and any(move["action"] == "move" for move in moves):
             self._run_sldb("stores", "update")
+            self._invalidate_cache()
 
         return {
             "kb_root": str(self._kb_root),
@@ -522,11 +612,9 @@ class KnowledgeOperations:
         query_emb = list(embedder.embed([query]))[0]
         qv = [float(v) for v in query_emb]
 
-        records = self._find_records()
+        docs = self._find_records()
         results = []
-        for r in records:
-            if r.kind != "doc":
-                continue
+        for r in docs:
             doc = self._read_doc(r.name)
             if not doc:
                 continue
@@ -576,12 +664,10 @@ class KnowledgeOperations:
         if not tokens:
             return []
 
-        records = self._find_records()
+        docs = self._find_records()
         results = []
         seen = set()
-        for r in records:
-            if r.kind != "doc":
-                continue
+        for r in docs:
             if r.name in seen:
                 continue
             seen.add(r.name)
@@ -845,8 +931,6 @@ class KnowledgeOperations:
         # Use model_name from records rather than semantic search
         records = self._find_records()
         for r in records:
-            if r.kind != "doc":
-                continue
             if r.model_name == "SelfDeclaration":
                 doc = self._read_doc(r.name)
                 if doc:
@@ -914,6 +998,7 @@ class KnowledgeOperations:
         md = render_model_markdown(model_cls, payload)
         atom_path.parent.mkdir(parents=True, exist_ok=True)
         atom_path.write_text(md + "\n", encoding="utf-8")
+        self._invalidate_cache()
 
         return {
             "id": doc_id,
