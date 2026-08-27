@@ -30,3 +30,17 @@ namespaces:
       - family:user         # perfiles, traits
       - family:concepts     # conceptos abstractos, definiciones de negocio
     use_when: "El átomo documenta un modelo de datos o un concepto transversal."
+
+  # Canal de procedencia (reflector, importadores)
+  source:
+    meaning: "Canal de procedencia o productor que originó el borrador del átomo."
+    examples:
+      - source:reflector
+    use_when: "El átomo es generado por máquina o workflow y necesita atribución de origen."
+
+  # Tema o tópico de conocimiento
+  topic:
+    meaning: "Tema, tópico o área de conocimiento del átomo."
+    examples:
+      - topic:ontology
+    use_when: "El átomo pertenece a un tema o tópico de conocimiento específico."

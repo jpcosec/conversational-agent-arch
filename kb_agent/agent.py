@@ -39,6 +39,35 @@ _TOOL_INTENT_KEYWORDS = (
     "disponibilidad",
     "recordatorio",
 )
+
+# ── heuristicas de clasificacion de intencion PSP ───────────────────────────
+# Reflejan las 4 ramas del spec psp-flujo-atencion-chatbot.yml.
+# Cada conjunto de keywords mapea a un step del grafo conversacional.
+_PSP_EA_KEYWORDS = (
+    "dolor", "dolores", "duele", "dolia", "doliaa", "dolen",
+    "molest", "malestar", "reaccion", "reacción",
+    "nausea", "nauseas", "náusea", "náuseas", "vomito", "vómito",
+    "vomitos", "vómitos", "mareo", "mareos",
+    "hinchazon", "hinchazón", "fiebre", "alergia",
+    "sintoma", "síntoma", "sintomas", "síntomas",
+    "efecto adverso", "efectos adversos",
+    "evento adverso", "eventos adversos",
+    "me duele", "me duelen", "siento un dolor",
+)
+_PSP_MEDINFO_KEYWORDS = (
+    "interactua", "interactúa", "interaccion", "interacción",
+    "contraindic", "contraindicacion", "contraindicación",
+    "puedo tomar", "puedo usar", "es seguro",
+    "efecto secundario", "efectos secundarios",
+    "riesgo", "riesgos", "alergia", "alergico", "alérgico",
+    "medicamento", "medicamentos", "remed", "pastilla",
+)
+_PSP_OPERACIONAL_KEYWORDS = (
+    "cambiar", "cambio", "recordatorio", "recordatorios",
+    "horario", "horarios", "dia", "día", "fecha",
+    "recompra", "comprar", "receta", "stock",
+    "quedan", "cuanto", "cuantas", "cuantos",
+)
 _TOOL_AFFINITY_TOKENS = ("calendar", "calendario", "agenda", "cita", "book", "booking", "reserva", "recordatorio")
 _DATE_ARG_NAMES = {"date", "fecha", "day", "dia"}
 _TIME_ARG_NAMES = {"hora", "time"}
@@ -78,7 +107,13 @@ _NAME_CAPTURE_STOP_WORDS = (
 
 
 def decide_turn(compiled_context: Mapping[str, Any]) -> dict[str, Any]:
-    """Decide el tipo de turno sin redactar ni llamar al LLM."""
+    """Decide el tipo de turno sin redactar ni llamar al LLM.
+
+    Returns:
+        dict con ``kind`` (tool_call | fallback | nl) y opcionalmente
+        ``flow_target`` (step tag a navegar) si la intencion del usuario
+        corresponde a una rama PSP clara.
+    """
     function_declarations = build_function_declarations(compiled_context)
     question = str(compiled_context.get("question") or "")
     selected_tool = _select_relevant_tool(question, function_declarations)
@@ -97,7 +132,41 @@ def decide_turn(compiled_context: Mapping[str, Any]) -> dict[str, Any]:
     if not rules and not domain_facts:
         return {"kind": "fallback"}
 
+    # Clasificacion de intencion PSP para navegacion de flujo
+    flow_target = _classify_psp_intent(question)
+    if flow_target:
+        return {"kind": "nl", "flow_target": flow_target}
+
     return {"kind": "nl"}
+
+
+def _classify_psp_intent(question: str) -> str | None:
+    """Clasifica la pregunta del usuario en una rama PSP y devuelve el
+    ConversationStep tag al que navegar, o None si no hay coincidencia.
+
+    Basado en las condiciones de los RuleAtom de clasificacion PSP
+    (rule-antonia-clasificacion-*) y las keywords definidas arriba.
+    """
+    if not question:
+        return None
+    normalized = _normalize_text(question)
+
+    # 1. EA/FV tiene la prioridad mas alta (seguridad del paciente)
+    if any(kw in normalized for kw in _PSP_EA_KEYWORDS):
+        return "conversation:steps.evento_adverso"
+
+    # 2. MedInfo: consulta clinica sin reporte de reaccion
+    #    Solo clasifica si NO hay EA keywords (ya filtrado arriba).
+    if any(kw in normalized for kw in _PSP_MEDINFO_KEYWORDS):
+        return "conversation:steps.derivacion_medinfo"
+
+    # 3. Operacional F0: cambio de recordatorio, recompra, logistica
+    if any(kw in normalized for kw in _PSP_OPERACIONAL_KEYWORDS):
+        return "conversation:steps.journey_operativo"
+
+    # 4. Tratamiento F1 (duda de tratamiento): catch-all para el resto
+    #    Sin keywords especificas — el LLM lo resuelve con los domain atoms
+    return None
 
 
 def build_function_declarations(compiled_context: Mapping[str, Any] | None) -> list[dict[str, Any]]:

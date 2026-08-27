@@ -34,12 +34,12 @@ def test_fallback_when_no_grounding_even_if_not_flagged_empty() -> None:
 
 
 def test_nl_when_grounding_exists() -> None:
-    assert decide_turn({"question": "¿Cuál es el horario?", **GROUNDED}) == {"kind": "nl"}
+    assert decide_turn({"question": "¿Cuál es el horario?", **GROUNDED})["kind"] == "nl"
 
 
 def test_nl_when_tools_exist_but_no_tool_intent() -> None:
     decision = decide_turn({"question": "¿cuánto cuesta la margherita?", "tools": [RESERVA_TOOL], **GROUNDED})
-    assert decision == {"kind": "nl"}
+    assert decision["kind"] == "nl"
 
 
 def test_tool_call_when_intent_and_required_args_complete() -> None:

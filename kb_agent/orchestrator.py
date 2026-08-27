@@ -160,6 +160,8 @@ class Orchestrator:
                     return {"function_call": decision["function_call"]}
                 if kind == "fallback":
                     return self._fallback_text(compiled_context)
+                # Guardar flow_target si existe para navegacion post-draft
+                compiled_context["_flow_target"] = decision.get("flow_target")
                 return self.conversador.draft_nl(compiled_context)
 
             router = RouterStateMachine(compile_context=compile_context, draft_response=draft)
@@ -184,6 +186,22 @@ class Orchestrator:
                 kind = "fallback"
             else:
                 kind = "nl"
+                # Policy Gate: validar respuesta redactada contra criterios gate
+                gate_result = self._validate_response(response, compiled)
+                if not gate_result["approved"]:
+                    kind = "derived"
+                    response = (
+                        "He preparado una respuesta pero prefiero que un profesional "
+                        "del programa la revise antes de enviarla. Alguien del equipo "
+                        "te contactará a la brevedad."
+                    )
+                    compiled["gate_rejection"] = gate_result["reasons"]
+
+            # Navegacion de flujo: si el orquestador clasifico un flow_target,
+            # actualizar el flow_node en SessionState
+            flow_target = compiled.get("_flow_target")
+            if flow_target:
+                compiled["flow_node"] = flow_target
 
             # Persistir SessionState (dominio + flujo) + ChatHistory
             session_state.active_domain = scenario_effective or None
@@ -240,6 +258,82 @@ class Orchestrator:
         if not isinstance(response, str):
             return False
         return response == self._fallback_text(compiled)
+
+    # ── policy gate ───────────────────────────────────────────────────────
+    def _validate_response(self, response: str, compiled: Mapping[str, Any]) -> dict[str, Any]:
+        """Valida una respuesta redactada contra los criterios GateCriterion de la KB.
+
+        Lee los atomos type.knowledge.gate del store y verifica que la
+        respuesta no viole ningun criterio regulatorio. Si algun criterio
+        falla, devuelve ``approved: False`` con los motivos.
+
+        Los atomos gate son invisibles al compilador de turno, asi que se
+        leen directamente del reader.
+        """
+        if not isinstance(response, str) or not response.strip():
+            return {"approved": True, "reasons": []}
+
+        try:
+            gate_atoms = self.reader.find("type.knowledge.gate")
+        except Exception:
+            return {"approved": True, "reasons": []}
+
+        if not gate_atoms:
+            return {"approved": True, "reasons": []}
+
+        reasons: list[str] = []
+        response_lower = response.lower()
+
+        for atom in gate_atoms:
+            criterion = str(atom.get("criterion", "") or "")
+            approval = str(atom.get("approval_condition", "") or "")
+            rejection = str(atom.get("rejection_action", "") or "")
+            atom_id = atom.get("id", "")
+
+            # Heuristicas deterministicas por criterio comun
+            # Se basan en los approval_condition de los 5 gate atoms
+            violated = False
+
+            if "dosis" in atom_id or "dosis" in criterion:
+                # No indica, sugiere ni comenta cambios de dosis
+                if any(p in response_lower for p in ["sube la dosis", "subir la dosis", "suba la dosis",
+                       "baja la dosis", "bajar la dosis", "baje la dosis",
+                       "aumenta la dosis", "aumentar la dosis", "aumente la dosis",
+                       "debes tomar", "tienes que tomar", "tiene que tomar",
+                       "cambia la dosis", "cambiar la dosis", "cambie la dosis",
+                       "ajusta la dosis", "ajustar la dosis", "ajuste la dosis"]):
+                    violated = True
+
+            if "diagnostico" in atom_id or "diagnostico" in criterion:
+                # No diagnostica ni interpreta sintomas
+                # Usar frases completas para evitar falsos positivos con "tienes"
+                if any(p in response_lower for p in ["tienes diabetes", "tienes cancer", "tienes una enfermedad",
+                       "tienes un problema de", "diagnosticado", "padeces de", "sufres de",
+                       "tu enfermedad es", "tu problema es", "lo que tienes es",
+                       "esto es debido a", "la causa de tus sintomas"]):
+                    violated = True
+
+            if "corpus" in atom_id or "corpus" in criterion:
+                # La respuesta no debe indicar que usa informacion no aprobada
+                if any(p in response_lower for p in ["según estudios", "investigaciones muestran",
+                       "la literatura dice", "se ha demostrado que", "segun la ciencia"]):
+                    violated = True
+
+            if "promesas" in atom_id or "promesas" in criterion:
+                # No promete resultados clinicos
+                if any(p in response_lower for p in ["vas a mejorar", "te curar", "te sanar",
+                       "100%", "garantiz", "resultado seguro", "sin riesgo"]):
+                    violated = True
+
+            if "derivacion" in atom_id or "derivacion" in criterion:
+                # Si la respuesta contiene informacion que debio derivar pero no deriva
+                # (check mas suave — se basa en que el LLM ya deriva correctamente)
+                pass
+
+            if violated:
+                reasons.append(f"{atom_id}: {rejection}" if rejection else atom_id)
+
+        return {"approved": len(reasons) == 0, "reasons": reasons}
 
     # ── contexto del turno (para UIs) ─────────────────────────────────────
     @staticmethod

@@ -77,8 +77,8 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-molecula
   path: atoms/atom-antonia-molecula.md
-  hash_c: 1146e7ac4354289888f11bfba05f2e4aeb0d48d33d9956dab07f942d8fbf98c9
-  hash_d: d320be3b97bbaf526697d3e71c29afd54957090800632b3a2db2ddafd6ccbb29
+  hash_c: ec71910e19b1a928feed4c4871df6cd374eff884103aac27183185a0d5e98d4d
+  hash_d: 646e27aa304d02bb327f48b6fc93c422f0afbde46fcbf5f9884cc6f17765635a
   semantic_tags:
   - domain:tratamiento
   - system:laboratorio-chile
