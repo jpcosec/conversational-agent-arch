@@ -158,6 +158,7 @@ tags:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   - 20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills
+  - 20260827-184454-suggestion-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   type.knowledge.atom:
   - atom-agente-conversador
   - atom-canales-de-entrada
@@ -268,6 +269,7 @@ tags:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   - 20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills
+  - 20260827-184454-suggestion-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   workspace:desk:
   - Board
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
@@ -373,6 +375,12 @@ documents:
   20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills:
     model: InboxNoteDoc
     path: desk/inbox/20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills.md
+    tags:
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+  20260827-184454-suggestion-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente:
+    model: InboxNoteDoc
+    path: desk/inbox/20260827-184454-suggestion-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox
