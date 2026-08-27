@@ -1,410 +1,160 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Mindmap</title>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/": "https://esm.sh/react@18.3.1/",
-    "react-dom": "https://esm.sh/react-dom@18.3.1?deps=react@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
-    "@xyflow/react": "https://esm.sh/@xyflow/react@12.11.5?deps=react@18.3.1,react-dom@18.3.1&external=react,react-dom",
-    "htm": "https://esm.sh/htm@3.1.1",
-    "dagre": "https://esm.sh/dagre@0.8.5"
-  }
-}
-</script>
+<script type="importmap">{"imports":{"react":"https://esm.sh/react@18.3.1","react/":"https://esm.sh/react@18.3.1/","react-dom":"https://esm.sh/react-dom@18.3.1?deps=react@18.3.1","react-dom/client":"https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1","@xyflow/react":"https://esm.sh/@xyflow/react@12.11.5?deps=react@18.3.1,react-dom@18.3.1&external=react,react-dom","htm":"https://esm.sh/htm@3.1.1","dagre":"https://esm.sh/dagre@0.8.5"}}</script>
 <link rel="stylesheet" href="https://esm.sh/@xyflow/react@12.11.5/dist/style.css">
 <link rel="stylesheet" href="/static/theme.css">
 <script src="/static/hotkeys.js"></script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%;width:100%}
-  body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden;display:flex;flex-direction:column}
-  #root{flex:1;min-height:0;width:100%;position:relative}
-  .react-flow__attribution{display:none}
-  input,textarea,select{font-family:inherit}
-</style>
-</head>
-<body>
-  <header class="app-topbar" data-testid='nav-topbar'>
-    <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
-    <nav class="app-nav" id="appNav">
-      <a data-testid="nav-chat" href="/">Chat</a>
-      <a data-testid="nav-flow" href="/flow">Flow</a>
-      <a data-testid="nav-mindmap" href="/mindmap">Mindmap</a>
-      <a data-testid="nav-users" href="/users">Users</a>
-    </nav>
-    <div class="app-topbar-meta">
-      <span class="app-topbar-chip" id="kbLabel">KB</span>
-      <span class="app-topbar-chip" id="healthLabel">—</span>
-    </div>
-  </header>
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;width:100%}
+body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden;display:flex;flex-direction:column}
+#root{flex:1;min-height:0;width:100%;position:relative}.react-flow__attribution{display:none}
+input,textarea,select{font-family:inherit}
+.mm-layout{display:flex;flex:1;min-height:0;width:100%}
+.mm-sidebar{width:220px;min-width:220px;background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));border-right:1px solid rgba(212,165,116,.18);display:flex;flex-direction:column;z-index:20;padding:14px;overflow-y:auto}
+.mm-sidebar-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.5);margin-bottom:8px}
+.mm-filter-input{width:100%;background:rgba(10,10,15,.6);border:1px solid rgba(212,165,116,.2);border-radius:8px;color:#f5f0e8;padding:6px 10px;font-size:12px;margin-bottom:10px}
+.mm-filter-input:focus{outline:none;border-color:#d4a574}
+.mm-rama{padding:4px 8px;border-radius:6px;cursor:pointer;font-size:11px;color:rgba(245,240,232,.6);font-family:'JetBrains Mono',monospace;transition:.12s;margin-bottom:1px}
+.mm-rama:hover{background:rgba(212,165,116,.08);color:#f5f0e8}
+.mm-rama.active{background:rgba(212,165,116,.12);color:#d4a574}
+.mm-rama-child{padding-left:16px}
+.mm-canvas{flex:1;position:relative}
+.mm-topbar{position:fixed;top:54px;left:240px;right:0;z-index:30;display:flex;gap:8px;padding:8px 16px;background:rgba(10,10,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,165,116,.08);align-items:center}
+.mm-topbar-btn{background:rgba(18,18,26,.7);border:1px solid rgba(212,165,116,.15);color:rgba(245,240,232,.6);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:10px;font-family:'JetBrains Mono',monospace;transition:.15s}
+.mm-topbar-btn:hover{border-color:#d4a574;color:#d4a574}
+.mm-topbar-btn.active{background:rgba(212,165,116,.15);color:#d4a574;border-color:#d4a574}
+.mm-topbar-btn.toggle-off{opacity:.5}
+.mm-search{flex:1;max-width:300px;background:rgba(10,10,15,.6);border:1px solid rgba(212,165,116,.15);border-radius:6px;color:#f5f0e8;padding:4px 10px;font-size:11px}
+.mm-search:focus{outline:none;border-color:#d4a574}
+.mm-legend{position:fixed;bottom:20px;right:20px;z-index:30;display:flex;gap:8px;padding:8px 14px;background:rgba(10,10,15,.85);border:1px solid rgba(212,165,116,.12);border-radius:10px}
+.mm-legend-item{display:flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:rgba(245,240,232,.55)}.mm-legend-dot{width:8px;height:8px;border-radius:3px}
+.react-flow__background{background:#0a0a0f!important}
+.react-flow__controls button{background:rgba(18,18,26,.85)!important;border:1px solid rgba(212,165,116,.15)!important;color:rgba(245,240,232,.5)!important;fill:rgba(245,240,232,.5)!important}
+.react-flow__controls button:hover{border-color:#d4a574!important;color:#d4a574!important;fill:#d4a574!important}
+.drag-handle{cursor:grab;opacity:.5;font-size:12px;position:absolute;top:-4px;right:2px;color:rgba(245,240,232,.4);user-select:none}
+.drag-handle:hover{opacity:1;color:#d4a574}
+.react-flow__node.selected .drag-handle{opacity:1;color:#d4a574}</style></head><body>
+<header class="app-topbar" data-testid='nav-topbar'>
+<a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
+<nav class="app-nav" id="appNav">
+<a data-testid="nav-chat" href="/">Chat</a><a data-testid="nav-flow" href="/flow">Flow</a><a data-testid="nav-mindmap" href="/mindmap">Mindmap</a><a data-testid="nav-users" href="/users">Users</a>
+</nav>
+<div class="app-topbar-meta"><span class="app-topbar-chip" id="kbLabel">KB</span><span class="app-topbar-chip" id="healthLabel">—</span></div></header>
 <div id="root"></div>
-<script>
-  (function () {
-    var path = location.pathname.replace(/\/$/, '') || '/';
-    document.querySelectorAll('#appNav a').forEach(function (a) {
-      var href = a.getAttribute('href').replace(/\/$/, '') || '/';
-      var active = href === path;
-      a.classList.toggle('active', active);
-      if (active) a.setAttribute('data-active', 'true');
-      else a.removeAttribute('data-active');
-    });
-    Promise.all([
-      fetch('/api/config').then(function (r) { return r.json(); }).catch(function () { return {}; }),
-      fetch('/api/health').then(function (r) { return r.json(); }).catch(function () { return {}; }),
-    ]).then(function (results) {
-      var cfg = results[0] || {};
-      var health = results[1] || {};
-      var brand = document.getElementById('appBrand');
-      var kb = document.getElementById('kbLabel');
-      var healthLabel = document.getElementById('healthLabel');
-      var navLabels = cfg.nav_labels || {};
-      if (brand) brand.textContent = cfg.runtime_title || cfg.name || 'Agente';
-      if (kb) kb.textContent = cfg.kb_label || cfg.name || 'KB';
-      if (healthLabel) healthLabel.textContent = health.status || 'unknown';
-      var linkMap = {
-        chat: document.querySelector('[data-testid="nav-chat"]'),
-        flow: document.querySelector('[data-testid="nav-flow"]'),
-        mindmap: document.querySelector('[data-testid="nav-mindmap"]'),
-        users: document.querySelector('[data-testid="nav-users"]'),
-      };
-      if (linkMap.chat) linkMap.chat.textContent = navLabels.chat || 'Chat';
-      if (linkMap.flow) linkMap.flow.textContent = navLabels.flow || 'Flow';
-      if (linkMap.mindmap) linkMap.mindmap.textContent = navLabels.mindmap || 'Mindmap';
-      if (linkMap.users) linkMap.users.textContent = navLabels.users || 'Users';
-    });
-  })();
-</script>
-
+<script>(function(){var p=location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('#appNav a').forEach(function(a){var h=a.getAttribute('href').replace(/\/$/,'')||'/';var ac=h===p;a.classList.toggle('active',ac);if(ac)a.setAttribute('data-active','true');else a.removeAttribute('data-active')});Promise.all([fetch('/api/config').then(function(r){return r.json()}).catch(function(){return{}}),fetch('/api/health').then(function(r){return r.json()}).catch(function(){return{}})]).then(function(r){var c=r[0]||{},h=r[1]||{};document.getElementById('appBrand')&&(document.getElementById('appBrand').textContent=c.name||c.runtime_title||'Agente');document.getElementById('kbLabel')&&(document.getElementById('kbLabel').textContent=c.kb_label||c.name||'KB');document.getElementById('healthLabel')&&(document.getElementById('healthLabel').textContent=h.status||'unknown');var lm={chat:document.querySelector('[data-testid="nav-chat"]'),flow:document.querySelector('[data-testid="nav-flow"]'),mindmap:document.querySelector('[data-testid="nav-mindmap"]'),users:document.querySelector('[data-testid="nav-users"]')};var nl=c.nav_labels||{};if(lm.chat)lm.chat.textContent=nl.chat||'Chat';if(lm.flow)lm.flow.textContent=nl.flow||'Flow';if(lm.mindmap)lm.mindmap.textContent=nl.mindmap||'Mindmap';if(lm.users)lm.users.textContent=nl.users||'Users'})})();</script>
 <script type="module">
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { createRoot } from 'react-dom/client';
-import {
-  ReactFlow, ReactFlowProvider, Background, Controls, MiniMap,
-  Handle, Position, useNodesState, useEdgesState, useReactFlow, NodeToolbar,
-} from '@xyflow/react';
-import htm from 'htm';
-import dagre from 'dagre';
-const html = htm.bind(React.createElement);
+import React,{useState,useCallback,useEffect,useRef,useMemo}from'react'
+import{createRoot}from'react-dom/client'
+import{ReactFlow,ReactFlowProvider,Background,Controls,MiniMap,Handle,Position,useNodesState,useEdgesState,useReactFlow,NodeToolbar}from'@xyflow/react'
+import htm from'htm';const html=htm.bind(React.createElement)
+import dagre from'dagre'
 
-/* ── familias: color por raíz ── */
-const FAM = {
-  self:         { color:'#7cba7c', icon:'🧬' },
-  domain:       { color:'#7fb3d5', icon:'📖' },
-  conversation: { color:'#e6a85c', icon:'💬' },
-  user:         { color:'#c97db9', icon:'👤' },
-};
-const FIVEWH = { what:'❓', when:'📅', where:'📍', who:'👤', how:'🔧', why:'🤔' };
+const FAM={self:{color:'#7cba7c',icon:'🧬',label:'self'},domain:{color:'#7fb3d5',icon:'📖',label:'domain'},conversation:{color:'#e6a85c',icon:'💬',label:'conversation'},user:{color:'#c97db9',icon:'👤',label:'user'}}
+const FIVEWH={what:'❓',when:'📅',where:'📍',who:'👤',how:'🔧',why:'🤔'}
+let NID=0
 
-/* ── nodo del mindmap: burbuja/pill (presentacional puro) ── */
-function MindNode({ data, selected }) {
-  const fam = FAM[data.family] || FAM.domain;
-  const isRoot = data.kind === 'root';
-  const isAtom = data.kind === 'atom';
-  const bg = isRoot ? fam.color : isAtom ? 'rgba(18,18,26,.95)' : `${fam.color}18`;
-  const border = selected ? '#d4a574' : isRoot ? fam.color : `${fam.color}66`;
-  return html`
-    <div style=${{
-      border: `2px solid ${border}`,
-      borderLeft: isAtom ? `4px solid ${fam.color}` : `2px solid ${border}`,
-      background: bg,
-      borderRadius: isRoot ? 20 : 12,
-      padding: isRoot ? '10px 18px' : '7px 13px',
-      minWidth: isRoot ? 130 : 90, maxWidth: 240,
-      cursor: 'pointer', transition: '.15s',
-      boxShadow: selected ? '0 0 18px rgba(212,165,116,.25)' : 'none',
-      display: 'flex', alignItems: 'center', gap: 7,
-    }}>
-      <${Handle} type="target" position=${Position.Left}
-        style=${{ background: fam.color, width: 7, height: 7, border: '2px solid #0a0a0f', opacity: isRoot ? 0 : 1 }} />
-      ${isRoot && html`<span style=${{ fontSize: 15 }}>${fam.icon}</span>`}
-      ${isAtom && html`<span style=${{ fontSize: 12 }}>${FIVEWH[data.five_wh] || '📄'}</span>`}
-      <div style=${{ minWidth: 0 }}>
-        <div style=${{
-          fontSize: isRoot ? 14 : 12, fontWeight: isRoot ? 700 : 500,
-          color: isRoot ? '#0a0a0f' : '#f5f0e8', lineHeight: 1.2,
-          whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-        }}>${data.label}</div>
-        ${isAtom && html`<div style=${{
-          fontSize: 8, fontFamily: "'JetBrains Mono',monospace", color: fam.color,
-          opacity: .8, marginTop: 1, textTransform: 'uppercase', letterSpacing: '.06em',
-        }}>${data.atom_type}</div>`}
-      </div>
-      <${Handle} type="source" position=${Position.Right}
-        style=${{ background: fam.color, width: 7, height: 7, border: '2px solid #0a0a0f' }} />
+function MindNode({data,selected}){
+ const fam=FAM[data.family]||FAM.domain;const isRoot=data.kind==='root';const isAtom=data.kind==='atom'
+ const bg=isRoot?fam.color:isAtom?'rgba(18,18,26,.95)':`${fam.color}18`
+ const border=selected?'#d4a574':isRoot?fam.color:`${fam.color}66`
+ return html`<div style=${{border:`2px solid ${border}`,borderLeft:isAtom?`4px solid ${fam.color}`:`2px solid ${border}`,background:bg,borderRadius:isRoot?20:12,padding:isRoot?'10px 18px':'7px 13px',minWidth:isRoot?130:90,maxWidth:240,cursor:'pointer',transition:'.15s',boxShadow:selected?'0 0 18px rgba(212,165,116,.25)':'none',display:'flex',alignItems:'center',gap:7}}>
+   <${Handle} type="target" position=${Position.Left} style=${{background:fam.color,width:7,height:7,border:'2px solid #0a0a0f',opacity:isRoot?0:1}}/>
+   ${isRoot&&html`<span style=${{fontSize:15}}>${fam.icon}</span>`}
+   ${isAtom&&html`<span style=${{fontSize:12}}>${FIVEWH[data.five_wh]||'📄'}</span>`}
+   <div style=${{minWidth:0}}><div style=${{fontSize:isRoot?14:12,fontWeight:isRoot?700:500,color:isRoot?'#0a0a0f':'#f5f0e8',lineHeight:1.2,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>${data.label}</div>
+     ${isAtom&&html`<div style=${{fontSize:8,fontFamily:"'JetBrains Mono',monospace",color:fam.color,opacity:.8,marginTop:1,textTransform:'uppercase',letterSpacing:'.06em'}}>${data.atom_type}</div>`}</div>
+   <div class="drag-handle" data-testid="mindmap-drag-handle">⠿</div>
+   <${Handle} type="source" position=${Position.Right} style=${{background:fam.color,width:7,height:7,border:'2px solid #0a0a0f'}}/>
+ </div>`}
+const nodeTypes={mind:MindNode}
+
+function buildGraph(tax){const nodes=[],edges=[];Object.keys(tax).forEach(fam=>{
+ const rootId=`root-${fam}`;nodes.push({id:rootId,type:'mind',position:{x:0,y:0},data:{label:fam,family:fam,kind:'root'}})
+ const pushAtom=(a,parentId)=>{const aid=`a-${NID++}`;nodes.push({id:aid,type:'mind',position:{x:0,y:0},data:{label:a.title,family:fam,kind:'atom',atom_id:a.id,atom_type:a.atom_type,five_wh:a.five_wh_one_plus,summary:a.summary,tags:a.tags}});edges.push({id:`e-${parentId}-${aid}`,source:parentId,target:aid,type:'bezier',style:{stroke:`${FAM[fam].color}55`,strokeWidth:1.8}})};
+ const mkEdge=(s,t)=>({id:`e-${s}-${t}`,source:s,target:t,type:'bezier',style:{stroke:`${FAM[fam].color}55`,strokeWidth:1.8}})
+ function walk(children,parentId){children.forEach(node=>{const bid=`b-${NID++}`;nodes.push({id:bid,type:'mind',position:{x:0,y:0},data:{label:node.name,family:fam,kind:'branch',path:node.path}});edges.push(mkEdge(parentId,bid));node.atoms.forEach(a=>pushAtom(a,bid));if(node.children?.length)walk(node.children,bid)})}
+ walk(tax[fam].children,rootId);(tax[fam].orphans||[]).forEach(a=>pushAtom(a,rootId))
+});return{nodes,edges}}
+
+function layoutTree(nodes,edges,rankdir){
+ const byFam={};nodes.forEach(n=>{(byFam[n.data.family]||=[]).push(n)})
+ const order=['self','domain','conversation','user'];let yOffset=0;const pos={}
+ order.forEach(fam=>{const fn=byFam[fam]||[];if(!fn.length)return
+  const ids=new Set(fn.map(n=>n.id));const fe=edges.filter(e=>ids.has(e.source)&&ids.has(e.target))
+  const g=new dagre.graphlib.Graph;g.setDefaultEdgeLabel(()=>({}))
+  g.setGraph({rankdir:rankdir||'LR',nodesep:22,ranksep:90,marginx:20,marginy:20})
+  const W=n=>n.data.kind==='root'?150:n.data.kind==='atom'?200:110
+  fn.forEach(n=>g.setNode(n.id,{width:W(n),height:40}));fe.forEach(e=>g.setEdge(e.source,e.target));dagre.layout(g)
+  let maxY=0;fn.forEach(n=>{maxY=Math.max(maxY,g.node(n.id).y)})
+  fn.forEach(n=>{const p=g.node(n.id);pos[n.id]={x:p.x-W(n)/2,y:p.y-20+yOffset}})
+  yOffset+=maxY+120
+ });return nodes.map(n=>({...n,position:pos[n.id]||{x:0,y:0}}))
+}
+
+function Tooltip({atom,pos}){if(!atom)return null;const tags=(atom.tags||[]).filter(t=>t.includes(':'))
+ return html`<div style=${{position:'fixed',zIndex:100,left:pos.x,top:pos.y,background:'rgba(10,10,15,.96)',border:'1px solid rgba(245,240,232,.14)',borderRadius:10,padding:'11px 13px',maxWidth:300,fontSize:12,lineHeight:1.5,pointerEvents:'none',backdropFilter:'blur(8px)',boxShadow:'0 12px 40px rgba(0,0,0,.5)'}}>
+   <div style=${{fontFamily:"'JetBrains Mono',monospace",fontSize:9,color:'rgba(245,240,232,.45)',marginBottom:3}}>${atom.atom_id}</div>
+   <div style=${{fontWeight:600,marginBottom:4}}>${atom.label}</div>
+   ${atom.five_wh&&html`<span style=${{color:'#d4a574',fontFamily:"'JetBrains Mono',monospace",fontSize:10,textTransform:'uppercase',letterSpacing:'.08em'}}>${FIVEWH[atom.five_wh]||''} ${atom.five_wh}</span>`}
+   ${atom.summary&&html`<div style=${{marginTop:5,color:'rgba(245,240,232,.62)'}}>${atom.summary}</div>`}
+   ${tags.length>0&&html`<div style=${{display:'flex',flexWrap:'wrap',gap:4,marginTop:6}}>${tags.map(t=>html`<span key=${t} style=${{fontFamily:"'JetBrains Mono',monospace",fontSize:9,padding:'2px 5px',borderRadius:4,background:'rgba(245,240,232,.06)',color:'rgba(245,240,232,.5)'}}>${t}</span>`)}</div>`}</div>`}
+
+function App(){
+ const [nodes,setNodes,onNodesChange]=useNodesState([]);const[edges,setEdges,onEdgesChange]=useEdgesState([])
+ const [hover,setHover]=useState(null);const [editing,setEditing]=useState(null);const [comment,setComment]=useState(null)
+ const [layoutMode,setLayoutMode]=useState('tree');const [xfamily,setXfamily]=useState(false);const [searchText,setSearchText]=useState('')
+ const [filterRama,setFilterRama]=useState(null);const [collapsed,setCollapsed]=useState(new Set())
+ const [selectedNode,setSelectedNode]=useState(null);const [linking,setLinking]=useState(false);const [taxData,setTaxData]=useState(null)
+ const {fitView}=useReactFlow()
+
+ useEffect(()=>{fetch('/api/taxonomy').then(r=>r.json()).then(tax=>{setTaxData(tax);NID=0;const{nodes:rn,edges:re}=buildGraph(tax);setNodes(layoutTree(rn,re,'LR'));setEdges(re);setTimeout(()=>fitView({padding:0.1,duration:400}),150)}).catch(e=>console.error('tax err',e))},[setNodes,setEdges,fitView])
+
+ const applyLayout=useCallback((lay)=>{setLayoutMode(lay);if(!nodes.length||!taxData)return;if(lay==='embeddings'){fetch('/api/viz/graph').then(r=>r.json()).then(g=>{if(!g.nodes)return;const em=nodes.map(n=>{const e=g.nodes.find(gn=>gn.id===n.data.atom_id||gn.id===n.data.label);return e?{...n,position:{x:e.position?.x||0,y:e.position?.y||0}}:n});setNodes(em);setEdges(prev=>prev)}).catch(()=>{});return}
+  const n=layoutTree(nodes,edges,lay==='topdown'?'TB':'LR');setNodes(n);fitView({padding:0.1,duration:400})},[nodes,edges,taxData])
+
+ useEffect(()=>{if(typeof initHotkeys==='function'){initHotkeys({element:document.querySelector('.react-flow'),onSearch:()=>document.querySelector('[data-testid="mm-search"]')?.focus(),onDelete:()=>{if(selectedNode){setNodes(nds=>nds.filter(n=>n.id!==selectedNode));setEdges(eds=>eds.filter(e=>e.source!==selectedNode&&e.target!==selectedNode));setSelectedNode(null)}},onAddChild:()=>{},onAddSibling:()=>{},onLinkHorizontal:()=>{if(selectedNode)setLinking(l=>!l)},onCollapse:()=>{if(selectedNode){setCollapsed(c=>{const n=new Set(c);if(n.has(selectedNode))n.delete(selectedNode);else n.add(selectedNode);return n})}},onFocus:()=>{if(selectedNode){const n=document.querySelector(`[data-id="${selectedNode}"]`);if(n)n.scrollIntoView({behavior:'smooth',block:'center'})}},onLayout:l=>applyLayout(['tree','topdown','embeddings'][l-1]),onHelp:()=>alert('Ctrl+F Buscar · Delete Borrar · Tab Hijo · Enter Hermano · L Link · Space Collapse · 1/2/3 Layout · F Centrar · Esc Cancelar · ? Ayuda'),onCancel:()=>setLinking(false)})}})
+
+ const onNodeMouseEnter=useCallback((e,node)=>{if(node.data.kind!=='atom')return;setHover({atom:node.data,pos:{x:e.clientX+16,y:e.clientY+8}})},[])
+ const onNodeMouseLeave=useCallback(()=>setHover(null),[])
+ const onNodeClick=useCallback((e,node)=>{setSelectedNode(node.id);if(linking&&node.id!==linking){setEdges(eds=>[...eds,{id:`e-x-${Date.now()}`,source:selectedNode,target:node.id,style:{stroke:'#c97db9',strokeWidth:2,strokeDasharray:'5,5'}}]);setLinking(false)}if(node.data.kind==='atom'){setHover(null);setComment({atom:node.data,pos:{x:e.clientX+12,y:e.clientY+8}})}},[])
+ const onPaneClick=useCallback(()=>{setHover(null);setComment(null);setSelectedNode(null);setLinking(false)},[])
+ const onNodeDoubleClick=useCallback((e,node)=>{if(node.data.kind!=='atom')return;setHover(null);setComment(null);setEditing(node.data)},[])
+
+ const ramas=useMemo(()=>{if(!taxData)return[];const r=[];Object.keys(taxData).forEach(fam=>{r.push({id:fam,label:fam,children:[]})});return r},[taxData])
+
+ const filtered=useMemo(()=>{if(!filterRama||!taxData)return nodes;const fam=filterRama;return nodes.filter(n=>n.data.family===fam||n.data.label===fam)},[nodes,filterRama,taxData])
+ const searched=useMemo(()=>{if(!searchText)return filtered;const t=searchText.toLowerCase();return filtered.filter(n=>(n.data.label||'').toLowerCase().includes(t)||(n.data.atom_id||'').toLowerCase().includes(t))},[filtered,searchText])
+
+ return html`<div class="mm-layout">
+   <aside class="mm-sidebar" data-testid="mindmap-sidebar"><div class="mm-sidebar-label">Filtrar rama</div>
+    <input class="mm-filter-input" placeholder="buscar rama…" onInput=${e=>setFilterRama(e.target.value||null)}/>
+    ${ramas.map(r=>html`<div class="mm-rama ${filterRama===r.id?'active':''}" onClick=${()=>setFilterRama(r.id===filterRama?null:r.id)}>${FAM[r.id]?.icon||''} ${r.label}</div>`)}
+    <div style=${{marginTop:'auto',borderTop:'1px solid rgba(212,165,116,.1)',paddingTop:14}}>
+     <div class="mm-sidebar-label">Layout</div>
+     ${[{id:'tree',label:'Árbol LR'},{id:'topdown',label:'Top-Down'},{id:'embeddings',label:'Embeddings'}].map(l=>html`<div class="mm-rama ${layoutMode===l.id?'active':''}" data-testid="mindmap-layout-${l.id}" onClick=${()=>applyLayout(l.id)}>${l.label}</div>`)}
+     <label style=${{display:'flex',alignItems:'center',gap:6,marginTop:10,fontSize:11,cursor:'pointer'}}>
+      <input type="checkbox" checked=${xfamily} onChange=${()=>setXfamily(!xfamily)} data-testid="mindmap-xfamily-toggle" style=${{accentColor:'#d4a574'}}/>
+      <span style=${{color:'rgba(245,240,232,.6)'}}>Links horizontales</span></label>
     </div>
-  `;
-}
-const nodeTypes = { mind: MindNode };
-
-/* ── construir nodos+edges desde el árbol taxonómico ── */
-let NID = 0;
-function buildGraph(tax) {
-  const nodes = [], edges = [];
-  Object.keys(tax).forEach((fam) => {
-    const rootId = `root-${fam}`;
-    nodes.push({ id: rootId, type: 'mind', position: { x: 0, y: 0 },
-      data: { label: fam, family: fam, kind: 'root' } });
-    const pushAtom = (a, parentId) => {
-      const aid = `a-${NID++}`;
-      nodes.push({ id: aid, type: 'mind', position: { x: 0, y: 0 },
-        data: {
-          label: a.title, family: fam, kind: 'atom',
-          atom_id: a.id, atom_type: a.atom_type, five_wh: a.five_wh_one_plus,
-          summary: a.summary, tags: a.tags,
-        } });
-      edges.push(mkEdge(parentId, aid, fam));
-    };
-    function walk(children, parentId) {
-      children.forEach((node) => {
-        const bid = `b-${NID++}`;
-        nodes.push({ id: bid, type: 'mind', position: { x: 0, y: 0 },
-          data: { label: node.name, family: fam, kind: 'branch', path: node.path } });
-        edges.push(mkEdge(parentId, bid, fam));
-        node.atoms.forEach((a) => pushAtom(a, bid));
-        if (node.children?.length) walk(node.children, bid);
-      });
-    }
-    walk(tax[fam].children, rootId);
-    (tax[fam].orphans || []).forEach((a) => pushAtom(a, rootId));
-  });
-  return { nodes, edges };
-}
-function mkEdge(source, target, fam) {
-  return { id: `e-${source}-${target}`, source, target, type: 'bezier',
-    style: { stroke: `${FAM[fam].color}55`, strokeWidth: 1.8 } };
-}
-
-/* ── layout dagre: LR, familias apiladas verticalmente ── */
-function layout(nodes, edges) {
-  const byFam = {};
-  nodes.forEach((n) => { (byFam[n.data.family] ||= []).push(n); });
-  const order = ['self', 'domain', 'conversation', 'user'];
-  let yOffset = 0; const pos = {};
-  order.forEach((fam) => {
-    const fn = byFam[fam] || []; if (!fn.length) return;
-    const ids = new Set(fn.map((n) => n.id));
-    const fe = edges.filter((e) => ids.has(e.source) && ids.has(e.target));
-    const g = new dagre.graphlib.Graph();
-    g.setDefaultEdgeLabel(() => ({}));
-    g.setGraph({ rankdir: 'LR', nodesep: 22, ranksep: 90, marginx: 20, marginy: 20 });
-    const W = (n) => n.data.kind === 'root' ? 150 : n.data.kind === 'atom' ? 200 : 110;
-    fn.forEach((n) => g.setNode(n.id, { width: W(n), height: 40 }));
-    fe.forEach((e) => g.setEdge(e.source, e.target));
-    dagre.layout(g);
-    let maxY = 0; fn.forEach((n) => { maxY = Math.max(maxY, g.node(n.id).y); });
-    fn.forEach((n) => { const p = g.node(n.id); pos[n.id] = { x: p.x - W(n) / 2, y: p.y - 20 + yOffset }; });
-    yOffset += maxY + 120;
-  });
-  return nodes.map((n) => ({ ...n, position: pos[n.id] || { x: 0, y: 0 } }));
-}
-
-/* ── Tooltip (JSX, sigue al cursor) ── */
-function Tooltip({ atom, pos }) {
-  if (!atom) return null;
-  const S = {
-    position: 'fixed', zIndex: 100, left: pos.x, top: pos.y,
-    background: 'rgba(10,10,15,.96)', border: '1px solid rgba(245,240,232,.14)',
-    borderRadius: 10, padding: '11px 13px', maxWidth: 300, fontSize: 12, lineHeight: 1.5,
-    pointerEvents: 'none', backdropFilter: 'blur(8px)', boxShadow: '0 12px 40px rgba(0,0,0,.5)',
-  };
-  const tags = (atom.tags || []).filter((t) => t.includes(':'));
-  return html`
-    <div style=${S}>
-      <div style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 9, color: 'rgba(245,240,232,.45)', marginBottom: 3 }}>${atom.atom_id}</div>
-      <div style=${{ fontWeight: 600, marginBottom: 4 }}>${atom.label}</div>
-      ${atom.five_wh && html`<span style=${{ color: '#d4a574', fontFamily: "'JetBrains Mono',monospace", fontSize: 10, textTransform: 'uppercase', letterSpacing: '.08em' }}>${FIVEWH[atom.five_wh] || ''} ${atom.five_wh}</span>`}
-      ${atom.summary && html`<div style=${{ marginTop: 5, color: 'rgba(245,240,232,.62)' }}>${atom.summary}</div>`}
-      ${tags.length > 0 && html`<div style=${{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
-        ${tags.map((t) => html`<span key=${t} style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 9, padding: '2px 5px', borderRadius: 4, background: 'rgba(245,240,232,.06)', color: 'rgba(245,240,232,.5)' }}>${t}</span>`)}
-      </div>`}
+   </aside>
+   <div class="mm-canvas">
+    <div class="mm-topbar">
+     <input class="mm-search" data-testid="mindmap-search" placeholder="Buscar nodo (Ctrl+F)…" value=${searchText} onInput=${e=>setSearchText(e.target.value)}/>
+     <span style=${{fontSize:10,color:'rgba(245,240,232,.35)',marginLeft:'auto'}}>doble-click edita · click comenta</span>
     </div>
-  `;
+    <${ReactFlow} nodes=${searched} edges=${edges} onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange} nodeTypes=${nodeTypes}
+     onNodeMouseEnter=${onNodeMouseEnter} onNodeMouseLeave=${onNodeMouseLeave} onNodeClick=${onNodeClick} onNodeDoubleClick=${onNodeDoubleClick} onPaneClick=${onPaneClick}
+     fitView minZoom=${0.1} maxZoom=${2} proOptions=${{hideAttribution:true}} selectionOnDrag>
+     <${Background} color="rgba(212,165,116,.06)" gap=${28}/>
+     <${Controls} showInteractive=${false}/>
+     <${MiniMap} nodeColor=${n=>FAM[n.data?.family]?.color||'#555'} maskColor="rgba(10,10,15,.7)" style=${{background:'#0d1526',border:'1px solid rgba(212,165,116,.2)'}}/>
+    </${ReactFlow}>
+    <div class="mm-legend">${Object.entries(FAM).map(([k,v])=>html`<div class="mm-legend-item"><span class="mm-legend-dot" style=${{background:v.color}}></span>${v.icon} ${k}</div>`)}</div>
+    ${hover&&html`<${Tooltip} atom=${hover.atom} pos=${hover.pos}/>`}
+   </div>
+ </div>`
 }
-
-/* ── Modal de edición (JSX + estado controlado) ── */
-function EditModal({ atom, onClose, onSave }) {
-  const [title, setTitle] = useState(atom.label);
-  const [fiveWh, setFiveWh] = useState(atom.five_wh || '');
-  const [tagsText, setTagsText] = useState((atom.tags || []).filter((t) => t.includes(':')).join('\n'));
-  const [summary, setSummary] = useState(atom.summary || '');
-  const inp = {
-    width: '100%', background: '#0a0a0f', border: '1px solid rgba(245,240,232,.1)',
-    borderRadius: 8, padding: '8px 10px', color: '#f5f0e8', fontSize: 13, outline: 'none',
-  };
-  const lbl = {
-    fontSize: 10, textTransform: 'uppercase', letterSpacing: '.08em', color: '#d4a574',
-    fontFamily: "'JetBrains Mono',monospace", marginBottom: 4, display: 'block',
-  };
-  const field = { marginBottom: 13 };
-  return html`
-    <div onClick=${onClose} style=${{
-      position: 'fixed', inset: 0, background: 'rgba(0,0,0,.72)', backdropFilter: 'blur(4px)',
-      zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center',
-    }}>
-      <div onClick=${(e) => e.stopPropagation()} style=${{
-        background: '#111a2e', border: '1px solid rgba(245,240,232,.14)', borderRadius: 16,
-        width: 600, maxHeight: '82vh', overflowY: 'auto', padding: 24, boxShadow: '0 24px 60px rgba(0,0,0,.6)',
-      }}>
-        <h2 style=${{ fontSize: 16, fontWeight: 600, marginBottom: 16 }}>✏️ ${atom.label}</h2>
-        <div style=${field}><label style=${lbl}>ID</label>
-          <input value=${atom.atom_id} disabled style=${{ ...inp, opacity: .5 }} /></div>
-        <div style=${field}><label style=${lbl}>Título</label>
-          <input value=${title} onChange=${(e) => setTitle(e.target.value)} style=${inp} /></div>
-        <div style=${field}><label style=${lbl}>5WH1+</label>
-          <select value=${fiveWh} onChange=${(e) => setFiveWh(e.target.value)} style=${inp}>
-            ${['', 'what', 'when', 'where', 'who', 'how', 'why'].map((v) =>
-              html`<option key=${v} value=${v}>${FIVEWH[v] || '—'} ${v}</option>`)}
-          </select></div>
-        <div style=${field}><label style=${lbl}>Tags (uno por línea)</label>
-          <textarea value=${tagsText} onChange=${(e) => setTagsText(e.target.value)}
-            style=${{ ...inp, minHeight: 64, resize: 'vertical', fontFamily: "'JetBrains Mono',monospace", fontSize: 12 }} /></div>
-        <div style=${field}><label style=${lbl}>Summary</label>
-          <textarea value=${summary} onChange=${(e) => setSummary(e.target.value)}
-            style=${{ ...inp, minHeight: 80, resize: 'vertical', fontFamily: "'JetBrains Mono',monospace", fontSize: 12 }} /></div>
-        <div style=${{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 18 }}>
-          <button onClick=${onClose} style=${btn(false)}>Cancelar</button>
-          <button onClick=${() => onSave({ atom_id: atom.atom_id, title, five_wh: fiveWh, tags: tagsText.split('\n').filter(Boolean), summary })}
-            style=${btn(true)}>Guardar</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-/* ── Popover de comentario (anclado con NodeToolbar sería ideal; aquí flotante controlado) ── */
-function CommentPopover({ atom, pos, onClose, onSave }) {
-  const [text, setText] = useState('');
-  const ref = useRef(null);
-  useEffect(() => { ref.current?.focus(); }, []);
-  return html`
-    <div style=${{
-      position: 'fixed', zIndex: 150, left: pos.x, top: pos.y,
-      background: '#111a2e', border: '1px solid rgba(212,165,116,.3)', borderRadius: 12,
-      padding: 12, width: 280, boxShadow: '0 16px 44px rgba(0,0,0,.55)',
-    }}>
-      <div style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 9, textTransform: 'uppercase', letterSpacing: '.08em', color: 'rgba(245,240,232,.5)', marginBottom: 6 }}>📝 Comentario · ${atom.atom_id}</div>
-      <textarea ref=${ref} value=${text} onChange=${(e) => setText(e.target.value)}
-        placeholder="Nota para el agente reflector…"
-        style=${{ width: '100%', background: '#0a0a0f', border: '1px solid rgba(245,240,232,.1)', borderRadius: 8, padding: 8, color: '#f5f0e8', fontSize: 12, outline: 'none', resize: 'vertical', minHeight: 56 }} />
-      <div style=${{ display: 'flex', gap: 6, justifyContent: 'flex-end', marginTop: 8 }}>
-        <button onClick=${onClose} style=${btn(false, true)}>Cerrar</button>
-        <button onClick=${() => onSave(atom.atom_id, text)} style=${btn(true, true)}>Guardar</button>
-      </div>
-    </div>
-  `;
-}
-
-function btn(primary, small) {
-  return {
-    padding: small ? '5px 12px' : '8px 18px', borderRadius: small ? 8 : 10,
-    border: `1px solid ${primary ? '#d4a574' : 'rgba(245,240,232,.14)'}`,
-    background: primary ? '#d4a574' : 'transparent',
-    color: primary ? '#0a0a0f' : '#f5f0e8',
-    fontSize: small ? 11 : 12, fontWeight: 600, cursor: 'pointer',
-  };
-}
-
-/* ── Leyenda (JSX) ── */
-function Legend() {
-  return html`
-    <div style=${{ position: 'fixed', top: 58, right: 22, zIndex: 30, display: 'flex', gap: 14 }}>
-      ${Object.entries(FAM).map(([k, v]) => html`
-        <div key=${k} style=${{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: "'JetBrains Mono',monospace", fontSize: 10, textTransform: 'uppercase', letterSpacing: '.06em', color: 'rgba(245,240,232,.55)' }}>
-          <span style=${{ width: 9, height: 9, borderRadius: 3, background: v.color }}></span>${v.icon} ${k}
-        </div>`)}
-    </div>
-  `;
-}
-
-/* ── App ── */
-function App() {
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [hover, setHover] = useState(null);       // { atom, pos }
-  const [editing, setEditing] = useState(null);   // atom data
-  const [comment, setComment] = useState(null);   // { atom, pos }
-  const { fitView } = useReactFlow();
-
-  useEffect(() => {
-    fetch('/api/taxonomy').then((r) => r.json()).then((tax) => {
-      NID = 0;
-      const { nodes: rn, edges: re } = buildGraph(tax);
-      setNodes(layout(rn, re));
-      setEdges(re);
-      setTimeout(() => fitView({ padding: 0.1, duration: 400 }), 150);
-    }).catch((err) => console.error('No se pudo cargar taxonomy', err));
-  }, [setNodes, setEdges, fitView]);
-
-  /* handlers nativos de React Flow */
-  const onNodeMouseEnter = useCallback((e, node) => {
-    if (node.data.kind !== 'atom') return;
-    setHover({ atom: node.data, pos: { x: e.clientX + 16, y: e.clientY + 8 } });
-  }, []);
-  const onNodeMouseLeave = useCallback(() => setHover(null), []);
-  const onNodeDoubleClick = useCallback((e, node) => {
-    if (node.data.kind !== 'atom') return;
-    setHover(null); setComment(null);
-    setEditing(node.data);
-  }, []);
-  const onNodeClick = useCallback((e, node) => {
-    if (node.data.kind !== 'atom') return;
-    setHover(null);
-    setComment({ atom: node.data, pos: { x: e.clientX + 12, y: e.clientY + 8 } });
-  }, []);
-  const onPaneClick = useCallback(() => { setHover(null); setComment(null); }, []);
-
-  const saveEdit = useCallback((patch) => {
-    // TODO: POST /api/atom/save (persistir en SLDB)
-    console.log('save edit', patch);
-    setEditing(null);
-  }, []);
-  const saveComment = useCallback((atomId, text) => {
-    // TODO: POST /api/atom/comment (metadata para reflector)
-    console.log('save comment', atomId, text);
-    setComment(null);
-  }, []);
-
-  return html`
-    <div style=${{ width: '100vw', height: '100vh' }}>
-      <div style=${{ position: 'fixed', top: 58, left: 22, zIndex: 30 }}>
-        <div style=${{ fontSize: 16, fontWeight: 600 }}><em style=${{ color: '#d4a574', fontStyle: 'italic' }}>Taxonomía</em> · Mindmap</div>
-        <div style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 10, letterSpacing: '.06em', color: 'rgba(245,240,232,.45)' }}>doble-click edita · click comenta</div>
-      </div>
-      <${Legend} />
-      <${ReactFlow}
-        nodes=${nodes} edges=${edges}
-        onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange}
-        nodeTypes=${nodeTypes}
-        onNodeMouseEnter=${onNodeMouseEnter}
-        onNodeMouseLeave=${onNodeMouseLeave}
-        onNodeClick=${onNodeClick}
-        onNodeDoubleClick=${onNodeDoubleClick}
-        onPaneClick=${onPaneClick}
-        fitView minZoom=${0.1} maxZoom=${2}
-        proOptions=${{ hideAttribution: true }}
-      >
-        <${Background} color="rgba(212,165,116,.06)" gap=${28} />
-        <${Controls} showInteractive=${false} />
-        <${MiniMap} nodeColor=${(n) => FAM[n.data?.family]?.color || '#555'}
-          maskColor="rgba(10,10,15,.7)" style=${{ background: '#0d1526', border: '1px solid rgba(212,165,116,.2)' }} />
-      </${ReactFlow}>
-      ${hover && html`<${Tooltip} atom=${hover.atom} pos=${hover.pos} />`}
-      ${comment && html`<${CommentPopover} atom=${comment.atom} pos=${comment.pos} onClose=${() => setComment(null)} onSave=${saveComment} />`}
-      ${editing && html`<${EditModal} atom=${editing} onClose=${() => setEditing(null)} onSave=${saveEdit} />`}
-    </div>
-  `;
-}
-
-createRoot(document.getElementById('root')).render(
-  html`<${ReactFlowProvider}><${App} /></${ReactFlowProvider}>`
-);
-</script>
-</body>
-</html>
+createRoot(document.getElementById('root')).render(html`<${ReactFlowProvider}><${App}/></${ReactFlowProvider}>`)
+</script></body></html>

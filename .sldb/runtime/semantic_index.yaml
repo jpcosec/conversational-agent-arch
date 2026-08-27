@@ -5,50 +5,21 @@ tags:
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  domain:self.architecture.backend:
-  - atom-agente-conversador
-  - atom-api-gateway-y-state-router
-  - atom-contexto-compilado
-  - atom-debounce-buffer-agrupacion
-  - atom-grafo-de-flujo-conversacional
-  - atom-knowledge-base-cli
-  - atom-modelos-de-conocimiento-tipados
-  - atom-ontologizador-context-compiler
+  family:domain:
+  - atom-reflector-batch
+  family:user:
   - atom-perfilador-asincrono
-  - atom-reflector-batch
-  - atom-trigger-sintetico-cron
-  - atom-turno-de-sistema-system-turn
-  domain:self.architecture.frontend:
-  - atom-capa-frontend-del-runtime
-  domain:self.architecture.integration:
-  - atom-apis-externas-integracion
-  domain:self.data.persistence:
-  - atom-historial-de-conversacion-sin-pii
-  - atom-sql-capa-identidad-y-estado
-  domain:standards.privacy:
-  - atom-aislamiento-estricto-de-pii
-  layer:cli:
-  - atom-knowledge-base-cli
-  layer:document-model:
-  - atom-modelos-de-conocimiento-tipados
-  - atom-sql-capa-identidad-y-estado
-  layer:frontend:
-  - atom-capa-frontend-del-runtime
-  layer:persistence:
-  - atom-aislamiento-estricto-de-pii
-  - atom-historial-de-conversacion-sin-pii
-  - atom-reflector-batch
   layer:runtime:
   - atom-agente-conversador
-  - atom-api-gateway-y-state-router
-  - atom-apis-externas-integracion
-  - atom-contexto-compilado
-  - atom-debounce-buffer-agrupacion
-  - atom-grafo-de-flujo-conversacional
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
-  - atom-trigger-sintetico-cron
-  - atom-turno-de-sistema-system-turn
+  - atom-reflector-batch
+  role:background:
+  - atom-perfilador-asincrono
+  - atom-reflector-batch
+  role:engine:
+  - atom-agente-conversador
+  - atom-ontologizador-context-compiler
   rule:execution:
   - pill-conversador-jamas-alucina-sin-contexto
   rule:state-machine:
@@ -59,95 +30,30 @@ tags:
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  system:cron:
-  - atom-trigger-sintetico-cron
-  system:kb-agent:
-  - atom-agente-conversador
-  - atom-api-gateway-y-state-router
-  - atom-apis-externas-integracion
-  - atom-capa-frontend-del-runtime
-  - atom-contexto-compilado
-  - atom-debounce-buffer-agrupacion
-  - atom-grafo-de-flujo-conversacional
-  - atom-knowledge-base-cli
-  - atom-ontologizador-context-compiler
-  - atom-perfilador-asincrono
-  - atom-reflector-batch
-  - atom-turno-de-sistema-system-turn
-  system:sldb:
-  - atom-modelos-de-conocimiento-tipados
-  system:sql:
-  - atom-aislamiento-estricto-de-pii
-  - atom-historial-de-conversacion-sin-pii
-  - atom-sql-capa-identidad-y-estado
   topic:arquitectura:
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   topic:clasificacion:
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  topic:consolidation:
-  - atom-reflector-batch
-  topic:context:
-  - atom-contexto-compilado
-  topic:conversation-flow:
-  - atom-grafo-de-flujo-conversacional
   topic:flujo-conversacional:
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
-  topic:generation:
-  - atom-agente-conversador
-  topic:history:
-  - atom-historial-de-conversacion-sin-pii
-  topic:identity:
-  - atom-sql-capa-identidad-y-estado
-  topic:knowledge-models:
-  - atom-modelos-de-conocimiento-tipados
   topic:modelacion:
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
-  topic:pii:
-  - atom-aislamiento-estricto-de-pii
   topic:policy-gate:
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  topic:proactivity:
-  - atom-trigger-sintetico-cron
-  topic:profiling:
-  - atom-perfilador-asincrono
-  topic:retrieval:
-  - atom-knowledge-base-cli
-  - atom-ontologizador-context-compiler
-  topic:routing:
-  - atom-api-gateway-y-state-router
-  - atom-debounce-buffer-agrupacion
-  topic:tool-calling:
-  - atom-apis-externas-integracion
-  - atom-turno-de-sistema-system-turn
-  topic:ui:
-  - atom-capa-frontend-del-runtime
   type.desk.inbox-note:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
   - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
   type.knowledge.atom:
   - atom-agente-conversador
-  - atom-aislamiento-estricto-de-pii
-  - atom-api-gateway-y-state-router
-  - atom-apis-externas-integracion
-  - atom-capa-frontend-del-runtime
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  - atom-contexto-compilado
-  - atom-debounce-buffer-agrupacion
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
-  - atom-grafo-de-flujo-conversacional
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
-  - atom-historial-de-conversacion-sin-pii
-  - atom-knowledge-base-cli
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
-  - atom-modelos-de-conocimiento-tipados
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   - atom-reflector-batch
-  - atom-sql-capa-identidad-y-estado
-  - atom-trigger-sintetico-cron
-  - atom-turno-de-sistema-system-turn
   type.workflow.pill:
   - pill-conversador-jamas-alucina-sin-contexto
   - pill-maquina-de-estados-pausa-en-tool-calling
@@ -156,27 +62,14 @@ tags:
   - pill-maquina-de-estados-pausa-en-tool-calling
   workspace.desk.atoms:
   - atom-agente-conversador
-  - atom-aislamiento-estricto-de-pii
-  - atom-api-gateway-y-state-router
-  - atom-apis-externas-integracion
-  - atom-capa-frontend-del-runtime
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  - atom-contexto-compilado
-  - atom-debounce-buffer-agrupacion
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
-  - atom-grafo-de-flujo-conversacional
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
-  - atom-historial-de-conversacion-sin-pii
-  - atom-knowledge-base-cli
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
-  - atom-modelos-de-conocimiento-tipados
   - atom-ontologizador-context-compiler
   - atom-perfilador-asincrono
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   - atom-reflector-batch
-  - atom-sql-capa-identidad-y-estado
-  - atom-trigger-sintetico-cron
-  - atom-turno-de-sistema-system-turn
   workspace.desk.inbox:
   - 20260825-020103-suggestion-ritual-zero-context-subagent-stress-test
   - 20260826-033933-suggestion-closeout-de-tasks-no-limpia-primitives-ni-deja-status-coherente
@@ -207,174 +100,38 @@ documents:
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox
-  atom-api-gateway-y-state-router:
-    model: AtomDoc
-    path: desk/atoms/atom-api-gateway-y-state-router.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
   atom-agente-conversador:
     model: AtomDoc
     path: desk/atoms/atom-agente-conversador.md
     tags:
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:generation
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
   atom-ontologizador-context-compiler:
     model: AtomDoc
     path: desk/atoms/atom-ontologizador-context-compiler.md
     tags:
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:retrieval
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
   atom-perfilador-asincrono:
     model: AtomDoc
     path: desk/atoms/atom-perfilador-asincrono.md
     tags:
-    - domain:self.architecture.backend
+    - family:user
     - layer:runtime
-    - system:kb-agent
-    - topic:profiling
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
   atom-reflector-batch:
     model: AtomDoc
     path: desk/atoms/atom-reflector-batch.md
     tags:
-    - domain:self.architecture.backend
-    - layer:persistence
-    - system:kb-agent
-    - topic:consolidation
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-sql-capa-identidad-y-estado:
-    model: AtomDoc
-    path: desk/atoms/atom-sql-capa-identidad-y-estado.md
-    tags:
-    - domain:self.data.persistence
-    - layer:document-model
-    - system:sql
-    - topic:identity
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-apis-externas-integracion:
-    model: AtomDoc
-    path: desk/atoms/atom-apis-externas-integracion.md
-    tags:
-    - domain:self.architecture.integration
+    - family:domain
     - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-contexto-compilado:
-    model: AtomDoc
-    path: desk/atoms/atom-contexto-compilado.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:context
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-turno-de-sistema-system-turn:
-    model: AtomDoc
-    path: desk/atoms/atom-turno-de-sistema-system-turn.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-trigger-sintetico-cron:
-    model: AtomDoc
-    path: desk/atoms/atom-trigger-sintetico-cron.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:cron
-    - topic:proactivity
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-debounce-buffer-agrupacion:
-    model: AtomDoc
-    path: desk/atoms/atom-debounce-buffer-agrupacion.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-aislamiento-estricto-de-pii:
-    model: AtomDoc
-    path: desk/atoms/atom-aislamiento-estricto-de-pii.md
-    tags:
-    - domain:standards.privacy
-    - layer:persistence
-    - system:sql
-    - topic:pii
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-historial-de-conversacion-sin-pii:
-    model: AtomDoc
-    path: desk/atoms/atom-historial-de-conversacion-sin-pii.md
-    tags:
-    - domain:self.data.persistence
-    - layer:persistence
-    - system:sql
-    - topic:history
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-modelos-de-conocimiento-tipados:
-    model: AtomDoc
-    path: desk/atoms/atom-modelos-de-conocimiento-tipados.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:document-model
-    - system:sldb
-    - topic:knowledge-models
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-grafo-de-flujo-conversacional:
-    model: AtomDoc
-    path: desk/atoms/atom-grafo-de-flujo-conversacional.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:conversation-flow
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-capa-frontend-del-runtime:
-    model: AtomDoc
-    path: desk/atoms/atom-capa-frontend-del-runtime.md
-    tags:
-    - domain:self.architecture.frontend
-    - layer:frontend
-    - system:kb-agent
-    - topic:ui
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-knowledge-base-cli:
-    model: AtomDoc
-    path: desk/atoms/atom-knowledge-base-cli.md
-    tags:
-    - domain:self.architecture.backend
-    - layer:cli
-    - system:kb-agent
-    - topic:retrieval
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
   atom-policy-gate-como-agente-separado-con-rama-kb-propia:

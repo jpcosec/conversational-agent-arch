@@ -1,0 +1,41 @@
+documents:
+- doc_name: pill-maquina-de-estados-pausa-en-tool-calling
+  sections:
+  - path: context
+    title: Context
+    breadcrumbs:
+    - Context
+    about:
+    - Context
+    - context
+    - rule:state-machine
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - rule:state-machine
+    - type.workflow.pill
+    - workspace.desk
+    slug: context
+    level: 1
+    line_start: 8
+    line_end: 9
+- doc_name: pill-conversador-jamas-alucina-sin-contexto
+  sections:
+  - path: context
+    title: Context
+    breadcrumbs:
+    - Context
+    about:
+    - Context
+    - context
+    - rule:execution
+    - type.workflow.pill
+    - workspace.desk
+    semantic_tags:
+    - rule:execution
+    - type.workflow.pill
+    - workspace.desk
+    slug: context
+    level: 1
+    line_start: 8
+    line_end: 9

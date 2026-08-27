@@ -12,46 +12,40 @@ documents:
   - workspace.desk.atoms
 - name: atom-agente-conversador
   path: desk/atoms/atom-agente-conversador.md
-  hash_c: 1d8c0515a147566fd9c1c0c1aedf15128f6865e29cc534e0909ec071442affd9
-  hash_d: 33cb17789e3ea95ef45bfd1c7392948aa8fb98d411d5764dc746311d43d58bc4
+  hash_c: e8a34d3b157b21ad01b747847bcc077dc3b8f9e2cc9b471785bfd008d41d9bab
+  hash_d: ecb6587f092728d536ac2fbab692496911a963581b3d7e6387ed7287492b6490
   semantic_tags:
-  - domain:self.architecture.backend
   - layer:runtime
-  - system:kb-agent
-  - topic:generation
+  - role:engine
   - type.knowledge.atom
   - workspace.desk.atoms
 - name: atom-ontologizador-context-compiler
   path: desk/atoms/atom-ontologizador-context-compiler.md
-  hash_c: c432a45e90833616c00c85ca514e871eed0f4040a51f0b30eff9e96462318173
-  hash_d: 73b890f97a527a9a4f17d7dec0737f807e31e786d011ba4a3ebdb2f975611af9
+  hash_c: 0be3a81fd3f1dfc65901e6a303c653de27b149ca6d49641cee7f05fc6fb6e893
+  hash_d: dcbc3b116029916f3d604a428715e21da18c51d1968551ead70c1a5464e47f94
   semantic_tags:
-  - domain:self.architecture.backend
   - layer:runtime
-  - system:kb-agent
-  - topic:retrieval
+  - role:engine
   - type.knowledge.atom
   - workspace.desk.atoms
 - name: atom-perfilador-asincrono
   path: desk/atoms/atom-perfilador-asincrono.md
-  hash_c: e883a4855c8ada613d73714dc67c48cdc591ab3db7b4fcfbe99c010328b91286
-  hash_d: 14c68c30c1b2ce9cc3a46c0dae972909e857a9b2c9222b63a0670846db743f43
+  hash_c: 4665f2706874064b1445a6177abb30339a7081c469d60807f85b6110148aa9df
+  hash_d: e9f2432e48ba6d78a74b7f0843898f36990a5d24b685eaf0497330eb08787f4a
   semantic_tags:
-  - domain:self.architecture.backend
+  - family:user
   - layer:runtime
-  - system:kb-agent
-  - topic:profiling
+  - role:background
   - type.knowledge.atom
   - workspace.desk.atoms
 - name: atom-reflector-batch
   path: desk/atoms/atom-reflector-batch.md
-  hash_c: c56fcc32f02326afd321490fc003fd2208288414243505a59c627958e1f04560
-  hash_d: 67f13f44bb68a45254ab1c2c53a050604229215caaadc8d13c74c6f2ac895f13
+  hash_c: 777dd9ce25fd0060022061f6144ee7e1de25cafe8192198bc985432753869ff8
+  hash_d: 1b8485c9e683a75316fa9f093445f91b8ab0112d15938a43ee6b51ced76b95ff
   semantic_tags:
-  - domain:self.architecture.backend
-  - layer:persistence
-  - system:kb-agent
-  - topic:consolidation
+  - family:domain
+  - layer:runtime
+  - role:background
   - type.knowledge.atom
   - workspace.desk.atoms
 - name: atom-sql-capa-identidad-y-estado
@@ -218,8 +212,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   path: desk/atoms/atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas.md
-  hash_c: 5de37216d69fb569c510c5dc14a8932516613e07e6b1d7a3c64c9ab0b8ef7b07
-  hash_d: a1a516d024bcf00bb684fa85680918cb16bd039fbddaf6c3cc2f5b29929f638a
+  hash_c: a93a24110fa24f3f0707f8cb491e805ae822092608b4be4f550667b6f858b012
+  hash_d: 3fa7340ddcadf33fd83430cbf15422d5501fe5136a5d9b30a65c88599424bcba
   semantic_tags:
   - domain:psp
   - system:antonia

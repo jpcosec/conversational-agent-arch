@@ -39,6 +39,7 @@ from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 
 from kb_agent.models_sql.identity import Users, UserTraits
+from kb_agent.models_sql.session import ChatHistory
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import ProjectConfig, load_project_config
 
@@ -286,6 +287,24 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             }
         return JSONResponse(result)
 
+    @app.get("/api/tools")
+    def tools() -> JSONResponse:
+        """Lista de ToolAtoms de la KB activa (nombre, schema, description, tool_id)."""
+        reader = _orch().reader
+        tools_list: list[dict] = []
+        for doc in reader.find("type.knowledge.tool"):
+            tool_id = doc.get("id")
+            if not tool_id:
+                continue
+            tools_list.append({
+                "tool_id": tool_id,
+                "name": doc.get("title") or tool_id,
+                "description": doc.get("description", ""),
+                "schema": doc.get("function_schema", {}),
+                "tags": doc.get("tags", []),
+            })
+        return JSONResponse(tools_list)
+
     @app.get("/users")
     @app.get("/users/")
     def profiling_viewer() -> FileResponse:
@@ -337,7 +356,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/profiles")
     def profiles() -> JSONResponse:
-        """Perfilado: cruza UserTraits (SQL) con TraitAtom (SLDB)."""
+        """Perfil ampliado: cruza UserTraits (SQL) con TraitAtom (SLDB) + eventos + conversaciones."""
         engine = create_engine(f"sqlite:///{cfg.profiling_db}", future=True)
         Session = sessionmaker(bind=engine, future=True)
 
@@ -357,11 +376,32 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                             "created_at": r.created_at.isoformat() if r.created_at else None,
                         })
                     traits.sort(key=lambda t: t["confidence"], reverse=True)
+
+                    # conversaciones del usuario
+                    history_rows = s.query(ChatHistory).filter(
+                        ChatHistory.user_id == u.id
+                    ).order_by(ChatHistory.created_at.desc()).limit(20).all()
+                    conversations = []
+                    for h in history_rows:
+                        conversations.append({
+                            "session_id": f"hist-{h.id}",
+                            "created_at": h.created_at.isoformat() if h.created_at else None,
+                            "summary": (h.content[:80] if h.content else "") if h.role == "user" else "",
+                            "role": h.role,
+                            "n_turns": 1,
+                            "result": "unknown",
+                        })
+
                     users_out.append({
                         "user_id": u.id,
                         "external_id": u.external_id,
                         "channel": u.channel,
                         "traits": traits,
+                        "traits_count": len(traits),
+                        "total_turns": len(history_rows),
+                        "last_active": history_rows[0].created_at.isoformat() if history_rows else None,
+                        "created_at": u.created_at.isoformat() if hasattr(u, "created_at") and u.created_at else None,
+                        "conversations": conversations,
                     })
         finally:
             engine.dispose()
@@ -380,6 +420,48 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             }
         missing = sorted(trait_ids - set(fichas.keys()))
         return JSONResponse({"users": users_out, "fichas": fichas, "missing_fichas": missing})
+
+    @app.get("/api/events")
+    def events(user_id: int | None = None) -> JSONResponse:
+        """Serie temporal de eventos de un usuario."""
+        if user_id is None:
+            return JSONResponse({"events": []})
+        engine = create_engine(f"sqlite:///{cfg.profiling_db}", future=True)
+        Session = sessionmaker(bind=engine, future=True)
+        events_list: list[dict] = []
+        try:
+            with Session() as s:
+                user = s.query(Users).filter(Users.id == user_id).first()
+                if not user:
+                    return JSONResponse({"events": [], "user_id": user_id})
+
+                # chats como eventos
+                for h in s.query(ChatHistory).filter(
+                    ChatHistory.user_id == user_id
+                ).order_by(ChatHistory.created_at.asc()).all():
+                    events_list.append({
+                        "timestamp": h.created_at.isoformat() if h.created_at else None,
+                        "kind": "chat",
+                        "label": (h.content[:60] if h.content else "mensaje") if h.role == "user" else "respuesta",
+                        "kind_label": h.role,
+                    })
+
+                # traits como eventos
+                for t in s.query(UserTraits).filter(UserTraits.user_id == user_id).all():
+                    events_list.append({
+                        "timestamp": t.created_at.isoformat() if t.created_at else None,
+                        "kind": "trait",
+                        "label": t.trait_id,
+                        "confidence": t.confidence,
+                    })
+        finally:
+            engine.dispose()
+
+        events_list.sort(key=lambda e: e.get("timestamp") or "")
+        return JSONResponse({
+            "events": events_list,
+            "user_id": user_id,
+        })
 
     @app.get("/api/health")
     def health() -> dict:

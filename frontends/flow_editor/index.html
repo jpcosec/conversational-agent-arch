@@ -1,665 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Flow</title>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/": "https://esm.sh/react@18.3.1/",
-    "react-dom": "https://esm.sh/react-dom@18.3.1?deps=react@18.3.1",
-    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
-    "@xyflow/react": "https://esm.sh/@xyflow/react@12.11.5?deps=react@18.3.1,react-dom@18.3.1&external=react,react-dom",
-    "htm": "https://esm.sh/htm@3.1.1",
-    "dagre": "https://esm.sh/dagre@0.8.5"
-  }
-}
-</script>
+<script type="importmap">{"imports":{"react":"https://esm.sh/react@18.3.1","react/":"https://esm.sh/react@18.3.1/","react-dom":"https://esm.sh/react-dom@18.3.1?deps=react@18.3.1","react-dom/client":"https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1","@xyflow/react":"https://esm.sh/@xyflow/react@12.11.5?deps=react@18.3.1,react-dom@18.3.1&external=react,react-dom","htm":"https://esm.sh/htm@3.1.1","dagre":"https://esm.sh/dagre@0.8.5"}}</script>
 <link rel="stylesheet" href="https://esm.sh/@xyflow/react@12.11.5/dist/style.css">
 <link rel="stylesheet" href="/static/theme.css">
 <script src="/static/hotkeys.js"></script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%;width:100%}
-  body{
-    font-family:'Inter',sans-serif;
-    background:#0a0a0f;
-    color:#f5f0e8;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-  }
-
-  /* ── Layout ── */
-  .app{display:flex;flex:1;min-height:0;width:100%}
-  .sidebar{
-    width:280px;min-width:280px;
-    background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));
-    border-right:1px solid rgba(212,165,116,.18);
-    display:flex;flex-direction:column;
-    z-index:20;
-  }
-  .canvas-wrap{flex:1;position:relative}
-  .inspector{
-    width:340px;min-width:340px;
-    background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));
-    border-left:1px solid rgba(212,165,116,.18);
-    display:flex;flex-direction:column;
-    z-index:20;
-  }
-
-  /* ── Sidebar brand ── */
-  .brand{
-    padding:20px 18px 14px;
-    border-bottom:1px solid rgba(212,165,116,.18);
-  }
-  .brand-kicker{
-    font-family:'JetBrains Mono',monospace;
-    font-size:9px;letter-spacing:.18em;
-    text-transform:uppercase;
-    color:#d4a574;margin-bottom:8px;
-  }
-  .brand-title{
-    font-size:22px;font-weight:300;line-height:1.1;
-  }
-  .brand-title em{color:#d4a574;font-style:italic}
-
-  /* ── Palette ── */
-  .palette{padding:14px;flex:1;overflow-y:auto}
-  .palette-label{
-    font-family:'JetBrains Mono',monospace;
-    font-size:9px;letter-spacing:.14em;
-    text-transform:uppercase;
-    color:rgba(245,240,232,.5);
-    margin-bottom:10px;
-  }
-  .palette-item{
-    display:flex;align-items:center;gap:10px;
-    padding:10px 12px;
-    margin-bottom:6px;
-    border:1px solid rgba(212,165,116,.15);
-    border-radius:10px;
-    background:rgba(18,18,26,.8);
-    cursor:grab;
-    transition:.2s;
-    user-select:none;
-    font-size:13px;
-  }
-  .palette-item:hover{
-    border-color:#d4a574;
-    background:rgba(212,165,116,.08);
-  }
-  .palette-dot{
-    width:10px;height:10px;border-radius:50%;flex-shrink:0;
-  }
-
-  /* ── Inspector ── */
-  .inspector-header{
-    padding:18px;border-bottom:1px solid rgba(212,165,116,.18);
-    font-family:'JetBrains Mono',monospace;
-    font-size:10px;letter-spacing:.14em;
-    text-transform:uppercase;color:rgba(245,240,232,.5);
-  }
-  .inspector-body{padding:18px;flex:1;overflow-y:auto;font-size:13px;line-height:1.6}
-  .inspector-body .empty{color:rgba(245,240,232,.35);text-align:center;margin-top:40px;font-size:13px}
-  .field-group{margin-bottom:18px}
-  .field-label{
-    font-family:'JetBrains Mono',monospace;
-    font-size:9px;letter-spacing:.1em;
-    text-transform:uppercase;color:#d4a574;
-    margin-bottom:6px;
-  }
-  .field-value{
-    color:rgba(245,240,232,.7);
-    font-size:13px;line-height:1.55;
-    white-space:pre-wrap;
-  }
-  .field-value.inline{
-    display:flex;flex-wrap:wrap;gap:6px;
-  }
-  .slot-chip{
-    display:inline-block;
-    padding:4px 10px;
-    border:1px solid rgba(212,165,116,.2);
-    border-radius:999px;
-    font-size:11px;
-    color:rgba(245,240,232,.6);
-    background:rgba(212,165,116,.06);
-  }
-  .transition-chip{
-    display:inline-flex;align-items:center;gap:4px;
-    padding:4px 10px;
-    border:1px solid rgba(100,220,130,.25);
-    border-radius:999px;
-    font-size:11px;
-    color:rgba(100,220,130,.8);
-    background:rgba(100,220,130,.06);
-  }
-  .transition-chip::before{content:'→';font-size:14px;color:rgba(100,220,130,.6)}
-  .atom-chip{
-    display:inline-flex;align-items:center;gap:4px;
-    padding:4px 10px;
-    border:1px solid rgba(130,160,255,.25);
-    border-radius:999px;
-    font-size:11px;
-    color:rgba(130,160,255,.8);
-    background:rgba(130,160,255,.06);
-  }
-  .atom-chip::before{content:'📎';font-size:11px}
-  .insp-input{
-    width:100%;
-    background:rgba(10,10,15,.6);
-    border:1px solid rgba(212,165,116,.2);
-    border-radius:8px;
-    color:#f5f0e8;
-    padding:8px 10px;
-    font-family:'Inter',sans-serif;
-    font-size:13px;
-  }
-  .insp-input:focus{outline:none;border-color:#d4a574}
-  textarea.insp-input{resize:vertical;min-height:70px;line-height:1.5}
-  select.insp-input{cursor:pointer}
-  .kind-badge{
-    display:inline-flex;align-items:center;gap:6px;
-    padding:5px 12px;border-radius:999px;
-    font-family:'JetBrains Mono',monospace;font-size:10px;
-    letter-spacing:.06em;text-transform:uppercase;
-  }
-
-  /* ── Toolbar ── */
-  .toolbar{
-    position:absolute;top:14px;right:14px;z-index:10;
-    display:flex;gap:8px;
-  }
-  .toolbar-btn{
-    background:rgba(18,18,26,.85);
-    border:1px solid rgba(212,165,116,.2);
-    color:rgba(245,240,232,.6);
-    padding:8px 14px;border-radius:8px;
-    cursor:pointer;font-size:12px;
-    font-family:'JetBrains Mono',monospace;
-    transition:.2s;
-    backdrop-filter:blur(8px);
-  }
-  .toolbar-btn:hover{
-    color:#d4a574;border-color:#d4a574;
-    background:rgba(18,18,26,.95);
-  }
-  .toolbar-btn.primary{
-    background:#d4a574;color:#0a0a0f;border-color:#d4a574;
-    font-weight:600;
-  }
-  .toolbar-btn.primary:hover{background:#c49560}
-
-  /* ── React Flow overrides ── */
-  .react-flow__background{background:#0a0a0f !important}
-  .react-flow__controls button{
-    background:rgba(18,18,26,.85) !important;
-    border:1px solid rgba(212,165,116,.15) !important;
-    color:rgba(245,240,232,.5) !important;
-    fill:rgba(245,240,232,.5) !important;
-  }
-  .react-flow__controls button:hover{
-    border-color:#d4a574 !important;
-    color:#d4a574 !important;
-    fill:#d4a574 !important;
-  }
-  .react-flow__minimap{background:rgba(10,10,15,.9) !important;border:1px solid rgba(212,165,116,.12) !important;border-radius:8px !important}
-  .react-flow__controls{margin:14px !important}
-  .react-flow__attribution{display:none !important}
-  .react-flow__edge-path{stroke:rgba(212,165,116,.25);stroke-width:2}
-  .react-flow__edge.selected .react-flow__edge-path{stroke:#d4a574;stroke-width:2.5}
-</style>
-</head>
-<body>
-  <header class="app-topbar" data-testid='nav-topbar'>
-    <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
-    <nav class="app-nav" id="appNav">
-      <a data-testid="nav-chat" href="/">Chat</a>
-      <a data-testid="nav-flow" href="/flow">Flow</a>
-      <a data-testid="nav-mindmap" href="/mindmap">Mindmap</a>
-      <a data-testid="nav-users" href="/users">Users</a>
-    </nav>
-    <div class="app-topbar-meta">
-      <span class="app-topbar-chip" id="kbLabel">KB</span>
-      <span class="app-topbar-chip" id="healthLabel">—</span>
-    </div>
-  </header>
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;width:100%}
+body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden;display:flex;flex-direction:column}
+.app{display:flex;flex:1;min-height:0;width:100%}
+.sidebar{width:280px;min-width:280px;background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));border-right:1px solid rgba(212,165,116,.18);display:flex;flex-direction:column;z-index:20;overflow-y:auto}
+.brand{padding:20px 18px 14px;border-bottom:1px solid rgba(212,165,116,.18)}
+.brand-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#d4a574;margin-bottom:8px}
+.brand-title{font-size:22px;font-weight:300;line-height:1.1}.brand-title em{color:#d4a574;font-style:italic}
+.palette{padding:14px;flex:1}
+.palette-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.5);margin-bottom:10px;margin-top:14px}
+.palette-item{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:6px;border:1px solid rgba(212,165,116,.15);border-radius:10px;background:rgba(18,18,26,.8);cursor:grab;transition:.2s;user-select:none;font-size:13px}
+.palette-item:hover{border-color:#d4a574;background:rgba(212,165,116,.08)}
+.palette-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.canvas-wrap{flex:1;position:relative}
+.inspector{width:340px;min-width:340px;background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));border-left:1px solid rgba(212,165,116,.18);display:flex;flex-direction:column;z-index:20;overflow-y:auto}
+.inspector-header{padding:18px;border-bottom:1px solid rgba(212,165,116,.18);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.5)}
+.inspector-body{padding:18px;flex:1;overflow-y:auto;font-size:13px;line-height:1.6}
+.inspector-body .empty{color:rgba(245,240,232,.35);text-align:center;margin-top:40px;font-size:13px}
+.field-group{margin-bottom:18px}.field-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#d4a574;margin-bottom:6px}
+.field-value{color:rgba(245,240,232,.7);font-size:13px;line-height:1.55;white-space:pre-wrap}
+.field-value.inline{display:flex;flex-wrap:wrap;gap:6px}
+.slot-chip{display:inline-block;padding:4px 10px;border:1px solid rgba(212,165,116,.2);border-radius:999px;font-size:11px;color:rgba(245,240,232,.6);background:rgba(212,165,116,.06)}
+.transition-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid rgba(100,220,130,.25);border-radius:999px;font-size:11px;color:rgba(100,220,130,.8);background:rgba(100,220,130,.06)}
+.transition-chip::before{content:'→';font-size:14px;color:rgba(100,220,130,.6)}
+.atom-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid rgba(130,160,255,.25);border-radius:999px;font-size:11px;color:rgba(130,160,255,.8);background:rgba(130,160,255,.06)}
+.atom-chip::before{content:'📎';font-size:11px}
+.insp-input{width:100%;background:rgba(10,10,15,.6);border:1px solid rgba(212,165,116,.2);border-radius:8px;color:#f5f0e8;padding:8px 10px;font-family:'Inter',sans-serif;font-size:13px}
+.insp-input:focus{outline:none;border-color:#d4a574}
+textarea.insp-input{resize:vertical;min-height:70px;line-height:1.5}
+select.insp-input{cursor:pointer}
+.kind-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.toolbar{position:absolute;top:14px;right:14px;z-index:10;display:flex;gap:8px;flex-wrap:wrap}
+.toolbar-btn{background:rgba(18,18,26,.85);border:1px solid rgba(212,165,116,.2);color:rgba(245,240,232,.6);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'JetBrains Mono',monospace;transition:.2s;backdrop-filter:blur(8px)}
+.toolbar-btn:hover{color:#d4a574;border-color:#d4a574;background:rgba(18,18,26,.95)}
+.toolbar-btn.primary{background:#d4a574;color:#0a0a0f;border-color:#d4a574;font-weight:600}
+.toolbar-btn.primary:hover{background:#c49560}
+.toolbar-btn.active{background:rgba(212,165,116,.15);color:#d4a574;border-color:#d4a574}
+.react-flow__background{background:#0a0a0f!important}
+.react-flow__controls button{background:rgba(18,18,26,.85)!important;border:1px solid rgba(212,165,116,.15)!important;color:rgba(245,240,232,.5)!important;fill:rgba(245,240,232,.5)!important}
+.react-flow__controls button:hover{border-color:#d4a574!important;color:#d4a574!important;fill:#d4a574!important}
+.react-flow__minimap{background:rgba(10,10,15,.9)!important;border:1px solid rgba(212,165,116,.12)!important;border-radius:8px!important}
+.react-flow__controls{margin:14px!important}
+.react-flow__attribution{display:none!important}
+.react-flow__edge-path{stroke:rgba(212,165,116,.25);stroke-width:2}
+.react-flow__edge.selected .react-flow__edge-path{stroke:#d4a574;stroke-width:2.5}
+.react-flow__node.dragging{z-index:100!important}
+.subflow-group{border:2px dashed rgba(212,165,116,.35);border-radius:14px;padding:20px 14px 14px;background:rgba(212,165,116,.03);position:relative;transition:.2s}
+.subflow-group:hover{border-color:rgba(212,165,116,.6)}
+.subflow-label{position:absolute;top:-10px;left:12px;background:#0a0a0f;padding:0 8px;font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,165,116,.7)}
+.subflow-collapse{position:absolute;top:6px;right:10px;background:transparent;border:1px solid rgba(212,165,116,.2);border-radius:6px;color:rgba(245,240,232,.5);cursor:pointer;font-size:10px;padding:2px 8px;font-family:'JetBrains Mono',monospace}
+.subflow-collapse:hover{color:#d4a574;border-color:#d4a574}
+.tools-panel{margin-top:auto;padding:14px;border-top:1px solid rgba(212,165,116,.1);max-height:200px;overflow-y:auto}
+.tool-item{display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(212,165,116,.1);border-radius:8px;margin-bottom:4px;font-size:11px;cursor:grab;transition:.15s;background:rgba(18,18,26,.6)}
+.tool-item:hover{border-color:#d4a574;background:rgba(212,165,116,.08)}
+.tool-name{color:#d4a574;font-weight:600;font-family:'JetBrains Mono',monospace;font-size:10px}
+.tool-desc{color:rgba(245,240,232,.5);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.node-toolbar{z-index:50}
+</style></head><body>
+<header class="app-topbar" data-testid='nav-topbar'>
+<a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
+<nav class="app-nav" id="appNav">
+<a data-testid="nav-chat" href="/">Chat</a><a data-testid="nav-flow" href="/flow">Flow</a><a data-testid="nav-mindmap" href="/mindmap">Mindmap</a><a data-testid="nav-users" href="/users">Users</a>
+</nav>
+<div class="app-topbar-meta"><span class="app-topbar-chip" id="kbLabel">KB</span><span class="app-topbar-chip" id="healthLabel">—</span></div></header>
 <div id="root"></div>
-<script>
-  (function () {
-    var path = location.pathname.replace(/\/$/, '') || '/';
-    document.querySelectorAll('#appNav a').forEach(function (a) {
-      var href = a.getAttribute('href').replace(/\/$/, '') || '/';
-      var active = href === path;
-      a.classList.toggle('active', active);
-      if (active) a.setAttribute('data-active', 'true');
-      else a.removeAttribute('data-active');
-    });
-    Promise.all([
-      fetch('/api/config').then(function (r) { return r.json(); }).catch(function () { return {}; }),
-      fetch('/api/health').then(function (r) { return r.json(); }).catch(function () { return {}; }),
-    ]).then(function (results) {
-      var cfg = results[0] || {};
-      var health = results[1] || {};
-      var brand = document.getElementById('appBrand');
-      var kb = document.getElementById('kbLabel');
-      var healthLabel = document.getElementById('healthLabel');
-      var navLabels = cfg.nav_labels || {};
-      if (brand) brand.textContent = cfg.runtime_title || cfg.name || 'Agente';
-      if (kb) kb.textContent = cfg.kb_label || cfg.name || 'KB';
-      if (healthLabel) healthLabel.textContent = health.status || 'unknown';
-      var linkMap = {
-        chat: document.querySelector('[data-testid="nav-chat"]'),
-        flow: document.querySelector('[data-testid="nav-flow"]'),
-        mindmap: document.querySelector('[data-testid="nav-mindmap"]'),
-        users: document.querySelector('[data-testid="nav-users"]'),
-      };
-      if (linkMap.chat) linkMap.chat.textContent = navLabels.chat || 'Chat';
-      if (linkMap.flow) linkMap.flow.textContent = navLabels.flow || 'Flow';
-      if (linkMap.mindmap) linkMap.mindmap.textContent = navLabels.mindmap || 'Mindmap';
-      if (linkMap.users) linkMap.users.textContent = navLabels.users || 'Users';
-    });
-  })();
-</script>
-
+<script>(function(){var p=location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('#appNav a').forEach(function(a){var h=a.getAttribute('href').replace(/\/$/,'')||'/';var ac=h===p;a.classList.toggle('active',ac);if(ac)a.setAttribute('data-active','true');else a.removeAttribute('data-active')});Promise.all([fetch('/api/config').then(function(r){return r.json()}).catch(function(){return{}}),fetch('/api/health').then(function(r){return r.json()}).catch(function(){return{}})]).then(function(r){var c=r[0]||{},h=r[1]||{};var b=document.getElementById('appBrand'),kb=document.getElementById('kbLabel'),hl=document.getElementById('healthLabel');if(b)b.textContent=c.name||c.runtime_title||'Agente';if(kb)kb.textContent=c.kb_label||c.name||'KB';if(hl)hl.textContent=h.status||'unknown';var lm={chat:document.querySelector('[data-testid="nav-chat"]'),flow:document.querySelector('[data-testid="nav-flow"]'),mindmap:document.querySelector('[data-testid="nav-mindmap"]'),users:document.querySelector('[data-testid="nav-users"]')};var nl=c.nav_labels||{};if(lm.chat)lm.chat.textContent=nl.chat||'Chat';if(lm.flow)lm.flow.textContent=nl.flow||'Flow';if(lm.mindmap)lm.mindmap.textContent=nl.mindmap||'Mindmap';if(lm.users)lm.users.textContent=nl.users||'Users'})})();</script>
 <script type="module">
-import React, { useState, useCallback, useMemo, useRef } from 'react';
-import { createRoot } from 'react-dom/client';
-import {
-  ReactFlow,
-  ReactFlowProvider,
-  Background,
-  Controls,
-  MiniMap,
-  useNodesState,
-  useEdgesState,
-  addEdge,
-  Handle,
-  Position,
-  MarkerType,
-  useReactFlow,
-} from '@xyflow/react';
-import htm from 'htm';
-import dagre from 'dagre';
-const html = htm.bind(React.createElement);
+import React,{useState,useCallback,useMemo,useRef,useEffect}from'react'
+import{createRoot}from'react-dom/client'
+import{ReactFlow,ReactFlowProvider,Background,Controls,MiniMap,useNodesState,useEdgesState,addEdge,Handle,Position,MarkerType,useReactFlow,NodeToolbar,NodeResizer,}from'@xyflow/react'
+import htm from'htm';const html=htm.bind(React.createElement)
+import dagre from'dagre'
 
-/* ── auto-layout con dagre (LR) ── */
-function layoutGraph(nodes, edges) {
-  const g = new dagre.graphlib.Graph();
-  g.setDefaultEdgeLabel(() => ({}));
-  g.setGraph({ rankdir: 'LR', nodesep: 45, ranksep: 110, marginx: 30, marginy: 30 });
-  const W = 200, H = 64;
-  nodes.forEach((n) => g.setNode(n.id, { width: W, height: H }));
-  edges.forEach((e) => g.setEdge(e.source, e.target));
-  dagre.layout(g);
-  return nodes.map((n) => {
-    const p = g.node(n.id);
-    return { ...n, position: { x: p.x - W / 2, y: p.y - H / 2 } };
-  });
+const STEP_KINDS={interaccion_simple:{label:'Interacción simple',dot:'#e6a85c',border:'rgba(230,168,92,.5)',bg:'rgba(230,168,92,.07)',icon:'💬'},obtencion_datos:{label:'Obtención de datos',dot:'#c97db9',border:'rgba(201,125,185,.5)',bg:'rgba(201,125,185,.07)',icon:'📝'},handout:{label:'Handout',dot:'#7fb3d5',border:'rgba(127,179,213,.5)',bg:'rgba(127,179,213,.07)',icon:'🤝'},llamado_tool:{label:'Llamado a tool',dot:'#7cba7c',border:'rgba(124,186,124,.5)',bg:'rgba(124,186,124,.07)',icon:'⚙️'}}
+const KIND_FIELDS={interaccion_simple:['instructions'],obtencion_datos:['instructions','required_slots'],handout:['instructions','handout_target'],llamado_tool:['instructions','tool_ref','tool_params']}
+const PALETTE_ITEMS=Object.entries(STEP_KINDS).map(([k,v])=>({kind:k,label:v.label,color:v.dot,icon:v.icon}))
+
+function layoutGraph(nodes,edges,rankdir){
+ const g=new dagre.graphlib.Graph;g.setDefaultEdgeLabel(()=>({}))
+ g.setGraph({rankdir:rankdir||'LR',nodesep:45,ranksep:110,marginx:30,marginy:30})
+ const W=200,H=64;nodes.forEach(n=>g.setNode(n.id,{width:W,height:H}))
+ edges.forEach(e=>g.setEdge(e.source,e.target));dagre.layout(g)
+ return nodes.map(n=>{const p=g.node(n.id);return{...n,position:{x:p.x-W/2,y:p.y-H/2}}})
 }
 
-/* ── Step KINDS: comportamiento del paso (fijo). El nombre es libre. ──
-   Colores reusados de la paleta de familias (self/domain/conversation/user)
-   que ya usan taxonomy/viz, para que un mismo color signifique lo mismo
-   en todo el runtime. */
-const STEP_KINDS = {
-  interaccion_simple: { label: 'Interacción simple', dot: '#e6a85c', border: 'rgba(230,168,92,.5)', bg: 'rgba(230,168,92,.07)', icon: '💬' },   // conversation
-  obtencion_datos:    { label: 'Obtención de datos', dot: '#c97db9', border: 'rgba(201,125,185,.5)', bg: 'rgba(201,125,185,.07)', icon: '📝' },   // user
-  handout:            { label: 'Handout',            dot: '#7fb3d5', border: 'rgba(127,179,213,.5)', bg: 'rgba(127,179,213,.07)', icon: '🤝' },   // domain
-  llamado_tool:       { label: 'Llamado a tool',     dot: '#7cba7c', border: 'rgba(124,186,124,.5)', bg: 'rgba(124,186,124,.07)', icon: '⚙️' },   // self
-};
-
-/* qué campos muestra el inspector según el kind */
-const KIND_FIELDS = {
-  interaccion_simple: ['instructions'],
-  obtencion_datos:    ['instructions', 'required_slots'],
-  handout:            ['instructions', 'handout_target'],
-  llamado_tool:       ['instructions', 'tool_ref', 'tool_params'],
-};
-
-const PALETTE_ITEMS = Object.entries(STEP_KINDS).map(([kind, k]) => ({
-  kind, label: k.label, color: k.dot, icon: k.icon,
-}));
-
-/* ── Step Node Component ── */
-function StepNode({ data, selected }) {
-  const c = STEP_KINDS[data.stepKind] || STEP_KINDS.interaccion_simple;
-  return html`
-    <div style=${{
-      border: `2px solid ${selected ? c.border : 'rgba(212,165,116,.12)'}`,
-      borderLeft: `4px solid ${c.border}`,
-      background: c.bg,
-      borderRadius: 12,
-      padding: '10px 14px',
-      minWidth: 190,
-      cursor: 'pointer',
-      transition: '.2s',
-      boxShadow: selected ? '0 0 20px rgba(212,165,116,.12)' : 'none',
-    }}>
-      <${Handle} type="target" position=${Position.Left} style=${{ background: c.border, width: 8, height: 8, border: '2px solid #0a0a0f' }} />
-      <div style=${{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
-        <span style=${{ fontSize: 13 }}>${c.icon}</span>
-        <span style=${{ fontSize: 13, fontWeight: 600, color: '#f5f0e8' }}>${data.label}</span>
-      </div>
-      <div style=${{
-        fontSize: 9, fontFamily: "'JetBrains Mono',monospace", letterSpacing: '.08em',
-        textTransform: 'uppercase', color: c.dot, opacity: .85,
-      }}>
-        ${c.label}
-      </div>
-      <${Handle} type="source" position=${Position.Right} style=${{ background: c.border, width: 8, height: 8, border: '2px solid #0a0a0f' }} />
-    </div>
-  `;
+function StepNode({data,selected}){
+ const c=STEP_KINDS[data.stepKind]||STEP_KINDS.interaccion_simple
+ return html`<div style=${{border:`2px solid ${selected?c.border:'rgba(212,165,116,.12)'}`,borderLeft:`4px solid ${c.border}`,background:c.bg,borderRadius:12,padding:'10px 14px',minWidth:190,cursor:'pointer',transition:'.2s',boxShadow:selected?'0 0 20px rgba(212,165,116,.12)':'none'}}>
+   <${Handle} type="target" position=${Position.Left} style=${{background:c.border,width:8,height:8,border:'2px solid #0a0a0f'}}/>
+   <div style=${{display:'flex',alignItems:'center',gap:8,marginBottom:3}}><span style=${{fontSize:13}}>${c.icon}</span><span style=${{fontSize:13,fontWeight:600,color:'#f5f0e8'}}>${data.label}</span></div>
+   <div style=${{fontSize:9,fontFamily:"'JetBrains Mono',monospace",letterSpacing:'.08em',textTransform:'uppercase',color:c.dot,opacity:.85}}>${c.label}</div>
+   <div class="drag-handle" data-testid="flow-drag-handle" style=${{position:'absolute',top:-6,right:6,cursor:'grab',fontSize:10,color:'rgba(245,240,232,.3)',userSelect:'none'}}>⠿</div>
+   <${Handle} type="source" position=${Position.Right} style=${{background:c.border,width:8,height:8,border:'2px solid #0a0a0f'}}/></div>`
 }
+const nodeTypes={step:StepNode}
 
-const nodeTypes = { step: StepNode };
+function App(){
+ const [steps,setSteps]=useState({})
+ const [selectedStepId,setSelectedStepId]=useState(null)
+ const [nodes,setNodes,onNodesChange]=useNodesState([])
+ const [edges,setEdges,onEdgesChange]=useEdgesState([])
+ const [rankdir,setRankdir]=useState(localStorage.getItem('flow_rankdir')||'LR')
+ const [tools,setTools]=useState([])
+ const [subflows,setSubflows]=useState([])
+ const [linking,setLinking]=useState(null)
+ const {fitView}=useReactFlow()
 
-/* ── Main App ── */
-function App() {
-  const [steps, setSteps] = useState({});
-  const [selectedStepId, setSelectedStepId] = useState(null);
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const { fitView } = useReactFlow();
+ useEffect(()=>{fetch('/api/tools').then(r=>r.json()).then(setTools).catch(()=>{})},[])
+ useEffect(()=>{localStorage.setItem('flow_rankdir',rankdir)},[rankdir])
 
-  /* carga flow.json y arma el grafo con dagre */
-  React.useEffect(() => {
-    fetch('/api/flow').then((r) => r.json()).then((flow) => {
-      const stepMap = {};
-      const tagToId = {};
-      flow.nodes.forEach((s) => {
-        stepMap[s.id] = s;
-        (s.tags || []).forEach?.(() => {});
-      });
-      // construir tag->id para labels de aristas
-      flow.nodes.forEach((s) => {
-        if (s.step_tag) tagToId[s.step_tag] = s.id;
-      });
-      setSteps(stepMap);
+ useEffect(()=>{fetch('/api/flow').then(r=>r.json()).then(flow=>{const m={};flow.nodes.forEach(s=>{m[s.id]=s});setSteps(m);const rn=flow.nodes.map(s=>({id:s.id,type:'step',position:{x:0,y:0},data:{label:(s.title||'').replace(/ —.*$/,'').slice(0,28),stepKind:s.kind||'interaccion_simple',stepId:s.id}}));const re=flow.edges.map((e,i)=>({id:`e-${i}`,source:e.source,target:e.target,animated:true,style:{stroke:'rgba(212,165,116,.3)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.5)'}}));setNodes(layoutGraph(rn,re,rankdir));setEdges(re);setTimeout(()=>fitView({padding:0.15,duration:400}),150)}).catch(e=>console.error('flow err',e))},[setNodes,setEdges,fitView])
 
-      const rawNodes = flow.nodes.map((s) => ({
-        id: s.id,
-        type: 'step',
-        position: { x: 0, y: 0 },
-        data: {
-          label: s.title.replace(/ —.*$/, '').slice(0, 28),
-          stepKind: s.kind,
-          stepId: s.id,
-        },
-      }));
-      const rawEdges = flow.edges.map((e, i) => ({
-        id: `e-${i}`,
-        source: e.source,
-        target: e.target,
-        animated: true,
-        style: { stroke: 'rgba(212,165,116,.3)', strokeWidth: 2 },
-        markerEnd: { type: MarkerType.ArrowClosed, color: 'rgba(212,165,116,.5)' },
-      }));
+ useEffect(()=>{if(!nodes.length)return;setNodes(layoutGraph(nodes,edges,rankdir))},[rankdir])
 
-      setNodes(layoutGraph(rawNodes, rawEdges));
-      setEdges(rawEdges);
-      setTimeout(() => fitView({ padding: 0.15, duration: 400 }), 150);
-    }).catch((err) => console.error('No se pudo cargar flow.json', err));
-  }, [setNodes, setEdges, fitView]);
+ const onConnect=useCallback((params)=>{setEdges(eds=>addEdge({...params,animated:true,style:{stroke:'rgba(212,165,116,.3)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.5'}},eds))},[setEdges])
+ const onNodeClick=useCallback((_,node)=>{setSelectedStepId(id=>id===node.data.stepId?null:node.data.stepId);if(linking){setEdges(eds=>[...eds,{id:`e-x-${Date.now()}`,source:linking,target:node.id,animated:true,style:{stroke:'#c97db9',strokeWidth:2,strokeDasharray:'5,5'},markerEnd:{type:MarkerType.ArrowClosed,color:'#c97db9'}}]);setLinking(null)}},[linking])
+ const onPaneClick=useCallback(()=>{setSelectedStepId(null);setLinking(null)},[])
+ const selectedStep=selectedStepId?steps[selectedStepId]:null
 
-  const onConnect = useCallback((params) => {
-    setEdges((eds) => addEdge({
-      ...params,
-      animated: true,
-      style: { stroke: 'rgba(212,165,116,.3)', strokeWidth: 2 },
-      markerEnd: { type: MarkerType.ArrowClosed, color: 'rgba(212,165,116,.5)' },
-    }, eds));
-  }, [setEdges]);
+ const updateStep=useCallback((patch)=>{if(!selectedStepId)return;setSteps(prev=>({...prev,[selectedStepId]:{...prev[selectedStepId],...patch}}));if('title'in patch||'kind'in patch){setNodes(nds=>nds.map(n=>n.id===selectedStepId?{...n,data:{...n.data,...(patch.title!=null?{label:patch.title}:{}),...(patch.kind!=null?{stepKind:patch.kind}:{})}}:n))}},[selectedStepId])
 
-  const onNodeClick = useCallback((_, node) => {
-    const stepId = node.data.stepId;
-    setSelectedStepId(stepId === selectedStepId ? null : stepId);
-  }, [selectedStepId]);
+ const onDragStart=useCallback((e,kind)=>{e.dataTransfer.setData('application/reactflow','step');e.dataTransfer.setData('application/reactflow/kind',kind);e.dataTransfer.effectAllowed='move'},[])
+ const onToolDragStart=useCallback((e,tool)=>{e.dataTransfer.setData('application/reactflow','step');e.dataTransfer.setData('application/reactflow/kind','llamado_tool');e.dataTransfer.setData('application/reactflow/tool',JSON.stringify(tool));e.dataTransfer.effectAllowed='move'},[])
+ const onDrop=useCallback((event)=>{event.preventDefault();const bounds=event.target.closest('.react-flow').getBoundingClientRect();const type=event.dataTransfer.getData('application/reactflow');const kind=event.dataTransfer.getData('application/reactflow/kind');if(!type)return;const toolData=event.dataTransfer.getData('application/reactflow/tool');const pos={x:event.clientX-bounds.left-100,y:event.clientY-bounds.top-30};const id=`n-${Date.now()}`;const label=`nuevo-paso-${Math.ceil(Math.random()*99)}`;const newStep={id,title:label,kind,instructions:'',required_slots:[],handout_target:'',tool_ref:'',tool_params:[],allowed_transitions:[],grounding_atoms:[],completion_condition:''};if(toolData){try{const t=JSON.parse(toolData);newStep.tool_ref=t.name||t.tool_id||'';newStep.title=label+'-'+newStep.tool_ref.slice(0,12)}catch(e){}}setSteps(prev=>({...prev,[id]:newStep}));setNodes(nds=>[...nds,{id,type:'step',position:pos,data:{label:newStep.title,stepKind:kind,stepId:id}}]);setSelectedStepId(id)},[])
+ const onDragOver=useCallback((e)=>{e.preventDefault();e.dataTransfer.dropEffect='move'},[])
 
-  const onPaneClick = useCallback(() => {
-    setSelectedStepId(null);
-  }, []);
+ const addSubflow=useCallback(()=>{const id=`sf-${Date.now()}`;setSubflows(s=>[...s,{id,label:'nuevo-subflow',nodes:[],collapsed:false}])},[])
+ const toggleSubflow=useCallback((id)=>{setSubflows(s=>s.map(f=>f.id===id?{...f,collapsed:!f.collapsed}:f))},[])
 
-  const selectedStep = selectedStepId ? steps[selectedStepId] : null;
+ const selectedStepEl=selectedStep?html`<div>${(()=>{const kf=KIND_FIELDS[selectedStep.kind]||['instructions'];const kc=STEP_KINDS[selectedStep.kind]||STEP_KINDS.interaccion_simple;return html`<div><div class="field-group"><div class="field-label">Nombre</div><input class="insp-input" value=${selectedStep.title}onInput=${e=>updateStep({title:e.target.value})}/></div><div class="field-group"><div class="field-label">Tipo</div><select class="insp-input" value=${selectedStep.kind}onChange=${e=>updateStep({kind:e.target.value})}>${Object.entries(STEP_KINDS).map(([k,v])=>html`<option value=${k}>${v.icon} ${v.label}</option>`)}</select></div><div class="field-group"><div class="field-label">Instrucciones</div><textarea class="insp-input" value=${selectedStep.instructions}onInput=${e=>updateStep({instructions:e.target.value})}placeholder="Qué hace el agente aquí..."></textarea></div>${kf.includes('required_slots')?html`<div class="field-group"><div class="field-label">Slots requeridos</div><div class="field-value inline">${(selectedStep.required_slots||[]).map(s=>html`<span class="slot-chip">${s}</span>`)}</div></div>`:''}${kf.includes('handout_target')?html`<div class="field-group"><div class="field-label">Destino handout</div><input class="insp-input" value=${selectedStep.handout_target||''}onInput=${e=>updateStep({handout_target:e.target.value})}placeholder="humano / equipo"/></div>`:''}${kf.includes('tool_ref')?html`<div class="field-group"><div class="field-label">Tool</div><input class="insp-input" value=${selectedStep.tool_ref||''}onInput=${e=>updateStep({tool_ref:e.target.value})}placeholder="ID ToolAtom"/></div>`:''}<div class="field-group"><div class="field-label">Transiciones</div><div class="field-value inline">${(selectedStep.allowed_transitions||[]).map(t=>html`<span class="transition-chip">${t}</span>`)}</div></div><div class="field-group"><div class="field-label">Grounding Atoms</div><div class="field-value inline">${(selectedStep.grounding_atoms||[]).map(a=>html`<span class="atom-chip">${a}</span>`)}</div></div><div class="field-group"><div class="field-label">Condición término</div><textarea class="insp-input" value=${selectedStep.completion_condition||''}onInput=${e=>updateStep({completion_condition:e.target.value})}placeholder="Cuándo se completa..."></textarea></div><div class="field-group"><div class="field-label">ID</div><div class="field-value" style=${{fontFamily:"'JetBrains Mono',monospace",fontSize:11,color:'rgba(245,240,232,.35)'}}>${selectedStep.id}</div></div></div>`})()}</div>`:html`<div class="empty">Selecciona un nodo para inspeccionar</div>`
 
-  /* actualiza un campo del step y sincroniza el nodo del canvas */
-  const updateStep = useCallback((patch) => {
-    if (!selectedStepId) return;
-    setSteps((prev) => ({ ...prev, [selectedStepId]: { ...prev[selectedStepId], ...patch } }));
-    if ('title' in patch || 'kind' in patch) {
-      setNodes((nds) => nds.map((n) => n.id === selectedStepId ? {
-        ...n,
-        data: {
-          ...n.data,
-          ...(patch.title != null ? { label: patch.title } : {}),
-          ...(patch.kind != null ? { stepKind: patch.kind } : {}),
-        },
-      } : n));
-    }
-  }, [selectedStepId, setSteps, setNodes]);
-
-  const onDragStart = useCallback((event, kind) => {
-    event.dataTransfer.setData('application/reactflow', 'step');
-    event.dataTransfer.setData('application/reactflow/kind', kind);
-    event.dataTransfer.effectAllowed = 'move';
-  }, []);
-
-  const onDrop = useCallback((event) => {
-    event.preventDefault();
-    const reactFlowBounds = event.target.closest('.react-flow').getBoundingClientRect();
-    const type = event.dataTransfer.getData('application/reactflow');
-    const kind = event.dataTransfer.getData('application/reactflow/kind');
-    if (!type) return;
-
-    const position = {
-      x: event.clientX - reactFlowBounds.left - 100,
-      y: event.clientY - reactFlowBounds.top - 30,
-    };
-
-    const n = Object.keys(steps).length + 1;
-    const id = `step-nuevo-${Date.now()}`;
-    const label = `nuevo-paso-${n}`;
-    const newStep = {
-      id,
-      title: label,
-      kind,
-      instructions: '',
-      required_slots: [],
-      handout_target: '',
-      tool_ref: '',
-      tool_params: [],
-      allowed_transitions: [],
-      grounding_atoms: [],
-      completion_condition: '',
-    };
-
-    setSteps((prev) => ({ ...prev, [id]: newStep }));
-    setNodes((nds) => [...nds, {
-      id,
-      type: 'step',
-      position,
-      data: { label, stepKind: kind, stepId: id },
-    }]);
-    setSelectedStepId(id);
-  }, [setNodes, setSteps, steps]);
-
-  const onDragOver = useCallback((event) => {
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-  }, []);
-
-  const selectedStepEl = selectedStep ? html`
-    ${(() => {
-      const kindFields = KIND_FIELDS[selectedStep.kind] || ['instructions'];
-      const kc = STEP_KINDS[selectedStep.kind] || STEP_KINDS.interaccion_simple;
-      return html`<div>
-        ${/* Nombre editable */''}
-        <div class="field-group">
-          <div class="field-label">Nombre del paso</div>
-          <input class="insp-input" value=${selectedStep.title}
-            onInput=${(e) => updateStep({ title: e.target.value })} />
-        </div>
-
-        ${/* Tipo (kind) */''}
-        <div class="field-group">
-          <div class="field-label">Tipo de paso</div>
-          <select class="insp-input" value=${selectedStep.kind}
-            onChange=${(e) => updateStep({ kind: e.target.value })}>
-            ${Object.entries(STEP_KINDS).map(([k, v]) => html`<option value=${k}>${v.icon}  ${v.label}</option>`)}
-          </select>
-        </div>
-
-        ${/* Instructions (siempre) */''}
-        <div class="field-group">
-          <div class="field-label">Instrucciones</div>
-          <textarea class="insp-input" value=${selectedStep.instructions}
-            onInput=${(e) => updateStep({ instructions: e.target.value })}
-            placeholder="Qué hace el agente en este paso..."></textarea>
-        </div>
-
-        ${/* Slots (solo obtencion_datos) */''}
-        ${kindFields.includes('required_slots') ? html`
-          <div class="field-group">
-            <div class="field-label">Slots requeridos</div>
-            <div class="field-value inline">
-              ${selectedStep.required_slots.map((s) => html`<span class="slot-chip">${s}</span>`)}
-            </div>
-          </div>` : ''}
-
-        ${/* Handout target (solo handout) */''}
-        ${kindFields.includes('handout_target') ? html`
-          <div class="field-group">
-            <div class="field-label">Destino de handout</div>
-            <input class="insp-input" value=${selectedStep.handout_target || ''}
-              onInput=${(e) => updateStep({ handout_target: e.target.value })}
-              placeholder="humano / equipo / otro flujo" />
-          </div>` : ''}
-
-        ${/* Tool ref (solo llamado_tool) */''}
-        ${kindFields.includes('tool_ref') ? html`
-          <div class="field-group">
-            <div class="field-label">Tool</div>
-            <input class="insp-input" value=${selectedStep.tool_ref || ''}
-              onInput=${(e) => updateStep({ tool_ref: e.target.value })}
-              placeholder="id de la ToolAtom (ej. crear_reserva)" />
-          </div>` : ''}
-
-        ${/* Transiciones (siempre) */''}
-        <div class="field-group">
-          <div class="field-label">Transiciones permitidas</div>
-          <div class="field-value inline">
-            ${selectedStep.allowed_transitions.map((t) => html`<span class="transition-chip">${t}</span>`)}
-          </div>
-        </div>
-
-        ${/* Grounding atoms (siempre) */''}
-        <div class="field-group">
-          <div class="field-label">Grounding Atoms</div>
-          <div class="field-value inline">
-            ${selectedStep.grounding_atoms.map((a) => html`<span class="atom-chip">${a}</span>`)}
-          </div>
-        </div>
-
-        ${/* Completion */''}
-        <div class="field-group">
-          <div class="field-label">Condición de término</div>
-          <textarea class="insp-input" value=${selectedStep.completion_condition || ''}
-            onInput=${(e) => updateStep({ completion_condition: e.target.value })}
-            placeholder="Cuándo se considera completo el paso..."></textarea>
-        </div>
-
-        ${/* ID (read-only, al fondo) */''}
-        <div class="field-group">
-          <div class="field-label">Step ID</div>
-          <div class="field-value" style=${{ fontFamily: "'JetBrains Mono',monospace", fontSize: 11, color: 'rgba(245,240,232,.35)' }}>
-            ${selectedStep.id}
-          </div>
-        </div>
-      </div>`;
-    })()}
-  ` : html`<div class="empty">Selecciona un nodo para inspeccionar</div>`;
-
-  return html`
-    <div class="app">
-      ${/* Sidebar */''}
-      <aside class="sidebar">
-        <div class="brand">
-          <div class="brand-kicker">Conversation Flow</div>
-          <div class="brand-title"><em>Step</em> Editor</div>
-        </div>
-        <div class="palette">
-          <div class="palette-label">Tipos de paso</div>
-          ${PALETTE_ITEMS.map((item) => html`
-            <div class="palette-item" draggable
-              onDragStart=${(e) => onDragStart(e, item.kind)}>
-              <span style=${{ fontSize: 14 }}>${item.icon}</span>
-              <span class="palette-dot" style=${{ background: item.color }}></span>
-              ${item.label}
-            </div>
-          `)}
-          <div style=${{ marginTop: 20, borderTop: '1px solid rgba(212,165,116,.1)', paddingTop: 14 }}>
-            <div class="palette-label">Anotaciones</div>
-            <div style=${{ fontSize: 11, color: 'rgba(245,240,232,.3)', lineHeight: 1.6 }}>
-              Arrastra pasos al canvas.<br/>
-              Conecta arrastrando desde el handle derecho de un nodo.
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      ${/* Canvas */''}
-      <div class="canvas-wrap" onDrop=${onDrop} onDragOver=${onDragOver}>
-          <${ReactFlow}
-            nodes=${nodes}
-            edges=${edges}
-            onNodesChange=${onNodesChange}
-            onEdgesChange=${onEdgesChange}
-            onConnect=${onConnect}
-            onNodeClick=${onNodeClick}
-            onPaneClick=${onPaneClick}
-            nodeTypes=${nodeTypes}
-            fitView
-            fitViewOptions=${{ padding: 0.3 }}
-            colorMode="dark"
-            defaultEdgeOptions=${{
-              style: { stroke: 'rgba(212,165,116,.2)', strokeWidth: 2 },
-              markerEnd: { type: MarkerType.ArrowClosed, color: 'rgba(212,165,116,.4)' },
-            }}
-          >
-            <${Background} color="rgba(212,165,116,.04)" gap=${24} />
-            <${Controls} showInteractive=${false} />
-            <${MiniMap}
-              nodeColor=${() => 'rgba(212,165,116,.2)'}
-              maskColor="rgba(10,10,15,.7)"
-              style=${{ background: 'rgba(10,10,15,.5)' }}
-            />
-          </${ReactFlow}>
-        <div class="toolbar">
-          <button class="toolbar-btn">⟲ Layout</button>
-          <button class="toolbar-btn primary">💾 Save</button>
-        </div>
-      </div>
-
-      ${/* Inspector */''}
-      <aside class="inspector">
-        <div class="inspector-header">
-          ${selectedStep ? 'Step Inspector' : 'Inspector'}
-        </div>
-        <div class="inspector-body">
-          ${selectedStepEl}
-        </div>
-      </aside>
-    </div>
-  `;
+ return html`<div class="app"><aside class="sidebar"><div class="brand"><div class="brand-kicker">Conversation Flow</div><div class="brand-title"><em>Step</em> Editor</div></div>
+   <div class="palette" data-testid="flow-palette"><div class="palette-label">Tipos de paso</div>${PALETTE_ITEMS.map(i=>html`<div class="palette-item" data-testid="flow-palette-item" draggable onDragStart=${e=>onDragStart(e,i.kind)}><span style=${{fontSize:14}}>${i.icon}</span><span class="palette-dot" style=${{background:i.color}}></span>${i.label}</div>`)}
+   <div class="palette-label" style=${{marginTop:20}}>Subflows</div><button class="toolbar-btn" data-testid="flow-add-subflow" onClick=${addSubflow} style=${{width:'100%',fontSize:11,padding:'6px 10px'}}>+ Añadir subflow</button>
+   ${subflows.map(f=>html`<div data-testid="flow-subflow-${f.id}" style=${{display:'flex',alignItems:'center',gap:6,padding:'6px 10px',marginTop:6,border:'1px dashed rgba(212,165,116,.3)',borderRadius:8,fontSize:11}}>
+     <span style=${{color:'rgba(245,240,232,.6)',fontFamily:"'JetBrains Mono',monospace"}}>📁 ${f.label}</span>
+     <button onClick=${()=>toggleSubflow(f.id)} style=${{marginLeft:'auto',background:'transparent',border:'none',color:'#d4a574',cursor:'pointer',fontSize:10}}>${f.collapsed?'▶':'▼'}</button></div>`)}
+   </div>
+   <div class="tools-panel" data-testid="flow-tools-panel"><div class="palette-label">Tools (KB)</div>${tools.map(t=>html`<div class="tool-item" data-testid="flow-tool-item" draggable onDragStart=${e=>onToolDragStart(e,t)}><span class="tool-name">${t.name}</span><span class="tool-desc">${(t.description||'').slice(0,50)}</span></div>`)}${!tools.length?html`<div style=${{fontSize:10,color:'rgba(245,240,232,.3)'}}>Sin tools en esta KB</div>`:''}</div>
+ </aside>
+ <div class="canvas-wrap" onDrop=${onDrop} onDragOver=${onDragOver}>
+   <${ReactFlow} nodes=${nodes} edges=${edges} onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange} onConnect=${onConnect} onNodeClick=${onNodeClick} onPaneClick=${onPaneClick} nodeTypes=${nodeTypes} fitView fitViewOptions=${{padding:0.3}} colorMode="dark" defaultEdgeOptions=${{style:{stroke:'rgba(212,165,116,.2)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.4'}}}>
+     <${Background} color="rgba(212,165,116,.04)" gap=${24}/>
+     <${Controls} showInteractive=${false}/>
+     <${MiniMap} nodeColor=${()=>'rgba(212,165,116,.2)'} maskColor="rgba(10,10,15,.7)" style=${{background:'rgba(10,10,15,.5)'}}/>
+   </${ReactFlow}>
+   <div class="toolbar">
+     <button class="toolbar-btn" onClick=${()=>{const d=rankdir==='LR'?'TB':'LR';setRankdir(d)}} data-testid="flow-layout-toggle">⟲ ${rankdir==='LR'?'↓ Top-Down':'→ Left-Right'}</button>
+     <button class="toolbar-btn" onClick=${()=>{setLinking(selectedStepId)}} data-testid="flow-link-horizontal" style=${{background:linking?'rgba(201,125,185,.2)':''}}>🔗 Link (L)</button>
+     <button class="toolbar-btn primary">💾 Save</button>
+   </div>
+ </div>
+ <aside class="inspector"><div class="inspector-header" data-testid="flow-inspector">${selectedStep?'Step Inspector':'Inspector'}</div><div class="inspector-body">${selectedStepEl}</div></aside></div>`
 }
-
-const root = createRoot(document.getElementById('root'));
-root.render(html`<${ReactFlowProvider}><${App} /></${ReactFlowProvider}>`);
-</script>
-</body>
-</html>
+createRoot(document.getElementById('root')).render(html`<${ReactFlowProvider}><${App}/></${ReactFlowProvider}>`)
+</script></body></html>

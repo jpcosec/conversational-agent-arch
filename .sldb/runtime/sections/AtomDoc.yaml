@@ -1,57 +1,4 @@
 documents:
-- doc_name: atom-api-gateway-y-state-router
-  sections:
-  - path: api-gateway-y-state-router
-    title: API Gateway y State Router
-    breadcrumbs:
-    - API Gateway y State Router
-    about:
-    - API Gateway y State Router
-    - api gateway y state router
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: api-gateway-y-state-router
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: api-gateway-y-state-router/answer
-    title: Answer
-    breadcrumbs:
-    - API Gateway y State Router
-    - Answer
-    about:
-    - API Gateway y State Router
-    - api gateway y state router
-    - Answer
-    - answer
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
 - doc_name: atom-agente-conversador
   sections:
   - path: agente-conversador
@@ -61,23 +8,19 @@ documents:
     about:
     - Agente Conversador
     - agente conversador
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:generation
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:generation
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: agente-conversador
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 11
+    line_end: 12
   - path: agente-conversador/answer
     title: Answer
     breadcrumbs:
@@ -88,76 +31,64 @@ documents:
     - agente conversador
     - Answer
     - answer
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:generation
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:generation
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 13
+    line_end: 14
 - doc_name: atom-ontologizador-context-compiler
   sections:
   - path: ontologizador-context-compiler
-    title: Ontologizador Context Compiler
+    title: Ontologizador (Context Compiler)
     breadcrumbs:
-    - Ontologizador Context Compiler
+    - Ontologizador (Context Compiler)
     about:
-    - Ontologizador Context Compiler
+    - Ontologizador (Context Compiler)
     - ontologizador context compiler
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:retrieval
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:retrieval
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: ontologizador-context-compiler
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 11
+    line_end: 12
   - path: ontologizador-context-compiler/answer
     title: Answer
     breadcrumbs:
-    - Ontologizador Context Compiler
+    - Ontologizador (Context Compiler)
     - Answer
     about:
-    - Ontologizador Context Compiler
+    - Ontologizador (Context Compiler)
     - ontologizador context compiler
     - Answer
     - answer
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:retrieval
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
     - layer:runtime
-    - system:kb-agent
-    - topic:retrieval
+    - role:engine
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 13
+    line_end: 14
 - doc_name: atom-perfilador-asincrono
   sections:
   - path: perfilador-asincrono
@@ -167,23 +98,21 @@ documents:
     about:
     - Perfilador Asincrono
     - perfilador asincrono
-    - domain:self.architecture.backend
+    - family:user
     - layer:runtime
-    - system:kb-agent
-    - topic:profiling
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
+    - family:user
     - layer:runtime
-    - system:kb-agent
-    - topic:profiling
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: perfilador-asincrono
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 12
+    line_end: 13
   - path: perfilador-asincrono/answer
     title: Answer
     breadcrumbs:
@@ -194,23 +123,21 @@ documents:
     - perfilador asincrono
     - Answer
     - answer
-    - domain:self.architecture.backend
+    - family:user
     - layer:runtime
-    - system:kb-agent
-    - topic:profiling
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
+    - family:user
     - layer:runtime
-    - system:kb-agent
-    - topic:profiling
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 14
+    line_end: 15
 - doc_name: atom-reflector-batch
   sections:
   - path: reflector-batch
@@ -220,23 +147,21 @@ documents:
     about:
     - Reflector Batch
     - reflector batch
-    - domain:self.architecture.backend
-    - layer:persistence
-    - system:kb-agent
-    - topic:consolidation
+    - family:domain
+    - layer:runtime
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:persistence
-    - system:kb-agent
-    - topic:consolidation
+    - family:domain
+    - layer:runtime
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: reflector-batch
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 12
+    line_end: 13
   - path: reflector-batch/answer
     title: Answer
     breadcrumbs:
@@ -247,653 +172,264 @@ documents:
     - reflector batch
     - Answer
     - answer
-    - domain:self.architecture.backend
-    - layer:persistence
-    - system:kb-agent
-    - topic:consolidation
+    - family:domain
+    - layer:runtime
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:persistence
-    - system:kb-agent
-    - topic:consolidation
+    - family:domain
+    - layer:runtime
+    - role:background
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-sql-capa-identidad-y-estado
+    line_start: 14
+    line_end: 15
+- doc_name: atom-policy-gate-como-agente-separado-con-rama-kb-propia
   sections:
-  - path: sql-capa-identidad-y-estado
-    title: SQL Capa Identidad y Estado
+  - path: policy-gate-como-agente-separado-con-rama-kb-propia
+    title: Policy gate como agente separado con rama KB propia
     breadcrumbs:
-    - SQL Capa Identidad y Estado
+    - Policy gate como agente separado con rama KB propia
     about:
-    - SQL Capa Identidad y Estado
-    - sql capa identidad y estado
-    - domain:self.data.persistence
-    - layer:document-model
-    - system:sql
-    - topic:identity
+    - Policy gate como agente separado con rama KB propia
+    - policy gate como agente separado con rama kb propia
+    - domain:psp
+    - system:antonia
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.data.persistence
-    - layer:document-model
-    - system:sql
-    - topic:identity
+    - domain:psp
+    - system:antonia
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: sql-capa-identidad-y-estado
+    slug: policy-gate-como-agente-separado-con-rama-kb-propia
     level: 1
-    line_start: 13
-    line_end: 14
-  - path: sql-capa-identidad-y-estado/answer
+    line_start: 12
+    line_end: 13
+  - path: policy-gate-como-agente-separado-con-rama-kb-propia/answer
     title: Answer
     breadcrumbs:
-    - SQL Capa Identidad y Estado
+    - Policy gate como agente separado con rama KB propia
     - Answer
     about:
-    - SQL Capa Identidad y Estado
-    - sql capa identidad y estado
+    - Policy gate como agente separado con rama KB propia
+    - policy gate como agente separado con rama kb propia
     - Answer
     - answer
-    - domain:self.data.persistence
-    - layer:document-model
-    - system:sql
-    - topic:identity
+    - domain:psp
+    - system:antonia
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.data.persistence
-    - layer:document-model
-    - system:sql
-    - topic:identity
+    - domain:psp
+    - system:antonia
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-apis-externas-integracion
+    line_start: 14
+    line_end: 15
+- doc_name: atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   sections:
-  - path: apis-externas-integracion
-    title: APIs Externas Integracion
+  - path: mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+    title: Mapeo cadena de agentes PSP sobre el runtime Antonia
     breadcrumbs:
-    - APIs Externas Integracion
+    - Mapeo cadena de agentes PSP sobre el runtime Antonia
     about:
-    - APIs Externas Integracion
-    - apis externas integracion
-    - domain:self.architecture.integration
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - Mapeo cadena de agentes PSP sobre el runtime Antonia
+    - mapeo cadena de agentes psp sobre el runtime antonia
+    - domain:psp
+    - system:antonia
+    - topic:arquitectura
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.integration
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - domain:psp
+    - system:antonia
+    - topic:arquitectura
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: apis-externas-integracion
+    slug: mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
     level: 1
-    line_start: 13
-    line_end: 14
-  - path: apis-externas-integracion/answer
+    line_start: 12
+    line_end: 13
+  - path: mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia/answer
     title: Answer
     breadcrumbs:
-    - APIs Externas Integracion
+    - Mapeo cadena de agentes PSP sobre el runtime Antonia
     - Answer
     about:
-    - APIs Externas Integracion
-    - apis externas integracion
+    - Mapeo cadena de agentes PSP sobre el runtime Antonia
+    - mapeo cadena de agentes psp sobre el runtime antonia
     - Answer
     - answer
-    - domain:self.architecture.integration
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - domain:psp
+    - system:antonia
+    - topic:arquitectura
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.integration
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - domain:psp
+    - system:antonia
+    - topic:arquitectura
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-contexto-compilado
+    line_start: 14
+    line_end: 15
+- doc_name: "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   sections:
-  - path: contexto-compilado
-    title: Contexto Compilado
+  - path: clasificaci-n-de-4-ramas-del-flujo-psp
+    title: "Clasificaci\xF3n de 4 ramas del flujo PSP"
     breadcrumbs:
-    - Contexto Compilado
+    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
     about:
-    - Contexto Compilado
-    - contexto compilado
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:context
+    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - clasificaci n de 4 ramas del flujo psp
+    - domain:psp
+    - system:antonia
+    - topic:clasificacion
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:context
+    - domain:psp
+    - system:antonia
+    - topic:clasificacion
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: contexto-compilado
+    slug: clasificaci-n-de-4-ramas-del-flujo-psp
     level: 1
-    line_start: 13
-    line_end: 14
-  - path: contexto-compilado/answer
+    line_start: 12
+    line_end: 13
+  - path: clasificaci-n-de-4-ramas-del-flujo-psp/answer
     title: Answer
     breadcrumbs:
-    - Contexto Compilado
+    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
     - Answer
     about:
-    - Contexto Compilado
-    - contexto compilado
+    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - clasificaci n de 4 ramas del flujo psp
     - Answer
     - answer
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:context
+    - domain:psp
+    - system:antonia
+    - topic:clasificacion
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:context
+    - domain:psp
+    - system:antonia
+    - topic:clasificacion
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-turno-de-sistema-system-turn
+    line_start: 14
+    line_end: 15
+- doc_name: atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   sections:
-  - path: turno-de-sistema-system-turn
-    title: Turno de Sistema System Turn
+  - path: grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+    title: Grafo de steps actual de Antonia y extensiones PSP requeridas
     breadcrumbs:
-    - Turno de Sistema System Turn
+    - Grafo de steps actual de Antonia y extensiones PSP requeridas
     about:
-    - Turno de Sistema System Turn
-    - turno de sistema system turn
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - Grafo de steps actual de Antonia y extensiones PSP requeridas
+    - grafo de steps actual de antonia y extensiones psp requeridas
+    - domain:psp
+    - system:antonia
+    - topic:flujo-conversacional
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - domain:psp
+    - system:antonia
+    - topic:flujo-conversacional
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: turno-de-sistema-system-turn
+    slug: grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
     level: 1
-    line_start: 13
-    line_end: 14
-  - path: turno-de-sistema-system-turn/answer
+    line_start: 12
+    line_end: 13
+  - path: grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas/answer
     title: Answer
     breadcrumbs:
-    - Turno de Sistema System Turn
+    - Grafo de steps actual de Antonia y extensiones PSP requeridas
     - Answer
     about:
-    - Turno de Sistema System Turn
-    - turno de sistema system turn
+    - Grafo de steps actual de Antonia y extensiones PSP requeridas
+    - grafo de steps actual de antonia y extensiones psp requeridas
     - Answer
     - answer
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - domain:psp
+    - system:antonia
+    - topic:flujo-conversacional
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:tool-calling
+    - domain:psp
+    - system:antonia
+    - topic:flujo-conversacional
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer
     level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-trigger-sintetico-cron
+    line_start: 14
+    line_end: 15
+- doc_name: "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   sections:
-  - path: trigger-sintetico-cron
-    title: Trigger Sintetico Cron
+  - path: decisi-n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
+    title: "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
     breadcrumbs:
-    - Trigger Sintetico Cron
+    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
     about:
-    - Trigger Sintetico Cron
-    - trigger sintetico cron
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:cron
-    - topic:proactivity
+    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - decisi n familia gate con modelo gatecriterion para el policy gate
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:cron
-    - topic:proactivity
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
-    slug: trigger-sintetico-cron
+    slug: decisi-n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
     level: 1
     line_start: 13
     line_end: 14
-  - path: trigger-sintetico-cron/answer
+  - path: decisi-n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate/answer
     title: Answer
     breadcrumbs:
-    - Trigger Sintetico Cron
+    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
     - Answer
     about:
-    - Trigger Sintetico Cron
-    - trigger sintetico cron
+    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - decisi n familia gate con modelo gatecriterion para el policy gate
     - Answer
     - answer
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:cron
-    - topic:proactivity
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
     semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:cron
-    - topic:proactivity
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-debounce-buffer-agrupacion
-  sections:
-  - path: debounce-buffer-agrupacion
-    title: Debounce Buffer Agrupacion
-    breadcrumbs:
-    - Debounce Buffer Agrupacion
-    about:
-    - Debounce Buffer Agrupacion
-    - debounce buffer agrupacion
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: debounce-buffer-agrupacion
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: debounce-buffer-agrupacion/answer
-    title: Answer
-    breadcrumbs:
-    - Debounce Buffer Agrupacion
-    - Answer
-    about:
-    - Debounce Buffer Agrupacion
-    - debounce buffer agrupacion
-    - Answer
-    - answer
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:routing
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-aislamiento-estricto-de-pii
-  sections:
-  - path: aislamiento-estricto-de-pii
-    title: Aislamiento Estricto de PII
-    breadcrumbs:
-    - Aislamiento Estricto de PII
-    about:
-    - Aislamiento Estricto de PII
-    - aislamiento estricto de pii
-    - domain:standards.privacy
-    - layer:persistence
-    - system:sql
-    - topic:pii
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:standards.privacy
-    - layer:persistence
-    - system:sql
-    - topic:pii
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: aislamiento-estricto-de-pii
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: aislamiento-estricto-de-pii/answer
-    title: Answer
-    breadcrumbs:
-    - Aislamiento Estricto de PII
-    - Answer
-    about:
-    - Aislamiento Estricto de PII
-    - aislamiento estricto de pii
-    - Answer
-    - answer
-    - domain:standards.privacy
-    - layer:persistence
-    - system:sql
-    - topic:pii
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:standards.privacy
-    - layer:persistence
-    - system:sql
-    - topic:pii
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-historial-de-conversacion-sin-pii
-  sections:
-  - path: historial-de-conversacion-sin-pii
-    title: Historial de Conversacion sin PII
-    breadcrumbs:
-    - Historial de Conversacion sin PII
-    about:
-    - Historial de Conversacion sin PII
-    - historial de conversacion sin pii
-    - domain:self.data.persistence
-    - layer:persistence
-    - system:sql
-    - topic:history
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.data.persistence
-    - layer:persistence
-    - system:sql
-    - topic:history
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: historial-de-conversacion-sin-pii
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: historial-de-conversacion-sin-pii/answer
-    title: Answer
-    breadcrumbs:
-    - Historial de Conversacion sin PII
-    - Answer
-    about:
-    - Historial de Conversacion sin PII
-    - historial de conversacion sin pii
-    - Answer
-    - answer
-    - domain:self.data.persistence
-    - layer:persistence
-    - system:sql
-    - topic:history
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.data.persistence
-    - layer:persistence
-    - system:sql
-    - topic:history
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-modelos-de-conocimiento-tipados
-  sections:
-  - path: modelos-de-conocimiento-tipados
-    title: Modelos de Conocimiento Tipados
-    breadcrumbs:
-    - Modelos de Conocimiento Tipados
-    about:
-    - Modelos de Conocimiento Tipados
-    - modelos de conocimiento tipados
-    - domain:self.architecture.backend
-    - layer:document-model
-    - system:sldb
-    - topic:knowledge-models
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:document-model
-    - system:sldb
-    - topic:knowledge-models
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: modelos-de-conocimiento-tipados
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: modelos-de-conocimiento-tipados/answer
-    title: Answer
-    breadcrumbs:
-    - Modelos de Conocimiento Tipados
-    - Answer
-    about:
-    - Modelos de Conocimiento Tipados
-    - modelos de conocimiento tipados
-    - Answer
-    - answer
-    - domain:self.architecture.backend
-    - layer:document-model
-    - system:sldb
-    - topic:knowledge-models
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:document-model
-    - system:sldb
-    - topic:knowledge-models
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-grafo-de-flujo-conversacional
-  sections:
-  - path: grafo-de-flujo-conversacional
-    title: Grafo de Flujo Conversacional
-    breadcrumbs:
-    - Grafo de Flujo Conversacional
-    about:
-    - Grafo de Flujo Conversacional
-    - grafo de flujo conversacional
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:conversation-flow
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:conversation-flow
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: grafo-de-flujo-conversacional
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: grafo-de-flujo-conversacional/answer
-    title: Answer
-    breadcrumbs:
-    - Grafo de Flujo Conversacional
-    - Answer
-    about:
-    - Grafo de Flujo Conversacional
-    - grafo de flujo conversacional
-    - Answer
-    - answer
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:conversation-flow
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:runtime
-    - system:kb-agent
-    - topic:conversation-flow
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-capa-frontend-del-runtime
-  sections:
-  - path: capa-frontend-del-runtime
-    title: Capa Frontend del Runtime
-    breadcrumbs:
-    - Capa Frontend del Runtime
-    about:
-    - Capa Frontend del Runtime
-    - capa frontend del runtime
-    - domain:self.architecture.frontend
-    - layer:frontend
-    - system:kb-agent
-    - topic:ui
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.frontend
-    - layer:frontend
-    - system:kb-agent
-    - topic:ui
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: capa-frontend-del-runtime
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: capa-frontend-del-runtime/answer
-    title: Answer
-    breadcrumbs:
-    - Capa Frontend del Runtime
-    - Answer
-    about:
-    - Capa Frontend del Runtime
-    - capa frontend del runtime
-    - Answer
-    - answer
-    - domain:self.architecture.frontend
-    - layer:frontend
-    - system:kb-agent
-    - topic:ui
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.frontend
-    - layer:frontend
-    - system:kb-agent
-    - topic:ui
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 15
-    line_end: 16
-- doc_name: atom-knowledge-base-cli
-  sections:
-  - path: knowledge-base-cli
-    title: Knowledge Base CLI
-    breadcrumbs:
-    - Knowledge Base CLI
-    about:
-    - Knowledge Base CLI
-    - knowledge base cli
-    - domain:self.architecture.backend
-    - layer:cli
-    - system:kb-agent
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:cli
-    - system:kb-agent
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: knowledge-base-cli
-    level: 1
-    line_start: 13
-    line_end: 14
-  - path: knowledge-base-cli/answer
-    title: Answer
-    breadcrumbs:
-    - Knowledge Base CLI
-    - Answer
-    about:
-    - Knowledge Base CLI
-    - knowledge base cli
-    - Answer
-    - answer
-    - domain:self.architecture.backend
-    - layer:cli
-    - system:kb-agent
-    - topic:retrieval
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - domain:self.architecture.backend
-    - layer:cli
-    - system:kb-agent
-    - topic:retrieval
+    - domain:psp
+    - system:antonia
+    - topic:modelacion
+    - topic:policy-gate
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer

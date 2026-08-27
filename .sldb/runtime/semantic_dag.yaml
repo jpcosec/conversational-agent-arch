@@ -1,29 +1,4 @@
 nodes:
-- id: domain:self
-  parents: []
-- id: domain:self.architecture
-  parents:
-  - domain:self
-- id: domain:self.architecture.backend
-  parents:
-  - domain:self.architecture
-- id: domain:self.architecture.frontend
-  parents:
-  - domain:self.architecture
-- id: domain:self.architecture.integration
-  parents:
-  - domain:self.architecture
-- id: domain:self.data
-  parents:
-  - domain:self
-- id: domain:self.data.persistence
-  parents:
-  - domain:self.data
-- id: domain:standards
-  parents: []
-- id: domain:standards.privacy
-  parents:
-  - domain:standards
 - id: type
   parents: []
 - id: type.desk
