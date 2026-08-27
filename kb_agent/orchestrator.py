@@ -17,10 +17,11 @@ import asyncio
 import json
 import logging
 import os
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
@@ -33,6 +34,7 @@ from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.recordatorios import Recordatorios  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
+from kb_agent.models_sql.turns import Turns
 from kb_agent.ontologizador.compiler import ContextCompiler
 from kb_agent.ontologizador.kgdb_reader import KGDBReader
 from kb_agent.ontologizador.sldb_reader import SLDBReader
@@ -236,7 +238,9 @@ class Orchestrator:
                 kind = "nl"
                 draft_response = response
                 # Policy Gate: validar respuesta redactada contra criterios gate
-                gate_result = self._policy_gate(response, compiled)
+                gate_result = self._policy_gate(
+                    response, compiled, self._session_tools_called(session, user.id)
+                )
                 if not gate_result["approved"]:
                     kind = "derived"
                     response = (
@@ -320,6 +324,14 @@ class Orchestrator:
                 "tool": {"called": True, **system_turn} if isinstance(system_turn, dict) else {"called": False},
             }
 
+            self._persist_turn(
+                session,
+                user_id=user.id,
+                external_id=external_id,
+                decisions=decisions,
+                draft=reply_text,
+            )
+
             return {
                 "user_id": user.id,
                 "question": message,
@@ -399,7 +411,80 @@ class Orchestrator:
         tool = payload.get("tool") if isinstance(payload, Mapping) else None
         return str(tool) if tool else None
 
-    def _policy_gate(self, response: str, compiled: Mapping[str, Any]) -> dict[str, Any]:
+    @staticmethod
+    def _persist_turn(
+        session: Session,
+        *,
+        user_id: int,
+        external_id: str,
+        decisions: Mapping[str, Any],
+        draft: str,
+    ) -> None:
+        """Persiste el rastro del turno en ``turns`` (fase 3.1).
+
+        Hasta ahora el rastro se calculaba y se descartaba: solo viajaba en la
+        respuesta HTTP, y por eso al reabrir una conversacion el Turn Inspector
+        mostraba "0 atoms, step —". Se guarda el borrador del Conversador ANTES
+        del gate: si el gate lo rechaza, el texto que ve el paciente es otro y
+        queremos poder auditar los dos.
+
+        No rompe el turno si falla: el rastro es para auditoria, no para
+        responderle a la paciente. Si la tabla no existe (base vieja sin la
+        migracion) se ignora.
+        """
+        step = decisions.get("step") or {}
+        tool = decisions.get("tool") or {}
+        try:
+            session.add(
+                Turns(
+                    turn_id=uuid4().hex[:12],
+                    session_id=external_id,
+                    user_id=user_id,
+                    step_before=step.get("before"),
+                    step_after=step.get("after"),
+                    decision=dict(decisions.get("orquestador") or {}),
+                    draft=str((decisions.get("conversador") or {}).get("draft") or draft),
+                    gate=dict(decisions.get("gate") or {}),
+                    bundle=list((decisions.get("ruteador") or {}).get("bundle") or []),
+                    tool=dict(tool) if tool else None,
+                )
+            )
+            session.commit()
+        except Exception:
+            session.rollback()
+            logger.exception("no se pudo persistir el rastro del turno en turns")
+
+    @staticmethod
+    def _session_tools_called(session: Session, user_id: int) -> list[str]:
+        """Tools que ya se ejecutaron antes en esta conversacion.
+
+        El pre-filtro del gate es por turno, pero una afirmacion puede referirse
+        legitimamente a algo hecho en un turno anterior. Medido en el CLI real:
+        el turno 2 ejecuto ``agendar_recordatorio`` (fila real en SQL) y en el
+        turno 3 el agente respondio "ya esta confirmado tu recordatorio" --
+        cierto-- con ``tool_called`` False en ese turno; el gate lo derivaba a
+        un humano sin motivo.
+
+        Se leen de ``turns`` (fase 3.1). Si la tabla todavia no existe en una
+        base vieja, se devuelve vacio: el gate vuelve a su comportamiento por
+        turno, que es el conservador.
+        """
+        try:
+            rows = session.query(Turns.tool).filter(Turns.user_id == user_id).all()
+        except Exception:
+            return []
+        names: list[str] = []
+        for (tool,) in rows:
+            if isinstance(tool, Mapping) and tool.get("called") and tool.get("tool"):
+                names.append(str(tool["tool"]))
+        return names
+
+    def _policy_gate(
+        self,
+        response: str,
+        compiled: Mapping[str, Any],
+        session_tools_called: Sequence[str] = (),
+    ) -> dict[str, Any]:
         """Veredicto del ``GateAgent`` (fase 2.3) sobre la respuesta redactada.
 
         ``tool_called`` se deriva de ``compiled["system_turn"]``: es la unica
@@ -427,7 +512,13 @@ class Orchestrator:
         step = compiled.get("flow_node")
 
         try:
-            return self.gate.evaluate(response, tool_called=tool_called, tool_name=tool_name, step=step)
+            return self.gate.evaluate(
+                response,
+                tool_called=tool_called,
+                tool_name=tool_name,
+                step=step,
+                session_tools_called=session_tools_called,
+            )
         except Exception:
             logger.exception("GateAgent fallo evaluando la respuesta; fail-open (approved=True)")
             return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": [], "fail_open": True}

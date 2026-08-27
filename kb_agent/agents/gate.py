@@ -265,12 +265,27 @@ class GateAgent:
         tool_called: bool,
         tool_name: str | None = None,
         step: str | None = None,
+        session_tools_called: Sequence[str] = (),
     ) -> dict[str, Any]:
-        """Veredicto sobre ``response``. Puede lanzar (ver ``Orchestrator._policy_gate``)."""
+        """Veredicto sobre ``response``. Puede lanzar (ver ``Orchestrator._policy_gate``).
+
+        ``session_tools_called`` son las tools que YA se ejecutaron antes en
+        esta conversacion. El pre-filtro es por turno, pero la afirmacion del
+        agente puede referirse legitimamente a algo hecho en un turno previo:
+        medido en el CLI real, "agendame un recordatorio" ejecuto la tool en el
+        turno 2 y en el turno 3 ("si, dale, confirmalo") el agente respondio
+        "ya esta confirmado tu recordatorio" -- cierto, con ``tool_called``
+        False en ESE turno. Sin este dato el gate derivaba a un humano una
+        respuesta correcta.
+        """
         if not isinstance(response, str) or not response.strip():
             return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
 
-        if not tool_called and response_claims_completed_action(response):
+        if (
+            not tool_called
+            and not session_tools_called
+            and response_claims_completed_action(response)
+        ):
             return _prefilter_verdict(response, tool_name=tool_name)
 
         if not self._has_criteria:

@@ -68,9 +68,16 @@ class FakeGate:
         tool_called: bool,
         tool_name: str | None = None,
         step: str | None = None,
+        session_tools_called: Sequence[str] = (),
     ) -> dict[str, Any]:
         self.calls.append(
-            {"response": response, "tool_called": tool_called, "tool_name": tool_name, "step": step}
+            {
+                "response": response,
+                "tool_called": tool_called,
+                "tool_name": tool_name,
+                "step": step,
+                "session_tools_called": list(session_tools_called),
+            }
         )
         if self._raises:
             raise RuntimeError("FakeGate: fallo simulado del juez")
