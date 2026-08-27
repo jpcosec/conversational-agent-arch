@@ -319,6 +319,122 @@ DEMO_USERS = [
             },
         ],
     },
+    {
+        "external_id": "wa-56933344455",
+        "channel": "whatsapp",
+        "traits": [
+            (TRAITS["dudas"], 0.88, "reflector"),
+            (TRAITS["adherencia"], 0.64, "perfilador"),
+        ],
+        # Evento adverso: la rama de farmacovigilancia. Es el caso que mas
+        # importa del PSP y el que ejercita el gate de verdad.
+        "turns": [
+            {
+                "user": "me salio una roncha roja donde me inyecte y me arde",
+                "assistant": "Gracias por contarme. Voy a registrar lo que me describes para que el equipo del programa lo revise.",
+                "step_before": "steps.registro_estado",
+                "step_after": "steps.evento_adverso",
+                "allowed_transitions": ["steps.evento_adverso", "steps.agendar_recordatorio", "steps.derivacion_medinfo"],
+                "bundle": [
+                    {"doc_id": "rule-antonia-anti-alucinacion", "family": "domain", "motivo": "piso de seguridad", "score": None},
+                    {"doc_id": "rule-antonia-eventos-adversos", "family": "domain", "motivo": "piso de seguridad", "score": None},
+                    {"doc_id": "rule-antonia-no-diagnosticar", "family": "domain", "motivo": "piso de seguridad", "score": None},
+                    {"doc_id": "step-antonia-evento-adverso", "family": "conversation", "motivo": "grounding de steps.evento_adverso", "score": None},
+                    {"doc_id": "atom-antonia-ea", "family": "domain", "motivo": "similitud 0.84", "score": 0.84},
+                    {"doc_id": "atom-antonia-ea-administracion", "family": "domain", "motivo": "similitud 0.77", "score": 0.77},
+                ],
+                "reason": "La paciente describe una reaccion local en el sitio de aplicacion: es un evento adverso y corresponde navegar a esa rama y registrarlo sin interpretar el sintoma.",
+                "step_target": "steps.evento_adverso",
+                "step_target_vetado": None,
+                "gate": APPROVED_GATE,
+                "tool": {"called": False},
+            },
+            {
+                "user": "es grave? me tengo que preocupar?",
+                "assistant": GATE_HANDOFF_TEXT,
+                "draft": "No parece grave, suele ser una reaccion local leve que pasa sola en un par de dias.",
+                "step_before": "steps.evento_adverso",
+                "step_after": "steps.derivacion_medinfo",
+                "allowed_transitions": ["steps.despedida", "steps.derivacion_medinfo"],
+                "bundle": [
+                    {"doc_id": "rule-antonia-anti-alucinacion", "family": "domain", "motivo": "piso de seguridad", "score": None},
+                    {"doc_id": "rule-antonia-no-diagnosticar", "family": "domain", "motivo": "piso de seguridad", "score": None},
+                    {"doc_id": "gate-antonia-diagnostico", "family": "gate", "motivo": "similitud 0.86", "score": 0.86},
+                    {"doc_id": "atom-antonia-ea-esperados", "family": "domain", "motivo": "similitud 0.79", "score": 0.79},
+                    {"doc_id": "step-antonia-derivacion-medinfo", "family": "conversation", "motivo": "grounding de steps.derivacion_medinfo", "score": None},
+                ],
+                "reason": "Pregunta por gravedad: es una valoracion clinica que Antonia no puede hacer; corresponde derivar.",
+                "step_target": "steps.derivacion_medinfo",
+                "step_target_vetado": None,
+                # El borrador calificaba la gravedad ("no parece grave", "pasa
+                # sola"): el gate lo rechaza por gate-antonia-diagnostico y lo
+                # reemplaza por el handoff. draft y texto final quedan distintos.
+                "gate": {
+                    "approved": False,
+                    "reasons": [
+                        "La respuesta califica la gravedad de un sintoma y anticipa su evolucion, lo que constituye una valoracion clinica no sostenida por el corpus.",
+                    ],
+                    "action": "handoff",
+                    "criterion_ids": ["gate-antonia-diagnostico"],
+                },
+                "tool": {"called": False},
+            },
+        ],
+    },
+    {
+        "external_id": "wa-56911122233",
+        "channel": "whatsapp",
+        "traits": [
+            (TRAITS["recordatorios"], 0.81, "perfilador"),
+        ],
+        # Enrolamiento: paciente que NO viene inscrita en el PSP (users.enrolled
+        # False). Ejercita el step nuevo y la tool registrar_enrolamiento.
+        "turns": [
+            {
+                "user": "hola, me hablaron del programa de acompañamiento pero no se si estoy inscrita",
+                "assistant": "Hola. Te cuento en que consiste y, si quieres, te inscribo. Necesito tu nombre, un telefono y un correo de contacto.",
+                "step_before": None,
+                "step_after": "steps.enrolamiento",
+                "allowed_transitions": ["steps.derivacion_medinfo", "steps.onboarding"],
+                "bundle": [
+                    {"doc_id": "rule-antonia-anti-alucinacion", "family": "domain", "motivo": "piso de seguridad", "score": None},
+                    {"doc_id": "step-antonia-enrolamiento", "family": "conversation", "motivo": "grounding de steps.enrolamiento", "score": None},
+                    {"doc_id": "self-antonia", "family": "self", "motivo": "grounding de steps.enrolamiento", "score": None},
+                    {"doc_id": "atom-antonia-bienvenida", "family": "domain", "motivo": "similitud 0.73", "score": 0.73},
+                ],
+                "reason": "La persona no figura inscrita (enrolled=False): corresponde el step de enrolamiento y pedir los datos de contacto de a uno.",
+                "step_target": "steps.enrolamiento",
+                "step_target_vetado": None,
+                "gate": APPROVED_GATE,
+                "tool": {"called": False},
+            },
+            {
+                "user": "Carolina Rojas, +56911122233, carolina.rojas@ejemplo.cl",
+                "assistant": "Listo Carolina, quedaste inscrita en el programa. Ahora te acompaño con tu tratamiento.",
+                "step_before": "steps.enrolamiento",
+                "step_after": "steps.onboarding",
+                "allowed_transitions": ["steps.derivacion_medinfo", "steps.onboarding"],
+                "bundle": [
+                    {"doc_id": "rule-antonia-anti-alucinacion", "family": "domain", "motivo": "piso de seguridad", "score": None},
+                    {"doc_id": "step-antonia-enrolamiento", "family": "conversation", "motivo": "grounding de steps.enrolamiento", "score": None},
+                    {"doc_id": "tool-antonia-registrar-enrolamiento", "family": "self", "motivo": "la tool del step activo, con los tres slots completos", "score": None},
+                ],
+                "reason": "Estan los tres slots requeridos (nombre, telefono, correo): corresponde ejecutar registrar_enrolamiento y pasar a onboarding.",
+                "step_target": "steps.onboarding",
+                "step_target_vetado": None,
+                "gate": SKIPPED_GATE_TOOL_CALL,
+                # PII: el rastro guarda si el dato se entrego, NUNCA su valor
+                # (ver kb_agent/tools/enrolamiento.py).
+                "tool": {
+                    "called": True,
+                    "tool": "registrar_enrolamiento",
+                    "status": "ok",
+                    "args": {"nombre_provisto": True, "telefono_provisto": True, "mail_provisto": True},
+                    "enrolled": True,
+                },
+            },
+        ],
+    },
 ]
 
 
