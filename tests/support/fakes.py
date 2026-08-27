@@ -35,6 +35,48 @@ class FakeConversador:
         return f"[nl] {' | '.join(facts[:2])}{suffix}"
 
 
+class FakeGate:
+    """Veredicto determinista para tests offline (``GateAgent``, fase 2.3).
+
+    ``Orchestrator.__init__`` construye un ``GateAgent`` real (que necesita
+    un cliente LLM) cuando no se inyecta ``gate=...``. Este doble evita esa
+    construccion -- y cualquier llamada a un modelo -- en
+    ``offline_orchestrator``, igual que ``FakeConversador``/``FakeTraitMapper``
+    evitan la llamada real para el resto del turno.
+
+    Por defecto aprueba todo (``approved=True``). ``verdict_fn`` permite
+    simular un rechazo del juez; ``raises=True`` hace que ``evaluate`` lance,
+    para ejercer el fail-open de ``Orchestrator._policy_gate``.
+    """
+
+    def __init__(
+        self,
+        verdict_fn: Callable[..., dict[str, Any]] | None = None,
+        *,
+        raises: bool = False,
+    ) -> None:
+        self.calls: list[dict[str, Any]] = []
+        self._verdict_fn = verdict_fn
+        self._raises = raises
+
+    def evaluate(
+        self,
+        response: str,
+        *,
+        tool_called: bool,
+        tool_name: str | None = None,
+        step: str | None = None,
+    ) -> dict[str, Any]:
+        self.calls.append(
+            {"response": response, "tool_called": tool_called, "tool_name": tool_name, "step": step}
+        )
+        if self._raises:
+            raise RuntimeError("FakeGate: fallo simulado del juez")
+        if self._verdict_fn is not None:
+            return self._verdict_fn(response, tool_called=tool_called, tool_name=tool_name, step=step)
+        return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
+
+
 class FakeTraitMapper:
     """Mapea texto -> traits por palabras clave (``{"vegetarian": [{"trait_id": ..., "confidence": ...}]}``)."""
 
@@ -106,6 +148,7 @@ def offline_orchestrator(
     *,
     conversador: FakeConversador | None = None,
     trait_mapper: FakeTraitMapper | None = None,
+    gate: FakeGate | None = None,
     tool_handlers: dict[str, Any] | None = None,
     **kwargs: Any,
 ) -> Orchestrator:
@@ -115,6 +158,7 @@ def offline_orchestrator(
         db_url=db_url,
         conversador=conversador or FakeConversador(),
         trait_mapper=trait_mapper or FakeTraitMapper(VEGETARIAN_MATCH),
+        gate=gate or FakeGate(),
         tool_handlers=tool_handlers,
         **kwargs,
     )

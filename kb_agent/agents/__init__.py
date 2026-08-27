@@ -14,6 +14,13 @@ from .base import (
     Tool,
     ToolCall,
 )
+from .gate import (
+    GateAgent,
+    GateVerdict,
+    PREFILTER_CRITERION_ID,
+    render_gate_criteria,
+    response_claims_completed_action,
+)
 
 __all__ = [
     "Agent",
@@ -25,4 +32,9 @@ __all__ = [
     "AfterModelCallback",
     "BeforeToolCallback",
     "AfterToolCallback",
+    "GateAgent",
+    "GateVerdict",
+    "PREFILTER_CRITERION_ID",
+    "render_gate_criteria",
+    "response_claims_completed_action",
 ]

@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import os
 from collections.abc import Mapping
 from datetime import datetime, timezone
@@ -25,6 +26,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE, decide_turn
+from kb_agent.agents.gate import GateAgent
 from kb_agent.llm import Conversador, GeminiConversador, GeminiTraitMapper, TraitMapper, make_gemini_client
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
@@ -41,6 +43,8 @@ from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, 
 from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
 from kb_agent.state_machine import RouterStateMachine
 from knowledge_base.operations import KnowledgeOperations
+
+logger = logging.getLogger(__name__)
 
 #: Canal cuando el external_id no trae prefijo reconocible ("<canal>:<id>").
 UNKNOWN_CHANNEL = "unknown"
@@ -65,6 +69,7 @@ class Orchestrator:
         fallback_message: str | None = None,
         conversador: Conversador | None = None,
         trait_mapper: TraitMapper | None = None,
+        gate: GateAgent | None = None,
         client: Any | None = None,
     ) -> None:
         self.kb_root = Path(kb_root).resolve()
@@ -90,11 +95,17 @@ class Orchestrator:
         )
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
 
-        # LLM: solo se crea el cliente real si no inyectaron ambos puertos.
-        if conversador is None or trait_mapper is None:
+        # LLM: solo se crea el cliente real si no inyectaron los 3 puertos
+        # (conversador, trait_mapper, gate). El gate LLM-judge (fase 2.3) se
+        # construye UNA vez aca, no por turno: los GateCriterion de la KB son
+        # contexto fijo (ver GateAgent.static_instruction).
+        if conversador is None or trait_mapper is None or gate is None:
             client = client or make_gemini_client()
         self.conversador: Conversador = conversador or GeminiConversador(client, self.model)
         self.trait_mapper: TraitMapper = trait_mapper or GeminiTraitMapper(client, self.model)
+        self.gate: GateAgent = gate or GateAgent(
+            client=client, model=self.model, gate_atoms=self._load_gate_atoms()
+        )
         self.event_bus = InProcessEventBus()
 
     @classmethod
@@ -212,7 +223,7 @@ class Orchestrator:
                 kind = "nl"
                 draft_response = response
                 # Policy Gate: validar respuesta redactada contra criterios gate
-                gate_result = self._validate_response(response, compiled)
+                gate_result = self._policy_gate(response, compiled)
                 if not gate_result["approved"]:
                     kind = "derived"
                     response = (
@@ -320,82 +331,70 @@ class Orchestrator:
         return response == self._fallback_text(compiled)
 
     # ── policy gate ───────────────────────────────────────────────────────
-    def _validate_response(self, response: str, compiled: Mapping[str, Any]) -> dict[str, Any]:
-        """Valida una respuesta redactada contra los criterios GateCriterion de la KB.
+    def _load_gate_atoms(self) -> list[dict[str, Any]]:
+        """Carga los ``GateCriterion`` (``type.knowledge.gate``) para el ``GateAgent``.
 
-        Lee los atomos type.knowledge.gate del store y verifica que la
-        respuesta no viole ningun criterio regulatorio. Si algun criterio
-        falla, devuelve ``approved: False`` con los motivos.
+        Fail-open a lista vacia: si la KB no tiene la familia gate o el
+        reader falla, ``GateAgent`` (ver su docstring) aprueba por defecto en
+        vez de que falle la construccion del orquestador.
+        """
+        try:
+            return self.reader.find("type.knowledge.gate")
+        except Exception:
+            return []
 
-        Los atomos gate son invisibles al compilador de turno, asi que se
-        leen directamente del reader.
+    @staticmethod
+    def _tool_name_from_system_turn(system_turn: Any) -> str | None:
+        """Nombre de la tool ejecutada, si ``system_turn`` trae un resultado real.
+
+        ``system_turn['content']`` es el payload de ``execute_tool`` serializado
+        a JSON (ver ``RouterStateMachine._resume_from_waiting_tool``); ese
+        payload trae ``{"tool": <nombre>, "status": ..., ...}``.
+        """
+        if not isinstance(system_turn, Mapping):
+            return None
+        content = system_turn.get("content")
+        if not isinstance(content, str):
+            return None
+        try:
+            payload = json.loads(content)
+        except (TypeError, ValueError):
+            return None
+        tool = payload.get("tool") if isinstance(payload, Mapping) else None
+        return str(tool) if tool else None
+
+    def _policy_gate(self, response: str, compiled: Mapping[str, Any]) -> dict[str, Any]:
+        """Veredicto del ``GateAgent`` (fase 2.3) sobre la respuesta redactada.
+
+        ``tool_called`` se deriva de ``compiled["system_turn"]``: es la unica
+        senal de que hubo una ejecucion REAL de tool grounding esta respuesta
+        (lo mismo que ya usan ``draft()``/``build_nl_prompt`` para inyectar el
+        resultado de la tool al Conversador). Este metodo solo se llama desde
+        la rama ``kind == "nl"`` de ``handle_turn``, que es precisamente donde
+        el Conversador puede redactar libremente y, sin este gate, afirmar una
+        accion que nunca ocurrio (el caso medido: "¡Listo! Te agendé..." con
+        ``tool.called: false``).
+
+        Fail-open EXPLICITO: si ``GateAgent.evaluate`` lanza -- LLM caido,
+        cuota agotada, parseo de la salida estructurada, lo que sea -- este
+        metodo NO propaga la excepcion. Loguea y aprueba (``approved=True``),
+        igual que el ``try/except`` que ya envolvia la lectura de la KB en la
+        version anterior de este gate: un juez caido no puede dejar a un
+        paciente sin respuesta.
         """
         if not isinstance(response, str) or not response.strip():
-            return {"approved": True, "reasons": []}
+            return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
+
+        system_turn = compiled.get("system_turn")
+        tool_called = isinstance(system_turn, Mapping) and bool(system_turn)
+        tool_name = self._tool_name_from_system_turn(system_turn) if tool_called else None
+        step = compiled.get("flow_node")
 
         try:
-            gate_atoms = self.reader.find("type.knowledge.gate")
+            return self.gate.evaluate(response, tool_called=tool_called, tool_name=tool_name, step=step)
         except Exception:
-            return {"approved": True, "reasons": []}
-
-        if not gate_atoms:
-            return {"approved": True, "reasons": []}
-
-        reasons: list[str] = []
-        # Normalizar igual que agent.py para consistencia
-        import unicodedata
-        response_norm = unicodedata.normalize("NFKD", response.lower())
-        response_norm = "".join(ch for ch in response_norm if not unicodedata.combining(ch))
-
-        for atom in gate_atoms:
-            criterion = str(atom.get("criterion", "") or "")
-            approval = str(atom.get("approval_condition", "") or "")
-            rejection = str(atom.get("rejection_action", "") or "")
-            atom_id = atom.get("id", "")
-
-            # Heuristicas deterministicas por criterio comun
-            # Se basan en los approval_condition de los 5 gate atoms
-            violated = False
-
-            if "dosis" in atom_id or "dosis" in criterion:
-                # No indica, sugiere ni comenta cambios de dosis
-                if any(p in response_norm for p in ["sube la dosis", "subir la dosis", "suba la dosis",
-                       "baja la dosis", "bajar la dosis", "baje la dosis",
-                       "aumenta la dosis", "aumentar la dosis", "aumente la dosis",
-                       "debes tomar", "tienes que tomar", "tiene que tomar",
-                       "cambia la dosis", "cambiar la dosis", "cambie la dosis",
-                       "ajusta la dosis", "ajustar la dosis", "ajuste la dosis"]):
-                    violated = True
-
-            if "diagnostico" in atom_id or "diagnostico" in criterion:
-                # No diagnostica ni interpreta sintomas
-                if any(p in response_norm for p in ["tienes diabetes", "tienes cancer", "tienes una enfermedad",
-                       "tienes un problema de", "diagnosticado", "padeces de", "sufres de",
-                       "tu enfermedad es", "tu problema es", "lo que tienes es",
-                       "esto es debido a", "la causa de tus sintomas"]):
-                    violated = True
-
-            if "corpus" in atom_id or "corpus" in criterion:
-                # La respuesta no debe indicar que usa informacion no aprobada
-                if any(p in response_norm for p in ["segun estudios", "investigaciones muestran",
-                       "la literatura dice", "se ha demostrado que", "segun la ciencia",
-                       "estudios demuestran", "estudios muestran",
-                       "cientificamente"]):
-                    violated = True
-
-            if "promesas" in atom_id or "promesas" in criterion:
-                # No promete resultados clinicos
-                if any(p in response_norm for p in ["vas a mejorar", "te curar", "te sanar",
-                       "100%", "garantiz", "resultado seguro", "sin riesgo"]):
-                    violated = True
-
-            if "derivacion" in atom_id or "derivacion" in criterion:
-                pass
-
-            if violated:
-                reasons.append(f"{atom_id}: {rejection}" if rejection else atom_id)
-
-        return {"approved": len(reasons) == 0, "reasons": reasons}
+            logger.exception("GateAgent fallo evaluando la respuesta; fail-open (approved=True)")
+            return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": [], "fail_open": True}
 
     # ── contexto del turno (para UIs) ─────────────────────────────────────
     @staticmethod
