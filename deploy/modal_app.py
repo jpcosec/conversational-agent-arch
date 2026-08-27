@@ -92,6 +92,10 @@ image = (
         "pydantic==2.13.4",
         # Migraciones del sqlite del volumen (ver _migrate_data_volume).
         "alembic==1.18.4",
+        # Embeddings de la query en runtime: sin esto el RouterAgent no puede
+        # llamar explore_multi y el bundle cae a la via deterministica SIN
+        # componente semantico (medido en el primer deploy).
+        "fastembed==0.8.0",
     )
     # Paquetes locales (no en PyPI): copian el codigo fuente y se instalan
     # via pip contra el directorio local (usa su pyproject.toml).
@@ -160,6 +164,9 @@ def serve():
     os.environ["CHAT_DB"] = "/data/ui-chat.sqlite"
     os.environ["PROFILING_DB"] = "/data/ui-chat.sqlite"
     os.environ["PYTHONPATH"] = REMOTE_APP_DIR
+    # El modelo de embeddings (~615MB) vive en el volumen: la imagen es
+    # inmutable y sin esto se re-descarga en cada arranque en frio.
+    os.environ["EMBEDDING_CACHE_DIR"] = "/data/embedding-cache"
 
     _migrate_data_volume()
 
