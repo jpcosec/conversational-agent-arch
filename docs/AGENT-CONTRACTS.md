@@ -161,9 +161,29 @@ vecinos, tools. Cada documento que mete al bundle va con su **motivo**.
 Viene con un prompt que le indica cómo hacer esa búsqueda y cómo
 justificarla. Le pasa el bundle a los otros agentes.
 
-**Hoy — este agente no existe.** Lo más cercano es `ContextCompiler`
-(`kb_agent/ontologizador/compiler.py`), que **no es un agente**: no tiene
-prompt, no llama LLM, no decide. Es un compilador fijo.
+**Hoy — el agente no existe, pero sus herramientas sí, huérfanas.** Lo que
+el runtime usa es `ContextCompiler` (`kb_agent/ontologizador/compiler.py`),
+que **no es un agente**: no tiene prompt, no llama LLM, no decide. Es un
+compilador fijo.
+
+Pero el paquete `knowledge_base/` (`KnowledgeOperations`, 832 líneas,
+21 tests en verde) ya implementa las operaciones por agente que este
+contrato pide, y **`kb_agent` no lo importa ni una vez**:
+
+| Operación | Para quién | Qué hace que el compilador no |
+|---|---|---|
+| `explore_multi(query)` | ruteador | embeddings (umbral 0.3) + fuzzy + vecinos KGDB, top-10 **con score** |
+| `step_next(user_id)` | orquestador | `flow_node` de SQL → `get_next_transitions()` + `get_grounding_atoms()` (el grafo **tipado**) |
+| `traits(user_id)` | ruteador / conversador | resuelve cada `trait_id` contra su `TraitAtom` (título, descripción, categoría) |
+| `self_context()` | conversador | identidad + estilo + límites como base |
+| `context(user_id)` | ruteador | bundle por usuario |
+| `propose / promote / reflect / organize` | reflector | curación de la KB |
+
+Es la capa que pobló los embeddings (`index embeddings`) y la única que los
+lee. El runtime reimplementó una versión más pobre (carga todo, sin
+grafo tipado, traits como id) y dejó ésta sin consumidor: no es legacy, es
+**el destino que el runtime nunca alcanzó**. Conectarla es el camino corto
+para este agente (ver §7.4).
 
 - ❌ Selección de conocimiento (`compiler.py:73-74`):
   ```python
@@ -229,7 +249,10 @@ más de lo que el diseño le asigna, y la decisión no es un agente.
   *todos* los hermanos (`compiler.py:~313`,
   `allowed_transitions = [s for s in steps if s != active]`). Lo mismo con
   `get_grounding_atoms()` (`kgdb_reader.py:195`) vs `docs_for_tag()`. Es un
-  bug de cableado de dos líneas, no un grafo faltante.
+  bug de cableado de dos líneas, no un grafo faltante — y
+  `knowledge_base.KnowledgeOperations.step_next()` ya lo hace bien
+  (`operations.py:660`): lee `flow_node` de SQL y resuelve transiciones y
+  grounding por las aristas tipadas. El runtime no la llama.
 - ❌ La decisión es heurística, no un agente. `decide_turn`
   (`kb_agent/agent.py:109`) es una policy pura sin LLM: elige tool con
   `_select_relevant_tool` (matching contra la pregunta) y clasifica el step
@@ -339,15 +362,23 @@ Parte de la confusión documental viene de que los nombres no coinciden.
 | — | `RouterStateMachine` | **no** es el ruteador de contexto |
 | Perfilador | `TraitExtractor` | post-turno, async; fuera de los 4 agentes |
 | Reflector | `ReflectorBatch` | offline; genera atoms desde `chat_history` |
+| herramientas de knowledge por agente | `knowledge_base.KnowledgeOperations` | existe, testeado, **sin consumidor** en el runtime |
 
 ---
 
 ## 6. Mapa de brechas, por impacto
 
+0. **`knowledge_base` está huérfano del runtime.** Las herramientas por
+   agente existen y están testeadas (§2.2), pero `kb_agent` no las importa.
+   Cablearlas por hooks (§7.4) cierra de golpe parte de 1, 2 y 4 sin
+   escribir retrieval nuevo. Es la acción con mejor relación
+   efecto/esfuerzo de esta lista.
 1. **No hay ruteador de contexto.** El conversador recibe 60 % de la KB en
    cada turno, sin selección por pregunta. Es la brecha que hace el
    comportamiento impredecible y el coste creciente (cada atom nuevo de
-   dominio entra a todos los turnos de todos los usuarios).
+   dominio entra a todos los turnos de todos los usuarios). La búsqueda
+   con score ya existe en `knowledge_base.explore_multi`; falta el agente
+   que la use y justifique.
 2. **Los agentes no tienen la conversación.** Sin historial no hay
    coherencia entre turnos, y las tools se "confirman" sin ejecutarse.
 3. **El gate no usa la KB.** Heurísticas hardcodeadas sobre ids; el handoff
@@ -470,6 +501,36 @@ Orden sugerido de migración, por brecha que cierra (§6):
    la brecha 3.
 4. Orquestador como `Agent` con `output_schema` de decisión → cierra 4 y el
    bug de tools declaradas y no ejecutadas.
+
+### 7.4 Hooks: cómo se conecta knowledge a los agentes
+
+ADK expone pre/post hooks en `LlmAgent`, y son el mecanismo natural para
+enchufar `knowledge_base` sin reescribir el orquestador. Firmas verificadas
+en `google-adk 2.3.0` (todas aceptan también una **lista** de callbacks,
+que se encadenan):
+
+| Hook | Firma | Puede |
+|---|---|---|
+| `before_model_callback` | `(ctx, llm_request) → LlmResponse \| None` | mutar el request (inyectar contexto) o cortocircuitar devolviendo una respuesta |
+| `after_model_callback` | `(ctx, llm_response) → LlmResponse \| None` | reemplazar la respuesta |
+| `before_tool_callback` | `(tool, args, ctx) → dict \| None` | vetar o reescribir los args de una tool |
+| `after_tool_callback` | `(tool, args, ctx, result) → dict \| None` | reescribir el resultado; persistir |
+| `before/after_agent_callback` | `(ctx) → Content \| None` | envolver el turno entero |
+
+Sobre los cuatro agentes:
+
+| Hook | Agente | Implementación |
+|---|---|---|
+| `before_model` | **Ruteador de contexto** | llama a `knowledge_base`: `self_context()` (base), `step_next(user)` (step + transiciones tipadas + grounding), `traits(user)` (documentos, no ids), `explore_multi(pregunta)` (candidatos con score); arma el bundle `[{doc_id, motivo}]` y lo inyecta en `llm_request`. El motivo va al rastro del turno. |
+| `after_model` | **Gate** | valida `llm_response` contra los `GateCriterion` (contexto fijo, leídos de verdad); si rechaza, devuelve el handoff como `LlmResponse` y registra `gate_rejection`. |
+| `before_tool` | **Orquestador** (guardia) | para la tool `move_step`: veta si el destino no está en `get_next_transitions(step_actual)`. Ahí se cumple "solo puede avanzar por pasos". |
+| `after_tool` | **Orquestador** (persistencia) | escribe `session_state` / `recordatorios` / `reservas` y el rastro de la tool. Ahí se elimina "te agendé" sin tool. |
+
+Esto cambia la recomendación de §7.3 en un punto: los hooks son la razón
+más fuerte a favor de `LlmAgent` de ADK. Si se mantiene la clase propia,
+tiene que exponer **estos mismos cuatro hooks con estas firmas** —
+son la interfaz por la que knowledge entra y sale de cada agente, y el
+motivo de que `knowledge_base` no necesite conocer al orquestador.
 
 ---
 

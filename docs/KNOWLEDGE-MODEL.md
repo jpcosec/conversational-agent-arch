@@ -470,6 +470,33 @@ del step (`REL_FLOWS_TO`, `REL_GROUNDED_BY`). Métodos: `steps_under`,
 `docs_for_tag`, `siblings`, `get_next_transitions`, `get_grounding_atoms`,
 `get_tools_for_node`.
 
+### KnowledgeOperations — herramientas por agente (`knowledge_base/`)
+
+Tercera capa, la de más alto nivel: envuelve SLDB + KGDB + SQL en
+operaciones con semántica de agente. CLI: `python -m knowledge_base --kb
+knowledge <cmd>`. Subcomandos: `explore show step traits self context
+propose organize index embeddings hierarchy promote reflect`.
+
+| Operación | Agente | Devuelve |
+|---|---|---|
+| `explore_multi(query, threshold=0.3, max=10)` | ruteador | docs rankeados: similitud de embeddings + fuzzy (×0.85) + 3 vecinos KGDB por doc, `top_score`, `is_empty` |
+| `explore(tag= / atom=)` | ruteador | navegación del grafo: raíces, hijos, vecinos |
+| `step_next(user_id)` | orquestador | `flow_node` (SQL) + `allowed_transitions` y `grounding_atoms` por aristas tipadas + `missing_slots` |
+| `traits(user_id)` | ruteador / conversador | traits del usuario **resueltos contra el `TraitAtom`** (título, descripción, categoría, confianza) |
+| `self_context()` | conversador | identidad, estilo, límites |
+| `context(user_id)` | ruteador | bundle por usuario |
+| `show(atom_id)` | cualquiera | un documento resuelto |
+| `index_embeddings()`, `index_hierarchy()` | offline | escribe `embedding` (jina-v2-base-es, 768d) y `parent` |
+| `propose`, `promote`, `reflect`, `organize` | reflector / curación | alta y promoción de documentos |
+
+**Hoy:** `kb_agent` **no importa `knowledge_base`** (el único consumidor,
+`frontends/viz/export_graph.py`, fue eliminado). La dependencia va en un
+solo sentido: `knowledge_base → kb_agent.models`. Está más reciente en git
+que el ontologizador y sus 21 tests pasan. Es la capa que pobló los
+embeddings y la única que los lee. El runtime tiene, en paralelo, una
+versión más pobre de lo mismo (§5.1): carga todo, hermanos en vez de
+transiciones, traits como id.
+
 ---
 
 ## 8. Inconsistencias encontradas
@@ -488,6 +515,12 @@ Por orden de impacto sobre el comportamiento:
    de deskops (`desk/atoms`, cuyo `tag-namespaces.yaml` está copiado dentro
    de `knowledge/desk/`). Ordenarlo es un rename mecánico más mover el
    archivo de namespaces y derivarlo de las familias.
+0c. **Dos capas de acceso a knowledge, y el runtime usa la peor** (§7).
+   `knowledge_base.KnowledgeOperations` resuelve transiciones por el grafo
+   tipado, traits como documento y búsqueda con score; el ontologizador
+   del runtime hace lo contrario en los tres puntos, y nadie llama a la
+   primera. Antes de escribir retrieval nuevo, enchufar la que existe
+   (`AGENT-CONTRACTS.md` §7.4).
 1. **Transiciones y grounding declarados pero no cableados** (§4.2). El
    flujo está bien modelado en la KB y KGDB lo lee; el compilador usa los
    métodos genéricos en vez de los tipados. Dos líneas.
