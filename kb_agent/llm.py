@@ -87,12 +87,26 @@ def build_nl_prompt(compiled: dict[str, Any]) -> str:
             f"{system_turn['content']}\n"
             "Usa este resultado para responder al cliente sin inventar datos fuera del JSON ni del grounding."
         )
+    history_prompt = ""
+    history = compiled.get("history")
+    if isinstance(history, list) and history:
+        # El ultimo item puede ser el system_turn recien anexado por el
+        # router (ver ``RouterStateMachine._resume_from_waiting_tool``); ya
+        # se muestra aparte en RESULTADO DE TOOL, no lo dupliques aca.
+        skip_content = system_turn.get("content") if isinstance(system_turn, dict) else None
+        history_lines = [
+            f"- {h.get('role', '')}: {h.get('content', '')}"
+            for h in history
+            if isinstance(h, dict) and not (h.get("role") == "system" and h.get("content") == skip_content)
+        ]
+        if history_lines:
+            history_prompt = "\n\nCONVERSACION PREVIA (mas antiguo primero, NO es el turno actual):\n" + "\n".join(history_lines)
     return (
         f"{identity}\n\n"
         "Responde usando EXCLUSIVAMENTE los datos de abajo. "
         "Si hay traits del cliente, adapta la sugerencia a su perfil. "
         "No inventes nada fuera de estos datos.\n\n"
-        f"DATOS:\n{grounding}{perfil}{system_turn_prompt}\n\n"
+        f"DATOS:\n{grounding}{perfil}{system_turn_prompt}{history_prompt}\n\n"
         f"PREGUNTA: {compiled['question']}\n\nRESPUESTA:"
     )
 

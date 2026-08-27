@@ -57,6 +57,41 @@ def test_nl_prompt_falls_back_to_generic_identity_only_without_persona() -> None
     assert prompt.startswith("Eres un asistente.")
 
 
+def test_nl_prompt_includes_history_separated_from_context_and_question() -> None:
+    prompt = build_nl_prompt({
+        "question": "¿y ahora que sigue?",
+        "domain_facts": [{"id": "a", "body": "Margherita 8900."}],
+        "history": [
+            {"role": "user", "content": "hola"},
+            {"role": "assistant", "content": "¡Hola! ¿En que te ayudo?"},
+        ],
+    })
+    assert "CONVERSACION PREVIA" in prompt
+    assert "- user: hola" in prompt
+    assert "- assistant: ¡Hola! ¿En que te ayudo?" in prompt
+    # el historial va ANTES de la pregunta actual, y la pregunta actual no se duplica ahi
+    assert prompt.index("CONVERSACION PREVIA") < prompt.index("PREGUNTA: ¿y ahora que sigue?")
+
+
+def test_nl_prompt_omits_history_block_when_absent_or_empty() -> None:
+    assert "CONVERSACION PREVIA" not in build_nl_prompt({"question": "hola"})
+    assert "CONVERSACION PREVIA" not in build_nl_prompt({"question": "hola", "history": []})
+
+
+def test_nl_prompt_history_does_not_duplicate_the_just_appended_system_turn() -> None:
+    # RouterStateMachine._resume_from_waiting_tool anexa el system_turn (resultado
+    # de la tool) al final de ``history`` antes de redactar; build_nl_prompt ya lo
+    # muestra aparte en RESULTADO DE TOOL, no debe repetirlo en CONVERSACION PREVIA.
+    system_turn = {"role": "system", "content": '{"reserva_id": 1}'}
+    prompt = build_nl_prompt({
+        "question": "confirmame la reserva",
+        "system_turn": system_turn,
+        "history": [{"role": "user", "content": "hola"}, system_turn],
+    })
+    assert prompt.count('{"reserva_id": 1}') == 1
+    assert "- user: hola" in prompt
+
+
 def test_parse_trait_json_is_robust() -> None:
     assert parse_trait_json('```json\n[{"trait_id": "t", "confidence": 0.9}]\n```') == [{"trait_id": "t", "confidence": 0.9}]
     assert parse_trait_json("sin json") == []

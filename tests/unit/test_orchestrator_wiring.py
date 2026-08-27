@@ -20,7 +20,14 @@ from kb_agent.orchestrator import Orchestrator, channel_from_external_id
 from kb_agent.pii.scrubber import scrub
 from kb_agent.project_config import load_project_config
 from kb_agent.tools import load_tool_handlers
-from tests.support.fakes import FakeConversador, FakeTraitMapper, RecordingToolHandler, VEGETARIAN_MATCH, offline_orchestrator
+from tests.support.fakes import (
+    FakeConversador,
+    FakeEmbedder,
+    FakeTraitMapper,
+    RecordingToolHandler,
+    VEGETARIAN_MATCH,
+    offline_orchestrator,
+)
 from tests.support.sldb_seed import minimal_business_atoms, seed_store
 
 RESERVA_MSG = "reservar mesa para 4 el viernes a las 20:00 a nombre de Rojas"
@@ -49,8 +56,6 @@ def test_nl_turn_is_grounded_in_kb_and_traced(orch: Orchestrator) -> None:
     assert "atom-donpeppe-carta" in ctx["atom_ids"]
     carta = next(i for i in ctx["items"] if i["atom_id"] == "atom-donpeppe-carta")
     assert carta["title"] == "Carta Don Peppe" and carta["role"] == "domain_fact" and carta["grounds_step"] is True
-    regla = next(i for i in ctx["items"] if i["atom_id"] == "atom-donpeppe-regla-reservas")
-    assert regla["role"] == "domain_fact"  # domain:* prima sobre conversation:*
     assert "domain:catalogo" in ctx["include_tags"]
 
     # el conversador recibio persona/estrategia/fallback desde la KB, no hardcodeados
@@ -58,6 +63,14 @@ def test_nl_turn_is_grounded_in_kb_and_traced(orch: Orchestrator) -> None:
     assert compiled["persona"]["whoami"].startswith("Soy el asistente virtual de Don Peppe")
     assert compiled["fallback_text"].startswith("Uy, eso no lo tengo a mano")
     assert compiled["question"] == "que pizzas tienen?"
+
+    # Bundle justificado (tarea 1.3): atom-donpeppe-carta entra con motivo de
+    # grounding del step activo (onboarding). atom-donpeppe-regla-reservas
+    # (que solo groundea "booking") ya NO entra "porque estaba todo incluido"
+    # como antes de 1.3 -- el contexto es justificado por turno, no total.
+    bundle_by_id = {b["doc_id"]: b for b in compiled["bundle"]}
+    assert bundle_by_id["atom-donpeppe-carta"]["motivo"] == "grounding de steps.onboarding"
+    assert "atom-donpeppe-regla-reservas" not in bundle_by_id
 
 
 def test_tool_turn_executes_registered_handler_and_persists(orch: Orchestrator) -> None:
@@ -196,6 +209,7 @@ def test_state_and_data_survive_orchestrator_restart(donpeppe_kb: Path, tmp_db_u
 def test_from_config_wires_business_declared_in_yaml(tmp_db_url: str) -> None:
     cfg = load_project_config(mode="test")
     o = Orchestrator.from_config(cfg, db_url=tmp_db_url, conversador=FakeConversador(), trait_mapper=FakeTraitMapper(VEGETARIAN_MATCH))
+    o.knowledge_ops._embedder_cache = FakeEmbedder()
     try:
         assert o.kb_root == cfg.kb_root
         assert o.model == cfg.model

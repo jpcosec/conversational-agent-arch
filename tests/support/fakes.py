@@ -73,6 +73,33 @@ class RecordingToolHandler:
 VEGETARIAN_MATCH = {"vegetarian": [{"trait_id": "trait-vegetariano", "confidence": 0.9}]}
 
 
+class FakeEmbedder:
+    """Doble barato de ``fastembed.TextEmbedding`` para tests offline.
+
+    El compilador (``ContextCompiler._semantic_candidates``, tarea 1.3) pide
+    el embedder de ``knowledge_ops`` (``knowledge_ops._embedder()``) para
+    embeder la pregunta de cada turno cuando hay ``knowledge_ops`` inyectado
+    -- y ``Orchestrator.__init__`` SIEMPRE crea una instancia real de
+    ``KnowledgeOperations``. Cargar el embedder real (jina-embeddings-v2)
+    puede tomar bastante en frio (ver ``KnowledgeOperations._embedder``), y
+    cada test que arma un ``Orchestrator`` via ``offline_orchestrator`` crea
+    una instancia nueva. Sin este doble, la suite entera pagaria ese costo
+    por cada test -- se lo inyecta directo en ``_embedder_cache`` (mismo
+    mecanismo de cacheo por instancia que usa el codigo real, ver su
+    docstring).
+
+    Vector fijo (no todo-ceros, para que la similitud coseno no divida por
+    cero) del mismo largo que ``jina-embeddings-v2-base-es`` (768).
+    Determinista: no importa el ranking exacto en estos tests, ninguno
+    afirma sobre el contenido del bundle/domain_facts vía similitud real.
+    """
+
+    _DIM = 768
+
+    def embed(self, texts: Any) -> list[list[float]]:
+        return [[0.01] * self._DIM for _ in texts]
+
+
 def offline_orchestrator(
     kb_root: Path,
     db_url: str = "sqlite:///:memory:",
@@ -83,7 +110,7 @@ def offline_orchestrator(
     **kwargs: Any,
 ) -> Orchestrator:
     """Orquestador completo con LLM fake (sin credenciales, sin red)."""
-    return Orchestrator(
+    orch = Orchestrator(
         kb_root=kb_root,
         db_url=db_url,
         conversador=conversador or FakeConversador(),
@@ -91,3 +118,5 @@ def offline_orchestrator(
         tool_handlers=tool_handlers,
         **kwargs,
     )
+    orch.knowledge_ops._embedder_cache = FakeEmbedder()
+    return orch
