@@ -28,7 +28,6 @@ de ``MODAL_APP_NAME`` y el volumen es ``<app>-data``.
 """
 from __future__ import annotations
 
-import os
 from pathlib import Path
 
 import modal
@@ -40,11 +39,21 @@ TOOLS_ROOT = Path("/home/jp/proyectos/hum-ecosystem/tools")
 #: ``deploy``), leida via ``ProjectConfig``. Antes estos valores vivian
 #: hardcodeados aca; ahora una KB nueva cambia su yaml y no este archivo.
 #: ``MODAL_APP_NAME`` sigue teniendo prioridad (lo aplica ``load_project_config``).
+#:
+#: Este modulo se importa DOS veces: al deployar (raiz = este repo) y dentro
+#: del contenedor al hidratar la funcion (raiz = REMOTE_APP_DIR, donde la
+#: imagen copia kb_agent/ y el yaml). Resolver la raiz por existencia; si no,
+#: el contenedor revienta con ModuleNotFoundError('kb_agent') y el deploy
+#: queda en crash-loop sirviendo la version anterior.
 import sys as _sys
-_sys.path.insert(0, str(REPO_ROOT))
+
+REMOTE_APP_DIR = "/root/app"
+_CFG_ROOT = REPO_ROOT if (REPO_ROOT / "kb_agent").is_dir() else Path(REMOTE_APP_DIR)
+if str(_CFG_ROOT) not in _sys.path:
+    _sys.path.insert(0, str(_CFG_ROOT))
 from kb_agent.project_config import load_project_config as _load_cfg  # noqa: E402
 
-_DEPLOY_CFG = _load_cfg(REPO_ROOT / "project.config.yaml", mode="serving").deploy
+_DEPLOY_CFG = _load_cfg(_CFG_ROOT / "project.config.yaml", mode="serving").deploy
 
 APP_NAME = _DEPLOY_CFG.modal_app_name
 VOLUME_NAME = f"{APP_NAME}-data"
@@ -56,8 +65,6 @@ GCP_SECRET_NAME = _DEPLOY_CFG.gcp_secret_name
 TWILIO_SECRET_NAME = _DEPLOY_CFG.twilio_secret_name
 MIN_CONTAINERS = _DEPLOY_CFG.min_containers
 SERVE_TIMEOUT_S = _DEPLOY_CFG.serve_timeout_s
-
-REMOTE_APP_DIR = "/root/app"
 
 #: Excludes comunes para los paquetes locales (sldb, kgdb, deskops): solo
 #: necesitamos el codigo fuente instalable, no su workflow/tests/docs propios.
@@ -144,6 +151,9 @@ image = (
                     ignore=_PYCACHE_IGNORE)
     .add_local_file(str(REPO_ROOT / "alembic.ini"), f"{REMOTE_APP_DIR}/alembic.ini", copy=True)
     .add_local_file(str(REPO_ROOT / "project.config.yaml"), f"{REMOTE_APP_DIR}/project.config.yaml", copy=True)
+    # El override MODAL_APP_NAME del deploy viaja a la imagen: el contenedor
+    # re-importa este modulo y debe resolver el MISMO app/volumen.
+    .env({"MODAL_APP_NAME": APP_NAME})
 )
 
 app = modal.App(APP_NAME)
