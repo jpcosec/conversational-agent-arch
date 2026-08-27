@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- Mock estatico transcrito del diseño de referencia docs/dashboard-reference.png: los numeros/series son de ejemplo, no metricas reales. -->
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard</title>
+<link rel="stylesheet" href="/static/theme.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;width:100%}
+body{font-family:var(--font-sans);background:var(--bg-page);color:var(--text-primary);display:flex;flex-direction:column;overflow:hidden}
+.db-layout{display:flex;flex:1;min-height:0;width:100%}
+
+/* sidebar */
+.db-sidebar{width:250px;min-width:250px;background:var(--bg-panel2);border-right:1px solid var(--border-accent);display:flex;flex-direction:column;padding:20px 18px;overflow-y:auto;gap:22px}
+.db-side-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.db-search{width:100%;background:rgba(10,10,15,.6);border:1px solid var(--border-accent);border-radius:8px;color:var(--text-primary);padding:9px 12px;font-size:13px}
+.db-search:focus{outline:none;border-color:var(--accent)}
+.db-item{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:var(--text-muted-2);transition:var(--transition);margin-bottom:2px}
+.db-item:hover{background:rgba(212,165,116,.07);color:var(--text-primary)}
+.db-item.active{background:rgba(212,165,116,.12);color:var(--accent)}
+.db-ico{width:18px;text-align:center;font-size:15px}
+.db-dot{width:9px;height:9px;border-radius:3px;flex:0 0 auto}
+.db-daterange{background:rgba(10,10,15,.5);border:1px solid var(--border-accent);border-radius:12px;padding:14px}
+.db-daterange .val{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-primary);margin-top:8px}
+.db-daterange .cmp{font-size:11px;color:var(--text-muted);margin-top:10px;line-height:1.4}
+
+/* main */
+.db-main{flex:1;min-height:0;overflow-y:auto;padding:24px 28px}
+.db-mock{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border-accent);border-radius:999px;padding:4px 10px;background:rgba(212,165,116,.08)}
+.db-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px}
+.db-card{background:var(--bg-panel-solid);border:1px solid var(--border-accent);border-radius:var(--radius-card);padding:18px;display:flex;flex-direction:column;gap:12px;min-height:230px}
+.db-card:hover{border-color:var(--border-strong)}
+.db-card-head{display:flex;align-items:flex-start;gap:12px}
+.db-badge{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex:0 0 auto}
+.db-card-title{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted-2);line-height:1.5;flex:1}
+.db-info{color:var(--text-muted);font-size:12px;cursor:default}
+.db-big{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.db-big .u{font-size:20px;font-weight:400;color:var(--text-muted-2);margin-left:4px}
+.db-delta{font-size:12px;color:var(--text-muted-2)}
+.db-delta b{font-weight:600}
+.db-up{color:var(--family-self)}
+.db-down-good{color:var(--family-self)}
+.db-warn{color:var(--danger)}
+.db-spark{margin-top:auto;height:70px}
+
+.db-charts{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.db-panel{background:var(--bg-panel-solid);border:1px solid var(--border-accent);border-radius:var(--radius-card);padding:18px 20px}
+.db-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.db-panel-title{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted-2);display:flex;align-items:center;gap:8px}
+.db-select{background:rgba(10,10,15,.6);border:1px solid var(--border-accent);border-radius:8px;color:var(--text-muted-2);padding:5px 10px;font-family:var(--font-mono);font-size:11px}
+.db-legend{display:flex;gap:20px;justify-content:center;margin-top:12px}
+.db-legend-item{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--text-muted-2)}
+.db-legend-line{width:22px;height:0;border-top:2px solid}
+.db-legend-line.dash{border-top-style:dashed}
+.db-footer{margin-top:22px;font-family:var(--font-mono);font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:8px}
+.db-live{width:8px;height:8px;border-radius:50%;background:var(--family-self);box-shadow:0 0 8px var(--family-self)}
+
+.db-axis{font-family:var(--font-mono);font-size:9px;fill:var(--text-muted)}
+@media(max-width:1200px){.db-kpis{grid-template-columns:repeat(2,1fr)}.db-charts{grid-template-columns:1fr}}
+</style></head><body>
+<header class="app-topbar" data-testid='nav-topbar'>
+<a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
+<nav class="app-nav" id="appNav">
+<a data-testid="nav-chat" href="/">Chat</a><a data-testid="nav-flow" href="/flow">Flow</a><a data-testid="nav-mindmap" href="/mindmap">Mindmap</a><a data-testid="nav-users" href="/users">Users</a><a data-testid="nav-dashboard" href="/dashboard">Dashboard</a>
+</nav>
+<div class="app-topbar-meta"><span class="app-topbar-chip" id="kbLabel">KB</span><span class="app-topbar-chip" id="healthLabel">—</span></div></header>
+
+<div class="db-layout">
+  <aside class="db-sidebar">
+    <div>
+      <div class="db-side-label">Filtrar rama</div>
+      <input class="db-search" placeholder="buscar rama..." />
+      <div style="margin-top:12px">
+        <div class="db-item active"><span class="db-ico">🧬</span>self</div>
+        <div class="db-item"><span class="db-ico">📖</span>domain</div>
+        <div class="db-item"><span class="db-ico">💬</span>conversation</div>
+        <div class="db-item"><span class="db-ico">🚦</span>gate</div>
+        <div class="db-item"><span class="db-ico">👤</span>user</div>
+      </div>
+    </div>
+    <div>
+      <div class="db-side-label">Filtrar agente</div>
+      <div class="db-item"><span class="db-dot" style="background:var(--family-domain)"></span><span class="db-ico">🗣️</span>Conversador</div>
+      <div class="db-item"><span class="db-dot" style="background:var(--family-conversation)"></span><span class="db-ico">🧭</span>Ruteador</div>
+      <div class="db-item"><span class="db-dot" style="background:var(--family-user)"></span><span class="db-ico">🎛️</span>Orquestador</div>
+    </div>
+    <div class="db-daterange">
+      <div class="db-side-label" style="margin:0">Rango de fechas</div>
+      <div class="val">📅 26 ago 2026 – 26 sep 2026 ▾</div>
+      <div class="cmp">Comparado con 26 jul 2026 – 25 ago 2026</div>
+    </div>
+  </aside>
+
+  <main class="db-main">
+    <div class="db-mock" data-testid="dashboard-mock-chip" title="Series y KPIs sinteticos; no salen del runtime">◌ Datos de ejemplo</div>
+    <div class="db-kpis" id="kpis"></div>
+    <div class="db-charts">
+      <div class="db-panel">
+        <div class="db-panel-head">
+          <div class="db-panel-title">Tasa de adherencia (%) <span class="db-info">ⓘ</span></div>
+          <select class="db-select"><option>Diaria</option><option>Semanal</option></select>
+        </div>
+        <div id="chartAdh"></div>
+        <div class="db-legend">
+          <div class="db-legend-item"><span class="db-legend-line" style="border-color:var(--family-user)"></span>Período actual</div>
+          <div class="db-legend-item"><span class="db-legend-line dash" style="border-color:var(--family-user)"></span>Período anterior</div>
+        </div>
+      </div>
+      <div class="db-panel">
+        <div class="db-panel-head">
+          <div class="db-panel-title">Tiempo promedio hasta abandono (días) <span class="db-info">ⓘ</span></div>
+          <select class="db-select"><option>Diaria</option><option>Semanal</option></select>
+        </div>
+        <div id="chartAband"></div>
+        <div class="db-legend">
+          <div class="db-legend-item"><span class="db-legend-line" style="border-color:var(--family-conversation)"></span>Período actual</div>
+          <div class="db-legend-item"><span class="db-legend-line dash" style="border-color:var(--family-conversation)"></span>Período anterior</div>
+        </div>
+      </div>
+    </div>
+    <div class="db-footer">Última actualización: <span id="ts"></span> <span class="db-live"></span></div>
+  </main>
+</div>
+
+<script>
+// ---- nav active + brand/health (misma doctrina que /users) ----
+(function(){var p=location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('#appNav a').forEach(function(a){var h=a.getAttribute('href').replace(/\/$/,'')||'/';var ac=h===p;a.classList.toggle('active',ac);if(ac)a.setAttribute('data-active','true');else a.removeAttribute('data-active')});
+Promise.all([fetch('/api/config').then(function(r){return r.json()}).catch(function(){return{}}),fetch('/api/health').then(function(r){return r.json()}).catch(function(){return{}})]).then(function(r){var c=r[0]||{},h=r[1]||{},b=document.getElementById('appBrand'),kb=document.getElementById('kbLabel'),hl=document.getElementById('healthLabel');if(b)b.textContent=c.name||c.runtime_title||'Agente';if(kb)kb.textContent=c.kb_label||c.name||'KB';if(hl)hl.textContent=h.status||'unknown';var lm={chat:document.querySelector('[data-testid="nav-chat"]'),flow:document.querySelector('[data-testid="nav-flow"]'),mindmap:document.querySelector('[data-testid="nav-mindmap"]'),users:document.querySelector('[data-testid="nav-users"]'),dashboard:document.querySelector('[data-testid="nav-dashboard"]')};var nl=c.nav_labels||{};if(lm.chat)lm.chat.textContent=nl.chat||'Chat';if(lm.flow)lm.flow.textContent=nl.flow||'Flow';if(lm.mindmap)lm.mindmap.textContent=nl.mindmap||'Mindmap';if(lm.users)lm.users.textContent=nl.users||'Users';if(lm.dashboard)lm.dashboard.textContent=nl.dashboard||'Dashboard'});})();
+
+// ---- mock data (relato del screenshot; numeros no vinculantes) ----
+var RNG=(function(){var s=42;return function(){s=(s*9301+49297)%233280;return s/233280}})();
+function series(n,base,drift,noise){var a=[],v=base;for(var i=0;i<n;i++){v+=drift+(RNG()-.5)*noise;a.push(v)}return a}
+var N=31;
+var adhCur=series(N,70,.55,3.2), adhPrev=75;
+var abCur=series(N,48,-.38,2.4), abPrev=42;
+
+var KPI=[
+  {t:'Tasa de adherencia',icon:'♥',col:'var(--family-user)',bg:'rgba(201,125,185,.12)',big:'82,6',u:'%',delta:'↑ 6,3 pp',cls:'db-up',note:'vs período anterior',s:adhCur,line:'var(--family-user)'},
+  {t:'Tiempo promedio hasta abandono',icon:'◷',col:'var(--family-conversation)',bg:'rgba(230,168,92,.12)',big:'38,4',u:'días',delta:'↓ 4,7 días',cls:'db-down-good',note:'vs período anterior',s:abCur,line:'var(--family-conversation)'},
+  {t:'Efectos adversos reportados',icon:'⚠',col:'var(--danger)',bg:'rgba(224,108,90,.12)',big:'1.243',u:'',delta:'↑ 12,1%',cls:'db-warn',note:'vs período anterior',s:series(N,900,11,60),line:'var(--danger)'},
+  {t:'Efectos adversos corregidos / reconciliados',icon:'✓',col:'var(--family-self)',bg:'rgba(124,186,124,.12)',big:'1.018',u:'',delta:'82,0%',cls:'db-up',note:'del total reportado · ↑ 9,8%',s:series(N,700,11,40),line:'var(--family-self)'}
+];
+
+function sparkPath(data,w,h,pad){var mn=Math.min.apply(0,data),mx=Math.max.apply(0,data),rg=(mx-mn)||1;
+  return data.map(function(v,i){var x=pad+i/(data.length-1)*(w-2*pad);var y=h-pad-(v-mn)/rg*(h-2*pad);return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}).join(' ')}
+
+function renderSpark(el,data,color){var w=260,h=70,pad=6;var d=sparkPath(data,w,h,pad);var id='g'+Math.random().toString(36).slice(2);
+  el.innerHTML='<svg viewBox="0 0 '+w+' '+h+'" width="100%" height="'+h+'" preserveAspectRatio="none">'+
+   '<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+color+'" stop-opacity=".28"/><stop offset="1" stop-color="'+color+'" stop-opacity="0"/></linearGradient></defs>'+
+   '<path d="'+d+' L'+(w-pad)+' '+(h-pad)+' L'+pad+' '+(h-pad)+' Z" fill="url(#'+id+')"/>'+
+   '<path d="'+d+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linejoin="round"/></svg>'}
+
+var kpiWrap=document.getElementById('kpis');
+KPI.forEach(function(k){var c=document.createElement('div');c.className='db-card';
+  c.innerHTML='<div class="db-card-head"><div class="db-badge" style="background:'+k.bg+';color:'+k.col+'">'+k.icon+'</div>'+
+    '<div class="db-card-title">'+k.t+'</div><span class="db-info">ⓘ</span></div>'+
+    '<div class="db-big" style="color:'+k.col+'">'+k.big+(k.u?'<span class="u">'+k.u+'</span>':'')+'</div>'+
+    '<div class="db-delta '+k.cls+'"><b>'+k.delta+'</b> <span style="color:var(--text-muted)">'+k.note+'</span></div>'+
+    '<div class="db-spark"></div>';
+  kpiWrap.appendChild(c);renderSpark(c.querySelector('.db-spark'),k.s,k.line)});
+
+// ---- big charts ----
+function bigChart(elId,cur,prevVal,color,yMax,yTicks,unit){
+  var w=560,h=260,pl=42,pr=14,pt=14,pb=28;var iw=w-pl-pr,ih=h-pt-pb;
+  var mn=0,mx=yMax,rg=mx-mn;
+  function X(i){return pl+i/(cur.length-1)*iw}
+  function Y(v){return pt+ih-(v-mn)/rg*ih}
+  var line=cur.map(function(v,i){return (i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)}).join(' ');
+  var area=line+' L'+X(cur.length-1)+' '+(pt+ih)+' L'+pl+' '+(pt+ih)+' Z';
+  var id='c'+Math.random().toString(36).slice(2);
+  var grid='',lbl='';
+  yTicks.forEach(function(t){var y=Y(t);grid+='<line x1="'+pl+'" y1="'+y+'" x2="'+(w-pr)+'" y2="'+y+'" stroke="var(--border)" stroke-width="1"/>';lbl+='<text class="db-axis" x="'+(pl-8)+'" y="'+(y+3)+'" text-anchor="end">'+t+unit+'</text>'});
+  var xl=['26 ago','2 sep','9 sep','16 sep','23 sep','26 sep'],xax='';
+  xl.forEach(function(s,i){var x=pl+i/(xl.length-1)*iw;xax+='<text class="db-axis" x="'+x+'" y="'+(h-8)+'" text-anchor="middle">'+s+'</text>'});
+  var prevY=Y(prevVal);
+  var dots=cur.map(function(v,i){return '<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(v).toFixed(1)+'" r="2.4" fill="'+color+'"/>'}).join('');
+  document.getElementById(elId).innerHTML='<svg viewBox="0 0 '+w+' '+h+'" width="100%">'+
+    '<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+color+'" stop-opacity=".22"/><stop offset="1" stop-color="'+color+'" stop-opacity="0"/></linearGradient></defs>'+
+    grid+lbl+xax+
+    '<path d="'+area+'" fill="url(#'+id+')"/>'+
+    '<line x1="'+pl+'" y1="'+prevY+'" x2="'+(w-pr)+'" y2="'+prevY+'" stroke="'+color+'" stroke-width="1.5" stroke-dasharray="6 5" opacity=".7"/>'+
+    '<path d="'+line+'" fill="none" stroke="'+color+'" stroke-width="2.2" stroke-linejoin="round"/>'+dots+'</svg>'}
+
+bigChart('chartAdh',adhCur,adhPrev,'var(--family-user)',100,[0,25,50,75,100],'%');
+bigChart('chartAband',abCur,abPrev,'var(--family-conversation)',60,[0,15,30,45,60],'');
+
+document.getElementById('ts').textContent=new Date().toLocaleString('es',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+</script>
+</body></html>

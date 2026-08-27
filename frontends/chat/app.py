@@ -13,7 +13,7 @@ Endpoints:
   GET  /api/taxonomy                   -> arbol taxonomico completo (familias x atoms)
   GET  /api/viz/graph                  -> grafo de atoms+embeddings (PCA 2D) del store en vivo
   GET  /api/health
-  GET  /, /flow, /mindmap, /users (+ redirects legacy) -> UIs estaticas
+  GET  /, /flow, /mindmap, /users, /dashboard (+ redirects legacy) -> UIs estaticas
 
 La app NO instancia nada al importar el modulo: ``create_app`` recibe (o
 construye desde ``project.config.yaml``) el orquestador y lo deja en
@@ -52,6 +52,7 @@ EDITOR_DIR = PROJECT_ROOT / "frontends" / "flow_editor"
 PROFILING_DIR = PROJECT_ROOT / "frontends" / "profiling"
 TAXONOMY_DIR = PROJECT_ROOT / "frontends" / "taxonomy"
 VIZ_DIR = PROJECT_ROOT / "frontends" / "viz"
+DASHBOARD_DIR = PROJECT_ROOT / "frontends" / "dashboard"
 SHARED_DIR = PROJECT_ROOT / "frontends" / "shared"
 
 UI_CHANNEL = "ui"
@@ -286,6 +287,11 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     @app.get("/mindmap/")
     def taxonomy_explorer() -> FileResponse:
         return FileResponse(str(TAXONOMY_DIR / "index.html"))
+
+    @app.get("/dashboard")
+    @app.get("/dashboard/")
+    def dashboard() -> FileResponse:
+        return FileResponse(str(DASHBOARD_DIR / "index.html"))
 
     @app.get("/api/taxonomy")
     def taxonomy() -> JSONResponse:

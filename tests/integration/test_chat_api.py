@@ -42,6 +42,14 @@ def test_static_uis_are_served(client: TestClient, path: str) -> None:
     assert res.status_code == 200 and "<!doctype html>" in res.text.lower()
 
 
+@pytest.mark.parametrize("path", ["/dashboard", "/dashboard/"])
+def test_dashboard_route_serves_html(client: TestClient, path: str) -> None:
+    res = client.get(path)
+    assert res.status_code == 200
+    assert res.headers["content-type"].startswith("text/html")
+    assert 'data-testid="dashboard-mock-chip"' in res.text
+
+
 def test_shared_theme_css_is_served(client: TestClient) -> None:
     res = client.get("/static/theme.css")
     assert res.status_code == 200
