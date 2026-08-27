@@ -228,6 +228,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             "tool": ("tool", "self"),
             "domain": ("domain", "domain"),
             "rule": ("rule", "domain"),
+            "gate": ("gate", "gate"),
             "step": ("step", "conversation"),
             "fallback": ("fallback", "conversation"),
             "strategy": ("strategy", "conversation"),
@@ -236,7 +237,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
         reader = _orch().reader
         families: dict[str, dict] = {f: {"name": f, "children": {}, "orphans": []}
-                                     for f in ("self", "domain", "conversation", "user")}
+                                     for f in ("self", "domain", "conversation", "gate", "user")}
 
         for doc in reader.find("type.knowledge."):
             tags: list[str] = doc.get("tags") or []
