@@ -28,6 +28,13 @@ from .orchestrator_agent import (
     apply_transition_guard,
     render_orchestrator_flow,
 )
+from .router import (
+    RouterAgent,
+    RouterDecision,
+    BundleEntry,
+    apply_security_floor,
+    render_router_instruction,
+)
 
 __all__ = [
     "Agent",
@@ -49,4 +56,9 @@ __all__ = [
     "ToolCallDecision",
     "apply_transition_guard",
     "render_orchestrator_flow",
+    "RouterAgent",
+    "RouterDecision",
+    "BundleEntry",
+    "apply_security_floor",
+    "render_router_instruction",
 ]

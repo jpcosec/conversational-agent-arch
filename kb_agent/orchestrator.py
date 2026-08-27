@@ -29,6 +29,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE
 from kb_agent.agents.gate import GateAgent
 from kb_agent.agents.orchestrator_agent import OrchestratorAgent
+from kb_agent.agents.router import RouterAgent
 from kb_agent.llm import Conversador, GeminiConversador, GeminiTraitMapper, TraitMapper, make_gemini_client
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
@@ -74,6 +75,7 @@ class Orchestrator:
         trait_mapper: TraitMapper | None = None,
         gate: GateAgent | None = None,
         orchestrator_agent: OrchestratorAgent | None = None,
+        router_agent: RouterAgent | None = None,
         client: Any | None = None,
     ) -> None:
         self.kb_root = Path(kb_root).resolve()
@@ -99,13 +101,22 @@ class Orchestrator:
         )
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
 
-        # LLM: solo se crea el cliente real si no inyectaron los 4 puertos
-        # (conversador, trait_mapper, gate, orchestrator_agent). El gate
-        # LLM-judge (fase 2.3) y el orquestador LLM-judge (fase 2.4) se
-        # construyen UNA vez aca, no por turno: los GateCriterion y el grafo
-        # de ConversationStep de la KB son contexto fijo (ver
-        # GateAgent.static_instruction / OrchestratorAgent.static_instruction).
-        if conversador is None or trait_mapper is None or gate is None or orchestrator_agent is None:
+        # LLM: solo se crea el cliente real si no inyectaron los 5 puertos
+        # (conversador, trait_mapper, gate, orchestrator_agent, router_agent).
+        # El gate LLM-judge (fase 2.3), el orquestador LLM-judge (fase 2.4) y
+        # el ruteador de contexto (fase 2.2) se construyen UNA vez aca, no por
+        # turno: los GateCriterion y el grafo de ConversationStep de la KB son
+        # contexto fijo (ver GateAgent.static_instruction /
+        # OrchestratorAgent.static_instruction), y el RouterAgent reusa la
+        # UNICA instancia de KnowledgeOperations del proceso (embedder
+        # cacheado, ver su constructor arriba).
+        if (
+            conversador is None
+            or trait_mapper is None
+            or gate is None
+            or orchestrator_agent is None
+            or router_agent is None
+        ):
             client = client or make_gemini_client()
         self.conversador: Conversador = conversador or GeminiConversador(client, self.model)
         self.trait_mapper: TraitMapper = trait_mapper or GeminiTraitMapper(client, self.model)
@@ -119,6 +130,15 @@ class Orchestrator:
         # en la KB es su static_instruction (fijo, no cambia por turno).
         self.orchestrator_agent: OrchestratorAgent = orchestrator_agent or OrchestratorAgent(
             client=client, model=self.model, step_atoms=self._load_step_atoms()
+        )
+        # Ruteador de contexto (fase 2.2): decide el bundle justificado del
+        # turno con LLM + tools de KB, en vez de (solo) la union
+        # deterministica (`ContextCompiler._build_bundle`, que sigue viva
+        # como fallback fail-open -- ver kb_agent/agents/router.py). Se
+        # inyecta al `ContextCompiler` de cada turno en `handle_turn`, no se
+        # reconstruye por turno.
+        self.router_agent: RouterAgent = router_agent or RouterAgent(
+            client=client, model=self.model, knowledge_ops=self.knowledge_ops
         )
         self.event_bus = InProcessEventBus()
 
@@ -172,6 +192,7 @@ class Orchestrator:
                 kgdb=self.kgdb,
                 identity_session=session,
                 knowledge_ops=self.knowledge_ops,
+                router_agent=self.router_agent,
             )
 
             def compile_context(*, question: str, user_id: int | None, scenario: str | None, trigger: str) -> dict[str, Any]:
@@ -293,12 +314,18 @@ class Orchestrator:
                     "missing_slots": flow_missing,
                 },
                 "ruteador": {
-                    # Bundle justificado del turno (doctrina 1.3): union sin
-                    # duplicados de similitud, grounding, piso de seguridad y
-                    # traits, cada entrada con su motivo. Es lo que hace
-                    # auditable "por que entro este documento" sin abrir la
-                    # KB -- ver ContextCompiler._build_bundle.
+                    # Bundle justificado del turno (doctrina 1.3 + fase 2.2):
+                    # union sin duplicados de similitud, grounding, piso de
+                    # seguridad y traits (o la decision del RouterAgent, con
+                    # el mismo piso de seguridad forzado por codigo), cada
+                    # entrada con su motivo. Es lo que hace auditable "por
+                    # que entro este documento" sin abrir la KB -- ver
+                    # ContextCompiler._resolve_bundle.
                     "bundle": compiled.get("bundle", []),
+                    # "agent" si lo armo el RouterAgent real; "deterministic"
+                    # si se uso el fallback (sin router_agent, o el agente
+                    # fallo) -- ver ContextCompiler._resolve_bundle.
+                    "source": compiled.get("bundle_source", "deterministic"),
                     "atoms": len(turn_context.get("atom_ids", [])),
                     "grounding_atoms": compiled.get("grounding_atoms", []),
                     "user_traits": compiled.get("user_traits", []),

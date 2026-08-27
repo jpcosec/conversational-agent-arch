@@ -6,7 +6,7 @@ llamadas para que los tests afirmen sobre lo que el runtime le pidio al LLM.
 """
 from __future__ import annotations
 
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
@@ -137,6 +137,69 @@ class FakeOrchestratorAgent:
         return result
 
 
+class FakeRouterAgent:
+    """Bundle determinista para tests offline (``RouterAgent``, fase 2.2).
+
+    ``Orchestrator.__init__`` construye un ``RouterAgent`` real (que necesita
+    un cliente LLM) cuando no se inyecta ``router_agent=...``. Este doble
+    evita esa construccion -- y cualquier llamada a un modelo -- en
+    ``offline_orchestrator``, igual que ``FakeGate``/``FakeOrchestratorAgent``
+    evitan la llamada real para el resto del turno.
+
+    Por defecto (``bundle_fn=None``, ``raises=True``) SIMULA que no hay LLM
+    disponible: ``.route()`` lanza. En un test offline eso es literalmente
+    cierto -- no hay credenciales ni red -- asi que el comportamiento fiel es
+    el mismo que en produccion sin agente: ``ContextCompiler`` cae al bundle
+    deterministico ya verificado (``ContextCompiler._build_bundle``),
+    EXACTAMENTE el mismo bundle (mismos motivos, mismo tope) que producia el
+    runtime antes de esta fase. Esto preserva sin cambios las aserciones
+    existentes sobre el bundle en los tests de cableado (p.ej. el motivo
+    "grounding de steps.onboarding" en ``test_orchestrator_wiring.py``) sin
+    tener que tocarlas.
+
+    Pasale ``bundle_fn`` (callable que recibe los mismos kwargs que
+    ``RouterAgent.route`` y devuelve una lista de dicts ``{doc_id, motivo,
+    ...}``) para simular que el agente SI respondio -- asi se ejercita el
+    camino "agent" completo: el piso de seguridad se sigue forzando por
+    codigo (``kb_agent.agents.router.apply_security_floor``, aplicado por
+    ``ContextCompiler``) aunque ``bundle_fn`` no incluya ninguna regla de
+    seguridad, y los ids que no resuelvan contra la KB real se descartan.
+    """
+
+    def __init__(
+        self,
+        bundle_fn: Callable[..., list[dict[str, Any]]] | None = None,
+        *,
+        raises: bool = True,
+    ) -> None:
+        self.calls: list[dict[str, Any]] = []
+        self._bundle_fn = bundle_fn
+        self._raises = raises and bundle_fn is None
+
+    def route(
+        self,
+        *,
+        question: str,
+        active_step: str | None,
+        grounding_atoms: Sequence[str] = (),
+        user_traits: Sequence[Mapping[str, Any]] = (),
+        history: Sequence[Mapping[str, Any]] = (),
+    ) -> list[dict[str, Any]]:
+        call = {
+            "question": question,
+            "active_step": active_step,
+            "grounding_atoms": list(grounding_atoms),
+            "user_traits": list(user_traits),
+            "history": list(history),
+        }
+        self.calls.append(call)
+        if self._raises:
+            raise RuntimeError("FakeRouterAgent: sin LLM disponible (offline)")
+        if self._bundle_fn is not None:
+            return list(self._bundle_fn(**call))
+        return []
+
+
 class FakeTraitMapper:
     """Mapea texto -> traits por palabras clave (``{"vegetarian": [{"trait_id": ..., "confidence": ...}]}``)."""
 
@@ -210,6 +273,7 @@ def offline_orchestrator(
     trait_mapper: FakeTraitMapper | None = None,
     gate: FakeGate | None = None,
     orchestrator_agent: FakeOrchestratorAgent | None = None,
+    router_agent: FakeRouterAgent | None = None,
     tool_handlers: dict[str, Any] | None = None,
     **kwargs: Any,
 ) -> Orchestrator:
@@ -221,6 +285,7 @@ def offline_orchestrator(
         trait_mapper=trait_mapper or FakeTraitMapper(VEGETARIAN_MATCH),
         gate=gate or FakeGate(),
         orchestrator_agent=orchestrator_agent or FakeOrchestratorAgent(),
+        router_agent=router_agent or FakeRouterAgent(),
         tool_handlers=tool_handlers,
         **kwargs,
     )
