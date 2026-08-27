@@ -168,11 +168,17 @@ más de lo que el diseño le asigna, y la decisión no es un agente.
 - ✅ Tools de escritura SQL: `agendar_recordatorio` → `recordatorios`,
   `crear_reserva` → `reservas`, ejecutadas vía `execute_tool`
   (`orchestrator.py:178`).
-- ❌ **"Solo puede avanzar por pasos" no se cumple.**
-  `allowed_transitions = [s for s in steps if s != active]`
-  (`compiler.py:~313`): desde cualquier step se puede ir a **cualquier
-  otro**. No hay grafo de transiciones válidas; los edges del flow editor
-  son visuales, no restricciones.
+- ❌ **"Solo puede avanzar por pasos" no se cumple — pero está modelado.**
+  Cada `ConversationStep` declara sus transiciones (`## Allowed
+  Transitions`: `onboarding → registro_estado`; `despedida` es terminal;
+  `saludo → onboarding | registro_estado | journey_operativo |
+  derivacion_medinfo`), y `KGDBReader.get_next_transitions()`
+  (`kgdb_reader.py:183`) las lee como aristas `REL_FLOWS_TO`. El compilador
+  **no llama a ese método**: usa `steps_under()` y expone como permitidos
+  *todos* los hermanos (`compiler.py:~313`,
+  `allowed_transitions = [s for s in steps if s != active]`). Lo mismo con
+  `get_grounding_atoms()` (`kgdb_reader.py:195`) vs `docs_for_tag()`. Es un
+  bug de cableado de dos líneas, no un grafo faltante.
 - ❌ La decisión es heurística, no un agente. `decide_turn`
   (`kb_agent/agent.py:109`) es una policy pura sin LLM: elige tool con
   `_select_relevant_tool` (matching contra la pregunta) y clasifica el step
