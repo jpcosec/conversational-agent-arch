@@ -55,6 +55,9 @@ class ProjectConfig:
     greeting: str = "Hola. ¿En qué te puedo ayudar?"
     input_placeholder: str = "Escribe tu mensaje..."
     mode: str = "serving"  # "serving" | "test" (informativo)
+    #: Modo demo (opt-in con DEMO_MODE=1): sin orquestador ni LLM, todos los
+    #: /api/* sirven ``frontends/chat/demo_data``. Nunca en modo test.
+    demo_mode: bool = False
 
     @property
     def flow_kb_root(self) -> Path:
@@ -165,5 +168,6 @@ def load_project_config(
         cfg.host = environ["HOST"]
     if environ.get("PORT"):
         cfg.port = int(environ["PORT"])
+    cfg.demo_mode = resolved_mode != "test" and environ.get("DEMO_MODE") == "1"
 
     return cfg

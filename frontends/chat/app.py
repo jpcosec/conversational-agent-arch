@@ -46,6 +46,7 @@ from kb_agent.models_sql.turns import Turns
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import ProjectConfig, load_project_config
 from frontends.chat.demo_data import (
+    DemoStateMachineConversador,
     demo_atom,
     demo_config,
     demo_events,
@@ -57,7 +58,6 @@ from frontends.chat.demo_data import (
     demo_tools,
     demo_viz_graph,
 )
-from tests.support.fakes import DemoStateMachineConversador
 
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -203,7 +203,9 @@ def _tree_to_list(children: dict, parent_key: str) -> list[dict]:
 
 def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | None = None) -> FastAPI:
     cfg = cfg or load_project_config()
-    demo_mode = cfg.mode != "test" and os.environ.get("DEMO_MODE", "1") != "0"
+    # Demo = opt-in explicito (DEMO_MODE=1, ver ProjectConfig.demo_mode): sin
+    # orquestador ni LLM. Nunca por defecto: produccion no setea la variable.
+    demo_mode = cfg.demo_mode
     if orchestrator is None and not demo_mode:
         cfg.chat_db.parent.mkdir(parents=True, exist_ok=True)
         orchestrator = Orchestrator.from_config(cfg)
