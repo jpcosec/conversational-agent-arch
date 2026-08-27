@@ -47,13 +47,13 @@ markup nuevo; sin build step (CDN only); dark siempre.
 
 ### Rutas
 
-| Vista | Ruta nueva | Ruta vieja (redirect 301) |
-|---|---|---|
-| chat-inspector | `/` | — |
-| flow | `/flow` | `/conversation_flow_editor` |
-| mindmap | `/mindmap` | `/taxonomy_explorer`, `/viz` |
-| users | `/users` | `/profiling_viewer` |
-| dashboard | `/dashboard` | — |
+| Vista | Ruta |
+|---|---|
+| chat-inspector | `/` |
+| flow | `/flow` |
+| mindmap | `/mindmap` |
+| users | `/users` |
+| dashboard | `/dashboard` |
 
 `/dashboard` sirve `frontends/dashboard/index.html`: un mock estático con el
 chip "Datos de ejemplo", enlazado desde la topbar de todas las vistas
@@ -164,7 +164,7 @@ Vista única de la KB con **3 layouts** (fusión de taxonomía + embeddings).
 |---|---|
 | árbol (default) | jerarquía familias→subpaths→atoms, dagre LR |
 | top-down | misma jerarquía, dagre TB |
-| embeddings | posiciones por PCA 2D (ex `/viz`), edges de similitud coseno, jerarquía oculta |
+| embeddings | posiciones por PCA 2D, edges de similitud coseno, jerarquía oculta |
 
 ### 4.2 Sidebar filtro (`mindmap-sidebar`)
 - Árbol de namespaces/ramas; click → filtra canvas a esa rama.
@@ -268,4 +268,4 @@ documentación.
 | `/api/events` | NUEVO: serie temporal por user_id |
 | `/api/profiles` | ampliado (perfil+eventos+conversaciones) |
 | `/api/chat` | soporta carga de historial por session_id |
-| rutas UI | `/flow`, `/mindmap`, `/users`, `/dashboard` + redirects 301 de las viejas |
+| rutas UI | `/flow`, `/mindmap`, `/users`, `/dashboard` |

@@ -13,7 +13,7 @@ Endpoints:
   GET  /api/taxonomy                   -> arbol taxonomico completo (familias x atoms)
   GET  /api/viz/graph                  -> grafo de atoms+embeddings (PCA 2D) del store en vivo
   GET  /api/health
-  GET  /, /flow, /mindmap, /users, /dashboard (+ redirects legacy) -> UIs estaticas
+  GET  /, /flow, /mindmap, /users, /dashboard -> UIs estaticas
 
 La app NO instancia nada al importar el modulo: ``create_app`` recibe (o
 construye desde ``project.config.yaml``) el orquestador y lo deja en
@@ -32,7 +32,6 @@ from fastapi import FastAPI, HTTPException, Request, Response
 from starlette.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
-from starlette.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from sqlalchemy import create_engine
@@ -69,15 +68,6 @@ DASHBOARD_DIR = PROJECT_ROOT / "frontends" / "dashboard"
 SHARED_DIR = PROJECT_ROOT / "frontends" / "shared"
 
 UI_CHANNEL = "ui"
-
-# Rutas viejas de las vistas -> destino actual (301, con y sin barra final).
-OLD_ROUTES = {
-    "/conversation_flow_editor": "/flow",
-    "/taxonomy_explorer": "/mindmap",
-    "/viz": "/mindmap",
-    "/profiling_viewer": "/users",
-}
-
 
 class ChatRequest(BaseModel):
     message: str
@@ -325,7 +315,6 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         return FileResponse(str(EDITOR_DIR / "index.html"))
 
     @app.get("/api/flow")
-    @app.get("/conversation_flow_editor/flow.json")
     def flow_graph() -> JSONResponse:
         if app.state.demo_mode:
             return JSONResponse(demo_flow())
@@ -463,15 +452,6 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             app.state.viz_cache = cache
 
         return JSONResponse({"kb": cfg.name, **graph})
-
-    def _redirect_factory(dest: str):
-        async def _redirect() -> RedirectResponse:
-            return RedirectResponse(url=dest, status_code=301)
-        return _redirect
-
-    for old_path, new_path in OLD_ROUTES.items():
-        app.add_api_route(old_path, _redirect_factory(new_path), methods=["GET"])
-        app.add_api_route(old_path + "/", _redirect_factory(new_path), methods=["GET"])
 
     @app.get("/api/profiles")
     def profiles() -> JSONResponse:

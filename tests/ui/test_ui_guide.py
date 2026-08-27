@@ -135,21 +135,6 @@ def test_nav_shows_all_views(page, base_url: str):
         assert link.is_visible(), f"Falta {lid} en la navegacion"
 
 
-def test_old_routes_redirect(page, base_url: str):
-    """Las rutas viejas hacen redirect 301 a las nuevas (UI-GUIDE §1)."""
-    redirects = {
-        "/conversation_flow_editor": "/flow",
-        "/taxonomy_explorer": "/mindmap",
-        "/profiling_viewer": "/users",
-        "/viz": "/mindmap",
-    }
-    for old, new in redirects.items():
-        # sin max_redirects=0 Playwright sigue el 301 y se ve el 200 del destino
-        resp = page.request.get(f"{base_url}{old}", max_redirects=0)
-        assert resp.status == 301, f"{old} deberia redirigir 301"
-        assert new in resp.headers.get("location", "")
-
-
 def test_nav_active_view_highlighted(page, base_url: str):
     """El link de la vista activa se resalta (UI-GUIDE §1)."""
     page.goto(f"{base_url}/flow", wait_until="networkidle")
