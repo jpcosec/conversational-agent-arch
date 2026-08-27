@@ -1,0 +1,32 @@
+[
+  {
+    "rama": "operacional",
+    "kind": "nl",
+    "flow": "conversation:steps.journey_operativo",
+    "gate_rejection": null
+  },
+  {
+    "rama": "ea",
+    "kind": "nl",
+    "flow": "conversation:steps.evento_adverso",
+    "gate_rejection": null
+  },
+  {
+    "rama": "medinfo",
+    "kind": "nl",
+    "flow": "conversation:steps.derivacion_medinfo",
+    "gate_rejection": null
+  },
+  {
+    "rama": "tratamiento",
+    "kind": "nl",
+    "flow": "conversation:steps.derivacion_medinfo",
+    "gate_rejection": null
+  },
+  {
+    "rama": "corpus-inventar",
+    "kind": "nl",
+    "flow": "conversation:steps.derivacion_medinfo",
+    "gate_rejection": null
+  }
+]

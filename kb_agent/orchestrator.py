@@ -282,7 +282,10 @@ class Orchestrator:
             return {"approved": True, "reasons": []}
 
         reasons: list[str] = []
-        response_lower = response.lower()
+        # Normalizar igual que agent.py para consistencia
+        import unicodedata
+        response_norm = unicodedata.normalize("NFKD", response.lower())
+        response_norm = "".join(ch for ch in response_norm if not unicodedata.combining(ch))
 
         for atom in gate_atoms:
             criterion = str(atom.get("criterion", "") or "")
@@ -296,7 +299,7 @@ class Orchestrator:
 
             if "dosis" in atom_id or "dosis" in criterion:
                 # No indica, sugiere ni comenta cambios de dosis
-                if any(p in response_lower for p in ["sube la dosis", "subir la dosis", "suba la dosis",
+                if any(p in response_norm for p in ["sube la dosis", "subir la dosis", "suba la dosis",
                        "baja la dosis", "bajar la dosis", "baje la dosis",
                        "aumenta la dosis", "aumentar la dosis", "aumente la dosis",
                        "debes tomar", "tienes que tomar", "tiene que tomar",
@@ -306,8 +309,7 @@ class Orchestrator:
 
             if "diagnostico" in atom_id or "diagnostico" in criterion:
                 # No diagnostica ni interpreta sintomas
-                # Usar frases completas para evitar falsos positivos con "tienes"
-                if any(p in response_lower for p in ["tienes diabetes", "tienes cancer", "tienes una enfermedad",
+                if any(p in response_norm for p in ["tienes diabetes", "tienes cancer", "tienes una enfermedad",
                        "tienes un problema de", "diagnosticado", "padeces de", "sufres de",
                        "tu enfermedad es", "tu problema es", "lo que tienes es",
                        "esto es debido a", "la causa de tus sintomas"]):
@@ -315,19 +317,19 @@ class Orchestrator:
 
             if "corpus" in atom_id or "corpus" in criterion:
                 # La respuesta no debe indicar que usa informacion no aprobada
-                if any(p in response_lower for p in ["según estudios", "investigaciones muestran",
-                       "la literatura dice", "se ha demostrado que", "segun la ciencia"]):
+                if any(p in response_norm for p in ["segun estudios", "investigaciones muestran",
+                       "la literatura dice", "se ha demostrado que", "segun la ciencia",
+                       "estudios demuestran", "estudios muestran",
+                       "cientificamente"]):
                     violated = True
 
             if "promesas" in atom_id or "promesas" in criterion:
                 # No promete resultados clinicos
-                if any(p in response_lower for p in ["vas a mejorar", "te curar", "te sanar",
+                if any(p in response_norm for p in ["vas a mejorar", "te curar", "te sanar",
                        "100%", "garantiz", "resultado seguro", "sin riesgo"]):
                     violated = True
 
             if "derivacion" in atom_id or "derivacion" in criterion:
-                # Si la respuesta contiene informacion que debio derivar pero no deriva
-                # (check mas suave — se basa en que el LLM ya deriva correctamente)
                 pass
 
             if violated:

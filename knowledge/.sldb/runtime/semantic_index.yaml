@@ -8,11 +8,17 @@ tags:
   conversation:fallback:
   - fallback-antonia
   - rule-antonia-anti-alucinacion
+  - rule-antonia-derivar-clinico
   conversation:pharmacovigilance:
   - rule-antonia-eventos-adversos
   conversation:security:
   - boundary-antonia-manipulacion
   - rule-antonia-anti-alucinacion
+  - rule-antonia-no-contraindicaciones
+  - rule-antonia-no-deducir
+  - rule-antonia-no-extrapolar
+  - rule-antonia-no-farmacologia
+  - rule-antonia-no-inventar
   conversation:steps.agendar_recordatorio:
   - step-antonia-agendar-recordatorio
   - tool-antonia-agendar-recordatorio
@@ -102,7 +108,13 @@ tags:
   - rule-antonia-clasificacion-medinfo
   - rule-antonia-clasificacion-operacional
   - rule-antonia-clasificacion-tratamiento
+  - rule-antonia-derivar-clinico
   - rule-antonia-eventos-adversos
+  - rule-antonia-no-contraindicaciones
+  - rule-antonia-no-deducir
+  - rule-antonia-no-extrapolar
+  - rule-antonia-no-farmacologia
+  - rule-antonia-no-inventar
   - self-antonia
   - step-antonia-agendar-recordatorio
   - step-antonia-derivacion-medinfo
@@ -149,7 +161,13 @@ tags:
   - rule-antonia-clasificacion-medinfo
   - rule-antonia-clasificacion-operacional
   - rule-antonia-clasificacion-tratamiento
+  - rule-antonia-derivar-clinico
   - rule-antonia-eventos-adversos
+  - rule-antonia-no-contraindicaciones
+  - rule-antonia-no-deducir
+  - rule-antonia-no-extrapolar
+  - rule-antonia-no-farmacologia
+  - rule-antonia-no-inventar
   type.knowledge.self:
   - self-antonia
   type.knowledge.step:
@@ -208,7 +226,13 @@ tags:
   - rule-antonia-clasificacion-medinfo
   - rule-antonia-clasificacion-operacional
   - rule-antonia-clasificacion-tratamiento
+  - rule-antonia-derivar-clinico
   - rule-antonia-eventos-adversos
+  - rule-antonia-no-contraindicaciones
+  - rule-antonia-no-deducir
+  - rule-antonia-no-extrapolar
+  - rule-antonia-no-farmacologia
+  - rule-antonia-no-inventar
   - self-antonia
   - step-antonia-agendar-recordatorio
   - step-antonia-derivacion-medinfo
@@ -345,6 +369,54 @@ documents:
     path: atoms/rule-antonia-clasificacion-tratamiento.md
     tags:
     - conversation:classification
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-no-contraindicaciones:
+    model: RuleAtom
+    path: atoms/rule-antonia-no-contraindicaciones.md
+    tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-no-deducir:
+    model: RuleAtom
+    path: atoms/rule-antonia-no-deducir.md
+    tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-no-extrapolar:
+    model: RuleAtom
+    path: atoms/rule-antonia-no-extrapolar.md
+    tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-no-farmacologia:
+    model: RuleAtom
+    path: atoms/rule-antonia-no-farmacologia.md
+    tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-no-inventar:
+    model: RuleAtom
+    path: atoms/rule-antonia-no-inventar.md
+    tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-antonia-derivar-clinico:
+    model: RuleAtom
+    path: atoms/rule-antonia-derivar-clinico.md
+    tags:
+    - conversation:fallback
     - system:laboratorio-chile
     - type.knowledge.rule
     - workspace.knowledge
