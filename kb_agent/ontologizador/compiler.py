@@ -27,6 +27,8 @@ Flujo:
 """
 from __future__ import annotations
 
+import logging
+
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Callable, ClassVar, Protocol
 
@@ -48,6 +50,8 @@ from kb_agent.models.knowledge import (
 )
 from kb_agent.models_sql.identity import UserTraits, Users
 from kb_agent.models_sql.session import ChatHistory
+
+logger = logging.getLogger(__name__)
 
 from .compiled_document import CompiledDocument
 from .kgdb_reader import KGDBReader
@@ -529,6 +533,11 @@ class ContextCompiler:
                 history=history,
             )
         except Exception:
+            # Fail-open igual que el gate, pero AUDIBLE: sin este log el
+            # fallback es invisible y no hay como saber por que el ruteador
+            # no decidio (paso en el deploy a Modal: source=deterministic
+            # en produccion, agent en local, y los logs no decian nada).
+            logger.exception("RouterAgent fallo; bundle por la via deterministica")
             return None
 
         security_ids = self._security_floor_ids()
