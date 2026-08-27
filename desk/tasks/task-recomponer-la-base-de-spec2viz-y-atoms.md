@@ -9,8 +9,7 @@ tags:
 routine: routine-task-recomponer-la-base-de-spec2viz-y-atoms
 current_node: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
 history: []
-references:
-- desk/drawer/tasks/seed-recomponer-spec2viz-y-atoms.md
+references: []
 depends_on: []
 pills: []
 files: []
@@ -42,29 +41,20 @@ Promote deferred work from seed-recomponer-spec2viz-y-atoms.md.
 
 _State what is in scope and what is out of scope._
 
-## Semilla
 
-Recomponer la base de spec2viz y atoms.
-
-## Nota
-
-Track base. Los demás tracks (UI, KB, subagentes) dependen de este.
-Scope por definir al picar la tarea.
 
 ## Implementation Path
 
 _Outline the expected implementation route or affected surface._
 
-Promoted from desk/drawer/tasks/seed-recomponer-spec2viz-y-atoms.md.
+Cerrada: la base de spec2viz (desk/spec2viz/) y los atoms (desk/atoms/) ya estan recompuestos y trackeados en .sldb.
 
 ## Validation
 
 _List the checks required before this task can close._
 
-- pytest
+- 
 
 ## Done When
 
 _Name the observable condition that makes the task complete._
-
-Promoted work is completed, validated, and closed with a commit.

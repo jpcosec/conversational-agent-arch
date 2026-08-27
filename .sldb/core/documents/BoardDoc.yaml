@@ -1,1 +1,9 @@
-documents: []
+documents:
+- name: Board
+  path: desk/tasks/Board.md
+  hash_c: 9367757f3c79f7abea2823ef93fc8a5ce4bf73536dda74fcd88261e223e36942
+  hash_d: f4e774693177069dfd3cfbf83ea8407edbc9ff6c5763cbeb79e7cbfb4a9dabb8
+  semantic_tags:
+  - type.workflow.board
+  - workspace.desk
+  - workspace:desk

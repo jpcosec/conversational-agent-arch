@@ -2,6 +2,7 @@ tags:
   artifact:task:
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - task-recomponer-la-base-de-spec2viz-y-atoms
   domain:psp:
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
@@ -25,6 +26,10 @@ tags:
   - atom-reflector-batch
   family:user:
   - atom-perfilador-asincrono
+  foundation:
+  - task-ui-foundations
+  hotkeys:
+  - task-ui-foundations
   layer:business:
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
@@ -54,6 +59,8 @@ tags:
   - atom-reflector-batch
   - atom-router-state-machine
   - atom-tool-handlers-registry
+  navigation:
+  - task-ui-foundations
   role:background:
   - atom-perfilador-asincrono
   - atom-reflector-batch
@@ -81,6 +88,7 @@ tags:
   - pill-maquina-de-estados-pausa-en-tool-calling
   source:drawer:
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - task-recomponer-la-base-de-spec2viz-y-atoms
   system:antonia:
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
@@ -108,6 +116,7 @@ tags:
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   type.desk.inbox-note:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
+  - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   type.knowledge.atom:
   - atom-agente-conversador
   - atom-canales-de-entrada
@@ -138,6 +147,8 @@ tags:
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
   - atom-topologia-de-despliegue
+  type.workflow.board:
+  - Board
   type.workflow.pill:
   - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
   - pill-conversador-jamas-alucina-sin-contexto
@@ -147,7 +158,12 @@ tags:
   type.workflow.task:
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - task-recomponer-la-base-de-spec2viz-y-atoms
+  - task-ui-foundations
+  ui:
+  - task-ui-foundations
   workspace.desk:
+  - Board
   - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
   - pill-conversador-jamas-alucina-sin-contexto
   - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
@@ -155,6 +171,8 @@ tags:
   - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - task-recomponer-la-base-de-spec2viz-y-atoms
+  - task-ui-foundations
   workspace.desk.atoms:
   - atom-agente-conversador
   - atom-canales-de-entrada
@@ -187,10 +205,20 @@ tags:
   - atom-topologia-de-despliegue
   workspace.desk.inbox:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
+  - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   workspace:desk:
+  - Board
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - task-recomponer-la-base-de-spec2viz-y-atoms
 documents:
+  Board:
+    model: BoardDoc
+    path: desk/tasks/Board.md
+    tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
   task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp:
     model: TaskDoc
     path: desk/tasks/task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
@@ -208,6 +236,25 @@ documents:
     - type.workflow.task
     - workspace.desk
     - workspace:desk
+  task-recomponer-la-base-de-spec2viz-y-atoms:
+    model: TaskDoc
+    path: desk/tasks/task-recomponer-la-base-de-spec2viz-y-atoms.md
+    tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-ui-foundations:
+    model: TaskDoc
+    path: desk/tasks/task-ui-foundations.md
+    tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
   pill-maquina-de-estados-pausa-en-tool-calling:
     model: PillDoc
     path: desk/drawer/pills/pill-maquina-de-estados-pausa-en-tool-calling.md
@@ -252,6 +299,12 @@ documents:
   20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer:
     model: InboxNoteDoc
     path: desk/inbox/20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer.md
+    tags:
+    - type.desk.inbox-note
+    - workspace.desk.inbox
+  20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status:
+    model: InboxNoteDoc
+    path: desk/inbox/20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status.md
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox

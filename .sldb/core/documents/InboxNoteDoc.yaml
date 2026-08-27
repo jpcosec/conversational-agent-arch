@@ -6,3 +6,10 @@ documents:
   semantic_tags:
   - type.desk.inbox-note
   - workspace.desk.inbox
+- name: 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
+  path: desk/inbox/20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status.md
+  hash_c: ddfc92d141ef221af290e86f725742676b184da3a5c6ca94d0b5792effa0aef4
+  hash_d: 563691df91705fa4bbb6f1ea4233d6c74547d11bd15df7de8a0ec8a5f69fe74b
+  semantic_tags:
+  - type.desk.inbox-note
+  - workspace.desk.inbox

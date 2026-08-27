@@ -11,8 +11,7 @@ current_node: complete
 history:
 - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
 - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
-references:
-- desk/drawer/tasks/handoff-knowledge-org.md
+references: []
 depends_on: []
 pills: []
 files: []

@@ -203,8 +203,8 @@ documents:
     - workspace:desk
     slug: organizaci-n-autom-tica-de-tomos-en-la-kb
     level: 1
-    line_start: 30
-    line_end: 31
+    line_start: 29
+    line_end: 30
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/rationale
     title: Rationale
     breadcrumbs:
@@ -228,8 +228,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 32
-    line_end: 33
+    line_start: 31
+    line_end: 32
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/goal
     title: Goal
     breadcrumbs:
@@ -253,8 +253,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 38
-    line_end: 39
+    line_start: 37
+    line_end: 38
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/scope
     title: Scope
     breadcrumbs:
@@ -278,8 +278,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 44
-    line_end: 45
+    line_start: 43
+    line_end: 44
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -303,8 +303,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 50
-    line_end: 51
+    line_start: 49
+    line_end: 50
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/validation
     title: Validation
     breadcrumbs:
@@ -328,8 +328,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 56
-    line_end: 57
+    line_start: 55
+    line_end: 56
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/done-when
     title: Done When
     breadcrumbs:
@@ -353,5 +353,382 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 62
-    line_end: 63
+    line_start: 61
+    line_end: 62
+- doc_name: task-recomponer-la-base-de-spec2viz-y-atoms
+  sections:
+  - path: recomponer-la-base-de-spec2viz-y-atoms
+    title: Recomponer la base de spec2viz y atoms
+    breadcrumbs:
+    - Recomponer la base de spec2viz y atoms
+    about:
+    - Recomponer la base de spec2viz y atoms
+    - recomponer la base de spec2viz y atoms
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: recomponer-la-base-de-spec2viz-y-atoms
+    level: 1
+    line_start: 26
+    line_end: 27
+  - path: recomponer-la-base-de-spec2viz-y-atoms/rationale
+    title: Rationale
+    breadcrumbs:
+    - Recomponer la base de spec2viz y atoms
+    - Rationale
+    about:
+    - Recomponer la base de spec2viz y atoms
+    - recomponer la base de spec2viz y atoms
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 28
+    line_end: 29
+  - path: recomponer-la-base-de-spec2viz-y-atoms/goal
+    title: Goal
+    breadcrumbs:
+    - Recomponer la base de spec2viz y atoms
+    - Goal
+    about:
+    - Recomponer la base de spec2viz y atoms
+    - recomponer la base de spec2viz y atoms
+    - Goal
+    - goal
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 34
+    line_end: 35
+  - path: recomponer-la-base-de-spec2viz-y-atoms/scope
+    title: Scope
+    breadcrumbs:
+    - Recomponer la base de spec2viz y atoms
+    - Scope
+    about:
+    - Recomponer la base de spec2viz y atoms
+    - recomponer la base de spec2viz y atoms
+    - Scope
+    - scope
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 40
+    line_end: 41
+  - path: recomponer-la-base-de-spec2viz-y-atoms/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Recomponer la base de spec2viz y atoms
+    - Implementation Path
+    about:
+    - Recomponer la base de spec2viz y atoms
+    - recomponer la base de spec2viz y atoms
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 46
+    line_end: 47
+  - path: recomponer-la-base-de-spec2viz-y-atoms/validation
+    title: Validation
+    breadcrumbs:
+    - Recomponer la base de spec2viz y atoms
+    - Validation
+    about:
+    - Recomponer la base de spec2viz y atoms
+    - recomponer la base de spec2viz y atoms
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 52
+    line_end: 53
+  - path: recomponer-la-base-de-spec2viz-y-atoms/done-when
+    title: Done When
+    breadcrumbs:
+    - Recomponer la base de spec2viz y atoms
+    - Done When
+    about:
+    - Recomponer la base de spec2viz y atoms
+    - recomponer la base de spec2viz y atoms
+    - Done When
+    - done when
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 58
+    line_end: 59
+- doc_name: task-ui-foundations
+  sections:
+  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales
+    title: "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    breadcrumbs:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    about:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    slug: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/rationale
+    title: Rationale
+    breadcrumbs:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - Rationale
+    about:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - Rationale
+    - rationale
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    slug: rationale
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/goal
+    title: Goal
+    breadcrumbs:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - Goal
+    about:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - Goal
+    - goal
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    slug: goal
+    level: 2
+    line_start: 35
+    line_end: 36
+  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/scope
+    title: Scope
+    breadcrumbs:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - Scope
+    about:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - Scope
+    - scope
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    slug: scope
+    level: 2
+    line_start: 41
+    line_end: 42
+  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - Implementation Path
+    about:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - Implementation Path
+    - implementation path
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    slug: implementation-path
+    level: 2
+    line_start: 47
+    line_end: 48
+  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/validation
+    title: Validation
+    breadcrumbs:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - Validation
+    about:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - Validation
+    - validation
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    slug: validation
+    level: 2
+    line_start: 53
+    line_end: 54
+  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/done-when
+    title: Done When
+    breadcrumbs:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - Done When
+    about:
+    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
+      \ globales"
+    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - Done When
+    - done when
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - foundation
+    - hotkeys
+    - navigation
+    - type.workflow.task
+    - ui
+    - workspace.desk
+    slug: done-when
+    level: 2
+    line_start: 59
+    line_end: 60

@@ -16,6 +16,9 @@ nodes:
 - id: type.workflow
   parents:
   - type
+- id: type.workflow.board
+  parents:
+  - type.workflow
 - id: type.workflow.pill
   parents:
   - type.workflow

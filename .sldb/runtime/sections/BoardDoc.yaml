@@ -1,0 +1,192 @@
+documents:
+- doc_name: Board
+  sections:
+  - path: board-xxx
+    title: board-xxx
+    breadcrumbs:
+    - board-xxx
+    about:
+    - board-xxx
+    - board xxx
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: board-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: affected-workspace-or-domain
+    title: Affected workspace or domain
+    breadcrumbs:
+    - Affected workspace or domain
+    about:
+    - Affected workspace or domain
+    - affected workspace or domain
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: affected-workspace-or-domain
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: list-of-task-xxx-paths
+    title: List of task-xxx paths
+    breadcrumbs:
+    - List of task-xxx paths
+    about:
+    - List of task-xxx paths
+    - list of task xxx paths
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: list-of-task-xxx-paths
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: list-of-pill-xxx-paths
+    title: List of pill-xxx paths
+    breadcrumbs:
+    - List of pill-xxx paths
+    about:
+    - List of pill-xxx paths
+    - list of pill xxx paths
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: list-of-pill-xxx-paths
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: list-of-ritual-xxx-paths
+    title: List of ritual-xxx paths
+    breadcrumbs:
+    - List of ritual-xxx paths
+    about:
+    - List of ritual-xxx paths
+    - list of ritual xxx paths
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: list-of-ritual-xxx-paths
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: e-g-system-sldb-workspace-desk
+    title: e.g., system:sldb, workspace:desk
+    breadcrumbs:
+    - e.g., system:sldb, workspace:desk
+    about:
+    - e.g., system:sldb, workspace:desk
+    - e g system sldb workspace desk
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: e-g-system-sldb-workspace-desk
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: gemini-test-board
+    title: gemini_test Board
+    breadcrumbs:
+    - gemini_test Board
+    about:
+    - gemini_test Board
+    - gemini test board
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: gemini-test-board
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: gemini-test-board/purpose
+    title: Purpose
+    breadcrumbs:
+    - gemini_test Board
+    - Purpose
+    about:
+    - gemini_test Board
+    - gemini test board
+    - Purpose
+    - purpose
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: purpose
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: gemini-test-board/notes
+    title: Notes
+    breadcrumbs:
+    - gemini_test Board
+    - Notes
+    about:
+    - gemini_test Board
+    - gemini test board
+    - Notes
+    - notes
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: notes
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: gemini-test-board/task-details
+    title: Task Details
+    breadcrumbs:
+    - gemini_test Board
+    - Task Details
+    about:
+    - gemini_test Board
+    - gemini test board
+    - Task Details
+    - task details
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.board
+    - workspace.desk
+    - workspace:desk
+    slug: task-details
+    level: 2
+    line_start: 41
+    line_end: 42
