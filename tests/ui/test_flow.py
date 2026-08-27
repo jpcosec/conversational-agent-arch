@@ -176,18 +176,25 @@ def test_flow_inspector_present(page):
     assert page.locator("[data-testid='flow-inspector']").is_visible()
 
 
-def test_flow_node_toolbar_on_select(page):
-    """Al seleccionar un nodo aparece el NodeToolbar (§3.2).
+def _select_first_node(page):
+    """Selecciona el primer nodo del grafo de forma robusta.
 
-    NOTA: en el HTML actual NodeToolbar se importa pero nunca se renderiza en
-    el JSX -> se espera que este test FALLE hasta que se agregue el toolbar.
+    React Flow envuelve cada nodo en `.react-flow__node`, pero el wrapper
+    comparte area con `.react-flow__pane`, que intercepta el pointer event de
+    Playwright. Hacer click sobre el contenido interno del nodo (primer `div`
+    hijo) evita esa intercepcion y dispara `onNodeClick` de forma fiable.
     """
+    node = page.locator("[class*=react-flow__node]").first
+    node.locator("div").first.click(timeout=8000)
+    page.wait_for_timeout(700)
+
+
+def test_flow_node_toolbar_on_select(page):
+    """Al seleccionar un nodo aparece el NodeToolbar (§3.2)."""
     _open_flow(page)
     page.wait_for_selector("[class*=react-flow]", timeout=20000)
     page.wait_for_timeout(2000)
-    node = page.locator("[class*=react-flow__node]").first
-    node.click()
-    page.wait_for_timeout(500)
+    _select_first_node(page)
     toolbar = page.locator("[data-testid='flow-node-toolbar']")
     assert toolbar.count() > 0 and toolbar.first.is_visible(), (
         "no aparece flow-node-toolbar al seleccionar nodo"
@@ -199,11 +206,13 @@ def test_flow_node_click_opens_inspector(page):
     _open_flow(page)
     page.wait_for_selector("[class*=react-flow]", timeout=20000)
     page.wait_for_timeout(2000)
-    node = page.locator("[class*=react-flow__node]").first
-    node.click()
-    page.wait_for_timeout(400)
+    _select_first_node(page)
     header = page.locator("[data-testid='flow-inspector']")
-    assert header.inner_text().strip() != "", "inspector vacio tras click en nodo"
+    # text_content() en vez de inner_text(): en headless el foreignObject/text
+    # a veces reporta inner_text vacio aunque el DOM tenga el texto.
+    assert (header.text_content() or "").strip() == "Step Inspector", (
+        "inspector no cambio a 'Step Inspector' tras click en nodo"
+    )
 
 
 def test_flow_add_subflow(page):

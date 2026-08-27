@@ -8,8 +8,9 @@
 <link rel="stylesheet" href="/static/theme.css">
 <script src="/static/hotkeys.js"></script>
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;width:100%}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;width:100%}body{display:flex;flex-direction:column}
 body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden;display:flex;flex-direction:column}
+#root{display:flex;flex:1;min-height:0;width:100%;position:relative}
 .app{display:flex;flex:1;min-height:0;width:100%}
 .sidebar{width:280px;min-width:280px;background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));border-right:1px solid rgba(212,165,116,.18);display:flex;flex-direction:column;z-index:20;overflow-y:auto}
 .brand{padding:20px 18px 14px;border-bottom:1px solid rgba(212,165,116,.18)}
@@ -83,6 +84,8 @@ import dagre from'dagre'
 const STEP_KINDS={interaccion_simple:{label:'Interacción simple',dot:'#e6a85c',border:'rgba(230,168,92,.5)',bg:'rgba(230,168,92,.07)',icon:'💬'},obtencion_datos:{label:'Obtención de datos',dot:'#c97db9',border:'rgba(201,125,185,.5)',bg:'rgba(201,125,185,.07)',icon:'📝'},handout:{label:'Handout',dot:'#7fb3d5',border:'rgba(127,179,213,.5)',bg:'rgba(127,179,213,.07)',icon:'🤝'},llamado_tool:{label:'Llamado a tool',dot:'#7cba7c',border:'rgba(124,186,124,.5)',bg:'rgba(124,186,124,.07)',icon:'⚙️'}}
 const KIND_FIELDS={interaccion_simple:['instructions'],obtencion_datos:['instructions','required_slots'],handout:['instructions','handout_target'],llamado_tool:['instructions','tool_ref','tool_params']}
 const PALETTE_ITEMS=Object.entries(STEP_KINDS).map(([k,v])=>({kind:k,label:v.label,color:v.dot,icon:v.icon}))
+// Acciones del NodeToolbar; App las cablea en un useEffect (evita re-threadear cada node.data)
+const FLOW_ACTIONS={onDelete:null,onRename:null,onChangeKind:null}
 
 function layoutGraph(nodes,edges,rankdir){
  const g=new dagre.graphlib.Graph;g.setDefaultEdgeLabel(()=>({}))
@@ -94,7 +97,15 @@ function layoutGraph(nodes,edges,rankdir){
 
 function StepNode({data,selected}){
  const c=STEP_KINDS[data.stepKind]||STEP_KINDS.interaccion_simple
+ const tbtn={background:'transparent',border:'1px solid rgba(212,165,116,.25)',color:'rgba(245,240,232,.75)',borderRadius:6,padding:'3px 8px',fontSize:11,fontFamily:"'JetBrains Mono',monospace",cursor:'pointer'}
  return html`<div style=${{border:`2px solid ${selected?c.border:'rgba(212,165,116,.12)'}`,borderLeft:`4px solid ${c.border}`,background:c.bg,borderRadius:12,padding:'10px 14px',minWidth:190,cursor:'pointer',transition:'.2s',boxShadow:selected?'0 0 20px rgba(212,165,116,.12)':'none'}}>
+   <${NodeToolbar} isVisible=${!!selected} position=${Position.Top} className="node-toolbar">
+     <div data-testid="flow-node-toolbar" style=${{display:'flex',gap:6,background:'rgba(18,18,26,.96)',border:'1px solid rgba(212,165,116,.3)',borderRadius:8,padding:'5px 6px',backdropFilter:'blur(8px)',boxShadow:'0 4px 18px rgba(0,0,0,.4)'}}>
+       <button data-testid="flow-node-rename" title="Renombrar" onClick=${()=>FLOW_ACTIONS.onRename&&FLOW_ACTIONS.onRename(data.stepId)} style=${tbtn}>✎ Renombrar</button>
+       <button data-testid="flow-node-kind" title="Cambiar tipo" onClick=${()=>FLOW_ACTIONS.onChangeKind&&FLOW_ACTIONS.onChangeKind(data.stepId)} style=${tbtn}>⇄ Tipo</button>
+       <button data-testid="flow-node-delete" title="Borrar" onClick=${()=>FLOW_ACTIONS.onDelete&&FLOW_ACTIONS.onDelete(data.stepId)} style=${{...tbtn,borderColor:'rgba(230,120,120,.4)',color:'rgba(240,180,180,.9)'}}>🗑 Borrar</button>
+     </div>
+   </${NodeToolbar}>
    <${Handle} type="target" position=${Position.Left} style=${{background:c.border,width:8,height:8,border:'2px solid #0a0a0f'}}/>
    <div style=${{display:'flex',alignItems:'center',gap:8,marginBottom:3}}><span style=${{fontSize:13}}>${c.icon}</span><span style=${{fontSize:13,fontWeight:600,color:'#f5f0e8'}}>${data.label}</span></div>
    <div style=${{fontSize:9,fontFamily:"'JetBrains Mono',monospace",letterSpacing:'.08em',textTransform:'uppercase',color:c.dot,opacity:.85}}>${c.label}</div>
@@ -115,10 +126,20 @@ function App(){
  const {fitView}=useReactFlow()
 
  useEffect(()=>{fetch('/api/tools').then(r=>r.json()).then(setTools).catch(()=>{})},[])
+
+ // Cablear acciones del NodeToolbar (borrar / renombrar / cambiar kind)
+ useEffect(()=>{
+  FLOW_ACTIONS.onDelete=(id)=>{setNodes(nds=>nds.filter(n=>n.id!==id));setEdges(eds=>eds.filter(e=>e.source!==id&&e.target!==id));setSteps(prev=>{const c={...prev};delete c[id];return c});setSelectedStepId(cur=>cur===id?null:cur)}
+  FLOW_ACTIONS.onRename=(id)=>{const nn=window.prompt('Nuevo nombre del paso:');if(nn&&nn.trim()){const t=nn.trim();setSteps(prev=>({...prev,[id]:{...prev[id],title:t}}));setNodes(nds=>nds.map(n=>n.id===id?{...n,data:{...n.data,label:t}}:n))}}
+  FLOW_ACTIONS.onChangeKind=(id)=>{const keys=Object.keys(STEP_KINDS);setSteps(prev=>{const cur=prev[id];if(!cur)return prev;const nk=keys[(keys.indexOf(cur.kind)+1)%keys.length];return{...prev,[id]:{...cur,kind:nk}}});setNodes(nds=>nds.map(n=>{if(n.id!==id)return n;const nk=keys[(keys.indexOf(n.data.stepKind)+1)%keys.length];return{...n,data:{...n.data,stepKind:nk}}}))}
+  return()=>{FLOW_ACTIONS.onDelete=null;FLOW_ACTIONS.onRename=null;FLOW_ACTIONS.onChangeKind=null}
+ },[setNodes,setEdges])
  useEffect(()=>{localStorage.setItem('flow_rankdir',rankdir)},[rankdir])
 
  useEffect(()=>{fetch('/api/flow').then(r=>r.json()).then(flow=>{const m={};flow.nodes.forEach(s=>{m[s.id]=s});setSteps(m);const rn=flow.nodes.map(s=>({id:s.id,type:'step',position:{x:0,y:0},data:{label:(s.title||'').replace(/ —.*$/,'').slice(0,28),stepKind:s.kind||'interaccion_simple',stepId:s.id}}));const re=flow.edges.map((e,i)=>({id:`e-${i}`,source:e.source,target:e.target,animated:true,style:{stroke:'rgba(212,165,116,.3)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.5)'}}));setNodes(layoutGraph(rn,re,rankdir));setEdges(re);setTimeout(()=>fitView({padding:0.15,duration:400}),150)}).catch(e=>console.error('flow err',e))},[setNodes,setEdges,fitView])
 
+ // nodes.length en las deps: los nodos llegan por fetch, asi que en el primer
+ // render el grafo esta vacio y `nodesInitialized` ya es true (cero nodos estan
  useEffect(()=>{if(!nodes.length)return;setNodes(layoutGraph(nodes,edges,rankdir))},[rankdir])
 
  const onConnect=useCallback((params)=>{setEdges(eds=>addEdge({...params,animated:true,style:{stroke:'rgba(212,165,116,.3)',strokeWidth:2},markerEnd:{type:MarkerType.ArrowClosed,color:'rgba(212,165,116,.5'}},eds))},[setEdges])
