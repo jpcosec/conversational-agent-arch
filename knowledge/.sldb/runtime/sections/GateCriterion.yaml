@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-dosis
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-dosis/criterion
     title: Criterion
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-dosis/approval-condition
     title: Approval Condition
     breadcrumbs:
@@ -65,8 +65,8 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-dosis/rejection-action
     title: Rejection Action
     breadcrumbs:
@@ -88,8 +88,8 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-diagnostico
   sections:
   - path: gate-regulatorio-diagn-stico
@@ -110,8 +110,8 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-diagn-stico
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-diagn-stico/criterion
     title: Criterion
     breadcrumbs:
@@ -133,8 +133,8 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-diagn-stico/approval-condition
     title: Approval Condition
     breadcrumbs:
@@ -156,8 +156,8 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-diagn-stico/rejection-action
     title: Rejection Action
     breadcrumbs:
@@ -179,8 +179,8 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-corpus
   sections:
   - path: gate-regulatorio-corpus-aprobado
@@ -201,8 +201,8 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-corpus-aprobado
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-corpus-aprobado/criterion
     title: Criterion
     breadcrumbs:
@@ -224,8 +224,8 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-corpus-aprobado/approval-condition
     title: Approval Condition
     breadcrumbs:
@@ -247,8 +247,8 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-corpus-aprobado/rejection-action
     title: Rejection Action
     breadcrumbs:
@@ -270,8 +270,8 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-derivacion
   sections:
   - path: gate-regulatorio-derivaci-n-correcta
@@ -292,8 +292,8 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-derivaci-n-correcta
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-derivaci-n-correcta/criterion
     title: Criterion
     breadcrumbs:
@@ -315,8 +315,8 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-derivaci-n-correcta/approval-condition
     title: Approval Condition
     breadcrumbs:
@@ -338,8 +338,8 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-derivaci-n-correcta/rejection-action
     title: Rejection Action
     breadcrumbs:
@@ -361,8 +361,8 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-promesas
   sections:
   - path: gate-regulatorio-promesas
@@ -383,8 +383,8 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-promesas
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-promesas/criterion
     title: Criterion
     breadcrumbs:
@@ -406,8 +406,8 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-promesas/approval-condition
     title: Approval Condition
     breadcrumbs:
@@ -429,8 +429,8 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-promesas/rejection-action
     title: Rejection Action
     breadcrumbs:
@@ -452,5 +452,5 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 794
+    line_end: 795

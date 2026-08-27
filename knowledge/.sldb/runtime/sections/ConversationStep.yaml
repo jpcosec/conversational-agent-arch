@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: onboarding-primera-interaccion
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 785
+    line_end: 786
   - path: onboarding-primera-interaccion/instructions
     title: Instructions
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 787
+    line_end: 788
   - path: onboarding-primera-interaccion/required-slots
     title: Required Slots
     breadcrumbs:
@@ -65,8 +65,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 791
+    line_end: 792
   - path: onboarding-primera-interaccion/handout-target
     title: Handout Target
     breadcrumbs:
@@ -88,8 +88,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 795
+    line_end: 796
   - path: onboarding-primera-interaccion/tool
     title: Tool
     breadcrumbs:
@@ -111,8 +111,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 799
+    line_end: 800
   - path: onboarding-primera-interaccion/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -134,8 +134,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 31
-    line_end: 32
+    line_start: 803
+    line_end: 804
   - path: onboarding-primera-interaccion/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -157,8 +157,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 807
+    line_end: 808
   - path: onboarding-primera-interaccion/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -180,8 +180,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-agendar-recordatorio
   sections:
   - path: agendar-recordatorio-de-aplicacion
@@ -202,8 +202,8 @@ documents:
     - workspace.knowledge
     slug: agendar-recordatorio-de-aplicacion
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 785
+    line_end: 786
   - path: agendar-recordatorio-de-aplicacion/instructions
     title: Instructions
     breadcrumbs:
@@ -225,8 +225,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 787
+    line_end: 788
   - path: agendar-recordatorio-de-aplicacion/required-slots
     title: Required Slots
     breadcrumbs:
@@ -248,8 +248,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 791
+    line_end: 792
   - path: agendar-recordatorio-de-aplicacion/handout-target
     title: Handout Target
     breadcrumbs:
@@ -271,8 +271,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 795
+    line_end: 796
   - path: agendar-recordatorio-de-aplicacion/tool
     title: Tool
     breadcrumbs:
@@ -294,8 +294,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 799
+    line_end: 800
   - path: agendar-recordatorio-de-aplicacion/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -317,8 +317,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 31
-    line_end: 32
+    line_start: 803
+    line_end: 804
   - path: agendar-recordatorio-de-aplicacion/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -340,8 +340,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 807
+    line_end: 808
   - path: agendar-recordatorio-de-aplicacion/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -363,8 +363,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-despedida
   sections:
   - path: despedida
@@ -385,8 +385,8 @@ documents:
     - workspace.knowledge
     slug: despedida
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 785
+    line_end: 786
   - path: despedida/instructions
     title: Instructions
     breadcrumbs:
@@ -408,8 +408,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 787
+    line_end: 788
   - path: despedida/required-slots
     title: Required Slots
     breadcrumbs:
@@ -431,8 +431,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 791
+    line_end: 792
   - path: despedida/handout-target
     title: Handout Target
     breadcrumbs:
@@ -454,8 +454,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 795
+    line_end: 796
   - path: despedida/tool
     title: Tool
     breadcrumbs:
@@ -477,8 +477,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 799
+    line_end: 800
   - path: despedida/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -500,8 +500,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 31
-    line_end: 32
+    line_start: 803
+    line_end: 804
   - path: despedida/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -523,8 +523,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 807
+    line_end: 808
   - path: despedida/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -546,8 +546,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-evento-adverso
   sections:
   - path: evento-adverso-derivacion
@@ -568,8 +568,8 @@ documents:
     - workspace.knowledge
     slug: evento-adverso-derivacion
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 785
+    line_end: 786
   - path: evento-adverso-derivacion/instructions
     title: Instructions
     breadcrumbs:
@@ -591,8 +591,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 787
+    line_end: 788
   - path: evento-adverso-derivacion/required-slots
     title: Required Slots
     breadcrumbs:
@@ -614,8 +614,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 791
+    line_end: 792
   - path: evento-adverso-derivacion/handout-target
     title: Handout Target
     breadcrumbs:
@@ -637,8 +637,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 795
+    line_end: 796
   - path: evento-adverso-derivacion/tool
     title: Tool
     breadcrumbs:
@@ -660,8 +660,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 799
+    line_end: 800
   - path: evento-adverso-derivacion/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -683,8 +683,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 31
-    line_end: 32
+    line_start: 803
+    line_end: 804
   - path: evento-adverso-derivacion/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -706,8 +706,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 807
+    line_end: 808
   - path: evento-adverso-derivacion/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -729,8 +729,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-recompra
   sections:
   - path: seguimiento-de-recompra-y-receta
@@ -751,8 +751,8 @@ documents:
     - workspace.knowledge
     slug: seguimiento-de-recompra-y-receta
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 785
+    line_end: 786
   - path: seguimiento-de-recompra-y-receta/instructions
     title: Instructions
     breadcrumbs:
@@ -774,8 +774,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 787
+    line_end: 788
   - path: seguimiento-de-recompra-y-receta/required-slots
     title: Required Slots
     breadcrumbs:
@@ -797,8 +797,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 791
+    line_end: 792
   - path: seguimiento-de-recompra-y-receta/handout-target
     title: Handout Target
     breadcrumbs:
@@ -820,8 +820,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 795
+    line_end: 796
   - path: seguimiento-de-recompra-y-receta/tool
     title: Tool
     breadcrumbs:
@@ -843,8 +843,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 799
+    line_end: 800
   - path: seguimiento-de-recompra-y-receta/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -866,8 +866,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 31
-    line_end: 32
+    line_start: 803
+    line_end: 804
   - path: seguimiento-de-recompra-y-receta/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -889,8 +889,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 807
+    line_end: 808
   - path: seguimiento-de-recompra-y-receta/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -912,8 +912,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-registro-estado
   sections:
   - path: registro-de-estado-como-va-el-tratamiento
@@ -934,8 +934,8 @@ documents:
     - workspace.knowledge
     slug: registro-de-estado-como-va-el-tratamiento
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 785
+    line_end: 786
   - path: registro-de-estado-como-va-el-tratamiento/instructions
     title: Instructions
     breadcrumbs:
@@ -957,8 +957,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 787
+    line_end: 788
   - path: registro-de-estado-como-va-el-tratamiento/required-slots
     title: Required Slots
     breadcrumbs:
@@ -980,8 +980,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 791
+    line_end: 792
   - path: registro-de-estado-como-va-el-tratamiento/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1003,8 +1003,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 795
+    line_end: 796
   - path: registro-de-estado-como-va-el-tratamiento/tool
     title: Tool
     breadcrumbs:
@@ -1026,8 +1026,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 799
+    line_end: 800
   - path: registro-de-estado-como-va-el-tratamiento/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -1049,8 +1049,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 31
-    line_end: 32
+    line_start: 803
+    line_end: 804
   - path: registro-de-estado-como-va-el-tratamiento/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -1072,8 +1072,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 807
+    line_end: 808
   - path: registro-de-estado-como-va-el-tratamiento/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1095,8 +1095,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-saludo
   sections:
   - path: saludo-inicial
@@ -1117,8 +1117,8 @@ documents:
     - workspace.knowledge
     slug: saludo-inicial
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 785
+    line_end: 786
   - path: saludo-inicial/instructions
     title: Instructions
     breadcrumbs:
@@ -1140,8 +1140,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 787
+    line_end: 788
   - path: saludo-inicial/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1163,8 +1163,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 791
+    line_end: 792
   - path: saludo-inicial/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1186,8 +1186,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 795
+    line_end: 796
   - path: saludo-inicial/tool
     title: Tool
     breadcrumbs:
@@ -1209,8 +1209,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 799
+    line_end: 800
   - path: saludo-inicial/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -1232,8 +1232,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 31
-    line_end: 32
+    line_start: 803
+    line_end: 804
   - path: saludo-inicial/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -1255,8 +1255,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 807
+    line_end: 808
   - path: saludo-inicial/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1278,8 +1278,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-derivacion-medinfo
   sections:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa
@@ -1300,8 +1300,8 @@ documents:
     - workspace.knowledge
     slug: derivaci-n-medinfo-consulta-m-dica-del-programa
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 786
+    line_end: 787
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/instructions
     title: Instructions
     breadcrumbs:
@@ -1323,8 +1323,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 788
+    line_end: 789
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1346,8 +1346,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 792
+    line_end: 793
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1369,8 +1369,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 796
+    line_end: 797
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/tool
     title: Tool
     breadcrumbs:
@@ -1392,8 +1392,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 30
-    line_end: 31
+    line_start: 800
+    line_end: 801
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -1415,8 +1415,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 34
-    line_end: 35
+    line_start: 804
+    line_end: 805
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -1438,8 +1438,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 38
-    line_end: 39
+    line_start: 808
+    line_end: 809
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1461,8 +1461,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 42
-    line_end: 43
+    line_start: 812
+    line_end: 813
 - doc_name: step-antonia-revision-humana
   sections:
   - path: revisi-n-humana-ticket-pendiente
@@ -1483,8 +1483,8 @@ documents:
     - workspace.knowledge
     slug: revisi-n-humana-ticket-pendiente
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 785
+    line_end: 786
   - path: revisi-n-humana-ticket-pendiente/instructions
     title: Instructions
     breadcrumbs:
@@ -1506,8 +1506,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 787
+    line_end: 788
   - path: revisi-n-humana-ticket-pendiente/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1529,8 +1529,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 791
+    line_end: 792
   - path: revisi-n-humana-ticket-pendiente/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1552,8 +1552,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 795
+    line_end: 796
   - path: revisi-n-humana-ticket-pendiente/tool
     title: Tool
     breadcrumbs:
@@ -1575,8 +1575,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 30
-    line_end: 31
+    line_start: 799
+    line_end: 800
   - path: revisi-n-humana-ticket-pendiente/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -1598,8 +1598,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 34
-    line_end: 35
+    line_start: 803
+    line_end: 804
   - path: revisi-n-humana-ticket-pendiente/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -1621,8 +1621,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 38
-    line_end: 39
+    line_start: 807
+    line_end: 808
   - path: revisi-n-humana-ticket-pendiente/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1644,8 +1644,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 42
-    line_end: 43
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-journey-operativo
   sections:
   - path: journey-operativo-contenido-preaprobado-del-programa
@@ -1666,8 +1666,8 @@ documents:
     - workspace.knowledge
     slug: journey-operativo-contenido-preaprobado-del-programa
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 785
+    line_end: 786
   - path: journey-operativo-contenido-preaprobado-del-programa/instructions
     title: Instructions
     breadcrumbs:
@@ -1689,8 +1689,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 787
+    line_end: 788
   - path: journey-operativo-contenido-preaprobado-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1712,8 +1712,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 791
+    line_end: 792
   - path: journey-operativo-contenido-preaprobado-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1735,8 +1735,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 795
+    line_end: 796
   - path: journey-operativo-contenido-preaprobado-del-programa/tool
     title: Tool
     breadcrumbs:
@@ -1758,8 +1758,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 30
-    line_end: 31
+    line_start: 799
+    line_end: 800
   - path: journey-operativo-contenido-preaprobado-del-programa/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -1781,8 +1781,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 34
-    line_end: 35
+    line_start: 803
+    line_end: 804
   - path: journey-operativo-contenido-preaprobado-del-programa/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -1804,8 +1804,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 38
-    line_end: 39
+    line_start: 807
+    line_end: 808
   - path: journey-operativo-contenido-preaprobado-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1827,8 +1827,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 42
-    line_end: 43
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-validacion-policy-gate
   sections:
   - path: validaci-n-policy-gate-autochequeo-post-draft
@@ -1849,8 +1849,8 @@ documents:
     - workspace.knowledge
     slug: validaci-n-policy-gate-autochequeo-post-draft
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 785
+    line_end: 786
   - path: validaci-n-policy-gate-autochequeo-post-draft/instructions
     title: Instructions
     breadcrumbs:
@@ -1872,8 +1872,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 787
+    line_end: 788
   - path: validaci-n-policy-gate-autochequeo-post-draft/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1895,8 +1895,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 791
+    line_end: 792
   - path: validaci-n-policy-gate-autochequeo-post-draft/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1918,8 +1918,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 795
+    line_end: 796
   - path: validaci-n-policy-gate-autochequeo-post-draft/tool
     title: Tool
     breadcrumbs:
@@ -1941,8 +1941,8 @@ documents:
     - workspace.knowledge
     slug: tool
     level: 2
-    line_start: 30
-    line_end: 31
+    line_start: 799
+    line_end: 800
   - path: validaci-n-policy-gate-autochequeo-post-draft/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
@@ -1964,8 +1964,8 @@ documents:
     - workspace.knowledge
     slug: allowed-transitions
     level: 2
-    line_start: 34
-    line_end: 35
+    line_start: 803
+    line_end: 804
   - path: validaci-n-policy-gate-autochequeo-post-draft/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
@@ -1987,8 +1987,8 @@ documents:
     - workspace.knowledge
     slug: grounding-atoms
     level: 2
-    line_start: 38
-    line_end: 39
+    line_start: 807
+    line_end: 808
   - path: validaci-n-policy-gate-autochequeo-post-draft/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -2010,5 +2010,5 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 42
-    line_end: 43
+    line_start: 811
+    line_end: 812

@@ -167,8 +167,8 @@ documents:
     - workspace.knowledge
     slug: clasificaci-n-operacional-del-programa
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: clasificaci-n-operacional-del-programa/answer
     title: Answer
     breadcrumbs:
@@ -190,8 +190,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: clasificaci-n-operacional-del-programa/conditions
     title: Conditions
     breadcrumbs:
@@ -213,8 +213,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-clasificacion-medinfo
   sections:
   - path: clasificaci-n-de-consulta-m-dica-medinfo
@@ -235,8 +235,8 @@ documents:
     - workspace.knowledge
     slug: clasificaci-n-de-consulta-m-dica-medinfo
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: clasificaci-n-de-consulta-m-dica-medinfo/answer
     title: Answer
     breadcrumbs:
@@ -258,8 +258,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: clasificaci-n-de-consulta-m-dica-medinfo/conditions
     title: Conditions
     breadcrumbs:
@@ -281,8 +281,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-clasificacion-tratamiento
   sections:
   - path: clasificaci-n-de-dudas-de-tratamiento
@@ -303,8 +303,8 @@ documents:
     - workspace.knowledge
     slug: clasificaci-n-de-dudas-de-tratamiento
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: clasificaci-n-de-dudas-de-tratamiento/answer
     title: Answer
     breadcrumbs:
@@ -326,8 +326,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: clasificaci-n-de-dudas-de-tratamiento/conditions
     title: Conditions
     breadcrumbs:
@@ -349,8 +349,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-contraindicaciones
   sections:
   - path: no-mencionar-contraindicaciones-ni-interacciones
@@ -371,8 +371,8 @@ documents:
     - workspace.knowledge
     slug: no-mencionar-contraindicaciones-ni-interacciones
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: no-mencionar-contraindicaciones-ni-interacciones/answer
     title: Answer
     breadcrumbs:
@@ -394,8 +394,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: no-mencionar-contraindicaciones-ni-interacciones/conditions
     title: Conditions
     breadcrumbs:
@@ -417,8 +417,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-deducir
   sections:
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales
@@ -439,8 +439,8 @@ documents:
     - workspace.knowledge
     slug: no-deducir-informaci-n-cl-nica-desde-principios-generales
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/answer
     title: Answer
     breadcrumbs:
@@ -462,8 +462,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/conditions
     title: Conditions
     breadcrumbs:
@@ -485,8 +485,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-extrapolar
   sections:
   - path: no-extrapolar-desde-otros-medicamentos-similares
@@ -507,8 +507,8 @@ documents:
     - workspace.knowledge
     slug: no-extrapolar-desde-otros-medicamentos-similares
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: no-extrapolar-desde-otros-medicamentos-similares/answer
     title: Answer
     breadcrumbs:
@@ -530,8 +530,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: no-extrapolar-desde-otros-medicamentos-similares/conditions
     title: Conditions
     breadcrumbs:
@@ -553,8 +553,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-farmacologia
   sections:
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
@@ -575,8 +575,8 @@ documents:
     - workspace.knowledge
     slug: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/answer
     title: Answer
     breadcrumbs:
@@ -598,8 +598,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/conditions
     title: Conditions
     breadcrumbs:
@@ -621,8 +621,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-inventar
   sections:
   - path: no-inventar-ni-complementar-con-conocimiento-general
@@ -643,8 +643,8 @@ documents:
     - workspace.knowledge
     slug: no-inventar-ni-complementar-con-conocimiento-general
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: no-inventar-ni-complementar-con-conocimiento-general/answer
     title: Answer
     breadcrumbs:
@@ -666,8 +666,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: no-inventar-ni-complementar-con-conocimiento-general/conditions
     title: Conditions
     breadcrumbs:
@@ -689,8 +689,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-derivar-clinico
   sections:
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
@@ -711,8 +711,8 @@ documents:
     - workspace.knowledge
     slug: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 786
+    line_end: 787
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/answer
     title: Answer
     breadcrumbs:
@@ -734,8 +734,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 788
+    line_end: 789
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/conditions
     title: Conditions
     breadcrumbs:
@@ -757,5 +757,5 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 792
+    line_end: 793
