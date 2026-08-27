@@ -442,22 +442,16 @@ def test_mindmap_focus_on_node(page, base_url: str):
 def _open_first_user(page, base_url: str):
     """Garantiza un usuario (un turno por API) y lo selecciona en la lista.
 
-    Los usuarios se listan como `user-item-<id>` (no `user-chip-<id>` como
-    dice UI-GUIDE §5.1; test_users.py usa el mismo testid).
-
-    Se selecciona con ``dispatch_event("click")`` y no con un click real: el
-    mousedown real sobre el chip cuelga y crashea el renderer de Chromium
-    (headless shell y chromium completo), incluso con ``select()`` anulado,
-    asi que es un problema de render del chip y no del handler JS (con
-    ``.user-chip{user-select:none}`` inyectado el click real deja de crashear:
-    es la seleccion de texto que arranca en el mousedown). Con el crash, la
-    page compartida del modulo queda inutilizable para el resto.
+    Los usuarios se listan como `user-item-<id>` (test_users.py usa el mismo
+    testid). El click es REAL (`.click()`, no `dispatch_event`): es la
+    regresion de `.user-chip{user-select:none}` — sin eso el mousedown real
+    arrancaba una seleccion de texto que colgaba el renderer de Chromium.
     """
     page.request.post(f"{base_url}/api/chat", data={"message": "hola", "session_id": "ui-guide-users"})
     page.goto(f"{base_url}/users", wait_until="networkidle")
     first = page.locator("[data-testid^='user-item-']").first
     first.wait_for(timeout=20000)
-    first.dispatch_event("click")
+    first.click()
     page.wait_for_timeout(300)
 
 

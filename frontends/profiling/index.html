@@ -12,7 +12,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh
 .col-head{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:14px;padding:0 20px}
 .col-head span{color:var(--muted)}
 .userbar{display:flex;flex-direction:column;flex-wrap:nowrap;gap:6px;padding:14px 20px;overflow-y:auto;flex:1}
-.user-chip{width:100%;font-family:var(--mono);font-size:11px;padding:10px 14px;border-radius:10px;border:1px solid var(--border2);background:var(--panel2);color:var(--muted);cursor:pointer;transition:all .15s;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+/* user-select:none: el chip es un boton (no hay nada que seleccionar) y el
+   mousedown real sobre el arrancaba una seleccion de texto que cuelga el
+   renderer de Chromium cuando las lineas del chip miden 0px (pasa cuando la
+   webfont no carga y la familia generica cae en una fuente sin metricas:
+   ver tests/ui/test_ui_guide.py::_open_first_user). */
+.user-chip{width:100%;user-select:none;font-family:var(--mono);font-size:11px;padding:10px 14px;border-radius:10px;border:1px solid var(--border2);background:var(--panel2);color:var(--muted);cursor:pointer;transition:all .15s;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
 .user-chip:hover{border-color:var(--accent);color:var(--text);background:rgba(212,165,116,.06)}
 .user-chip.active{border-color:var(--accent);background:rgba(212,165,116,.12);color:var(--accent)}
 .user-chip .chip-main{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
