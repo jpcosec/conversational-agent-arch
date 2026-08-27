@@ -84,3 +84,156 @@ documents:
   - system:laboratorio-chile
   - type.knowledge.domain
   - workspace.knowledge
+- name: atom-antonia-meddra
+  path: atoms/atom-antonia-meddra.md
+  hash_c: 2bb57c077117c236759c0edc0fe0e9b906be09e975b26387d80c8881122b1405
+  hash_d: ec0a80cff995bb4d75481e840d5cd06b06528d2d0b7322336be69112e4dd5fb8
+  semantic_tags:
+  - domain:seguridad.meddra
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-ea
+  path: atoms/atom-antonia-ea.md
+  hash_c: 5f1f648d43a863d43245eb2e3481bb6118abf6395d25f7b05a0daae99cdc2985
+  hash_d: bc0a45a81812c4ee471e2ba3e4625b5125f8cb5bf7fb1ce16273dc1ad972b57a
+  semantic_tags:
+  - domain:seguridad.evento
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-ea-administracion
+  path: atoms/atom-antonia-ea-administracion.md
+  hash_c: fc51ec9baee543740d12d355433cfd02607af36a1af11795667f14effad31b2e
+  hash_d: 34aab95c7cfa466703238a9d2503099c7aa15518d279b224fe5aade9e6222179
+  semantic_tags:
+  - domain:seguridad.evento
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-ea-esperados
+  path: atoms/atom-antonia-ea-esperados.md
+  hash_c: a8719f1e4fd6a970230f47e75850c030e3797d068ee11ea6488e335e0c17f33e
+  hash_d: 9161332c50801e993adf424f073cba3530ba480a06e755a898a36a7736557916
+  semantic_tags:
+  - domain:seguridad.evento
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-gamp5
+  path: atoms/atom-antonia-gamp5.md
+  hash_c: 4b95f0d76b83627d9fe2882b93b5a8284966f20af7fe50c65f50bc728e555520
+  hash_d: 697322690d40d742bab55415ac99e540b2c48af21072ed48402bae0123ea0a8b
+  semantic_tags:
+  - domain:seguridad.compliance
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-gamp5-agile
+  path: atoms/atom-antonia-gamp5-agile.md
+  hash_c: 0c536ed919b6fe9068c60c8dc55b25990b179679cee634275a112ad86867d922
+  hash_d: e8dde01e46d06946bc59336b90e8d00ac84524e893b23ae33b6ad2c8774f164d
+  semantic_tags:
+  - domain:seguridad.compliance
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-gamp5-alcoa
+  path: atoms/atom-antonia-gamp5-alcoa.md
+  hash_c: 301e6664ca22fa0b0c99c57c47eedc8bd3c1bc0b1d198fb5ca1b3986ef9f1d40
+  hash_d: bedd6f6223862ac4eb9c66002e5a7185ca14fecc030e50b9839d17fbf00bdc11
+  semantic_tags:
+  - domain:seguridad.compliance
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-ime
+  path: atoms/atom-antonia-ime.md
+  hash_c: 9cf6144133b9b65bda0fd77f96adcde06afc0e944be33b1deb567ae9db236fcd
+  hash_d: 72351b3fd04affa73c9dc543f8cda7bbc116a8845339f9f816af70dafb0363cc
+  semantic_tags:
+  - domain:seguridad.ime
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-ime-catalogo
+  path: atoms/atom-antonia-ime-catalogo.md
+  hash_c: c6d266bf01044fe2030d71ebc6c9efaa008ae0e89954ac1f56fbd68d8e6fcd14
+  hash_d: 3bec09458cc96250bfba3290bc6ace017304b925e4b533db2052c328fb41e031
+  semantic_tags:
+  - domain:seguridad.ime
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-ime-grave-automatico
+  path: atoms/atom-antonia-ime-grave-automatico.md
+  hash_c: 2bfb0ba81057d1811a401f1be213a25f1053855b31dd785b7736b4b9376b9442
+  hash_d: d711ebf3379bb0316d39d61021cbac28626422183e3705cb84a1dcc1f87f337b
+  semantic_tags:
+  - domain:seguridad.ime
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-meddra-alcance
+  path: atoms/atom-antonia-meddra-alcance.md
+  hash_c: cd51bc57691d859193b5d5ccf046981ba821bf8968791d67fd6ab2d8ac509de4
+  hash_d: 5580d7f530b8003ab8e8e6321d839629dfcbf03a81f31f7a67989d73ff7dbcd5
+  semantic_tags:
+  - domain:seguridad.meddra
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-meddra-jerarquia
+  path: atoms/atom-antonia-meddra-jerarquia.md
+  hash_c: 3903c4df01316948520a20c1d18097e90db9c5387a19ba0a20e7ec08081cd85e
+  hash_d: 6e51cf3afa85b120e0baa7b3629c420b6d89775efeb0112f9652ade66bea66be
+  semantic_tags:
+  - domain:seguridad.meddra
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-meddra-verbatim
+  path: atoms/atom-antonia-meddra-verbatim.md
+  hash_c: 252ccf332bc69c9f3679fbd16d31f7bb9cded8c15dfc0f520914623a6b42d82e
+  hash_d: 6c5b8c0c810fb79c01e284cdf89ffd1b5e42b671a1a90b289de845f04a3885e0
+  semantic_tags:
+  - domain:seguridad.meddra
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-triage
+  path: atoms/atom-antonia-triage.md
+  hash_c: a768601d3bf7da27d8ef7fbb9f9e9848378d613952fbd8f91599b3b018dc72c7
+  hash_d: ef8ee1fa77f09540d718516395439af7cdb112b229073778f2f07fab1cf8533e
+  semantic_tags:
+  - domain:seguridad.triage
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-triage-colas
+  path: atoms/atom-antonia-triage-colas.md
+  hash_c: 636eced780fbc3afa7f2e33b0073bf75becff1def737abea8837da33148a4c95
+  hash_d: d7928ed2d9cb0d85b096293990bbde0e5590dade4b5ebbf901f568d8c8c33e43
+  semantic_tags:
+  - domain:seguridad.triage
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-triage-limites
+  path: atoms/atom-antonia-triage-limites.md
+  hash_c: a80df1f287535ed8b263938fb30cbd8a16d6f2ff060b8890b1c36f2c5d6881e7
+  hash_d: 433cd7c0a0d8d886248c57b733677944b6e4ea86d9ae680b00660fb60024e391
+  semantic_tags:
+  - domain:seguridad.triage
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge
+- name: atom-antonia-triage-validez
+  path: atoms/atom-antonia-triage-validez.md
+  hash_c: 1e9d7fbfeb920c214a1a0fd286f008fd6e1dccb71adc1ed86da9a0bed200bbec
+  hash_d: 84cb43809a1209c6633c6c9c18036c21269c91962a6013bc52ff00736e2df243
+  semantic_tags:
+  - domain:seguridad.triage
+  - system:laboratorio-chile
+  - type.knowledge.domain
+  - workspace.knowledge

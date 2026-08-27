@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:RuleAtom
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/rule.py
 documents_index: .sldb/core/documents/RuleAtom.yaml
 sections_index: .sldb/runtime/sections/RuleAtom.yaml
-hash_b: b790de108bd490e7476dcb529bddb69667f5edb2ebc5e3b13b55363bf3cae70f
+hash_b: 6f6fb82bf92183ff051baf6e93f90cdd2d699d5ae45df34c627f8129c7ab7081
 version: 1
 canonical: false
 family: null

@@ -1,5 +1,5 @@
 documents:
-- doc_name: tool-antonia-agendar-recordatorio
+- doc_name: agendar_recordatorio
   sections:
   - path: tool-agendar-recordatorio-de-aplicaci-n
     title: "Tool agendar recordatorio de aplicaci\xF3n"

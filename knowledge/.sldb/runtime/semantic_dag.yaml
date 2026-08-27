@@ -34,6 +34,23 @@ nodes:
 - id: conversation:steps.validacion_policy_gate
   parents:
   - conversation:steps
+- id: domain:seguridad
+  parents: []
+- id: domain:seguridad.compliance
+  parents:
+  - domain:seguridad
+- id: domain:seguridad.evento
+  parents:
+  - domain:seguridad
+- id: domain:seguridad.ime
+  parents:
+  - domain:seguridad
+- id: domain:seguridad.meddra
+  parents:
+  - domain:seguridad
+- id: domain:seguridad.triage
+  parents:
+  - domain:seguridad
 - id: gate:regulatorio
   parents: []
 - id: gate:regulatorio.diagnostico
