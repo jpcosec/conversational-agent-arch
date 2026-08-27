@@ -82,16 +82,10 @@ def main(argv: list[str] | None = None) -> int:
             scenario = None
 
             print(f"Bot > {_format_reply(turn)}")
+            # Rastro del turno: step, decision de cada agente, tool.
             print(
                 json.dumps(
-                    {
-                        "kind": turn.get("kind"),
-                        "scenario_effective": turn.get("scenario_effective"),
-                        "scenario_source": turn.get("scenario_source"),
-                        "state_trace": turn.get("state_trace"),
-                        "traits_after": turn.get("traits_after"),
-                        "system_turn": turn.get("system_turn"),
-                    },
+                    {**turn.get("decisions", {}), "traits_after": turn.get("traits_after")},
                     ensure_ascii=False,
                     indent=2,
                 )

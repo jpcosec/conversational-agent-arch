@@ -126,6 +126,7 @@ class Orchestrator:
         try:
             user = self.ensure_user(session, external_id, channel=channel)
             session_state = self._load_or_create_session_state(session, user.id)
+            step_before = session_state.flow_node
 
             if scenario is not None:
                 scenario_source = "argument"
@@ -155,6 +156,8 @@ class Orchestrator:
                     return self.conversador.draft_nl(compiled_context)
 
                 decision = decide_turn(compiled_context)
+                # Se conserva para exponer la decision del orquestador en el turno
+                compiled_context["_decision"] = decision
                 kind = decision.get("kind")
                 if kind == "tool_call":
                     return {"function_call": decision["function_call"]}
@@ -174,18 +177,28 @@ class Orchestrator:
             response = turn_result.response
             state_trace = [node.value for node in router.state_trace]
 
+            # Decisiones de cada agente, para el rastro del turno. La del
+            # orquestador se captura antes de que un tool_call reemplace
+            # `compiled` por el contexto recompilado tras la tool.
+            orchestrator_decision = compiled.get("_decision")
+            draft_response: Any = None
+            gate_result: dict[str, Any] | None = None
+
             system_turn = None
             if isinstance(response, dict) and "function_call" in response:
                 kind = "tool_call"
                 system_turn = execute_tool(session, user.id, response["function_call"], self.tool_handlers)
                 resumed_result = router.handle_tool_result(system_turn)
                 response = resumed_result.response
+                draft_response = response
                 compiled = resumed_result.compiled_context
                 state_trace = [node.value for node in router.state_trace]
             elif self._is_fallback_response(response, compiled):
                 kind = "fallback"
+                draft_response = response
             else:
                 kind = "nl"
+                draft_response = response
                 # Policy Gate: validar respuesta redactada contra criterios gate
                 gate_result = self._validate_response(response, compiled)
                 if not gate_result["approved"]:
@@ -227,6 +240,34 @@ class Orchestrator:
             asyncio.run(self._run_profiler(user.id, message))
             traits_after = self._current_traits(session, user.id)
 
+            turn_context = self._build_turn_context(compiled)
+            # Rastro por agente: ruteador (contexto) -> orquestador (decision)
+            # -> conversador (borrador) -> gate (veredicto). El borrador se
+            # conserva aunque el gate lo reemplace por el handoff.
+            decisions = {
+                "step": {
+                    "before": step_before,
+                    "after": flow_node,
+                    "target": flow_target,
+                    "allowed_transitions": flow_transitions,
+                    "missing_slots": flow_missing,
+                },
+                "ruteador": {
+                    "atoms": len(turn_context.get("atom_ids", [])),
+                    "grounding_atoms": compiled.get("grounding_atoms", []),
+                    "user_traits": compiled.get("user_traits", []),
+                    "is_empty": bool(compiled.get("is_empty", False)),
+                },
+                "orquestador": {
+                    "kind": kind,
+                    "decision": orchestrator_decision,
+                    "state_trace": state_trace,
+                },
+                "conversador": {"draft": draft_response},
+                "gate": gate_result if gate_result is not None else {"approved": None, "skipped": kind},
+                "tool": {"called": True, **system_turn} if isinstance(system_turn, dict) else {"called": False},
+            }
+
             return {
                 "user_id": user.id,
                 "question": message,
@@ -243,7 +284,8 @@ class Orchestrator:
                 "flow_node": flow_node,
                 "allowed_transitions": flow_transitions,
                 "missing_slots": flow_missing,
-                "context": self._build_turn_context(compiled),
+                "context": turn_context,
+                "decisions": decisions,
             }
         finally:
             session.close()
