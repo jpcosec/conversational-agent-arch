@@ -351,3 +351,411 @@ documents:
     level: 2
     line_start: 23
     line_end: 24
+- doc_name: rule-antonia-no-contraindicaciones
+  sections:
+  - path: no-mencionar-contraindicaciones-ni-interacciones
+    title: No mencionar contraindicaciones ni interacciones
+    breadcrumbs:
+    - No mencionar contraindicaciones ni interacciones
+    about:
+    - No mencionar contraindicaciones ni interacciones
+    - no mencionar contraindicaciones ni interacciones
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-mencionar-contraindicaciones-ni-interacciones
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: no-mencionar-contraindicaciones-ni-interacciones/answer
+    title: Answer
+    breadcrumbs:
+    - No mencionar contraindicaciones ni interacciones
+    - Answer
+    about:
+    - No mencionar contraindicaciones ni interacciones
+    - no mencionar contraindicaciones ni interacciones
+    - Answer
+    - answer
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: no-mencionar-contraindicaciones-ni-interacciones/conditions
+    title: Conditions
+    breadcrumbs:
+    - No mencionar contraindicaciones ni interacciones
+    - Conditions
+    about:
+    - No mencionar contraindicaciones ni interacciones
+    - no mencionar contraindicaciones ni interacciones
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+- doc_name: rule-antonia-no-deducir
+  sections:
+  - path: no-deducir-informaci-n-cl-nica-desde-principios-generales
+    title: "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    breadcrumbs:
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    about:
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - no deducir informaci n cl nica desde principios generales
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-deducir-informaci-n-cl-nica-desde-principios-generales
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/answer
+    title: Answer
+    breadcrumbs:
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - Answer
+    about:
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - no deducir informaci n cl nica desde principios generales
+    - Answer
+    - answer
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/conditions
+    title: Conditions
+    breadcrumbs:
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - Conditions
+    about:
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - no deducir informaci n cl nica desde principios generales
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+- doc_name: rule-antonia-no-extrapolar
+  sections:
+  - path: no-extrapolar-desde-otros-medicamentos-similares
+    title: No extrapolar desde otros medicamentos similares
+    breadcrumbs:
+    - No extrapolar desde otros medicamentos similares
+    about:
+    - No extrapolar desde otros medicamentos similares
+    - no extrapolar desde otros medicamentos similares
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-extrapolar-desde-otros-medicamentos-similares
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: no-extrapolar-desde-otros-medicamentos-similares/answer
+    title: Answer
+    breadcrumbs:
+    - No extrapolar desde otros medicamentos similares
+    - Answer
+    about:
+    - No extrapolar desde otros medicamentos similares
+    - no extrapolar desde otros medicamentos similares
+    - Answer
+    - answer
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: no-extrapolar-desde-otros-medicamentos-similares/conditions
+    title: Conditions
+    breadcrumbs:
+    - No extrapolar desde otros medicamentos similares
+    - Conditions
+    about:
+    - No extrapolar desde otros medicamentos similares
+    - no extrapolar desde otros medicamentos similares
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+- doc_name: rule-antonia-no-farmacologia
+  sections:
+  - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
+    title: "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    breadcrumbs:
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    about:
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - no mencionar farmacolog a ni mecanismo de acci n
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/answer
+    title: Answer
+    breadcrumbs:
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - Answer
+    about:
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - no mencionar farmacolog a ni mecanismo de acci n
+    - Answer
+    - answer
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/conditions
+    title: Conditions
+    breadcrumbs:
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - Conditions
+    about:
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - no mencionar farmacolog a ni mecanismo de acci n
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+- doc_name: rule-antonia-no-inventar
+  sections:
+  - path: no-inventar-ni-complementar-con-conocimiento-general
+    title: No inventar ni complementar con conocimiento general
+    breadcrumbs:
+    - No inventar ni complementar con conocimiento general
+    about:
+    - No inventar ni complementar con conocimiento general
+    - no inventar ni complementar con conocimiento general
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-inventar-ni-complementar-con-conocimiento-general
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: no-inventar-ni-complementar-con-conocimiento-general/answer
+    title: Answer
+    breadcrumbs:
+    - No inventar ni complementar con conocimiento general
+    - Answer
+    about:
+    - No inventar ni complementar con conocimiento general
+    - no inventar ni complementar con conocimiento general
+    - Answer
+    - answer
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: no-inventar-ni-complementar-con-conocimiento-general/conditions
+    title: Conditions
+    breadcrumbs:
+    - No inventar ni complementar con conocimiento general
+    - Conditions
+    about:
+    - No inventar ni complementar con conocimiento general
+    - no inventar ni complementar con conocimiento general
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+- doc_name: rule-antonia-derivar-clinico
+  sections:
+  - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
+    title: "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    breadcrumbs:
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    about:
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - derivar al m dico cuando no hay contenido aprobado
+    - conversation:fallback
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/answer
+    title: Answer
+    breadcrumbs:
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Answer
+    about:
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - derivar al m dico cuando no hay contenido aprobado
+    - Answer
+    - answer
+    - conversation:fallback
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Conditions
+    about:
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - derivar al m dico cuando no hay contenido aprobado
+    - Conditions
+    - conditions
+    - conversation:fallback
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:laboratorio-chile
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24

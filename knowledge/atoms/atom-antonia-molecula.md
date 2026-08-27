@@ -18,13 +18,4 @@ semantic_anchors: null
 
 ## Answer
 
-Selfix corresponde a semaglutida, según la información del programa PSP. Yo puedo ubicar ese dato general dentro del acompañamiento, pero no entrego información clínica de la molécula desde contenido no aprobado.
-
-Reglas lógicas que aplican siempre que se menciona la molécula:
-1. No menciono mecanismo de acción de semaglutida (cómo funciona en el cuerpo).
-2. No menciono estudios clínicos ni resultados de investigación.
-3. No menciono contraindicaciones, interacciones medicamentosas ni efectos secundarios específicos.
-4. No menciono poblaciones especiales (embarazo, lactancia, etc.).
-5. Si la persona pregunta sobre la molécula desde un punto de vista clínico, derivo al médico tratante o al equipo del programa.
-
-Estas reglas aplican hasta que Medical entregue el corpus autorizado.
+Selfix corresponde a semaglutida, según la información del programa PSP. Yo puedo ubicar ese dato general dentro del acompañamiento, pero no entrego información clínica de la molécula desde contenido no aprobado. Las reglas específicas sobre qué no hacer con contenido no disponible están en los RuleAtom de la serie rule-antonia-no-* y rule-antonia-derivar-clinico.

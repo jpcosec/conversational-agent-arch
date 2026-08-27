@@ -46,3 +46,57 @@ documents:
   - system:laboratorio-chile
   - type.knowledge.rule
   - workspace.knowledge
+- name: rule-antonia-no-contraindicaciones
+  path: atoms/rule-antonia-no-contraindicaciones.md
+  hash_c: 611566f76f1d4d727980237136eb5c5bd10dfacc0216ce112d64ac956eca716b
+  hash_d: 21699b9c68151563e8116b3f0f2ac61e0af0a67d2b9c9a12aaf113b5b4be5831
+  semantic_tags:
+  - conversation:security
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-no-deducir
+  path: atoms/rule-antonia-no-deducir.md
+  hash_c: 3aeee4a8f911265c88022f5530ef7c57aa602cfc1163b81aac49b94f3acbd79d
+  hash_d: cc261083127bd3a3ebccbbbce52284e2d1f5127095a42b5db55f39732f256ece
+  semantic_tags:
+  - conversation:security
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-no-extrapolar
+  path: atoms/rule-antonia-no-extrapolar.md
+  hash_c: f12558241bf72b739aeeb2a7d45bbd693536d32a2ad2fcb72ae9f02042f59d29
+  hash_d: e35f86322084b13ff97dec799178d377453961109b6ea4e00a7cbfe6903772fc
+  semantic_tags:
+  - conversation:security
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-no-farmacologia
+  path: atoms/rule-antonia-no-farmacologia.md
+  hash_c: 69e92a3a66c090997804faa05071fa2d59bcea97e86d053ca4092a7761e76230
+  hash_d: c57d0c932ddd0e4a8cd642b54a39f8ba9dd6af49e1fc1fd509d0991db27b7b77
+  semantic_tags:
+  - conversation:security
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-no-inventar
+  path: atoms/rule-antonia-no-inventar.md
+  hash_c: 1e7aac1f80086a3ff33093265eb81774b3a3aac270d282dfab1116cb593b1892
+  hash_d: 2fd903faa8da33aba90eab8fdd9f6daffde678a657b6294b8e5278cb8b84e68e
+  semantic_tags:
+  - conversation:security
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-antonia-derivar-clinico
+  path: atoms/rule-antonia-derivar-clinico.md
+  hash_c: a7bc2de2ef3f9b67b7633619dc0cca58d09715c22f3b52833362fedf76243552
+  hash_d: c915db9f976dbf5402ad177595415912f29bdd105c2a27cebd2f31c9222255de
+  semantic_tags:
+  - conversation:fallback
+  - system:laboratorio-chile
+  - type.knowledge.rule
+  - workspace.knowledge
