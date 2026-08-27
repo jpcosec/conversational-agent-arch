@@ -172,8 +172,25 @@ def _function_call_content(calls: Sequence[ToolCall]) -> dict[str, Any]:
     return {"role": "model", "parts": [{"function_call": {"name": c.name, "args": c.args}} for c in calls]}
 
 
-def _function_response_content(name: str, result: Mapping[str, Any]) -> dict[str, Any]:
-    return {"role": "user", "parts": [{"function_response": {"name": name, "response": dict(result)}}]}
+def _function_response_content(
+    results: Sequence[tuple[str, Mapping[str, Any]]],
+) -> dict[str, Any]:
+    """Un UNICO content con una parte por cada function call del turno.
+
+    Gemini exige que el turno de respuestas tenga tantas partes como
+    partes tuvo el turno de llamadas. Mandar un content por respuesta
+    devuelve 400 INVALID_ARGUMENT ("the number of function response
+    parts is equal to the number of function call parts"). Solo se ve
+    cuando el modelo pide DOS O MAS tools en el mismo turno, por eso no
+    aparecio en local y si en produccion.
+    """
+    return {
+        "role": "user",
+        "parts": [
+            {"function_response": {"name": name, "response": dict(result)}}
+            for name, result in results
+        ],
+    }
 
 
 def _extract_function_calls(raw: Any) -> list[ToolCall]:
@@ -265,9 +282,11 @@ class Agent:
         while response.function_calls and iterations < self.max_tool_iterations:
             iterations += 1
             request.contents.append(_function_call_content(response.function_calls))
-            for call in response.function_calls:
-                result = self.call_tool(call.name, call.args)
-                request.contents.append(_function_response_content(call.name, result))
+            resultados = [
+                (call.name, self.call_tool(call.name, call.args))
+                for call in response.function_calls
+            ]
+            request.contents.append(_function_response_content(resultados))
             response = self._call_model(request)
 
         if self.output_schema is not None:

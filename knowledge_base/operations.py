@@ -574,9 +574,19 @@ class KnowledgeOperations:
         """
         if self._embedder_cache is None:
             from fastembed import TextEmbedding
+            # El modelo pesa ~615MB. Por defecto se cachea junto a la KB, pero
+            # en un despliegue con almacenamiento efimero (Modal: la imagen es
+            # inmutable y .embedding_cache esta excluido a proposito) hay que
+            # apuntarlo a un volumen persistente o se re-descarga en cada
+            # arranque en frio. EMBEDDING_CACHE_DIR permite eso sin tocar la KB.
+            import os
+
+            cache_dir = os.environ.get("EMBEDDING_CACHE_DIR") or str(
+                self._kb_root / ".embedding_cache"
+            )
             self._embedder_cache = TextEmbedding(
                 model_name=self.EMBED_MODEL,
-                cache_dir=str(self._kb_root / ".embedding_cache"),
+                cache_dir=cache_dir,
             )
         return self._embedder_cache
 

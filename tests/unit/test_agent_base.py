@@ -242,3 +242,51 @@ def test_run_executes_tool_loop_when_model_requests_function_call() -> None:
     assert result == "listo, hay lugar"
     assert tool_calls == [{"fecha": "hoy"}]
     assert len(client.calls) == 2  # la segunda llamada incluye el tool result
+
+
+def test_multiple_function_calls_answer_in_one_content_with_matching_parts() -> None:
+    """Dos tools en un turno -> UN content de respuesta con DOS partes.
+
+    Gemini exige que el turno de respuestas tenga tantas partes como partes
+    tuvo el turno de llamadas; mandar un content por respuesta devuelve
+    400 INVALID_ARGUMENT ("the number of function response parts is equal to
+    the number of function call parts"). Solo se manifiesta cuando el modelo
+    pide DOS O MAS tools a la vez, por eso no aparecio en local y si en el
+    deploy: el RouterAgent caia al fallback deterministico en produccion.
+    """
+    def handler_a(args: dict[str, Any]) -> dict[str, Any]:
+        return {"a": 1}
+
+    def handler_b(args: dict[str, Any]) -> dict[str, Any]:
+        return {"b": 2}
+
+    tools = [
+        Tool(name="buscar", description="", parameters={}, handler=handler_a),
+        Tool(name="mostrar", description="", parameters={}, handler=handler_b),
+    ]
+
+    responses = [
+        _Resp(text="", function_calls=[
+            {"name": "buscar", "args": {"q": "x"}},
+            {"name": "mostrar", "args": {"id": "y"}},
+        ]),
+        _Resp(text="ok"),
+    ]
+
+    def responder(_kwargs: dict[str, Any]) -> _Resp:
+        return responses.pop(0)
+
+    client = _FakeClient(responder=responder)
+    agent, _client = make_agent(client=client, tools=tools)
+
+    assert agent.run({"q": "?"}) == "ok"
+
+    contents = client.calls[-1]["contents"]
+    call_turn = [c for c in contents if any("function_call" in p for p in c["parts"])]
+    resp_turn = [c for c in contents if any("function_response" in p for p in c["parts"])]
+
+    assert len(call_turn) == 1 and len(call_turn[0]["parts"]) == 2
+    # Un solo content de respuesta, con una parte por llamada y en el mismo orden.
+    assert len(resp_turn) == 1
+    assert len(resp_turn[0]["parts"]) == len(call_turn[0]["parts"])
+    assert [p["function_response"]["name"] for p in resp_turn[0]["parts"]] == ["buscar", "mostrar"]
