@@ -168,7 +168,8 @@ compilador fijo.
 
 Pero el paquete `knowledge_base/` (`KnowledgeOperations`, 832 líneas,
 21 tests en verde) ya implementa las operaciones por agente que este
-contrato pide, y **`kb_agent` no lo importa ni una vez**:
+contrato pide, y hoy `kb_agent` ya lo importa en tres puntos (ver más
+abajo):
 
 | Operación | Para quién | Qué hace que el compilador no |
 |---|---|---|
@@ -180,10 +181,29 @@ contrato pide, y **`kb_agent` no lo importa ni una vez**:
 | `propose / promote / reflect / organize` | reflector | curación de la KB |
 
 Es la capa que pobló los embeddings (`index embeddings`) y la única que los
-lee. El runtime reimplementó una versión más pobre (carga todo, sin
-grafo tipado, traits como id) y dejó ésta sin consumidor: no es legacy, es
-**el destino que el runtime nunca alcanzó**. Conectarla es el camino corto
-para este agente (ver §7.4).
+lee. Durante un tiempo el runtime reimplementó una versión más pobre (carga
+todo, sin grafo tipado, traits como id) y la dejó sin consumidor; hoy está
+cableada en tres módulos (`grep -rn knowledge_base kb_agent/ | grep import`):
+
+- `kb_agent/orchestrator.py:49` — importa `KnowledgeOperations` y crea la
+  **única instancia por proceso** (`self.knowledge_ops`, cachea el embedder
+  de jina, ~1 min en frío), que inyecta al `RouterAgent` y al
+  `ContextCompiler` de cada turno.
+- `kb_agent/agents/router.py:50` — el `RouterAgent` recibe esa instancia y
+  expone al modelo tres de sus operaciones como tools: `explore_multi`
+  (búsqueda con score), `explore` (navegación del grafo por tag/atom) y
+  `show` (documento completo). `traits`/`self_context` no se exponen: el
+  contexto del turno ya trae los traits resueltos.
+- `kb_agent/ontologizador/compiler.py:61` — `ContextCompiler.knowledge_ops`
+  (opcional) usa `knowledge_ops.traits(external_id)` para resolver traits
+  contra su `TraitAtom` y toma de ahí el embedder para
+  `_semantic_candidates`; sin inyección (tests unitarios) resuelve vía
+  `reader`.
+
+Lo que sigue pendiente es `step_next` (transiciones tipadas, hoy `[]` por
+falta de aristas en el grafo) y la curación del reflector
+(`propose / promote / reflect / organize`). El mecanismo de hooks está en
+§7.4.
 
 - ❌ Selección de conocimiento (`compiler.py:73-74`):
   ```python
@@ -369,17 +389,16 @@ Parte de la confusión documental viene de que los nombres no coinciden.
 | — | `RouterStateMachine` | **no** es el ruteador de contexto |
 | Perfilador | `TraitExtractor` | post-turno, async; fuera de los 4 agentes |
 | Reflector | `ReflectorBatch` | offline; genera atoms desde `chat_history` |
-| herramientas de knowledge por agente | `knowledge_base.KnowledgeOperations` | existe, testeado, **sin consumidor** en el runtime |
+| herramientas de knowledge por agente | `knowledge_base.KnowledgeOperations` | instancia única en `orchestrator.py`; tools del `RouterAgent`; traits/embedder del `ContextCompiler` (§2.2) |
 
 ---
 
 ## 6. Mapa de brechas, por impacto
 
-0. **`knowledge_base` está huérfano del runtime.** Las herramientas por
-   agente existen y están testeadas (§2.2), pero `kb_agent` no las importa.
-   Cablearlas por hooks (§7.4) cierra de golpe parte de 1, 2 y 4 sin
-   escribir retrieval nuevo. Es la acción con mejor relación
-   efecto/esfuerzo de esta lista.
+0. ~~**`knowledge_base` está huérfano del runtime.**~~ Cerrado: el
+   orquestador crea la instancia y la inyecta al `RouterAgent` y al
+   `ContextCompiler` (§2.2). Queda `step_next` (sin aristas tipadas) y la
+   curación del reflector.
 1. **No hay ruteador de contexto.** El conversador recibe 60 % de la KB en
    cada turno, sin selección por pregunta. Es la brecha que hace el
    comportamiento impredecible y el coste creciente (cada atom nuevo de
