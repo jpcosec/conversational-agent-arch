@@ -1,8 +1,8 @@
-# UI Guide — estado objetivo de las interfaces
+# UI Guide — estado actual de las interfaces
 
-Fuente de verdad del rediseño de UI. Describe cómo QUEDA cada vista tras la
-implementación (no cómo está hoy). Deriva de
-`desk/drawer/tasks/seed-ui-correcciones-y-vistas.md`.
+Fuente de verdad de la UI. Describe cómo ESTÁ cada vista hoy: el rediseño
+que nació en `desk/drawer/tasks/seed-ui-correcciones-y-vistas.md` ya se
+implementó y este documento se mantiene como descripción del estado vigente.
 Los tests de `tests/ui/` validan ESTE documento sección por sección.
 
 > Convención de IDs: cada elemento interactivo relevante lleva un
@@ -53,6 +53,11 @@ markup nuevo; sin build step (CDN only); dark siempre.
 | flow | `/flow` | `/conversation_flow_editor` |
 | mindmap | `/mindmap` | `/taxonomy_explorer`, `/viz` |
 | users | `/users` | `/profiling_viewer` |
+| dashboard | `/dashboard` | — |
+
+`/dashboard` sirve `frontends/dashboard/index.html`: un mock estático con el
+chip "Datos de ejemplo", todavía **no enlazado** desde la topbar de las otras
+vistas (no tiene `nav-dashboard`).
 
 Los endpoints `/api/*` no cambian de ruta (solo se agregan nuevos).
 
@@ -260,4 +265,4 @@ documentación.
 | `/api/events` | NUEVO: serie temporal por user_id |
 | `/api/profiles` | ampliado (perfil+eventos+conversaciones) |
 | `/api/chat` | soporta carga de historial por session_id |
-| rutas UI | `/flow`, `/mindmap`, `/users` + redirects 301 de las viejas |
+| rutas UI | `/flow`, `/mindmap`, `/users`, `/dashboard` + redirects 301 de las viejas |
