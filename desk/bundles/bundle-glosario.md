@@ -5,3 +5,5 @@ Definiciones de los términos ubicuos (Ubiquitous Language) utilizados en todo e
 ![[atom-concepto-turno-extendido]]
 ![[atom-concepto-atomo-semantico]]
 ![[atom-negocios-activos]]
+![[atom-encuadre-de-agentes-desde-la-kb-agentframing]]
+![[atom-modo-demo]]

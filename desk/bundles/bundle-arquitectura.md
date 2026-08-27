@@ -10,9 +10,12 @@ Esta documentación está ensamblada a partir de los Átomos Semánticos del pro
 ![[atom-pii-scrubber]]
 ![[atom-router-state-machine]]
 ![[atom-ontologizador-context-compiler]]
+![[atom-ruteador-de-contexto-como-agente]]
 ![[atom-policy-decide-turn]]
 ![[atom-tool-handlers-registry]]
 ![[atom-agente-conversador]]
+![[atom-policy-gate-como-agente-separado-con-rama-kb-propia]]
+![[atom-encuadre-de-agentes-desde-la-kb-agentframing]]
 
 ## Procesos Offline y Asíncronos
 ![[atom-in-process-event-bus]]
@@ -24,3 +27,7 @@ Esta documentación está ensamblada a partir de los Átomos Semánticos del pro
 ![[atom-persistencia-sql]]
 ![[atom-sldb-knowledge-base]]
 ![[atom-kgdb-grafo-de-flujo]]
+
+## Frontends
+![[atom-dashboard]]
+![[atom-modo-demo]]

@@ -12,3 +12,9 @@
 
 ## Operaciones y Desarrollo
 > Ver [Guía de Operaciones](docs/OPERATIONS.md).
+
+## Ramas, CI y releases
+> Capas de test, topología Modal y alembic en detalle: [Guía de Operaciones](docs/OPERATIONS.md). Secrets, imagen y volumen: [deploy/README.md](deploy/README.md).
+
+![[atom-modelo-de-ramas]]
+![[atom-capas-de-verificación-y-release]]
