@@ -24,6 +24,7 @@ from tests.support.fakes import (
     FakeConversador,
     FakeEmbedder,
     FakeGate,
+    FakeOrchestratorAgent,
     FakeTraitMapper,
     RecordingToolHandler,
     VEGETARIAN_MATCH,
@@ -215,6 +216,7 @@ def test_from_config_wires_business_declared_in_yaml(tmp_db_url: str) -> None:
         conversador=FakeConversador(),
         trait_mapper=FakeTraitMapper(VEGETARIAN_MATCH),
         gate=FakeGate(),
+        orchestrator_agent=FakeOrchestratorAgent(),
     )
     o.knowledge_ops._embedder_cache = FakeEmbedder()
     try:

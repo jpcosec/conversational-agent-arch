@@ -21,6 +21,13 @@ from .gate import (
     render_gate_criteria,
     response_claims_completed_action,
 )
+from .orchestrator_agent import (
+    OrchestratorAgent,
+    OrchestratorDecision,
+    ToolCallDecision,
+    apply_transition_guard,
+    render_orchestrator_flow,
+)
 
 __all__ = [
     "Agent",
@@ -37,4 +44,9 @@ __all__ = [
     "PREFILTER_CRITERION_ID",
     "render_gate_criteria",
     "response_claims_completed_action",
+    "OrchestratorAgent",
+    "OrchestratorDecision",
+    "ToolCallDecision",
+    "apply_transition_guard",
+    "render_orchestrator_flow",
 ]

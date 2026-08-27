@@ -25,8 +25,9 @@ from typing import Any
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
-from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE, decide_turn
+from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE
 from kb_agent.agents.gate import GateAgent
+from kb_agent.agents.orchestrator_agent import OrchestratorAgent
 from kb_agent.llm import Conversador, GeminiConversador, GeminiTraitMapper, TraitMapper, make_gemini_client
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
@@ -70,6 +71,7 @@ class Orchestrator:
         conversador: Conversador | None = None,
         trait_mapper: TraitMapper | None = None,
         gate: GateAgent | None = None,
+        orchestrator_agent: OrchestratorAgent | None = None,
         client: Any | None = None,
     ) -> None:
         self.kb_root = Path(kb_root).resolve()
@@ -95,16 +97,26 @@ class Orchestrator:
         )
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
 
-        # LLM: solo se crea el cliente real si no inyectaron los 3 puertos
-        # (conversador, trait_mapper, gate). El gate LLM-judge (fase 2.3) se
-        # construye UNA vez aca, no por turno: los GateCriterion de la KB son
-        # contexto fijo (ver GateAgent.static_instruction).
-        if conversador is None or trait_mapper is None or gate is None:
+        # LLM: solo se crea el cliente real si no inyectaron los 4 puertos
+        # (conversador, trait_mapper, gate, orchestrator_agent). El gate
+        # LLM-judge (fase 2.3) y el orquestador LLM-judge (fase 2.4) se
+        # construyen UNA vez aca, no por turno: los GateCriterion y el grafo
+        # de ConversationStep de la KB son contexto fijo (ver
+        # GateAgent.static_instruction / OrchestratorAgent.static_instruction).
+        if conversador is None or trait_mapper is None or gate is None or orchestrator_agent is None:
             client = client or make_gemini_client()
         self.conversador: Conversador = conversador or GeminiConversador(client, self.model)
         self.trait_mapper: TraitMapper = trait_mapper or GeminiTraitMapper(client, self.model)
         self.gate: GateAgent = gate or GateAgent(
             client=client, model=self.model, gate_atoms=self._load_gate_atoms()
+        )
+        # Orquestador (fase 2.4): decide kind/tool_call/step_target con LLM +
+        # salida tipada, en vez de la policy por keywords (`decide_turn`, que
+        # sigue viva como fallback deterministico -- ver
+        # kb_agent/agents/orchestrator_agent.py). El grafo de steps declarado
+        # en la KB es su static_instruction (fijo, no cambia por turno).
+        self.orchestrator_agent: OrchestratorAgent = orchestrator_agent or OrchestratorAgent(
+            client=client, model=self.model, step_atoms=self._load_step_atoms()
         )
         self.event_bus = InProcessEventBus()
 
@@ -173,12 +185,13 @@ class Orchestrator:
                 return d
 
             def draft(compiled_context: dict[str, Any]) -> Any:
-                # El ORQUESTADOR decide el tipo de turno con una policy pura
-                # (decide_turn) y SOLO despues actua. Decidir != redactar.
+                # El ORQUESTADOR decide el tipo de turno con salida tipada
+                # (OrchestratorAgent, fase 2.4: LLM + guardia dura sobre
+                # allowed_transitions) y SOLO despues actua. Decidir != redactar.
                 if compiled_context.get("system_turn"):
                     return self.conversador.draft_nl(compiled_context)
 
-                decision = decide_turn(compiled_context)
+                decision = self.orchestrator_agent.decide(compiled_context)
                 # Se conserva para exponer la decision del orquestador en el turno
                 compiled_context["_decision"] = decision
                 kind = decision.get("kind")
@@ -291,6 +304,16 @@ class Orchestrator:
                     "kind": kind,
                     "decision": orchestrator_decision,
                     "state_trace": state_trace,
+                    # Por que decidio esto (auditable) y, si aplica, la
+                    # transicion de step que propuso pero la guardia dura
+                    # descarto por no estar en allowed_transitions del step
+                    # activo (ver kb_agent.agents.orchestrator_agent.apply_transition_guard).
+                    "reason": orchestrator_decision.get("reason") if isinstance(orchestrator_decision, dict) else None,
+                    "step_target_vetado": (
+                        orchestrator_decision.get("step_target_vetado")
+                        if isinstance(orchestrator_decision, dict)
+                        else None
+                    ),
                 },
                 "conversador": {"draft": draft_response},
                 "gate": gate_result if gate_result is not None else {"approved": None, "skipped": kind},
@@ -340,6 +363,19 @@ class Orchestrator:
         """
         try:
             return self.reader.find("type.knowledge.gate")
+        except Exception:
+            return []
+
+    def _load_step_atoms(self) -> list[dict[str, Any]]:
+        """Carga los ``ConversationStep`` (``type.knowledge.step``) para el ``OrchestratorAgent``.
+
+        Fail-open a lista vacia: si la KB no tiene el diagrama de flujo o el
+        reader falla, ``OrchestratorAgent`` (ver ``render_orchestrator_flow``)
+        decide sin grafo (``step_target`` siempre ``null``) en vez de que
+        falle la construccion del orquestador.
+        """
+        try:
+            return self.reader.find("type.knowledge.step")
         except Exception:
             return []
 

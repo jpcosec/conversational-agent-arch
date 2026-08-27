@@ -10,6 +10,8 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
 
+from kb_agent.agent import decide_turn
+from kb_agent.agents.orchestrator_agent import apply_transition_guard
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.perfilador.extractor import TraitCandidate
 
@@ -75,6 +77,57 @@ class FakeGate:
         if self._verdict_fn is not None:
             return self._verdict_fn(response, tool_called=tool_called, tool_name=tool_name, step=step)
         return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
+
+
+class FakeOrchestratorAgent:
+    """Decision determinista para tests offline (``OrchestratorAgent``, fase 2.4).
+
+    ``Orchestrator.__init__`` construye un ``OrchestratorAgent`` real (que
+    necesita un cliente LLM) cuando no se inyecta ``orchestrator_agent=...``.
+    Este doble evita esa construccion -- y cualquier llamada a un modelo --
+    en ``offline_orchestrator``, igual que ``FakeGate``/``FakeConversador``
+    evitan la llamada real para el resto del turno.
+
+    Por defecto DELEGA en ``kb_agent.agent.decide_turn`` (la policy pura sin
+    LLM, previa a fase 2.4): asi el runtime offline sigue produciendo
+    EXACTAMENTE las mismas decisiones que antes (tool_call por keywords,
+    fallback si no hay grounding, nl en el resto) sin tocar los tests que ya
+    ejercitan ese comportamiento -- ``decide_turn`` es, en los hechos, el
+    fallback deterministico "sin LLM" que describe el plan de fase 2.4.
+
+    Pasale ``decision_fn`` para forzar una decision arbitraria (p.ej. un
+    ``kind: "tool_call"`` que ``decide_turn`` nunca elegiria por keywords, o
+    un ``step_target`` fuera de ``allowed_transitions`` para ejercer el
+    veto). En AMBOS casos (default y ``decision_fn``) se aplica la MISMA
+    guardia de codigo que usa el ``OrchestratorAgent`` real
+    (``apply_transition_guard``): el fake no es una via para saltarse la
+    guardia, es otra fuente de decision sujeta a ella.
+    """
+
+    def __init__(self, decision_fn: Callable[[dict[str, Any]], dict[str, Any]] | None = None) -> None:
+        self.calls: list[dict[str, Any]] = []
+        self._decision_fn = decision_fn
+
+    def decide(self, compiled_context: dict[str, Any]) -> dict[str, Any]:
+        self.calls.append(compiled_context)
+        allowed_transitions = [str(t) for t in (compiled_context.get("allowed_transitions") or [])]
+
+        raw: dict[str, Any] = (
+            dict(self._decision_fn(compiled_context))
+            if self._decision_fn is not None
+            else dict(decide_turn(compiled_context))
+        )
+        raw.setdefault("reason", "decision determinista (fallback sin LLM: decide_turn)")
+
+        step_target, vetoed = apply_transition_guard(raw.pop("flow_target", None), allowed_transitions)
+        result: dict[str, Any] = {"kind": raw.get("kind", "nl"), "reason": raw["reason"]}
+        if "function_call" in raw:
+            result["function_call"] = raw["function_call"]
+        if step_target:
+            result["flow_target"] = step_target
+        if vetoed:
+            result["step_target_vetado"] = vetoed
+        return result
 
 
 class FakeTraitMapper:
@@ -149,6 +202,7 @@ def offline_orchestrator(
     conversador: FakeConversador | None = None,
     trait_mapper: FakeTraitMapper | None = None,
     gate: FakeGate | None = None,
+    orchestrator_agent: FakeOrchestratorAgent | None = None,
     tool_handlers: dict[str, Any] | None = None,
     **kwargs: Any,
 ) -> Orchestrator:
@@ -159,6 +213,7 @@ def offline_orchestrator(
         conversador=conversador or FakeConversador(),
         trait_mapper=trait_mapper or FakeTraitMapper(VEGETARIAN_MATCH),
         gate=gate or FakeGate(),
+        orchestrator_agent=orchestrator_agent or FakeOrchestratorAgent(),
         tool_handlers=tool_handlers,
         **kwargs,
     )
