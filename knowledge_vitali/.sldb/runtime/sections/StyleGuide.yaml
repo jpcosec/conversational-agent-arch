@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: estilo-de-conversacion
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 784
+    line_end: 785
   - path: estilo-de-conversacion/tone
     title: Tone
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: tone
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 786
+    line_end: 787
   - path: estilo-de-conversacion/language-register
     title: Language Register
     breadcrumbs:
@@ -65,8 +65,8 @@ documents:
     - workspace.knowledge
     slug: language-register
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: estilo-de-conversacion/phrase-preferences
     title: Phrase Preferences
     breadcrumbs:
@@ -88,8 +88,8 @@ documents:
     - workspace.knowledge
     slug: phrase-preferences
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
   - path: estilo-de-conversacion/length-guidelines
     title: Length Guidelines
     breadcrumbs:
@@ -111,5 +111,5 @@ documents:
     - workspace.knowledge
     slug: length-guidelines
     level: 2
-    line_start: 30
-    line_end: 31
+    line_start: 798
+    line_end: 799

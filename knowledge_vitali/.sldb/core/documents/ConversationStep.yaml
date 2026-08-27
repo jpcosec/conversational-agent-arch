@@ -1,8 +1,8 @@
 documents:
 - name: step-vitali-saludo
   path: atoms/step-vitali-saludo.md
-  hash_c: 3ab1be3a60fb8b64973f5d8a8285808b6693759e349baa8cabdde260e1d4a447
-  hash_d: b2f015e9291d63c78cdf7c95175d6098c87d1f708912655e2354f53a5ac10ee5
+  hash_c: c324349111c58efc10b31ce4980c6acfa8e5a2d215f5b8978e30866893391808
+  hash_d: 0b5202fbbfbad70d6b41d76da984a9c32f75d9c5f07e7c3773c2db4af46e337c
   semantic_tags:
   - agent:conversation-rule
   - conversation:steps.saludo
@@ -11,8 +11,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-calificacion
   path: atoms/step-vitali-calificacion.md
-  hash_c: 067df5ddf5225ae0d0b4d2598741280ac061ad83260ed0b695af2330b57b75b6
-  hash_d: d4b4a71b7af7cd5abf24584ee3a2bdd7b81e174adaf687eb3d454882a03af5c6
+  hash_c: 9500ccb1718766dd51d5fe17e2bf41d1ada7d89ffc732cc7806ff1352b2f902e
+  hash_d: 3348de7f4c8561f7be51fcf1e8c81856cd75ffaf40b4824da424bcca65238d7a
   semantic_tags:
   - agent:conversation-rule
   - conversation:steps.calificacion
@@ -21,8 +21,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-agendar-visita
   path: atoms/step-vitali-agendar-visita.md
-  hash_c: a4b261aec319e5624654f7a9aadab6249e65c06d46f289202f62ed686bfdbafa
-  hash_d: 4a5c61f0a01769f527bfbacd61f89c6b952d7208f2ce5ffa461f5cce6d69ea13
+  hash_c: bcdae91dfc017881c409fea5d113e0fbf4f91c5799fe4fd6dfdfa8081891f6c4
+  hash_d: 802ae87bcaf0b65b402f41596fc4afff3525287178b10a7cbe09d38069a334e6
   semantic_tags:
   - agent:booking-workflow
   - conversation:steps.agendar_visita
@@ -31,8 +31,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-datos-contacto
   path: atoms/step-vitali-datos-contacto.md
-  hash_c: f82f3d0cea3c0610a240ec04b4dff40cce70b1f47c04280a525d45fd26df3651
-  hash_d: 60b8dcc667b3a240756cb29a1da4e632712f2f8f98aa446bf5774199d6e10fc6
+  hash_c: a5be0eda869925f758c93fbd73a6775688a0e0a0491b155fc9f89034eda4ad5e
+  hash_d: 096167f807a3d93bdc5b8ee4182bf54000d657a5eb3e39266ff90d28bf6ecc9f
   semantic_tags:
   - agent:booking-workflow
   - conversation:steps.datos_contacto
@@ -41,8 +41,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-cierre
   path: atoms/step-vitali-cierre.md
-  hash_c: 67f3f93806204aff897073ef97441f933f239e1dd686b8580e251533d5731902
-  hash_d: f23500c60ec73dfc61935e5559292fcd249f29f2ca8c6cecf5a3ddf9b7293ac2
+  hash_c: ea52eacb9ab9f5ae3b41b854ff31797e00d62e99cb1c024562c88960dbb08b90
+  hash_d: d170aea13e1ab18022ce31eac7a062e06e6424d6f2c00a20722878af99006493
   semantic_tags:
   - agent:booking-workflow
   - conversation:steps.cierre

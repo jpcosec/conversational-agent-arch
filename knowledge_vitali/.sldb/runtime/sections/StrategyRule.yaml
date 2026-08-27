@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: responder-primero-al-cliente
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 785
+    line_end: 786
   - path: responder-primero-al-cliente/goal
     title: Goal
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: goal
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: responder-primero-al-cliente/approach
     title: Approach
     breadcrumbs:
@@ -71,8 +71,8 @@ documents:
     - workspace.knowledge
     slug: approach
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 791
+    line_end: 792
   - path: responder-primero-al-cliente/priorities
     title: Priorities
     breadcrumbs:
@@ -96,8 +96,8 @@ documents:
     - workspace.knowledge
     slug: priorities
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 795
+    line_end: 796
 - doc_name: strategy-vitali-opening
   sections:
   - path: mensaje-de-apertura
@@ -120,8 +120,8 @@ documents:
     - workspace.knowledge
     slug: mensaje-de-apertura
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 784
+    line_end: 785
   - path: mensaje-de-apertura/goal
     title: Goal
     breadcrumbs:
@@ -145,8 +145,8 @@ documents:
     - workspace.knowledge
     slug: goal
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 786
+    line_end: 787
   - path: mensaje-de-apertura/approach
     title: Approach
     breadcrumbs:
@@ -170,8 +170,8 @@ documents:
     - workspace.knowledge
     slug: approach
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: mensaje-de-apertura/priorities
     title: Priorities
     breadcrumbs:
@@ -195,8 +195,8 @@ documents:
     - workspace.knowledge
     slug: priorities
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
 - doc_name: strategy-vitali-slot-presentation
   sections:
   - path: presentacion-de-horarios
@@ -219,8 +219,8 @@ documents:
     - workspace.knowledge
     slug: presentacion-de-horarios
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 785
+    line_end: 786
   - path: presentacion-de-horarios/goal
     title: Goal
     breadcrumbs:
@@ -244,8 +244,8 @@ documents:
     - workspace.knowledge
     slug: goal
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: presentacion-de-horarios/approach
     title: Approach
     breadcrumbs:
@@ -269,8 +269,8 @@ documents:
     - workspace.knowledge
     slug: approach
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 791
+    line_end: 792
   - path: presentacion-de-horarios/priorities
     title: Priorities
     breadcrumbs:
@@ -294,5 +294,5 @@ documents:
     - workspace.knowledge
     slug: priorities
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 795
+    line_end: 796

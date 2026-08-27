@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: quien-soy
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 784
+    line_end: 785
   - path: quien-soy/statement
     title: Statement
     breadcrumbs:
@@ -42,5 +42,5 @@ documents:
     - workspace.knowledge
     slug: statement
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 786
+    line_end: 787

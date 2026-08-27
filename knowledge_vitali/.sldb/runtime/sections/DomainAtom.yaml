@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: vitali-suites-identity
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: vitali-suites-identity/answer
     title: Answer
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-company-history
   sections:
   - path: company-history
@@ -64,8 +64,8 @@ documents:
     - workspace.knowledge
     slug: company-history
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: company-history/answer
     title: Answer
     breadcrumbs:
@@ -87,8 +87,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-company-mission
   sections:
   - path: company-mission
@@ -109,8 +109,8 @@ documents:
     - workspace.knowledge
     slug: company-mission
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: company-mission/answer
     title: Answer
     breadcrumbs:
@@ -132,8 +132,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-company-values
   sections:
   - path: core-values
@@ -154,8 +154,8 @@ documents:
     - workspace.knowledge
     slug: core-values
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: core-values/answer
     title: Answer
     breadcrumbs:
@@ -177,8 +177,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-company-leadership
   sections:
   - path: executive-team
@@ -199,8 +199,8 @@ documents:
     - workspace.knowledge
     slug: executive-team
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: executive-team/answer
     title: Answer
     breadcrumbs:
@@ -222,8 +222,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-company-portfolio-scale
   sections:
   - path: portfolio-scale
@@ -244,8 +244,8 @@ documents:
     - workspace.knowledge
     slug: portfolio-scale
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: portfolio-scale/answer
     title: Answer
     breadcrumbs:
@@ -267,8 +267,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-concept-value-proposition
   sections:
   - path: core-value-proposition
@@ -289,8 +289,8 @@ documents:
     - workspace.knowledge
     slug: core-value-proposition
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: core-value-proposition/answer
     title: Answer
     breadcrumbs:
@@ -312,8 +312,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-concept-three-pillars
   sections:
   - path: three-pillars
@@ -334,8 +334,8 @@ documents:
     - workspace.knowledge
     slug: three-pillars
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: three-pillars/answer
     title: Answer
     breadcrumbs:
@@ -357,8 +357,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-concept-investment-model
   sections:
   - path: investment-model-for-residents
@@ -379,8 +379,8 @@ documents:
     - workspace.knowledge
     slug: investment-model-for-residents
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: investment-model-for-residents/answer
     title: Answer
     breadcrumbs:
@@ -402,8 +402,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-concept-amenities-suites
   sections:
   - path: premium-suites-features
@@ -424,8 +424,8 @@ documents:
     - workspace.knowledge
     slug: premium-suites-features
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: premium-suites-features/answer
     title: Answer
     breadcrumbs:
@@ -447,8 +447,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-concept-amenities-services
   sections:
   - path: services-and-amenities
@@ -469,8 +469,8 @@ documents:
     - workspace.knowledge
     slug: services-and-amenities
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: services-and-amenities/answer
     title: Answer
     breadcrumbs:
@@ -492,8 +492,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-concept-care-security
   sections:
   - path: care-and-security
@@ -514,8 +514,8 @@ documents:
     - workspace.knowledge
     slug: care-and-security
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: care-and-security/answer
     title: Answer
     breadcrumbs:
@@ -537,8 +537,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-concept-social-life
   sections:
   - path: active-social-life
@@ -559,8 +559,8 @@ documents:
     - workspace.knowledge
     slug: active-social-life
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: active-social-life/answer
     title: Answer
     breadcrumbs:
@@ -582,8 +582,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-project-chicureo
   sections:
   - path: project-chicureo
@@ -604,8 +604,8 @@ documents:
     - workspace.knowledge
     slug: project-chicureo
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: project-chicureo/answer
     title: Answer
     breadcrumbs:
@@ -627,8 +627,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-project-mantagua
   sections:
   - path: project-mantagua
@@ -649,8 +649,8 @@ documents:
     - workspace.knowledge
     slug: project-mantagua
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: project-mantagua/answer
     title: Answer
     breadcrumbs:
@@ -672,8 +672,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-project-ciudad-de-mexico
   sections:
   - path: project-ciudad-de-mexico
@@ -694,8 +694,8 @@ documents:
     - workspace.knowledge
     slug: project-ciudad-de-mexico
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: project-ciudad-de-mexico/answer
     title: Answer
     breadcrumbs:
@@ -717,8 +717,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-project-bogota
   sections:
   - path: project-bogota
@@ -739,8 +739,8 @@ documents:
     - workspace.knowledge
     slug: project-bogota
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: project-bogota/answer
     title: Answer
     breadcrumbs:
@@ -762,8 +762,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-project-armenia
   sections:
   - path: project-armenia
@@ -784,8 +784,8 @@ documents:
     - workspace.knowledge
     slug: project-armenia
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: project-armenia/answer
     title: Answer
     breadcrumbs:
@@ -807,8 +807,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-project-urubo
   sections:
   - path: project-urubo
@@ -829,8 +829,8 @@ documents:
     - workspace.knowledge
     slug: project-urubo
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: project-urubo/answer
     title: Answer
     breadcrumbs:
@@ -852,8 +852,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-projects-overview
   sections:
   - path: projects-overview
@@ -874,8 +874,8 @@ documents:
     - workspace.knowledge
     slug: projects-overview
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: projects-overview/answer
     title: Answer
     breadcrumbs:
@@ -897,8 +897,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-contact-channels
   sections:
   - path: contact-channels
@@ -919,8 +919,8 @@ documents:
     - workspace.knowledge
     slug: contact-channels
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: contact-channels/answer
     title: Answer
     breadcrumbs:
@@ -942,8 +942,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-contact-offices
   sections:
   - path: office-locations
@@ -964,8 +964,8 @@ documents:
     - workspace.knowledge
     slug: office-locations
     level: 1
-    line_start: 18
-    line_end: 19
+    line_start: 786
+    line_end: 787
   - path: office-locations/answer
     title: Answer
     breadcrumbs:
@@ -987,8 +987,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
 - doc_name: dom-contact-lead-segments
   sections:
   - path: lead-segments
@@ -1009,8 +1009,8 @@ documents:
     - workspace.knowledge
     slug: lead-segments
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: lead-segments/answer
     title: Answer
     breadcrumbs:
@@ -1032,8 +1032,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-contact-lead-qualification
   sections:
   - path: lead-qualification-fields
@@ -1054,8 +1054,8 @@ documents:
     - workspace.knowledge
     slug: lead-qualification-fields
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: lead-qualification-fields/answer
     title: Answer
     breadcrumbs:
@@ -1077,8 +1077,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-franchise-offer
   sections:
   - path: franchise-opportunity
@@ -1099,8 +1099,8 @@ documents:
     - workspace.knowledge
     slug: franchise-opportunity
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: franchise-opportunity/answer
     title: Answer
     breadcrumbs:
@@ -1122,8 +1122,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-franchise-why
   sections:
   - path: why-vitali-market-case
@@ -1144,8 +1144,8 @@ documents:
     - workspace.knowledge
     slug: why-vitali-market-case
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: why-vitali-market-case/answer
     title: Answer
     breadcrumbs:
@@ -1167,8 +1167,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-franchise-process
   sections:
   - path: how-the-franchise-works
@@ -1189,8 +1189,8 @@ documents:
     - workspace.knowledge
     slug: how-the-franchise-works
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: how-the-franchise-works/answer
     title: Answer
     breadcrumbs:
@@ -1212,8 +1212,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-franchise-benefits
   sections:
   - path: franchisee-benefits
@@ -1234,8 +1234,8 @@ documents:
     - workspace.knowledge
     slug: franchisee-benefits
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: franchisee-benefits/answer
     title: Answer
     breadcrumbs:
@@ -1257,8 +1257,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790
 - doc_name: dom-franchise-market-data
   sections:
   - path: market-data
@@ -1279,8 +1279,8 @@ documents:
     - workspace.knowledge
     slug: market-data
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: market-data/answer
     title: Answer
     breadcrumbs:
@@ -1302,5 +1302,5 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 789
+    line_end: 790

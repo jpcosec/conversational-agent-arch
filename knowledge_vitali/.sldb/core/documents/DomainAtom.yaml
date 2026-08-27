@@ -1,8 +1,8 @@
 documents:
 - name: dom-company-identity
   path: atoms/dom-company-identity.md
-  hash_c: 92d8f910f0fa7075536624aea016b836b521145ebb061f21481aec03fbdd8126
-  hash_d: e088da822daae67648d6e3aa16d751fcca0a676361cd0e15e67ff8f50bc78866
+  hash_c: 249c5540547464e65a542af2a65c9e44866beedf380308ec487b0c729bf99a50
+  hash_d: 5ccc8bd221cdcfef17fa91be8e28ed468ed6a8811152b6f272a09edb58f61c04
   semantic_tags:
   - domain:brand
   - system:vitali
@@ -10,8 +10,8 @@ documents:
   - workspace.knowledge
 - name: dom-company-history
   path: atoms/dom-company-history.md
-  hash_c: a51fffcb209f6af713a1ee64f15af5e76107403f3cc9a16142d40a62c1e23d3c
-  hash_d: 99ebb56782e8c55a98bd4163f35fee96462f338a3daf7b72a1a087a556bb4a5a
+  hash_c: 2e15d7ffaa9b9e912a20e56994147af666a926d02cd30c7a6311592e06a3c738
+  hash_d: 0add2bd8fe7c3c26f29df974e1a2e314010511c9fa6870da99c6c8eab57420b2
   semantic_tags:
   - domain:brand
   - system:vitali
@@ -19,8 +19,8 @@ documents:
   - workspace.knowledge
 - name: dom-company-mission
   path: atoms/dom-company-mission.md
-  hash_c: 38247b6edd33f23ad634a3b57e8bb33370fb94dc76a6ebe926ed66cad67f8591
-  hash_d: 9ed1d7534fe8f8b7f64106dfb2dd101178f4c4cb7119046e1db0ad0fe04f492d
+  hash_c: 418a802807dcaccc6ea9349ca57ff3edee0f36ceaae87c7ddcfc96719a586c1c
+  hash_d: 57ab4764c50ad1a685495cce28a7fb74bc1fcb9bcf259f68acbfedf65517cd1c
   semantic_tags:
   - domain:brand
   - system:vitali
@@ -28,8 +28,8 @@ documents:
   - workspace.knowledge
 - name: dom-company-values
   path: atoms/dom-company-values.md
-  hash_c: 8371f83be0e1f3e79502c00761b53102fffe1ac8c90b763a16b87d01e49f80ec
-  hash_d: cc381d4762297b79b2f7112208f99cebffb508b17dd6ec78678096a35d437849
+  hash_c: 4020ebfc3eb93ef497ff37f23e7deed2d18abc7fa005adec207da502ec8f5a35
+  hash_d: a615dc0222d77ceb6ad799f8b6441ef6d792e6dc7338b66141fbba1af0748557
   semantic_tags:
   - domain:brand
   - system:vitali
@@ -37,8 +37,8 @@ documents:
   - workspace.knowledge
 - name: dom-company-leadership
   path: atoms/dom-company-leadership.md
-  hash_c: 919c7362a692c9baeda3c30b05bb4d79164f8fadf264a0f78c28a46ca5c41bb4
-  hash_d: a523ea94019d3264655d3bcfef5951842f6d0826af73cb06f24ad8195eef3390
+  hash_c: 25ab2d9cd91d024d5783278406f4f53a422b81c2257f8a86157c15cd34da7319
+  hash_d: 065540f398e791613095e52aa5a1f102aa1eca19c587905f0861c84b0f1507e2
   semantic_tags:
   - domain:brand
   - system:vitali
@@ -46,8 +46,8 @@ documents:
   - workspace.knowledge
 - name: dom-company-portfolio-scale
   path: atoms/dom-company-portfolio-scale.md
-  hash_c: 3bc33df50a529b49831ad8389436dda207c87e7e7fb76d277ab16de5fb91727a
-  hash_d: 8bbdea2d743e9d2dd44ddfbafe1453ad39f03a3a1f41ba782b86d0980c28eb60
+  hash_c: 4bda0201fb6f90e124fb268652a65a5b0856d5eac7268fe5f1b67cf630cc80fb
+  hash_d: 5c1011a932178db54af0802a779b5db79c346f61693d102dcdca3c7b0f4555be
   semantic_tags:
   - domain:brand
   - system:vitali
@@ -55,8 +55,8 @@ documents:
   - workspace.knowledge
 - name: dom-concept-value-proposition
   path: atoms/dom-concept-value-proposition.md
-  hash_c: 7d65ce0cfb913f2aa837ad81a8bc742bfb8a7d025326515df87de7bf40ca28e4
-  hash_d: 45fb85e71afabad39c10ef60caba5c452302997f90bd648673bdf6b8bf7f7b9e
+  hash_c: a8cfac99720219ef3fa2c750548b8aae44af773707c0479836fc3935a99a895d
+  hash_d: 3c0b2a1c7333973ca2c205fc71de36ddac438301e19a5081ea175542bc8c3a1c
   semantic_tags:
   - domain:offering
   - system:vitali
@@ -64,8 +64,8 @@ documents:
   - workspace.knowledge
 - name: dom-concept-three-pillars
   path: atoms/dom-concept-three-pillars.md
-  hash_c: a4ff197cc961c1d0a74c55dc478ee430e1523b75dded00cfb0c2bba66ff2f94e
-  hash_d: 6db3c79cd5d35c3d2b40bf9a53cf7725ab6a60e1ffb5ce50e839a4a552800301
+  hash_c: ea7cabc33d6cb8ff169d72731d20d2ba69f05d500a6c84793561b440b3b1aa37
+  hash_d: b1f951a15e57b72a463f8eeadc393940643be1a98c441d0cd55cf9f1965b5582
   semantic_tags:
   - domain:offering
   - system:vitali
@@ -73,8 +73,8 @@ documents:
   - workspace.knowledge
 - name: dom-concept-investment-model
   path: atoms/dom-concept-investment-model.md
-  hash_c: 63c9640df065a9bf79ae37fd355a6a38f249ce556e7f91038873e617de9c85a1
-  hash_d: 806654caba6cee9c08b7304eb8fd1f7069fe599616c682aa07cbc4883a34166d
+  hash_c: f171160f4c4a74f8b198f48c4b58b574a0ef64ae2d4c63bf5049ab3573bece44
+  hash_d: c7ad2a661407893790b57650c2c51697812a95e95a0e77cf26222f2852e5e77a
   semantic_tags:
   - domain:offering
   - system:vitali
@@ -82,8 +82,8 @@ documents:
   - workspace.knowledge
 - name: dom-concept-amenities-suites
   path: atoms/dom-concept-amenities-suites.md
-  hash_c: 57b1cbe8385958dffb6e75256455660d47604127ddaaa70a4d605449f3724106
-  hash_d: be09dd50d0a96ff93ce5a73a6d7f527132d55678f5a3197aaed89696f69f7c65
+  hash_c: 0b959920c15ec4dbaf378770854a4ea700b474e6dd2dcd50d1963274c1249f9c
+  hash_d: 6b5c1d670e6de8dbdc0cad4c1287fdef41679a6060c4f5162b235b58689965b9
   semantic_tags:
   - domain:offering
   - system:vitali
@@ -91,8 +91,8 @@ documents:
   - workspace.knowledge
 - name: dom-concept-amenities-services
   path: atoms/dom-concept-amenities-services.md
-  hash_c: 6b77649a96446b34610c8e8108d3976b10ccb2aeaa43d9fc5c968966261fe200
-  hash_d: c93e2016bb724233ff751c149d7e73ee35ec444d6d2cb6f5146bac0bf289a2dc
+  hash_c: 3f0a4221ce38c8e953f929e408dde5d37e40972ec2fd6aa0e9516c05087560e0
+  hash_d: caa5ec0340308c45bcd802a1960918f6b88f6ee3b95fdb03e6380c5d998183d8
   semantic_tags:
   - domain:offering
   - system:vitali
@@ -100,8 +100,8 @@ documents:
   - workspace.knowledge
 - name: dom-concept-care-security
   path: atoms/dom-concept-care-security.md
-  hash_c: 487c158e5edd0679d38e1e818f9fb48ac33d337de305b24ce54763a57b1fa83d
-  hash_d: 5c50508db60e12d92bed8fdb44b8a9cf47e4650769d1025824b8e70f8261c4e2
+  hash_c: f32540eceb8fa5a2c8adc48884f00dff9f315bfd7fdc6a7ef02633708754fce7
+  hash_d: b3200f86af463c816920624bcc01f2ae0b1f04920639e65577712d47028cec1b
   semantic_tags:
   - domain:offering
   - system:vitali
@@ -109,8 +109,8 @@ documents:
   - workspace.knowledge
 - name: dom-concept-social-life
   path: atoms/dom-concept-social-life.md
-  hash_c: b07a17c780e02fec046455db971097c86d1a50da9e2290074cd64cd3d1b14736
-  hash_d: 10e8ba888ed9412af9d4da8ebf17ded68239fcb5cb34d536da61b01c7676b559
+  hash_c: c3248ea61e7edbeb0f5bd4146b67644db9cd28e64e94f47a426a4083821be6d9
+  hash_d: 6cc424b151c5c07b7aa9b2efcf0dc91f3b2b3d6bc0b1564a6903125aa7876f7d
   semantic_tags:
   - domain:offering
   - system:vitali
@@ -118,8 +118,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-chicureo
   path: atoms/dom-project-chicureo.md
-  hash_c: 9355fccdf569258e8853af5845cc4765ac604bd6ce097c206e322da88d250017
-  hash_d: 4e12476c92fe1fd87d8d314f570c38e8c5f3921a72092d0a865cc5037d8914e4
+  hash_c: a5ff6ce43c12a92e24ba58f2a91bfe2bcd9ca17add57c4b0d4e3372b8bcf5941
+  hash_d: 9fa07194b31e15dffcd2c654e501d169eaab1bc93ec1e8d8daf284428c55c652
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -127,8 +127,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-mantagua
   path: atoms/dom-project-mantagua.md
-  hash_c: 000c9698eb718ca6fa3fa2344acb220c9c21b4dad0b86f2bb38a226db4a91533
-  hash_d: 9214bdcb778b5ac9f94a92c542c8fa01db0b4c061a9d6195894df687021ee0f0
+  hash_c: f165ae85efbb4bc51221f8f71f5185e08e1fc5d6b72bff4e3d244cf0becfa7eb
+  hash_d: 36626a5ffc05a3cb4824eab0c202333de02f74bd944dd5fca1f373349cf05871
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -136,8 +136,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-ciudad-de-mexico
   path: atoms/dom-project-ciudad-de-mexico.md
-  hash_c: d8c44055304427cf37f43c994b66879905b085df8454963b5b5a81882d333527
-  hash_d: b1a638c759117bf7d298e33369e115540b0f733b740427b19f302dd06933aa5f
+  hash_c: e5a17775caba38c9fab95a7cab9e30ddb33c85b4e77924dd7751d947a7f058d3
+  hash_d: 1d10aa7b1460b27281b68335c6a01d717d2d993fde1d5782933a94c55f1bf8db
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -145,8 +145,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-bogota
   path: atoms/dom-project-bogota.md
-  hash_c: 7ce7722b3b6f101a13ad94af78c6173e5d60336cdbfabc16bd92f36c250a9917
-  hash_d: 92903436a609574ef4dae420f9b36672d6be4296819405bcd2da7b248146069e
+  hash_c: 22df70e18de1277629eab6a5db0cf2573a498705b23b5abd1bf78010b6f5d35c
+  hash_d: 7553f80c68e415ef972b6cb2a8281dec4df1365e5618f32957383d0c93dfefcb
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -154,8 +154,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-armenia
   path: atoms/dom-project-armenia.md
-  hash_c: 2578cd1b0d09a76780d82ab1fc3f47a7517412bffaf7d1ff00de8d03271470ae
-  hash_d: 07985674884c8ad45e9a45975bc1f2d5084e359ab73a701c457c7c325a52d5d4
+  hash_c: 5ff4ca0a46b021a907f9e8a167d3a100c5011026550a6206fd294cc06ef42397
+  hash_d: 4f541413df430bd47f132ea564a9c8fb4dffa222e3a2e9a8f6edef8ef1e48db2
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -163,8 +163,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-urubo
   path: atoms/dom-project-urubo.md
-  hash_c: 138c37b9419678dc8818b374f2d70b7b5fcdde5aabe16fd00709c0b9dd4f8a78
-  hash_d: 08bbdcdada454510f6aef5b3647a565f941bc46f885c6f906092a81c217dee08
+  hash_c: 33503c914395f7f09cfbb45fa9eb439c4fb48a3201229f6ea1599123b5840d4b
+  hash_d: e7fe9529736bd5f6f59f376de5265563f0a797a80558cfed6a87a3fc17ed3f0e
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -172,8 +172,8 @@ documents:
   - workspace.knowledge
 - name: dom-projects-overview
   path: atoms/dom-projects-overview.md
-  hash_c: 654fb48e8311b4cb85e7de43c77baa1338da08ec6a418c32547c8ccb3d927009
-  hash_d: 6bd5eba5c259402dfc1d4495bf6509d2baa59dbe26f606d4f80d6e297f78881a
+  hash_c: faf2b09ea44a717a4b767341dfbbd2b24011a1253dc4a84d0cbceae3739100d2
+  hash_d: 10cc08024bb332a568167a2e4cf435d98ca7613afb1d2bf76f5867938b44d9f9
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -181,8 +181,8 @@ documents:
   - workspace.knowledge
 - name: dom-contact-channels
   path: atoms/dom-contact-channels.md
-  hash_c: 22e457ef6fb441638263d50433fcbca639f0403d8b12e11c155f9b298b5dfb4d
-  hash_d: a81cd16233d233c7cbaf8d0e3359ea674ebb4296c393be510cefdff87c15129f
+  hash_c: 14815ce03e5ccc0f70cb1b76b6377cfe491b2609130783a556c70095e42180d2
+  hash_d: 2c2e8d684c34ca0eecb5da1d044bdd45f65257b3e51c41176c1fe94f22bdd98e
   semantic_tags:
   - domain:contact
   - system:vitali
@@ -190,8 +190,8 @@ documents:
   - workspace.knowledge
 - name: dom-contact-offices
   path: atoms/dom-contact-offices.md
-  hash_c: 6a46ef92e052899599d39de12fdcad47c8c82348f2ae414195e92fafd6fe94f4
-  hash_d: 4fe8ffa836d299a30b19b61f704cbaaf20e3170b8d88d9a0f9c6e051f3aad033
+  hash_c: 5add14e2d9dde289daa0bb863b6ab79f16881786e214e0cb3e0ed635d84878cf
+  hash_d: 8e18ff1a7df5c9547aa69562a3e9a8bea8884e2db7a6b71bcff8e5b97dc0a4af
   semantic_tags:
   - domain:contact
   - system:vitali
@@ -199,8 +199,8 @@ documents:
   - workspace.knowledge
 - name: dom-contact-lead-segments
   path: atoms/dom-contact-lead-segments.md
-  hash_c: 79191218914e8806b7afb40ac63733aed485233cf20072511fd13b7af755f0e3
-  hash_d: 864dcf8b03ccb2646b933f8e8b51d7526009746d2895eb2b022f30d79d9509fc
+  hash_c: c987d7310d004f701b11b54d08e5056564156fcb5a6b221304ac6b8aade9e9a3
+  hash_d: 74b84af53c058e741b34ed8630cee09995a151d5bfa71af6252ee9d63e1548bc
   semantic_tags:
   - domain:contact
   - system:vitali
@@ -208,8 +208,8 @@ documents:
   - workspace.knowledge
 - name: dom-contact-lead-qualification
   path: atoms/dom-contact-lead-qualification.md
-  hash_c: d9dd411ef3b02efad252f28bdb8839476d63961bb7a3f414cb65e5412712356a
-  hash_d: aed09d7522fc25d8d7ce0a84527e8ee61ad90a1c088461b32f471e5b3862b8e1
+  hash_c: a92688581ac5bf2cd8ba4537846e36dff675a08204f88198060c993870570bb9
+  hash_d: 389469ea5f644692ff07b64e8d7fa61c201b59d180f9874a950258156ea1a3c9
   semantic_tags:
   - domain:contact
   - system:vitali
@@ -217,8 +217,8 @@ documents:
   - workspace.knowledge
 - name: dom-franchise-offer
   path: atoms/dom-franchise-offer.md
-  hash_c: 14480e78839e71b4d9293b507cfad4ed3f2c6e3af05dce40a51870c9424f606d
-  hash_d: dfe891677a938e2c5c47031f7598b4a9c5b8130edf415c310fc9153f749466d1
+  hash_c: 0e1af1da90dd5ac28180541015dd88c86b618c5a98953ebf41c1137895874c74
+  hash_d: 7b764051e8e39bec1928c861a1d521f6ab9bd65f03e80862efc017d8ecbb2cf9
   semantic_tags:
   - domain:franchise
   - system:vitali
@@ -226,8 +226,8 @@ documents:
   - workspace.knowledge
 - name: dom-franchise-why
   path: atoms/dom-franchise-why.md
-  hash_c: e3b561ab3a9783f1b6bd22133c6a08e326f943964f9b4b183fbe378c2e6c47c2
-  hash_d: 4020edf7008449ba298d25c70a8ad00d767448fa94093149c1e9d2a783aafa8b
+  hash_c: e8c566551e80bc266434f9025ae81c76efbf7eb8c55d1dea820e5bd519c20229
+  hash_d: 6c79c327dd02c96fb8693f0d2921e7fe262c7082ea16c25cb99e76a44475762b
   semantic_tags:
   - domain:franchise
   - system:vitali
@@ -235,8 +235,8 @@ documents:
   - workspace.knowledge
 - name: dom-franchise-process
   path: atoms/dom-franchise-process.md
-  hash_c: 7770847835b34b21d7ca9990e10a0c4a4d0b4bba20318e7642c6f369350a6e62
-  hash_d: 62f82250370a1489964877a24a79e052b5f222c8b65217b43db8707553b3f24b
+  hash_c: caed8e5d12170b04a6028918d56e132c8bdd08d6a90e6e38f03122e7e9eac081
+  hash_d: 4c402ee8c39a45173da01e21edcb71922cd66d89e4c65466e47652192a032b35
   semantic_tags:
   - domain:franchise
   - system:vitali
@@ -244,8 +244,8 @@ documents:
   - workspace.knowledge
 - name: dom-franchise-benefits
   path: atoms/dom-franchise-benefits.md
-  hash_c: ec5e11ee623bd2209f3a94594686676b3b1fda0271d25e9d147f3c40a4c8fdc3
-  hash_d: 24a688b22394d6506789190aaaf35c8d34c9984e47a1b22b63080c0d4f9553da
+  hash_c: 0631abd6548c4638a5d40be23efb37322b700ad5df828c20c75b8c9af8d6e671
+  hash_d: 275449c220c48d07fd1e937e8867fd01c25405199b558ecbefc560f78fbdc757
   semantic_tags:
   - domain:franchise
   - system:vitali
@@ -253,8 +253,8 @@ documents:
   - workspace.knowledge
 - name: dom-franchise-market-data
   path: atoms/dom-franchise-market-data.md
-  hash_c: 1a1ba74aa8bdc609aa9adf93b4c451f269f1ca8d3095ff27c373e17001e30652
-  hash_d: 33006937306c1dba5876340f4e15cb182d89988c29693fe592d4127003484371
+  hash_c: 30d7a0f14cba857fe798acd05395aee869f6a0836063f49f83c04a5af3f5e238
+  hash_d: ea47750f37c1a7ce5025c16a3630336877ebb420b77fdb512b26bab1cd38e069
   semantic_tags:
   - domain:franchise
   - system:vitali

@@ -1,8 +1,8 @@
 documents:
 - name: rule-faq-pricing
   path: atoms/rule-faq-pricing.md
-  hash_c: e783db3d4efd7992905c948efecd5ced1d86fcbc133271d04953e78b4ef859c3
-  hash_d: ad22acdf28aaa942457cbe2fdc7a27474ebf0f6f3c59c4ab545c76b62072b745
+  hash_c: 4fd66009023ecc346f67f778af4f49b7fe062c55f59359f2f6cb6a9dcfe7860b
+  hash_d: b14ec87060d997cd4c12eeb016bc027371f7027b97c31532c3e3a27f96dc3c21
   semantic_tags:
   - agent:conversation-rule
   - domain:sales
@@ -11,8 +11,8 @@ documents:
   - workspace.knowledge
 - name: rule-faq-financing
   path: atoms/rule-faq-financing.md
-  hash_c: 46be8bf64c7d83f2d74f8ab9799d9f6330b4b8a1b7c699d36efa349ec1962ae3
-  hash_d: 64c8638e173ea18ba0b1912bd618b8e533e438f1833ed0e1b7cd2394cd834f10
+  hash_c: c6956ac2b263a47e18da1da902de4f85fe4c85a1dd1304da9bcda209d5779293
+  hash_d: 1a56e439dd9b6eabbe509a8f9e5f062e120e2a055b013fa210395533b9f8d3a4
   semantic_tags:
   - agent:conversation-rule
   - domain:sales
@@ -21,8 +21,8 @@ documents:
   - workspace.knowledge
 - name: rule-faq-availability
   path: atoms/rule-faq-availability.md
-  hash_c: b118316aa8ef2e0dcc26c7c0113ecb13cfd2de5a24f4430a5ef8ded47e3db2e4
-  hash_d: 6b9cc9436ea0b33bcc04012f99f7adc2ea0d94748d6005043ce38ae27fec3182
+  hash_c: 7303be7a31c479161b0673c405a675579aea1f9355e4ec44cacbe1e49b7c7561
+  hash_d: fe660c98bc477d02020f3d3b760959be8becc1e29ff7c4a4a7cf5febb321efd2
   semantic_tags:
   - agent:conversation-rule
   - domain:sales
@@ -31,8 +31,8 @@ documents:
   - workspace.knowledge
 - name: rule-faq-reserve-now
   path: atoms/rule-faq-reserve-now.md
-  hash_c: 9a0bc5742e26d1bfc3b874f366a2a461062050433158901f0f44d4f933f7f736
-  hash_d: 0067b988c9aefabe0e40c47a25849a4b63a0f14cad50b746a608e1bba87a1e3c
+  hash_c: 08d71873315289e4f6b602790a9d346559068a7a0874ff5726a57ddba1d442c6
+  hash_d: f30a97b5d8c51fc7fe6f6715d99cb75fed6dd770d97f6ce4f24b890a77746a78
   semantic_tags:
   - agent:conversation-rule
   - domain:sales
@@ -41,8 +41,8 @@ documents:
   - workspace.knowledge
 - name: rule-business-hours
   path: atoms/rule-business-hours.md
-  hash_c: c018d544f8fb1fa75f2a033fcf6cf9cd66a5ec6434dec46fc61e052243b4f368
-  hash_d: 97c9185df74a687ac0b3f9df0e4dbd4fc8a88cb6f32360bcb26ffa991b82a899
+  hash_c: d5981be8e5f96967c4bcd5a90ef22132077cbd7fc8633e74f61214c57e3ee861
+  hash_d: ab81ecdc9e7a51b809f870196f127451ffeb3deeed2cdf41ee9f61b93c584167
   semantic_tags:
   - agent:conversation-rule
   - domain:booking
@@ -51,8 +51,8 @@ documents:
   - workspace.knowledge
 - name: rule-timezone-routing
   path: atoms/rule-timezone-routing.md
-  hash_c: 49b1d0f60e022fa2ca80d8d5af9daf77a6892abb2b00789f87081245476ee9eb
-  hash_d: 788400afdd13d97a7dc4b7382b4559f2df34d6c5b49a2b5c7d43f65e99cc2f1e
+  hash_c: cad295b431c2d70adc5de3f792334d064c4b80c70206fc2acb384dbf1bd5f366
+  hash_d: 2cbe85bd396b70e4c3eae02f3e7dbb8f45a06e60776d54def2c81ee5938a4598
   semantic_tags:
   - agent:conversation-rule
   - domain:booking
@@ -61,8 +61,8 @@ documents:
   - workspace.knowledge
 - name: rule-visit-modality
   path: atoms/rule-visit-modality.md
-  hash_c: 45aa191e2560a878c5b5df5e2e68037702ff2fa23f5fc56b03f675fbccf369cb
-  hash_d: 667d9550f53d45debe4b86b0c318a303a19ae8c49e1171b6288eed0a2bd567a7
+  hash_c: fcf4cb95d0b1760217b7e7f8d3fd8753e89d1cb61738112cf2d4e661f1a69491
+  hash_d: 2b118c6afed2865a132143eaa9f872923c1c4277a079491d1f98c50dc001d9e8
   semantic_tags:
   - agent:conversation-rule
   - domain:booking

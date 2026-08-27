@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: regla-precio-de-una-suite
     level: 1
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
   - path: regla-precio-de-una-suite/answer
     title: Answer
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: regla-precio-de-una-suite/conditions
     title: Conditions
     breadcrumbs:
@@ -71,8 +71,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
 - doc_name: rule-faq-financing
   sections:
   - path: regla-financiamiento-y-pago
@@ -95,8 +95,8 @@ documents:
     - workspace.knowledge
     slug: regla-financiamiento-y-pago
     level: 1
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
   - path: regla-financiamiento-y-pago/answer
     title: Answer
     breadcrumbs:
@@ -120,8 +120,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: regla-financiamiento-y-pago/conditions
     title: Conditions
     breadcrumbs:
@@ -145,8 +145,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
 - doc_name: rule-faq-availability
   sections:
   - path: regla-disponibilidad-y-fechas-de-inicio
@@ -169,8 +169,8 @@ documents:
     - workspace.knowledge
     slug: regla-disponibilidad-y-fechas-de-inicio
     level: 1
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
   - path: regla-disponibilidad-y-fechas-de-inicio/answer
     title: Answer
     breadcrumbs:
@@ -194,8 +194,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: regla-disponibilidad-y-fechas-de-inicio/conditions
     title: Conditions
     breadcrumbs:
@@ -219,8 +219,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
 - doc_name: rule-faq-reserve-now
   sections:
   - path: regla-no-se-reservan-suites-por-chat
@@ -243,8 +243,8 @@ documents:
     - workspace.knowledge
     slug: regla-no-se-reservan-suites-por-chat
     level: 1
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
   - path: regla-no-se-reservan-suites-por-chat/answer
     title: Answer
     breadcrumbs:
@@ -268,8 +268,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: regla-no-se-reservan-suites-por-chat/conditions
     title: Conditions
     breadcrumbs:
@@ -293,8 +293,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
 - doc_name: rule-business-hours
   sections:
   - path: regla-horario-de-atencion
@@ -317,8 +317,8 @@ documents:
     - workspace.knowledge
     slug: regla-horario-de-atencion
     level: 1
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
   - path: regla-horario-de-atencion/answer
     title: Answer
     breadcrumbs:
@@ -342,8 +342,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: regla-horario-de-atencion/conditions
     title: Conditions
     breadcrumbs:
@@ -367,8 +367,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
 - doc_name: rule-timezone-routing
   sections:
   - path: regla-zona-horaria-y-oficina
@@ -391,8 +391,8 @@ documents:
     - workspace.knowledge
     slug: regla-zona-horaria-y-oficina
     level: 1
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
   - path: regla-zona-horaria-y-oficina/answer
     title: Answer
     breadcrumbs:
@@ -416,8 +416,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: regla-zona-horaria-y-oficina/conditions
     title: Conditions
     breadcrumbs:
@@ -441,8 +441,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795
 - doc_name: rule-visit-modality
   sections:
   - path: regla-modalidad-de-la-visita
@@ -465,8 +465,8 @@ documents:
     - workspace.knowledge
     slug: regla-modalidad-de-la-visita
     level: 1
-    line_start: 20
-    line_end: 21
+    line_start: 788
+    line_end: 789
   - path: regla-modalidad-de-la-visita/answer
     title: Answer
     breadcrumbs:
@@ -490,8 +490,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 790
+    line_end: 791
   - path: regla-modalidad-de-la-visita/conditions
     title: Conditions
     breadcrumbs:
@@ -515,5 +515,5 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 794
+    line_end: 795

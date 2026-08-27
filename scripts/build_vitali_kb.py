@@ -340,6 +340,23 @@ def main() -> None:
     for f in FRAMINGS:
         create("AgentFraming", f, f["id"])
 
+    index_embeddings()
+
+
+def index_embeddings() -> None:
+    """Paso offline final: sin vectores el retrieval semantico devuelve vacio."""
+    print("== index embeddings ==")
+    from knowledge_base.operations import KnowledgeOperations
+
+    ops = KnowledgeOperations(REPO / "knowledge_vitali", pythonpath=str(REPO))
+    stats = ops.index_embeddings()
+    print(
+        f"  {stats['processed']} processed, {stats['skipped']} skipped, "
+        f"{stats['errors']} errors"
+    )
+    if stats.get("store_update_error"):
+        print(f"  WARNING store update fallo: {stats['store_update_error']}", file=sys.stderr)
+
 
 if __name__ == "__main__":
     main()

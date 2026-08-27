@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: limites-de-cara-al-cliente
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 785
+    line_end: 786
   - path: limites-de-cara-al-cliente/restriction
     title: Restriction
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: restriction
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 787
+    line_end: 788
   - path: limites-de-cara-al-cliente/conditions
     title: Conditions
     breadcrumbs:
@@ -71,8 +71,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 791
+    line_end: 792
   - path: limites-de-cara-al-cliente/escalation
     title: Escalation
     breadcrumbs:
@@ -96,5 +96,5 @@ documents:
     - workspace.knowledge
     slug: escalation
     level: 2
-    line_start: 27
-    line_end: 28
+    line_start: 795
+    line_end: 796
