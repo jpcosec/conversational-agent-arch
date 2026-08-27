@@ -1,0 +1,70 @@
+namespaces:
+  channel:
+    do_not_use_when: The tag describes the conversation step, domain, or a user trait instead of the delivery channel.
+    examples:
+    - channel:whatsapp
+    meaning: Transversal. Delivery channel the atom applies to (not a family; cuts across all five).
+    use_when: The atom's content or applicability depends on the messaging channel.
+  conversation:
+    do_not_use_when: The tag names a business domain or a policy-gate criterion instead of a step, strategy, or fallback of the flow.
+    examples:
+    - conversation:steps.onboarding
+    - conversation:steps.agendar_recordatorio
+    - conversation:classification
+    - conversation:fallback
+    - conversation:strategy
+    - conversation:security
+    meaning: 'Family. Root namespace for the `conversation` family: `ConversationStep`, `StrategyRule`, `FallbackRule` -- the conversational flow itself (steps, transitions, strategy, fallbacks).'
+    use_when: The atom defines or governs a step, strategy rule, or fallback of the conversational flow.
+  domain:
+    do_not_use_when: The tag describes the conversational flow, a user trait, or a post-draft gate criterion instead of business/domain knowledge.
+    examples:
+    - domain:seguridad.triage
+    - domain:seguridad.compliance
+    - domain:clinico
+    - domain:medinfo
+    - domain:programa
+    - domain:tratamiento
+    meaning: 'Family. Root namespace for the `domain` family: `DomainAtom`, `RuleAtom` -- business/domain knowledge (question+answer atoms and domain rules). Hierarchical, dot-separated (`domain:seguridad.triage`).'
+    use_when: The atom is a domain question-answer atom or a domain rule about the business.
+  gate:
+    do_not_use_when: The tag describes a conversation step, user trait, or general topic instead of a post-draft validation criterion.
+    examples:
+    - gate:corpus
+    - gate:derivacion
+    - gate:promesas
+    - gate:regulatorio.dosis
+    - gate:regulatorio.diagnostico
+    meaning: 'Family. Root namespace for the `gate` family: `GateCriterion` -- post-draft policy-gate criteria evaluated over the agent response.'
+    use_when: The atom defines a validation or rejection criterion for the policy gate.
+  self:
+    do_not_use_when: The tag is about the business domain, the user, or the conversational flow instead of the assistant's own identity or tooling.
+    examples:
+    - self:whoami
+    - self:estilo
+    - self:limites
+    - self:tools
+    meaning: 'Family. Root namespace for the `self` family: `SelfDeclaration`, `CapabilityBoundary`, `StyleGuide`, `ToolAtom` -- the assistant''s own identity, capability limits, style, and declared tools.'
+    use_when: The atom is about the assistant itself (identity, limits, style, tools) rather than the business or the user.
+  system:
+    do_not_use_when: The tag is only a general topic or names a family instead of the system this KB belongs to.
+    examples:
+    - system:laboratorio-chile
+    meaning: Transversal. System, project, or organization the atom belongs to. In this KB it is constant across all 71 documents; kept for cross-KB disambiguation, not for discrimination within this KB.
+    use_when: The atom needs to be attributed to the owning system/organization.
+  topic:
+    do_not_use_when: The atom is better classified by its family (domain, conversation, gate, self, user) than by a loose subject label.
+    examples:
+    - topic:rules
+    meaning: Transversal. Subject area discussed by the atom, used as a lightweight cross-cutting label independent of family.
+    use_when: The atom is about a conceptual topic that doesn't map cleanly onto one of the five families.
+  user:
+    do_not_use_when: The tag describes the assistant, the business domain, or a conversation step instead of a trait/characteristic of the end user.
+    examples:
+    - user:traits.primera_vez
+    - user:traits.ansioso_aplicacion
+    - user:traits.buena_adherencia
+    - user:traits.dudas_efectos
+    - user:traits.prefiere_recordatorios
+    meaning: 'Family. Root namespace for the `user` family: `TraitAtom` -- traits or characteristics of the end user that adapt the assistant''s response.'
+    use_when: The atom captures a user trait used to personalize the conversation.
