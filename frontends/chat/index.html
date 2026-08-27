@@ -8,7 +8,17 @@
 <link rel="stylesheet" href="/static/theme.css"/>
 <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{"background":"var(--bg-page)","surface":"var(--bg-page)","surface-container-lowest":"var(--bg-panel)","surface-container-low":"var(--bg-panel-solid)","surface-container":"var(--bg-panel-solid)","surface-container-high":"var(--bg-panel-elevated)","surface-container-highest":"var(--bg-panel-strong)","surface-variant":"var(--bg-panel-strong)","surface-bright":"var(--border-strong-solid)","primary":"var(--accent)","secondary":"var(--accent-hover)","secondary-container":"var(--accent-hover)","on-secondary-container":"var(--bg-page)","tertiary":"var(--family-user)","tertiary-container":"var(--bg-panel-strong)","on-surface":"var(--text-primary)","on-surface-variant":"var(--text-muted-2)","outline":"rgba(245,240,232,.35)","outline-variant":"var(--border-strong)","error":"var(--danger)"},borderRadius:{DEFAULT:"8px",lg:"12px",xl:"16px",full:"999px"},fontFamily:{body:["Inter","sans-serif"],mono:["JetBrains Mono","monospace"]}}}}</script>
 <style>.glow-active{box-shadow:0 0 15px rgba(212,165,116,.2),inset 0 0 10px rgba(212,165,116,.1);border-color:rgba(212,165,116,.5)}.pulse-dot{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}.custom-scrollbar::-webkit-scrollbar{width:6px}.custom-scrollbar::-webkit-scrollbar-track{background:transparent}.custom-scrollbar::-webkit-scrollbar-thumb{background-color:rgba(245,240,232,.1);border-radius:10px}.msym{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr}.prose-chat p{margin-bottom:.6rem}.prose-chat h1,.prose-chat h2,.prose-chat h3{line-height:1.2;margin:.4rem 0}.prose-chat code{background:var(--bg-panel-solid);border:1px solid var(--border-strong);padding:1px 5px;border-radius:6px;font-family:'JetBrains Mono';font-size:.85em}.prose-chat pre{overflow:auto;background:var(--bg-panel-solid);border:1px solid var(--border-strong);padding:10px;border-radius:10px}.atom-link{cursor:pointer;color:var(--accent-hover);border:1px solid var(--border-accent);background:rgba(212,165,116,.08);border-radius:999px;padding:1px 7px;font-family:'JetBrains Mono';font-size:12px;text-decoration:none}.fam-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-family:'JetBrains Mono';font-size:9px;text-transform:uppercase;letter-spacing:.06em;border:1px solid;margin-right:4px}.ctx-card{cursor:pointer;transition:all .15s}.ctx-card:hover{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}.ctx-card:hover .ctx-hint{opacity:1}.ctx-hint{opacity:0;font-size:9px;color:rgba(245,240,232,.35);transition:.15s}
-.agent-row{border:1px solid rgba(212,165,116,.08);border-radius:10px;padding:8px 12px;cursor:pointer;transition:.15s}.agent-row:hover{border-color:rgba(212,165,116,.25);background:rgba(212,165,116,.04)}.agent-row .expand-icon{transition:transform .2s;font-size:14px}.agent-row.open .expand-icon{transform:rotate(90deg)}.family-group{margin-bottom:10px}.family-group .fg-header{font-family:'JetBrains Mono';font-size:9px;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:3px}</style>
+.agent-row{border:1px solid rgba(212,165,116,.08);border-radius:10px;padding:8px 12px;cursor:pointer;transition:.15s}.agent-row:hover{border-color:rgba(212,165,116,.25);background:rgba(212,165,116,.04)}.agent-row .expand-icon{transition:transform .2s;font-size:14px}.agent-row.open .expand-icon{transform:rotate(90deg)}.family-group{margin-bottom:10px}.family-group .fg-header{font-family:'JetBrains Mono';font-size:9px;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:3px}
+/* Sidebar: mismo lenguaje visual que frontends/flow_editor/index.html
+   (.sidebar/.brand/.palette-label/.palette-item) y frontends/profiling/index.html
+   (.col-left/.user-chip) -- ancho 280px, fondo degradado y borde dorado via
+   los tokens de /static/theme.css (--bg-panel2/--border-accent), no rgba
+   hardcodeado nuevo. Antes el chat usaba solo utilidades Tailwind
+   (bg-surface-container-low, border-white/5) que no calzaban con esos dos.*/
+.chat-sidebar{width:280px;min-width:280px;background:var(--bg-panel2);border-right:1px solid var(--border-accent)}
+.sidebar-block{border:1px solid var(--border-accent);border-radius:10px;padding:12px;background:rgba(18,18,26,.8);transition:var(--transition)}
+.sidebar-block:hover{border-color:var(--accent-hover)}
+.sidebar-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}</style>
 </head><body class="bg-background text-on-surface font-body h-screen overflow-hidden flex flex-col">
 <header class="app-topbar" data-testid='nav-topbar'>
 <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
@@ -18,26 +28,26 @@
 <div class="app-topbar-meta"><span class="app-topbar-chip" id="kbLabel">KB</span><span class="app-topbar-chip" id="healthLabel">—</span></div></header>
 <div class="flex flex-1 min-h-0 overflow-hidden">
  <!-- Global Sidebar -->
- <aside class="w-64 flex-shrink-0 bg-surface-container-low border-r border-white/5 overflow-y-auto p-4 hidden md:flex flex-col gap-4" data-testid="chat-sidebar">
-   <div class="border border-white/5 rounded-lg p-3" data-testid="sidebar-user">
-     <h4 class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1"><span class="msym text-[14px]">person</span>Usuario</h4>
+ <aside class="chat-sidebar flex-shrink-0 overflow-y-auto p-4 hidden md:flex flex-col gap-4" data-testid="chat-sidebar">
+   <div class="sidebar-block" data-testid="sidebar-user">
+     <h4 class="sidebar-label flex items-center gap-1"><span class="msym text-[14px]">person</span>Usuario</h4>
      <div id="sidebarUserId" class="font-mono text-xs text-on-surface">—</div>
      <div id="sidebarTraits" class="flex flex-wrap gap-1 mt-2"></div>
      <div id="sidebarEvents" class="font-mono text-[10px] text-on-surface-variant mt-1">0 eventos</div>
    </div>
-   <div class="border border-white/5 rounded-lg p-3" data-testid="sidebar-conversation">
-     <h4 class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1"><span class="msym text-[14px]">forum</span>Estado</h4>
+   <div class="sidebar-block" data-testid="sidebar-conversation">
+     <h4 class="sidebar-label flex items-center gap-1"><span class="msym text-[14px]">forum</span>Estado</h4>
      <div id="sidebarConvState" class="font-mono text-xs text-on-surface">Esperando mensaje…</div>
    </div>
-   <div class="border border-white/5 rounded-lg p-3" data-testid="sidebar-agents">
-     <h4 class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1"><span class="msym text-[14px]">settings</span>Config</h4>
+   <div class="sidebar-block" data-testid="sidebar-agents">
+     <h4 class="sidebar-label flex items-center gap-1"><span class="msym text-[14px]">settings</span>Config</h4>
      <div id="sidebarModel" class="font-mono text-[10px] text-on-surface-variant">Modelo: —</div>
      <div id="sidebarKB" class="font-mono text-[10px] text-on-surface-variant">KB: —</div>
      <div id="sidebarBusiness" class="font-mono text-[10px] text-on-surface-variant">Negocio: —</div>
    </div>
-   <div class="border border-white/5 rounded-lg p-3 relative overflow-hidden" data-testid="sidebar-pulse">
+   <div class="sidebar-block relative overflow-hidden" data-testid="sidebar-pulse">
      <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
-     <h4 class="font-mono text-[10px] text-on-surface-variant uppercase tracking-wider mb-2 flex items-center gap-1"><span class="msym text-[14px]">monitor_heart</span>Agent Pulse</h4>
+     <h4 class="sidebar-label flex items-center gap-1"><span class="msym text-[14px]">monitor_heart</span>Agent Pulse</h4>
      <div id="sidebarPulse" class="flex items-center gap-2"><div class="w-2 h-2 rounded-full border-2 border-outline-variant"></div><span class="font-mono text-xs text-on-surface-variant">Offline</span></div>
    </div>
  </aside>
@@ -113,9 +123,50 @@ function renderInspector(turn){
  const motivoLine=it=>{const hasScore=typeof it.score==='number';const scoreTxt=hasScore?' · score '+it.score.toFixed(2):'';return '<div class="text-[10px] text-on-surface-variant/80 mt-1 leading-snug" data-testid="context-motivo-'+esc(it.atom_id)+'">'+esc(it.motivo||'—')+scoreTxt+'</div>'};
  const ctxByFam=Object.keys(famGroups).map(f=>'<div class="family-group"><div class="fg-header" style="color:'+famColor(f)+'">'+f+'</div>'+famGroups[f].map(it=>'<div class="ctx-card border border-white/5 rounded-lg p-2 bg-surface-container-lowest" data-testid="context-atom-'+esc(it.atom_id)+'" data-atom="'+esc(it.atom_id)+'"><div class="flex justify-between"><span class="text-on-surface text-xs font-semibold">'+esc(it.title||it.atom_id)+'</span><span class="msym text-[14px] text-primary ctx-hint">open_in_new</span></div><div class="font-mono text-[10px] text-on-surface-variant mt-1" style="color:'+famColor(f)+'">'+esc(it.atom_id)+' · '+esc(it.role||'-')+(it.grounds_step?' · grounds step':'')+'</div>'+motivoLine(it)+'</div>').join('')+'</div>').join('');
 
- // agrupación por agente en razonamiento
- const agents=[{name:'Ontologizador',icon:'🧠',desc:'Compiló '+items.length+' atoms · scenario: '+(ctx.scenario||'—')},{name:'Conversador',icon:'💬',desc:'Redactó: '+(kind==='tool_call'?'tool_call decidido':kind==='fallback'?'fallback':'NL')},{name:'Perfilador',icon:'👤',desc:(turn.traits_after||[]).length+' traits extraídos'},{name:'Reflector',icon:'📦',desc:'batch offline'}];
- const agentHtml=agents.map(a=>'<div class="agent-row" onclick="this.classList.toggle(\'open\');this.querySelector(\'.agent-detail\').classList.toggle(\'hidden\')"><div class="flex items-center gap-2"><span>'+a.icon+'</span><span class="font-mono text-xs text-on-surface font-semibold">'+a.name+'</span><span class="expand-icon msym text-on-surface-variant ml-auto">chevron_right</span></div><div class="font-mono text-[10px] text-on-surface-variant mt-1">'+a.desc+'</div><div class="agent-detail hidden mt-2 border-t border-white/5 pt-2"><div class="font-mono text-[10px] text-on-surface-variant">State trace: '+((turn.state_trace||[]).join(' → ')||'—')+'</div>'+(turn.system_turn?'<div class="font-mono text-[10px] text-secondary mt-1">Tool: '+esc(turn.system_turn.tool)+' · '+esc(turn.system_turn.status)+'</div>':'')+'</div></div>');
+ // Razonamiento: los 4 agentes REALES del pipeline, en orden de ejecución,
+ // con datos reales de `turn.decisions` (lo que arma Orchestrator.handle_turn
+ // -- ver kb_agent/orchestrator.py). Antes esta lista era hardcodeada con
+ // nombres viejos (Ontologizador/Reflector) y descripciones inventadas.
+ const dec=turn.decisions||{};
+ const rBundle=(dec.ruteador&&dec.ruteador.bundle)||ctx.bundle||[];
+ const motivoCounts=bundle=>{const c={piso:0,grounding:0,similitud:0,traits:0};bundle.forEach(b=>{const m=b.motivo||'';if(m.indexOf('piso de seguridad')>-1)c.piso++;if(m.indexOf('grounding')>-1)c.grounding++;if(m.indexOf('similitud')>-1)c.similitud++;if(m.indexOf('trait')>-1)c.traits++});return c};
+ const mCounts=motivoCounts(rBundle);
+ const ruteadorDesc=rBundle.length+' documentos · piso de seguridad '+mCounts.piso+' · grounding '+mCounts.grounding+' · similitud '+mCounts.similitud+' · traits '+mCounts.traits;
+ const ruteadorDetail=rBundle.length?rBundle.map(b=>{const hasScore=typeof b.score==='number';return '<div class="text-[10px] font-mono border-t border-white/5 pt-1 mt-1"><span class="text-on-surface">'+esc(b.doc_id)+'</span> <span style="color:'+famColor(b.family||'domain')+'">· '+esc(b.family||'-')+'</span><div class="text-on-surface-variant/80">'+esc(b.motivo||'—')+(hasScore?' · score '+b.score.toFixed(2):'')+'</div></div>'}).join(''):'<div class="text-xs text-on-surface-variant">Sin bundle.</div>';
+
+ const orq=dec.orquestador||{};
+ const stepInfo=dec.step||{};
+ const orqKind=orq.kind||kind;
+ const orqDesc='kind: '+esc(orqKind)+' · '+(orq.reason?esc(orq.reason):'—');
+ const vetoHtml=orq.step_target_vetado?'<div class="mt-2 text-[10px] font-mono text-error border border-error/40 rounded p-2 bg-error/5">Transición vetada: '+esc(orq.step_target_vetado)+' (no estaba en allowed_transitions del step activo -- violación atrapada por la guardia dura)</div>':'';
+ const orqDetail='<div class="font-mono text-[10px] text-on-surface-variant">Step: '+esc(stepInfo.before||'—')+' → '+esc(stepInfo.after||'—')+'</div><div class="font-mono text-[10px] text-on-surface-variant mt-1">Allowed transitions: '+((stepInfo.allowed_transitions||[]).map(esc).join(', ')||'—')+'</div>'+vetoHtml;
+
+ const conv=dec.conversador||{};
+ const draftText=conv.draft||'';
+ const finalText=turn.assistant_message||'';
+ const replaced=!!(draftText&&finalText&&draftText!==finalText);
+ const convDesc=replaced?'El Gate reemplazó el borrador por el mensaje de derivación':'Redactó: '+(orqKind==='tool_call'?'tool_call decidido':orqKind==='fallback'?'fallback':'NL');
+ const convDetail='<div class="text-[10px] text-on-surface-variant font-mono uppercase tracking-wide mb-1">Borrador (pre-gate)</div><div class="text-xs text-on-surface/90 whitespace-pre-wrap">'+esc(draftText||'—')+'</div>'+(replaced?'<div class="text-[10px] text-on-surface-variant font-mono uppercase tracking-wide mt-2 mb-1">Texto final (post-gate)</div><div class="text-xs text-secondary whitespace-pre-wrap">'+esc(finalText)+'</div>':'');
+
+ const gate=dec.gate||{};
+ const gateSkipped=Object.prototype.hasOwnProperty.call(gate,'skipped');
+ const gateDesc=gateSkipped?'omitido ('+esc(String(gate.skipped))+')':'approved: '+(gate.approved===true?'sí':gate.approved===false?'no':'—')+' · action: '+esc(gate.action||'—');
+ const gateReasons=gate.reasons||[];
+ const gateCriteria=gate.criterion_ids||[];
+ const gateDetail=gateSkipped?'<div class="text-xs text-on-surface-variant">El Gate solo evalúa redacciones NL; este turno fue '+esc(String(gate.skipped))+'.</div>':('<div class="text-[10px] text-on-surface-variant font-mono uppercase tracking-wide mb-1">Reasons</div>'+(gateReasons.length?'<ul class="list-disc list-inside text-xs text-on-surface/90">'+gateReasons.map(r=>'<li>'+esc(r)+'</li>').join('')+'</ul>':'<div class="text-xs text-on-surface-variant">—</div>')+'<div class="text-[10px] text-on-surface-variant font-mono uppercase tracking-wide mt-2 mb-1">Criterion ids</div>'+(gateCriteria.length?gateCriteria.map(c=>'<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant mr-1">'+esc(c)+'</span>').join(''):'<div class="text-xs text-on-surface-variant">—</div>'));
+
+ const traitsAfter=turn.traits_after||[];
+ const profDesc=traitsAfter.length+' traits · corre después de responder la paciente, no bloquea la respuesta';
+ const profDetail=traitsAfter.length?traitsAfter.map(t=>'<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mr-1">'+esc(t)+'</span>').join(''):'<div class="text-xs text-on-surface-variant">Sin traits nuevos en este turno.</div>';
+
+ const agents=[
+  {name:'Ruteador de contexto',icon:'🧭',desc:ruteadorDesc,detail:ruteadorDetail},
+  {name:'Orquestador',icon:'🧠',desc:orqDesc,detail:orqDetail},
+  {name:'Conversador',icon:'💬',desc:convDesc,detail:convDetail},
+  {name:'Gate',icon:'🛡️',desc:gateDesc,detail:gateDetail},
+  {name:'Perfilador · async post-turno',icon:'👤',desc:profDesc,detail:profDetail}
+ ];
+ const agentHtml=agents.map(a=>'<div class="agent-row" data-testid="agent-row" onclick="this.classList.toggle(\'open\');this.querySelector(\'.agent-detail\').classList.toggle(\'hidden\')"><div class="flex items-center gap-2"><span>'+a.icon+'</span><span class="font-mono text-xs text-on-surface font-semibold">'+esc(a.name)+'</span><span class="expand-icon msym text-on-surface-variant ml-auto">chevron_right</span></div><div class="font-mono text-[10px] text-on-surface-variant mt-1">'+a.desc+'</div><div class="agent-detail hidden mt-2 border-t border-white/5 pt-2">'+a.detail+'</div></div>');
 
  inspectorEl.innerHTML = [
   '<div class="bg-surface-container-low border border-white/5 rounded-lg p-4" data-testid="inspector-summary">',
@@ -161,8 +212,43 @@ document.addEventListener('click',e=>{
 (async function(){try{cfg=await fetch('/api/config').then(r=>r.json())}catch(e){}try{health=await fetch('/api/health').then(r=>r.json())}catch(e){}
  var bizName=cfg.name||'Agente';document.getElementById('sessionTitle').textContent='Session: '+bizName;if(sessionId)document.getElementById('sessionBadge').textContent='ID: '+sessionId;
  turns.push({turn_id:'turn-000',user_message:'',assistant_message:cfg.greeting||'Hola. Soy el asistente de **'+bizName+'**. ¿En qué te puedo ayudar?',kind:'nl',context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]}});
- var loadUser=new URLSearchParams(location.search).get('user');
- if(loadUser){try{var hist=await fetch('/api/history?external_id='+encodeURIComponent(loadUser)).then(r=>r.json());var msgs=hist.messages||[];var last=null;msgs.forEach(function(m,i){if(m.role==='user'){last={turn_id:'h'+i,user_message:m.content,assistant_message:'',kind:'nl',context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]}};turns.push(last)}else if(m.role==='assistant'){if(last&&!last.assistant_message){last.assistant_message=m.content}else{last={turn_id:'h'+i,user_message:'',assistant_message:m.content,kind:'nl',context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]}};turns.push(last)}}else{last=null}});document.getElementById('sessionTitle').textContent='Session: '+bizName+' · '+loadUser}catch(e){}}
+ var qs=new URLSearchParams(location.search),loadSession=qs.get('session'),loadUser=qs.get('user');
+ if(loadSession||loadUser){try{
+  var histUrl=loadSession?('/api/history?session_id='+encodeURIComponent(loadSession)):('/api/history?external_id='+encodeURIComponent(loadUser));
+  var hist=await fetch(histUrl).then(r=>r.json());
+  var msgs=hist.messages||[],turnRows=hist.turns||[];
+  // Empareja mensajes user/assistant en turnos y, si hay rastro real en
+  // `turns` (siempre que la conversacion se cargue por ?session=), le pega
+  // el rastro (bundle/decision/gate/draft) al turno correspondiente por
+  // orden cronologico -- ambas listas vienen ordenadas asc por created_at,
+  // y cada turno real persiste exactamente 1 fila user + 1 fila assistant.
+  var pairedTurns=[],pending=null;
+  msgs.forEach(function(m,i){
+   if(m.role==='user'){pending={turn_id:'h'+i,user_message:m.content,assistant_message:'',kind:'nl',context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]},decisions:{}};pairedTurns.push(pending)}
+   else if(m.role==='assistant'){if(pending&&!pending.assistant_message){pending.assistant_message=m.content}else{pending={turn_id:'h'+i,user_message:'',assistant_message:m.content,kind:'nl',context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]},decisions:{}};pairedTurns.push(pending)}}
+   else{pending=null}
+  });
+  pairedTurns.forEach(function(t,idx){
+   var row=turnRows[idx];if(!row)return;
+   var bundle=row.bundle||[];
+   var items=bundle.map(function(b){return {atom_id:b.doc_id,title:b.doc_id,role:b.family,family:b.family,score:b.score,motivo:b.motivo,tags:[],grounds_step:(b.motivo||'').indexOf('grounding')>-1}});
+   t.context={atom_ids:bundle.map(function(b){return b.doc_id}),include_tags:[],items:items,tools:[],grounding_atoms:[],bundle:bundle,is_empty:bundle.length===0};
+   t.kind=(row.decision&&row.decision.kind)||'nl';
+   t.flow_node=row.step_after;
+   t.decisions={
+    step:{before:row.step_before,after:row.step_after,target:row.decision&&row.decision.step_target,allowed_transitions:[],missing_slots:[]},
+    ruteador:{bundle:bundle,atoms:bundle.length,grounding_atoms:[],user_traits:[],is_empty:bundle.length===0},
+    orquestador:{kind:t.kind,decision:row.decision,state_trace:[],reason:row.decision&&row.decision.reason,step_target_vetado:row.decision&&row.decision.step_target_vetado},
+    conversador:{draft:row.draft},
+    gate:row.gate||{approved:null,skipped:t.kind},
+    tool:row.tool||{called:false}
+   }
+  });
+  turns=turns.concat(pairedTurns);
+  var titleSuffix=loadSession?('sesión '+loadSession):loadUser;
+  document.getElementById('sessionTitle').textContent='Session: '+bizName+' · '+titleSuffix;
+  if(loadSession){sessionId=null;document.getElementById('sessionBadge').textContent='ID: (histórico) '+loadSession}
+ }catch(e){}}
  renderTurns()})();
 </script>
 </body></html>

@@ -22,6 +22,8 @@ construye desde ``project.config.yaml``) el orquestador y lo deja en
 from __future__ import annotations
 
 import os
+from collections import OrderedDict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from uuid import uuid4
@@ -40,6 +42,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 from kb_agent.models_sql.identity import Users, UserTraits
 from kb_agent.models_sql.session import ChatHistory
+from kb_agent.models_sql.turns import Turns
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import ProjectConfig, load_project_config
 
@@ -98,6 +101,11 @@ def to_ui_turn(turn_id: str, raw: dict[str, Any]) -> dict[str, Any]:
         "allowed_transitions": raw.get("allowed_transitions", []),
         "traits_after": raw.get("traits_after", []),
         "system_turn": raw.get("system_turn"),
+        # Rastro por agente (ruteador/orquestador/conversador/gate) que arma
+        # Orchestrator.handle_turn -- lo consume el panel "Razonamiento" del
+        # Turn Inspector (frontends/chat/index.html, renderInspector) para
+        # mostrar como piensa el pipeline real, no una lista inventada.
+        "decisions": raw.get("decisions", {}),
         "context": {
             "context_id": f"ctx-{turn_id}",
             "scenario": context.get("scenario", ""),
@@ -111,6 +119,59 @@ def to_ui_turn(turn_id: str, raw: dict[str, Any]) -> dict[str, Any]:
             "bundle": context.get("bundle", []),
         },
     }
+
+
+def _group_conversations(history_rows: list[ChatHistory]) -> list[dict]:
+    """Agrupa ChatHistory por CONVERSACION real, no por mensaje.
+
+    Una conversacion (sesion) es una secuencia de turnos que comparten
+    ``session_id`` (columna agregada en la migracion ``8df38d93ccd7``). Antes
+    esta funcion no existia: cada FILA de ChatHistory (un mensaje, no un
+    turno) se listaba como si fuera una conversacion propia con ``n_turns``
+    hardcodeado a 1 -- una charla de 6 mensajes aparecia como 6
+    "conversaciones", la mitad vacias (las del asistente, sin summary).
+
+    Cada turno real persiste exactamente 1 fila 'user' + 1 fila 'assistant'
+    (ver ``Orchestrator.handle_turn`` / ``_persist_chat_history``), asi que
+    contar filas con ``role == 'user'`` de una sesion SI es contar turnos
+    reales, no mensajes.
+
+    Filas legadas con ``session_id`` NULL: hoy el orquestador en produccion
+    no setea ``chat_history.session_id`` (gap fuera del alcance de esta UI,
+    ver ``Orchestrator._persist_chat_history``), asi que estas filas no
+    tienen forma honesta de saber a que conversacion pertenecen. NO se
+    inventa un session_id por fila (eso era el bug anterior): se agrupan por
+    DIA de creacion, con ``session_id`` explicitamente ``None`` para que la
+    UI no las trate como una conversacion navegable (no hay ``turns`` en la
+    tabla `turns` para ese grupo tampoco).
+    """
+    groups: "OrderedDict[str, list[ChatHistory]]" = OrderedDict()
+    epoch = datetime.min.replace(tzinfo=timezone.utc)
+    for h in sorted(history_rows, key=lambda r: r.created_at or epoch):
+        if h.session_id:
+            key = f"sid:{h.session_id}"
+        else:
+            day = h.created_at.date().isoformat() if h.created_at else "sin-fecha"
+            key = f"legacy:{day}"
+        groups.setdefault(key, []).append(h)
+
+    conversations: list[dict] = []
+    for key, rows in groups.items():
+        is_legacy = key.startswith("legacy:")
+        n_turns = sum(1 for r in rows if r.role == "user")
+        first_user = next((r.content for r in rows if r.role == "user"), "")
+        conversations.append({
+            "session_id": None if is_legacy else rows[0].session_id,
+            "legacy_group": key.split(":", 1)[1] if is_legacy else None,
+            "created_at": rows[0].created_at.isoformat() if rows[0].created_at else None,
+            "last_active": rows[-1].created_at.isoformat() if rows[-1].created_at else None,
+            "summary": (first_user[:80] if first_user else ""),
+            "n_turns": n_turns,
+            "n_messages": len(rows),
+            "result": "unknown",
+        })
+    conversations.sort(key=lambda c: c["last_active"] or "", reverse=True)
+    return conversations
 
 
 def _tree_to_list(children: dict, parent_key: str) -> list[dict]:
@@ -392,20 +453,15 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                         })
                     traits.sort(key=lambda t: t["confidence"], reverse=True)
 
-                    # conversaciones del usuario
+                    # conversaciones del usuario: agrupadas por sesion real,
+                    # no una entrada por fila/mensaje (ver _group_conversations).
                     history_rows = s.query(ChatHistory).filter(
                         ChatHistory.user_id == u.id
-                    ).order_by(ChatHistory.created_at.desc()).limit(20).all()
-                    conversations = []
-                    for h in history_rows:
-                        conversations.append({
-                            "session_id": f"hist-{h.id}",
-                            "created_at": h.created_at.isoformat() if h.created_at else None,
-                            "summary": (h.content[:80] if h.content else "") if h.role == "user" else "",
-                            "role": h.role,
-                            "n_turns": 1,
-                            "result": "unknown",
-                        })
+                    ).order_by(ChatHistory.created_at.asc()).all()
+                    all_conversations = _group_conversations(history_rows)
+                    conversations = all_conversations[:20]
+                    total_turns = sum(c["n_turns"] for c in all_conversations)
+                    last_active = all_conversations[0]["last_active"] if all_conversations else None
 
                     users_out.append({
                         "user_id": u.id,
@@ -413,8 +469,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                         "channel": u.channel,
                         "traits": traits,
                         "traits_count": len(traits),
-                        "total_turns": len(history_rows),
-                        "last_active": history_rows[0].created_at.isoformat() if history_rows else None,
+                        "total_turns": total_turns,
+                        "last_active": last_active,
                         "created_at": u.created_at.isoformat() if hasattr(u, "created_at") and u.created_at else None,
                         "conversations": conversations,
                     })
@@ -479,26 +535,80 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         })
 
     @app.get("/api/history")
-    def history(external_id: str) -> JSONResponse:
-        """Historial cronologico de ChatHistory de un usuario (para precargar el chat)."""
+    def history(external_id: str | None = None, session_id: str | None = None) -> JSONResponse:
+        """Historial de una conversacion, con su rastro por turno (tabla ``turns``).
+
+        Acepta ``session_id`` (UNA conversacion real, preferido: linkeado desde
+        ``/users`` -> ``/?session=<session_id>``) o ``external_id`` (todas las
+        filas de ChatHistory de ese usuario, comportamiento legado -- sigue
+        existiendo para las filas sin ``session_id``, ver ``_group_conversations``).
+
+        Con ``session_id`` ademas devuelve ``turns``: el rastro persistido por
+        ``Orchestrator._persist_turn`` (bundle, decision, gate, draft, tool) para
+        que el Turn Inspector funcione al reabrir una conversacion pasada, no
+        solo en vivo (antes de esto no habia rastro guardado y el panel
+        quedaba vacio).
+
+        Nota sobre ``Turns.session_id``: ``Orchestrator._persist_turn`` lo
+        llena con el ``external_id`` del turno, NO con
+        ``chat_history.session_id`` (que hoy el orquestador no setea en
+        produccion, ver ``_group_conversations``). Para el canal ``ui`` esto
+        igual funciona: ``external_id`` ya es ``f"ui:{session_id}"``, estable
+        por conversacion de navegador. Por eso el rastro se busca por
+        ``session_id`` (conversaciones sembradas/futuras con la columna
+        seteada) Y por ``external_id`` (conversaciones en vivo de hoy).
+        """
+        if not external_id and not session_id:
+            raise HTTPException(status_code=400, detail="se requiere external_id o session_id")
         engine = create_engine(f"sqlite:///{cfg.profiling_db}", future=True)
         Session = sessionmaker(bind=engine, future=True)
         msgs: list[dict] = []
+        turns_out: list[dict] = []
         try:
             with Session() as s:
-                user = s.query(Users).filter(Users.external_id == external_id).first()
-                if user:
-                    for h in s.query(ChatHistory).filter(
-                        ChatHistory.user_id == user.id
-                    ).order_by(ChatHistory.created_at.asc()).all():
-                        msgs.append({
-                            "role": h.role,
-                            "content": h.content,
-                            "created_at": h.created_at.isoformat() if h.created_at else None,
+                if session_id:
+                    rows = s.query(ChatHistory).filter(
+                        ChatHistory.session_id == session_id
+                    ).order_by(ChatHistory.created_at.asc()).all()
+                else:
+                    user = s.query(Users).filter(Users.external_id == external_id).first()
+                    rows = (
+                        s.query(ChatHistory).filter(ChatHistory.user_id == user.id)
+                        .order_by(ChatHistory.created_at.asc()).all()
+                        if user else []
+                    )
+                for h in rows:
+                    msgs.append({
+                        "role": h.role,
+                        "content": h.content,
+                        "created_at": h.created_at.isoformat() if h.created_at else None,
+                        "session_id": h.session_id,
+                    })
+
+                turns_session_key = session_id or external_id
+                if turns_session_key:
+                    for t in s.query(Turns).filter(
+                        Turns.session_id == turns_session_key
+                    ).order_by(Turns.created_at.asc()).all():
+                        turns_out.append({
+                            "turn_id": t.turn_id,
+                            "created_at": t.created_at.isoformat() if t.created_at else None,
+                            "step_before": t.step_before,
+                            "step_after": t.step_after,
+                            "decision": t.decision,
+                            "draft": t.draft,
+                            "gate": t.gate,
+                            "bundle": t.bundle,
+                            "tool": t.tool,
                         })
         finally:
             engine.dispose()
-        return JSONResponse({"external_id": external_id, "messages": msgs})
+        return JSONResponse({
+            "external_id": external_id,
+            "session_id": session_id,
+            "messages": msgs,
+            "turns": turns_out,
+        })
 
     @app.get("/api/health")
     def health() -> dict:
