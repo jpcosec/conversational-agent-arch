@@ -69,7 +69,8 @@ def page(base_url: str):
 def test_chat_dashboard_runs_a_turn_and_shows_atomic_context(page, base_url: str) -> None:
     cfg = page.request.get(f"{base_url}/api/config").json()
     page.goto(base_url, wait_until="networkidle")
-    assert cfg["runtime_title"] in page.content()
+    # La marca la pinta el JS de la topbar como `c.name || c.runtime_title` (no viene en el HTML).
+    assert page.inner_text("[data-testid='nav-brand']").strip() == (cfg["name"] or cfg["runtime_title"])
     assert cfg["name"] in page.inner_text("body")  # marca desde /api/config, no del HTML
 
     box = page.query_selector("textarea, input[type=text]")
@@ -86,14 +87,14 @@ def test_chat_dashboard_runs_a_turn_and_shows_atomic_context(page, base_url: str
 def test_flow_editor_renders_graph_from_api(page, base_url: str) -> None:
     flow = page.request.get(f"{base_url}/api/flow").json()
     assert flow["nodes"] and flow["edges"]
-    page.goto(f"{base_url}/conversation_flow_editor", wait_until="networkidle")
+    page.goto(f"{base_url}/flow", wait_until="networkidle")
     page.wait_for_selector("[class*=node], svg, canvas", timeout=20000)
 
 
 def test_profiling_viewer_lists_users(page, base_url: str) -> None:
     profiles = page.request.get(f"{base_url}/api/profiles").json()
     assert profiles["users"] and profiles["missing_fichas"] == []
-    page.goto(f"{base_url}/profiling_viewer", wait_until="networkidle")
+    page.goto(f"{base_url}/users", wait_until="networkidle")
     assert len(page.content()) > 200
     assert page.errors == [], page.errors  # type: ignore[attr-defined]
 
@@ -101,11 +102,13 @@ def test_profiling_viewer_lists_users(page, base_url: str) -> None:
 def test_viz_graph_renders_from_active_kb(page, base_url: str) -> None:
     graph = page.request.get(f"{base_url}/api/viz/graph").json()
     assert graph["nodes"]
-    page.goto(f"{base_url}/viz", wait_until="networkidle")
+    page.goto(f"{base_url}/mindmap", wait_until="networkidle")
     page.wait_for_selector(".react-flow__node, svg", timeout=20000)
     assert page.errors == [], page.errors  # type: ignore[attr-defined]
 
 
-def test_chat_sidebar_links_to_viz(page, base_url: str) -> None:
+def test_chat_nav_links_to_mindmap(page, base_url: str) -> None:
     page.goto(base_url, wait_until="networkidle")
-    assert page.query_selector("a[href='/viz']") is not None
+    link = page.query_selector("[data-testid='nav-mindmap']")
+    assert link is not None and link.get_attribute("href") == "/mindmap"
+    assert page.query_selector("a[href='/mindmap']") is not None
