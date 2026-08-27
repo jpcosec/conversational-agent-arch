@@ -30,8 +30,8 @@ documents:
   - workspace:desk
 - name: task-ui-foundations
   path: desk/tasks/task-ui-foundations.md
-  hash_c: 20f4370e39d2625fe26e302571c62d29ca2ed286f25da86ed4fcc7af8cf562a3
-  hash_d: 6da8c5194b17d82ad299d47b20c520accd517d445967870a8117ce9447b8dcf2
+  hash_c: ec7dac4aeaf3a09a57218b41392d248a83f863588eeceda3ba2636f2db78976b
+  hash_d: 1cc3d8ef751f74ab52b791990333418b5f89b3ed7c94c5b13ad6b575d28e0e57
   semantic_tags:
   - foundation
   - hotkeys

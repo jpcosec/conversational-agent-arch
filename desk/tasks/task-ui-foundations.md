@@ -27,10 +27,7 @@ atoms: []
 
 _Explain why this task exists or the business driver behind it._
 
-Fuentes:
-- desk/drawer/tasks/seed-ui-correcciones-y-vistas.md (§0, §1, §4, §5.6, §5.7, §6.8, §8)
-- frontends/UI-GUIDE.md (§0, §1, §6, §7, §8)
-- frontends/flow_editor/index.html (estilo de referencia)
+Task obsoleta. Nacio del seed UI del drawer (seed-ui-correcciones-y-vistas, ya consumido y eliminado) y de frontends/UI-GUIDE.md; todo lo que describia fue shipeado o borrado.
 
 ## Goal
 
