@@ -33,5 +33,5 @@ def test_profiler_learns_trait_from_natural_language(orch: Orchestrator) -> None
     first = orch.handle_turn(external_id="live:perfil", message="Hola, soy vegetariano, ¿qué me recomiendan?")
     assert "trait-vegetariano" in first["traits_after"], first
     second = orch.handle_turn(external_id="live:perfil", message="¿Y cuál conviene para el martes?")
-    assert second["used_traits_in_context"] == ["trait-vegetariano"]
+    assert [t["trait_id"] for t in second["used_traits_in_context"]] == ["trait-vegetariano"], second["used_traits_in_context"]
     assert second["kind"] == "nl"

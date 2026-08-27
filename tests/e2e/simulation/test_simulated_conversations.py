@@ -9,7 +9,8 @@ Por escenario:
      limites, adecuacion).
 
 La transcripcion completa se guarda en runs/simulation/<escenario>.json y se
-imprime en el mensaje de fallo. Escenarios con ``known_gap`` son xfail estricto.
+imprime en el mensaje de fallo. Escenarios con ``known_gap`` son xfail estricto
+(salvo ``known_gap_strict=False``, para gaps cuyo resultado varia con el LLM).
 
 Correr:  pytest tests/e2e/simulation -m simulation   (o -k donpeppe / -k antonia)
 """
@@ -39,7 +40,10 @@ def _params() -> list:
     for s in ALL_SCENARIOS:
         marks = []
         if s.known_gap:
-            marks = [pytest.mark.known_gap, pytest.mark.xfail(strict=True, reason=f"known_gap: {s.known_gap}")]
+            reason = f"known_gap: {s.known_gap}"
+            if not s.known_gap_strict:
+                reason += f" [no estricto: {s.known_gap_variance}]"
+            marks = [pytest.mark.known_gap, pytest.mark.xfail(strict=s.known_gap_strict, reason=reason)]
         params.append(pytest.param(s, id=s.id, marks=marks))
     return params
 

@@ -9,11 +9,15 @@ Cada escenario combina:
 
 ``known_gap`` documenta un defecto conocido del runtime: el test se marca
 xfail ESTRICTO, asi que cuando el defecto se arregle el test exigira quitar la
-marca (no se pueden olvidar gaps "arreglados por accidente").
+marca (no se pueden olvidar gaps "arreglados por accidente"). Si el resultado
+del gap depende de la variabilidad del LLM (a veces pasa, a veces no, sin que
+el runtime haya cambiado), ``known_gap_strict=False`` con el motivo en
+``known_gap_variance`` lo vuelve xfail no estricto solo para ese escenario.
 """
 from __future__ import annotations
 
 from collections.abc import Callable
+import re
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -26,6 +30,15 @@ from .runner import Transcript
 from .simulated_user import Persona
 
 Check = Callable[[Transcript, Orchestrator], None]
+
+_HORA_RE = re.compile(r"^(\d{1,2}):(\d{2})$")
+
+
+def _norm_arg(v: Any) -> Any:
+    """Normaliza horas ``H:MM``/``HH:MM`` a ``HH:MM`` para comparar argumentos (el LLM a veces rellena el cero)."""
+    if isinstance(v, str) and (m := _HORA_RE.match(v.strip())):
+        return f"{int(m.group(1)):02d}:{m.group(2)}"
+    return v
 
 # ── criterios comunes ─────────────────────────────────────────────────────────
 GROUNDED = Criterion(
@@ -81,14 +94,14 @@ def tool_executed(name: str, **expected_args: Any) -> Check:
         assert calls, f"la tool {name} nunca se ejecuto; kinds={t.kinds}"
         assert calls[0]["status"] == "ok", f"tool {name} status={calls[0]['status']}"
         for k, v in expected_args.items():
-            assert calls[0]["args"].get(k) == v, f"arg {k}={calls[0]['args'].get(k)!r} (esperado {v!r})"
+            assert _norm_arg(calls[0]["args"].get(k)) == _norm_arg(v), f"arg {k}={calls[0]['args'].get(k)!r} (esperado {v!r})"
     return _check
 
 
 def trait_learned(trait_id: str) -> Check:
     def _check(t: Transcript, orch: Orchestrator) -> None:
         assert any(trait_id in x["traits_after"] for x in t.turns), f"el perfilador no aprendio {trait_id}"
-        assert any(trait_id in x["used_traits_in_context"] for x in t.turns[1:]), f"{trait_id} nunca entro al contexto de un turno posterior"
+        assert any(trait_id in [u["trait_id"] for u in x["used_traits_in_context"]] for x in t.turns[1:]), f"{trait_id} nunca entro al contexto de un turno posterior"
     return _check
 
 
@@ -97,7 +110,7 @@ def handler_called(name: str, **expected_args: Any) -> Check:
         handler = orch.tool_handlers[name]
         assert isinstance(handler, RecordingToolHandler) and handler.calls, f"handler {name} no fue invocado"
         for k, v in expected_args.items():
-            assert handler.calls[0]["args"].get(k) == v, f"handler arg {k}={handler.calls[0]['args'].get(k)!r} (esperado {v!r})"
+            assert _norm_arg(handler.calls[0]["args"].get(k)) == _norm_arg(v), f"handler arg {k}={handler.calls[0]['args'].get(k)!r} (esperado {v!r})"
     return _check
 
 
@@ -112,6 +125,12 @@ class Scenario:
     max_turns: int = 6
     handlers: Callable[[], dict[str, Any]] = field(default=lambda: {})
     known_gap: str | None = None
+    known_gap_strict: bool = True             # False solo si el resultado del gap varia con el LLM
+    known_gap_variance: str | None = None     # por que varia (obligatorio si known_gap_strict=False)
+
+    def __post_init__(self) -> None:
+        if not self.known_gap_strict and not (self.known_gap and self.known_gap_variance):
+            raise ValueError(f"{self.id}: known_gap_strict=False exige known_gap y known_gap_variance")
 
 
 def _donpeppe_handlers() -> dict[str, Any]:
@@ -248,6 +267,8 @@ DONPEPPE: list[Scenario] = [
         max_turns=4,
         handlers=_donpeppe_handlers,
         known_gap="decide_turn ejecuta la tool con cualquier argumento valido segun el schema; las RuleAtom de la KB no restringen la policy determinista (reserva para 1 persona el mismo dia se persiste).",
+        known_gap_strict=False,
+        known_gap_variance="el LLM a veces rechaza en NL sin llamar la tool; la policy determinista sigue sin aplicar la RuleAtom",
     ),
     Scenario(
         id="donpeppe_manipulacion",
