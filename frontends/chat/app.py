@@ -463,6 +463,28 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             "user_id": user_id,
         })
 
+    @app.get("/api/history")
+    def history(external_id: str) -> JSONResponse:
+        """Historial cronologico de ChatHistory de un usuario (para precargar el chat)."""
+        engine = create_engine(f"sqlite:///{cfg.profiling_db}", future=True)
+        Session = sessionmaker(bind=engine, future=True)
+        msgs: list[dict] = []
+        try:
+            with Session() as s:
+                user = s.query(Users).filter(Users.external_id == external_id).first()
+                if user:
+                    for h in s.query(ChatHistory).filter(
+                        ChatHistory.user_id == user.id
+                    ).order_by(ChatHistory.created_at.asc()).all():
+                        msgs.append({
+                            "role": h.role,
+                            "content": h.content,
+                            "created_at": h.created_at.isoformat() if h.created_at else None,
+                        })
+        finally:
+            engine.dispose()
+        return JSONResponse({"external_id": external_id, "messages": msgs})
+
     @app.get("/api/health")
     def health() -> dict:
         return {"status": "ok", "kb_root": str(cfg.kb_root), "model": _orch().model}
