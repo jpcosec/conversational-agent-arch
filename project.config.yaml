@@ -51,8 +51,10 @@ project:
     runtime_title: "Auditable Agent Runtime"
     kb_label: "Antonia · KB"
     input_placeholder: "Escribe tu mensaje..."
+    # Este saludo lo lee la paciente: nada de vocabulario del runtime (atoms,
+    # contexto compilado, auditoría de turnos). La trazabilidad se inspecciona
+    # en el Turn Inspector, que es superficie de desarrollo, no de producto.
     greeting: >-
       Hola. Soy **Antonia**, del Programa de Acompañamiento de Selfix.
       Pregúntame sobre tu tratamiento, cómo aplicarte o agenda un recordatorio
-      de aplicación. Cada respuesta queda ligada a su contexto atómico real —
-      selecciónala para auditar el turno.
+      de aplicación. Tu médico tratante sigue siendo tu referente clínico.
