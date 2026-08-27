@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/static/theme.css">
 <script src="/static/hotkeys.js"></script>
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;width:100%}
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;width:100%}body{display:flex;flex-direction:column}
 body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#f5f0e8;overflow:hidden;display:flex;flex-direction:column}
 #root{flex:1;min-height:0;width:100%;position:relative}.react-flow__attribution{display:none}
 input,textarea,select{font-family:inherit}
@@ -20,8 +20,9 @@ input,textarea,select{font-family:inherit}
 .mm-rama:hover{background:rgba(212,165,116,.08);color:#f5f0e8}
 .mm-rama.active{background:rgba(212,165,116,.12);color:#d4a574}
 .mm-rama-child{padding-left:16px}
-.mm-canvas{flex:1;position:relative}
-.mm-topbar{position:fixed;top:54px;left:240px;right:0;z-index:30;display:flex;gap:8px;padding:8px 16px;background:rgba(10,10,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,165,116,.08);align-items:center}
+.mm-canvas{flex:1;position:relative;overflow:hidden}
+.mm-topbar{position:absolute;top:0;left:0;right:0;z-index:30;display:flex;gap:8px;padding:8px 16px;background:rgba(10,10,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,165,116,.08);align-items:center;pointer-events:none}
+.mm-topbar>*{pointer-events:auto}
 .mm-topbar-btn{background:rgba(18,18,26,.7);border:1px solid rgba(212,165,116,.15);color:rgba(245,240,232,.6);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:10px;font-family:'JetBrains Mono',monospace;transition:.15s}
 .mm-topbar-btn:hover{border-color:#d4a574;color:#d4a574}
 .mm-topbar-btn.active{background:rgba(212,165,116,.15);color:#d4a574;border-color:#d4a574}
@@ -54,12 +55,25 @@ import dagre from'dagre'
 const FAM={self:{color:'#7cba7c',icon:'🧬',label:'self'},domain:{color:'#7fb3d5',icon:'📖',label:'domain'},conversation:{color:'#e6a85c',icon:'💬',label:'conversation'},user:{color:'#c97db9',icon:'👤',label:'user'}}
 const FIVEWH={what:'❓',when:'📅',where:'📍',who:'👤',how:'🔧',why:'🤔'}
 let NID=0
+// Puente de acciones del NodeToolbar -> estado de App (poblado en App via useEffect)
+const MM_ACTIONS={del(){},child(){},sibling(){},link(){},comment(){},goto(){}}
+const TB_BTN={background:'rgba(18,18,26,.95)',border:'1px solid rgba(212,165,116,.25)',color:'rgba(245,240,232,.75)',borderRadius:6,padding:'3px 8px',fontSize:11,cursor:'pointer',fontFamily:"'JetBrains Mono',monospace"}
 
-function MindNode({data,selected}){
+function MindNode({id,data,selected}){
  const fam=FAM[data.family]||FAM.domain;const isRoot=data.kind==='root';const isAtom=data.kind==='atom'
  const bg=isRoot?fam.color:isAtom?'rgba(18,18,26,.95)':`${fam.color}18`
  const border=selected?'#d4a574':isRoot?fam.color:`${fam.color}66`
  return html`<div style=${{border:`2px solid ${border}`,borderLeft:isAtom?`4px solid ${fam.color}`:`2px solid ${border}`,background:bg,borderRadius:isRoot?20:12,padding:isRoot?'10px 18px':'7px 13px',minWidth:isRoot?130:90,maxWidth:240,cursor:'pointer',transition:'.15s',boxShadow:selected?'0 0 18px rgba(212,165,116,.25)':'none',display:'flex',alignItems:'center',gap:7}}>
+   <${NodeToolbar} isVisible=${!!selected} position=${Position.Top}>
+     <div data-testid="mindmap-node-toolbar" style=${{display:'flex',gap:4,background:'rgba(10,10,15,.95)',border:'1px solid rgba(212,165,116,.2)',borderRadius:8,padding:4,boxShadow:'0 8px 28px rgba(0,0,0,.5)'}}>
+       <button style=${TB_BTN} title="Borrar" onClick=${()=>MM_ACTIONS.del(id)}>🗑</button>
+       <button style=${TB_BTN} title="Agregar hijo" onClick=${()=>MM_ACTIONS.child(id)}>＋hijo</button>
+       <button style=${TB_BTN} title="Agregar hermano" onClick=${()=>MM_ACTIONS.sibling(id)}>＋herm</button>
+       <button style=${TB_BTN} title="Link horizontal" onClick=${()=>MM_ACTIONS.link(id)}>🔗</button>
+       <button style=${TB_BTN} title="Comentario agente (coming soon)" onClick=${()=>MM_ACTIONS.comment(id)}>💬</button>
+       <button style=${TB_BTN} title="Ir al documento" onClick=${()=>MM_ACTIONS.goto(id)}>↗doc</button>
+     </div>
+   </${NodeToolbar}>
    <${Handle} type="target" position=${Position.Left} style=${{background:fam.color,width:7,height:7,border:'2px solid #0a0a0f',opacity:isRoot?0:1}}/>
    ${isRoot&&html`<span style=${{fontSize:15}}>${fam.icon}</span>`}
    ${isAtom&&html`<span style=${{fontSize:12}}>${FIVEWH[data.five_wh]||'📄'}</span>`}
@@ -114,7 +128,17 @@ function App(){
  const applyLayout=useCallback((lay)=>{setLayoutMode(lay);if(!nodes.length||!taxData)return;if(lay==='embeddings'){fetch('/api/viz/graph').then(r=>r.json()).then(g=>{if(!g.nodes)return;const em=nodes.map(n=>{const e=g.nodes.find(gn=>gn.id===n.data.atom_id||gn.id===n.data.label);return e?{...n,position:{x:e.position?.x||0,y:e.position?.y||0}}:n});setNodes(em);setEdges(prev=>prev)}).catch(()=>{});return}
   const n=layoutTree(nodes,edges,lay==='topdown'?'TB':'LR');setNodes(n);fitView({padding:0.1,duration:400})},[nodes,edges,taxData])
 
- useEffect(()=>{if(typeof initHotkeys==='function'){initHotkeys({element:document.querySelector('.react-flow'),onSearch:()=>document.querySelector('[data-testid="mm-search"]')?.focus(),onDelete:()=>{if(selectedNode){setNodes(nds=>nds.filter(n=>n.id!==selectedNode));setEdges(eds=>eds.filter(e=>e.source!==selectedNode&&e.target!==selectedNode));setSelectedNode(null)}},onAddChild:()=>{},onAddSibling:()=>{},onLinkHorizontal:()=>{if(selectedNode)setLinking(l=>!l)},onCollapse:()=>{if(selectedNode){setCollapsed(c=>{const n=new Set(c);if(n.has(selectedNode))n.delete(selectedNode);else n.add(selectedNode);return n})}},onFocus:()=>{if(selectedNode){const n=document.querySelector(`[data-id="${selectedNode}"]`);if(n)n.scrollIntoView({behavior:'smooth',block:'center'})}},onLayout:l=>applyLayout(['tree','topdown','embeddings'][l-1]),onHelp:()=>alert('Ctrl+F Buscar · Delete Borrar · Tab Hijo · Enter Hermano · L Link · Space Collapse · 1/2/3 Layout · F Centrar · Esc Cancelar · ? Ayuda'),onCancel:()=>setLinking(false)})}})
+ useEffect(()=>{if(typeof initHotkeys==='function'){initHotkeys({element:document.querySelector('.react-flow'),onSearch:()=>document.querySelector('[data-testid="mindmap-search"]')?.focus(),onDelete:()=>{if(selectedNode){setNodes(nds=>nds.filter(n=>n.id!==selectedNode));setEdges(eds=>eds.filter(e=>e.source!==selectedNode&&e.target!==selectedNode));setSelectedNode(null)}},onAddChild:()=>{},onAddSibling:()=>{},onLinkHorizontal:()=>{if(selectedNode)setLinking(l=>!l)},onCollapse:()=>{if(selectedNode){setCollapsed(c=>{const n=new Set(c);if(n.has(selectedNode))n.delete(selectedNode);else n.add(selectedNode);return n})}},onFocus:()=>{if(selectedNode){const n=document.querySelector(`[data-id="${selectedNode}"]`);if(n)n.scrollIntoView({behavior:'smooth',block:'center'})}},onLayout:l=>applyLayout(['tree','topdown','embeddings'][l-1]),onHelp:()=>alert('Ctrl+F Buscar · Delete Borrar · Tab Hijo · Enter Hermano · L Link · Space Collapse · 1/2/3 Layout · F Centrar · Esc Cancelar · ? Ayuda'),onCancel:()=>setLinking(false)})}})
+
+ // Puente NodeToolbar -> acciones sobre estado de App
+ useEffect(()=>{
+  MM_ACTIONS.del=(nid)=>{setNodes(nds=>nds.filter(n=>n.id!==nid));setEdges(eds=>eds.filter(e=>e.source!==nid&&e.target!==nid));setSelectedNode(null)}
+  MM_ACTIONS.child=(nid)=>{const cid=`b-${NID++}`;setNodes(nds=>{const p=nds.find(n=>n.id===nid);if(!p)return nds;return[...nds,{id:cid,type:'mind',position:{x:(p.position?.x||0)+180,y:(p.position?.y||0)+40},data:{label:'nuevo',family:p.data.family,kind:'branch'}}]});setEdges(eds=>[...eds,{id:`e-${nid}-${cid}`,source:nid,target:cid,type:'bezier',style:{stroke:'rgba(212,165,116,.5)',strokeWidth:1.8}}])}
+  MM_ACTIONS.sibling=(nid)=>{const sid=`b-${NID++}`;setNodes(nds=>{const p=nds.find(n=>n.id===nid);if(!p)return nds;const parentEdge=edges.find(e=>e.target===nid);const src=parentEdge?parentEdge.source:null;const newNode={id:sid,type:'mind',position:{x:(p.position?.x||0),y:(p.position?.y||0)+70},data:{label:'nuevo',family:p.data.family,kind:p.data.kind==='atom'?'branch':p.data.kind}};if(src)setEdges(eds=>[...eds,{id:`e-${src}-${sid}`,source:src,target:sid,type:'bezier',style:{stroke:'rgba(212,165,116,.5)',strokeWidth:1.8}}]);return[...nds,newNode]})}
+  MM_ACTIONS.link=(nid)=>{setSelectedNode(nid);setLinking(true)}
+  MM_ACTIONS.comment=(nid)=>{const n=nodes.find(x=>x.id===nid);if(n)setComment({atom:n.data,pos:{x:window.innerWidth/2,y:window.innerHeight/2}})}
+  MM_ACTIONS.goto=(nid)=>{const n=nodes.find(x=>x.id===nid);if(n&&n.data.atom_id)window.open('/api/atom/'+encodeURIComponent(n.data.atom_id),'_blank')}
+ })
 
  const onNodeMouseEnter=useCallback((e,node)=>{if(node.data.kind!=='atom')return;setHover({atom:node.data,pos:{x:e.clientX+16,y:e.clientY+8}})},[])
  const onNodeMouseLeave=useCallback(()=>setHover(null),[])
