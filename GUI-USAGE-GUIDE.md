@@ -4,6 +4,44 @@ Guía visual detallada de las 4 vistas del sistema. Cada sección describe qué 
 
 ---
 
+## 0.0 Modo Demo
+
+La app corre en **modo demo** por defecto (flag `app.demo_mode`, desactivable con `DEMO_MODE=0`). En demo:
+
+- **No se llama al LLM real**: un state machine determinista (`DemoStateMachineConversador` en `tests/support/fakes.py`) redacta las respuestas y avanza el `flow_node` según palabras clave.
+- **Todos los `/api/*` devuelven datos prefabricados** desde `frontends/chat/demo_data.py` (KB de Antonia sintética).
+- `/api/config` devuelve `runtime_title: "Demo Agent"` e `input_placeholder: "Escribe algo…"`.
+
+### Guías pedagógicas visibles (banners `demo-guide`)
+
+Cada vista muestra una tarjeta que explica qué se está viendo:
+
+| Selector | Vista |
+|---|---|
+| `data-testid="chat-demo-guide"` | Chat — cómo leer la demo + frases de ejemplo |
+| `data-testid="chat-inspector-guide"` | Chat — qué es Summary / Contexto / Razonamiento |
+| `data-testid="flow-demo-guide"` | Flow — qué son nodos, flechas, tools |
+| `data-testid="flow-inspector-guide"` | Flow — qué significa cada campo del step |
+| `data-testid="mindmap-demo-guide"` | Mindmap — qué representa cada layout |
+| `data-testid="users-demo-guide"` | Users — qué son perfil / eventos / conversaciones |
+
+### Máquina de estados del chat demo
+
+Palabras clave → intención → `flow_node`:
+
+| Frase de ejemplo | Intención | `flow_node` resultante | `kind` |
+|---|---|---|---|
+| "hola" | saludo | `consulta` | `nl` |
+| "me da miedo la aguja" | ansiedad | `consulta` | `nl` |
+| "cómo me aplico Selfix" | aplicacion | `consulta` | `nl` |
+| "quiero un recordatorio" | recordatorio | `obtencion_datos` | `nl` |
+| "el lunes a las 20" (con día+hora) | recordatorio | `tool` | `tool_call` |
+| "me mareé después de aplicarlo" | evento_adverso | `despedida` | `nl` |
+
+Cuando `kind == tool_call`, el turno trae `system_turn` con la tool `agendar_recordatorio` y sus args (`dia`, `hora`, `nombre`).
+
+---
+
 ## 0. Sistema de diseño común
 
 Todas las vistas comparten estos elementos visuales:
@@ -101,7 +139,7 @@ Layout de 3 columnas: sidebar izquierdo | timeline central | inspector derecho.
 | `data-testid="inspector-reasoning"` | Sección Razonamiento (agentes) |
 | `data-testid="context-atom-{id}"` | Card de un átomo específico en Context |
 | `data-testid="atom-modal"` | Modal de detalle de un átomo |
-| `data-testid="reasoning-agent-{nombre}"` | Fila de un agente (expandible) |
+| `data-testid="agent-row"` | Fila de un agente (expandible) |
 
 **Puntos de control en Summary**:
 - 4 datos en grilla 2×2: Usuario reconocido, Intent (kind coloreado: `fallback`=rojo error, `tool_call`=terciario, `nl`=secondary), Tool llamada (o "—"), Step actual (flow_node)
@@ -113,9 +151,15 @@ Layout de 3 columnas: sidebar izquierdo | timeline central | inspector derecho.
 - Click → abre modal (`data-testid="atom-modal"`)
 
 **Puntos de control en Razonamiento**:
-- 4 filas de agentes: Ontologizador, Conversador, Perfilador, Reflector
-- Cada fila: icono + nombre + descripción resumida
-- Click → expande acordeón con state_trace, system_turn (tool + status)
+- 5 filas de agentes reales del pipeline, en orden de ejecución: **Ruteador de contexto**, **Orquestador**, **Conversador**, **Gate**, **Perfilador** (async post-turno).
+- Cada fila: icono + nombre + descripción con datos reales de `turn.decisions`.
+- Click → expande acordeón:
+  - Ruteador: bundle `[{doc_id, family, motivo, score}]`, con conteo por tipo de motivo (piso de seguridad / grounding / similitud / traits).
+  - Orquestador: `kind`, `reason`, transición `step.before → step.after`, `allowed_transitions`, y veto si aplica.
+  - Conversador: borrador pre-gate y texto final post-gate.
+  - Gate: `approved`, `action`, `reasons`, `criterion_ids` (o `skipped` en turnos no-NL).
+  - Perfilador: traits nuevos del turno.
+- En demo estos datos vienen del state machine (`decisions` prefabricado), con la misma forma que el runtime real.
 
 **Estado esperado por defecto (sin turno seleccionado)**:
 - "Selecciona una respuesta del asistente para auditar su turno."
