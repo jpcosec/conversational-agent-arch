@@ -15,21 +15,27 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import os
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
-from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE, decide_turn
+from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE
+from kb_agent.agents.gate import GateAgent
+from kb_agent.agents.orchestrator_agent import OrchestratorAgent
+from kb_agent.agents.router import RouterAgent
 from kb_agent.llm import Conversador, GeminiConversador, GeminiTraitMapper, TraitMapper, make_gemini_client
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.recordatorios import Recordatorios  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
+from kb_agent.models_sql.turns import Turns
 from kb_agent.ontologizador.compiler import ContextCompiler
 from kb_agent.ontologizador.kgdb_reader import KGDBReader
 from kb_agent.ontologizador.sldb_reader import SLDBReader
@@ -41,6 +47,8 @@ from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, 
 from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
 from kb_agent.state_machine import RouterStateMachine
 from knowledge_base.operations import KnowledgeOperations
+
+logger = logging.getLogger(__name__)
 
 #: Canal cuando el external_id no trae prefijo reconocible ("<canal>:<id>").
 UNKNOWN_CHANNEL = "unknown"
@@ -65,6 +73,9 @@ class Orchestrator:
         fallback_message: str | None = None,
         conversador: Conversador | None = None,
         trait_mapper: TraitMapper | None = None,
+        gate: GateAgent | None = None,
+        orchestrator_agent: OrchestratorAgent | None = None,
+        router_agent: RouterAgent | None = None,
         client: Any | None = None,
     ) -> None:
         self.kb_root = Path(kb_root).resolve()
@@ -90,11 +101,45 @@ class Orchestrator:
         )
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
 
-        # LLM: solo se crea el cliente real si no inyectaron ambos puertos.
-        if conversador is None or trait_mapper is None:
+        # LLM: solo se crea el cliente real si no inyectaron los 5 puertos
+        # (conversador, trait_mapper, gate, orchestrator_agent, router_agent).
+        # El gate LLM-judge (fase 2.3), el orquestador LLM-judge (fase 2.4) y
+        # el ruteador de contexto (fase 2.2) se construyen UNA vez aca, no por
+        # turno: los GateCriterion y el grafo de ConversationStep de la KB son
+        # contexto fijo (ver GateAgent.static_instruction /
+        # OrchestratorAgent.static_instruction), y el RouterAgent reusa la
+        # UNICA instancia de KnowledgeOperations del proceso (embedder
+        # cacheado, ver su constructor arriba).
+        if (
+            conversador is None
+            or trait_mapper is None
+            or gate is None
+            or orchestrator_agent is None
+            or router_agent is None
+        ):
             client = client or make_gemini_client()
         self.conversador: Conversador = conversador or GeminiConversador(client, self.model)
         self.trait_mapper: TraitMapper = trait_mapper or GeminiTraitMapper(client, self.model)
+        self.gate: GateAgent = gate or GateAgent(
+            client=client, model=self.model, gate_atoms=self._load_gate_atoms()
+        )
+        # Orquestador (fase 2.4): decide kind/tool_call/step_target con LLM +
+        # salida tipada, en vez de la policy por keywords (`decide_turn`, que
+        # sigue viva como fallback deterministico -- ver
+        # kb_agent/agents/orchestrator_agent.py). El grafo de steps declarado
+        # en la KB es su static_instruction (fijo, no cambia por turno).
+        self.orchestrator_agent: OrchestratorAgent = orchestrator_agent or OrchestratorAgent(
+            client=client, model=self.model, step_atoms=self._load_step_atoms()
+        )
+        # Ruteador de contexto (fase 2.2): decide el bundle justificado del
+        # turno con LLM + tools de KB, en vez de (solo) la union
+        # deterministica (`ContextCompiler._build_bundle`, que sigue viva
+        # como fallback fail-open -- ver kb_agent/agents/router.py). Se
+        # inyecta al `ContextCompiler` de cada turno en `handle_turn`, no se
+        # reconstruye por turno.
+        self.router_agent: RouterAgent = router_agent or RouterAgent(
+            client=client, model=self.model, knowledge_ops=self.knowledge_ops
+        )
         self.event_bus = InProcessEventBus()
 
     @classmethod
@@ -147,6 +192,7 @@ class Orchestrator:
                 kgdb=self.kgdb,
                 identity_session=session,
                 knowledge_ops=self.knowledge_ops,
+                router_agent=self.router_agent,
             )
 
             def compile_context(*, question: str, user_id: int | None, scenario: str | None, trigger: str) -> dict[str, Any]:
@@ -162,12 +208,13 @@ class Orchestrator:
                 return d
 
             def draft(compiled_context: dict[str, Any]) -> Any:
-                # El ORQUESTADOR decide el tipo de turno con una policy pura
-                # (decide_turn) y SOLO despues actua. Decidir != redactar.
+                # El ORQUESTADOR decide el tipo de turno con salida tipada
+                # (OrchestratorAgent, fase 2.4: LLM + guardia dura sobre
+                # allowed_transitions) y SOLO despues actua. Decidir != redactar.
                 if compiled_context.get("system_turn"):
                     return self.conversador.draft_nl(compiled_context)
 
-                decision = decide_turn(compiled_context)
+                decision = self.orchestrator_agent.decide(compiled_context)
                 # Se conserva para exponer la decision del orquestador en el turno
                 compiled_context["_decision"] = decision
                 kind = decision.get("kind")
@@ -212,7 +259,9 @@ class Orchestrator:
                 kind = "nl"
                 draft_response = response
                 # Policy Gate: validar respuesta redactada contra criterios gate
-                gate_result = self._validate_response(response, compiled)
+                gate_result = self._policy_gate(
+                    response, compiled, self._session_tools_called(session, user.id)
+                )
                 if not gate_result["approved"]:
                     kind = "derived"
                     response = (
@@ -265,12 +314,18 @@ class Orchestrator:
                     "missing_slots": flow_missing,
                 },
                 "ruteador": {
-                    # Bundle justificado del turno (doctrina 1.3): union sin
-                    # duplicados de similitud, grounding, piso de seguridad y
-                    # traits, cada entrada con su motivo. Es lo que hace
-                    # auditable "por que entro este documento" sin abrir la
-                    # KB -- ver ContextCompiler._build_bundle.
+                    # Bundle justificado del turno (doctrina 1.3 + fase 2.2):
+                    # union sin duplicados de similitud, grounding, piso de
+                    # seguridad y traits (o la decision del RouterAgent, con
+                    # el mismo piso de seguridad forzado por codigo), cada
+                    # entrada con su motivo. Es lo que hace auditable "por
+                    # que entro este documento" sin abrir la KB -- ver
+                    # ContextCompiler._resolve_bundle.
                     "bundle": compiled.get("bundle", []),
+                    # "agent" si lo armo el RouterAgent real; "deterministic"
+                    # si se uso el fallback (sin router_agent, o el agente
+                    # fallo) -- ver ContextCompiler._resolve_bundle.
+                    "source": compiled.get("bundle_source", "deterministic"),
                     "atoms": len(turn_context.get("atom_ids", [])),
                     "grounding_atoms": compiled.get("grounding_atoms", []),
                     "user_traits": compiled.get("user_traits", []),
@@ -280,11 +335,29 @@ class Orchestrator:
                     "kind": kind,
                     "decision": orchestrator_decision,
                     "state_trace": state_trace,
+                    # Por que decidio esto (auditable) y, si aplica, la
+                    # transicion de step que propuso pero la guardia dura
+                    # descarto por no estar en allowed_transitions del step
+                    # activo (ver kb_agent.agents.orchestrator_agent.apply_transition_guard).
+                    "reason": orchestrator_decision.get("reason") if isinstance(orchestrator_decision, dict) else None,
+                    "step_target_vetado": (
+                        orchestrator_decision.get("step_target_vetado")
+                        if isinstance(orchestrator_decision, dict)
+                        else None
+                    ),
                 },
                 "conversador": {"draft": draft_response},
                 "gate": gate_result if gate_result is not None else {"approved": None, "skipped": kind},
                 "tool": {"called": True, **system_turn} if isinstance(system_turn, dict) else {"called": False},
             }
+
+            self._persist_turn(
+                session,
+                user_id=user.id,
+                external_id=external_id,
+                decisions=decisions,
+                draft=reply_text,
+            )
 
             return {
                 "user_id": user.id,
@@ -320,82 +393,162 @@ class Orchestrator:
         return response == self._fallback_text(compiled)
 
     # ── policy gate ───────────────────────────────────────────────────────
-    def _validate_response(self, response: str, compiled: Mapping[str, Any]) -> dict[str, Any]:
-        """Valida una respuesta redactada contra los criterios GateCriterion de la KB.
+    def _load_gate_atoms(self) -> list[dict[str, Any]]:
+        """Carga los ``GateCriterion`` (``type.knowledge.gate``) para el ``GateAgent``.
 
-        Lee los atomos type.knowledge.gate del store y verifica que la
-        respuesta no viole ningun criterio regulatorio. Si algun criterio
-        falla, devuelve ``approved: False`` con los motivos.
+        Fail-open a lista vacia: si la KB no tiene la familia gate o el
+        reader falla, ``GateAgent`` (ver su docstring) aprueba por defecto en
+        vez de que falle la construccion del orquestador.
+        """
+        try:
+            return self.reader.find("type.knowledge.gate")
+        except Exception:
+            return []
 
-        Los atomos gate son invisibles al compilador de turno, asi que se
-        leen directamente del reader.
+    def _load_step_atoms(self) -> list[dict[str, Any]]:
+        """Carga los ``ConversationStep`` (``type.knowledge.step``) para el ``OrchestratorAgent``.
+
+        Fail-open a lista vacia: si la KB no tiene el diagrama de flujo o el
+        reader falla, ``OrchestratorAgent`` (ver ``render_orchestrator_flow``)
+        decide sin grafo (``step_target`` siempre ``null``) en vez de que
+        falle la construccion del orquestador.
+        """
+        try:
+            return self.reader.find("type.knowledge.step")
+        except Exception:
+            return []
+
+    @staticmethod
+    def _tool_name_from_system_turn(system_turn: Any) -> str | None:
+        """Nombre de la tool ejecutada, si ``system_turn`` trae un resultado real.
+
+        ``system_turn['content']`` es el payload de ``execute_tool`` serializado
+        a JSON (ver ``RouterStateMachine._resume_from_waiting_tool``); ese
+        payload trae ``{"tool": <nombre>, "status": ..., ...}``.
+        """
+        if not isinstance(system_turn, Mapping):
+            return None
+        content = system_turn.get("content")
+        if not isinstance(content, str):
+            return None
+        try:
+            payload = json.loads(content)
+        except (TypeError, ValueError):
+            return None
+        tool = payload.get("tool") if isinstance(payload, Mapping) else None
+        return str(tool) if tool else None
+
+    @staticmethod
+    def _persist_turn(
+        session: Session,
+        *,
+        user_id: int,
+        external_id: str,
+        decisions: Mapping[str, Any],
+        draft: str,
+    ) -> None:
+        """Persiste el rastro del turno en ``turns`` (fase 3.1).
+
+        Hasta ahora el rastro se calculaba y se descartaba: solo viajaba en la
+        respuesta HTTP, y por eso al reabrir una conversacion el Turn Inspector
+        mostraba "0 atoms, step —". Se guarda el borrador del Conversador ANTES
+        del gate: si el gate lo rechaza, el texto que ve el paciente es otro y
+        queremos poder auditar los dos.
+
+        No rompe el turno si falla: el rastro es para auditoria, no para
+        responderle a la paciente. Si la tabla no existe (base vieja sin la
+        migracion) se ignora.
+        """
+        step = decisions.get("step") or {}
+        tool = decisions.get("tool") or {}
+        try:
+            session.add(
+                Turns(
+                    turn_id=uuid4().hex[:12],
+                    session_id=external_id,
+                    user_id=user_id,
+                    step_before=step.get("before"),
+                    step_after=step.get("after"),
+                    decision=dict(decisions.get("orquestador") or {}),
+                    draft=str((decisions.get("conversador") or {}).get("draft") or draft),
+                    gate=dict(decisions.get("gate") or {}),
+                    bundle=list((decisions.get("ruteador") or {}).get("bundle") or []),
+                    tool=dict(tool) if tool else None,
+                )
+            )
+            session.commit()
+        except Exception:
+            session.rollback()
+            logger.exception("no se pudo persistir el rastro del turno en turns")
+
+    @staticmethod
+    def _session_tools_called(session: Session, user_id: int) -> list[str]:
+        """Tools que ya se ejecutaron antes en esta conversacion.
+
+        El pre-filtro del gate es por turno, pero una afirmacion puede referirse
+        legitimamente a algo hecho en un turno anterior. Medido en el CLI real:
+        el turno 2 ejecuto ``agendar_recordatorio`` (fila real en SQL) y en el
+        turno 3 el agente respondio "ya esta confirmado tu recordatorio" --
+        cierto-- con ``tool_called`` False en ese turno; el gate lo derivaba a
+        un humano sin motivo.
+
+        Se leen de ``turns`` (fase 3.1). Si la tabla todavia no existe en una
+        base vieja, se devuelve vacio: el gate vuelve a su comportamiento por
+        turno, que es el conservador.
+        """
+        try:
+            rows = session.query(Turns.tool).filter(Turns.user_id == user_id).all()
+        except Exception:
+            return []
+        names: list[str] = []
+        for (tool,) in rows:
+            if isinstance(tool, Mapping) and tool.get("called") and tool.get("tool"):
+                names.append(str(tool["tool"]))
+        return names
+
+    def _policy_gate(
+        self,
+        response: str,
+        compiled: Mapping[str, Any],
+        session_tools_called: Sequence[str] = (),
+    ) -> dict[str, Any]:
+        """Veredicto del ``GateAgent`` (fase 2.3) sobre la respuesta redactada.
+
+        ``tool_called`` se deriva de ``compiled["system_turn"]``: es la unica
+        senal de que hubo una ejecucion REAL de tool grounding esta respuesta
+        (lo mismo que ya usan ``draft()``/``build_nl_prompt`` para inyectar el
+        resultado de la tool al Conversador). Este metodo solo se llama desde
+        la rama ``kind == "nl"`` de ``handle_turn``, que es precisamente donde
+        el Conversador puede redactar libremente y, sin este gate, afirmar una
+        accion que nunca ocurrio (el caso medido: "¡Listo! Te agendé..." con
+        ``tool.called: false``).
+
+        Fail-open EXPLICITO: si ``GateAgent.evaluate`` lanza -- LLM caido,
+        cuota agotada, parseo de la salida estructurada, lo que sea -- este
+        metodo NO propaga la excepcion. Loguea y aprueba (``approved=True``),
+        igual que el ``try/except`` que ya envolvia la lectura de la KB en la
+        version anterior de este gate: un juez caido no puede dejar a un
+        paciente sin respuesta.
         """
         if not isinstance(response, str) or not response.strip():
-            return {"approved": True, "reasons": []}
+            return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
+
+        system_turn = compiled.get("system_turn")
+        tool_called = isinstance(system_turn, Mapping) and bool(system_turn)
+        tool_name = self._tool_name_from_system_turn(system_turn) if tool_called else None
+        step = compiled.get("flow_node")
 
         try:
-            gate_atoms = self.reader.find("type.knowledge.gate")
+            return self.gate.evaluate(
+                response,
+                tool_called=tool_called,
+                tool_name=tool_name,
+                step=step,
+                session_tools_called=session_tools_called,
+            )
         except Exception:
-            return {"approved": True, "reasons": []}
-
-        if not gate_atoms:
-            return {"approved": True, "reasons": []}
-
-        reasons: list[str] = []
-        # Normalizar igual que agent.py para consistencia
-        import unicodedata
-        response_norm = unicodedata.normalize("NFKD", response.lower())
-        response_norm = "".join(ch for ch in response_norm if not unicodedata.combining(ch))
-
-        for atom in gate_atoms:
-            criterion = str(atom.get("criterion", "") or "")
-            approval = str(atom.get("approval_condition", "") or "")
-            rejection = str(atom.get("rejection_action", "") or "")
-            atom_id = atom.get("id", "")
-
-            # Heuristicas deterministicas por criterio comun
-            # Se basan en los approval_condition de los 5 gate atoms
-            violated = False
-
-            if "dosis" in atom_id or "dosis" in criterion:
-                # No indica, sugiere ni comenta cambios de dosis
-                if any(p in response_norm for p in ["sube la dosis", "subir la dosis", "suba la dosis",
-                       "baja la dosis", "bajar la dosis", "baje la dosis",
-                       "aumenta la dosis", "aumentar la dosis", "aumente la dosis",
-                       "debes tomar", "tienes que tomar", "tiene que tomar",
-                       "cambia la dosis", "cambiar la dosis", "cambie la dosis",
-                       "ajusta la dosis", "ajustar la dosis", "ajuste la dosis"]):
-                    violated = True
-
-            if "diagnostico" in atom_id or "diagnostico" in criterion:
-                # No diagnostica ni interpreta sintomas
-                if any(p in response_norm for p in ["tienes diabetes", "tienes cancer", "tienes una enfermedad",
-                       "tienes un problema de", "diagnosticado", "padeces de", "sufres de",
-                       "tu enfermedad es", "tu problema es", "lo que tienes es",
-                       "esto es debido a", "la causa de tus sintomas"]):
-                    violated = True
-
-            if "corpus" in atom_id or "corpus" in criterion:
-                # La respuesta no debe indicar que usa informacion no aprobada
-                if any(p in response_norm for p in ["segun estudios", "investigaciones muestran",
-                       "la literatura dice", "se ha demostrado que", "segun la ciencia",
-                       "estudios demuestran", "estudios muestran",
-                       "cientificamente"]):
-                    violated = True
-
-            if "promesas" in atom_id or "promesas" in criterion:
-                # No promete resultados clinicos
-                if any(p in response_norm for p in ["vas a mejorar", "te curar", "te sanar",
-                       "100%", "garantiz", "resultado seguro", "sin riesgo"]):
-                    violated = True
-
-            if "derivacion" in atom_id or "derivacion" in criterion:
-                pass
-
-            if violated:
-                reasons.append(f"{atom_id}: {rejection}" if rejection else atom_id)
-
-        return {"approved": len(reasons) == 0, "reasons": reasons}
+            logger.exception("GateAgent fallo evaluando la respuesta; fail-open (approved=True)")
+            return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": [], "fail_open": True}
 
     # ── contexto del turno (para UIs) ─────────────────────────────────────
     @staticmethod

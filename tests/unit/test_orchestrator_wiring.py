@@ -23,6 +23,9 @@ from kb_agent.tools import load_tool_handlers
 from tests.support.fakes import (
     FakeConversador,
     FakeEmbedder,
+    FakeGate,
+    FakeOrchestratorAgent,
+    FakeRouterAgent,
     FakeTraitMapper,
     RecordingToolHandler,
     VEGETARIAN_MATCH,
@@ -208,7 +211,15 @@ def test_state_and_data_survive_orchestrator_restart(donpeppe_kb: Path, tmp_db_u
 
 def test_from_config_wires_business_declared_in_yaml(tmp_db_url: str) -> None:
     cfg = load_project_config(mode="test")
-    o = Orchestrator.from_config(cfg, db_url=tmp_db_url, conversador=FakeConversador(), trait_mapper=FakeTraitMapper(VEGETARIAN_MATCH))
+    o = Orchestrator.from_config(
+        cfg,
+        db_url=tmp_db_url,
+        conversador=FakeConversador(),
+        trait_mapper=FakeTraitMapper(VEGETARIAN_MATCH),
+        gate=FakeGate(),
+        orchestrator_agent=FakeOrchestratorAgent(),
+        router_agent=FakeRouterAgent(),
+    )
     o.knowledge_ops._embedder_cache = FakeEmbedder()
     try:
         assert o.kb_root == cfg.kb_root

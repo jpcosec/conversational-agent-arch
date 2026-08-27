@@ -1,5 +1,5 @@
 documents:
-- doc_name: tool-antonia-agendar-recordatorio
+- doc_name: agendar_recordatorio
   sections:
   - path: tool-agendar-recordatorio-de-aplicaci-n
     title: "Tool agendar recordatorio de aplicaci\xF3n"
@@ -65,6 +65,80 @@ documents:
     - workspace.knowledge
     semantic_tags:
     - conversation:steps.agendar_recordatorio
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: parameters
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: registrar_enrolamiento
+  sections:
+  - path: tool-registrar-enrolamiento-al-programa
+    title: Tool registrar enrolamiento al programa
+    breadcrumbs:
+    - Tool registrar enrolamiento al programa
+    about:
+    - Tool registrar enrolamiento al programa
+    - tool registrar enrolamiento al programa
+    - conversation:steps.enrolamiento
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: tool-registrar-enrolamiento-al-programa
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: tool-registrar-enrolamiento-al-programa/description
+    title: Description
+    breadcrumbs:
+    - Tool registrar enrolamiento al programa
+    - Description
+    about:
+    - Tool registrar enrolamiento al programa
+    - tool registrar enrolamiento al programa
+    - Description
+    - description
+    - conversation:steps.enrolamiento
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: tool-registrar-enrolamiento-al-programa/parameters
+    title: Parameters
+    breadcrumbs:
+    - Tool registrar enrolamiento al programa
+    - Parameters
+    about:
+    - Tool registrar enrolamiento al programa
+    - tool registrar enrolamiento al programa
+    - Parameters
+    - parameters
+    - conversation:steps.enrolamiento
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
     - self:tools
     - system:laboratorio-chile
     - type.knowledge.tool

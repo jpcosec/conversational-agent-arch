@@ -33,6 +33,7 @@ from typing import TYPE_CHECKING, Any, Callable, ClassVar, Protocol
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from kb_agent.agents.router import apply_security_floor
 from kb_agent.models.knowledge import (
     CapabilityBoundary,
     ConversationStep,
@@ -54,6 +55,7 @@ from .sldb_reader import SLDBReader
 
 if TYPE_CHECKING:
     from knowledge_base.operations import KnowledgeOperations
+    from kb_agent.agents.router import RouterAgent
 
 
 class SessionStateLike(Protocol):
@@ -75,9 +77,21 @@ class ContextCompiler:
     #: hay ranking semantico y el bundle cae al modo legado (todo domain/rule,
     #: sin tope).
     knowledge_ops: "KnowledgeOperations | None" = None
+    #: Ruteador de contexto (fase 2.2, agente): decide el bundle con LLM +
+    #: tools de KB (``explore_multi``/``explore``/``show``) en vez de la
+    #: union deterministica de ``_build_bundle``. El orquestador crea UNA
+    #: instancia y la reutiliza en todos los turnos, igual que
+    #: ``knowledge_ops``. Si es ``None`` (tests offline sin
+    #: ``FakeRouterAgent``, o compilador usado standalone) o si
+    #: ``RouterAgent.route`` lanza, se cae al fallback deterministico
+    #: (``_build_bundle``) -- mismo patron fail-open que
+    #: ``Orchestrator._policy_gate``. Ver ``_resolve_bundle``.
+    router_agent: "RouterAgent | None" = None
     #: Tope del bundle justificado (ver ``_build_bundle``). Solo se aplica
     #: cuando hay ``knowledge_ops`` (hay ranking real con el que decidir que
-    #: cae fuera); sin el, no hay tope (modo legado).
+    #: cae fuera); sin el, no hay tope (modo legado). El bundle armado por
+    #: ``router_agent`` tambien respeta este tope (ver
+    #: ``_build_bundle_via_agent``).
     max_bundle_size: int = 12
     #: Cuantos mensajes recientes de ``chat_history`` entran a ``history``.
     history_limit: int = 6
@@ -111,15 +125,17 @@ class ContextCompiler:
         strategy = self._extract_strategy()
         fallback_text = self._extract_fallback()
 
-        # Doctrina 1.3: el contexto ya no es "todo domain/rule" (score 1.0
-        # hardcodeado); es un bundle JUSTIFICADO (ver ``_build_bundle``).
-        # ``domain_facts``/``rules`` son la proyeccion tipada de ese bundle,
-        # asi ``decide_turn``/``build_nl_prompt`` no cambian de forma.
-        bundle, domain_facts, rules = self._build_bundle(
+        # Doctrina 1.3 + fase 2.2 (agente): el contexto ya no es "todo
+        # domain/rule" (score 1.0 hardcodeado); es un bundle JUSTIFICADO (ver
+        # ``_resolve_bundle``). ``domain_facts``/``rules`` son la proyeccion
+        # tipada de ese bundle, asi ``decide_turn``/``build_nl_prompt`` no
+        # cambian de forma.
+        bundle, domain_facts, rules, bundle_source = self._resolve_bundle(
             question=question,
             active_step=active_step,
             grounding_ids=grounding_ids,
             user_traits=user_traits,
+            history=history,
         )
 
         doc = CompiledDocument(
@@ -139,6 +155,16 @@ class ContextCompiler:
         doc.flow_node = active_step
         doc.allowed_transitions = allowed_transitions
         doc.grounding_atoms = grounding_ids
+        # ``CompiledDocument`` no declara este campo (no es parte de su
+        # contrato tipado, ver su docstring): se asigna como atributo de
+        # instancia, igual que los 3 de arriba en el caso de
+        # ``flow_node``/``allowed_transitions``/``grounding_atoms`` antes de
+        # que fueran campos formales -- ``to_dict`` (``self.__dict__``) lo
+        # incluye igual. Rastro (fase 2.2): "agent" si lo armo el
+        # ``RouterAgent`` real, "deterministic" si se uso el fallback
+        # (``_build_bundle``) -- ver ``Orchestrator.handle_turn``,
+        # ``decisions.ruteador.source``.
+        doc.bundle_source = bundle_source
         return doc
 
     def _resolve_scenario(
@@ -322,6 +348,20 @@ class ContextCompiler:
         scored.sort(key=lambda pair: pair[0], reverse=True)
         return [{"id": doc_id, "score": round(score, 4)} for score, doc_id in scored[:max_results]]
 
+    def _security_floor_ids(self) -> set[str]:
+        """Ids de las ``RuleAtom`` con tag ``conversation:security``: el piso
+        de seguridad no negociable (farmacovigilancia). Fuente unica de
+        verdad, usada tanto por el fallback deterministico (``_build_bundle``)
+        como por el camino del ``RouterAgent`` (``_build_bundle_via_agent``,
+        via ``kb_agent.agents.router.apply_security_floor``): un LLM no es
+        garantia, asi que ambos caminos fuerzan la MISMA lista por codigo.
+        """
+        return {
+            d.get("id", "")
+            for d in self._find_by_model("rule")
+            if self._SECURITY_FLOOR_TAG in (d.get("tags") or [])
+        }
+
     def _build_bundle(
         self,
         *,
@@ -374,11 +414,7 @@ class ContextCompiler:
                 entry["score"] = score
 
         # a) piso de seguridad: SIEMPRE.
-        security_ids = {
-            d.get("id", "")
-            for d in self._find_by_model("rule")
-            if self._SECURITY_FLOOR_TAG in (d.get("tags") or [])
-        }
+        security_ids = self._security_floor_ids()
         for doc_id in sorted(security_ids):
             _add(doc_id, "piso de seguridad", None)
 
@@ -449,6 +485,133 @@ class ContextCompiler:
                 (domain_facts if tipo == "domain" else rules).append(projected)
 
         return bundle, domain_facts, rules
+
+    def _build_bundle_via_agent(
+        self,
+        *,
+        question: str,
+        active_step: str | None,
+        grounding_ids: list[str],
+        user_traits: list[dict[str, Any]],
+        history: list[dict[str, str]],
+    ) -> tuple[list[dict[str, Any]], list[dict[str, str]], list[dict[str, str]]] | None:
+        """Arma el bundle con el ``RouterAgent`` (fase 2.2, LLM real + tools).
+
+        Devuelve ``None`` si no hay ``router_agent`` inyectado o si
+        ``RouterAgent.route`` lanza -- el llamador (``_resolve_bundle``) cae
+        entonces al fallback deterministico (``_build_bundle``), mismo patron
+        fail-open que ``Orchestrator._policy_gate``/``GateAgent``: un agente
+        caido (LLM sin cuota, red caida, salida no parseable) no puede dejar
+        el turno sin contexto.
+
+        Piso de seguridad: se aplica SIEMPRE despues de la respuesta del
+        agente, via ``apply_security_floor`` -- no importa que el modelo haya
+        decidido, las ``RuleAtom`` de ``conversation:security`` quedan.
+
+        Validacion: cualquier ``doc_id`` que el agente devuelva y que NO
+        resuelva contra ``self.reader`` (alucinado, o de una KB vieja) se
+        descarta silenciosamente -- nunca se propaga un id inventado al
+        Conversador/Orquestador.
+
+        Tope (``max_bundle_size``): igual criterio que ``_build_bundle`` --
+        el piso de seguridad es OBLIGATORIO (nunca lo tapa el tope); el resto
+        de la capacidad la llena, en el orden que devolvio el agente, lo que
+        entra.
+        """
+        if self.router_agent is None:
+            return None
+        try:
+            raw_bundle = self.router_agent.route(
+                question=question,
+                active_step=active_step,
+                grounding_atoms=grounding_ids,
+                user_traits=user_traits,
+                history=history,
+            )
+        except Exception:
+            return None
+
+        security_ids = self._security_floor_ids()
+        merged = apply_security_floor(raw_bundle, security_ids)
+
+        resolved: list[dict[str, Any]] = []
+        for entry in merged:
+            doc_id = str(entry.get("doc_id") or "")
+            doc = self.reader.get_doc(doc_id) if doc_id else None
+            if doc is None:
+                continue  # id alucinado / inexistente: no entra al bundle
+            tipo, family = self._tipo_y_family_de_doc(doc)
+            resolved.append({
+                "doc_id": doc_id,
+                "family": family or entry.get("family"),
+                "motivo": str(entry.get("motivo") or ""),
+                "score": entry.get("score"),
+                "_tipo": tipo,
+                "_doc": doc,
+            })
+
+        if len(resolved) > self.max_bundle_size:
+            mandatory = [e for e in resolved if e["doc_id"] in security_ids]
+            optional = [e for e in resolved if e["doc_id"] not in security_ids]
+            remaining = max(self.max_bundle_size - len(mandatory), 0)
+            resolved = mandatory + optional[:remaining]
+
+        bundle: list[dict[str, Any]] = []
+        domain_facts: list[dict[str, str]] = []
+        rules: list[dict[str, str]] = []
+        for entry in resolved:
+            doc_id = entry["doc_id"]
+            doc = entry.pop("_doc")
+            tipo = entry.pop("_tipo")
+            bundle.append(entry)
+            if tipo in ("domain", "rule"):
+                projected = {
+                    "id": doc.get("id", doc_id),
+                    "body": doc.get("answer", ""),
+                    "tags": doc.get("tags", []),
+                    "title": doc.get("title") or doc.get("id", doc_id),
+                    "family": entry["family"],
+                }
+                (domain_facts if tipo == "domain" else rules).append(projected)
+
+        return bundle, domain_facts, rules
+
+    def _resolve_bundle(
+        self,
+        *,
+        question: str,
+        active_step: str | None,
+        grounding_ids: list[str],
+        user_traits: list[dict[str, Any]],
+        history: list[dict[str, str]],
+    ) -> tuple[list[dict[str, Any]], list[dict[str, str]], list[dict[str, str]], str]:
+        """Punto unico de entrada del bundle del turno: agente primero, fallback despues.
+
+        Devuelve ``(bundle, domain_facts, rules, source)`` con ``source`` en
+        ``"agent"`` (lo armo el ``RouterAgent`` real) o ``"deterministic"``
+        (fallback via ``_build_bundle`` -- sin ``router_agent`` inyectado, o
+        el agente fallo). ``source`` viaja hasta ``decisions.ruteador.source``
+        en el rastro del turno (``Orchestrator.handle_turn``): auditable si
+        el contexto de este turno lo decidio un LLM o la union deterministica.
+        """
+        via_agent = self._build_bundle_via_agent(
+            question=question,
+            active_step=active_step,
+            grounding_ids=grounding_ids,
+            user_traits=user_traits,
+            history=history,
+        )
+        if via_agent is not None:
+            bundle, domain_facts, rules = via_agent
+            return bundle, domain_facts, rules, "agent"
+
+        bundle, domain_facts, rules = self._build_bundle(
+            question=question,
+            active_step=active_step,
+            grounding_ids=grounding_ids,
+            user_traits=user_traits,
+        )
+        return bundle, domain_facts, rules, "deterministic"
 
     # ── configuracion del agente desde modelos tipados (deshardcodeo) ──
 
@@ -691,6 +854,7 @@ def compile_context(
     session_state_loader: Callable[[int], SessionStateLike | None] | None = None,
     kgdb: KGDBReader | None = None,
     knowledge_ops: "KnowledgeOperations | None" = None,
+    router_agent: "RouterAgent | None" = None,
 ) -> CompiledDocument:
     """Atajo funcional sobre ``ContextCompiler`` (el reader es obligatorio)."""
     compiler = ContextCompiler(
@@ -699,6 +863,7 @@ def compile_context(
         session_state_loader=session_state_loader,
         kgdb=kgdb,
         knowledge_ops=knowledge_ops,
+        router_agent=router_agent,
     )
     return compiler.compile(
         question=question,

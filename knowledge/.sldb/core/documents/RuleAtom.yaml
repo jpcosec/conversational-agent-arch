@@ -100,3 +100,63 @@ documents:
   - system:laboratorio-chile
   - type.knowledge.rule
   - workspace.knowledge
+- name: atom-antonia-regla-clasificar
+  path: atoms/atom-antonia-regla-clasificar.md
+  hash_c: e2524f7e153913984aec29992081e6cbb1845144502809d6eec7f7e288c2f807
+  hash_d: 6bf3e4fc0b9ede29b51b96b11e3df360b0622d1fa827d37967000ddb01922542
+  semantic_tags:
+  - domain:seguridad.triage
+  - system:laboratorio-chile
+  - topic:rules
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: atom-antonia-regla-escalar-ime
+  path: atoms/atom-antonia-regla-escalar-ime.md
+  hash_c: 37b96d1409673924163c6146c4783f2ee642561c44b386e12bda6779ed9df8b0
+  hash_d: 2f60c5419bf1e31110cb9ff8ac214f9f77f3b8fa2e6967b4638cf612d8cff319
+  semantic_tags:
+  - domain:seguridad.ime
+  - system:laboratorio-chile
+  - topic:rules
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: atom-antonia-regla-integridad
+  path: atoms/atom-antonia-regla-integridad.md
+  hash_c: 8e6feab5862522722ea0de55490c57d263c0b99ada3063f4109edc3956e88ebd
+  hash_d: f91c02267f846d887cf43cd828d825172b219053302cbfc7de4670e82f2e330d
+  semantic_tags:
+  - domain:seguridad.compliance
+  - system:laboratorio-chile
+  - topic:rules
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: atom-antonia-regla-no-codificar
+  path: atoms/atom-antonia-regla-no-codificar.md
+  hash_c: f0b76895a8fb5904289b1e7d4046165ebbc24f1b59b239c158b238c272bfe500
+  hash_d: 8ac65e21207b8b25293158d39f0aa8f4ef6aa7c9b69abb52bfd5a97e72093054
+  semantic_tags:
+  - domain:seguridad.meddra
+  - system:laboratorio-chile
+  - topic:rules
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: atom-antonia-regla-no-diagnosticar
+  path: atoms/atom-antonia-regla-no-diagnosticar.md
+  hash_c: abb33e339dfbd2401ad9b3b4acf37e9facf82b63a8a5fe2b0695e64e5d4adc40
+  hash_d: bbbd307f819fd5307ae4e12cc290d1cda59359714ec128f87ca9d90e5d63a7bc
+  semantic_tags:
+  - domain:seguridad.triage
+  - system:laboratorio-chile
+  - topic:rules
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: atom-antonia-regla-validez
+  path: atoms/atom-antonia-regla-validez.md
+  hash_c: 3f37190113f64c84344f79b380ce2b8ec43e34a4df658aa239715f503d11efbe
+  hash_d: 286f6b34f2f48f8b58744de84eb79f9643b20f54bc58c23bc9dff52236e687f0
+  semantic_tags:
+  - domain:seguridad.triage
+  - system:laboratorio-chile
+  - topic:rules
+  - type.knowledge.rule
+  - workspace.knowledge

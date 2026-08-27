@@ -37,8 +37,12 @@ def server(tmp_path_factory: pytest.TempPathFactory):
     import uvicorn
 
     db = tmp_path_factory.mktemp("ui") / "ui.sqlite"
-    # Sin mode="test": usa la KB real de Antonia (serving); LLM sigue fake.
-    cfg = load_project_config(env={"CHAT_DB": str(db), "PROFILING_DB": str(db)})
+    # mode="serving" explicito: usa la KB real de Antonia; LLM sigue fake.
+    # Sin esto, load_project_config autodetecta pytest (_is_test_context())
+    # y cae a test_kb_root (la KB chica de DonPeppe) pese a lo que decia este
+    # comentario -- bug preexistente: el "Sin mode='test'" de antes no alcanzaba,
+    # porque el default es None y la autodeteccion de pytest gana igual.
+    cfg = load_project_config(mode="serving", env={"CHAT_DB": str(db), "PROFILING_DB": str(db)})
     orch = offline_orchestrator(
         cfg.kb_root, cfg.chat_db_url, tool_handlers=load_tool_handlers(cfg.tool_handlers)
     )
@@ -216,6 +220,122 @@ def test_mindmap_search_filters_nodes(page, server: str) -> None:
     page.wait_for_timeout(600)
     after = len(page.query_selector_all(".react-flow__node"))
     assert after < before, f"la busqueda no filtro nodos (antes={before}, despues={after})"
+
+
+# --------------------------------------------------------------------------
+# Filtro por agente (además del filtro por familia)
+# --------------------------------------------------------------------------
+
+_AGENT_IDS = ["conversador", "ruteador", "orquestador", "gate", "perfilador"]
+
+
+def _visible_atom_types(page) -> set[str]:
+    """atom_type de cada nodo-hoja actualmente visible en el canvas (via el
+    atributo data-atom-type que MindNode expone solo en nodos kind=atom)."""
+    types = page.eval_on_selector_all(
+        "[data-atom-type]",
+        "els => els.map(e => e.getAttribute('data-atom-type')).filter(t => t)",
+    )
+    return set(types)
+
+
+def _wait_full_graph(page, min_types: int = 8, timeout_s: float = 15.0) -> set[str]:
+    """El fetch de /api/taxonomy + layout de dagre es async; esperar un
+    timeout fijo es fragil (CDN de esm.sh / carga de KB real puede variar).
+    Poll hasta ver la variedad de atom_type esperada antes de medir un
+    "antes" confiable."""
+    deadline = time.time() + timeout_s
+    types: set[str] = set()
+    while time.time() < deadline:
+        types = _visible_atom_types(page)
+        if len(types) >= min_types:
+            return types
+        page.wait_for_timeout(300)
+    return types
+
+
+def test_mindmap_agent_filter_present(page, server: str) -> None:
+    _goto_mindmap(page, server)
+    for aid in _AGENT_IDS:
+        assert page.query_selector(f'[data-testid="mindmap-agent-{aid}"]') is not None, aid
+
+
+def test_mindmap_agent_filter_by_content(page, server: str) -> None:
+    """No alcanza con que exista el testid: al filtrar por el agente Gate
+    solo deben quedar visibles atoms atom_type=gate, y el resto (domain,
+    rule, step, tool...) tiene que desaparecer. Mapeo verificado contra
+    docs/AGENT-CONTRACTS.md §2.0: atom_type 'gate' -> solo el agente Gate."""
+    _goto_mindmap(page, server)
+    page.wait_for_selector(".react-flow__node", timeout=20000)
+
+    before_types = _wait_full_graph(page)
+    assert len(before_types) > 1, f"esperaba varios atom_type antes de filtrar, vi {before_types}"
+    assert "gate" in before_types and "domain" in before_types
+
+    page.click('[data-testid="mindmap-agent-gate"]')
+    page.wait_for_timeout(500)
+
+    after_types = _visible_atom_types(page)
+    assert after_types == {"gate"}, f"filtro por Gate dejo pasar otros atom_type: {after_types}"
+
+    # Desactivar (toggle): vuelve a mostrar todos los atom_type de antes.
+    page.click('[data-testid="mindmap-agent-gate"]')
+    page.wait_for_timeout(500)
+    assert _visible_atom_types(page) == before_types
+
+
+def test_mindmap_agent_filter_respects_agent_document_map(page, server: str) -> None:
+    """atom_type 'tool' solo lo toca el Orquestador (carga base fija,
+    AGENT-CONTRACTS §2.0 / KNOWLEDGE-MODEL §5); filtrando por Conversador no
+    debe aparecer ningun atom tool, aunque el Conversador vea otros tipos."""
+    _goto_mindmap(page, server)
+    page.wait_for_selector(".react-flow__node", timeout=20000)
+    _wait_full_graph(page)
+
+    page.click('[data-testid="mindmap-agent-conversador"]')
+    page.wait_for_timeout(500)
+    types = _visible_atom_types(page)
+    assert types, "filtro por Conversador no dejo ningun atom visible"
+    assert "tool" not in types, f"Conversador no deberia ver atom_type=tool, vi {types}"
+    assert "gate" not in types, f"Conversador no deberia ver atom_type=gate, vi {types}"
+    assert "domain" in types, f"Conversador si deberia ver atom_type=domain, vi {types}"
+
+
+def test_mindmap_agent_filter_is_multiselect(page, server: str) -> None:
+    """El filtro por agente es combinable, no exclusivo: Gate + Orquestador
+    juntos deben mostrar la union (gate y tool), no solo uno de los dos."""
+    _goto_mindmap(page, server)
+    page.wait_for_selector(".react-flow__node", timeout=20000)
+    _wait_full_graph(page)
+
+    page.click('[data-testid="mindmap-agent-gate"]')
+    page.click('[data-testid="mindmap-agent-orquestador"]')
+    page.wait_for_timeout(500)
+    types = _visible_atom_types(page)
+    assert "gate" in types, f"Gate+Orquestador deberia incluir gate, vi {types}"
+    assert "tool" in types, f"Gate+Orquestador deberia incluir tool (de Orquestador), vi {types}"
+
+
+def test_mindmap_agent_filter_combines_with_family_filter(page, server: str) -> None:
+    """Cruce de los dos ejes (el motivo de ser del filtro, ver pedido del
+    usuario): rama 'domain' trae atom_type domain+rule; agregar el filtro de
+    agente Orquestador encima debe dejar solo 'rule' (el Orquestador clasifica
+    con rule pero no toca domain, KNOWLEDGE-MODEL §5)."""
+    _goto_mindmap(page, server)
+    page.wait_for_selector(".react-flow__node", timeout=20000)
+    _wait_full_graph(page)
+
+    page.click('[data-testid="mindmap-rama-domain"]')
+    page.wait_for_timeout(500)
+    rama_types = _visible_atom_types(page)
+    assert {"domain", "rule"} <= rama_types, f"rama domain deberia traer domain+rule, vi {rama_types}"
+
+    page.click('[data-testid="mindmap-agent-orquestador"]')
+    page.wait_for_timeout(500)
+    combo_types = _visible_atom_types(page)
+    assert combo_types == {"rule"}, (
+        f"rama=domain + agente=Orquestador deberia dejar solo rule, vi {combo_types}"
+    )
 
 
 # --------------------------------------------------------------------------

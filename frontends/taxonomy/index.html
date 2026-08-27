@@ -53,6 +53,28 @@ import htm from'htm';const html=htm.bind(React.createElement)
 import dagre from'dagre'
 
 const FAM={self:{color:'#7cba7c',icon:'🧬',label:'self'},domain:{color:'#7fb3d5',icon:'📖',label:'domain'},conversation:{color:'#e6a85c',icon:'💬',label:'conversation'},user:{color:'#c97db9',icon:'👤',label:'user'},gate:{color:'#d46a8c',icon:'🚦',label:'gate'}}
+// Eje de agente (independiente de la familia): qué agente "toca" cada atom_type.
+// Mapeo verificado contra docs/AGENT-CONTRACTS.md §2.0 y §5 de docs/KNOWLEDGE-MODEL.md
+// (tabla "Documentos ↔ agentes"; F=carga base y D=selección dinámica cuentan igual acá,
+// porque lo que importa para el filtro es si el agente lo ve, no cuándo).
+// El perfilador es post-turno (no participa del camino de respuesta) — marcado aparte.
+const AGENTS={
+ conversador:{color:'#4fc3d9',icon:'🗣️',label:'Conversador'},
+ ruteador:{color:'#e0c341',icon:'🧭',label:'Ruteador'},
+ orquestador:{color:'#9b7fd4',icon:'🎚️',label:'Orquestador'},
+ gate:{color:'#ff6b6b',icon:'🛂',label:'Gate'},
+ perfilador:{color:'#8a94a6',icon:'🪞',label:'Perfilador',postTurn:true},
+}
+const AGENT_OF={
+ self:['conversador'],style:['conversador'],boundary:['conversador'],strategy:['conversador'],
+ fallback:['conversador','orquestador'],
+ domain:['conversador','ruteador'],
+ rule:['conversador','ruteador','orquestador'],
+ step:['conversador','ruteador','orquestador'],
+ tool:['orquestador'],
+ gate:['gate'],
+ trait:['conversador','ruteador','perfilador'],
+}
 const FIVEWH={what:'❓',when:'📅',where:'📍',who:'👤',how:'🔧',why:'🤔'}
 let NID=0
 // Puente de acciones del NodeToolbar -> estado de App (poblado en App via useEffect)
@@ -63,7 +85,7 @@ function MindNode({id,data,selected}){
  const fam=FAM[data.family]||FAM.domain;const isRoot=data.kind==='root';const isAtom=data.kind==='atom'
  const bg=isRoot?fam.color:isAtom?'rgba(18,18,26,.95)':`${fam.color}18`
  const border=selected?'#d4a574':isRoot?fam.color:`${fam.color}66`
- return html`<div style=${{border:`2px solid ${border}`,borderLeft:isAtom?`4px solid ${fam.color}`:`2px solid ${border}`,background:bg,borderRadius:isRoot?20:12,padding:isRoot?'10px 18px':'7px 13px',minWidth:isRoot?130:90,maxWidth:240,cursor:'pointer',transition:'.15s',boxShadow:selected?'0 0 18px rgba(212,165,116,.25)':'none',display:'flex',alignItems:'center',gap:7}}>
+ return html`<div data-kind=${data.kind} data-atom-type=${isAtom?data.atom_type:undefined} style=${{border:`2px solid ${border}`,borderLeft:isAtom?`4px solid ${fam.color}`:`2px solid ${border}`,background:bg,borderRadius:isRoot?20:12,padding:isRoot?'10px 18px':'7px 13px',minWidth:isRoot?130:90,maxWidth:240,cursor:'pointer',transition:'.15s',boxShadow:selected?'0 0 18px rgba(212,165,116,.25)':'none',display:'flex',alignItems:'center',gap:7}}>
    <${NodeToolbar} isVisible=${!!selected} position=${Position.Top}>
      <div data-testid="mindmap-node-toolbar" style=${{display:'flex',gap:4,background:'rgba(10,10,15,.95)',border:'1px solid rgba(212,165,116,.2)',borderRadius:8,padding:4,boxShadow:'0 8px 28px rgba(0,0,0,.5)'}}>
        <button style=${TB_BTN} title="Borrar" onClick=${()=>MM_ACTIONS.del(id)}>🗑</button>
@@ -121,6 +143,8 @@ function App(){
  const [hover,setHover]=useState(null);const [editing,setEditing]=useState(null);const [comment,setComment]=useState(null)
  const [layoutMode,setLayoutMode]=useState('tree');const [xfamily,setXfamily]=useState(false);const [searchText,setSearchText]=useState('')
  const [filterRama,setFilterRama]=useState(null);const [collapsed,setCollapsed]=useState(new Set())
+ const [filterAgents,setFilterAgents]=useState(new Set())
+ const toggleAgent=useCallback(id=>setFilterAgents(prev=>{const n=new Set(prev);n.has(id)?n.delete(id):n.add(id);return n}),[])
  const [selectedNode,setSelectedNode]=useState(null);const [linking,setLinking]=useState(false);const [taxData,setTaxData]=useState(null)
  const {fitView}=useReactFlow()
  const [viewport,setViewport]=useState({x:0,y:0,zoom:1})
@@ -178,13 +202,24 @@ function App(){
 
  const ramas=useMemo(()=>{if(!taxData)return[];const r=[];Object.keys(taxData).forEach(fam=>{r.push({id:fam,label:fam,children:[]})});return r},[taxData])
 
- const filtered=useMemo(()=>{if(!filterRama||!taxData)return nodes;const fam=filterRama;return nodes.filter(n=>n.data.family===fam||n.data.label===fam)},[nodes,filterRama,taxData])
+ const filtered=useMemo(()=>{
+  let out=nodes
+  if(filterRama&&taxData){const fam=filterRama;out=out.filter(n=>n.data.family===fam||n.data.label===fam)}
+  if(filterAgents.size){
+   // El eje de agente solo aplica a hojas (atoms): raíz y ramas quedan
+   // visibles como esqueleto del árbol aunque ninguno de sus atoms matchee.
+   out=out.filter(n=>{if(n.data.kind!=='atom')return true;const ag=AGENT_OF[n.data.atom_type]||[];return ag.some(a=>filterAgents.has(a))})
+  }
+  return out
+ },[nodes,filterRama,taxData,filterAgents])
  const searched=useMemo(()=>{if(!searchText)return filtered;const t=searchText.toLowerCase();return filtered.filter(n=>(n.data.label||'').toLowerCase().includes(t)||(n.data.atom_id||'').toLowerCase().includes(t))},[filtered,searchText])
 
  return html`<div class="mm-layout">
    <aside class="mm-sidebar" data-testid="mindmap-sidebar"><div class="mm-sidebar-label">Filtrar rama</div>
     <input class="mm-filter-input" placeholder="buscar rama…" onInput=${e=>setFilterRama(e.target.value||null)}/>
-    ${ramas.map(r=>html`<div class="mm-rama ${filterRama===r.id?'active':''}" onClick=${()=>setFilterRama(r.id===filterRama?null:r.id)}>${FAM[r.id]?.icon||''} ${r.label}</div>`)}
+    ${ramas.map(r=>html`<div class="mm-rama ${filterRama===r.id?'active':''}" data-testid="mindmap-rama-${r.id}" onClick=${()=>setFilterRama(r.id===filterRama?null:r.id)}>${FAM[r.id]?.icon||''} ${r.label}</div>`)}
+    <div class="mm-sidebar-label" style=${{marginTop:14}} data-testid="mindmap-agent-filter">Filtrar agente</div>
+    ${Object.entries(AGENTS).map(([id,a])=>{const active=filterAgents.has(id);return html`<div class="mm-rama ${active?'active':''}" data-testid="mindmap-agent-${id}" style=${{borderLeft:`3px solid ${active?a.color:'transparent'}`,color:active?a.color:'rgba(245,240,232,.6)'}} onClick=${()=>toggleAgent(id)}><span style=${{display:'inline-block',width:6,height:6,borderRadius:2,background:a.color,marginRight:5}}></span>${a.icon} ${a.label}${a.postTurn?' · post-turno':''}</div>`})}
     <div style=${{marginTop:'auto',borderTop:'1px solid rgba(212,165,116,.1)',paddingTop:14}}>
      <div class="mm-sidebar-label">Layout</div>
      ${[{id:'tree',label:'Árbol LR'},{id:'topdown',label:'Top-Down'},{id:'embeddings',label:'Embeddings'}].map(l=>html`<div class="mm-rama ${layoutMode===l.id?'active':''}" data-testid="mindmap-layout-${l.id}" onClick=${()=>applyLayout(l.id)}>${l.label}</div>`)}

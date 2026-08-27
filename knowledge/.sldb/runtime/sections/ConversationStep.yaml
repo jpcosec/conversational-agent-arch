@@ -2012,3 +2012,186 @@ documents:
     level: 2
     line_start: 811
     line_end: 812
+- doc_name: step-antonia-enrolamiento
+  sections:
+  - path: enrolamiento-inscripci-n-al-programa
+    title: "Enrolamiento \u2014 inscripci\xF3n al programa"
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: enrolamiento-inscripci-n-al-programa
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: enrolamiento-inscripci-n-al-programa/instructions
+    title: Instructions
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Instructions
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Instructions
+    - instructions
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: enrolamiento-inscripci-n-al-programa/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Required Slots
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Required Slots
+    - required slots
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 791
+    line_end: 792
+  - path: enrolamiento-inscripci-n-al-programa/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Handout Target
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Handout Target
+    - handout target
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 795
+    line_end: 796
+  - path: enrolamiento-inscripci-n-al-programa/tool
+    title: Tool
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Tool
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Tool
+    - tool
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: enrolamiento-inscripci-n-al-programa/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Allowed Transitions
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: enrolamiento-inscripci-n-al-programa/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Grounding Atoms
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
+  - path: enrolamiento-inscripci-n-al-programa/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Completion Condition
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Completion Condition
+    - completion condition
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 811
+    line_end: 812

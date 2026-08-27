@@ -759,3 +759,447 @@ documents:
     level: 2
     line_start: 792
     line_end: 793
+- doc_name: atom-antonia-regla-clasificar
+  sections:
+  - path: clasificar-cada-mensaje-entrante
+    title: Clasificar cada mensaje entrante
+    breadcrumbs:
+    - Clasificar cada mensaje entrante
+    about:
+    - Clasificar cada mensaje entrante
+    - clasificar cada mensaje entrante
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: clasificar-cada-mensaje-entrante
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: clasificar-cada-mensaje-entrante/answer
+    title: Answer
+    breadcrumbs:
+    - Clasificar cada mensaje entrante
+    - Answer
+    about:
+    - Clasificar cada mensaje entrante
+    - clasificar cada mensaje entrante
+    - Answer
+    - answer
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: clasificar-cada-mensaje-entrante/conditions
+    title: Conditions
+    breadcrumbs:
+    - Clasificar cada mensaje entrante
+    - Conditions
+    about:
+    - Clasificar cada mensaje entrante
+    - clasificar cada mensaje entrante
+    - Conditions
+    - conditions
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794
+- doc_name: atom-antonia-regla-escalar-ime
+  sections:
+  - path: escalar-de-inmediato-ante-s-ntoma-ime
+    title: "Escalar de inmediato ante s\xEDntoma IME"
+    breadcrumbs:
+    - "Escalar de inmediato ante s\xEDntoma IME"
+    about:
+    - "Escalar de inmediato ante s\xEDntoma IME"
+    - escalar de inmediato ante s ntoma ime
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: escalar-de-inmediato-ante-s-ntoma-ime
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: escalar-de-inmediato-ante-s-ntoma-ime/answer
+    title: Answer
+    breadcrumbs:
+    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Answer
+    about:
+    - "Escalar de inmediato ante s\xEDntoma IME"
+    - escalar de inmediato ante s ntoma ime
+    - Answer
+    - answer
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: escalar-de-inmediato-ante-s-ntoma-ime/conditions
+    title: Conditions
+    breadcrumbs:
+    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Conditions
+    about:
+    - "Escalar de inmediato ante s\xEDntoma IME"
+    - escalar de inmediato ante s ntoma ime
+    - Conditions
+    - conditions
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794
+- doc_name: atom-antonia-regla-integridad
+  sections:
+  - path: preservar-integridad-del-verbatim
+    title: Preservar integridad del verbatim
+    breadcrumbs:
+    - Preservar integridad del verbatim
+    about:
+    - Preservar integridad del verbatim
+    - preservar integridad del verbatim
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: preservar-integridad-del-verbatim
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: preservar-integridad-del-verbatim/answer
+    title: Answer
+    breadcrumbs:
+    - Preservar integridad del verbatim
+    - Answer
+    about:
+    - Preservar integridad del verbatim
+    - preservar integridad del verbatim
+    - Answer
+    - answer
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: preservar-integridad-del-verbatim/conditions
+    title: Conditions
+    breadcrumbs:
+    - Preservar integridad del verbatim
+    - Conditions
+    about:
+    - Preservar integridad del verbatim
+    - preservar integridad del verbatim
+    - Conditions
+    - conditions
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794
+- doc_name: atom-antonia-regla-no-codificar
+  sections:
+  - path: no-traducir-a-t-rminos-m-dicos
+    title: "No traducir a t\xE9rminos m\xE9dicos"
+    breadcrumbs:
+    - "No traducir a t\xE9rminos m\xE9dicos"
+    about:
+    - "No traducir a t\xE9rminos m\xE9dicos"
+    - no traducir a t rminos m dicos
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-traducir-a-t-rminos-m-dicos
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: no-traducir-a-t-rminos-m-dicos/answer
+    title: Answer
+    breadcrumbs:
+    - "No traducir a t\xE9rminos m\xE9dicos"
+    - Answer
+    about:
+    - "No traducir a t\xE9rminos m\xE9dicos"
+    - no traducir a t rminos m dicos
+    - Answer
+    - answer
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: no-traducir-a-t-rminos-m-dicos/conditions
+    title: Conditions
+    breadcrumbs:
+    - "No traducir a t\xE9rminos m\xE9dicos"
+    - Conditions
+    about:
+    - "No traducir a t\xE9rminos m\xE9dicos"
+    - no traducir a t rminos m dicos
+    - Conditions
+    - conditions
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794
+- doc_name: atom-antonia-regla-no-diagnosticar
+  sections:
+  - path: nunca-diagnosticar-ni-indicar-tratamiento
+    title: Nunca diagnosticar ni indicar tratamiento
+    breadcrumbs:
+    - Nunca diagnosticar ni indicar tratamiento
+    about:
+    - Nunca diagnosticar ni indicar tratamiento
+    - nunca diagnosticar ni indicar tratamiento
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: nunca-diagnosticar-ni-indicar-tratamiento
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: nunca-diagnosticar-ni-indicar-tratamiento/answer
+    title: Answer
+    breadcrumbs:
+    - Nunca diagnosticar ni indicar tratamiento
+    - Answer
+    about:
+    - Nunca diagnosticar ni indicar tratamiento
+    - nunca diagnosticar ni indicar tratamiento
+    - Answer
+    - answer
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: nunca-diagnosticar-ni-indicar-tratamiento/conditions
+    title: Conditions
+    breadcrumbs:
+    - Nunca diagnosticar ni indicar tratamiento
+    - Conditions
+    about:
+    - Nunca diagnosticar ni indicar tratamiento
+    - nunca diagnosticar ni indicar tratamiento
+    - Conditions
+    - conditions
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794
+- doc_name: atom-antonia-regla-validez
+  sections:
+  - path: confirmar-los-4-criterios-antes-de-escalar
+    title: Confirmar los 4 criterios antes de escalar
+    breadcrumbs:
+    - Confirmar los 4 criterios antes de escalar
+    about:
+    - Confirmar los 4 criterios antes de escalar
+    - confirmar los 4 criterios antes de escalar
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: confirmar-los-4-criterios-antes-de-escalar
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: confirmar-los-4-criterios-antes-de-escalar/answer
+    title: Answer
+    breadcrumbs:
+    - Confirmar los 4 criterios antes de escalar
+    - Answer
+    about:
+    - Confirmar los 4 criterios antes de escalar
+    - confirmar los 4 criterios antes de escalar
+    - Answer
+    - answer
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: confirmar-los-4-criterios-antes-de-escalar/conditions
+    title: Conditions
+    breadcrumbs:
+    - Confirmar los 4 criterios antes de escalar
+    - Conditions
+    about:
+    - Confirmar los 4 criterios antes de escalar
+    - confirmar los 4 criterios antes de escalar
+    - Conditions
+    - conditions
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - topic:rules
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794

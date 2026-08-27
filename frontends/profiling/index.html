@@ -191,11 +191,11 @@ function renderEvents(u){
 function renderConversations(u){
  var panel=document.getElementById('detailPanel');
  panel.innerHTML='<div class="demo-guide"><h4>Qué ves aquí</h4><ul><li><b>Cada fila</b> representa una conversación demo.</li><li><b>Click</b> abre el chat precargado para ese usuario.</li></ul></div><div class="col-head" style="padding:0;margin-bottom:14px">Conversaciones <span>· '+((u.conversations||[]).length||0)+'</span></div>'+
- // Navega por ?user=<external_id>, no por ?session=: el chat precarga con ese
- // parametro (GET /api/history?external_id=...) y chat_history no tiene columna
- // session_id, asi que el c.session_id que sirve /api/profiles es sintetico
- // ("hist-<id>" de UNA fila) y no identifica ninguna conversacion real.
- ((u.conversations||[]).length?u.conversations.map(c=>'<div class="conv-item" data-testid="conversation-'+esc(c.session_id||'')+'" onclick="window.location.href=\'/?user='+encodeURIComponent(u.external_id||'')+'\'"><div><div class="conv-date">'+esc(c.created_at||'')+'</div><div class="conv-summary">'+esc(c.summary||'—')+'</div></div><div class="conv-meta">'+(c.n_turns||1)+' turnos<br/>'+esc(c.result||'')+'</div></div>').join(''):'<div class="empty">Sin conversaciones guardadas.</div>')}
+ ((u.conversations||[]).length?u.conversations.map(c=>{
+   var href=c.session_id?('/?session='+encodeURIComponent(c.session_id)):('/?user='+encodeURIComponent(u.external_id||''));
+   var metaExtra=c.session_id?'':' · sin sesión';
+   return '<div class="conv-item" data-testid="conversation-'+esc(c.session_id||c.legacy_group||'')+'" onclick="window.location.href=\''+href+'\'"><div><div class="conv-date">'+esc(c.created_at||'')+'</div><div class="conv-summary">'+esc(c.summary||'—')+'</div></div><div class="conv-meta">'+(c.n_turns||0)+' turnos'+esc(metaExtra)+'<br/>'+esc(c.result||'')+'</div></div>'
+ }).join(''):'<div class="empty">Sin conversaciones guardadas.</div>')}
 
 document.querySelectorAll('.view-btn').forEach(b=>b.addEventListener('click',function(){switchView(this.dataset.view)}));
 function esc(s){return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')}

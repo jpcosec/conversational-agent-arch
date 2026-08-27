@@ -26,9 +26,6 @@ tags:
   - step-antonia-derivacion-medinfo
   conversation:steps.despedida:
   - step-antonia-despedida
-  conversation:steps.enrolamiento:
-  - registrar_enrolamiento
-  - step-antonia-enrolamiento
   conversation:steps.evento_adverso:
   - step-antonia-evento-adverso
   conversation:steps.journey_operativo:
@@ -115,7 +112,6 @@ tags:
   - boundary-antonia-manipulacion
   self:tools:
   - agendar_recordatorio
-  - registrar_enrolamiento
   self:whoami:
   - self-antonia
   system:laboratorio-chile:
@@ -160,7 +156,6 @@ tags:
   - gate-antonia-diagnostico
   - gate-antonia-dosis
   - gate-antonia-promesas
-  - registrar_enrolamiento
   - rule-antonia-anti-alucinacion
   - rule-antonia-clasificacion-medinfo
   - rule-antonia-clasificacion-operacional
@@ -176,7 +171,6 @@ tags:
   - step-antonia-agendar-recordatorio
   - step-antonia-derivacion-medinfo
   - step-antonia-despedida
-  - step-antonia-enrolamiento
   - step-antonia-evento-adverso
   - step-antonia-journey-operativo
   - step-antonia-onboarding
@@ -261,7 +255,6 @@ tags:
   - step-antonia-agendar-recordatorio
   - step-antonia-derivacion-medinfo
   - step-antonia-despedida
-  - step-antonia-enrolamiento
   - step-antonia-evento-adverso
   - step-antonia-journey-operativo
   - step-antonia-onboarding
@@ -276,7 +269,6 @@ tags:
   - style-antonia
   type.knowledge.tool:
   - agendar_recordatorio
-  - registrar_enrolamiento
   type.knowledge.trait:
   - trait-antonia-ansioso-aplicacion
   - trait-antonia-buena-adherencia
@@ -335,7 +327,6 @@ tags:
   - gate-antonia-diagnostico
   - gate-antonia-dosis
   - gate-antonia-promesas
-  - registrar_enrolamiento
   - rule-antonia-anti-alucinacion
   - rule-antonia-clasificacion-medinfo
   - rule-antonia-clasificacion-operacional
@@ -351,7 +342,6 @@ tags:
   - step-antonia-agendar-recordatorio
   - step-antonia-derivacion-medinfo
   - step-antonia-despedida
-  - step-antonia-enrolamiento
   - step-antonia-evento-adverso
   - step-antonia-journey-operativo
   - step-antonia-onboarding
@@ -733,15 +723,6 @@ documents:
     - system:laboratorio-chile
     - type.knowledge.tool
     - workspace.knowledge
-  registrar_enrolamiento:
-    model: ToolAtom
-    path: atoms/tool-antonia-registrar-enrolamiento.md
-    tags:
-    - conversation:steps.enrolamiento
-    - self:tools
-    - system:laboratorio-chile
-    - type.knowledge.tool
-    - workspace.knowledge
   trait-antonia-primera-vez:
     model: TraitAtom
     path: atoms/trait-antonia-primera-vez.md
@@ -867,14 +848,6 @@ documents:
     path: atoms/step-antonia-validacion-policy-gate.md
     tags:
     - conversation:steps.validacion_policy_gate
-    - system:laboratorio-chile
-    - type.knowledge.step
-    - workspace.knowledge
-  step-antonia-enrolamiento:
-    model: ConversationStep
-    path: atoms/step-antonia-enrolamiento.md
-    tags:
-    - conversation:steps.enrolamiento
     - system:laboratorio-chile
     - type.knowledge.step
     - workspace.knowledge

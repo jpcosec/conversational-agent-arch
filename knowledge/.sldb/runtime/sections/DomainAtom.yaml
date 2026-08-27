@@ -420,3 +420,768 @@ documents:
     level: 2
     line_start: 788
     line_end: 789
+- doc_name: atom-antonia-meddra
+  sections:
+  - path: meddra-diccionario-m-dico-regulatorio
+    title: "MedDRA: diccionario m\xE9dico regulatorio"
+    breadcrumbs:
+    - "MedDRA: diccionario m\xE9dico regulatorio"
+    about:
+    - "MedDRA: diccionario m\xE9dico regulatorio"
+    - meddra diccionario m dico regulatorio
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: meddra-diccionario-m-dico-regulatorio
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: meddra-diccionario-m-dico-regulatorio/answer
+    title: Answer
+    breadcrumbs:
+    - "MedDRA: diccionario m\xE9dico regulatorio"
+    - Answer
+    about:
+    - "MedDRA: diccionario m\xE9dico regulatorio"
+    - meddra diccionario m dico regulatorio
+    - Answer
+    - answer
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-ea
+  sections:
+  - path: efecto-adverso-definici-n
+    title: "Efecto adverso: definici\xF3n"
+    breadcrumbs:
+    - "Efecto adverso: definici\xF3n"
+    about:
+    - "Efecto adverso: definici\xF3n"
+    - efecto adverso definici n
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: efecto-adverso-definici-n
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: efecto-adverso-definici-n/answer
+    title: Answer
+    breadcrumbs:
+    - "Efecto adverso: definici\xF3n"
+    - Answer
+    about:
+    - "Efecto adverso: definici\xF3n"
+    - efecto adverso definici n
+    - Answer
+    - answer
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-ea-administracion
+  sections:
+  - path: aplicaci-n-correcta-y-mala-praxis
+    title: "Aplicaci\xF3n correcta y mala praxis"
+    breadcrumbs:
+    - "Aplicaci\xF3n correcta y mala praxis"
+    about:
+    - "Aplicaci\xF3n correcta y mala praxis"
+    - aplicaci n correcta y mala praxis
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: aplicaci-n-correcta-y-mala-praxis
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: aplicaci-n-correcta-y-mala-praxis/answer
+    title: Answer
+    breadcrumbs:
+    - "Aplicaci\xF3n correcta y mala praxis"
+    - Answer
+    about:
+    - "Aplicaci\xF3n correcta y mala praxis"
+    - aplicaci n correcta y mala praxis
+    - Answer
+    - answer
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-ea-esperados
+  sections:
+  - path: efectos-esperados-de-selfix
+    title: Efectos esperados de Selfix
+    breadcrumbs:
+    - Efectos esperados de Selfix
+    about:
+    - Efectos esperados de Selfix
+    - efectos esperados de selfix
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: efectos-esperados-de-selfix
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: efectos-esperados-de-selfix/answer
+    title: Answer
+    breadcrumbs:
+    - Efectos esperados de Selfix
+    - Answer
+    about:
+    - Efectos esperados de Selfix
+    - efectos esperados de selfix
+    - Answer
+    - answer
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.evento
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-gamp5
+  sections:
+  - path: gamp-5-validaci-n-de-software-pharma
+    title: "GAMP 5: validaci\xF3n de software pharma"
+    breadcrumbs:
+    - "GAMP 5: validaci\xF3n de software pharma"
+    about:
+    - "GAMP 5: validaci\xF3n de software pharma"
+    - gamp 5 validaci n de software pharma
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: gamp-5-validaci-n-de-software-pharma
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: gamp-5-validaci-n-de-software-pharma/answer
+    title: Answer
+    breadcrumbs:
+    - "GAMP 5: validaci\xF3n de software pharma"
+    - Answer
+    about:
+    - "GAMP 5: validaci\xF3n de software pharma"
+    - gamp 5 validaci n de software pharma
+    - Answer
+    - answer
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-gamp5-agile
+  sections:
+  - path: gamp-5-acepta-pruebas-automatizadas
+    title: GAMP 5 acepta pruebas automatizadas
+    breadcrumbs:
+    - GAMP 5 acepta pruebas automatizadas
+    about:
+    - GAMP 5 acepta pruebas automatizadas
+    - gamp 5 acepta pruebas automatizadas
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: gamp-5-acepta-pruebas-automatizadas
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: gamp-5-acepta-pruebas-automatizadas/answer
+    title: Answer
+    breadcrumbs:
+    - GAMP 5 acepta pruebas automatizadas
+    - Answer
+    about:
+    - GAMP 5 acepta pruebas automatizadas
+    - gamp 5 acepta pruebas automatizadas
+    - Answer
+    - answer
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-gamp5-alcoa
+  sections:
+  - path: integridad-de-datos-alcoa
+    title: Integridad de datos (ALCOA+)
+    breadcrumbs:
+    - Integridad de datos (ALCOA+)
+    about:
+    - Integridad de datos (ALCOA+)
+    - integridad de datos alcoa
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: integridad-de-datos-alcoa
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: integridad-de-datos-alcoa/answer
+    title: Answer
+    breadcrumbs:
+    - Integridad de datos (ALCOA+)
+    - Answer
+    about:
+    - Integridad de datos (ALCOA+)
+    - integridad de datos alcoa
+    - Answer
+    - answer
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.compliance
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-ime
+  sections:
+  - path: ime-eventos-m-dicos-importantes
+    title: "IME: eventos m\xE9dicos importantes"
+    breadcrumbs:
+    - "IME: eventos m\xE9dicos importantes"
+    about:
+    - "IME: eventos m\xE9dicos importantes"
+    - ime eventos m dicos importantes
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: ime-eventos-m-dicos-importantes
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: ime-eventos-m-dicos-importantes/answer
+    title: Answer
+    breadcrumbs:
+    - "IME: eventos m\xE9dicos importantes"
+    - Answer
+    about:
+    - "IME: eventos m\xE9dicos importantes"
+    - ime eventos m dicos importantes
+    - Answer
+    - answer
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-ime-catalogo
+  sections:
+  - path: se-ales-de-alarma-tipo-ime
+    title: "Se\xF1ales de alarma tipo IME"
+    breadcrumbs:
+    - "Se\xF1ales de alarma tipo IME"
+    about:
+    - "Se\xF1ales de alarma tipo IME"
+    - se ales de alarma tipo ime
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: se-ales-de-alarma-tipo-ime
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: se-ales-de-alarma-tipo-ime/answer
+    title: Answer
+    breadcrumbs:
+    - "Se\xF1ales de alarma tipo IME"
+    - Answer
+    about:
+    - "Se\xF1ales de alarma tipo IME"
+    - se ales de alarma tipo ime
+    - Answer
+    - answer
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-ime-grave-automatico
+  sections:
+  - path: ime-grave-autom-tico
+    title: "IME = grave autom\xE1tico"
+    breadcrumbs:
+    - "IME = grave autom\xE1tico"
+    about:
+    - "IME = grave autom\xE1tico"
+    - ime grave autom tico
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: ime-grave-autom-tico
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: ime-grave-autom-tico/answer
+    title: Answer
+    breadcrumbs:
+    - "IME = grave autom\xE1tico"
+    - Answer
+    about:
+    - "IME = grave autom\xE1tico"
+    - ime grave autom tico
+    - Answer
+    - answer
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.ime
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-meddra-alcance
+  sections:
+  - path: por-qu-no-codifico-meddra
+    title: "Por qu\xE9 NO codifico MedDRA"
+    breadcrumbs:
+    - "Por qu\xE9 NO codifico MedDRA"
+    about:
+    - "Por qu\xE9 NO codifico MedDRA"
+    - por qu no codifico meddra
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: por-qu-no-codifico-meddra
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: por-qu-no-codifico-meddra/answer
+    title: Answer
+    breadcrumbs:
+    - "Por qu\xE9 NO codifico MedDRA"
+    - Answer
+    about:
+    - "Por qu\xE9 NO codifico MedDRA"
+    - por qu no codifico meddra
+    - Answer
+    - answer
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-meddra-jerarquia
+  sections:
+  - path: niveles-meddra-llt-pt-soc
+    title: "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    breadcrumbs:
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    about:
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    - niveles meddra llt pt soc
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: niveles-meddra-llt-pt-soc
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: niveles-meddra-llt-pt-soc/answer
+    title: Answer
+    breadcrumbs:
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    - Answer
+    about:
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    - niveles meddra llt pt soc
+    - Answer
+    - answer
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-meddra-verbatim
+  sections:
+  - path: verbatim-la-palabra-cruda-del-paciente
+    title: 'Verbatim: la palabra cruda del paciente'
+    breadcrumbs:
+    - 'Verbatim: la palabra cruda del paciente'
+    about:
+    - 'Verbatim: la palabra cruda del paciente'
+    - verbatim la palabra cruda del paciente
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: verbatim-la-palabra-cruda-del-paciente
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: verbatim-la-palabra-cruda-del-paciente/answer
+    title: Answer
+    breadcrumbs:
+    - 'Verbatim: la palabra cruda del paciente'
+    - Answer
+    about:
+    - 'Verbatim: la palabra cruda del paciente'
+    - verbatim la palabra cruda del paciente
+    - Answer
+    - answer
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.meddra
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-triage
+  sections:
+  - path: triage-ordenar-por-urgencia
+    title: 'Triage: ordenar por urgencia'
+    breadcrumbs:
+    - 'Triage: ordenar por urgencia'
+    about:
+    - 'Triage: ordenar por urgencia'
+    - triage ordenar por urgencia
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: triage-ordenar-por-urgencia
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: triage-ordenar-por-urgencia/answer
+    title: Answer
+    breadcrumbs:
+    - 'Triage: ordenar por urgencia'
+    - Answer
+    about:
+    - 'Triage: ordenar por urgencia'
+    - triage ordenar por urgencia
+    - Answer
+    - answer
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-triage-colas
+  sections:
+  - path: las-3-colas-de-clasificaci-n
+    title: "Las 3 colas de clasificaci\xF3n"
+    breadcrumbs:
+    - "Las 3 colas de clasificaci\xF3n"
+    about:
+    - "Las 3 colas de clasificaci\xF3n"
+    - las 3 colas de clasificaci n
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: las-3-colas-de-clasificaci-n
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: las-3-colas-de-clasificaci-n/answer
+    title: Answer
+    breadcrumbs:
+    - "Las 3 colas de clasificaci\xF3n"
+    - Answer
+    about:
+    - "Las 3 colas de clasificaci\xF3n"
+    - las 3 colas de clasificaci n
+    - Answer
+    - answer
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-triage-limites
+  sections:
+  - path: lo-que-el-triage-no-hace
+    title: Lo que el triage NO hace
+    breadcrumbs:
+    - Lo que el triage NO hace
+    about:
+    - Lo que el triage NO hace
+    - lo que el triage no hace
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: lo-que-el-triage-no-hace
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: lo-que-el-triage-no-hace/answer
+    title: Answer
+    breadcrumbs:
+    - Lo que el triage NO hace
+    - Answer
+    about:
+    - Lo que el triage NO hace
+    - lo que el triage no hace
+    - Answer
+    - answer
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+- doc_name: atom-antonia-triage-validez
+  sections:
+  - path: los-4-criterios-de-validez-de-un-reporte
+    title: Los 4 criterios de validez de un reporte
+    breadcrumbs:
+    - Los 4 criterios de validez de un reporte
+    about:
+    - Los 4 criterios de validez de un reporte
+    - los 4 criterios de validez de un reporte
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: los-4-criterios-de-validez-de-un-reporte
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: los-4-criterios-de-validez-de-un-reporte/answer
+    title: Answer
+    breadcrumbs:
+    - Los 4 criterios de validez de un reporte
+    - Answer
+    about:
+    - Los 4 criterios de validez de un reporte
+    - los 4 criterios de validez de un reporte
+    - Answer
+    - answer
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:seguridad.triage
+    - system:laboratorio-chile
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789

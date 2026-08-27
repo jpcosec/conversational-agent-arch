@@ -14,6 +14,27 @@ from .base import (
     Tool,
     ToolCall,
 )
+from .gate import (
+    GateAgent,
+    GateVerdict,
+    PREFILTER_CRITERION_ID,
+    render_gate_criteria,
+    response_claims_completed_action,
+)
+from .orchestrator_agent import (
+    OrchestratorAgent,
+    OrchestratorDecision,
+    ToolCallDecision,
+    apply_transition_guard,
+    render_orchestrator_flow,
+)
+from .router import (
+    RouterAgent,
+    RouterDecision,
+    BundleEntry,
+    apply_security_floor,
+    render_router_instruction,
+)
 
 __all__ = [
     "Agent",
@@ -25,4 +46,19 @@ __all__ = [
     "AfterModelCallback",
     "BeforeToolCallback",
     "AfterToolCallback",
+    "GateAgent",
+    "GateVerdict",
+    "PREFILTER_CRITERION_ID",
+    "render_gate_criteria",
+    "response_claims_completed_action",
+    "OrchestratorAgent",
+    "OrchestratorDecision",
+    "ToolCallDecision",
+    "apply_transition_guard",
+    "render_orchestrator_flow",
+    "RouterAgent",
+    "RouterDecision",
+    "BundleEntry",
+    "apply_security_floor",
+    "render_router_instruction",
 ]

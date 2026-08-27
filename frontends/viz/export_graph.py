@@ -21,8 +21,9 @@ from pathlib import Path
 
 import numpy as np
 
-from knowledge_base.operations import KnowledgeOperations, ALL_MODELS
-from sldb.runtime.validation import extract_model_data
+from knowledge_base.operations import ALL_MODELS
+from sldb.cli.model_utils import resolve_model_ref
+from sldb.store.query import load_runtime_documents
 
 # Paleta alineada con kb-ui (taxonomy_explorer).
 FAMILY_COLORS = {
@@ -39,34 +40,41 @@ DEFAULT_MAX_EDGES_PER_NODE = 3
 
 
 def _load_atoms(kb: str, pythonpath: str) -> list[dict]:
-    ops = KnowledgeOperations(kb, pythonpath=pythonpath)
+    """Carga atoms + embeddings vía la capa de librería de SLDB.
+
+    Antes llamaba a ``KnowledgeOperations._find_records()`` (un método
+    "privado" de otro módulo) y después volvía a leer/parsear cada ``.md``
+    con ``extract_model_data`` -- un segundo parseo redundante, porque
+    ``_find_records()`` ya trae el payload resuelto por documento (vía
+    ``load_runtime_documents`` internamente). ``KnowledgeOperations`` no
+    expone una API pública que devuelva "todos los docs de todos los
+    modelos con su payload" (sus métodos públicos son búsquedas puntuales:
+    ``show``, ``explore_multi``, ``fetch``-equivalentes por tipo), así que
+    en vez de forzar ese caso por una API pensada para otra cosa, esto usa
+    directamente la misma capa de librería que ``KnowledgeOperations``
+    usa por dentro (``sldb.store.query.load_runtime_documents``), sin pasar
+    por ``knowledge_base`` en absoluto.
+    """
     by_class = {cls.__name__.lower(): cls for cls in ALL_MODELS}
-    kb_root = Path(kb)
+    store_path = Path(kb).resolve() / ".sldb"
+    docs = load_runtime_documents(store_path, resolve_model_ref, pythonpath=pythonpath)
+
     atoms = []
-    for r in ops._find_records():
-        if r.kind != "doc" or not r.path:
-            continue
-        model_cls = by_class.get((r.model_name or "").lower())
+    for d in docs:
+        model_cls = by_class.get((d.model_name or "").lower())
         if model_cls is None:
             continue
-        doc_path = kb_root / r.path
-        if not doc_path.exists():
-            continue
-        try:
-            payload = extract_model_data(model_cls, doc_path.read_text(encoding="utf-8"))
-        except Exception:
-            continue
-        emb = payload.get("embedding")
+        emb = d.payload.get("embedding")
         if not emb:
             continue
         family = model_cls.family()
         atoms.append({
-            "id": r.name,
-            "title": payload.get("title", r.name),
-            "summary": payload.get("summary", ""),
+            "id": d.name,
+            "title": d.payload.get("title", d.name),
+            "summary": d.payload.get("summary", ""),
             "model": model_cls.__name__,
             "family": family,
-            "tags": payload.get("tags", []),
+            "tags": d.payload.get("tags", []),
             "embedding": np.asarray(emb, dtype=np.float64),
         })
     return atoms

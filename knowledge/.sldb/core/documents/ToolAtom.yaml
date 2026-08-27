@@ -1,10 +1,20 @@
 documents:
-- name: tool-antonia-agendar-recordatorio
+- name: agendar_recordatorio
   path: atoms/tool-antonia-agendar-recordatorio.md
   hash_c: 075d4e9fa02df5ab188e261929fd46d4d2333daead3cb8c9f26bb79d839e23a7
   hash_d: 64f1b3a56166f2d112da88d108bf02466a1fe6a370ef559789c5acc857a8437f
   semantic_tags:
   - conversation:steps.agendar_recordatorio
+  - self:tools
+  - system:laboratorio-chile
+  - type.knowledge.tool
+  - workspace.knowledge
+- name: registrar_enrolamiento
+  path: atoms/tool-antonia-registrar-enrolamiento.md
+  hash_c: 58320dab5c3b065e0730f4d1d9f7181eee72504afee1dd6e8ace5a3787d91471
+  hash_d: 610dbcf0fcae3798421081fe8a281e118edab2e393b9f6fefd7cc81a4e987037
+  semantic_tags:
+  - conversation:steps.enrolamiento
   - self:tools
   - system:laboratorio-chile
   - type.knowledge.tool

@@ -6,19 +6,14 @@ llamadas para que los tests afirmen sobre lo que el runtime le pidio al LLM.
 """
 from __future__ import annotations
 
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
+from kb_agent.agent import decide_turn
+from kb_agent.agents.orchestrator_agent import apply_transition_guard
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.perfilador.extractor import TraitCandidate
-from frontends.chat.demo_data import (
-    build_reply_text,
-    demo_context_items,
-    extract_slots,
-    infer_intent,
-    next_flow_node,
-)
 
 
 class FakeConversador:
@@ -40,6 +35,15 @@ class FakeConversador:
         trait_ids = [t["trait_id"] if isinstance(t, dict) else str(t) for t in traits]
         suffix = f" (perfil: {', '.join(trait_ids)})" if trait_ids else ""
         return f"[nl] {' | '.join(facts[:2])}{suffix}"
+
+
+from frontends.chat.demo_data import (  # noqa: E402
+    build_reply_text,
+    demo_context_items,
+    extract_slots,
+    infer_intent,
+    next_flow_node,
+)
 
 
 class DemoStateMachineConversador:
@@ -92,6 +96,36 @@ class DemoStateMachineConversador:
                 "content": f"Recordatorio semanal agendado para {session['slots'].get('dia')} a las {session['slots'].get('hora')}",
             }
 
+        bundle = [
+            {"doc_id": i["atom_id"], "family": i.get("family"), "motivo": i.get("motivo"), "score": i.get("score")}
+            for i in items
+        ]
+        prev_node = session.get("flow_node") or "bienvenida"
+        allowed = {
+            "bienvenida": ["consulta"],
+            "consulta": ["obtencion_datos", "despedida"],
+            "obtencion_datos": ["tool", "consulta"],
+            "tool": ["despedida"],
+            "despedida": [],
+        }.get(prev_node, [])
+        decisions = {
+            "ruteador": {"bundle": bundle},
+            "orquestador": {
+                "kind": kind,
+                "reason": {
+                    "tool_call": "intención de recordatorio con día y hora confirmados",
+                    "fallback": "sin grounding suficiente para responder",
+                    "nl": "respuesta en lenguaje natural con contexto disponible",
+                }.get(kind, ""),
+                "step_target_vetado": None,
+            },
+            "step": {"before": prev_node, "after": flow_node, "allowed_transitions": allowed},
+            "conversador": {"draft": reply_text},
+            "gate": (
+                {"skipped": kind} if kind != "nl"
+                else {"approved": True, "action": "pass", "reasons": ["sin criterios de bloqueo activados"], "criterion_ids": []}
+            ),
+        }
         raw = {
             "question": user_message,
             "reply_text": reply_text,
@@ -100,9 +134,10 @@ class DemoStateMachineConversador:
             "scenario_source": "demo_mode",
             "state_trace": state_trace,
             "flow_node": flow_node,
-            "allowed_transitions": [e["target"] for e in []],
+            "allowed_transitions": allowed,
             "traits_after": list(session["traits"]),
             "system_turn": system_turn,
+            "decisions": decisions,
             "context": {
                 "scenario": "psp-selfix-demo",
                 "atom_ids": [i["atom_id"] for i in items],
@@ -115,10 +150,7 @@ class DemoStateMachineConversador:
                 ],
                 "grounding_atoms": [i["atom_id"] for i in items if i.get("grounds_step")],
                 "is_empty": kind == "fallback",
-                "bundle": [
-                    {"doc_id": i["atom_id"], "motivo": i.get("motivo"), "score": i.get("score")}
-                    for i in items
-                ],
+                "bundle": bundle,
             },
         }
         session["flow_node"] = "despedida" if kind == "tool_call" else flow_node
@@ -126,6 +158,169 @@ class DemoStateMachineConversador:
         session["history"].append({"role": "assistant", "content": reply_text})
         self.calls.append(raw)
         return raw
+
+
+class FakeGate:
+    """Veredicto determinista para tests offline (``GateAgent``, fase 2.3).
+
+    ``Orchestrator.__init__`` construye un ``GateAgent`` real (que necesita
+    un cliente LLM) cuando no se inyecta ``gate=...``. Este doble evita esa
+    construccion -- y cualquier llamada a un modelo -- en
+    ``offline_orchestrator``, igual que ``FakeConversador``/``FakeTraitMapper``
+    evitan la llamada real para el resto del turno.
+
+    Por defecto aprueba todo (``approved=True``). ``verdict_fn`` permite
+    simular un rechazo del juez; ``raises=True`` hace que ``evaluate`` lance,
+    para ejercer el fail-open de ``Orchestrator._policy_gate``.
+    """
+
+    def __init__(
+        self,
+        verdict_fn: Callable[..., dict[str, Any]] | None = None,
+        *,
+        raises: bool = False,
+    ) -> None:
+        self.calls: list[dict[str, Any]] = []
+        self._verdict_fn = verdict_fn
+        self._raises = raises
+
+    def evaluate(
+        self,
+        response: str,
+        *,
+        tool_called: bool,
+        tool_name: str | None = None,
+        step: str | None = None,
+        session_tools_called: Sequence[str] = (),
+    ) -> dict[str, Any]:
+        self.calls.append(
+            {
+                "response": response,
+                "tool_called": tool_called,
+                "tool_name": tool_name,
+                "step": step,
+                "session_tools_called": list(session_tools_called),
+            }
+        )
+        if self._raises:
+            raise RuntimeError("FakeGate: fallo simulado del juez")
+        if self._verdict_fn is not None:
+            return self._verdict_fn(response, tool_called=tool_called, tool_name=tool_name, step=step)
+        return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
+
+
+class FakeOrchestratorAgent:
+    """Decision determinista para tests offline (``OrchestratorAgent``, fase 2.4).
+
+    ``Orchestrator.__init__`` construye un ``OrchestratorAgent`` real (que
+    necesita un cliente LLM) cuando no se inyecta ``orchestrator_agent=...``.
+    Este doble evita esa construccion -- y cualquier llamada a un modelo --
+    en ``offline_orchestrator``, igual que ``FakeGate``/``FakeConversador``
+    evitan la llamada real para el resto del turno.
+
+    Por defecto DELEGA en ``kb_agent.agent.decide_turn`` (la policy pura sin
+    LLM, previa a fase 2.4): asi el runtime offline sigue produciendo
+    EXACTAMENTE las mismas decisiones que antes (tool_call por keywords,
+    fallback si no hay grounding, nl en el resto) sin tocar los tests que ya
+    ejercitan ese comportamiento -- ``decide_turn`` es, en los hechos, el
+    fallback deterministico "sin LLM" que describe el plan de fase 2.4.
+
+    Pasale ``decision_fn`` para forzar una decision arbitraria (p.ej. un
+    ``kind: "tool_call"`` que ``decide_turn`` nunca elegiria por keywords, o
+    un ``step_target`` fuera de ``allowed_transitions`` para ejercer el
+    veto). En AMBOS casos (default y ``decision_fn``) se aplica la MISMA
+    guardia de codigo que usa el ``OrchestratorAgent`` real
+    (``apply_transition_guard``): el fake no es una via para saltarse la
+    guardia, es otra fuente de decision sujeta a ella.
+    """
+
+    def __init__(self, decision_fn: Callable[[dict[str, Any]], dict[str, Any]] | None = None) -> None:
+        self.calls: list[dict[str, Any]] = []
+        self._decision_fn = decision_fn
+
+    def decide(self, compiled_context: dict[str, Any]) -> dict[str, Any]:
+        self.calls.append(compiled_context)
+        allowed_transitions = [str(t) for t in (compiled_context.get("allowed_transitions") or [])]
+
+        raw: dict[str, Any] = (
+            dict(self._decision_fn(compiled_context))
+            if self._decision_fn is not None
+            else dict(decide_turn(compiled_context))
+        )
+        raw.setdefault("reason", "decision determinista (fallback sin LLM: decide_turn)")
+
+        step_target, vetoed = apply_transition_guard(raw.pop("flow_target", None), allowed_transitions)
+        result: dict[str, Any] = {"kind": raw.get("kind", "nl"), "reason": raw["reason"]}
+        if "function_call" in raw:
+            result["function_call"] = raw["function_call"]
+        if step_target:
+            result["flow_target"] = step_target
+        if vetoed:
+            result["step_target_vetado"] = vetoed
+        return result
+
+
+class FakeRouterAgent:
+    """Bundle determinista para tests offline (``RouterAgent``, fase 2.2).
+
+    ``Orchestrator.__init__`` construye un ``RouterAgent`` real (que necesita
+    un cliente LLM) cuando no se inyecta ``router_agent=...``. Este doble
+    evita esa construccion -- y cualquier llamada a un modelo -- en
+    ``offline_orchestrator``, igual que ``FakeGate``/``FakeOrchestratorAgent``
+    evitan la llamada real para el resto del turno.
+
+    Por defecto (``bundle_fn=None``, ``raises=True``) SIMULA que no hay LLM
+    disponible: ``.route()`` lanza. En un test offline eso es literalmente
+    cierto -- no hay credenciales ni red -- asi que el comportamiento fiel es
+    el mismo que en produccion sin agente: ``ContextCompiler`` cae al bundle
+    deterministico ya verificado (``ContextCompiler._build_bundle``),
+    EXACTAMENTE el mismo bundle (mismos motivos, mismo tope) que producia el
+    runtime antes de esta fase. Esto preserva sin cambios las aserciones
+    existentes sobre el bundle en los tests de cableado (p.ej. el motivo
+    "grounding de steps.onboarding" en ``test_orchestrator_wiring.py``) sin
+    tener que tocarlas.
+
+    Pasale ``bundle_fn`` (callable que recibe los mismos kwargs que
+    ``RouterAgent.route`` y devuelve una lista de dicts ``{doc_id, motivo,
+    ...}``) para simular que el agente SI respondio -- asi se ejercita el
+    camino "agent" completo: el piso de seguridad se sigue forzando por
+    codigo (``kb_agent.agents.router.apply_security_floor``, aplicado por
+    ``ContextCompiler``) aunque ``bundle_fn`` no incluya ninguna regla de
+    seguridad, y los ids que no resuelvan contra la KB real se descartan.
+    """
+
+    def __init__(
+        self,
+        bundle_fn: Callable[..., list[dict[str, Any]]] | None = None,
+        *,
+        raises: bool = True,
+    ) -> None:
+        self.calls: list[dict[str, Any]] = []
+        self._bundle_fn = bundle_fn
+        self._raises = raises and bundle_fn is None
+
+    def route(
+        self,
+        *,
+        question: str,
+        active_step: str | None,
+        grounding_atoms: Sequence[str] = (),
+        user_traits: Sequence[Mapping[str, Any]] = (),
+        history: Sequence[Mapping[str, Any]] = (),
+    ) -> list[dict[str, Any]]:
+        call = {
+            "question": question,
+            "active_step": active_step,
+            "grounding_atoms": list(grounding_atoms),
+            "user_traits": list(user_traits),
+            "history": list(history),
+        }
+        self.calls.append(call)
+        if self._raises:
+            raise RuntimeError("FakeRouterAgent: sin LLM disponible (offline)")
+        if self._bundle_fn is not None:
+            return list(self._bundle_fn(**call))
+        return []
 
 
 class FakeTraitMapper:
@@ -199,6 +394,9 @@ def offline_orchestrator(
     *,
     conversador: FakeConversador | None = None,
     trait_mapper: FakeTraitMapper | None = None,
+    gate: FakeGate | None = None,
+    orchestrator_agent: FakeOrchestratorAgent | None = None,
+    router_agent: FakeRouterAgent | None = None,
     tool_handlers: dict[str, Any] | None = None,
     **kwargs: Any,
 ) -> Orchestrator:
@@ -208,6 +406,9 @@ def offline_orchestrator(
         db_url=db_url,
         conversador=conversador or FakeConversador(),
         trait_mapper=trait_mapper or FakeTraitMapper(VEGETARIAN_MATCH),
+        gate=gate or FakeGate(),
+        orchestrator_agent=orchestrator_agent or FakeOrchestratorAgent(),
+        router_agent=router_agent or FakeRouterAgent(),
         tool_handlers=tool_handlers,
         **kwargs,
     )

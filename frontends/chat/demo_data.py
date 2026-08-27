@@ -727,20 +727,20 @@ def demo_context_items(intent: str, flow_node: str, session: dict[str, Any], mes
         seen.add(atom_id)
         atom = DEMO_ATOMS[atom_id]
         motivo = {
-            "self-antonia": "Base de identidad del agente para mantener alcance y tono.",
-            "style-antonia": "Base de estilo para responder corto y cálido.",
-            "step-antonia-saludo": "Paso de flujo relevante para ubicar el turno actual.",
-            "step-antonia-registro-estado": "Paso activo de clasificación de intención.",
-            "step-antonia-agendar-recordatorio": "Paso activo de captura de slots antes de tool.",
-            "step-antonia-despedida": "Paso terminal para cierre del turno.",
-            "atom-antonia-aplicacion": "Grounding directo sobre aplicación semanal y conservación.",
-            "atom-antonia-primeras-semanas": "Refuerzo contextual para onboarding práctico.",
-            "rule-antonia-eventos-adversos": "Regla de seguridad activada por palabras de malestar o reacción.",
-            "rule-antonia-no-deducir": "Regla activada porque faltan slots para ejecutar la tool.",
-            "trait-antonia-ansioso-aplicacion": "Trait activado por señales de miedo o nervios.",
-            "trait-antonia-prefiere-recordatorios": "Trait activado por preferencia práctica de adherencia.",
-            "agendar_recordatorio": "Tool declarada y visible para el orquestador demo.",
-            "tool-antonia-derivacion-medinfo": "Capacidad de handoff visible por contexto de seguridad.",
+            "self-antonia": "Entra por piso de seguridad: identidad base del agente.",
+            "style-antonia": "Entra por piso de seguridad: estilo base de redacción.",
+            "step-antonia-saludo": "grounding del step: ubica el turno en el flujo.",
+            "step-antonia-registro-estado": "grounding del step activo de clasificación.",
+            "step-antonia-agendar-recordatorio": "grounding del step activo de captura de slots.",
+            "step-antonia-despedida": "grounding del step terminal de cierre.",
+            "atom-antonia-aplicacion": "Entra por similitud con la consulta de aplicación.",
+            "atom-antonia-primeras-semanas": "Entra por similitud: refuerzo de onboarding.",
+            "rule-antonia-eventos-adversos": "Entra por similitud con señales de malestar o reacción.",
+            "rule-antonia-no-deducir": "grounding: regla de integridad porque faltan slots.",
+            "trait-antonia-ansioso-aplicacion": "trait del usuario activado por señales de ansiedad.",
+            "trait-antonia-prefiere-recordatorios": "trait del usuario por preferencia de adherencia.",
+            "agendar_recordatorio": "grounding: tool declarada y visible para el orquestador.",
+            "tool-antonia-derivacion-medinfo": "Entra por similitud: capacidad de handoff por seguridad.",
         }.get(atom_id, "Documento relevante para el turno.")
         score = None if atom["family"] in {"self", "conversation", "user"} else 0.98 if intent != "fallback" else 0.42
         ordered.append(
