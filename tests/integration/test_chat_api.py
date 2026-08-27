@@ -13,7 +13,7 @@ from twilio.request_validator import RequestValidator
 
 from kb_agent.project_config import load_project_config
 from kb_agent.tools import load_tool_handlers
-from frontends.chat.app import create_app
+from frontends.chat.app import OLD_ROUTES, create_app
 from tests.support.fakes import offline_orchestrator
 
 TOKEN = "twilio-test-token"
@@ -36,7 +36,10 @@ def test_health_and_config_reflect_project_config(client: TestClient) -> None:
     assert client.get("/api/config").json() == cfg.to_public_dict()
 
 
-@pytest.mark.parametrize("path", ["/", "/conversation_flow_editor", "/profiling_viewer", "/taxonomy_explorer", "/viz"])
+VIEW_ROUTES = ["/", "/flow", "/mindmap", "/users"]
+
+
+@pytest.mark.parametrize("path", VIEW_ROUTES)
 def test_static_uis_are_served(client: TestClient, path: str) -> None:
     res = client.get(path)
     assert res.status_code == 200 and "<!doctype html>" in res.text.lower()
@@ -59,12 +62,22 @@ def test_shared_theme_css_is_served(client: TestClient) -> None:
 NAV_LINKS = ["/", "/flow", "/mindmap", "/users"]
 
 
-@pytest.mark.parametrize("path", ["/", "/conversation_flow_editor", "/profiling_viewer", "/taxonomy_explorer", "/viz"])
+@pytest.mark.parametrize("path", VIEW_ROUTES)
 def test_pages_link_shared_theme_and_nav(client: TestClient, path: str) -> None:
     html = client.get(path).text
     assert '/static/theme.css' in html
     for link in NAV_LINKS:
         assert f'href="{link}"' in html
+
+
+def test_old_routes_redirect_301(client: TestClient) -> None:
+    """Las rutas viejas (con y sin barra final) responden 301 al destino nuevo, sin seguir el redirect."""
+    assert OLD_ROUTES  # el mapeo vive en frontends/chat/app.py; si desaparece, este test deja de tener sentido
+    for old, new in OLD_ROUTES.items():
+        for path in (old, old + "/"):
+            res = client.get(path, follow_redirects=False)
+            assert res.status_code == 301, f"{path} -> {res.status_code}"
+            assert res.headers["location"] == new, f"{path} -> {res.headers.get('location')}"
 
 
 def test_atom_endpoint_reads_store(client: TestClient) -> None:

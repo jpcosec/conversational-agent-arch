@@ -70,6 +70,14 @@ SHARED_DIR = PROJECT_ROOT / "frontends" / "shared"
 
 UI_CHANNEL = "ui"
 
+# Rutas viejas de las vistas -> destino actual (301, con y sin barra final).
+OLD_ROUTES = {
+    "/conversation_flow_editor": "/flow",
+    "/taxonomy_explorer": "/mindmap",
+    "/viz": "/mindmap",
+    "/profiling_viewer": "/users",
+}
+
 
 class ChatRequest(BaseModel):
     message: str
@@ -455,13 +463,6 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             app.state.viz_cache = cache
 
         return JSONResponse({"kb": cfg.name, **graph})
-
-    OLD_ROUTES = {
-        "/conversation_flow_editor": "/flow",
-        "/taxonomy_explorer": "/mindmap",
-        "/viz": "/mindmap",
-        "/profiling_viewer": "/users",
-    }
 
     def _redirect_factory(dest: str):
         async def _redirect() -> RedirectResponse:
