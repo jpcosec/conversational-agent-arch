@@ -18,3 +18,4 @@ runs/subagents/index.jsonl
 desk/spec2viz/build/
 .sldb/runtime/knowledge_graph.nx.json
 .sldb/runtime/knowledge_graph.kg.json
+.pytest_cache/
