@@ -1,7 +1,7 @@
 name: ci
 
 # Dos capas:
-#   static  -> gate liviano sin deps (compila, config, no-hardcode).
+#   static  -> gate liviano sin deps (compila, config, docs proyectados, no-hardcode).
 #   suite   -> suite offline real (unit + integration) instalando las 3 deps
 #              locales (sldb, kgdb, deskops) por git. Se pudo habilitar al
 #              publicar kgdb (jpcosec/kgdb); antes no habia remoto y solo
@@ -38,6 +38,12 @@ jobs:
           assert cfg.get("tools"), "falta project.tools"
           print(f"negocio activo: {cfg['name']} (kb_root={cfg['kb_root']})")
           PY
+
+      # Los 4 docs de alto nivel son proyecciones de desk/bundles + desk/atoms. El
+      # script lee los atoms con stdlib (el store .sldb es la autoridad, pero no hace
+      # falta instalar sldb), asi que el drift guard corre en el gate sin deps.
+      - name: Docs proyectados sin drift
+        run: python desk/bundles/materialize.py --check
 
       - name: No hay hardcodes de negocio en el runtime
         run: |

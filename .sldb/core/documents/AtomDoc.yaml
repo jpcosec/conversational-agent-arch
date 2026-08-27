@@ -342,8 +342,8 @@ documents:
   - workspace.desk.atoms
 - name: "atom-capas-de-verificaci\xF3n-y-release"
   path: "desk/atoms/atom-capas-de-verificaci\xF3n-y-release.md"
-  hash_c: 71c4a294e35a5780fdcfc98ed69116cf7e81980dc7fa1af2ffb909437f678306
-  hash_d: cd4f52f8cd5dd2e351a6c0f44c10db3e8147687cc35d2aa50951d00b89465fcd
+  hash_c: 83e1fda4be74e5a44835006f450073084fefa4fb5b61230b5ec83c8cdb2f8dd6
+  hash_d: 4869afe52d42962dbc7d04779b2b5841c490099d976ed79b28651c0271e2b50e
   semantic_tags:
   - layer:ops
   - role:boundary
@@ -358,5 +358,14 @@ documents:
   - layer:runtime
   - role:engine
   - topic:router
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-migraciones-alembic-en-local
+  path: desk/atoms/atom-migraciones-alembic-en-local.md
+  hash_c: 69786a488d66eb06eb6bd8e84f9c715df86a5c8f9b5d8037d826fc7cc2464942
+  hash_d: 2997862a7098fc6390881ee3f74357f1ccb96fed42b2ebb2b74de30ccdfeb3a6
+  semantic_tags:
+  - layer:ops
+  - topic:alembic
   - type.knowledge.atom
   - workspace.desk.atoms

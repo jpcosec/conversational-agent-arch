@@ -12,6 +12,7 @@
 ![[atom-topologia-de-despliegue]]
 ![[atom-deploy-dev-y-mantenimiento-del-volumen]]
 ![[atom-migraciones-alembic-del-volumen]]
+![[atom-migraciones-alembic-en-local]]
 
 ## Gobernanza
 ![[atom-gobernanza-deskops]]

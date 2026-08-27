@@ -1822,3 +1822,48 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
+- doc_name: atom-migraciones-alembic-en-local
+  sections:
+  - path: migraciones-alembic-en-local
+    title: Migraciones alembic en local
+    breadcrumbs:
+    - Migraciones alembic en local
+    about:
+    - Migraciones alembic en local
+    - migraciones alembic en local
+    - layer:ops
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: migraciones-alembic-en-local
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: migraciones-alembic-en-local/answer
+    title: Answer
+    breadcrumbs:
+    - Migraciones alembic en local
+    - Answer
+    about:
+    - Migraciones alembic en local
+    - migraciones alembic en local
+    - Answer
+    - answer
+    - layer:ops
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14

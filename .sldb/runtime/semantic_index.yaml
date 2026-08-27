@@ -56,6 +56,7 @@ tags:
   - atom-estrategia-de-testing
   - atom-gobernanza-deskops
   - atom-migraciones-alembic-del-volumen
+  - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
   - atom-topologia-de-despliegue
   layer:runtime:
@@ -122,6 +123,7 @@ tags:
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
   topic:alembic:
   - atom-migraciones-alembic-del-volumen
+  - atom-migraciones-alembic-en-local
   topic:arquitectura:
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   topic:ci-release:
@@ -177,6 +179,7 @@ tags:
   - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-migraciones-alembic-del-volumen
+  - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
   - atom-modo-demo
   - atom-negocios-activos
@@ -242,6 +245,7 @@ tags:
   - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-migraciones-alembic-del-volumen
+  - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
   - atom-modo-demo
   - atom-negocios-activos
@@ -693,5 +697,13 @@ documents:
     - layer:runtime
     - role:engine
     - topic:router
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-migraciones-alembic-en-local:
+    model: AtomDoc
+    path: desk/atoms/atom-migraciones-alembic-en-local.md
+    tags:
+    - layer:ops
+    - topic:alembic
     - type.knowledge.atom
     - workspace.desk.atoms
