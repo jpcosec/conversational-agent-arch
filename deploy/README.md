@@ -64,6 +64,15 @@ se inventó ninguno — `/webhooks/twilio` responde 503 hasta que se configure.
 modal deploy deploy/modal_app.py
 ```
 
+Para un endpoint de desarrollo separado (app `kb-agent-runtime-dev`, volumen
+`kb-agent-runtime-dev-data`, mismo secret GCP) no se copia el archivo: el
+nombre sale de la variable `MODAL_APP_NAME`:
+
+```bash
+MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py
+modal app logs kb-agent-runtime-dev
+```
+
 Esto crea (si no existen) la app `kb-agent-runtime` y el Volume persistente
 `kb-agent-runtime-data` (montado en `/data` dentro del contenedor), y publica
 la función ASGI. La URL pública queda impresa al final del deploy, con forma:

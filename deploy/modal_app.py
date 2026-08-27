@@ -20,9 +20,15 @@ importar el modulo -- asi que es seguro invocarlo dentro de la funcion ASGI.
 Uso:
     modal deploy deploy/modal_app.py
     modal app logs kb-agent-runtime
+
+App/volumen separados (dev), sin copiar este archivo: el nombre de la app sale
+de ``MODAL_APP_NAME`` y el volumen es ``<app>-data``.
+    MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py
+    modal app logs kb-agent-runtime-dev
 """
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import modal
@@ -30,8 +36,10 @@ import modal
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TOOLS_ROOT = Path("/home/jp/proyectos/hum-ecosystem/tools")
 
-APP_NAME = "kb-agent-runtime"
-VOLUME_NAME = "kb-agent-runtime-data"
+#: MODAL_APP_NAME=kb-agent-runtime-dev => app y volumen (``<app>-data``) propios,
+#: mismo secret GCP. Sin la variable: produccion.
+APP_NAME = os.environ.get("MODAL_APP_NAME") or "kb-agent-runtime"
+VOLUME_NAME = f"{APP_NAME}-data"
 GCP_SECRET_NAME = "kb-agent-runtime-gcp"
 #: Secret opcional con TWILIO_AUTH_TOKEN para /webhooks/twilio. No existe hoy
 #: (no se invento uno); si se crea mas adelante, agregar

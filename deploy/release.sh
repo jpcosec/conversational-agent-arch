@@ -36,8 +36,8 @@ echo "==> Gate: suite offline (unit + integration, sin LLM)"
 SKIP_LLM_TESTS=1 python -m pytest tests/unit tests/integration -q
 
 if [[ "${SKIP_DEPLOY:-0}" != "1" ]]; then
-  echo "==> Deploy a Modal"
-  modal deploy deploy/modal_app.py
+  echo "==> Deploy a Modal (app ${MODAL_APP_NAME:-kb-agent-runtime})"
+  MODAL_APP_NAME="${MODAL_APP_NAME:-kb-agent-runtime}" modal deploy deploy/modal_app.py
 else
   echo "==> SKIP_DEPLOY=1: no se despliega"
 fi
