@@ -3,15 +3,20 @@ from __future__ import annotations
 import json
 import os
 import subprocess
-import tempfile
 import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
+from typing import Any, Iterable
 
 import yaml
 from deskops.atom_tags import default_registry_path, validate_atom_tag_namespaces
+
+from sldb.cli.model_utils import resolve_model_ref
+from sldb.runtime.validation import render_model_markdown, validate_model_input_roundtrip
+from sldb.store.io import load_store_index
+from sldb.store.layout import project_root as sldb_project_root
+from sldb.store.ops import track_document
 
 from kb_agent.ontologizador.sldb_reader import SLDBReader
 from kb_agent.reflector.reader import ReflectorHistoryRow
@@ -19,6 +24,7 @@ from kb_agent.reflector.reader import ReflectorHistoryRow
 PATTERN_MIN_COUNT = 5
 PROPOSED_STATUS = "proposed"
 SOURCE_TAG = "source:reflector"
+ATOM_MODEL_NAME = "AtomDoc"
 
 
 @dataclass(frozen=True, slots=True)
@@ -145,24 +151,30 @@ class ReflectorAtomGenerator:
         output_path = self.output_dir / f"{atom_id}.md"
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False, encoding="utf-8") as handle:
-            yaml.safe_dump(payload, handle, sort_keys=False, allow_unicode=True)
-            payload_path = Path(handle.name)
+        model_type, model_entry, store_index = self._resolve_model(ATOM_MODEL_NAME)
+        rendered = render_model_markdown(model_type, payload)
+        is_valid, details = validate_model_input_roundtrip(model_type, rendered)
+        if not is_valid:
+            raise ValueError(f"Reflector atom failed roundtrip validation: {details}")
 
-        try:
-            self._run_sldb(
-                "docs",
-                "create",
-                "--model",
-                "AtomDoc",
-                "-o",
-                str(output_path),
-                str(payload_path),
-            )
-        finally:
-            payload_path.unlink(missing_ok=True)
+        final_text = self._with_status(rendered, PROPOSED_STATUS)
+        output_path.write_text(final_text, encoding="utf-8")
+        # OJO: el "project root" del store NO es necesariamente `self.kb_root`.
+        # `Orchestrator.run_reflector` llama a este generador con
+        # `kb_root=self.repo_root` (para pythonpath) y `store_name=<ruta
+        # absoluta al .sldb del KB>`; `self.store_path` termina apuntando
+        # bien porque `Path(kb_root) / store_name_absoluto` descarta el lado
+        # izquierdo (comportamiento de pathlib con un operando absoluto), pero
+        # `self.kb_root` en ese caso queda siendo el repo root, no el
+        # directorio que CONTIENE el store. `track_document` necesita el
+        # directorio real que contiene `.sldb` (para resolver `doc.path`,
+        # relativo a él) -- se deriva del propio `store_path`, no de
+        # `self.kb_root`.
+        track_document(
+            self.store_path, sldb_project_root(self.store_path), store_index, model_type, model_entry,
+            output_path, atom_id, resolve_model_ref, self.pythonpath,
+        )
 
-        self._inject_status(output_path, PROPOSED_STATUS)
         return GeneratedAtom(
             atom_id=atom_id,
             atom_type=pattern.atom_type,
@@ -170,6 +182,23 @@ class ReflectorAtomGenerator:
             normalized_text=pattern.normalized_text,
             count=pattern.count,
         )
+
+    def _resolve_model(self, model_name: str) -> tuple[type, Any, Any]:
+        """Resuelve (model_type, model_entry, store_index) para un modelo tracked.
+
+        Equivalente en libreria a lo que ``sldb.cli.model_utils.registered_model``
+        hace para un comando CLI (sin el fallback a stores federados, que el
+        Reflector no usa), construido sobre las mismas piezas de librería que
+        ``knowledge_base/operations.py`` ya usa: ``sldb.store.io.load_store_index``
+        + ``sldb.cli.model_utils.resolve_model_ref`` (el resolvedor inyectado,
+        no la capa CLI de un solo disparo).
+        """
+        store_index = load_store_index(self.store_path)
+        entry = next((m for m in store_index.models if m.name == model_name), None)
+        if entry is None:
+            raise ValueError(f"Model '{model_name}' not registered in store {self.store_path}")
+        model_type = resolve_model_ref(entry.model_ref, self.pythonpath)
+        return model_type, entry, store_index
 
     def _payload_for_pattern(self, pattern: RecurrentPattern) -> dict[str, object]:
         atom_label = "Rule" if pattern.atom_type == "rule" else "Domain"
@@ -188,15 +217,41 @@ class ReflectorAtomGenerator:
             "provenance": "kb_agent/reflector/generator.py",
         }
 
-    def _inject_status(self, path: Path, status: str) -> None:
-        text = path.read_text(encoding="utf-8")
-        if "\nstatus:" in text.split("---", 2)[1]:
-            return
-        frontmatter_end = text.find("\n---\n", 4)
+    @staticmethod
+    def _with_status(rendered: str, status: str) -> str:
+        """Agrega ``status: <status>`` al frontmatter YA RENDERIZADO, en memoria,
+        antes de la única escritura a disco.
+
+        ``AtomDoc`` (``deskops.models:AtomDoc``) no declara un campo ``status``
+        en su ``__template__`` (a diferencia de otros modelos de deskops que sí
+        lo tienen, p.ej. ``deskops.models.routine``), así que
+        ``render_model_markdown`` no tiene forma de emitirlo: no existe una
+        llamada de librería de SLDB que produzca un campo que el modelo no
+        conoce. Tampoco se puede resolver expresándolo como TAG (el patrón que
+        usa ``knowledge_base/operations.py::promote`` para los atoms de la KB
+        real, vía ``status:proposed``/``status:active`` en ``tags``): el
+        namespace ``status`` no está en el registro de namespaces de atoms de
+        deskops (``desk/atoms/tag-namespaces.yaml``, ver
+        ``deskops.atom_tags.validate_atom_tag_namespaces``), y agregarlo sería
+        una decisión de gobierno de esa taxonomía que no le corresponde tomar
+        al Reflector en silencio.
+
+        Antes esto se resolvía escribiendo el ``.md`` ya trackeado en el store,
+        para después LEERLO de vuelta del disco y REESCRIBIRLO con la línea
+        insertada a mano (``_inject_status``, previo a esta migración: dos
+        pasadas de I/O sobre un documento del store). Acá el splice ocurre
+        sobre el string ya renderizado en memoria, antes de la única escritura
+        (``output_path.write_text``): se elimina el ciclo
+        leer-mutar-reescribir, aunque la limitación de fondo —el modelo no
+        tiene un campo ``status`` real, ni una tag de status gobernada— sigue
+        sin una vía de librería. Ver el reporte sobre ``KnowledgeOperations``
+        en el mensaje del commit para lo que faltaría para cerrar esto del
+        todo.
+        """
+        frontmatter_end = rendered.find("\n---\n", 4)
         if frontmatter_end == -1:
-            raise ValueError(f"Could not locate frontmatter boundary in {path}")
-        updated = f"{text[:frontmatter_end]}\nstatus: {status}{text[frontmatter_end:]}"
-        path.write_text(updated, encoding="utf-8")
+            raise ValueError("Could not locate frontmatter boundary in rendered document")
+        return f"{rendered[:frontmatter_end]}\nstatus: {status}{rendered[frontmatter_end:]}\n"
 
     def _validate_required_namespaces(self) -> None:
         validate_atom_tag_namespaces([SOURCE_TAG], default_registry_path(self.kb_root))
