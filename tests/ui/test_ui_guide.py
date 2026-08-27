@@ -1,11 +1,14 @@
 """Tests que validan `frontends/UI-GUIDE.md` — el estado objetivo de las UIs.
 
-Cada test verifica una sección de la guía. Fallan HOY (UI sin rediseñar) y
-pasan cuando la implementación esté completa. Sirven como spec ejecutable.
+Cada test verifica una sección de la guía; las secciones todavía no
+implementadas quedan marcadas `xfail`. Sirven como spec ejecutable.
 
 Convención:
 - Cada elemento lleva `data-testid` (definido en UI-GUIDE.md).
-- Los tests seleccionan SOLO por `data-testid`, nunca por texto o clase.
+- Los tests seleccionan por `data-testid`, nunca por texto. Dos excepciones
+  que la UI expone de otra forma (y que la guía documenta asi): las cards de
+  turno por `data-turn-id` (ver REAL_TURN) y el detalle de cada agente del
+  razonamiento por la clase `.agent-detail`.
 - `SKIP_LLM_TESTS=1` evita credenciales. El fixture levanta uvicorn
   in-process con LLM fake (offline_orchestrator).
 """
@@ -78,7 +81,7 @@ def page(base_url: str):
 
 # Las cards de turno se identifican con `data-turn-id` (t1, t2, ...; el saludo
 # inicial es `turn-000` y el placeholder mientras corre el turno `ghost-*`),
-# no con `data-testid="turn-<n>"` como pide UI-GUIDE §2.2.
+# como documenta UI-GUIDE §2.2.
 REAL_TURN = "[data-turn-id]:not([data-turn-id^='turn-']):not([data-turn-id^='ghost-'])"
 
 
@@ -252,9 +255,8 @@ def test_inspector_reasoning_agents(page, base_url: str):
     reasoning = page.locator("[data-testid='inspector-reasoning']")
     assert reasoning.is_visible()
 
-    # Cada agente es una fila `agent-row` (no `reasoning-agent-<nombre>` como
-    # pide UI-GUIDE §2.3.C); el detalle es el hijo `.agent-detail` que se
-    # destapa al hacer click en la fila.
+    # Cada agente es una fila `agent-row` (UI-GUIDE §2.3.C); el detalle es el
+    # hijo `.agent-detail` que se destapa al hacer click en la fila.
     agents = reasoning.locator("[data-testid='agent-row']")
     count = agents.count()
     assert count >= 1, "debe haber al menos 1 agente en razonamiento"

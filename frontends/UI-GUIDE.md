@@ -80,8 +80,9 @@ De arriba a abajo:
 
 ### 2.2 Timeline (columna central)
 
-- Mensajes user/assistant; cada respuesta assistant es seleccionable
-  (`data-testid="turn-<n>"`).
+- Mensajes user/assistant; cada respuesta assistant es seleccionable: la
+  card lleva `data-turn-id="t<n>"` (el saludo inicial es `turn-000` y el
+  placeholder mientras corre el turno `ghost-*`).
 - Referencias `atom-...` en el texto son links (`atom-link`).
 - Input abajo: placeholder desde `/api/config.input_placeholder`
   (**prohibido** hardcodear "pizzas"). `data-testid="chat-input"`, `chat-send`.
@@ -111,9 +112,10 @@ Secciones, en orden:
 - Una fila por agente que participó: Ontologizador (qué compiló: N atoms,
   scenario), Conversador (qué redactó / o tool decidida), Perfilador (traits
   extraídos), Reflector (solo si aplica).
-- Cada fila expandible (acordeón, `reasoning-agent-<nombre>`): al abrir
-  muestra el detalle disponible del turno (state_trace, transiciones,
-  system_turn completo).
+- Cada fila expandible (acordeón, `data-testid="agent-row"`; el detalle es
+  el hijo `.agent-detail`, oculto hasta el click): al abrir muestra el
+  detalle disponible del turno (state_trace, transiciones, system_turn
+  completo).
 
 *(Se eliminan: "Atoms del contexto" redundante, latency, model route del
 summary; Agent Pulse se va al sidebar.)*
@@ -195,8 +197,9 @@ Vista única de la KB con **3 layouts** (fusión de taxonomía + embeddings).
 Perfilado + eventos + conversaciones.
 
 ### 5.1 Layout
-- **Izquierda** (`users-list`): lista de usuarios; cada ficha con alias,
-  última actividad, #traits, #turnos, indicador activo.
+- **Izquierda** (`users-list`): lista de usuarios; cada ficha
+  (`user-item-<id>`) con alias, última actividad, #traits, #turnos,
+  indicador activo.
 - **Derecha**: panel según **selector de vista** (`users-view-selector`):
   Perfil / Eventos / Conversaciones. Info personal del usuario arriba.
 
