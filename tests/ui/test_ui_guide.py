@@ -123,10 +123,10 @@ def test_config_serves_input_placeholder(page, base_url: str):
 
 
 def test_nav_shows_all_views(page, base_url: str):
-    """La topbar tiene links a las 4 vistas (UI-GUIDE §1)."""
+    """La topbar tiene links a las 5 vistas (UI-GUIDE §1)."""
     page.goto(base_url, wait_until="networkidle")
     nav = page.locator("[data-testid='nav-topbar']")
-    links = ["nav-chat", "nav-flow", "nav-mindmap", "nav-users"]
+    links = ["nav-chat", "nav-flow", "nav-mindmap", "nav-users", "nav-dashboard"]
     for lid in links:
         link = nav.locator(f"[data-testid='{lid}']")
         assert link.is_visible(), f"Falta {lid} en la navegacion"

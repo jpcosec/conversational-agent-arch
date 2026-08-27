@@ -40,7 +40,7 @@ markup nuevo; sin build step (CDN only); dark siempre.
 [brand: {ui.runtime_title}]   Chat · Flow · Mindmap · Users   [kb_label] [health]
 ```
 
-- `data-testid="nav-topbar"`, links: `nav-chat`, `nav-flow`, `nav-mindmap`, `nav-users`.
+- `data-testid="nav-topbar"`, links: `nav-chat`, `nav-flow`, `nav-mindmap`, `nav-users`, `nav-dashboard`.
 - Se elimina la sidebar de navegación duplicada del chat.
 - Brand y labels vienen de `/api/config` — **cero hardcode**.
 - Link activo resaltado con accent.
@@ -56,8 +56,8 @@ markup nuevo; sin build step (CDN only); dark siempre.
 | dashboard | `/dashboard` | — |
 
 `/dashboard` sirve `frontends/dashboard/index.html`: un mock estático con el
-chip "Datos de ejemplo", todavía **no enlazado** desde la topbar de las otras
-vistas (no tiene `nav-dashboard`).
+chip "Datos de ejemplo", enlazado desde la topbar de todas las vistas
+(`nav-dashboard`, label `nav_labels.dashboard`).
 
 Los endpoints `/api/*` no cambian de ruta (solo se agregan nuevos).
 

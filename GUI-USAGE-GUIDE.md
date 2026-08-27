@@ -66,6 +66,7 @@ Presente siempre en la parte superior de la pantalla.
 | `data-testid="nav-flow"` | Link a Flow (`/flow`) |
 | `data-testid="nav-mindmap"` | Link a Mindmap (`/mindmap`) |
 | `data-testid="nav-users"` | Link a Users (`/users`) |
+| `data-testid="nav-dashboard"` | Link a Dashboard (`/dashboard`) |
 
 **Punto de control**: el link activo tiene clase `active` y atributo `data-active="true"`. Los labels de los links vienen de `/api/config.nav_labels`. El brand muestra `config.runtime_title`. A la derecha hay dos chips: KB label (`#kbLabel`) y health status (`#healthLabel`).
 

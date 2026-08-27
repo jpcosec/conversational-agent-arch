@@ -36,7 +36,7 @@ def test_health_and_config_reflect_project_config(client: TestClient) -> None:
     assert client.get("/api/config").json() == cfg.to_public_dict()
 
 
-VIEW_ROUTES = ["/", "/flow", "/mindmap", "/users"]
+VIEW_ROUTES = ["/", "/flow", "/mindmap", "/users", "/dashboard"]
 
 
 @pytest.mark.parametrize("path", VIEW_ROUTES)
@@ -59,7 +59,7 @@ def test_shared_theme_css_is_served(client: TestClient) -> None:
     assert "--bg" in res.text
 
 
-NAV_LINKS = ["/", "/flow", "/mindmap", "/users"]
+NAV_LINKS = ["/", "/flow", "/mindmap", "/users", "/dashboard"]
 
 
 @pytest.mark.parametrize("path", VIEW_ROUTES)
