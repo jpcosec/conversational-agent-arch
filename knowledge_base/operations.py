@@ -81,6 +81,11 @@ class KnowledgeOperations:
     """Operations layer for the knowledge CLI.
 
     Wraps SLDB, KGDB, and SQL access into semantic commands.
+
+    El embedder (jina, ~1 min de carga en frío) se cachea por INSTANCIA en
+    ``self._embedder_cache`` (ver ``_embedder``). El orquestador/runtime debe
+    crear UNA instancia de esta clase y reutilizarla para todo el proceso en
+    vez de instanciarla por request.
     """
 
     def __init__(self, kb_root: str | Path, db_url: str | None = None, pythonpath: str | None = None) -> None:
@@ -465,7 +470,18 @@ class KnowledgeOperations:
     _embedder_cache: Any = None
 
     def _embedder(self):
-        """Lazy embedder (fastembed, español)."""
+        """Lazy embedder (fastembed, español), cacheado a nivel de INSTANCIA.
+
+        Cargar ``jinaai/jina-embeddings-v2-base-es`` tarda ~1 minuto en frío.
+        ``_embedder_cache`` se guarda en ``self`` (no es un singleton de
+        módulo/clase: la asignación de abajo crea un atributo de instancia
+        que oculta el ``None`` de clase), así que el costo de carga se paga
+        una sola vez POR INSTANCIA de ``KnowledgeOperations``. El
+        orquestador/runtime debe crear UNA instancia y reutilizarla para
+        todas las llamadas a explore/explore_multi/index_embeddings dentro
+        del mismo proceso; crear una instancia nueva por request vuelve a
+        pagar el minuto de carga.
+        """
         if self._embedder_cache is None:
             from fastembed import TextEmbedding
             self._embedder_cache = TextEmbedding(
@@ -481,10 +497,27 @@ class KnowledgeOperations:
         nb = sum(y * y for y in b) ** 0.5
         return dot / (na * nb) if na and nb else 0.0
 
-    def _semantic_search(self, query: str, threshold: float = 0.5) -> list[dict[str, Any]]:
-        """Busca por similitud coseno entre query y embeddings de atoms."""
-        from kb_agent.models.knowledge import DomainAtom, RuleAtom
+    # Por debajo de este score, un resultado semántico se marca "weak": el
+    # llamador (ruteador) decide si lo usa o no, en vez de que un corte
+    # absoluto lo descarte antes de que compita en el ranking.
+    WEAK_SCORE_THRESHOLD = 0.25
 
+    def _semantic_search(self, query: str, threshold: float = 0.05) -> list[dict[str, Any]]:
+        """Busca por similitud coseno entre la query y los embeddings de TODOS los
+        documentos, sin filtrar por modelo.
+
+        El ruteador puede meter cualquier documento al bundle si lo justifica
+        (traits, steps, tools, no solo domain/rule). Con el filtro anterior a
+        DomainAtom/RuleAtom, "me da miedo la aguja" devolvia dos IME a 0.30 y
+        descartaba trait-antonia-ansioso-aplicacion (0.396) y
+        trait-antonia-primera-vez (0.349), que rankean #1 y #2.
+
+        ``threshold`` ya NO es un corte semántico duro: es un piso absoluto
+        muy bajo (ruido de embedding, default 0.05) para no arrastrar
+        documentos sin ninguna relación. El ranking real (qué tan relevante
+        es un resultado) lo decide el orden por score + el flag ``weak``,
+        no este umbral. Ver ``explore_multi`` para el top-k relativo.
+        """
         embedder = self._embedder()
         query_emb = list(embedder.embed([query]))[0]
         qv = [float(v) for v in query_emb]
@@ -493,9 +526,6 @@ class KnowledgeOperations:
         results = []
         for r in records:
             if r.kind != "doc":
-                continue
-            mn = (r.model_name or "").lower()
-            if mn not in ("domainatom", "ruleatom"):
                 continue
             doc = self._read_doc(r.name)
             if not doc:
@@ -516,10 +546,37 @@ class KnowledgeOperations:
             })
         return sorted(results, key=lambda x: x["score"], reverse=True)
 
+    _FUZZY_STOPWORDS = {
+        "me", "da", "es", "la", "de", "que", "en", "y", "el", "un",
+        "una", "por", "con", "mi", "tu", "su", "lo", "se", "te", "le",
+        "sus", "mis", "tus", "del", "al", "no", "si", "ya", "muy",
+    }
+    _FUZZY_ACCENTS = str.maketrans("áéíóúüñ", "aeiouun")
+
+    @classmethod
+    def _tokenize_query(cls, query: str) -> list[str]:
+        """Tokeniza una query en español: minúsculas, sin tildes, sin stopwords cortas."""
+        import re
+
+        normalized = query.lower().translate(cls._FUZZY_ACCENTS)
+        raw_tokens = re.findall(r"[a-z0-9]+", normalized)
+        return [
+            t for t in raw_tokens
+            if len(t) >= 4 and t not in cls._FUZZY_STOPWORDS
+        ]
+
     def _fuzzy_search(self, query: str) -> list[dict[str, Any]]:
-        """Busca por substring en tags, title, answer, semantic_anchors."""
+        """Busca por fracción de tokens de la query presentes en title/tags/summary/answer.
+
+        Tokeniza la query (minúsculas, sin tildes, sin stopwords cortas) y puntúa
+        cada documento como (# tokens que matchean) / (# tokens de la query), en
+        rango 0..1, comparable con el score semántico.
+        """
+        tokens = self._tokenize_query(query)
+        if not tokens:
+            return []
+
         records = self._find_records()
-        q = query.lower()
         results = []
         seen = set()
         for r in records:
@@ -529,25 +586,47 @@ class KnowledgeOperations:
                 continue
             seen.add(r.name)
 
-            tags = [t.lower() for t in (r.semantic or [])]
-            if any(q in t for t in tags):
-                results.append({
-                    "id": r.name, "model": r.model_name, "score": 0.8,
-                    "match": "semantic_tag", "tags": list(r.semantic or []), "path": r.path,
-                })
+            tags = [t.lower().translate(self._FUZZY_ACCENTS) for t in (r.semantic or [])]
+            tags_blob = " ".join(tags)
+
+            doc = self._read_doc(r.name) or {}
+            title = str(doc.get("title", "")).lower().translate(self._FUZZY_ACCENTS)
+            summary = str(doc.get("summary", "")).lower().translate(self._FUZZY_ACCENTS)
+            answer = str(doc.get("answer", "")).lower().translate(self._FUZZY_ACCENTS)
+            anchors = [str(a).lower().translate(self._FUZZY_ACCENTS) for a in (doc.get("semantic_anchors") or [])]
+            anchors_blob = " ".join(anchors)
+
+            matched_where: set[str] = set()
+            matched_tokens = 0
+            for tok in tokens:
+                hit = False
+                if tok in tags_blob or tok in anchors_blob:
+                    matched_where.add("semantic_tag")
+                    hit = True
+                if tok in title:
+                    matched_where.add("title")
+                    hit = True
+                if tok in summary:
+                    matched_where.add("summary")
+                    hit = True
+                if tok in answer:
+                    matched_where.add("answer")
+                    hit = True
+                if hit:
+                    matched_tokens += 1
+
+            if matched_tokens == 0:
                 continue
 
-            doc = self._read_doc(r.name)
-            if not doc:
-                continue
-            title = str(doc.get("title", "")).lower()
-            answer = str(doc.get("answer", "")).lower()
-            anchors = [str(a).lower() for a in (doc.get("semantic_anchors") or [])]
-            if q in title or q in answer or any(q in a for a in anchors):
-                results.append({
-                    "id": r.name, "model": r.model_name, "score": 0.7,
-                    "match": "title_answer_anchor", "tags": list(r.semantic or []), "path": r.path,
-                })
+            score = matched_tokens / len(tokens)
+            results.append({
+                "id": r.name,
+                "model": r.model_name,
+                "score": round(score, 4),
+                "match": "+".join(sorted(matched_where)),
+                "tags": list(r.semantic or []),
+                "path": r.path,
+            })
         return results
 
     # ── runtime: explore multi-estrategia ─────────────────────────
@@ -555,10 +634,19 @@ class KnowledgeOperations:
     def explore_multi(
         self,
         query: str,
-        semantic_threshold: float = 0.3,
+        semantic_threshold: float = 0.05,
         max_results: int = 10,
     ) -> dict[str, Any]:
-        """Explore multi-estrategia: embeds query, busca por similitud + fuzzy + KGDB."""
+        """Explore multi-estrategia: embeds query, busca por similitud + fuzzy + KGDB.
+
+        Devuelve el top-k (``max_results``) ordenado por score, SIN descartar
+        por umbral absoluto: ``semantic_threshold`` es solo un piso mínimo muy
+        bajo para filtrar ruido de embedding (default 0.05), se mantiene en la
+        firma por compatibilidad. Cada resultado trae ``weak: bool``
+        (score < ``WEAK_SCORE_THRESHOLD``, hoy 0.25) para que el llamador
+        (el ruteador) decida si lo usa, en vez de que un corte duro lo
+        descarte antes de competir en el ranking.
+        """
         semantic = self._semantic_search(query, threshold=semantic_threshold)
         fuzzy = self._fuzzy_search(query)
 
@@ -572,6 +660,9 @@ class KnowledgeOperations:
                 seen.add(item["id"])
                 item["score"] = round(item["score"] * 0.85, 4)
                 merged.append(item)
+
+        for item in merged:
+            item["weak"] = item["score"] < self.WEAK_SCORE_THRESHOLD
 
         merged.sort(key=lambda x: x["score"], reverse=True)
         merged = merged[:max_results]
