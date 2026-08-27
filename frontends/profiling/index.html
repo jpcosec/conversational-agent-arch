@@ -31,6 +31,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh
 .view-btn.active{background:rgba(212,165,116,.12);border-color:var(--accent);color:var(--accent)}
 .panel-detail{display:flex;gap:24px;flex:1;min-height:0}
 .panel-detail.as-list{display:block;overflow-y:auto}
+.panel-profile{display:flex;gap:24px;flex:1;min-height:0;width:100%}
 .panel-kpi{flex:1;max-width:420px}
 .panel-traits{flex:2}
 .kpi-card{border:1px solid var(--border2);border-radius:14px;padding:16px;background:var(--panel);margin-bottom:14px}
@@ -44,6 +45,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);height:100vh
 .chart-svg{width:100%;height:auto;display:block}
 .chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:900px){.chart-grid{grid-template-columns:1fr}}
+a.conv-item{color:inherit;text-decoration:none}
 .conv-item{border:1px solid var(--border2);border-radius:12px;padding:12px 16px;margin-bottom:8px;cursor:pointer;transition:.15s;background:var(--panel);display:flex;justify-content:space-between;align-items:center}
 .conv-item:hover{border-color:var(--accent);background:rgba(212,165,116,.04)}
 .conv-date{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:2px}
@@ -181,8 +183,8 @@ var WK=['S1','S2','S3','S4','S5','S6'];
 function renderProfile(u){
  var panel=document.getElementById('detailPanel');var traits=u.traits||[];
  var byCat={};traits.forEach(t=>{var f=FICHAS[t.trait_id];var cat=(f&&f.category)||'general';(byCat[cat]||=[]).push(t)});
- panel.innerHTML='<div class="panel-kpi" data-testid="profile-kpis"><div class="kpi-card"><div class="kpi-label">Turnos</div><div class="kpi-value">'+(u.total_turns||0)+'</div><div class="kpi-sub">total conversaciones</div></div><div class="kpi-card"><div class="kpi-label">Traits</div><div class="kpi-value">'+(traits.length)+'</div><div class="kpi-sub">rasgos aprendidos</div></div><div class="kpi-card"><div class="kpi-label">Última actividad</div><div class="kpi-value" style="font-size:16px">'+(u.last_active?u.last_active.slice(0,10):'—')+'</div></div><div class="chart-card"><div class="chart-title">Actividad semanal</div>'+svgBars(rndSeries(u,11,6,2,12),{labels:WK})+'</div><div class="chart-card"><div class="chart-title">Mensajes por semana</div>'+svgBars(rndSeries(u,29,6,1,9),{labels:WK})+'</div></div><div class="panel-traits" data-testid="profile-traits">'+
- (traits.length?traits.map(t=>{var f=FICHAS[t.trait_id];var pct=Math.round((t.confidence||.5)*100);return'<div class="ficha"><div class="ficha-top"><span class="ficha-title">'+esc((f&&f.title)||t.trait_id)+'</span>'+(f&&f.category?'<span class="ficha-cat">'+esc(f.category)+'</span>':'')+'</div><div class="ficha-id">'+esc(t.trait_id)+'</div><div class="conf-row"><div class="conf-bar"><div class="conf-fill" style="width:'+pct+'%"></div></div><div class="conf-val">'+(t.confidence||.5).toFixed(2)+'</div></div><div style="font-size:10px;color:var(--muted);font-family:var(--mono)">source: '+esc(t.source||'extractor')+'</div>'+(f&&f.description?'<div style="margin-top:6px;font-size:12px;color:rgba(245,240,232,.6)">'+esc(f.description)+'</div>':'')+'</div>'}).join(''):'<div class="empty">Sin traits todavía.</div>')+'</div>';}
+ panel.innerHTML='<div class="panel-profile" data-testid="users-profile"><div class="panel-kpi" data-testid="profile-kpis"><div class="kpi-card"><div class="kpi-label">Turnos</div><div class="kpi-value">'+(u.total_turns||0)+'</div><div class="kpi-sub">total conversaciones</div></div><div class="kpi-card"><div class="kpi-label">Traits</div><div class="kpi-value">'+(traits.length)+'</div><div class="kpi-sub">rasgos aprendidos</div></div><div class="kpi-card"><div class="kpi-label">Última actividad</div><div class="kpi-value" style="font-size:16px">'+(u.last_active?u.last_active.slice(0,10):'—')+'</div></div><div class="chart-card"><div class="chart-title">Actividad semanal</div>'+svgBars(rndSeries(u,11,6,2,12),{labels:WK})+'</div><div class="chart-card"><div class="chart-title">Mensajes por semana</div>'+svgBars(rndSeries(u,29,6,1,9),{labels:WK})+'</div></div><div class="panel-traits" data-testid="profile-traits">'+
+ (traits.length?traits.map(t=>{var f=FICHAS[t.trait_id];var pct=Math.round((t.confidence||.5)*100);return'<div class="ficha"><div class="ficha-top"><span class="ficha-title">'+esc((f&&f.title)||t.trait_id)+'</span>'+(f&&f.category?'<span class="ficha-cat">'+esc(f.category)+'</span>':'')+'</div><div class="ficha-id">'+esc(t.trait_id)+'</div><div class="conf-row"><div class="conf-bar"><div class="conf-fill" style="width:'+pct+'%"></div></div><div class="conf-val">'+(t.confidence||.5).toFixed(2)+'</div></div><div style="font-size:10px;color:var(--muted);font-family:var(--mono)">source: '+esc(t.source||'extractor')+'</div>'+(f&&f.description?'<div style="margin-top:6px;font-size:12px;color:rgba(245,240,232,.6)">'+esc(f.description)+'</div>':'')+'</div>'}).join(''):'<div class="empty">Sin traits todavía.</div>')+'</div></div>';}
 
 function renderEvents(u){
  var panel=document.getElementById('detailPanel');
@@ -194,12 +196,12 @@ function renderEvents(u){
 
 function renderConversations(u){
  var panel=document.getElementById('detailPanel');
- panel.innerHTML='<div class="col-head" style="padding:0;margin-bottom:14px">Conversaciones <span>· '+((u.conversations||[]).length||0)+'</span></div>'+
+ panel.innerHTML='<div data-testid="users-conversations"><div class="col-head" style="padding:0;margin-bottom:14px">Conversaciones <span>· '+((u.conversations||[]).length||0)+'</span></div>'+
  ((u.conversations||[]).length?u.conversations.map(c=>{
    var href=c.session_id?('/?session='+encodeURIComponent(c.session_id)):('/?user='+encodeURIComponent(u.external_id||''));
    var metaExtra=c.session_id?'':' · sin sesión';
-   return '<div class="conv-item" data-testid="conversation-'+esc(c.session_id||c.legacy_group||'')+'" onclick="window.location.href=\''+href+'\'"><div><div class="conv-date">'+esc(c.created_at||'')+'</div><div class="conv-summary">'+esc(c.summary||'—')+'</div></div><div class="conv-meta">'+(c.n_turns||0)+' turnos'+esc(metaExtra)+'<br/>'+esc(c.result||'')+'</div></div>'
- }).join(''):'<div class="empty">Sin conversaciones guardadas.</div>')}
+   return '<a class="conv-item" href="'+href+'" data-testid="conversation-'+esc(c.session_id||c.legacy_group||'')+'"><div><div class="conv-date">'+esc(c.created_at||'')+'</div><div class="conv-summary">'+esc(c.summary||'—')+'</div></div><div class="conv-meta">'+(c.n_turns||0)+' turnos'+esc(metaExtra)+'<br/>'+esc(c.result||'')+'</div></a>'
+ }).join(''):'<div class="empty">Sin conversaciones guardadas.</div>')+'</div>'}
 
 document.querySelectorAll('.view-btn').forEach(b=>b.addEventListener('click',function(){switchView(this.dataset.view)}));
 function esc(s){return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;')}

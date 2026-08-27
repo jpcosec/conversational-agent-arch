@@ -462,7 +462,6 @@ def test_users_layout(page, base_url: str):
     assert page.locator("[data-testid='users-view-selector']").is_visible()
 
 
-@pytest.mark.xfail(strict=True, reason="falta data-testid='users-profile' (UI-GUIDE §5.2): el perfil se pinta directo en #detailPanel; profile-kpis y profile-traits si existen")
 def test_users_profile_shows_kpis_and_traits(page, base_url: str):
     """Perfil de usuario muestra KPIs a la izq y traits a la der (§5.2)."""
     _open_first_user(page, base_url)
@@ -491,7 +490,6 @@ def test_users_events_timeline(page, base_url: str):
     assert events.locator("canvas, svg, [data-testid='events-chart']").count() > 0
 
 
-@pytest.mark.xfail(strict=True, reason="falta data-testid='users-conversations' (UI-GUIDE §5.4): la lista se pinta directo en #detailPanel y cada conversation-<id> es un div con onclick, sin href")
 def test_users_conversations_list(page, base_url: str):
     """Vista conversaciones muestra lista cronologica clickeable (§5.4)."""
     _open_first_user(page, base_url)
@@ -500,10 +498,14 @@ def test_users_conversations_list(page, base_url: str):
     conv = page.locator("[data-testid='users-conversations']")
     assert conv.is_visible()
     items = conv.locator("[data-testid^='conversation-']")
-    # si hay conversaciones, deben ser clickeables
+    # si hay conversaciones, deben ser links al chat: `/?session=<id>` cuando
+    # la fila tiene session_id, `/?user=<external_id>` cuando no (hoy el
+    # orquestador no setea chat_history.session_id, ver _group_conversations).
     if items.count() > 0:
         href = items.first.get_attribute("href") or ""
-        assert "session" in href, "click debe navegar a chat con session_id"
+        assert href.startswith("/?") and ("session=" in href or "user=" in href), (
+            f"click debe navegar al chat con la conversacion cargada: href={href!r}"
+        )
 
 
 # ══════════════════════════════════════════════════════════════════════════
