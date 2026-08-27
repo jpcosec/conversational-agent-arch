@@ -313,6 +313,8 @@ Visualización de la KB con 3 layouts (árbol, top-down, embeddings).
 - 💬 Comentario agente (coming soon)
 - ↗doc Ir al documento (abre `/api/atom/{id}`)
 
+**Sólo lectura**: la vista no edita campos de atoms ni persiste nada — no existe endpoint de escritura (`PUT`/`PATCH`/`POST` sobre `/api/atom/{id}` devuelven 405). Las acciones del toolbar que mutan el grafo son locales al cliente y se pierden al recargar.
+
 **Tooltip de atom** (hover sobre nodo atom): aparece modal flotante con atom_id, label, 5WH, summary, tags
 
 **Estado esperado**:

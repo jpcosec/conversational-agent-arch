@@ -140,7 +140,7 @@ function Tooltip({atom,pos}){if(!atom)return null;const tags=(atom.tags||[]).fil
 
 function App(){
  const [nodes,setNodes,onNodesChange]=useNodesState([]);const[edges,setEdges,onEdgesChange]=useEdgesState([])
- const [hover,setHover]=useState(null);const [editing,setEditing]=useState(null);const [comment,setComment]=useState(null)
+ const [hover,setHover]=useState(null)
  const [layoutMode,setLayoutMode]=useState('tree');const [xfamily,setXfamily]=useState(false);const [searchText,setSearchText]=useState('')
  const [filterRama,setFilterRama]=useState(null);const [collapsed,setCollapsed]=useState(new Set())
  const [filterAgents,setFilterAgents]=useState(new Set())
@@ -190,15 +190,13 @@ function App(){
   MM_ACTIONS.child=(nid)=>{const cid=`b-${NID++}`;setNodes(nds=>{const p=nds.find(n=>n.id===nid);if(!p)return nds;return[...nds,{id:cid,type:'mind',position:{x:(p.position?.x||0)+180,y:(p.position?.y||0)+40},data:{label:'nuevo',family:p.data.family,kind:'branch'}}]});setEdges(eds=>[...eds,{id:`e-${nid}-${cid}`,source:nid,target:cid,type:'bezier',style:{stroke:'rgba(212,165,116,.5)',strokeWidth:1.8}}])}
   MM_ACTIONS.sibling=(nid)=>{const sid=`b-${NID++}`;setNodes(nds=>{const p=nds.find(n=>n.id===nid);if(!p)return nds;const parentEdge=edges.find(e=>e.target===nid);const src=parentEdge?parentEdge.source:null;const newNode={id:sid,type:'mind',position:{x:(p.position?.x||0),y:(p.position?.y||0)+70},data:{label:'nuevo',family:p.data.family,kind:p.data.kind==='atom'?'branch':p.data.kind}};if(src)setEdges(eds=>[...eds,{id:`e-${src}-${sid}`,source:src,target:sid,type:'bezier',style:{stroke:'rgba(212,165,116,.5)',strokeWidth:1.8}}]);return[...nds,newNode]})}
   MM_ACTIONS.link=(nid)=>{setSelectedNode(nid);setLinking(true)}
-  MM_ACTIONS.comment=(nid)=>{const n=nodes.find(x=>x.id===nid);if(n)setComment({atom:n.data,pos:{x:window.innerWidth/2,y:window.innerHeight/2}})}
   MM_ACTIONS.goto=(nid)=>{const n=nodes.find(x=>x.id===nid);if(n&&n.data.atom_id)window.open('/api/atom/'+encodeURIComponent(n.data.atom_id),'_blank')}
  })
 
  const onNodeMouseEnter=useCallback((e,node)=>{if(node.data.kind!=='atom')return;setHover({atom:node.data,pos:{x:e.clientX+16,y:e.clientY+8}})},[])
  const onNodeMouseLeave=useCallback(()=>setHover(null),[])
- const onNodeClick=useCallback((e,node)=>{setSelectedNode(node.id);if(linking&&node.id!==linking){setEdges(eds=>[...eds,{id:`e-x-${Date.now()}`,source:selectedNode,target:node.id,style:{stroke:'#c97db9',strokeWidth:2,strokeDasharray:'5,5'}}]);setLinking(false)}if(node.data.kind==='atom'){setHover(null);setComment({atom:node.data,pos:{x:e.clientX+12,y:e.clientY+8}})}},[])
- const onPaneClick=useCallback(()=>{setHover(null);setComment(null);setSelectedNode(null);setLinking(false)},[])
- const onNodeDoubleClick=useCallback((e,node)=>{if(node.data.kind!=='atom')return;setHover(null);setComment(null);setEditing(node.data)},[])
+ const onNodeClick=useCallback((e,node)=>{setSelectedNode(node.id);if(linking&&node.id!==linking){setEdges(eds=>[...eds,{id:`e-x-${Date.now()}`,source:selectedNode,target:node.id,style:{stroke:'#c97db9',strokeWidth:2,strokeDasharray:'5,5'}}]);setLinking(false)}if(node.data.kind==='atom')setHover(null)},[])
+ const onPaneClick=useCallback(()=>{setHover(null);setSelectedNode(null);setLinking(false)},[])
 
  const ramas=useMemo(()=>{if(!taxData)return[];const r=[];Object.keys(taxData).forEach(fam=>{r.push({id:fam,label:fam,children:[]})});return r},[taxData])
 
@@ -231,10 +229,10 @@ function App(){
    <div class="mm-canvas">
     <div class="mm-topbar">
      <input class="mm-search" data-testid="mindmap-search" placeholder="Buscar nodo (Ctrl+F)…" value=${searchText} onInput=${e=>setSearchText(e.target.value)}/>
-     <span style=${{fontSize:10,color:'rgba(245,240,232,.35)',marginLeft:'auto'}}>doble-click edita · click comenta</span>
+     <span style=${{fontSize:10,color:'rgba(245,240,232,.35)',marginLeft:'auto'}}>sólo lectura · hover muestra el detalle</span>
     </div>
     <${ReactFlow} nodes=${searched} edges=${edges} onNodesChange=${onNodesChange} onEdgesChange=${onEdgesChange} nodeTypes=${nodeTypes}
-     onNodeMouseEnter=${onNodeMouseEnter} onNodeMouseLeave=${onNodeMouseLeave} onNodeClick=${onNodeClick} onNodeDoubleClick=${onNodeDoubleClick} onPaneClick=${onPaneClick}
+     onNodeMouseEnter=${onNodeMouseEnter} onNodeMouseLeave=${onNodeMouseLeave} onNodeClick=${onNodeClick} onPaneClick=${onPaneClick}
      viewport=${viewport} onViewportChange=${setViewport} minZoom=${0.1} maxZoom=${2} proOptions=${{hideAttribution:true}} selectionOnDrag>
      <${Background} color="rgba(212,165,116,.06)" gap=${28}/>
      <${Controls} showInteractive=${false}/>

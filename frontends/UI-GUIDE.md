@@ -178,6 +178,11 @@ Vista única de la KB con **3 layouts** (fusión de taxonomía + embeddings).
   cross-family dashed violeta; Esc cancela) · comentario agente ("coming
   soon") · ir al documento.
 - Tooltips explicativos en kinds/campos no obvios (mismo mapa léxico).
+- **La vista es sólo lectura**: no hay edición de campos de un atom ni endpoint
+  de escritura (`/api/atom/{id}` y `/api/taxonomy` son GET). Las acciones del
+  toolbar que mutan el grafo (borrar, hijo, hermano, link) viven sólo en el
+  cliente y se pierden al recargar; los atoms se editan por el pipeline
+  spec→atoms de deskops, no desde la UI.
 
 ### 4.4 Cross-family links
 - Toggle de relaciones (`mindmap-xfamily-toggle`), OFF por default.
