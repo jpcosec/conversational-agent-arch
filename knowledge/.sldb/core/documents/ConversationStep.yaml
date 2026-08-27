@@ -55,8 +55,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-saludo
   path: atoms/step-antonia-saludo.md
-  hash_c: 17be4949be1757080542fbc25232d604ed7705ecdfb31a770a39629272ad8be2
-  hash_d: 9f535cd70a7327394eaf1fa34142ccb9e4c3403a82fcefca617ad00c2e8c40fa
+  hash_c: c210691b5c8773dac24cc8be92d7937e576e8418aaa7278f68f4e4fc6335dcf2
+  hash_d: deab23e26778e3f2dc5418d5a7f03bef9692d06015b774d253a0b64e4fd0f5f4
   semantic_tags:
   - conversation:steps.saludo
   - system:laboratorio-chile
@@ -95,6 +95,15 @@ documents:
   hash_d: 46c318705f6b794f2b00bab341943f583d036bfead7a99c449e19a7b96654f1b
   semantic_tags:
   - conversation:steps.validacion_policy_gate
+  - system:laboratorio-chile
+  - type.knowledge.step
+  - workspace.knowledge
+- name: step-antonia-enrolamiento
+  path: atoms/step-antonia-enrolamiento.md
+  hash_c: 0215a6b05daef966404e0b9cb9c6ab930449e368cd1b4fca31ac1bb1fba790cc
+  hash_d: 6d687e4b985f6506ac9bca5f1831088c226c3d2825f4e8f136d67df201bace64
+  semantic_tags:
+  - conversation:steps.enrolamiento
   - system:laboratorio-chile
   - type.knowledge.step
   - workspace.knowledge

@@ -9,3 +9,13 @@ documents:
   - system:laboratorio-chile
   - type.knowledge.tool
   - workspace.knowledge
+- name: registrar_enrolamiento
+  path: atoms/tool-antonia-registrar-enrolamiento.md
+  hash_c: 58320dab5c3b065e0730f4d1d9f7181eee72504afee1dd6e8ace5a3787d91471
+  hash_d: 610dbcf0fcae3798421081fe8a281e118edab2e393b9f6fefd7cc81a4e987037
+  semantic_tags:
+  - conversation:steps.enrolamiento
+  - self:tools
+  - system:laboratorio-chile
+  - type.knowledge.tool
+  - workspace.knowledge

@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:ToolAtom
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/tool.py
 documents_index: .sldb/core/documents/ToolAtom.yaml
 sections_index: .sldb/runtime/sections/ToolAtom.yaml
-hash_b: a5b75cde56e6d009a8c799fc0aa7c9a04e45377b174237f73f1e439ed944be04
+hash_b: 77b9eb9946ab1df9f3f33a98d55783d331bc16ce04fa285e1ff2cb05c5f2a70a
 version: 1
 canonical: false
 family: null

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import CheckConstraint, DateTime, Float, ForeignKey, String, func
+from sqlalchemy import Boolean, CheckConstraint, DateTime, Float, ForeignKey, String, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
@@ -16,6 +16,11 @@ class Users(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     external_id: Mapped[str] = mapped_column(String, unique=True, nullable=False)
     channel: Mapped[str] = mapped_column(String, nullable=False)
+    # Enrolamiento (fase 4): si la persona ya esta inscrita en el programa.
+    # Los usuarios sembrados por el PSP (wa-*, web-anon-*) vienen inscritos;
+    # cualquier usuario nuevo -- incluidos los de la UI de desarrollo (ui:*) --
+    # arranca en False hasta pasar por step-antonia-enrolamiento.
+    enrolled: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

@@ -10,6 +10,9 @@ nodes:
 - id: conversation:steps.despedida
   parents:
   - conversation:steps
+- id: conversation:steps.enrolamiento
+  parents:
+  - conversation:steps
 - id: conversation:steps.evento_adverso
   parents:
   - conversation:steps

@@ -802,7 +802,7 @@ si la persona ya esta registrada
 
 ## Allowed Transitions
 
-conversation:steps.onboarding, conversation:steps.registro_estado, conversation:steps.journey_operativo, conversation:steps.derivacion_medinfo
+conversation:steps.onboarding, conversation:steps.registro_estado, conversation:steps.journey_operativo, conversation:steps.derivacion_medinfo, conversation:steps.enrolamiento
 
 ## Grounding Atoms
 

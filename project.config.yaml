@@ -40,6 +40,7 @@ project:
   tools:
     agendar_recordatorio: kb_agent.tools.recordatorios:agendar_recordatorio
     crear_reserva: kb_agent.tools.reservas:crear_reserva
+    registrar_enrolamiento: kb_agent.tools.enrolamiento:registrar_enrolamiento
 
   # Servidor HTTP (kb_chat_ui)
   server:
