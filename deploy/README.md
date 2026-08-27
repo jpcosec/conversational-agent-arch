@@ -1,7 +1,8 @@
 # Deploy a Modal
 
-Despliega el runtime completo (chat UI, editor de flujo, taxonomía, viz de
-embeddings, perfilado y webhook Twilio) como una app serverless en
+Despliega el runtime completo (chat UI `/`, editor de flujo `/flow`, mindmap
+`/mindmap` con layout de embeddings, `/users`, `/dashboard`, perfilado y
+webhook Twilio) como una app serverless en
 [Modal](https://modal.com), sirviendo el mismo `frontends.chat.app:create_app`
 que corre localmente.
 
@@ -114,7 +115,7 @@ curl -s "$URL/api/viz/graph" | head -c 200 # nodes/edges del grafo de embeddings
 curl -s "$URL/api/flow" | head -c 200      # grafo de ConversationStep
 curl -s -X POST "$URL/api/chat" \
   -H "Content-Type: application/json" \
-  -d '{"message":"que pizzas tienen?","session_id":"smoke"}'
+  -d '{"message":"quiero un recordatorio para el lunes a las 20","session_id":"smoke"}'
 ```
 
 ## Cambiar de negocio (otra KB)
