@@ -90,6 +90,8 @@ image = (
         "Jinja2==3.1.6",
         "SQLAlchemy==2.0.49",
         "pydantic==2.13.4",
+        # Migraciones del sqlite del volumen (ver _migrate_data_volume).
+        "alembic==1.18.4",
     )
     # Paquetes locales (no en PyPI): copian el codigo fuente y se instalan
     # via pip contra el directorio local (usa su pyproject.toml).
@@ -113,10 +115,18 @@ image = (
     # KB de prueba (Don Peppe), incluida por si se apunta ahi con PROJECT_CONFIG/KB_ROOT
     .add_local_dir(str(REPO_ROOT / "tests" / "knowledge"), f"{REMOTE_APP_DIR}/tests/knowledge", copy=True,
                     ignore=[*_PYCACHE_IGNORE, ".embedding_cache", ".embedding_cache/**", "desk", "desk/**"])
+    # Migraciones: el volumen /data persiste el sqlite entre deploys, asi que
+    # el esquema hay que MIGRARLO (create_all() no altera tablas existentes).
+    .add_local_dir(str(REPO_ROOT / "alembic"), f"{REMOTE_APP_DIR}/alembic", copy=True,
+                    ignore=_PYCACHE_IGNORE)
+    .add_local_file(str(REPO_ROOT / "alembic.ini"), f"{REMOTE_APP_DIR}/alembic.ini", copy=True)
     .add_local_file(str(REPO_ROOT / "project.config.yaml"), f"{REMOTE_APP_DIR}/project.config.yaml", copy=True)
 )
 
 app = modal.App(APP_NAME)
+#: Primera revision de alembic; con la que se marca una base pre-migraciones.
+BASELINE_REVISION = "b77575dcdf9b"
+
 data_volume = modal.Volume.from_name(VOLUME_NAME, create_if_missing=True)
 
 
@@ -151,6 +161,59 @@ def serve():
     os.environ["PROFILING_DB"] = "/data/ui-chat.sqlite"
     os.environ["PYTHONPATH"] = REMOTE_APP_DIR
 
+    _migrate_data_volume()
+
     from frontends.chat.app import create_app
 
     return create_app()
+
+
+def _migrate_data_volume() -> None:
+    """Deja el sqlite del volumen en la ultima revision de alembic.
+
+    El volumen persiste entre deploys, asi que una base creada por un deploy
+    viejo se queda con el esquema viejo: create_all() crea tablas que faltan
+    pero NUNCA altera una existente. Sin esto, el primer turno despues de un
+    cambio de modelo revienta con "no such column" (paso de verdad en local
+    con session_state.flow_node).
+
+    Tres casos:
+      - la base no existe          -> upgrade head la crea completa
+      - existe sin alembic_version -> se creo con create_all() antes de que
+                                      hubiera migraciones: se marca en el
+                                      baseline y despues se migra
+      - existe y esta versionada   -> upgrade head
+    """
+    import logging
+    import os
+    import sqlite3
+
+    log = logging.getLogger("modal_app")
+    db_path = os.environ["CHAT_DB"]
+    url = f"sqlite:///{db_path}"
+
+    from alembic import command
+    from alembic.config import Config
+
+    cfg = Config(f"{REMOTE_APP_DIR}/alembic.ini")
+    cfg.set_main_option("script_location", f"{REMOTE_APP_DIR}/alembic")
+    os.environ["DATABASE_URL"] = url
+
+    try:
+        if os.path.exists(db_path):
+            con = sqlite3.connect(db_path)
+            try:
+                tablas = {r[0] for r in con.execute(
+                    "select name from sqlite_master where type='table'")}
+            finally:
+                con.close()
+            if tablas and "alembic_version" not in tablas:
+                log.warning("sqlite sin alembic_version; marcando el baseline")
+                command.stamp(cfg, BASELINE_REVISION)
+        command.upgrade(cfg, "head")
+        log.info("sqlite del volumen en head")
+    except Exception:
+        # No frenamos el arranque: sin esto la app no responde nada. El error
+        # queda en los logs y el turno fallara de forma visible si el esquema
+        # quedo atras.
+        log.exception("no se pudo migrar el sqlite del volumen")
