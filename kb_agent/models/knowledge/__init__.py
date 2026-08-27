@@ -16,9 +16,11 @@ Taxonomy:
   strategy   → StrategyRule      — high-level interaction strategy
   fallback   → FallbackRule      — empty-context fallback messages
   gate       → GateCriterion     — post-draft policy checks kept invisible to the current turn compiler
+  agent      → AgentFraming      — per-agent business framing injected into agent prompts
 """
 
 from .index_proxies import IndexProxies, INDEX_PROXY_TEMPLATE
+from .agent_framing import AgentFraming
 from .boundary import CapabilityBoundary
 from .domain import DomainAtom, AtomQuestion, AtomTag
 from .fallback import FallbackRule
@@ -32,6 +34,7 @@ from .tool import ToolAtom
 from .trait import TraitAtom
 
 __all__ = [
+    "AgentFraming",
     "AtomQuestion",
     "AtomTag",
     "CapabilityBoundary",

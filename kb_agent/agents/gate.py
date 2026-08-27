@@ -35,7 +35,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
-from kb_agent.agents.base import Agent
+from kb_agent.agents.base import Agent, AgentRole
 
 __all__ = [
     "GateAgent",
@@ -51,12 +51,29 @@ __all__ = [
 #: gobierna el codigo -- ver docstring de ``response_claims_completed_action``.
 PREFILTER_CRITERION_ID = "gate-integridad-accion-no-ejecutada"
 
-_NO_CRITERIA_INSTRUCTION = (
-    "Eres el GATE regulatorio de un programa de soporte a pacientes "
-    "(farmacovigilancia). La base de conocimiento no tiene ningun "
-    "GateCriterion cargado en este momento: aprueba por defecto cualquier "
-    "respuesta razonable, sin inventar criterios propios."
+#: Encuadre generico del gate (business-neutral). El encuadre del NEGOCIO
+#: ("gate regulatorio de un programa de farmacovigilancia", etc.) NO vive
+#: aca: llega por ``framing`` desde un ``AgentFraming`` de la KB (rol
+#: ``gate``). Sin ese atom, se usa este texto neutro.
+_DEFAULT_GATE_FRAMING = (
+    "Eres el GATE de un agente conversacional. Tu trabajo es juzgar la "
+    "RESPUESTA REDACTADA por el agente (no la pregunta del usuario) contra "
+    "los criterios cargados desde la base de conocimiento."
 )
+
+
+def _gate_framing(framing: str | None) -> str:
+    """Encuadre efectivo del gate: el de la KB si existe, si no el generico."""
+    text = (framing or "").strip()
+    return text or _DEFAULT_GATE_FRAMING
+
+
+def _no_criteria_instruction(framing: str | None) -> str:
+    return (
+        f"{_gate_framing(framing)} La base de conocimiento no tiene ningun "
+        "GateCriterion cargado en este momento: aprueba por defecto cualquier "
+        "respuesta razonable, sin inventar criterios propios."
+    )
 
 
 class GateVerdict(BaseModel):
@@ -68,16 +85,23 @@ class GateVerdict(BaseModel):
     criterion_ids: list[str] = Field(default_factory=list)
 
 
-def render_gate_criteria(gate_atoms: Sequence[Mapping[str, Any]]) -> str:
+def render_gate_criteria(
+    gate_atoms: Sequence[Mapping[str, Any]], *, framing: str | None = None
+) -> str:
     """Renderiza los ``GateCriterion`` de la KB para el ``static_instruction``.
 
     Cada atom aporta ``criterion`` (que evaluar), ``approval_condition``
     (cuando pasa) y ``rejection_action`` (que hacer si no pasa) -- los 3
     campos que el gate viejo leia y despues ignoraba. Aca son el prompt
     completo: el LLM no tiene otra fuente de criterios.
+
+    ``framing`` es el encuadre de negocio (lead-in): de donde sale el rol
+    concreto del gate ("gate regulatorio de un programa de
+    farmacovigilancia"). Viene de un ``AgentFraming`` de la KB (rol ``gate``);
+    si es ``None`` se usa un encuadre generico (``_DEFAULT_GATE_FRAMING``).
     """
     if not gate_atoms:
-        return _NO_CRITERIA_INSTRUCTION
+        return _no_criteria_instruction(framing)
 
     blocks: list[str] = []
     for atom in gate_atoms:
@@ -95,11 +119,10 @@ def render_gate_criteria(gate_atoms: Sequence[Mapping[str, Any]]) -> str:
 
     criteria_ids = ", ".join(str(atom.get("id") or "") for atom in gate_atoms)
     return (
-        "Eres el GATE regulatorio de un programa de soporte a pacientes "
-        "(farmacovigilancia). Tu trabajo es juzgar la RESPUESTA REDACTADA "
-        "por el agente conversador (no la pregunta del usuario) contra CADA "
-        "UNO de los siguientes criterios, cargados desde la base de "
-        "conocimiento. Si la respuesta viola alguno, recházala.\n\n"
+        f"{_gate_framing(framing)} Juzga la RESPUESTA REDACTADA por el agente "
+        "(no la pregunta del usuario) contra CADA UNO de los siguientes "
+        "criterios, cargados desde la base de conocimiento. Si la respuesta "
+        "viola alguno, recházala.\n\n"
         + "\n\n".join(blocks)
         + "\n\n"
         "Responde en el formato estructurado pedido: "
@@ -246,13 +269,22 @@ class GateAgent:
     ``evaluate`` en un ``try/except`` -- ver su docstring.
     """
 
-    def __init__(self, *, name: str = "gate", client: Any, model: str, gate_atoms: Sequence[Mapping[str, Any]]) -> None:
+    def __init__(
+        self,
+        *,
+        name: str = "gate",
+        client: Any,
+        model: str,
+        gate_atoms: Sequence[Mapping[str, Any]],
+        framing: str | None = None,
+    ) -> None:
         self._has_criteria = bool(gate_atoms)
-        self.static_instruction = render_gate_criteria(gate_atoms)
+        self.static_instruction = render_gate_criteria(gate_atoms, framing=framing)
         self._agent = Agent(
             name=name,
             client=client,
             model=model,
+            role=AgentRole.GATE,
             static_instruction=self.static_instruction,
             include_contents=False,
             output_schema=GateVerdict,

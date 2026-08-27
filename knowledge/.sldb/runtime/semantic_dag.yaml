@@ -67,6 +67,9 @@ nodes:
 - id: type.knowledge
   parents:
   - type
+- id: type.knowledge.agent
+  parents:
+  - type.knowledge
 - id: type.knowledge.boundary
   parents:
   - type.knowledge

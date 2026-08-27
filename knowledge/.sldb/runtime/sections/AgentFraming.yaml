@@ -1,0 +1,125 @@
+documents:
+- doc_name: agent-antonia-gate
+  sections:
+  - path: encuadre-del-gate-antonia
+    title: "Encuadre del Gate \u2014 Antonia"
+    breadcrumbs:
+    - "Encuadre del Gate \u2014 Antonia"
+    about:
+    - "Encuadre del Gate \u2014 Antonia"
+    - encuadre del gate antonia
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-gate-antonia
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: encuadre-del-gate-antonia/framing
+    title: Framing
+    breadcrumbs:
+    - "Encuadre del Gate \u2014 Antonia"
+    - Framing
+    about:
+    - "Encuadre del Gate \u2014 Antonia"
+    - encuadre del gate antonia
+    - Framing
+    - framing
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: encuadre-del-gate-antonia/examples
+    title: Examples
+    breadcrumbs:
+    - "Encuadre del Gate \u2014 Antonia"
+    - Examples
+    about:
+    - "Encuadre del Gate \u2014 Antonia"
+    - encuadre del gate antonia
+    - Examples
+    - examples
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: examples
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: agent-antonia-router
+  sections:
+  - path: encuadre-del-ruteador-antonia
+    title: "Encuadre del Ruteador \u2014 Antonia"
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 Antonia"
+    about:
+    - "Encuadre del Ruteador \u2014 Antonia"
+    - encuadre del ruteador antonia
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-ruteador-antonia
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: encuadre-del-ruteador-antonia/framing
+    title: Framing
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 Antonia"
+    - Framing
+    about:
+    - "Encuadre del Ruteador \u2014 Antonia"
+    - encuadre del ruteador antonia
+    - Framing
+    - framing
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: encuadre-del-ruteador-antonia/examples
+    title: Examples
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 Antonia"
+    - Examples
+    about:
+    - "Encuadre del Ruteador \u2014 Antonia"
+    - encuadre del ruteador antonia
+    - Examples
+    - examples
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: examples
+    level: 2
+    line_start: 21
+    line_end: 22

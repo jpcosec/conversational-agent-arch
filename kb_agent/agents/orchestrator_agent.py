@@ -57,7 +57,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 from kb_agent.agent import build_function_declarations
-from kb_agent.agents.base import Agent
+from kb_agent.agents.base import Agent, AgentRole
 
 __all__ = [
     "OrchestratorAgent",
@@ -101,7 +101,21 @@ _NO_STEPS_INSTRUCTION = (
 )
 
 
-def render_orchestrator_flow(step_atoms: Sequence[Mapping[str, Any]]) -> str:
+#: Encuadre generico del orquestador. El orquestador es el agente MENOS
+#: acoplado al negocio (solo navega el grafo de steps); su encuadre por
+#: defecto ya es neutro. Si un negocio quiere matizarlo, aporta un
+#: ``AgentFraming`` de rol ``orchestrator`` y llega por ``framing``.
+_DEFAULT_ORCHESTRATOR_FRAMING = "Eres el ORQUESTADOR de un agente conversacional."
+
+
+def _orchestrator_framing(framing: str | None) -> str:
+    text = (framing or "").strip()
+    return text or _DEFAULT_ORCHESTRATOR_FRAMING
+
+
+def render_orchestrator_flow(
+    step_atoms: Sequence[Mapping[str, Any]], *, framing: str | None = None
+) -> str:
     """Renderiza el grafo de ``ConversationStep`` para el ``static_instruction``.
 
     Contexto FIJO del orquestador (pedido explicito del plan): el grafo
@@ -130,7 +144,7 @@ def render_orchestrator_flow(step_atoms: Sequence[Mapping[str, Any]]) -> str:
         )
 
     return (
-        "Eres el ORQUESTADOR de un agente conversacional. Cada turno "
+        f"{_orchestrator_framing(framing)} Cada turno "
         "decides el TIPO DE TURNO ('kind') y, si corresponde, QUE TOOL "
         "llamar y A QUE STEP navegar -- NUNCA redactas la respuesta final "
         "(eso lo hace el Conversador despues de tu decision, con el "
@@ -201,12 +215,14 @@ class OrchestratorAgent:
         client: Any,
         model: str,
         step_atoms: Sequence[Mapping[str, Any]] = (),
+        framing: str | None = None,
     ) -> None:
-        self.static_instruction = render_orchestrator_flow(step_atoms)
+        self.static_instruction = render_orchestrator_flow(step_atoms, framing=framing)
         self._agent = Agent(
             name=name,
             client=client,
             model=model,
+            role=AgentRole.ORCHESTRATOR,
             static_instruction=self.static_instruction,
             include_contents=False,
             output_schema=OrchestratorDecision,

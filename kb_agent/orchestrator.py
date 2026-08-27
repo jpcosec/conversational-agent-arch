@@ -27,6 +27,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE
+from kb_agent.agents.base import AgentRole
 from kb_agent.agents.gate import GateAgent
 from kb_agent.agents.orchestrator_agent import OrchestratorAgent
 from kb_agent.agents.router import RouterAgent
@@ -42,7 +43,7 @@ from kb_agent.ontologizador.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
 from kb_agent.pii.scrubber import scrub
-from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, load_project_config
+from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, TuningConfig, load_project_config
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
 from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
 from kb_agent.state_machine import RouterStateMachine
@@ -71,6 +72,7 @@ class Orchestrator:
         model: str | None = None,
         tool_handlers: Mapping[str, ToolHandler] | None = None,
         fallback_message: str | None = None,
+        tuning: TuningConfig | None = None,
         conversador: Conversador | None = None,
         trait_mapper: TraitMapper | None = None,
         gate: GateAgent | None = None,
@@ -83,6 +85,9 @@ class Orchestrator:
         self.model = model or os.getenv("GEMINI_MODEL") or DEFAULT_MODEL
         self.tool_handlers: dict[str, ToolHandler] = dict(tool_handlers or {})
         self.fallback_message = fallback_message or DEFAULT_FALLBACK_MESSAGE
+        #: Parametros de tuning del runtime (bundle/historial/router). Antes
+        #: eran constantes en el codigo; ahora llegan del yaml via ProjectConfig.
+        self.tuning: TuningConfig = tuning or TuningConfig()
 
         self.engine = create_engine(db_url, future=True)
         Base.metadata.create_all(self.engine)
@@ -121,7 +126,8 @@ class Orchestrator:
         self.conversador: Conversador = conversador or GeminiConversador(client, self.model)
         self.trait_mapper: TraitMapper = trait_mapper or GeminiTraitMapper(client, self.model)
         self.gate: GateAgent = gate or GateAgent(
-            client=client, model=self.model, gate_atoms=self._load_gate_atoms()
+            client=client, model=self.model, gate_atoms=self._load_gate_atoms(),
+            framing=self._load_agent_framing(AgentRole.GATE),
         )
         # Orquestador (fase 2.4): decide kind/tool_call/step_target con LLM +
         # salida tipada, en vez de la policy por keywords (`decide_turn`, que
@@ -129,7 +135,8 @@ class Orchestrator:
         # kb_agent/agents/orchestrator_agent.py). El grafo de steps declarado
         # en la KB es su static_instruction (fijo, no cambia por turno).
         self.orchestrator_agent: OrchestratorAgent = orchestrator_agent or OrchestratorAgent(
-            client=client, model=self.model, step_atoms=self._load_step_atoms()
+            client=client, model=self.model, step_atoms=self._load_step_atoms(),
+            framing=self._load_agent_framing(AgentRole.ORCHESTRATOR),
         )
         # Ruteador de contexto (fase 2.2): decide el bundle justificado del
         # turno con LLM + tools de KB, en vez de (solo) la union
@@ -138,7 +145,9 @@ class Orchestrator:
         # inyecta al `ContextCompiler` de cada turno en `handle_turn`, no se
         # reconstruye por turno.
         self.router_agent: RouterAgent = router_agent or RouterAgent(
-            client=client, model=self.model, knowledge_ops=self.knowledge_ops
+            client=client, model=self.model, knowledge_ops=self.knowledge_ops,
+            framing=self._load_agent_framing(AgentRole.ROUTER),
+            default_max_results=self.tuning.router_max_results,
         )
         self.event_bus = InProcessEventBus()
 
@@ -152,6 +161,7 @@ class Orchestrator:
             "model": cfg.model,
             "tool_handlers": load_tool_handlers(cfg.tool_handlers),
             "fallback_message": cfg.fallback_message,
+            "tuning": cfg.tuning,
         }
         params.update(overrides)
         return cls(**params)
@@ -193,6 +203,8 @@ class Orchestrator:
                 identity_session=session,
                 knowledge_ops=self.knowledge_ops,
                 router_agent=self.router_agent,
+                max_bundle_size=self.tuning.max_bundle_size,
+                history_limit=self.tuning.history_limit,
             )
 
             def compile_context(*, question: str, user_id: int | None, scenario: str | None, trigger: str) -> dict[str, Any]:
@@ -226,7 +238,11 @@ class Orchestrator:
                 compiled_context["_flow_target"] = decision.get("flow_target")
                 return self.conversador.draft_nl(compiled_context)
 
-            router = RouterStateMachine(compile_context=compile_context, draft_response=draft)
+            router = RouterStateMachine(
+                compile_context=compile_context,
+                draft_response=draft,
+                tool_timeout_ms=self.tuning.tool_timeout_ms,
+            )
             turn_result = router.handle_user_message(message, user_id=user.id, scenario=scenario)
             if turn_result is None:
                 raise RuntimeError("router did not produce a turn result for immediate user turn")
@@ -417,6 +433,31 @@ class Orchestrator:
             return self.reader.find("type.knowledge.step")
         except Exception:
             return []
+
+    def _load_agent_framing(self, role: AgentRole) -> str | None:
+        """Encuadre de negocio del agente ``role`` desde la KB (familia ``agent``).
+
+        Busca un ``AgentFraming`` (``type.knowledge.agent``) cuyo campo
+        ``role`` coincida y devuelve su ``framing`` (mas ``examples`` si los
+        tiene). Fail-open a ``None``: sin atom (o si el reader falla), el
+        ``render_*`` correspondiente usa su encuadre generico. Asi el
+        vocabulario del negocio (clinico, gastronomico, etc.) vive en la KB,
+        no hardcodeado en el codigo del agente.
+        """
+        try:
+            atoms = self.reader.find("type.knowledge.agent")
+        except Exception:
+            return None
+        for atom in atoms:
+            doc = self.reader.get_doc(atom["id"]) or atom
+            if str(doc.get("role") or "").strip() != str(role):
+                continue
+            framing = str(doc.get("framing") or "").strip()
+            examples = str(doc.get("examples") or "").strip()
+            if framing and examples:
+                return f"{framing}\n\nEjemplos:\n{examples}"
+            return framing or examples or None
+        return None
 
     @staticmethod
     def _tool_name_from_system_turn(system_turn: Any) -> str | None:

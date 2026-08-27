@@ -35,6 +35,52 @@ DEFAULT_MODEL = "gemini-2.5-flash"
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 8000
 
+#: Defaults de los parametros de tuning del runtime (antes hardcodeados en el
+#: codigo). Se centralizan en el bloque ``tuning`` del yaml y admiten override
+#: por env (ver ``load_project_config``).
+DEFAULT_MAX_BUNDLE_SIZE = 12
+DEFAULT_HISTORY_LIMIT = 6
+DEFAULT_ROUTER_MAX_RESULTS = 10
+DEFAULT_TOOL_TIMEOUT_MS = 15000
+
+#: Defaults del bloque ``deploy`` (infra de Modal). Antes vivian hardcodeados
+#: en ``deploy/modal_app.py``.
+DEFAULT_MODAL_APP_NAME = "kb-agent-runtime"
+DEFAULT_GCP_SECRET_NAME = "kb-agent-runtime-gcp"
+DEFAULT_MIN_CONTAINERS = 1
+DEFAULT_SERVE_TIMEOUT_S = 600
+
+
+@dataclass(slots=True)
+class TuningConfig:
+    """Parametros de tuning del runtime (bundle, historial, router, tools).
+
+    Antes eran constantes hardcodeadas (``ContextCompiler.max_bundle_size``,
+    ``history_limit``, el ``max_results`` default del router, ``TOOL_TIMEOUT_MS``).
+    Ahora salen del bloque ``tuning`` del yaml, con override por env.
+    """
+
+    max_bundle_size: int = DEFAULT_MAX_BUNDLE_SIZE
+    history_limit: int = DEFAULT_HISTORY_LIMIT
+    router_max_results: int = DEFAULT_ROUTER_MAX_RESULTS
+    tool_timeout_ms: int = DEFAULT_TOOL_TIMEOUT_MS
+
+
+@dataclass(slots=True)
+class DeployConfig:
+    """Infra de despliegue (Modal). No es config de negocio; es plataforma.
+
+    Centraliza lo que ``deploy/modal_app.py`` tenia hardcodeado: nombre de la
+    app/volumen, secret de GCP, min_containers y timeout del ``serve``. El
+    nombre de la app sigue admitiendo override por ``MODAL_APP_NAME``.
+    """
+
+    modal_app_name: str = DEFAULT_MODAL_APP_NAME
+    gcp_secret_name: str = DEFAULT_GCP_SECRET_NAME
+    twilio_secret_name: str | None = None
+    min_containers: int = DEFAULT_MIN_CONTAINERS
+    serve_timeout_s: int = DEFAULT_SERVE_TIMEOUT_S
+
 
 @dataclass(slots=True)
 class ProjectConfig:
@@ -55,6 +101,10 @@ class ProjectConfig:
     greeting: str = "Hola. ¿En qué te puedo ayudar?"
     input_placeholder: str = "Escribe tu mensaje..."
     mode: str = "serving"  # "serving" | "test" (informativo)
+    #: Parametros de tuning del runtime (bloque ``tuning`` del yaml).
+    tuning: TuningConfig = field(default_factory=TuningConfig)
+    #: Infra de despliegue (bloque ``deploy`` del yaml). Plataforma, no negocio.
+    deploy: DeployConfig = field(default_factory=DeployConfig)
     #: Modo demo (opt-in con DEMO_MODE=1): sin orquestador ni LLM, todos los
     #: /api/* sirven ``frontends/chat/demo_data``. Nunca en modo test.
     demo_mode: bool = False
@@ -117,6 +167,8 @@ def load_project_config(
     ui = data.get("ui", {}) if isinstance(data.get("ui"), dict) else {}
     server = data.get("server", {}) if isinstance(data.get("server"), dict) else {}
     tools = data.get("tools", {}) if isinstance(data.get("tools"), dict) else {}
+    tuning = data.get("tuning", {}) if isinstance(data.get("tuning"), dict) else {}
+    deploy = data.get("deploy", {}) if isinstance(data.get("deploy"), dict) else {}
     resolved_mode = mode or ("test" if _is_test_context() else "serving")
     cfg = ProjectConfig(mode=resolved_mode)
 
@@ -155,6 +207,28 @@ def load_project_config(
     if ui.get("input_placeholder"):
         cfg.input_placeholder = str(ui["input_placeholder"]).strip()
 
+    # Bloque ``tuning`` (parametros del runtime, antes hardcodeados).
+    if tuning.get("max_bundle_size") is not None:
+        cfg.tuning.max_bundle_size = int(tuning["max_bundle_size"])
+    if tuning.get("history_limit") is not None:
+        cfg.tuning.history_limit = int(tuning["history_limit"])
+    if tuning.get("router_max_results") is not None:
+        cfg.tuning.router_max_results = int(tuning["router_max_results"])
+    if tuning.get("tool_timeout_ms") is not None:
+        cfg.tuning.tool_timeout_ms = int(tuning["tool_timeout_ms"])
+
+    # Bloque ``deploy`` (infra de Modal, antes hardcodeada en modal_app.py).
+    if deploy.get("modal_app_name"):
+        cfg.deploy.modal_app_name = str(deploy["modal_app_name"])
+    if deploy.get("gcp_secret_name"):
+        cfg.deploy.gcp_secret_name = str(deploy["gcp_secret_name"])
+    if deploy.get("twilio_secret_name"):
+        cfg.deploy.twilio_secret_name = str(deploy["twilio_secret_name"])
+    if deploy.get("min_containers") is not None:
+        cfg.deploy.min_containers = int(deploy["min_containers"])
+    if deploy.get("serve_timeout_s") is not None:
+        cfg.deploy.serve_timeout_s = int(deploy["serve_timeout_s"])
+
     # Overrides por entorno (mayor precedencia; ganan sobre test/serving).
     if environ.get("KB_ROOT"):
         cfg.kb_root = _resolve_path(environ["KB_ROOT"])
@@ -168,6 +242,18 @@ def load_project_config(
         cfg.host = environ["HOST"]
     if environ.get("PORT"):
         cfg.port = int(environ["PORT"])
+    # Tuning por env (compat: TOOL_TIMEOUT_MS ya existia como env suelto).
+    if environ.get("TOOL_TIMEOUT_MS"):
+        cfg.tuning.tool_timeout_ms = int(environ["TOOL_TIMEOUT_MS"])
+    if environ.get("MAX_BUNDLE_SIZE"):
+        cfg.tuning.max_bundle_size = int(environ["MAX_BUNDLE_SIZE"])
+    if environ.get("HISTORY_LIMIT"):
+        cfg.tuning.history_limit = int(environ["HISTORY_LIMIT"])
+    if environ.get("ROUTER_MAX_RESULTS"):
+        cfg.tuning.router_max_results = int(environ["ROUTER_MAX_RESULTS"])
+    # Deploy por env (compat: MODAL_APP_NAME ya lo leia modal_app.py).
+    if environ.get("MODAL_APP_NAME"):
+        cfg.deploy.modal_app_name = environ["MODAL_APP_NAME"]
     cfg.demo_mode = resolved_mode != "test" and environ.get("DEMO_MODE") == "1"
 
     return cfg

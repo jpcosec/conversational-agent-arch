@@ -53,6 +53,9 @@ class RouterStateMachine:
     state_trace: list[RouterNode] = field(default_factory=lambda: [RouterNode.IDLE])
     pending_events: list[dict[str, Any]] = field(default_factory=list)
     debounce_enabled: bool = False
+    #: Timeout de una tool en ms. Default = ``TOOL_TIMEOUT_MS`` (env/legacy),
+    #: pero el runtime lo setea desde ``ProjectConfig.tuning.tool_timeout_ms``.
+    tool_timeout_ms: int = TOOL_TIMEOUT_MS
     now_ms: Callable[[], int] = field(default_factory=lambda: (lambda: 0))
     session_state: SessionState = field(default_factory=SessionState)
     _debounce_deadline_ms: int | None = field(default=None, init=False, repr=False)
@@ -119,7 +122,7 @@ class RouterStateMachine:
 
             timeout_payload = {
                 "error": "tool_timeout",
-                "message": f"Tool call timed out after {TOOL_TIMEOUT_MS}ms",
+                "message": f"Tool call timed out after {self.tool_timeout_ms}ms",
             }
             return self._resume_from_waiting_tool(timeout_payload)
 
@@ -233,7 +236,7 @@ class RouterStateMachine:
         self._debounce_deadline_ms = self.now_ms() + DEBOUNCE_MS
 
     def _arm_tool_timer(self) -> None:
-        self._tool_deadline_ms = self.now_ms() + TOOL_TIMEOUT_MS
+        self._tool_deadline_ms = self.now_ms() + self.tool_timeout_ms
 
     def _is_function_call(self, response: Any) -> bool:
         return isinstance(response, dict) and isinstance(response.get("function_call"), dict)

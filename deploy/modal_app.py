@@ -36,15 +36,26 @@ import modal
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TOOLS_ROOT = Path("/home/jp/proyectos/hum-ecosystem/tools")
 
-#: MODAL_APP_NAME=kb-agent-runtime-dev => app y volumen (``<app>-data``) propios,
-#: mismo secret GCP. Sin la variable: produccion.
-APP_NAME = os.environ.get("MODAL_APP_NAME") or "kb-agent-runtime"
+#: Infra de despliegue centralizada en ``project.config.yaml`` (bloque
+#: ``deploy``), leida via ``ProjectConfig``. Antes estos valores vivian
+#: hardcodeados aca; ahora una KB nueva cambia su yaml y no este archivo.
+#: ``MODAL_APP_NAME`` sigue teniendo prioridad (lo aplica ``load_project_config``).
+import sys as _sys
+_sys.path.insert(0, str(REPO_ROOT))
+from kb_agent.project_config import load_project_config as _load_cfg  # noqa: E402
+
+_DEPLOY_CFG = _load_cfg(REPO_ROOT / "project.config.yaml", mode="serving").deploy
+
+APP_NAME = _DEPLOY_CFG.modal_app_name
 VOLUME_NAME = f"{APP_NAME}-data"
-GCP_SECRET_NAME = "kb-agent-runtime-gcp"
-#: Secret opcional con TWILIO_AUTH_TOKEN para /webhooks/twilio. No existe hoy
-#: (no se invento uno); si se crea mas adelante, agregar
-#: `modal.Secret.from_name("kb-agent-runtime-twilio")` a la lista `secrets=`
-#: de la funcion `serve` de abajo y redeployar.
+GCP_SECRET_NAME = _DEPLOY_CFG.gcp_secret_name
+#: Secret opcional con TWILIO_AUTH_TOKEN para /webhooks/twilio. Se declara en
+#: el yaml (``deploy.twilio_secret_name``); si esta seteado se agrega a la
+#: lista ``secrets=`` de ``serve``. Si es null, la ruta /webhooks/twilio
+#: responde 503 hasta que se configure.
+TWILIO_SECRET_NAME = _DEPLOY_CFG.twilio_secret_name
+MIN_CONTAINERS = _DEPLOY_CFG.min_containers
+SERVE_TIMEOUT_S = _DEPLOY_CFG.serve_timeout_s
 
 REMOTE_APP_DIR = "/root/app"
 
@@ -141,13 +152,18 @@ BASELINE_REVISION = "b77575dcdf9b"
 
 data_volume = modal.Volume.from_name(VOLUME_NAME, create_if_missing=True)
 
+#: Secrets del ``serve``: GCP siempre; Twilio solo si el yaml lo declara.
+_SERVE_SECRETS = [modal.Secret.from_name(GCP_SECRET_NAME)]
+if TWILIO_SECRET_NAME:
+    _SERVE_SECRETS.append(modal.Secret.from_name(TWILIO_SECRET_NAME))
+
 
 @app.function(
     image=image,
     volumes={"/data": data_volume},
-    secrets=[modal.Secret.from_name(GCP_SECRET_NAME)],
-    min_containers=1,
-    timeout=600,
+    secrets=_SERVE_SECRETS,
+    min_containers=MIN_CONTAINERS,
+    timeout=SERVE_TIMEOUT_S,
 )
 @modal.asgi_app()
 def serve():
