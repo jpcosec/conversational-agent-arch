@@ -74,6 +74,16 @@ MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py
 modal app logs kb-agent-runtime-dev
 ```
 
+Para **otro negocio** (otra KB) en su propio endpoint, `PROJECT_CONFIG` elige
+el yaml (tiene que vivir en la raíz del repo). De ahí salen el nombre de
+app/volumen (`deploy.modal_app_name`) y la KB que se copia a la imagen
+(`kb_root`); el yaml y la KB de Antonia no viajan. Ej. Vitali:
+
+```bash
+PROJECT_CONFIG=project.vitali.yaml modal deploy deploy/modal_app.py
+modal app logs vitali-runtime
+```
+
 Esto crea (si no existen) la app `kb-agent-runtime` y el Volume persistente
 `kb-agent-runtime-data` (montado en `/data` dentro del contenedor), y publica
 la función ASGI. La URL pública queda impresa al final del deploy, con forma:
