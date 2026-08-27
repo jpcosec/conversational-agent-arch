@@ -77,6 +77,8 @@ def main(argv: list[str] | None = None) -> int:
             if args.index_command == "embeddings":
                 result = ops.index_embeddings(model=getattr(args, "model", None))
                 print(f"Embeddings: {result['processed']} processed, {result['skipped']} skipped, {result['errors']} errors")
+                if result.get("store_update_error"):
+                    print(f"Warning: store update failed (embeddings already written): {result['store_update_error']}", file=sys.stderr)
                 return 0
             if args.index_command == "hierarchy":
                 result = ops.index_hierarchy()

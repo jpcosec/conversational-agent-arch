@@ -19,6 +19,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from kb_agent.models.knowledge import DomainAtom, RuleAtom, ToolAtom, TraitAtom
 from kb_agent.models.knowledge import ConversationStep, SelfDeclaration, StyleGuide
 from kb_agent.models.knowledge import CapabilityBoundary, StrategyRule, FallbackRule
+from kb_agent.models.knowledge import GateCriterion
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.session import SessionState
 
@@ -33,6 +34,7 @@ MODEL_MAP = {
     "boundary": CapabilityBoundary,
     "strategy": StrategyRule,
     "fallback": FallbackRule,
+    "gate": GateCriterion,
 }
 
 ALL_MODELS = list(MODEL_MAP.values())
@@ -48,6 +50,7 @@ MODEL_NAME_BY_ATOM_TYPE = {
     "boundary": "CapabilityBoundary",
     "strategy": "StrategyRule",
     "fallback": "FallbackRule",
+    "gate": "GateCriterion",
 }
 
 
@@ -226,8 +229,14 @@ class KnowledgeOperations:
             doc_path.write_text(md + "\n", encoding="utf-8")
             stats["processed"] += 1
 
-        # Actualizar store
-        self._run_sldb("stores", "update")
+        # Actualizar store. Los embeddings ya quedaron persistidos en los .md;
+        # una falla del store (p.ej. store raíz mal configurado) NO debe abortar
+        # el pipeline ni descartar el reporte de lo ya escrito.
+        if stats["processed"]:
+            try:
+                self._run_sldb("stores", "update")
+            except Exception as exc:
+                stats["store_update_error"] = str(exc)
 
         stats["dimension"] = len(vector) if vector else 0
         return stats

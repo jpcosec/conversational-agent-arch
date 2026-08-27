@@ -36,6 +36,7 @@ MODEL_BY_TYPE: dict[str, str] = {
     "tool": "ToolAtom",
     "trait": "TraitAtom",
     "step": "ConversationStep",
+    "gate": "GateCriterion",
 }
 
 SECTION_TITLES: dict[str, str] = {
@@ -61,6 +62,9 @@ SECTION_TITLES: dict[str, str] = {
     "allowed_transitions": "Allowed Transitions",
     "grounding_atoms": "Grounding Atoms",
     "completion_condition": "Completion Condition",
+    "criterion": "Criterion",
+    "approval_condition": "Approval Condition",
+    "rejection_action": "Rejection Action",
 }
 
 
