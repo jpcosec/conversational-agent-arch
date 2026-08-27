@@ -91,8 +91,8 @@ const atomIds=(ctx)=>(ctx?.atom_ids||[]);
 function openModal(title,html){modalTitle.textContent=title;modalBody.innerHTML=html;modalBackdrop.classList.remove('hidden');modalBackdrop.classList.add('flex')}
 function closeModal(){modalBackdrop.classList.add('hidden');modalBackdrop.classList.remove('flex')}
 
-const FAM_COLORS={self:'#7cba7c',domain:'#7fb3d5',conversation:'#e6a85c',user:'#c97db9'};
-function familiaDe(atom){const tags=atom.tags||[];for(const f of Object.keys(FAM_COLORS)){if(tags.some(t=>t.startsWith(f+':')))return f}return null}
+const FAM_COLORS={self:'#7cba7c',domain:'#7fb3d5',conversation:'#e6a85c',user:'#c97db9',gate:'#d46a8c'};
+function familiaDe(atom){if(atom.family)return atom.family;const tags=atom.tags||[];for(const f of Object.keys(FAM_COLORS)){if(tags.some(t=>t.startsWith(f+':')))return f}return null}
 
 function renderTurns(){
  messagesEl.innerHTML='<div class="absolute left-[38px] top-6 bottom-6 w-px bg-surface-container-highest z-0"></div>';

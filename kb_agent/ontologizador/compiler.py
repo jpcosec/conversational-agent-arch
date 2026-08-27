@@ -28,11 +28,12 @@ Flujo:
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable, Protocol
+from typing import Any, Callable, ClassVar, Protocol
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from kb_agent.models.knowledge import DomainAtom, RuleAtom
 from kb_agent.models_sql.identity import UserTraits
 
 from .compiled_document import CompiledDocument
@@ -169,19 +170,32 @@ class ContextCompiler:
             docs.append(doc)
         return sorted(docs, key=lambda d: d.get("id", ""))
 
-    def _find_atoms(self, tipo: str) -> list[dict[str, str]]:
+    #: modelo tipado por cada tipo que pasa por ``_find_atoms`` (domain/rule).
+    #: Se usa solo para exponer ``family()`` (declarada en la clase, ClassVar
+    #: ``__family__``) sin derivarla del prefijo del tag en el consumidor.
+    _ATOM_MODEL_BY_TIPO: ClassVar[dict[str, type]] = {
+        "domain": DomainAtom,
+        "rule": RuleAtom,
+    }
+
+    def _find_atoms(self, tipo: str) -> list[dict[str, Any]]:
         """Grounding del negocio: domain/rule con su ``answer`` como body.
 
         Conserva tags y title para que el orquestador arme el contexto del turno
-        sin re-leer el store (brecha #2).
+        sin re-leer el store (brecha #2). Tambien propaga ``family``, tomada de
+        la CLASE del modelo tipado (``.family()``), no del prefijo del tag: un
+        RuleAtom es familia "domain" aunque lleve tags "conversation:*".
         """
-        result = []
+        model_cls = self._ATOM_MODEL_BY_TIPO.get(tipo)
+        family = model_cls.family() if model_cls is not None else None
+        result: list[dict[str, Any]] = []
         for d in self._find_by_model(tipo):
             result.append({
                 "id": d.get("id", ""),
                 "body": d.get("answer", ""),
                 "tags": d.get("tags", []),
                 "title": d.get("title") or d.get("id", ""),
+                "family": family,
             })
         return result
 

@@ -52,7 +52,7 @@ import{ReactFlow,ReactFlowProvider,Background,Controls,MiniMap,Handle,Position,u
 import htm from'htm';const html=htm.bind(React.createElement)
 import dagre from'dagre'
 
-const FAM={self:{color:'#7cba7c',icon:'🧬',label:'self'},domain:{color:'#7fb3d5',icon:'📖',label:'domain'},conversation:{color:'#e6a85c',icon:'💬',label:'conversation'},user:{color:'#c97db9',icon:'👤',label:'user'}}
+const FAM={self:{color:'#7cba7c',icon:'🧬',label:'self'},domain:{color:'#7fb3d5',icon:'📖',label:'domain'},conversation:{color:'#e6a85c',icon:'💬',label:'conversation'},user:{color:'#c97db9',icon:'👤',label:'user'},gate:{color:'#d46a8c',icon:'🚦',label:'gate'}}
 const FIVEWH={what:'❓',when:'📅',where:'📍',who:'👤',how:'🔧',why:'🤔'}
 let NID=0
 // Puente de acciones del NodeToolbar -> estado de App (poblado en App via useEffect)
@@ -94,7 +94,7 @@ function buildGraph(tax){const nodes=[],edges=[];Object.keys(tax).forEach(fam=>{
 
 function layoutTree(nodes,edges,rankdir){
  const byFam={};nodes.forEach(n=>{(byFam[n.data.family]||=[]).push(n)})
- const order=['self','domain','conversation','user'];let yOffset=0;const pos={}
+ const order=['self','domain','conversation','user','gate'];let yOffset=0;const pos={}
  order.forEach(fam=>{const fn=byFam[fam]||[];if(!fn.length)return
   const ids=new Set(fn.map(n=>n.id));const fe=edges.filter(e=>ids.has(e.source)&&ids.has(e.target))
   const g=new dagre.graphlib.Graph;g.setDefaultEdgeLabel(()=>({}))

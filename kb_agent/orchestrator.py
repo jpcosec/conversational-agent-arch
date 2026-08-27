@@ -417,6 +417,7 @@ class Orchestrator:
                 "atom_id": atom_id,
                 "title": atom.get("title") or atom_id,
                 "role": self._semantic_role(tags, fallback_role),
+                "family": atom.get("family"),
                 "score": 1.0,
                 "tags": tags,
                 "grounds_step": atom_id in grounding,
