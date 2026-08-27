@@ -12,6 +12,8 @@ tags:
   - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
   - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
   - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  family:agent:
+  - atom-encuadre-de-agentes-desde-la-kb-agentframing
   family:concepts:
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
@@ -38,15 +40,23 @@ tags:
   - atom-propuesta-de-valor
   layer:frontend:
   - atom-canales-de-entrada
+  - atom-dashboard
   - atom-embeddings-como-layout-no-vista
+  - atom-modo-demo
   layer:knowledge:
+  - atom-encuadre-de-agentes-desde-la-kb-agentframing
   - atom-kgdb-grafo-de-flujo
   - atom-persistencia-sql
   - atom-project-config
   - atom-sldb-knowledge-base
   layer:ops:
+  - "atom-capas-de-verificaci\xF3n-y-release"
+  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-estrategia-de-testing
   - atom-gobernanza-deskops
+  - atom-migraciones-alembic-del-volumen
+  - atom-modelo-de-ramas
   - atom-topologia-de-despliegue
   layer:runtime:
   - atom-agente-conversador
@@ -58,6 +68,7 @@ tags:
   - atom-policy-decide-turn
   - atom-reflector-batch
   - atom-router-state-machine
+  - atom-ruteador-de-contexto-como-agente
   - atom-tool-handlers-registry
   navigation:
   - task-ui-foundations
@@ -66,8 +77,14 @@ tags:
   - atom-reflector-batch
   role:boundary:
   - atom-canales-de-entrada
+  - "atom-capas-de-verificaci\xF3n-y-release"
+  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-dashboard
+  - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-estrategia-de-testing
   - atom-in-process-event-bus
+  - atom-modelo-de-ramas
+  - atom-modo-demo
   - atom-orquestador-hub
   - atom-pii-scrubber
   - atom-project-config
@@ -76,12 +93,15 @@ tags:
   - atom-topologia-de-despliegue
   role:data:
   - atom-kgdb-grafo-de-flujo
+  - atom-migraciones-alembic-del-volumen
   - atom-persistencia-sql
   - atom-sldb-knowledge-base
   role:engine:
   - atom-agente-conversador
+  - atom-encuadre-de-agentes-desde-la-kb-agentframing
   - atom-ontologizador-context-compiler
   - atom-policy-decide-turn
+  - atom-ruteador-de-contexto-como-agente
   rule:execution:
   - pill-conversador-jamas-alucina-sin-contexto
   rule:state-machine:
@@ -98,22 +118,40 @@ tags:
   - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
   - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
   - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  topic:agent-framing:
+  - atom-encuadre-de-agentes-desde-la-kb-agentframing
+  topic:alembic:
+  - atom-migraciones-alembic-del-volumen
   topic:arquitectura:
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  topic:ci-release:
+  - "atom-capas-de-verificaci\xF3n-y-release"
   topic:clasificacion:
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   topic:compliance:
   - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  topic:configuration:
+  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  topic:dashboard:
+  - atom-dashboard
+  topic:demo:
+  - atom-modo-demo
+  topic:deploy:
+  - atom-deploy-dev-y-mantenimiento-del-volumen
   topic:doctrina:
   - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
   topic:flujo-conversacional:
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+  topic:git-flow:
+  - atom-modelo-de-ramas
   topic:modelacion:
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
   topic:policy-gate:
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  topic:router:
+  - atom-ruteador-de-contexto-como-agente
   type.desk.inbox-note:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
@@ -121,11 +159,16 @@ tags:
   type.knowledge.atom:
   - atom-agente-conversador
   - atom-canales-de-entrada
+  - "atom-capas-de-verificaci\xF3n-y-release"
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
+  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-dashboard
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-embeddings-como-layout-no-vista
+  - atom-encuadre-de-agentes-desde-la-kb-agentframing
   - atom-estrategia-de-testing
   - atom-garantia-cero-alucinaciones
   - atom-gobernanza-deskops
@@ -133,6 +176,9 @@ tags:
   - atom-in-process-event-bus
   - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-migraciones-alembic-del-volumen
+  - atom-modelo-de-ramas
+  - atom-modo-demo
   - atom-negocios-activos
   - atom-ontologizador-context-compiler
   - atom-orquestador-hub
@@ -145,6 +191,7 @@ tags:
   - atom-propuesta-de-valor
   - atom-reflector-batch
   - atom-router-state-machine
+  - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
   - atom-topologia-de-despliegue
@@ -177,11 +224,16 @@ tags:
   workspace.desk.atoms:
   - atom-agente-conversador
   - atom-canales-de-entrada
+  - "atom-capas-de-verificaci\xF3n-y-release"
   - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
+  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-dashboard
   - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-embeddings-como-layout-no-vista
+  - atom-encuadre-de-agentes-desde-la-kb-agentframing
   - atom-estrategia-de-testing
   - atom-garantia-cero-alucinaciones
   - atom-gobernanza-deskops
@@ -189,6 +241,9 @@ tags:
   - atom-in-process-event-bus
   - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-migraciones-alembic-del-volumen
+  - atom-modelo-de-ramas
+  - atom-modo-demo
   - atom-negocios-activos
   - atom-ontologizador-context-compiler
   - atom-orquestador-hub
@@ -201,6 +256,7 @@ tags:
   - atom-propuesta-de-valor
   - atom-reflector-batch
   - atom-router-state-machine
+  - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
   - atom-topologia-de-despliegue
@@ -555,5 +611,87 @@ documents:
     tags:
     - layer:ops
     - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-modo-demo:
+    model: AtomDoc
+    path: desk/atoms/atom-modo-demo.md
+    tags:
+    - layer:frontend
+    - role:boundary
+    - topic:demo
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-dashboard:
+    model: AtomDoc
+    path: desk/atoms/atom-dashboard.md
+    tags:
+    - layer:frontend
+    - role:boundary
+    - topic:dashboard
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-encuadre-de-agentes-desde-la-kb-agentframing:
+    model: AtomDoc
+    path: desk/atoms/atom-encuadre-de-agentes-desde-la-kb-agentframing.md
+    tags:
+    - family:agent
+    - layer:knowledge
+    - role:engine
+    - topic:agent-framing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  "atom-configuraci\xF3n-por-capas-y-tuning":
+    model: AtomDoc
+    path: "desk/atoms/atom-configuraci\xF3n-por-capas-y-tuning.md"
+    tags:
+    - layer:ops
+    - role:boundary
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-deploy-dev-y-mantenimiento-del-volumen:
+    model: AtomDoc
+    path: desk/atoms/atom-deploy-dev-y-mantenimiento-del-volumen.md
+    tags:
+    - layer:ops
+    - role:boundary
+    - topic:deploy
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-migraciones-alembic-del-volumen:
+    model: AtomDoc
+    path: desk/atoms/atom-migraciones-alembic-del-volumen.md
+    tags:
+    - layer:ops
+    - role:data
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-modelo-de-ramas:
+    model: AtomDoc
+    path: desk/atoms/atom-modelo-de-ramas.md
+    tags:
+    - layer:ops
+    - role:boundary
+    - topic:git-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  "atom-capas-de-verificaci\xF3n-y-release":
+    model: AtomDoc
+    path: "desk/atoms/atom-capas-de-verificaci\xF3n-y-release.md"
+    tags:
+    - layer:ops
+    - role:boundary
+    - topic:ci-release
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-ruteador-de-contexto-como-agente:
+    model: AtomDoc
+    path: desk/atoms/atom-ruteador-de-contexto-como-agente.md
+    tags:
+    - layer:runtime
+    - role:engine
+    - topic:router
     - type.knowledge.atom
     - workspace.desk.atoms

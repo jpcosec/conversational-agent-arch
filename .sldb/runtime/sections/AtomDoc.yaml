@@ -1377,3 +1377,448 @@ documents:
     level: 2
     line_start: 13
     line_end: 14
+- doc_name: atom-modo-demo
+  sections:
+  - path: modo-demo
+    title: Modo demo
+    breadcrumbs:
+    - Modo demo
+    about:
+    - Modo demo
+    - modo demo
+    - layer:frontend
+    - role:boundary
+    - topic:demo
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:frontend
+    - role:boundary
+    - topic:demo
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: modo-demo
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: modo-demo/answer
+    title: Answer
+    breadcrumbs:
+    - Modo demo
+    - Answer
+    about:
+    - Modo demo
+    - modo demo
+    - Answer
+    - answer
+    - layer:frontend
+    - role:boundary
+    - topic:demo
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:frontend
+    - role:boundary
+    - topic:demo
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-dashboard
+  sections:
+  - path: dashboard
+    title: Dashboard
+    breadcrumbs:
+    - Dashboard
+    about:
+    - Dashboard
+    - dashboard
+    - layer:frontend
+    - role:boundary
+    - topic:dashboard
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:frontend
+    - role:boundary
+    - topic:dashboard
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: dashboard
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: dashboard/answer
+    title: Answer
+    breadcrumbs:
+    - Dashboard
+    - Answer
+    about:
+    - Dashboard
+    - dashboard
+    - Answer
+    - answer
+    - layer:frontend
+    - role:boundary
+    - topic:dashboard
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:frontend
+    - role:boundary
+    - topic:dashboard
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-encuadre-de-agentes-desde-la-kb-agentframing
+  sections:
+  - path: encuadre-de-agentes-desde-la-kb-agentframing
+    title: Encuadre de agentes desde la KB (AgentFraming)
+    breadcrumbs:
+    - Encuadre de agentes desde la KB (AgentFraming)
+    about:
+    - Encuadre de agentes desde la KB (AgentFraming)
+    - encuadre de agentes desde la kb agentframing
+    - family:agent
+    - layer:knowledge
+    - role:engine
+    - topic:agent-framing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:agent
+    - layer:knowledge
+    - role:engine
+    - topic:agent-framing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: encuadre-de-agentes-desde-la-kb-agentframing
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: encuadre-de-agentes-desde-la-kb-agentframing/answer
+    title: Answer
+    breadcrumbs:
+    - Encuadre de agentes desde la KB (AgentFraming)
+    - Answer
+    about:
+    - Encuadre de agentes desde la KB (AgentFraming)
+    - encuadre de agentes desde la kb agentframing
+    - Answer
+    - answer
+    - family:agent
+    - layer:knowledge
+    - role:engine
+    - topic:agent-framing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:agent
+    - layer:knowledge
+    - role:engine
+    - topic:agent-framing
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: "atom-configuraci\xF3n-por-capas-y-tuning"
+  sections:
+  - path: configuraci-n-por-capas-y-tuning
+    title: "Configuraci\xF3n por capas y tuning"
+    breadcrumbs:
+    - "Configuraci\xF3n por capas y tuning"
+    about:
+    - "Configuraci\xF3n por capas y tuning"
+    - configuraci n por capas y tuning
+    - layer:ops
+    - role:boundary
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: configuraci-n-por-capas-y-tuning
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: configuraci-n-por-capas-y-tuning/answer
+    title: Answer
+    breadcrumbs:
+    - "Configuraci\xF3n por capas y tuning"
+    - Answer
+    about:
+    - "Configuraci\xF3n por capas y tuning"
+    - configuraci n por capas y tuning
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:configuration
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-deploy-dev-y-mantenimiento-del-volumen
+  sections:
+  - path: deploy-dev-y-mantenimiento-del-volumen
+    title: Deploy dev y mantenimiento del volumen
+    breadcrumbs:
+    - Deploy dev y mantenimiento del volumen
+    about:
+    - Deploy dev y mantenimiento del volumen
+    - deploy dev y mantenimiento del volumen
+    - layer:ops
+    - role:boundary
+    - topic:deploy
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:deploy
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: deploy-dev-y-mantenimiento-del-volumen
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: deploy-dev-y-mantenimiento-del-volumen/answer
+    title: Answer
+    breadcrumbs:
+    - Deploy dev y mantenimiento del volumen
+    - Answer
+    about:
+    - Deploy dev y mantenimiento del volumen
+    - deploy dev y mantenimiento del volumen
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:deploy
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:deploy
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-migraciones-alembic-del-volumen
+  sections:
+  - path: migraciones-alembic-del-volumen
+    title: Migraciones alembic del volumen
+    breadcrumbs:
+    - Migraciones alembic del volumen
+    about:
+    - Migraciones alembic del volumen
+    - migraciones alembic del volumen
+    - layer:ops
+    - role:data
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:data
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: migraciones-alembic-del-volumen
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: migraciones-alembic-del-volumen/answer
+    title: Answer
+    breadcrumbs:
+    - Migraciones alembic del volumen
+    - Answer
+    about:
+    - Migraciones alembic del volumen
+    - migraciones alembic del volumen
+    - Answer
+    - answer
+    - layer:ops
+    - role:data
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:data
+    - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-modelo-de-ramas
+  sections:
+  - path: modelo-de-ramas
+    title: Modelo de ramas
+    breadcrumbs:
+    - Modelo de ramas
+    about:
+    - Modelo de ramas
+    - modelo de ramas
+    - layer:ops
+    - role:boundary
+    - topic:git-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:git-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: modelo-de-ramas
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: modelo-de-ramas/answer
+    title: Answer
+    breadcrumbs:
+    - Modelo de ramas
+    - Answer
+    about:
+    - Modelo de ramas
+    - modelo de ramas
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:git-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:git-flow
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: "atom-capas-de-verificaci\xF3n-y-release"
+  sections:
+  - path: capas-de-verificaci-n-y-release
+    title: "Capas de verificaci\xF3n y release"
+    breadcrumbs:
+    - "Capas de verificaci\xF3n y release"
+    about:
+    - "Capas de verificaci\xF3n y release"
+    - capas de verificaci n y release
+    - layer:ops
+    - role:boundary
+    - topic:ci-release
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:ci-release
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: capas-de-verificaci-n-y-release
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: capas-de-verificaci-n-y-release/answer
+    title: Answer
+    breadcrumbs:
+    - "Capas de verificaci\xF3n y release"
+    - Answer
+    about:
+    - "Capas de verificaci\xF3n y release"
+    - capas de verificaci n y release
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:ci-release
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:ci-release
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-ruteador-de-contexto-como-agente
+  sections:
+  - path: ruteador-de-contexto-como-agente
+    title: Ruteador de contexto como agente
+    breadcrumbs:
+    - Ruteador de contexto como agente
+    about:
+    - Ruteador de contexto como agente
+    - ruteador de contexto como agente
+    - layer:runtime
+    - role:engine
+    - topic:router
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - topic:router
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: ruteador-de-contexto-como-agente
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: ruteador-de-contexto-como-agente/answer
+    title: Answer
+    breadcrumbs:
+    - Ruteador de contexto como agente
+    - Answer
+    about:
+    - Ruteador de contexto como agente
+    - ruteador de contexto como agente
+    - Answer
+    - answer
+    - layer:runtime
+    - role:engine
+    - topic:router
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - topic:router
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15

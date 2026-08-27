@@ -39,8 +39,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-policy-gate-como-agente-separado-con-rama-kb-propia
   path: desk/atoms/atom-policy-gate-como-agente-separado-con-rama-kb-propia.md
-  hash_c: 1595341ba1525b3374425810a55b1d98867310b9a9a6459a21431cb5b2c337a7
-  hash_d: 69a3f26611f1a93270e4d865c84d8ada8d28a8c378940cf12ab1777624180456
+  hash_c: c3d85a2495170e91482cee0d2b39f391f0ebd165b5f4e08b7490af597c0f13f5
+  hash_d: 277759d5f7a15403a29bb1872723ea84e2157d55924c9531253a570ac3a12363
   semantic_tags:
   - domain:psp
   - system:antonia
@@ -126,8 +126,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-estrategia-de-testing
   path: desk/atoms/atom-estrategia-de-testing.md
-  hash_c: 74d2f966bfb7d7b2866a1322b69993476c8dbf46e40c52cf6c8014c57d4e7802
-  hash_d: 164e6087c95a953c75c87b661410009e0705888b9f5bca04c8521b1cd39f45da
+  hash_c: 3a0ac3f87850019802be5b1818cae06904ab8ba1b6e26a42ab6e6ea336ea0f63
+  hash_d: 3af59d29c42caa8d7bb840c39759825b66a290a0d3647231859aea662fc657ff
   semantic_tags:
   - layer:ops
   - role:boundary
@@ -262,10 +262,101 @@ documents:
   - workspace.desk.atoms
 - name: atom-topologia-de-despliegue
   path: desk/atoms/atom-topologia-de-despliegue.md
-  hash_c: a271911298c8c81601f5cdba611e6596fe8735cc747ef3b6e00d8835c7b9b942
-  hash_d: 5579d4ca883866faaad098c2138e1367a543e8383bd006cd261828ce97663d69
+  hash_c: ec04bf3e7823b49eb43888854e75ee87af4664c63dd590bd7af7fb5e490e431b
+  hash_d: 9a45495a30cf946b5db67cf7ea0998934c61c0a8b04b881877afd50e67b77887
   semantic_tags:
   - layer:ops
   - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-modo-demo
+  path: desk/atoms/atom-modo-demo.md
+  hash_c: 2af16dd4d031fc2cc3e51fe60e0ee5a6a35f8041730346c15abb941af7809377
+  hash_d: e51b707bd26b334d5b9d3f9f8638cd459937b4bb57ecf800ca0230cad65030bd
+  semantic_tags:
+  - layer:frontend
+  - role:boundary
+  - topic:demo
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-dashboard
+  path: desk/atoms/atom-dashboard.md
+  hash_c: 9abda1d9f334b63284dedf236f9e2b3a81f58474bdb8371aa02ce3c05ca81eb6
+  hash_d: 03b4490f33f6a13f874675fe7d149ceb06a9ecb091617b707fbc8b106d4960ee
+  semantic_tags:
+  - layer:frontend
+  - role:boundary
+  - topic:dashboard
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-encuadre-de-agentes-desde-la-kb-agentframing
+  path: desk/atoms/atom-encuadre-de-agentes-desde-la-kb-agentframing.md
+  hash_c: 8f69ced45ebc7029cd1c28d2faf5fd97161c428f370f21f85b8e33e81cf54f55
+  hash_d: 7dd5c51d833ebef92647980670385c4a2dac2188f31ac8924eae5748484209ca
+  semantic_tags:
+  - family:agent
+  - layer:knowledge
+  - role:engine
+  - topic:agent-framing
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: "atom-configuraci\xF3n-por-capas-y-tuning"
+  path: "desk/atoms/atom-configuraci\xF3n-por-capas-y-tuning.md"
+  hash_c: 81e9938e9950be0b5f38a032071f9e8626fe60ac288ff3a20e17a7f299bbf8b0
+  hash_d: ac83f250ea204926ca8bbc1510bc0f5e27d809448a45b9e76854a75bcb6b3515
+  semantic_tags:
+  - layer:ops
+  - role:boundary
+  - topic:configuration
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-deploy-dev-y-mantenimiento-del-volumen
+  path: desk/atoms/atom-deploy-dev-y-mantenimiento-del-volumen.md
+  hash_c: 263ec1a78fecfd9a2fc5e5cb5c02b18ffb5416ccfe75ea14e7a7dcf6678d0b37
+  hash_d: ae20f1791007775ff16a308ce9a86c9837f2d12814ce7c6c90a69c18def51a61
+  semantic_tags:
+  - layer:ops
+  - role:boundary
+  - topic:deploy
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-migraciones-alembic-del-volumen
+  path: desk/atoms/atom-migraciones-alembic-del-volumen.md
+  hash_c: 9e0cb3c2733423f767eac120f1d65f29c31c3458183b23811e636cd2cb4840cc
+  hash_d: 93a39eb2221ba721e8cd4185a79f5546cd722c1a94584426e7115511bf97dd43
+  semantic_tags:
+  - layer:ops
+  - role:data
+  - topic:alembic
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-modelo-de-ramas
+  path: desk/atoms/atom-modelo-de-ramas.md
+  hash_c: 3760711424eaff5b33bec0cd6a4972c13cf3e5b67b9dc2b62b6849fbc25bf257
+  hash_d: c96d1ca4d91b7fbcf3f96d495ad5f7f1a917345122f810d8b5249c9c0bb4cdcc
+  semantic_tags:
+  - layer:ops
+  - role:boundary
+  - topic:git-flow
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: "atom-capas-de-verificaci\xF3n-y-release"
+  path: "desk/atoms/atom-capas-de-verificaci\xF3n-y-release.md"
+  hash_c: 71c4a294e35a5780fdcfc98ed69116cf7e81980dc7fa1af2ffb909437f678306
+  hash_d: cd4f52f8cd5dd2e351a6c0f44c10db3e8147687cc35d2aa50951d00b89465fcd
+  semantic_tags:
+  - layer:ops
+  - role:boundary
+  - topic:ci-release
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-ruteador-de-contexto-como-agente
+  path: desk/atoms/atom-ruteador-de-contexto-como-agente.md
+  hash_c: 23e559216738feb0bbeb7c7c74efdf194b09e24141e7de27221dadea88b018a7
+  hash_d: 6ecf5947f022477660eb4cfa81b75bb36af808c04029ad0d8d76fc87e8557e13
+  semantic_tags:
+  - layer:runtime
+  - role:engine
+  - topic:router
   - type.knowledge.atom
   - workspace.desk.atoms
