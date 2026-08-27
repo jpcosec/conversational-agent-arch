@@ -1,0 +1,10 @@
+documents:
+- name: style-vitali
+  path: atoms/style-vitali.md
+  hash_c: 7c126eb6386cf3acc83403fc6a09d8a56e1e3ed8463ce974183d6de5aa770dd4
+  hash_d: 83ba6f33a370b818f2bffb9677aec9b21448c48062b66640ced6ad6e87de6076
+  semantic_tags:
+  - self:style
+  - system:vitali
+  - type.knowledge.style
+  - workspace.knowledge

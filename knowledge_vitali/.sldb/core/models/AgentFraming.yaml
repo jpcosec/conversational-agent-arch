@@ -1,0 +1,13 @@
+name: AgentFraming
+model_ref: kb_agent.models.knowledge:AgentFraming
+path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/agent_framing.py
+documents_index: .sldb/core/documents/AgentFraming.yaml
+sections_index: .sldb/runtime/sections/AgentFraming.yaml
+hash_b: 66422b252f73e00ff8ca43226c407f4ecc2dea2a62d7e0dbcacec0776c474805
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.agent
+- workspace.knowledge
+base_models: []

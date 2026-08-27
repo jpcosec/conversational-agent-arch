@@ -1,0 +1,10 @@
+documents:
+- name: self-vitali
+  path: atoms/self-vitali.md
+  hash_c: 3011328884615617c8372782fdc455d1cd7c2064c5a194b87a6f13652c105fe2
+  hash_d: eca579567b4778a7ba5255a54bc3c571950e99df27ebfefeb762b2cb2f4d2ea1
+  semantic_tags:
+  - self:whoami
+  - system:vitali
+  - type.knowledge.self
+  - workspace.knowledge

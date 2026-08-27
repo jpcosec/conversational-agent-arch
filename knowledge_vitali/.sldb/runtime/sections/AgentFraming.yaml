@@ -1,0 +1,137 @@
+documents:
+- doc_name: agent-vitali-gate
+  sections:
+  - path: encuadre-del-gate-vitali
+    title: "Encuadre del Gate \u2014 Vitali"
+    breadcrumbs:
+    - "Encuadre del Gate \u2014 Vitali"
+    about:
+    - "Encuadre del Gate \u2014 Vitali"
+    - encuadre del gate vitali
+    - agent:gate
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-gate-vitali
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: encuadre-del-gate-vitali/framing
+    title: Framing
+    breadcrumbs:
+    - "Encuadre del Gate \u2014 Vitali"
+    - Framing
+    about:
+    - "Encuadre del Gate \u2014 Vitali"
+    - encuadre del gate vitali
+    - Framing
+    - framing
+    - agent:gate
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: encuadre-del-gate-vitali/examples
+    title: Examples
+    breadcrumbs:
+    - "Encuadre del Gate \u2014 Vitali"
+    - Examples
+    about:
+    - "Encuadre del Gate \u2014 Vitali"
+    - encuadre del gate vitali
+    - Examples
+    - examples
+    - agent:gate
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: examples
+    level: 2
+    line_start: 22
+    line_end: 23
+- doc_name: agent-vitali-router
+  sections:
+  - path: encuadre-del-ruteador-vitali
+    title: "Encuadre del Ruteador \u2014 Vitali"
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 Vitali"
+    about:
+    - "Encuadre del Ruteador \u2014 Vitali"
+    - encuadre del ruteador vitali
+    - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-ruteador-vitali
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: encuadre-del-ruteador-vitali/framing
+    title: Framing
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 Vitali"
+    - Framing
+    about:
+    - "Encuadre del Ruteador \u2014 Vitali"
+    - encuadre del ruteador vitali
+    - Framing
+    - framing
+    - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: encuadre-del-ruteador-vitali/examples
+    title: Examples
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 Vitali"
+    - Examples
+    about:
+    - "Encuadre del Ruteador \u2014 Vitali"
+    - encuadre del ruteador vitali
+    - Examples
+    - examples
+    - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: examples
+    level: 2
+    line_start: 22
+    line_end: 23

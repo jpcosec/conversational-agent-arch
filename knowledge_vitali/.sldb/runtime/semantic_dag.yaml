@@ -1,0 +1,56 @@
+nodes:
+- id: conversation:steps
+  parents: []
+- id: conversation:steps.agendar_visita
+  parents:
+  - conversation:steps
+- id: conversation:steps.calificacion
+  parents:
+  - conversation:steps
+- id: conversation:steps.cierre
+  parents:
+  - conversation:steps
+- id: conversation:steps.datos_contacto
+  parents:
+  - conversation:steps
+- id: conversation:steps.saludo
+  parents:
+  - conversation:steps
+- id: type
+  parents: []
+- id: type.knowledge
+  parents:
+  - type
+- id: type.knowledge.agent
+  parents:
+  - type.knowledge
+- id: type.knowledge.boundary
+  parents:
+  - type.knowledge
+- id: type.knowledge.domain
+  parents:
+  - type.knowledge
+- id: type.knowledge.fallback
+  parents:
+  - type.knowledge
+- id: type.knowledge.rule
+  parents:
+  - type.knowledge
+- id: type.knowledge.self
+  parents:
+  - type.knowledge
+- id: type.knowledge.step
+  parents:
+  - type.knowledge
+- id: type.knowledge.strategy
+  parents:
+  - type.knowledge
+- id: type.knowledge.style
+  parents:
+  - type.knowledge
+- id: workspace
+  parents: []
+- id: workspace.knowledge
+  parents:
+  - workspace
+equivalences: {}

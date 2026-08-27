@@ -1,0 +1,115 @@
+documents:
+- doc_name: style-vitali
+  sections:
+  - path: estilo-de-conversacion
+    title: Estilo de conversacion
+    breadcrumbs:
+    - Estilo de conversacion
+    about:
+    - Estilo de conversacion
+    - estilo de conversacion
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: estilo-de-conversacion
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: estilo-de-conversacion/tone
+    title: Tone
+    breadcrumbs:
+    - Estilo de conversacion
+    - Tone
+    about:
+    - Estilo de conversacion
+    - estilo de conversacion
+    - Tone
+    - tone
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: tone
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: estilo-de-conversacion/language-register
+    title: Language Register
+    breadcrumbs:
+    - Estilo de conversacion
+    - Language Register
+    about:
+    - Estilo de conversacion
+    - estilo de conversacion
+    - Language Register
+    - language register
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: language-register
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: estilo-de-conversacion/phrase-preferences
+    title: Phrase Preferences
+    breadcrumbs:
+    - Estilo de conversacion
+    - Phrase Preferences
+    about:
+    - Estilo de conversacion
+    - estilo de conversacion
+    - Phrase Preferences
+    - phrase preferences
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: phrase-preferences
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: estilo-de-conversacion/length-guidelines
+    title: Length Guidelines
+    breadcrumbs:
+    - Estilo de conversacion
+    - Length Guidelines
+    about:
+    - Estilo de conversacion
+    - estilo de conversacion
+    - Length Guidelines
+    - length guidelines
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: length-guidelines
+    level: 2
+    line_start: 30
+    line_end: 31

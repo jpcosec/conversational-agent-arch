@@ -1,0 +1,71 @@
+documents:
+- name: rule-faq-pricing
+  path: atoms/rule-faq-pricing.md
+  hash_c: e783db3d4efd7992905c948efecd5ced1d86fcbc133271d04953e78b4ef859c3
+  hash_d: ad22acdf28aaa942457cbe2fdc7a27474ebf0f6f3c59c4ab545c76b62072b745
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:sales
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-faq-financing
+  path: atoms/rule-faq-financing.md
+  hash_c: 46be8bf64c7d83f2d74f8ab9799d9f6330b4b8a1b7c699d36efa349ec1962ae3
+  hash_d: 64c8638e173ea18ba0b1912bd618b8e533e438f1833ed0e1b7cd2394cd834f10
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:sales
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-faq-availability
+  path: atoms/rule-faq-availability.md
+  hash_c: b118316aa8ef2e0dcc26c7c0113ecb13cfd2de5a24f4430a5ef8ded47e3db2e4
+  hash_d: 6b9cc9436ea0b33bcc04012f99f7adc2ea0d94748d6005043ce38ae27fec3182
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:sales
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-faq-reserve-now
+  path: atoms/rule-faq-reserve-now.md
+  hash_c: 9a0bc5742e26d1bfc3b874f366a2a461062050433158901f0f44d4f933f7f736
+  hash_d: 0067b988c9aefabe0e40c47a25849a4b63a0f14cad50b746a608e1bba87a1e3c
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:sales
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-business-hours
+  path: atoms/rule-business-hours.md
+  hash_c: c018d544f8fb1fa75f2a033fcf6cf9cd66a5ec6434dec46fc61e052243b4f368
+  hash_d: 97c9185df74a687ac0b3f9df0e4dbd4fc8a88cb6f32360bcb26ffa991b82a899
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:booking
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-timezone-routing
+  path: atoms/rule-timezone-routing.md
+  hash_c: 49b1d0f60e022fa2ca80d8d5af9daf77a6892abb2b00789f87081245476ee9eb
+  hash_d: 788400afdd13d97a7dc4b7382b4559f2df34d6c5b49a2b5c7d43f65e99cc2f1e
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:booking
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-visit-modality
+  path: atoms/rule-visit-modality.md
+  hash_c: 45aa191e2560a878c5b5df5e2e68037702ff2fa23f5fc56b03f675fbccf369cb
+  hash_d: 667d9550f53d45debe4b86b0c318a303a19ae8c49e1171b6288eed0a2bd567a7
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:booking
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge

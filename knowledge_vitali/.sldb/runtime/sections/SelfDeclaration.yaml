@@ -1,0 +1,46 @@
+documents:
+- doc_name: self-vitali
+  sections:
+  - path: quien-soy
+    title: Quien soy
+    breadcrumbs:
+    - Quien soy
+    about:
+    - Quien soy
+    - quien soy
+    - self:whoami
+    - system:vitali
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - self:whoami
+    - system:vitali
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: quien-soy
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: quien-soy/statement
+    title: Statement
+    breadcrumbs:
+    - Quien soy
+    - Statement
+    about:
+    - Quien soy
+    - quien soy
+    - Statement
+    - statement
+    - self:whoami
+    - system:vitali
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - self:whoami
+    - system:vitali
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: statement
+    level: 2
+    line_start: 18
+    line_end: 19

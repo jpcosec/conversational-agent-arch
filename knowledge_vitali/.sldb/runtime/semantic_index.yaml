@@ -1,0 +1,667 @@
+tags:
+  agent:booking-workflow:
+  - step-vitali-agendar-visita
+  - step-vitali-cierre
+  - step-vitali-datos-contacto
+  - strategy-vitali-slot-presentation
+  agent:conversation-rule:
+  - rule-business-hours
+  - rule-faq-availability
+  - rule-faq-financing
+  - rule-faq-pricing
+  - rule-faq-reserve-now
+  - rule-timezone-routing
+  - rule-visit-modality
+  - step-vitali-calificacion
+  - step-vitali-saludo
+  - strategy-vitali-opening
+  - strategy-vitali-respond-first
+  agent:gate:
+  - agent-vitali-gate
+  agent:router:
+  - agent-vitali-router
+  constraint:customer-facing:
+  - boundary-vitali-customer-facing
+  conversation:fallback:
+  - fallback-vitali
+  conversation:steps.agendar_visita:
+  - step-vitali-agendar-visita
+  conversation:steps.calificacion:
+  - step-vitali-calificacion
+  conversation:steps.cierre:
+  - step-vitali-cierre
+  conversation:steps.datos_contacto:
+  - step-vitali-datos-contacto
+  conversation:steps.saludo:
+  - step-vitali-saludo
+  conversation:strategy:
+  - strategy-vitali-opening
+  - strategy-vitali-respond-first
+  - strategy-vitali-slot-presentation
+  domain:booking:
+  - rule-business-hours
+  - rule-timezone-routing
+  - rule-visit-modality
+  domain:brand:
+  - dom-company-history
+  - dom-company-identity
+  - dom-company-leadership
+  - dom-company-mission
+  - dom-company-portfolio-scale
+  - dom-company-values
+  domain:contact:
+  - dom-contact-channels
+  - dom-contact-lead-qualification
+  - dom-contact-lead-segments
+  - dom-contact-offices
+  domain:franchise:
+  - dom-franchise-benefits
+  - dom-franchise-market-data
+  - dom-franchise-offer
+  - dom-franchise-process
+  - dom-franchise-why
+  domain:offering:
+  - dom-concept-amenities-services
+  - dom-concept-amenities-suites
+  - dom-concept-care-security
+  - dom-concept-investment-model
+  - dom-concept-social-life
+  - dom-concept-three-pillars
+  - dom-concept-value-proposition
+  domain:projects:
+  - dom-project-armenia
+  - dom-project-bogota
+  - dom-project-chicureo
+  - dom-project-ciudad-de-mexico
+  - dom-project-mantagua
+  - dom-project-urubo
+  - dom-projects-overview
+  domain:sales:
+  - rule-faq-availability
+  - rule-faq-financing
+  - rule-faq-pricing
+  - rule-faq-reserve-now
+  self:boundary:
+  - boundary-vitali-customer-facing
+  self:style:
+  - style-vitali
+  self:whoami:
+  - self-vitali
+  system:vitali:
+  - agent-vitali-gate
+  - agent-vitali-router
+  - boundary-vitali-customer-facing
+  - dom-company-history
+  - dom-company-identity
+  - dom-company-leadership
+  - dom-company-mission
+  - dom-company-portfolio-scale
+  - dom-company-values
+  - dom-concept-amenities-services
+  - dom-concept-amenities-suites
+  - dom-concept-care-security
+  - dom-concept-investment-model
+  - dom-concept-social-life
+  - dom-concept-three-pillars
+  - dom-concept-value-proposition
+  - dom-contact-channels
+  - dom-contact-lead-qualification
+  - dom-contact-lead-segments
+  - dom-contact-offices
+  - dom-franchise-benefits
+  - dom-franchise-market-data
+  - dom-franchise-offer
+  - dom-franchise-process
+  - dom-franchise-why
+  - dom-project-armenia
+  - dom-project-bogota
+  - dom-project-chicureo
+  - dom-project-ciudad-de-mexico
+  - dom-project-mantagua
+  - dom-project-urubo
+  - dom-projects-overview
+  - fallback-vitali
+  - rule-business-hours
+  - rule-faq-availability
+  - rule-faq-financing
+  - rule-faq-pricing
+  - rule-faq-reserve-now
+  - rule-timezone-routing
+  - rule-visit-modality
+  - self-vitali
+  - step-vitali-agendar-visita
+  - step-vitali-calificacion
+  - step-vitali-cierre
+  - step-vitali-datos-contacto
+  - step-vitali-saludo
+  - strategy-vitali-opening
+  - strategy-vitali-respond-first
+  - strategy-vitali-slot-presentation
+  - style-vitali
+  type.knowledge.agent:
+  - agent-vitali-gate
+  - agent-vitali-router
+  type.knowledge.boundary:
+  - boundary-vitali-customer-facing
+  type.knowledge.domain:
+  - dom-company-history
+  - dom-company-identity
+  - dom-company-leadership
+  - dom-company-mission
+  - dom-company-portfolio-scale
+  - dom-company-values
+  - dom-concept-amenities-services
+  - dom-concept-amenities-suites
+  - dom-concept-care-security
+  - dom-concept-investment-model
+  - dom-concept-social-life
+  - dom-concept-three-pillars
+  - dom-concept-value-proposition
+  - dom-contact-channels
+  - dom-contact-lead-qualification
+  - dom-contact-lead-segments
+  - dom-contact-offices
+  - dom-franchise-benefits
+  - dom-franchise-market-data
+  - dom-franchise-offer
+  - dom-franchise-process
+  - dom-franchise-why
+  - dom-project-armenia
+  - dom-project-bogota
+  - dom-project-chicureo
+  - dom-project-ciudad-de-mexico
+  - dom-project-mantagua
+  - dom-project-urubo
+  - dom-projects-overview
+  type.knowledge.fallback:
+  - fallback-vitali
+  type.knowledge.rule:
+  - rule-business-hours
+  - rule-faq-availability
+  - rule-faq-financing
+  - rule-faq-pricing
+  - rule-faq-reserve-now
+  - rule-timezone-routing
+  - rule-visit-modality
+  type.knowledge.self:
+  - self-vitali
+  type.knowledge.step:
+  - step-vitali-agendar-visita
+  - step-vitali-calificacion
+  - step-vitali-cierre
+  - step-vitali-datos-contacto
+  - step-vitali-saludo
+  type.knowledge.strategy:
+  - strategy-vitali-opening
+  - strategy-vitali-respond-first
+  - strategy-vitali-slot-presentation
+  type.knowledge.style:
+  - style-vitali
+  workspace.knowledge:
+  - agent-vitali-gate
+  - agent-vitali-router
+  - boundary-vitali-customer-facing
+  - dom-company-history
+  - dom-company-identity
+  - dom-company-leadership
+  - dom-company-mission
+  - dom-company-portfolio-scale
+  - dom-company-values
+  - dom-concept-amenities-services
+  - dom-concept-amenities-suites
+  - dom-concept-care-security
+  - dom-concept-investment-model
+  - dom-concept-social-life
+  - dom-concept-three-pillars
+  - dom-concept-value-proposition
+  - dom-contact-channels
+  - dom-contact-lead-qualification
+  - dom-contact-lead-segments
+  - dom-contact-offices
+  - dom-franchise-benefits
+  - dom-franchise-market-data
+  - dom-franchise-offer
+  - dom-franchise-process
+  - dom-franchise-why
+  - dom-project-armenia
+  - dom-project-bogota
+  - dom-project-chicureo
+  - dom-project-ciudad-de-mexico
+  - dom-project-mantagua
+  - dom-project-urubo
+  - dom-projects-overview
+  - fallback-vitali
+  - rule-business-hours
+  - rule-faq-availability
+  - rule-faq-financing
+  - rule-faq-pricing
+  - rule-faq-reserve-now
+  - rule-timezone-routing
+  - rule-visit-modality
+  - self-vitali
+  - step-vitali-agendar-visita
+  - step-vitali-calificacion
+  - step-vitali-cierre
+  - step-vitali-datos-contacto
+  - step-vitali-saludo
+  - strategy-vitali-opening
+  - strategy-vitali-respond-first
+  - strategy-vitali-slot-presentation
+  - style-vitali
+documents:
+  dom-company-identity:
+    model: DomainAtom
+    path: atoms/dom-company-identity.md
+    tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-company-history:
+    model: DomainAtom
+    path: atoms/dom-company-history.md
+    tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-company-mission:
+    model: DomainAtom
+    path: atoms/dom-company-mission.md
+    tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-company-values:
+    model: DomainAtom
+    path: atoms/dom-company-values.md
+    tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-company-leadership:
+    model: DomainAtom
+    path: atoms/dom-company-leadership.md
+    tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-company-portfolio-scale:
+    model: DomainAtom
+    path: atoms/dom-company-portfolio-scale.md
+    tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-concept-value-proposition:
+    model: DomainAtom
+    path: atoms/dom-concept-value-proposition.md
+    tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-concept-three-pillars:
+    model: DomainAtom
+    path: atoms/dom-concept-three-pillars.md
+    tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-concept-investment-model:
+    model: DomainAtom
+    path: atoms/dom-concept-investment-model.md
+    tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-concept-amenities-suites:
+    model: DomainAtom
+    path: atoms/dom-concept-amenities-suites.md
+    tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-concept-amenities-services:
+    model: DomainAtom
+    path: atoms/dom-concept-amenities-services.md
+    tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-concept-care-security:
+    model: DomainAtom
+    path: atoms/dom-concept-care-security.md
+    tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-concept-social-life:
+    model: DomainAtom
+    path: atoms/dom-concept-social-life.md
+    tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-project-chicureo:
+    model: DomainAtom
+    path: atoms/dom-project-chicureo.md
+    tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-project-mantagua:
+    model: DomainAtom
+    path: atoms/dom-project-mantagua.md
+    tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-project-ciudad-de-mexico:
+    model: DomainAtom
+    path: atoms/dom-project-ciudad-de-mexico.md
+    tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-project-bogota:
+    model: DomainAtom
+    path: atoms/dom-project-bogota.md
+    tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-project-armenia:
+    model: DomainAtom
+    path: atoms/dom-project-armenia.md
+    tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-project-urubo:
+    model: DomainAtom
+    path: atoms/dom-project-urubo.md
+    tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-projects-overview:
+    model: DomainAtom
+    path: atoms/dom-projects-overview.md
+    tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-contact-channels:
+    model: DomainAtom
+    path: atoms/dom-contact-channels.md
+    tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-contact-offices:
+    model: DomainAtom
+    path: atoms/dom-contact-offices.md
+    tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-contact-lead-segments:
+    model: DomainAtom
+    path: atoms/dom-contact-lead-segments.md
+    tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-contact-lead-qualification:
+    model: DomainAtom
+    path: atoms/dom-contact-lead-qualification.md
+    tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-franchise-offer:
+    model: DomainAtom
+    path: atoms/dom-franchise-offer.md
+    tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-franchise-why:
+    model: DomainAtom
+    path: atoms/dom-franchise-why.md
+    tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-franchise-process:
+    model: DomainAtom
+    path: atoms/dom-franchise-process.md
+    tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-franchise-benefits:
+    model: DomainAtom
+    path: atoms/dom-franchise-benefits.md
+    tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  dom-franchise-market-data:
+    model: DomainAtom
+    path: atoms/dom-franchise-market-data.md
+    tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+  rule-faq-pricing:
+    model: RuleAtom
+    path: atoms/rule-faq-pricing.md
+    tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-faq-financing:
+    model: RuleAtom
+    path: atoms/rule-faq-financing.md
+    tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-faq-availability:
+    model: RuleAtom
+    path: atoms/rule-faq-availability.md
+    tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-faq-reserve-now:
+    model: RuleAtom
+    path: atoms/rule-faq-reserve-now.md
+    tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-business-hours:
+    model: RuleAtom
+    path: atoms/rule-business-hours.md
+    tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-timezone-routing:
+    model: RuleAtom
+    path: atoms/rule-timezone-routing.md
+    tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-visit-modality:
+    model: RuleAtom
+    path: atoms/rule-visit-modality.md
+    tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  step-vitali-saludo:
+    model: ConversationStep
+    path: atoms/step-vitali-saludo.md
+    tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+  step-vitali-calificacion:
+    model: ConversationStep
+    path: atoms/step-vitali-calificacion.md
+    tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+  step-vitali-agendar-visita:
+    model: ConversationStep
+    path: atoms/step-vitali-agendar-visita.md
+    tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+  step-vitali-datos-contacto:
+    model: ConversationStep
+    path: atoms/step-vitali-datos-contacto.md
+    tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+  step-vitali-cierre:
+    model: ConversationStep
+    path: atoms/step-vitali-cierre.md
+    tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+  self-vitali:
+    model: SelfDeclaration
+    path: atoms/self-vitali.md
+    tags:
+    - self:whoami
+    - system:vitali
+    - type.knowledge.self
+    - workspace.knowledge
+  style-vitali:
+    model: StyleGuide
+    path: atoms/style-vitali.md
+    tags:
+    - self:style
+    - system:vitali
+    - type.knowledge.style
+    - workspace.knowledge
+  boundary-vitali-customer-facing:
+    model: CapabilityBoundary
+    path: atoms/boundary-vitali-customer-facing.md
+    tags:
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+  strategy-vitali-respond-first:
+    model: StrategyRule
+    path: atoms/strategy-vitali-respond-first.md
+    tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+  strategy-vitali-opening:
+    model: StrategyRule
+    path: atoms/strategy-vitali-opening.md
+    tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+  strategy-vitali-slot-presentation:
+    model: StrategyRule
+    path: atoms/strategy-vitali-slot-presentation.md
+    tags:
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+  fallback-vitali:
+    model: FallbackRule
+    path: atoms/fallback-vitali.md
+    tags:
+    - conversation:fallback
+    - system:vitali
+    - type.knowledge.fallback
+    - workspace.knowledge
+  agent-vitali-gate:
+    model: AgentFraming
+    path: atoms/agent-vitali-gate.md
+    tags:
+    - agent:gate
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+  agent-vitali-router:
+    model: AgentFraming
+    path: atoms/agent-vitali-router.md
+    tags:
+    - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge

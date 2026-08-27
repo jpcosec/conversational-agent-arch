@@ -1,0 +1,13 @@
+name: StyleGuide
+model_ref: kb_agent.models.knowledge:StyleGuide
+path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/style.py
+documents_index: .sldb/core/documents/StyleGuide.yaml
+sections_index: .sldb/runtime/sections/StyleGuide.yaml
+hash_b: 22f5999ee9381adab7c9b71cba79452e68b39bd7042b5bc297ce9f1bb06c8ef0
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.style
+- workspace.knowledge
+base_models: []

@@ -1,0 +1,11 @@
+documents:
+- name: boundary-vitali-customer-facing
+  path: atoms/boundary-vitali-customer-facing.md
+  hash_c: 2709af38fa5d60e7a5c39d3e17dccb1e18e1be9aa68aab6c868d3f0d1cd7f2d2
+  hash_d: 989ac870d49d9bb2f5b0efa568e0d7512b12087d65e947d87401e636d19b426e
+  semantic_tags:
+  - constraint:customer-facing
+  - self:boundary
+  - system:vitali
+  - type.knowledge.boundary
+  - workspace.knowledge

@@ -1,0 +1,100 @@
+documents:
+- doc_name: boundary-vitali-customer-facing
+  sections:
+  - path: limites-de-cara-al-cliente
+    title: Limites de cara al cliente
+    breadcrumbs:
+    - Limites de cara al cliente
+    about:
+    - Limites de cara al cliente
+    - limites de cara al cliente
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: limites-de-cara-al-cliente
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: limites-de-cara-al-cliente/restriction
+    title: Restriction
+    breadcrumbs:
+    - Limites de cara al cliente
+    - Restriction
+    about:
+    - Limites de cara al cliente
+    - limites de cara al cliente
+    - Restriction
+    - restriction
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: limites-de-cara-al-cliente/conditions
+    title: Conditions
+    breadcrumbs:
+    - Limites de cara al cliente
+    - Conditions
+    about:
+    - Limites de cara al cliente
+    - limites de cara al cliente
+    - Conditions
+    - conditions
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 23
+    line_end: 24
+  - path: limites-de-cara-al-cliente/escalation
+    title: Escalation
+    breadcrumbs:
+    - Limites de cara al cliente
+    - Escalation
+    about:
+    - Limites de cara al cliente
+    - limites de cara al cliente
+    - Escalation
+    - escalation
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - constraint:customer-facing
+    - self:boundary
+    - system:vitali
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 27
+    line_end: 28

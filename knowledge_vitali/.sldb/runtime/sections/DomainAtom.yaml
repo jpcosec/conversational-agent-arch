@@ -1,0 +1,1306 @@
+documents:
+- doc_name: dom-company-identity
+  sections:
+  - path: vitali-suites-identity
+    title: Vitali Suites Identity
+    breadcrumbs:
+    - Vitali Suites Identity
+    about:
+    - Vitali Suites Identity
+    - vitali suites identity
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: vitali-suites-identity
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: vitali-suites-identity/answer
+    title: Answer
+    breadcrumbs:
+    - Vitali Suites Identity
+    - Answer
+    about:
+    - Vitali Suites Identity
+    - vitali suites identity
+    - Answer
+    - answer
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-company-history
+  sections:
+  - path: company-history
+    title: Company History
+    breadcrumbs:
+    - Company History
+    about:
+    - Company History
+    - company history
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: company-history
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: company-history/answer
+    title: Answer
+    breadcrumbs:
+    - Company History
+    - Answer
+    about:
+    - Company History
+    - company history
+    - Answer
+    - answer
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-company-mission
+  sections:
+  - path: company-mission
+    title: Company Mission
+    breadcrumbs:
+    - Company Mission
+    about:
+    - Company Mission
+    - company mission
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: company-mission
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: company-mission/answer
+    title: Answer
+    breadcrumbs:
+    - Company Mission
+    - Answer
+    about:
+    - Company Mission
+    - company mission
+    - Answer
+    - answer
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-company-values
+  sections:
+  - path: core-values
+    title: Core Values
+    breadcrumbs:
+    - Core Values
+    about:
+    - Core Values
+    - core values
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: core-values
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: core-values/answer
+    title: Answer
+    breadcrumbs:
+    - Core Values
+    - Answer
+    about:
+    - Core Values
+    - core values
+    - Answer
+    - answer
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-company-leadership
+  sections:
+  - path: executive-team
+    title: Executive Team
+    breadcrumbs:
+    - Executive Team
+    about:
+    - Executive Team
+    - executive team
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: executive-team
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: executive-team/answer
+    title: Answer
+    breadcrumbs:
+    - Executive Team
+    - Answer
+    about:
+    - Executive Team
+    - executive team
+    - Answer
+    - answer
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-company-portfolio-scale
+  sections:
+  - path: portfolio-scale
+    title: Portfolio Scale
+    breadcrumbs:
+    - Portfolio Scale
+    about:
+    - Portfolio Scale
+    - portfolio scale
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: portfolio-scale
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: portfolio-scale/answer
+    title: Answer
+    breadcrumbs:
+    - Portfolio Scale
+    - Answer
+    about:
+    - Portfolio Scale
+    - portfolio scale
+    - Answer
+    - answer
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:brand
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-concept-value-proposition
+  sections:
+  - path: core-value-proposition
+    title: Core Value Proposition
+    breadcrumbs:
+    - Core Value Proposition
+    about:
+    - Core Value Proposition
+    - core value proposition
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: core-value-proposition
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: core-value-proposition/answer
+    title: Answer
+    breadcrumbs:
+    - Core Value Proposition
+    - Answer
+    about:
+    - Core Value Proposition
+    - core value proposition
+    - Answer
+    - answer
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-concept-three-pillars
+  sections:
+  - path: three-pillars
+    title: Three Pillars
+    breadcrumbs:
+    - Three Pillars
+    about:
+    - Three Pillars
+    - three pillars
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: three-pillars
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: three-pillars/answer
+    title: Answer
+    breadcrumbs:
+    - Three Pillars
+    - Answer
+    about:
+    - Three Pillars
+    - three pillars
+    - Answer
+    - answer
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-concept-investment-model
+  sections:
+  - path: investment-model-for-residents
+    title: Investment Model for Residents
+    breadcrumbs:
+    - Investment Model for Residents
+    about:
+    - Investment Model for Residents
+    - investment model for residents
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: investment-model-for-residents
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: investment-model-for-residents/answer
+    title: Answer
+    breadcrumbs:
+    - Investment Model for Residents
+    - Answer
+    about:
+    - Investment Model for Residents
+    - investment model for residents
+    - Answer
+    - answer
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-concept-amenities-suites
+  sections:
+  - path: premium-suites-features
+    title: Premium Suites Features
+    breadcrumbs:
+    - Premium Suites Features
+    about:
+    - Premium Suites Features
+    - premium suites features
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: premium-suites-features
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: premium-suites-features/answer
+    title: Answer
+    breadcrumbs:
+    - Premium Suites Features
+    - Answer
+    about:
+    - Premium Suites Features
+    - premium suites features
+    - Answer
+    - answer
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-concept-amenities-services
+  sections:
+  - path: services-and-amenities
+    title: Services and Amenities
+    breadcrumbs:
+    - Services and Amenities
+    about:
+    - Services and Amenities
+    - services and amenities
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: services-and-amenities
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: services-and-amenities/answer
+    title: Answer
+    breadcrumbs:
+    - Services and Amenities
+    - Answer
+    about:
+    - Services and Amenities
+    - services and amenities
+    - Answer
+    - answer
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-concept-care-security
+  sections:
+  - path: care-and-security
+    title: Care and Security
+    breadcrumbs:
+    - Care and Security
+    about:
+    - Care and Security
+    - care and security
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: care-and-security
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: care-and-security/answer
+    title: Answer
+    breadcrumbs:
+    - Care and Security
+    - Answer
+    about:
+    - Care and Security
+    - care and security
+    - Answer
+    - answer
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-concept-social-life
+  sections:
+  - path: active-social-life
+    title: Active Social Life
+    breadcrumbs:
+    - Active Social Life
+    about:
+    - Active Social Life
+    - active social life
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: active-social-life
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: active-social-life/answer
+    title: Answer
+    breadcrumbs:
+    - Active Social Life
+    - Answer
+    about:
+    - Active Social Life
+    - active social life
+    - Answer
+    - answer
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:offering
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-project-chicureo
+  sections:
+  - path: project-chicureo
+    title: 'Project: Chicureo'
+    breadcrumbs:
+    - 'Project: Chicureo'
+    about:
+    - 'Project: Chicureo'
+    - project chicureo
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: project-chicureo
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: project-chicureo/answer
+    title: Answer
+    breadcrumbs:
+    - 'Project: Chicureo'
+    - Answer
+    about:
+    - 'Project: Chicureo'
+    - project chicureo
+    - Answer
+    - answer
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-project-mantagua
+  sections:
+  - path: project-mantagua
+    title: 'Project: Mantagua'
+    breadcrumbs:
+    - 'Project: Mantagua'
+    about:
+    - 'Project: Mantagua'
+    - project mantagua
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: project-mantagua
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: project-mantagua/answer
+    title: Answer
+    breadcrumbs:
+    - 'Project: Mantagua'
+    - Answer
+    about:
+    - 'Project: Mantagua'
+    - project mantagua
+    - Answer
+    - answer
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-project-ciudad-de-mexico
+  sections:
+  - path: project-ciudad-de-mexico
+    title: 'Project: Ciudad de Mexico'
+    breadcrumbs:
+    - 'Project: Ciudad de Mexico'
+    about:
+    - 'Project: Ciudad de Mexico'
+    - project ciudad de mexico
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: project-ciudad-de-mexico
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: project-ciudad-de-mexico/answer
+    title: Answer
+    breadcrumbs:
+    - 'Project: Ciudad de Mexico'
+    - Answer
+    about:
+    - 'Project: Ciudad de Mexico'
+    - project ciudad de mexico
+    - Answer
+    - answer
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-project-bogota
+  sections:
+  - path: project-bogota
+    title: 'Project: Bogota'
+    breadcrumbs:
+    - 'Project: Bogota'
+    about:
+    - 'Project: Bogota'
+    - project bogota
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: project-bogota
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: project-bogota/answer
+    title: Answer
+    breadcrumbs:
+    - 'Project: Bogota'
+    - Answer
+    about:
+    - 'Project: Bogota'
+    - project bogota
+    - Answer
+    - answer
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-project-armenia
+  sections:
+  - path: project-armenia
+    title: 'Project: Armenia'
+    breadcrumbs:
+    - 'Project: Armenia'
+    about:
+    - 'Project: Armenia'
+    - project armenia
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: project-armenia
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: project-armenia/answer
+    title: Answer
+    breadcrumbs:
+    - 'Project: Armenia'
+    - Answer
+    about:
+    - 'Project: Armenia'
+    - project armenia
+    - Answer
+    - answer
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-project-urubo
+  sections:
+  - path: project-urubo
+    title: 'Project: Urubo'
+    breadcrumbs:
+    - 'Project: Urubo'
+    about:
+    - 'Project: Urubo'
+    - project urubo
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: project-urubo
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: project-urubo/answer
+    title: Answer
+    breadcrumbs:
+    - 'Project: Urubo'
+    - Answer
+    about:
+    - 'Project: Urubo'
+    - project urubo
+    - Answer
+    - answer
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-projects-overview
+  sections:
+  - path: projects-overview
+    title: Projects Overview
+    breadcrumbs:
+    - Projects Overview
+    about:
+    - Projects Overview
+    - projects overview
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: projects-overview
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: projects-overview/answer
+    title: Answer
+    breadcrumbs:
+    - Projects Overview
+    - Answer
+    about:
+    - Projects Overview
+    - projects overview
+    - Answer
+    - answer
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:projects
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-contact-channels
+  sections:
+  - path: contact-channels
+    title: Contact Channels
+    breadcrumbs:
+    - Contact Channels
+    about:
+    - Contact Channels
+    - contact channels
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: contact-channels
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: contact-channels/answer
+    title: Answer
+    breadcrumbs:
+    - Contact Channels
+    - Answer
+    about:
+    - Contact Channels
+    - contact channels
+    - Answer
+    - answer
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-contact-offices
+  sections:
+  - path: office-locations
+    title: Office Locations
+    breadcrumbs:
+    - Office Locations
+    about:
+    - Office Locations
+    - office locations
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: office-locations
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: office-locations/answer
+    title: Answer
+    breadcrumbs:
+    - Office Locations
+    - Answer
+    about:
+    - Office Locations
+    - office locations
+    - Answer
+    - answer
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 20
+    line_end: 21
+- doc_name: dom-contact-lead-segments
+  sections:
+  - path: lead-segments
+    title: Lead Segments
+    breadcrumbs:
+    - Lead Segments
+    about:
+    - Lead Segments
+    - lead segments
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: lead-segments
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: lead-segments/answer
+    title: Answer
+    breadcrumbs:
+    - Lead Segments
+    - Answer
+    about:
+    - Lead Segments
+    - lead segments
+    - Answer
+    - answer
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-contact-lead-qualification
+  sections:
+  - path: lead-qualification-fields
+    title: Lead Qualification Fields
+    breadcrumbs:
+    - Lead Qualification Fields
+    about:
+    - Lead Qualification Fields
+    - lead qualification fields
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: lead-qualification-fields
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: lead-qualification-fields/answer
+    title: Answer
+    breadcrumbs:
+    - Lead Qualification Fields
+    - Answer
+    about:
+    - Lead Qualification Fields
+    - lead qualification fields
+    - Answer
+    - answer
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:contact
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-franchise-offer
+  sections:
+  - path: franchise-opportunity
+    title: Franchise Opportunity
+    breadcrumbs:
+    - Franchise Opportunity
+    about:
+    - Franchise Opportunity
+    - franchise opportunity
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: franchise-opportunity
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: franchise-opportunity/answer
+    title: Answer
+    breadcrumbs:
+    - Franchise Opportunity
+    - Answer
+    about:
+    - Franchise Opportunity
+    - franchise opportunity
+    - Answer
+    - answer
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-franchise-why
+  sections:
+  - path: why-vitali-market-case
+    title: Why Vitali (Market Case)
+    breadcrumbs:
+    - Why Vitali (Market Case)
+    about:
+    - Why Vitali (Market Case)
+    - why vitali market case
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: why-vitali-market-case
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: why-vitali-market-case/answer
+    title: Answer
+    breadcrumbs:
+    - Why Vitali (Market Case)
+    - Answer
+    about:
+    - Why Vitali (Market Case)
+    - why vitali market case
+    - Answer
+    - answer
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-franchise-process
+  sections:
+  - path: how-the-franchise-works
+    title: How the Franchise Works
+    breadcrumbs:
+    - How the Franchise Works
+    about:
+    - How the Franchise Works
+    - how the franchise works
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: how-the-franchise-works
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: how-the-franchise-works/answer
+    title: Answer
+    breadcrumbs:
+    - How the Franchise Works
+    - Answer
+    about:
+    - How the Franchise Works
+    - how the franchise works
+    - Answer
+    - answer
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-franchise-benefits
+  sections:
+  - path: franchisee-benefits
+    title: Franchisee Benefits
+    breadcrumbs:
+    - Franchisee Benefits
+    about:
+    - Franchisee Benefits
+    - franchisee benefits
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: franchisee-benefits
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: franchisee-benefits/answer
+    title: Answer
+    breadcrumbs:
+    - Franchisee Benefits
+    - Answer
+    about:
+    - Franchisee Benefits
+    - franchisee benefits
+    - Answer
+    - answer
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22
+- doc_name: dom-franchise-market-data
+  sections:
+  - path: market-data
+    title: Market Data
+    breadcrumbs:
+    - Market Data
+    about:
+    - Market Data
+    - market data
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: market-data
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: market-data/answer
+    title: Answer
+    breadcrumbs:
+    - Market Data
+    - Answer
+    about:
+    - Market Data
+    - market data
+    - Answer
+    - answer
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:franchise
+    - system:vitali
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 21
+    line_end: 22

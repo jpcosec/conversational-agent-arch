@@ -1,0 +1,10 @@
+documents:
+- name: fallback-vitali
+  path: atoms/fallback-vitali.md
+  hash_c: ac5621a9ea9a273611ba30dd6e5475d45df07f3f23cc7de219fcdfed4806ec62
+  hash_d: 4a09448819a4e85103905d43ed182d2513a6b50b565b95f29fd2b4ac9fe792c8
+  semantic_tags:
+  - conversation:fallback
+  - system:vitali
+  - type.knowledge.fallback
+  - workspace.knowledge

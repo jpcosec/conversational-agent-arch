@@ -1,0 +1,19 @@
+documents:
+- name: agent-vitali-gate
+  path: atoms/agent-vitali-gate.md
+  hash_c: 679bb0015c2dc19ee24a24e58457c3bbbf3adaa409ef1b4a1535f8d7b7925d3e
+  hash_d: b166af7d3cd967b39228e1052381606defa309967b0f35c7605f7356afd0f1a9
+  semantic_tags:
+  - agent:gate
+  - system:vitali
+  - type.knowledge.agent
+  - workspace.knowledge
+- name: agent-vitali-router
+  path: atoms/agent-vitali-router.md
+  hash_c: c4ee073e51db2666f28156fbcb1c81de4d56d4a711c651f71467cd35305d3c83
+  hash_d: 2ebf555ef937ade7949d0378aada7361f52ad60d63744ecb7d8a69eb16b936a6
+  semantic_tags:
+  - agent:router
+  - system:vitali
+  - type.knowledge.agent
+  - workspace.knowledge

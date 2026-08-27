@@ -1,0 +1,13 @@
+name: CapabilityBoundary
+model_ref: kb_agent.models.knowledge:CapabilityBoundary
+path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/boundary.py
+documents_index: .sldb/core/documents/CapabilityBoundary.yaml
+sections_index: .sldb/runtime/sections/CapabilityBoundary.yaml
+hash_b: 41a364029a33a11362c60cb48b43710eeda6e763132c7a8855e9708d1ea9f5fa
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.boundary
+- workspace.knowledge
+base_models: []

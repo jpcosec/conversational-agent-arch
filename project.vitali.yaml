@@ -1,0 +1,50 @@
+# Configuración del negocio: Vitali Suites (senior-living, ventas/agendamiento).
+#
+# Doctrina: una KB = un negocio. Este archivo define QUÉ negocio corre el
+# runtime. Para servir Vitali: PROJECT_CONFIG=project.vitali.yaml
+#
+# NOTA: las tools (Kommo, Google Calendar, Gmail) todavía NO están cableadas;
+# el bloque `tools` queda vacío a propósito. El agente conversa y navega el
+# flujo de agendamiento, pero aún no ejecuta la reserva real.
+
+project:
+  name: "Vitali"
+  slug: vitali
+
+  # KB del negocio (formato runtime, 11 tipos). Generada desde los atoms
+  # deskops + antonia_prompt.md (ver scripts/build_vitali_kb.py).
+  kb_root: knowledge_vitali
+  test_kb_root: tests/knowledge
+
+  chat_db: runs/ui-chat-vitali.sqlite
+  profiling_db: runs/ui-chat-vitali.sqlite
+
+  model: gemini-2.5-flash
+
+  # Tools del negocio: vacío por ahora (excluidas a propósito).
+  tools: {}
+
+  server:
+    host: 127.0.0.1
+    port: 8000
+
+  ui:
+    runtime_title: "Auditable Agent Runtime"
+    kb_label: "Vitali · KB"
+    input_placeholder: "Escribe tu mensaje..."
+    greeting: >-
+      Hola. ¿Para quién estás buscando la propiedad, para un familiar o para ti?
+
+  tuning:
+    max_bundle_size: 12
+    history_limit: 6
+    router_max_results: 10
+    tool_timeout_ms: 15000
+
+  # Infra de despliegue: app y volumen propios, separados de Antonia.
+  deploy:
+    modal_app_name: vitali-runtime
+    gcp_secret_name: kb-agent-runtime-gcp
+    twilio_secret_name: null
+    min_containers: 1
+    serve_timeout_s: 600

@@ -1,0 +1,298 @@
+documents:
+- doc_name: strategy-vitali-respond-first
+  sections:
+  - path: responder-primero-al-cliente
+    title: Responder primero al cliente
+    breadcrumbs:
+    - Responder primero al cliente
+    about:
+    - Responder primero al cliente
+    - responder primero al cliente
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: responder-primero-al-cliente
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: responder-primero-al-cliente/goal
+    title: Goal
+    breadcrumbs:
+    - Responder primero al cliente
+    - Goal
+    about:
+    - Responder primero al cliente
+    - responder primero al cliente
+    - Goal
+    - goal
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: goal
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: responder-primero-al-cliente/approach
+    title: Approach
+    breadcrumbs:
+    - Responder primero al cliente
+    - Approach
+    about:
+    - Responder primero al cliente
+    - responder primero al cliente
+    - Approach
+    - approach
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: approach
+    level: 2
+    line_start: 23
+    line_end: 24
+  - path: responder-primero-al-cliente/priorities
+    title: Priorities
+    breadcrumbs:
+    - Responder primero al cliente
+    - Priorities
+    about:
+    - Responder primero al cliente
+    - responder primero al cliente
+    - Priorities
+    - priorities
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: priorities
+    level: 2
+    line_start: 27
+    line_end: 28
+- doc_name: strategy-vitali-opening
+  sections:
+  - path: mensaje-de-apertura
+    title: Mensaje de apertura
+    breadcrumbs:
+    - Mensaje de apertura
+    about:
+    - Mensaje de apertura
+    - mensaje de apertura
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: mensaje-de-apertura
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: mensaje-de-apertura/goal
+    title: Goal
+    breadcrumbs:
+    - Mensaje de apertura
+    - Goal
+    about:
+    - Mensaje de apertura
+    - mensaje de apertura
+    - Goal
+    - goal
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: goal
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: mensaje-de-apertura/approach
+    title: Approach
+    breadcrumbs:
+    - Mensaje de apertura
+    - Approach
+    about:
+    - Mensaje de apertura
+    - mensaje de apertura
+    - Approach
+    - approach
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: approach
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: mensaje-de-apertura/priorities
+    title: Priorities
+    breadcrumbs:
+    - Mensaje de apertura
+    - Priorities
+    about:
+    - Mensaje de apertura
+    - mensaje de apertura
+    - Priorities
+    - priorities
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: priorities
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: strategy-vitali-slot-presentation
+  sections:
+  - path: presentacion-de-horarios
+    title: Presentacion de horarios
+    breadcrumbs:
+    - Presentacion de horarios
+    about:
+    - Presentacion de horarios
+    - presentacion de horarios
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: presentacion-de-horarios
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: presentacion-de-horarios/goal
+    title: Goal
+    breadcrumbs:
+    - Presentacion de horarios
+    - Goal
+    about:
+    - Presentacion de horarios
+    - presentacion de horarios
+    - Goal
+    - goal
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: goal
+    level: 2
+    line_start: 19
+    line_end: 20
+  - path: presentacion-de-horarios/approach
+    title: Approach
+    breadcrumbs:
+    - Presentacion de horarios
+    - Approach
+    about:
+    - Presentacion de horarios
+    - presentacion de horarios
+    - Approach
+    - approach
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: approach
+    level: 2
+    line_start: 23
+    line_end: 24
+  - path: presentacion-de-horarios/priorities
+    title: Priorities
+    breadcrumbs:
+    - Presentacion de horarios
+    - Priorities
+    about:
+    - Presentacion de horarios
+    - presentacion de horarios
+    - Priorities
+    - priorities
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:strategy
+    - system:vitali
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: priorities
+    level: 2
+    line_start: 27
+    line_end: 28

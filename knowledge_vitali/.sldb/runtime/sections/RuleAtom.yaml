@@ -1,0 +1,519 @@
+documents:
+- doc_name: rule-faq-pricing
+  sections:
+  - path: regla-precio-de-una-suite
+    title: 'Regla: precio de una suite'
+    breadcrumbs:
+    - 'Regla: precio de una suite'
+    about:
+    - 'Regla: precio de una suite'
+    - regla precio de una suite
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-precio-de-una-suite
+    level: 1
+    line_start: 20
+    line_end: 21
+  - path: regla-precio-de-una-suite/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: precio de una suite'
+    - Answer
+    about:
+    - 'Regla: precio de una suite'
+    - regla precio de una suite
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: regla-precio-de-una-suite/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: precio de una suite'
+    - Conditions
+    about:
+    - 'Regla: precio de una suite'
+    - regla precio de una suite
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: rule-faq-financing
+  sections:
+  - path: regla-financiamiento-y-pago
+    title: 'Regla: financiamiento y pago'
+    breadcrumbs:
+    - 'Regla: financiamiento y pago'
+    about:
+    - 'Regla: financiamiento y pago'
+    - regla financiamiento y pago
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-financiamiento-y-pago
+    level: 1
+    line_start: 20
+    line_end: 21
+  - path: regla-financiamiento-y-pago/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: financiamiento y pago'
+    - Answer
+    about:
+    - 'Regla: financiamiento y pago'
+    - regla financiamiento y pago
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: regla-financiamiento-y-pago/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: financiamiento y pago'
+    - Conditions
+    about:
+    - 'Regla: financiamiento y pago'
+    - regla financiamiento y pago
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: rule-faq-availability
+  sections:
+  - path: regla-disponibilidad-y-fechas-de-inicio
+    title: 'Regla: disponibilidad y fechas de inicio'
+    breadcrumbs:
+    - 'Regla: disponibilidad y fechas de inicio'
+    about:
+    - 'Regla: disponibilidad y fechas de inicio'
+    - regla disponibilidad y fechas de inicio
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-disponibilidad-y-fechas-de-inicio
+    level: 1
+    line_start: 20
+    line_end: 21
+  - path: regla-disponibilidad-y-fechas-de-inicio/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: disponibilidad y fechas de inicio'
+    - Answer
+    about:
+    - 'Regla: disponibilidad y fechas de inicio'
+    - regla disponibilidad y fechas de inicio
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: regla-disponibilidad-y-fechas-de-inicio/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: disponibilidad y fechas de inicio'
+    - Conditions
+    about:
+    - 'Regla: disponibilidad y fechas de inicio'
+    - regla disponibilidad y fechas de inicio
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: rule-faq-reserve-now
+  sections:
+  - path: regla-no-se-reservan-suites-por-chat
+    title: 'Regla: no se reservan suites por chat'
+    breadcrumbs:
+    - 'Regla: no se reservan suites por chat'
+    about:
+    - 'Regla: no se reservan suites por chat'
+    - regla no se reservan suites por chat
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-no-se-reservan-suites-por-chat
+    level: 1
+    line_start: 20
+    line_end: 21
+  - path: regla-no-se-reservan-suites-por-chat/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: no se reservan suites por chat'
+    - Answer
+    about:
+    - 'Regla: no se reservan suites por chat'
+    - regla no se reservan suites por chat
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: regla-no-se-reservan-suites-por-chat/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: no se reservan suites por chat'
+    - Conditions
+    about:
+    - 'Regla: no se reservan suites por chat'
+    - regla no se reservan suites por chat
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:sales
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: rule-business-hours
+  sections:
+  - path: regla-horario-de-atencion
+    title: 'Regla: horario de atencion'
+    breadcrumbs:
+    - 'Regla: horario de atencion'
+    about:
+    - 'Regla: horario de atencion'
+    - regla horario de atencion
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-horario-de-atencion
+    level: 1
+    line_start: 20
+    line_end: 21
+  - path: regla-horario-de-atencion/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: horario de atencion'
+    - Answer
+    about:
+    - 'Regla: horario de atencion'
+    - regla horario de atencion
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: regla-horario-de-atencion/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: horario de atencion'
+    - Conditions
+    about:
+    - 'Regla: horario de atencion'
+    - regla horario de atencion
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: rule-timezone-routing
+  sections:
+  - path: regla-zona-horaria-y-oficina
+    title: 'Regla: zona horaria y oficina'
+    breadcrumbs:
+    - 'Regla: zona horaria y oficina'
+    about:
+    - 'Regla: zona horaria y oficina'
+    - regla zona horaria y oficina
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-zona-horaria-y-oficina
+    level: 1
+    line_start: 20
+    line_end: 21
+  - path: regla-zona-horaria-y-oficina/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: zona horaria y oficina'
+    - Answer
+    about:
+    - 'Regla: zona horaria y oficina'
+    - regla zona horaria y oficina
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: regla-zona-horaria-y-oficina/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: zona horaria y oficina'
+    - Conditions
+    about:
+    - 'Regla: zona horaria y oficina'
+    - regla zona horaria y oficina
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: rule-visit-modality
+  sections:
+  - path: regla-modalidad-de-la-visita
+    title: 'Regla: modalidad de la visita'
+    breadcrumbs:
+    - 'Regla: modalidad de la visita'
+    about:
+    - 'Regla: modalidad de la visita'
+    - regla modalidad de la visita
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-modalidad-de-la-visita
+    level: 1
+    line_start: 20
+    line_end: 21
+  - path: regla-modalidad-de-la-visita/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: modalidad de la visita'
+    - Answer
+    about:
+    - 'Regla: modalidad de la visita'
+    - regla modalidad de la visita
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: regla-modalidad-de-la-visita/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: modalidad de la visita'
+    - Conditions
+    about:
+    - 'Regla: modalidad de la visita'
+    - regla modalidad de la visita
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:booking
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 26
+    line_end: 27

@@ -1,0 +1,13 @@
+name: ConversationStep
+model_ref: kb_agent.models.knowledge:ConversationStep
+path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/step.py
+documents_index: .sldb/core/documents/ConversationStep.yaml
+sections_index: .sldb/runtime/sections/ConversationStep.yaml
+hash_b: 85d374cb8a827b6e0156a0a698e30b32ece65d230c6c208fa768e76378617f07
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.step
+- workspace.knowledge
+base_models: []

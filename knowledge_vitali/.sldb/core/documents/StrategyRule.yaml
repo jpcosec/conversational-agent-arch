@@ -1,0 +1,31 @@
+documents:
+- name: strategy-vitali-respond-first
+  path: atoms/strategy-vitali-respond-first.md
+  hash_c: 066b65253e4b1fd811515375f12e9ffda429f88747531fcc8ed077abb867c430
+  hash_d: 9b9e3b307a7552f974e69b7e4a40564d8505248b032d29a14c50bd68007223ee
+  semantic_tags:
+  - agent:conversation-rule
+  - conversation:strategy
+  - system:vitali
+  - type.knowledge.strategy
+  - workspace.knowledge
+- name: strategy-vitali-opening
+  path: atoms/strategy-vitali-opening.md
+  hash_c: cc886b6f4ff3866cf266fb08889e6624af00064fd81df4ff94567c4e84f98ee0
+  hash_d: 80a7c8af3ae548746db4c0230f8e27b556edfd9a48f04e2b47f089e140705e73
+  semantic_tags:
+  - agent:conversation-rule
+  - conversation:strategy
+  - system:vitali
+  - type.knowledge.strategy
+  - workspace.knowledge
+- name: strategy-vitali-slot-presentation
+  path: atoms/strategy-vitali-slot-presentation.md
+  hash_c: 580c4412289f3973a03e55d6231b573b31513693ed261a5cefe4e394a42144ae
+  hash_d: cb94b3fcfb3e2da06568b5f7b5ae0d4f6402b2abfa977adba163261c7fe72895
+  semantic_tags:
+  - agent:booking-workflow
+  - conversation:strategy
+  - system:vitali
+  - type.knowledge.strategy
+  - workspace.knowledge

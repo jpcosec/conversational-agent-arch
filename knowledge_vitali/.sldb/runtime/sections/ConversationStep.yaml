@@ -1,0 +1,996 @@
+documents:
+- doc_name: step-vitali-saludo
+  sections:
+  - path: saludo-y-segmentacion
+    title: Saludo y segmentacion
+    breadcrumbs:
+    - Saludo y segmentacion
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: saludo-y-segmentacion
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: saludo-y-segmentacion/instructions
+    title: Instructions
+    breadcrumbs:
+    - Saludo y segmentacion
+    - Instructions
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - Instructions
+    - instructions
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: saludo-y-segmentacion/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Saludo y segmentacion
+    - Required Slots
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - Required Slots
+    - required slots
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 24
+    line_end: 25
+  - path: saludo-y-segmentacion/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Saludo y segmentacion
+    - Handout Target
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - Handout Target
+    - handout target
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 28
+    line_end: 29
+  - path: saludo-y-segmentacion/tool
+    title: Tool
+    breadcrumbs:
+    - Saludo y segmentacion
+    - Tool
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - Tool
+    - tool
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: saludo-y-segmentacion/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Saludo y segmentacion
+    - Allowed Transitions
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - Allowed Transitions
+    - allowed transitions
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 36
+    line_end: 37
+  - path: saludo-y-segmentacion/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Saludo y segmentacion
+    - Grounding Atoms
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - Grounding Atoms
+    - grounding atoms
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 40
+    line_end: 41
+  - path: saludo-y-segmentacion/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Saludo y segmentacion
+    - Completion Condition
+    about:
+    - Saludo y segmentacion
+    - saludo y segmentacion
+    - Completion Condition
+    - completion condition
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.saludo
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 44
+    line_end: 45
+- doc_name: step-vitali-calificacion
+  sections:
+  - path: calificacion-del-lead
+    title: Calificacion del lead
+    breadcrumbs:
+    - Calificacion del lead
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: calificacion-del-lead
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: calificacion-del-lead/instructions
+    title: Instructions
+    breadcrumbs:
+    - Calificacion del lead
+    - Instructions
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - Instructions
+    - instructions
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: calificacion-del-lead/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Calificacion del lead
+    - Required Slots
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - Required Slots
+    - required slots
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 24
+    line_end: 25
+  - path: calificacion-del-lead/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Calificacion del lead
+    - Handout Target
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - Handout Target
+    - handout target
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 28
+    line_end: 29
+  - path: calificacion-del-lead/tool
+    title: Tool
+    breadcrumbs:
+    - Calificacion del lead
+    - Tool
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - Tool
+    - tool
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: calificacion-del-lead/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Calificacion del lead
+    - Allowed Transitions
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - Allowed Transitions
+    - allowed transitions
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 36
+    line_end: 37
+  - path: calificacion-del-lead/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Calificacion del lead
+    - Grounding Atoms
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - Grounding Atoms
+    - grounding atoms
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 40
+    line_end: 41
+  - path: calificacion-del-lead/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Calificacion del lead
+    - Completion Condition
+    about:
+    - Calificacion del lead
+    - calificacion del lead
+    - Completion Condition
+    - completion condition
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - conversation:steps.calificacion
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 44
+    line_end: 45
+- doc_name: step-vitali-agendar-visita
+  sections:
+  - path: agendar-la-visita
+    title: Agendar la visita
+    breadcrumbs:
+    - Agendar la visita
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: agendar-la-visita
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: agendar-la-visita/instructions
+    title: Instructions
+    breadcrumbs:
+    - Agendar la visita
+    - Instructions
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - Instructions
+    - instructions
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: agendar-la-visita/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Agendar la visita
+    - Required Slots
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - Required Slots
+    - required slots
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 24
+    line_end: 25
+  - path: agendar-la-visita/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Agendar la visita
+    - Handout Target
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - Handout Target
+    - handout target
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 28
+    line_end: 29
+  - path: agendar-la-visita/tool
+    title: Tool
+    breadcrumbs:
+    - Agendar la visita
+    - Tool
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - Tool
+    - tool
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: agendar-la-visita/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Agendar la visita
+    - Allowed Transitions
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - Allowed Transitions
+    - allowed transitions
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 36
+    line_end: 37
+  - path: agendar-la-visita/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Agendar la visita
+    - Grounding Atoms
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - Grounding Atoms
+    - grounding atoms
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 40
+    line_end: 41
+  - path: agendar-la-visita/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Agendar la visita
+    - Completion Condition
+    about:
+    - Agendar la visita
+    - agendar la visita
+    - Completion Condition
+    - completion condition
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.agendar_visita
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 44
+    line_end: 45
+- doc_name: step-vitali-datos-contacto
+  sections:
+  - path: datos-de-contacto
+    title: Datos de contacto
+    breadcrumbs:
+    - Datos de contacto
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: datos-de-contacto
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: datos-de-contacto/instructions
+    title: Instructions
+    breadcrumbs:
+    - Datos de contacto
+    - Instructions
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - Instructions
+    - instructions
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: datos-de-contacto/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Datos de contacto
+    - Required Slots
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - Required Slots
+    - required slots
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 24
+    line_end: 25
+  - path: datos-de-contacto/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Datos de contacto
+    - Handout Target
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - Handout Target
+    - handout target
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 28
+    line_end: 29
+  - path: datos-de-contacto/tool
+    title: Tool
+    breadcrumbs:
+    - Datos de contacto
+    - Tool
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - Tool
+    - tool
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: datos-de-contacto/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Datos de contacto
+    - Allowed Transitions
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - Allowed Transitions
+    - allowed transitions
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 36
+    line_end: 37
+  - path: datos-de-contacto/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Datos de contacto
+    - Grounding Atoms
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - Grounding Atoms
+    - grounding atoms
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 40
+    line_end: 41
+  - path: datos-de-contacto/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Datos de contacto
+    - Completion Condition
+    about:
+    - Datos de contacto
+    - datos de contacto
+    - Completion Condition
+    - completion condition
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.datos_contacto
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 44
+    line_end: 45
+- doc_name: step-vitali-cierre
+  sections:
+  - path: cierre-y-confirmacion
+    title: Cierre y confirmacion
+    breadcrumbs:
+    - Cierre y confirmacion
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: cierre-y-confirmacion
+    level: 1
+    line_start: 18
+    line_end: 19
+  - path: cierre-y-confirmacion/instructions
+    title: Instructions
+    breadcrumbs:
+    - Cierre y confirmacion
+    - Instructions
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - Instructions
+    - instructions
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: cierre-y-confirmacion/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Cierre y confirmacion
+    - Required Slots
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - Required Slots
+    - required slots
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 24
+    line_end: 25
+  - path: cierre-y-confirmacion/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Cierre y confirmacion
+    - Handout Target
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - Handout Target
+    - handout target
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 28
+    line_end: 29
+  - path: cierre-y-confirmacion/tool
+    title: Tool
+    breadcrumbs:
+    - Cierre y confirmacion
+    - Tool
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - Tool
+    - tool
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: cierre-y-confirmacion/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Cierre y confirmacion
+    - Allowed Transitions
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - Allowed Transitions
+    - allowed transitions
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 36
+    line_end: 37
+  - path: cierre-y-confirmacion/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Cierre y confirmacion
+    - Grounding Atoms
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - Grounding Atoms
+    - grounding atoms
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 40
+    line_end: 41
+  - path: cierre-y-confirmacion/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Cierre y confirmacion
+    - Completion Condition
+    about:
+    - Cierre y confirmacion
+    - cierre y confirmacion
+    - Completion Condition
+    - completion condition
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - agent:booking-workflow
+    - conversation:steps.cierre
+    - system:vitali
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 44
+    line_end: 45

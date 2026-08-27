@@ -1,0 +1,13 @@
+name: StrategyRule
+model_ref: kb_agent.models.knowledge:StrategyRule
+path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/strategy.py
+documents_index: .sldb/core/documents/StrategyRule.yaml
+sections_index: .sldb/runtime/sections/StrategyRule.yaml
+hash_b: 12d32603ed0ad4ff6d7d424d10162dea6a30d1f894c4e2da87c9e4daf4b3ad5f
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.strategy
+- workspace.knowledge
+base_models: []
