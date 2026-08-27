@@ -30,10 +30,18 @@ def test_nl_prompt_uses_kb_persona_strategy_grounding_and_traits() -> None:
         "strategy": "Primero responder.",
         "domain_facts": [{"id": "a", "body": "Margherita 8900."}],
         "rules": [{"id": "r", "body": "Reservas con 1 dia de anticipacion."}],
-        "user_traits": ["trait-vegetariano"],
+        "user_traits": [{
+            "trait_id": "trait-vegetariano",
+            "title": "Cliente vegetariano",
+            "description": "No consume carne.",
+            "category": "dietary",
+            "confidence": 0.9,
+            "source": "test",
+        }],
     })
     for fragment in ("Soy el asistente de X.", "Estilo: Breve.", "Limites: No invento.", "Estrategia: Primero responder.",
-                     "- Margherita 8900.", "- Reservas con 1 dia de anticipacion.", "PERFIL DEL CLIENTE (traits): trait-vegetariano",
+                     "- Margherita 8900.", "- Reservas con 1 dia de anticipacion.",
+                     "PERFIL DEL CLIENTE (traits): Cliente vegetariano (No consume carne.)",
                      "PREGUNTA: ¿Qué me recomiendan?"):
         assert fragment in prompt
     assert "RESULTADO DE TOOL" not in prompt

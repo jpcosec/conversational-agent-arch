@@ -41,6 +41,23 @@ class TraitMapper(Protocol):
     ) -> Sequence[Any]: ...
 
 
+def _describe_trait(trait: Any) -> str:
+    """Redacta un trait para el prompt con su descripcion, no solo el id.
+
+    ``user_traits`` trae dicts {trait_id, title, description, category,
+    confidence, source} resueltos contra el TraitAtom en la KB (ver
+    ``ContextCompiler._load_user_traits``). Tolera strings sueltos por si
+    algun llamador legacy todavia pasa solo el id.
+    """
+    if not isinstance(trait, dict):
+        return str(trait)
+    label = (trait.get("title") or trait.get("trait_id") or "").strip()
+    description = (trait.get("description") or "").strip()
+    if label and description:
+        return f"{label} ({description})"
+    return label or description or str(trait.get("trait_id", ""))
+
+
 def build_nl_prompt(compiled: dict[str, Any]) -> str:
     """Prompt del Conversador. Todo lo del negocio sale del Contexto Compilado."""
     persona = compiled.get("persona", {}) or {}
@@ -60,7 +77,8 @@ def build_nl_prompt(compiled: dict[str, Any]) -> str:
     rules = [r["body"] for r in compiled.get("rules", [])]
     traits = compiled.get("user_traits", [])
     grounding = "\n".join(f"- {t}" for t in facts + rules)
-    perfil = f"\nPERFIL DEL CLIENTE (traits): {', '.join(traits)}" if traits else ""
+    trait_labels = [_describe_trait(t) for t in traits]
+    perfil = f"\nPERFIL DEL CLIENTE (traits): {', '.join(trait_labels)}" if trait_labels else ""
     system_turn = compiled.get("system_turn")
     system_turn_prompt = ""
     if isinstance(system_turn, dict) and system_turn.get("content"):

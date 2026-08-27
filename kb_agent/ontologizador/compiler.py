@@ -28,17 +28,20 @@ Flujo:
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Callable, ClassVar, Protocol
+from typing import TYPE_CHECKING, Any, Callable, ClassVar, Protocol
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from kb_agent.models.knowledge import DomainAtom, RuleAtom
-from kb_agent.models_sql.identity import UserTraits
+from kb_agent.models_sql.identity import UserTraits, Users
 
 from .compiled_document import CompiledDocument
 from .kgdb_reader import KGDBReader
 from .sldb_reader import SLDBReader
+
+if TYPE_CHECKING:
+    from knowledge_base.operations import KnowledgeOperations
 
 
 class SessionStateLike(Protocol):
@@ -51,6 +54,11 @@ class ContextCompiler:
     kgdb: KGDBReader | None = None
     identity_session: Session | None = None
     session_state_loader: Callable[[int], SessionStateLike | None] | None = None
+    #: Capa knowledge_base (SLDB+KGDB+SQL) para resolver traits contra su
+    #: TraitAtom. El orquestador crea UNA instancia (embedder cacheado por
+    #: instancia) y la reutiliza en todos los turnos; si no se inyecta (tests
+    #: unitarios del compilador), se resuelve localmente via ``reader``.
+    knowledge_ops: "KnowledgeOperations | None" = None
 
     def compile(
         self,
@@ -285,6 +293,29 @@ class ContextCompiler:
 
     # ── enriquecimiento KGDB ────────────────────────────────────
 
+    #: placeholders del texto libre "Allowed Transitions" que significan
+    #: "sin salida" (step terminal), ver p.ej. step-antonia-despedida.
+    _NO_TRANSITION_PLACEHOLDERS = {"ninguno", "ninguna", "ninguna (paso terminal)"}
+
+    @classmethod
+    def _split_declared_transitions(cls, text: str) -> list[str]:
+        """Parsea el campo libre ``ConversationStep.allowed_transitions``.
+
+        Mismo criterio que ``frontends/flow_editor/export_flow.py`` (unica
+        otra lectora de este campo hoy): coma o salto de linea como
+        separador, placeholders de "sin transicion" descartados.
+        """
+        if not text:
+            return []
+        parts = [p.strip() for p in text.replace("\n", ",").split(",")]
+        return [p for p in parts if p and p.lower() not in cls._NO_TRANSITION_PLACEHOLDERS]
+
+    def _find_step_by_tag(self, tag: str) -> dict[str, Any] | None:
+        for step in self._find_by_model("step"):
+            if tag in (step.get("tags") or []):
+                return step
+        return None
+
     def _augment_from_kgdb(
         self,
         doc: CompiledDocument,
@@ -297,8 +328,18 @@ class ContextCompiler:
         vive en la jerarquia ``conversation:steps.*``. Este metodo:
           1. determina el step actual (viene del SessionState via ``current_step``,
              o cae al onboarding si existe, o al primer step disponible),
-          2. expone los steps hermanos como transiciones permitidas,
+          2. expone SOLO las transiciones que el step activo declara en su
+             propia seccion "Allowed Transitions" (no todos los hermanos),
           3. resuelve los documentos que groundean el step contra SLDB.
+
+        Nota: ``KGDBReader.get_next_transitions``/``get_grounding_atoms``
+        leen aristas ``flows_to``/``grounded_by`` que el pipeline de ingest
+        SLDB->KGDB (``kgdb.ingest.sldb``) nunca produce -- el grafo que arma
+        ``KGDBReader.from_sldb`` es puramente tag-centrico (``tagged_as``,
+        ``semantic_parent``). Por eso las transiciones se leen del campo
+        tipado ``ConversationStep.allowed_transitions`` via el reader, que es
+        la fuente real que ya declara cada step (y que ya usa, por el mismo
+        motivo, ``frontends/flow_editor/export_flow.py``).
         """
         if self.kgdb is None:
             return
@@ -315,16 +356,52 @@ class ContextCompiler:
             active = onboarding or steps[0]
 
         doc.flow_node = active
-        # Transiciones permitidas: los otros steps del diagrama (hermanos).
-        doc.allowed_transitions = [s for s in steps if s != active]
+        # Transiciones permitidas: SOLO las declaradas por el step activo,
+        # filtradas contra el universo real de steps del diagrama (defensivo
+        # ante typos o referencias colgantes en el campo libre).
+        step_doc = self._find_step_by_tag(active)
+        declared = self._split_declared_transitions(step_doc.get("allowed_transitions", "")) if step_doc else []
+        doc.allowed_transitions = [t for t in declared if t in steps]
         # Grounding: documentos etiquetados con el step actual (resueltos en SLDB).
         doc.grounding_atoms = self.kgdb.docs_for_tag(active)
 
-    def _load_user_traits(self, user_id: int | None) -> list[str]:
+    def _load_user_traits(self, user_id: int | None) -> list[dict[str, Any]]:
+        """Traits del usuario resueltos contra su TraitAtom (no solo el id).
+
+        Via ``knowledge_ops.traits(external_id)`` cuando el orquestador
+        inyecto una instancia de ``KnowledgeOperations`` (produccion: una
+        sola instancia por proceso, embedder cacheado). Si no hay
+        ``knowledge_ops`` (p.ej. tests unitarios del compilador solo), cae a
+        la misma resolucion hecha a mano con lo que el compilador ya tiene
+        inyectado (``identity_session`` + ``reader``), sin abrir una conexion
+        SQL nueva.
+        """
         if user_id is None or self.identity_session is None:
             return []
-        statement = select(UserTraits.trait_id).where(UserTraits.user_id == user_id).order_by(UserTraits.trait_id)
-        return list(self.identity_session.scalars(statement))
+
+        if self.knowledge_ops is not None:
+            user = self.identity_session.get(Users, user_id)
+            external_id = getattr(user, "external_id", None)
+            if external_id is not None:
+                return self.knowledge_ops.traits(external_id)
+
+        statement = (
+            select(UserTraits)
+            .where(UserTraits.user_id == user_id)
+            .order_by(UserTraits.trait_id)
+        )
+        results: list[dict[str, Any]] = []
+        for ut in self.identity_session.scalars(statement):
+            trait_doc = self.reader.get_doc(ut.trait_id) or {}
+            results.append({
+                "trait_id": ut.trait_id,
+                "title": trait_doc.get("title", ut.trait_id),
+                "description": trait_doc.get("description", ""),
+                "category": trait_doc.get("category", ""),
+                "confidence": ut.confidence,
+                "source": ut.source,
+            })
+        return results
 
 
 def compile_context(
@@ -338,6 +415,7 @@ def compile_context(
     identity_session: Session | None = None,
     session_state_loader: Callable[[int], SessionStateLike | None] | None = None,
     kgdb: KGDBReader | None = None,
+    knowledge_ops: "KnowledgeOperations | None" = None,
 ) -> CompiledDocument:
     """Atajo funcional sobre ``ContextCompiler`` (el reader es obligatorio)."""
     compiler = ContextCompiler(
@@ -345,6 +423,7 @@ def compile_context(
         identity_session=identity_session,
         session_state_loader=session_state_loader,
         kgdb=kgdb,
+        knowledge_ops=knowledge_ops,
     )
     return compiler.compile(
         question=question,

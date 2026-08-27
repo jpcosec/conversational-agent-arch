@@ -80,7 +80,11 @@ def test_compile_selects_by_typed_model_and_structures_by_semantic_role(business
     assert "Resolver la consulta." in d["strategy"] and "Exactitud primero" in d["strategy"]
     assert d["fallback_text"] == "Si no hay contexto suficiente, pide una aclaración."
     assert d["tools"] == [{"name": "crear_reserva", "parameters": {"type": "object", "properties": {"fecha": {"type": "string"}}, "required": ["fecha"]}}]
-    assert d["user_traits"] == ["trait-prefiere-borde-relleno", "trait-vegetariano"]
+    # user_traits ahora son dicts resueltos contra su TraitAtom (trait_id +
+    # title/description/category), no solo el id (esta KB no declara
+    # TraitAtom para estos ids: title/description caen al fallback del id).
+    assert [t["trait_id"] for t in d["user_traits"]] == ["trait-prefiere-borde-relleno", "trait-vegetariano"]
+    assert all({"trait_id", "title", "description", "category", "confidence", "source"} <= set(t) for t in d["user_traits"])
     assert d["is_empty"] is False
     assert d["flow_node"] is None  # sin KGDB no hay flujo
 

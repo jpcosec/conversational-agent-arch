@@ -16,7 +16,9 @@ class CompiledDocument:
 
     scenario: str
     question: str
-    user_traits: list[str] = field(default_factory=list)
+    #: Traits del usuario resueltos contra su TraitAtom en la KB (no solo el
+    #: id): {trait_id, title, description, category, confidence, source}.
+    user_traits: list[dict[str, Any]] = field(default_factory=list)
     domain_facts: list[dict[str, str]] = field(default_factory=list)
     rules: list[dict[str, str]] = field(default_factory=list)
     tools: list[dict[str, Any]] = field(default_factory=list)

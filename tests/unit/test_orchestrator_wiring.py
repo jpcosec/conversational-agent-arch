@@ -131,8 +131,12 @@ def test_profiler_learns_trait_and_next_turn_uses_it(orch: Orchestrator) -> None
     assert first["used_traits_in_context"] == []  # el perfil recien aprendido entra al SIGUIENTE turno
 
     second = orch.handle_turn(external_id="wa:+56933333333", message="¿y para hoy?")
-    assert second["used_traits_in_context"] == ["trait-vegetariano"]
-    assert orch.conversador.calls[-1]["user_traits"] == ["trait-vegetariano"]
+    # used_traits_in_context / user_traits ahora son dicts resueltos contra
+    # el TraitAtom (trait_id, title, description, category, confidence,
+    # source), no solo el id.
+    assert [t["trait_id"] for t in second["used_traits_in_context"]] == ["trait-vegetariano"]
+    assert second["used_traits_in_context"][0]["description"].startswith("La persona es vegetariana")
+    assert [t["trait_id"] for t in orch.conversador.calls[-1]["user_traits"]] == ["trait-vegetariano"]
     assert "(perfil: trait-vegetariano)" in second["reply"]
 
     # el perfilador ve el texto scrubbeado y el catalogo de TraitAtoms de la KB
@@ -178,7 +182,7 @@ def test_state_and_data_survive_orchestrator_restart(donpeppe_kb: Path, tmp_db_u
     try:
         t3 = b.handle_turn(external_id="wa:+56966666666", message="¿y para hoy?")
         assert t3["scenario_source"] == "session_state" and t3["scenario_effective"] == "pizzeria"
-        assert t3["used_traits_in_context"] == ["trait-vegetariano"]
+        assert [t["trait_id"] for t in t3["used_traits_in_context"]] == ["trait-vegetariano"]
         assert b.count_reservas() == 1
         with b.SessionLocal() as s:
             state = s.get(SessionState, t3["user_id"])

@@ -30,7 +30,8 @@ class FakeConversador:
             return f"[tool-ok] {system_turn['content']}"
         facts = [f["body"] for f in compiled.get("domain_facts", [])]
         traits = compiled.get("user_traits", [])
-        suffix = f" (perfil: {', '.join(traits)})" if traits else ""
+        trait_ids = [t["trait_id"] if isinstance(t, dict) else str(t) for t in traits]
+        suffix = f" (perfil: {', '.join(trait_ids)})" if trait_ids else ""
         return f"[nl] {' | '.join(facts[:2])}{suffix}"
 
 

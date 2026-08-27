@@ -40,6 +40,7 @@ from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, load_project_c
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
 from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
 from kb_agent.state_machine import RouterStateMachine
+from knowledge_base.operations import KnowledgeOperations
 
 #: Canal cuando el external_id no trae prefijo reconocible ("<canal>:<id>").
 UNKNOWN_CHANNEL = "unknown"
@@ -81,6 +82,12 @@ class Orchestrator:
             self.kgdb = KGDBReader.from_sldb(self.kb_root / ".sldb")
         except Exception:
             self.kgdb = None
+        # Una sola instancia por proceso: KnowledgeOperations cachea el
+        # embedder de jina por INSTANCIA (~1 min en frio). Se reutiliza en
+        # todos los turnos, inyectada en el ContextCompiler de cada turno.
+        self.knowledge_ops = KnowledgeOperations(
+            kb_root=self.kb_root, db_url=db_url, pythonpath=str(self.repo_root),
+        )
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
 
         # LLM: solo se crea el cliente real si no inyectaron ambos puertos.
@@ -135,7 +142,12 @@ class Orchestrator:
             else:
                 scenario_source = "default"
 
-            compiler = ContextCompiler(reader=self.reader, kgdb=self.kgdb, identity_session=session)
+            compiler = ContextCompiler(
+                reader=self.reader,
+                kgdb=self.kgdb,
+                identity_session=session,
+                knowledge_ops=self.knowledge_ops,
+            )
 
             def compile_context(*, question: str, user_id: int | None, scenario: str | None, trigger: str) -> dict[str, Any]:
                 compiled = compiler.compile(
