@@ -152,13 +152,20 @@ Cinco familias para once tipos:
 
 Dos cosas que la familia resuelve y el `atom_type` no:
 
-1. **Es el eje de propiedad por agente.** Cada familia tiene exactamente un
-   agente que la carga como contexto fijo o la selecciona: `self` →
-   conversador (persona + tools), `conversation` → orquestador (flujo,
-   estrategia, fallback), `domain` → ruteador (selección dinámica), `user` →
-   perfil (juntura con SQL), `gate` → gate. Es el mapeo limpio que
-   `AGENT-CONTRACTS.md` §2 necesitaba y que por `atom_type` queda disperso
-   en 11 filas.
+1. **Es el eje de carga base por agente.** Cada familia tiene un agente
+   que la carga como contexto fijo antes del turno: `self` → conversador
+   (persona + tools), `conversation` → orquestador (flujo, estrategia,
+   fallback), `user` → perfil (juntura con SQL), `gate` → gate. `domain` no
+   tiene base: entra solo cuando el ruteador lo trae. Es el mapeo limpio
+   que `AGENT-CONTRACTS.md` §2 necesitaba y que por `atom_type` queda
+   disperso en 11 filas.
+
+   Ojo con la lectura inversa: la familia **no** limita lo que el ruteador
+   puede meter al bundle de un turno. El ruteador selecciona sobre las 11
+   colecciones — un `TraitAtom` si el paciente dice que está ansioso, un
+   `ConversationStep` vecino si la pregunta abre una rama, un `ToolAtom` si
+   pregunta por agendar — con un motivo por documento. Familia = quién lo
+   tiene de base; justificación = por qué entra hoy.
 2. **Es la raíz del árbol de tags.** El comentario del código lo dice:
    "recupera el origen taxonómico que tenían los átomos originales
    (namespace antes del ':')". Un doc de familia `domain` *debería* llevar
@@ -356,7 +363,12 @@ arrancar; **D** = dinámico, seleccionado por turno.
 | `step` | D (instrucciones del step activo) | **D** step actual + grounding | **F** flow completo | | | |
 | `tool` | | | **F** tools disponibles | | | |
 | `gate` | | | | **F** | | |
-| `trait` | D (perfil del usuario, vía SQL) | D | | | **F** candidatos | |
+| `trait` | D (perfil del usuario, vía SQL) | **D** busca (p. ej. ansiedad) | | | **F** candidatos | |
+
+La columna **Ruteador de contexto** marca los casos típicos, no un límite:
+el ruteador puede meter al bundle un documento de **cualquier** fila si lo
+justifica (`AGENT-CONTRACTS.md` §2.0, regla 2). Lo que no puede es meterlo
+sin motivo.
 
 ### 5.1 Quién los lee hoy (código)
 

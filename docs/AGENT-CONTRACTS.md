@@ -91,19 +91,40 @@ Cada uno de los 11 modelos de knowledge declara una **familia**
 (`__family__`, ver `KNOWLEDGE-MODEL.md` §3.1). Las cinco familias mapean
 uno a uno sobre los contratos de esta sección:
 
-| Familia | Documentos | Agente dueño | Modo |
+| Familia | Documentos | Agente que la carga como **base** | Carga base |
 |---|---|---|---|
-| `self` | SelfDeclaration, StyleGuide, CapabilityBoundary, ToolAtom | Conversador (persona) · Orquestador (tools) | **fijo** |
-| `conversation` | ConversationStep, StrategyRule, FallbackRule | Orquestador | **fijo** (flujo completo) |
-| `domain` | DomainAtom, RuleAtom | Ruteador de contexto | **dinámico** (selección por turno) |
-| `user` | TraitAtom | Perfil (juntura SQL `user_traits`) | dinámico (por usuario) |
-| `gate` | GateCriterion | Gate | **fijo** |
+| `self` | SelfDeclaration, StyleGuide, CapabilityBoundary, ToolAtom | Conversador (persona) · Orquestador (tools) | fija, al arrancar |
+| `conversation` | ConversationStep, StrategyRule, FallbackRule | Orquestador (flujo completo) | fija, al arrancar |
+| `domain` | DomainAtom, RuleAtom | — (no tiene base; entra solo por el ruteador) | ninguna |
+| `user` | TraitAtom | Perfil (los ids vienen de SQL `user_traits`) | por usuario |
+| `gate` | GateCriterion | Gate | fija, al arrancar |
 
-La familia es, por tanto, el criterio para decidir *qué se carga al
-arrancar y qué se busca por turno*: todo lo que no es `domain` es contexto
-fijo de algún agente. Hoy ningún consumidor lee `__family__` (registro en
-`null`, runtime por prefijo de tag, UIs a mano); la clase `Agent` de §7
-debería recibir sus documentos fijos **por familia**, no por `atom_type`.
+Dos reglas, y hay que no mezclarlas:
+
+1. **La familia dice quién carga el documento como línea base.** Es lo que
+   cada agente tiene *antes* de que empiece el turno. Es fijo y no depende
+   de lo que diga el paciente.
+2. **El ruteador puede meter cualquier documento, de cualquier familia,
+   al bundle del turno — si lo justifica.** La familia no restringe la
+   selección dinámica; la restringe la justificación. Ejemplos:
+   - el paciente dice que está ansioso → entra el `TraitAtom`
+     `trait-antonia-ansioso-aplicacion` (familia `user`), con su descripción
+     y sus reglas de manejo, aunque el perfil SQL todavía no tenga ese trait;
+   - la pregunta toca eventos adversos → entran las `RuleAtom` de
+     farmacovigilancia (familia `domain`) *y* el `ConversationStep`
+     `evento_adverso` (familia `conversation`) como candidato de navegación;
+   - el paciente pregunta si puede agendar → entra el `ToolAtom`
+     (familia `self`) para que el orquestador lo tenga a la vista.
+
+   La salida del ruteador no es una lista de ids: es un bundle
+   `[{doc_id, motivo}]`. El motivo es parte del contrato — es lo que hace
+   auditable el contexto y lo que el rastro del turno (`decisions.ruteador`)
+   debe mostrar en vez de un conteo.
+
+Hoy ningún consumidor lee `__family__` (registro en `null`, runtime por
+prefijo de tag, UIs a mano); la clase `Agent` de §7 debería recibir sus
+documentos **base por familia**, y el ruteador buscar **sobre las 11
+colecciones** sin filtro de familia.
 
 ### 2.1 Conversador
 
@@ -134,9 +155,11 @@ conocimiento. Tiene la conversación. No decide flujo, no llama tools.
 
 **Diseño.** Tiene el step actual, la conversación y los datos SQL. Tiene
 acceso a las **herramientas de búsqueda de knowledge** para encontrar los
-atoms que corresponden a este step y a esta interacción del paciente. Viene
-con un prompt que le indica cómo hacer esa búsqueda. Le pasa el contexto a
-los otros agentes.
+documentos que corresponden a este step y a esta interacción del paciente
+— **de cualquier familia** (§2.0, regla 2): domain, rules, traits, steps
+vecinos, tools. Cada documento que mete al bundle va con su **motivo**.
+Viene con un prompt que le indica cómo hacer esa búsqueda y cómo
+justificarla. Le pasa el bundle a los otros agentes.
 
 **Hoy — este agente no existe.** Lo más cercano es `ContextCompiler`
 (`kb_agent/ontologizador/compiler.py`), que **no es un agente**: no tiene
@@ -159,6 +182,14 @@ prompt, no llama LLM, no decide. Es un compilador fijo.
   (`models/knowledge/index_proxies.py:55`); esa comparación no está
   implementada en ningún punto del runtime.
 - ❌ No tiene la conversación (mismo hueco que 2.1).
+- ❌ **Los traits entran como id, no como documento.** `_load_user_traits`
+  (`compiler.py:~320`) hace `select(UserTraits.trait_id)` y el conversador
+  recibe `["trait-antonia-ansioso-aplicacion"]` — el string, sin la
+  descripción ni las reglas de manejo del `TraitAtom`. Y solo los traits
+  que **ya están** en SQL: si el paciente dice "estoy ansioso" en este
+  turno, el documento de ansiedad no entra hasta que el perfilador lo
+  persista *después* del turno. Es exactamente el caso que la regla 2 de
+  §2.0 exige cubrir.
 - ❌ No hay herramientas de búsqueda expuestas al LLM. `SLDBReader` tiene
   `find()`, `find_fields()`, `fetch()` (`sldb_reader.py:31-53`) pero son
   internas. Las únicas tools registradas para el modelo son
@@ -374,7 +405,7 @@ runner.
 | **Contexto dinámico** | documentos del ruteador, perfil, estrategia | step actual, perfil, datos SQL | contexto del ruteador | respuesta redactada |
 | **Historial** | sí | sí | sí | no (solo la respuesta) |
 | **Tools** | ninguna | búsqueda en KB (`find`, `find_fields`, `fetch`) | mover step, escribir SQL (`agendar_recordatorio`, `crear_reserva`) | handoff, activar protocolo |
-| **Salida** | texto | lista de atom_ids + estrategia | decisión: `{step_target, tool_call \| none}` | `{approved, reasons, action}` |
+| **Salida** | texto | bundle `[{doc_id, motivo}]` + estrategia | decisión: `{step_target, tool_call \| none}` | `{approved, reasons, action}` |
 | **Determinista** | no | sí (mismo input ⇒ mismos ids) | sí | sí |
 
 Dos observaciones que salen de la tabla:
