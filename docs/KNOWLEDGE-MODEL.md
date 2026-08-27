@@ -5,7 +5,7 @@ Escrito a mano. Complementa `AGENT-CONTRACTS.md` (qué recibe cada agente);
 este documento cubre **qué son los documentos, cómo se relacionan entre sí,
 y cómo se conectan con los agentes y con SQL**.
 
-Todo lo que dice "hoy" está verificado contra `dev @ 5e01207` (§9).
+Todo lo que dice "hoy" está verificado contra `dev @ 0586fad` (§9).
 
 ---
 
@@ -224,16 +224,17 @@ documentos estructurados de otra naturaleza, que comparten base
 | `grounding_atoms` del step | lista `step-antonia-onboarding` y `self-antonia` | son documentos de grounding, no átomos |
 | `gate_atoms` (`orchestrator.py:277`) | los criterios del gate son átomos | son `GateCriterion` |
 | "71 atoms", `_find_atoms`, `atom_ids` | todo documento es un átomo | — |
-| `knowledge/desk/atoms/tag-namespaces.yaml` | vocabulario de deskops (`layer`, `source`, `system:deskops`, `topic:atoms`) | vocabulario de **esta** KB (§4.1) |
+| `knowledge/tag-namespaces.yaml` (antes `knowledge/desk/atoms/tag-namespaces.yaml`) | era una copia del vocabulario de deskops (`layer`, `source`, `system:deskops`, `topic:atoms`) | hoy define el vocabulario de **esta** KB (§4.1) |
 
 Y hay una **tercera** acepción fuera de knowledge: `desk/atoms/` (deskops,
 modelo `AtomDoc`) son átomos de *arquitectura del proyecto*. Tienen
 exactamente la misma forma que `DomainAtom` — `id, title,
 five_wh_one_plus, tags, provenance, answer` — pero viven en otro store, con
-otro modelo, y con su propio `tag-namespaces.yaml`. El archivo de
-namespaces dentro de `knowledge/desk/` es ese vocabulario copiado: por eso
-define `layer` y `source` (que ningún documento de negocio usa) y no define
-`conversation`, `self`, `user` ni `channel` (que 42 documentos usan).
+otro modelo, y con su propio `desk/atoms/tag-namespaces.yaml`. El archivo
+de namespaces que vivía dentro de `knowledge/desk/` era ese vocabulario
+copiado: definía `layer` y `source` (que ningún documento de negocio usa) y
+no definía `conversation`, `self`, `user` ni `channel` (que 42 documentos
+usan). Ya no existe: lo reemplazó `knowledge/tag-namespaces.yaml`.
 
 **Cómo ordenarlo.** Un criterio y tres consecuencias:
 
@@ -250,9 +251,9 @@ define `layer` y `source` (que ningún documento de negocio usa) y no define
   `__family__` ya lo dice: la familia es "el namespace antes del `:`". Las
   cinco familias (`self`, `conversation`, `domain`, `user`, `gate`) **son**
   los namespaces raíz de esta KB; `system`, `topic` y `channel` son
-  transversales. Ese archivo debe vivir en `knowledge/tag-namespaces.yaml`,
-  describir *estos* nueve, y `knowledge/desk/` desaparecer — no hay un desk
-  dentro de knowledge, hay un archivo de otro store dejado ahí.
+  transversales. **Hecho:** el archivo vive en `knowledge/tag-namespaces.yaml`,
+  describe *estos* namespaces (cinco familias + `system`, `topic`, `channel`)
+  y `knowledge/desk/` ya no existe.
 - **`desk/atoms` y `knowledge` DomainAtom son el mismo concepto en dos
   stores.** Es legítimo que estén separados (arquitectura del proyecto vs
   conocimiento del negocio), pero deberían compartir una base `Atom` para
@@ -276,18 +277,19 @@ doc) y **tipadas** (declaradas por un modelo concreto, con semántica propia).
 
 #### Namespaces de tags
 
-Definidos en `knowledge/desk/atoms/tag-namespaces.yaml` vs. uso real en los
-71 documentos:
+Definidos en `knowledge/tag-namespaces.yaml` vs. uso real en los
+71 documentos (la columna *Definido* refleja el archivo actual; los tres
+`**no**` de la versión anterior se cerraron al mover el archivo):
 
 | Namespace | Definido | Usado (docs) | Ejemplo | Nota |
 |---|---|---|---|---|
 | `system` | sí | 71 | `system:laboratorio-chile` | constante; no discrimina |
 | `domain` | sí | 35 | `domain:seguridad.triage` | jerárquico por `.` |
-| `conversation` | **no** | 31 | `conversation:steps.onboarding` | **el más importante, sin definir** |
+| `conversation` | sí | 31 | `conversation:steps.onboarding` | **el más importante, sin definir** |
 | `topic` | sí | 6 | `topic:rules` | |
 | `gate` | sí | 5 | `gate:corpus` | |
-| `self` | **no** | 5 | `self:whoami` | |
-| `user` | **no** | 5 | `user:trait` | |
+| `self` | sí | 5 | `self:whoami` | |
+| `user` | sí | 5 | `user:trait` | |
 | `channel` | **no** | 1 | | |
 | `layer` | sí | 0 | | definido, sin uso |
 | `source` | sí | 0 | | definido, sin uso (reflector debería usarlo) |
@@ -531,9 +533,10 @@ Por orden de impacto sobre el comportamiento:
 0b. **"Átomo" nombra tres cosas** (§3.2): el documento pregunta-respuesta
    (43/71), cualquier documento de knowledge (carpeta, `atom_type`,
    `grounding_atoms`, `TraitAtom`/`ToolAtom`), y el átomo de arquitectura
-   de deskops (`desk/atoms`, cuyo `tag-namespaces.yaml` está copiado dentro
-   de `knowledge/desk/`). Ordenarlo es un rename mecánico más mover el
-   archivo de namespaces y derivarlo de las familias.
+   de deskops (`desk/atoms`, cuyo `tag-namespaces.yaml` estuvo copiado
+   dentro de `knowledge/desk/` hasta que lo reemplazó
+   `knowledge/tag-namespaces.yaml`, ya derivado de las familias). Queda el
+   rename mecánico.
 0c. **Dos capas de acceso a knowledge, y el runtime usa la peor** (§7).
    `knowledge_base.KnowledgeOperations` resuelve transiciones por el grafo
    tipado, traits como documento y búsqueda con score; el ontologizador
@@ -572,6 +575,6 @@ Por orden de impacto sobre el comportamiento:
 - Consumidores: `grep type.knowledge.<tipo>|fetch("<tipo>")` sobre
   `kb_agent/`, más lectura de `compiler.py`, `kgdb_reader.py`,
   `orchestrator.py`, `perfilador/extractor.py`.
-- Namespaces: `knowledge/desk/atoms/tag-namespaces.yaml` vs. conteo real.
+- Namespaces: `knowledge/tag-namespaces.yaml` vs. conteo real.
 - SQL: `kb_agent/models_sql/*.py` y `PRAGMA table_info` sobre
   `runs/local-chat.sqlite`.
