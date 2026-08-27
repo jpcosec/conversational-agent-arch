@@ -1,17 +1,19 @@
-# Visualización de Atoms & Embeddings (ReactFlow)
+# Grafo de Atoms & Embeddings (backend)
 
-Grafo 2D interactivo de los átomos de la KB, posicionados por similitud
-semántica (embeddings) y coloreados por familia.
+Módulo backend que calcula el grafo 2D de los átomos de la KB, posicionados
+por similitud semántica (embeddings) y coloreados por familia. **No tiene
+vista propia**: no hay `index.html` acá y `GET /viz` es un redirect 301 a
+`/mindmap` (`OLD_ROUTES` en `frontends/chat/app.py`).
 
 ## Cómo se sirve
 
-El runtime (`frontends/chat/app.py`) sirve esta UI en vivo, igual que el
-Flow Editor y el Taxonomy Explorer:
-
-- `GET /viz` -> este `index.html`.
-- `GET /api/viz/graph` -> grafo (nodos/edges) calculado en el momento desde
-  la KB del negocio activo (`cfg.kb_root`). Acepta `edge_threshold` y
-  `max_edges_per_node` como query params opcionales.
+- `GET /api/viz/graph` (`frontends/chat/app.py`) llama a `build_graph` y
+  devuelve nodos/edges calculados en el momento desde la KB del negocio
+  activo (`cfg.kb_root`). Acepta `edge_threshold` y `max_edges_per_node`
+  como query params opcionales.
+- Lo consume el layout **"Embeddings"** del mindmap
+  (`frontends/taxonomy/index.html`, `applyLayout('embeddings')`), que toma
+  las posiciones PCA de cada átomo para reubicar los nodos del árbol.
 
 Nunca se leen JSON precalculados: el grafo siempre refleja el estado actual
 del store SLDB, sin artefactos de negocio hardcodeados en git.
@@ -21,9 +23,8 @@ del store SLDB, sin artefactos de negocio hardcodeados en git.
 1. **Exporter** (`export_graph.py`, función `build_graph`): lee átomos +
    embeddings desde la KB, proyecta 768→2D con PCA (SVD, numpy puro), crea
    edges entre pares con alta similitud coseno.
-2. **HTML** (`index.html`): ReactFlow vía CDN (ESM), hace `fetch('/api/viz/graph')`
-   y `fetch('/api/config')` (nombre del negocio para el header), colorea por
-   familia, panel de detalle al click.
+2. **Consumidor**: el mindmap hace `fetch('/api/viz/graph')` y usa
+   `position` de cada nodo; la coloración por familia es la del mindmap.
 
 ## CLI de exportación offline
 
@@ -55,5 +56,3 @@ umbral más bajo (p.ej. 0.42) da un grafo más conectado y legible.
 | `domain` | azul acero |
 | `conversation` | ámbar |
 | `user` | magenta suave |
-
-Requiere internet (ReactFlow desde esm.sh CDN).
