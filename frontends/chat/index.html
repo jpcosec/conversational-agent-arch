@@ -7,6 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="/static/theme.css"/>
 <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{"background":"var(--bg-page)","surface":"var(--bg-page)","surface-container-lowest":"var(--bg-panel)","surface-container-low":"var(--bg-panel-solid)","surface-container":"var(--bg-panel-solid)","surface-container-high":"var(--bg-panel-elevated)","surface-container-highest":"var(--bg-panel-strong)","surface-variant":"var(--bg-panel-strong)","surface-bright":"var(--border-strong-solid)","primary":"var(--accent)","secondary":"var(--accent-hover)","secondary-container":"var(--accent-hover)","on-secondary-container":"var(--bg-page)","tertiary":"var(--family-user)","tertiary-container":"var(--bg-panel-strong)","on-surface":"var(--text-primary)","on-surface-variant":"var(--text-muted-2)","outline":"rgba(245,240,232,.35)","outline-variant":"var(--border-strong)","error":"var(--danger)"},borderRadius:{DEFAULT:"8px",lg:"12px",xl:"16px",full:"999px"},fontFamily:{body:["Inter","sans-serif"],mono:["JetBrains Mono","monospace"]}}}}</script>
+<style>
+/* Paleta de chat sin celestes (pedido del usuario).
+   theme.css define los paneles en navy (--bg-panel #0d1526, --bg-panel-solid
+   #111a2e, --bg-panel-elevated #16223a, --bg-panel-strong #1c2b45) y chat los
+   consume via su config de Tailwind, por eso las burbujas, el avatar y los
+   badges se veian azulados. /flow usa una escala DARK NEUTRAL
+   (rgba(18,18,26) -> rgba(10,10,15)); aca se replica esa escala, acotada a
+   esta pagina para no alterar mindmap ni users. */
+:root{
+  --bg-panel: #0f0f16;
+  --bg-panel-solid: #12121a;
+  --bg-panel-elevated: #16161f;
+  --bg-panel-strong: #1c1c26;
+}
+</style>
 <style>.glow-active{box-shadow:0 0 15px rgba(212,165,116,.2),inset 0 0 10px rgba(212,165,116,.1);border-color:rgba(212,165,116,.5)}.pulse-dot{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}.custom-scrollbar::-webkit-scrollbar{width:6px}.custom-scrollbar::-webkit-scrollbar-track{background:transparent}.custom-scrollbar::-webkit-scrollbar-thumb{background-color:rgba(245,240,232,.1);border-radius:10px}.msym{font-family:'Material Symbols Outlined';font-weight:normal;font-style:normal;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;direction:ltr}.prose-chat p{margin-bottom:.6rem}.prose-chat h1,.prose-chat h2,.prose-chat h3{line-height:1.2;margin:.4rem 0}.prose-chat code{background:var(--bg-panel-solid);border:1px solid var(--border-strong);padding:1px 5px;border-radius:6px;font-family:'JetBrains Mono';font-size:.85em}.prose-chat pre{overflow:auto;background:var(--bg-panel-solid);border:1px solid var(--border-strong);padding:10px;border-radius:10px}.atom-link{cursor:pointer;color:var(--accent-hover);border:1px solid var(--border-accent);background:rgba(212,165,116,.08);border-radius:999px;padding:1px 7px;font-family:'JetBrains Mono';font-size:12px;text-decoration:none}.fam-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-family:'JetBrains Mono';font-size:9px;text-transform:uppercase;letter-spacing:.06em;border:1px solid;margin-right:4px}.ctx-card{cursor:pointer;transition:all .15s}.ctx-card:hover{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent)}.ctx-card:hover .ctx-hint{opacity:1}.ctx-hint{opacity:0;font-size:9px;color:rgba(245,240,232,.35);transition:.15s}
 .agent-row{border:1px solid rgba(212,165,116,.08);border-radius:10px;padding:8px 12px;cursor:pointer;transition:.15s}.agent-row:hover{border-color:rgba(212,165,116,.25);background:rgba(212,165,116,.04)}.agent-row .expand-icon{transition:transform .2s;font-size:14px}.agent-row.open .expand-icon{transform:rotate(90deg)}.family-group{margin-bottom:10px}.family-group .fg-header{font-family:'JetBrains Mono';font-size:9px;text-transform:uppercase;letter-spacing:.1em;opacity:.7;margin-bottom:3px}
 /* Sidebar: mismo lenguaje visual que frontends/flow_editor/index.html
@@ -101,7 +116,10 @@ const atomIds=(ctx)=>(ctx?.atom_ids||[]);
 function openModal(title,html){modalTitle.textContent=title;modalBody.innerHTML=html;modalBackdrop.classList.remove('hidden');modalBackdrop.classList.add('flex')}
 function closeModal(){modalBackdrop.classList.add('hidden');modalBackdrop.classList.remove('flex')}
 
-const FAM_COLORS={self:'#7cba7c',domain:'#7fb3d5',conversation:'#e6a85c',user:'#c97db9',gate:'#d46a8c'};
+// domain pasa de #7fb3d5 (celeste) a un neutro calido: es la familia mas
+// frecuente (43 de 71 documentos), asi domina sin tirar la paleta al azul
+// y las otras familias siguen destacando.
+const FAM_COLORS={self:'#7cba7c',domain:'#c9bda6',conversation:'#e6a85c',user:'#c97db9',gate:'#d46a8c'};
 function familiaDe(atom){if(atom.family)return atom.family;const tags=atom.tags||[];for(const f of Object.keys(FAM_COLORS)){if(tags.some(t=>t.startsWith(f+':')))return f}return null}
 
 function renderTurns(){
@@ -119,7 +137,7 @@ function renderInspector(turn){
  const ctx=turn.context||{},kind=turn.kind||'nl',diff=contextDiff(turn),items=ctx.items||[];
  // agrupar atoms por familia
  const famGroups={};items.forEach(it=>{const f=familiaDe(it)||'domain';(famGroups[f]||=[]).push(it)});
- const famColor=f=>FAM_COLORS[f]||'#7fb3d5';
+ const famColor=f=>FAM_COLORS[f]||'#c9bda6';
  const motivoLine=it=>{const hasScore=typeof it.score==='number';const scoreTxt=hasScore?' · score '+it.score.toFixed(2):'';return '<div class="text-[10px] text-on-surface-variant/80 mt-1 leading-snug" data-testid="context-motivo-'+esc(it.atom_id)+'">'+esc(it.motivo||'—')+scoreTxt+'</div>'};
  const ctxByFam=Object.keys(famGroups).map(f=>'<div class="family-group"><div class="fg-header" style="color:'+famColor(f)+'">'+f+'</div>'+famGroups[f].map(it=>'<div class="ctx-card border border-white/5 rounded-lg p-2 bg-surface-container-lowest" data-testid="context-atom-'+esc(it.atom_id)+'" data-atom="'+esc(it.atom_id)+'"><div class="flex justify-between"><span class="text-on-surface text-xs font-semibold">'+esc(it.title||it.atom_id)+'</span><span class="msym text-[14px] text-primary ctx-hint">open_in_new</span></div><div class="font-mono text-[10px] text-on-surface-variant mt-1" style="color:'+famColor(f)+'">'+esc(it.atom_id)+' · '+esc(it.role||'-')+(it.grounds_step?' · grounds step':'')+'</div>'+motivoLine(it)+'</div>').join('')+'</div>').join('');
 
