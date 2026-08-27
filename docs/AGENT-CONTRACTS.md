@@ -85,6 +85,26 @@ Resumen. El detalle y la auditoría van en 2.1–2.4.
 | **Orquestador** | flow completo de steps | contexto del ruteador, decisión de avance | ruteador + su propia lógica | SQL vía tools; step actual |
 | **Gate** | documentos gate de la KB | respuesta redactada | conversador | nada; dispara handoff / protocolo |
 
+### 2.0 La familia del documento dice qué agente lo posee
+
+Cada uno de los 11 modelos de knowledge declara una **familia**
+(`__family__`, ver `KNOWLEDGE-MODEL.md` §3.1). Las cinco familias mapean
+uno a uno sobre los contratos de esta sección:
+
+| Familia | Documentos | Agente dueño | Modo |
+|---|---|---|---|
+| `self` | SelfDeclaration, StyleGuide, CapabilityBoundary, ToolAtom | Conversador (persona) · Orquestador (tools) | **fijo** |
+| `conversation` | ConversationStep, StrategyRule, FallbackRule | Orquestador | **fijo** (flujo completo) |
+| `domain` | DomainAtom, RuleAtom | Ruteador de contexto | **dinámico** (selección por turno) |
+| `user` | TraitAtom | Perfil (juntura SQL `user_traits`) | dinámico (por usuario) |
+| `gate` | GateCriterion | Gate | **fijo** |
+
+La familia es, por tanto, el criterio para decidir *qué se carga al
+arrancar y qué se busca por turno*: todo lo que no es `domain` es contexto
+fijo de algún agente. Hoy ningún consumidor lee `__family__` (registro en
+`null`, runtime por prefijo de tag, UIs a mano); la clase `Agent` de §7
+debería recibir sus documentos fijos **por familia**, no por `atom_type`.
+
 ### 2.1 Conversador
 
 **Diseño.** Arranca con personalidad e instrucciones fijas, **cargadas desde

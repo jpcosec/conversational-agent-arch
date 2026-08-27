@@ -109,23 +109,147 @@ no de la base. `domain_ref` vale siempre `psp-selfix`: hoy no discrimina.
 
 ## 3. Catálogo: los 11 tipos de documento
 
-| Tipo (`atom_type`) | Modelo | N | Campos propios (`*` obligatorio) | Secciones del cuerpo | Rol |
-|---|---|---|---|---|---|
-| `domain` | `DomainAtom` | 32 | `five_wh_one_plus`*, `answer`*, `domain_ref` | Answer | hecho del negocio; grounding de respuestas |
-| `rule` | `RuleAtom` | 11 | `five_wh_one_plus`*, `answer`*, `conditions`, `applies_to` | Answer, Conditions | regla condicional (clasificación, seguridad, anti-alucinación) |
-| `step` | `ConversationStep` | 11 | `kind`, `instructions`*, `required_slots`, `handout_target`, `tool_ref`, `allowed_transitions`, `grounding_atoms`, `completion_condition`, `domain_ref` | Instructions, Required Slots, Handout Target, Tool, Allowed Transitions, Grounding Atoms, Completion Condition | nodo del flujo conversacional |
-| `trait` | `TraitAtom` | 5 | `description`*, `category` | Description | rasgo aprendible del usuario; candidato para el perfilador |
-| `gate` | `GateCriterion` | 5 | `criterion`*, `approval_condition`*, `rejection_action`* | Criterion, Approval Condition, Rejection Action | criterio post-redacción del gate |
-| `boundary` | `CapabilityBoundary` | 2 | `restriction`*, `conditions`, `escalation` | Restriction, Conditions, Escalation | límite duro de lo que el agente puede hacer |
-| `tool` | `ToolAtom` | 1 | `description`*, `parameters`* | Description, Parameters | declaración de una tool para el LLM |
-| `style` | `StyleGuide` | 1 | `tone`*, `language_register`*, `phrase_preferences`, `length_guidelines` | Tone, Language Register, ... | estilo de redacción |
-| `strategy` | `StrategyRule` | 1 | `goal`*, `approach`*, `priorities` | Goal, Approach, Priorities | estrategia conversacional |
-| `self` | `SelfDeclaration` | 1 | `statement`* | Statement | quién es el agente |
-| `fallback` | `FallbackRule` | 1 | `fallback_message`*, `conditions` | Fallback Message, Conditions | qué decir cuando no hay corpus |
+Ordenado por **familia** (§3.1), que es el eje que organiza todo lo demás.
 
-Los cinco de abajo (`tool`, `style`, `strategy`, `self`, `fallback`) son
-**singletons de configuración**: una KB = un negocio = uno de cada. Los seis
-de arriba son **colecciones**.
+| Familia | Tipo (`atom_type`) | Modelo | N | Campos propios (`*` obligatorio) | Secciones del cuerpo | Rol |
+|---|---|---|---|---|---|---|
+| `self` | `self` | `SelfDeclaration` | 1 | `statement`* | Statement | quién es el agente |
+| `self` | `style` | `StyleGuide` | 1 | `tone`*, `language_register`*, `phrase_preferences`, `length_guidelines` | Tone, Language Register, ... | estilo de redacción |
+| `self` | `boundary` | `CapabilityBoundary` | 2 | `restriction`*, `conditions`, `escalation` | Restriction, Conditions, Escalation | límite duro de lo que el agente puede hacer |
+| `self` | `tool` | `ToolAtom` | 1 | `description`*, `parameters`* | Description, Parameters | declaración de una tool para el LLM |
+| `domain` | `domain` | `DomainAtom` | 32 | `five_wh_one_plus`*, `answer`*, `domain_ref` | Answer | hecho del negocio; grounding de respuestas |
+| `domain` | `rule` | `RuleAtom` | 11 | `five_wh_one_plus`*, `answer`*, `conditions`, `applies_to` | Answer, Conditions | regla condicional (clasificación, seguridad, anti-alucinación) |
+| `conversation` | `step` | `ConversationStep` | 11 | `kind`, `instructions`*, `required_slots`, `handout_target`, `tool_ref`, `allowed_transitions`, `grounding_atoms`, `completion_condition`, `domain_ref` | Instructions, Required Slots, Handout Target, Tool, Allowed Transitions, Grounding Atoms, Completion Condition | nodo del flujo conversacional |
+| `conversation` | `strategy` | `StrategyRule` | 1 | `goal`*, `approach`*, `priorities` | Goal, Approach, Priorities | estrategia conversacional |
+| `conversation` | `fallback` | `FallbackRule` | 1 | `fallback_message`*, `conditions` | Fallback Message, Conditions | qué decir cuando no hay corpus |
+| `user` | `trait` | `TraitAtom` | 5 | `description`*, `category` | Description | rasgo aprendible del usuario; candidato para el perfilador |
+| `gate` | `gate` | `GateCriterion` | 5 | `criterion`*, `approval_condition`*, `rejection_action`* | Criterion, Approval Condition, Rejection Action | criterio post-redacción del gate |
+
+`self`, `style`, `strategy`, `fallback` y `tool` son **singletons de
+configuración**: una KB = un negocio = uno de cada. El resto son
+**colecciones**.
+
+### 3.1 `family`: el eje de propiedad
+
+Cada modelo declara una **familia** como `ClassVar` — no es un campo del
+frontmatter, se declara por clase y no se deriva en runtime
+(`models/knowledge/index_proxies.py:38-43`):
+
+```python
+class DomainAtom(IndexProxies):
+    __family__ = "domain"
+```
+
+Cinco familias para once tipos:
+
+| Familia | Modelos | Qué es |
+|---|---|---|
+| `self` | SelfDeclaration, StyleGuide, CapabilityBoundary, **ToolAtom** | lo que el agente **es**: identidad, estilo, límites y capacidades |
+| `domain` | DomainAtom, RuleAtom | lo que el agente **sabe** del negocio |
+| `conversation` | ConversationStep, StrategyRule, FallbackRule | cómo se **conduce** la conversación |
+| `user` | TraitAtom | lo que se **aprende** del usuario |
+| `gate` | GateCriterion | lo que **valida** la respuesta |
+
+Dos cosas que la familia resuelve y el `atom_type` no:
+
+1. **Es el eje de propiedad por agente.** Cada familia tiene exactamente un
+   agente que la carga como contexto fijo o la selecciona: `self` →
+   conversador (persona + tools), `conversation` → orquestador (flujo,
+   estrategia, fallback), `domain` → ruteador (selección dinámica), `user` →
+   perfil (juntura con SQL), `gate` → gate. Es el mapeo limpio que
+   `AGENT-CONTRACTS.md` §2 necesitaba y que por `atom_type` queda disperso
+   en 11 filas.
+2. **Es la raíz del árbol de tags.** El comentario del código lo dice:
+   "recupera el origen taxonómico que tenían los átomos originales
+   (namespace antes del ':')". Un doc de familia `domain` *debería* llevar
+   tags `domain:*`; uno de familia `conversation`, tags `conversation:*`.
+
+Nota: `ToolAtom` es familia `self`, no `conversation`. Las tools son
+capacidades del agente, no pasos del flujo — el step las *referencia*
+(`tool_ref`), no las posee.
+
+**Hoy — la familia se declara una vez y se pierde en cada consumidor:**
+
+| Consumidor | Cómo obtiene la familia | Resultado |
+|---|---|---|
+| registro del store (`core/models/*.yaml`) | campo `family:` de SLDB | **`null` en los 11** — `bootstrap` no lee `__family__` |
+| `KGDBReader` (`kgdb_reader.py:140`) | `m.family` del registro | `null` en el grafo |
+| índices runtime (`semantic_index`, `semantic_dag`) | — | 0 menciones |
+| `/api/taxonomy` (`frontends/chat/app.py:224`) | `MODEL_MAP` **hardcodeado** | duplica `__family__` a mano (y ya divergió: hubo que agregar `gate` por separado) |
+| `Orchestrator._semantic_role` (`orchestrator.py:384`) | **prefijo del tag** (`self:` > `domain:` > `conversation:`) | un `RuleAtom` (familia `domain`) con tags `conversation:security` sale como `conversation.security` |
+| Turn Inspector (`chat/index.html:95`, `familiaDe`) | prefijo del tag | agrupa por tag, no por familia; `FAM_COLORS` no conoce `gate` |
+| `taxonomy/index.html:55` (`FAM`) | hardcodeado | 4 familias, sin `gate` |
+
+El único lugar que la conoce de verdad es la clase. Todo lo demás la
+reconstruye por otro camino (registro nulo, prefijo de tag, mapa a mano) y
+cada reconstrucción diverge un poco. En el contexto real medido (§5.1), de
+43 atoms 10 aparecen como familia `conversation` cuando son `RuleAtom` de
+familia `domain`.
+
+### 3.2 Átomo vs documento: el overlap
+
+La palabra "átomo" está sobrecargada en la KB. Hoy nombra tres cosas
+distintas, y la confusión se ve en carpetas, campos, clases y vocabulario.
+
+**Lo que los datos dicen.** Solo dos modelos tienen la forma de un átomo —
+una pregunta (`five_wh_one_plus`) y una respuesta (`answer`):
+
+| Modelo | Se llama `*Atom` | Tiene 5W1H + `answer` | Es átomo |
+|---|---|---|---|
+| `DomainAtom` | sí | sí | **sí** (32) |
+| `RuleAtom` | sí | sí | **sí** (11) |
+| `TraitAtom` | **sí** | no | no |
+| `ToolAtom` | **sí** | no | no |
+| `ConversationStep`, `GateCriterion`, `CapabilityBoundary`, `StyleGuide`, `StrategyRule`, `SelfDeclaration`, `FallbackRule` | no | no | no |
+
+Es decir: **43 de los 71 documentos son átomos**. Los otros 28 son pasos,
+criterios, límites, estilo, estrategia, identidad, tools y traits —
+documentos estructurados de otra naturaleza, que comparten base
+(`StructuredNLDoc`) e índice, pero no son unidades pregunta-respuesta.
+
+**Dónde se mezcla:**
+
+| Lugar | Qué dice | Qué debería decir |
+|---|---|---|
+| carpeta `knowledge/atoms/` | contiene los 71 | son documentos; 43 son átomos |
+| campo `atom_type: step` / `gate` / `style` | un step "es un tipo de átomo" | es un tipo de **documento** (`doc_type`) |
+| clases `TraitAtom`, `ToolAtom` | son átomos | no tienen pregunta ni respuesta |
+| `grounding_atoms` del step | lista `step-antonia-onboarding` y `self-antonia` | son documentos de grounding, no átomos |
+| `gate_atoms` (`orchestrator.py:277`) | los criterios del gate son átomos | son `GateCriterion` |
+| "71 atoms", `_find_atoms`, `atom_ids` | todo documento es un átomo | — |
+| `knowledge/desk/atoms/tag-namespaces.yaml` | vocabulario de deskops (`layer`, `source`, `system:deskops`, `topic:atoms`) | vocabulario de **esta** KB (§4.1) |
+
+Y hay una **tercera** acepción fuera de knowledge: `desk/atoms/` (deskops,
+modelo `AtomDoc`) son átomos de *arquitectura del proyecto*. Tienen
+exactamente la misma forma que `DomainAtom` — `id, title,
+five_wh_one_plus, tags, provenance, answer` — pero viven en otro store, con
+otro modelo, y con su propio `tag-namespaces.yaml`. El archivo de
+namespaces dentro de `knowledge/desk/` es ese vocabulario copiado: por eso
+define `layer` y `source` (que ningún documento de negocio usa) y no define
+`conversation`, `self`, `user` ni `channel` (que 42 documentos usan).
+
+**Cómo ordenarlo.** Un criterio y tres consecuencias:
+
+- **Documento** = cualquier instancia de los 11 modelos. **Átomo** =
+  documento con pregunta y respuesta (`DomainAtom`, `RuleAtom`). "Átomo"
+  queda reservado para eso; el resto se nombra por lo que es.
+- **Renombrar lo que miente**: `atom_type` → `doc_type`; `TraitAtom` →
+  `UserTrait`; `ToolAtom` → `ToolDeclaration`; `grounding_atoms` →
+  `grounding_docs`; `_find_atoms` → `_find_docs`; `knowledge/atoms/` →
+  `knowledge/docs/` (o una carpeta por familia). Es un rename mecánico,
+  pero toca modelos, 71 frontmatters, readers y UI; hacerlo de una vez y
+  con `sldb docs track --force` para reindexar.
+- **Los namespaces salen de las familias, no de deskops.** El comentario de
+  `__family__` ya lo dice: la familia es "el namespace antes del `:`". Las
+  cinco familias (`self`, `conversation`, `domain`, `user`, `gate`) **son**
+  los namespaces raíz de esta KB; `system`, `topic` y `channel` son
+  transversales. Ese archivo debe vivir en `knowledge/tag-namespaces.yaml`,
+  describir *estos* nueve, y `knowledge/desk/` desaparecer — no hay un desk
+  dentro de knowledge, hay un archivo de otro store dejado ahí.
+- **`desk/atoms` y `knowledge` DomainAtom son el mismo concepto en dos
+  stores.** Es legítimo que estén separados (arquitectura del proyecto vs
+  conocimiento del negocio), pero deberían compartir una base `Atom` para
+  que la forma no divierja. Decisión pendiente, no urgente.
 
 ---
 
@@ -340,6 +464,18 @@ del step (`REL_FLOWS_TO`, `REL_GROUNDED_BY`). Métodos: `steps_under`,
 
 Por orden de impacto sobre el comportamiento:
 
+0. **`family` declarada en la clase y perdida en todos los consumidores**
+   (§3.1). Es el eje de propiedad por agente y la raíz del árbol de tags,
+   y hoy el registro la tiene en `null`, el runtime la deriva del prefijo
+   del tag, y las UIs la hardcodean. Antes que cualquier retrieval o
+   ruteador, este eje tiene que propagarse: registro → KGDB → contexto →
+   UI, desde `__family__` y no desde heurísticas.
+0b. **"Átomo" nombra tres cosas** (§3.2): el documento pregunta-respuesta
+   (43/71), cualquier documento de knowledge (carpeta, `atom_type`,
+   `grounding_atoms`, `TraitAtom`/`ToolAtom`), y el átomo de arquitectura
+   de deskops (`desk/atoms`, cuyo `tag-namespaces.yaml` está copiado dentro
+   de `knowledge/desk/`). Ordenarlo es un rename mecánico más mover el
+   archivo de namespaces y derivarlo de las familias.
 1. **Transiciones y grounding declarados pero no cableados** (§4.2). El
    flujo está bien modelado en la KB y KGDB lo lee; el compilador usa los
    métodos genéricos en vez de los tipados. Dos líneas.
