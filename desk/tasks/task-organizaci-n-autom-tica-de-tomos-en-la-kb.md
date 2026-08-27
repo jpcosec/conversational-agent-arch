@@ -1,6 +1,6 @@
 ---
 id: task-organizaci-n-autom-tica-de-tomos-en-la-kb
-status: ready_for_testing
+status: complete
 summary: ''
 tags:
 - workspace:desk

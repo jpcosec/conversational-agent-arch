@@ -1,8 +1,11 @@
 ---
 id: atom-embeddings-como-layout-no-vista
 title: "Embeddings: layout de Mindmap, no vista separada"
-status: active
-tags: [decision, ui, mindmap, embeddings]
+five_wh_one_plus: why
+tags:
+- layer:frontend
+- family:concepts
+provenance: ui-redesign-session
 ---
 
 ## Decisión
