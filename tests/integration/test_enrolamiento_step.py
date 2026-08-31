@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 
 
 def test_enrolamiento_step_is_tracked_with_expected_transitions(antonia_kb: Path) -> None:

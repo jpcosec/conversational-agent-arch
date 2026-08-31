@@ -8,7 +8,7 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
 
 from kb_agent.models_sql.identity import Base, UserTraits, Users
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import PROFILER_SOURCE, TRAIT_MIN_CONFIDENCE, TraitExtractor, TraitMatch
 from tests.support.sldb_seed import seed_store
 

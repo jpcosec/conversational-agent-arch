@@ -7,8 +7,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from kb_agent.ontologizador.compiler import ContextCompiler
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.compiler import ContextCompiler
+from kb_agent.knowledge.sldb_reader import SLDBReader
 
 
 def kb_truth_text(kb_root: Path) -> str:

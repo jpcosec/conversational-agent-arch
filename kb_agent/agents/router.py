@@ -3,7 +3,7 @@
 Fase 2.2, el cuarto y ultimo agente del diseno (Conversador, Ruteador,
 Orquestador, Gate). Antes de esto, el bundle justificado del turno lo
 armaba enteramente ``ContextCompiler._build_bundle``
-(``kb_agent/ontologizador/compiler.py``): una union DETERMINISTICA de 4
+(``kb_agent/knowledge/compiler.py``): una union DETERMINISTICA de 4
 vias (piso de seguridad, grounding del step activo, traits del usuario,
 similitud top-k contra la pregunta). Funciona bien y sigue siendo el
 fallback (ver mas abajo) -- pero es una politica fija, no un agente: no

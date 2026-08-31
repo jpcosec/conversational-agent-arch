@@ -8,7 +8,7 @@ from typing import Any, Protocol
 from sqlalchemy.orm import Session
 
 from kb_agent.models_sql.identity import UserTraits
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 
 TRAIT_MIN_CONFIDENCE = 0.7
 PROFILER_SOURCE = "perfilador"

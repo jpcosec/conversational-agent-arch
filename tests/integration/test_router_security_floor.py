@@ -21,8 +21,8 @@ from pathlib import Path
 
 import pytest
 
-from kb_agent.ontologizador.compiler import ContextCompiler
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.compiler import ContextCompiler
+from kb_agent.knowledge.sldb_reader import SLDBReader
 from tests.support.fakes import FakeRouterAgent, offline_orchestrator
 
 SECURITY_RULE_IDS = {

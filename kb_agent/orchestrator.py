@@ -1,7 +1,7 @@
 """Orquestador end-to-end: cablea TODOS los modulos.
 
 Flujo por turno:
-  usuario -> RouterStateMachine -> Ontologizador (compile_context, con traits del user)
+  usuario -> RouterStateMachine -> Knowledge (compile_context, con traits del user)
           -> policy decide_turn (pura) -> Conversador (LLM: NL) | fallback (KB) | function_call
           -> [si function_call] Tool dispatcher (registry inyectado) que persiste en SQL
           -> ChatHistory (scrubbed) + publish turn -> Perfilador (LLM)
@@ -37,9 +37,9 @@ from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la ta
 from kb_agent.models_sql.recordatorios import Recordatorios  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
 from kb_agent.models_sql.turns import Turns
-from kb_agent.ontologizador.compiler import ContextCompiler
-from kb_agent.ontologizador.kgdb_reader import KGDBReader
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.compiler import ContextCompiler
+from kb_agent.knowledge.kgdb_reader import KGDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
 from kb_agent.pii.scrubber import scrub

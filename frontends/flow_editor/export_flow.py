@@ -12,7 +12,7 @@ from __future__ import annotations
 import json
 import sys
 
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 
 
 def _split(v: str) -> list[str]:

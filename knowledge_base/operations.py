@@ -785,7 +785,7 @@ class KnowledgeOperations:
 
     def _kgdb(self):
         """Lazy KGDB reader."""
-        from kb_agent.ontologizador.kgdb_reader import KGDBReader
+        from kb_agent.knowledge.kgdb_reader import KGDBReader
         return KGDBReader.from_sldb(self._store_path, pythonpath=self._pythonpath)
 
     def explore(
@@ -876,7 +876,7 @@ class KnowledgeOperations:
 
         # Try KGDB for transitions
         try:
-            from kb_agent.ontologizador.kgdb_reader import KGDBReader
+            from kb_agent.knowledge.kgdb_reader import KGDBReader
 
             kgdb = KGDBReader.from_sldb(self._store_path, pythonpath=self._pythonpath)
 
