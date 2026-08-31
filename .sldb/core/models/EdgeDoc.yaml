@@ -1,0 +1,13 @@
+name: EdgeDoc
+model_ref: deskops.models:EdgeDoc
+path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/edge.py
+documents_index: .sldb/core/documents/EdgeDoc.yaml
+sections_index: .sldb/runtime/sections/EdgeDoc.yaml
+hash_b: 940e21d7f7275fe813f44da5575d4426465b336be2775064d64dfd9df6b20230
+version: 1
+canonical: false
+family: null
+semantics:
+- type.workflow.edge
+- workspace.desk.primitives
+base_models: []

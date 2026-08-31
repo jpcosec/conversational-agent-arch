@@ -72,6 +72,46 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: ChecklistDoc
+  model_ref: deskops.models:ChecklistDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/checklist.py
+  models_index: .sldb/core/models/ChecklistDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: ConditionDoc
+  model_ref: deskops.models:ConditionDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/condition.py
+  models_index: .sldb/core/models/ConditionDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: EdgeDoc
+  model_ref: deskops.models:EdgeDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/edge.py
+  models_index: .sldb/core/models/EdgeDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: OperatorDoc
+  model_ref: deskops.models:OperatorDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/operator.py
+  models_index: .sldb/core/models/OperatorDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: RoutineDoc
+  model_ref: deskops.models:RoutineDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/routine.py
+  models_index: .sldb/core/models/RoutineDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
 predicates:
 - name: is_solved_by
   axis: HOW
@@ -94,4 +134,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: e2910266824da8e9b3e59a71167bb48a7d8183b69c9e994aa23b1a4ed8e65dbe
+hash_a: 318ae66cc74b7cf851253ffecffe3bba4045398af61e2e5beead45125972d537

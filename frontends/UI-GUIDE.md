@@ -173,16 +173,19 @@ Vista única de la KB con **3 layouts** (fusión de taxonomía + embeddings).
 ### 4.3 Nodos
 - **Drag handle** (única zona de arrastre; el body no mueve el nodo).
 - **Collapse children** (badge `+N` al colapsar; hotkey Space).
-- **NodeToolbar** (`mindmap-node-toolbar`): borrar · agregar hijo · agregar
-  hermano · **link horizontal** (modo linking: click destino crea edge
-  cross-family dashed violeta; Esc cancela) · comentario agente ("coming
-  soon") · ir al documento.
+- **NodeToolbar** (`mindmap-node-toolbar`): **ir al documento** (`↗doc`). Es la
+  única acción del toolbar.
 - Tooltips explicativos en kinds/campos no obvios (mismo mapa léxico).
-- **La vista es sólo lectura**: no hay edición de campos de un atom ni endpoint
-  de escritura (`/api/atom/{id}` y `/api/taxonomy` son GET). Las acciones del
-  toolbar que mutan el grafo (borrar, hijo, hermano, link) viven sólo en el
-  cliente y se pierden al recargar; los atoms se editan por el pipeline
-  spec→atoms de deskops, no desde la UI.
+- **La vista es READ-ONLY (decisión del owner).** El mindmap *visualiza* la KB;
+  no la edita. Las mutaciones locales que antes prometían persistencia
+  inexistente (borrar, +hijo, +hermano, link horizontal, y sus hotkeys
+  Delete/Tab/Enter/L) fueron **removidas** del toolbar y de las hotkeys: sólo
+  cambiaban el estado del cliente y se perdían al recargar. La KB se edita por
+  comandos SLDB sobre el store (`sldb docs create/update … --store <kb>/.sldb`),
+  no desde la UI. Hotkeys vigentes: Ctrl+F buscar · Space collapse · 1/2/3
+  layout · F centrar · ? ayuda. El modo editor persistido queda como task
+  diferida en el drawer (`task-modo-editor-de-atoms-en-la-ui`).
+- No hay endpoint de escritura: `/api/atom/{id}` y `/api/taxonomy` son GET.
 
 ### 4.4 Cross-family links
 - Toggle de relaciones (`mindmap-xfamily-toggle`), OFF por default.

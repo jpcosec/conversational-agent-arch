@@ -249,14 +249,39 @@ def _prefilter_verdict(response: str, *, tool_name: str | None) -> dict[str, Any
     }
 
 
+def _declared_fact_lines(declared_facts: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+    """Proyecta los facts/rules declarados por la KB a lo minimo que el juez
+    necesita para verificar grounding: id, titulo y cuerpo. Sin esto el gate
+    no tiene contra que contrastar lo que afirma la respuesta."""
+    lines: list[dict[str, Any]] = []
+    for fact in declared_facts:
+        lines.append(
+            {
+                "id": fact.get("id"),
+                "title": fact.get("title"),
+                "body": fact.get("body"),
+            }
+        )
+    return lines
+
+
 def _dynamic_context(
-    response: str, *, tool_called: bool, tool_name: str | None, step: str | None
+    response: str,
+    *,
+    tool_called: bool,
+    tool_name: str | None,
+    step: str | None,
+    declared_facts: Sequence[Mapping[str, Any]] = (),
 ) -> dict[str, Any]:
     return {
         "respuesta_redactada": response,
         "tool_called": bool(tool_called),
         "tool_name": tool_name,
         "step": step,
+        # Facts/rules que la KB declaro para ESTE turno. El criterio de
+        # grounding se juzga contra esta lista: la respuesta no puede afirmar
+        # atributos que no esten aca.
+        "contexto_declarado_por_la_kb": _declared_fact_lines(declared_facts),
     }
 
 
@@ -298,6 +323,7 @@ class GateAgent:
         tool_name: str | None = None,
         step: str | None = None,
         session_tools_called: Sequence[str] = (),
+        declared_facts: Sequence[Mapping[str, Any]] = (),
     ) -> dict[str, Any]:
         """Veredicto sobre ``response``. Puede lanzar (ver ``Orchestrator._policy_gate``).
 
@@ -324,7 +350,13 @@ class GateAgent:
             return {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
 
         verdict = self._agent.run(
-            _dynamic_context(response, tool_called=tool_called, tool_name=tool_name, step=step)
+            _dynamic_context(
+                response,
+                tool_called=tool_called,
+                tool_name=tool_name,
+                step=step,
+                declared_facts=declared_facts,
+            )
         )
         assert isinstance(verdict, GateVerdict)
         return verdict.model_dump()

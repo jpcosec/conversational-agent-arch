@@ -51,8 +51,8 @@ documents:
   - workspace.knowledge
 - name: rule-timezone-routing
   path: atoms/rule-timezone-routing.md
-  hash_c: cad295b431c2d70adc5de3f792334d064c4b80c70206fc2acb384dbf1bd5f366
-  hash_d: 2cbe85bd396b70e4c3eae02f3e7dbb8f45a06e60776d54def2c81ee5938a4598
+  hash_c: 2b655eb23a9b6c666d73b2cd642d0ead28891568679cd19d0c1888a6975cabed
+  hash_d: 92bd2a09987c67b0608fa16a4671674a063e7afe9db23758061056153a1bbed1
   semantic_tags:
   - agent:conversation-rule
   - domain:booking
@@ -61,11 +61,48 @@ documents:
   - workspace.knowledge
 - name: rule-visit-modality
   path: atoms/rule-visit-modality.md
-  hash_c: fcf4cb95d0b1760217b7e7f8d3fd8753e89d1cb61738112cf2d4e661f1a69491
-  hash_d: 2b118c6afed2865a132143eaa9f872923c1c4277a079491d1f98c50dc001d9e8
+  hash_c: 6a9aa08e4701831a6f2ad236937d1e141a5ca48672b9b21afc7c4ad11cc5114f
+  hash_d: a587719675036b3a64d3cfade42f96bf871bad81226d68979d79450d7b01223e
   semantic_tags:
   - agent:conversation-rule
   - domain:booking
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-vitali-anti-alucinacion
+  path: atoms/rule-vitali-anti-alucinacion.md
+  hash_c: 4dea218a897f860dc68fab2114e6fcf56ebebbea7ac272c2e0f2ae8bb1659f04
+  hash_d: f51a261813fbe6516f13cf78ca1d41dd93bc7b808540217684f2e646ade4597f
+  semantic_tags:
+  - conversation:fallback
+  - conversation:security
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-vitali-no-precios-sin-fuente
+  path: atoms/rule-vitali-no-precios-sin-fuente.md
+  hash_c: a82d45c044a1c26e52405f7f0effd33e699addfea0b60fca5ae0272ca14ec6bf
+  hash_d: aa2650a4d29554a3469496ec7daeb7d63aec14324ec54f6f988724ac78934027
+  semantic_tags:
+  - conversation:security
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-vitali-datos-sensibles-adulto-mayor
+  path: atoms/rule-vitali-datos-sensibles-adulto-mayor.md
+  hash_c: 9075928d985c9987ebc699be1e1938a1a58153e3f64a9dda51dffa7448d63a25
+  hash_d: 17e2dd7030723e4ce94eeaccdcf5976f753b842552ba49adc3be38f1dea17c13
+  semantic_tags:
+  - conversation:security
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-vitali-no-prometer-disponibilidad
+  path: atoms/rule-vitali-no-prometer-disponibilidad.md
+  hash_c: 05c032d57aa2b65f2cda59273b4ad7ea270d95fb9b1643f405c4688e05d82db0
+  hash_d: ed91a8d1b031d3b9d74157e2e2b607f7cc026254e369214b2f863b7c21a023ad
+  semantic_tags:
+  - conversation:security
   - system:vitali
   - type.knowledge.rule
   - workspace.knowledge

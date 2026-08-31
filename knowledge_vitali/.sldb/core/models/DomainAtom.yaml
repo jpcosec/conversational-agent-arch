@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:DomainAtom
 path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/domain.py
 documents_index: .sldb/core/documents/DomainAtom.yaml
 sections_index: .sldb/runtime/sections/DomainAtom.yaml
-hash_b: 022fa5851d0b5e9d67619375c272f4e4a87f40fe3f989b240fab4f187e391c9d
+hash_b: b7ee5afaaeb05a5aafa707510fdeba37ed79cc55556dc2ce8cb37ad16a941222
 version: 1
 canonical: false
 family: null

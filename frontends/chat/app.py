@@ -219,7 +219,6 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     )
     app.state.cfg = cfg
     app.state.orchestrator = orchestrator
-    app.state.turn_counters = {}
     app.state.demo_mode = demo_mode
     app.state.demo_sessions = {}
     app.state.demo_llm = DemoStateMachineConversador() if demo_mode else None
@@ -237,15 +236,15 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             raise HTTPException(status_code=400, detail="message vacio")
 
         session_id = req.session_id or uuid4().hex[:12]
-        counters: dict[str, int] = app.state.turn_counters
-        counters[session_id] = counters.get(session_id, 0) + 1
 
         if app.state.demo_mode:
             sessions: dict[str, dict[str, Any]] = app.state.demo_sessions
             session = sessions.setdefault(session_id, {"session_id": session_id, "flow_node": "bienvenida", "slots": {}, "traits": [], "history": []})
             raw = app.state.demo_llm.handle_turn(session, req.message)
             raw["allowed_transitions"] = next((n["allowed_transitions"] for n in demo_flow()["nodes"] if n["id"] == raw.get("flow_node")), [])
-            return ChatResponse(session_id=session_id, turn=to_ui_turn(f"t{counters[session_id]}", raw))
+            # demo no pasa por el orquestador (no persiste turns): genera su
+            # propio id unico por turno, sin contador compartido.
+            return ChatResponse(session_id=session_id, turn=to_ui_turn(uuid4().hex[:12], raw))
 
         raw = _orch().handle_turn(
             external_id=_external_id(session_id),
@@ -253,7 +252,10 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             scenario=req.scenario,
             channel=UI_CHANNEL,
         )
-        return ChatResponse(session_id=session_id, turn=to_ui_turn(f"t{counters[session_id]}", raw))
+        # El orquestador genera y persiste el turn_id; la UI usa EXACTAMENTE
+        # ese, asi el id en vivo coincide con el que devuelve /api/history y no
+        # colisiona entre requests concurrentes (ya no hay contador compartido).
+        return ChatResponse(session_id=session_id, turn=to_ui_turn(raw["turn_id"], raw))
 
     @app.post("/webhooks/twilio")
     async def twilio_inbound(request: Request) -> Response:

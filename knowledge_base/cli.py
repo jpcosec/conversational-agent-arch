@@ -84,6 +84,16 @@ def main(argv: list[str] | None = None) -> int:
                 result = ops.index_hierarchy()
                 print(f"Hierarchy: {result.get('tags', 0)} tags, {result.get('new_parent_relations', 0)} new relations")
                 return 0
+            if args.index_command == "audit":
+                result = ops.audit_embeddings()
+                print(
+                    f"Embeddings audit [{result['kb']}]: {result['with_embedding']}/{result['total']} "
+                    f"con vector, {result['embeddingless_by_design']} sin vector por diseño, "
+                    f"{len(result['missing'])} faltantes"
+                )
+                for m in result["missing"]:
+                    print(f"  FALTA: {m['id']} ({m['model']})", file=sys.stderr)
+                return 0 if result["ok"] else 1
 
         if args.command == "promote":
             result = ops.promote(args.atom_id)

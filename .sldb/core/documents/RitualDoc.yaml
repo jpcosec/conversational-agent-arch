@@ -23,3 +23,11 @@ documents:
   - type.workflow.ritual
   - workspace.desk
   - workspace:desk
+- name: phase
+  path: desk/rituals/phase.md
+  hash_c: 3dbfdf37f015ca4b618e8b2c1869402febaea94c4368e6514443edb5a9350eb3
+  hash_d: fc0865c530877dd0deb4cd4aad8cb696a52823be84f8240cb7f9dd495d9c1945
+  semantic_tags:
+  - type.workflow.ritual
+  - workspace.desk
+  - workspace:desk

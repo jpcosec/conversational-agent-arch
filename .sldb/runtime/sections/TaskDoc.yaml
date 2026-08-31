@@ -667,378 +667,6 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
-- doc_name: task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
-  sections:
-  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
-    title: 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    breadcrumbs:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    about:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - concurrencia el turn id de la ui colisiona entre requests simultaneas
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
-    level: 1
-    line_start: 23
-    line_end: 24
-  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/goal
-    title: Goal
-    breadcrumbs:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - Goal
-    about:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - concurrencia el turn id de la ui colisiona entre requests simultaneas
-    - Goal
-    - goal
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: goal
-    level: 2
-    line_start: 29
-    line_end: 30
-  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/scope
-    title: Scope
-    breadcrumbs:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - Scope
-    about:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - concurrencia el turn id de la ui colisiona entre requests simultaneas
-    - Scope
-    - scope
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: scope
-    level: 2
-    line_start: 33
-    line_end: 34
-  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/source
-    title: Source
-    breadcrumbs:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - Source
-    about:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - concurrencia el turn id de la ui colisiona entre requests simultaneas
-    - Source
-    - source
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: source
-    level: 2
-    line_start: 39
-    line_end: 40
-  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/done-when
-    title: Done When
-    breadcrumbs:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - Done When
-    about:
-    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
-    - concurrencia el turn id de la ui colisiona entre requests simultaneas
-    - Done When
-    - done when
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: done-when
-    level: 2
-    line_start: 43
-    line_end: 44
-- doc_name: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
-  sections:
-  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
-    title: 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    breadcrumbs:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    about:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - concurrencia ensure user pierde el mensaje del primer contacto
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
-    level: 1
-    line_start: 23
-    line_end: 24
-  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/goal
-    title: Goal
-    breadcrumbs:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - Goal
-    about:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - concurrencia ensure user pierde el mensaje del primer contacto
-    - Goal
-    - goal
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: goal
-    level: 2
-    line_start: 29
-    line_end: 30
-  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/scope
-    title: Scope
-    breadcrumbs:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - Scope
-    about:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - concurrencia ensure user pierde el mensaje del primer contacto
-    - Scope
-    - scope
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: scope
-    level: 2
-    line_start: 33
-    line_end: 34
-  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/source
-    title: Source
-    breadcrumbs:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - Source
-    about:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - concurrencia ensure user pierde el mensaje del primer contacto
-    - Source
-    - source
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: source
-    level: 2
-    line_start: 39
-    line_end: 40
-  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/done-when
-    title: Done When
-    breadcrumbs:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - Done When
-    about:
-    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
-    - concurrencia ensure user pierde el mensaje del primer contacto
-    - Done When
-    - done when
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: done-when
-    level: 2
-    line_start: 43
-    line_end: 44
-- doc_name: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
-  sections:
-  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
-    title: El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    breadcrumbs:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    about:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - el turn id en vivo tn no coincide con el persistido uuid
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
-    level: 1
-    line_start: 23
-    line_end: 24
-  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/goal
-    title: Goal
-    breadcrumbs:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - Goal
-    about:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - el turn id en vivo tn no coincide con el persistido uuid
-    - Goal
-    - goal
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: goal
-    level: 2
-    line_start: 29
-    line_end: 30
-  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/scope
-    title: Scope
-    breadcrumbs:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - Scope
-    about:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - el turn id en vivo tn no coincide con el persistido uuid
-    - Scope
-    - scope
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: scope
-    level: 2
-    line_start: 33
-    line_end: 34
-  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/source
-    title: Source
-    breadcrumbs:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - Source
-    about:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - el turn id en vivo tn no coincide con el persistido uuid
-    - Source
-    - source
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: source
-    level: 2
-    line_start: 39
-    line_end: 40
-  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/done-when
-    title: Done When
-    breadcrumbs:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - Done When
-    about:
-    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
-    - el turn id en vivo tn no coincide con el persistido uuid
-    - Done When
-    - done when
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    semantic_tags:
-    - artifact:task
-    - source:inbox
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
-    slug: done-when
-    level: 2
-    line_start: 43
-    line_end: 44
 - doc_name: task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
   sections:
   - path: evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
@@ -1179,6 +807,500 @@ documents:
     level: 2
     line_start: 43
     line_end: 44
+- doc_name: task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
+  sections:
+  - path: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
+    title: Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    breadcrumbs:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    about:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - renombrar kb agent ontologizador a kb agent knowledge
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
+    level: 1
+    line_start: 30
+    line_end: 31
+  - path: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge/rationale
+    title: Rationale
+    breadcrumbs:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - Rationale
+    about:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - renombrar kb agent ontologizador a kb agent knowledge
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge/goal
+    title: Goal
+    breadcrumbs:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - Goal
+    about:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - renombrar kb agent ontologizador a kb agent knowledge
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 38
+    line_end: 39
+  - path: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge/scope
+    title: Scope
+    breadcrumbs:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - Scope
+    about:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - renombrar kb agent ontologizador a kb agent knowledge
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 44
+    line_end: 45
+  - path: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - Implementation Path
+    about:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - renombrar kb agent ontologizador a kb agent knowledge
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 50
+    line_end: 51
+  - path: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge/validation
+    title: Validation
+    breadcrumbs:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - Validation
+    about:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - renombrar kb agent ontologizador a kb agent knowledge
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 56
+    line_end: 57
+  - path: renombrar-kb-agent-ontologizador-a-kb-agent-knowledge/done-when
+    title: Done When
+    breadcrumbs:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - Done When
+    about:
+    - Renombrar kb_agent/ontologizador a kb_agent/knowledge
+    - renombrar kb agent ontologizador a kb agent knowledge
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 62
+    line_end: 63
+- doc_name: task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  sections:
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+    title: 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+    level: 1
+    line_start: 25
+    line_end: 26
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Rationale
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 27
+    line_end: 28
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/goal
+    title: Goal
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Goal
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 33
+    line_end: 34
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/scope
+    title: Scope
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Scope
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 39
+    line_end: 40
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Implementation Path
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 45
+    line_end: 46
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/validation
+    title: Validation
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Validation
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 51
+    line_end: 52
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/done-when
+    title: Done When
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Done When
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 58
+    line_end: 59
+- doc_name: task-modo-editor-de-atoms-en-la-ui
+  sections:
+  - path: modo-editor-de-atoms-en-la-ui-mindmap
+    title: Modo editor de atoms en la UI (mindmap)
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: modo-editor-de-atoms-en-la-ui-mindmap
+    level: 1
+    line_start: 23
+    line_end: 24
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/rationale
+    title: Rationale
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Rationale
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/goal
+    title: Goal
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Goal
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Goal
+    - goal
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/scope
+    title: Scope
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Scope
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Scope
+    - scope
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Implementation Path
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 43
+    line_end: 44
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/validation
+    title: Validation
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Validation
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Validation
+    - validation
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/done-when
+    title: Done When
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Done When
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Done When
+    - done when
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 56
+    line_end: 57
 - doc_name: task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
   sections:
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
@@ -1189,20 +1311,45 @@ documents:
     - 'Grounding: el conversador afirma atributos de productos que la KB no declara'
     - grounding el conversador afirma atributos de productos que la kb no declara
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
     level: 1
-    line_start: 23
-    line_end: 24
+    line_start: 27
+    line_end: 28
+  - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Grounding: el conversador afirma atributos de productos que la KB no declara'
+    - Rationale
+    about:
+    - 'Grounding: el conversador afirma atributos de productos que la KB no declara'
+    - grounding el conversador afirma atributos de productos que la kb no declara
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/goal
     title: Goal
     breadcrumbs:
@@ -1214,20 +1361,20 @@ documents:
     - Goal
     - goal
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 35
+    line_end: 36
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/scope
     title: Scope
     breadcrumbs:
@@ -1239,45 +1386,70 @@ documents:
     - Scope
     - scope
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 33
-    line_end: 34
-  - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/source
-    title: Source
+    line_start: 41
+    line_end: 42
+  - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/implementation-path
+    title: Implementation Path
     breadcrumbs:
     - 'Grounding: el conversador afirma atributos de productos que la KB no declara'
-    - Source
+    - Implementation Path
     about:
     - 'Grounding: el conversador afirma atributos de productos que la KB no declara'
     - grounding el conversador afirma atributos de productos que la kb no declara
-    - Source
-    - source
+    - Implementation Path
+    - implementation path
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-    slug: source
+    slug: implementation-path
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 47
+    line_end: 48
+  - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/validation
+    title: Validation
+    breadcrumbs:
+    - 'Grounding: el conversador afirma atributos de productos que la KB no declara'
+    - Validation
+    about:
+    - 'Grounding: el conversador afirma atributos de productos que la KB no declara'
+    - grounding el conversador afirma atributos de productos que la kb no declara
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 53
+    line_end: 54
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/done-when
     title: Done When
     breadcrumbs:
@@ -1289,20 +1461,20 @@ documents:
     - Done When
     - done when
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 43
-    line_end: 44
+    line_start: 59
+    line_end: 60
 - doc_name: task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
   sections:
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
@@ -1313,20 +1485,45 @@ documents:
     - 'Identidad no unificada entre canales: el mismo usuario es dos usuarios'
     - identidad no unificada entre canales el mismo usuario es dos usuarios
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
     level: 1
-    line_start: 23
-    line_end: 24
+    line_start: 27
+    line_end: 28
+  - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Identidad no unificada entre canales: el mismo usuario es dos usuarios'
+    - Rationale
+    about:
+    - 'Identidad no unificada entre canales: el mismo usuario es dos usuarios'
+    - identidad no unificada entre canales el mismo usuario es dos usuarios
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/goal
     title: Goal
     breadcrumbs:
@@ -1338,20 +1535,20 @@ documents:
     - Goal
     - goal
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 35
+    line_end: 36
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/scope
     title: Scope
     breadcrumbs:
@@ -1363,45 +1560,70 @@ documents:
     - Scope
     - scope
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 33
-    line_end: 34
-  - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/source
-    title: Source
+    line_start: 41
+    line_end: 42
+  - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/implementation-path
+    title: Implementation Path
     breadcrumbs:
     - 'Identidad no unificada entre canales: el mismo usuario es dos usuarios'
-    - Source
+    - Implementation Path
     about:
     - 'Identidad no unificada entre canales: el mismo usuario es dos usuarios'
     - identidad no unificada entre canales el mismo usuario es dos usuarios
-    - Source
-    - source
+    - Implementation Path
+    - implementation path
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-    slug: source
+    slug: implementation-path
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 47
+    line_end: 48
+  - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/validation
+    title: Validation
+    breadcrumbs:
+    - 'Identidad no unificada entre canales: el mismo usuario es dos usuarios'
+    - Validation
+    about:
+    - 'Identidad no unificada entre canales: el mismo usuario es dos usuarios'
+    - identidad no unificada entre canales el mismo usuario es dos usuarios
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 53
+    line_end: 54
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/done-when
     title: Done When
     breadcrumbs:
@@ -1413,20 +1635,20 @@ documents:
     - Done When
     - done when
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 43
-    line_end: 44
+    line_start: 59
+    line_end: 60
 - doc_name: task-la-conversacion-no-existe-como-entidad-en-el-esquema
   sections:
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema
@@ -1437,20 +1659,45 @@ documents:
     - La conversacion no existe como entidad en el esquema
     - la conversacion no existe como entidad en el esquema
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: la-conversacion-no-existe-como-entidad-en-el-esquema
     level: 1
-    line_start: 23
-    line_end: 24
+    line_start: 27
+    line_end: 28
+  - path: la-conversacion-no-existe-como-entidad-en-el-esquema/rationale
+    title: Rationale
+    breadcrumbs:
+    - La conversacion no existe como entidad en el esquema
+    - Rationale
+    about:
+    - La conversacion no existe como entidad en el esquema
+    - la conversacion no existe como entidad en el esquema
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/goal
     title: Goal
     breadcrumbs:
@@ -1462,20 +1709,20 @@ documents:
     - Goal
     - goal
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 35
+    line_end: 36
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/scope
     title: Scope
     breadcrumbs:
@@ -1487,45 +1734,70 @@ documents:
     - Scope
     - scope
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 33
-    line_end: 34
-  - path: la-conversacion-no-existe-como-entidad-en-el-esquema/source
-    title: Source
+    line_start: 41
+    line_end: 42
+  - path: la-conversacion-no-existe-como-entidad-en-el-esquema/implementation-path
+    title: Implementation Path
     breadcrumbs:
     - La conversacion no existe como entidad en el esquema
-    - Source
+    - Implementation Path
     about:
     - La conversacion no existe como entidad en el esquema
     - la conversacion no existe como entidad en el esquema
-    - Source
-    - source
+    - Implementation Path
+    - implementation path
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-    slug: source
+    slug: implementation-path
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 47
+    line_end: 48
+  - path: la-conversacion-no-existe-como-entidad-en-el-esquema/validation
+    title: Validation
+    breadcrumbs:
+    - La conversacion no existe como entidad en el esquema
+    - Validation
+    about:
+    - La conversacion no existe como entidad en el esquema
+    - la conversacion no existe como entidad en el esquema
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 53
+    line_end: 54
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/done-when
     title: Done When
     breadcrumbs:
@@ -1537,20 +1809,20 @@ documents:
     - Done When
     - done when
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 43
-    line_end: 44
+    line_start: 59
+    line_end: 60
 - doc_name: task-mindmap-no-hay-escritura-de-atoms-desde-la-ui
   sections:
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui
@@ -1561,20 +1833,45 @@ documents:
     - 'Mindmap: no hay escritura de atoms desde la UI'
     - mindmap no hay escritura de atoms desde la ui
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: mindmap-no-hay-escritura-de-atoms-desde-la-ui
     level: 1
-    line_start: 23
-    line_end: 24
+    line_start: 27
+    line_end: 28
+  - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Mindmap: no hay escritura de atoms desde la UI'
+    - Rationale
+    about:
+    - 'Mindmap: no hay escritura de atoms desde la UI'
+    - mindmap no hay escritura de atoms desde la ui
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/goal
     title: Goal
     breadcrumbs:
@@ -1586,20 +1883,20 @@ documents:
     - Goal
     - goal
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 35
+    line_end: 36
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/scope
     title: Scope
     breadcrumbs:
@@ -1611,45 +1908,70 @@ documents:
     - Scope
     - scope
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 33
-    line_end: 34
-  - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/source
-    title: Source
+    line_start: 41
+    line_end: 42
+  - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/implementation-path
+    title: Implementation Path
     breadcrumbs:
     - 'Mindmap: no hay escritura de atoms desde la UI'
-    - Source
+    - Implementation Path
     about:
     - 'Mindmap: no hay escritura de atoms desde la UI'
     - mindmap no hay escritura de atoms desde la ui
-    - Source
-    - source
+    - Implementation Path
+    - implementation path
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-    slug: source
+    slug: implementation-path
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 47
+    line_end: 48
+  - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/validation
+    title: Validation
+    breadcrumbs:
+    - 'Mindmap: no hay escritura de atoms desde la UI'
+    - Validation
+    about:
+    - 'Mindmap: no hay escritura de atoms desde la UI'
+    - mindmap no hay escritura de atoms desde la ui
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 53
+    line_end: 54
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/done-when
     title: Done When
     breadcrumbs:
@@ -1661,20 +1983,542 @@ documents:
     - Done When
     - done when
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 43
-    line_end: 44
+    line_start: 59
+    line_end: 60
+- doc_name: task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
+  sections:
+  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
+    title: 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    breadcrumbs:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    about:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - concurrencia el turn id de la ui colisiona entre requests simultaneas
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - Rationale
+    about:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - concurrencia el turn id de la ui colisiona entre requests simultaneas
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
+  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/goal
+    title: Goal
+    breadcrumbs:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - Goal
+    about:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - concurrencia el turn id de la ui colisiona entre requests simultaneas
+    - Goal
+    - goal
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 35
+    line_end: 36
+  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/scope
+    title: Scope
+    breadcrumbs:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - Scope
+    about:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - concurrencia el turn id de la ui colisiona entre requests simultaneas
+    - Scope
+    - scope
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 41
+    line_end: 42
+  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - Implementation Path
+    about:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - concurrencia el turn id de la ui colisiona entre requests simultaneas
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/validation
+    title: Validation
+    breadcrumbs:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - Validation
+    about:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - concurrencia el turn id de la ui colisiona entre requests simultaneas
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
+  - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/done-when
+    title: Done When
+    breadcrumbs:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - Done When
+    about:
+    - 'Concurrencia: el turn_id de la UI colisiona entre requests simultaneas'
+    - concurrencia el turn id de la ui colisiona entre requests simultaneas
+    - Done When
+    - done when
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 61
+    line_end: 62
+- doc_name: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
+  sections:
+  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
+    title: 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    breadcrumbs:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    about:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - concurrencia ensure user pierde el mensaje del primer contacto
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - Rationale
+    about:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - concurrencia ensure user pierde el mensaje del primer contacto
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
+  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/goal
+    title: Goal
+    breadcrumbs:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - Goal
+    about:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - concurrencia ensure user pierde el mensaje del primer contacto
+    - Goal
+    - goal
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 35
+    line_end: 36
+  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/scope
+    title: Scope
+    breadcrumbs:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - Scope
+    about:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - concurrencia ensure user pierde el mensaje del primer contacto
+    - Scope
+    - scope
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 41
+    line_end: 42
+  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - Implementation Path
+    about:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - concurrencia ensure user pierde el mensaje del primer contacto
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/validation
+    title: Validation
+    breadcrumbs:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - Validation
+    about:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - concurrencia ensure user pierde el mensaje del primer contacto
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
+  - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/done-when
+    title: Done When
+    breadcrumbs:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - Done When
+    about:
+    - 'Concurrencia: ensure_user pierde el mensaje del primer contacto'
+    - concurrencia ensure user pierde el mensaje del primer contacto
+    - Done When
+    - done when
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 61
+    line_end: 62
+- doc_name: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
+  sections:
+  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
+    title: El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    breadcrumbs:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    about:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - el turn id en vivo tn no coincide con el persistido uuid
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/rationale
+    title: Rationale
+    breadcrumbs:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - Rationale
+    about:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - el turn id en vivo tn no coincide con el persistido uuid
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
+  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/goal
+    title: Goal
+    breadcrumbs:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - Goal
+    about:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - el turn id en vivo tn no coincide con el persistido uuid
+    - Goal
+    - goal
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 35
+    line_end: 36
+  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/scope
+    title: Scope
+    breadcrumbs:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - Scope
+    about:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - el turn id en vivo tn no coincide con el persistido uuid
+    - Scope
+    - scope
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 41
+    line_end: 42
+  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - Implementation Path
+    about:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - el turn id en vivo tn no coincide con el persistido uuid
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/validation
+    title: Validation
+    breadcrumbs:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - Validation
+    about:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - el turn id en vivo tn no coincide con el persistido uuid
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
+  - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/done-when
+    title: Done When
+    breadcrumbs:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - Done When
+    about:
+    - El turn_id en vivo (tN) no coincide con el persistido (uuid)
+    - el turn id en vivo tn no coincide con el persistido uuid
+    - Done When
+    - done when
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 61
+    line_end: 62
 - doc_name: task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
   sections:
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
@@ -1685,20 +2529,45 @@ documents:
     - Una KB sin embeddings falla en silencio y nadie avisa
     - una kb sin embeddings falla en silencio y nadie avisa
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
     level: 1
-    line_start: 23
-    line_end: 24
+    line_start: 27
+    line_end: 28
+  - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/rationale
+    title: Rationale
+    breadcrumbs:
+    - Una KB sin embeddings falla en silencio y nadie avisa
+    - Rationale
+    about:
+    - Una KB sin embeddings falla en silencio y nadie avisa
+    - una kb sin embeddings falla en silencio y nadie avisa
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/goal
     title: Goal
     breadcrumbs:
@@ -1710,20 +2579,20 @@ documents:
     - Goal
     - goal
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 35
+    line_end: 36
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/scope
     title: Scope
     breadcrumbs:
@@ -1735,45 +2604,70 @@ documents:
     - Scope
     - scope
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 33
-    line_end: 34
-  - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/source
-    title: Source
+    line_start: 41
+    line_end: 42
+  - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/implementation-path
+    title: Implementation Path
     breadcrumbs:
     - Una KB sin embeddings falla en silencio y nadie avisa
-    - Source
+    - Implementation Path
     about:
     - Una KB sin embeddings falla en silencio y nadie avisa
     - una kb sin embeddings falla en silencio y nadie avisa
-    - Source
-    - source
+    - Implementation Path
+    - implementation path
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-    slug: source
+    slug: implementation-path
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 49
+    line_end: 50
+  - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/validation
+    title: Validation
+    breadcrumbs:
+    - Una KB sin embeddings falla en silencio y nadie avisa
+    - Validation
+    about:
+    - Una KB sin embeddings falla en silencio y nadie avisa
+    - una kb sin embeddings falla en silencio y nadie avisa
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/done-when
     title: Done When
     breadcrumbs:
@@ -1785,20 +2679,20 @@ documents:
     - Done When
     - done when
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 43
-    line_end: 44
+    line_start: 61
+    line_end: 62
 - doc_name: task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   sections:
   - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
@@ -1809,20 +2703,45 @@ documents:
     - Verificar si el known_gap donpeppe_saludo_unico sigue vigente
     - verificar si el known gap donpeppe saludo unico sigue vigente
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
     level: 1
-    line_start: 23
-    line_end: 24
+    line_start: 27
+    line_end: 28
+  - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/rationale
+    title: Rationale
+    breadcrumbs:
+    - Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    - Rationale
+    about:
+    - Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    - verificar si el known gap donpeppe saludo unico sigue vigente
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
   - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/goal
     title: Goal
     breadcrumbs:
@@ -1834,20 +2753,20 @@ documents:
     - Goal
     - goal
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 35
+    line_end: 36
   - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/scope
     title: Scope
     breadcrumbs:
@@ -1859,45 +2778,70 @@ documents:
     - Scope
     - scope
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 33
-    line_end: 34
-  - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/source
-    title: Source
+    line_start: 41
+    line_end: 42
+  - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/implementation-path
+    title: Implementation Path
     breadcrumbs:
     - Verificar si el known_gap donpeppe_saludo_unico sigue vigente
-    - Source
+    - Implementation Path
     about:
     - Verificar si el known_gap donpeppe_saludo_unico sigue vigente
     - verificar si el known gap donpeppe saludo unico sigue vigente
-    - Source
-    - source
+    - Implementation Path
+    - implementation path
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-    slug: source
+    slug: implementation-path
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 49
+    line_end: 50
+  - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/validation
+    title: Validation
+    breadcrumbs:
+    - Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    - Validation
+    about:
+    - Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    - verificar si el known gap donpeppe saludo unico sigue vigente
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
   - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/done-when
     title: Done When
     breadcrumbs:
@@ -1909,20 +2853,20 @@ documents:
     - Done When
     - done when
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 43
-    line_end: 44
+    line_start: 61
+    line_end: 62
 - doc_name: task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
   sections:
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
@@ -1933,20 +2877,45 @@ documents:
     - 'Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security'
     - vitali no tiene piso de seguridad ningun ruleatom conversation security
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
     level: 1
-    line_start: 23
-    line_end: 24
+    line_start: 27
+    line_end: 28
+  - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security'
+    - Rationale
+    about:
+    - 'Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security'
+    - vitali no tiene piso de seguridad ningun ruleatom conversation security
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 29
+    line_end: 30
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/goal
     title: Goal
     breadcrumbs:
@@ -1958,20 +2927,20 @@ documents:
     - Goal
     - goal
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 35
+    line_end: 36
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/scope
     title: Scope
     breadcrumbs:
@@ -1983,45 +2952,70 @@ documents:
     - Scope
     - scope
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 33
-    line_end: 34
-  - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/source
-    title: Source
+    line_start: 41
+    line_end: 42
+  - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/implementation-path
+    title: Implementation Path
     breadcrumbs:
     - 'Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security'
-    - Source
+    - Implementation Path
     about:
     - 'Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security'
     - vitali no tiene piso de seguridad ningun ruleatom conversation security
-    - Source
-    - source
+    - Implementation Path
+    - implementation path
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-    slug: source
+    slug: implementation-path
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 49
+    line_end: 50
+  - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/validation
+    title: Validation
+    breadcrumbs:
+    - 'Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security'
+    - Validation
+    about:
+    - 'Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security'
+    - vitali no tiene piso de seguridad ningun ruleatom conversation security
+    - Validation
+    - validation
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:drawer
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/done-when
     title: Done When
     breadcrumbs:
@@ -2033,17 +3027,17 @@ documents:
     - Done When
     - done when
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     semantic_tags:
     - artifact:task
-    - source:inbox
+    - source:drawer
     - type.workflow.task
     - workspace.desk
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 43
-    line_end: 44
+    line_start: 61
+    line_end: 62

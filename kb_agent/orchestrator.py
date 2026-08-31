@@ -24,6 +24,7 @@ from typing import Any
 from uuid import uuid4
 
 from sqlalchemy import create_engine
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
 from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE
@@ -169,10 +170,21 @@ class Orchestrator:
     # ── identidad ─────────────────────────────────────────────────────────
     def ensure_user(self, session: Session, external_id: str, channel: str | None = None) -> Users:
         user = session.query(Users).filter_by(external_id=external_id).one_or_none()
-        if user is None:
-            user = Users(external_id=external_id, channel=channel or channel_from_external_id(external_id))
-            session.add(user)
+        if user is not None:
+            return user
+        # SELECT-then-INSERT tiene una carrera: dos requests concurrentes del
+        # mismo usuario nuevo (dos pestanas, doble tap, reintento de webhook)
+        # pasan ambos el filtro y el segundo INSERT viola el UNIQUE de
+        # ``external_id``. Antes eso reventaba el turno con un 500 y el mensaje
+        # se perdia. Ahora: si el INSERT choca, rollback y re-SELECT del
+        # ganador de la carrera.
+        user = Users(external_id=external_id, channel=channel or channel_from_external_id(external_id))
+        session.add(user)
+        try:
             session.commit()
+        except IntegrityError:
+            session.rollback()
+            user = session.query(Users).filter_by(external_id=external_id).one()
         return user
 
     # ── turno ─────────────────────────────────────────────────────────────
@@ -186,6 +198,12 @@ class Orchestrator:
     ) -> dict[str, Any]:
         session = self.SessionLocal()
         try:
+            # Identificador unico del turno, generado UNA vez: es el mismo que
+            # se persiste en ``turns`` y el que se devuelve al frontend. Antes
+            # la UI usaba un contador ``tN`` (colisionaba entre requests
+            # concurrentes de la misma sesion y no coincidia con el uuid
+            # persistido). Un turno, un identificador.
+            turn_id = uuid4().hex[:12]
             user = self.ensure_user(session, external_id, channel=channel)
             session_state = self._load_or_create_session_state(session, user.id)
             step_before = session_state.flow_node
@@ -369,6 +387,7 @@ class Orchestrator:
 
             self._persist_turn(
                 session,
+                turn_id=turn_id,
                 user_id=user.id,
                 external_id=external_id,
                 decisions=decisions,
@@ -376,6 +395,7 @@ class Orchestrator:
             )
 
             return {
+                "turn_id": turn_id,
                 "user_id": user.id,
                 "question": message,
                 "kind": kind,
@@ -483,6 +503,7 @@ class Orchestrator:
     def _persist_turn(
         session: Session,
         *,
+        turn_id: str,
         user_id: int,
         external_id: str,
         decisions: Mapping[str, Any],
@@ -505,7 +526,7 @@ class Orchestrator:
         try:
             session.add(
                 Turns(
-                    turn_id=uuid4().hex[:12],
+                    turn_id=turn_id,
                     session_id=external_id,
                     user_id=user_id,
                     step_before=step.get("before"),
@@ -579,6 +600,14 @@ class Orchestrator:
         tool_name = self._tool_name_from_system_turn(system_turn) if tool_called else None
         step = compiled.get("flow_node")
 
+        # Facts/rules que la KB declaro para este turno: es el universo contra
+        # el que el gate juzga grounding (la respuesta no puede afirmar
+        # atributos que no esten aca). Ver GateCriterion de grounding en la KB.
+        declared_facts = [
+            *compiled.get("domain_facts", []),
+            *compiled.get("rules", []),
+        ]
+
         try:
             return self.gate.evaluate(
                 response,
@@ -586,6 +615,7 @@ class Orchestrator:
                 tool_name=tool_name,
                 step=step,
                 session_tools_called=session_tools_called,
+                declared_facts=declared_facts,
             )
         except Exception:
             logger.exception("GateAgent fallo evaluando la respuesta; fail-open (approved=True)")
@@ -683,6 +713,7 @@ class Orchestrator:
                 reader=self.reader,
                 identity_session=session,
                 llm_mapper=self.trait_mapper,
+                knowledge_ops=self.knowledge_ops,
             )
             extractor.extract(user_id=event.user_id, turn_text=event.turn_text_scrubbed)
         finally:
@@ -713,10 +744,18 @@ class Orchestrator:
     # ── persistencia ──────────────────────────────────────────────────────
     def _load_or_create_session_state(self, session: Session, user_id: int) -> SessionState:
         state = session.get(SessionState, user_id)
-        if state is None:
-            state = SessionState(user_id=user_id, current_node=SessionNode.IDLE)
-            session.add(state)
+        if state is not None:
+            return state
+        # Misma carrera que ``ensure_user``: el PK es ``user_id``, dos requests
+        # concurrentes del mismo usuario nuevo compiten por crear el estado y
+        # el segundo INSERT viola el PK. rollback + re-SELECT del ganador.
+        state = SessionState(user_id=user_id, current_node=SessionNode.IDLE)
+        session.add(state)
+        try:
             session.commit()
+        except IntegrityError:
+            session.rollback()
+            state = session.get(SessionState, user_id)
         return state
 
     def _persist_chat_history(self, session: Session, *, user_id: int, role: str, content: str) -> ChatHistory:

@@ -33,6 +33,9 @@ nodes:
 - id: type.knowledge.fallback
   parents:
   - type.knowledge
+- id: type.knowledge.gate
+  parents:
+  - type.knowledge
 - id: type.knowledge.rule
   parents:
   - type.knowledge
@@ -48,6 +51,74 @@ nodes:
 - id: type.knowledge.style
   parents:
   - type.knowledge
+- id: type.knowledge.trait
+  parents:
+  - type.knowledge
+- id: user:traits
+  parents: []
+- id: user:traits.con_cita
+  parents:
+  - user:traits
+- id: user:traits.edad_45_59
+  parents:
+  - user:traits
+- id: user:traits.edad_60_69
+  parents:
+  - user:traits
+- id: user:traits.edad_70_mas
+  parents:
+  - user:traits
+- id: user:traits.edad_menos_45
+  parents:
+  - user:traits
+- id: user:traits.horizonte_decision
+  parents:
+  - user:traits
+- id: user:traits.onboarding_pendiente
+  parents:
+  - user:traits
+- id: user:traits.pais_bolivia
+  parents:
+  - user:traits
+- id: user:traits.pais_chile
+  parents:
+  - user:traits
+- id: user:traits.pais_colombia
+  parents:
+  - user:traits
+- id: user:traits.pais_mexico
+  parents:
+  - user:traits
+- id: user:traits.pais_usa
+  parents:
+  - user:traits
+- id: user:traits.para_familiar
+  parents:
+  - user:traits
+- id: user:traits.para_inversion
+  parents:
+  - user:traits
+- id: user:traits.para_mi
+  parents:
+  - user:traits
+- id: user:traits.persona_juridica
+  parents:
+  - user:traits
+- id: user:traits.proyecto_interes
+  parents:
+  - user:traits
+- id: user:traits.segmento_broker
+  parents:
+  - user:traits
+- id: user:traits.segmento_franquicia
+  parents:
+  - user:traits
+- id: user:traits.segmento_suite
+  parents:
+  - user:traits
+- id: user:traits.sin_cita
+  parents:
+  - user:traits
 - id: workspace
   parents: []
 - id: workspace.knowledge

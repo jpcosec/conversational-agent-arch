@@ -1,0 +1,545 @@
+documents:
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence.md
+  hash_c: c48cc6086597b1b90a7d2f0e16702d5f6b20f4ad92fb075990a483303aea46ca
+  hash_d: 2ec5d17ffe22e44a89da973823bd539c69f6538033a687302cec7f08ce388efa
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path.md
+  hash_c: 45a952f3748e4c07b9c3fc8e671f29f2afe77a5188f7971c33132ae8982c55b4
+  hash_d: 317476efc15de25a3772cbd501be89ec308123ab6b8a3cf3de9bda26a86c93ab
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation.md
+  hash_c: dac1a87eebe96aacdecc5f895d6338fd0e3893893530c3dd57129b5af9950c14
+  hash_d: df6fd1d4a7e1724f7b565b63339c56dbcc6e64dd6751cc98b39e036c0e14e61e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout.md
+  hash_c: 47538a5810dbe2184e3c0ed5a3953ac9fc1b8b3e445b79da8de30966273ceac5
+  hash_d: 4cbe3136e36ee752d796c39c554aca5f5b558d71ea07181003eee35b31db467d
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence.md
+  hash_c: 9509618dd1215d969e8427a751592a64857ce4b58ddb5cfb5e9de994ec6aa3be
+  hash_d: f02ff87416abb1ca68fb49cac83397ac3d08d4f3774dd0802d0e4acde56254ec
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path.md
+  hash_c: 3de07808fe5f6c59965aee0722069f0965e72f4a0cfdedefb5b1d94bc7812d47
+  hash_d: 28d1080ff36d65fd16644110ca1d87526cda11a03a240ca82bf55530e12e0a9e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation.md
+  hash_c: 04c4258b2e52dc5971d79ecab339b7eae9c78a2f2caab901ff779258c6ff5ac0
+  hash_d: 0c7e910525d7cf129ad8833657d5c9e9992322494b21f40d2d781302af5a8bea
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout.md
+  hash_c: 98f1a29f1e0b6e3289c409d292d57fcb4df0d9505cd52b6bd2eca9de7ae62087
+  hash_d: d3383b1e59c806f4ef9089c58e07ae30fd3c742754c8a2b5e779122fc38f082e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence.md
+  hash_c: b0adfbc8b50d1b3c5590b7cae6fb052fde3159d38ed7cc98975ee2886670a043
+  hash_d: b343e1d9211fdfd323b40a80c8380a0cd74d3232b41b5c522ac6f9da657abea8
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path.md
+  hash_c: 6f2df205fefb59c61c345dcd18ab6129873880490a873de486494e9915a9e3b0
+  hash_d: 2f5005bb4a7859e881780436752522c9db192780ce62f50b255d24a5d2e5fdca
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation.md
+  hash_c: a02fa4c673a06821e5093c531a639bae973948527cd956142d28dfb4b32a27a0
+  hash_d: 26ed5e7d71fefa2c17bf376f131b12ec7e82a2e2659ce090ec288ed9f29193d2
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout.md
+  hash_c: 34702109357b09eda5469f83bb0b5707e7621eb3cfefef051da1dd6c30b6ef1c
+  hash_d: 365a9efabcad00d0246cf60484fc6fe44711152684d01fbd1c892a28ce0342d4
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence.md
+  hash_c: e35b7b2a59f6cafe35e784a60a42dc0cbbceca8d74e6002ae9cb8ef35f734250
+  hash_d: b1598c0ebfd606e6583e97e34cfc6c629bdbdcfba1b74bb97413bd959fef384e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path
+  path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path.md
+  hash_c: 88ef427da813182bf0de608402915bb614d88d9558bc8cc1d7f562d8aedcc8ca
+  hash_d: fbd7999b81c1ed593673b38c2cd3bbfba0336f8afbef963a81f21c800ff683b1
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation
+  path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation.md
+  hash_c: ddab9a3187f05ee9d348a5a653319bcf667299b68d5bf6802b8d2822e4122e0c
+  hash_d: 3edba41da2c608b4421c8f7d5a4a32b13eac03d05cff09944f6e9168c9757f7e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout.md
+  hash_c: b56b665211e43082eb443ddf008b3b99cee2d4156eccec19f9ce8e2034ab8372
+  hash_d: 1ef971f7de7bcf2dd56a4d5fb9d1dd7c580324e290dec9be4a11a5e4ecd2eb69
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-closeout-evidence.md
+  hash_c: 77c05c2e13fbed9a88781f72941f984d0d11245d4385f7a7caf678277a2e372b
+  hash_d: 55d1aa855b8928e10f902034d001ffd5120711d779a71abd23a340b1edc84d0c
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-implementation-path
+  path: desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-implementation-path.md
+  hash_c: 55efeab879968484a205b54e8173e8698bb5cb658d560d40168a550e509c2bac
+  hash_d: 244d97a7c29f57dc7042663c73eb05fa8b11833a73c134e73a5e18d9906fd3ae
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-validation
+  path: desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-validation.md
+  hash_c: 7aeb95f48abc0eb652b470dcc8a06fe5fa71c15b3af256141f134e39ffcfb52e
+  hash_d: e7d46e1f7661e85dba6ed9c1afc39ef90b3e77ab4a129a795cdf229d2e835785
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-ready-for-closeout.md
+  hash_c: 3756a29a1c4beeaf55a93828d21e0b53d9bca8d115c33a016c6b799c71e92257
+  hash_d: b47748b63a13bee69d7bcd1c3a7c54fcbc3d100756c4b53ec0c2b374342b0f2c
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-has-closeout-evidence.md
+  hash_c: 35b36e70515c3090a0b2db721e91605b0ffcdbd68b26a4a610470ffeb28a5954
+  hash_d: 15dfe7cab39b273db89528c6ad9cb4c41acb13fbd0e4bce01e8755267b91f569
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-has-implementation-path
+  path: desk/primitives/conditions/condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-has-implementation-path.md
+  hash_c: b5e74701d3ea7a3c3ee22bbca9c988ea4d9b3ef459868dff2dd4fb6ebceec034
+  hash_d: 47de7027090f27e19e5d8ddd1a8248aa9b07fef4bd1505f5bdd9b64b4dd59f76
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-has-validation
+  path: desk/primitives/conditions/condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-has-validation.md
+  hash_c: 35f1fc555e66b60f933fdce8ac20fde97fe3b95f6eb80f48545ce84724bf30e5
+  hash_d: fffe039aad77f65501f9b8dee0e6e4b1bd24f96ea4ae142e2f94a3d7b4dd6ca8
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-ready-for-closeout.md
+  hash_c: e20e28a55a005280d8c561b7d4288e9281065a779e458bdbcf933fe1e49a1412
+  hash_d: c9bfec076d1cecade7ce684e038bbb2e6ae1ac670345955bd1ecb59f70cfb519
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-has-closeout-evidence.md
+  hash_c: bc4d7faf921f0163d099df81377e11d212767b78b8db6bea2e4d55a097620e7a
+  hash_d: 8429257212474ea7299af795e58082f0ec58259d088c294bedefbd7373cfcfdd
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-has-implementation-path
+  path: desk/primitives/conditions/condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-has-implementation-path.md
+  hash_c: dcc0f98fb303a3a2f8cf122040b4ad83a88e3c10de8b8ad1b06ae466bf56768f
+  hash_d: 4a88d0d03d7fec7e4c507393239dccba4f1972119c1d5b14e1b943170938c962
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-has-validation
+  path: desk/primitives/conditions/condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-has-validation.md
+  hash_c: b97a913e45929a6082b8f194598ef01d82db9b070bfc2ac72888ca997efa3b88
+  hash_d: 6fdc75517ddc98cee1725be48346f7c70cbfbbc047f9049d13712b80d09dac28
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-ready-for-closeout.md
+  hash_c: 0ff7b058ae32235802e4166d291d0d7950bf2f33998d22ebb24d32e85e2a1e72
+  hash_d: faf5dd6f109654a0d146f13cc83f91540072afc14eafe0d48ba718c7b96f46d9
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-has-closeout-evidence.md
+  hash_c: b75c0b8c11254c4c53486fc1d2725508603aa18a2735717adc889982a426c074
+  hash_d: c1e9b00facdc2411995c21ad302a497e76d4c0277dc673ff6b64ff17e533bc9c
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-has-implementation-path
+  path: desk/primitives/conditions/condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-has-implementation-path.md
+  hash_c: c2c0609087d15d6e4ff21fc63b905e862fdd9732db55b0ecfd4f3fee71ac24cb
+  hash_d: fd920c0f9c3065e5fd439945f8149a7c946d2840a4965a85c580f7b1498d6fe7
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-has-validation
+  path: desk/primitives/conditions/condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-has-validation.md
+  hash_c: 99f9543a36312cd5cb13e96e2fe83c623440296a1c7f720943856c66438fd83b
+  hash_d: 3a91501e7e49ecbc958edc0613b5a1a17c48581e8053bc37724ec4f24a1c02b7
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-ready-for-closeout.md
+  hash_c: b1fb6aa588885cbc886ba56715e32ad99e651dd4f2aa3a51ef896b495b354fc7
+  hash_d: 53d4fd5be8bb769b44a0b9191fffa96e54f67d6fb6cad829a087ab8016c5a27e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-closeout-evidence.md
+  hash_c: 21c849231650803a15847366ee997bb4b6369ac8f40b582383c5564b0f6d9f64
+  hash_d: ab0dbbcbe6610b345cfe401c584a79944b767b51da4c94152a09de910bbb8d4a
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-implementation-path
+  path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-implementation-path.md
+  hash_c: cfcc6b1c34bcd0104f8cb9f0233a72077f3ada426eaa7ad900e17704f1a0ce4b
+  hash_d: bebef37202031a002610c7313809550313f7112813f244526633871e56ff6ef4
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-validation
+  path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-validation.md
+  hash_c: 22caf4c5f75f0874c4b3d4db62f183362e6baf7911c9fadf32e3d30dac6e8518
+  hash_d: b918f306feb7c75eb2323f02c2e749fdcf721f90bedb247a516d3c16ce9a5db9
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-closeout.md
+  hash_c: fb9653e2c16e68e7226ac4d3d615329aaa08f1f9eac6957b2adc598e47d2c33b
+  hash_d: 0a7dda523e72339ca5baed2027221bfdade0a0c91fee26d9e499f0bf89af9845
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-closeout-evidence.md
+  hash_c: 500f5655afb4fc805c45251ed19f43c78cc493e29cad8218c44da4a246a78a3f
+  hash_d: 9cf2de5e08e1e72a4fd60c58a986954312ff8ba51eee3a2cafcea217134bde6b
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-implementation-path
+  path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-implementation-path.md
+  hash_c: f3e0babdac59299662860b55a79df49c32e7c718f937ada7ced1fd25585f0dee
+  hash_d: 10fdd0daa3f60b64eb96593459f5bb90c029b84f22a34ba2b6f3f79794b40aa1
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-validation
+  path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-validation.md
+  hash_c: e121ba13a08c411a5c0932fa900e3692b47d72f6585ee6f180dd40122b8fb329
+  hash_d: 7b7897444a45e67c92f90a8dfecf369117f416e3594ffeff199b1a978c97fefa
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout.md
+  hash_c: 7e103d920b103255aa913ca7b7d77201d4b21d367887a4272ab24c21b16544fa
+  hash_d: f6550bd3435b1e095dea1676d8da001b071bc4b493c08b35a9cb2e6d99952245
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-has-closeout-evidence.md
+  hash_c: 1c4c24c7b5f9cc80da6178638532858a76998c5802f6f3d1fe57878e5cb689e0
+  hash_d: fc9064d34a8490275ea90d621555b0a3faaa591fdad011d6d6f0de07c1789cf9
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-has-implementation-path
+  path: desk/primitives/conditions/condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-has-implementation-path.md
+  hash_c: f803715139a1c048249c06b61536152717eb51421b5180c43322996e4c58d0b3
+  hash_d: d1f70ba1251c8bf197d5a942cff3ec7d6884f85ba609a5231415f5a5af26c071
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-has-validation
+  path: desk/primitives/conditions/condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-has-validation.md
+  hash_c: e784c3aa6f970eb1cef3b7fe1262e95c5faa7f8dbd4aa4a4e171a738c6137020
+  hash_d: 5eb7fa093ea2f9851f498ba6b9cdc845ec0dfac645fa59aedc82b258dee2f5c6
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-ready-for-closeout.md
+  hash_c: d0a150d62148cdaebdf5993347225f38d4c85e6076701eadfbfe240a04eaacbc
+  hash_d: 16cd8e14d1099a1d78d5146fba0fe65f53e08c22eecd9ed014c9ddaf166f0bdc
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence.md
+  hash_c: aebf3ecf70fc6ce25b115d5abbed7efc7980a5d3fb34b1886239b165bc7469a1
+  hash_d: 38383411fc2e57e318e18aa22d2651a28e618791b2b9995fb47b79a295789035
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
+  path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path.md
+  hash_c: 7ace5b8346f853c78e0ca45ef3d13baf84dbfa310510af439e3073cba492e4fc
+  hash_d: 9dcb0adcd5a98b575c00860868e12a8390571be975f45c8e4356fc354444aaa4
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
+  path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation.md
+  hash_c: 0f116328d2b91bde41973e25e559e278246e8d3bd0a7dc5184b9a222002adab6
+  hash_d: 79954df92b85268e67ee46763cfcaf290d8134482aeecb1e6fa712e460a2a0e2
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout.md
+  hash_c: 7f43a4b14a37e5b89eeabc260b5f0dcd3a1012e0f4c7c2c89c27a10c54b737b9
+  hash_d: 8f64ce6df09a579c1a78e28cd16c515b8e20cc57ff26a9780e5f8b4811154a17
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-has-closeout-evidence.md
+  hash_c: b7c8fc183711d534510c868139242c1b0a019e9209c327417bcc668d276fb2cd
+  hash_d: 89a21e37b65d33358d8802ba742c3631ccfb500c26a5aafc135383ef3c770b47
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-has-implementation-path
+  path: desk/primitives/conditions/condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-has-implementation-path.md
+  hash_c: 2a214ef1c701e6b92baf7528be5fd2955f3d123f0fb45e633a69286e35e0432b
+  hash_d: 12a49c91286e7e46439f93c6af64061b5f6cffc523d5081dc54148cc09870aa9
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-has-validation
+  path: desk/primitives/conditions/condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-has-validation.md
+  hash_c: 08e3bf1c8b80a8ef1e685fa5f4ffd1cf0b638c9994cf0ce8838a473d314a83f6
+  hash_d: ad13934fa803368ca9710ed8b54bad4d7ed7eb07df125f42bdcd46549dde786e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-ready-for-closeout.md
+  hash_c: 8b84ed7fa50a9db872b3c0dcec8dbfea7140dc7377f4e6e1bc368f409dcc1944
+  hash_d: 6470014509c05d55ff17af4ed12f24f87360ae23a40da9e7679b73c3917f6eba
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-has-closeout-evidence.md
+  hash_c: 0d611d71289d1a973c3123c5fb27b5d2c249f671288ddc9f7986cd1129dd907d
+  hash_d: 5f0559c20929962ac01bad42d09a22046afc4a6475947a6716fac5291befe585
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-has-implementation-path
+  path: desk/primitives/conditions/condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-has-implementation-path.md
+  hash_c: 4ec563787abeffd1e147dfd0eae0ef694ebcfc4eda1c4457709655ffb0e7b89b
+  hash_d: 1b7013cef1aa957989521798f8034c5031d30ba3c4c24191340ac3a814022880
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-has-validation
+  path: desk/primitives/conditions/condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-has-validation.md
+  hash_c: d57097dfd052ff12437c45b03a36e0b21d79b57f2df923cc3d93ed0894c0e287
+  hash_d: 57b884eebcbde902a1c9067d1744785f157ce8f1e11070274cd2a71a01e7d623
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-ready-for-closeout.md
+  hash_c: 3e433b071a6c41609b095ae0b0ab5455aa9ec2a70a5ce98a3460e76aeff9cbcc
+  hash_d: 3add33ebf64a0038f59ecc865284084e06f391ab073bd3d4d69f44b223628e5d
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-has-closeout-evidence.md
+  hash_c: 531db01dde82d4ffa787194d1d1c3ee45e0fc59797590e9dda9ea9c56a0e12a2
+  hash_d: 3a7f8d6ae751b3196ee543019b7a1fb8d77d1ced8014b3c193f8aff5e4d78a0d
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-has-implementation-path
+  path: desk/primitives/conditions/condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-has-implementation-path.md
+  hash_c: d45e9d195a361624138057c34560eba99532b6e8ae6795fe9a4bc35878a0e770
+  hash_d: 38b38852723a19b79bad1c62dc86d68cf4584c162e630e9a3f752d14e6074370
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-has-validation
+  path: desk/primitives/conditions/condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-has-validation.md
+  hash_c: 47d5953f33a223428c644bcb1e0671fd05d952f12e879f94d049ef8b7a6a937f
+  hash_d: 6672c8fbf4ba4376289f950b75b7b496189bfec25ebeaea8f8b0b5d45511e098
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-ready-for-closeout.md
+  hash_c: b21620011aee2ddd12d8491c85948930eb72d304d2acdf7c8479aed964750ec0
+  hash_d: c6017026a9b658fd04206ffd14cb30e162504b5b0b400f0fc355b506a9e21ced
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-has-closeout-evidence.md
+  hash_c: a1e173a331c33fb43e7ea4166614637dde175bca9c350df8b3a76e177a9ab357
+  hash_d: 77d892707f422147a9e424a329f2b75c0cc4a1254930044c0451b6e6a622b386
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-has-implementation-path
+  path: desk/primitives/conditions/condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-has-implementation-path.md
+  hash_c: 2a44b7e8222f6dd3ba095dae4051d8cd467650434f0e47bb80bd930ba8b7730d
+  hash_d: 8b5861a838f93f02d869786838c902963129f4cc7e607ccda70be219d03be9f9
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-has-validation
+  path: desk/primitives/conditions/condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-has-validation.md
+  hash_c: cdfdcd9dc3585b0b98552618c525130ca50253bd31dfcb1c0684414979ffe565
+  hash_d: 5de3eee4bfd0b801ad3d0e995c12b22889bad93072e5fbb96288e9e3169c08a7
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-la-conversacion-no-existe-como-entidad-en-el-esquema-ready-for-closeout.md
+  hash_c: a36865d5a6d3f24d04930501bee838094ebc60f99daa3cec5be04650fd58c9af
+  hash_d: 8b4ff8ad00f7dbfacf1ca2369bc4624f852a5bcd70fe235cb5b5c87dbb3f9fe6
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-has-closeout-evidence.md
+  hash_c: efff986d04d961580fd3136c08b7f863270d049aa6afd88973a778f72ba49c57
+  hash_d: 5d39263f7b1d77dfa677d88e73d76da64f1ead281d1e591eaf55c46b7cac09b6
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-has-implementation-path
+  path: desk/primitives/conditions/condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-has-implementation-path.md
+  hash_c: 46301f38c780b1ee25544ab6594fd802f17d87a872bc4ba7886f4de8c81430f6
+  hash_d: 62e19c4872683afddcad2771c74de14645fb3d088b3423a77e79ac67ea7f2d9a
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-has-validation
+  path: desk/primitives/conditions/condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-has-validation.md
+  hash_c: 660d4d1ae5dc9cef7b43e898829ed626c2cc478960143f5228edb0c1d428fb24
+  hash_d: b97aceabfb8e003b7386a6cb0cd2caef10f6d33c3471e073a7f27f49607be08e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-ready-for-closeout.md
+  hash_c: 12e229ed20be8f8038950554b78c67ba07df3d989251d58ce6f4fab21219d2ee
+  hash_d: 59a2dba405a29755cf0b5299c6198f89afba02b3707bd388c168e1e69daea179
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives

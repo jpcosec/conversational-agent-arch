@@ -58,36 +58,6 @@ documents:
   - seed
   - type.workflow.task
   - workspace.desk
-- name: task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
-  path: desk/drawer/tasks/task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas.md
-  hash_c: dbdef8d130778788d300c6dd5acd5e4f70b3994807717acbf62727c7dba754de
-  hash_d: 3665d8f4b20e96db0efd3193cbc0c7f5e31274fb14752f479ea4ceea970b8507
-  semantic_tags:
-  - artifact:task
-  - source:inbox
-  - type.workflow.task
-  - workspace.desk
-  - workspace:desk
-- name: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
-  path: desk/drawer/tasks/task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md
-  hash_c: 4794c43d0a4b9db94fdb304c57febfa3425c546f39cd0e49529118439df3b64a
-  hash_d: 48396970db72b93465d7a31b9615e526b1c037fd899799345fb61031dd2d7c7b
-  semantic_tags:
-  - artifact:task
-  - source:inbox
-  - type.workflow.task
-  - workspace.desk
-  - workspace:desk
-- name: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
-  path: desk/drawer/tasks/task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md
-  hash_c: 9d4d60c7b1f3bfd0345a0e073ea48be4909d329ef4f683bdf98b361657f74a73
-  hash_d: 2ae888ae2d537c480e83bd85776a07b6d95133733071ca23cde939435063845b
-  semantic_tags:
-  - artifact:task
-  - source:inbox
-  - type.workflow.task
-  - workspace.desk
-  - workspace:desk
 - name: task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
   path: desk/drawer/tasks/task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento.md
   hash_c: ba66b9ac1106006f5f3d4600f03a6855e19a7f0496a22860c65f6344b9d03614
@@ -98,73 +68,131 @@ documents:
   - type.workflow.task
   - workspace.desk
   - workspace:desk
-- name: task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
-  path: desk/drawer/tasks/task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara.md
-  hash_c: 2dfc9db5980283308051562579982a1569ead5782536a4c4b7207440007d2aa7
-  hash_d: f8fb720e232ddfeefac595c35c396f3a431d23cc788fce3c8133bbb04cf4e620
+- name: task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
+  path: desk/tasks/task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge.md
+  hash_c: a426eb4de2ff3e60c3998a167a019ee795761552dea1211f116c1cccd3ec718d
+  hash_d: 7477c87895aa0fb9055deb6d30779c4d02d56908165f8d40e37577a23695d4d7
   semantic_tags:
   - artifact:task
-  - source:inbox
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  path: desk/drawer/tasks/task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
+  hash_c: 9cf2968c8679284d4a91b6c9488e046afcfe2f48e9de534166a124be14476f5e
+  hash_d: d4e2fc7afece573e986ea7bd05e424dd975f964caa91b25153e9ed1589b3b826
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-modo-editor-de-atoms-en-la-ui
+  path: desk/drawer/tasks/task-modo-editor-de-atoms-en-la-ui.md
+  hash_c: ccdc828f5b35569114e069b5bd58b5f03fc9ad63b7cbcc9e95dcd8729c768653
+  hash_d: 2717fcc9de8ced70f9516609f848fe677cf2cf30322bd9880a7010dea1b9e463
+  semantic_tags:
+  - artifact:task
+  - source:decision
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
+  path: desk/tasks/task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara.md
+  hash_c: c3a31c6b2abbdf3d83d30546cad75ab02a6108f996b2d68941cde49f0a07e8a1
+  hash_d: 2b6eff903d1cf7103bbc444d9b50ad3db223affeee7cf9fc9fcea82e99fb6431
+  semantic_tags:
+  - artifact:task
+  - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk
 - name: task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
-  path: desk/drawer/tasks/task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios.md
-  hash_c: 11343300cccef7ce610286308fb84bb0967acca1aa11adbfbd7b8b66a25476a3
-  hash_d: 11404c70826910bac67a86823522e8ec5bbea630b13b346ef38adb53e93474d0
+  path: desk/tasks/task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios.md
+  hash_c: b9b408a7047e8cd9f0ec73bb22cb24f1569abc772c06d978b6e857c6304fa677
+  hash_d: 5056181706d78f3821fc1ab545c840e52c3470a2dd2056cf45bd1353b7fa029b
   semantic_tags:
   - artifact:task
-  - source:inbox
+  - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk
 - name: task-la-conversacion-no-existe-como-entidad-en-el-esquema
-  path: desk/drawer/tasks/task-la-conversacion-no-existe-como-entidad-en-el-esquema.md
-  hash_c: cdd83e1a65b2c7745b4ed9ed5f337e79a36e32d2badfac4f6b124cc88968f661
-  hash_d: b3bdda2a05795ee8ba3975eb18a2f0db5b684c2e6fb5bae2ae668cf4ca80808f
+  path: desk/tasks/task-la-conversacion-no-existe-como-entidad-en-el-esquema.md
+  hash_c: e2a67cdc9dc80978a4589b06cc4de441df12add3c24fa10d029afb41de5a9141
+  hash_d: a133322dcacf14b23f654a0349733c44a7da2171ab728154581931d0556bb573
   semantic_tags:
   - artifact:task
-  - source:inbox
+  - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk
 - name: task-mindmap-no-hay-escritura-de-atoms-desde-la-ui
-  path: desk/drawer/tasks/task-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md
-  hash_c: 8f83c152aaa98b31acab698d5834697b237546060ae1d0b77efe9c9578c52323
-  hash_d: e4e08c2427828525abc8f4b7b177bfd536aab4059f45149c6dc091ea033ef6f7
+  path: desk/tasks/task-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md
+  hash_c: c28949b3f494663b96d35b59fc0b7102191e57f75b0172ab77ff4d91c00fad83
+  hash_d: 5898c68157d8322356630b62008abeb9190a2e791d483845e1f31f3d4b710f04
   semantic_tags:
   - artifact:task
-  - source:inbox
+  - source:drawer
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
+  path: desk/tasks/task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas.md
+  hash_c: 7765ae000767ce573971fe646369f18736404a578f1b0850b7548bda127cdf00
+  hash_d: 0a2a5d8b8143ad3978bd3e7a2ad66510943260c1877442035b2d5655b93d05aa
+  semantic_tags:
+  - artifact:task
+  - source:drawer
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
+  path: desk/tasks/task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md
+  hash_c: c3c79abee05bc12b84bcce2b475adec247b38101e7452135c756e930a0ff66dc
+  hash_d: 97298a8a0ecdfbdd4238afbbf3b0819ebf3e0d2ee0a3f14a6af99ec87d5cf75b
+  semantic_tags:
+  - artifact:task
+  - source:drawer
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
+  path: desk/tasks/task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md
+  hash_c: 117ec04c0a5875ccd942e8d3b143aa8be7aef24e1f6ec9f7e0f620f2b1ee93e8
+  hash_d: fea4e1ea7d9858930d00336a4c4d1bdc881321889f34b1b171e65ba3fc97835f
+  semantic_tags:
+  - artifact:task
+  - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk
 - name: task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
-  path: desk/drawer/tasks/task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa.md
-  hash_c: edf5f082594cec5358ff91c1ef019e13cc73f7ed0cc8fc3cad1dbacb4c8ff845
-  hash_d: 9f540ff3590f9eff7c97ee98597bfcb28f449dc950d58d0c05d27507f8bec002
+  path: desk/tasks/task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa.md
+  hash_c: cce2d7efec84d64f9215f5c9e4f0199b76a217a3dd2bc0d5c0a33022db5caa39
+  hash_d: 3c25df9e64c2691895b5f9aed24c654c98a145126f6649b12330ff7c9e7164be
   semantic_tags:
   - artifact:task
-  - source:inbox
+  - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk
 - name: task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
-  path: desk/drawer/tasks/task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
-  hash_c: 967acf90881111b5d13cab83da23500ed52174d2528156b9deb3947111473220
-  hash_d: 728e395b4311bc8dece42a63bd22007b896b601c066e715063baa637106aeccd
+  path: desk/tasks/task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
+  hash_c: 902c04a9187e97c0ef5fc98f3a866140114a2717f0d8f5ddae444c63bef41827
+  hash_d: 0ce3e6ea7fc37abf326ac262e304095ada79f1a4ce632e5e28169cdc4fd9594c
   semantic_tags:
   - artifact:task
-  - source:inbox
+  - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk
 - name: task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
-  path: desk/drawer/tasks/task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md
-  hash_c: 9fa2d7d218b3f62c02aacad20b4487261804427974cb1781b97ec2a8d8d8adfd
-  hash_d: 09bd5c1ffa0c74901be2fc39c19901dc1d2ad304452038061354033f9aca4d5e
+  path: desk/tasks/task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md
+  hash_c: 552462d171beeba3f686ae5f11c7a5d9c48bcd18ea460329e452a40eebe5e8c1
+  hash_d: df9ae08ac596dd7401582ead4a71d677034c580c2bcc105fc135912f13f6db81
   semantic_tags:
   - artifact:task
-  - source:inbox
+  - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk

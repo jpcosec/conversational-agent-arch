@@ -59,3 +59,224 @@ documents:
     level: 1
     line_start: 8
     line_end: 9
+- doc_name: phase
+  sections:
+  - path: ritual-xxx
+    title: ritual-xxx
+    breadcrumbs:
+    - ritual-xxx
+    about:
+    - ritual-xxx
+    - ritual xxx
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: ritual-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: list-of-step-xxx-paths
+    title: List of step-xxx paths
+    breadcrumbs:
+    - List of step-xxx paths
+    about:
+    - List of step-xxx paths
+    - list of step xxx paths
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: list-of-step-xxx-paths
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: e-g-layer-workflow-system-sldb
+    title: e.g., layer:workflow, system:sldb
+    breadcrumbs:
+    - e.g., layer:workflow, system:sldb
+    about:
+    - e.g., layer:workflow, system:sldb
+    - e g layer workflow system sldb
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: e-g-layer-workflow-system-sldb
+    level: 1
+    line_start: 19
+    line_end: 20
+  - path: ritual-de-fase
+    title: Ritual de fase
+    breadcrumbs:
+    - Ritual de fase
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: ritual-de-fase
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: ritual-de-fase/purpose
+    title: Purpose
+    breadcrumbs:
+    - Ritual de fase
+    - Purpose
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - Purpose
+    - purpose
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: purpose
+    level: 2
+    line_start: 26
+    line_end: 27
+  - path: ritual-de-fase/trigger
+    title: Trigger
+    breadcrumbs:
+    - Ritual de fase
+    - Trigger
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - Trigger
+    - trigger
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: trigger
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: ritual-de-fase/preconditions
+    title: Preconditions
+    breadcrumbs:
+    - Ritual de fase
+    - Preconditions
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - Preconditions
+    - preconditions
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: preconditions
+    level: 2
+    line_start: 38
+    line_end: 39
+  - path: ritual-de-fase/validation
+    title: Validation
+    breadcrumbs:
+    - Ritual de fase
+    - Validation
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - Validation
+    - validation
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 47
+    line_end: 48
+  - path: ritual-de-fase/failure-modes
+    title: Failure Modes
+    breadcrumbs:
+    - Ritual de fase
+    - Failure Modes
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - Failure Modes
+    - failure modes
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: failure-modes
+    level: 2
+    line_start: 57
+    line_end: 58
+  - path: ritual-de-fase/completion
+    title: Completion
+    breadcrumbs:
+    - Ritual de fase
+    - Completion
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - Completion
+    - completion
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: completion
+    level: 2
+    line_start: 66
+    line_end: 67
+  - path: ritual-de-fase/step-details
+    title: Step Details
+    breadcrumbs:
+    - Ritual de fase
+    - Step Details
+    about:
+    - Ritual de fase
+    - ritual de fase
+    - Step Details
+    - step details
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: step-details
+    level: 2
+    line_start: 72
+    line_end: 73

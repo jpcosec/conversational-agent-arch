@@ -172,8 +172,8 @@ documents:
   - workspace.knowledge
 - name: dom-projects-overview
   path: atoms/dom-projects-overview.md
-  hash_c: faf2b09ea44a717a4b767341dfbbd2b24011a1253dc4a84d0cbceae3739100d2
-  hash_d: 10cc08024bb332a568167a2e4cf435d98ca7613afb1d2bf76f5867938b44d9f9
+  hash_c: 8d9842f38d91978527fe9df7614c1a847941c718bda39b4d2aeb15835a494596
+  hash_d: 930af58411571ea26156c79d223052b2efd9941838be66a246cfb7270baf2ca4
   semantic_tags:
   - domain:projects
   - system:vitali

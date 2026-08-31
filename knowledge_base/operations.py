@@ -6,10 +6,13 @@ into semantic commands for agent consumption.
 from __future__ import annotations
 
 import json
+import logging
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 import yaml
 from sldb.cli.model_utils import resolve_model_ref
@@ -134,6 +137,9 @@ class KnowledgeOperations:
         # minutos por consulta.
         self._records_cache: list[_DocRecord] | None = None
         self._doc_cache: dict[str, dict[str, Any] | None] = {}
+
+        # Se pone en True tras avisar (una vez) que la KB no tiene embeddings.
+        self._warned_no_embeddings = False
 
     # ── helpers ────────────────────────────────────────────────
 
@@ -333,6 +339,46 @@ class KnowledgeOperations:
 
         stats["dimension"] = len(vector) if vector else 0
         return stats
+
+    #: Modelos que NO llevan embedding por diseno: el encuadre de los agentes
+    #: (``AgentFraming``, rol router/gate) no se recupera por similitud, se
+    #: carga por rol. Contarlos como "sin vector" seria un falso positivo.
+    _EMBEDDINGLESS_BY_DESIGN = {"AgentFraming"}
+
+    def audit_embeddings(self) -> dict[str, Any]:
+        """Cuenta atoms sin vector en la KB, separando los que faltan de los que
+        no llevan por diseno (``_EMBEDDINGLESS_BY_DESIGN``).
+
+        Es la guarda para el defecto invisible: una KB entera sin vectores
+        sigue respondiendo por fuzzy literal, asi que nada falla desde afuera
+        (paso con knowledge_vitali, 50/50 atoms sin embedding). Devuelve
+        ``ok=False`` si hay atoms que DEBERIAN tener vector y no lo tienen;
+        pensado para un chequeo de arranque o job de CI (ver ``cli.py``).
+        """
+        total = 0
+        with_embedding = 0
+        by_design = 0
+        missing: list[dict[str, str]] = []
+        for r in self._find_records():
+            total += 1
+            doc = self._read_doc(r.name)
+            emb = doc.get("embedding") if doc else None
+            has_emb = bool(emb) and isinstance(emb, list) and len(emb) >= 2
+            if has_emb:
+                with_embedding += 1
+                continue
+            if r.model_name in self._EMBEDDINGLESS_BY_DESIGN:
+                by_design += 1
+                continue
+            missing.append({"id": r.name, "model": r.model_name})
+        return {
+            "kb": self._kb_root.name,
+            "total": total,
+            "with_embedding": with_embedding,
+            "embeddingless_by_design": by_design,
+            "missing": missing,
+            "ok": not missing,
+        }
 
     # ── offline: index hierarchy ────────────────────────────────
 
@@ -624,6 +670,7 @@ class KnowledgeOperations:
 
         docs = self._find_records()
         results = []
+        seen_any_embedding = False
         for r in docs:
             doc = self._read_doc(r.name)
             if not doc:
@@ -631,6 +678,7 @@ class KnowledgeOperations:
             emb = doc.get("embedding")
             if not emb or not isinstance(emb, list) or len(emb) < 2:
                 continue
+            seen_any_embedding = True
             score = self._cosine_sim(qv, [float(v) for v in emb])
             if score < threshold:
                 continue
@@ -642,6 +690,21 @@ class KnowledgeOperations:
                 "path": r.path,
                 "title": doc.get("title", ""),
             })
+        # Degradacion muda: si HABIA documentos pero NINGUNO tenia embedding,
+        # el retrieval semantico no puede funcionar y el sistema cae al fuzzy
+        # literal sin que nadie se entere (fue exactamente lo que paso con
+        # knowledge_vitali: 50/50 atoms sin vector). Avisar una sola vez por
+        # instancia -- no en cada consulta -- para no inundar el log.
+        if docs and not seen_any_embedding and not self._warned_no_embeddings:
+            self._warned_no_embeddings = True
+            logger.warning(
+                "KB en %s: ninguno de los %d documentos tiene embedding; el "
+                "retrieval semantico esta degradado a fuzzy literal. Corre "
+                "'python -m knowledge_base --kb %s index embeddings'.",
+                self._kb_root,
+                len(docs),
+                self._kb_root.name,
+            )
         return sorted(results, key=lambda x: x["score"], reverse=True)
 
     _FUZZY_STOPWORDS = {

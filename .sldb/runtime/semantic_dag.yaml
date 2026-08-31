@@ -25,10 +25,25 @@ nodes:
 - id: type.workflow.board
   parents:
   - type.workflow
+- id: type.workflow.checklist
+  parents:
+  - type.workflow
+- id: type.workflow.condition
+  parents:
+  - type.workflow
+- id: type.workflow.edge
+  parents:
+  - type.workflow
+- id: type.workflow.operator
+  parents:
+  - type.workflow
 - id: type.workflow.pill
   parents:
   - type.workflow
 - id: type.workflow.ritual
+  parents:
+  - type.workflow
+- id: type.workflow.routine
   parents:
   - type.workflow
 - id: type.workflow.step
@@ -46,6 +61,12 @@ nodes:
   parents:
   - workspace.desk
 - id: workspace.desk.inbox
+  parents:
+  - workspace.desk
+- id: workspace.desk.primitives
+  parents:
+  - workspace.desk
+- id: workspace.desk.routines
   parents:
   - workspace.desk
 - id: workspace.docs

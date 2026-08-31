@@ -106,19 +106,35 @@ def test_chat_turn_contract_and_session_continuity(client: TestClient) -> None:
     assert res.status_code == 200
     body = res.json()
     turn = body["turn"]
-    assert body["session_id"] == "s1" and turn["turn_id"] == "t1"
+    # El turn_id ahora es el uuid que genera y persiste el orquestador (un
+    # turno, un identificador), no un contador "tN" por sesion.
+    assert body["session_id"] == "s1"
+    assert turn["turn_id"] and len(turn["turn_id"]) == 12
+    assert turn["context"]["context_id"] == f"ctx-{turn['turn_id']}"
     assert turn["kind"] == "nl" and turn["assistant_message"].startswith("[nl]")
     assert turn["state_trace"] == ["idle", "evaluating_context", "drafting_response", "idle"]
     assert "atom-donpeppe-carta" in turn["context"]["atom_ids"]
-    assert turn["context"]["context_id"] == "ctx-t1"
     assert turn["flow_node"] == "conversation:steps.onboarding"
 
     second = client.post("/api/chat", json={"message": "soy vegetariano", "session_id": "s1"}).json()["turn"]
-    assert second["turn_id"] == "t2" and second["traits_after"] == ["trait-vegetariano"]
+    # turnos distintos -> ids distintos
+    assert second["turn_id"] != turn["turn_id"] and second["traits_after"] == ["trait-vegetariano"]
 
     anonymous = client.post("/api/chat", json={"message": "hola"}).json()
-    assert anonymous["session_id"] and anonymous["turn"]["turn_id"] == "t1"
+    assert anonymous["session_id"] and anonymous["turn"]["turn_id"]
     assert client.post("/api/chat", json={"message": "   "}).status_code == 400
+
+
+def test_live_turn_id_matches_persisted_turn_id_in_history(client: TestClient) -> None:
+    """El turn_id en vivo (/api/chat) debe ser el mismo que /api/history: un
+    turno, un identificador. Antes /api/chat devolvia 'tN' (contador) y
+    /api/history el uuid persistido -- no matcheaban."""
+    live = client.post(
+        "/api/chat", json={"message": "que pizzas tienen?", "session_id": "s-idmatch"}
+    ).json()["turn"]
+    hist = client.get("/api/history", params={"external_id": "ui:s-idmatch"}).json()
+    persisted_ids = [t["turn_id"] for t in hist["turns"]]
+    assert live["turn_id"] in persisted_ids
 
 
 def test_chat_tool_turn_and_profiles_endpoint(client: TestClient) -> None:

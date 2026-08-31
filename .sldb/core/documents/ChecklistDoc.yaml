@@ -1,0 +1,409 @@
+documents:
+- name: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready.md
+  hash_c: 3d3278536bd27aefb48fe31b95ac75593b8fe7787841a2b475f899c8869cb6d6
+  hash_d: 31822c66c9b24128aef85a9a2bcbb4be5f70ecb2f2270298ed0d63dde8d14773
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready.md
+  hash_c: c881f0f60f8c3c4d311a7851c0cd9bc834133a5efd09659a994759884e50690a
+  hash_d: d579d5a1011c0d92d241f63ffe183e9a9578dc006ab75d5adf3a46248c035499
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready.md
+  hash_c: bc5e1e8340dae1cebe4c046b7eb4da21dfc4a06ecef5a228bd1befaf53fc27a3
+  hash_d: fe2b58443a2286cf5df6ffd0c987611c95484002793c861056fc773fb888ff15
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready.md
+  hash_c: fd3516b0632e68d1e2eb502e4f48509463edad980cc5646dce047b5c14206c94
+  hash_d: cf171aeee108f9dbaf96becc8f675e95997e659fc602a0ac640483c5a3ffca7c
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready.md
+  hash_c: c2efc23c1e2c231c4384d202080a5a1369fa288ac00452d72565a3e3b1e97926
+  hash_d: 1c79a3c010e30f4e716936eb105c6b804696aad5de85c6c700463f81bf4f8084
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready.md
+  hash_c: 0f55dcf8f4dc051bb649c63fdcb6e100f5750f5295d9e34414edd7d279e50a98
+  hash_d: 2fe3583771bc39e801f2ac82169ca9e583170815fac5d205918200675781c787
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready.md
+  hash_c: 91262aaab01431178173c219a4e5ae643596a887dc5f9e31d12d0056fed9f7a4
+  hash_d: d111ba0a529e428c4a4eafe9d23c75bcc5b896f066b58fd659b9552d1bd7814a
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready.md
+  hash_c: 3302ddbd00d4a8ead9c1b0a527fc3869581725e28750192c0e5431436efa179a
+  hash_d: 0fc9e798c78a6cac7f07182bbd985a50aa3a4f2024e9bc075562b8f12745b1fb
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready.md
+  hash_c: 34956c4f0928653f226acf200f70bf2f8dbc04b63ce31471cc0c76c674d0b713
+  hash_d: 51968e24aad6200513cb59fa166fde225d2619d4105dfea5f108c6437f60b470
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready
+  path: desk/primitives/checklists/checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready.md
+  hash_c: b69b0156dd076e4aa216b7fa4e0359416add8578cdba3709d2b7887161d879b3
+  hash_d: 15a7da2daf5700b46e9411dde627bcf1d0d8c4b2d908fe8b0a065d0fc6b49bef
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready
+  path: desk/primitives/checklists/checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready.md
+  hash_c: 4358ee540c6838a56eaf007e00ecbdf7a70d2aab2a21874d600ec3f5b80dec51
+  hash_d: 551be048292867629e1e52d1181a38daa0533835499c82371df2d73a658a83ad
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready
+  path: desk/primitives/checklists/checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready.md
+  hash_c: 70f2b8dc072199a9c1aa1071eadc6d83d011fce9a7c9e94baf7b444a56f3a5a1
+  hash_d: 7d947d204e76a2f2e10a6bf971d952dac200aaa92bb581755f6734d20783d8e0
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-closeout-ready
+  path: desk/primitives/checklists/checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-closeout-ready.md
+  hash_c: 1b1d2dd7c7a868d48975f21059296da71c50d6e313de73f74322e993d0d25e3b
+  hash_d: 78c73f6df0d084d4b9b0ed84699d30d520ca6dff301a1641d2802808af1ac216
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-execution-ready
+  path: desk/primitives/checklists/checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-execution-ready.md
+  hash_c: 44d15a19b503f08030eb5586c2e88e7546927c099aa7791c8745e237704c42ea
+  hash_d: c304d7594aefc832c7cbdfa0144691cd5cf27fbd195360eb56f9fbe349106824
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-testing-ready
+  path: desk/primitives/checklists/checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-testing-ready.md
+  hash_c: 2a145dfeaee40e7b73c01c009dbce39d9f97947ea3d2af74bf40275cbe0ca35c
+  hash_d: aecb0d537eaddd53f56bb93a9dd23bca0bed50515744a9b7d1441dd0f00a5d55
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-closeout-ready
+  path: desk/primitives/checklists/checklist-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-closeout-ready.md
+  hash_c: 480c9a957c87764eb10107ad6c7af41f62e157d1f459fa75dc6cdac5924bed01
+  hash_d: bf625c6f428a7520e3b88e95b02862b78c4aa1201185891a9ba8586c88dbf8df
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-execution-ready
+  path: desk/primitives/checklists/checklist-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-execution-ready.md
+  hash_c: 73ce3a6fceca18c3729da11f493f255beb0fc44227b79c611e9ddcdfb07e2010
+  hash_d: a3772948b1d8dbec2da931e411262470fe41cf30f78c44937349f93f8ed44650
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-testing-ready
+  path: desk/primitives/checklists/checklist-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas-testing-ready.md
+  hash_c: 980c7addcd2b2387d59688bdb77b36633c69eac05658c10308023b92c670bed1
+  hash_d: b7c7f67b9152326bfb81e8a3dab4ff389ba9f6a1791f163416651d4945d4688c
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-closeout-ready
+  path: desk/primitives/checklists/checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-closeout-ready.md
+  hash_c: c0fd984979a631aac66420ab6aa8c5400a06348048686f1bd5d74bf89dfdd86b
+  hash_d: 61bd8c93be8b1699209ffeca388941133271a509dc924cc285ffdbe42507ef07
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-execution-ready
+  path: desk/primitives/checklists/checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-execution-ready.md
+  hash_c: 253ba54c63367e257891492f859ea62d769a04b78cbb465ece4c1abd099eeeeb
+  hash_d: 8e2e3ebf226f90c96f231d6f0ad192a17abd6c2111789339154a8c8300f4acda
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-testing-ready
+  path: desk/primitives/checklists/checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-testing-ready.md
+  hash_c: 66ce8e70e8a37d32a657529067edaaf4b81290c76457c8cb753067d3bb1f0469
+  hash_d: 1cf3ab6013b4464b04848e6f711d53d40af49671fe07eb64971c8ffc0c147fdf
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-closeout-ready
+  path: desk/primitives/checklists/checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-closeout-ready.md
+  hash_c: 972ec5634b321b4899d25dd272b6f3cec8ab8137012a2df624dbc95ac990343a
+  hash_d: 09452666b07ea67eeba5741d20a79f03a78c44fb537585134fc7ebc6589721d1
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-execution-ready
+  path: desk/primitives/checklists/checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-execution-ready.md
+  hash_c: ff1f2bde1cd8ca4e0b0f0dc867c05f4c0834038025a5551badc29a4c427bc1f5
+  hash_d: b8c1956be341840f1a9436c3e8c20216068d15537b3d65d2ec2b45c89d143825
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-testing-ready
+  path: desk/primitives/checklists/checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-testing-ready.md
+  hash_c: 36cf27e7b5bf370f6a63b382d598967c54fecb40742a8a676da848d9332f452f
+  hash_d: 3a41293f9b6bbb110393ee5dafb7069edbbd003975189c1db013ae9452949fd0
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-ready
+  path: desk/primitives/checklists/checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-ready.md
+  hash_c: dbc635f455eeaaaf4a46b6716da174def4df7815c4f73c26d6fde72adc720e76
+  hash_d: f9d39e6592b76ff3d38ad6deb3d706a6c738314a3df308a5cff916cd4981c186
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-ready
+  path: desk/primitives/checklists/checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-ready.md
+  hash_c: 5338f13e3cf4f82e711efe8b65fa0d661464006a5c919c193b93e98f7f28dae1
+  hash_d: 52170d7f78c72aef94ee84ddaae57e3b3e51968244cfd387723d61f0582fc75a
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-ready
+  path: desk/primitives/checklists/checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-ready.md
+  hash_c: 3584db135e00b83dd76ae71ca546ae61e42204fd261fe19e21c2a111a3653a12
+  hash_d: b22962d380c75dfdaeaf06693370303dc4e2f838b8e9861f7091a5f4249c4487
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-ready
+  path: desk/primitives/checklists/checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-ready.md
+  hash_c: 4e9dbfc4af32664adcac2f05ba88323629d9fffec6fd7c6f81878e29a20e69a0
+  hash_d: a6908bf6f18ca2319f0aedb2023e3e6afc386e2d7e03b36fd7c8bfd8b7963bdb
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-ready
+  path: desk/primitives/checklists/checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-ready.md
+  hash_c: adbe76e94672e4cd0797e061213038b81650c46c73580de47a1dfcea497af44a
+  hash_d: 6b04950ec34a8cb115a413426dc40120e81b8bd271c65b9bac868d885d3cf062
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready
+  path: desk/primitives/checklists/checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready.md
+  hash_c: c80bbd8a3d40549083e2f1e3c424eca36345c6ed46714faab3f976527095ebc1
+  hash_d: 038c0bc19e9f97bc85cdfb8c670e56245470335c15e33caa6494196817a56761
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-closeout-ready
+  path: desk/primitives/checklists/checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-closeout-ready.md
+  hash_c: 575ebb5cf67236a6855111fa32ad11e077a7a48068a15a7d308a29d4e48690ad
+  hash_d: 5d1d8a96bc903c59cfdf8137b53ee69164e32189fa65ed05a3681c82d5ad0ddc
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-execution-ready
+  path: desk/primitives/checklists/checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-execution-ready.md
+  hash_c: d1df5f9a2c916cef329674a4cf5b655053dda23df412ce8659d2da551cdd9dd7
+  hash_d: 0de158097cf93fbc43d6fd1400b244a4d13f5ae11fd0ca4380d42c90f568bbfa
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-testing-ready
+  path: desk/primitives/checklists/checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-testing-ready.md
+  hash_c: c8cc6c90fe2ca996667d4b520aec4031a7d9526abd40c8f96eae61ba5c47b40f
+  hash_d: ff745b79489ba2a2f5358ed9c52ae16fb0ca2b97d6b77cc47fb8a87ea6a58928
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready
+  path: desk/primitives/checklists/checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready.md
+  hash_c: 2135a308fd783b39b53ec82cbaa01f2f2e3a07fa51afb3a7530308df0f4d4c32
+  hash_d: 66484a9f387885b66f5f1be1dd914d73cc36303c28ef2afb8c96820685e629f5
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready
+  path: desk/primitives/checklists/checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready.md
+  hash_c: fe9b38371aa1fd2711d589e7203c51a5660451105eb0f6d2d72f70893eed0994
+  hash_d: f6aa52eff298fc0fff7961c2b5a872c33f4e5fa8cc6effe240297fcdca2b7e3b
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready
+  path: desk/primitives/checklists/checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready.md
+  hash_c: 623e5b43b1b5a0c07f04257ce33fe92779ec32f657e6dabd6a3c99e0eb4b71c0
+  hash_d: 3a04fa651a02c4adc853d69b7062eb1c0e58b5328a4881918bcacbeb3bad7f22
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-closeout-ready
+  path: desk/primitives/checklists/checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-closeout-ready.md
+  hash_c: cbf37c6c15ae6aea770179bb895df96e8b339b1a79aaaf31ce01a1d86f332762
+  hash_d: 1558ea6854b0bc201795ee384e20832517c11249c0707dc7891fdeca604e63e9
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-execution-ready
+  path: desk/primitives/checklists/checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-execution-ready.md
+  hash_c: 4562ab30cd8e120ce6e571222e9004c73fce1e0dd937bc2acf07d158346717cd
+  hash_d: 87f95b5a5a3ad05f5e69f27165879a77dcb2eec9668e4ea10ff520378b9f2f3c
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-testing-ready
+  path: desk/primitives/checklists/checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-testing-ready.md
+  hash_c: 7382512d09629988bf64c5df58f4a23913be152c2f9525b33e845ba80e28d1f5
+  hash_d: 5e5af7f257420bfea6a310f456e87af44fbc2da631b01b2aa61c62fdd847bb9d
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-closeout-ready
+  path: desk/primitives/checklists/checklist-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-closeout-ready.md
+  hash_c: d20fd113d04c492a538c41d02f2c9141455ba423d45d7ed5906edb69ba3559c4
+  hash_d: 5fa7b5fe8a225ad1092c894649ccbb789a4edc72522d313ccdb32a122643bae3
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-execution-ready
+  path: desk/primitives/checklists/checklist-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-execution-ready.md
+  hash_c: d36d3d74dcfb7be9146e81b2d3af0b88cec9ac5ed7e302d22b180bdfbac58eae
+  hash_d: 5e1ababbdf92b92815bab49d7fa72ae8c88ffd96f2780539dbb8b2f15eb3ea6b
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-testing-ready
+  path: desk/primitives/checklists/checklist-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara-testing-ready.md
+  hash_c: 6777c0a3aaaf1d6bcdee2de7a07e94c7607d781d7986365325de2385eea90d10
+  hash_d: 9240b8f91a89d7f72b100f98094402f7de3d024b334728c97bce076317e89441
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-closeout-ready
+  path: desk/primitives/checklists/checklist-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-closeout-ready.md
+  hash_c: 808f3f196eb51a2a49ba31a17ef3fe4ee10d25244d6e0dc1bf7e069061a6d0d1
+  hash_d: db130e704ee6fc7c780a16d398fde28d08c45f81d1c37ca4283de4479ba7900d
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-execution-ready
+  path: desk/primitives/checklists/checklist-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-execution-ready.md
+  hash_c: 7ad91231c7c8abb07184bd0d6e2b1264e5c8de0a4806d5700f9b5c26bedd602a
+  hash_d: adfe14275a2c7bb7608c8daf327c8a328b9a8c63a062ea4bacb8c254dff9ece5
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-testing-ready
+  path: desk/primitives/checklists/checklist-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios-testing-ready.md
+  hash_c: d11649a1985333872c801135b52a0ae3e5bda89e4a013c3ccbc4a03b0d1f88ef
+  hash_d: 2d064828f37ba167236cbfeda19eb9b179217c6a6f681879fb72405bc08cf374
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-closeout-ready
+  path: desk/primitives/checklists/checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-closeout-ready.md
+  hash_c: 4d5a2a510878bbdefb673e03f95e49c526ea99f184f7195f830e559c8c3ecb14
+  hash_d: 7b7fd6d51920c75853ccc23dfebe756b6ecd27c16fa9646dc1ca25eae230fa81
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-execution-ready
+  path: desk/primitives/checklists/checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-execution-ready.md
+  hash_c: 8e06bdf59bc90dda113b541ffc77f05f9a8aac52c072afe3ab5c91f0889d8ec2
+  hash_d: b120c14d21169ab65204d077baaf25ebee3fe7febcc4c9fd069f2c6768bdb4e1
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-testing-ready
+  path: desk/primitives/checklists/checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-testing-ready.md
+  hash_c: 62744b37c24ea60d8a9858c84c1401bbde665b79ceca4a15d32e56f931d65246
+  hash_d: 7404a36ff30f32a4158e05569daf588e0590893f9422e12ebebb695df84139da
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-closeout-ready
+  path: desk/primitives/checklists/checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-closeout-ready.md
+  hash_c: ecb41353204d73f43b7c09587266c426316340656b5f195c4109fd338c5b565f
+  hash_d: 5a1eb5e9336c7e85a97f1e3d6ee85996cb692200ce580f1e4096da6c5226fc70
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-execution-ready
+  path: desk/primitives/checklists/checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-execution-ready.md
+  hash_c: 0a0cd7e87bc088650c98d72784e866f7c2d7310c6cb3a21311cb67be1f38c5db
+  hash_d: 0eb703056ff61dedab82cfd8547cdb687425e04a5591c6e96b79505fc1099c30
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-testing-ready
+  path: desk/primitives/checklists/checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-testing-ready.md
+  hash_c: 07051e0dd1cc0d81f72e9a99d4c3d57e3f37210fa2441846143ce0b96471240c
+  hash_d: 0f1a00b389bae48dd35c020603326632cd2c23b620c0382cd2a21c4b4da74a3f
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives

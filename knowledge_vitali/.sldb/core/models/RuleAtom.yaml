@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:RuleAtom
 path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/rule.py
 documents_index: .sldb/core/documents/RuleAtom.yaml
 sections_index: .sldb/runtime/sections/RuleAtom.yaml
-hash_b: cb19c6aa6d253ab1192bb5c3db79c89f082dceccbcaed2e45e85a8ff9119f34c
+hash_b: 930f9cdd1cc65408ab3c1190c300df678efc099c02bc4316a437ac2ded0d3070
 version: 1
 canonical: false
 family: null

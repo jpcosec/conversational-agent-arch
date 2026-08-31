@@ -87,12 +87,13 @@ function MindNode({id,data,selected}){
  const border=selected?'#d4a574':isRoot?fam.color:`${fam.color}66`
  return html`<div data-kind=${data.kind} data-atom-type=${isAtom?data.atom_type:undefined} style=${{border:`2px solid ${border}`,borderLeft:isAtom?`4px solid ${fam.color}`:`2px solid ${border}`,background:bg,borderRadius:isRoot?20:12,padding:isRoot?'10px 18px':'7px 13px',minWidth:isRoot?130:90,maxWidth:240,cursor:'pointer',transition:'.15s',boxShadow:selected?'0 0 18px rgba(212,165,116,.25)':'none',display:'flex',alignItems:'center',gap:7}}>
    <${NodeToolbar} isVisible=${!!selected} position=${Position.Top}>
+     <!-- UI read-only (decision del owner): el mindmap VISUALIZA la KB, no la
+          edita. Las mutaciones locales (borrar / +hijo / +hermano / link) se
+          removieron porque prometian una persistencia que no existe: la KB se
+          edita via comandos SLDB sobre el store, no desde aca. Ver
+          frontends/UI-GUIDE.md. El editor persistido queda como task diferida
+          (task-modo-editor-de-atoms-en-la-ui). Solo queda navegar al documento. -->
      <div data-testid="mindmap-node-toolbar" style=${{display:'flex',gap:4,background:'rgba(10,10,15,.95)',border:'1px solid rgba(212,165,116,.2)',borderRadius:8,padding:4,boxShadow:'0 8px 28px rgba(0,0,0,.5)'}}>
-       <button style=${TB_BTN} title="Borrar" onClick=${()=>MM_ACTIONS.del(id)}>🗑</button>
-       <button style=${TB_BTN} title="Agregar hijo" onClick=${()=>MM_ACTIONS.child(id)}>＋hijo</button>
-       <button style=${TB_BTN} title="Agregar hermano" onClick=${()=>MM_ACTIONS.sibling(id)}>＋herm</button>
-       <button style=${TB_BTN} title="Link horizontal" onClick=${()=>MM_ACTIONS.link(id)}>🔗</button>
-       <button style=${TB_BTN} title="Comentario agente (coming soon)" onClick=${()=>MM_ACTIONS.comment(id)}>💬</button>
        <button style=${TB_BTN} title="Ir al documento" onClick=${()=>MM_ACTIONS.goto(id)}>↗doc</button>
      </div>
    </${NodeToolbar}>
@@ -182,20 +183,26 @@ function App(){
  const applyLayout=useCallback((lay)=>{setLayoutMode(lay);if(!nodes.length||!taxData)return;if(lay==='embeddings'){fetch('/api/viz/graph').then(r=>r.json()).then(g=>{if(!g.nodes)return;const em=nodes.map(n=>{const e=g.nodes.find(gn=>gn.id===n.data.atom_id||gn.id===n.data.label);return e?{...n,position:{x:e.position?.x||0,y:e.position?.y||0}}:n});setNodes(em);setEdges(prev=>prev)}).catch(()=>{});return}
   const n=layoutTree(nodes,edges,lay==='topdown'?'TB':'LR');setNodes(n);fitView({padding:0.1,duration:400})},[nodes,edges,taxData])
 
- useEffect(()=>{if(typeof initHotkeys==='function'){initHotkeys({element:document.querySelector('.react-flow'),onSearch:()=>document.querySelector('[data-testid="mindmap-search"]')?.focus(),onDelete:()=>{if(selectedNode){setNodes(nds=>nds.filter(n=>n.id!==selectedNode));setEdges(eds=>eds.filter(e=>e.source!==selectedNode&&e.target!==selectedNode));setSelectedNode(null)}},onAddChild:()=>{},onAddSibling:()=>{},onLinkHorizontal:()=>{if(selectedNode)setLinking(l=>!l)},onCollapse:()=>{if(selectedNode){setCollapsed(c=>{const n=new Set(c);if(n.has(selectedNode))n.delete(selectedNode);else n.add(selectedNode);return n})}},onFocus:()=>{if(selectedNode){const n=document.querySelector(`[data-id="${selectedNode}"]`);if(n)n.scrollIntoView({behavior:'smooth',block:'center'})}},onLayout:l=>applyLayout(['tree','topdown','embeddings'][l-1]),onHelp:()=>alert('Ctrl+F Buscar · Delete Borrar · Tab Hijo · Enter Hermano · L Link · Space Collapse · 1/2/3 Layout · F Centrar · Esc Cancelar · ? Ayuda'),onCancel:()=>setLinking(false)})}})
+ // UI read-only (decision del owner): las hotkeys de MUTACION (Delete/Tab/
+ // Enter/L) se neutralizan -- borrar/agregar/linkear no persisten en la KB.
+ // Solo quedan las de NAVEGACION/VISTA: buscar, collapse, centrar, layout.
+ useEffect(()=>{if(typeof initHotkeys==='function'){initHotkeys({element:document.querySelector('.react-flow'),onSearch:()=>document.querySelector('[data-testid="mindmap-search"]')?.focus(),onDelete:()=>{},onAddChild:()=>{},onAddSibling:()=>{},onLinkHorizontal:()=>{},onCollapse:()=>{if(selectedNode){setCollapsed(c=>{const n=new Set(c);if(n.has(selectedNode))n.delete(selectedNode);else n.add(selectedNode);return n})}},onFocus:()=>{if(selectedNode){const n=document.querySelector(`[data-id="${selectedNode}"]`);if(n)n.scrollIntoView({behavior:'smooth',block:'center'})}},onLayout:l=>applyLayout(['tree','topdown','embeddings'][l-1]),onHelp:()=>alert('Ctrl+F Buscar · Space Collapse · 1/2/3 Layout · F Centrar · ? Ayuda · (vista read-only: la KB se edita por SLDB)'),onCancel:()=>setLinking(false)})}})
 
- // Puente NodeToolbar -> acciones sobre estado de App
+ // Puente NodeToolbar -> acciones sobre estado de App. UI read-only: solo
+ // navegar al documento. Las mutaciones (del/child/sibling/link) quedan como
+ // no-op -- se removieron del toolbar y de las hotkeys (ver UI-GUIDE.md).
  useEffect(()=>{
-  MM_ACTIONS.del=(nid)=>{setNodes(nds=>nds.filter(n=>n.id!==nid));setEdges(eds=>eds.filter(e=>e.source!==nid&&e.target!==nid));setSelectedNode(null)}
-  MM_ACTIONS.child=(nid)=>{const cid=`b-${NID++}`;setNodes(nds=>{const p=nds.find(n=>n.id===nid);if(!p)return nds;return[...nds,{id:cid,type:'mind',position:{x:(p.position?.x||0)+180,y:(p.position?.y||0)+40},data:{label:'nuevo',family:p.data.family,kind:'branch'}}]});setEdges(eds=>[...eds,{id:`e-${nid}-${cid}`,source:nid,target:cid,type:'bezier',style:{stroke:'rgba(212,165,116,.5)',strokeWidth:1.8}}])}
-  MM_ACTIONS.sibling=(nid)=>{const sid=`b-${NID++}`;setNodes(nds=>{const p=nds.find(n=>n.id===nid);if(!p)return nds;const parentEdge=edges.find(e=>e.target===nid);const src=parentEdge?parentEdge.source:null;const newNode={id:sid,type:'mind',position:{x:(p.position?.x||0),y:(p.position?.y||0)+70},data:{label:'nuevo',family:p.data.family,kind:p.data.kind==='atom'?'branch':p.data.kind}};if(src)setEdges(eds=>[...eds,{id:`e-${src}-${sid}`,source:src,target:sid,type:'bezier',style:{stroke:'rgba(212,165,116,.5)',strokeWidth:1.8}}]);return[...nds,newNode]})}
-  MM_ACTIONS.link=(nid)=>{setSelectedNode(nid);setLinking(true)}
+  MM_ACTIONS.del=()=>{}
+  MM_ACTIONS.child=()=>{}
+  MM_ACTIONS.sibling=()=>{}
+  MM_ACTIONS.link=()=>{}
   MM_ACTIONS.goto=(nid)=>{const n=nodes.find(x=>x.id===nid);if(n&&n.data.atom_id)window.open('/api/atom/'+encodeURIComponent(n.data.atom_id),'_blank')}
  })
 
  const onNodeMouseEnter=useCallback((e,node)=>{if(node.data.kind!=='atom')return;setHover({atom:node.data,pos:{x:e.clientX+16,y:e.clientY+8}})},[])
  const onNodeMouseLeave=useCallback(()=>setHover(null),[])
- const onNodeClick=useCallback((e,node)=>{setSelectedNode(node.id);if(linking&&node.id!==linking){setEdges(eds=>[...eds,{id:`e-x-${Date.now()}`,source:selectedNode,target:node.id,style:{stroke:'#c97db9',strokeWidth:2,strokeDasharray:'5,5'}}]);setLinking(false)}if(node.data.kind==='atom')setHover(null)},[])
+ // UI read-only: seleccionar resalta el nodo; ya no se crean edges por click.
+ const onNodeClick=useCallback((e,node)=>{setSelectedNode(node.id);if(node.data.kind==='atom')setHover(null)},[])
  const onPaneClick=useCallback(()=>{setHover(null);setSelectedNode(null);setLinking(false)},[])
 
  const ramas=useMemo(()=>{if(!taxData)return[];const r=[];Object.keys(taxData).forEach(fam=>{r.push({id:fam,label:fam,children:[]})});return r},[taxData])

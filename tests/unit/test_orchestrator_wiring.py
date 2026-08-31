@@ -228,3 +228,82 @@ def test_from_config_wires_business_declared_in_yaml(tmp_db_url: str) -> None:
         assert o.handle_turn(external_id="ui:cfg", message=RESERVA_MSG)["system_turn"]["status"] == "ok"
     finally:
         o.close()
+
+
+# ── concurrencia: SELECT-then-INSERT sin lock (regresion) ──────────────────
+#
+# Antes: dos requests simultaneas de un usuario NUEVO pasaban ambas el SELECT
+# de ensure_user/_load_or_create_session_state y el segundo INSERT reventaba
+# con IntegrityError (UNIQUE users.external_id / PK session_state.user_id),
+# perdiendo el turno con un 500. Ademas el turn_id lo daba un contador
+# compartido que colisionaba. Estos tests ejercen concurrencia real (threads
+# contra un SQLite de archivo); antes no habia ninguno.
+
+def test_concurrent_first_contact_does_not_lose_turns(donpeppe_kb: Path, tmp_db_url: str) -> None:
+    import threading
+
+    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    n = 8
+    results: list[dict] = []
+    errors: list[Exception] = []
+    barrier = threading.Barrier(n)
+
+    def worker(i: int) -> None:
+        try:
+            barrier.wait()  # maximizar el solapamiento
+            turn = o.handle_turn(external_id="wa:+concurrent-new", message=f"hola {i}")
+            results.append(turn)
+        except Exception as exc:  # noqa: BLE001 -- el test decide si fallar
+            errors.append(exc)
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(n)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    try:
+        assert errors == [], f"requests concurrentes fallaron: {errors!r}"
+        assert len(results) == n
+        with o.SessionLocal() as s:
+            users = s.scalars(select(Users).where(Users.external_id == "wa:+concurrent-new")).all()
+            assert len(users) == 1  # un solo usuario, no N
+            states = s.scalars(
+                select(SessionState).where(SessionState.user_id == users[0].id)
+            ).all()
+            assert len(states) == 1  # un solo estado de sesion
+            msgs = s.scalars(
+                select(ChatHistory).where(ChatHistory.user_id == users[0].id)
+            ).all()
+            # cada turno persiste user+assistant: N turnos -> 2N mensajes
+            assert len(msgs) == 2 * n
+    finally:
+        o.close()
+
+
+def test_concurrent_turns_get_unique_turn_ids(donpeppe_kb: Path, tmp_db_url: str) -> None:
+    import threading
+
+    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    n = 12
+    turn_ids: list[str] = []
+    lock = threading.Lock()
+    barrier = threading.Barrier(n)
+
+    def worker(i: int) -> None:
+        barrier.wait()
+        turn = o.handle_turn(external_id="wa:+concurrent-ids", message=f"hola {i}")
+        with lock:
+            turn_ids.append(turn["turn_id"])
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(n)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    try:
+        assert len(turn_ids) == n
+        assert len(set(turn_ids)) == n  # todos unicos, no colisionan
+    finally:
+        o.close()

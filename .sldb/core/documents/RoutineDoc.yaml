@@ -1,0 +1,154 @@
+documents:
+- name: routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  path: desk/routines/routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+  hash_c: 245660cd71a9bd47c5ab61882af2f2a9f2fbd6a008fbebfd4cbba67ae94839d0
+  hash_d: ddc01b76ce92467db0683bf8bac8314e26bbbb7bc18144985863c073d29bd8e6
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  path: desk/routines/routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb.md
+  hash_c: 939ec0e3e15613f5258395bf36a911fcae1a5697d13ac139c39f6d60c8342e80
+  hash_d: c4b281e3ca6105027beb878ba39c99c81d1957c37a39d1d1d142135714c94ba1
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  path: desk/routines/routine-task-recomponer-la-base-de-spec2viz-y-atoms.md
+  hash_c: 2d16a9eca2ae27f9288e40365b31959f5eee306bea8b8e168358b44fcfbcbdaa
+  hash_d: 5b473672f79775a9ff5868c8d45f4b5fc75da3e70b1381b80c1b469cb4aea49e
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  path: desk/routines/routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
+  hash_c: 1441ea23a5eef9fd16aba3531dff1276f69e4268c198513454fe44d3ea98da6c
+  hash_d: 3892992bc01c4f6a8742bd2d74f46211bfa72c3bbfdecbf4b2c197db9fbb4c6e
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
+  path: desk/routines/routine-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge.md
+  hash_c: 36a472321b276716f1761babcb3d8fa64a57af0043896dbd5bea339bafcbcff1
+  hash_d: 390dab25b6f6132653d9dfbe49dfb7f9f23ecb8785e463a8565ba9a96f06fa6b
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
+  path: desk/routines/routine-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas.md
+  hash_c: 3a4ae87d8d7f8ed3d4ab0e8962cf29ef6c7db79cb76273900439d5a39975968d
+  hash_d: 0e185a3ab12cad5ad569667acd92bd33688ae043c13817cd43a87892980b60d9
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
+  path: desk/routines/routine-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md
+  hash_c: 8dca51e1df7eef258ec8f31185615251e607dab43eff0d18437155f5d107828c
+  hash_d: 3120285d2d403af547884bebfec168fcec4c31bff3b43b9e9a3f61ae541d7f8a
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
+  path: desk/routines/routine-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md
+  hash_c: 4756619dc2cc7a38271fc5247af4fe82022b0179e24ef4198397ee450cbcc0f9
+  hash_d: ad5e909d79a91f58c860de1da8ba67779d58c92c3522af96b8fc840b687baa51
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
+  path: desk/routines/routine-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara.md
+  hash_c: 1b38ae1cd261c4fee93d7bd6a9684aa65fae411abefd05f0a9e195da207629cb
+  hash_d: afd17ec2351d742a984dd068df984cc03489b2c6567fbf5990308a4c549dec71
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
+  path: desk/routines/routine-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios.md
+  hash_c: 795f2e5f4cfe0d49172eeaad254688e1157f9aa0e9adb06246e2aece99114c72
+  hash_d: bbbf4853363f994e6455e2cb028b103937a99e07f139bc9bde0158569acb04f3
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+  path: desk/routines/routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form.md
+  hash_c: 90ea090f193184a1615ec20f9bf760f1b5a1e7f64f0d707eb49aa144e541bb97
+  hash_d: af2627e610357ba7ae360d924394794bf5186e0b4d3b153e4c89a30f17dc3423
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-la-conversacion-no-existe-como-entidad-en-el-esquema
+  path: desk/routines/routine-task-la-conversacion-no-existe-como-entidad-en-el-esquema.md
+  hash_c: 08d3ecb32237766b7e7a195128218bf3daa9a4e694b224471f3d2c560b0fc5d3
+  hash_d: 4f43ce3194a4d422289337a24949b8be1678a93335ea17d806e9bab7ee372661
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui
+  path: desk/routines/routine-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md
+  hash_c: 197a838c09a68de0c2f1f6162e3acd53416607048c0ddeafc57fc4f8093ee5b6
+  hash_d: b68dec579b2f92bd52d0f0aa5eb4211b40847647e3148bbb32e880fd88721706
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+  path: desk/routines/routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica.md
+  hash_c: 5bf8ac38282b56a1d177c1c25e80a457dd24aa30735d4a370bd7a939fa0a0858
+  hash_d: ae27fa70382a9a0d8ba50bfd166781cf9fb688af4e46355e5650d7d1dd38560c
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
+  path: desk/routines/routine-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa.md
+  hash_c: c20fbdee1950d3afdae99edd76c28ac64c8100b39735575b92bbd747c84e693b
+  hash_d: 0b6ec6ca37c723274c9263674f0c16519389f74a66d1d527b17f108c0803639e
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
+  path: desk/routines/routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
+  hash_c: 06c53a4650c96ab37a0961c5fb2dc80f16f99b970273cbacee6da3bcdc515aaf
+  hash_d: 561b77b6ef68cb583bd11b05c715cf68b59340a6e02961bd7666d46cb555c772
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
+  path: desk/routines/routine-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md
+  hash_c: db5c37a1d2816438c8205e74acbf9453b12a1dd07171336deead676d35def1fc
+  hash_d: 5560d92db4d0f6dd9958ca50eba2faac36219bffb1a2b3f0265716b216edc9f5
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk

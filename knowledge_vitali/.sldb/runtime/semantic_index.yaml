@@ -24,6 +24,12 @@ tags:
   - boundary-vitali-customer-facing
   conversation:fallback:
   - fallback-vitali
+  - rule-vitali-anti-alucinacion
+  conversation:security:
+  - rule-vitali-anti-alucinacion
+  - rule-vitali-datos-sensibles-adulto-mayor
+  - rule-vitali-no-precios-sin-fuente
+  - rule-vitali-no-prometer-disponibilidad
   conversation:steps.agendar_visita:
   - step-vitali-agendar-visita
   conversation:steps.calificacion:
@@ -81,6 +87,8 @@ tags:
   - rule-faq-financing
   - rule-faq-pricing
   - rule-faq-reserve-now
+  gate:grounding:
+  - gate-vitali-grounding
   self:boundary:
   - boundary-vitali-customer-facing
   self:style:
@@ -121,6 +129,7 @@ tags:
   - dom-project-urubo
   - dom-projects-overview
   - fallback-vitali
+  - gate-vitali-grounding
   - rule-business-hours
   - rule-faq-availability
   - rule-faq-financing
@@ -128,6 +137,10 @@ tags:
   - rule-faq-reserve-now
   - rule-timezone-routing
   - rule-visit-modality
+  - rule-vitali-anti-alucinacion
+  - rule-vitali-datos-sensibles-adulto-mayor
+  - rule-vitali-no-precios-sin-fuente
+  - rule-vitali-no-prometer-disponibilidad
   - self-vitali
   - step-vitali-agendar-visita
   - step-vitali-calificacion
@@ -138,6 +151,27 @@ tags:
   - strategy-vitali-respond-first
   - strategy-vitali-slot-presentation
   - style-vitali
+  - trait-vitali-con-cita
+  - trait-vitali-edad-45-59
+  - trait-vitali-edad-60-69
+  - trait-vitali-edad-70-mas
+  - trait-vitali-edad-menos-45
+  - trait-vitali-horizonte-decision
+  - trait-vitali-onboarding-pendiente
+  - trait-vitali-pais-bolivia
+  - trait-vitali-pais-chile
+  - trait-vitali-pais-colombia
+  - trait-vitali-pais-mexico
+  - trait-vitali-pais-usa
+  - trait-vitali-para-familiar
+  - trait-vitali-para-inversion
+  - trait-vitali-para-mi
+  - trait-vitali-persona-juridica
+  - trait-vitali-proyecto-interes
+  - trait-vitali-segmento-broker
+  - trait-vitali-segmento-franquicia
+  - trait-vitali-segmento-suite
+  - trait-vitali-sin-cita
   type.knowledge.agent:
   - agent-vitali-gate
   - agent-vitali-router
@@ -175,6 +209,8 @@ tags:
   - dom-projects-overview
   type.knowledge.fallback:
   - fallback-vitali
+  type.knowledge.gate:
+  - gate-vitali-grounding
   type.knowledge.rule:
   - rule-business-hours
   - rule-faq-availability
@@ -183,6 +219,10 @@ tags:
   - rule-faq-reserve-now
   - rule-timezone-routing
   - rule-visit-modality
+  - rule-vitali-anti-alucinacion
+  - rule-vitali-datos-sensibles-adulto-mayor
+  - rule-vitali-no-precios-sin-fuente
+  - rule-vitali-no-prometer-disponibilidad
   type.knowledge.self:
   - self-vitali
   type.knowledge.step:
@@ -197,6 +237,70 @@ tags:
   - strategy-vitali-slot-presentation
   type.knowledge.style:
   - style-vitali
+  type.knowledge.trait:
+  - trait-vitali-con-cita
+  - trait-vitali-edad-45-59
+  - trait-vitali-edad-60-69
+  - trait-vitali-edad-70-mas
+  - trait-vitali-edad-menos-45
+  - trait-vitali-horizonte-decision
+  - trait-vitali-onboarding-pendiente
+  - trait-vitali-pais-bolivia
+  - trait-vitali-pais-chile
+  - trait-vitali-pais-colombia
+  - trait-vitali-pais-mexico
+  - trait-vitali-pais-usa
+  - trait-vitali-para-familiar
+  - trait-vitali-para-inversion
+  - trait-vitali-para-mi
+  - trait-vitali-persona-juridica
+  - trait-vitali-proyecto-interes
+  - trait-vitali-segmento-broker
+  - trait-vitali-segmento-franquicia
+  - trait-vitali-segmento-suite
+  - trait-vitali-sin-cita
+  user:traits.con_cita:
+  - trait-vitali-con-cita
+  user:traits.edad_45_59:
+  - trait-vitali-edad-45-59
+  user:traits.edad_60_69:
+  - trait-vitali-edad-60-69
+  user:traits.edad_70_mas:
+  - trait-vitali-edad-70-mas
+  user:traits.edad_menos_45:
+  - trait-vitali-edad-menos-45
+  user:traits.horizonte_decision:
+  - trait-vitali-horizonte-decision
+  user:traits.onboarding_pendiente:
+  - trait-vitali-onboarding-pendiente
+  user:traits.pais_bolivia:
+  - trait-vitali-pais-bolivia
+  user:traits.pais_chile:
+  - trait-vitali-pais-chile
+  user:traits.pais_colombia:
+  - trait-vitali-pais-colombia
+  user:traits.pais_mexico:
+  - trait-vitali-pais-mexico
+  user:traits.pais_usa:
+  - trait-vitali-pais-usa
+  user:traits.para_familiar:
+  - trait-vitali-para-familiar
+  user:traits.para_inversion:
+  - trait-vitali-para-inversion
+  user:traits.para_mi:
+  - trait-vitali-para-mi
+  user:traits.persona_juridica:
+  - trait-vitali-persona-juridica
+  user:traits.proyecto_interes:
+  - trait-vitali-proyecto-interes
+  user:traits.segmento_broker:
+  - trait-vitali-segmento-broker
+  user:traits.segmento_franquicia:
+  - trait-vitali-segmento-franquicia
+  user:traits.segmento_suite:
+  - trait-vitali-segmento-suite
+  user:traits.sin_cita:
+  - trait-vitali-sin-cita
   workspace.knowledge:
   - agent-vitali-gate
   - agent-vitali-router
@@ -231,6 +335,7 @@ tags:
   - dom-project-urubo
   - dom-projects-overview
   - fallback-vitali
+  - gate-vitali-grounding
   - rule-business-hours
   - rule-faq-availability
   - rule-faq-financing
@@ -238,6 +343,10 @@ tags:
   - rule-faq-reserve-now
   - rule-timezone-routing
   - rule-visit-modality
+  - rule-vitali-anti-alucinacion
+  - rule-vitali-datos-sensibles-adulto-mayor
+  - rule-vitali-no-precios-sin-fuente
+  - rule-vitali-no-prometer-disponibilidad
   - self-vitali
   - step-vitali-agendar-visita
   - step-vitali-calificacion
@@ -248,6 +357,27 @@ tags:
   - strategy-vitali-respond-first
   - strategy-vitali-slot-presentation
   - style-vitali
+  - trait-vitali-con-cita
+  - trait-vitali-edad-45-59
+  - trait-vitali-edad-60-69
+  - trait-vitali-edad-70-mas
+  - trait-vitali-edad-menos-45
+  - trait-vitali-horizonte-decision
+  - trait-vitali-onboarding-pendiente
+  - trait-vitali-pais-bolivia
+  - trait-vitali-pais-chile
+  - trait-vitali-pais-colombia
+  - trait-vitali-pais-mexico
+  - trait-vitali-pais-usa
+  - trait-vitali-para-familiar
+  - trait-vitali-para-inversion
+  - trait-vitali-para-mi
+  - trait-vitali-persona-juridica
+  - trait-vitali-proyecto-interes
+  - trait-vitali-segmento-broker
+  - trait-vitali-segmento-franquicia
+  - trait-vitali-segmento-suite
+  - trait-vitali-sin-cita
 documents:
   dom-company-identity:
     model: DomainAtom
@@ -544,6 +674,207 @@ documents:
     - system:vitali
     - type.knowledge.rule
     - workspace.knowledge
+  rule-vitali-anti-alucinacion:
+    model: RuleAtom
+    path: atoms/rule-vitali-anti-alucinacion.md
+    tags:
+    - conversation:fallback
+    - conversation:security
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-vitali-no-precios-sin-fuente:
+    model: RuleAtom
+    path: atoms/rule-vitali-no-precios-sin-fuente.md
+    tags:
+    - conversation:security
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-vitali-datos-sensibles-adulto-mayor:
+    model: RuleAtom
+    path: atoms/rule-vitali-datos-sensibles-adulto-mayor.md
+    tags:
+    - conversation:security
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-vitali-no-prometer-disponibilidad:
+    model: RuleAtom
+    path: atoms/rule-vitali-no-prometer-disponibilidad.md
+    tags:
+    - conversation:security
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  trait-vitali-con-cita:
+    model: TraitAtom
+    path: atoms/trait-vitali-con-cita.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.con_cita
+    - workspace.knowledge
+  trait-vitali-edad-45-59:
+    model: TraitAtom
+    path: atoms/trait-vitali-edad-45-59.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_45_59
+    - workspace.knowledge
+  trait-vitali-edad-60-69:
+    model: TraitAtom
+    path: atoms/trait-vitali-edad-60-69.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_60_69
+    - workspace.knowledge
+  trait-vitali-edad-70-mas:
+    model: TraitAtom
+    path: atoms/trait-vitali-edad-70-mas.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_70_mas
+    - workspace.knowledge
+  trait-vitali-edad-menos-45:
+    model: TraitAtom
+    path: atoms/trait-vitali-edad-menos-45.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_menos_45
+    - workspace.knowledge
+  trait-vitali-horizonte-decision:
+    model: TraitAtom
+    path: atoms/trait-vitali-horizonte-decision.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.horizonte_decision
+    - workspace.knowledge
+  trait-vitali-onboarding-pendiente:
+    model: TraitAtom
+    path: atoms/trait-vitali-onboarding-pendiente.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.onboarding_pendiente
+    - workspace.knowledge
+  trait-vitali-pais-bolivia:
+    model: TraitAtom
+    path: atoms/trait-vitali-pais-bolivia.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_bolivia
+    - workspace.knowledge
+  trait-vitali-pais-chile:
+    model: TraitAtom
+    path: atoms/trait-vitali-pais-chile.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_chile
+    - workspace.knowledge
+  trait-vitali-pais-colombia:
+    model: TraitAtom
+    path: atoms/trait-vitali-pais-colombia.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_colombia
+    - workspace.knowledge
+  trait-vitali-pais-mexico:
+    model: TraitAtom
+    path: atoms/trait-vitali-pais-mexico.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_mexico
+    - workspace.knowledge
+  trait-vitali-pais-usa:
+    model: TraitAtom
+    path: atoms/trait-vitali-pais-usa.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_usa
+    - workspace.knowledge
+  trait-vitali-para-familiar:
+    model: TraitAtom
+    path: atoms/trait-vitali-para-familiar.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_familiar
+    - workspace.knowledge
+  trait-vitali-para-inversion:
+    model: TraitAtom
+    path: atoms/trait-vitali-para-inversion.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_inversion
+    - workspace.knowledge
+  trait-vitali-para-mi:
+    model: TraitAtom
+    path: atoms/trait-vitali-para-mi.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_mi
+    - workspace.knowledge
+  trait-vitali-persona-juridica:
+    model: TraitAtom
+    path: atoms/trait-vitali-persona-juridica.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.persona_juridica
+    - workspace.knowledge
+  trait-vitali-proyecto-interes:
+    model: TraitAtom
+    path: atoms/trait-vitali-proyecto-interes.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.proyecto_interes
+    - workspace.knowledge
+  trait-vitali-segmento-broker:
+    model: TraitAtom
+    path: atoms/trait-vitali-segmento-broker.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_broker
+    - workspace.knowledge
+  trait-vitali-segmento-franquicia:
+    model: TraitAtom
+    path: atoms/trait-vitali-segmento-franquicia.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_franquicia
+    - workspace.knowledge
+  trait-vitali-segmento-suite:
+    model: TraitAtom
+    path: atoms/trait-vitali-segmento-suite.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_suite
+    - workspace.knowledge
+  trait-vitali-sin-cita:
+    model: TraitAtom
+    path: atoms/trait-vitali-sin-cita.md
+    tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.sin_cita
+    - workspace.knowledge
   step-vitali-saludo:
     model: ConversationStep
     path: atoms/step-vitali-saludo.md
@@ -648,6 +979,14 @@ documents:
     - conversation:fallback
     - system:vitali
     - type.knowledge.fallback
+    - workspace.knowledge
+  gate-vitali-grounding:
+    model: GateCriterion
+    path: atoms/gate-vitali-grounding.md
+    tags:
+    - gate:grounding
+    - system:vitali
+    - type.knowledge.gate
     - workspace.knowledge
   agent-vitali-gate:
     model: AgentFraming

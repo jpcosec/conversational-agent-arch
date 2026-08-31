@@ -1,0 +1,82 @@
+# Mapa de dominio — KB Vitali
+# Solo familia dominio (domain:*). 36 atomos: 29 DomainAtom + 7 RuleAtom.
+# Render: D2_LAYOUT=elk d2 desk/spec2viz/kb-domain-vitali.d2 desk/spec2viz/kb-domain-vitali.svg
+
+direction: down
+
+title: |md
+  # KB Vitali — Mapa de dominio
+| {near: top-center}
+
+kb: KB Vitali · dominio {
+  shape: hexagon
+  grid-columns: 1
+}
+
+brand: domain:brand {
+  identity;  history;  mission
+  values;    leadership; portfolio-scale
+}
+offering: domain:offering {
+  value-proposition; three-pillars; investment-model
+  amenities-suites;  amenities-services
+  care-security;     social-life
+}
+projects: domain:projects {
+  overview
+  chicureo: chicureo · CL 2026
+  mantagua: mantagua · CL 2026
+  cdmx: ciudad-de-mexico · MX 2032
+  bogota: bogota · CO 2031
+  armenia: armenia · CO 2033
+  urubo: urubo · BO 2034
+}
+contact: domain:contact {
+  offices; channels
+  lead-segments; lead-qualification
+}
+franchise: domain:franchise {
+  offer; why; benefits; process; market-data
+}
+booking: domain:booking · reglas {
+  business-hours; timezone-routing; visit-modality
+}
+sales: domain:sales · reglas {
+  faq-pricing; faq-financing
+  faq-availability; faq-reserve-now
+}
+
+kb -> brand
+kb -> offering
+kb -> projects
+kb -> contact
+kb -> franchise
+kb -> booking
+kb -> sales
+
+# Flujo de lead (cómo se conecta el dominio en conversación)
+flow: Flujo de lead {
+  lead: Lead entra {shape: oval}
+  seg: Segmento? {shape: diamond}
+  suite: Suite
+  broker: Broker
+  fran: Franquicia
+  qa: Preguntas comunes
+  visit: Agendar visita {shape: oval}
+
+  lead -> seg
+  seg -> suite: suite
+  seg -> broker: broker
+  seg -> fran: franquicia
+  suite -> qa
+  qa -> visit: sales + booking
+  broker -> visit
+  fran -> visit
+}
+
+# Puentes semanticos (no estructurales: hoy solo via embeddings)
+flow.suite -> offering: consulta {style.stroke-dash: 3}
+flow.suite -> projects: consulta {style.stroke-dash: 3}
+flow.qa -> sales:       redirige {style.stroke-dash: 3}
+flow.qa -> booking:     agenda   {style.stroke-dash: 3}
+flow.fran -> franchise: usa      {style.stroke-dash: 3}

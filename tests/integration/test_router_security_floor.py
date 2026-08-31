@@ -124,6 +124,31 @@ def test_compiling_without_any_router_agent_uses_deterministic_bundle(antonia_kb
     assert SECURITY_RULE_IDS <= bundle_ids
 
 
+# ── piso de seguridad de Vitali: la KB de Vitali tambien tiene su piso ───
+VITALI_SECURITY_RULE_IDS = {
+    "rule-vitali-anti-alucinacion",
+    "rule-vitali-no-precios-sin-fuente",
+    "rule-vitali-datos-sensibles-adulto-mayor",
+    "rule-vitali-no-prometer-disponibilidad",
+}
+
+
+def test_vitali_bundle_includes_security_floor(vitali_kb: Path) -> None:
+    """knowledge_vitali no tenia ninguna RuleAtom conversation:security: el
+    compilador metia un piso vacio. Ahora el piso existe y entra al bundle."""
+    compiler = ContextCompiler(reader=SLDBReader(kb_root=vitali_kb))
+
+    doc = compiler.compile(question="cuanto cuesta una suite?", user_id=None)
+
+    bundle_ids = {b["doc_id"] for b in doc.bundle}
+    # al menos un RuleAtom conversation:security entra (de hecho, los 4)
+    assert VITALI_SECURITY_RULE_IDS & bundle_ids
+    assert VITALI_SECURITY_RULE_IDS <= bundle_ids
+    for entry in doc.bundle:
+        if entry["doc_id"] in VITALI_SECURITY_RULE_IDS:
+            assert entry["motivo"].startswith("piso de seguridad")
+
+
 # ── cableado end-to-end: el turno completo no se rompe y audita la fuente ─
 def test_orchestrator_turn_survives_router_agent_failure_and_traces_source(antonia_kb: Path, tmp_db_url: str) -> None:
     orch = offline_orchestrator(antonia_kb, tmp_db_url, router_agent=FakeRouterAgent())
