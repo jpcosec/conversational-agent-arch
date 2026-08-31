@@ -7,7 +7,7 @@ tags:
 - artifact:task
 - source:drawer
 routine: routine-task-recomponer-la-base-de-spec2viz-y-atoms
-current_node: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+current_node: complete
 history: []
 references: []
 depends_on: []

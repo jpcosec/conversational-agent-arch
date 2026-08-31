@@ -1,3 +1,25 @@
+---
+id: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
+status: deferred
+summary: ''
+tags:
+- workspace:desk
+- artifact:task
+- source:inbox
+routine: ''
+current_node: ''
+history: []
+references: []
+depends_on: []
+pills: []
+files: []
+checklists: []
+task_type: ''
+inherits_from: []
+inherit_acceptance_context: false
+atoms: []
+---
+
 # El turn_id en vivo (tN) no coincide con el persistido (uuid)
 
 ID: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid

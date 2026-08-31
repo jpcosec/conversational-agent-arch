@@ -1,3 +1,25 @@
+---
+id: task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
+status: deferred
+summary: ''
+tags:
+- workspace:desk
+- artifact:task
+- source:inbox
+routine: ''
+current_node: ''
+history: []
+references: []
+depends_on: []
+pills: []
+files: []
+checklists: []
+task_type: ''
+inherits_from: []
+inherit_acceptance_context: false
+atoms: []
+---
+
 # Concurrencia: el turn_id de la UI colisiona entre requests simultaneas
 
 ID: task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas

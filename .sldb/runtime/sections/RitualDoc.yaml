@@ -1,0 +1,61 @@
+documents:
+- doc_name: execution
+  sections:
+  - path: execution-ritual
+    title: Execution ritual
+    breadcrumbs:
+    - Execution ritual
+    about:
+    - Execution ritual
+    - execution ritual
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: execution-ritual
+    level: 1
+    line_start: 8
+    line_end: 9
+- doc_name: closeout
+  sections:
+  - path: closeout-ritual
+    title: Closeout ritual
+    breadcrumbs:
+    - Closeout ritual
+    about:
+    - Closeout ritual
+    - closeout ritual
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: closeout-ritual
+    level: 1
+    line_start: 8
+    line_end: 9
+- doc_name: testing
+  sections:
+  - path: testing-ritual
+    title: Testing ritual
+    breadcrumbs:
+    - Testing ritual
+    about:
+    - Testing ritual
+    - testing ritual
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+    slug: testing-ritual
+    level: 1
+    line_start: 8
+    line_end: 9

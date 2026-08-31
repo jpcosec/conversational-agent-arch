@@ -1,3 +1,25 @@
+---
+id: task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
+status: deferred
+summary: ''
+tags:
+- workspace:desk
+- artifact:task
+- source:inbox
+routine: ''
+current_node: ''
+history: []
+references: []
+depends_on: []
+pills: []
+files: []
+checklists: []
+task_type: ''
+inherits_from: []
+inherit_acceptance_context: false
+atoms: []
+---
+
 # Identidad no unificada entre canales: el mismo usuario es dos usuarios
 
 ID: task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios

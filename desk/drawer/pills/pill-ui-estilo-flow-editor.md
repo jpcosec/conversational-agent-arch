@@ -1,13 +1,16 @@
 ---
 id: pill-ui-estilo-flow-editor
-title: Estilo visual — alinear con Flow Editor
+title: Estilo visual flow editor
 status: active
+type: pill
 tags:
 - pill
 - ui
 - style
 - frontend
 ---
+
+# Context
 
 ## Doctrina
 

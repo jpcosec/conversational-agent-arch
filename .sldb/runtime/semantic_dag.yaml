@@ -7,6 +7,12 @@ nodes:
 - id: type.desk.inbox-note
   parents:
   - type.desk
+- id: type.documentation
+  parents:
+  - type
+- id: type.documentation.faq
+  parents:
+  - type.documentation
 - id: type.knowledge
   parents:
   - type
@@ -20,6 +26,12 @@ nodes:
   parents:
   - type.workflow
 - id: type.workflow.pill
+  parents:
+  - type.workflow
+- id: type.workflow.ritual
+  parents:
+  - type.workflow
+- id: type.workflow.step
   parents:
   - type.workflow
 - id: type.workflow.task
@@ -36,4 +48,10 @@ nodes:
 - id: workspace.desk.inbox
   parents:
   - workspace.desk
+- id: workspace.docs
+  parents:
+  - workspace
+- id: workspace.docs.faq
+  parents:
+  - workspace.docs
 equivalences: {}

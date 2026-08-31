@@ -71,8 +71,8 @@ documents:
     - workspace:desk
     slug: list-of-pill-xxx-paths
     level: 1
-    line_start: 11
-    line_end: 12
+    line_start: 9
+    line_end: 10
   - path: list-of-ritual-xxx-paths
     title: List of ritual-xxx paths
     breadcrumbs:
@@ -89,8 +89,8 @@ documents:
     - workspace:desk
     slug: list-of-ritual-xxx-paths
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 12
+    line_end: 13
   - path: e-g-system-sldb-workspace-desk
     title: e.g., system:sldb, workspace:desk
     breadcrumbs:
@@ -107,8 +107,8 @@ documents:
     - workspace:desk
     slug: e-g-system-sldb-workspace-desk
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 17
+    line_end: 18
   - path: gemini-test-board
     title: gemini_test Board
     breadcrumbs:
@@ -125,8 +125,8 @@ documents:
     - workspace:desk
     slug: gemini-test-board
     level: 1
-    line_start: 24
-    line_end: 25
+    line_start: 22
+    line_end: 23
   - path: gemini-test-board/purpose
     title: Purpose
     breadcrumbs:
@@ -146,8 +146,8 @@ documents:
     - workspace:desk
     slug: purpose
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 24
+    line_end: 25
   - path: gemini-test-board/notes
     title: Notes
     breadcrumbs:
@@ -167,8 +167,8 @@ documents:
     - workspace:desk
     slug: notes
     level: 2
-    line_start: 32
-    line_end: 33
+    line_start: 30
+    line_end: 31
   - path: gemini-test-board/task-details
     title: Task Details
     breadcrumbs:
@@ -188,5 +188,5 @@ documents:
     - workspace:desk
     slug: task-details
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 36
+    line_end: 37

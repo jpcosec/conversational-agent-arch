@@ -1,3 +1,25 @@
+---
+id: task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
+status: deferred
+summary: ''
+tags:
+- workspace:desk
+- artifact:task
+- source:inbox
+routine: ''
+current_node: ''
+history: []
+references: []
+depends_on: []
+pills: []
+files: []
+checklists: []
+task_type: ''
+inherits_from: []
+inherit_acceptance_context: false
+atoms: []
+---
+
 # Grounding: el conversador afirma atributos de productos que la KB no declara
 
 ID: task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara

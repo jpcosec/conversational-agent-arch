@@ -1,3 +1,25 @@
+---
+id: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
+status: deferred
+summary: ''
+tags:
+- workspace:desk
+- artifact:task
+- source:inbox
+routine: ''
+current_node: ''
+history: []
+references: []
+depends_on: []
+pills: []
+files: []
+checklists: []
+task_type: ''
+inherits_from: []
+inherit_acceptance_context: false
+atoms: []
+---
+
 # Concurrencia: ensure_user pierde el mensaje del primer contacto
 
 ID: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
