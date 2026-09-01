@@ -9,7 +9,6 @@ tasks:
 - desk/tasks/task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge.md
 - desk/tasks/task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica.md
 - desk/tasks/task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form.md
-- desk/tasks/task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md
 - desk/tasks/task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
 - desk/tasks/task-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md
 # List of pill-xxx paths
@@ -51,6 +50,5 @@ _Generated from the task references above._
 
 - Extender el flujo conversacional de la KB Antonia para cumplir la cadena de agentes PSP [ready_for_testing] - La KB de Antonia (knowledge/atoms/) modela completo el flujo de atención PSP: las 4 ramas de clasificación como RuleAtom, los steps faltantes del grafo conversacional (derivación MedInfo, revisión humana, journey operativo F0, autovalidación policy gate) como ConversationStep con transiciones coherentes, los criterios regulatorios del policy gate como átomos GateCriterion de la nueva familia gate (modelo nuevo, invisible al runtime actual), y los domain atoms de soporte (MedInfo, proceso FV, journeys, titulación, molécula) que completan la ontología cerrada PSP — todo indexado en el store SLDB y verificable por conversación real contra el runtime sin ninguna modificación del código de turno (decide_turn, compiler, state_machine, orchestrator).
 - Renombrar kb_agent/ontologizador a kb_agent/knowledge [ready_for_testing] - Mover el paquete a kb_agent/knowledge, actualizar imports y comentarios/docstrings Python, mantener la suite tests/unit + tests/integration igual de verde antes y después
-- Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security [ready_for_testing] - Triage and resolve the inbox message promoted from `desk/inbox/20260827-184452-suggestion-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md`.
 - Verificar si el known_gap donpeppe_saludo_unico sigue vigente [active] - Triage and resolve the inbox message promoted from `desk/inbox/20260827-184454-suggestion-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md`.
 - Mindmap: no hay escritura de atoms desde la UI [ready_for_testing] - Triage and resolve the inbox message promoted from `desk/inbox/20260827-184453-suggestion-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md`.
