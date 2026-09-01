@@ -42,6 +42,9 @@ DEFAULT_MAX_BUNDLE_SIZE = 12
 DEFAULT_HISTORY_LIMIT = 6
 DEFAULT_ROUTER_MAX_RESULTS = 10
 DEFAULT_TOOL_TIMEOUT_MS = 15000
+#: Cierre de conversacion por inactividad (segundos). Un turno cuyo gap con el
+#: anterior supere este TTL abre una conversacion nueva. Default 6h.
+DEFAULT_CONVERSATION_IDLE_TTL_S = 6 * 3600
 
 #: Defaults del bloque ``deploy`` (infra de Modal). Antes vivian hardcodeados
 #: en ``deploy/modal_app.py``.
@@ -64,6 +67,8 @@ class TuningConfig:
     history_limit: int = DEFAULT_HISTORY_LIMIT
     router_max_results: int = DEFAULT_ROUTER_MAX_RESULTS
     tool_timeout_ms: int = DEFAULT_TOOL_TIMEOUT_MS
+    #: Criterio de cierre de conversacion por inactividad (segundos).
+    conversation_idle_ttl_s: int = DEFAULT_CONVERSATION_IDLE_TTL_S
 
 
 @dataclass(slots=True)
@@ -101,6 +106,12 @@ class ProjectConfig:
     greeting: str = "Hola. ¿En qué te puedo ayudar?"
     input_placeholder: str = "Escribe tu mensaje..."
     mode: str = "serving"  # "serving" | "test" (informativo)
+    #: Clave canonica de identidad de persona. ``external_id`` (default) trata
+    #: cada par canal:id como un usuario distinto (comportamiento historico).
+    #: ``phone`` unifica al mismo usuario entre canales por su telefono
+    #: normalizado, manteniendo el external_id por canal como alias. Decision
+    #: del owner para Vitali: el telefono es la clave de persona.
+    identity_key: str = "external_id"
     #: Parametros de tuning del runtime (bloque ``tuning`` del yaml).
     tuning: TuningConfig = field(default_factory=TuningConfig)
     #: Infra de despliegue (bloque ``deploy`` del yaml). Plataforma, no negocio.
@@ -176,6 +187,8 @@ def load_project_config(
         cfg.name = str(data["name"])
     if data.get("slug"):
         cfg.slug = str(data["slug"])
+    if data.get("identity_key"):
+        cfg.identity_key = str(data["identity_key"]).strip().lower()
     if data.get("model"):
         cfg.model = str(data["model"])
     if data.get("fallback_message"):
@@ -216,6 +229,8 @@ def load_project_config(
         cfg.tuning.router_max_results = int(tuning["router_max_results"])
     if tuning.get("tool_timeout_ms") is not None:
         cfg.tuning.tool_timeout_ms = int(tuning["tool_timeout_ms"])
+    if tuning.get("conversation_idle_ttl_s") is not None:
+        cfg.tuning.conversation_idle_ttl_s = int(tuning["conversation_idle_ttl_s"])
 
     # Bloque ``deploy`` (infra de Modal, antes hardcodeada en modal_app.py).
     if deploy.get("modal_app_name"):

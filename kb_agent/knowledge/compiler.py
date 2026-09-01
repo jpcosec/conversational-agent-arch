@@ -108,6 +108,7 @@ class ContextCompiler:
         scenario: str | None = None,
         trigger: str = "user",
         session_state: SessionStateLike | None = None,
+        conversation_id: int | None = None,
     ) -> CompiledDocument:
         resolved_scenario = self._resolve_scenario(
             user_id=user_id,
@@ -123,7 +124,7 @@ class ContextCompiler:
 
         tools = self._find_tools()
         user_traits = self._load_user_traits(user_id)
-        history = self._load_history(user_id)
+        history = self._load_history(user_id, conversation_id=conversation_id)
 
         persona = self._extract_persona()
         strategy = self._extract_strategy()
@@ -823,8 +824,14 @@ class ContextCompiler:
             })
         return results
 
-    def _load_history(self, user_id: int | None, limit: int | None = None) -> list[dict[str, str]]:
-        """Ultimos ``limit`` mensajes de ``chat_history`` del usuario, cronologicos.
+    def _load_history(
+        self,
+        user_id: int | None,
+        limit: int | None = None,
+        *,
+        conversation_id: int | None = None,
+    ) -> list[dict[str, str]]:
+        """Ultimos ``limit`` mensajes de ``chat_history``, cronologicos.
 
         Usa la MISMA ``identity_session`` que el orquestador ya tiene abierta
         (nunca abre una conexion nueva). El orquestador llama al compilador
@@ -832,6 +839,11 @@ class ContextCompiler:
         el compile_context corre dentro de ``router.handle_user_message``,
         ``_persist_chat_history`` recien despues), asi que el mensaje actual
         (ya viene como ``question``) nunca aparece duplicado aca.
+
+        Si se pasa ``conversation_id``, el historial se acota a ESA
+        conversacion -- no cruza el limite de una conversacion cerrada. Sin el
+        (crons, tests viejos, filas pre-migracion sin FK) cae al filtro por
+        ``user_id`` como antes.
         """
         if user_id is None or self.identity_session is None:
             return []
@@ -840,12 +852,12 @@ class ContextCompiler:
         if n <= 0:
             return []
 
-        statement = (
-            select(ChatHistory)
-            .where(ChatHistory.user_id == user_id)
-            .order_by(ChatHistory.id.desc())
-            .limit(n)
-        )
+        statement = select(ChatHistory)
+        if conversation_id is not None:
+            statement = statement.where(ChatHistory.conversation_id == conversation_id)
+        else:
+            statement = statement.where(ChatHistory.user_id == user_id)
+        statement = statement.order_by(ChatHistory.id.desc()).limit(n)
         rows = list(self.identity_session.scalars(statement))
         rows.reverse()  # orden cronologico (mas viejo primero)
         return [{"role": row.role, "content": row.content} for row in rows]

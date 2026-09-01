@@ -16,6 +16,11 @@ class Users(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     external_id: Mapped[str] = mapped_column(String, unique=True, nullable=False)
     channel: Mapped[str] = mapped_column(String, nullable=False)
+    # Clave canonica de persona cuando el proyecto usa identity_key='phone':
+    # el telefono normalizado unifica al mismo usuario entre canales
+    # (whatsapp/web/ui). El ``external_id`` sigue siendo unico por canal y
+    # actua como alias. Nullable: no todos los canales aportan telefono.
+    phone: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
     # Enrolamiento (fase 4): si la persona ya esta inscrita en el programa.
     # Los usuarios sembrados por el PSP (wa-*, web-anon-*) vienen inscritos;
     # cualquier usuario nuevo -- incluidos los de la UI de desarrollo (ui:*) --

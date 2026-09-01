@@ -1,11 +1,28 @@
 from __future__ import annotations
 
 from datetime import datetime
+from enum import Enum
 
-from sqlalchemy import DateTime, ForeignKey, Index, JSON, String, Text, UniqueConstraint, func
+from sqlalchemy import DateTime, Enum as SqlEnum, ForeignKey, Index, JSON, String, Text, UniqueConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .identity import Base
+
+
+class TurnKind(str, Enum):
+    """Autoria de un turno (decision del owner).
+
+    * ``user`` -- lo dijo la persona.
+    * ``agent`` -- lo genero nuestro agente; guarda el trail completo
+      (decision, bundle, gate, tool) para auditar de donde salio la respuesta.
+    * ``override`` -- lo dijo un humano de nuestro lado (takeover), no el
+      agente. Aun no hay UI de takeover; el tipo queda modelado para cuando la
+      haya, y para no tener que migrar despues.
+    """
+
+    USER = "user"
+    AGENT = "agent"
+    OVERRIDE = "override"
 
 
 class Turns(Base):
@@ -28,12 +45,25 @@ class Turns(Base):
     __table_args__ = (
         UniqueConstraint("session_id", "turn_id", name="uq_turns_session_id_turn_id"),
         Index("ix_turns_session_id_created_at", "session_id", "created_at"),
+        Index("ix_turns_conversation_id_created_at", "conversation_id", "created_at"),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
     turn_id: Mapped[str] = mapped_column(String, nullable=False)
     session_id: Mapped[str] = mapped_column(String, nullable=False)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    #: Conversacion a la que pertenece el turno. Nullable por compatibilidad
+    #: con filas viejas (pre-migracion); el runtime siempre lo setea.
+    conversation_id: Mapped[int | None] = mapped_column(
+        ForeignKey("conversations.id"), nullable=True
+    )
+    #: Autoria del turno (user/agent/override). Default agent: hasta ahora la
+    #: tabla solo guardaba turnos del agente (con su trail).
+    kind: Mapped[TurnKind] = mapped_column(
+        SqlEnum(TurnKind, native_enum=False, validate_strings=True),
+        nullable=False,
+        default=TurnKind.AGENT,
+    )
     step_before: Mapped[str | None] = mapped_column(String, nullable=True)
     step_after: Mapped[str | None] = mapped_column(String, nullable=True)
     decision: Mapped[dict[str, object]] = mapped_column(JSON, nullable=False)

@@ -371,7 +371,9 @@ def test_mindmap_drag_handle_not_body(page, base_url: str):
 
 
 def test_mindmap_node_toolbar(page, base_url: str):
-    """Mindmap NodeToolbar tiene borrar/hijo/hermano/link/comentario (§4.3)."""
+    """Mindmap NodeToolbar es READ-ONLY (decision del owner): solo 'ir al
+    documento'. Las mutaciones (borrar/hijo/hermano/link) se removieron -- ver
+    frontends/UI-GUIDE.md §4.3."""
     page.goto(f"{base_url}/mindmap", wait_until="networkidle")
     page.wait_for_selector("[class*=react-flow]", timeout=20000)
     node = page.locator(".react-flow__node").first
@@ -381,9 +383,13 @@ def test_mindmap_node_toolbar(page, base_url: str):
     page.wait_for_timeout(300)
     toolbar = page.locator("[data-testid='mindmap-node-toolbar']")
     assert toolbar.is_visible()
-    # debe tener link horizontal, que activa modo linking (boton con title, sin testid propio)
-    link_btn = toolbar.locator("button[title*='Link' i], [data-testid*='link']")
-    assert link_btn.count() > 0, "toolbar debe tener link horizontal"
+    # solo 'ir al documento'; NINGUN boton de mutacion
+    goto_btn = toolbar.locator("button[title*='documento' i]")
+    assert goto_btn.count() > 0, "toolbar debe permitir ir al documento"
+    assert toolbar.locator("button[title*='Borrar' i]").count() == 0
+    assert toolbar.locator("button[title*='hijo' i]").count() == 0
+    assert toolbar.locator("button[title*='hermano' i]").count() == 0
+    assert toolbar.locator("button[title*='Link' i]").count() == 0
 
 
 def test_mindmap_node_search(page, base_url: str):

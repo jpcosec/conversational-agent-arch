@@ -11,8 +11,13 @@ project:
   name: "Vitali"
   slug: vitali
 
-  # KB del negocio (formato runtime, 11 tipos). Generada desde los atoms
-  # deskops + antonia_prompt.md (ver scripts/build_vitali_kb.py).
+  # Clave canonica de identidad de persona (decision del owner): el telefono
+  # unifica al mismo usuario entre canales (whatsapp/web/ui); el external_id
+  # por canal queda como alias.
+  identity_key: phone
+
+  # KB del negocio (formato runtime, 11 tipos). Se edita por comandos SLDB
+  # sobre knowledge_vitali/.sldb (no hay generador intermedio).
   kb_root: knowledge_vitali
   test_kb_root: tests/knowledge
 
@@ -40,6 +45,8 @@ project:
     history_limit: 6
     router_max_results: 10
     tool_timeout_ms: 15000
+    # Cierre de conversacion por inactividad (segundos). 6h.
+    conversation_idle_ttl_s: 21600
 
   # Infra de despliegue: app y volumen propios, separados de Antonia.
   deploy:
