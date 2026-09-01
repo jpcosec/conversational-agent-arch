@@ -35,82 +35,10 @@ documents:
   - type.workflow.routine
   - workspace.desk.routines
   - workspace:desk
-- name: routine-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
-  path: desk/routines/routine-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge.md
-  hash_c: 36a472321b276716f1761babcb3d8fa64a57af0043896dbd5bea339bafcbcff1
-  hash_d: 390dab25b6f6132653d9dfbe49dfb7f9f23ecb8785e463a8565ba9a96f06fa6b
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
-- name: routine-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
-  path: desk/routines/routine-task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas.md
-  hash_c: 3a4ae87d8d7f8ed3d4ab0e8962cf29ef6c7db79cb76273900439d5a39975968d
-  hash_d: 0e185a3ab12cad5ad569667acd92bd33688ae043c13817cd43a87892980b60d9
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
-- name: routine-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
-  path: desk/routines/routine-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md
-  hash_c: 8dca51e1df7eef258ec8f31185615251e607dab43eff0d18437155f5d107828c
-  hash_d: 3120285d2d403af547884bebfec168fcec4c31bff3b43b9e9a3f61ae541d7f8a
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
-- name: routine-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
-  path: desk/routines/routine-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md
-  hash_c: 4756619dc2cc7a38271fc5247af4fe82022b0179e24ef4198397ee450cbcc0f9
-  hash_d: ad5e909d79a91f58c860de1da8ba67779d58c92c3522af96b8fc840b687baa51
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
-- name: routine-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
-  path: desk/routines/routine-task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara.md
-  hash_c: 1b38ae1cd261c4fee93d7bd6a9684aa65fae411abefd05f0a9e195da207629cb
-  hash_d: afd17ec2351d742a984dd068df984cc03489b2c6567fbf5990308a4c549dec71
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
-- name: routine-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
-  path: desk/routines/routine-task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios.md
-  hash_c: 795f2e5f4cfe0d49172eeaad254688e1157f9aa0e9adb06246e2aece99114c72
-  hash_d: bbbf4853363f994e6455e2cb028b103937a99e07f139bc9bde0158569acb04f3
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
 - name: routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
   path: desk/routines/routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form.md
   hash_c: 90ea090f193184a1615ec20f9bf760f1b5a1e7f64f0d707eb49aa144e541bb97
   hash_d: af2627e610357ba7ae360d924394794bf5186e0b4d3b153e4c89a30f17dc3423
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
-- name: routine-task-la-conversacion-no-existe-como-entidad-en-el-esquema
-  path: desk/routines/routine-task-la-conversacion-no-existe-como-entidad-en-el-esquema.md
-  hash_c: 08d3ecb32237766b7e7a195128218bf3daa9a4e694b224471f3d2c560b0fc5d3
-  hash_d: 4f43ce3194a4d422289337a24949b8be1678a93335ea17d806e9bab7ee372661
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
-- name: routine-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui
-  path: desk/routines/routine-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md
-  hash_c: 197a838c09a68de0c2f1f6162e3acd53416607048c0ddeafc57fc4f8093ee5b6
-  hash_d: b68dec579b2f92bd52d0f0aa5eb4211b40847647e3148bbb32e880fd88721706
   semantic_tags:
   - primitive:routine
   - type.workflow.routine
@@ -125,15 +53,6 @@ documents:
   - type.workflow.routine
   - workspace.desk.routines
   - workspace:desk
-- name: routine-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
-  path: desk/routines/routine-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa.md
-  hash_c: c20fbdee1950d3afdae99edd76c28ac64c8100b39735575b92bbd747c84e693b
-  hash_d: 0b6ec6ca37c723274c9263674f0c16519389f74a66d1d527b17f108c0803639e
-  semantic_tags:
-  - primitive:routine
-  - type.workflow.routine
-  - workspace.desk.routines
-  - workspace:desk
 - name: routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   path: desk/routines/routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
   hash_c: 06c53a4650c96ab37a0961c5fb2dc80f16f99b970273cbacee6da3bcdc515aaf
@@ -143,10 +62,10 @@ documents:
   - type.workflow.routine
   - workspace.desk.routines
   - workspace:desk
-- name: routine-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
-  path: desk/routines/routine-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md
-  hash_c: db5c37a1d2816438c8205e74acbf9453b12a1dd07171336deead676d35def1fc
-  hash_d: 5560d92db4d0f6dd9958ca50eba2faac36219bffb1a2b3f0265716b216edc9f5
+- name: routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  path: desk/routines/routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime.md
+  hash_c: 7fcd4db95e2b6e3acb0adc4ecea7a9530ac553e8db5ec3b1033ada32284661af
+  hash_d: 5b791986314f2a946a278271e7de62e4dd8a5bb53b9366dbd8f9d71b9d29dd39
   semantic_tags:
   - primitive:routine
   - type.workflow.routine
