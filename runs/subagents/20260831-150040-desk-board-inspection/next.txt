@@ -1,0 +1,78 @@
+== deskops next task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp ==
+Task: task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+Title: Extender el flujo conversacional de la KB Antonia para cumplir la cadena de agentes PSP
+Status: ready_for_testing
+Current node: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+Task type: design
+Phase: closeout
+Required ritual:
+- desk/rituals/closeout.md
+Required pills:
+- desk/contexts/pills.md
+- desk/contexts/pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible.md
+- desk/contexts/pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes.md
+- desk/contexts/pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia.md
+Next actions:
+1. Confirm passing validation evidence and pill coverage.
+2. Remove the task from the active board and delete the resolved task file when ready.
+3. Untrack the store entry if tracked.
+4. Create one atomic closing commit.
+Advance when:
+- Closeout ritual obligations are satisfied.
+Sources:
+- task: desk/tasks/task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+- board: desk/tasks/Board.md
+- workflow: spec/workflows/task_lifecycle.yaml
+
+== deskops next task-organizaci-n-autom-tica-de-tomos-en-la-kb ==
+Task: task-organizaci-n-autom-tica-de-tomos-en-la-kb
+Title: Organización automática de átomos en la KB
+Status: complete
+Current node: complete
+Phase: complete
+Required pills:
+- desk/contexts/pills.md
+Next actions:
+1. No active next action for this task.
+Sources:
+- task: desk/tasks/task-organizaci-n-autom-tica-de-tomos-en-la-kb.md
+- board: desk/tasks/Board.md
+- workflow: spec/workflows/task_lifecycle.yaml
+
+== deskops next task-recomponer-la-base-de-spec2viz-y-atoms ==
+Task: task-recomponer-la-base-de-spec2viz-y-atoms
+Title: Recomponer la base de spec2viz y atoms
+Status: complete
+Current node: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+Phase: execution
+Required ritual:
+- desk/rituals/execution.md
+Required pills:
+- desk/contexts/pills.md
+Next actions:
+1. Make the active task, scope, touched files, and validation targets explicit.
+2. Run a fresh-context subagent review.
+3. Bind matching board and task pills.
+4. Start implementation only after the initialization gate is satisfied.
+Advance when:
+- Execution gate obligations are recorded or satisfied.
+Sources:
+- task: desk/tasks/task-recomponer-la-base-de-spec2viz-y-atoms.md
+- board: desk/tasks/Board.md
+- workflow: spec/workflows/task_lifecycle.yaml
+
+== deskops next task-ui-foundations ==
+Task: task-ui-foundations
+Title: UI foundations — navegación unificada, estilo flow-editor, hotkeys globales
+Status: complete
+Current node: complete
+Phase: complete
+Required pills:
+- desk/contexts/pills.md
+Next actions:
+1. No active next action for this task.
+Sources:
+- task: desk/tasks/task-ui-foundations.md
+- board: desk/tasks/Board.md
+- workflow: spec/workflows/task_lifecycle.yaml
+

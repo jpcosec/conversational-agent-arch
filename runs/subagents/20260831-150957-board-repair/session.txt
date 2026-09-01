@@ -1,0 +1,1 @@
+Board/store repair execution evidence. See validation.log and result-summary.md for details.

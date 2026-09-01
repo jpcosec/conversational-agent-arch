@@ -1,0 +1,63 @@
+Inspection task: estado actual del desk/tablero en worktree vitali
+
+== deskops list tasks ==
+task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp | ready_for_testing | checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+task-organizaci-n-autom-tica-de-tomos-en-la-kb | complete | complete
+task-recomponer-la-base-de-spec2viz-y-atoms | complete | checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+task-ui-foundations | complete | complete
+
+
+== deskops show task task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp ==
+Task: task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+Title: Extender el flujo conversacional de la KB Antonia para cumplir la cadena de agentes PSP
+Status: ready_for_testing
+Current node: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+Task type: design
+Routine: routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+Effective pills:
+- desk/contexts/pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible.md
+- desk/contexts/pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes.md
+- desk/contexts/pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia.md
+Effective atoms:
+- atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+- atom-clasificación-de-4-ramas-del-flujo-psp
+- atom-policy-gate-como-agente-separado-con-rama-kb-propia
+- atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
+- atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
+Checklist status:
+- checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready: complete
+- checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready: complete
+- checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready: pending
+
+== deskops show task task-organizaci-n-autom-tica-de-tomos-en-la-kb ==
+Task: task-organizaci-n-autom-tica-de-tomos-en-la-kb
+Title: Organización automática de átomos en la KB
+Status: complete
+Current node: complete
+Task type: 
+Routine: routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+Checklist status:
+- checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready: complete
+- checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready: pending
+- checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready: pending
+
+== deskops show task task-recomponer-la-base-de-spec2viz-y-atoms ==
+Task: task-recomponer-la-base-de-spec2viz-y-atoms
+Title: Recomponer la base de spec2viz y atoms
+Status: complete
+Current node: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+Task type: 
+Routine: routine-task-recomponer-la-base-de-spec2viz-y-atoms
+Checklist status:
+- checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready: complete
+- checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready: pending
+- checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready: pending
+
+== deskops show task task-ui-foundations ==
+Task: task-ui-foundations
+Title: UI foundations — navegación unificada, estilo flow-editor, hotkeys globales
+Status: complete
+Current node: complete
+Task type: 
+Routine: 
+Checklist status:

@@ -1,0 +1,27 @@
+## vitali...origin/vitali [ahead 4]
+ M desk/tasks/Board.md
+ M knowledge_vitali/.sldb/core/documents/DomainAtom.yaml
+ M knowledge_vitali/.sldb/core/models/DomainAtom.yaml
+ M knowledge_vitali/.sldb/core/store_index.yaml
+ M knowledge_vitali/atoms/dom-projects-overview.md
+?? deployment-index.md
+?? desk/primitives/checklists/checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-closeout-ready.md
+?? desk/primitives/checklists/checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-execution-ready.md
+?? desk/primitives/checklists/checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-testing-ready.md
+?? desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-closeout-evidence.md
+?? desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-implementation-path.md
+?? desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-has-validation.md
+?? desk/primitives/conditions/condition-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-ready-for-closeout.md
+?? desk/primitives/edges/edge-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-activate-to-testing.md
+?? desk/primitives/edges/edge-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-close-to-complete.md
+?? desk/primitives/edges/edge-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-closeout-to-close.md
+?? desk/primitives/edges/edge-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-execution-to-activate.md
+?? desk/primitives/edges/edge-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-ready-to-closeout.md
+?? desk/primitives/edges/edge-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-testing-to-ready.md
+?? desk/primitives/operators/operator-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-activate.md
+?? desk/primitives/operators/operator-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-close.md
+?? desk/primitives/operators/operator-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-ready-for-testing.md
+?? desk/routines/routine-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge.md
+?? desk/tasks/task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge.md
+?? knowledge_vitali/README.md
+?? source/
