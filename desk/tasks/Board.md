@@ -7,7 +7,6 @@ scope: desk
 tasks:
 - desk/tasks/task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
 - desk/tasks/task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge.md
-- desk/tasks/task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md
 - desk/tasks/task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md
 - desk/tasks/task-la-conversacion-no-existe-como-entidad-en-el-esquema.md
 - desk/tasks/task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios.md
@@ -56,7 +55,6 @@ _Generated from the task references above._
 
 - Extender el flujo conversacional de la KB Antonia para cumplir la cadena de agentes PSP [ready_for_testing] - La KB de Antonia (knowledge/atoms/) modela completo el flujo de atención PSP: las 4 ramas de clasificación como RuleAtom, los steps faltantes del grafo conversacional (derivación MedInfo, revisión humana, journey operativo F0, autovalidación policy gate) como ConversationStep con transiciones coherentes, los criterios regulatorios del policy gate como átomos GateCriterion de la nueva familia gate (modelo nuevo, invisible al runtime actual), y los domain atoms de soporte (MedInfo, proceso FV, journeys, titulación, molécula) que completan la ontología cerrada PSP — todo indexado en el store SLDB y verificable por conversación real contra el runtime sin ninguna modificación del código de turno (decide_turn, compiler, state_machine, orchestrator).
 - Renombrar kb_agent/ontologizador a kb_agent/knowledge [ready_for_testing] - Mover el paquete a kb_agent/knowledge, actualizar imports y comentarios/docstrings Python, mantener la suite tests/unit + tests/integration igual de verde antes y después
-- El turn_id en vivo (tN) no coincide con el persistido (uuid) [ready_for_testing] - Triage and resolve the inbox message promoted from `desk/inbox/20260827-184450-suggestion-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md`.
 - Concurrencia: ensure_user pierde el mensaje del primer contacto [ready_for_testing] - Triage and resolve the inbox message promoted from `desk/inbox/20260827-184448-suggestion-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md`.
 - La conversacion no existe como entidad en el esquema [ready_for_testing] - Triage and resolve the inbox message promoted from `desk/inbox/20260827-184449-suggestion-la-conversacion-no-existe-como-entidad-en-el-esquema.md`.
 - Identidad no unificada entre canales: el mismo usuario es dos usuarios [ready_for_testing] - Triage and resolve the inbox message promoted from `desk/inbox/20260827-184449-suggestion-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios.md`.
