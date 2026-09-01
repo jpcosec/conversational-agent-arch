@@ -1,14 +1,16 @@
 ---
 id: task-la-conversacion-no-existe-como-entidad-en-el-esquema
-status: active
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 - source:drawer
 routine: routine-task-la-conversacion-no-existe-como-entidad-en-el-esquema
-current_node: checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-execution-ready
-history: []
+current_node: checklist-task-la-conversacion-no-existe-como-entidad-en-el-esquema-closeout-ready
+history:
+- operator-task-la-conversacion-no-existe-como-entidad-en-el-esquema-activate
+- operator-task-la-conversacion-no-existe-como-entidad-en-el-esquema-ready-for-testing
 references:
 - desk/drawer/tasks/task-la-conversacion-no-existe-como-entidad-en-el-esquema.md
 depends_on: []
@@ -22,6 +24,8 @@ task_type: ''
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # La conversacion no existe como entidad en el esquema

@@ -1,14 +1,16 @@
 ---
 id: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
-status: active
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 - source:drawer
 routine: routine-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
-current_node: checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-execution-ready
-history: []
+current_node: checklist-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-closeout-ready
+history:
+- operator-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-activate
+- operator-task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid-ready-for-testing
 references:
 - desk/drawer/tasks/task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md
 depends_on: []
@@ -22,6 +24,8 @@ task_type: ''
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # El turn_id en vivo (tN) no coincide con el persistido (uuid)

@@ -1,14 +1,16 @@
 ---
 id: task-mindmap-no-hay-escritura-de-atoms-desde-la-ui
-status: active
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 - source:drawer
 routine: routine-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui
-current_node: checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-execution-ready
-history: []
+current_node: checklist-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-closeout-ready
+history:
+- operator-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-activate
+- operator-task-mindmap-no-hay-escritura-de-atoms-desde-la-ui-ready-for-testing
 references:
 - desk/drawer/tasks/task-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md
 depends_on: []
@@ -22,6 +24,8 @@ task_type: ''
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Mindmap: no hay escritura de atoms desde la UI

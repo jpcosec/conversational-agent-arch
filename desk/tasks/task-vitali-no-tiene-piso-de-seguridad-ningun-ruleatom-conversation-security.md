@@ -1,14 +1,16 @@
 ---
 id: task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
-status: active
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 - source:drawer
 routine: routine-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
-current_node: checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-execution-ready
-history: []
+current_node: checklist-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-closeout-ready
+history:
+- operator-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-activate
+- operator-task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security-ready-for-testing
 references:
 - desk/drawer/tasks/task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md
 depends_on: []
@@ -22,6 +24,8 @@ task_type: ''
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Vitali no tiene piso de seguridad: ningun RuleAtom conversation:security

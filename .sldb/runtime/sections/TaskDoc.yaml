@@ -1323,8 +1323,8 @@ documents:
     - workspace:desk
     slug: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/rationale
     title: Rationale
     breadcrumbs:
@@ -1348,8 +1348,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/goal
     title: Goal
     breadcrumbs:
@@ -1373,8 +1373,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/scope
     title: Scope
     breadcrumbs:
@@ -1398,8 +1398,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -1423,8 +1423,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 47
-    line_end: 48
+    line_start: 51
+    line_end: 52
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/validation
     title: Validation
     breadcrumbs:
@@ -1448,8 +1448,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 53
-    line_end: 54
+    line_start: 57
+    line_end: 58
   - path: grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara/done-when
     title: Done When
     breadcrumbs:
@@ -1473,8 +1473,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 59
-    line_end: 60
+    line_start: 63
+    line_end: 64
 - doc_name: task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
   sections:
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
@@ -1497,8 +1497,8 @@ documents:
     - workspace:desk
     slug: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/rationale
     title: Rationale
     breadcrumbs:
@@ -1522,8 +1522,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/goal
     title: Goal
     breadcrumbs:
@@ -1547,8 +1547,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/scope
     title: Scope
     breadcrumbs:
@@ -1572,8 +1572,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -1597,8 +1597,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 47
-    line_end: 48
+    line_start: 51
+    line_end: 52
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/validation
     title: Validation
     breadcrumbs:
@@ -1622,8 +1622,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 53
-    line_end: 54
+    line_start: 57
+    line_end: 58
   - path: identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios/done-when
     title: Done When
     breadcrumbs:
@@ -1647,8 +1647,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 59
-    line_end: 60
+    line_start: 63
+    line_end: 64
 - doc_name: task-la-conversacion-no-existe-como-entidad-en-el-esquema
   sections:
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema
@@ -1671,8 +1671,8 @@ documents:
     - workspace:desk
     slug: la-conversacion-no-existe-como-entidad-en-el-esquema
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/rationale
     title: Rationale
     breadcrumbs:
@@ -1696,8 +1696,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/goal
     title: Goal
     breadcrumbs:
@@ -1721,8 +1721,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/scope
     title: Scope
     breadcrumbs:
@@ -1746,8 +1746,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -1771,8 +1771,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 47
-    line_end: 48
+    line_start: 51
+    line_end: 52
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/validation
     title: Validation
     breadcrumbs:
@@ -1796,8 +1796,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 53
-    line_end: 54
+    line_start: 57
+    line_end: 58
   - path: la-conversacion-no-existe-como-entidad-en-el-esquema/done-when
     title: Done When
     breadcrumbs:
@@ -1821,8 +1821,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 59
-    line_end: 60
+    line_start: 63
+    line_end: 64
 - doc_name: task-mindmap-no-hay-escritura-de-atoms-desde-la-ui
   sections:
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui
@@ -1845,8 +1845,8 @@ documents:
     - workspace:desk
     slug: mindmap-no-hay-escritura-de-atoms-desde-la-ui
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/rationale
     title: Rationale
     breadcrumbs:
@@ -1870,8 +1870,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/goal
     title: Goal
     breadcrumbs:
@@ -1895,8 +1895,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/scope
     title: Scope
     breadcrumbs:
@@ -1920,8 +1920,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -1945,8 +1945,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 47
-    line_end: 48
+    line_start: 51
+    line_end: 52
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/validation
     title: Validation
     breadcrumbs:
@@ -1970,8 +1970,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 53
-    line_end: 54
+    line_start: 57
+    line_end: 58
   - path: mindmap-no-hay-escritura-de-atoms-desde-la-ui/done-when
     title: Done When
     breadcrumbs:
@@ -1995,8 +1995,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 59
-    line_end: 60
+    line_start: 63
+    line_end: 64
 - doc_name: task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
   sections:
   - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
@@ -2019,8 +2019,8 @@ documents:
     - workspace:desk
     slug: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/rationale
     title: Rationale
     breadcrumbs:
@@ -2044,8 +2044,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/goal
     title: Goal
     breadcrumbs:
@@ -2069,8 +2069,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/scope
     title: Scope
     breadcrumbs:
@@ -2094,8 +2094,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -2119,8 +2119,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 49
-    line_end: 50
+    line_start: 53
+    line_end: 54
   - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/validation
     title: Validation
     breadcrumbs:
@@ -2144,8 +2144,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 55
-    line_end: 56
+    line_start: 59
+    line_end: 60
   - path: concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas/done-when
     title: Done When
     breadcrumbs:
@@ -2169,8 +2169,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 61
-    line_end: 62
+    line_start: 65
+    line_end: 66
 - doc_name: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
   sections:
   - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
@@ -2193,8 +2193,8 @@ documents:
     - workspace:desk
     slug: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/rationale
     title: Rationale
     breadcrumbs:
@@ -2218,8 +2218,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/goal
     title: Goal
     breadcrumbs:
@@ -2243,8 +2243,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/scope
     title: Scope
     breadcrumbs:
@@ -2268,8 +2268,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -2293,8 +2293,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 49
-    line_end: 50
+    line_start: 53
+    line_end: 54
   - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/validation
     title: Validation
     breadcrumbs:
@@ -2318,8 +2318,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 55
-    line_end: 56
+    line_start: 59
+    line_end: 60
   - path: concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto/done-when
     title: Done When
     breadcrumbs:
@@ -2343,8 +2343,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 61
-    line_end: 62
+    line_start: 65
+    line_end: 66
 - doc_name: task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
   sections:
   - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
@@ -2367,8 +2367,8 @@ documents:
     - workspace:desk
     slug: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/rationale
     title: Rationale
     breadcrumbs:
@@ -2392,8 +2392,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/goal
     title: Goal
     breadcrumbs:
@@ -2417,8 +2417,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/scope
     title: Scope
     breadcrumbs:
@@ -2442,8 +2442,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -2467,8 +2467,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 49
-    line_end: 50
+    line_start: 53
+    line_end: 54
   - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/validation
     title: Validation
     breadcrumbs:
@@ -2492,8 +2492,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 55
-    line_end: 56
+    line_start: 59
+    line_end: 60
   - path: el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid/done-when
     title: Done When
     breadcrumbs:
@@ -2517,8 +2517,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 61
-    line_end: 62
+    line_start: 65
+    line_end: 66
 - doc_name: task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
   sections:
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
@@ -2541,8 +2541,8 @@ documents:
     - workspace:desk
     slug: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/rationale
     title: Rationale
     breadcrumbs:
@@ -2566,8 +2566,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/goal
     title: Goal
     breadcrumbs:
@@ -2591,8 +2591,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/scope
     title: Scope
     breadcrumbs:
@@ -2616,8 +2616,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -2641,8 +2641,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 49
-    line_end: 50
+    line_start: 53
+    line_end: 54
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/validation
     title: Validation
     breadcrumbs:
@@ -2666,8 +2666,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 55
-    line_end: 56
+    line_start: 59
+    line_end: 60
   - path: una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa/done-when
     title: Done When
     breadcrumbs:
@@ -2691,8 +2691,8 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 61
-    line_end: 62
+    line_start: 65
+    line_end: 66
 - doc_name: task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   sections:
   - path: verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
@@ -2889,8 +2889,8 @@ documents:
     - workspace:desk
     slug: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security
     level: 1
-    line_start: 27
-    line_end: 28
+    line_start: 31
+    line_end: 32
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/rationale
     title: Rationale
     breadcrumbs:
@@ -2914,8 +2914,8 @@ documents:
     - workspace:desk
     slug: rationale
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 33
+    line_end: 34
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/goal
     title: Goal
     breadcrumbs:
@@ -2939,8 +2939,8 @@ documents:
     - workspace:desk
     slug: goal
     level: 2
-    line_start: 35
-    line_end: 36
+    line_start: 39
+    line_end: 40
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/scope
     title: Scope
     breadcrumbs:
@@ -2964,8 +2964,8 @@ documents:
     - workspace:desk
     slug: scope
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 45
+    line_end: 46
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/implementation-path
     title: Implementation Path
     breadcrumbs:
@@ -2989,8 +2989,8 @@ documents:
     - workspace:desk
     slug: implementation-path
     level: 2
-    line_start: 49
-    line_end: 50
+    line_start: 53
+    line_end: 54
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/validation
     title: Validation
     breadcrumbs:
@@ -3014,8 +3014,8 @@ documents:
     - workspace:desk
     slug: validation
     level: 2
-    line_start: 55
-    line_end: 56
+    line_start: 59
+    line_end: 60
   - path: vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security/done-when
     title: Done When
     breadcrumbs:
@@ -3039,5 +3039,5 @@ documents:
     - workspace:desk
     slug: done-when
     level: 2
-    line_start: 61
-    line_end: 62
+    line_start: 65
+    line_end: 66

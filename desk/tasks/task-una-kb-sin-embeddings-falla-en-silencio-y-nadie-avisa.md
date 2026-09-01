@@ -1,14 +1,16 @@
 ---
 id: task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
-status: active
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 - source:drawer
 routine: routine-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa
-current_node: checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-execution-ready
-history: []
+current_node: checklist-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-closeout-ready
+history:
+- operator-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-activate
+- operator-task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa-ready-for-testing
 references:
 - desk/drawer/tasks/task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa.md
 depends_on: []
@@ -22,6 +24,8 @@ task_type: ''
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Una KB sin embeddings falla en silencio y nadie avisa

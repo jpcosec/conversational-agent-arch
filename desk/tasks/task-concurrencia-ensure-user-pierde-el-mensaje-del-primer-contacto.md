@@ -1,14 +1,16 @@
 ---
 id: task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
-status: active
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 - source:drawer
 routine: routine-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto
-current_node: checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-execution-ready
-history: []
+current_node: checklist-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-closeout-ready
+history:
+- operator-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-activate
+- operator-task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto-ready-for-testing
 references:
 - desk/drawer/tasks/task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md
 depends_on: []
@@ -22,6 +24,8 @@ task_type: ''
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Concurrencia: ensure_user pierde el mensaje del primer contacto
