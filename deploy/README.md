@@ -48,12 +48,20 @@ importar `frontends.chat.app`.
 
 ### Twilio (opcional)
 
-Si más adelante se activa el canal WhatsApp/SMS y existe un
-`TWILIO_AUTH_TOKEN`, crear un segundo secret:
+Para activar el canal WhatsApp/SMS, crear un segundo secret con el Auth Token
+de la cuenta Twilio que dispara el webhook (con él se valida la firma) y su
+Account SID (con él el runtime manda la respuesta por REST: el webhook
+responde `<Response/>` al instante porque Twilio corta a los 15 s y un turno
+con LLM tarda más; ver `kb_agent/inbound.py`):
 
 ```bash
-modal secret create kb-agent-runtime-twilio TWILIO_AUTH_TOKEN=...
+modal secret create kb-agent-runtime-twilio TWILIO_ACCOUNT_SID=AC... TWILIO_AUTH_TOKEN=...
 ```
+
+Sin `TWILIO_ACCOUNT_SID` el webhook cae a modo sync (TwiML en línea), que sólo
+sirve si el turno cabe en 15 s. `TWILIO_REPLY_MODE=sync|async` fuerza el modo.
+Luego, en la consola de Twilio, apuntar el sender/número a
+`https://<app>.modal.run/webhooks/twilio` (POST).
 
 y agregar `modal.Secret.from_name("kb-agent-runtime-twilio")` a la lista
 `secrets=` de la función `serve` en `deploy/modal_app.py`. Hoy no existe y no
