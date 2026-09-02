@@ -98,8 +98,9 @@ Antes hardcodeada en `deploy/modal_app.py`. Hoy sale del YAML
 - `modal_app_name`: nombre de la app **y** del volumen (`<app>-data`).
   `MODAL_APP_NAME` sigue teniendo prioridad.
 - `gcp_secret_name`: Modal Secret con el ADC de Vertex AI.
-- `twilio_secret_name`: Secret con `TWILIO_AUTH_TOKEN` (o `null` → la ruta
-  `/webhooks/twilio` responde 503 hasta configurarlo).
+- `twilio_secret_name`: Secret con `TWILIO_AUTH_TOKEN` (firma del webhook) y
+  `TWILIO_ACCOUNT_SID` (respuesta por REST en modo async). `null` → la ruta
+  `/webhooks/twilio` responde 503 hasta configurarlo.
 - `min_containers`, `serve_timeout_s`: parámetros del `serve`.
 
 ---
