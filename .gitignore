@@ -16,3 +16,6 @@ desk/spec2viz/build/
 .sldb/runtime/knowledge_graph.nx.json
 .sldb/runtime/knowledge_graph.kg.json
 .pytest_cache/
+
+# estado local de deploy/launch_twilio_local.sh (pids, webhooks previos)
+runs/logs/twilio_local/
