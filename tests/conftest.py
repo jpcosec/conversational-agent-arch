@@ -24,6 +24,7 @@ if str(REPO_ROOT) not in sys.path:
 
 DONPEPPE_KB = REPO_ROOT / "tests" / "knowledge"       # KB de prueba (atoms tipados)
 ANTONIA_KB = REPO_ROOT / "knowledge"                  # KB REAL del negocio desplegado
+VITALI_KB = REPO_ROOT / "knowledge_vitali"            # KB REAL de Vitali Suites
 
 
 # ── gating por entorno ────────────────────────────────────────────────────────
@@ -82,6 +83,13 @@ def donpeppe_kb() -> Path:
 @pytest.fixture(scope="session")
 def antonia_kb() -> Path:
     return ANTONIA_KB
+
+
+@pytest.fixture(scope="session")
+def vitali_kb() -> Path:
+    if not VITALI_KB.exists():
+        pytest.skip("knowledge_vitali no disponible en este checkout")
+    return VITALI_KB
 
 
 @pytest.fixture()

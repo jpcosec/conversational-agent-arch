@@ -91,6 +91,11 @@ def _add_index_commands(subparsers: argparse._SubParsersAction) -> None:
 
     s.add_parser("hierarchy", help="Construye jerarquía enciclopédica en el semantic DAG")
 
+    s.add_parser(
+        "audit",
+        help="Cuenta atoms sin embedding (guarda: falla si faltan vectores que deberían existir)",
+    )
+
     p = subparsers.add_parser("promote", help="Promueve un atom propuesto a activo")
     p.add_argument("atom_id", help="Id del atom a promover")
 

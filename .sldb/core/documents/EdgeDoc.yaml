@@ -1,0 +1,385 @@
+documents:
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing.md
+  hash_c: d35d687780b627f7415066858407681e66f27e33c7c998677f4d478becbe9a64
+  hash_d: aa722f955769cdcade2c01d40632ddb922fafd4b14726c07a24f161c77eae7e3
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close.md
+  hash_c: bd6e624e0e76780a95aabc483abb833cf32b320aeffb95490fadfa23f1ec0fac
+  hash_d: eab4707dbd7b25fb8a8662cdcb2f81879499f25a3196c0e0254b4f4e735f78be
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete.md
+  hash_c: d06563ae8c36114382f31c0cd80e40b98b1880629b8123daefb7c930d9d9482d
+  hash_d: c12b9bbc88e44a6538b1340032993115f1e064d84d8bc36e227e128bffb287c4
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate.md
+  hash_c: 0b1ae6f278a5ddc278f11d126ceb8e075a7ee93cdb4983bf73ebae608787154e
+  hash_d: 7194b254b6507324d8ad8789f1902d7966cf6acdd58933809b9f2ebf7cab2150
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout.md
+  hash_c: a6084b6270f09646752ed997f8a14b08d6f065444f2e509804532945958e8fd8
+  hash_d: 1a144cc1582600e1b816f2838e10395af236173bffe5d84827723a8e93c7ff6f
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready.md
+  hash_c: fc4316a6c6a66e65dd337c23d54f721b91c2800675950e052727ef250cd009f4
+  hash_d: 3516ebcc2f1e34eb3373b4066119f4eae38d666bc32756b1ff65d620d1b4934e
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing.md
+  hash_c: c444ee80ff53d6a476e82d53f23bff7707c58ebc336894a75e1573f02fb55044
+  hash_d: e29ba6f177cf12d1c187348c745f009582f33b55a7be6e6cd19f9d709ca798fc
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close.md
+  hash_c: 1828f7b8bc50056bffac7711b36ed2ec80a1dd4262ed4ff31216559cf73030d2
+  hash_d: fc4460d38eed8e5aa5908534a6ec59702a6a7bdfe9f15a16f3c1f4144e3393a0
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete.md
+  hash_c: f0665b3cd8aee25bc2fccec85990ba0532255f05ddf665a376ea5cfecbc548a8
+  hash_d: 1be881d3439ca011d1436cde6139837ccf1cbfe0300e5f8c32facd5bafa84913
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate.md
+  hash_c: 75c80d584aa5eb950707845ceac4e6d857c1674243584ca1fdd53343b55aa520
+  hash_d: 4407e44914ea91ab64712e0db149216c8b58ccaaee63ae20b59cd92d58a850b5
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout.md
+  hash_c: f72b127ebdfd7cf1060a52346774c78ba6576662420077e495d6456ac1849f5d
+  hash_d: 97b0e4fd0777b2294f1287e683817cd9f8d286a55ff92518ddb146a1ad461575
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready.md
+  hash_c: 0f0c507d64f83447871322784b300ea25469022b33fde2bc866b3fa588988172
+  hash_d: fad554deeb55d80ee6072636c4fd15642c290a703b029527f5f9caf75109772c
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing.md
+  hash_c: f1b0039620b50adec92761ae2053ba7512247e14741ee8ca98b44048932685c5
+  hash_d: e1be65d7977cf771e7b4000cc1f4edfca133919fe165260dc0c3274d33c71dcf
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close.md
+  hash_c: 7a9f7892fd05e6b250517b9dab6845f26da2858c308b377eb15e2c518131a5e6
+  hash_d: 0c50c111f0be7f85a169a21ca694f1bc26781de1ab9d075b6f9807f11e4d515e
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete.md
+  hash_c: 04cab8ae5ab949602f017a4563298cf7ed5a90f7e95c2895242f0f36e2623230
+  hash_d: 30237fbbdd8d9e0d04be34272f77da20990c1b052fce8d1131cc46d59aecc4ee
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate.md
+  hash_c: fc03635aeffc3afcaf6934e74e2859ada819d3fbef9340f984e1f9febdaf331b
+  hash_d: 60e4eb10e4378245cf9aee86cc839c6968d736559278f0e5631aa34d240884a9
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout.md
+  hash_c: dfcb589d81b4c8ae5b071a159afc191edc0f9471f92a1548430f7bc36550d6a1
+  hash_d: 113c23a202335e22f203231a263f58c22724a94885538b6781d0daeaeda578cc
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready.md
+  hash_c: 46ca79964ede5728d9ebc83e169c43e18a211e519089fda4605e8701e625b224
+  hash_d: 44d585d2674c2f2bff20d5b06d1457ddc521ac466e8ab6ececba4ad0bb71e48d
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing
+  path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing.md
+  hash_c: d1ca1192c485d6b242b8c2af486c97e7709ba4dff0c7df7fa624f7d52b7e8fb4
+  hash_d: 38deea047ea292952eab206180cd5c1a5ee6b139cef57f1bb55ad8281f0f4869
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-to-close
+  path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-to-close.md
+  hash_c: 9880e5fae6044333fc4eccaf76ce868e2d4d4088fcbec0a41bf52f65a40dd439
+  hash_d: ef91c729788f71b8bdcdb52fe80aa95211e04f65902d646807879d976f2ec482
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close-to-complete
+  path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close-to-complete.md
+  hash_c: 8d633b50dc42be2e75c68be78a296580a64c2a41296d97c375ca7007b5f89c41
+  hash_d: a2e862eee5ffa68a1060f38f27ba79d541a9482dba4bd769512573dd16f61f79
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate
+  path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate.md
+  hash_c: 3d5d533ebb365c75d14925b0b2273a8b87e45289259608e70f1cced1e3c61e62
+  hash_d: c4d2a9ed86687a5db427c4f9b7aaf90ec39cde5e59ed7bafe138ac9ec3ce319a
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout
+  path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout.md
+  hash_c: dcded7f947212251af9d3ae7e12291fdbe94a1783c2c6d1dbc55e9a030380f16
+  hash_d: cd7095d109a7a4e9fe926fde292f74418b85aef9738188e265177c6efbe7ba28
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready
+  path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready.md
+  hash_c: 0820b5cc947c9c24c1c57176fc481329101a79dd9a903f18be2a6cbc9cecf1b3
+  hash_d: 9d372029de9e10ef6d3e3b81d38896aef5dd24503b6d0f9defa6eefe785e74a6
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate-to-testing
+  path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate-to-testing.md
+  hash_c: be0a170e06517d49b71895a164f61924596754b7620d74c95fbbc5a0039476b5
+  hash_d: 6d2137c9c124f981c32b499414ce3b70efca512d5560b94956252d38ec3aea5f
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close-to-complete
+  path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close-to-complete.md
+  hash_c: 0a2532fb3e8b59bea8cfd95dc6cf7f019a0ba0185ad7ff7aed58f334a784159d
+  hash_d: dda76bdde31c0c554f8621d713501f50229ae5bd8f55bf4e1ed2694dba9525cb
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-to-close
+  path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-to-close.md
+  hash_c: e3c453b896d3d6ed7f3ed1b50c416b909af06332479fa98fe16a6b215ad230a1
+  hash_d: baf7044c8b6196519a68e3fb7387a9977e0a525d24db061586b2366d0f37a680
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-to-activate
+  path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-to-activate.md
+  hash_c: edb1864a8d9d49ef7f8cce2032bd0b959ac8754a6ac70413b83dd8e058424eeb
+  hash_d: ca3941b87c0f32f8806b8cbcbed9de82a5f89f2c9993da7111512850d8944943
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-to-closeout
+  path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-to-closeout.md
+  hash_c: 9ea071bbe5e2ac69bdbb2e042202b3e15c38b5e2200a26a7b25a1f993b6eaa89
+  hash_d: 4e5d364dda6391a184a97c4e4eb72fd5ebb08068415b928d379ced1fc907cd10
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-to-ready
+  path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-to-ready.md
+  hash_c: 010d6086b75d0fea3c1423ceb63cffeb52f5abecf6c6018be0baab20276c8505
+  hash_d: 4ed922a46a28968d2afa7c457971b3a899d51f530664a9b995df860a47383f1e
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate-to-testing
+  path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate-to-testing.md
+  hash_c: 0303523d225fc5d973dbedc8487cd29ab13addf4b523801b248470ca72bea6b8
+  hash_d: 29a70a4f441c7bca33527acb27796a3ddf8c33f5970917c20341aac7bb0e8c87
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close-to-complete
+  path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close-to-complete.md
+  hash_c: 087ca6fcc3edfe95030620478266089e776007997d11a7734b0e15fa1f007789
+  hash_d: 1fc7d1ed88b19dba17a2e8ef679dfedf9f8d0a8fde15c73ca6e8b498c3291ac1
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-to-close
+  path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-to-close.md
+  hash_c: 1e3787df21df3cc6cbabc3166069c8e7d70f1d3a1ae71dcf0cf1d1c83fb9e485
+  hash_d: 35f5e15cf5ea0240bded0c9cb8195274e778d2d74fd189f698dc474331455c61
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-to-activate
+  path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-to-activate.md
+  hash_c: 420271f75ae96e2607ca412c42afc066b1921d565645c1891dbffd750b4dae99
+  hash_d: 96f575092b12e97b73710166205db9b07eb2f65fea7fb2583511ca00b5b29f94
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-to-closeout
+  path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-to-closeout.md
+  hash_c: 6fe4e883d3fee4a61b0f0f9a22b994d5f5bf80b9ddcfb40a4f4e83be5e719d76
+  hash_d: f6a611e6c72f6217f6dff30c35558917632556e891da5932751e4530003dfbb3
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready
+  path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready.md
+  hash_c: 54273ca6e8b6228dbd510896f966db70435e8743e9dd8e9665f54e285af38e2c
+  hash_d: 3a1ef7e9fe04d1d4bccb957112d429f2ee6ed9f935783cc4cde759a7cbca9543
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing
+  path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing.md
+  hash_c: 6a7dacbadca444ffa86c3204b4cf0846aab99013d3021554badd332a462380e5
+  hash_d: d00b8ca34efc72e0ab1e7a58872803526ab9d75b9d38872864a7f7d780d30728
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete
+  path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete.md
+  hash_c: 686b3bb2a7b9c4f71ff84440f979efb778b7832d14220a651dcc929023c533da
+  hash_d: 91cec710138fb06043487eefab875919aaf8fff81679dc8c37f2cf67d8a9e85a
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close
+  path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close.md
+  hash_c: 9eea3aa7817f2caf7f52b780a1560f6fea3f0df5ebfdacd420aeb7f1c0089707
+  hash_d: e57a3934e47040dfb54cdc289de33f0be8321c933cd135959a9a32f2f7dd2ef3
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-to-activate
+  path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-to-activate.md
+  hash_c: 9ed04b96857faac2c230aca830e69892bd33ff7c19f5f4d36fd79a3396ae35d7
+  hash_d: ba3b2b09005cf469dd7de36b7104695a1aa39cff9541c0419a4e8dbe42d78582
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-to-closeout
+  path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-to-closeout.md
+  hash_c: 860dd74ca18549dab565a992defa6d3e39f9791f5c7c393729b068fce9291a5a
+  hash_d: 34dd75ee75cfffcaa629e0ea2148c2a8514cf97a2b840f2d0e36efb723886ef6
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-to-ready
+  path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-to-ready.md
+  hash_c: 753a6b1aec702bdfcbe0beb7eca984e26e21cef4e5bd841532a33d9bf2388d28
+  hash_d: 6a1a377971687e28ec407d1a18c1f709611599d105de6d2af1ff60a10070e27a
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate-to-testing
+  path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate-to-testing.md
+  hash_c: 7bf08e45f09c8a055d4e67d7d6912bc62d364532ea2b9b10c01d2072f1b8e8df
+  hash_d: d138dfc12abeaa9444cf24f9f2faf7f04a08c765dd23c82696052aaa5e2a1951
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-to-close
+  path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-to-close.md
+  hash_c: ab86281b15cc00165e56710109883915cfef1458f9a2bb1ad0591588f6f5e097
+  hash_d: 61b06e5b8aa544ef523b2b0c55c594dd83e3e01081a4c5d901603bce236512de
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close-to-complete
+  path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close-to-complete.md
+  hash_c: 3eb9eb3e31a3079598de9c0f71e4d2ba8e867cc87573416de97db661fe320990
+  hash_d: ef7133e2feae23385fefe68ba2d39bcde7f6c1242bf1dde9204669a63e4ffd2a
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-to-activate
+  path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-to-activate.md
+  hash_c: 029f7f1dd7654f6dec474ce187eb59e8b7412ffd554b630ec3f9862e16da18a6
+  hash_d: f4aeb90d27fda5c1251b273a827a364861e812f70ffde86cd6b091b11e1d51d4
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-to-closeout
+  path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-to-closeout.md
+  hash_c: 3c1997824130c03472f02496d078616b9d8d1de000427598926ff6bbfb6f20b9
+  hash_d: 91bc4a1f2524024f3aea86441e80eba6b5e293d7765ded712d36dddf46d2ec68
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-to-ready
+  path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-to-ready.md
+  hash_c: dca23e98510b5b28016f3b83a8e07d4104091bb26808e5d35376410fbca63cf9
+  hash_d: 2dd277d7513fe0400266fec81d54be48a085c578e05e046e09bf30cfaeba96e8
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives

@@ -49,8 +49,10 @@ def test_upgrade_backfills_enrolled_by_external_id_prefix_and_downgrade_is_clean
             )
     engine.dispose()
 
-    # Upgrade a head: agrega la columna y corre el backfill.
-    command.upgrade(cfg, "head")
+    # Upgrade a la migracion bajo prueba (users.enrolled). NO a "head": el head
+    # avanza con cada migracion nueva y este test valida SOLO el backfill de
+    # enrolled y su downgrade limpio.
+    command.upgrade(cfg, "07c82d1aebbf")
 
     engine = create_engine(f"sqlite:///{db_path}", future=True)
     with engine.connect() as conn:

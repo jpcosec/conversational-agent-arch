@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from kb_agent.ontologizador.kgdb_reader import KGDBReader
+from kb_agent.knowledge.kgdb_reader import KGDBReader
 
 
 @pytest.fixture(scope="module")

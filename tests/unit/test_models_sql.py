@@ -162,9 +162,10 @@ def test_turns_requires_a_user(session: Session) -> None:
 
 
 def test_turn_id_is_unique_only_within_its_session(session: Session) -> None:
-    """turn_id tipo "t1" lo genera un contador por-sesion (frontends/chat/app.py),
-    asi que el mismo turn_id puede repetirse en sesiones distintas: la unicidad
-    real es (session_id, turn_id), no turn_id solo."""
+    """El turn_id lo genera el orquestador (uuid por turno); el constraint del
+    modelo es (session_id, turn_id), no turn_id solo. Este test usa ids
+    literales ("t1") para ejercer el constraint: el mismo turn_id puede
+    repetirse en sesiones distintas."""
     a, b = _user(session, "wa:+turns-5a"), _user(session, "wa:+turns-5b")
     session.add(Turns(**_turn_kwargs(a.id, session_id="sess-5a", turn_id="t1")))
     session.add(Turns(**_turn_kwargs(b.id, session_id="sess-5b", turn_id="t1")))

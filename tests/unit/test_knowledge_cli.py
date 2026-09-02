@@ -313,6 +313,44 @@ def test_index_embeddings_persists_vectors_to_frontmatter(embed_kb: Path, monkey
     assert any(v != 0.0 for v in gate_vec)
 
 
+def test_audit_embeddings_flags_missing_vectors(embed_kb: Path) -> None:
+    """KB recien sembrada (sin vectores): el audit los reporta como faltantes
+    y devuelve ok=False -- el defecto deja de ser invisible."""
+    ops = _ops(embed_kb)
+    report = ops.audit_embeddings()
+    assert report["ok"] is False
+    assert report["with_embedding"] == 0
+    missing_ids = {m["id"] for m in report["missing"]}
+    assert {"atom-carta", "gate-corpus"} <= missing_ids
+
+
+def test_audit_embeddings_passes_after_indexing(embed_kb: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    ops = _ops(embed_kb)
+    monkeypatch.setattr(ops, "_embedder", lambda: _FakeEmbedder())
+    monkeypatch.setattr(ops, "_run_sldb", lambda *args: None)
+    ops.index_embeddings()
+    ops._invalidate_cache()
+    report = ops.audit_embeddings()
+    assert report["ok"] is True
+    assert report["missing"] == []
+    assert report["with_embedding"] == report["total"]
+
+
+def test_audit_embeddings_excludes_agent_framing_by_design() -> None:
+    """AgentFraming (router/gate) no lleva vector por diseno: no cuenta como
+    faltante (evita el falso positivo documentado en la task). Se valida
+    contra la KB real ``knowledge_vitali``, cuyos unicos atoms sin vector son
+    ``agent-vitali-router`` y ``agent-vitali-gate``."""
+    kb = REPO_ROOT / "knowledge_vitali"
+    if not (kb / ".sldb").exists():
+        pytest.skip("knowledge_vitali no disponible en este checkout")
+    ops = KnowledgeOperations(kb, None, pythonpath=str(REPO_ROOT))
+    report = ops.audit_embeddings()
+    assert report["ok"] is True
+    assert report["missing"] == []
+    assert report["embeddingless_by_design"] == 2
+
+
 def test_index_embeddings_survives_store_update_failure(embed_kb: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     ops = _ops(embed_kb)
     monkeypatch.setattr(ops, "_embedder", lambda: _FakeEmbedder())

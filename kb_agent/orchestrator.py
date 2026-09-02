@@ -1,7 +1,7 @@
 """Orquestador end-to-end: cablea TODOS los modulos.
 
 Flujo por turno:
-  usuario -> RouterStateMachine -> Ontologizador (compile_context, con traits del user)
+  usuario -> RouterStateMachine -> Knowledge (compile_context, con traits del user)
           -> policy decide_turn (pura) -> Conversador (LLM: NL) | fallback (KB) | function_call
           -> [si function_call] Tool dispatcher (registry inyectado) que persiste en SQL
           -> ChatHistory (scrubbed) + publish turn -> Perfilador (LLM)
@@ -18,12 +18,13 @@ import json
 import logging
 import os
 from collections.abc import Mapping, Sequence
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
 from sqlalchemy import create_engine
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
 from kb_agent.agent import DEFAULT_FALLBACK_MESSAGE
@@ -36,10 +37,11 @@ from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.recordatorios import Recordatorios  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
-from kb_agent.models_sql.turns import Turns
-from kb_agent.ontologizador.compiler import ContextCompiler
-from kb_agent.ontologizador.kgdb_reader import KGDBReader
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.models_sql.turns import Turns, TurnKind
+from kb_agent.models_sql.conversation import Conversation, ConversationStatus
+from kb_agent.knowledge.compiler import ContextCompiler
+from kb_agent.knowledge.kgdb_reader import KGDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
 from kb_agent.pii.scrubber import scrub
@@ -73,6 +75,7 @@ class Orchestrator:
         tool_handlers: Mapping[str, ToolHandler] | None = None,
         fallback_message: str | None = None,
         tuning: TuningConfig | None = None,
+        identity_key: str = "external_id",
         conversador: Conversador | None = None,
         trait_mapper: TraitMapper | None = None,
         gate: GateAgent | None = None,
@@ -88,6 +91,10 @@ class Orchestrator:
         #: Parametros de tuning del runtime (bundle/historial/router). Antes
         #: eran constantes en el codigo; ahora llegan del yaml via ProjectConfig.
         self.tuning: TuningConfig = tuning or TuningConfig()
+        #: Clave canonica de identidad de persona: "external_id" (default,
+        #: cada canal:id es un usuario) o "phone" (unifica entre canales por
+        #: telefono). Ver ``ensure_user`` y ``_canonical_phone``.
+        self.identity_key = identity_key
 
         self.engine = create_engine(db_url, future=True)
         Base.metadata.create_all(self.engine)
@@ -162,17 +169,61 @@ class Orchestrator:
             "tool_handlers": load_tool_handlers(cfg.tool_handlers),
             "fallback_message": cfg.fallback_message,
             "tuning": cfg.tuning,
+            "identity_key": cfg.identity_key,
         }
         params.update(overrides)
         return cls(**params)
 
     # ── identidad ─────────────────────────────────────────────────────────
+    @staticmethod
+    def _canonical_phone(external_id: str) -> str | None:
+        """Telefono canonico (solo digitos con prefijo +) de un external_id de
+        canal telefonico. ``whatsapp:+56 9 1234 5678`` -> ``+56912345678``.
+
+        Canales sin telefono (``ui:...``, ``web-anon-...``) devuelven None: no
+        se unifican por telefono. Devuelve None si no queda ningun digito.
+        """
+        _, sep, raw = external_id.partition(":")
+        if not sep:
+            return None
+        digits = "".join(ch for ch in raw if ch.isdigit())
+        return ("+" + digits) if digits else None
+
     def ensure_user(self, session: Session, external_id: str, channel: str | None = None) -> Users:
         user = session.query(Users).filter_by(external_id=external_id).one_or_none()
-        if user is None:
-            user = Users(external_id=external_id, channel=channel or channel_from_external_id(external_id))
-            session.add(user)
+        if user is not None:
+            return user
+
+        # Identidad unificada por telefono (identity_key='phone', decision del
+        # owner para Vitali): el mismo telefono en otro canal es la MISMA
+        # persona. Se reusa el Users existente y el external_id nuevo queda
+        # como alias (no se crea una fila duplicada). Sin telefono, o con
+        # identity_key='external_id', cae al comportamiento por canal.
+        phone = self._canonical_phone(external_id) if self.identity_key == "phone" else None
+        if phone is not None:
+            existing = (
+                session.query(Users).filter_by(phone=phone).order_by(Users.id).first()
+            )
+            if existing is not None:
+                return existing
+
+        # SELECT-then-INSERT tiene una carrera: dos requests concurrentes del
+        # mismo usuario nuevo (dos pestanas, doble tap, reintento de webhook)
+        # pasan ambos el filtro y el segundo INSERT viola el UNIQUE de
+        # ``external_id``. Antes eso reventaba el turno con un 500 y el mensaje
+        # se perdia. Ahora: si el INSERT choca, rollback y re-SELECT del
+        # ganador de la carrera.
+        user = Users(
+            external_id=external_id,
+            channel=channel or channel_from_external_id(external_id),
+            phone=phone,
+        )
+        session.add(user)
+        try:
             session.commit()
+        except IntegrityError:
+            session.rollback()
+            user = session.query(Users).filter_by(external_id=external_id).one()
         return user
 
     # ── turno ─────────────────────────────────────────────────────────────
@@ -186,8 +237,20 @@ class Orchestrator:
     ) -> dict[str, Any]:
         session = self.SessionLocal()
         try:
+            # Identificador unico del turno, generado UNA vez: es el mismo que
+            # se persiste en ``turns`` y el que se devuelve al frontend. Antes
+            # la UI usaba un contador ``tN`` (colisionaba entre requests
+            # concurrentes de la misma sesion y no coincidia con el uuid
+            # persistido). Un turno, un identificador.
+            turn_id = uuid4().hex[:12]
             user = self.ensure_user(session, external_id, channel=channel)
             session_state = self._load_or_create_session_state(session, user.id)
+            # Conversacion activa (o nueva si la anterior expiro por
+            # inactividad). El historial que va al prompt se acota a ESTA
+            # conversacion, no a todo el chat_history del usuario.
+            conversation = self._resolve_conversation(
+                session, user_id=user.id, channel=channel or channel_from_external_id(external_id)
+            )
             step_before = session_state.flow_node
 
             if scenario is not None:
@@ -214,6 +277,7 @@ class Orchestrator:
                     scenario=scenario,
                     trigger=trigger,
                     session_state=session_state,
+                    conversation_id=conversation.id,
                 )
                 d = compiled.to_dict()
                 d["user_id"] = user_id
@@ -308,8 +372,8 @@ class Orchestrator:
             session_state.current_node = SessionNode.IDLE
             session_state.updated_at = datetime.now(timezone.utc)
             reply_text = json.dumps(response, ensure_ascii=False) if isinstance(response, dict) else str(response)
-            self._persist_chat_history(session, user_id=user.id, role="user", content=message)
-            self._persist_chat_history(session, user_id=user.id, role="assistant", content=reply_text)
+            self._persist_chat_history(session, user_id=user.id, role="user", content=message, conversation_id=conversation.id)
+            self._persist_chat_history(session, user_id=user.id, role="assistant", content=reply_text, conversation_id=conversation.id)
             session.commit()
 
             # Perfilador: extrae traits con LLM y persiste (sesion propia)
@@ -369,13 +433,17 @@ class Orchestrator:
 
             self._persist_turn(
                 session,
+                turn_id=turn_id,
                 user_id=user.id,
                 external_id=external_id,
+                conversation_id=conversation.id,
                 decisions=decisions,
                 draft=reply_text,
             )
 
             return {
+                "turn_id": turn_id,
+                "conversation_id": conversation.id,
                 "user_id": user.id,
                 "question": message,
                 "kind": kind,
@@ -483,10 +551,12 @@ class Orchestrator:
     def _persist_turn(
         session: Session,
         *,
+        turn_id: str,
         user_id: int,
         external_id: str,
         decisions: Mapping[str, Any],
         draft: str,
+        conversation_id: int | None = None,
     ) -> None:
         """Persiste el rastro del turno en ``turns`` (fase 3.1).
 
@@ -505,9 +575,11 @@ class Orchestrator:
         try:
             session.add(
                 Turns(
-                    turn_id=uuid4().hex[:12],
+                    turn_id=turn_id,
                     session_id=external_id,
                     user_id=user_id,
+                    conversation_id=conversation_id,
+                    kind=TurnKind.AGENT,
                     step_before=step.get("before"),
                     step_after=step.get("after"),
                     decision=dict(decisions.get("orquestador") or {}),
@@ -579,6 +651,14 @@ class Orchestrator:
         tool_name = self._tool_name_from_system_turn(system_turn) if tool_called else None
         step = compiled.get("flow_node")
 
+        # Facts/rules que la KB declaro para este turno: es el universo contra
+        # el que el gate juzga grounding (la respuesta no puede afirmar
+        # atributos que no esten aca). Ver GateCriterion de grounding en la KB.
+        declared_facts = [
+            *compiled.get("domain_facts", []),
+            *compiled.get("rules", []),
+        ]
+
         try:
             return self.gate.evaluate(
                 response,
@@ -586,6 +666,7 @@ class Orchestrator:
                 tool_name=tool_name,
                 step=step,
                 session_tools_called=session_tools_called,
+                declared_facts=declared_facts,
             )
         except Exception:
             logger.exception("GateAgent fallo evaluando la respuesta; fail-open (approved=True)")
@@ -683,6 +764,7 @@ class Orchestrator:
                 reader=self.reader,
                 identity_session=session,
                 llm_mapper=self.trait_mapper,
+                knowledge_ops=self.knowledge_ops,
             )
             extractor.extract(user_id=event.user_id, turn_text=event.turn_text_scrubbed)
         finally:
@@ -713,14 +795,83 @@ class Orchestrator:
     # ── persistencia ──────────────────────────────────────────────────────
     def _load_or_create_session_state(self, session: Session, user_id: int) -> SessionState:
         state = session.get(SessionState, user_id)
-        if state is None:
-            state = SessionState(user_id=user_id, current_node=SessionNode.IDLE)
-            session.add(state)
+        if state is not None:
+            return state
+        # Misma carrera que ``ensure_user``: el PK es ``user_id``, dos requests
+        # concurrentes del mismo usuario nuevo compiten por crear el estado y
+        # el segundo INSERT viola el PK. rollback + re-SELECT del ganador.
+        state = SessionState(user_id=user_id, current_node=SessionNode.IDLE)
+        session.add(state)
+        try:
             session.commit()
+        except IntegrityError:
+            session.rollback()
+            state = session.get(SessionState, user_id)
         return state
 
-    def _persist_chat_history(self, session: Session, *, user_id: int, role: str, content: str) -> ChatHistory:
-        row = ChatHistory(user_id=user_id, role=role, content=scrub(content), pii_scrubbed=True)
+    def _resolve_conversation(
+        self, session: Session, *, user_id: int, channel: str | None
+    ) -> Conversation:
+        """Conversacion activa del usuario, o una nueva si la ultima expiro.
+
+        Criterio de cierre (config ``tuning.conversation_idle_ttl_s``): si la
+        conversacion abierta mas reciente lleva mas de ese TTL sin actividad,
+        se cierra y se abre una nueva. Asi el historial que va al prompt
+        (filtrado por ``conversation_id``) no cruza el limite de una
+        conversacion vieja -- antes se infería por dia calendario y se
+        mezclaba todo el ``chat_history`` del usuario.
+        """
+        now = datetime.now(timezone.utc)
+        ttl = timedelta(seconds=self.tuning.conversation_idle_ttl_s)
+        current = (
+            session.query(Conversation)
+            .filter(
+                Conversation.user_id == user_id,
+                Conversation.status == ConversationStatus.OPEN,
+            )
+            .order_by(Conversation.last_activity_at.desc())
+            .first()
+        )
+        if current is not None:
+            last = current.last_activity_at
+            if last is not None and last.tzinfo is None:
+                last = last.replace(tzinfo=timezone.utc)
+            if last is None or now - last <= ttl:
+                current.last_activity_at = now
+                session.commit()
+                return current
+            # expiro por inactividad: cerrarla y abrir una nueva
+            current.status = ConversationStatus.CLOSED
+            current.closed_at = now
+            session.commit()
+
+        conv = Conversation(
+            user_id=user_id,
+            status=ConversationStatus.OPEN,
+            channel=channel,
+            started_at=now,
+            last_activity_at=now,
+        )
+        session.add(conv)
+        session.commit()
+        return conv
+
+    def _persist_chat_history(
+        self,
+        session: Session,
+        *,
+        user_id: int,
+        role: str,
+        content: str,
+        conversation_id: int | None = None,
+    ) -> ChatHistory:
+        row = ChatHistory(
+            user_id=user_id,
+            role=role,
+            content=scrub(content),
+            pii_scrubbed=True,
+            conversation_id=conversation_id,
+        )
         session.add(row)
         return row
 

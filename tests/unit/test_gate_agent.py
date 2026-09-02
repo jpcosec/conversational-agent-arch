@@ -9,6 +9,8 @@ sin tocar codigo.
 """
 from __future__ import annotations
 
+import json
+
 from typing import Any
 
 import pytest
@@ -172,6 +174,31 @@ def test_llm_judge_rejects_with_reasons_and_criterion_ids() -> None:
     assert result["reasons"] == ["La respuesta sugiere subir la dosis, viola gate-antonia-dosis."]
     assert result["criterion_ids"] == ["gate-antonia-dosis"]
     assert result["action"] == "handoff"
+
+
+# ── grounding: los facts declarados por la KB viajan al juez ────────────────
+def test_declared_facts_are_passed_to_the_judge_context() -> None:
+    verdict = GateVerdict(approved=True)
+    client = _verdict_client(verdict)
+    gate = GateAgent(client=client, model="gemini-test", gate_atoms=GATE_ATOMS)
+
+    facts = [
+        {"id": "dom-suite-x", "title": "Suite X", "body": "Suite de 45 m2 en Chicureo."},
+        {"id": "rule-precio", "title": "Precios", "body": "No divulgar precios sin fuente."},
+    ]
+    gate.evaluate(
+        "La Suite X tiene 45 m2 y está en Chicureo.",
+        tool_called=True,
+        tool_name=None,
+        declared_facts=facts,
+    )
+
+    # el content del turno (JSON serializado) debe incluir los facts declarados
+    contents = client.calls[0]["contents"]
+    turn_text = json.dumps(contents, ensure_ascii=False, default=str)
+    assert "contexto_declarado_por_la_kb" in turn_text
+    assert "dom-suite-x" in turn_text
+    assert "45 m2 en Chicureo" in turn_text
 
 
 # ── vacio / sin texto: aprueba trivialmente sin llamar al modelo ────────────

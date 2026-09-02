@@ -45,3 +45,33 @@ documents:
   - topic:modelacion
   - type.workflow.pill
   - workspace.desk
+- name: pills
+  path: desk/contexts/pills.md
+  hash_c: 9f79888c2ce15c6f1a6a2afcf7a5b6ad24f2bc3bfea9a47850ac3287c0182ce5
+  hash_d: 692fd656e0bb31b87f69b2974da9231ec2446aa4f08c82cc22ac0c596e76f354
+  semantic_tags:
+  - type.workflow.pill
+  - workspace.desk
+  - workspace:desk
+- name: pill-ui-estilo-flow-editor
+  path: desk/drawer/pills/pill-ui-estilo-flow-editor.md
+  hash_c: 917e1d4878a7ae5c691071ba926e45dda8cb985502f96f4d5cf369c2ef0cd80b
+  hash_d: 1bc450fc425683bb101a5301550ce57e34cad4e914ad54d858da76530acb60d5
+  semantic_tags:
+  - frontend
+  - pill
+  - style
+  - type.workflow.pill
+  - ui
+  - workspace.desk
+- name: pill-ui-no-build-cdn
+  path: desk/drawer/pills/pill-ui-no-build-cdn.md
+  hash_c: 68460be02428beb67b54c16a06be26769c64dd71aaa608bed7823984d6379289
+  hash_d: 6b18db2d885f919f7bfd49510d1a060bbbe254297f8e3bcd6b93eb4961a9a02d
+  semantic_tags:
+  - build
+  - constraints
+  - pill
+  - type.workflow.pill
+  - ui
+  - workspace.desk

@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 from tests.support.sldb_seed import seed_store
 
 CLINICA = [

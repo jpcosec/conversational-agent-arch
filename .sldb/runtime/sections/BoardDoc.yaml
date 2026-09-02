@@ -107,8 +107,8 @@ documents:
     - workspace:desk
     slug: e-g-system-sldb-workspace-desk
     level: 1
-    line_start: 19
-    line_end: 20
+    line_start: 20
+    line_end: 21
   - path: gemini-test-board
     title: gemini_test Board
     breadcrumbs:
@@ -125,8 +125,8 @@ documents:
     - workspace:desk
     slug: gemini-test-board
     level: 1
-    line_start: 24
-    line_end: 25
+    line_start: 25
+    line_end: 26
   - path: gemini-test-board/purpose
     title: Purpose
     breadcrumbs:
@@ -146,8 +146,8 @@ documents:
     - workspace:desk
     slug: purpose
     level: 2
-    line_start: 26
-    line_end: 27
+    line_start: 27
+    line_end: 28
   - path: gemini-test-board/notes
     title: Notes
     breadcrumbs:
@@ -167,8 +167,8 @@ documents:
     - workspace:desk
     slug: notes
     level: 2
-    line_start: 32
-    line_end: 33
+    line_start: 33
+    line_end: 34
   - path: gemini-test-board/task-details
     title: Task Details
     breadcrumbs:
@@ -188,5 +188,5 @@ documents:
     - workspace:desk
     slug: task-details
     level: 2
-    line_start: 41
-    line_end: 42
+    line_start: 39
+    line_end: 40

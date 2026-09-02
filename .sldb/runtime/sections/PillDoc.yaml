@@ -693,3 +693,231 @@ documents:
     level: 2
     line_start: 43
     line_end: 44
+- doc_name: pills
+  sections:
+  - path: pills
+    title: Pills
+    breadcrumbs:
+    - Pills
+    about:
+    - Pills
+    - pills
+    - type.workflow.pill
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.pill
+    - workspace.desk
+    - workspace:desk
+    slug: pills
+    level: 1
+    line_start: 7
+    line_end: 8
+  - path: pills/notes
+    title: Notes
+    breadcrumbs:
+    - Pills
+    - Notes
+    about:
+    - Pills
+    - pills
+    - Notes
+    - notes
+    - type.workflow.pill
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - type.workflow.pill
+    - workspace.desk
+    - workspace:desk
+    slug: notes
+    level: 2
+    line_start: 11
+    line_end: 12
+- doc_name: pill-ui-estilo-flow-editor
+  sections:
+  - path: context
+    title: Context
+    breadcrumbs:
+    - Context
+    about:
+    - Context
+    - context
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    slug: context
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: context/doctrina
+    title: Doctrina
+    breadcrumbs:
+    - Context
+    - Doctrina
+    about:
+    - Context
+    - context
+    - Doctrina
+    - doctrina
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    slug: doctrina
+    level: 2
+    line_start: 15
+    line_end: 16
+  - path: context/prohibido
+    title: Prohibido
+    breadcrumbs:
+    - Context
+    - Prohibido
+    about:
+    - Context
+    - context
+    - Prohibido
+    - prohibido
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    slug: prohibido
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: context/referencia
+    title: Referencia
+    breadcrumbs:
+    - Context
+    - Referencia
+    about:
+    - Context
+    - context
+    - Referencia
+    - referencia
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    slug: referencia
+    level: 2
+    line_start: 45
+    line_end: 46
+- doc_name: pill-ui-no-build-cdn
+  sections:
+  - path: context
+    title: Context
+    breadcrumbs:
+    - Context
+    about:
+    - Context
+    - context
+    - build
+    - constraints
+    - pill
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - build
+    - constraints
+    - pill
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    slug: context
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: context/doctrina
+    title: Doctrina
+    breadcrumbs:
+    - Context
+    - Doctrina
+    about:
+    - Context
+    - context
+    - Doctrina
+    - doctrina
+    - build
+    - constraints
+    - pill
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - build
+    - constraints
+    - pill
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    slug: doctrina
+    level: 2
+    line_start: 15
+    line_end: 16
+  - path: context/consecuencias
+    title: Consecuencias
+    breadcrumbs:
+    - Context
+    - Consecuencias
+    about:
+    - Context
+    - context
+    - Consecuencias
+    - consecuencias
+    - build
+    - constraints
+    - pill
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    semantic_tags:
+    - build
+    - constraints
+    - pill
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+    slug: consecuencias
+    level: 2
+    line_start: 27
+    line_end: 28

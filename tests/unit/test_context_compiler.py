@@ -1,4 +1,4 @@
-"""Ontologizador: SLDB (modelos tipados) + SQL (traits) + KGDB (flujo) -> CompiledDocument."""
+"""Knowledge: SLDB (modelos tipados) + SQL (traits) + KGDB (flujo) -> CompiledDocument."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -9,9 +9,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
 from kb_agent.models_sql.identity import Base, UserTraits, Users
-from kb_agent.ontologizador.compiler import ContextCompiler, compile_context
-from kb_agent.ontologizador.kgdb_reader import KGDBReader
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.compiler import ContextCompiler, compile_context
+from kb_agent.knowledge.kgdb_reader import KGDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 from tests.support.sldb_seed import minimal_business_atoms, seed_store
 
 

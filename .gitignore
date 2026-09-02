@@ -4,7 +4,7 @@ __pycache__/
 *.db
 .adk/session.db
 node_modules/
-runs/*
+runs/*.sqlite
 spec2viz_serve.log
 .sldb_e2e_donpeppe/.sldb/runtime/
 .embedding_cache/

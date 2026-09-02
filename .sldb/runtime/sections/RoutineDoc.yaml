@@ -1,0 +1,1492 @@
+documents:
+- doc_name: routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+    title: Routine for Extender el flujo conversacional de la KB Antonia para cumplir
+      la cadena de agentes PSP
+    breadcrumbs:
+    - Routine for Extender el flujo conversacional de la KB Antonia para cumplir la
+      cadena de agentes PSP
+    about:
+    - Routine for Extender el flujo conversacional de la KB Antonia para cumplir la
+      cadena de agentes PSP
+    - routine for extender el flujo conversacional de la kb antonia para cumplir la
+      cadena de agentes psp
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp/summary
+    title: Summary
+    breadcrumbs:
+    - Routine for Extender el flujo conversacional de la KB Antonia para cumplir la
+      cadena de agentes PSP
+    - Summary
+    about:
+    - Routine for Extender el flujo conversacional de la KB Antonia para cumplir la
+      cadena de agentes PSP
+    - routine for extender el flujo conversacional de la kb antonia para cumplir la
+      cadena de agentes psp
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36
+- doc_name: routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-organizaci-n-autom-tica-de-tomos-en-la-kb
+    title: "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    breadcrumbs:
+    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    about:
+    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - routine for organizaci n autom tica de tomos en la kb
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-organizaci-n-autom-tica-de-tomos-en-la-kb
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-organizaci-n-autom-tica-de-tomos-en-la-kb/summary
+    title: Summary
+    breadcrumbs:
+    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Summary
+    about:
+    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - routine for organizaci n autom tica de tomos en la kb
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36
+- doc_name: routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-recomponer-la-base-de-spec2viz-y-atoms
+    title: Routine for Recomponer la base de spec2viz y atoms
+    breadcrumbs:
+    - Routine for Recomponer la base de spec2viz y atoms
+    about:
+    - Routine for Recomponer la base de spec2viz y atoms
+    - routine for recomponer la base de spec2viz y atoms
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-recomponer-la-base-de-spec2viz-y-atoms
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-recomponer-la-base-de-spec2viz-y-atoms/summary
+    title: Summary
+    breadcrumbs:
+    - Routine for Recomponer la base de spec2viz y atoms
+    - Summary
+    about:
+    - Routine for Recomponer la base de spec2viz y atoms
+    - routine for recomponer la base de spec2viz y atoms
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36
+- doc_name: routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+    title: 'Routine for Reconstruir KB de Vitali: dudas de contenido y residuo de
+      tools'
+    breadcrumbs:
+    - 'Routine for Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    about:
+    - 'Routine for Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - routine for reconstruir kb de vitali dudas de contenido y residuo de tools
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/summary
+    title: Summary
+    breadcrumbs:
+    - 'Routine for Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Summary
+    about:
+    - 'Routine for Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - routine for reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36
+- doc_name: routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+    title: Routine for Ingestion declarativa de traits desde el formulario/registro
+      (source=form)
+    breadcrumbs:
+    - Routine for Ingestion declarativa de traits desde el formulario/registro (source=form)
+    about:
+    - Routine for Ingestion declarativa de traits desde el formulario/registro (source=form)
+    - routine for ingestion declarativa de traits desde el formulario registro source
+      form
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form/summary
+    title: Summary
+    breadcrumbs:
+    - Routine for Ingestion declarativa de traits desde el formulario/registro (source=form)
+    - Summary
+    about:
+    - Routine for Ingestion declarativa de traits desde el formulario/registro (source=form)
+    - routine for ingestion declarativa de traits desde el formulario registro source
+      form
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36
+- doc_name: routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+    title: 'Routine for Perfilador: pre-filtrar traits candidatos por similitud semantica'
+    breadcrumbs:
+    - 'Routine for Perfilador: pre-filtrar traits candidatos por similitud semantica'
+    about:
+    - 'Routine for Perfilador: pre-filtrar traits candidatos por similitud semantica'
+    - routine for perfilador pre filtrar traits candidatos por similitud semantica
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica/summary
+    title: Summary
+    breadcrumbs:
+    - 'Routine for Perfilador: pre-filtrar traits candidatos por similitud semantica'
+    - Summary
+    about:
+    - 'Routine for Perfilador: pre-filtrar traits candidatos por similitud semantica'
+    - routine for perfilador pre filtrar traits candidatos por similitud semantica
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36
+- doc_name: routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
+    title: Routine for Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    breadcrumbs:
+    - Routine for Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    about:
+    - Routine for Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    - routine for verificar si el known gap donpeppe saludo unico sigue vigente
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente/summary
+    title: Summary
+    breadcrumbs:
+    - Routine for Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    - Summary
+    about:
+    - Routine for Verificar si el known_gap donpeppe_saludo_unico sigue vigente
+    - routine for verificar si el known gap donpeppe saludo unico sigue vigente
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36
+- doc_name: routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  sections:
+  - path: routine-xxx
+    title: routine-xxx
+    breadcrumbs:
+    - routine-xxx
+    about:
+    - routine-xxx
+    - routine xxx
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: initial-node-identifier
+    title: Initial node identifier
+    breadcrumbs:
+    - Initial node identifier
+    about:
+    - Initial node identifier
+    - initial node identifier
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: initial-node-identifier
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: ordered-or-grouped-primitive-identifiers
+    title: Ordered or grouped primitive identifiers
+    breadcrumbs:
+    - Ordered or grouped primitive identifiers
+    about:
+    - Ordered or grouped primitive identifiers
+    - ordered or grouped primitive identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: ordered-or-grouped-primitive-identifiers
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: edge-identifiers-composing-the-graph
+    title: Edge identifiers composing the graph
+    breadcrumbs:
+    - Edge identifiers composing the graph
+    about:
+    - Edge identifiers composing the graph
+    - edge identifiers composing the graph
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: edge-identifiers-composing-the-graph
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: terminal-node-identifiers
+    title: Terminal node identifiers
+    breadcrumbs:
+    - Terminal node identifiers
+    about:
+    - Terminal node identifiers
+    - terminal node identifiers
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: terminal-node-identifiers
+    level: 1
+    line_start: 24
+    line_end: 25
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 27
+    line_end: 28
+  - path: routine-for-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+    title: Routine for Reconciliar atoms de arquitectura con el batch runtime
+    breadcrumbs:
+    - Routine for Reconciliar atoms de arquitectura con el batch runtime
+    about:
+    - Routine for Reconciliar atoms de arquitectura con el batch runtime
+    - routine for reconciliar atoms de arquitectura con el batch runtime
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: routine-for-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+    level: 1
+    line_start: 33
+    line_end: 34
+  - path: routine-for-reconciliar-atoms-de-arquitectura-con-el-batch-runtime/summary
+    title: Summary
+    breadcrumbs:
+    - Routine for Reconciliar atoms de arquitectura con el batch runtime
+    - Summary
+    about:
+    - Routine for Reconciliar atoms de arquitectura con el batch runtime
+    - routine for reconciliar atoms de arquitectura con el batch runtime
+    - Summary
+    - summary
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    semantic_tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+    slug: summary
+    level: 2
+    line_start: 35
+    line_end: 36

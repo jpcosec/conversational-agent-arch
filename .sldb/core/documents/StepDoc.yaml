@@ -1,1 +1,412 @@
-documents: []
+documents:
+- name: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready.md
+  hash_c: 3302ddbd00d4a8ead9c1b0a527fc3869581725e28750192c0e5431436efa179a
+  hash_d: cdc3f6ccaf97e701598209d7d8c1910cc144221dc78dd652589d690179c63bc0
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  path: desk/routines/routine-task-recomponer-la-base-de-spec2viz-y-atoms.md
+  hash_c: 2d16a9eca2ae27f9288e40365b31959f5eee306bea8b8e168358b44fcfbcbdaa
+  hash_d: 417d65cbbb215092368ef1aaf1aea258c14ffe40ae536cf9a5eaf3be0a92ae73
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.step
+  - workspace.desk
+  - workspace:desk
+- name: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready.md
+  hash_c: 3d3278536bd27aefb48fe31b95ac75593b8fe7787841a2b475f899c8869cb6d6
+  hash_d: e8344bc5a6af695afe919527ce616bd7d344fb65085cfb04fac75f0901fceb2f
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready.md
+  hash_c: c881f0f60f8c3c4d311a7851c0cd9bc834133a5efd09659a994759884e50690a
+  hash_d: fd65bcbab41274bb786e0820f02d98475b88d49e36e39f0460009edc50e2fd43
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready.md
+  hash_c: bc5e1e8340dae1cebe4c046b7eb4da21dfc4a06ecef5a228bd1befaf53fc27a3
+  hash_d: 1d5191744946007f39df6ab81b29baddcc9688f04aa529876bdf2af1d62ea3aa
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready.md
+  hash_c: fd3516b0632e68d1e2eb502e4f48509463edad980cc5646dce047b5c14206c94
+  hash_d: 85370d999a1a7e4463f1dfcb5ad93a3926366c30d9ce61e613c1ca2c60d331d5
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready.md
+  hash_c: c2efc23c1e2c231c4384d202080a5a1369fa288ac00452d72565a3e3b1e97926
+  hash_d: 3c2c8cb215dfd882f6b8058d59533816849e06cbeeba59659670e8f7c5625068
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready.md
+  hash_c: 0f55dcf8f4dc051bb649c63fdcb6e100f5750f5295d9e34414edd7d279e50a98
+  hash_d: 84ccfb02acd01b176da4af3e69e010a281126bdb2319a437044504d05a028cf0
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready.md
+  hash_c: 91262aaab01431178173c219a4e5ae643596a887dc5f9e31d12d0056fed9f7a4
+  hash_d: d9c6be3de2a7397d287d82cc6d1955df9672cdccbd8dea2633bc62b20735664b
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready.md
+  hash_c: 34956c4f0928653f226acf200f70bf2f8dbc04b63ce31471cc0c76c674d0b713
+  hash_d: 61f4d50903d2a919c28650a50c88ffda886982f83326189fb745dace3bed5687
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence.md
+  hash_c: c48cc6086597b1b90a7d2f0e16702d5f6b20f4ad92fb075990a483303aea46ca
+  hash_d: 0485893c01533853cf01729bb802410a5bfd1a83e11cbf8770f99628a6419fae
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path.md
+  hash_c: 45a952f3748e4c07b9c3fc8e671f29f2afe77a5188f7971c33132ae8982c55b4
+  hash_d: 03890370fb7aade743d27f8a27b230b2e714c557e86a41e71545cc4c555654a4
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation.md
+  hash_c: dac1a87eebe96aacdecc5f895d6338fd0e3893893530c3dd57129b5af9950c14
+  hash_d: 55d857ddcc7f1beff2a569c29d8857c75da81fb7be5a5e725a7fb51fc310852b
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout.md
+  hash_c: 47538a5810dbe2184e3c0ed5a3953ac9fc1b8b3e445b79da8de30966273ceac5
+  hash_d: 5f2ec1c1db62859d5a2f038903201f92bcd381c2f2acdeec9a2b5c4ab5e4f23d
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence.md
+  hash_c: 9509618dd1215d969e8427a751592a64857ce4b58ddb5cfb5e9de994ec6aa3be
+  hash_d: bdf2fc14c8df6539c24b278ff812345e02f6d956e5a209035b2a43b37d0c05bb
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path.md
+  hash_c: 3de07808fe5f6c59965aee0722069f0965e72f4a0cfdedefb5b1d94bc7812d47
+  hash_d: 251de8f746f0620cbf08e96056f2350f6856c5fad0275b1463762fcd7898640f
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation.md
+  hash_c: 04c4258b2e52dc5971d79ecab339b7eae9c78a2f2caab901ff779258c6ff5ac0
+  hash_d: d55e530560eb62b0f219b3d8ca8ed29ef5c72f190ffa1df4cb5df2dc81ca8772
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout.md
+  hash_c: 98f1a29f1e0b6e3289c409d292d57fcb4df0d9505cd52b6bd2eca9de7ae62087
+  hash_d: 5d491588901b9f98d9277b2b939eba2825fe6d2f0a4824ddc1ba0bb9e2262f19
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence.md
+  hash_c: b0adfbc8b50d1b3c5590b7cae6fb052fde3159d38ed7cc98975ee2886670a043
+  hash_d: ea111cffce8dfeb8e1e33dfa19ae5376b869a7daea903c41e8c37a119591e76a
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path.md
+  hash_c: 6f2df205fefb59c61c345dcd18ab6129873880490a873de486494e9915a9e3b0
+  hash_d: 241da0f520b7acbfe73deda3d30b640d661b6f7e391b9ecf564dc2cfed3dcebf
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation.md
+  hash_c: a02fa4c673a06821e5093c531a639bae973948527cd956142d28dfb4b32a27a0
+  hash_d: 70a4b59898d4f8cfaec0c3ec123d28899f991a9afcd8915656b911820af6960b
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout.md
+  hash_c: 34702109357b09eda5469f83bb0b5707e7621eb3cfefef051da1dd6c30b6ef1c
+  hash_d: 87a1dc427c2f98c579749319a4df7f1394f7d00f28c2d0c1a357431dde1be6d6
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing.md
+  hash_c: d35d687780b627f7415066858407681e66f27e33c7c998677f4d478becbe9a64
+  hash_d: e3dadff2ce94e0e8f5e290733532d174938bc5228a83bef4fe876ead0b3fd7d7
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete.md
+  hash_c: d06563ae8c36114382f31c0cd80e40b98b1880629b8123daefb7c930d9d9482d
+  hash_d: 9241c943adc92e99cc560695760e1e0c7ce6761bca21a0fb90230bb17daedda5
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close.md
+  hash_c: bd6e624e0e76780a95aabc483abb833cf32b320aeffb95490fadfa23f1ec0fac
+  hash_d: 6268acfd3339c5731b8f67d65082da01df5322b50467665ccd143d860facdb2d
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate.md
+  hash_c: 0b1ae6f278a5ddc278f11d126ceb8e075a7ee93cdb4983bf73ebae608787154e
+  hash_d: 601d48ab9ce8c2c3e2f7f29566a10f63088c2d2d38d8e4a37b88641bdecfe4fa
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout.md
+  hash_c: a6084b6270f09646752ed997f8a14b08d6f065444f2e509804532945958e8fd8
+  hash_d: d8a374d07ba491e31f4fe47fab196e9b6044312dd6aae7a802fa150d742e2327
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready.md
+  hash_c: fc4316a6c6a66e65dd337c23d54f721b91c2800675950e052727ef250cd009f4
+  hash_d: 97c4a14188113c82e6e4deb1ea2f7ee593bd34faee1a84b3db75ba68f3b2883c
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing.md
+  hash_c: c444ee80ff53d6a476e82d53f23bff7707c58ebc336894a75e1573f02fb55044
+  hash_d: de5cfdd3bfa91271157a048968db26120285eaa3609076f78307e617c5d92b98
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete.md
+  hash_c: f0665b3cd8aee25bc2fccec85990ba0532255f05ddf665a376ea5cfecbc548a8
+  hash_d: 5376e983d324fd8a485526c8883ee7842b2123e7965ea30402c9e0051f89febf
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close.md
+  hash_c: 1828f7b8bc50056bffac7711b36ed2ec80a1dd4262ed4ff31216559cf73030d2
+  hash_d: 93f7c0fbe91906b37fb489aa98e049b9091f7f88ef9d86d070217ab9d6c59e98
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate.md
+  hash_c: 75c80d584aa5eb950707845ceac4e6d857c1674243584ca1fdd53343b55aa520
+  hash_d: f6bc3a24d523f8b41afc93a1def2b54d61b1c9ca2db69e0a4b079e3c2def4c17
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout.md
+  hash_c: f72b127ebdfd7cf1060a52346774c78ba6576662420077e495d6456ac1849f5d
+  hash_d: f1a9d49c301a0d776913a0e178616754b9c78069964111693105ec19d6a060e0
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready.md
+  hash_c: 0f0c507d64f83447871322784b300ea25469022b33fde2bc866b3fa588988172
+  hash_d: 778788c44e583bcaef7aefd956fff454d2864ac6348da4654dae73babb58aea2
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing.md
+  hash_c: f1b0039620b50adec92761ae2053ba7512247e14741ee8ca98b44048932685c5
+  hash_d: d354f4d2f6129595c49350c4cc2d1d626bc90f0587dfec8f3c074416c6942cb1
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete.md
+  hash_c: 04cab8ae5ab949602f017a4563298cf7ed5a90f7e95c2895242f0f36e2623230
+  hash_d: b87e2311d10cb81ffe51b62d750e71cc31c21b3823454ce68bded4dcfab8648e
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close.md
+  hash_c: 7a9f7892fd05e6b250517b9dab6845f26da2858c308b377eb15e2c518131a5e6
+  hash_d: 94b5ae611845e4a5e8fb74ab1ae84169c27f41b7b959395338fe09ea5f4eb7b5
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate.md
+  hash_c: fc03635aeffc3afcaf6934e74e2859ada819d3fbef9340f984e1f9febdaf331b
+  hash_d: 4ae4053cc0f0a891a0094b0b5364babaca005c819b8e26464a9494b764e5758f
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout.md
+  hash_c: dfcb589d81b4c8ae5b071a159afc191edc0f9471f92a1548430f7bc36550d6a1
+  hash_d: 9ecab00f120f9a3db16dd596ce77a35f516d60921bdd86153b3ffb73567171dc
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready.md
+  hash_c: 46ca79964ede5728d9ebc83e169c43e18a211e519089fda4605e8701e625b224
+  hash_d: bcff46d76c3dd56996ece1514924ff49ff8fa1a75ab4b825bcd98e7f63b99b0b
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate.md
+  hash_c: d33be2277227fc03f099d18baa6dc4d1d2f4c47ba30792d591fe9bff8354cfe7
+  hash_d: 8a74b2738fa80eeea4ef9ef4551492dd269da87a7e1377f45e2c2988dce731cd
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close.md
+  hash_c: bfee909f4b0ec95f578246ccd2d76cdfa38128bd0f234433b8dcf0592954bbb2
+  hash_d: 739f830773636b103284af529ba64534274be53a467ddeb8d700b3365de4ca6d
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing.md
+  hash_c: 9658e4301a733f22bac622444f06ba88a4ccba6694908e31c56aa87d880a5504
+  hash_d: 343b02e0425e490f4387399d57ee5eef90104c32cae1006b0428777958cc1f0b
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate.md
+  hash_c: 4c60d6aabe0e7b115f61390425313481139695d6b36cd0df19a19d631d282857
+  hash_d: c7c39bf79cf726fb2bc302ee294480824a98695dc8d86bbe6c3abfe196027e8f
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close.md
+  hash_c: d7131061d92190afb082756eb33fa33a6c6e5fd46bb9060182e2bec4e36ea8dc
+  hash_d: 77af1a82b1936278c5939c7a8ed223708e399eac92acf0b8d8df5ff1197838e9
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing.md
+  hash_c: 271bfac66aa51f480f8c3c8921ffd584bf9cb95052836ffd5038a5f19aa2c49d
+  hash_d: 3887636e19dcb1ae1f4c8b0db328019a553168ce7683974bd7eb47e0796dcbd0
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate.md
+  hash_c: 8917bfddc8e2e65ee4dab0ce838a4fbb6ace984aadf86acb00bfd647776d7fbb
+  hash_d: 8102b983d5800a0c3a99b927dc6a08ade993f61966b49b8633d5792b55f9d3a7
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-close.md
+  hash_c: 6e8280e3bafcf6dcaa58bb5eb6715311fa8d1dced299404dba314f5517e61026
+  hash_d: 04b6eae6f6863a182d40f8c731057905412cf7e72dbda9303e66cc48a2e4cc94
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing.md
+  hash_c: ec514ceeccf15ac8ec09c2eba806df1196f3f4a626ab78644453d8573f1714fc
+  hash_d: 10c64570c17abd792c5c3c9e58cf938c89875832293ddc8899d686fd09886ba3
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.step
+  - workspace.desk
+- name: routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  path: desk/routines/routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+  hash_c: 245660cd71a9bd47c5ab61882af2f2a9f2fbd6a008fbebfd4cbba67ae94839d0
+  hash_d: 2671da821590ad9e1bed4b05e4aa9aba3bb67693b9ee1b945d20c794b4695506
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.step
+  - workspace.desk
+  - workspace:desk
+- name: routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  path: desk/routines/routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb.md
+  hash_c: 939ec0e3e15613f5258395bf36a911fcae1a5697d13ac139c39f6d60c8342e80
+  hash_d: 6a3e1c4ff659bfdd3ddfda49b72a28b82e96c764dee38073c9c54cdc6583593f
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.step
+  - workspace.desk
+  - workspace:desk

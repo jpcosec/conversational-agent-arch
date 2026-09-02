@@ -1,8 +1,8 @@
 documents:
 - name: Board
   path: desk/tasks/Board.md
-  hash_c: 9367757f3c79f7abea2823ef93fc8a5ce4bf73536dda74fcd88261e223e36942
-  hash_d: f4e774693177069dfd3cfbf83ea8407edbc9ff6c5763cbeb79e7cbfb4a9dabb8
+  hash_c: c399b71982a8f9305d5122c8e4d0a63b2ac31e961fac714a3afb0efbe495d39e
+  hash_d: 90b5a1ddc6d8a1f54fe25f58c39e0c2e74b4604fca73d1706d4f6918e0c60b09
   semantic_tags:
   - type.workflow.board
   - workspace.desk

@@ -1,0 +1,24 @@
+Task: task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+Title: Extender el flujo conversacional de la KB Antonia para cumplir la cadena de agentes PSP
+Status: ready_for_testing
+Current node: checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+Task type: design
+Phase: closeout
+Required ritual:
+- desk/rituals/closeout.md
+Required pills:
+- desk/contexts/pills.md
+- desk/contexts/pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible.md
+- desk/contexts/pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes.md
+- desk/contexts/pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia.md
+Next actions:
+1. Confirm passing validation evidence and pill coverage.
+2. Remove the task from the active board and delete the resolved task file when ready.
+3. Untrack the store entry if tracked.
+4. Create one atomic closing commit.
+Advance when:
+- Closeout ritual obligations are satisfied.
+Sources:
+- task: desk/tasks/task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+- board: desk/tasks/Board.md
+- workflow: spec/workflows/task_lifecycle.yaml

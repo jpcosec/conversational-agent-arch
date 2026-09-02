@@ -1,0 +1,517 @@
+documents:
+- doc_name: current-system-overview
+  sections:
+  - path: c-mo-funciona-el-sistema-visi-n-general
+    title: "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: c-mo-funciona-el-sistema-visi-n-general
+    level: 1
+    line_start: 1
+    line_end: 2
+  - path: c-mo-funciona-el-sistema-visi-n-general/1-los-tres-subsistemas
+    title: 1. Los tres subsistemas
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - 1. Los tres subsistemas
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - 1. Los tres subsistemas
+    - 1 los tres subsistemas
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 1-los-tres-subsistemas
+    level: 2
+    line_start: 12
+    line_end: 13
+  - path: c-mo-funciona-el-sistema-visi-n-general/2-el-flujo-de-un-turno-runtime
+    title: 2. El flujo de un turno (Runtime)
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - 2. El flujo de un turno (Runtime)
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - 2. El flujo de un turno (Runtime)
+    - 2 el flujo de un turno runtime
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 2-el-flujo-de-un-turno-runtime
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: c-mo-funciona-el-sistema-visi-n-general/3-las-capas-de-datos-knowledge
+    title: 3. Las capas de datos (Knowledge)
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - 3. Las capas de datos (Knowledge)
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - 3. Las capas de datos (Knowledge)
+    - 3 las capas de datos knowledge
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 3-las-capas-de-datos-knowledge
+    level: 2
+    line_start: 51
+    line_end: 52
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14
+    title: "4. \xCDndice de vistas del cat\xE1logo (14)"
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4 ndice de vistas del cat logo 14
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 4-ndice-de-vistas-del-cat-logo-14
+    level: 2
+    line_start: 74
+    line_end: 75
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/backend-runtime-el-motor
+    title: "Backend \xB7 Runtime (el motor)"
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - "Backend \xB7 Runtime (el motor)"
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4 ndice de vistas del cat logo 14
+    - "Backend \xB7 Runtime (el motor)"
+    - backend runtime el motor
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: backend-runtime-el-motor
+    level: 3
+    line_start: 80
+    line_end: 81
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/backend-knowledge-el-conocimiento
+    title: "Backend \xB7 Knowledge (el conocimiento)"
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - "Backend \xB7 Knowledge (el conocimiento)"
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4 ndice de vistas del cat logo 14
+    - "Backend \xB7 Knowledge (el conocimiento)"
+    - backend knowledge el conocimiento
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: backend-knowledge-el-conocimiento
+    level: 3
+    line_start: 97
+    line_end: 98
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/frontend-las-uis
+    title: Frontend (las UIs)
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - Frontend (las UIs)
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4 ndice de vistas del cat logo 14
+    - Frontend (las UIs)
+    - frontend las uis
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: frontend-las-uis
+    level: 3
+    line_start: 104
+    line_end: 105
+  - path: c-mo-funciona-el-sistema-visi-n-general/5-c-mo-regenerar
+    title: "5. C\xF3mo regenerar"
+    breadcrumbs:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - "5. C\xF3mo regenerar"
+    about:
+    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - c mo funciona el sistema visi n general
+    - "5. C\xF3mo regenerar"
+    - 5 c mo regenerar
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 5-c-mo-regenerar
+    level: 2
+    line_start: 114
+    line_end: 115
+- doc_name: bundle-readme
+  sections:
+  - path: kb-agent-runtime
+    title: KB Agent Runtime
+    breadcrumbs:
+    - KB Agent Runtime
+    about:
+    - KB Agent Runtime
+    - kb agent runtime
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: kb-agent-runtime
+    level: 1
+    line_start: 1
+    line_end: 2
+  - path: kb-agent-runtime/arquitectura-y-componentes
+    title: Arquitectura y Componentes
+    breadcrumbs:
+    - KB Agent Runtime
+    - Arquitectura y Componentes
+    about:
+    - KB Agent Runtime
+    - kb agent runtime
+    - Arquitectura y Componentes
+    - arquitectura y componentes
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: arquitectura-y-componentes
+    level: 2
+    line_start: 7
+    line_end: 8
+  - path: kb-agent-runtime/glosario-del-dominio
+    title: Glosario del Dominio
+    breadcrumbs:
+    - KB Agent Runtime
+    - Glosario del Dominio
+    about:
+    - KB Agent Runtime
+    - kb agent runtime
+    - Glosario del Dominio
+    - glosario del dominio
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: glosario-del-dominio
+    level: 2
+    line_start: 10
+    line_end: 11
+  - path: kb-agent-runtime/operaciones-y-desarrollo
+    title: Operaciones y Desarrollo
+    breadcrumbs:
+    - KB Agent Runtime
+    - Operaciones y Desarrollo
+    about:
+    - KB Agent Runtime
+    - kb agent runtime
+    - Operaciones y Desarrollo
+    - operaciones y desarrollo
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: operaciones-y-desarrollo
+    level: 2
+    line_start: 13
+    line_end: 14
+  - path: kb-agent-runtime/configuraci-n-kb-vs-yaml-y-montar-otro-negocio
+    title: "Configuraci\xF3n (KB vs YAML) y montar otro negocio"
+    breadcrumbs:
+    - KB Agent Runtime
+    - "Configuraci\xF3n (KB vs YAML) y montar otro negocio"
+    about:
+    - KB Agent Runtime
+    - kb agent runtime
+    - "Configuraci\xF3n (KB vs YAML) y montar otro negocio"
+    - configuraci n kb vs yaml y montar otro negocio
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: configuraci-n-kb-vs-yaml-y-montar-otro-negocio
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: kb-agent-runtime/ramas-ci-y-releases
+    title: Ramas, CI y releases
+    breadcrumbs:
+    - KB Agent Runtime
+    - Ramas, CI y releases
+    about:
+    - KB Agent Runtime
+    - kb agent runtime
+    - Ramas, CI y releases
+    - ramas ci y releases
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: ramas-ci-y-releases
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: README
+  sections:
+  - path: desk-bundles
+    title: desk/bundles
+    breadcrumbs:
+    - desk/bundles
+    about:
+    - desk/bundles
+    - desk bundles
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: desk-bundles
+    level: 1
+    line_start: 1
+    line_end: 2
+- doc_name: bundle-arquitectura
+  sections:
+  - path: arquitectura-del-sistema
+    title: Arquitectura del Sistema
+    breadcrumbs:
+    - Arquitectura del Sistema
+    about:
+    - Arquitectura del Sistema
+    - arquitectura del sistema
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: arquitectura-del-sistema
+    level: 1
+    line_start: 1
+    line_end: 2
+  - path: arquitectura-del-sistema/el-motor-conversacional-s-ncrono-runtime
+    title: "El Motor Conversacional S\xEDncrono (Runtime)"
+    breadcrumbs:
+    - Arquitectura del Sistema
+    - "El Motor Conversacional S\xEDncrono (Runtime)"
+    about:
+    - Arquitectura del Sistema
+    - arquitectura del sistema
+    - "El Motor Conversacional S\xEDncrono (Runtime)"
+    - el motor conversacional s ncrono runtime
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: el-motor-conversacional-s-ncrono-runtime
+    level: 2
+    line_start: 7
+    line_end: 8
+  - path: arquitectura-del-sistema/procesos-offline-y-as-ncronos
+    title: "Procesos Offline y As\xEDncronos"
+    breadcrumbs:
+    - Arquitectura del Sistema
+    - "Procesos Offline y As\xEDncronos"
+    about:
+    - Arquitectura del Sistema
+    - arquitectura del sistema
+    - "Procesos Offline y As\xEDncronos"
+    - procesos offline y as ncronos
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: procesos-offline-y-as-ncronos
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: arquitectura-del-sistema/capas-de-datos-y-conocimiento
+    title: Capas de Datos y Conocimiento
+    breadcrumbs:
+    - Arquitectura del Sistema
+    - Capas de Datos y Conocimiento
+    about:
+    - Arquitectura del Sistema
+    - arquitectura del sistema
+    - Capas de Datos y Conocimiento
+    - capas de datos y conocimiento
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: capas-de-datos-y-conocimiento
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: arquitectura-del-sistema/frontends
+    title: Frontends
+    breadcrumbs:
+    - Arquitectura del Sistema
+    - Frontends
+    about:
+    - Arquitectura del Sistema
+    - arquitectura del sistema
+    - Frontends
+    - frontends
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: frontends
+    level: 2
+    line_start: 31
+    line_end: 32
+- doc_name: bundle-glosario
+  sections:
+  - path: glosario-de-conceptos
+    title: Glosario de Conceptos
+    breadcrumbs:
+    - Glosario de Conceptos
+    about:
+    - Glosario de Conceptos
+    - glosario de conceptos
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: glosario-de-conceptos
+    level: 1
+    line_start: 1
+    line_end: 2
+- doc_name: bundle-operaciones
+  sections:
+  - path: operaciones-testing-y-gobernanza
+    title: Operaciones, Testing y Gobernanza
+    breadcrumbs:
+    - Operaciones, Testing y Gobernanza
+    about:
+    - Operaciones, Testing y Gobernanza
+    - operaciones testing y gobernanza
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: operaciones-testing-y-gobernanza
+    level: 1
+    line_start: 1
+    line_end: 2
+  - path: operaciones-testing-y-gobernanza/testing-y-verificaci-n
+    title: "Testing y verificaci\xF3n"
+    breadcrumbs:
+    - Operaciones, Testing y Gobernanza
+    - "Testing y verificaci\xF3n"
+    about:
+    - Operaciones, Testing y Gobernanza
+    - operaciones testing y gobernanza
+    - "Testing y verificaci\xF3n"
+    - testing y verificaci n
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: testing-y-verificaci-n
+    level: 2
+    line_start: 3
+    line_end: 4
+  - path: operaciones-testing-y-gobernanza/ramas-y-releases
+    title: Ramas y releases
+    breadcrumbs:
+    - Operaciones, Testing y Gobernanza
+    - Ramas y releases
+    about:
+    - Operaciones, Testing y Gobernanza
+    - operaciones testing y gobernanza
+    - Ramas y releases
+    - ramas y releases
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: ramas-y-releases
+    level: 2
+    line_start: 7
+    line_end: 8
+  - path: operaciones-testing-y-gobernanza/configuraci-n-y-despliegue
+    title: "Configuraci\xF3n y despliegue"
+    breadcrumbs:
+    - Operaciones, Testing y Gobernanza
+    - "Configuraci\xF3n y despliegue"
+    about:
+    - Operaciones, Testing y Gobernanza
+    - operaciones testing y gobernanza
+    - "Configuraci\xF3n y despliegue"
+    - configuraci n y despliegue
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: configuraci-n-y-despliegue
+    level: 2
+    line_start: 10
+    line_end: 11
+  - path: operaciones-testing-y-gobernanza/gobernanza
+    title: Gobernanza
+    breadcrumbs:
+    - Operaciones, Testing y Gobernanza
+    - Gobernanza
+    about:
+    - Operaciones, Testing y Gobernanza
+    - operaciones testing y gobernanza
+    - Gobernanza
+    - gobernanza
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: gobernanza
+    level: 2
+    line_start: 17
+    line_end: 18

@@ -18,7 +18,7 @@ from sldb.store.io import load_store_index
 from sldb.store.layout import project_root as sldb_project_root
 from sldb.store.ops import track_document
 
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.reflector.reader import ReflectorHistoryRow
 
 PATTERN_MIN_COUNT = 5

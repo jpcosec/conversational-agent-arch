@@ -6,6 +6,8 @@ llamadas para que los tests afirmen sobre lo que el runtime le pidio al LLM.
 """
 from __future__ import annotations
 
+import hashlib
+import random
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -69,6 +71,7 @@ class FakeGate:
         tool_name: str | None = None,
         step: str | None = None,
         session_tools_called: Sequence[str] = (),
+        declared_facts: Sequence[Mapping[str, Any]] = (),
     ) -> dict[str, Any]:
         self.calls.append(
             {
@@ -77,6 +80,7 @@ class FakeGate:
                 "tool_name": tool_name,
                 "step": step,
                 "session_tools_called": list(session_tools_called),
+                "declared_facts": list(declared_facts),
             }
         )
         if self._raises:
@@ -241,10 +245,10 @@ VEGETARIAN_MATCH = {"vegetarian": [{"trait_id": "trait-vegetariano", "confidence
 class FakeEmbedder:
     """Doble barato de ``fastembed.TextEmbedding`` para tests offline.
 
-    El compilador (``ContextCompiler._semantic_candidates``, tarea 1.3) pide
-    el embedder de ``knowledge_ops`` (``knowledge_ops._embedder()``) para
-    embeder la pregunta de cada turno cuando hay ``knowledge_ops`` inyectado
-    -- y ``Orchestrator.__init__`` SIEMPRE crea una instancia real de
+    El compilador (``ContextCompiler._semantic_candidates``) y el perfilador
+    (``TraitExtractor._rank_candidates``) piden el embedder de
+    ``knowledge_ops`` (``knowledge_ops._embedder()``) para embeder texto por
+    turno -- y ``Orchestrator.__init__`` SIEMPRE crea una instancia real de
     ``KnowledgeOperations``. Cargar el embedder real (jina-embeddings-v2)
     puede tomar bastante en frio (ver ``KnowledgeOperations._embedder``), y
     cada test que arma un ``Orchestrator`` via ``offline_orchestrator`` crea
@@ -253,16 +257,24 @@ class FakeEmbedder:
     mecanismo de cacheo por instancia que usa el codigo real, ver su
     docstring).
 
-    Vector fijo (no todo-ceros, para que la similitud coseno no divida por
-    cero) del mismo largo que ``jina-embeddings-v2-base-es`` (768).
-    Determinista: no importa el ranking exacto en estos tests, ninguno
-    afirma sobre el contenido del bundle/domain_facts vía similitud real.
+    Determinista y DISCRIMINANTE por contenido: deriva un vector pseudo-
+    aleatorio estable del texto (hash -> semilla). Textos distintos dan
+    vectores distintos y no colineales, asi que la similitud coseno separa
+    de verdad (un doble que devuelve el MISMO vector para todo colapsa el
+    ranking y esconde bugs). Mismo largo que ``jina-embeddings-v2-base-es``
+    (768), norma no nula.
     """
 
     _DIM = 768
 
+    @classmethod
+    def _vector(cls, text: str) -> list[float]:
+        seed = int(hashlib.sha256(text.encode("utf-8")).hexdigest(), 16) & 0xFFFFFFFF
+        rng = random.Random(seed)
+        return [rng.uniform(-1.0, 1.0) for _ in range(cls._DIM)]
+
     def embed(self, texts: Any) -> list[list[float]]:
-        return [[0.01] * self._DIM for _ in texts]
+        return [self._vector(str(t)) for t in texts]
 
 
 def offline_orchestrator(

@@ -48,11 +48,18 @@ class ChatHistory(Base):
     __table_args__ = (
         Index("ix_chat_history_user_id_created_at", "user_id", "created_at"),
         Index("ix_chat_history_user_id_session_id", "user_id", "session_id"),
+        Index("ix_chat_history_conversation_id_created_at", "conversation_id", "created_at"),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
     session_id: Mapped[str | None] = mapped_column(String, nullable=True)
+    #: Conversacion a la que pertenece el mensaje. El historial que va al
+    #: prompt se filtra por esta FK -> no cruza el limite de la conversacion.
+    #: Nullable por compatibilidad con filas viejas (pre-migracion).
+    conversation_id: Mapped[int | None] = mapped_column(
+        ForeignKey("conversations.id"), nullable=True
+    )
     role: Mapped[str] = mapped_column(
         SqlEnum("user", "assistant", "system", name="chat_history_role", native_enum=False, validate_strings=True),
         nullable=False,

@@ -3,21 +3,33 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from textwrap import dedent
-from typing import Any, Protocol
+from typing import TYPE_CHECKING, Any, Protocol
 
 from sqlalchemy.orm import Session
 
-from kb_agent.models_sql.identity import UserTraits
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.sldb_reader import SLDBReader
+from kb_agent.perfilador.traits_store import SOURCE_PROFILER, upsert_user_trait
+
+if TYPE_CHECKING:
+    from knowledge_base.operations import KnowledgeOperations
 
 TRAIT_MIN_CONFIDENCE = 0.7
-PROFILER_SOURCE = "perfilador"
+#: Reexport por compatibilidad; la fuente canonica vive en ``traits_store``.
+PROFILER_SOURCE = SOURCE_PROFILER
+
+#: Top-k de traits candidatos que se pasan al LLM tras el pre-filtro semantico.
+#: Con la KB creciendo, evita inflar el prompt de extraccion cada turno.
+DEFAULT_TRAIT_TOPK = 10
+#: Piso de ruido de embedding (mismo default que KnowledgeOperations). No es un
+#: corte de relevancia, solo descarta similitud puramente ruidosa.
+DEFAULT_TRAIT_NOISE_FLOOR = 0.05
 
 
 @dataclass(frozen=True, slots=True)
 class TraitCandidate:
     id: str
     body: str
+    embedding: tuple[float, ...] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -42,6 +54,12 @@ class TraitExtractor:
     reader: SLDBReader
     identity_session: Session
     llm_mapper: StructuredTraitMapper
+    #: Instancia unica de KnowledgeOperations del proceso (embedder cacheado).
+    #: Si es None (tests unitarios, o KB sin embeddings) el ranking cae al
+    #: comportamiento previo: pasar TODOS los candidatos.
+    knowledge_ops: "KnowledgeOperations | None" = None
+    top_k: int = DEFAULT_TRAIT_TOPK
+    noise_floor: float = DEFAULT_TRAIT_NOISE_FLOOR
 
     def extract(self, *, user_id: int | None, turn_text: str) -> list[TraitMatch]:
         if user_id is None:
@@ -54,6 +72,8 @@ class TraitExtractor:
         candidates = self._load_candidates()
         if not candidates:
             return []
+
+        candidates = self._rank_candidates(cleaned_turn, candidates)
 
         raw_matches = self.llm_mapper.extract_traits(
             turn_text=cleaned_turn,
@@ -71,36 +91,86 @@ class TraitExtractor:
         return matches
 
     def _load_candidates(self) -> list[TraitCandidate]:
-        """Carga los trait atoms desde SLDB (dict o objeto)."""
+        """Carga los trait atoms desde SLDB (dict o objeto), con su embedding."""
         traits = self.reader.fetch("trait")
         result = []
         for t in traits:
             if isinstance(t, dict):
                 # TraitAtom tipado usa ``description``; fallback a ``answer``.
                 body = t.get("description") or t.get("answer", "")
-                result.append(TraitCandidate(id=t["id"], body=body))
+                emb = t.get("embedding")
+                result.append(
+                    TraitCandidate(
+                        id=t["id"],
+                        body=body,
+                        embedding=tuple(float(v) for v in emb) if emb else None,
+                    )
+                )
             else:
-                result.append(TraitCandidate(id=t.id, body=getattr(t, "body", "")))
+                emb = getattr(t, "embedding", None)
+                result.append(
+                    TraitCandidate(
+                        id=t.id,
+                        body=getattr(t, "body", ""),
+                        embedding=tuple(float(v) for v in emb) if emb else None,
+                    )
+                )
         return result
 
-    def _upsert_trait(self, *, user_id: int, match: TraitMatch) -> None:
-        persisted = self.identity_session.get(
-            UserTraits,
-            {"user_id": user_id, "trait_id": match.trait_id},
-        )
-        if persisted is None:
-            self.identity_session.add(
-                UserTraits(
-                    user_id=user_id,
-                    trait_id=match.trait_id,
-                    confidence=match.confidence,
-                    source=PROFILER_SOURCE,
-                )
-            )
-            return
+    def _rank_candidates(
+        self, turn_text: str, candidates: list[TraitCandidate]
+    ) -> list[TraitCandidate]:
+        """Pre-filtra los candidatos por similitud coseno turno-vs-trait y deja
+        top-k, en vez de mandar TODOS los traits al LLM cada turno.
 
-        persisted.confidence = max(persisted.confidence, match.confidence)
-        persisted.source = PROFILER_SOURCE
+        Reusa el embedder cacheado del proceso (``knowledge_ops._embedder``) y
+        el coseno de ``KnowledgeOperations`` -- mismo patron que
+        ``ContextCompiler._semantic_candidates``. Fail-open: sin knowledge_ops,
+        sin traits con embedding, o si el embedder falla, devuelve TODOS los
+        candidatos (comportamiento previo). Los traits sin embedding nunca se
+        pierden: se anexan siempre fuera del ranking.
+        """
+        # Si el catalogo ya cabe en el top-k, no tiene sentido rankear: se
+        # pasan todos (evita descartar traits por un embedder degenerado y
+        # ahorra el embed de la query cuando hay pocos candidatos).
+        if self.knowledge_ops is None or len(candidates) <= self.top_k:
+            return candidates
+
+        embeddable = [c for c in candidates if c.embedding]
+        non_embeddable = [c for c in candidates if not c.embedding]
+        if not embeddable:
+            return candidates
+
+        try:
+            from knowledge_base.operations import KnowledgeOperations
+
+            embedder = self.knowledge_ops._embedder()
+            query_vec = [float(v) for v in list(embedder.embed([turn_text]))[0]]
+        except Exception:
+            return candidates
+
+        scored: list[tuple[float, TraitCandidate]] = []
+        for cand in embeddable:
+            score = KnowledgeOperations._cosine_sim(
+                query_vec, [float(v) for v in cand.embedding]
+            )
+            if score < self.noise_floor:
+                continue
+            scored.append((score, cand))
+
+        scored.sort(key=lambda pair: pair[0], reverse=True)
+        top = [cand for _, cand in scored[: self.top_k]]
+        # Traits sin embedding se incluyen SIEMPRE (no compiten por similitud).
+        return top + non_embeddable
+
+    def _upsert_trait(self, *, user_id: int, match: TraitMatch) -> None:
+        upsert_user_trait(
+            self.identity_session,
+            user_id=user_id,
+            trait_id=match.trait_id,
+            confidence=match.confidence,
+            source=SOURCE_PROFILER,
+        )
 
 
 def build_trait_mapping_instructions(turn_text: str, candidates: Sequence[TraitCandidate]) -> str:
