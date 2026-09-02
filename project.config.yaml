@@ -24,6 +24,13 @@ project:
   test_kb_root: tests/knowledge     # KB de prueba del repo (Don Peppe, atoms tipados)
 
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
+
+  # Clave canónica de identidad de persona (kb_agent/orchestrator.py::ensure_user).
+  #   external_id -> cada par canal:id es un usuario distinto.
+  #   phone       -> el mismo teléfono por WhatsApp y SMS es la MISMA persona;
+  #                  el external_id nuevo queda como alias del usuario existente.
+  # Antonia: pacientes que pueden escribir por WhatsApp o SMS => phone.
+  identity_key: phone
   profiling_db: runs/ui-chat.sqlite # SQLite que lee el visualizador de perfiles
 
   # Modelo LLM (Conversador + Perfilador)

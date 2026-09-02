@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Request, Response
 from starlette.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
@@ -42,6 +42,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 from kb_agent.models_sql.identity import Users, UserTraits
 from kb_agent.models_sql.session import ChatHistory
 from kb_agent.models_sql.turns import Turns
+from kb_agent.inbound import InboundService, twilio_rest_sender
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import ProjectConfig, load_project_config
 from frontends.chat.demo_data import (
@@ -257,8 +258,16 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         # colisiona entre requests concurrentes (ya no hay contador compartido).
         return ChatResponse(session_id=session_id, turn=to_ui_turn(raw["turn_id"], raw))
 
+    def _twilio_reply_mode() -> str:
+        """``async`` (default si hay TWILIO_ACCOUNT_SID para mandar por REST) o
+        ``sync`` (TwiML en linea). Override explicito: TWILIO_REPLY_MODE."""
+        mode = (os.environ.get("TWILIO_REPLY_MODE") or "").strip().lower()
+        if mode in {"sync", "async"}:
+            return mode
+        return "async" if os.environ.get("TWILIO_ACCOUNT_SID") else "sync"
+
     @app.post("/webhooks/twilio")
-    async def twilio_inbound(request: Request) -> Response:
+    async def twilio_inbound(request: Request, background: BackgroundTasks) -> Response:
         token = os.environ.get("TWILIO_AUTH_TOKEN")
         if not token:
             raise HTTPException(status_code=503, detail="twilio not configured (TWILIO_AUTH_TOKEN)")
@@ -267,13 +276,29 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         if not RequestValidator(token).validate(str(request.url), form, signature):
             raise HTTPException(status_code=403, detail="invalid twilio signature")
 
-        result = await run_in_threadpool(
-            _orch().handle_turn,
-            external_id=form.get("From", ""),
-            message=(form.get("Body", "") or "").strip(),
-        )
+        # InboundService: normaliza el remitente (SMS pelado -> sms:+56...),
+        # persiste el mensaje como InboundMessage (source del turno, con el
+        # MessageSid del proveedor), resuelve el usuario y corre el turno. Un
+        # reintento de Twilio con el mismo MessageSid no corre un segundo
+        # turno: devuelve la respuesta guardada, o <Response/> vacio si el
+        # original sigue corriendo.
         twiml = MessagingResponse()
-        twiml.message(result.get("reply_text") or result.get("reply") or "")
+        if _twilio_reply_mode() == "async":
+            # Twilio corta el webhook a los 15 s y un turno con LLM tarda mas:
+            # se responde vacio al instante y la respuesta sale por REST
+            # cuando el turno termina (InboundService.run_turn_and_send).
+            sender = getattr(app.state, "twilio_sender", None) or twilio_rest_sender(
+                os.environ["TWILIO_ACCOUNT_SID"], token
+            )
+            svc = InboundService(_orch(), sender=sender)
+            row = await run_in_threadpool(svc.record, form)
+            if row is not None:
+                background.add_task(svc.run_turn_and_send, row)
+            return Response(str(twiml), media_type="application/xml")
+
+        result = await run_in_threadpool(InboundService(_orch()).receive, form)
+        if result.reply_text:
+            twiml.message(result.reply_text)
         return Response(str(twiml), media_type="application/xml")
 
     @app.get("/api/atom/{atom_id}")

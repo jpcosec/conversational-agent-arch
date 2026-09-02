@@ -74,6 +74,7 @@ variable de entorno.
 | LLM | `model` | `GEMINI_MODEL` |
 | Fallback | `fallback_message` | — |
 | Tools | `tools:` (nombre → `modulo:funcion`) | — |
+| `identity_key` | `external_id` \| `phone` — clave de persona: con `phone` el mismo teléfono por WhatsApp y SMS es un solo `Users` | — |
 | `server` | `host`, `port` | `HOST`, `PORT` |
 | `ui` | `runtime_title`, `kb_label`, `greeting`, `input_placeholder` | — |
 | `tuning` | `max_bundle_size`, `history_limit`, `router_max_results`, `tool_timeout_ms` | `MAX_BUNDLE_SIZE`, `HISTORY_LIMIT`, `ROUTER_MAX_RESULTS`, `TOOL_TIMEOUT_MS` |
