@@ -247,13 +247,17 @@ import os, sys, requests
 from twilio.request_validator import RequestValidator
 
 url = f"http://{sys.argv[1]}:{sys.argv[2]}/webhooks/twilio"
+import uuid
 to = os.environ.get("TWILIO_WHATSAPP_FROM") or os.environ.get("TWILIO_SMS_FROM") or ""
 sender = "whatsapp:+56900000000" if to.startswith("whatsapp:") else "+56900000000"
-form = {"From": sender, "To": to, "Body": "hola"}
+# Sin "To": en modo async el turno corre en background pero NO se intenta
+# mandar nada por REST a un numero falso. MessageSid unico: idempotencia.
+form = {"From": sender, "Body": "hola", "MessageSid": f"SMsmoke{uuid.uuid4().hex[:12]}"}
 sig = RequestValidator(os.environ["TWILIO_AUTH_TOKEN"]).compute_signature(url, form)
 r = requests.post(url, data=form, headers={"X-Twilio-Signature": sig}, timeout=180)
-ok = r.status_code == 200 and "<Response>" in r.text
-print(f"[twilio-local] smoke firmado local: {r.status_code} {'OK' if ok else 'FALLO'}")
+ok = r.status_code == 200 and "<Response" in r.text
+mode = "sync (TwiML con texto)" if "<Message>" in r.text else "async (<Response/> vacio, turno en background)"
+print(f"[twilio-local] smoke firmado local: {r.status_code} {'OK' if ok else 'FALLO'} - modo {mode}")
 if not ok:
     print(r.content.decode("utf-8", "replace")[:400])
     sys.exit(1)

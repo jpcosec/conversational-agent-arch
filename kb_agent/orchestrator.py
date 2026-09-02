@@ -13,6 +13,8 @@ explicita en el constructor (tests, otros canales).
 """
 from __future__ import annotations
 
+import re
+
 import asyncio
 import json
 import logging
@@ -55,6 +57,24 @@ logger = logging.getLogger(__name__)
 
 #: Canal cuando el external_id no trae prefijo reconocible ("<canal>:<id>").
 UNKNOWN_CHANNEL = "unknown"
+
+
+#: Telefono E.164: opcional ``+`` y 7 a 15 digitos, tras quitar separadores.
+_PHONE_RE = re.compile(r"^\+?\d{7,15}$")
+
+
+def canonical_phone(raw: str) -> str | None:
+    """Telefono canonico (``+`` + digitos) de un id de canal telefonico.
+
+    ``+56 9 1234-5678`` -> ``+56912345678``. Devuelve None si el id NO parece
+    un telefono (``devsession-1``, ``abc``): antes se extraian los digitos que
+    hubiera y ``ui:devsession-1`` daba ``+1``, con lo que dos sesiones de UI
+    distintas terminadas en 1 se unificaban como la misma persona.
+    """
+    compact = re.sub(r"[\s\-().]", "", raw or "")
+    if not _PHONE_RE.match(compact):
+        return None
+    return "+" + compact.lstrip("+")
 
 
 def channel_from_external_id(external_id: str) -> str:
@@ -186,8 +206,7 @@ class Orchestrator:
         _, sep, raw = external_id.partition(":")
         if not sep:
             return None
-        digits = "".join(ch for ch in raw if ch.isdigit())
-        return ("+" + digits) if digits else None
+        return canonical_phone(raw)
 
     def ensure_user(self, session: Session, external_id: str, channel: str | None = None) -> Users:
         user = session.query(Users).filter_by(external_id=external_id).one_or_none()
