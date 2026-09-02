@@ -40,9 +40,11 @@ load_env() {
     # shellcheck disable=SC1091
     source .env
     set +a
-    for v in TWILIO_ACCOUNT_SID TWILIO_AUTH_TOKEN TWILIO_SMS_FROM; do
+    for v in TWILIO_ACCOUNT_SID TWILIO_AUTH_TOKEN; do
         [ -n "${!v:-}" ] || die "falta $v en .env"
     done
+    [ -n "${TWILIO_SMS_FROM:-}${TWILIO_WHATSAPP_FROM:-}" ] \
+        || die "falta TWILIO_SMS_FROM y/o TWILIO_WHATSAPP_FROM en .env"
 }
 
 port_in_use() { ss -ltn 2>/dev/null | grep -q ":$PORT "; }
@@ -122,42 +124,63 @@ import json, os, sys
 from twilio.rest import Client
 
 webhook, prev_path = sys.argv[1], sys.argv[2]
-number = os.environ["TWILIO_SMS_FROM"]
+sms_from = os.environ.get("TWILIO_SMS_FROM") or ""
+wa_from = os.environ.get("TWILIO_WHATSAPP_FROM") or ""
+if sms_from and not wa_from:
+    wa_from = f"whatsapp:{sms_from}"
 c = Client(os.environ["TWILIO_ACCOUNT_SID"], os.environ["TWILIO_AUTH_TOKEN"])
 # Se guarda el estado previo solo la PRIMERA vez: un segundo `up` sin `down`
 # no debe pisar el webhook original con la URL de un tunel viejo.
 prev = json.load(open(prev_path)) if os.path.exists(prev_path) else None
 state = prev or {}
+manual = []  # canales que hay que apuntar a mano en la consola
 
-# SMS: webhook del numero.
-nums = c.incoming_phone_numbers.list(phone_number=number)
-if not nums:
-    sys.exit(f"el numero {number} no esta en la cuenta")
-n = nums[0]
-if prev is None:
-    state["sms"] = {"sid": n.sid, "sms_url": n.sms_url, "sms_method": n.sms_method}
-n.update(sms_url=webhook, sms_method="POST")
-print(f"[twilio-local] SMS      {n.phone_number} sms_url -> {webhook}")
+# SMS: webhook del numero (IncomingPhoneNumber.sms_url).
+if sms_from:
+    nums = c.incoming_phone_numbers.list(phone_number=sms_from)
+    if nums:
+        n = nums[0]
+        if prev is None:
+            state["sms"] = {"sid": n.sid, "sms_url": n.sms_url, "sms_method": n.sms_method}
+        n.update(sms_url=webhook, sms_method="POST")
+        print(f"[twilio-local] SMS      {n.phone_number} sms_url -> {webhook}")
+    else:
+        print(f"[twilio-local] SMS      {sms_from} no esta en esta cuenta; no toco nada")
 
-# WhatsApp: el webhook vive en el sender, no en el numero.
-wa = [s for s in c.messaging.v2.channels_senders.list(channel="whatsapp")
-      if s.sender_id == f"whatsapp:{number}"]
-if wa:
-    s = wa[0]
-    if prev is None:
-        state["whatsapp"] = {"sid": s.sid, "webhook": s.webhook}
-    c.request(
-        "POST", f"https://messaging.twilio.com/v2/Channels/Senders/{s.sid}",
-        data=json.dumps({"webhook": {"callback_url": webhook, "callback_method": "POST"}}),
-        headers={"Content-Type": "application/json"},
-    )
-    print(f"[twilio-local] WhatsApp {s.sender_id} ({s.status}) webhook -> {webhook}")
-else:
-    print(f"[twilio-local] WhatsApp whatsapp:{number} NO esta registrado como sender en esta cuenta "
-          "(Console > Messaging > Senders > WhatsApp senders). Queda solo SMS.")
+# WhatsApp: el webhook vive en el sender (Messaging v2), no en el numero. En
+# cuentas Trial la API de senders responde 401 y el webhook se pone en la
+# consola (Messaging > Try it out > Send a WhatsApp message > Sandbox settings).
+if wa_from:
+    try:
+        wa = [s for s in c.messaging.v2.channels_senders.list(channel="whatsapp")
+              if s.sender_id == wa_from]
+    except Exception as e:  # 401 en Trial, o feature no habilitada
+        wa = None
+        print(f"[twilio-local] WhatsApp API de senders no disponible ({type(e).__name__}); "
+              f"probable cuenta Trial")
+    if wa:
+        s = wa[0]
+        if prev is None:
+            state["whatsapp"] = {"sid": s.sid, "webhook": s.webhook}
+        c.request(
+            "POST", f"https://messaging.twilio.com/v2/Channels/Senders/{s.sid}",
+            data=json.dumps({"webhook": {"callback_url": webhook, "callback_method": "POST"}}),
+            headers={"Content-Type": "application/json"},
+        )
+        print(f"[twilio-local] WhatsApp {s.sender_id} ({s.status}) webhook -> {webhook}")
+    elif wa is not None:
+        print(f"[twilio-local] WhatsApp {wa_from} no esta registrado como sender en esta cuenta "
+              "(Console > Messaging > Senders > WhatsApp senders)")
+        manual.append(wa_from)
+    else:
+        manual.append(wa_from)
 
 if prev is None:
     json.dump(state, open(prev_path, "w"))
+if manual:
+    print()
+    print(f"[twilio-local] A MANO en la consola de Twilio (cuenta {os.environ['TWILIO_ACCOUNT_SID'][:10]}...):")
+    print(f"               {', '.join(manual)}  ->  'When a message comes in' = {webhook}  [POST]")
 PYEOF
 }
 
@@ -190,19 +213,30 @@ twilio_show_number() {
 import os
 from twilio.rest import Client
 
-number = os.environ["TWILIO_SMS_FROM"]
+sms_from = os.environ.get("TWILIO_SMS_FROM") or ""
+wa_from = os.environ.get("TWILIO_WHATSAPP_FROM") or (f"whatsapp:{sms_from}" if sms_from else "")
 c = Client(os.environ["TWILIO_ACCOUNT_SID"], os.environ["TWILIO_AUTH_TOKEN"])
 a = c.api.accounts(os.environ["TWILIO_ACCOUNT_SID"]).fetch()
-print(f"  cuenta   : {a.friendly_name} ({a.status})")
-for n in c.incoming_phone_numbers.list(phone_number=number):
-    print(f"  SMS      : {n.phone_number}  sms_url={n.sms_url} [{n.sms_method}]")
-wa = [s for s in c.messaging.v2.channels_senders.list(channel="whatsapp")
-      if s.sender_id == f"whatsapp:{number}"]
-if wa:
-    w = wa[0].webhook or {}
-    print(f"  WhatsApp : {wa[0].sender_id} ({wa[0].status})  callback_url={w.get('callback_url')}")
-else:
-    print(f"  WhatsApp : whatsapp:{number} no registrado como sender en esta cuenta")
+print(f"  cuenta   : {a.friendly_name} ({a.status}, {a.type})")
+if sms_from:
+    for n in c.incoming_phone_numbers.list(phone_number=sms_from):
+        print(f"  SMS      : {n.phone_number}  sms_url={n.sms_url} [{n.sms_method}]")
+if wa_from:
+    try:
+        wa = [s for s in c.messaging.v2.channels_senders.list(channel="whatsapp") if s.sender_id == wa_from]
+    except Exception:
+        wa = None
+    if wa:
+        w = wa[0].webhook or {}
+        print(f"  WhatsApp : {wa[0].sender_id} ({wa[0].status})  callback_url={w.get('callback_url')}")
+    elif wa is None:
+        print(f"  WhatsApp : {wa_from}  (Trial: webhook solo visible/editable en la consola)")
+    else:
+        print(f"  WhatsApp : {wa_from} no registrado como sender en esta cuenta")
+print("  ultimos mensajes:")
+for m in c.messages.list(limit=5):
+    print(f"    {m.date_created:%Y-%m-%d %H:%M} {m.direction:13} {m.from_} -> {m.to}  {m.status}"
+          f"{'  err=' + str(m.error_code) if m.error_code else ''}")
 PYEOF
 }
 
@@ -213,7 +247,9 @@ import os, sys, requests
 from twilio.request_validator import RequestValidator
 
 url = f"http://{sys.argv[1]}:{sys.argv[2]}/webhooks/twilio"
-form = {"From": "+56900000000", "To": os.environ["TWILIO_SMS_FROM"], "Body": "hola"}
+to = os.environ.get("TWILIO_WHATSAPP_FROM") or os.environ.get("TWILIO_SMS_FROM") or ""
+sender = "whatsapp:+56900000000" if to.startswith("whatsapp:") else "+56900000000"
+form = {"From": sender, "To": to, "Body": "hola"}
 sig = RequestValidator(os.environ["TWILIO_AUTH_TOKEN"]).compute_signature(url, form)
 r = requests.post(url, data=form, headers={"X-Twilio-Signature": sig}, timeout=180)
 ok = r.status_code == 200 and "<Response>" in r.text
@@ -234,7 +270,8 @@ cmd_up() {
     twilio_point_number "$url/webhooks/twilio"
     cat <<MSG
 
-  Listo. Manda un SMS (o WhatsApp, si el sender existe) a $TWILIO_SMS_FROM.
+  Webhook publico: $url/webhooks/twilio
+  Manda un SMS a ${TWILIO_SMS_FROM:-"(sin numero SMS)"} o un WhatsApp a ${TWILIO_WHATSAPP_FROM:-"(sin sender WhatsApp)"}.
   Deberias ver "POST /webhooks/twilio 200" en:  tail -f $LOG_DIR/ui.log
   Inspector de ngrok:                          http://127.0.0.1:4040
   Para bajar todo y restaurar los webhooks:    $0 down
