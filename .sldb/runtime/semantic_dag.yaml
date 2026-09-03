@@ -10,6 +10,9 @@ nodes:
 - id: type.documentation
   parents:
   - type
+- id: type.documentation.composition
+  parents:
+  - type.documentation
 - id: type.documentation.faq
   parents:
   - type.documentation
@@ -61,6 +64,9 @@ nodes:
   parents:
   - workspace.desk
 - id: workspace.desk.inbox
+  parents:
+  - workspace.desk
+- id: workspace.desk.materializations
   parents:
   - workspace.desk
 - id: workspace.desk.primitives

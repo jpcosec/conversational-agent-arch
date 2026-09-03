@@ -44,51 +44,6 @@ documents:
     level: 2
     line_start: 13
     line_end: 14
-- doc_name: atom-ontologizador-context-compiler
-  sections:
-  - path: ontologizador-context-compiler
-    title: Ontologizador (Context Compiler)
-    breadcrumbs:
-    - Ontologizador (Context Compiler)
-    about:
-    - Ontologizador (Context Compiler)
-    - ontologizador context compiler
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: ontologizador-context-compiler
-    level: 1
-    line_start: 11
-    line_end: 12
-  - path: ontologizador-context-compiler/answer
-    title: Answer
-    breadcrumbs:
-    - Ontologizador (Context Compiler)
-    - Answer
-    about:
-    - Ontologizador (Context Compiler)
-    - ontologizador context compiler
-    - Answer
-    - answer
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 13
-    line_end: 14
 - doc_name: atom-perfilador-asincrono
   sections:
   - path: perfilador-asincrono
@@ -1867,3 +1822,309 @@ documents:
     level: 2
     line_start: 13
     line_end: 14
+- doc_name: atom-context-compiler-knowledge
+  sections:
+  - path: context-compiler-knowledge
+    title: Context Compiler (knowledge)
+    breadcrumbs:
+    - Context Compiler (knowledge)
+    about:
+    - Context Compiler (knowledge)
+    - context compiler knowledge
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: context-compiler-knowledge
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: context-compiler-knowledge/answer
+    title: Answer
+    breadcrumbs:
+    - Context Compiler (knowledge)
+    - Answer
+    about:
+    - Context Compiler (knowledge)
+    - context compiler knowledge
+    - Answer
+    - answer
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-mensajes-entrantes-inboundservice-e-inbound-messages
+  sections:
+  - path: mensajes-entrantes-inboundservice-e-inbound-messages
+    title: 'Mensajes entrantes: InboundService e inbound_messages'
+    breadcrumbs:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    about:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    - mensajes entrantes inboundservice e inbound messages
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: mensajes-entrantes-inboundservice-e-inbound-messages
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: mensajes-entrantes-inboundservice-e-inbound-messages/answer
+    title: Answer
+    breadcrumbs:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    - Answer
+    about:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    - mensajes entrantes inboundservice e inbound messages
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
+  sections:
+  - path: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+    title: "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    breadcrumbs:
+    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    about:
+    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    - por qu la respuesta a twilio sale por rest y no en el twiml
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml/answer
+    title: Answer
+    breadcrumbs:
+    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    - Answer
+    about:
+    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    - por qu la respuesta a twilio sale por rest y no en el twiml
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+  sections:
+  - path: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
+    title: "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    breadcrumbs:
+    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    about:
+    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    - c mo se resuelve canal y persona desde el remitente de twilio
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio/answer
+    title: Answer
+    breadcrumbs:
+    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    - Answer
+    about:
+    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    - c mo se resuelve canal y persona desde el remitente de twilio
+    - Answer
+    - answer
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: "atom-c\xF3mo-conectar-twilio-al-runtime-local"
+  sections:
+  - path: c-mo-conectar-twilio-al-runtime-local
+    title: "C\xF3mo conectar Twilio al runtime local"
+    breadcrumbs:
+    - "C\xF3mo conectar Twilio al runtime local"
+    about:
+    - "C\xF3mo conectar Twilio al runtime local"
+    - c mo conectar twilio al runtime local
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: c-mo-conectar-twilio-al-runtime-local
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: c-mo-conectar-twilio-al-runtime-local/answer
+    title: Answer
+    breadcrumbs:
+    - "C\xF3mo conectar Twilio al runtime local"
+    - Answer
+    about:
+    - "C\xF3mo conectar Twilio al runtime local"
+    - c mo conectar twilio al runtime local
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
+  sections:
+  - path: qu-no-hacer-con-credenciales-y-firma-de-twilio
+    title: "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    breadcrumbs:
+    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    about:
+    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    - qu no hacer con credenciales y firma de twilio
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: qu-no-hacer-con-credenciales-y-firma-de-twilio
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: qu-no-hacer-con-credenciales-y-firma-de-twilio/answer
+    title: Answer
+    breadcrumbs:
+    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    - Answer
+    about:
+    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    - qu no hacer con credenciales y firma de twilio
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
