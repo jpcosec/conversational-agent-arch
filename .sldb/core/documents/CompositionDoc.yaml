@@ -1,0 +1,41 @@
+documents:
+- name: composition-readme
+  path: desk/materializations/composition-readme.md
+  hash_c: 7ba3e8e361e5cfe9e140d99174d599b1d5d91ccf053115ad6f75fafc9c7636b1
+  hash_d: deccc927d612ade60d087085fc443046e3835f32351eef4c9cbcad6d464f2418
+  semantic_tags:
+  - target:readme
+  - type.documentation.composition
+  - type:composition
+  - workspace.desk.materializations
+  - workspace:docs
+- name: composition-architecture
+  path: desk/materializations/composition-architecture.md
+  hash_c: 56d0b6a2bcbae63f3b39027b7e85f11664e1c7f8c06e764c558758a1172a87ce
+  hash_d: 902887ef599295a916dc925393ccb8fb6f55174713e9a68395302661dcdcbad9
+  semantic_tags:
+  - target:architecture
+  - type.documentation.composition
+  - type:composition
+  - workspace.desk.materializations
+  - workspace:docs
+- name: composition-glossary
+  path: desk/materializations/composition-glossary.md
+  hash_c: 7a1eed4e52f3ea605fdc819dc64f691cb285e906a3cf5ba75878e52848d8e49c
+  hash_d: 15350168ed760b27f992e3ce25e5cd8a27bd65fc0bf08735fb8f9114e5151a54
+  semantic_tags:
+  - target:glossary
+  - type.documentation.composition
+  - type:composition
+  - workspace.desk.materializations
+  - workspace:docs
+- name: composition-operations
+  path: desk/materializations/composition-operations.md
+  hash_c: 256ef2c7d4548766609816cb18be747ee4f579f8794052adbe5c20c64b82e62b
+  hash_d: 7a79382522c458eab96dd6177e1176f4530789fee859cd6d8846ed72cc93290a
+  semantic_tags:
+  - target:operations
+  - type.documentation.composition
+  - type:composition
+  - workspace.desk.materializations
+  - workspace:docs

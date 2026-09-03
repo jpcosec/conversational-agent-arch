@@ -99,7 +99,7 @@ documents:
   - workspace:desk
 - name: task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   path: desk/tasks/task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime.md
-  hash_c: 14535c74c0cac74075ffd1dd736df009f352cb741525c4aaf64932270a827397
+  hash_c: b2570731a2577a1acc3da20ced847c8af4a41d297302c1cc7404e5bfcd1e8290
   hash_d: 7d2bd7050160d47c87d8f5c2078f235c2e8bfca8e9212ec7cc472ad6bbd385e3
   semantic_tags:
   - artifact:task

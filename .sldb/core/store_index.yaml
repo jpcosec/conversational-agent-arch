@@ -112,6 +112,14 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: CompositionDoc
+  model_ref: repo_docs_models:CompositionDoc
+  path: repo_docs_models/composition.py
+  models_index: .sldb/core/models/CompositionDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
 predicates:
 - name: is_solved_by
   axis: HOW
@@ -134,4 +142,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: 6b0a12c212b12cdeda7aca603c9d602b2c14031fb93d051b943e88bd90bfa5c1
+hash_a: caff745a2dca24fc1bb6240423112215c8de7e087cd84d37a4bf6cac3265968d
