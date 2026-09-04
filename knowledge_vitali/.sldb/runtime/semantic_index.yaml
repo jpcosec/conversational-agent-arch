@@ -12,6 +12,7 @@ tags:
   - rule-faq-reserve-now
   - rule-timezone-routing
   - rule-visit-modality
+  - rule-vitali-ubicacion-proyectos
   - step-vitali-calificacion
   - step-vitali-saludo
   - strategy-vitali-opening
@@ -82,6 +83,7 @@ tags:
   - dom-project-mantagua
   - dom-project-urubo
   - dom-projects-overview
+  - rule-vitali-ubicacion-proyectos
   domain:sales:
   - rule-faq-availability
   - rule-faq-financing
@@ -141,6 +143,7 @@ tags:
   - rule-vitali-datos-sensibles-adulto-mayor
   - rule-vitali-no-precios-sin-fuente
   - rule-vitali-no-prometer-disponibilidad
+  - rule-vitali-ubicacion-proyectos
   - self-vitali
   - step-vitali-agendar-visita
   - step-vitali-calificacion
@@ -223,6 +226,7 @@ tags:
   - rule-vitali-datos-sensibles-adulto-mayor
   - rule-vitali-no-precios-sin-fuente
   - rule-vitali-no-prometer-disponibilidad
+  - rule-vitali-ubicacion-proyectos
   type.knowledge.self:
   - self-vitali
   type.knowledge.step:
@@ -347,6 +351,7 @@ tags:
   - rule-vitali-datos-sensibles-adulto-mayor
   - rule-vitali-no-precios-sin-fuente
   - rule-vitali-no-prometer-disponibilidad
+  - rule-vitali-ubicacion-proyectos
   - self-vitali
   - step-vitali-agendar-visita
   - step-vitali-calificacion
@@ -704,6 +709,15 @@ documents:
     path: atoms/rule-vitali-no-prometer-disponibilidad.md
     tags:
     - conversation:security
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-vitali-ubicacion-proyectos:
+    model: RuleAtom
+    path: atoms/rule-vitali-ubicacion-proyectos.md
+    tags:
+    - agent:conversation-rule
+    - domain:projects
     - system:vitali
     - type.knowledge.rule
     - workspace.knowledge

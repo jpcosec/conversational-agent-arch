@@ -10,11 +10,22 @@ sitio (`source/crawl/`) ni en `source/systemprompt.md` queda aquí, sin inventar
 - Embeddings de la KB re-indexados (48 atoms). Store valida (PASS).
 
 ## Bugs reportados por Gian — estado
-1. **"Ubicación" solo daba Mantagua** → CORREGIDO (overview ahora nombra ambos).
-2. **Chicureo solo dice "precordillera de Santiago"** → el sitio NO publica más
-   detalle. El atom ya refleja todo lo público. DUDA abajo (P1).
-3. **Precios ("desde 2376 UF") y tipologías/dimensiones** → NO hay fuente. Sin
-   tocar. DUDAS abajo (P2, P3).
+1. **"Ubicación" solo daba Mantagua** → CORREGIDO (overview nombra ambos y
+   `rule-vitali-ubicacion-proyectos` obliga a nombrar Chicureo y Mantagua).
+2. **Chicureo solo dice "precordillera de Santiago"** → 2026-09-03: los atoms de
+   Chicureo y Mantagua ahora dan comuna y zona (Colina / Quintero) y derivan la
+   dirección exacta a la reunión en oficina. Dirección del terreno sigue en P1.
+3. **Precios ("desde 2376 UF") y tipologías/dimensiones** → 2026-09-03: el
+   precio de referencia "desde 2.376 UF" entra a `rule-faq-pricing` con
+   provenance (WhatsApp equipo Vitali, 31/08). Tipologías y dimensiones siguen
+   sin fuente (P3).
+4. **No agenda / se cuelga buscando disponibilidad / asume fechas** (1 y 3 de
+   septiembre) → 2026-09-03: `step-vitali-agendar-visita` pasa a
+   `obtencion_datos`: sin tool no se "revisa" agenda, se piden 2-3 preferencias
+   de día/bloque y el equipo confirma. Vuelve a `llamado_tool` cuando llegue el
+   n8n (P5).
+5. **Residuo Google Calendar (P5b)** → 2026-09-03: limpiado en
+   `rule-timezone-routing`, `rule-visit-modality` y `step-vitali-cierre`.
 
 ## Preguntas abiertas
 

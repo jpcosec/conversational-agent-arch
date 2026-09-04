@@ -1,8 +1,8 @@
 documents:
 - name: rule-faq-pricing
   path: atoms/rule-faq-pricing.md
-  hash_c: 4fd66009023ecc346f67f778af4f49b7fe062c55f59359f2f6cb6a9dcfe7860b
-  hash_d: b14ec87060d997cd4c12eeb016bc027371f7027b97c31532c3e3a27f96dc3c21
+  hash_c: bb5550fbc5f6ecafb291fafb704c8760c683f13875e3ba13b39934a12e7f9056
+  hash_d: 0d853c6fda23fc5544ea9377dc9f4ed39203ba3ce1099a4ee18ffee112b93773
   semantic_tags:
   - agent:conversation-rule
   - domain:sales
@@ -51,8 +51,8 @@ documents:
   - workspace.knowledge
 - name: rule-timezone-routing
   path: atoms/rule-timezone-routing.md
-  hash_c: 2b655eb23a9b6c666d73b2cd642d0ead28891568679cd19d0c1888a6975cabed
-  hash_d: 92bd2a09987c67b0608fa16a4671674a063e7afe9db23758061056153a1bbed1
+  hash_c: 109d13546b79271cca74b8086f5760abe8705977d4db44b5e2b839df28416714
+  hash_d: 4bce236bc9501560530cdba9d9a9fe41ba5a1091eb414a9f5f43667634e0dcfc
   semantic_tags:
   - agent:conversation-rule
   - domain:booking
@@ -61,8 +61,8 @@ documents:
   - workspace.knowledge
 - name: rule-visit-modality
   path: atoms/rule-visit-modality.md
-  hash_c: 6a9aa08e4701831a6f2ad236937d1e141a5ca48672b9b21afc7c4ad11cc5114f
-  hash_d: a587719675036b3a64d3cfade42f96bf871bad81226d68979d79450d7b01223e
+  hash_c: 1d1e4075bcebcf58aa94a006d3ca61d471f5cf7398cd3aa352e84c8c02f4fedf
+  hash_d: 92c1fd2cc36d87c210cfbb8a213dae07c5aa01ddf30e705cf0d7729a2ca5cf59
   semantic_tags:
   - agent:conversation-rule
   - domain:booking
@@ -81,8 +81,8 @@ documents:
   - workspace.knowledge
 - name: rule-vitali-no-precios-sin-fuente
   path: atoms/rule-vitali-no-precios-sin-fuente.md
-  hash_c: a82d45c044a1c26e52405f7f0effd33e699addfea0b60fca5ae0272ca14ec6bf
-  hash_d: aa2650a4d29554a3469496ec7daeb7d63aec14324ec54f6f988724ac78934027
+  hash_c: 0a96067c2dbe2dae9148e25438be3d8c3e0043c69e7f01d57520baab97c1d32e
+  hash_d: caa5b3b61fb922d13b6d2bfdbf3b6b345dd4ac82868e2b0a3ffa9484eda9566f
   semantic_tags:
   - conversation:security
   - system:vitali
@@ -103,6 +103,16 @@ documents:
   hash_d: ed91a8d1b031d3b9d74157e2e2b607f7cc026254e369214b2f863b7c21a023ad
   semantic_tags:
   - conversation:security
+  - system:vitali
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-vitali-ubicacion-proyectos
+  path: atoms/rule-vitali-ubicacion-proyectos.md
+  hash_c: 6140644245b81b8bad04200481e5973531dd2cea2bb3887c5e5b3220fa557baf
+  hash_d: f06ed2f147a0a028ae129f8a407a9370868fedbb1ce0f40b6564834012e690f6
+  semantic_tags:
+  - agent:conversation-rule
+  - domain:projects
   - system:vitali
   - type.knowledge.rule
   - workspace.knowledge

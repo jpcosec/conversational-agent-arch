@@ -118,8 +118,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-chicureo
   path: atoms/dom-project-chicureo.md
-  hash_c: a5ff6ce43c12a92e24ba58f2a91bfe2bcd9ca17add57c4b0d4e3372b8bcf5941
-  hash_d: 9fa07194b31e15dffcd2c654e501d169eaab1bc93ec1e8d8daf284428c55c652
+  hash_c: 86fc515ec48d15a39190dba25ac0c4515a5cc1047c461b240123970997a9f5b8
+  hash_d: 43546cacc835c1ed60d9dadf6a6dda31c864419163c05a4c29d0605c81d757c2
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -127,8 +127,8 @@ documents:
   - workspace.knowledge
 - name: dom-project-mantagua
   path: atoms/dom-project-mantagua.md
-  hash_c: f165ae85efbb4bc51221f8f71f5185e08e1fc5d6b72bff4e3d244cf0becfa7eb
-  hash_d: 36626a5ffc05a3cb4824eab0c202333de02f74bd944dd5fca1f373349cf05871
+  hash_c: b99e44f782cf4ea7a5874fc9b51dbcd2c98921505d3949360d0afae0c6f6c353
+  hash_d: 318442ef3fe91434fa0fa55426707b0b4885859af7790486bf16bfad0b741899
   semantic_tags:
   - domain:projects
   - system:vitali
@@ -190,8 +190,8 @@ documents:
   - workspace.knowledge
 - name: dom-contact-offices
   path: atoms/dom-contact-offices.md
-  hash_c: 5add14e2d9dde289daa0bb863b6ab79f16881786e214e0cb3e0ed635d84878cf
-  hash_d: 8e18ff1a7df5c9547aa69562a3e9a8bea8884e2db7a6b71bcff8e5b97dc0a4af
+  hash_c: fb2a3f9b24c4a1a12b3637ce10b367a73a9fb9da1c72245cec3ad1eca7366226
+  hash_d: 15b658407f5f54e3df8e935a1b9563e993d51b0bd51c4f1c2ce04bf566e3d21d
   semantic_tags:
   - domain:contact
   - system:vitali

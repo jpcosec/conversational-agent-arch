@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: regla-precio-de-una-suite
     level: 1
-    line_start: 788
-    line_end: 789
+    line_start: 789
+    line_end: 790
   - path: regla-precio-de-una-suite/answer
     title: Answer
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 790
-    line_end: 791
+    line_start: 791
+    line_end: 792
   - path: regla-precio-de-una-suite/conditions
     title: Conditions
     breadcrumbs:
@@ -71,8 +71,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 794
-    line_end: 795
+    line_start: 795
+    line_end: 796
 - doc_name: rule-faq-financing
   sections:
   - path: regla-financiamiento-y-pago
@@ -795,3 +795,77 @@ documents:
     level: 2
     line_start: 792
     line_end: 793
+- doc_name: rule-vitali-ubicacion-proyectos
+  sections:
+  - path: regla-ubicacion-de-los-proyectos
+    title: 'Regla: ubicacion de los proyectos'
+    breadcrumbs:
+    - 'Regla: ubicacion de los proyectos'
+    about:
+    - 'Regla: ubicacion de los proyectos'
+    - regla ubicacion de los proyectos
+    - agent:conversation-rule
+    - domain:projects
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:projects
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-ubicacion-de-los-proyectos
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: regla-ubicacion-de-los-proyectos/answer
+    title: Answer
+    breadcrumbs:
+    - 'Regla: ubicacion de los proyectos'
+    - Answer
+    about:
+    - 'Regla: ubicacion de los proyectos'
+    - regla ubicacion de los proyectos
+    - Answer
+    - answer
+    - agent:conversation-rule
+    - domain:projects
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:projects
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+  - path: regla-ubicacion-de-los-proyectos/conditions
+    title: Conditions
+    breadcrumbs:
+    - 'Regla: ubicacion de los proyectos'
+    - Conditions
+    about:
+    - 'Regla: ubicacion de los proyectos'
+    - regla ubicacion de los proyectos
+    - Conditions
+    - conditions
+    - agent:conversation-rule
+    - domain:projects
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - agent:conversation-rule
+    - domain:projects
+    - system:vitali
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 795
+    line_end: 796

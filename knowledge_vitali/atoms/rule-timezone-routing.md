@@ -790,7 +790,7 @@ semantic_anchors: null
 
 ## Answer
 
-El negocio opera desde dos oficinas: Santiago (Chile) y Doral (USA). La zona horaria de referencia de la operacion es America/Santiago, pero los leads pueden estar en Mexico, Colombia, Bolivia o USA. Regla: confirmar temprano el pais/ciudad del lead, ofrecer siempre los horarios en su zona horaria local (indicandola de forma explicita) y orientarlo a la oficina mas cercana (Santiago para Chile y LatAm sur; Doral para USA y norte). PENDIENTE con el negocio (P6): confirmar si las citas se agendan en la zona horaria del lead o siempre en la de la oficina.
+El negocio opera desde dos oficinas: Santiago (Chile) y Doral (USA). La zona horaria de referencia de la operacion es America/Santiago, pero los leads pueden estar en Mexico, Colombia, Bolivia o USA. Regla: confirmar temprano el pais/ciudad del lead, expresar siempre los horarios en su zona horaria local (indicandola de forma explicita) y orientarlo a la oficina mas cercana (Santiago para Chile y LatAm sur; Doral para USA y norte).
 
 ## Conditions
 

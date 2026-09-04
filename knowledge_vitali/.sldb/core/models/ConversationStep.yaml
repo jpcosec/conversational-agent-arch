@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:ConversationStep
 path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/step.py
 documents_index: .sldb/core/documents/ConversationStep.yaml
 sections_index: .sldb/runtime/sections/ConversationStep.yaml
-hash_b: 8c8446d1a5220a67de40e1cafd41ddb9691f55139389118cf8700cd2158b89bb
+hash_b: 7e057379a9325d2fbe23b330cf53451013ab6b6315c88554657e49a21f20f919
 version: 1
 canonical: false
 family: null

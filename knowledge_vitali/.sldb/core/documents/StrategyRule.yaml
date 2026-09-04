@@ -21,8 +21,8 @@ documents:
   - workspace.knowledge
 - name: strategy-vitali-slot-presentation
   path: atoms/strategy-vitali-slot-presentation.md
-  hash_c: 701e25238e7d13faa153e72a0469225f5bcfc23717b5878879963dc0d07b5615
-  hash_d: f86cf82d39e8c72b6a1a41261c52ce553da1cc73e608c57969a50e551e67629d
+  hash_c: b86d29297ad5c2a336cdc43123e6f2361ad289709728b604cc50fc7fd496bb60
+  hash_d: 33f6a29921ab6ff71e49bf02fe2b026a56a06d3d1ffbeb64ced6a2caf7dac227
   semantic_tags:
   - agent:booking-workflow
   - conversation:strategy

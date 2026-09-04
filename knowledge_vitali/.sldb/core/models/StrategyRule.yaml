@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:StrategyRule
 path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/strategy.py
 documents_index: .sldb/core/documents/StrategyRule.yaml
 sections_index: .sldb/runtime/sections/StrategyRule.yaml
-hash_b: 9d2baabe32ef71feedf85d397f569930f7da74f25cc68fcd49899a28c90e63b3
+hash_b: 2f3293f587f1829b3fd5d884dc2cb02c7ab064e6aa766d896c05185269ee5b74
 version: 1
 canonical: false
 family: null
