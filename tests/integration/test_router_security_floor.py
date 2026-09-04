@@ -22,7 +22,7 @@ from pathlib import Path
 import pytest
 
 from kb_agent.knowledge.compiler import ContextCompiler
-from kb_agent.knowledge.sldb_reader import SLDBReader
+from knowledge_base.operations import KnowledgeOperations
 from tests.support.fakes import FakeRouterAgent, offline_orchestrator
 
 SECURITY_RULE_IDS = {
@@ -37,7 +37,7 @@ SECURITY_RULE_IDS = {
 
 @pytest.fixture()
 def compiler(antonia_kb: Path) -> ContextCompiler:
-    return ContextCompiler(reader=SLDBReader(kb_root=antonia_kb))
+    return ContextCompiler(knowledge=KnowledgeOperations(kb_root=antonia_kb))
 
 
 # ── 1) piso de seguridad: no negociable, aunque el agente no lo pida ─────
@@ -115,7 +115,7 @@ def test_compiling_without_any_router_agent_uses_deterministic_bundle(antonia_kb
     """Sin ``router_agent`` inyectado (p.ej. ``ContextCompiler`` standalone,
     como en ``tests/unit/test_context_compiler.py``) el compilador nunca
     intenta llamar a un agente -- va directo al fallback."""
-    compiler = ContextCompiler(reader=SLDBReader(kb_root=antonia_kb))
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=antonia_kb))
 
     doc = compiler.compile(question="hola", user_id=None)
 
@@ -136,7 +136,7 @@ VITALI_SECURITY_RULE_IDS = {
 def test_vitali_bundle_includes_security_floor(vitali_kb: Path) -> None:
     """knowledge_vitali no tenia ninguna RuleAtom conversation:security: el
     compilador metia un piso vacio. Ahora el piso existe y entra al bundle."""
-    compiler = ContextCompiler(reader=SLDBReader(kb_root=vitali_kb))
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=vitali_kb))
 
     doc = compiler.compile(question="cuanto cuesta una suite?", user_id=None)
 

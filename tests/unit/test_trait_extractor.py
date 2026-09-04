@@ -8,7 +8,7 @@ from sqlalchemy import create_engine, select
 from sqlalchemy.orm import Session
 
 from kb_agent.models_sql.identity import Base, UserTraits, Users
-from kb_agent.knowledge.sldb_reader import SLDBReader
+from knowledge_base.operations import KnowledgeOperations
 from kb_agent.perfilador.extractor import PROFILER_SOURCE, TRAIT_MIN_CONFIDENCE, TraitExtractor, TraitMatch
 from tests.support.sldb_seed import seed_store
 
@@ -46,7 +46,7 @@ def session() -> tuple[Session, int]:
 
 
 def _extractor(kb_root: Path, session: Session, mapper) -> TraitExtractor:
-    return TraitExtractor(reader=SLDBReader(kb_root=kb_root), identity_session=session, llm_mapper=mapper)
+    return TraitExtractor(knowledge=KnowledgeOperations(kb_root=kb_root), identity_session=session, llm_mapper=mapper)
 
 
 def test_explicit_signal_creates_user_trait_row(kb_root: Path, session: tuple[Session, int]) -> None:
@@ -135,7 +135,7 @@ def test_rank_candidates_keeps_only_topk_by_similarity(kb_root: Path, session: t
     embedder = _FakeEmbedder({"quiero suite": [1.0, 0.0, 0.0]})
     ops = _FakeKnowledgeOps(embedder)
     extractor = TraitExtractor(
-        reader=SLDBReader(kb_root=kb_root),
+        knowledge=KnowledgeOperations(kb_root=kb_root),
         identity_session=s,
         llm_mapper=ScriptedMapper([]),
         knowledge_ops=ops,
@@ -154,7 +154,7 @@ def test_rank_candidates_always_keeps_traits_without_embedding(kb_root: Path, se
     embedder = _FakeEmbedder({"hola": [1.0, 0.0, 0.0]})
     ops = _FakeKnowledgeOps(embedder)
     extractor = TraitExtractor(
-        reader=SLDBReader(kb_root=kb_root),
+        knowledge=KnowledgeOperations(kb_root=kb_root),
         identity_session=s,
         llm_mapper=ScriptedMapper([]),
         knowledge_ops=ops,

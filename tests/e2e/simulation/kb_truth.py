@@ -8,12 +8,12 @@ from __future__ import annotations
 from pathlib import Path
 
 from kb_agent.knowledge.compiler import ContextCompiler
-from kb_agent.knowledge.sldb_reader import SLDBReader
+from knowledge_base.operations import KnowledgeOperations
 
 
 def kb_truth_text(kb_root: Path) -> str:
-    reader = SLDBReader(kb_root=kb_root)
-    d = ContextCompiler(reader=reader).compile(question="", user_id=None, trigger="cron").to_dict()
+    reader = KnowledgeOperations(kb_root=kb_root)
+    d = ContextCompiler(knowledge=reader).compile(question="", user_id=None, trigger="cron").to_dict()
     persona = d.get("persona", {})
     tools = ", ".join(t.get("name", "?") for t in d.get("tools", [])) or "(ninguna)"
     lines = [

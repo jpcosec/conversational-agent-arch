@@ -118,9 +118,13 @@ class KnowledgeOperations:
     vez de instanciarla por request.
     """
 
-    def __init__(self, kb_root: str | Path, db_url: str | None = None, pythonpath: str | None = None) -> None:
+    def __init__(self, kb_root: str | Path, db_url: str | None = None, pythonpath: str | None = None, store_name: str = ".sldb") -> None:
         self._kb_root = Path(kb_root).resolve()
-        self._store_path = self._kb_root / ".sldb"
+        # ``store_name`` admite tanto un nombre relativo (".sldb", ".sldb_test")
+        # como una ruta ABSOLUTA, en cuyo caso gana sobre ``kb_root`` (semantica
+        # de ``Path.__truediv__``). El reflector usa las dos formas; era la
+        # firma del ``SLDBReader`` que esta clase absorbio.
+        self._store_path = self._kb_root / store_name
         self._pythonpath = pythonpath or str(self._kb_root.parent)
 
         # SQL session for user traits and session state
@@ -131,7 +135,7 @@ class KnowledgeOperations:
         # Cache por INSTANCIA de records/docs del store (ver `_find_records`,
         # `_read_doc` y `_invalidate_cache`). Sin esto, cada llamada a
         # `_read_doc` volvía a llamar a `_find_records()` (un rescan
-        # completo del store desde disco), y `_semantic_search`/
+        # completo del store desde disco), y `semantic_search`/
         # `_fuzzy_search` llaman a `_read_doc` una vez por documento dentro
         # de su loop: O(n²) de I/O que en la KB real (71 docs) tardaba ~4
         # minutos por consulta.
@@ -198,20 +202,78 @@ class KnowledgeOperations:
             ]
         return self._records_cache
 
-    def _search(self, term: str, search_in: str = "semantic") -> list[dict[str, Any]]:
-        """Busca documentos cuyos semantic tags matcheen `term` (igualdad o substring)."""
-        docs = self._find_records()
-        results = []
-        for doc in docs:
-            tags = list(doc.semantic or [])
-            if any(term == t or term in t for t in tags):
-                results.append({
-                    "id": doc.name,
-                    "model": doc.model_name,
-                    "path": doc.path,
-                    "semantic": tags,
-                })
-        return results
+    # ── runtime: acceso al store (unico dueno) ─────────────────
+    #
+    # El runtime (kb_agent) lee la KB SOLO por aca. Antes tenia su propio
+    # lector, ``kb_agent/knowledge/sldb_reader.py::SLDBReader``, que volvia a
+    # llamar a ``load_runtime_documents`` sobre el MISMO store: dos parseos y
+    # dos caches por proceso que nadie sincronizaba.
+    #
+    # OJO con el contrato de ``tags``, que es lo unico que distingue estos dos
+    # metodos de ``_read_doc``:
+    #
+    #   ``_read_doc``  -> contrato de EDICION. ``payload["tags"]`` son los tags
+    #                     crudos del frontmatter, porque ``promote()`` los
+    #                     reasigna y los reescribe al ``.md``. Meterle aca los
+    #                     tags derivados del modelo escribiria
+    #                     ``type.knowledge.rule`` dentro del archivo.
+    #   ``doc``/``docs_by_type`` -> contrato de RUNTIME, de solo lectura.
+    #                     ``tags`` son los ``semantic_tags`` del store: la union
+    #                     del ``__semantics__`` de la clase
+    #                     (``type.knowledge.<tipo>``, ``workspace.knowledge``) y
+    #                     los del frontmatter. El compilador DEPENDE de esa
+    #                     union: ``ContextCompiler._tipo_for_doc`` deriva el
+    #                     tipo del tag ``type.knowledge.*``, que no existe en el
+    #                     frontmatter de ningun atom.
+
+    @staticmethod
+    def _runtime_payload(record: "_DocRecord") -> dict[str, Any]:
+        """Payload de un documento en el contrato de runtime (ver bloque arriba)."""
+        payload = dict(record.payload or {})
+        payload["id"] = record.name
+        payload["tags"] = list(record.semantic or [])
+        payload["path"] = str(record.path) if record.path else None
+        return payload
+
+    def docs_by_type(self, atom_type: str) -> list[dict[str, Any]]:
+        """Atoms de un modelo tipado, via el eje ``type.knowledge.<atom_type>``.
+
+        Pertenencia EXACTA al set de tags, que es lo que hace sldb
+        (``SemanticEngine.get_semantic``). El lector viejo comparaba con
+        ``term in tag`` (substring): con la taxonomia actual da lo mismo, pero
+        un tag nuevo que contuviera a otro como prefijo lo habria hecho
+        seleccionar de mas en silencio.
+        """
+        tag = f"type.knowledge.{atom_type}"
+        return [
+            self._runtime_payload(r) for r in self._find_records()
+            if tag in (r.semantic or [])
+        ]
+
+    def docs_by_tag(self, tag: str) -> list[dict[str, Any]]:
+        """Atoms que llevan ``tag``, o un hijo suyo en la jerarquia semantica.
+
+        Match = pertenencia exacta al set de ``semantic_tags``, o descendencia
+        por punto (``domain:medicamentos`` trae ``domain:medicamentos.sedanil``),
+        que es como sldb arma el DAG (``store/semantic_tags.py::_prefix_edges``
+        parte los tags por ``.``).
+
+        NO es substring, a diferencia del ``SLDBReader.find`` que reemplaza:
+        con ``term in tag``, buscar ``user:specialty.psiquiatria`` habria
+        traido tambien ``user:specialty.psiquiatria_infantil``, en silencio.
+        """
+        prefix = f"{tag}."
+        return [
+            self._runtime_payload(r) for r in self._find_records()
+            if any(t == tag or t.startswith(prefix) for t in (r.semantic or []))
+        ]
+
+    def doc(self, atom_id: str) -> dict[str, Any] | None:
+        """Payload resuelto de un atom por id, en el contrato de runtime."""
+        for r in self._find_records():
+            if r.name == atom_id:
+                return self._runtime_payload(r)
+        return None
 
     def _read_doc(self, atom_id: str) -> dict[str, Any] | None:
         """Read a complete document by id from any model.
@@ -648,7 +710,7 @@ class KnowledgeOperations:
     # absoluto lo descarte antes de que compita en el ranking.
     WEAK_SCORE_THRESHOLD = 0.25
 
-    def _semantic_search(self, query: str, threshold: float = 0.05) -> list[dict[str, Any]]:
+    def semantic_search(self, query: str, threshold: float = 0.05) -> list[dict[str, Any]]:
         """Busca por similitud coseno entre la query y los embeddings de TODOS los
         documentos, sin filtrar por modelo.
 
@@ -672,10 +734,14 @@ class KnowledgeOperations:
         results = []
         seen_any_embedding = False
         for r in docs:
-            doc = self._read_doc(r.name)
-            if not doc:
-                continue
-            emb = doc.get("embedding")
+            # El payload ya viene resuelto en el record (``_find_records`` lo
+            # trae de ``load_runtime_documents``). Esto llamaba a
+            # ``self._read_doc(r.name)``, que vuelve a escanear TODOS los
+            # records por cada documento del loop: O(n^2) con cache fria, ~4
+            # min sobre la KB real. ``embedding`` y ``title`` son lo unico que
+            # se usaba de ahi, y los dos estan en ``r.payload``.
+            payload = r.payload or {}
+            emb = payload.get("embedding")
             if not emb or not isinstance(emb, list) or len(emb) < 2:
                 continue
             seen_any_embedding = True
@@ -688,7 +754,7 @@ class KnowledgeOperations:
                 "score": round(score, 4),
                 "tags": list(r.semantic or []),
                 "path": r.path,
-                "title": doc.get("title", ""),
+                "title": payload.get("title", ""),
             })
         # Degradacion muda: si HABIA documentos pero NINGUNO tenia embedding,
         # el retrieval semantico no puede funcionar y el sistema cae al fuzzy
@@ -806,7 +872,7 @@ class KnowledgeOperations:
         (el ruteador) decida si lo usa, en vez de que un corte duro lo
         descarte antes de competir en el ranking.
         """
-        semantic = self._semantic_search(query, threshold=semantic_threshold)
+        semantic = self.semantic_search(query, threshold=semantic_threshold)
         fuzzy = self._fuzzy_search(query)
 
         seen = set()
@@ -951,7 +1017,7 @@ class KnowledgeOperations:
             pass
 
         if flow_node is None:
-            steps = self._search("conversation:steps", search_in="semantic")
+            steps = self.docs_by_tag("conversation:steps")
             if steps:
                 flow_node = steps[0]["id"]
 

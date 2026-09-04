@@ -7,7 +7,6 @@ from typing import TYPE_CHECKING, Any, Protocol
 
 from sqlalchemy.orm import Session
 
-from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.traits_store import SOURCE_PROFILER, upsert_user_trait
 
 if TYPE_CHECKING:
@@ -51,7 +50,7 @@ class StructuredTraitMapper(Protocol):
 
 @dataclass(slots=True)
 class TraitExtractor:
-    reader: SLDBReader
+    knowledge: "KnowledgeOperations"
     #: Sesion SQL de identidad. Solo la usan ``persist``/``extract``;
     #: ``analyze`` (embedder + LLM) no toca la base, por eso es opcional:
     #: el hilo del perfilador construye el extractor sin sesion.
@@ -108,7 +107,7 @@ class TraitExtractor:
 
     def _load_candidates(self) -> list[TraitCandidate]:
         """Carga los trait atoms desde SLDB (dict o objeto), con su embedding."""
-        traits = self.reader.fetch("trait")
+        traits = self.knowledge.docs_by_type("trait")
         result = []
         for t in traits:
             if isinstance(t, dict):

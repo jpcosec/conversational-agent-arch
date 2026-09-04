@@ -18,7 +18,7 @@ from sldb.store.io import load_store_index
 from sldb.store.layout import project_root as sldb_project_root
 from sldb.store.ops import track_document
 
-from kb_agent.knowledge.sldb_reader import SLDBReader
+from knowledge_base.operations import KnowledgeOperations
 from kb_agent.reflector.reader import ReflectorHistoryRow
 
 PATTERN_MIN_COUNT = 5
@@ -63,7 +63,9 @@ class ReflectorAtomGenerator:
         self.output_dir = Path(output_dir or (self.kb_root / "desk" / "atoms")).resolve()
         self.pattern_min_count = pattern_min_count
         self.pythonpath = str(Path(pythonpath or self.kb_root).resolve())
-        self._reader = SLDBReader(kb_root=self.kb_root, store_name=store_name)
+        self._knowledge = KnowledgeOperations(
+            kb_root=self.kb_root, pythonpath=str(self.kb_root.parent), store_name=store_name,
+        )
 
     def generate(self, rows: Iterable[ReflectorHistoryRow]) -> list[GeneratedAtom]:
         self._validate_required_namespaces()
@@ -121,7 +123,7 @@ class ReflectorAtomGenerator:
         seen_docs: set[str] = set()
 
         for atom_type in ("domain", "rule"):
-            for atom in self._reader.fetch(atom_type):
+            for atom in self._knowledge.docs_by_type(atom_type):
                 atom_id = atom["id"] if isinstance(atom, dict) else atom.id
                 atom_body = atom.get("answer", "") if isinstance(atom, dict) else atom.body
                 seen_docs.add(atom_id)
