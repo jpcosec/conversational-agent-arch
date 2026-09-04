@@ -191,3 +191,99 @@ documents:
   - primitive:checklist
   - type.workflow.checklist
   - workspace.desk.primitives
+- name: checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready
+  path: desk/primitives/checklists/checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready.md
+  hash_c: 4657db0d28c090ff447f99b9845e9bbcca37d19da954f5b25c058d986a308218
+  hash_d: dbcf56f5c9e19079b59b3040a36a60f0ba978b30e705ff4e5dea1d02fcd9aac1
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready
+  path: desk/primitives/checklists/checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready.md
+  hash_c: 5b250e712fa6fdca0e3979712e39feb1ac240a837ad0767e69580a334d46879f
+  hash_d: e415f81479abce0e6c2b2d3210806dbd901b934992edee220c9387cdd8bf641a
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-ready
+  path: desk/primitives/checklists/checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-ready.md
+  hash_c: a2c3139252bede05545472ed2a0cb921f3cf5d94a55d7f7f5dd038db359c5729
+  hash_d: cd9c0291d597a5e1f6e564bc10e0b15eb96f6607f2fa064dc9b43e599e1ba15e
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
+  path: desk/primitives/checklists/checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready.md
+  hash_c: 3b05c7e75dcd5ce7b3509d9be702ed33475efbdf5b9a31b94226220021245a2f
+  hash_d: 7eb9bcba102dfc4cb1d5cba11222018173a3186be84080e238b1b7d78a61a4f0
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready
+  path: desk/primitives/checklists/checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready.md
+  hash_c: a36fd49d3822bc2c5495b6c94c47857e686e48ba9666674d201448fa8ba1d3bf
+  hash_d: 66c02ded83b2cd29155242308def6bce147fd6c44105c74c32ce93ebed3ab730
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
+  path: desk/primitives/checklists/checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready.md
+  hash_c: 7944cf6fc07ae69f086095e38a5ef2096ddc3bb4a1e78919abc5ae7bccfbf8a8
+  hash_d: 715efabfa2cfc772dcb736110cd222ff3ed8924e4128341c82e933ed92e2e2d7
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
+  path: desk/primitives/checklists/checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready.md
+  hash_c: 809c32edbade1a9f84f832cce8462e7510c3b4871037bf526a33266dad6cb51e
+  hash_d: ae7d8b48f2fc5eea8b3fe857196f9c7cccb523f3139edb21425c0892a6d84c1f
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready
+  path: desk/primitives/checklists/checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready.md
+  hash_c: d7577d8aa3756e3681d59d9fbe7a797ae3f094cb5e0ee72ece5858ef456047cf
+  hash_d: 1c9b929f6b6f487ee5855bca4dcf55b65aed9241c00837dfc81272c3a6ede0e8
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
+  path: desk/primitives/checklists/checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready.md
+  hash_c: a142a175b5b7a022c8e2bdb588fbdae1c2f49b41be06e4d06617f65d2462afb3
+  hash_d: 99ca0bb4e5a419bed88140eb993a6ed25017ed0fb8499414a8531d617ac59e34
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready
+  path: desk/primitives/checklists/checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready.md
+  hash_c: 930f0f59e7bbf7beda51e2d76cba427320e1bb1729a5e719dc0f1181a9f6421b
+  hash_d: 6915290c4ff8c76608c4872d08d2067021a7a0f1a6226b32bc0a6b1fbbec9f21
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-ready
+  path: desk/primitives/checklists/checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-ready.md
+  hash_c: b9bf63e225b6de5e482431686b9412defa3f01d6f4c9653a75b0fae5e388b4eb
+  hash_d: aad0e5588702fb210e3f55bb93e05b1cc158067fd89b75c053f56695a8600ffd
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready
+  path: desk/primitives/checklists/checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready.md
+  hash_c: 1d471dd4c6abd377efc31169fbb0a8709eb2a89342d61f8392bd3245d74b6bb5
+  hash_d: bb1a7d5974d2a5f504435963b78db53fc45253a2cdf9b7467da6688f887c0fdf
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives

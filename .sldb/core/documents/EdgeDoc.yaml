@@ -383,3 +383,195 @@ documents:
   - primitive:edge
   - type.workflow.edge
   - workspace.desk.primitives
+- name: edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-to-activate
+  path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-to-activate.md
+  hash_c: ce909ed490c3b0bf3a4acc3d511d9210b1d9c6d1b496ee45d3b1b0b24d1da10e
+  hash_d: 019d02add5f2b318e7624ce7b2e26ec2f532a471c109129776fa11951886b452
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate-to-testing
+  path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate-to-testing.md
+  hash_c: 52f07ff7cc04b2fb8b102781fce3c9c8804d8d62ed38429bdc866b74db048b16
+  hash_d: adcd8819ded124ecffd6e2b2a475cca6c73badf1b8e09467c5fe9036059657cf
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-to-ready
+  path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-to-ready.md
+  hash_c: 648f5261f6bd3766f547907bb3b2a6c52e68c97bf4b358f2a802404a71c1de70
+  hash_d: fea09d1adabface1afb24a11f613ed514421085abf982667c63b0d10da81c898
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-to-closeout
+  path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-to-closeout.md
+  hash_c: 926baa0f79de5243eb1c770b0fa3716cbad7a6eedc7a38d80fc2e5b1c4bb0bf7
+  hash_d: fc82cc494cb4812162f29bd3be2ed317680bc91de581d0a22c9237e2ef6a04a3
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-to-close
+  path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-to-close.md
+  hash_c: 629b0726640cc5e8b51908ffed158c7fe51ece3dad4b08d96f7bf770a1211770
+  hash_d: e37bf81f01248668c63a1c7c52e27962391c6e0ee7c4f5d5ae3d01e8d59d4df9
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close-to-complete
+  path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close-to-complete.md
+  hash_c: 3d174bf23e5ca4054bcba8c4e7b4b7bb58983e76ba3fb21a726eefd4e0153b69
+  hash_d: ff86af10bd61deba8c91c529189dfeefbbfb95f85eb0fd1fc71ffe35f84b164a
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-to-activate
+  path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-to-activate.md
+  hash_c: 01caf55ce4416f6244eae27b26496bb5e7083e0ca74149f4db36f3adda8bf3ce
+  hash_d: 7e8ac51dbc89d5d760fbead15eccca4b8dbc69ee02214f5b46354b6464a5e56b
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing
+  path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing.md
+  hash_c: 5c0525306448c3a99c5617578c970cd08d8a0e6773f96edb51157515e953283c
+  hash_d: 81f8abc4620427486f16242d1ca052748f15cbe9efe5fab626bb602070de6128
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-to-ready
+  path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-to-ready.md
+  hash_c: 024b4a039dd0d2743a97718b77aaaec08469988001a052ed140dc5bf38b026cf
+  hash_d: 80e2e34493e7089aa296b2b0144b6589b5284410665ea729862c0ca8c07bebf0
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-to-closeout
+  path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-to-closeout.md
+  hash_c: 596b52cb670bfcd3aef51a0c972a4854a4c02a257a5a2c161044580e1363ccd8
+  hash_d: 3747b9256a63cb7c8ee225546b6c92243312ac043a70cfffc8ca3ab040e5f7d2
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close
+  path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close.md
+  hash_c: d69eb380c5034412bf7fe46d1374bc99d906f488aaf5724ee0ec343dc8c6f494
+  hash_d: 35790bed2a23e1f0f91d06866bde1966e6069a66c146d2d13a20d795fd387eb2
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete
+  path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete.md
+  hash_c: f4f18776e8a652b2ed6561b2190c497325fd36f2ca9946b620bdaea879343533
+  hash_d: b6e893d0b1bdbe0635d3364a30503dccd4df66670e4e73115935c897c131202f
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate
+  path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate.md
+  hash_c: 4c97e469f40607ed21fd0153705fc89aa92cab39316168636a081ac712365359
+  hash_d: 068133ed6b6272aa1e2151459aab5b81286888936dc78926ec3026b13ee18380
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate-to-testing
+  path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate-to-testing.md
+  hash_c: c0978c13279745fc6df863e4fd55f6f82c9b39e7a177189b6007948ef8901d77
+  hash_d: 07908fb25fa0bfb428b51d1aa6e765c8204855509766bae63df1e0ca6f6e6f1a
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready
+  path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready.md
+  hash_c: 226999428d38aa3669764c7b25446122b61acec7be6551abe5f5a07c72adcc88
+  hash_d: 4456f562ad42da8aeb139fec925994d7bb9ffc66103999eec40668b58c438690
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout
+  path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout.md
+  hash_c: 3a56cad13ad26bb9ddd69326467d3ffcbe4da64205567556a6517da6d1d4e4e6
+  hash_d: 4e55bade0f72e36b78deba92c04e3d488c0e9aa5528db8aebca877bec92d7ad1
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-to-close
+  path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-to-close.md
+  hash_c: 7e3455c3b1310b5504f1a24f67203435cdd375bc82b80989913dd233dbd2620d
+  hash_d: 11b80503916d046243da701a26e6fcee6572f729ba43d1c9cf09c3a21bf0ccbf
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close-to-complete
+  path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close-to-complete.md
+  hash_c: af2ba7407d0c272438f22517107041750ffe413c54e1c7ae816d28bf21625d60
+  hash_d: 260adf872f0f51b18d6840a55d2323fc8afe9fcb1934e7d1c510e2bdb4b0e668
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-to-activate
+  path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-to-activate.md
+  hash_c: 238d30283b9bdbf24f7881a17e67868fb7bcfeba14953bada83e5abddd994f28
+  hash_d: 4fa7074d876b778191121c710d9abf19ab305b857bdd3d05a4d9724069c49c56
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate-to-testing
+  path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate-to-testing.md
+  hash_c: 55ea7904c01828cbb0c52edbd49b09da0cc150b1b35efd4363a03c8ade3e3f74
+  hash_d: 4eb55dafbc9c00afcbe1034b5676ac9f1ae4c051b45234f0cb6de6a11a759a18
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-to-ready
+  path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-to-ready.md
+  hash_c: 96577fa0ce534c3e9e6b16034e15e12219e4faf3c1d47ee7c27be67f9fa25044
+  hash_d: 9fc7afb572fc81ce6cac76d03e95b7ebc6d6d4535ed8194f73f7c0c3a90664f1
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-to-closeout
+  path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-to-closeout.md
+  hash_c: f5e76cd3f3d3e2ff00015919a4bf430d9bd6d54f142b64a3f4a41e9cdaad05b1
+  hash_d: b1149b23bf008fea277b335c95ed0c78fd4e29fffa934e6d0d0d31dcf19fc8f8
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-to-close
+  path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-to-close.md
+  hash_c: e1f4934dd9b9e52d9a5289db6be8494c0ec8a50f2df99eacee88eacf351a2131
+  hash_d: 7f9ba68f1440b16a72c88d390415cd97cbf2c7373ca234815af336b429e97aa5
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close-to-complete
+  path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close-to-complete.md
+  hash_c: 799664bdf46823735b254e52acaa051667e4711e70f161ad62aa3d1f6f59ef93
+  hash_d: e932e3d71668a49af1e4925b0a60def448f63cf7c6aab91ea69997828be1f735
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives

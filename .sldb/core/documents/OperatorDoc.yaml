@@ -191,3 +191,99 @@ documents:
   - primitive:operator
   - type.workflow.operator
   - workspace.desk.primitives
+- name: operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate
+  path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate.md
+  hash_c: 7a0b89a1711de8cbdc268f0d57511e66d810dafa04e3c21ff20868f90793b0c1
+  hash_d: 903f8e335db4ba3d4f9d755d2da84d4507757f7eca77427fc1a10a4bd00cccaf
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing
+  path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing.md
+  hash_c: d7417f5f09870b715ba218cc906cf8e0084a422efc8dc7415fb6ce8cd9761fff
+  hash_d: 29684266bef30945c3100a7372908a3183d0efd5a7fc627455358c08c2c6bde1
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close
+  path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close.md
+  hash_c: d603b64456668baede645bdef4fcb2d48d933ad340ff24758abc5fe4c38c42cb
+  hash_d: 173df9713e881c7f4309b217b294f24d21b090f750ff48627cb58ef34c94e82b
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
+  path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate.md
+  hash_c: 91b4bfdf5458f92219424c510b80dda9477eb9b617ff98bf31dcbfe3c2cf58b6
+  hash_d: 20a695218b7157ecd557066157a5c899e983b141a0bbe5ed09a29d2a1a4dc09b
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
+  path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing.md
+  hash_c: 7d2358a3b4dcef2aeeb82fe7e50d5170575398b4e8d2c21adb52306a5550ee7e
+  hash_d: e09662504d1ac79471f96674b591935357e85a2b3e67f2d235fe21a1c4650bc0
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
+  path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close.md
+  hash_c: cf8cc56651b5feda33e6897778455c5d46ce0ee7dea49e1a1bd22be5286efca8
+  hash_d: 80a75069d6e1cbd7bcfe828143ec39e22221b839aa2aa5c9001c17a13195fe5c
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
+  path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate.md
+  hash_c: 81a83263da1c7a8e6a135450010717e64c846f78aac6d2b4be8ef37e8a9447b2
+  hash_d: 28072ee79f210a556c0d0a96654d8445bf55d43a3bcb3af690f8ce4cd2cd0584
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing.md
+  hash_c: 7e177e7f496890112ea8511a7ea95f96f462b7327cebc64bed345d099ea43dbc
+  hash_d: 00d9eeb63f302156fd941219196db72b329f3c7f97ab67b99b5e3e07b2f3e9e1
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
+  path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close.md
+  hash_c: 5775f9d530dc971cadd24965495e2625723f0a22469da1ab138b5bfdb6e4f19a
+  hash_d: 7d12ca13684a7d357abdd0ee714350b8f546e7a14cc535491e0050ac1b481073
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate
+  path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate.md
+  hash_c: 1e0803083c1fbc7c242bf8f0b4d5aa0fa87c1676bbe83801d65d7fbd5838b4f0
+  hash_d: 77f7338935e2b3abbbb916b17e3c384221c0d23e4852664590cd566bba3bb0c7
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing
+  path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing.md
+  hash_c: d4efeea4647ad81a18602b7aa45447792291d235c6e2ec2e6ac556bd20ca7126
+  hash_d: a83a459e55c5a4ee372a8561197520c8b5cd0401980892228494397e42da61b1
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close
+  path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close.md
+  hash_c: 2a1f5ea3ed5d68bb238edfe77a4f7b2bdce0a9365965cc94babdb40b3f639916
+  hash_d: 66ea65aa929d22d2835efb491e810b72ce0b4cc3aabea8eb90f64b1b44c6bfa5
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives

@@ -106,3 +106,48 @@ documents:
   - type.workflow.task
   - workspace.desk
   - workspace:desk
+- name: task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  path: desk/tasks/task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo.md
+  hash_c: 09dac6f8a8a7893951a5bbdc1aa1e7db799ab5ca8034f2f399a3e2e03d2516c8
+  hash_d: ac0c303d97d842fcbbc8d1115ef3fddbd1e026d7369d90cb7bc35f67325d79ca
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-vista-leads-con-cola-de-visitas-por-confirmar
+  path: desk/tasks/task-vista-leads-con-cola-de-visitas-por-confirmar.md
+  hash_c: 4a14a07d847fd440b3793f9b5379f3db761799827f32a258240081e2ea39a6e8
+  hash_d: 4f3e13b73a82d3ee7e3898d6b1dfd355eb5183729eb979cad2a9f9e567d7d342
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  path: desk/tasks/task-metricas-reales-en-el-dashboard-desde-el-sqlite.md
+  hash_c: 894eed75afd3218efa9d9b2e4dcb7739d185c7426a76023320c29023aba1fb46
+  hash_d: f8670f51193e6a0fcabb0c0c792905fe327b6e4f90fccff99d8c14c6a7585a39
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  path: desk/tasks/task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
+  hash_c: 073871e61613d8bdaec323f99f4a6ca94cca18f4653fa3b47833ceb6b52dadc8
+  hash_d: bb5672439487bd8baeba1adb9119d1a2994948031dffa51f80ba41b7fef272b8
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-x-tmp
+  path: desk/tasks/task-x-tmp.md
+  hash_c: 624cc67eb00dc64e44d4e29f51fb936ca7d2105dd8f77011022c81744d33f236
+  hash_d: 6b945093bbe20986a38ddf422b5e6977acf0e6e8f68ac66ba7783cd0f8301c0d
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
