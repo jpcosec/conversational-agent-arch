@@ -118,6 +118,27 @@ body {
   font-family: var(--font-sans);
 }
 
+.app-topbar-logo {
+  height: 22px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* El lockup de Antonia es negro con acentos dorados: esta hecho para fondo
+   claro y sobre --bg-panel el wordmark desaparece. Va sobre una placa marfil
+   (el mismo --text-primary del sistema) en vez de invertirlo con filter, que
+   arruinaria el dorado de la marca. */
+.app-topbar-logo[data-testid="topbar-logo-brand"] {
+  background: var(--text-primary);
+  padding: 3px 8px;
+  border-radius: 8px;
+  box-sizing: content-box;
+  height: 18px;
+}
+
 .app-topbar-brand {
   font-size: 14px;
   font-weight: 600;
