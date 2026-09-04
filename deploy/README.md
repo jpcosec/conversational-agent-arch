@@ -55,13 +55,41 @@ responde `<Response/>` al instante porque Twilio corta a los 15 s y un turno
 con LLM tarda más; ver `kb_agent/inbound.py`):
 
 ```bash
+# Antonia (project.config.yaml)
 modal secret create kb-agent-runtime-twilio TWILIO_ACCOUNT_SID=AC... TWILIO_AUTH_TOKEN=...
+# Vitali (project.vitali.yaml)
+modal secret create vitali-runtime-twilio   TWILIO_ACCOUNT_SID=AC... TWILIO_AUTH_TOKEN=...
+```
+
+Los dos valores salen de la consola de Twilio, en **Account Info** del
+dashboard. El Auth Token es el de la MISMA cuenta que dispara el webhook: con
+él se valida la firma `X-Twilio-Signature` de cada request, así que un token
+de otra subcuenta hace que todo mensaje entrante responda 403.
+
+Después hay que declarar el secret en el yaml del negocio
+(`deploy.twilio_secret_name`) y volver a desplegar; mientras sea `null`,
+`/webhooks/twilio` responde 503 y el resto del runtime funciona igual:
+
+```yaml
+  deploy:
+    twilio_secret_name: vitali-runtime-twilio
 ```
 
 Sin `TWILIO_ACCOUNT_SID` el webhook cae a modo sync (TwiML en línea), que sólo
 sirve si el turno cabe en 15 s. `TWILIO_REPLY_MODE=sync|async` fuerza el modo.
-Luego, en la consola de Twilio, apuntar el sender/número a
-`https://<app>.modal.run/webhooks/twilio` (POST).
+Luego, en la consola de Twilio, apuntar el canal a
+`https://<workspace>--<app>-serve.modal.run/webhooks/twilio` con método
+**POST**. Son dos lugares distintos según el canal (mismo endpoint):
+
+| Canal | Dónde se configura | Campo |
+|---|---|---|
+| SMS | Phone Numbers → Manage → Active numbers → el número | "A message comes in" |
+| WhatsApp (sandbox) | Messaging → Try it out → WhatsApp sandbox settings | "When a message comes in" |
+| WhatsApp (sender propio) | Messaging → Senders → WhatsApp senders → el sender | webhook de entrada |
+
+En el sandbox de WhatsApp cada persona que quiera probar debe enviar antes el
+código de unión (`join <palabra>`) al número del sandbox; si no, Twilio nunca
+entrega el mensaje.
 
 y agregar `modal.Secret.from_name("kb-agent-runtime-twilio")` a la lista
 `secrets=` de la función `serve` en `deploy/modal_app.py`. Hoy no existe y no
