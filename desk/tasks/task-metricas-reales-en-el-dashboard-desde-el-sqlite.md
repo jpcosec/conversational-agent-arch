@@ -1,13 +1,15 @@
 ---
 id: task-metricas-reales-en-el-dashboard-desde-el-sqlite
-status: draft
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
-current_node: checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
-history: []
+current_node: checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
+history:
+- operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
+- operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
 references: []
 depends_on: []
 pills: []
@@ -20,6 +22,8 @@ task_type: implementation
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Metricas reales en el dashboard desde el sqlite

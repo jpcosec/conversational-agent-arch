@@ -1,13 +1,15 @@
 ---
 id: task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
-status: draft
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
-current_node: checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready
-history: []
+current_node: checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready
+history:
+- operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate
+- operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing
 references: []
 depends_on:
 - task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
@@ -21,6 +23,8 @@ task_type: implementation
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Chat de producto sin inspector para el equipo de Vitali

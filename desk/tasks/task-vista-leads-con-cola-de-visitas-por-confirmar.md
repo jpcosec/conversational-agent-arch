@@ -1,13 +1,15 @@
 ---
 id: task-vista-leads-con-cola-de-visitas-por-confirmar
-status: draft
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-vista-leads-con-cola-de-visitas-por-confirmar
-current_node: checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
-history: []
+current_node: checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
+history:
+- operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
+- operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
 references: []
 depends_on: []
 pills: []
@@ -20,6 +22,8 @@ task_type: implementation
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Vista Leads con cola de visitas por confirmar
