@@ -39,6 +39,12 @@ class CompiledDocument:
     flow_node: str | None = None
     allowed_transitions: list[str] = field(default_factory=list)
     missing_slots: list[str] = field(default_factory=list)
+    #: Step activo resuelto contra su ConversationStep (title/kind/instructions/
+    #: required_slots/completion_condition), o None sin diagrama. Es lo que el
+    #: Conversador ve como "paso actual" en su prompt: antes el step solo lo
+    #: veia el Orquestador (decide) y el Conversador redactaba sin conocer las
+    #: instrucciones ni los datos que el paso debe reunir.
+    step: dict[str, Any] | None = None
     system_turn: dict | None = None
     is_empty: bool = False
     # ── contexto estructurado por rol semantico (deshardcodeo) ──

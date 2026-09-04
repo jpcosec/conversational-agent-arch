@@ -97,6 +97,38 @@ def test_step_target_within_allowed_transitions_is_applied(orch_factory) -> None
     assert turn["decisions"]["orquestador"].get("step_target_vetado") is None
 
 
+def test_draft_uses_target_step_when_orchestrator_advances(orch_factory) -> None:
+    """Bug medido en Vitali: el orquestador decidia avanzar (agendar ->
+    datos_contacto) pero el Conversador redactaba con el step viejo y volvia
+    a pedir lo que el step anterior pedia. El borrador debe ver el step
+    DESTINO (instrucciones/slots), y el compilado original conserva el step
+    activo del turno para el rastro.
+    """
+    def advance(compiled_context: dict) -> dict:
+        return {"kind": "nl", "flow_target": "conversation:steps.booking"}
+
+    conversador = FakeConversador()
+    orch = orch_factory(orchestrator_agent=FakeOrchestratorAgent(advance), conversador=conversador)
+
+    turn = orch.handle_turn(external_id="ui:retarget", message="quiero reservar")
+
+    assert turn["flow_node"] == "conversation:steps.booking"
+    seen = conversador.calls[-1]["step"]
+    assert seen["tag"] == "conversation:steps.booking" and seen["id"] == "step-donpeppe-booking"
+    assert seen["instructions"]
+    # y el grounding del step destino ya esta en el contexto con el que se redacto
+    # (mismo contexto que juzga el gate): el tool atom de reserva entra por el step booking.
+    ctx = conversador.calls[-1]
+    assert "atom-donpeppe-tool-reserva" in ctx["grounding_atoms"]
+    assert any(e["doc_id"] == "atom-donpeppe-tool-reserva" and "grounding de steps.booking" in e["motivo"] for e in ctx["bundle"])
+
+    # Sin transicion, el Conversador ve el step activo (segundo turno ya esta en booking).
+    stay = FakeConversador()
+    orch2 = orch_factory(orchestrator_agent=FakeOrchestratorAgent(lambda c: {"kind": "nl"}), conversador=stay)
+    orch2.handle_turn(external_id="ui:stay", message="hola")
+    assert stay.calls[-1]["step"]["tag"] == "conversation:steps.onboarding"
+
+
 # ── BUG 1: tool_call decidido con contexto completo, no con keywords ────────
 def test_typed_tool_call_executes_even_without_keyword_match(donpeppe_kb: Path, tmp_db_url: str) -> None:
     """Reproduce el bug 1: un mensaje SIN ninguna keyword de intencion de tool

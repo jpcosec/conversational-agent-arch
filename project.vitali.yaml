@@ -26,6 +26,9 @@ project:
 
   model: gemini-2.5-flash
 
+  # Mensaje al lead cuando el policy gate rechaza el borrador (voz de Vitali).
+  gate_handoff_message: "Déjame confirmar ese punto con el equipo comercial para no darte un dato equivocado. Te respondo por este mismo medio a la brevedad."
+
   # Tools del negocio: vacío por ahora (excluidas a propósito).
   tools: {}
 

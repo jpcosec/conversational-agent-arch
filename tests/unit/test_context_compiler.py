@@ -117,6 +117,11 @@ def test_kgdb_augments_flow_node_transitions_and_grounding(donpeppe_kb: Path) ->
     assert fresh.flow_node == "conversation:steps.onboarding"  # default: onboarding
     assert fresh.allowed_transitions == ["conversation:steps.booking"]
     assert "step-donpeppe-onboarding" in fresh.grounding_atoms
+    # El step activo viaja resuelto (instrucciones/slots) para el prompt del Conversador.
+    assert fresh.step["tag"] == "conversation:steps.onboarding" and fresh.step["id"] == "step-donpeppe-onboarding"
+    assert fresh.step["instructions"] and "instructions" in fresh.to_dict()["step"]
+    assert compiler.step_context("conversation:steps.booking")["id"] == "step-donpeppe-booking"
+    assert compiler.step_context("conversation:steps.inexistente") is None and compiler.step_context(None) is None
 
     in_booking = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.booking"))
     assert in_booking.flow_node == "conversation:steps.booking"
@@ -125,6 +130,37 @@ def test_kgdb_augments_flow_node_transitions_and_grounding(donpeppe_kb: Path) ->
 
     unknown = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.inexistente"))
     assert unknown.flow_node == "conversation:steps.onboarding"
+
+
+def _step(step_id: str, tag: str, transitions: str) -> dict:
+    return {
+        "type": "step", "id": step_id, "title": step_id, "kind": "interaccion_simple",
+        "tags": [f"conversation:steps.{tag}", "system:test"], "domain_ref": "test-biz",
+        "fields": {"instructions": "x", "required_slots": "ninguno", "handout_target": "", "tool_ref": "", "allowed_transitions": transitions, "grounding_atoms": "atom-carta", "completion_condition": "x"},
+    }
+
+
+def test_entry_step_is_graph_root_when_kb_has_no_onboarding(tmp_path: Path) -> None:
+    # saludo -> calificacion -> cierre. Alfabeticamente 'agendar' y 'calificacion'
+    # van antes que 'saludo': el step de entrada tiene que salir del grafo, no
+    # del orden de los tags (bug real de Vitali: arrancaba en agendar_visita).
+    atoms = [a for a in minimal_business_atoms() if a["type"] == "domain"] + [
+        _step("step-saludo", "saludo", "conversation:steps.calificacion, conversation:steps.agendar"),
+        _step("step-calificacion", "calificacion", "conversation:steps.agendar"),
+        _step("step-agendar", "agendar", "conversation:steps.cierre"),
+        _step("step-cierre", "cierre", "(ninguna, paso terminal)"),
+    ]
+    root = seed_store(tmp_path / "flujo", atoms)
+    compiler = ContextCompiler(reader=SLDBReader(kb_root=root), kgdb=KGDBReader.from_sldb(root / ".sldb"))
+
+    fresh = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub())
+    assert fresh.flow_node == "conversation:steps.saludo"
+    assert fresh.allowed_transitions == ["conversation:steps.agendar", "conversation:steps.calificacion"] or \
+        fresh.allowed_transitions == ["conversation:steps.calificacion", "conversation:steps.agendar"]
+
+    # Una sesion con step valido no se toca; una con step inexistente vuelve a la raiz.
+    assert compiler.compile(question="q", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.cierre")).flow_node == "conversation:steps.cierre"
+    assert compiler.compile(question="q", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.nada")).flow_node == "conversation:steps.saludo"
 
 
 def test_real_donpeppe_kb_compiles_full_business_context(donpeppe_kb: Path) -> None:

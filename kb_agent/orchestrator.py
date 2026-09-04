@@ -53,6 +53,13 @@ from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
 from kb_agent.state_machine import RouterStateMachine
 from knowledge_base.operations import KnowledgeOperations
 
+#: Mensaje neutro cuando el policy gate rechaza el borrador; cada negocio
+#: lo redacta en su yaml (``gate_handoff_message``).
+DEFAULT_GATE_HANDOFF_MESSAGE = (
+    "Prefiero confirmar ese punto con el equipo antes de responderte. "
+    "Alguien del equipo te contactará a la brevedad."
+)
+
 logger = logging.getLogger(__name__)
 
 #: Canal cuando el external_id no trae prefijo reconocible ("<canal>:<id>").
@@ -94,6 +101,7 @@ class Orchestrator:
         model: str | None = None,
         tool_handlers: Mapping[str, ToolHandler] | None = None,
         fallback_message: str | None = None,
+        gate_handoff_message: str | None = None,
         tuning: TuningConfig | None = None,
         identity_key: str = "external_id",
         conversador: Conversador | None = None,
@@ -108,6 +116,10 @@ class Orchestrator:
         self.model = model or os.getenv("GEMINI_MODEL") or DEFAULT_MODEL
         self.tool_handlers: dict[str, ToolHandler] = dict(tool_handlers or {})
         self.fallback_message = fallback_message or DEFAULT_FALLBACK_MESSAGE
+        #: Texto que ve el usuario cuando el gate rechaza el borrador (kind
+        #: "derived"). Es voz del negocio, no del runtime: viene del yaml
+        #: (``gate_handoff_message``); el default es neutro.
+        self.gate_handoff_message = gate_handoff_message or DEFAULT_GATE_HANDOFF_MESSAGE
         #: Parametros de tuning del runtime (bundle/historial/router). Antes
         #: eran constantes en el codigo; ahora llegan del yaml via ProjectConfig.
         self.tuning: TuningConfig = tuning or TuningConfig()
@@ -188,6 +200,7 @@ class Orchestrator:
             "model": cfg.model,
             "tool_handlers": load_tool_handlers(cfg.tool_handlers),
             "fallback_message": cfg.fallback_message,
+            "gate_handoff_message": cfg.gate_handoff_message,
             "tuning": cfg.tuning,
             "identity_key": cfg.identity_key,
         }
@@ -318,7 +331,13 @@ class Orchestrator:
                 if kind == "fallback":
                     return self._fallback_text(compiled_context)
                 # Guardar flow_target si existe para navegacion post-draft
-                compiled_context["_flow_target"] = decision.get("flow_target")
+                flow_target = decision.get("flow_target")
+                compiled_context["_flow_target"] = flow_target
+                # El borrador se redacta YA con el step destino: si el
+                # orquestador decidio avanzar, el Conversador tiene que pedir
+                # lo que pide el step nuevo, no repetir lo del anterior.
+                if flow_target and flow_target != compiled_context.get("flow_node"):
+                    compiler.retarget_step(compiled_context, flow_target)
                 return self.conversador.draft_nl(compiled_context)
 
             router = RouterStateMachine(
@@ -363,11 +382,7 @@ class Orchestrator:
                 )
                 if not gate_result["approved"]:
                     kind = "derived"
-                    response = (
-                        "He preparado una respuesta pero prefiero que un profesional "
-                        "del programa la revise antes de enviarla. Alguien del equipo "
-                        "te contactará a la brevedad."
-                    )
+                    response = self.gate_handoff_message
                     compiled["gate_rejection"] = gate_result["reasons"]
 
             # Navegacion de flujo: si el orquestador clasifico un flow_target,
@@ -638,6 +653,48 @@ class Orchestrator:
                 names.append(str(tool["tool"]))
         return names
 
+    @staticmethod
+    def _step_and_client_facts(compiled: Mapping[str, Any]) -> list[dict[str, Any]]:
+        """Contexto declarado EXTRA para el gate, ademas de facts/rules.
+
+        Medido en Vitali: el gate rechazaba el cierre ("afirma 30 minutos,
+        invitacion por correo, jueves en la tarde, un email... no declarados
+        en el contexto") cuando esos datos venian de (a) las instrucciones
+        del ConversationStep activo, que son KB, y (b) lo que el propio
+        cliente dijo en la conversacion (su dia preferido, su correo). Ambos
+        entran como lineas de contexto declarado: el step con su id, y los
+        mensajes del cliente (solo rol user, ya scrubbeados de PII al
+        persistirse) como una linea "conversacion-cliente".
+        """
+        extra: list[dict[str, Any]] = []
+        step = compiled.get("step")
+        if isinstance(step, Mapping) and (step.get("instructions") or step.get("required_slots")):
+            body = " ".join(
+                part for part in (
+                    str(step.get("instructions") or "").strip(),
+                    f"Datos que este paso reune: {step.get('required_slots')}" if step.get("required_slots") else "",
+                ) if part
+            )
+            extra.append({
+                "id": str(step.get("id") or step.get("tag") or "step-actual"),
+                "title": f"Paso actual de la conversacion: {step.get('title') or step.get('tag') or ''}".strip(),
+                "body": body,
+            })
+        said: list[str] = []
+        for turn in compiled.get("history") or []:
+            if isinstance(turn, Mapping) and turn.get("role") == "user" and str(turn.get("content") or "").strip():
+                said.append(str(turn["content"]).strip())
+        question = str(compiled.get("question") or "").strip()
+        if question:
+            said.append(question)
+        if said:
+            extra.append({
+                "id": "conversacion-cliente",
+                "title": "Lo que el cliente dijo en esta conversacion (datos aportados por el, no por la KB)",
+                "body": "\n".join(f"- {line}" for line in said),
+            })
+        return extra
+
     def _policy_gate(
         self,
         response: str,
@@ -676,6 +733,7 @@ class Orchestrator:
         declared_facts = [
             *compiled.get("domain_facts", []),
             *compiled.get("rules", []),
+            *self._step_and_client_facts(compiled),
         ]
 
         try:
