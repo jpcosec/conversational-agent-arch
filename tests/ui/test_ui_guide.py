@@ -600,3 +600,52 @@ def test_no_page_errors(page, base_url: str):
         page.goto(f"{base_url}{path}", wait_until="networkidle")
         page.wait_for_timeout(2000)
         assert page.errors == [], f"page errors en {path}: {page.errors}"
+
+# ══════════════════════════════════════════════════════════════════════════
+# Sección 2.2b — Nueva conversación, stepper del flujo y ficha del lead
+# ══════════════════════════════════════════════════════════════════════════
+def test_flow_stepper_lists_steps_root_first_and_marks_active(page, base_url: str):
+    """UI-GUIDE §2.2b: el stepper enumera los ConversationStep en orden de
+    flujo (Don Peppe: onboarding -> booking) y marca el paso activo tras un turno."""
+    page.goto(f"{base_url}/")
+    page.locator("[data-testid='chat-new-session']").click()
+    page.wait_for_function(
+        "() => document.querySelectorAll(\'[data-testid=\"flow-step\"]\').length > 0",
+        timeout=10000,
+    )
+    steps = page.locator("[data-testid='flow-step']")
+    tags = [steps.nth(i).get_attribute("data-step-tag") for i in range(steps.count())]
+    assert tags[0] == "conversation:steps.onboarding", tags
+    assert all(steps.nth(i).get_attribute("data-state") == "pending" for i in range(steps.count()))
+
+    before = _send_chat(page, "hola, quiero pedir una pizza")
+    _wait_turn(page, before)
+    page.wait_for_function(
+        "() => [...document.querySelectorAll(\'[data-testid=\"flow-step\"]\')].some(e => e.dataset.state === \'active\')",
+        timeout=10000,
+    )
+    assert page.locator("[data-testid='flow-step'][data-state='active']").count() == 1
+    # el badge del turno muestra el titulo humano del step, no el tag
+    assert "conversation:steps." not in page.locator(REAL_TURN).last.inner_text()
+
+
+def test_lead_card_shows_collected_contact_and_new_session_resets_it(page, base_url: str):
+    """UI-GUIDE §2.2b: la ficha del lead muestra lo capturado del mensaje crudo
+    (email, telefono, preferencia de visita) y 'Nueva conversacion' la limpia."""
+    page.goto(f"{base_url}/")
+    page.locator("[data-testid='chat-new-session']").click()
+    before = _send_chat(page, "quiero reservar el viernes en la tarde, mi correo es lead@test.cl y mi telefono +56 9 1111 2222")
+    _wait_turn(page, before)
+    page.wait_for_function(
+        "() => (document.querySelector(\'[data-testid=\"lead-field-email\"]\') || {}).innerText?.includes(\'lead@test.cl\')",
+        timeout=10000,
+    )
+    card = page.locator("[data-testid='lead-card']").inner_text()
+    assert "lead@test.cl" in card and "+56911112222" in card and "viernes en la tarde" in card
+    assert page.locator("[data-testid='lead-field-paso']").inner_text().strip() != ""
+
+    page.locator("[data-testid='chat-new-session']").click()
+    assert "lead@test.cl" not in page.locator("[data-testid='lead-card']").inner_text()
+    assert "ID: —" in page.locator("#sessionBadge").inner_text()
+    assert page.locator(REAL_TURN).count() == 0
+    assert not page.errors, page.errors

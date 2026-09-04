@@ -177,3 +177,29 @@ def test_twilio_invalid_signature_is_rejected(client: TestClient, monkeypatch: p
 def test_twilio_unconfigured_returns_503(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.delenv("TWILIO_AUTH_TOKEN", raising=False)
     assert _post_twilio(client, {"From": "whatsapp:+1", "Body": "hola"}, "x").status_code == 503
+
+
+def test_lead_card_collects_contact_and_visit_preference(client: TestClient) -> None:
+    """/api/lead: paso activo en orden de flujo, perfil y datos capturados del
+    mensaje crudo (chat_history queda scrubbeado, la ficha no)."""
+    sid = "lead-card-1"
+    client.post("/api/chat", json={"message": "hola, quiero reservar el jueves en la tarde", "session_id": sid})
+    r = client.post("/api/chat", json={"message": "mi correo es ana@test.cl y mi telefono +56 9 8765 4321", "session_id": sid})
+    assert r.status_code == 200
+    turn = r.json()["turn"]
+    assert turn["collected"]["email"] == "ana@test.cl" and turn["collected"]["telefono"] == "+56987654321"
+
+    lead = client.get("/api/lead", params={"session_id": sid}).json()
+    assert lead["collected"] == {"email": "ana@test.cl", "telefono": "+56987654321", "preferencia_visita": "jueves en la tarde"}
+    tags = [s["tag"] for s in lead["steps"]]
+    assert tags[0] == "conversation:steps.onboarding"  # raiz del grafo primero (Don Peppe: onboarding -> booking)
+    assert lead["step"] is not None and lead["step"]["tag"] == turn["flow_node"]
+    assert {s["state"] for s in lead["steps"]} <= {"done", "active", "pending"}
+    assert all({"trait_id", "title", "category"} <= set(t) for t in lead["traits"])
+
+    # el historial persistido NO expone el email ni el telefono (scrub PII)
+    hist = client.get("/api/history", params={"session_id": sid}).json()
+    joined = " ".join(m["content"] for m in hist["messages"] if m["role"] == "user")
+    assert "ana@test.cl" not in joined and "87654321" not in joined
+
+    assert client.get("/api/lead").status_code == 400

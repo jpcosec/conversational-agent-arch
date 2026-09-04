@@ -40,7 +40,7 @@ from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 
 from kb_agent.models_sql.identity import Users, UserTraits
-from kb_agent.models_sql.session import ChatHistory
+from kb_agent.models_sql.session import ChatHistory, SessionState
 from kb_agent.models_sql.turns import Turns
 from kb_agent.inbound import InboundService, twilio_rest_sender
 from kb_agent.orchestrator import Orchestrator
@@ -113,6 +113,7 @@ def to_ui_turn(turn_id: str, raw: dict[str, Any]) -> dict[str, Any]:
         "flow_node": raw.get("flow_node"),
         "allowed_transitions": raw.get("allowed_transitions", []),
         "traits_after": raw.get("traits_after", []),
+        "collected": raw.get("collected_slots", {}) or {},
         "system_turn": raw.get("system_turn"),
         # Rastro por agente (ruteador/orquestador/conversador/gate) que arma
         # Orchestrator.handle_turn -- lo consume el panel "Razonamiento" del
@@ -132,6 +133,38 @@ def to_ui_turn(turn_id: str, raw: dict[str, Any]) -> dict[str, Any]:
             "bundle": context.get("bundle", []),
         },
     }
+
+
+def ordered_flow_steps(flow: dict[str, Any]) -> list[dict[str, Any]]:
+    """Steps del diagrama en orden de recorrido: raices (sin transicion entrante)
+    primero, luego BFS por las aristas ``flows_to``; lo inalcanzable al final.
+
+    Es lo que dibuja el stepper del chat: el orden de negocio (saludo ->
+    calificacion -> agendar -> datos -> cierre), no el alfabetico.
+    """
+    nodes = list(flow.get("nodes") or [])
+    edges = list(flow.get("edges") or [])
+    by_id = {n["id"]: n for n in nodes}
+    out_edges: dict[str, list[str]] = {n["id"]: [] for n in nodes}
+    incoming: set[str] = set()
+    for e in edges:
+        src, dst = e.get("source"), e.get("target")
+        if src in out_edges and dst in by_id:
+            out_edges[src].append(dst)
+            incoming.add(dst)
+    order: list[str] = []
+    queue = [n["id"] for n in nodes if n["id"] not in incoming]
+    while queue:
+        cur = queue.pop(0)
+        if cur in order:
+            continue
+        order.append(cur)
+        queue.extend(t for t in out_edges.get(cur, []) if t not in order)
+    order.extend(n["id"] for n in nodes if n["id"] not in order)
+    return [
+        {"id": sid, "tag": by_id[sid].get("step_tag"), "title": by_id[sid].get("title") or sid, "kind": by_id[sid].get("kind")}
+        for sid in order
+    ]
 
 
 def _group_conversations(history_rows: list[ChatHistory]) -> list[dict]:
@@ -584,6 +617,53 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         return JSONResponse({
             "events": events_list,
             "user_id": user_id,
+        })
+
+    @app.get("/api/lead")
+    def lead(session_id: str | None = None, external_id: str | None = None) -> JSONResponse:
+        """Ficha del lead de UNA conversacion: paso activo dentro del flujo,
+        perfil (traits resueltos contra su TraitAtom) y datos capturados del
+        mensaje crudo (``session_state.flow_slots.collected``, ver
+        ``kb_agent/lead_slots.py``). Es lo que el equipo comercial necesita
+        para confirmar una visita sin leer el rastro tecnico del turno.
+        """
+        if not session_id and not external_id:
+            raise HTTPException(status_code=400, detail="se requiere session_id o external_id")
+        ext = external_id or _external_id(session_id or "")
+        if app.state.demo_mode:
+            return JSONResponse({"external_id": ext, "step": None, "steps": [], "traits": [], "collected": {}})
+        from frontends.flow_editor.export_flow import export
+
+        steps = ordered_flow_steps(export(str(cfg.flow_kb_root)))
+        orch = _orch()
+        active: str | None = None
+        collected: dict[str, Any] = {}
+        trait_ids: list[str] = []
+        with orch.SessionLocal() as s:
+            user = s.query(Users).filter(Users.external_id == ext).first()
+            if user is not None:
+                state = s.get(SessionState, user.id)
+                if state is not None:
+                    active = state.flow_node
+                    slots = state.flow_slots if isinstance(state.flow_slots, dict) else {}
+                    collected = dict(slots.get("collected") or {})
+                trait_ids = [
+                    r[0] for r in s.query(UserTraits.trait_id).filter(UserTraits.user_id == user.id)
+                    .order_by(UserTraits.trait_id).all()
+                ]
+        active_idx = next((i for i, st in enumerate(steps) if st["tag"] == active), None)
+        for i, st in enumerate(steps):
+            st["state"] = "pending" if active_idx is None else ("done" if i < active_idx else "active" if i == active_idx else "pending")
+        traits = []
+        for tid in trait_ids:
+            doc = orch.reader.get_doc(tid) or {}
+            traits.append({"trait_id": tid, "title": doc.get("title") or tid, "category": doc.get("category") or ""})
+        return JSONResponse({
+            "external_id": ext,
+            "step": next((st for st in steps if st["state"] == "active"), None),
+            "steps": steps,
+            "traits": traits,
+            "collected": collected,
         })
 
     @app.get("/api/history")

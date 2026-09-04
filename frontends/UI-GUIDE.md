@@ -87,6 +87,31 @@ De arriba a abajo:
 - Input abajo: placeholder desde `/api/config.input_placeholder`
   (**prohibido** hardcodear "pizzas"). `data-testid="chat-input"`, `chat-send`.
 
+### 2.2b Estado de negocio: nueva conversación, stepper y ficha del lead
+
+Pensado para quien evalúa la vendedora virtual (equipo comercial), no para
+depurar el runtime. Fuente: `/api/lead?session_id=…` (o `external_id=…`),
+que devuelve los steps del diagrama en orden de recorrido (raíz primero),
+el paso activo, el perfil (traits resueltos contra su TraitAtom) y los datos
+capturados del mensaje crudo (`session_state.flow_slots.collected`, ver
+`kb_agent/lead_slots.py`: email, teléfono, preferencia de visita, modalidad;
+`chat_history` se persiste scrubbeado y no los tiene).
+
+- **Nueva conversación** (`chat-new-session`, en el header del timeline):
+  borra `kb_chat_session`, deja solo el saludo, badge `ID: —`, ficha y
+  stepper vacíos. Antes la sesión de localStorage era eterna y todos los que
+  probaban en el mismo navegador compartían contexto.
+- **Stepper** (`flow-stepper`, entre el header y el timeline): un
+  `flow-step` por ConversationStep con `data-step-tag` y
+  `data-state=done|active|pending`; título humano del step, numerado en
+  orden de flujo. Se actualiza con cada turno y al cargar una sesión.
+- **Ficha del lead** (`sidebar-lead` / `lead-card`, primer bloque del
+  sidebar): filas `lead-field-paso`, `lead-field-perfil` (chips con el título
+  del trait), `lead-field-preferencia_visita`, `lead-field-modalidad`,
+  `lead-field-email`, `lead-field-telefono`; "pendiente" cuando falta.
+- El badge de cada respuesta del timeline y el bloque Estado del sidebar
+  muestran el **título** del step, no el tag `conversation:steps.*`.
+
 ### 2.3 Inspector derecho (`data-testid="inspector"`)
 
 Secciones, en orden:

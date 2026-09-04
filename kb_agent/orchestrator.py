@@ -47,6 +47,7 @@ from kb_agent.knowledge.kgdb_reader import KGDBReader
 from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, TurnClosedEvent
+from kb_agent.lead_slots import extract_lead_slots, merge_lead_slots
 from kb_agent.pii.scrubber import scrub
 from kb_agent.pii.scrubber import scrub
 from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, TuningConfig, load_project_config
@@ -423,11 +424,16 @@ class Orchestrator:
                 session_state.flow_node = flow_node
             flow_transitions = compiled.get("allowed_transitions", [])
             flow_missing = compiled.get("missing_slots", [])
-            if flow_transitions or flow_missing:
-                session_state.flow_slots = {
-                    "allowed_transitions": flow_transitions,
-                    "missing_slots": flow_missing,
-                }
+            # Datos del lead (email, telefono, preferencia de visita, modalidad)
+            # capturados del mensaje CRUDO: chat_history se persiste scrubbeado
+            # y no se pueden recuperar despues (ver kb_agent/lead_slots.py).
+            previous_slots = session_state.flow_slots if isinstance(session_state.flow_slots, dict) else {}
+            collected_slots = merge_lead_slots(previous_slots.get("collected"), extract_lead_slots(message))
+            session_state.flow_slots = {
+                "allowed_transitions": flow_transitions,
+                "missing_slots": flow_missing,
+                "collected": collected_slots,
+            }
             session_state.current_node = SessionNode.IDLE
             session_state.updated_at = datetime.now(timezone.utc)
             reply_text = json.dumps(response, ensure_ascii=False) if isinstance(response, dict) else str(response)
@@ -511,6 +517,7 @@ class Orchestrator:
                 "system_turn": system_turn,
                 "traits_before": traits_before,
                 "traits_after": traits_after,
+                "collected_slots": collected_slots,
                 "used_traits_in_context": compiled.get("user_traits", []),
                 "scenario_effective": scenario_effective,
                 "scenario_source": scenario_source,

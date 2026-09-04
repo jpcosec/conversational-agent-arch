@@ -1,13 +1,14 @@
 ---
 id: task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
-status: draft
+status: active
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
-current_node: checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready
-history: []
+current_node: checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready
+history:
+- operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate
 references: []
 depends_on: []
 pills: []
@@ -20,6 +21,8 @@ task_type: implementation
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Chat: nueva conversacion, ficha del lead y stepper del flujo
