@@ -803,7 +803,7 @@ crear_visita
 
 ## Allowed Transitions
 
-conversation:steps.datos_contacto
+conversation:steps.datos_contacto, conversation:steps.cierre
 
 ## Grounding Atoms
 

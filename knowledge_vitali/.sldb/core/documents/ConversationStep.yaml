@@ -21,8 +21,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-agendar-visita
   path: atoms/step-vitali-agendar-visita.md
-  hash_c: b264f2b9a7f97b50c634f7407eb10d57c3b3930464130eefd4413dc2f02fdb24
-  hash_d: e2a407cf173f250e9686a797d9a2cb4a3b023683c55df1c934b3d78e6e7de74a
+  hash_c: 08d7defbeb0f0b61f7b9f4067bd9fa808b0c23ee2b2aafb3419cf5c3e2903a9d
+  hash_d: 879891af9f8952f1adcac78b3617667fb357302d29bdae05b48f82001bbef34c
   semantic_tags:
   - agent:booking-workflow
   - conversation:steps.agendar_visita
