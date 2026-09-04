@@ -1,0 +1,57 @@
+{
+  "scenario_id": "donpeppe_saludo_unico",
+  "external_id": "sim:donpeppe_saludo_unico",
+  "saved_at": "2026-08-27T19:29:08.805755+00:00",
+  "ended_by": "user_done",
+  "end_reason": "Ya obtuve las tres respuestas que necesitaba: horario del sábado, precio de la pizza Pepperoni y confirmación de estacionamiento.",
+  "turns": [
+    {
+      "user": "¿Qué horario tienen el sábado?",
+      "user_reason": "Necesito saber el horario del sábado.",
+      "assistant": "¡Hola! Los sábados, en Don Peppe te esperamos de 19:00 a 23:30 hrs. ¡Ideal para disfrutar una rica pizza!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "¿Qué precio tiene la pizza Pepperoni?",
+      "user_reason": "Todavía necesito saber el precio de la pizza Pepperoni y si hay estacionamiento.",
+      "assistant": "¡Hola! La pizza Pepperoni tiene un valor de $10.500. ¡Es una de las favoritas!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "¿Tienen estacionamiento?",
+      "user_reason": "Aun me falta preguntar si hay estacionamiento.",
+      "assistant": "¡Hola! Sí, ¡claro que sí! En Don Peppe contamos con estacionamiento para clientes, para que vengas sin preocupaciones. 😉",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "scenario_id": "donpeppe_regla_reservas",
+  "external_id": "sim:donpeppe_regla_reservas",
+  "saved_at": "2026-08-27T19:59:19.464601+00:00",
+  "ended_by": "user_done",
+  "end_reason": "No es posible reservar para hoy y para una persona, y ya me explicaron el motivo.",
+  "turns": [
+    {
+      "user": "Quiero reservar para 1 persona hoy a las 21:00 a nombre de Ana",
+      "user_reason": "mensaje inicial fijo",
+      "assistant": "¡Hola Ana! Gracias por tu interés. Te cuento que para reservar, necesitamos que sea con al menos un día de anticipación y para un mínimo de 2 personas.\n\nHoy mismo y para una persona no podríamos confirmar la reserva. ¿Te gustaría buscar otra fecha o quizás venir con un acompañante? ¡Así disfrutan mejor la pizza!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.booking",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

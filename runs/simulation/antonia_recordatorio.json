@@ -1,0 +1,37 @@
+{
+  "scenario_id": "antonia_recordatorio",
+  "external_id": "sim:antonia_recordatorio",
+  "saved_at": "2026-08-27T20:00:00.157784+00:00",
+  "ended_by": "user_done",
+  "end_reason": "El recordatorio fue agendado y confirmado.",
+  "turns": [
+    {
+      "user": "Quiero agendar un recordatorio para mi aplicación los martes a las 9:00",
+      "user_reason": "mensaje inicial fijo",
+      "assistant": "¡Listo! Ya agendé tu recordatorio para la aplicación de Selfix los martes a las 09:00 hrs. ¡Así no se te olvida! Cualquier otra cosa, aquí estoy. 😊",
+      "kind": "tool_call",
+      "system_turn": {
+        "tool": "agendar_recordatorio",
+        "status": "ok",
+        "args": {
+          "dia": "martes",
+          "hora": "09:00"
+        },
+        "recordatorio_id": 1
+      },
+      "traits_after": [
+        "trait-antonia-prefiere-recordatorios"
+      ],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "waiting_tool",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

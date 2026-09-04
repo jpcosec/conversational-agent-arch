@@ -1,10 +1,10 @@
-<!-- generado desde desk/bundles/bundle-glosario.md — no editar a mano; python desk/bundles/materialize.py -->
+<!-- generado desde desk/materializations/composition-glossary.md — no editar a mano; python desk/materializations/materialize.py -->
 # Glosario de Conceptos
 
 Definiciones de los términos ubicuos (Ubiquitous Language) utilizados en todo el ecosistema de KB Agent.
 
 ### Turno Extendido
-El ciclo de vida completo de un mensaje de usuario. A diferencia de un request/response tradicional, el turno extendido incluye pausas en la ejecución síncrona para ejecutar herramientas externas (tools) y procesos asíncronos posteriores a la respuesta (como la extracción de perfiles y la reflexión en batch).
+El ciclo de vida completo de un mensaje de usuario. A diferencia de un request/response tradicional, el turno extendido incluye pausas en la ejecución síncrona para ejecutar herramientas externas (tools) y procesos asíncronos posteriores a la respuesta (como la extracción de perfiles y la reflexión en batch). Cada turno se persiste con un `id` autoincremental como PK real (auditable e inequívoco); el `turn_id` que emite el runtime (p.ej. "t1", "t2") es un contador por-sesión y NO es globalmente único, por lo que solo es único dentro de su `session_id` (UniqueConstraint `session_id`+`turn_id`) y sirve para localizar un turno puntual en el Turn Inspector. El turno pertenece además a una Conversation (`conversation_id`), la unidad que acota qué historial entra al prompt.
 
 ### Átomo Semántico (SLDB)
 Unidad mínima de conocimiento y gobernanza. Técnicamente es un archivo Markdown con frontmatter YAML (formato SLDB). Todo en el sistema es un átomo: las reglas de negocio, los perfiles de usuario, los pasos del flujo, e incluso la propia documentación de arquitectura.

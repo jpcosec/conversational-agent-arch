@@ -1,0 +1,12 @@
+template: template.html
+html_artifact: kb_agent_runtime.html
+vistas:
+- id: vista01
+  category: Arquitectura
+  nav: "01 · Arquitectura AST"
+  lbl: Vista 01
+  title: "KB Agent Runtime · Arquitectura (AST scan)"
+  desc: "Diagrama de componentes generado automáticamente desde el código fuente (spec2viz diagram generate sobre kb_agent/): módulos, paquetes y dependencias reales del runtime agéntico."
+  specs:
+  - kb-agent-runtime
+  mmd: ../../rendered/architecture.spec.mmd

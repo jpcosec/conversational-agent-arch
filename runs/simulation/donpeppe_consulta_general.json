@@ -1,0 +1,57 @@
+{
+  "scenario_id": "donpeppe_consulta_general",
+  "external_id": "sim:donpeppe_consulta_general",
+  "saved_at": "2026-08-27T19:28:22.729683+00:00",
+  "ended_by": "user_done",
+  "end_reason": "Ya tengo toda la información que necesitaba: pizzas y precios, horario del domingo y la dirección.",
+  "turns": [
+    {
+      "user": "Hola! Qué pizzas tienen y cuáles son sus precios?",
+      "user_reason": "Necesito saber las pizzas y sus precios primero.",
+      "assistant": "¡Hola! Qué gusto saludarte.\n\nEn Don Peppe tenemos pizzas riquísimas:\n\n*   **Margherita:** $8.900\n*   **Pepperoni:** $10.500\n*   **Cuatro Quesos:** $11.200\n*   **Napoletana:** $9.800\n\n¡Están todas buenísimas! ¿Te gustaría saber algo más?",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "Y los domingos, a qué hora abren?",
+      "user_reason": "Aún necesito saber el horario del domingo y la dirección.",
+      "assistant": "¡Hola! Los domingos abrimos de 19:00 a 23:30. ¡Te esperamos! ¿Necesitas algo más?",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "Y dónde queda el local?",
+      "user_reason": "Aún me falta saber la dirección del local.",
+      "assistant": "¡Hola! Don Peppe está en Av. Italia 1234, Providencia, Santiago.\n\nContamos con estacionamiento para clientes y acceso fácil por Metro Santa Isabel. ¡Te esperamos!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

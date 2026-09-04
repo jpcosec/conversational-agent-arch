@@ -1,0 +1,41 @@
+{
+  "scenario_id": "donpeppe_reserva_completa",
+  "external_id": "sim:donpeppe_reserva_completa",
+  "saved_at": "2026-08-27T19:29:55.894653+00:00",
+  "ended_by": "user_done",
+  "end_reason": "No puedo dar la fecha exacta, así que no puedo hacer la reserva.",
+  "turns": [
+    {
+      "user": "Hola! Quiero reservar una mesa para 4 personas el viernes a las 20:00 a nombre de Rojas",
+      "user_reason": "mensaje inicial fijo",
+      "assistant": "¡Hola! Para poder confirmar tu reserva para 4 personas a las 20:00 a nombre de Rojas, necesito que me indiques la fecha exacta de ese viernes.\n\nAsí nos aseguramos de cumplir con el plazo de un día de anticipación. ¡Quedo atento!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.booking",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "No tengo la fecha exacta, solo sé que es para este viernes.",
+      "user_reason": "El asistente pide la fecha exacta y no la tengo en mis datos.",
+      "assistant": "¡Comprendo! Para concretar tu reserva para este viernes, sí o sí necesito la fecha exacta.\n\nEs importante para verificar que se cumpla el plazo de al menos un día de anticipación. ¡Apenas la tengas, me la indicas!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.booking",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

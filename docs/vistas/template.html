@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teva AWS Migration · Vistas de Arquitectura</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,400&family=Manrope:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.12.1/mermaid.min.js"></script>
+<style>
+  :root{--bg:#0a0a0f;--amber:#d4a574;--bone:#f5f0e8;--bone-dim:rgba(245,240,232,.6);--line:rgba(212,165,116,.25);--card:#12121a;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--bone);font-family:'Manrope',sans-serif;}
+  header{padding:48px 6% 28px;border-bottom:1px solid var(--line);}
+  .brand{font-family:'Fraunces',serif;font-size:20px;}
+  .brand span{color:var(--amber);font-style:italic;}
+  h1{font-family:'Fraunces',serif;font-weight:300;font-size:34px;margin-top:14px;}
+  h1 em{color:var(--amber);}
+  .sub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim);margin-top:10px;}
+  nav{display:flex;flex-wrap:wrap;gap:16px;padding:18px 6%;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,10,15,.95);backdrop-filter:blur(8px);z-index:10;align-items:center;}
+  .nav-category {display:flex;gap:8px;align-items:center;}
+  .nav-category span {font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--amber);margin-right:6px;text-transform:uppercase;}
+  nav a{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-dim);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:7px 14px;transition:.2s;}
+  nav a:hover{color:var(--amber);border-color:var(--amber);}
+  .macro-separator {padding:44px 6% 0px; border-bottom: none;}
+  .macro-separator h2 {font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--amber);text-align:center;letter-spacing:0.1em;text-transform:uppercase;}
+  section{padding:44px 6%;border-bottom:1px solid rgba(245,240,232,.06);}
+  .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
+  h2{font-family:'Fraunces',serif;font-weight:400;font-size:24px;margin-bottom:8px;}
+  .desc{color:var(--bone-dim);font-weight:300;font-size:14px;line-height:1.6;max-width:820px;margin-bottom:22px;}
+  .board{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;overflow-x:auto;}
+  .mermaid{display:flex;justify-content:center;min-width:600px;}
+  .puml-board svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+  .gap-notes{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:16px 20px;background:rgba(227,76,76,0.05);}
+  .gap-notes strong{color:#e07a6a;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;}
+  .gap-notes ul{margin:10px 0 0 18px;color:var(--bone-dim);font-size:14px;line-height:1.6;}
+  footer{padding:34px 6%;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--bone-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  .mermaid .cluster-label foreignObject { overflow: visible !important; }
+  .mermaid .cluster-label span,
+  .mermaid .cluster-label div {
+    background-color: rgba(10, 10, 15, 0.85) !important;
+    padding: 4px 10px !important;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(10, 10, 15, 0.9);
+    display: table;
+    white-space: nowrap !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .board { position: relative; }
+  .fs-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(18, 18, 26, 0.7);
+    border: 1px solid var(--line);
+    color: var(--bone-dim);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: 0.2s;
+    z-index: 10;
+  }
+  .fs-btn:hover { color: var(--amber); border-color: var(--amber); background: rgba(18,18,26,.95); }
+  .board:fullscreen {
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 20px;
+  }
+  .board:fullscreen .fs-btn { opacity: 0.3; position: fixed; }
+  .board:fullscreen .fs-btn:hover { opacity: 1; }
+  .board:fullscreen .mermaid { min-width: unset; }
+
+  /* anotaciones (planning-only) */
+  body.anno-mode .mermaid g.node:hover,
+  body.anno-mode .mermaid g.classGroup:hover,
+  body.anno-mode .mermaid g.stateGroup:hover,
+  body.anno-mode .mermaid rect.actor:hover {
+    filter: drop-shadow(0 0 5px var(--amber));
+    cursor: crosshair;
+  }
+  body.anno-mode .mermaid g.cluster:hover > rect {
+    stroke: var(--amber);
+    stroke-width: 1.5px;
+    cursor: crosshair;
+  }
+  .anno-marked { filter: drop-shadow(0 0 7px var(--amber)); }
+  /* ---------- UI y W5H1 Atoms ---------- */
+  .atom-tooltip {
+    position: fixed; z-index: 100;
+    width: 320px; max-height: 400px; overflow-y: auto;
+    background: rgba(18, 18, 26, 0.95); border: 1px solid var(--amber); border-radius: 8px;
+    padding: 14px; font-size: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .atom-tooltip.interactive { pointer-events: auto; }
+  .atom-tooltip h4 { color: var(--amber); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; }
+  .atom-tooltip .atom-entry { margin-bottom: 12px; }
+  .atom-tooltip .atom-q { color: var(--bone); font-family: 'JetBrains Mono', monospace; font-size: 10px; margin-bottom: 4px; border-bottom: 1px solid var(--line); padding-bottom: 2px; text-transform: uppercase; }
+  .atom-tooltip .atom-b { color: var(--bone-dim); font-size: 11.5px; line-height: 1.5; white-space: pre-wrap; }
+  .atom-tooltip .missing { color: #e34c4c; font-size: 10px; font-family: 'JetBrains Mono', monospace; margin-top: 8px; }
+  
+  .tracker-modal {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 80%; max-width: 600px; max-height: 80vh; overflow-y: auto;
+    background: var(--card); border: 1px solid var(--amber); border-radius: 12px;
+    padding: 24px; z-index: 200; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    display: none;
+  }
+  .tracker-modal h3 { color: var(--amber); font-family: 'Fraunces', serif; margin-bottom: 16px; font-size: 22px; }
+  .tracker-modal .close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--bone-dim); cursor: pointer; font-size: 20px; }
+  .tracker-modal .close-btn:hover { color: var(--amber); }
+  .tracker-item { margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--bone-dim); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
+  .tracker-item strong { color: var(--bone); }
+  .tracker-item .miss { color: #e34c4c; }
+
+  #floating-controls { position: fixed; bottom: 20px; right: 20px; z-index: 90; display: flex; gap: 10px; }
+  .float-btn {
+    background: var(--card); border: 1px solid var(--line); color: var(--bone-dim);
+    padding: 10px 16px; border-radius: 20px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .float-btn:hover { color: var(--amber); border-color: var(--amber); }
+  .float-btn.on { background: var(--amber); color: var(--bg); border-color: var(--amber); font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">teva <span>aws migration</span></div>
+  <h1>Vistas de <em>Arquitectura</em></h1>
+  <div class="sub">GENERADO · fuentes: specs/*.yml + rendered/*.mmd + vistas.yml · no editar a mano</div>
+</header>
+<nav>
+{{NAV}}
+</nav>
+{{SECTIONS}}
+<footer>
+  <div>PSP SELFIX · ARCHITECTURE TEMPLATE</div>
+  <div>spec2viz + mermaid projection</div>
+</footer>
+
+<div id="floating-controls">
+  <button id="btn-tracker" class="float-btn">🎯 Track que nos falta</button>
+  <button id="anno-btn" class="float-btn">✎ Marcar (Overlay)</button>
+</div>
+
+<div id="tracker-modal" class="tracker-modal">
+  <button class="close-btn" onclick="document.getElementById('tracker-modal').style.display='none'">✕</button>
+  <h3>Track de Átomos Faltantes (W5H1)</h3>
+  <div id="tracker-list"></div>
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'loose',
+    theme: 'dark',
+    themeVariables: {
+      primaryColor: '#12121a', primaryBorderColor: '#d4a574', primaryTextColor: '#f5f0e8', lineColor: '#d4a574',
+      secondaryColor: '#0a0a0f', tertiaryColor: '#12121a', fontFamily: 'Manrope, sans-serif',
+      clusterBkg: 'rgba(212,165,116,0.05)', clusterBorder: 'rgba(212,165,116,0.25)',
+      edgeLabelBackground: '#0a0a0f', actorBkg: '#12121a', actorBorder: '#d4a574', actorTextColor: '#f5f0e8',
+      signalColor: '#d4a574', signalTextColor: '#f5f0e8', noteBkgColor: 'rgba(212,165,116,0.12)',
+      noteBorderColor: '#d4a574', noteTextColor: '#f5f0e8'
+    },
+    flowchart: { htmlLabels: true, curve: 'basis', subGraphTitleMargin: { top: 0, bottom: 32 } }
+  });
+
+  function bindBoards() {
+    document.querySelectorAll('.board').forEach(board => {
+      if (board.querySelector('.fs-btn')) return;
+      let scale = 1, translateX = 0, translateY = 0, isDragging = false, startX, startY;
+      const getSvg = () => board.querySelector('svg');
+
+      board.addEventListener('wheel', (e) => {
+        if (!document.fullscreenElement) return;
+        e.preventDefault();
+        const svg = getSvg();
+        if (!svg) return;
+        scale += e.deltaY * -0.001;
+        scale = Math.max(0.3, Math.min(scale, 10));
+        svg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      });
+
+      board.addEventListener('mousedown', (e) => {
+        if (!document.fullscreenElement) return;
+        if (e.target.closest('.fs-btn')) return;
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        board.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+        board.style.cursor = '';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging || !document.fullscreenElement) return;
+        e.preventDefault();
+        const svg = getSvg();
+        if (!svg) return;
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        svg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      });
+
+      const btn = document.createElement('button');
+      btn.className = 'fs-btn';
+      btn.title = 'Fullscreen & Zoom';
+      btn.innerHTML = '⛶';
+      btn.onclick = () => {
+        if (!document.fullscreenElement) {
+          board.requestFullscreen().catch(err => console.error(err));
+        } else {
+          document.exitFullscreen();
+        }
+      };
+
+      board.addEventListener('fullscreenchange', () => {
+        const svg = getSvg();
+        if (!document.fullscreenElement) {
+          scale = 1; translateX = 0; translateY = 0;
+          if (svg) svg.style.transform = '';
+        } else {
+          if (svg) svg.style.transition = 'none';
+        }
+      });
+
+      board.appendChild(btn);
+    });
+  }
+
+  /* ---------- anotaciones (planning-only) ---------- */
+  let annoMode = false, annoCache = [];
+  const ANNO_SEL = 'g.node, g.classGroup, g.stateGroup, rect.actor, g.cluster';
+  const W5H1 = ['what', 'why', 'how', 'how_not', 'when', 'where', 'for_whom']; // Expected atoms
+
+  function annoLabel(el) {
+    if (el.matches('g.cluster')) {
+      return (el.querySelector('.cluster-label')?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80) || el.id;
+    }
+    if (el.matches('rect.actor')) {
+      const t = el.parentElement.querySelector('text.actor');
+      if (t) return t.textContent.replace(/\s+/g, ' ').trim().slice(0, 80);
+    }
+    const t = el.querySelector('.label, foreignObject, text');
+    return (t ? t.textContent : el.textContent).replace(/\s+/g, ' ').trim().slice(0, 80);
+  }
+  function annoVista(el) { return el.closest('section')?.id || 'unknown'; }
+
+  async function annoLoad() {
+    try {
+      const r = await fetch('/annotations');
+      annoCache = await r.json();
+      annoRender();
+    } catch { console.warn('annotate_server no activo'); }
+  }
+  function annoRender() {
+    document.querySelectorAll('.anno-marked').forEach(el => el.classList.remove('anno-marked'));
+    annoCache.forEach(a => {
+      const sec = document.getElementById(a.vista);
+      if (!sec) return;
+      sec.querySelectorAll(ANNO_SEL).forEach(el => {
+        if (annoLabel(el) === a.label) el.classList.add('anno-marked');
+      });
+    });
+  }
+  function annoClose() { document.getElementById('anno-popup')?.remove(); }
+  function annoPopup(el, x, y) {
+    annoClose();
+    const vista = annoVista(el), label = annoLabel(el);
+    const prev = annoCache.filter(a => a.vista === vista && a.label === label);
+    const div = document.createElement('div');
+    div.className = 'anno-popup'; div.id = 'anno-popup';
+    div.style.left = Math.min(x, innerWidth - 320) + 'px';
+    div.style.top = Math.min(y, innerHeight - 240) + 'px';
+    div.innerHTML =
+      `<div class="who">${vista} · ${label}</div>` +
+      prev.map(a => `<div class="prev">“${a.comentario}”<span>${a.ts.slice(0, 10)}</span></div>`).join('') +
+      `<textarea placeholder="comentario…"></textarea>
+       <div class="row">
+         <button data-act="save">guardar</button>
+         ${prev.length ? '<button data-act="del">borrar</button>' : ''}
+         <button data-act="x">✕</button>
+       </div>`;
+    div.addEventListener('click', async e => {
+      const act = e.target.dataset?.act;
+      if (!act) return;
+      if (act === 'x') return annoClose();
+      if (act === 'del') {
+        await fetch('/annotate', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ vista, label }) });
+        annoClose(); return annoLoad();
+      }
+      const comentario = div.querySelector('textarea').value.trim();
+      if (!comentario) return;
+      await fetch('/annotate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ vista, label, comentario }) });
+      annoClose(); annoLoad();
+    });
+    document.body.appendChild(div);
+    div.querySelector('textarea').focus();
+  }
+
+  function initAnnotations() {
+    const btn = document.getElementById('anno-btn');
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      annoMode = !annoMode;
+      document.body.classList.toggle('anno-mode', annoMode);
+      btn.classList.toggle('on', annoMode);
+      if (!annoMode) annoClose();
+    });
+    document.addEventListener('click', e => {
+      if (!annoMode || e.target.closest('.anno-popup, #floating-controls')) return;
+      const el = e.target.closest(ANNO_SEL);
+      if (!el) return;
+      e.preventDefault(); e.stopPropagation();
+      annoPopup(el, e.clientX, e.clientY);
+    }, true);
+    annoLoad();
+  }
+
+  /* ---------- Atoms W5H1 Hover & Tracker ---------- */
+  let tooltipEl = null;
+  function showAtomTooltip(el, e, label, data) {
+    if (annoMode) return;
+    if (!tooltipEl) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.className = 'atom-tooltip';
+      document.body.appendChild(tooltipEl);
+      
+      tooltipEl.addEventListener('mouseenter', () => tooltipEl.classList.add('interactive'));
+      tooltipEl.addEventListener('mouseleave', () => tooltipEl.style.opacity = '0');
+    }
+    
+    let html = `<h4>Atom: ${data ? data.title : label}</h4>`;
+    let missing = [...W5H1];
+    if (data && data.atoms) {
+      for (const [q, atom] of Object.entries(data.atoms)) {
+        missing = missing.filter(m => m !== q);
+        html += `<div class="atom-entry"><div class="atom-q">${q}</div><div class="atom-b">${atom.body}</div></div>`;
+      }
+    }
+    if (missing.length > 0) {
+      html += `<div class="missing">⚠️ Falta W5H1: ${missing.join(', ')}</div>`;
+    }
+    
+    tooltipEl.innerHTML = html;
+    tooltipEl.style.opacity = '1';
+    
+    // Position
+    const rect = el.getBoundingClientRect();
+    let left = e.clientX + 15;
+    let top = e.clientY + 15;
+    if (left + 320 > window.innerWidth) left = e.clientX - 335;
+    if (top + tooltipEl.offsetHeight > window.innerHeight) top = window.innerHeight - tooltipEl.offsetHeight - 15;
+    tooltipEl.style.left = left + 'px';
+    tooltipEl.style.top = top + 'px';
+  }
+
+  function initAtomsUI() {
+    const byView = window.ATOMS_BY_VIEW || {};
+    const db = Object.assign({}, window.ATOMS_DB || {}, ...Object.values(byView));
+    const lookup = (label) => {
+      const norm = label.toLowerCase().replace(/[^\w\s\u00C0-\u017F]+/g, ' ').replace(/\s+/g, ' ').trim();
+      if (db[norm]) return db[norm];
+      for (const entry of Object.values(db)) {
+        if (entry.aliases && entry.aliases.includes(norm)) return entry;
+      }
+      // fallback: label contains the canonical title (longest match wins)
+      let best;
+      for (const [key, entry] of Object.entries(db)) {
+        if (norm.includes(key) && (!best || key.length > best.key.length)) best = { key, entry };
+      }
+      return best ? best.entry : undefined;
+    };
+    const missingNodes = new Set();
+    
+    // Bind Hover & check missing
+    document.querySelectorAll(ANNO_SEL).forEach(el => {
+      const label = annoLabel(el).toLowerCase();
+      // Only care about nodes that have text/label
+      if (!label || label.length < 2) return;
+      
+      const data = lookup(label);
+      const foundCount = data && data.atoms ? Object.keys(data.atoms).length : 0;
+      
+      if (foundCount < W5H1.length) {
+        missingNodes.add(label);
+        // Add warning icon visually if it's a node
+        if (el.matches('g.node, rect.actor')) {
+           const warn = document.createElementNS("http://www.w3.org/2000/svg", "text");
+           warn.textContent = "⚠️";
+           warn.setAttribute("fill", "#e34c4c");
+           warn.setAttribute("font-size", "14");
+           warn.style.pointerEvents = "none";
+           const bbox = el.getBBox ? el.getBBox() : {x:0, y:0};
+           warn.setAttribute("x", bbox.x - 5);
+           warn.setAttribute("y", bbox.y + 10);
+           el.appendChild(warn);
+        }
+      }
+      
+      el.addEventListener('mouseenter', e => showAtomTooltip(el, e, label, data));
+      el.addEventListener('mousemove', e => {
+        if (tooltipEl && tooltipEl.style.opacity === '1' && !tooltipEl.classList.contains('interactive')) {
+           let left = e.clientX + 15;
+           let top = e.clientY + 15;
+           if (left + 320 > window.innerWidth) left = e.clientX - 335;
+           if (top + tooltipEl.offsetHeight > window.innerHeight) top = window.innerHeight - tooltipEl.offsetHeight - 15;
+           tooltipEl.style.left = left + 'px';
+           tooltipEl.style.top = top + 'px';
+        }
+      });
+      el.addEventListener('mouseleave', () => {
+        if (tooltipEl && !tooltipEl.classList.contains('interactive')) {
+          tooltipEl.style.opacity = '0';
+        }
+      });
+    });
+
+    // Setup Tracker
+    const trackerBtn = document.getElementById('btn-tracker');
+    trackerBtn.addEventListener('click', () => {
+      const modal = document.getElementById('tracker-modal');
+      const list = document.getElementById('tracker-list');
+      if (missingNodes.size === 0) {
+        list.innerHTML = '<div style="color:var(--amber)">🎉 Todos los componentes tienen sus W5H1 completos.</div>';
+      } else {
+        list.innerHTML = Array.from(missingNodes).sort().map(lbl => {
+          const d = lookup(lbl);
+          let miss = [...W5H1];
+          if (d && d.atoms) {
+             miss = miss.filter(m => !Object.keys(d.atoms).includes(m));
+          }
+          return `<div class="tracker-item"><strong>${lbl}</strong>: <span class="miss">faltan ${miss.join(', ')}</span></div>`;
+        }).join('');
+      }
+      modal.style.display = 'block';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await document.fonts.ready;
+      await mermaid.run({ querySelector: '.mermaid' });
+      document.querySelectorAll('.mermaid svg').forEach(svg => {
+        svg.querySelectorAll('g.cluster-label').forEach(lbl => {
+          let t = lbl.getAttribute('transform') || '';
+          for (let n = lbl.parentElement; n && n !== svg; n = n.parentElement)
+            t = ((n.getAttribute('transform') || '') + ' ' + t).trim();
+          lbl.setAttribute('transform', t);
+          lbl.style.pointerEvents = 'none';
+          svg.appendChild(lbl);
+        });
+      });
+    } catch (err) {
+      console.error('mermaid render failed:', err);
+    } finally {
+      bindBoards();
+      // initAnnotations(); // Deshabilitado para no lanzar 404 en consola
+      setTimeout(initAtomsUI, 500); // Allow some time for DOM bounds
+    }
+  });</script>
+</body>
+</html>
