@@ -707,10 +707,16 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         orch = _orch()
         rows: list[tuple] = []
         with orch.SessionLocal() as s:
-            for t in s.query(Turns).order_by(Turns.created_at.asc()).all():
-                kind = (t.decision or {}).get("kind") if isinstance(t.decision, dict) else None
-                approved = (t.gate or {}).get("approved") if isinstance(t.gate, dict) else None
-                rows.append((t.created_at, kind, approved, t.duration_ms))
+            # Se seleccionan COLUMNAS, no la entidad: no hace falta cargar
+            # ``kind`` (enum) para contar turnos, y asi la vista no depende de
+            # que cada fila historica tenga el enum en la forma que espera el
+            # modelo (ver migracion e5f6a7b8c9d1).
+            for created, decision, gate, duration in s.query(
+                Turns.created_at, Turns.decision, Turns.gate, Turns.duration_ms
+            ).order_by(Turns.created_at.asc()).all():
+                kind = decision.get("kind") if isinstance(decision, dict) else None
+                approved = gate.get("approved") if isinstance(gate, dict) else None
+                rows.append((created, kind, approved, duration))
             total_users = s.query(Users).count()
         leads_payload = leads().body
         import json as _json

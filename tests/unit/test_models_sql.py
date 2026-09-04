@@ -209,3 +209,37 @@ def test_reservas_table_links_optional_user(session: Session) -> None:
     session.commit()
     rows = session.scalars(select(Reservas).order_by(Reservas.id)).all()
     assert [(r.user_id, r.personas, r.nombre) for r in rows] == [(user.id, 4, "Rojas"), (None, 2, None)]
+
+
+def test_turn_kind_persists_the_enum_value_not_its_name(tmp_path) -> None:
+    """La columna guarda "agent", no "AGENT".
+
+    La migracion que creo ``turns.kind`` puso ``server_default="agent"`` (el
+    VALOR) mientras el modelo leia por NOMBRE: en la base de produccion de
+    Vitali toda fila previa quedo ilegible para el ORM ("LookupError: 'agent'
+    is not among the defined enum values") y rompia /api/history y
+    /api/metrics. Este test fija el contrato en la forma que ya tiene el
+    esquema.
+    """
+    from sqlalchemy import create_engine, text
+    from sqlalchemy.orm import sessionmaker
+
+    from kb_agent.models_sql.identity import Base, Users
+    from kb_agent.models_sql.turns import TurnKind, Turns
+
+    engine = create_engine(f"sqlite:///{tmp_path / 'k.sqlite'}", future=True)
+    Base.metadata.create_all(engine)
+    with sessionmaker(bind=engine, future=True)() as s:
+        s.add(Users(external_id="ui:k", channel="ui"))
+        s.flush()
+        s.add(Turns(turn_id="t1", session_id="ui:k", user_id=1, kind=TurnKind.AGENT, draft="x", decision={}, gate={}, bundle=[]))
+        s.commit()
+        assert s.execute(text("select kind from turns")).scalar_one() == "agent"
+        assert s.query(Turns).one().kind is TurnKind.AGENT
+
+        # y una fila escrita directamente con el valor (server_default de la
+        # migracion, o un backfill) se lee sin explotar
+        s.execute(text("insert into turns (turn_id, session_id, user_id, kind, draft, decision, gate, bundle) values ('t2','ui:k',1,'agent','y','{}','{}','[]')"))
+        s.commit()
+        assert {t.kind for t in s.query(Turns).all()} == {TurnKind.AGENT}
+    engine.dispose()

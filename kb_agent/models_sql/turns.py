@@ -59,8 +59,21 @@ class Turns(Base):
     )
     #: Autoria del turno (user/agent/override). Default agent: hasta ahora la
     #: tabla solo guardaba turnos del agente (con su trail).
+    #: ``values_callable``: se persiste el VALOR del enum ("agent"), no su
+    #: nombre ("AGENT"). Es lo que ya escribio la migracion que creo la
+    #: columna (``server_default="agent"``, c1a2b3d4e5f6), asi que sin esto
+    #: toda fila anterior a esa migracion -- o insertada por el default del
+    #: motor -- era ilegible para el ORM: "LookupError: 'agent' is not among
+    #: the defined enum values" al abrir el Turn Inspector o /api/metrics
+    #: sobre la base de produccion. La migracion e5f6a7b8c9d1 normaliza las
+    #: filas que si quedaron con el nombre.
     kind: Mapped[TurnKind] = mapped_column(
-        SqlEnum(TurnKind, native_enum=False, validate_strings=True),
+        SqlEnum(
+            TurnKind,
+            native_enum=False,
+            validate_strings=True,
+            values_callable=lambda enum_cls: [member.value for member in enum_cls],
+        ),
         nullable=False,
         default=TurnKind.AGENT,
     )
