@@ -118,8 +118,10 @@ class ProjectConfig:
     tuning: TuningConfig = field(default_factory=TuningConfig)
     #: Infra de despliegue (bloque ``deploy`` del yaml). Plataforma, no negocio.
     deploy: DeployConfig = field(default_factory=DeployConfig)
-    #: Modo demo (opt-in con DEMO_MODE=1): sin orquestador ni LLM, todos los
-    #: /api/* sirven ``frontends/chat/demo_data``. Nunca en modo test.
+    #: Modo demo: sin orquestador ni LLM, todos los /api/* sirven
+    #: ``frontends/chat/demo_data``. Se activa con la clave ``demo_mode`` del
+    #: yaml, o forzando la env DEMO_MODE=1 (gana sobre el yaml si este dice
+    #: false). Nunca en modo test.
     demo_mode: bool = False
 
     @property
@@ -197,6 +199,8 @@ def load_project_config(
         cfg.fallback_message = str(data["fallback_message"]).strip()
     if data.get("gate_handoff_message"):
         cfg.gate_handoff_message = str(data["gate_handoff_message"]).strip()
+    if data.get("demo_mode") is not None:
+        cfg.demo_mode = bool(data["demo_mode"])
     cfg.tool_handlers = {str(k): str(v) for k, v in tools.items() if v}
 
     # kb_root según contexto: test -> test_kb_root; serving -> kb_root.
@@ -273,6 +277,6 @@ def load_project_config(
     # Deploy por env (compat: MODAL_APP_NAME ya lo leia modal_app.py).
     if environ.get("MODAL_APP_NAME"):
         cfg.deploy.modal_app_name = environ["MODAL_APP_NAME"]
-    cfg.demo_mode = resolved_mode != "test" and environ.get("DEMO_MODE") == "1"
+    cfg.demo_mode = resolved_mode != "test" and (cfg.demo_mode or environ.get("DEMO_MODE") == "1")
 
     return cfg
