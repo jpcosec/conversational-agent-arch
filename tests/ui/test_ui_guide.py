@@ -649,3 +649,92 @@ def test_lead_card_shows_collected_contact_and_new_session_resets_it(page, base_
     assert "ID: —" in page.locator("#sessionBadge").inner_text()
     assert page.locator(REAL_TURN).count() == 0
     assert not page.errors, page.errors
+
+
+# ══════════════════════════════════════════════════════════════════════════
+# Secciones 1, 2b y 2c — nav agrupada, chat de producto, leads y métricas
+# ══════════════════════════════════════════════════════════════════════════
+def test_topbar_groups_views_by_audience(page, base_url: str):
+    """UI-GUIDE §1: la topbar agrupa por audiencia y la pinta nav.js."""
+    page.goto(f"{base_url}/leads")
+    page.wait_for_function(
+        "() => document.querySelector('[data-testid=\\'nav-leads\\']')?.hasAttribute('data-group-start')",
+        timeout=10000,
+    )
+    groups = page.eval_on_selector_all(
+        "#appNav a", "els => els.map(e => e.dataset.navGroup)"
+    )
+    assert groups == ["chat", "operacion", "operacion", "desarrollo", "desarrollo", "desarrollo", "desarrollo"]
+    assert page.locator("[data-testid='nav-leads'][data-active='true']").count() == 1
+    assert not page.errors, page.errors
+
+
+def test_leads_view_lists_states_and_visit_queue(page, base_url: str):
+    """UI-GUIDE §2c: conteos, cola de visitas por confirmar y ficha por lead."""
+    page.request.post(f"{base_url}/api/chat", data={"message": "quiero reservar el martes en la tarde, mi correo es ui@test.cl y mi fono +56 9 7777 6666", "session_id": "ui-leads-1"})
+    page.goto(f"{base_url}/leads")
+    page.wait_for_function(
+        "() => document.querySelectorAll('[data-testid=\\'lead-card\\']').length > 0",
+        timeout=15000,
+    )
+    # Cada card lleva su external_id: el orden depende de los otros leads que
+    # dejaron los tests del modulo, asi que se busca EL lead de este test.
+    card = page.locator("[data-testid='lead-card'][data-external-id='ui:ui-leads-1']").first
+    assert "ui@test.cl" in card.inner_text() and "+56977776666" in card.inner_text()
+    assert card.get_attribute("data-estado") == "datos_completos"
+    assert card.get_attribute("href") == "/?user=ui%3Aui-leads-1"
+
+    queue = page.locator("[data-testid='leads-queue'] [data-testid='lead-card']")
+    assert queue.count() >= 1
+    estados = [queue.nth(i).get_attribute("data-estado") for i in range(queue.count())]
+    assert set(estados) <= {"con_preferencia", "datos_completos"}
+    assert estados == sorted(estados, key=lambda e: e != "datos_completos")
+    # inner_text respeta text-transform: los rotulos se leen en mayusculas.
+    counts = page.locator("[data-testid='leads-counts']").inner_text().lower()
+    assert "datos completos" in counts and "con preferencia" in counts
+    assert not page.errors, page.errors
+
+
+def test_metrics_view_shows_real_counters_not_a_mock(page, base_url: str):
+    """UI-GUIDE §2c: el dashboard sale de /api/metrics; el chip de mock murió."""
+    page.goto(f"{base_url}/dashboard")
+    page.wait_for_function(
+        "() => document.querySelectorAll('[data-testid^=\\'kpi-\\']').length > 0",
+        timeout=15000,
+    )
+    assert page.locator("[data-testid='dashboard-mock-chip']").count() == 0
+    api = page.request.get(f"{base_url}/api/metrics").json()
+    assert page.locator("[data-testid='kpi-turnos']").inner_text().find(str(api["turnos"])) >= 0
+    for kpi in ("kpi-fallback", "kpi-derivados", "kpi-visitas", "kpi-latencia"):
+        assert page.locator(f"[data-testid='{kpi}']").count() == 1
+    assert not page.errors, page.errors
+
+
+def test_product_chat_is_conversation_only_and_keeps_phone_identity(page, base_url: str):
+    """UI-GUIDE §2b: sin inspector ni badges; el teléfono declarado identifica
+    a la persona (identity_key phone) y llega a su ficha."""
+    page.goto(f"{base_url}/chat")
+    page.locator("[data-testid='pc-name']").fill("Rosa Díaz")
+    page.locator("[data-testid='pc-phone']").fill("+56 9 2222 8888")
+    page.locator("[data-testid='pc-start']").click()
+
+    assert page.locator("[data-testid='inspector']").count() == 0
+    assert page.locator("[data-testid='flow-stepper']").count() == 0
+    assert page.locator("[data-testid='lead-card']").count() == 0
+
+    page.locator("[data-testid='pc-input']").fill("hola, quiero agendar")
+    page.locator("[data-testid='pc-send']").click()
+    page.wait_for_function(
+        "() => document.querySelectorAll('[data-testid=\\'pc-msg-bot\\']').length > 1",
+        timeout=25000,
+    )
+    assert page.locator("[data-testid='pc-msg-me']").count() == 1
+    assert page.locator("[data-testid='pc-typing']").count() == 0  # se retira al llegar la respuesta
+
+    lead = page.request.get(f"{base_url}/api/lead", params={"external_id": "web:+56922228888"}).json()
+    assert lead["collected"]["nombre"] == "Rosa Díaz"
+    assert lead["collected"]["telefono"] == "+56922228888"
+
+    page.locator("[data-testid='pc-new-session']").click()
+    assert page.locator("[data-testid='pc-msg-me']").count() == 0
+    assert not page.errors, page.errors

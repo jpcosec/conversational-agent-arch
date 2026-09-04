@@ -52,8 +52,11 @@ class StructuredTraitMapper(Protocol):
 @dataclass(slots=True)
 class TraitExtractor:
     reader: SLDBReader
-    identity_session: Session
-    llm_mapper: StructuredTraitMapper
+    #: Sesion SQL de identidad. Solo la usan ``persist``/``extract``;
+    #: ``analyze`` (embedder + LLM) no toca la base, por eso es opcional:
+    #: el hilo del perfilador construye el extractor sin sesion.
+    identity_session: Session | None = None
+    llm_mapper: StructuredTraitMapper | None = None
     #: Instancia unica de KnowledgeOperations del proceso (embedder cacheado).
     #: Si es None (tests unitarios, o KB sin embeddings) el ranking cae al
     #: comportamiento previo: pasar TODOS los candidatos.
@@ -61,7 +64,15 @@ class TraitExtractor:
     top_k: int = DEFAULT_TRAIT_TOPK
     noise_floor: float = DEFAULT_TRAIT_NOISE_FLOOR
 
-    def extract(self, *, user_id: int | None, turn_text: str) -> list[TraitMatch]:
+    def analyze(self, *, user_id: int | None, turn_text: str) -> list[TraitMatch]:
+        """Traits que el turno revela, SIN tocar la base de identidad.
+
+        Es la parte cara (embedder + LLM) y la unica que vale la pena correr
+        en paralelo con el turno. La escritura queda aparte (``persist``)
+        para que la haga el hilo dueno de la sesion SQL: dos hilos escribiendo
+        la misma conexion sqlite se pisan ("cannot commit transaction - SQL
+        statements in progress", medido en la suite).
+        """
         if user_id is None:
             return []
 
@@ -80,15 +91,20 @@ class TraitExtractor:
             candidates=candidates,
             instructions=build_trait_mapping_instructions(cleaned_turn, candidates),
         )
-        matches = _normalize_matches(raw_matches, candidates)
-        if not matches:
-            return []
+        return _normalize_matches(raw_matches, candidates)
 
+    def persist(self, *, user_id: int | None, matches: Sequence[TraitMatch]) -> list[TraitMatch]:
+        """Escribe en ``user_traits`` los matches de ``analyze``."""
+        if user_id is None or not matches:
+            return []
         for match in matches:
             self._upsert_trait(user_id=user_id, match=match)
-
         self.identity_session.commit()
-        return matches
+        return list(matches)
+
+    def extract(self, *, user_id: int | None, turn_text: str) -> list[TraitMatch]:
+        """analyze + persist en un paso (llamadores que ya tienen la sesion)."""
+        return self.persist(user_id=user_id, matches=self.analyze(user_id=user_id, turn_text=turn_text))
 
     def _load_candidates(self) -> list[TraitCandidate]:
         """Carga los trait atoms desde SLDB (dict o objeto), con su embedding."""

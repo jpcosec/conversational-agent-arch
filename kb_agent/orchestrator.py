@@ -17,6 +17,7 @@ import re
 
 import json
 import threading
+from time import perf_counter
 import logging
 import os
 from collections.abc import Mapping, Sequence
@@ -275,6 +276,7 @@ class Orchestrator:
         message: str,
         scenario: str | None = None,
         channel: str | None = None,
+        contact: Mapping[str, str] | None = None,
     ) -> dict[str, Any]:
         session = self.SessionLocal()
         try:
@@ -284,6 +286,7 @@ class Orchestrator:
             # concurrentes de la misma sesion y no coincidia con el uuid
             # persistido). Un turno, un identificador.
             turn_id = uuid4().hex[:12]
+            turn_started = perf_counter()
             user = self.ensure_user(session, external_id, channel=channel)
             session_state = self._load_or_create_session_state(session, user.id)
             # Conversacion activa (o nueva si la anterior expiro por
@@ -304,7 +307,7 @@ class Orchestrator:
             #: ``compile_context``): el perfil aprendido en este turno entra
             #: al SIGUIENTE, nunca al que lo aprendio (contrato medido en
             #: tests: ``used_traits_in_context`` del primer turno es []).
-            profiler: dict[str, threading.Thread] = {}
+            profiler: dict[str, tuple] = {}
 
             if scenario is not None:
                 scenario_source = "argument"
@@ -428,7 +431,15 @@ class Orchestrator:
             # capturados del mensaje CRUDO: chat_history se persiste scrubbeado
             # y no se pueden recuperar despues (ver kb_agent/lead_slots.py).
             previous_slots = session_state.flow_slots if isinstance(session_state.flow_slots, dict) else {}
-            collected_slots = merge_lead_slots(previous_slots.get("collected"), extract_lead_slots(message))
+            # ``contact`` son datos que el CANAL ya conoce de la persona (el
+            # formulario de entrada del chat web, el numero de WhatsApp): se
+            # tratan igual que los que dijo en el mensaje, pero no pisan lo
+            # que ya se habia capturado en la conversacion.
+            declared = {k: v for k, v in (contact or {}).items() if v}
+            collected_slots = merge_lead_slots(
+                merge_lead_slots(declared, previous_slots.get("collected") or {}),
+                extract_lead_slots(message),
+            )
             session_state.flow_slots = {
                 "allowed_transitions": flow_transitions,
                 "missing_slots": flow_missing,
@@ -443,7 +454,11 @@ class Orchestrator:
 
             # Perfilador: se espera su termino (arranco al compilar el contexto;
             # si el turno no compilo nada, corre aca en serie).
-            profiler.setdefault("thread", self._start_profiler(user.id, message)).join()
+            profiler_thread, profiler_matches = profiler.setdefault(
+                "thread", self._start_profiler(user.id, message)
+            )
+            profiler_thread.join()
+            self._persist_profiler(session, profiler_matches, user.id)
             traits_after = self._current_traits(session, user.id)
 
             turn_context = self._build_turn_context(compiled)
@@ -504,6 +519,7 @@ class Orchestrator:
                 conversation_id=conversation.id,
                 decisions=decisions,
                 draft=reply_text,
+                duration_ms=int((perf_counter() - turn_started) * 1000),
             )
 
             return {
@@ -623,6 +639,7 @@ class Orchestrator:
         decisions: Mapping[str, Any],
         draft: str,
         conversation_id: int | None = None,
+        duration_ms: int | None = None,
     ) -> None:
         """Persiste el rastro del turno en ``turns`` (fase 3.1).
 
@@ -653,6 +670,7 @@ class Orchestrator:
                     gate=dict(decisions.get("gate") or {}),
                     bundle=list((decisions.get("ruteador") or {}).get("bundle") or []),
                     tool=dict(tool) if tool else None,
+                    duration_ms=duration_ms,
                 )
             )
             session.commit()
@@ -863,38 +881,54 @@ class Orchestrator:
         }
 
     # ── perfilador ────────────────────────────────────────────────────────
-    def _start_profiler(self, user_id: int, turn_text: str) -> threading.Thread:
-        """Lanza ``_run_profiler`` en un hilo daemon y lo devuelve (join en el turno).
+    def _start_profiler(self, user_id: int, turn_text: str) -> tuple[threading.Thread, list]:
+        """Corre el ANALISIS del perfilador (embedder + LLM) en un hilo daemon.
+
+        Devuelve ``(thread, sink)``: el hilo no toca la base, deja los matches
+        en ``sink`` y el turno los persiste con su propia sesion despues del
+        join (ver ``TraitExtractor.analyze``/``persist``). Dos hilos
+        escribiendo la misma conexion sqlite se pisan ("cannot commit
+        transaction - SQL statements in progress", medido en la suite); asi
+        la unica parte paralela es la cara, que es la que interesa.
 
         Un fallo del perfilador no puede tumbar el turno: se loguea y el
         turno sigue con ``traits_after == traits_before``.
         """
-        def _target() -> None:
-            try:
-                self._run_profiler(user_id, turn_text)
-            except Exception:
-                logger.exception("perfilador fallo; el turno sigue sin traits nuevos")
-
-        thread = threading.Thread(target=_target, name=f"profiler-{user_id}", daemon=True)
-        thread.start()
-        return thread
-
-    def _run_profiler(self, user_id: int, turn_text: str) -> None:
         # scrub inline antes de que el perfilador vea nada (regla PII). El
         # evento se construye directo (no pasa por la cola compartida del
         # bus: con turnos concurrentes cada hilo consumia el evento de otro).
         event = TurnClosedEvent(user_id=user_id, turn_text_scrubbed=scrub(turn_text))
-        session = self.SessionLocal()
+        sink: list = []
+
+        def _analyze() -> None:
+            try:
+                extractor = TraitExtractor(
+                    reader=self.reader,
+                    llm_mapper=self.trait_mapper,
+                    knowledge_ops=self.knowledge_ops,
+                )
+                sink.extend(extractor.analyze(user_id=event.user_id, turn_text=event.turn_text_scrubbed))
+            except Exception:
+                logger.exception("perfilador fallo; el turno sigue sin traits nuevos")
+
+        thread = threading.Thread(target=_analyze, name=f"profiler-{user_id}", daemon=True)
+        thread.start()
+        return thread, sink
+
+    def _persist_profiler(self, session: Session, matches: list, user_id: int) -> None:
+        """Escribe en ``user_traits`` lo que el hilo del perfilador analizo."""
+        if not matches:
+            return
         try:
-            extractor = TraitExtractor(
+            TraitExtractor(
                 reader=self.reader,
                 identity_session=session,
                 llm_mapper=self.trait_mapper,
                 knowledge_ops=self.knowledge_ops,
-            )
-            extractor.extract(user_id=event.user_id, turn_text=event.turn_text_scrubbed)
-        finally:
-            session.close()
+            ).persist(user_id=user_id, matches=matches)
+        except Exception:
+            session.rollback()
+            logger.exception("no se pudieron persistir los traits del perfilador")
 
     # ── reflector ─────────────────────────────────────────────────────────
     def run_reflector(self) -> list[dict[str, Any]]:

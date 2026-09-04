@@ -25,6 +25,7 @@ import os
 from collections import OrderedDict
 from datetime import datetime, timezone
 from pathlib import Path
+from collections.abc import Mapping, Sequence
 from typing import Any
 from uuid import uuid4
 
@@ -43,7 +44,8 @@ from kb_agent.models_sql.identity import Users, UserTraits
 from kb_agent.models_sql.session import ChatHistory, SessionState
 from kb_agent.models_sql.turns import Turns
 from kb_agent.inbound import InboundService, twilio_rest_sender
-from kb_agent.orchestrator import Orchestrator
+
+from kb_agent.orchestrator import Orchestrator, canonical_phone
 from kb_agent.project_config import ProjectConfig, load_project_config
 from frontends.chat.demo_data import (
     DemoStateMachineConversador,
@@ -62,18 +64,31 @@ from frontends.chat.demo_data import (
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 EDITOR_DIR = PROJECT_ROOT / "frontends" / "flow_editor"
+CHAT_DIR = PROJECT_ROOT / "frontends" / "chat"
 PROFILING_DIR = PROJECT_ROOT / "frontends" / "profiling"
 TAXONOMY_DIR = PROJECT_ROOT / "frontends" / "taxonomy"
 VIZ_DIR = PROJECT_ROOT / "frontends" / "viz"
 DASHBOARD_DIR = PROJECT_ROOT / "frontends" / "dashboard"
+LEADS_DIR = PROJECT_ROOT / "frontends" / "leads"
 SHARED_DIR = PROJECT_ROOT / "frontends" / "shared"
 
 UI_CHANNEL = "ui"
+#: Canal del chat de producto cuando la persona declara su telefono. Un
+#: prefijo propio (no "ui") para que ``identity_key: phone`` lo unifique con
+#: whatsapp/sms y para poder distinguirlo en las metricas.
+WEB_CHANNEL = "web"
 
 class ChatRequest(BaseModel):
     message: str
     session_id: str | None = None
     scenario: str | None = None
+    #: Telefono declarado por quien escribe (chat de producto). Con
+    #: ``identity_key: phone`` unifica a la MISMA persona que ya escribio por
+    #: WhatsApp o SMS. Se canonicaliza en el servidor: el cliente elige su
+    #: telefono, nunca un external_id arbitrario de otro usuario.
+    phone: str | None = None
+    #: Nombre declarado, opcional. Entra a la ficha del lead, no al prompt.
+    nombre: str | None = None
 
 
 class ChatResponse(BaseModel):
@@ -165,6 +180,41 @@ def ordered_flow_steps(flow: dict[str, Any]) -> list[dict[str, Any]]:
         {"id": sid, "tag": by_id[sid].get("step_tag"), "title": by_id[sid].get("title") or sid, "kind": by_id[sid].get("kind")}
         for sid in order
     ]
+
+
+#: Estados de NEGOCIO de un lead, en orden de avance. No son los steps del
+#: diagrama (eso es el runtime): son lo que el equipo comercial necesita
+#: distinguir para saber a quien llamar. Ver ``lead_state``.
+LEAD_STATES = ("nuevo", "calificado", "con_preferencia", "datos_completos")
+
+LEAD_STATE_LABELS = {
+    "nuevo": "Nuevo",
+    "calificado": "Calificado",
+    "con_preferencia": "Con preferencia de visita",
+    "datos_completos": "Datos completos",
+}
+
+
+def lead_state(collected: Mapping[str, Any] | None, traits: Sequence[Any] = ()) -> str:
+    """Estado comercial de un lead a partir de lo que ya entrego.
+
+    - ``datos_completos``  -- pidio visita y dejo email Y telefono: el equipo
+      puede confirmarle la hora hoy mismo.
+    - ``con_preferencia``  -- dijo cuando o como quiere la reunion, pero falta
+      algun dato de contacto.
+    - ``calificado``       -- el perfilador ya le reconocio traits (para quien
+      busca, pais, proyecto), aun sin hablar de visita.
+    - ``nuevo``            -- escribio pero todavia no hay nada accionable.
+    """
+    c = dict(collected or {})
+    quiere_visita = bool(c.get("preferencia_visita") or c.get("modalidad"))
+    if quiere_visita and c.get("email") and c.get("telefono"):
+        return "datos_completos"
+    if quiere_visita:
+        return "con_preferencia"
+    if traits:
+        return "calificado"
+    return "nuevo"
 
 
 def _group_conversations(history_rows: list[ChatHistory]) -> list[dict]:
@@ -280,11 +330,23 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             # propio id unico por turno, sin contador compartido.
             return ChatResponse(session_id=session_id, turn=to_ui_turn(uuid4().hex[:12], raw))
 
+        # Identidad: con telefono declarado el usuario es el MISMO que escribe
+        # por WhatsApp (identity_key=phone resuelve `web:+569...`); sin el,
+        # la sesion del navegador (`ui:<session_id>`), anonima.
+        phone = canonical_phone(req.phone or "") if req.phone else None
+        external_id = f"{WEB_CHANNEL}:{phone}" if phone else _external_id(session_id)
+        contact: dict[str, str] = {}
+        if phone:
+            contact["telefono"] = phone
+        if req.nombre and req.nombre.strip():
+            contact["nombre"] = req.nombre.strip()
+
         raw = _orch().handle_turn(
-            external_id=_external_id(session_id),
+            external_id=external_id,
             message=req.message,
             scenario=req.scenario,
-            channel=UI_CHANNEL,
+            channel=WEB_CHANNEL if phone else UI_CHANNEL,
+            contact=contact or None,
         )
         # El orquestador genera y persiste el turn_id; la UI usa EXACTAMENTE
         # ese, asi el id en vivo coincide con el que devuelve /api/history y no
@@ -485,6 +547,16 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             })
         return JSONResponse(tools_list)
 
+    @app.get("/chat")
+    @app.get("/chat/")
+    def product_chat() -> FileResponse:
+        return FileResponse(str(CHAT_DIR / "product.html"))
+
+    @app.get("/leads")
+    @app.get("/leads/")
+    def leads_view() -> FileResponse:
+        return FileResponse(str(LEADS_DIR / "index.html"))
+
     @app.get("/users")
     @app.get("/users/")
     def profiling_viewer() -> FileResponse:
@@ -618,6 +690,118 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             "events": events_list,
             "user_id": user_id,
         })
+
+    @app.get("/api/metrics")
+    def metrics(days: int = 14) -> JSONResponse:
+        """Metricas reales del runtime, leidas del sqlite.
+
+        Reemplaza el mock estatico del dashboard. Todo sale de ``turns``
+        (rastro por turno) y ``users``/``session_state``; nada es sintetico.
+        ``fallback`` y ``derivados`` son los dos indicadores que de verdad
+        dicen si el agente esta respondiendo: un fallback es "no supe" y un
+        derivado es un borrador que el policy gate no dejo salir.
+        """
+        if app.state.demo_mode:
+            return JSONResponse({"turnos": 0, "por_dia": [], "kinds": {}, "fallback_pct": 0.0,
+                                 "derivados_pct": 0.0, "leads": {}, "latencia_ms": {}, "days": days})
+        orch = _orch()
+        rows: list[tuple] = []
+        with orch.SessionLocal() as s:
+            for t in s.query(Turns).order_by(Turns.created_at.asc()).all():
+                kind = (t.decision or {}).get("kind") if isinstance(t.decision, dict) else None
+                approved = (t.gate or {}).get("approved") if isinstance(t.gate, dict) else None
+                rows.append((t.created_at, kind, approved, t.duration_ms))
+            total_users = s.query(Users).count()
+        leads_payload = leads().body
+        import json as _json
+
+        leads_data = _json.loads(leads_payload)
+
+        total = len(rows)
+        kinds: dict[str, int] = {}
+        for _, kind, _a, _d in rows:
+            kinds[kind or "desconocido"] = kinds.get(kind or "desconocido", 0) + 1
+        por_dia: dict[str, int] = {}
+        for created, _k, _a, _d in rows:
+            if created is not None:
+                por_dia[created.date().isoformat()] = por_dia.get(created.date().isoformat(), 0) + 1
+        derivados = sum(1 for _c, _k, approved, _d in rows if approved is False)
+        fallbacks = kinds.get("fallback", 0)
+        durations = sorted(d for _c, _k, _a, d in rows if isinstance(d, int))
+        pct = lambda n: round(100.0 * n / total, 1) if total else 0.0
+        return JSONResponse({
+            "days": days,
+            "turnos": total,
+            "usuarios": total_users,
+            "kinds": kinds,
+            "por_dia": [{"dia": d, "turnos": n} for d, n in sorted(por_dia.items())][-days:],
+            "fallback_pct": pct(fallbacks),
+            "fallback_n": fallbacks,
+            "derivados_pct": pct(derivados),
+            "derivados_n": derivados,
+            "leads": leads_data.get("counts", {}),
+            "leads_total": len(leads_data.get("leads", [])),
+            "visitas_por_confirmar": len(leads_data.get("queue", [])),
+            "latencia_ms": {
+                "n": len(durations),
+                "mediana": durations[len(durations) // 2] if durations else None,
+                "p90": durations[int(len(durations) * 0.9)] if durations else None,
+                "max": durations[-1] if durations else None,
+            },
+        })
+
+    @app.get("/api/leads")
+    def leads() -> JSONResponse:
+        """Bandeja comercial: un lead por usuario, con su estado de negocio,
+        lo que ya entrego y la cola de visitas por confirmar.
+
+        Existe porque la tool de agenda (flujo n8n) todavia no llego: el
+        equipo confirma las horas a mano y hasta ahora no tenia donde ver
+        quien pidio visita ni con que datos (ver source/DUDAS-KB.md, P5).
+        """
+        if app.state.demo_mode:
+            return JSONResponse({"leads": [], "queue": [], "counts": {k: 0 for k in LEAD_STATES}})
+        orch = _orch()
+        out: list[dict] = []
+        with orch.SessionLocal() as s:
+            for u in s.query(Users).order_by(Users.id).all():
+                state_row = s.get(SessionState, u.id)
+                slots = state_row.flow_slots if state_row is not None and isinstance(state_row.flow_slots, dict) else {}
+                collected = dict(slots.get("collected") or {})
+                trait_ids = [
+                    r[0] for r in s.query(UserTraits.trait_id).filter(UserTraits.user_id == u.id)
+                    .order_by(UserTraits.trait_id).all()
+                ]
+                traits = []
+                for tid in trait_ids:
+                    doc = orch.reader.get_doc(tid) or {}
+                    traits.append({"trait_id": tid, "title": doc.get("title") or tid})
+                history_rows = s.query(ChatHistory).filter(
+                    ChatHistory.user_id == u.id
+                ).order_by(ChatHistory.created_at.asc()).all()
+                conversations = _group_conversations(history_rows)
+                estado = lead_state(collected, traits)
+                out.append({
+                    "user_id": u.id,
+                    "external_id": u.external_id,
+                    "channel": u.channel,
+                    "estado": estado,
+                    "estado_label": LEAD_STATE_LABELS[estado],
+                    "paso": state_row.flow_node if state_row is not None else None,
+                    "traits": traits,
+                    "collected": collected,
+                    "falta": [k for k in ("preferencia_visita", "modalidad", "email", "telefono") if not collected.get(k)],
+                    "n_turnos": sum(c["n_turns"] for c in conversations),
+                    "last_active": conversations[0]["last_active"] if conversations else None,
+                    "primer_mensaje": conversations[-1]["summary"] if conversations else "",
+                })
+        out.sort(key=lambda l: (l["last_active"] or ""), reverse=True)
+        counts = {k: sum(1 for l in out if l["estado"] == k) for k in LEAD_STATES}
+        # Cola: pidio visita (dijo cuando o como). Los que ya tienen todos los
+        # datos van primero -- se pueden confirmar sin volver a escribirles.
+        queue = [l for l in out if l["estado"] in ("con_preferencia", "datos_completos")]
+        queue.sort(key=lambda l: (l["estado"] != "datos_completos", l["last_active"] or ""))
+        return JSONResponse({"leads": out, "queue": queue, "counts": counts})
 
     @app.get("/api/lead")
     def lead(session_id: str | None = None, external_id: str | None = None) -> JSONResponse:

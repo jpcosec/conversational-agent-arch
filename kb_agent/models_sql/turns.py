@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from enum import Enum
 
-from sqlalchemy import DateTime, Enum as SqlEnum, ForeignKey, Index, JSON, String, Text, UniqueConstraint, func
+from sqlalchemy import DateTime, Enum as SqlEnum, ForeignKey, Index, Integer, JSON, String, Text, UniqueConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .identity import Base
@@ -71,6 +71,12 @@ class Turns(Base):
     gate: Mapped[dict[str, object]] = mapped_column(JSON, nullable=False)
     bundle: Mapped[list[object]] = mapped_column(JSON, nullable=False)
     tool: Mapped[dict[str, object] | None] = mapped_column(JSON, nullable=True)
+    #: Cuanto tardo el turno completo, en milisegundos (compilar contexto ->
+    #: orquestador -> conversador -> gate). Es la unica fuente honesta de
+    #: latencia: ``created_at`` de las dos filas de ``chat_history`` de un
+    #: turno se escribe en el mismo commit, asi que su diferencia es cero.
+    #: ``None`` en filas anteriores a la migracion ``e5f6a7b8c9d0``.
+    duration_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
