@@ -11,8 +11,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-calificacion
   path: atoms/step-vitali-calificacion.md
-  hash_c: 9e0bd6dece5694f9164f8da21fff43cfb22a101aa9e04a64286eacea851f8a82
-  hash_d: e85efc665fd9d19d8b47fa7a05f1abd5629dc62fbf33bf7969839adca8e3eaee
+  hash_c: da06b039fd0c291a6b3f4dd907913c9d6a99a089e1cf59b32c9cb5636a70208b
+  hash_d: 6535825a197dba591a5ee48010c869c56eb3707702c1c765b388773ce76861f8
   semantic_tags:
   - agent:conversation-rule
   - conversation:steps.calificacion

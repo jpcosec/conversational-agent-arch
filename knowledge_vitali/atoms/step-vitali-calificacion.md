@@ -803,7 +803,7 @@ registrar_lead
 
 ## Allowed Transitions
 
-conversation:steps.agendar_visita
+conversation:steps.agendar_visita, conversation:steps.cierre
 
 ## Grounding Atoms
 
