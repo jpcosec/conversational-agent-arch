@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from enum import Enum
 
-from sqlalchemy import DateTime, Enum as SqlEnum, ForeignKey, Index, JSON, String, Text, UniqueConstraint, func
+from sqlalchemy import DateTime, Enum as SqlEnum, ForeignKey, Index, Integer, JSON, String, Text, UniqueConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .identity import Base
@@ -59,8 +59,21 @@ class Turns(Base):
     )
     #: Autoria del turno (user/agent/override). Default agent: hasta ahora la
     #: tabla solo guardaba turnos del agente (con su trail).
+    #: ``values_callable``: se persiste el VALOR del enum ("agent"), no su
+    #: nombre ("AGENT"). Es lo que ya escribio la migracion que creo la
+    #: columna (``server_default="agent"``, c1a2b3d4e5f6), asi que sin esto
+    #: toda fila anterior a esa migracion -- o insertada por el default del
+    #: motor -- era ilegible para el ORM: "LookupError: 'agent' is not among
+    #: the defined enum values" al abrir el Turn Inspector o /api/metrics
+    #: sobre la base de produccion. La migracion e5f6a7b8c9d1 normaliza las
+    #: filas que si quedaron con el nombre.
     kind: Mapped[TurnKind] = mapped_column(
-        SqlEnum(TurnKind, native_enum=False, validate_strings=True),
+        SqlEnum(
+            TurnKind,
+            native_enum=False,
+            validate_strings=True,
+            values_callable=lambda enum_cls: [member.value for member in enum_cls],
+        ),
         nullable=False,
         default=TurnKind.AGENT,
     )
@@ -71,6 +84,12 @@ class Turns(Base):
     gate: Mapped[dict[str, object]] = mapped_column(JSON, nullable=False)
     bundle: Mapped[list[object]] = mapped_column(JSON, nullable=False)
     tool: Mapped[dict[str, object] | None] = mapped_column(JSON, nullable=True)
+    #: Cuanto tardo el turno completo, en milisegundos (compilar contexto ->
+    #: orquestador -> conversador -> gate). Es la unica fuente honesta de
+    #: latencia: ``created_at`` de las dos filas de ``chat_history`` de un
+    #: turno se escribe en el mismo commit, asi que su diferencia es cero.
+    #: ``None`` en filas anteriores a la migracion ``e5f6a7b8c9d0``.
+    duration_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

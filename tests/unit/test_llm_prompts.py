@@ -104,3 +104,26 @@ def test_gemini_ports_send_configured_model() -> None:
     assert GeminiConversador(client, "modelo-a").draft_nl({"question": "q"}) == '[{"trait_id": "trait-x", "confidence": 0.8}]'
     assert GeminiTraitMapper(client, "modelo-b").extract_traits(turn_text="t", candidates=[TraitCandidate("trait-x", "x")], instructions="") == [{"trait_id": "trait-x", "confidence": 0.8}]
     assert [c["model"] for c in client.calls] == ["modelo-a", "modelo-b"]
+
+
+def test_nl_prompt_includes_active_step_block_and_omits_it_without_step() -> None:
+    prompt = build_nl_prompt({
+        "question": "el jueves en la tarde",
+        "step": {
+            "tag": "conversation:steps.datos_contacto",
+            "title": "Datos de contacto",
+            "instructions": "Pedir email y telefono en un solo mensaje.",
+            "required_slots": "email; telefono",
+            "completion_condition": "Se reunieron email y telefono.",
+        },
+    })
+    assert "PASO ACTUAL DE LA CONVERSACION: Datos de contacto" in prompt
+    assert "Instrucciones del paso: Pedir email y telefono en un solo mensaje." in prompt
+    assert "Datos que este paso debe reunir: email; telefono" in prompt
+    assert "El paso se completa cuando: Se reunieron email y telefono." in prompt
+    # El bloque va ANTES de los datos: el paso encuadra la respuesta.
+    assert prompt.index("PASO ACTUAL") < prompt.index("DATOS:")
+
+    assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola"})
+    assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola", "step": None})
+    assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola", "step": {"tag": "x", "instructions": ""}})

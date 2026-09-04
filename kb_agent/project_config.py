@@ -97,6 +97,8 @@ class ProjectConfig:
     model: str = DEFAULT_MODEL
     #: Fallback de ultimo recurso si la KB no declara FallbackRule. None => constante del runtime.
     fallback_message: str | None = None
+    #: Mensaje al usuario cuando el policy gate rechaza el borrador. None => constante neutra del runtime.
+    gate_handoff_message: str | None = None
     #: {tool_name: "modulo:funcion"} — handlers que ejecutan los ToolAtom de la KB.
     tool_handlers: dict[str, str] = field(default_factory=dict)
     host: str = DEFAULT_HOST
@@ -193,6 +195,8 @@ def load_project_config(
         cfg.model = str(data["model"])
     if data.get("fallback_message"):
         cfg.fallback_message = str(data["fallback_message"]).strip()
+    if data.get("gate_handoff_message"):
+        cfg.gate_handoff_message = str(data["gate_handoff_message"]).strip()
     cfg.tool_handlers = {str(k): str(v) for k, v in tools.items() if v}
 
     # kb_root según contexto: test -> test_kb_root; serving -> kb_root.

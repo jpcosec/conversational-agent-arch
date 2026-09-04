@@ -17,8 +17,8 @@ similitud <score>), ``decision`` del orquestador, ``gate`` del policy gate y
 reemplace, igual que en produccion).
 
 Uso:
-    python -m kb_agent.seed_demo_users            # usa PROFILING_DB del config
-    python -m kb_agent.seed_demo_users --db ruta.sqlite
+    python -m frontends.chat.seed_demo_users            # usa PROFILING_DB del config
+    python -m frontends.chat.seed_demo_users --db ruta.sqlite
 
 Idempotente: hace upsert por external_id (borra y recrea el usuario demo,
 su ChatHistory y sus Turns).

@@ -45,15 +45,21 @@ markup nuevo; sin build step (CDN only); dark siempre.
 - Brand y labels vienen de `/api/config` — **cero hardcode**.
 - Link activo resaltado con accent.
 
-### Rutas
+### Rutas y grupos
 
-| Vista | Ruta |
-|---|---|
-| chat-inspector | `/` |
-| flow | `/flow` |
-| mindmap | `/mindmap` |
-| users | `/users` |
-| dashboard | `/dashboard` |
+La topbar agrupa las vistas por audiencia (`data-nav-group`, separador y
+rótulo vía CSS; la lógica vive en `frontends/shared/nav.js`, que reemplaza
+las cinco copias del mismo IIFE que había en cada página):
+
+| Grupo | Vista | Ruta | testid |
+|---|---|---|---|
+| Chat | chat de producto | `/chat` | `nav-chat` |
+| Operación | leads | `/leads` | `nav-leads` |
+| Operación | métricas | `/dashboard` | `nav-dashboard` |
+| Desarrollo | chat-inspector | `/` | `nav-inspector` |
+| Desarrollo | flujo | `/flow` | `nav-flow` |
+| Desarrollo | KB (mindmap) | `/mindmap` | `nav-mindmap` |
+| Desarrollo | perfiles | `/users` | `nav-users` |
 
 `/dashboard` sirve `frontends/dashboard/index.html`: un mock estático con el
 chip "Datos de ejemplo", enlazado desde la topbar de todas las vistas
@@ -87,6 +93,31 @@ De arriba a abajo:
 - Input abajo: placeholder desde `/api/config.input_placeholder`
   (**prohibido** hardcodear "pizzas"). `data-testid="chat-input"`, `chat-send`.
 
+### 2.2b Estado de negocio: nueva conversación, stepper y ficha del lead
+
+Pensado para quien evalúa la vendedora virtual (equipo comercial), no para
+depurar el runtime. Fuente: `/api/lead?session_id=…` (o `external_id=…`),
+que devuelve los steps del diagrama en orden de recorrido (raíz primero),
+el paso activo, el perfil (traits resueltos contra su TraitAtom) y los datos
+capturados del mensaje crudo (`session_state.flow_slots.collected`, ver
+`kb_agent/lead_slots.py`: email, teléfono, preferencia de visita, modalidad;
+`chat_history` se persiste scrubbeado y no los tiene).
+
+- **Nueva conversación** (`chat-new-session`, en el header del timeline):
+  borra `kb_chat_session`, deja solo el saludo, badge `ID: —`, ficha y
+  stepper vacíos. Antes la sesión de localStorage era eterna y todos los que
+  probaban en el mismo navegador compartían contexto.
+- **Stepper** (`flow-stepper`, entre el header y el timeline): un
+  `flow-step` por ConversationStep con `data-step-tag` y
+  `data-state=done|active|pending`; título humano del step, numerado en
+  orden de flujo. Se actualiza con cada turno y al cargar una sesión.
+- **Ficha del lead** (`sidebar-lead` / `lead-card`, primer bloque del
+  sidebar): filas `lead-field-paso`, `lead-field-perfil` (chips con el título
+  del trait), `lead-field-preferencia_visita`, `lead-field-modalidad`,
+  `lead-field-email`, `lead-field-telefono`; "pendiente" cuando falta.
+- El badge de cada respuesta del timeline y el bloque Estado del sidebar
+  muestran el **título** del step, no el tag `conversation:steps.*`.
+
 ### 2.3 Inspector derecho (`data-testid="inspector"`)
 
 Secciones, en orden:
@@ -119,6 +150,60 @@ Secciones, en orden:
 
 *(Se eliminan: "Atoms del contexto" redundante, latency, model route del
 summary; Agent Pulse se va al sidebar.)*
+
+---
+
+## 2b. Chat de producto (`/chat`)
+
+Lo que vería un cliente: sólo la conversación. Sin inspector, sin badges de
+runtime, sin vocabulario técnico. Móvil primero — el canal real del negocio es
+el teléfono — y en escritorio la conversación se centra en una columna.
+
+- **Puerta de entrada** (`pc-gate`): nombre (`pc-name`) y teléfono
+  (`pc-phone`), ambos opcionales; `pc-start` los guarda, `pc-skip` entra
+  anónimo. Con teléfono el servidor canonicaliza y usa `web:+569…` como
+  external_id, así `identity_key: phone` reconoce a la MISMA persona que ya
+  escribió por WhatsApp o SMS. El cliente elige su teléfono, nunca un
+  external_id arbitrario.
+- **Conversación**: burbujas `pc-msg-me` / `pc-msg-bot`, indicador de
+  escribiendo (`pc-typing`) mientras corre el turno, `pc-new-session` para
+  empezar de cero, `pc-input` / `pc-send`.
+- El nombre y el teléfono declarados entran a la ficha del lead como
+  cualquier dato capturado (ver §2.2b y §9).
+
+---
+
+## 2c. Leads (`/leads`) y Métricas (`/dashboard`)
+
+Superficie de **operación**: para el equipo comercial, no para depurar.
+
+### Leads (`/api/leads`)
+
+Un lead por usuario con su **estado de negocio** (`lead_state` en
+`frontends/chat/app.py`), no el step del runtime:
+
+| Estado | Significa |
+|---|---|
+| `nuevo` | escribió, nada accionable todavía |
+| `calificado` | el perfilador le reconoció traits |
+| `con_preferencia` | dijo cuándo o cómo quiere la reunión |
+| `datos_completos` | pidió visita y dejó email **y** teléfono |
+
+- `leads-counts` (uno por estado), `leads-queue` (**visitas por confirmar**:
+  los `con_preferencia` y `datos_completos`, los completos primero) y
+  `leads-list`. Cada `lead-card` lleva `data-estado` y abre la conversación
+  en el Inspector (`/?user=<external_id>`).
+- La cola existe porque la tool de agenda (flujo n8n) todavía no llegó: el
+  equipo confirma las horas a mano (ver `source/DUDAS-KB.md`, P5).
+
+### Métricas (`/api/metrics`)
+
+Reemplaza el mock estático (el chip "Datos de ejemplo" ya no existe). Todo
+sale del sqlite: turnos por día, % de fallback, % derivados por el gate,
+leads por estado, visitas por confirmar y latencia (mediana/p90) desde
+`turns.duration_ms`, que el orquestador mide y persiste — las dos filas de
+`chat_history` de un turno se escriben en el mismo commit, así que su
+diferencia no sirve como latencia.
 
 ---
 

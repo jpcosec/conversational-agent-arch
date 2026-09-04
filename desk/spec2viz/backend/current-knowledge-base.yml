@@ -4,6 +4,9 @@ type: component
 version: "1.0"
 metadata:
   author: antonIA
+  atoms:
+    - atom-sldb-knowledge-base
+    - atom-encuadre-de-agentes-desde-la-kb-agentframing
   description: >-
     Componentes reales del paquete knowledge_base/: el CLI (entrypoint + dispatch),
     el parser (11 subcomandos argparse), y la capa de operaciones
@@ -108,7 +111,7 @@ data:
       label: "reflect (ChatHistory -> proposed atoms)"
       kind: core
     ModelMap:
-      label: "MODEL_MAP / ALL_MODELS (10 typed KB models)"
+      label: "MODEL_MAP / ALL_MODELS (12 typed KB models)"
       kind: core
 
     # ── dependencias reales (edges de import) ─────────────────────
@@ -128,7 +131,7 @@ data:
       label: "kb_agent.models_sql (identity: Users/UserTraits · session: SessionState)"
       kind: external
     KGDBReader:
-      label: "kb_agent.ontologizador.kgdb_reader.KGDBReader"
+      label: "kb_agent.knowledge.kgdb_reader.KGDBReader"
       kind: external
     ReflectorPkg:
       label: "kb_agent.reflector (BatchReaderJob, AtomGenerator, CheckpointStore)"

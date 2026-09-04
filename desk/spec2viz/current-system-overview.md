@@ -28,7 +28,7 @@ piezas. Secuencia real:
 1. **HTTP** — `frontends/chat/app.py` `POST /api/chat` → `handle_turn(external_id, message, ...)`.
 2. **Identidad + sesión** — `ensure_user` (SQL `Users`), `_load_or_create_session_state` (SQL `SessionState`, arranca en `IDLE`).
 3. **Router** — `RouterStateMachine.handle_user_message` → `_run_turn` → `_compile_and_draft`. Estados: `IDLE → EVALUATING_CONTEXT`.
-4. **Ontologizador + Ruteador** — `ContextCompiler.compile` lee TODA la KB tipada (domain, rule, tool, trait, persona self/style/boundary, strategy, fallback) + enriquece con el paso de flujo (KGDB), y delega el **bundle justificado** en el `RouterAgent` (`kb_agent/agents/router.py`: LLM con tools `explore_multi`/`explore`/`show` sobre `KnowledgeOperations`; cualquier documento puede entrar si está justificado `[{doc_id, motivo}]`). `apply_security_floor` fuerza por código las `RuleAtom` `conversation:security`; si el agente falla, cae a `_build_bundle` determinístico. Devuelve `CompiledDocument`.
+4. **Context Compiler + Ruteador** — `ContextCompiler.compile` (`kb_agent.knowledge.compiler`) lee TODA la KB tipada (domain, rule, tool, trait, persona self/style/boundary, strategy, fallback) + enriquece con el paso de flujo (KGDB), y delega el **bundle justificado** en el `RouterAgent` (`kb_agent/agents/router.py`: LLM con tools `explore_multi`/`explore`/`show` sobre `KnowledgeOperations`; cualquier documento puede entrar si está justificado `[{doc_id, motivo}]`). `apply_security_floor` fuerza por código las `RuleAtom` `conversation:security`; si el agente falla, cae a `_build_bundle` determinístico. Devuelve `CompiledDocument`.
 5. **Breakpoint miss** — si el contexto viene vacío (`is_empty`): `EVALUATING_CONTEXT → BREAKPOINT_MISS`. Siempre sigue a `DRAFTING_RESPONSE`.
 6. **Orquestador** — `OrchestratorAgent.decide` (`kb_agent/agents/orchestrator_agent.py`) resuelve con salida tipada `kind` + `step_target`, viendo el grafo de `ConversationStep` (static_instruction), las tools declaradas y las transiciones permitidas:
    - `tool_call` → el modelo pide una tool con args válidos contra el schema del `ToolAtom`.
@@ -53,8 +53,8 @@ ya scrubbeada, detecta patrones recurrentes (≥5 turnos), y propone atoms nuevo
 | Capa | Qué guarda | Lectura |
 |---|---|---|
 | **SQL** | identidad (`Users`), traits aprendidos (`UserTraits`), estado vivo (`SessionState`), historial (`ChatHistory`), reservas/recordatorios. | SQLAlchemy `kb_agent/models_sql/` |
-| **SLDB** | conocimiento tipado: los 12 modelos (ver abajo). | `ontologizador/sldb_reader.py` + `knowledge_base/operations.py` (tools del Ruteador) |
-| **KGDB** | grafo de flujo conversacional: `ConversationStep` + relaciones (`flows_to`, `grounded_by`, `uses_tool`, ...). | `ontologizador/kgdb_reader.py` |
+| **SLDB** | conocimiento tipado: los 12 modelos (ver abajo). | `knowledge/sldb_reader.py` + `knowledge_base/operations.py` (tools del Ruteador) |
+| **KGDB** | grafo de flujo conversacional: `ConversationStep` + relaciones (`flows_to`, `grounded_by`, `uses_tool`, ...). | `knowledge/kgdb_reader.py` |
 
 **Los 12 modelos tipados** (`kb_agent/models/knowledge/`), agrupados por `__family__`:
 
@@ -111,7 +111,32 @@ en qué orden · `matrix` = quién participa en cada etapa.
 
 ---
 
-## 5. Cómo regenerar
+## 5. Mapeo specs → atoms de la desk (desk/atoms/)
+
+Cada spec YAML declara su relación con los atoms de `desk/atoms/` en el campo
+`metadata.atoms:`. El catálogo HTML inyecta automáticamente todos los atoms
+vía `--atoms-dir desk/atoms` en `window.ATOMS_DB`.
+
+| Spec | Atoms cubiertos |
+|---|---|
+| `logical.agent-ecosystem` | orquestador-hub, ruteador-de-contexto, agente-conversador, policy-gate, policy-decide-turn, ontologizador-context-compiler, in-process-event-bus, pii-scrubber, topologia-de-despliegue, router-state-machine, canales-de-entrada |
+| `current-kb-agent` | orquestador-hub, ruteador-de-contexto, agente-conversador, policy-gate, policy-decide-turn, ontologizador-context-compiler, in-process-event-bus, pii-scrubber, perfilador-asincrono, reflector-batch, tool-handlers-registry, persistencia-sql, sldb-knowledge-base, kgdb-grafo-de-flujo, project-config, mapeo-cadena-de-agentes |
+| `sequence.extended-turn` | concepto-turno-extendido, orquestador-hub, ruteador-de-contexto, agente-conversador, policy-gate, policy-decide-turn, ontologizador-context-compiler, tool-handlers-registry, perfilador-asincrono, pii-scrubber, router-state-machine, persistencia-sql, in-process-event-bus |
+| `state.conversation-flow` | router-state-machine, concepto-turno-extendido, policy-decide-turn, clasificación-4-ramas-flujo-psp |
+| `matrix.component-turn-lifecycle` | concepto-turno-extendido, clasificación-4-ramas-flujo-psp, mapeo-cadena-de-agentes |
+| `matrix.agents-kb-consumption` | encuadre-de-agentes-desde-la-kb-agentframing, sldb-knowledge-base, mapeo-cadena-de-agentes |
+| `current-frontends` | canales-de-entrada, dashboard, modo-demo, embeddings-como-layout, grafo-de-steps |
+| `current-knowledge-base` | sldb-knowledge-base, encuadre-de-agentes-desde-la-kb-agentframing |
+| `current-deploy` | topologia-de-despliegue, deploy-dev, migraciones-alembic-volumen, migraciones-alembic-local, configuración-capas-tuning, estrategia-testing, modelo-de-ramas, capas-verificación-release |
+| `current-tests` | estrategia-testing, modo-demo |
+| `activity.simulation-harness` | estrategia-testing, garantia-cero-alucinaciones |
+| `matrix.ui-semantic-surface` | dashboard, embeddings-como-layout, grafo-de-steps |
+| `deployment.backend-frontend` | topologia-de-despliegue, deploy-dev, migraciones-alembic-volumen, project-config |
+| `state.chat-ui` | dashboard |
+
+---
+
+## 6. Cómo regenerar
 
 ```bash
 # validar + renderizar un spec

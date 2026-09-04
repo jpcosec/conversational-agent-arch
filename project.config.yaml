@@ -40,6 +40,9 @@ project:
   # (La KB de Antonia SI lo declara: fallback-antonia. Esto solo aplica si falta.)
   # fallback_message: "No tengo esa información a mano."
 
+  # Mensaje a la paciente cuando el policy gate rechaza el borrador (voz de Antonia).
+  gate_handoff_message: "He preparado una respuesta pero prefiero que un profesional del programa la revise antes de enviarla. Alguien del equipo te contactará a la brevedad."
+
   # Tools del negocio: {nombre declarado en el ToolAtom: "modulo:funcion"}.
   # El ToolAtom de la KB define el schema; aqui se registra quien lo ejecuta.
   # Un handler registrado pero no declarado por la KB activa simplemente no se

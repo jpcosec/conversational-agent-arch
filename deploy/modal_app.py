@@ -361,7 +361,7 @@ def clean_and_seed() -> None:
     finally:
         con.close()
 
-    from kb_agent.seed_demo_users import seed
+    from frontends.chat.seed_demo_users import seed
 
     stats = seed(DB_PATH)
     print("sembrado:", stats)

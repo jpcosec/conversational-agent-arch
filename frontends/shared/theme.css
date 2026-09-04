@@ -297,3 +297,11 @@ select.input:focus {
   border-color: rgba(154, 167, 189, 0.4);
   background: rgba(154, 167, 189, 0.1);
 }
+
+/* Grupos de la topbar (ver frontends/shared/nav.js): un separador y su
+   rotulo antes del primer link de cada grupo, sin markup extra. */
+.app-nav a[data-group-start]{position:relative;margin-left:22px}
+.app-nav a[data-group-start]:first-child{margin-left:0}
+.app-nav a[data-group-start]:not(:first-child)::before{content:'';position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:1px;height:14px;background:var(--border-accent)}
+.app-nav a[data-group-label]::after{content:attr(data-group-label);position:absolute;left:0;top:-9px;font-family:var(--font-mono);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;pointer-events:none}
+.app-topbar{padding-top:10px}

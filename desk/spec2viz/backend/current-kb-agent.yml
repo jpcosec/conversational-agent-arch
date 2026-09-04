@@ -1,9 +1,26 @@
 id: current-kb-agent
 title: "kb_agent · Runtime Components (current codebase)"
 type: component
-version: "1.1"
+version: "2.0"
 metadata:
   author: antonIA
+  atoms:
+    - atom-orquestador-hub
+    - atom-ruteador-de-contexto-como-agente
+    - atom-agente-conversador
+    - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+    - atom-policy-decide-turn
+    - atom-context-compiler-knowledge
+    - atom-in-process-event-bus
+    - atom-pii-scrubber
+    - atom-perfilador-asincrono
+    - atom-reflector-batch
+    - atom-tool-handlers-registry
+    - atom-persistencia-sql
+    - atom-sldb-knowledge-base
+    - atom-kgdb-grafo-de-flujo
+    - atom-project-config
+    - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   description: >-
     Arquitectura real del runtime conversacional kb_agent, módulo por módulo.
     Orchestrator.handle_turn es el hub que cablea los 4 agentes LLM del paquete
@@ -13,16 +30,16 @@ metadata:
     los GateCriterion de la KB; el Conversador sigue en llm.py), los puertos LLM
     (llm: Conversador/TraitMapper Protocols + impls Gemini), la máquina de
     estados técnica (state_machine.RouterStateMachine), el compilador de contexto
-    (ontologizador, que delega el bundle en el RouterAgent con fallback
-    determinístico _build_bundle), el perfilador y reflector asíncronos, el
-    registro de tools, el scrubber PII y la persistencia SQL (models_sql, incl.
-    Turns como rastro por turno). agent.decide_turn queda como fallback
-    determinístico. Los 12 modelos tipados (models/knowledge) definen el contrato
-    de los atoms en SLDB; AgentFraming (familia agent) aporta el encuadre de
-    negocio por AgentRole y GateCriterion los criterios del gate. ProjectConfig
-    trae los bloques tuning (max_bundle_size, history_limit, router_max_results,
-    tool_timeout_ms) y deploy. Refleja el codebase actual; labels = ruta real,
-    edges = imports reales.
+    (knowledge.* — antes ``ontologizador`` —, que delega el bundle en el
+    RouterAgent con fallback determinístico _build_bundle), el perfilador y
+    reflector asíncronos, el registro de tools, el scrubber PII y la persistencia
+    SQL (models_sql, incl. Turns como rastro por turno). agent.decide_turn queda
+    como fallback determinístico. Los 12 modelos tipados (models/knowledge)
+    definen el contrato de los atoms en SLDB; AgentFraming (familia agent) aporta
+    el encuadre de negocio por AgentRole y GateCriterion los criterios del gate.
+    ProjectConfig trae los bloques tuning (max_bundle_size, history_limit,
+    router_max_results, tool_timeout_ms) y deploy. Refleja el codebase actual;
+    labels = ruta real, edges = imports reales.
 data:
   nodes:
     # ── Núcleo del turno (módulos raíz) ─────────────────────────────
@@ -39,7 +56,7 @@ data:
       label: "project_config (ProjectConfig + TuningConfig + DeployConfig, load_project_config)"
       kind: boundary
     CLI:
-      label: "cli (build_parser, main)"
+      label: "cli (build_parser, main; usa db_check)"
       kind: boundary
 
     # ── Agentes LLM (base común con la superficie de ADK) ────────────────
@@ -86,40 +103,44 @@ data:
       label: "llm.GeminiTraitMapper"
       kind: core
 
-    # ── Ontologizador (compilación de contexto) ─────────────────────
-    Ontologizador:
-      label: "ontologizador.* (Context Compiler)"
+    # ── Knowledge Layer (compilación de contexto) ───────────────────
+    KnowledgeLayer:
+      label: "knowledge.* (Context Compiler — antes ``ontologizador``)"
       kind: core
       contains:
-        - OntoCompiler
-        - OntoSldbReader
-        - OntoKgdbReader
-        - OntoCompiledDocument
-    OntoCompiler:
-      label: "ontologizador.compiler (ContextCompiler, SessionStateLike)"
+        - KnowCompiler
+        - KnowSldbReader
+        - KnowKgdbReader
+        - KnowCompiledDocument
+    KnowCompiler:
+      label: "knowledge.compiler (ContextCompiler, SessionStateLike)"
       kind: core
-    OntoSldbReader:
-      label: "ontologizador.sldb_reader (SLDBReader)"
+    KnowSldbReader:
+      label: "knowledge.sldb_reader (SLDBReader)"
       kind: core
-    OntoKgdbReader:
-      label: "ontologizador.kgdb_reader (KGDBReader)"
+    KnowKgdbReader:
+      label: "knowledge.kgdb_reader (KGDBReader)"
       kind: core
-    OntoCompiledDocument:
-      label: "ontologizador.compiled_document (CompiledDocument)"
+    KnowCompiledDocument:
+      label: "knowledge.compiled_document (CompiledDocument)"
       kind: core
 
     # ── Perfilador (async) ──────────────────────────────────────────
     Perfilador:
-      label: "perfilador.* (Feature Extractor async)"
+      label: "perfilador.* (Feature Extractor async + form_ingestion)"
       kind: core
       contains:
         - PerfExtractor
         - PerfListener
+        - PerfFormIngestion
     PerfExtractor:
       label: "perfilador.extractor (TraitExtractor, StructuredTraitMapper, TraitCandidate, TraitMatch)"
       kind: core
     PerfListener:
       label: "perfilador.listener (AsyncProfilingListener, EventBus, InProcessEventBus, TurnClosedEvent)"
+      kind: core
+    PerfFormIngestion:
+      label: "perfilador.form_ingestion (map_form_to_trait_ids, ingest_form_traits)"
       kind: core
 
     # ── Reflector (batch) ───────────────────────────────────────────
@@ -263,12 +284,24 @@ data:
       label: "knowledge_base.operations (KnowledgeOperations: explore_multi/explore/show, embedder cacheado)"
       kind: boundary
 
+    # ── Módulos auxiliares ──────────────────────────────────────────
+    DbCheck:
+      label: "db_check (DbRevisionStatus, check_db_revision · usado por cli.py)"
+      kind: boundary
+    SeedDemoUsers:
+      label: "seed_demo_users (seed · movido a frontends/chat, usado por deploy/modal_app.py)"
+      kind: boundary
+
   edges:
     # Entradas al hub
     - from: CLI
       to: Orchestrator
       relation: uses
       label: local chat loop
+    - from: CLI
+      to: DbCheck
+      relation: uses
+      label: check_db_revision
     - from: Orchestrator
       to: ProjectConfig
       relation: uses
@@ -323,7 +356,7 @@ data:
       to: ExtKnowledgeOps
       relation: uses
       label: tools explore_multi/explore/show
-    - from: OntoCompiler
+    - from: KnowCompiler
       to: RouterAgent
       relation: uses
       label: _build_bundle_via_agent (fallback _build_bundle)
@@ -368,32 +401,32 @@ data:
       relation: uses
       label: TraitCandidate
 
-    # Hub -> ontologizador -> lectura de conocimiento
+    # Hub -> knowledge layer -> lectura de conocimiento
     - from: Orchestrator
-      to: OntoCompiler
+      to: KnowCompiler
       relation: uses
       label: compila contexto del turno
-    - from: OntoCompiler
-      to: OntoSldbReader
+    - from: KnowCompiler
+      to: KnowSldbReader
       relation: uses
       label: extrae atoms
-    - from: OntoCompiler
-      to: OntoKgdbReader
+    - from: KnowCompiler
+      to: KnowKgdbReader
       relation: uses
       label: navega grafo
-    - from: OntoCompiler
-      to: OntoCompiledDocument
+    - from: KnowCompiler
+      to: KnowCompiledDocument
       relation: produces
       label: CompiledDocument
-    - from: OntoCompiler
+    - from: KnowCompiler
       to: SqlIdentity
       relation: reads
       label: trait_ids del usuario
-    - from: OntoSldbReader
+    - from: KnowSldbReader
       to: ExtSldb
       relation: reads
       label: search records
-    - from: OntoKgdbReader
+    - from: KnowKgdbReader
       to: ExtKgdb
       relation: reads
       label: neighborhood/ingest
@@ -408,7 +441,7 @@ data:
       relation: publishes
       label: publish_turn_closed (EventBus)
     - from: PerfExtractor
-      to: OntoSldbReader
+      to: KnowSldbReader
       relation: uses
       label: catálogo de TraitAtoms
     - from: PerfExtractor
@@ -430,7 +463,7 @@ data:
       relation: uses
       label: lee ChatHistory por checkpoint
     - from: ReflGenerator
-      to: OntoSldbReader
+      to: KnowSldbReader
       relation: uses
       label: materializa atoms nuevos
     - from: ReflGenerator
@@ -475,7 +508,7 @@ data:
       label: mapped ORM
 
     # Modelos tipados definen el contrato leído por el reader
-    - from: OntoSldbReader
+    - from: KnowSldbReader
       to: ModelsKnowledge
       relation: uses
       label: contrato de atoms

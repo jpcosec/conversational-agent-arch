@@ -160,6 +160,7 @@ class ContextCompiler:
         doc.flow_node = active_step
         doc.allowed_transitions = allowed_transitions
         doc.grounding_atoms = grounding_ids
+        doc.step = self.step_context(active_step)
         # ``CompiledDocument`` no declara este campo (no es parte de su
         # contrato tipado, ver su docstring): se asigna como atributo de
         # instancia, igual que los 3 de arriba en el caso de
@@ -543,6 +544,15 @@ class ContextCompiler:
 
         security_ids = self._security_floor_ids()
         merged = apply_security_floor(raw_bundle, security_ids)
+        # Grounding del step activo: obligatorio tambien por la via agente
+        # (misma guardia de codigo que el piso de seguridad).
+        if active_step:
+            short_step = active_step.split(":", 1)[-1] if ":" in active_step else active_step
+            present = {str(e.get("doc_id") or "") for e in merged}
+            for doc_id in grounding_ids:
+                if doc_id not in present:
+                    merged.append({"doc_id": doc_id, "motivo": f"grounding de {short_step}", "family": None, "score": None})
+                    present.add(doc_id)
 
         resolved: list[dict[str, Any]] = []
         for entry in merged:
@@ -561,8 +571,9 @@ class ContextCompiler:
             })
 
         if len(resolved) > self.max_bundle_size:
-            mandatory = [e for e in resolved if e["doc_id"] in security_ids]
-            optional = [e for e in resolved if e["doc_id"] not in security_ids]
+            mandatory_ids = set(security_ids) | set(grounding_ids)
+            mandatory = [e for e in resolved if e["doc_id"] in mandatory_ids]
+            optional = [e for e in resolved if e["doc_id"] not in mandatory_ids]
             remaining = max(self.max_bundle_size - len(mandatory), 0)
             resolved = mandatory + optional[:remaining]
 
@@ -732,6 +743,102 @@ class ContextCompiler:
                 return step
         return None
 
+    _STEP_CONTEXT_FIELDS = ("id", "title", "kind", "instructions", "required_slots", "completion_condition")
+
+    def step_context(self, tag: str | None) -> dict[str, Any] | None:
+        """Proyeccion del ``ConversationStep`` de ``tag`` para el prompt del Conversador.
+
+        Deterministico (lectura SLDB, sin LLM): sirve tanto para el step
+        activo al compilar como para RE-APUNTAR el borrador al step destino
+        cuando el Orquestador decide una transicion en el mismo turno (ver
+        ``Orchestrator.handle_turn``): sin esto el Conversador redactaba con
+        las instrucciones del step viejo y la respuesta iba un turno atrasada
+        respecto del estado (pedia otra vez lo que el step anterior pedia).
+        """
+        if not tag:
+            return None
+        doc = self._find_step_by_tag(tag)
+        if not doc:
+            return None
+        out: dict[str, Any] = {"tag": tag}
+        for key in self._STEP_CONTEXT_FIELDS:
+            out[key] = str(doc.get(key) or "").strip()
+        return out
+
+    def retarget_step(self, compiled: dict[str, Any], target: str) -> bool:
+        """Re-apunta un contexto compilado (dict) al step ``target`` sin LLM.
+
+        Lo usa ``Orchestrator.handle_turn`` cuando el Orquestador decide una
+        transicion: el Conversador redacta con el step destino (``step``) y
+        con su grounding sumado a ``bundle``/``domain_facts``/``rules``/
+        ``grounding_atoms`` (asi el gate juzga contra el mismo contexto que
+        vio el Conversador). ``flow_node`` no se toca: la navegacion la
+        persiste el orquestador al cerrar el turno. Devuelve False si el
+        step no existe en la KB (no se modifica nada).
+        """
+        step = self.step_context(target)
+        if step is None:
+            return False
+        compiled["step"] = step
+        short_step = target.split(":", 1)[-1] if ":" in target else target
+        bundle = compiled.setdefault("bundle", [])
+        facts = compiled.setdefault("domain_facts", [])
+        rules = compiled.setdefault("rules", [])
+        present = {str(e.get("doc_id") or "") for e in bundle}
+        present_facts = {str(f.get("id") or "") for f in facts}
+        present_rules = {str(r.get("id") or "") for r in rules}
+        grounding = list(compiled.get("grounding_atoms") or [])
+        for doc_id in self._step_grounding_ids(target):
+            if doc_id not in grounding:
+                grounding.append(doc_id)
+            doc = self.reader.get_doc(doc_id)
+            if doc is None:
+                continue
+            tipo, family = self._tipo_y_family_de_doc(doc)
+            if doc_id not in present:
+                bundle.append({"doc_id": doc_id, "family": family, "motivo": f"grounding de {short_step}", "score": None})
+                present.add(doc_id)
+            if tipo in ("domain", "rule"):
+                projected = {
+                    "id": doc.get("id", doc_id),
+                    "body": doc.get("answer", ""),
+                    "tags": doc.get("tags", []),
+                    "title": doc.get("title") or doc.get("id", doc_id),
+                    "family": family,
+                }
+                if tipo == "domain" and doc_id not in present_facts:
+                    facts.append(projected); present_facts.add(doc_id)
+                elif tipo == "rule" and doc_id not in present_rules:
+                    rules.append(projected); present_rules.add(doc_id)
+        compiled["grounding_atoms"] = grounding
+        return True
+
+    def _entry_step(self, steps: list[str]) -> str:
+        """Step de entrada del diagrama para una sesion sin step valido.
+
+        Orden de preferencia:
+          1. ``.onboarding`` si la KB lo declara (convencion historica, Don Peppe).
+          2. La raiz del grafo de ``Allowed Transitions``: el step al que
+             ningun otro transiciona. Si hay varias raices, la primera en
+             orden alfabetico.
+          3. El primer step del diagrama (alfabetico).
+
+        Antes se caia directo a ``steps[0]``: en una KB sin onboarding eso
+        era el primero por orden alfabetico, no el inicio del flujo (Vitali
+        arrancaba en ``agendar_visita`` en vez de ``saludo`` y el primer
+        "hola" caia en el step equivocado).
+        """
+        onboarding = next((s for s in steps if s.endswith(".onboarding")), None)
+        if onboarding:
+            return onboarding
+        targets: set[str] = set()
+        for step in steps:
+            doc = self._find_step_by_tag(step)
+            if doc:
+                targets.update(self._split_declared_transitions(doc.get("allowed_transitions", "")))
+        roots = [s for s in steps if s not in targets]
+        return roots[0] if roots else steps[0]
+
     def _resolve_kgdb_active_step(
         self, current_step: str | None = None
     ) -> tuple[str | None, list[str], list[str]]:
@@ -769,12 +876,11 @@ class ContextCompiler:
         if not steps:
             return None, [], []
 
-        # Step actual: el que trae la sesion, si es valido; si no, onboarding; si
-        # no existe onboarding, el primer step del diagrama.
+        # Step actual: el que trae la sesion, si es valido; si no, el step de
+        # entrada del diagrama (ver ``_entry_step``).
         active = current_step if current_step in steps else None
         if active is None:
-            onboarding = next((s for s in steps if s.endswith(".onboarding")), None)
-            active = onboarding or steps[0]
+            active = self._entry_step(steps)
 
         # Transiciones permitidas: SOLO las declaradas por el step activo,
         # filtradas contra el universo real de steps del diagrama (defensivo
@@ -782,9 +888,31 @@ class ContextCompiler:
         step_doc = self._find_step_by_tag(active)
         declared = self._split_declared_transitions(step_doc.get("allowed_transitions", "")) if step_doc else []
         allowed_transitions = [t for t in declared if t in steps]
-        # Grounding: documentos etiquetados con el step actual (resueltos en SLDB).
-        grounding_atoms = self.kgdb.docs_for_tag(active)
+        grounding_atoms = self._step_grounding_ids(active, step_doc)
         return active, allowed_transitions, grounding_atoms
+
+    def _step_grounding_ids(self, tag: str, step_doc: dict[str, Any] | None = None) -> list[str]:
+        """Ids que groundean el step ``tag``: union sin duplicados de
+
+          a) los documentos etiquetados con el tag del step (KGDB, p.ej. el
+             propio ConversationStep y los ToolAtom del step), y
+          b) los ids que el step DECLARA en su campo libre ``grounding_atoms``
+             ("Grounding Atoms", separados por coma), validados contra el
+             reader (un id que no existe se descarta).
+
+        Hasta ahora solo entraba (a): la lista que la KB escribe a mano en
+        cada step (reglas de horario, oficinas, modalidad...) no llegaba ni
+        al Conversador ni al gate, que rechazaba datos correctos por "no
+        declarados en el contexto".
+        """
+        ids: list[str] = list(self.kgdb.docs_for_tag(tag)) if self.kgdb is not None else []
+        if step_doc is None:
+            step_doc = self._find_step_by_tag(tag)
+        declared = self._split_declared_transitions(str((step_doc or {}).get("grounding_atoms") or ""))
+        for doc_id in declared:
+            if doc_id not in ids and self.reader.get_doc(doc_id) is not None:
+                ids.append(doc_id)
+        return ids
 
     def _load_user_traits(self, user_id: int | None) -> list[dict[str, Any]]:
         """Traits del usuario resueltos contra su TraitAtom (no solo el id).

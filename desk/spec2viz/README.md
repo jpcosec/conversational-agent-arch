@@ -123,6 +123,13 @@ renderer nombra la salida por el stem del archivo del spec, no por su `id`.
 | `component_view_matrix` | matriz vistas×stages | vega |
 | `reflection`/enforcement | artefacto semántico 6D | json |
 
+## Nota sobre nomenclatura
+
+Los specs anteriores a v2.0 usaban ``ontologizador/*`` como nombre del paquete
+(Context Compiler). El directorio real es ``kb_agent/knowledge/*``. Todos los
+specs se actualizaron en la ronda v2.0 para reflejar ``knowledge.*``. El
+nombre semántico ``Context Compiler`` se mantiene en los diagramas lógicos.
+
 ## Limitaciones conocidas
 
 - `diagram generate` solo escanea Python; el frontend (HTML/JS) no tiene escáner AST → sus specs son manuales.

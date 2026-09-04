@@ -7,7 +7,7 @@ vistas:
   category: Backend · Runtime
   nav: Modelo lógico (agentes)
   title: Backend · Lógico · Ecosistema de Agentes
-  desc: 'Cómo funciona el runtime a alto nivel, fiel al cableado real: canales, orquestador-hub, los 4 agentes LLM (Ruteador, Orquestador, Conversador, Gate) con guardas por código, encuadre desde la KB, event bus, scrubber, 3 DBs + KnowledgeOperations y Gemini.'
+  desc: 'Cómo funciona el runtime a alto nivel, fiel al cableado real: canales, orquestador-hub, los 4 agentes LLM (Ruteador, Orquestador, Conversador, Gate) con guardas por código, encuadre desde la KB, event bus, scrubber, 3 DBs + KnowledgeOperations y Gemini. El Context Compiler vive en knowledge.* (no ontologizador).'
   type: component
   src: build/logical.agent-ecosystem.mmd
   specs:

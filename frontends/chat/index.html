@@ -33,18 +33,39 @@
 .chat-sidebar{width:280px;min-width:280px;background:var(--bg-panel2);border-right:1px solid var(--border-accent)}
 .sidebar-block{border:1px solid var(--border-accent);border-radius:10px;padding:12px;background:rgba(18,18,26,.8);transition:var(--transition)}
 .sidebar-block:hover{border-color:var(--accent-hover)}
-.sidebar-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}</style>
+.sidebar-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+/* Ficha del lead + stepper del flujo: estado de NEGOCIO de la conversacion
+   (que paso va, que datos ya dio el cliente), para el equipo comercial;
+   el rastro tecnico sigue en el Turn Inspector. */
+.lead-row{display:flex;justify-content:space-between;gap:8px;font-size:11px;padding:4px 0;border-bottom:1px solid rgba(245,240,232,.06)}
+.lead-row:last-child{border-bottom:0}
+.lead-key{color:var(--text-muted);font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.lead-val{color:var(--text);text-align:right;word-break:break-word}
+.lead-val.empty{color:var(--text-muted);font-style:italic}
+.lead-chip{display:inline-block;font-size:10px;padding:2px 7px;border-radius:999px;border:1px solid var(--border-accent);color:var(--accent);margin:2px 2px 0 0}
+.flow-stepper{display:flex;align-items:stretch;gap:0;padding:10px 24px;border-bottom:1px solid rgba(245,240,232,.08);overflow-x:auto}
+.flow-step{flex:1;min-width:110px;display:flex;flex-direction:column;gap:4px;padding:6px 10px;border-top:2px solid rgba(245,240,232,.12);color:var(--text-muted);font-size:11px;position:relative}
+.flow-step .flow-step-n{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.flow-step.done{border-top-color:rgba(212,165,116,.45);color:rgba(245,240,232,.7)}
+.flow-step.active{border-top-color:var(--accent);color:var(--text);background:rgba(212,165,116,.08);border-radius:0 0 8px 8px}
+.flow-step.active .flow-step-n{color:var(--accent)}
+.btn-new-session{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:8px;border:1px solid var(--border-accent);color:var(--accent);background:transparent;cursor:pointer;transition:var(--transition)}
+.btn-new-session:hover{background:rgba(212,165,116,.1);border-color:var(--accent)}</style>
 </head><body class="bg-background text-on-surface font-body h-screen overflow-hidden flex flex-col">
 <header class="app-topbar" data-testid='nav-topbar'>
 <a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
 <nav class="app-nav" id="appNav">
-<a data-testid="nav-chat" href="/">Chat</a><a data-testid="nav-flow" href="/flow">Flow</a><a data-testid="nav-mindmap" href="/mindmap">Mindmap</a><a data-testid="nav-users" href="/users">Users</a><a data-testid="nav-dashboard" href="/dashboard">Dashboard</a>
+<a data-testid="nav-chat" data-nav-group="chat" href="/chat">Chat</a><a data-testid="nav-leads" data-nav-group="operacion" href="/leads">Leads</a><a data-testid="nav-dashboard" data-nav-group="operacion" href="/dashboard">Métricas</a><a data-testid="nav-inspector" data-nav-group="desarrollo" href="/">Inspector</a><a data-testid="nav-flow" data-nav-group="desarrollo" href="/flow">Flujo</a><a data-testid="nav-mindmap" data-nav-group="desarrollo" href="/mindmap">KB</a><a data-testid="nav-users" data-nav-group="desarrollo" href="/users">Perfiles</a>
 </nav>
 <div class="app-topbar-meta"><span class="app-topbar-chip" id="kbLabel">KB</span><span class="app-topbar-chip" id="healthLabel">—</span></div></header>
 <div class="flex flex-1 min-h-0 overflow-hidden">
  <!-- Global Sidebar -->
  <aside class="chat-sidebar flex-shrink-0 overflow-y-auto p-4 hidden md:flex flex-col gap-4" data-testid="chat-sidebar">
-   <div class="sidebar-block" data-testid="sidebar-user">
+   <div class="sidebar-block" data-testid="sidebar-lead">
+      <h4 class="sidebar-label flex items-center gap-1"><span class="msym text-[14px]">badge</span>Ficha del lead</h4>
+      <div id="leadCard" data-testid="lead-card"><div class="lead-val empty text-[11px]">Sin conversación todavía.</div></div>
+    </div>
+    <div class="sidebar-block" data-testid="sidebar-user">
      <h4 class="sidebar-label flex items-center gap-1"><span class="msym text-[14px]">person</span>Usuario</h4>
      <div id="sidebarUserId" class="font-mono text-xs text-on-surface">—</div>
      <div id="sidebarTraits" class="flex flex-wrap gap-1 mt-2"></div>
@@ -70,13 +91,17 @@
    <section class="flex-1 border-r border-white/5 flex flex-col overflow-hidden bg-surface">
     <header class="px-6 pt-6 pb-4 flex justify-between items-center border-b border-white/10">
       <h2 class="text-2xl text-on-surface flex items-center gap-2"><span class="msym text-primary">forum</span><span id="sessionTitle">Session</span></h2>
-      <span id="sessionBadge" class="font-mono text-xs text-on-surface-variant px-2 py-1 bg-surface-container-high rounded border border-outline-variant">ID: —</span>
+      <div class="flex items-center gap-2">
+        <span id="sessionBadge" class="font-mono text-xs text-on-surface-variant px-2 py-1 bg-surface-container-high rounded border border-outline-variant">ID: —</span>
+        <button type="button" id="newSession" data-testid="chat-new-session" class="btn-new-session" title="Empieza una conversación nueva (sesión y ficha desde cero)">＋ Nueva conversación</button>
+      </div>
     </header>
+    <div id="flowStepper" data-testid="flow-stepper" class="flow-stepper"></div>
     <div id="messages" class="flex-1 overflow-y-auto custom-scrollbar px-6 py-6 flex flex-col gap-6 relative"></div>
     <div class="p-4 border-t border-white/10 bg-surface-container-low flex gap-3">
       <textarea id="input" data-testid="chat-input" rows="2" placeholder="Escribe tu mensaje..."
         class="flex-1 resize-none bg-surface-container-lowest border border-outline-variant rounded-lg p-3 text-on-surface placeholder:text-on-surface-variant/50 focus:border-secondary focus:ring-0 font-body text-sm"></textarea>
-      <button id="send" data-testid="chat-send" class="px-5 rounded-lg bg-secondary-container text-on-secondary-container font-semibold hover:brightness-110 transition disabled:opacity-50 disabled:cursor-wait flex items-center gap-2">
+      <button type="submit" id="send" data-testid="chat-send" class="px-5 rounded-lg bg-secondary-container text-on-secondary-container font-semibold hover:brightness-110 transition disabled:opacity-50 disabled:cursor-wait flex items-center gap-2">
         <span class="msym text-lg">send</span></button>
     </div>
    </section>
@@ -100,16 +125,21 @@
     <div id="modalBody" class="p-4 overflow-auto custom-scrollbar prose-chat text-sm text-on-surface"></div>
   </div>
 </div>
-<script>
-(function(){var p=location.pathname.replace(/\/$/,'')||'/';document.querySelectorAll('#appNav a').forEach(function(a){var h=a.getAttribute('href').replace(/\/$/,'')||'/';var ac=h===p;a.classList.toggle('active',ac);if(ac)a.setAttribute('data-active','true');else a.removeAttribute('data-active')});Promise.all([fetch('/api/config').then(function(r){return r.json()}).catch(function(){return{}}),fetch('/api/health').then(function(r){return r.json()}).catch(function(){return{}})]).then(function(r){var c=r[0]||{},h=r[1]||{},b=document.getElementById('appBrand'),kb=document.getElementById('kbLabel'),hl=document.getElementById('healthLabel'),ci=document.querySelector('[data-testid="chat-input"]');if(b)b.textContent=c.name||c.runtime_title||'Agente';if(kb)kb.textContent=c.kb_label||c.name||'KB';if(hl)hl.textContent=h.status||'unknown';if(ci)ci.placeholder=c.input_placeholder||'Escribe tu mensaje...';var lm={chat:document.querySelector('[data-testid="nav-chat"]'),flow:document.querySelector('[data-testid="nav-flow"]'),mindmap:document.querySelector('[data-testid="nav-mindmap"]'),users:document.querySelector('[data-testid="nav-users"]'),dashboard:document.querySelector('[data-testid="nav-dashboard"]')};var nl=c.nav_labels||{};if(lm.chat)lm.chat.textContent=nl.chat||'Chat';if(lm.flow)lm.flow.textContent=nl.flow||'Flow';if(lm.mindmap)lm.mindmap.textContent=nl.mindmap||'Mindmap';if(lm.users)lm.users.textContent=nl.users||'Users';if(lm.dashboard)lm.dashboard.textContent=nl.dashboard||'Dashboard';
-  // sidebar data
-  var su=document.getElementById('sidebarUserId'),st=document.getElementById('sidebarTraits'),se=document.getElementById('sidebarEvents'),sc=document.getElementById('sidebarConvState'),sm=document.getElementById('sidebarModel'),sk=document.getElementById('sidebarKB'),sb=document.getElementById('sidebarBusiness'),sp=document.getElementById('sidebarPulse');
-  if(su)su.textContent=c.name||'—';if(sm)sm.textContent='Modelo: '+(c.model||'—');if(sk)sk.textContent='KB: '+(c.kb_label||'—');if(sb)sb.textContent='Negocio: '+(c.name||'—');if(sp&&h.status){sp.innerHTML='<div class="w-2 h-2 rounded-full border-2 '+(h.status==='ok'?'border-emerald-500 bg-emerald-500/30':'border-outline-variant')+'"></div><span class="font-mono text-xs '+(h.status==='ok'?'text-emerald-400':'text-on-surface-variant')+'">'+(h.status==='ok'?'Online':'Offline')+'</span>'}})})();</script>
+<script src="/static/nav.js"></script>
 
 <script>
 const messagesEl=document.getElementById('messages'),inputEl=document.getElementById('input'),sendBtn=document.getElementById('send'),inspectorEl=document.getElementById('inspectorBody'),modalBackdrop=document.getElementById('modalBackdrop'),modalTitle=document.getElementById('modalTitle'),modalBody=document.getElementById('modalBody'),modalClose=document.getElementById('modalClose');
 let sessionId=localStorage.getItem('kb_chat_session')||null,turns=[],selectedTurnId=null,health={model:'—',status:'unknown'},cfg={};
 const atomRegex=/\b(atom-[a-z0-9-]+)\b/g;marked.setOptions({gfm:true,breaks:true});
+// Flujo de negocio (stepper) y ficha del lead: /api/lead ordena los steps
+// (raiz primero) y trae paso activo, perfil y datos capturados.
+let flowSteps=[],leadState=null;
+const stepTitle=tag=>{const st=flowSteps.find(x=>x.tag===tag);return st?st.title:(tag||'');};
+function renderStepper(activeTag){const el=document.getElementById('flowStepper');if(!el)return;if(!flowSteps.length){el.innerHTML='';el.style.display='none';return}el.style.display='';const ai=flowSteps.findIndex(x=>x.tag===activeTag);el.innerHTML=flowSteps.map((st,i)=>{const cls=ai<0?'':i<ai?'done':i===ai?'active':'';return '<div class="flow-step '+cls+'" data-testid="flow-step" data-step-tag="'+esc(st.tag||'')+'" data-state="'+(cls||'pending')+'"><span class="flow-step-n">'+(i+1)+(cls==='active'?' · ahora':cls==='done'?' · listo':'')+'</span><span>'+esc(st.title)+'</span></div>'}).join('')}
+function renderLead(lead){const el=document.getElementById('leadCard');if(!el)return;leadState=lead;if(!lead){el.innerHTML='<div class="lead-val empty text-[11px]">Sin conversación todavía.</div>';return}const c=lead.collected||{},traits=lead.traits||[];const row=(k,label,v)=>'<div class="lead-row" data-testid="lead-field-'+k+'"><span class="lead-key">'+label+'</span><span class="lead-val'+(v?'':' empty')+'">'+(v?esc(v):'pendiente')+'</span></div>';el.innerHTML=[row('nombre','Nombre',c.nombre||''),row('paso','Paso',lead.step?lead.step.title:''),'<div class="lead-row" data-testid="lead-field-perfil"><span class="lead-key">Perfil</span><span class="lead-val'+(traits.length?'':' empty')+'">'+(traits.length?traits.map(t=>'<span class="lead-chip" title="'+esc(t.trait_id)+'">'+esc(t.title)+'</span>').join(''):'pendiente')+'</span></div>',row('preferencia_visita','Visita',c.preferencia_visita||''),row('modalidad','Modalidad',c.modalidad||''),row('email','Email',c.email||''),row('telefono','Teléfono',c.telefono||'')].join('')}
+async function loadFlow(){try{const f=await fetch('/api/flow').then(r=>r.json());const nodes=f.nodes||[],edges=f.edges||[];const byId={};nodes.forEach(n=>byId[n.id]=n);const incoming=new Set(edges.map(e=>e.target)),out={};edges.forEach(e=>{(out[e.source]||=[]).push(e.target)});const order=[],q=nodes.filter(n=>!incoming.has(n.id)).map(n=>n.id);while(q.length){const cur=q.shift();if(order.includes(cur))continue;order.push(cur);(out[cur]||[]).forEach(t=>{if(!order.includes(t))q.push(t)})}nodes.forEach(n=>{if(!order.includes(n.id))order.push(n.id)});flowSteps=order.map(id=>({id:id,tag:byId[id].step_tag,title:byId[id].title||id,kind:byId[id].kind}))}catch(e){flowSteps=[]}}
+async function refreshLead(key){if(!key){renderLead(null);return}try{const lead=await fetch('/api/lead?'+key).then(r=>r.json());renderLead(lead);if(lead.step)renderStepper(lead.step.tag)}catch(e){}}
+function newSession(){localStorage.removeItem('kb_chat_session');sessionId=null;selectedTurnId=null;turns=turns.filter(t=>t.turn_id==='turn-000');document.getElementById('sessionBadge').textContent='ID: —';document.getElementById('sessionTitle').textContent='Session: '+(cfg.name||'Agente');var sc=document.getElementById('sidebarConvState');if(sc)sc.textContent='Esperando mensaje…';renderLead(null);renderStepper(null);renderTurns();renderInspector(null);inputEl.focus()}
 const esc=(s='')=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
 const enhanceAtoms=(html)=>html.replace(atomRegex,'<a class="atom-link" data-atom="$1">$1</a>');
 const atomIds=(ctx)=>(ctx?.atom_ids||[]);
@@ -128,7 +158,7 @@ function renderTurns(){
   if(turn.user_message){wrap.innerHTML+='<div class="flex gap-4"><div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 border border-outline-variant mt-1"><span class="msym text-sm text-on-surface-variant">person</span></div><div class="flex-1 bg-surface-container-low border border-white/5 rounded-lg p-4 prose-chat text-on-surface/90">'+enhanceAtoms(marked.parse(turn.user_message))+'</div></div>'}
   var kind=turn.kind||'nl',kc=kind==='fallback'?'text-error':kind==='tool_call'?'text-tertiary':'text-secondary',na=atomIds(turn.context).length,nt=(turn.context?.include_tags||[]).length;
   var pulse=turn.pending?'<span class="font-mono text-xs '+kc+' flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary pulse-dot"></span>Reasoning…</span>':'<span class="font-mono text-xs '+kc+' flex items-center gap-1"><span class="msym text-[14px]">bolt</span>'+esc(kind)+'</span>';
-  wrap.innerHTML+='<div class="flex gap-4"><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 border border-secondary mt-1 shadow-[0_0_10px_rgba(5,102,217,0.3)]"><span class="msym text-sm text-on-secondary-container">smart_toy</span></div><div class="flex-1 bg-surface-container-high border rounded-lg p-4 cursor-pointer '+g+'" data-turn-id="'+turn.turn_id+'"><div class="prose-chat text-on-surface/95">'+enhanceAtoms(marked.parse(turn.assistant_message||''))+'</div><div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center"><div class="flex gap-3"><span class="font-mono text-xs text-primary flex items-center gap-1"><span class="msym text-[14px]">memory</span>'+esc(turn.flow_node||'ctx')+'</span><span class="font-mono text-xs text-tertiary flex items-center gap-1"><span class="msym text-[14px]">data_object</span>Atoms: '+na+'</span><span class="font-mono text-xs text-on-surface-variant flex items-center gap-1"><span class="msym text-[14px]">sell</span>'+nt+'</span></div>'+pulse+'</div></div></div>';messagesEl.appendChild(wrap)});messagesEl.scrollTop=messagesEl.scrollHeight}
+  wrap.innerHTML+='<div class="flex gap-4"><div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 border border-secondary mt-1 shadow-[0_0_10px_rgba(5,102,217,0.3)]"><span class="msym text-sm text-on-secondary-container">smart_toy</span></div><div class="flex-1 bg-surface-container-high border rounded-lg p-4 cursor-pointer '+g+'" data-turn-id="'+turn.turn_id+'"><div class="prose-chat text-on-surface/95">'+enhanceAtoms(marked.parse(turn.assistant_message||''))+'</div><div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center"><div class="flex gap-3"><span class="font-mono text-xs text-primary flex items-center gap-1"><span class="msym text-[14px]">memory</span>'+esc(turn.flow_node?(stepTitle(turn.flow_node)||turn.flow_node):'ctx')+'</span><span class="font-mono text-xs text-tertiary flex items-center gap-1"><span class="msym text-[14px]">data_object</span>Atoms: '+na+'</span><span class="font-mono text-xs text-on-surface-variant flex items-center gap-1"><span class="msym text-[14px]">sell</span>'+nt+'</span></div>'+pulse+'</div></div></div>';messagesEl.appendChild(wrap)});messagesEl.scrollTop=messagesEl.scrollHeight}
 
 function contextDiff(turn){const idx=turns.findIndex(t=>t.turn_id===turn.turn_id),prev=idx>0?turns[idx-1]:null;const cur=new Set(atomIds(turn.context)),before=new Set(prev?atomIds(prev.context):[]);const items=turn.context?.items||[];const titleOf=id=>(items.find(i=>i.atom_id===id)?.title)||id;return{retained:[...cur].filter(id=>before.has(id)),added:[...cur].filter(id=>!before.has(id)),removed:[...before].filter(id=>!cur.has(id)),titleOf,prevItems:(prev?.context?.items||[])}}
 
@@ -215,12 +245,13 @@ function renderInspector(turn){
 function selectTurn(turnId){selectedTurnId=turnId;renderTurns();renderInspector(turns.find(t=>t.turn_id===turnId))}
 async function openAtomModal(atomId){try{var r=await fetch('/api/atom/'+atomId);if(!r.ok){openModal('Atom','<div class="text-on-surface-variant">No se pudo cargar el atom.</div>');return}var a=await r.json();openModal(a.atom_id,'<div class="flex flex-col gap-3"><div><span class="text-on-surface-variant">Título:</span> '+esc(a.title||'')+'</div><div><span class="text-on-surface-variant">Familia:</span> <code style="font-family:JetBrains Mono">'+(a.tags?Object.keys(FAM_COLORS).find(k=>a.tags.some(t=>t.startsWith(k+':')))||'—':'—')+'</code></div><div><span class="text-on-surface-variant">Path:</span> <code>'+esc(a.path||'')+'</code></div><div><span class="text-on-surface-variant">Tags:</span><div class="flex flex-wrap gap-1 mt-1">'+((a.tags||[]).map(t=>'<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">'+esc(t)+'</span>').join(''))+'</div></div><div class="border-t border-white/10 pt-3">'+marked.parse(a.body||'_Sin contenido_')+'</div></div>')}catch(e){openModal('Atom','<div class="text-error">'+esc(e.message||e)+'</div>')}}
 
-async function sendMessage(){var m=inputEl.value.trim();if(!m)return;inputEl.value='';sendBtn.disabled=true;var ghostId='ghost-'+Date.now();turns.push({turn_id:ghostId,user_message:m,assistant_message:'_Compilando contexto…_',context:{atom_ids:[],include_tags:[],items:[]},pending:true});selectedTurnId=ghostId;renderTurns();var t0=performance.now();try{var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m,session_id:sessionId})});var d=await r.json();sessionId=d.session_id;localStorage.setItem('kb_chat_session',sessionId);document.getElementById('sessionBadge').textContent='ID: '+sessionId;d.turn.latency_ms=Math.round(performance.now()-t0);turns=turns.filter(t=>t.turn_id!==ghostId);turns.push(d.turn);selectTurn(d.turn.turn_id);updateSidebarConversation(d.turn)}catch(e){turns=turns.filter(t=>t.turn_id!==ghostId);turns.push({turn_id:'err-'+Date.now(),user_message:m,assistant_message:'**Error:** '+(e.message||e),kind:'fallback',context:{atom_ids:[],include_tags:[],items:[]}});renderTurns()}finally{sendBtn.disabled=false;inputEl.focus()}}
+async function sendMessage(){var m=inputEl.value.trim();if(!m)return;inputEl.value='';sendBtn.disabled=true;var ghostId='ghost-'+Date.now();turns.push({turn_id:ghostId,user_message:m,assistant_message:'_Compilando contexto…_',context:{atom_ids:[],include_tags:[],items:[]},pending:true});selectedTurnId=ghostId;renderTurns();var t0=performance.now();try{var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m,session_id:sessionId})});var d=await r.json();sessionId=d.session_id;localStorage.setItem('kb_chat_session',sessionId);document.getElementById('sessionBadge').textContent='ID: '+sessionId;d.turn.latency_ms=Math.round(performance.now()-t0);turns=turns.filter(t=>t.turn_id!==ghostId);turns.push(d.turn);selectTurn(d.turn.turn_id);updateSidebarConversation(d.turn);renderStepper(d.turn.flow_node);refreshLead('session_id='+encodeURIComponent(sessionId))}catch(e){turns=turns.filter(t=>t.turn_id!==ghostId);turns.push({turn_id:'err-'+Date.now(),user_message:m,assistant_message:'**Error:** '+(e.message||e),kind:'fallback',context:{atom_ids:[],include_tags:[],items:[]}});renderTurns()}finally{sendBtn.disabled=false;inputEl.focus()}}
 
-function updateSidebarConversation(turn){var sc=document.getElementById('sidebarConvState');if(sc)sc.textContent='Último: '+esc(turn.flow_node||'nl')+' · '+esc(turn.kind||'—')+((turn.traits_after||[]).length?' · +traits':'');var su=document.getElementById('sidebarUserId');if(su)su.textContent=turn.external_id||health.model||'—';var st=document.getElementById('sidebarTraits');if(st&&turn.traits_after?.length)st.innerHTML=turn.traits_after.map(t=>'<span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">'+esc(t)+'</span>').join('');var se=document.getElementById('sidebarEvents');if(se)se.textContent=turn.traits_after?.length+' traits · 1 turno'}
+function updateSidebarConversation(turn){var sc=document.getElementById('sidebarConvState');if(sc)sc.textContent='Último: '+esc(turn.flow_node?(stepTitle(turn.flow_node)||turn.flow_node):'nl')+' · '+esc(turn.kind||'—')+((turn.traits_after||[]).length?' · +traits':'');var su=document.getElementById('sidebarUserId');if(su)su.textContent=turn.external_id||health.model||'—';var st=document.getElementById('sidebarTraits');if(st&&turn.traits_after?.length)st.innerHTML=turn.traits_after.map(t=>'<span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">'+esc(t)+'</span>').join('');var se=document.getElementById('sidebarEvents');if(se)se.textContent=turn.traits_after?.length+' traits · 1 turno'}
 
 sendBtn.onclick=sendMessage;inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage()}});
 modalClose.onclick=closeModal;modalBackdrop.addEventListener('click',e=>{if(e.target===modalBackdrop)closeModal()});
+document.getElementById('newSession').onclick=newSession;
 document.getElementById('inspectorClear').onclick=()=>{selectedTurnId=null;renderTurns();renderInspector(null)};
 document.addEventListener('click',e=>{
  var card=e.target.closest('[data-turn-id]');if(card&&card.getAttribute('data-turn-id')){selectTurn(card.getAttribute('data-turn-id'));return}
@@ -229,6 +260,15 @@ document.addEventListener('click',e=>{
 
 (async function(){try{cfg=await fetch('/api/config').then(r=>r.json())}catch(e){}try{health=await fetch('/api/health').then(r=>r.json())}catch(e){}
  var bizName=cfg.name||'Agente';document.getElementById('sessionTitle').textContent='Session: '+bizName;if(sessionId)document.getElementById('sessionBadge').textContent='ID: '+sessionId;
+ // Sidebar de config y pulse: antes vivia en el IIFE de la topbar, que ahora
+ // es /static/nav.js (comun a todas las vistas). Aca ya estan cfg y health.
+ (function(){var sm=document.getElementById('sidebarModel'),sk=document.getElementById('sidebarKB'),sb=document.getElementById('sidebarBusiness'),sp=document.getElementById('sidebarPulse');
+  if(sm)sm.textContent='Modelo: '+(cfg.model||'—');
+  if(sk)sk.textContent='KB: '+(cfg.kb_label||'—');
+  if(sb)sb.textContent='Negocio: '+(cfg.name||'—');
+  if(sp&&health.status)sp.innerHTML='<div class="w-2 h-2 rounded-full border-2 '+(health.status==='ok'?'border-emerald-500 bg-emerald-500/30':'border-outline-variant')+'"></div><span class="font-mono text-xs '+(health.status==='ok'?'text-emerald-400':'text-on-surface-variant')+'">'+esc(health.status==='ok'?'Online':health.status)+'</span>';
+ })();
+ await loadFlow();renderStepper(null);
  turns.push({turn_id:'turn-000',user_message:'',assistant_message:cfg.greeting||'Hola. Soy el asistente de **'+bizName+'**. ¿En qué te puedo ayudar?',kind:'nl',context:{atom_ids:[],include_tags:[],items:[],tools:[],grounding_atoms:[]}});
  var qs=new URLSearchParams(location.search),loadSession=qs.get('session'),loadUser=qs.get('user');
  if(loadSession||loadUser){try{
@@ -267,7 +307,10 @@ document.addEventListener('click',e=>{
   document.getElementById('sessionTitle').textContent='Session: '+bizName+' · '+titleSuffix;
   if(loadSession){sessionId=null;document.getElementById('sessionBadge').textContent='ID: (histórico) '+loadSession}
  }catch(e){}}
- renderTurns()})();
+ renderTurns();
+ var leadKey=loadSession?('session_id='+encodeURIComponent(loadSession)):loadUser?('external_id='+encodeURIComponent(loadUser)):sessionId?('session_id='+encodeURIComponent(sessionId)):null;
+ refreshLead(leadKey);
+ var lastTurn=turns.filter(t=>t.flow_node).slice(-1)[0];if(lastTurn)renderStepper(lastTurn.flow_node)})();
 </script>
 <script src="/static/demo-tour.js"></script>
 <script>if(window.DemoTour)DemoTour.run();</script>

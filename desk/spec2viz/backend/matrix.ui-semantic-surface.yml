@@ -4,6 +4,10 @@ type: component_view_matrix
 version: "0.2"
 metadata:
   author: antonIA
+  atoms:
+    - atom-dashboard
+    - atom-embeddings-como-layout-no-vista
+    - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   description: >-
     Cruza las 5 páginas (frontends/*: chat /, flow /flow, mindmap /mindmap,
     users /users, dashboard /dashboard; la sexta vista, el tour guiado

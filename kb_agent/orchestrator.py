@@ -15,8 +15,9 @@ from __future__ import annotations
 
 import re
 
-import asyncio
 import json
+import threading
+from time import perf_counter
 import logging
 import os
 from collections.abc import Mapping, Sequence
@@ -26,6 +27,7 @@ from typing import Any
 from uuid import uuid4
 
 from sqlalchemy import create_engine
+from sqlalchemy.pool import StaticPool
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -45,13 +47,22 @@ from kb_agent.knowledge.compiler import ContextCompiler
 from kb_agent.knowledge.kgdb_reader import KGDBReader
 from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
-from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
+from kb_agent.perfilador.listener import InProcessEventBus, TurnClosedEvent
+from kb_agent.lead_slots import extract_lead_slots, merge_lead_slots
+from kb_agent.pii.scrubber import scrub
 from kb_agent.pii.scrubber import scrub
 from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, TuningConfig, load_project_config
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
 from kb_agent.tools import ToolHandler, execute_tool, load_tool_handlers
 from kb_agent.state_machine import RouterStateMachine
 from knowledge_base.operations import KnowledgeOperations
+
+#: Mensaje neutro cuando el policy gate rechaza el borrador; cada negocio
+#: lo redacta en su yaml (``gate_handoff_message``).
+DEFAULT_GATE_HANDOFF_MESSAGE = (
+    "Prefiero confirmar ese punto con el equipo antes de responderte. "
+    "Alguien del equipo te contactará a la brevedad."
+)
 
 logger = logging.getLogger(__name__)
 
@@ -94,6 +105,7 @@ class Orchestrator:
         model: str | None = None,
         tool_handlers: Mapping[str, ToolHandler] | None = None,
         fallback_message: str | None = None,
+        gate_handoff_message: str | None = None,
         tuning: TuningConfig | None = None,
         identity_key: str = "external_id",
         conversador: Conversador | None = None,
@@ -108,6 +120,10 @@ class Orchestrator:
         self.model = model or os.getenv("GEMINI_MODEL") or DEFAULT_MODEL
         self.tool_handlers: dict[str, ToolHandler] = dict(tool_handlers or {})
         self.fallback_message = fallback_message or DEFAULT_FALLBACK_MESSAGE
+        #: Texto que ve el usuario cuando el gate rechaza el borrador (kind
+        #: "derived"). Es voz del negocio, no del runtime: viene del yaml
+        #: (``gate_handoff_message``); el default es neutro.
+        self.gate_handoff_message = gate_handoff_message or DEFAULT_GATE_HANDOFF_MESSAGE
         #: Parametros de tuning del runtime (bundle/historial/router). Antes
         #: eran constantes en el codigo; ahora llegan del yaml via ProjectConfig.
         self.tuning: TuningConfig = tuning or TuningConfig()
@@ -116,7 +132,13 @@ class Orchestrator:
         #: telefono). Ver ``ensure_user`` y ``_canonical_phone``.
         self.identity_key = identity_key
 
-        self.engine = create_engine(db_url, future=True)
+        engine_kwargs: dict[str, Any] = {"future": True}
+        if db_url.endswith(":memory:"):
+            # sqlite en memoria (tests): cada conexion nueva es OTRA base vacia.
+            # El perfilador corre en un hilo con sesion propia, asi que todos
+            # los hilos tienen que compartir la unica conexion.
+            engine_kwargs.update(poolclass=StaticPool, connect_args={"check_same_thread": False})
+        self.engine = create_engine(db_url, **engine_kwargs)
         Base.metadata.create_all(self.engine)
         self.SessionLocal = sessionmaker(bind=self.engine, future=True)
 
@@ -188,6 +210,7 @@ class Orchestrator:
             "model": cfg.model,
             "tool_handlers": load_tool_handlers(cfg.tool_handlers),
             "fallback_message": cfg.fallback_message,
+            "gate_handoff_message": cfg.gate_handoff_message,
             "tuning": cfg.tuning,
             "identity_key": cfg.identity_key,
         }
@@ -253,6 +276,7 @@ class Orchestrator:
         message: str,
         scenario: str | None = None,
         channel: str | None = None,
+        contact: Mapping[str, str] | None = None,
     ) -> dict[str, Any]:
         session = self.SessionLocal()
         try:
@@ -262,6 +286,7 @@ class Orchestrator:
             # concurrentes de la misma sesion y no coincidia con el uuid
             # persistido). Un turno, un identificador.
             turn_id = uuid4().hex[:12]
+            turn_started = perf_counter()
             user = self.ensure_user(session, external_id, channel=channel)
             session_state = self._load_or_create_session_state(session, user.id)
             # Conversacion activa (o nueva si la anterior expiro por
@@ -271,6 +296,18 @@ class Orchestrator:
                 session, user_id=user.id, channel=channel or channel_from_external_id(external_id)
             )
             step_before = session_state.flow_node
+            # Perfilador EN PARALELO con el turno (hilo propio, sesion SQL
+            # propia): antes corria en serie despues de la respuesta y sumaba
+            # una llamada LLM completa a la latencia de cada turno. Los
+            # traits que extrae NO entran al contexto de este turno (igual
+            # que antes: se leian antes de correrlo); ``traits_before`` se
+            # captura aca, ``traits_after`` tras el join.
+            traits_before = self._current_traits(session, user.id)
+            #: El hilo arranca DESPUES de compilar el contexto del turno (ver
+            #: ``compile_context``): el perfil aprendido en este turno entra
+            #: al SIGUIENTE, nunca al que lo aprendio (contrato medido en
+            #: tests: ``used_traits_in_context`` del primer turno es []).
+            profiler: dict[str, tuple] = {}
 
             if scenario is not None:
                 scenario_source = "argument"
@@ -300,6 +337,11 @@ class Orchestrator:
                 )
                 d = compiled.to_dict()
                 d["user_id"] = user_id
+                # Contexto compilado (traits de este turno ya leidos): desde
+                # aca el perfilador corre en paralelo con orquestador,
+                # conversador y gate.
+                if "thread" not in profiler:
+                    profiler["thread"] = self._start_profiler(user.id, message)
                 return d
 
             def draft(compiled_context: dict[str, Any]) -> Any:
@@ -318,7 +360,13 @@ class Orchestrator:
                 if kind == "fallback":
                     return self._fallback_text(compiled_context)
                 # Guardar flow_target si existe para navegacion post-draft
-                compiled_context["_flow_target"] = decision.get("flow_target")
+                flow_target = decision.get("flow_target")
+                compiled_context["_flow_target"] = flow_target
+                # El borrador se redacta YA con el step destino: si el
+                # orquestador decidio avanzar, el Conversador tiene que pedir
+                # lo que pide el step nuevo, no repetir lo del anterior.
+                if flow_target and flow_target != compiled_context.get("flow_node"):
+                    compiler.retarget_step(compiled_context, flow_target)
                 return self.conversador.draft_nl(compiled_context)
 
             router = RouterStateMachine(
@@ -363,11 +411,7 @@ class Orchestrator:
                 )
                 if not gate_result["approved"]:
                     kind = "derived"
-                    response = (
-                        "He preparado una respuesta pero prefiero que un profesional "
-                        "del programa la revise antes de enviarla. Alguien del equipo "
-                        "te contactará a la brevedad."
-                    )
+                    response = self.gate_handoff_message
                     compiled["gate_rejection"] = gate_result["reasons"]
 
             # Navegacion de flujo: si el orquestador clasifico un flow_target,
@@ -383,11 +427,24 @@ class Orchestrator:
                 session_state.flow_node = flow_node
             flow_transitions = compiled.get("allowed_transitions", [])
             flow_missing = compiled.get("missing_slots", [])
-            if flow_transitions or flow_missing:
-                session_state.flow_slots = {
-                    "allowed_transitions": flow_transitions,
-                    "missing_slots": flow_missing,
-                }
+            # Datos del lead (email, telefono, preferencia de visita, modalidad)
+            # capturados del mensaje CRUDO: chat_history se persiste scrubbeado
+            # y no se pueden recuperar despues (ver kb_agent/lead_slots.py).
+            previous_slots = session_state.flow_slots if isinstance(session_state.flow_slots, dict) else {}
+            # ``contact`` son datos que el CANAL ya conoce de la persona (el
+            # formulario de entrada del chat web, el numero de WhatsApp): se
+            # tratan igual que los que dijo en el mensaje, pero no pisan lo
+            # que ya se habia capturado en la conversacion.
+            declared = {k: v for k, v in (contact or {}).items() if v}
+            collected_slots = merge_lead_slots(
+                merge_lead_slots(declared, previous_slots.get("collected") or {}),
+                extract_lead_slots(message),
+            )
+            session_state.flow_slots = {
+                "allowed_transitions": flow_transitions,
+                "missing_slots": flow_missing,
+                "collected": collected_slots,
+            }
             session_state.current_node = SessionNode.IDLE
             session_state.updated_at = datetime.now(timezone.utc)
             reply_text = json.dumps(response, ensure_ascii=False) if isinstance(response, dict) else str(response)
@@ -395,9 +452,13 @@ class Orchestrator:
             self._persist_chat_history(session, user_id=user.id, role="assistant", content=reply_text, conversation_id=conversation.id)
             session.commit()
 
-            # Perfilador: extrae traits con LLM y persiste (sesion propia)
-            traits_before = self._current_traits(session, user.id)
-            asyncio.run(self._run_profiler(user.id, message))
+            # Perfilador: se espera su termino (arranco al compilar el contexto;
+            # si el turno no compilo nada, corre aca en serie).
+            profiler_thread, profiler_matches = profiler.setdefault(
+                "thread", self._start_profiler(user.id, message)
+            )
+            profiler_thread.join()
+            self._persist_profiler(session, profiler_matches, user.id)
             traits_after = self._current_traits(session, user.id)
 
             turn_context = self._build_turn_context(compiled)
@@ -458,6 +519,7 @@ class Orchestrator:
                 conversation_id=conversation.id,
                 decisions=decisions,
                 draft=reply_text,
+                duration_ms=int((perf_counter() - turn_started) * 1000),
             )
 
             return {
@@ -471,6 +533,7 @@ class Orchestrator:
                 "system_turn": system_turn,
                 "traits_before": traits_before,
                 "traits_after": traits_after,
+                "collected_slots": collected_slots,
                 "used_traits_in_context": compiled.get("user_traits", []),
                 "scenario_effective": scenario_effective,
                 "scenario_source": scenario_source,
@@ -576,6 +639,7 @@ class Orchestrator:
         decisions: Mapping[str, Any],
         draft: str,
         conversation_id: int | None = None,
+        duration_ms: int | None = None,
     ) -> None:
         """Persiste el rastro del turno en ``turns`` (fase 3.1).
 
@@ -606,6 +670,7 @@ class Orchestrator:
                     gate=dict(decisions.get("gate") or {}),
                     bundle=list((decisions.get("ruteador") or {}).get("bundle") or []),
                     tool=dict(tool) if tool else None,
+                    duration_ms=duration_ms,
                 )
             )
             session.commit()
@@ -637,6 +702,48 @@ class Orchestrator:
             if isinstance(tool, Mapping) and tool.get("called") and tool.get("tool"):
                 names.append(str(tool["tool"]))
         return names
+
+    @staticmethod
+    def _step_and_client_facts(compiled: Mapping[str, Any]) -> list[dict[str, Any]]:
+        """Contexto declarado EXTRA para el gate, ademas de facts/rules.
+
+        Medido en Vitali: el gate rechazaba el cierre ("afirma 30 minutos,
+        invitacion por correo, jueves en la tarde, un email... no declarados
+        en el contexto") cuando esos datos venian de (a) las instrucciones
+        del ConversationStep activo, que son KB, y (b) lo que el propio
+        cliente dijo en la conversacion (su dia preferido, su correo). Ambos
+        entran como lineas de contexto declarado: el step con su id, y los
+        mensajes del cliente (solo rol user, ya scrubbeados de PII al
+        persistirse) como una linea "conversacion-cliente".
+        """
+        extra: list[dict[str, Any]] = []
+        step = compiled.get("step")
+        if isinstance(step, Mapping) and (step.get("instructions") or step.get("required_slots")):
+            body = " ".join(
+                part for part in (
+                    str(step.get("instructions") or "").strip(),
+                    f"Datos que este paso reune: {step.get('required_slots')}" if step.get("required_slots") else "",
+                ) if part
+            )
+            extra.append({
+                "id": str(step.get("id") or step.get("tag") or "step-actual"),
+                "title": f"Paso actual de la conversacion: {step.get('title') or step.get('tag') or ''}".strip(),
+                "body": body,
+            })
+        said: list[str] = []
+        for turn in compiled.get("history") or []:
+            if isinstance(turn, Mapping) and turn.get("role") == "user" and str(turn.get("content") or "").strip():
+                said.append(str(turn["content"]).strip())
+        question = str(compiled.get("question") or "").strip()
+        if question:
+            said.append(question)
+        if said:
+            extra.append({
+                "id": "conversacion-cliente",
+                "title": "Lo que el cliente dijo en esta conversacion (datos aportados por el, no por la KB)",
+                "body": "\n".join(f"- {line}" for line in said),
+            })
+        return extra
 
     def _policy_gate(
         self,
@@ -676,6 +783,7 @@ class Orchestrator:
         declared_facts = [
             *compiled.get("domain_facts", []),
             *compiled.get("rules", []),
+            *self._step_and_client_facts(compiled),
         ]
 
         try:
@@ -773,21 +881,54 @@ class Orchestrator:
         }
 
     # ── perfilador ────────────────────────────────────────────────────────
-    async def _run_profiler(self, user_id: int, turn_text: str) -> None:
-        # scrub inline antes de que el perfilador vea nada (regla PII)
-        publish_turn_closed(self.event_bus, user_id=user_id, turn_text=turn_text)
-        event = await self.event_bus.get()
-        session = self.SessionLocal()
+    def _start_profiler(self, user_id: int, turn_text: str) -> tuple[threading.Thread, list]:
+        """Corre el ANALISIS del perfilador (embedder + LLM) en un hilo daemon.
+
+        Devuelve ``(thread, sink)``: el hilo no toca la base, deja los matches
+        en ``sink`` y el turno los persiste con su propia sesion despues del
+        join (ver ``TraitExtractor.analyze``/``persist``). Dos hilos
+        escribiendo la misma conexion sqlite se pisan ("cannot commit
+        transaction - SQL statements in progress", medido en la suite); asi
+        la unica parte paralela es la cara, que es la que interesa.
+
+        Un fallo del perfilador no puede tumbar el turno: se loguea y el
+        turno sigue con ``traits_after == traits_before``.
+        """
+        # scrub inline antes de que el perfilador vea nada (regla PII). El
+        # evento se construye directo (no pasa por la cola compartida del
+        # bus: con turnos concurrentes cada hilo consumia el evento de otro).
+        event = TurnClosedEvent(user_id=user_id, turn_text_scrubbed=scrub(turn_text))
+        sink: list = []
+
+        def _analyze() -> None:
+            try:
+                extractor = TraitExtractor(
+                    reader=self.reader,
+                    llm_mapper=self.trait_mapper,
+                    knowledge_ops=self.knowledge_ops,
+                )
+                sink.extend(extractor.analyze(user_id=event.user_id, turn_text=event.turn_text_scrubbed))
+            except Exception:
+                logger.exception("perfilador fallo; el turno sigue sin traits nuevos")
+
+        thread = threading.Thread(target=_analyze, name=f"profiler-{user_id}", daemon=True)
+        thread.start()
+        return thread, sink
+
+    def _persist_profiler(self, session: Session, matches: list, user_id: int) -> None:
+        """Escribe en ``user_traits`` lo que el hilo del perfilador analizo."""
+        if not matches:
+            return
         try:
-            extractor = TraitExtractor(
+            TraitExtractor(
                 reader=self.reader,
                 identity_session=session,
                 llm_mapper=self.trait_mapper,
                 knowledge_ops=self.knowledge_ops,
-            )
-            extractor.extract(user_id=event.user_id, turn_text=event.turn_text_scrubbed)
-        finally:
-            session.close()
+            ).persist(user_id=user_id, matches=matches)
+        except Exception:
+            session.rollback()
+            logger.exception("no se pudieron persistir los traits del perfilador")
 
     # ── reflector ─────────────────────────────────────────────────────────
     def run_reflector(self) -> list[dict[str, Any]]:

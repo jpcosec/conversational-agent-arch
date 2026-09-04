@@ -263,3 +263,163 @@ documents:
   - primitive:condition
   - type.workflow.condition
   - workspace.desk.primitives
+- name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path
+  path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path.md
+  hash_c: 9f1e8af8341f4f8b1eaf054cd9938dda8bcee633cc56c694acb87df4555a67ef
+  hash_d: c03cad25b716c040f15ef6e1144bbf390a6930c2c86bd4de2ef797efa097877a
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation
+  path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation.md
+  hash_c: f25d3d5ee748042ab1af90b977e5e8d0daa0c0fc0ac5be00110b52d7c45eaed1
+  hash_d: 41fac457b007f3c59004736681e4329f8afb27a2fe799653fac223d9c39acecb
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence.md
+  hash_c: 8ead92251dba83e07686561f475ce88c450bc08920ba5354abd35df9adfb24a6
+  hash_d: 357238d6b419f02369f8870f459fb0033077135c7716bb3ea9a92671eb9fcd70
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated
+  path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated.md
+  hash_c: 8189cf5d378fb93067dcbab8e0992c85d9b3883f6a91d67162c83e4864f5065a
+  hash_d: 2002d0ba5ae1297604840d34908d3ea0d656d01e43d311b998526238fb83a69e
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout.md
+  hash_c: 784aab2962f27d751ff0c279fdf08e2c81d88d8a7f95e42299d8242ab9775707
+  hash_d: 08041a375b2fa65c7ec8b059c2a0b01f741b5a02be60bb832937d94c8fb6f145
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
+  path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path.md
+  hash_c: 3022daa53e2f210af78274eadab57b7e0ee2ed2c7bf937a82af962d0e23f4e13
+  hash_d: e9c7f700810681aa864c652ce763d6928760478c5a77b8f515304396dd909d35
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
+  path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation.md
+  hash_c: 80b3316c5b87b2939709fd2fc6f0faa22882c3bb48dc98bbe181310ab056b641
+  hash_d: 9ba8150eca261c36f766b70d871d7b059d639c44ab9e2dd7a88604dee7a1d708
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence.md
+  hash_c: 961ca0480de4dcf1c8919fee70be3fd146b0b0a62e4cdceea3f119f6f29f8c02
+  hash_d: 519ed50f341a2fdb6661b8525e6fb0544bcccb484abcd4f2e801fca90d724272
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated
+  path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated.md
+  hash_c: 2716678388840f58c37e4be02bfcb42dadde76a750ee1efdbaded893613bde71
+  hash_d: d16fed7fec5f097947396cbf9166e05a518e1a6d413eea85d7266691f7e4be17
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout.md
+  hash_c: c9f98083c01474c469fa3901ca6845ae94e065e071355ad2fc53a6e013bbe047
+  hash_d: 454bf0f17198b4573d2da0655252c4c069435cefc7538c00843142cb959bd96f
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path
+  path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path.md
+  hash_c: 04b211f06ce43ba6a7275e09f2529327a01823d608dd1fb527b3349d5957d5c2
+  hash_d: c143bfc6958fc25d992b376f9ef2ead1f2dddfab9a7950da805ef33abaedafe3
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
+  path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation.md
+  hash_c: c09489966220991dcc9e75673e5fb79c9c7bb53d6ce1f6d8d3d2bf155ea9321f
+  hash_d: b46d12d0550341668f8b3e6b133d804b52dbf2d75ae41e9a735ae4f97ec86931
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence.md
+  hash_c: 728408503eb23166b7ff70f6d1fdafad33d2d999ac459fdb8d01daf4538c40fa
+  hash_d: f2517a552a0c1de8075c7ba10d7b196d1f3014663ddaf1c39391627615915c32
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
+  path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated.md
+  hash_c: 74e4e6cb4eba717fc8a18a958cf90c502783acc69927bee51e72d08ea80d1904
+  hash_d: 457318ae1a121cb2618b44cd55dbabad93d2f83c616642c71331b0b55593cbd7
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout.md
+  hash_c: 35df4d7c60dab0ac543bed36c7569d284be218b9ef13d0877104232ea59f2cb9
+  hash_d: 728b8611d4a0f8ad9e59a08569e14e9adcc2841b9a2f8bc340c19af43dbb9fad
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path
+  path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path.md
+  hash_c: c6f2550bcbdb42530fbea96372a4cdea3941b928d9178ebc07227f7a5fa91e47
+  hash_d: 0f09305fcebf79ee5f3c56264c8427ae5f6a58a2730a174f3bd5663499050896
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation
+  path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation.md
+  hash_c: 75ccc2413b407fff3b1d5af978fcb3984266d26f5f1847c64d08b0ecc8d91526
+  hash_d: 55eb538910fb39513fd764b262886a4a33e66187ade766bfb9ba360bb027fc2b
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence.md
+  hash_c: c091e707191446de4c4aae1173624f6317f763d144cfecbdf3207c152082ce01
+  hash_d: 75ecb8a056c09d5cac195295042e559e1a52e4adf5c0f779b6f6f67d513381f2
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated
+  path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated.md
+  hash_c: 76e9c0874f72aac1d24cfeba538a5a27b641bd7ae22c3296d52aa5bf4e34dab4
+  hash_d: 5b25189631ad66c0f52617f8a35c2c97fde848ac5591a0b8fb5a4b96ee29f268
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout.md
+  hash_c: c1325172b35ae17bcc901e68eaab153d6491a82190deb8db1b7eb64ddde0cc60
+  hash_d: bcbcaadd2cdd605904a933cfeaab22941976f9aaa38ccb445c7621b169eb722b
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives

@@ -4,6 +4,11 @@ type: state
 version: '1.1'
 metadata:
   author: antonIA
+  atoms:
+    - atom-router-state-machine
+    - atom-concepto-turno-extendido
+    - atom-policy-decide-turn
+    - atom-clasificación-de-4-ramas-del-flujo-psp
   description: >-
     Diagrama de la Máquina de Estados que rige el flujo de la conversación, manejando
     buffers de entrada, escenarios de negocio, interrupciones, ejecución de tools y retomas.

@@ -4,6 +4,12 @@ type: component
 version: "1.1"
 metadata:
   author: antonIA
+  atoms:
+    - atom-canales-de-entrada
+    - atom-dashboard
+    - atom-modo-demo
+    - atom-embeddings-como-layout-no-vista
+    - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   description: >-
     Superficie frontend del runtime tal como está en el codebase. El hub es
     frontends/chat/app.py (create_app): una FastAPI factory que sirve las 6
@@ -128,7 +134,7 @@ data:
       label: kb_agent.project_config (load_project_config · demo_mode)
       kind: boundary
     SLDBReader:
-      label: kb_agent.ontologizador.sldb_reader.SLDBReader
+      label: kb_agent.knowledge.sldb_reader.SLDBReader
       kind: boundary
     ModelsSql:
       label: kb_agent.models_sql (Users, UserTraits, ChatHistory, Turns)

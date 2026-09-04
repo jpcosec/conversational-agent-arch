@@ -4,6 +4,10 @@ type: component_view_matrix
 version: "0.3"
 metadata:
   author: antonIA
+  atoms:
+    - atom-encuadre-de-agentes-desde-la-kb-agentframing
+    - atom-sldb-knowledge-base
+    - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   description: >-
     Qué modelo tipado de conocimiento lee o produce cada agente del runtime.
     Stages = los 12 modelos reales de kb_agent/models/knowledge/* (ordenados
@@ -66,9 +70,9 @@ data:
         reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait, gate, agent]
         writes: [domain_w, rule_w, trait_w]
       children:
-        - name: Ontologizador
+        - name: ContextCompiler
           kind: engine
-          label: "Ontologizador (compile_context: lee TODA la KB tipada + step vía KGDB; delega el bundle al Ruteador)"
+          label: "Context Compiler (knowledge.compiler: lee TODA la KB tipada + step vía KGDB; delega el bundle al Ruteador)"
           stages:
             reads: [self, style, boundary, tool, domain, rule, step, strategy, fallback, trait]
         - name: Ruteador

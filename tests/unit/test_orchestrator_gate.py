@@ -47,7 +47,8 @@ def test_gate_rejection_replaces_response_with_handoff(orch_factory) -> None:
     turn = orch.handle_turn(external_id="ui:gate-reject", message=QUESTION)
 
     assert turn["kind"] == "derived"
-    assert "profesional" in turn["reply"]  # el texto de handoff, no el borrador del conversador
+    # el texto de handoff (configurable por negocio, ver ProjectConfig.gate_handoff_message), no el borrador
+    assert turn["reply"] == orch.gate_handoff_message and "equipo" in turn["reply"]
     assert turn["decisions"]["gate"]["approved"] is False
     assert turn["decisions"]["gate"]["reasons"] == ["violó gate-antonia-dosis"]
     assert turn["decisions"]["gate"]["action"] == "handoff"
@@ -97,3 +98,20 @@ def test_empty_response_skips_gate_call_entirely(orch_factory) -> None:
     result = orch._policy_gate("   ", {})
     assert result == {"approved": True, "reasons": [], "action": "pass", "criterion_ids": []}
     assert gate.calls == []
+
+
+def test_gate_sees_active_step_and_client_statements_as_declared_context(orch_factory) -> None:
+    """El gate juzga grounding tambien contra el step activo (instrucciones
+    de la KB) y contra lo que el cliente dijo en la conversacion: sin eso
+    rechazaba cierres correctos ("afirma el dia que el cliente eligio").
+    """
+    gate = FakeGate()
+    orch = orch_factory(gate)
+    orch.handle_turn(external_id="ui:gate-ctx", message="quiero reservar para el jueves")
+    orch.handle_turn(external_id="ui:gate-ctx", message="somos cuatro personas")
+
+    facts = gate.calls[-1]["declared_facts"]
+    ids = [f["id"] for f in facts]
+    assert "step-donpeppe-onboarding" in ids or "step-donpeppe-booking" in ids
+    client = next(f for f in facts if f["id"] == "conversacion-cliente")
+    assert "quiero reservar para el jueves" in client["body"] and "somos cuatro personas" in client["body"]
