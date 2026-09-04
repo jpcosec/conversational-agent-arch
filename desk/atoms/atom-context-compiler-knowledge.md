@@ -1,6 +1,6 @@
 ---
-id: atom-ontologizador-context-compiler
-title: Ontologizador (Context Compiler)
+id: atom-context-compiler-knowledge
+title: Context Compiler (Knowledge)
 five_wh_one_plus: what
 tags:
 - layer:runtime
@@ -8,7 +8,7 @@ tags:
 provenance: architecture-audit
 ---
 
-# Ontologizador (Context Compiler)
+# Context Compiler (Knowledge)
 
 ## Answer
 

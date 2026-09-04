@@ -52,11 +52,11 @@ _Outline the expected implementation route or affected surface._
 
 _List the checks required before this task can close._
 
-- python desk/bundles/materialize.py --check
+- python desk/materializations/materialize.py --check
 - sldb stores check --store .sldb
 
 ## Done When
 
 _Name the observable condition that makes the task complete._
 
-python desk/bundles/materialize.py --check sin drift y atoms sin menciones al paquete viejo.
+python desk/materializations/materialize.py --check sin drift y atoms sin menciones al paquete viejo.

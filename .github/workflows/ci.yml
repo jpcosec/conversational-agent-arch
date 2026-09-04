@@ -39,11 +39,11 @@ jobs:
           print(f"negocio activo: {cfg['name']} (kb_root={cfg['kb_root']})")
           PY
 
-      # Los 4 docs de alto nivel son proyecciones de desk/bundles + desk/atoms. El
+      # Los 4 docs de alto nivel son proyecciones de desk/materializations + desk/atoms. El
       # script lee los atoms con stdlib (el store .sldb es la autoridad, pero no hace
       # falta instalar sldb), asi que el drift guard corre en el gate sin deps.
       - name: Docs proyectados sin drift
-        run: python desk/bundles/materialize.py --check
+        run: python desk/materializations/materialize.py --check
 
       - name: No hay hardcodes de negocio en el runtime
         run: |

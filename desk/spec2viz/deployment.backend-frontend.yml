@@ -4,6 +4,11 @@ type: deployment
 version: '2.1'
 metadata:
   author: antonIA
+  atoms:
+    - atom-topologia-de-despliegue
+    - atom-deploy-dev-y-mantenimiento-del-volumen
+    - atom-migraciones-alembic-del-volumen
+    - atom-project-config
   description: >-
     Separación explícita backend/frontend del runtime kb-agent. El frontend son 5 páginas
     estáticas (HTML/JS sin build: chat, flow, mindmap, users, dashboard) más el tour guiado

@@ -1,4 +1,4 @@
-<!-- generado desde desk/bundles/bundle-glosario.md — no editar a mano; python desk/bundles/materialize.py -->
+<!-- generado desde desk/materializations/composition-glossary.md — no editar a mano; python desk/materializations/materialize.py -->
 # Glosario de Conceptos
 
 Definiciones de los términos ubicuos (Ubiquitous Language) utilizados en todo el ecosistema de KB Agent.

@@ -4,6 +4,9 @@ type: activity
 version: '1.0'
 metadata:
   author: antonIA
+  atoms:
+    - atom-estrategia-de-testing
+    - atom-garantia-cero-alucinaciones
   description: >-
     tests/e2e/simulation: un usuario simulado (LLM con Persona) conversa con el Orchestrator
     REAL turno a turno hasta cumplir su objetivo o agotar max_turns; luego corren checks
