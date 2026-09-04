@@ -117,7 +117,7 @@ la conversacion (esta en "grounding_atoms_del_step" del contexto dinamico). \
 Sustituye <step_actual> por el NOMBRE DEL STEP tal cual viene en \
 "step_actual", NO por el id del documento. Ejemplo: si step_actual es \
 "conversation:steps.onboarding", el motivo correcto es "grounding de \
-steps.onboarding" -- nunca "grounding de steps.atom-antonia-bienvenida".
+steps.onboarding" -- nunca "grounding de steps.atom-bienvenida".
   - "trait del usuario" -- un TraitAtom que aplica al usuario de este turno.
   - "similitud <score>" -- relevante por similitud semantica con la \
 pregunta (usa el score real que te devuelve `explore_multi`, con 2 \

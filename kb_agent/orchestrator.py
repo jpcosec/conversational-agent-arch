@@ -15,8 +15,8 @@ from __future__ import annotations
 
 import re
 
-import asyncio
 import json
+import threading
 import logging
 import os
 from collections.abc import Mapping, Sequence
@@ -26,6 +26,7 @@ from typing import Any
 from uuid import uuid4
 
 from sqlalchemy import create_engine
+from sqlalchemy.pool import StaticPool
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -45,7 +46,8 @@ from kb_agent.knowledge.compiler import ContextCompiler
 from kb_agent.knowledge.kgdb_reader import KGDBReader
 from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
-from kb_agent.perfilador.listener import InProcessEventBus, publish_turn_closed
+from kb_agent.perfilador.listener import InProcessEventBus, TurnClosedEvent
+from kb_agent.pii.scrubber import scrub
 from kb_agent.pii.scrubber import scrub
 from kb_agent.project_config import DEFAULT_MODEL, ProjectConfig, TuningConfig, load_project_config
 from kb_agent.reflector import InMemoryCheckpointStore, ReflectorAtomGenerator, ReflectorBatchReaderJob
@@ -128,7 +130,13 @@ class Orchestrator:
         #: telefono). Ver ``ensure_user`` y ``_canonical_phone``.
         self.identity_key = identity_key
 
-        self.engine = create_engine(db_url, future=True)
+        engine_kwargs: dict[str, Any] = {"future": True}
+        if db_url.endswith(":memory:"):
+            # sqlite en memoria (tests): cada conexion nueva es OTRA base vacia.
+            # El perfilador corre en un hilo con sesion propia, asi que todos
+            # los hilos tienen que compartir la unica conexion.
+            engine_kwargs.update(poolclass=StaticPool, connect_args={"check_same_thread": False})
+        self.engine = create_engine(db_url, **engine_kwargs)
         Base.metadata.create_all(self.engine)
         self.SessionLocal = sessionmaker(bind=self.engine, future=True)
 
@@ -284,6 +292,18 @@ class Orchestrator:
                 session, user_id=user.id, channel=channel or channel_from_external_id(external_id)
             )
             step_before = session_state.flow_node
+            # Perfilador EN PARALELO con el turno (hilo propio, sesion SQL
+            # propia): antes corria en serie despues de la respuesta y sumaba
+            # una llamada LLM completa a la latencia de cada turno. Los
+            # traits que extrae NO entran al contexto de este turno (igual
+            # que antes: se leian antes de correrlo); ``traits_before`` se
+            # captura aca, ``traits_after`` tras el join.
+            traits_before = self._current_traits(session, user.id)
+            #: El hilo arranca DESPUES de compilar el contexto del turno (ver
+            #: ``compile_context``): el perfil aprendido en este turno entra
+            #: al SIGUIENTE, nunca al que lo aprendio (contrato medido en
+            #: tests: ``used_traits_in_context`` del primer turno es []).
+            profiler: dict[str, threading.Thread] = {}
 
             if scenario is not None:
                 scenario_source = "argument"
@@ -313,6 +333,11 @@ class Orchestrator:
                 )
                 d = compiled.to_dict()
                 d["user_id"] = user_id
+                # Contexto compilado (traits de este turno ya leidos): desde
+                # aca el perfilador corre en paralelo con orquestador,
+                # conversador y gate.
+                if "thread" not in profiler:
+                    profiler["thread"] = self._start_profiler(user.id, message)
                 return d
 
             def draft(compiled_context: dict[str, Any]) -> Any:
@@ -410,9 +435,9 @@ class Orchestrator:
             self._persist_chat_history(session, user_id=user.id, role="assistant", content=reply_text, conversation_id=conversation.id)
             session.commit()
 
-            # Perfilador: extrae traits con LLM y persiste (sesion propia)
-            traits_before = self._current_traits(session, user.id)
-            asyncio.run(self._run_profiler(user.id, message))
+            # Perfilador: se espera su termino (arranco al compilar el contexto;
+            # si el turno no compilo nada, corre aca en serie).
+            profiler.setdefault("thread", self._start_profiler(user.id, message)).join()
             traits_after = self._current_traits(session, user.id)
 
             turn_context = self._build_turn_context(compiled)
@@ -831,10 +856,27 @@ class Orchestrator:
         }
 
     # ── perfilador ────────────────────────────────────────────────────────
-    async def _run_profiler(self, user_id: int, turn_text: str) -> None:
-        # scrub inline antes de que el perfilador vea nada (regla PII)
-        publish_turn_closed(self.event_bus, user_id=user_id, turn_text=turn_text)
-        event = await self.event_bus.get()
+    def _start_profiler(self, user_id: int, turn_text: str) -> threading.Thread:
+        """Lanza ``_run_profiler`` en un hilo daemon y lo devuelve (join en el turno).
+
+        Un fallo del perfilador no puede tumbar el turno: se loguea y el
+        turno sigue con ``traits_after == traits_before``.
+        """
+        def _target() -> None:
+            try:
+                self._run_profiler(user_id, turn_text)
+            except Exception:
+                logger.exception("perfilador fallo; el turno sigue sin traits nuevos")
+
+        thread = threading.Thread(target=_target, name=f"profiler-{user_id}", daemon=True)
+        thread.start()
+        return thread
+
+    def _run_profiler(self, user_id: int, turn_text: str) -> None:
+        # scrub inline antes de que el perfilador vea nada (regla PII). El
+        # evento se construye directo (no pasa por la cola compartida del
+        # bus: con turnos concurrentes cada hilo consumia el evento de otro).
+        event = TurnClosedEvent(user_id=user_id, turn_text_scrubbed=scrub(turn_text))
         session = self.SessionLocal()
         try:
             extractor = TraitExtractor(

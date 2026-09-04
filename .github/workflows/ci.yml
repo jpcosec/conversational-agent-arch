@@ -96,7 +96,7 @@ jobs:
             "fastapi==0.135.2" "starlette==1.3.1" "uvicorn[standard]==0.42.0" \
             "python-multipart==0.0.26" "twilio==9.10.9" "python-dotenv==1.0.1" \
             "networkx==3.6.1" "numpy==2.1.3" "PyYAML==6.0.3" \
-            "SQLAlchemy==2.0.49" "pydantic==2.13.4" \
+            "SQLAlchemy==2.0.49" "pydantic==2.13.4" "alembic==1.18.4" \
             "httpx" "pytest" "pytest-asyncio"
 
       - name: Suite offline (unit + integration, sin LLM)

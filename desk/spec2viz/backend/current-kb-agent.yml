@@ -289,7 +289,7 @@ data:
       label: "db_check (DbRevisionStatus, check_db_revision · usado por cli.py)"
       kind: boundary
     SeedDemoUsers:
-      label: "seed_demo_users (seed · usado por deploy/modal_app.py)"
+      label: "seed_demo_users (seed · movido a frontends/chat, usado por deploy/modal_app.py)"
       kind: boundary
 
   edges:

@@ -73,7 +73,7 @@ data:
       label: frontends.chat.app.create_app
       kind: boundary
     SeedDemoUsers:
-      label: kb_agent.seed_demo_users.seed
+      label: frontends.chat.seed_demo_users.seed
       kind: boundary
 
     ReleaseGate:
