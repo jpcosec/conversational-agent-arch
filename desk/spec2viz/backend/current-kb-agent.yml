@@ -109,14 +109,10 @@ data:
       kind: core
       contains:
         - KnowCompiler
-        - KnowSldbReader
         - KnowKgdbReader
         - KnowCompiledDocument
     KnowCompiler:
       label: "knowledge.compiler (ContextCompiler, SessionStateLike)"
-      kind: core
-    KnowSldbReader:
-      label: "knowledge.sldb_reader (SLDBReader)"
       kind: core
     KnowKgdbReader:
       label: "knowledge.kgdb_reader (KGDBReader)"
@@ -281,7 +277,7 @@ data:
       label: "deskops.atom_tags (validación namespaces)"
       kind: boundary
     ExtKnowledgeOps:
-      label: "knowledge_base.operations (KnowledgeOperations: explore_multi/explore/show, embedder cacheado)"
+      label: "knowledge_base.operations (KnowledgeOperations: unico dueno del store — docs_by_type/doc/docs_by_tag, explore_multi/explore/show, embedder cacheado)"
       kind: boundary
 
     # ── Módulos auxiliares ──────────────────────────────────────────
@@ -407,9 +403,9 @@ data:
       relation: uses
       label: compila contexto del turno
     - from: KnowCompiler
-      to: KnowSldbReader
+      to: ExtKnowledgeOps
       relation: uses
-      label: extrae atoms
+      label: docs_by_type / doc
     - from: KnowCompiler
       to: KnowKgdbReader
       relation: uses
@@ -422,10 +418,6 @@ data:
       to: SqlIdentity
       relation: reads
       label: trait_ids del usuario
-    - from: KnowSldbReader
-      to: ExtSldb
-      relation: reads
-      label: search records
     - from: KnowKgdbReader
       to: ExtKgdb
       relation: reads
@@ -441,9 +433,9 @@ data:
       relation: publishes
       label: publish_turn_closed (EventBus)
     - from: PerfExtractor
-      to: KnowSldbReader
+      to: ExtKnowledgeOps
       relation: uses
-      label: catálogo de TraitAtoms
+      label: docs_by_type(trait)
     - from: PerfExtractor
       to: SqlIdentity
       relation: writes
@@ -463,7 +455,7 @@ data:
       relation: uses
       label: lee ChatHistory por checkpoint
     - from: ReflGenerator
-      to: KnowSldbReader
+      to: ExtKnowledgeOps
       relation: uses
       label: materializa atoms nuevos
     - from: ReflGenerator
@@ -507,8 +499,8 @@ data:
       relation: uses
       label: mapped ORM
 
-    # Modelos tipados definen el contrato leído por el reader
-    - from: KnowSldbReader
+    # Modelos tipados definen el contrato leído por knowledge_base
+    - from: ExtKnowledgeOps
       to: ModelsKnowledge
       relation: uses
       label: contrato de atoms

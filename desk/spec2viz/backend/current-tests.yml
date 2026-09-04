@@ -61,7 +61,7 @@ data:
       label: "test_turn_policy (decide_turn, fallback determinístico)"
       kind: core
     UnitCompiler:
-      label: "test_context_compiler / test_sldb_reader / test_kgdb_reader"
+      label: "test_context_compiler / test_knowledge_store_access / test_kgdb_reader"
       kind: core
     UnitStateMachine:
       label: "test_state_machine (RouterStateMachine)"

@@ -53,7 +53,7 @@ ya scrubbeada, detecta patrones recurrentes (≥5 turnos), y propone atoms nuevo
 | Capa | Qué guarda | Lectura |
 |---|---|---|
 | **SQL** | identidad (`Users`), traits aprendidos (`UserTraits`), estado vivo (`SessionState`), historial (`ChatHistory`), reservas/recordatorios. | SQLAlchemy `kb_agent/models_sql/` |
-| **SLDB** | conocimiento tipado: los 12 modelos (ver abajo). | `knowledge/sldb_reader.py` + `knowledge_base/operations.py` (tools del Ruteador) |
+| **SLDB** | conocimiento tipado: los 12 modelos (ver abajo). | `knowledge_base/operations.py` (tools del Ruteador) |
 | **KGDB** | grafo de flujo conversacional: `ConversationStep` + relaciones (`flows_to`, `grounded_by`, `uses_tool`, ...). | `knowledge/kgdb_reader.py` |
 
 **Los 12 modelos tipados** (`kb_agent/models/knowledge/`), agrupados por `__family__`:

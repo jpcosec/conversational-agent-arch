@@ -32,9 +32,13 @@ if not atoms:
 
 html_path = Path('docs/kb_agent_runtime.html')
 html = html_path.read_text()
-new, n = re.subn(r'window\.ATOMS_DB = \{\};',
-                 'window.ATOMS_DB = ' + json.dumps(atoms, ensure_ascii=False) + ';',
-                 html, count=1)
+# El reemplazo va como FUNCION, no como string: re.sub interpreta las
+# secuencias de escape del reemplazo, y eso convertia cada \n escapado por
+# json.dumps (dentro de los strings del JSON) en un salto de linea real.
+# Resultado: 202 literales rotos y un SyntaxError que mataba TODO el JS del
+# catalogo -- filtros sin estilo y el diagrama sin dimensionar.
+payload = 'window.ATOMS_DB = ' + json.dumps(atoms, ensure_ascii=False) + ';'
+new, n = re.subn(r'window\.ATOMS_DB = \{\};', lambda _m: payload, html, count=1)
 if n == 0:
     sys.exit('No se encontro window.ATOMS_DB = {} en el HTML')
 html_path.write_text(new)

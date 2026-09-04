@@ -146,7 +146,7 @@ data:
       label: "PII Scrubber (scrub antes de persistir y de perfilar)"
       kind: boundary
     context_compiler:
-      label: "Context Compiler (knowledge.compiler: ContextCompiler + SLDBReader + KGDBReader; delega el bundle al Ruteador)"
+      label: "Context Compiler (knowledge.compiler: ContextCompiler + KnowledgeOperations + KGDBReader; delega el bundle al Ruteador)"
       kind: engine
     router_agent:
       label: "Ruteador de contexto (RouterAgent.route: bundle justificado [{doc_id, motivo}] con tools explore_multi/explore/show; cualquier familia, justificada)"

@@ -22,7 +22,7 @@ desk/spec2viz/
 - **Backend** = Python: `kb_agent` (los 4 agentes LLM de `kb_agent/agents/` — Ruteador,
   Orquestador, Gate sobre `agents.base.Agent`, más el Conversador en `llm.py`; `decide_turn` en
   `agent.py` queda como fallback determinístico —, `Orchestrator` que cablea
-  SLDBReader/KGDBReader/ContextCompiler/RouterStateMachine/tool registry/Perfilador/Reflector),
+  KnowledgeOperations/KGDBReader/ContextCompiler/RouterStateMachine/tool registry/Perfilador/Reflector),
   desplegado en Modal (`deploy/modal_app.py`) o local vía uvicorn.
 - **Frontend** = HTML/JS estático sin build bajo `frontends/`: seis vistas servidas por el mismo
   FastAPI app factory (`frontends/chat/app.py create_app`, entrypoint `frontends/chat/server.py`):
