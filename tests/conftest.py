@@ -87,6 +87,8 @@ def antonia_kb() -> Path:
 
 @pytest.fixture(scope="session")
 def vitali_kb() -> Path:
+    if not VITALI_KB.exists():
+        pytest.skip("knowledge_vitali no disponible en este checkout")
     return VITALI_KB
 
 

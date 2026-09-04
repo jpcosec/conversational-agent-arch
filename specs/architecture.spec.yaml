@@ -1,0 +1,1714 @@
+id: kb-agent-runtime
+title: KB Agent Runtime · Arquitectura AST
+type: component
+version: '1.0'
+data:
+  nodes:
+    module_agent:
+      label: agent
+      kind: module
+    module_agents_base:
+      label: agents.base
+      kind: module
+    class_agents_base_AgentRole:
+      label: AgentRole
+      kind: class
+    class_agents_base_ToolCall:
+      label: ToolCall
+      kind: class
+    class_agents_base_LlmRequest:
+      label: LlmRequest
+      kind: class
+    class_agents_base_LlmResponse:
+      label: LlmResponse
+      kind: class
+    class_agents_base_Tool:
+      label: Tool
+      kind: class
+    class_agents_base_Agent:
+      label: Agent
+      kind: class
+    module_agents_gate:
+      label: agents.gate
+      kind: module
+    class_agents_gate_GateVerdict:
+      label: GateVerdict
+      kind: class
+    class_agents_gate_GateAgent:
+      label: GateAgent
+      kind: class
+    module_agents_orchestrator_agent:
+      label: agents.orchestrator_agent
+      kind: module
+    class_agents_orchestrator_agent_ToolCallDecision:
+      label: ToolCallDecision
+      kind: class
+    class_agents_orchestrator_agent_OrchestratorDecision:
+      label: OrchestratorDecision
+      kind: class
+    class_agents_orchestrator_agent_OrchestratorAgent:
+      label: OrchestratorAgent
+      kind: class
+    module_agents_router:
+      label: agents.router
+      kind: module
+    class_agents_router_BundleEntry:
+      label: BundleEntry
+      kind: class
+    class_agents_router_RouterDecision:
+      label: RouterDecision
+      kind: class
+    class_agents_router_RouterAgent:
+      label: RouterAgent
+      kind: class
+    module_cli:
+      label: cli
+      kind: module
+    module_db_check:
+      label: db_check
+      kind: module
+    class_db_check_DbRevisionStatus:
+      label: DbRevisionStatus
+      kind: class
+    module_inbound:
+      label: inbound
+      kind: module
+    class_inbound_InboundResult:
+      label: InboundResult
+      kind: class
+    class_inbound_InboundService:
+      label: InboundService
+      kind: class
+    module_knowledge_compiled_document:
+      label: knowledge.compiled_document
+      kind: module
+    class_knowledge_compiled_document_CompiledDocument:
+      label: CompiledDocument
+      kind: class
+    module_knowledge_compiler:
+      label: knowledge.compiler
+      kind: module
+    class_knowledge_compiler_SessionStateLike:
+      label: SessionStateLike
+      kind: class
+    class_knowledge_compiler_ContextCompiler:
+      label: ContextCompiler
+      kind: class
+    module_knowledge_kgdb_reader:
+      label: knowledge.kgdb_reader
+      kind: module
+    class_knowledge_kgdb_reader_KGDBReader:
+      label: KGDBReader
+      kind: class
+    module_knowledge_sldb_reader:
+      label: knowledge.sldb_reader
+      kind: module
+    class_knowledge_sldb_reader_SLDBReader:
+      label: SLDBReader
+      kind: class
+    module_llm:
+      label: llm
+      kind: module
+    class_llm_Conversador:
+      label: Conversador
+      kind: class
+    class_llm_TraitMapper:
+      label: TraitMapper
+      kind: class
+    class_llm_GeminiConversador:
+      label: GeminiConversador
+      kind: class
+    class_llm_GeminiTraitMapper:
+      label: GeminiTraitMapper
+      kind: class
+    module_models_knowledge_agent_framing:
+      label: models.knowledge.agent_framing
+      kind: module
+    class_models_knowledge_agent_framing_AgentFraming:
+      label: AgentFraming
+      kind: class
+    module_models_knowledge_boundary:
+      label: models.knowledge.boundary
+      kind: module
+    class_models_knowledge_boundary_CapabilityBoundary:
+      label: CapabilityBoundary
+      kind: class
+    module_models_knowledge_domain:
+      label: models.knowledge.domain
+      kind: module
+    class_models_knowledge_domain_AtomQuestion:
+      label: AtomQuestion
+      kind: class
+    class_models_knowledge_domain_DomainAtom:
+      label: DomainAtom
+      kind: class
+    module_models_knowledge_fallback:
+      label: models.knowledge.fallback
+      kind: module
+    class_models_knowledge_fallback_FallbackRule:
+      label: FallbackRule
+      kind: class
+    module_models_knowledge_gate:
+      label: models.knowledge.gate
+      kind: module
+    class_models_knowledge_gate_GateCriterion:
+      label: GateCriterion
+      kind: class
+    module_models_knowledge_index_proxies:
+      label: models.knowledge.index_proxies
+      kind: module
+    class_models_knowledge_index_proxies_IndexProxies:
+      label: IndexProxies
+      kind: class
+    module_models_knowledge_rule:
+      label: models.knowledge.rule
+      kind: module
+    class_models_knowledge_rule_RuleAtom:
+      label: RuleAtom
+      kind: class
+    module_models_knowledge_self_declaration:
+      label: models.knowledge.self_declaration
+      kind: module
+    class_models_knowledge_self_declaration_SelfDeclaration:
+      label: SelfDeclaration
+      kind: class
+    module_models_knowledge_step:
+      label: models.knowledge.step
+      kind: module
+    class_models_knowledge_step_StepKind:
+      label: StepKind
+      kind: class
+    class_models_knowledge_step_ConversationStep:
+      label: ConversationStep
+      kind: class
+    module_models_knowledge_strategy:
+      label: models.knowledge.strategy
+      kind: module
+    class_models_knowledge_strategy_StrategyRule:
+      label: StrategyRule
+      kind: class
+    module_models_knowledge_style:
+      label: models.knowledge.style
+      kind: module
+    class_models_knowledge_style_StyleGuide:
+      label: StyleGuide
+      kind: class
+    module_models_knowledge_tool:
+      label: models.knowledge.tool
+      kind: module
+    class_models_knowledge_tool_ToolAtom:
+      label: ToolAtom
+      kind: class
+    module_models_knowledge_trait:
+      label: models.knowledge.trait
+      kind: module
+    class_models_knowledge_trait_TraitAtom:
+      label: TraitAtom
+      kind: class
+    module_models_sql_conversation:
+      label: models_sql.conversation
+      kind: module
+    class_models_sql_conversation_ConversationStatus:
+      label: ConversationStatus
+      kind: class
+    class_models_sql_conversation_Conversation:
+      label: Conversation
+      kind: class
+    module_models_sql_identity:
+      label: models_sql.identity
+      kind: module
+    class_models_sql_identity_Base:
+      label: Base
+      kind: class
+    class_models_sql_identity_Users:
+      label: Users
+      kind: class
+    class_models_sql_identity_UserTraits:
+      label: UserTraits
+      kind: class
+    module_models_sql_inbound:
+      label: models_sql.inbound
+      kind: module
+    class_models_sql_inbound_InboundStatus:
+      label: InboundStatus
+      kind: class
+    class_models_sql_inbound_InboundMessage:
+      label: InboundMessage
+      kind: class
+    module_models_sql_recordatorios:
+      label: models_sql.recordatorios
+      kind: module
+    class_models_sql_recordatorios_Recordatorios:
+      label: Recordatorios
+      kind: class
+    module_models_sql_reservas:
+      label: models_sql.reservas
+      kind: module
+    class_models_sql_reservas_Reservas:
+      label: Reservas
+      kind: class
+    module_models_sql_session:
+      label: models_sql.session
+      kind: module
+    class_models_sql_session_SessionNode:
+      label: SessionNode
+      kind: class
+    class_models_sql_session_SessionState:
+      label: SessionState
+      kind: class
+    class_models_sql_session_ChatHistory:
+      label: ChatHistory
+      kind: class
+    module_models_sql_turns:
+      label: models_sql.turns
+      kind: module
+    class_models_sql_turns_TurnKind:
+      label: TurnKind
+      kind: class
+    class_models_sql_turns_Turns:
+      label: Turns
+      kind: class
+    module_orchestrator:
+      label: orchestrator
+      kind: module
+    class_orchestrator_Orchestrator:
+      label: Orchestrator
+      kind: class
+    module_perfilador_extractor:
+      label: perfilador.extractor
+      kind: module
+    class_perfilador_extractor_TraitCandidate:
+      label: TraitCandidate
+      kind: class
+    class_perfilador_extractor_TraitMatch:
+      label: TraitMatch
+      kind: class
+    class_perfilador_extractor_StructuredTraitMapper:
+      label: StructuredTraitMapper
+      kind: class
+    class_perfilador_extractor_TraitExtractor:
+      label: TraitExtractor
+      kind: class
+    module_perfilador_form_ingestion:
+      label: perfilador.form_ingestion
+      kind: module
+    module_perfilador_listener:
+      label: perfilador.listener
+      kind: module
+    class_perfilador_listener_TurnClosedEvent:
+      label: TurnClosedEvent
+      kind: class
+    class_perfilador_listener_EventBus:
+      label: EventBus
+      kind: class
+    class_perfilador_listener_InProcessEventBus:
+      label: InProcessEventBus
+      kind: class
+    class_perfilador_listener_AsyncProfilingListener:
+      label: AsyncProfilingListener
+      kind: class
+    module_perfilador_traits_store:
+      label: perfilador.traits_store
+      kind: module
+    module_pii_scrubber:
+      label: pii.scrubber
+      kind: module
+    class_pii_scrubber__PlaceholderRegistry:
+      label: _PlaceholderRegistry
+      kind: class
+    module_project_config:
+      label: project_config
+      kind: module
+    class_project_config_TuningConfig:
+      label: TuningConfig
+      kind: class
+    class_project_config_DeployConfig:
+      label: DeployConfig
+      kind: class
+    class_project_config_ProjectConfig:
+      label: ProjectConfig
+      kind: class
+    module_reflector_generator:
+      label: reflector.generator
+      kind: module
+    class_reflector_generator_RecurrentPattern:
+      label: RecurrentPattern
+      kind: class
+    class_reflector_generator_GeneratedAtom:
+      label: GeneratedAtom
+      kind: class
+    class_reflector_generator_ReflectorAtomGenerator:
+      label: ReflectorAtomGenerator
+      kind: class
+    module_reflector_reader:
+      label: reflector.reader
+      kind: module
+    class_reflector_reader_ReflectorHistoryRow:
+      label: ReflectorHistoryRow
+      kind: class
+    class_reflector_reader_ReaderCheckpoint:
+      label: ReaderCheckpoint
+      kind: class
+    class_reflector_reader_CheckpointStore:
+      label: CheckpointStore
+      kind: class
+    class_reflector_reader_InMemoryCheckpointStore:
+      label: InMemoryCheckpointStore
+      kind: class
+    class_reflector_reader_ReflectorBatchReaderJob:
+      label: ReflectorBatchReaderJob
+      kind: class
+    module_seed_demo_users:
+      label: seed_demo_users
+      kind: module
+    module_state_machine:
+      label: state_machine
+      kind: module
+    class_state_machine_RouterNode:
+      label: RouterNode
+      kind: class
+    class_state_machine_SessionState:
+      label: SessionState
+      kind: class
+    class_state_machine_CronTriggerPayload:
+      label: CronTriggerPayload
+      kind: class
+    class_state_machine_RouterTurnResult:
+      label: RouterTurnResult
+      kind: class
+    class_state_machine_RouterStateMachine:
+      label: RouterStateMachine
+      kind: class
+    module_tools_enrolamiento:
+      label: tools.enrolamiento
+      kind: module
+    module_tools_recordatorios:
+      label: tools.recordatorios
+      kind: module
+    module_tools_reservas:
+      label: tools.reservas
+      kind: module
+    module___future__:
+      label: ''
+      kind: external
+    module_collections_abc:
+      label: abc
+      kind: external
+    module_typing:
+      label: typing
+      kind: external
+    module_dataclasses:
+      label: dataclasses
+      kind: external
+    module_enum:
+      label: enum
+      kind: external
+    module_pydantic:
+      label: pydantic
+      kind: external
+    module_kb_agent_agents_base:
+      label: base
+      kind: external
+    module_kb_agent_agent:
+      label: agent
+      kind: external
+    module_knowledge_base_operations:
+      label: operations
+      kind: external
+    module_pathlib:
+      label: pathlib
+      kind: external
+    module_dotenv:
+      label: dotenv
+      kind: external
+    module_kb_agent_db_check:
+      label: check
+      kind: external
+    module_kb_agent_orchestrator:
+      label: orchestrator
+      kind: external
+    module_kb_agent_project_config:
+      label: config
+      kind: external
+    module_sqlalchemy:
+      label: sqlalchemy
+      kind: external
+    module_alembic_config:
+      label: config
+      kind: external
+    module_alembic_runtime_migration:
+      label: migration
+      kind: external
+    module_alembic_script:
+      label: script
+      kind: external
+    module_datetime:
+      label: datetime
+      kind: external
+    module_sqlalchemy_exc:
+      label: exc
+      kind: external
+    module_kb_agent_models_sql_inbound:
+      label: inbound
+      kind: external
+    module_twilio_rest:
+      label: rest
+      kind: external
+    module_sqlalchemy_orm:
+      label: orm
+      kind: external
+    module_kb_agent_agents_router:
+      label: router
+      kind: external
+    module_kb_agent_models_knowledge:
+      label: knowledge
+      kind: external
+    module_kb_agent_models_sql_identity:
+      label: identity
+      kind: external
+    module_kb_agent_models_sql_session:
+      label: session
+      kind: external
+    module_compiled_document:
+      label: document
+      kind: external
+    module_kgdb_reader:
+      label: reader
+      kind: external
+    module_sldb_reader:
+      label: reader
+      kind: external
+    module_kgdb_graph:
+      label: graph
+      kind: external
+    module_kgdb_graph_utils:
+      label: utils
+      kind: external
+    module_kgdb_ingest_sldb:
+      label: sldb
+      kind: external
+    module_kgdb_query_neighborhood:
+      label: neighborhood
+      kind: external
+    module_sldb_store_io:
+      label: io
+      kind: external
+    module_sldb_cli_model_utils:
+      label: utils
+      kind: external
+    module_sldb_store_query:
+      label: query
+      kind: external
+    module_sldb_store_query_engine_models:
+      label: models
+      kind: external
+    module_kb_agent_perfilador_extractor:
+      label: extractor
+      kind: external
+    module_google:
+      label: google
+      kind: external
+    module_sldb:
+      label: sldb
+      kind: external
+    module_index_proxies:
+      label: proxies
+      kind: external
+    module_domain:
+      label: domain
+      kind: external
+    module_identity:
+      label: identity
+      kind: external
+    module_uuid:
+      label: uuid
+      kind: external
+    module_kb_agent_agents_gate:
+      label: gate
+      kind: external
+    module_kb_agent_agents_orchestrator_agent:
+      label: agent
+      kind: external
+    module_kb_agent_llm:
+      label: llm
+      kind: external
+    module_kb_agent_models_sql_reservas:
+      label: reservas
+      kind: external
+    module_kb_agent_models_sql_recordatorios:
+      label: recordatorios
+      kind: external
+    module_kb_agent_models_sql_turns:
+      label: turns
+      kind: external
+    module_kb_agent_models_sql_conversation:
+      label: conversation
+      kind: external
+    module_kb_agent_knowledge_compiler:
+      label: compiler
+      kind: external
+    module_kb_agent_knowledge_kgdb_reader:
+      label: reader
+      kind: external
+    module_kb_agent_knowledge_sldb_reader:
+      label: reader
+      kind: external
+    module_kb_agent_perfilador_listener:
+      label: listener
+      kind: external
+    module_kb_agent_pii_scrubber:
+      label: scrubber
+      kind: external
+    module_kb_agent_reflector:
+      label: reflector
+      kind: external
+    module_kb_agent_tools:
+      label: tools
+      kind: external
+    module_kb_agent_state_machine:
+      label: machine
+      kind: external
+    module_textwrap:
+      label: textwrap
+      kind: external
+    module_kb_agent_perfilador_traits_store:
+      label: store
+      kind: external
+    module_abc:
+      label: abc
+      kind: external
+    module_collections:
+      label: collections
+      kind: external
+    module_deskops_atom_tags:
+      label: tags
+      kind: external
+    module_sldb_runtime_validation:
+      label: validation
+      kind: external
+    module_sldb_store_layout:
+      label: layout
+      kind: external
+    module_sldb_store_ops:
+      label: ops
+      kind: external
+    module_kb_agent_reflector_reader:
+      label: reader
+      kind: external
+  edges:
+  - from: module_agent
+    to: module___future__
+    relation: imports
+  - from: module_agent
+    to: module_collections_abc
+    relation: imports
+  - from: module_agent
+    to: module_typing
+    relation: imports
+  - from: module_agents_base
+    to: class_agents_base_AgentRole
+    relation: defines
+  - from: module_agents_base
+    to: class_agents_base_ToolCall
+    relation: defines
+  - from: module_agents_base
+    to: class_agents_base_LlmRequest
+    relation: defines
+  - from: module_agents_base
+    to: class_agents_base_LlmResponse
+    relation: defines
+  - from: module_agents_base
+    to: class_agents_base_Tool
+    relation: defines
+  - from: module_agents_base
+    to: class_agents_base_Agent
+    relation: defines
+  - from: module_agents_base
+    to: module___future__
+    relation: imports
+  - from: module_agents_base
+    to: module_collections_abc
+    relation: imports
+  - from: module_agents_base
+    to: module_dataclasses
+    relation: imports
+  - from: module_agents_base
+    to: module_enum
+    relation: imports
+  - from: module_agents_base
+    to: module_typing
+    relation: imports
+  - from: module_agents_base
+    to: module_pydantic
+    relation: imports
+  - from: module_agents_gate
+    to: class_agents_gate_GateVerdict
+    relation: defines
+  - from: module_agents_gate
+    to: class_agents_gate_GateAgent
+    relation: defines
+  - from: module_agents_gate
+    to: module___future__
+    relation: imports
+  - from: module_agents_gate
+    to: module_collections_abc
+    relation: imports
+  - from: module_agents_gate
+    to: module_typing
+    relation: imports
+  - from: module_agents_gate
+    to: module_pydantic
+    relation: imports
+  - from: module_agents_gate
+    to: module_kb_agent_agents_base
+    relation: imports
+  - from: module_agents_orchestrator_agent
+    to: class_agents_orchestrator_agent_ToolCallDecision
+    relation: defines
+  - from: module_agents_orchestrator_agent
+    to: class_agents_orchestrator_agent_OrchestratorDecision
+    relation: defines
+  - from: module_agents_orchestrator_agent
+    to: class_agents_orchestrator_agent_OrchestratorAgent
+    relation: defines
+  - from: module_agents_orchestrator_agent
+    to: module___future__
+    relation: imports
+  - from: module_agents_orchestrator_agent
+    to: module_collections_abc
+    relation: imports
+  - from: module_agents_orchestrator_agent
+    to: module_typing
+    relation: imports
+  - from: module_agents_orchestrator_agent
+    to: module_pydantic
+    relation: imports
+  - from: module_agents_orchestrator_agent
+    to: module_kb_agent_agent
+    relation: imports
+  - from: module_agents_orchestrator_agent
+    to: module_kb_agent_agents_base
+    relation: imports
+  - from: module_agents_router
+    to: class_agents_router_BundleEntry
+    relation: defines
+  - from: module_agents_router
+    to: class_agents_router_RouterDecision
+    relation: defines
+  - from: module_agents_router
+    to: class_agents_router_RouterAgent
+    relation: defines
+  - from: module_agents_router
+    to: module___future__
+    relation: imports
+  - from: module_agents_router
+    to: module_collections_abc
+    relation: imports
+  - from: module_agents_router
+    to: module_typing
+    relation: imports
+  - from: module_agents_router
+    to: module_pydantic
+    relation: imports
+  - from: module_agents_router
+    to: module_kb_agent_agents_base
+    relation: imports
+  - from: module_agents_router
+    to: module_knowledge_base_operations
+    relation: imports
+  - from: module_cli
+    to: module___future__
+    relation: imports
+  - from: module_cli
+    to: module_pathlib
+    relation: imports
+  - from: module_cli
+    to: module_dotenv
+    relation: imports
+  - from: module_cli
+    to: module_kb_agent_db_check
+    relation: imports
+  - from: module_cli
+    to: module_kb_agent_orchestrator
+    relation: imports
+  - from: module_cli
+    to: module_kb_agent_project_config
+    relation: imports
+  - from: module_db_check
+    to: class_db_check_DbRevisionStatus
+    relation: defines
+  - from: module_db_check
+    to: module___future__
+    relation: imports
+  - from: module_db_check
+    to: module_dataclasses
+    relation: imports
+  - from: module_db_check
+    to: module_pathlib
+    relation: imports
+  - from: module_db_check
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_db_check
+    to: module_alembic_config
+    relation: imports
+  - from: module_db_check
+    to: module_alembic_runtime_migration
+    relation: imports
+  - from: module_db_check
+    to: module_alembic_script
+    relation: imports
+  - from: module_inbound
+    to: class_inbound_InboundResult
+    relation: defines
+  - from: module_inbound
+    to: class_inbound_InboundService
+    relation: defines
+  - from: module_inbound
+    to: module___future__
+    relation: imports
+  - from: module_inbound
+    to: module_dataclasses
+    relation: imports
+  - from: module_inbound
+    to: module_datetime
+    relation: imports
+  - from: module_inbound
+    to: module_typing
+    relation: imports
+  - from: module_inbound
+    to: module_sqlalchemy_exc
+    relation: imports
+  - from: module_inbound
+    to: module_kb_agent_models_sql_inbound
+    relation: imports
+  - from: module_inbound
+    to: module_kb_agent_orchestrator
+    relation: imports
+  - from: module_inbound
+    to: module_twilio_rest
+    relation: imports
+  - from: module_knowledge_compiled_document
+    to: class_knowledge_compiled_document_CompiledDocument
+    relation: defines
+  - from: module_knowledge_compiled_document
+    to: module___future__
+    relation: imports
+  - from: module_knowledge_compiled_document
+    to: module_dataclasses
+    relation: imports
+  - from: module_knowledge_compiled_document
+    to: module_typing
+    relation: imports
+  - from: module_knowledge_compiler
+    to: class_knowledge_compiler_SessionStateLike
+    relation: defines
+  - from: module_knowledge_compiler
+    to: class_knowledge_compiler_ContextCompiler
+    relation: defines
+  - from: module_knowledge_compiler
+    to: module___future__
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_dataclasses
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_typing
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_kb_agent_agents_router
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_kb_agent_models_knowledge
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_compiled_document
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_kgdb_reader
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_sldb_reader
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_knowledge_base_operations
+    relation: imports
+  - from: module_knowledge_compiler
+    to: module_kb_agent_agents_router
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: class_knowledge_kgdb_reader_KGDBReader
+    relation: defines
+  - from: module_knowledge_kgdb_reader
+    to: module___future__
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_pathlib
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_typing
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_kgdb_graph
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_kgdb_graph_utils
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_kgdb_ingest_sldb
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_kgdb_query_neighborhood
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_sldb_store_io
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_sldb_store_io
+    relation: imports
+  - from: module_knowledge_kgdb_reader
+    to: module_sldb_store_io
+    relation: imports
+  - from: module_knowledge_sldb_reader
+    to: class_knowledge_sldb_reader_SLDBReader
+    relation: defines
+  - from: module_knowledge_sldb_reader
+    to: module___future__
+    relation: imports
+  - from: module_knowledge_sldb_reader
+    to: module_pathlib
+    relation: imports
+  - from: module_knowledge_sldb_reader
+    to: module_typing
+    relation: imports
+  - from: module_knowledge_sldb_reader
+    to: module_sldb_cli_model_utils
+    relation: imports
+  - from: module_knowledge_sldb_reader
+    to: module_sldb_store_query
+    relation: imports
+  - from: module_knowledge_sldb_reader
+    to: module_sldb_store_query_engine_models
+    relation: imports
+  - from: module_llm
+    to: class_llm_Conversador
+    relation: defines
+  - from: module_llm
+    to: class_llm_TraitMapper
+    relation: defines
+  - from: module_llm
+    to: class_llm_GeminiConversador
+    relation: defines
+  - from: module_llm
+    to: class_llm_GeminiTraitMapper
+    relation: defines
+  - from: module_llm
+    to: module___future__
+    relation: imports
+  - from: module_llm
+    to: module_collections_abc
+    relation: imports
+  - from: module_llm
+    to: module_typing
+    relation: imports
+  - from: module_llm
+    to: module_kb_agent_perfilador_extractor
+    relation: imports
+  - from: module_llm
+    to: module_google
+    relation: imports
+  - from: module_models_knowledge_agent_framing
+    to: class_models_knowledge_agent_framing_AgentFraming
+    relation: defines
+  - from: module_models_knowledge_agent_framing
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_agent_framing
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_agent_framing
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_agent_framing
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: class_models_knowledge_boundary_CapabilityBoundary
+    relation: defines
+  - from: module_models_knowledge_boundary
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_boundary
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: class_models_knowledge_domain_AtomQuestion
+    relation: defines
+  - from: module_models_knowledge_domain
+    to: class_models_knowledge_domain_DomainAtom
+    relation: defines
+  - from: module_models_knowledge_domain
+    to: module_enum
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_domain
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: class_models_knowledge_fallback_FallbackRule
+    relation: defines
+  - from: module_models_knowledge_fallback
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_fallback
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_gate
+    to: class_models_knowledge_gate_GateCriterion
+    relation: defines
+  - from: module_models_knowledge_gate
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_gate
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_gate
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_gate
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: class_models_knowledge_index_proxies_IndexProxies
+    relation: defines
+  - from: module_models_knowledge_index_proxies
+    to: module___future__
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_index_proxies
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: class_models_knowledge_rule_RuleAtom
+    relation: defines
+  - from: module_models_knowledge_rule
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_rule
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: class_models_knowledge_self_declaration_SelfDeclaration
+    relation: defines
+  - from: module_models_knowledge_self_declaration
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_self_declaration
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_step
+    to: class_models_knowledge_step_StepKind
+    relation: defines
+  - from: module_models_knowledge_step
+    to: class_models_knowledge_step_ConversationStep
+    relation: defines
+  - from: module_models_knowledge_step
+    to: module_enum
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_step
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: class_models_knowledge_strategy_StrategyRule
+    relation: defines
+  - from: module_models_knowledge_strategy
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_strategy
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_style
+    to: class_models_knowledge_style_StyleGuide
+    relation: defines
+  - from: module_models_knowledge_style
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_style
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_style
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_style
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: class_models_knowledge_tool_ToolAtom
+    relation: defines
+  - from: module_models_knowledge_tool
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_tool
+    to: module_domain
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: class_models_knowledge_trait_TraitAtom
+    relation: defines
+  - from: module_models_knowledge_trait
+    to: module_typing
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_pydantic
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_sldb
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_index_proxies
+    relation: imports
+  - from: module_models_knowledge_trait
+    to: module_domain
+    relation: imports
+  - from: module_models_sql_conversation
+    to: class_models_sql_conversation_ConversationStatus
+    relation: defines
+  - from: module_models_sql_conversation
+    to: class_models_sql_conversation_Conversation
+    relation: defines
+  - from: module_models_sql_conversation
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_conversation
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_conversation
+    to: module_enum
+    relation: imports
+  - from: module_models_sql_conversation
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_conversation
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_conversation
+    to: module_identity
+    relation: imports
+  - from: module_models_sql_identity
+    to: class_models_sql_identity_Base
+    relation: defines
+  - from: module_models_sql_identity
+    to: class_models_sql_identity_Users
+    relation: defines
+  - from: module_models_sql_identity
+    to: class_models_sql_identity_UserTraits
+    relation: defines
+  - from: module_models_sql_identity
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_identity
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_identity
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_identity
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_inbound
+    to: class_models_sql_inbound_InboundStatus
+    relation: defines
+  - from: module_models_sql_inbound
+    to: class_models_sql_inbound_InboundMessage
+    relation: defines
+  - from: module_models_sql_inbound
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_inbound
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_inbound
+    to: module_enum
+    relation: imports
+  - from: module_models_sql_inbound
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_inbound
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_inbound
+    to: module_identity
+    relation: imports
+  - from: module_models_sql_recordatorios
+    to: class_models_sql_recordatorios_Recordatorios
+    relation: defines
+  - from: module_models_sql_recordatorios
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_recordatorios
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_recordatorios
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_recordatorios
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_recordatorios
+    to: module_identity
+    relation: imports
+  - from: module_models_sql_reservas
+    to: class_models_sql_reservas_Reservas
+    relation: defines
+  - from: module_models_sql_reservas
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_reservas
+    to: module_identity
+    relation: imports
+  - from: module_models_sql_session
+    to: class_models_sql_session_SessionNode
+    relation: defines
+  - from: module_models_sql_session
+    to: class_models_sql_session_SessionState
+    relation: defines
+  - from: module_models_sql_session
+    to: class_models_sql_session_ChatHistory
+    relation: defines
+  - from: module_models_sql_session
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_session
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_session
+    to: module_enum
+    relation: imports
+  - from: module_models_sql_session
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_session
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_session
+    to: module_identity
+    relation: imports
+  - from: module_models_sql_turns
+    to: class_models_sql_turns_TurnKind
+    relation: defines
+  - from: module_models_sql_turns
+    to: class_models_sql_turns_Turns
+    relation: defines
+  - from: module_models_sql_turns
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_turns
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_turns
+    to: module_enum
+    relation: imports
+  - from: module_models_sql_turns
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_turns
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_turns
+    to: module_identity
+    relation: imports
+  - from: module_orchestrator
+    to: class_orchestrator_Orchestrator
+    relation: defines
+  - from: module_orchestrator
+    to: module___future__
+    relation: imports
+  - from: module_orchestrator
+    to: module_collections_abc
+    relation: imports
+  - from: module_orchestrator
+    to: module_datetime
+    relation: imports
+  - from: module_orchestrator
+    to: module_pathlib
+    relation: imports
+  - from: module_orchestrator
+    to: module_typing
+    relation: imports
+  - from: module_orchestrator
+    to: module_uuid
+    relation: imports
+  - from: module_orchestrator
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_orchestrator
+    to: module_sqlalchemy_exc
+    relation: imports
+  - from: module_orchestrator
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_agent
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_agents_base
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_agents_gate
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_agents_orchestrator_agent
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_agents_router
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_llm
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_reservas
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_recordatorios
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_turns
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_models_sql_conversation
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_knowledge_compiler
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_knowledge_kgdb_reader
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_knowledge_sldb_reader
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_perfilador_extractor
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_perfilador_listener
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_pii_scrubber
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_project_config
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_reflector
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_tools
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_state_machine
+    relation: imports
+  - from: module_orchestrator
+    to: module_knowledge_base_operations
+    relation: imports
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_TraitCandidate
+    relation: defines
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_TraitMatch
+    relation: defines
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_StructuredTraitMapper
+    relation: defines
+  - from: module_perfilador_extractor
+    to: class_perfilador_extractor_TraitExtractor
+    relation: defines
+  - from: module_perfilador_extractor
+    to: module___future__
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_collections_abc
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_dataclasses
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_textwrap
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_typing
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_kb_agent_knowledge_sldb_reader
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_kb_agent_perfilador_traits_store
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_knowledge_base_operations
+    relation: imports
+  - from: module_perfilador_extractor
+    to: module_knowledge_base_operations
+    relation: imports
+  - from: module_perfilador_form_ingestion
+    to: module___future__
+    relation: imports
+  - from: module_perfilador_form_ingestion
+    to: module_collections_abc
+    relation: imports
+  - from: module_perfilador_form_ingestion
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_perfilador_form_ingestion
+    to: module_kb_agent_perfilador_traits_store
+    relation: imports
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_TurnClosedEvent
+    relation: defines
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_EventBus
+    relation: defines
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_InProcessEventBus
+    relation: defines
+  - from: module_perfilador_listener
+    to: class_perfilador_listener_AsyncProfilingListener
+    relation: defines
+  - from: module_perfilador_listener
+    to: module___future__
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_abc
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_collections_abc
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_dataclasses
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_typing
+    relation: imports
+  - from: module_perfilador_listener
+    to: module_kb_agent_pii_scrubber
+    relation: imports
+  - from: module_perfilador_traits_store
+    to: module___future__
+    relation: imports
+  - from: module_perfilador_traits_store
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_perfilador_traits_store
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_pii_scrubber
+    to: class_pii_scrubber__PlaceholderRegistry
+    relation: defines
+  - from: module_pii_scrubber
+    to: module___future__
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_collections_abc
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_pii_scrubber
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_project_config
+    to: class_project_config_TuningConfig
+    relation: defines
+  - from: module_project_config
+    to: class_project_config_DeployConfig
+    relation: defines
+  - from: module_project_config
+    to: class_project_config_ProjectConfig
+    relation: defines
+  - from: module_project_config
+    to: module___future__
+    relation: imports
+  - from: module_project_config
+    to: module_dataclasses
+    relation: imports
+  - from: module_project_config
+    to: module_pathlib
+    relation: imports
+  - from: module_project_config
+    to: module_typing
+    relation: imports
+  - from: module_reflector_generator
+    to: class_reflector_generator_RecurrentPattern
+    relation: defines
+  - from: module_reflector_generator
+    to: class_reflector_generator_GeneratedAtom
+    relation: defines
+  - from: module_reflector_generator
+    to: class_reflector_generator_ReflectorAtomGenerator
+    relation: defines
+  - from: module_reflector_generator
+    to: module___future__
+    relation: imports
+  - from: module_reflector_generator
+    to: module_collections
+    relation: imports
+  - from: module_reflector_generator
+    to: module_dataclasses
+    relation: imports
+  - from: module_reflector_generator
+    to: module_pathlib
+    relation: imports
+  - from: module_reflector_generator
+    to: module_typing
+    relation: imports
+  - from: module_reflector_generator
+    to: module_deskops_atom_tags
+    relation: imports
+  - from: module_reflector_generator
+    to: module_sldb_cli_model_utils
+    relation: imports
+  - from: module_reflector_generator
+    to: module_sldb_runtime_validation
+    relation: imports
+  - from: module_reflector_generator
+    to: module_sldb_store_io
+    relation: imports
+  - from: module_reflector_generator
+    to: module_sldb_store_layout
+    relation: imports
+  - from: module_reflector_generator
+    to: module_sldb_store_ops
+    relation: imports
+  - from: module_reflector_generator
+    to: module_kb_agent_knowledge_sldb_reader
+    relation: imports
+  - from: module_reflector_generator
+    to: module_kb_agent_reflector_reader
+    relation: imports
+  - from: module_reflector_reader
+    to: class_reflector_reader_ReflectorHistoryRow
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_ReaderCheckpoint
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_CheckpointStore
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_InMemoryCheckpointStore
+    relation: defines
+  - from: module_reflector_reader
+    to: class_reflector_reader_ReflectorBatchReaderJob
+    relation: defines
+  - from: module_reflector_reader
+    to: module___future__
+    relation: imports
+  - from: module_reflector_reader
+    to: module_collections_abc
+    relation: imports
+  - from: module_reflector_reader
+    to: module_dataclasses
+    relation: imports
+  - from: module_reflector_reader
+    to: module_datetime
+    relation: imports
+  - from: module_reflector_reader
+    to: module_typing
+    relation: imports
+  - from: module_reflector_reader
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_reflector_reader
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_reflector_reader
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_seed_demo_users
+    to: module___future__
+    relation: imports
+  - from: module_seed_demo_users
+    to: module_datetime
+    relation: imports
+  - from: module_seed_demo_users
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_seed_demo_users
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_seed_demo_users
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_seed_demo_users
+    to: module_kb_agent_models_sql_session
+    relation: imports
+  - from: module_seed_demo_users
+    to: module_kb_agent_models_sql_turns
+    relation: imports
+  - from: module_seed_demo_users
+    to: module_kb_agent_project_config
+    relation: imports
+  - from: module_state_machine
+    to: class_state_machine_RouterNode
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_SessionState
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_CronTriggerPayload
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_RouterTurnResult
+    relation: defines
+  - from: module_state_machine
+    to: class_state_machine_RouterStateMachine
+    relation: defines
+  - from: module_state_machine
+    to: module___future__
+    relation: imports
+  - from: module_state_machine
+    to: module_dataclasses
+    relation: imports
+  - from: module_state_machine
+    to: module_enum
+    relation: imports
+  - from: module_state_machine
+    to: module_typing
+    relation: imports
+  - from: module_tools_enrolamiento
+    to: module___future__
+    relation: imports
+  - from: module_tools_enrolamiento
+    to: module_typing
+    relation: imports
+  - from: module_tools_enrolamiento
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_enrolamiento
+    to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module___future__
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module_typing
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_recordatorios
+    to: module_kb_agent_models_sql_recordatorios
+    relation: imports
+  - from: module_tools_reservas
+    to: module___future__
+    relation: imports
+  - from: module_tools_reservas
+    to: module_typing
+    relation: imports
+  - from: module_tools_reservas
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_reservas
+    to: module_kb_agent_models_sql_reservas
+    relation: imports

@@ -1,0 +1,73 @@
+{
+  "scenario_id": "donpeppe_reserva_paso_a_paso",
+  "external_id": "sim:donpeppe_reserva_paso_a_paso",
+  "saved_at": "2026-08-27T19:31:13.983105+00:00",
+  "ended_by": "user_done",
+  "end_reason": "No puedo dar la fecha exacta y el asistente sugirió llamar.",
+  "turns": [
+    {
+      "user": "Hola, quiero reservar una mesa",
+      "user_reason": "mensaje inicial fijo",
+      "assistant": "¡Hola! Con gusto te ayudo a reservar una mesa en Don Peppe.\n\nPara comenzar, ¿para qué fecha te gustaría reservar? Recuerda que debe ser con al menos un día de anticipación. 😊",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.booking",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "el viernes",
+      "user_reason": "El asistente me pidio la fecha, asi que la doy.",
+      "assistant": "¡Perfecto! ¿Podrías indicarme qué fecha sería ese viernes? Así podemos confirmar tu reserva. 😊",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.booking",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "No sé la fecha exacta, solo sé que es el viernes.",
+      "user_reason": "El asistente me pide una fecha especifica que no tengo, debo indicarlo.",
+      "assistant": "¡Entendido! Para que tu reserva quede lista, necesito el día exacto de ese viernes (por ejemplo, 20 de mayo). ¿Me lo podrías indicar? ¡Así confirmamos! 😊",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.booking",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "No sé la fecha exacta, solo sé que es el viernes.",
+      "user_reason": "El asistente pide la fecha exacta y no la tengo, debo indicarlo.",
+      "assistant": "¡Comprendo! Para poder dejar tu reserva lista, necesito la fecha exacta de ese viernes. Si te complica confirmarla ahora, no te preocupes, puedes llamar directamente a Don Peppe y te ayudaremos a revisar el calendario y hacer tu reserva por teléfono. ¡Te esperamos! 😊",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.booking",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

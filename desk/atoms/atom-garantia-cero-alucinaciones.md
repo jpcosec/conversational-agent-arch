@@ -12,4 +12,4 @@ provenance: architecture-audit
 
 ## Answer
 
-Regla arquitectónica estricta: el LLM tiene prohibido inventar información. Si el Ontologizador compila un contexto vacío (sin hechos ni reglas que sustenten la consulta del usuario), la máquina de estados fuerza una transición a un nodo de `BREAKPOINT_MISS`, obligando al agente a usar un mensaje de `fallback` determinista en lugar de alucinar una respuesta.
+Regla arquitectónica estricta: el LLM tiene prohibido inventar información. Si el Context Compiler (`kb_agent/knowledge`) compila un contexto vacío (sin hechos ni reglas que sustenten la consulta del usuario), la máquina de estados fuerza una transición a un nodo de `BREAKPOINT_MISS`, obligando al agente a usar un mensaje de `fallback` determinista en lugar de alucinar una respuesta.
