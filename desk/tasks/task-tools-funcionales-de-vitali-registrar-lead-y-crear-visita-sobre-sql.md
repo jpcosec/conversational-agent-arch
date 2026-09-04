@@ -1,13 +1,15 @@
 ---
 id: task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-status: draft
+status: ready_for_testing
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-current_node: checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
-history: []
+current_node: checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+history:
+- operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+- operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
 references: []
 depends_on: []
 pills: []
@@ -20,6 +22,8 @@ task_type: implementation
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL
@@ -46,7 +50,7 @@ kb_agent/models_sql (leads, visitas) + migracion alembic; kb_agent/tools/leads.p
 
 _Outline the expected implementation route or affected surface._
 
-
+kb_agent/models_sql/leads.py, alembic/versions/f6a7b8c9d0e2_leads_y_visitas.py, kb_agent/tools/leads.py, kb_agent/tools/visitas.py, kb_agent/orchestrator.py, kb_agent/agents/orchestrator_agent.py, project.vitali.yaml, knowledge_vitali/atoms/{tool-vitali-*,agent-vitali-orchestrator,step-vitali-*}.md, frontends/chat/app.py, tests/unit/test_leads_tools.py, tests/integration/test_vitali_tools_wiring.py
 
 ## Validation
 
