@@ -27,6 +27,7 @@ Esta documentación está ensamblada a partir de los Átomos Semánticos del pro
 ![[desk/atoms/atom-ruteador-de-contexto-como-agente.md]]
 ![[desk/atoms/atom-policy-decide-turn.md]]
 ![[desk/atoms/atom-tool-handlers-registry.md]]
+![[desk/atoms/atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas.md]]
 ![[desk/atoms/atom-agente-conversador.md]]
 ![[desk/atoms/atom-policy-gate-como-agente-separado-con-rama-kb-propia.md]]
 ![[desk/atoms/atom-encuadre-de-agentes-desde-la-kb-agentframing.md]]

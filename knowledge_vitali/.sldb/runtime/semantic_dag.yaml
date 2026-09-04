@@ -51,6 +51,9 @@ nodes:
 - id: type.knowledge.style
   parents:
   - type.knowledge
+- id: type.knowledge.tool
+  parents:
+  - type.knowledge
 - id: type.knowledge.trait
   parents:
   - type.knowledge

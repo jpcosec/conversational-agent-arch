@@ -17,3 +17,12 @@ documents:
   - system:vitali
   - type.knowledge.agent
   - workspace.knowledge
+- name: agent-vitali-orchestrator
+  path: atoms/agent-vitali-orchestrator.md
+  hash_c: 7a3dd7792bf4f33e1910fb0c8f5107df754d1bcd58292ee6c4a515c4b26bc69a
+  hash_d: 18aeb52e7779e5604ce48a791c65df26e976d8a8d78bec826eaf4e06c88b0a68
+  semantic_tags:
+  - agent:orchestrator
+  - system:vitali
+  - type.knowledge.agent
+  - workspace.knowledge

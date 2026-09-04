@@ -787,7 +787,7 @@ semantic_anchors: null
 
 ## Instructions
 
-El lead ya dio su preferencia de dia y bloque: NO volver a preguntar por la hora ni la fecha (con el bloque basta, el equipo propone la hora). Reunir en un solo mensaje conciso: email (imprescindible para la invitacion) y telefono de contacto. Si el lead escribe por WhatsApp o SMS ya tenemos su numero: confirmarlo en vez de pedirlo. Si falta el proposito o titulo de la reunion (segun el segmento), preguntarlo aqui. Pedirlo conversacionalmente, no como checklist. Si el lead ya entrego email y telefono en su mensaje, agradecer y pasar directo al cierre. Si responde otra cosa, contestar y volver a pedir lo que falta: no avanzar al cierre hasta tener email y telefono.
+El lead ya dio su preferencia de dia y bloque: NO volver a preguntar por la hora ni la fecha (con el bloque basta, el equipo propone la hora). Reunir en un solo mensaje conciso: email (imprescindible para la invitacion) y telefono de contacto. Si el lead escribe por WhatsApp o SMS ya tenemos su numero: confirmarlo en vez de pedirlo. Si falta el proposito o titulo de la reunion (segun el segmento), preguntarlo aqui. Pedirlo conversacionalmente, no como checklist. Cuando se tengan email y telefono (dichos en este turno o en turnos anteriores: los datos capturados cuentan) junto con la modalidad y la preferencia de dia y bloque, ejecutar la tool crear_visita con todos esos datos y navegar al cierre: la visita queda registrada como solicitud y el equipo confirma la hora. Si crear_visita responde faltan_datos, pedir exactamente lo que falta. Si el lead entrega solo parte de los datos, ejecutar registrar_lead con lo que dio y pedir el resto. Si responde otra cosa, contestar y volver a pedir lo que falta: no avanzar al cierre sin haber creado la visita.
 
 ## Required Slots
 
@@ -799,7 +799,7 @@ email; telefono; proposito/titulo de la reunion
 
 ## Tool
 
-
+crear_visita
 
 ## Allowed Transitions
 
@@ -811,4 +811,4 @@ dom-contact-lead-qualification, strategy-vitali-respond-first
 
 ## Completion Condition
 
-Se reunieron email y telefono (y el proposito de la reunion si no se conocia).
+Se reunieron email y telefono (y el proposito de la reunion si no se conocia) y se ejecuto crear_visita con exito.

@@ -316,6 +316,25 @@ class Orchestrator:
             else:
                 scenario_source = "default"
 
+            # Datos del lead (email, telefono, preferencia de visita, modalidad)
+            # capturados del mensaje CRUDO: chat_history se persiste scrubbeado
+            # y no se pueden recuperar despues (ver kb_agent/lead_slots.py).
+            # Se calculan ANTES de compilar para que (a) el OrchestratorAgent
+            # sepa que datos ya tiene al decidir los args de una tool y (b) los
+            # handlers los lean de session_state cuando el modelo no los paso.
+            previous_slots = session_state.flow_slots if isinstance(session_state.flow_slots, dict) else {}
+            # ``contact`` son datos que el CANAL ya conoce de la persona (el
+            # formulario de entrada del chat web, el numero de WhatsApp): se
+            # tratan igual que los que dijo en el mensaje, pero no pisan lo
+            # que ya se habia capturado en la conversacion.
+            declared = {k: v for k, v in (contact or {}).items() if v}
+            collected_slots = merge_lead_slots(
+                merge_lead_slots(declared, previous_slots.get("collected") or {}),
+                extract_lead_slots(message),
+            )
+            session_state.flow_slots = {**previous_slots, "collected": collected_slots}
+            session.flush()
+
             compiler = ContextCompiler(
                 reader=self.reader,
                 kgdb=self.kgdb,
@@ -337,6 +356,7 @@ class Orchestrator:
                 )
                 d = compiled.to_dict()
                 d["user_id"] = user_id
+                d["collected_slots"] = dict(collected_slots)
                 # Contexto compilado (traits de este turno ya leidos): desde
                 # aca el perfilador corre en paralelo con orquestador,
                 # conversador y gate.
@@ -344,11 +364,27 @@ class Orchestrator:
                     profiler["thread"] = self._start_profiler(user.id, message)
                 return d
 
+            #: Resultado de la tool del turno (lo llena handle_turn antes de
+            #: reanudar el router); draft() lo lee para decidir si aplica el
+            #: step destino. Un dict mutable porque draft() es un closure.
+            tool_outcome: dict[str, Any] = {}
+
             def draft(compiled_context: dict[str, Any]) -> Any:
                 # El ORQUESTADOR decide el tipo de turno con salida tipada
                 # (OrchestratorAgent, fase 2.4: LLM + guardia dura sobre
                 # allowed_transitions) y SOLO despues actua. Decidir != redactar.
                 if compiled_context.get("system_turn"):
+                    # Reanudacion tras la tool: el step destino decidido junto
+                    # con el tool_call se aplica SOLO si la tool efectivamente
+                    # hizo lo suyo (status ok). Si devolvio faltan_datos (o
+                    # fallo), el flujo se queda donde estaba y el Conversador
+                    # redacta con ese resultado pidiendo lo que falta.
+                    tool_target = compiled_context.get("_flow_target")
+                    if tool_target and tool_outcome.get("status") == "ok":
+                        if tool_target != compiled_context.get("flow_node"):
+                            compiler.retarget_step(compiled_context, tool_target)
+                    else:
+                        compiled_context["_flow_target"] = None
                     return self.conversador.draft_nl(compiled_context)
 
                 decision = self.orchestrator_agent.decide(compiled_context)
@@ -356,6 +392,10 @@ class Orchestrator:
                 compiled_context["_decision"] = decision
                 kind = decision.get("kind")
                 if kind == "tool_call":
+                    # El step destino decidido junto con la tool se aplica
+                    # igual que en un turno 'nl': tras crear la visita el
+                    # flujo avanza al cierre, no se queda pidiendo datos.
+                    compiled_context["_flow_target"] = decision.get("flow_target")
                     return {"function_call": decision["function_call"]}
                 if kind == "fallback":
                     return self._fallback_text(compiled_context)
@@ -394,6 +434,7 @@ class Orchestrator:
             if isinstance(response, dict) and "function_call" in response:
                 kind = "tool_call"
                 system_turn = execute_tool(session, user.id, response["function_call"], self.tool_handlers)
+                tool_outcome.update(system_turn)
                 resumed_result = router.handle_tool_result(system_turn)
                 response = resumed_result.response
                 draft_response = response
@@ -427,19 +468,6 @@ class Orchestrator:
                 session_state.flow_node = flow_node
             flow_transitions = compiled.get("allowed_transitions", [])
             flow_missing = compiled.get("missing_slots", [])
-            # Datos del lead (email, telefono, preferencia de visita, modalidad)
-            # capturados del mensaje CRUDO: chat_history se persiste scrubbeado
-            # y no se pueden recuperar despues (ver kb_agent/lead_slots.py).
-            previous_slots = session_state.flow_slots if isinstance(session_state.flow_slots, dict) else {}
-            # ``contact`` son datos que el CANAL ya conoce de la persona (el
-            # formulario de entrada del chat web, el numero de WhatsApp): se
-            # tratan igual que los que dijo en el mensaje, pero no pisan lo
-            # que ya se habia capturado en la conversacion.
-            declared = {k: v for k, v in (contact or {}).items() if v}
-            collected_slots = merge_lead_slots(
-                merge_lead_slots(declared, previous_slots.get("collected") or {}),
-                extract_lead_slots(message),
-            )
             session_state.flow_slots = {
                 "allowed_transitions": flow_transitions,
                 "missing_slots": flow_missing,

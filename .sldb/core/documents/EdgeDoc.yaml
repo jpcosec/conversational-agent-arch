@@ -575,3 +575,51 @@ documents:
   - primitive:edge
   - type.workflow.edge
   - workspace.desk.primitives
+- name: edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
+  path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate.md
+  hash_c: e1a173494a8aafa943f6f3e6ed8e5d20b45f193d00a378c88f5eef7cd56d4534
+  hash_d: e0885848940c28f135f10e202bf6339465e75e0a559852191aa3b2e33ff16710
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing
+  path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing.md
+  hash_c: e105783800c281e75c9d07d0ee55653dbbdbaeb8e448ae3620adf6a790db1732
+  hash_d: 14c3c1ec95376bd8ee5fd0f74b8ce332f8c640f592e39a07651270feaa73ff5d
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
+  path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready.md
+  hash_c: f5a9cf40b0520ef66b5fb716215bfc4a9c9949666b92289582801adb90450d8b
+  hash_d: f4ce71c276f0c39985fc4666be47d42307035d055fcec465e0c24b87af4aff16
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
+  path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout.md
+  hash_c: 80c3ed89591ca9eb82beabd68d1d4454f4966888c214e0473ba6483b2c59cde1
+  hash_d: 8b30f6c92f391bf5b60ba68d3e0e47aaeed3c31c23043dbcaea55f7300918e6c
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close
+  path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close.md
+  hash_c: 7e87bd3c34f1cd0241a630e25a0711df5d809bca98f78326b90426abff9850e9
+  hash_d: 037773c27727313c39174d2ba5cd2b7719ec5d5438e5ce320935da84af7266e5
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete
+  path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete.md
+  hash_c: 0c0576f0a7786c250e593f2ee35c93771467d3b96eb342fbb2b735010afb5df5
+  hash_d: e6e842f81d775af7c7e36960a780ec89e50380d81c155902f2019b27750e68e6
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives

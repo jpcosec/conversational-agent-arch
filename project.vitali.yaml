@@ -3,9 +3,9 @@
 # Doctrina: una KB = un negocio. Este archivo define QUÉ negocio corre el
 # runtime. Para servir Vitali: PROJECT_CONFIG=project.vitali.yaml
 #
-# NOTA: las tools (Kommo, Google Calendar, Gmail) todavía NO están cableadas;
-# el bloque `tools` queda vacío a propósito. El agente conversa y navega el
-# flujo de agendamiento, pero aún no ejecuta la reserva real.
+# Tools: registrar_lead y crear_visita persisten en SQL (leads, visitas) en
+# estado "solicitada"; el equipo comercial confirma la hora. Kommo, Google
+# Calendar y Gmail siguen fuera de este runtime.
 
 project:
   name: "Vitali"
@@ -29,8 +29,12 @@ project:
   # Mensaje al lead cuando el policy gate rechaza el borrador (voz de Vitali).
   gate_handoff_message: "Déjame confirmar ese punto con el equipo comercial para no darte un dato equivocado. Te respondo por este mismo medio a la brevedad."
 
-  # Tools del negocio: vacío por ahora (excluidas a propósito).
-  tools: {}
+  # Tools del negocio: wrappers semanticos sobre las tablas planas
+  # ``leads`` y ``visitas`` (kb_agent/models_sql/leads.py). El schema que ve
+  # el LLM vive en la KB (ToolAtom tool-vitali-registrar-lead / -crear-visita).
+  tools:
+    registrar_lead: kb_agent.tools.leads:registrar_lead
+    crear_visita: kb_agent.tools.visitas:crear_visita
 
   server:
     host: 127.0.0.1

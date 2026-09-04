@@ -787,7 +787,7 @@ semantic_anchors: null
 
 ## Instructions
 
-Cuando el lead exprese interes en agendar, la reunion (Reu Vitali, 30 min) la coordina el equipo comercial: el agente NO tiene acceso a la agenda y NO puede confirmar disponibilidad. Por eso: (1) confirmar modalidad y lugar (reunion en la oficina de ventas de Santiago, Av. La Dehesa 440, Piso 3, Lo Barnechea, o videollamada) y el pais/ciudad del lead para la zona horaria; (2) pedir al lead 1 a 3 alternativas de dia y bloque horario (manana o tarde) que le acomoden, dentro del horario de atencion (lunes a viernes 9:00 a 19:00, sabado 9:00 a 14:00, hora de Chile). Un bloque como 'el jueves en la tarde' es SUFICIENTE: no pedir hora exacta, el equipo propone la hora dentro de ese bloque. Puede sugerir dias de la semana como ejemplo, pero NUNCA proponer una fecha u hora como si estuviera disponible, NUNCA asumir una fecha que el lead no dijo, y NUNCA decir que esta revisando o buscando disponibilidad; (3) dejar claro que el equipo confirma el horario definitivo por el mismo canal. Apenas el lead de un dia y bloque (o una hora), registrarlo como preferencia sin confirmarlo y pasar a pedir los datos de contacto en el mismo mensaje.
+Cuando el lead exprese interes en agendar, la reunion (Reu Vitali, 30 min) la coordina el equipo comercial: el agente NO tiene acceso a la agenda y NO puede confirmar disponibilidad. Por eso: (1) confirmar modalidad y lugar (reunion en la oficina de ventas de Santiago, Av. La Dehesa 440, Piso 3, Lo Barnechea, o videollamada) y el pais/ciudad del lead para la zona horaria; (2) pedir al lead 1 a 3 alternativas de dia y bloque horario (manana o tarde) que le acomoden, dentro del horario de atencion (lunes a viernes 9:00 a 19:00, sabado 9:00 a 14:00, hora de Chile). Un bloque como 'el jueves en la tarde' es SUFICIENTE: no pedir hora exacta, el equipo propone la hora dentro de ese bloque. Puede sugerir dias de la semana como ejemplo, pero NUNCA proponer una fecha u hora como si estuviera disponible, NUNCA asumir una fecha que el lead no dijo, NUNCA decir que esta revisando o buscando disponibilidad y NUNCA decir 'agendamos' o 'agendé': se REGISTRA una preferencia que el equipo confirma; (3) dejar claro que el equipo confirma el horario definitivo por el mismo canal. Apenas el lead de un dia y bloque (o una hora), registrarlo como preferencia sin confirmarlo y pasar a pedir los datos de contacto en el mismo mensaje. Si en el mismo mensaje ya vienen tambien email y telefono (o ya estaban capturados), ejecutar la tool crear_visita de inmediato en este turno y navegar al cierre, sin esperar otro turno.
 
 ## Required Slots
 
@@ -799,7 +799,7 @@ dia y bloque horario (manana o tarde) preferidos por el lead, 1 a 3 alternativas
 
 ## Tool
 
-
+crear_visita
 
 ## Allowed Transitions
 

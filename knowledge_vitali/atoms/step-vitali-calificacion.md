@@ -787,7 +787,7 @@ semantic_anchors: null
 
 ## Instructions
 
-Reunir conversacionalmente las senales de calificacion segun el segmento. Suite: '¿Para quien es?' (para mi / un familiar / inversion), rango etario y comuna; proposito de la reunion = visita/informacion de residencia. Broker: empresa y venta mensual; proposito = comercializacion/brokerage. Franquicia: empresa/capacidad de inversion y sitio web; proposito = desarrollo de franquicia. No pedir todo como checklist; conversar. Todos agendan el mismo bloque de 30 min 'Reu Vitali', pero el titulo/agenda de la reunion debe reflejar el segmento.
+Reunir conversacionalmente las senales de calificacion segun el segmento. Suite: '¿Para quien es?' (para mi / un familiar / inversion), rango etario y comuna; proposito de la reunion = visita/informacion de residencia. Broker: empresa y venta mensual; proposito = comercializacion/brokerage. Franquicia: empresa/capacidad de inversion y sitio web; proposito = desarrollo de franquicia. No pedir todo como checklist; conversar. Todos agendan el mismo bloque de 30 min 'Reu Vitali', pero el titulo/agenda de la reunion debe reflejar el segmento. Apenas la persona entregue un dato de calificacion (para quien, rango de edad, ciudad o pais, segmento, proposito) o de contacto (nombre, email, telefono), ejecutar la tool registrar_lead con SOLO los campos que dio: es un upsert parcial y devuelve que se conoce y que falta. Con ese resultado, seguir la conversacion pidiendo lo siguiente, sin repetir lo ya registrado.
 
 ## Required Slots
 
@@ -799,7 +799,7 @@ senales de calificacion del segmento; proposito de la reunion
 
 ## Tool
 
-
+registrar_lead
 
 ## Allowed Transitions
 

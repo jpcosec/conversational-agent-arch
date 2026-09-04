@@ -11,8 +11,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-calificacion
   path: atoms/step-vitali-calificacion.md
-  hash_c: 9500ccb1718766dd51d5fe17e2bf41d1ada7d89ffc732cc7806ff1352b2f902e
-  hash_d: 3348de7f4c8561f7be51fcf1e8c81856cd75ffaf40b4824da424bcca65238d7a
+  hash_c: 9e0bd6dece5694f9164f8da21fff43cfb22a101aa9e04a64286eacea851f8a82
+  hash_d: e85efc665fd9d19d8b47fa7a05f1abd5629dc62fbf33bf7969839adca8e3eaee
   semantic_tags:
   - agent:conversation-rule
   - conversation:steps.calificacion
@@ -21,8 +21,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-agendar-visita
   path: atoms/step-vitali-agendar-visita.md
-  hash_c: a6f540392022a333cc87b4ac38bee9eac82290188261233d9a75aa84c9c42998
-  hash_d: 7d115ea32cafb3910459c8d72278f396320abc08e4ec0a95e72a35a93f911351
+  hash_c: b264f2b9a7f97b50c634f7407eb10d57c3b3930464130eefd4413dc2f02fdb24
+  hash_d: e2a407cf173f250e9686a797d9a2cb4a3b023683c55df1c934b3d78e6e7de74a
   semantic_tags:
   - agent:booking-workflow
   - conversation:steps.agendar_visita
@@ -31,8 +31,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-datos-contacto
   path: atoms/step-vitali-datos-contacto.md
-  hash_c: 708bc3ca2af342cbadc69c571db8b7b8d907207c52aad69118c0d1ae260b90a9
-  hash_d: 67e91fb182e5ccc2a961898517affdbcb6702916b8c6b0b978427ebe44252cd2
+  hash_c: d6b439d99c2eb6190bdd59ba352864728c678c421d53c63e2251927a887e4746
+  hash_d: 1feaa70a7fa4c7e4d94d1f04c4585f323a760f81c18186fa020457bd0637cd33
   semantic_tags:
   - agent:booking-workflow
   - conversation:steps.datos_contacto
@@ -41,8 +41,8 @@ documents:
   - workspace.knowledge
 - name: step-vitali-cierre
   path: atoms/step-vitali-cierre.md
-  hash_c: 79d056ab68bc77863bd0eda52710e87317928c308977778f7a961ff185b0230b
-  hash_d: b7446410ec2811825043f9eb1ba72e3919c23221ff5e60b645b9e59f14c19e9f
+  hash_c: 38d4fa5efc463c318101bebaf8e4520711dac26e14d41ebf27ca2b988aa457c1
+  hash_d: 7d3adb163a39deb017cd21298168b821a94416efe3e5554b0d12afafad294bea
   semantic_tags:
   - agent:booking-workflow
   - conversation:steps.cierre

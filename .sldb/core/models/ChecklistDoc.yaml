@@ -3,7 +3,7 @@ model_ref: deskops.models:ChecklistDoc
 path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/checklist.py
 documents_index: .sldb/core/documents/ChecklistDoc.yaml
 sections_index: .sldb/runtime/sections/ChecklistDoc.yaml
-hash_b: af68c8c07c8e6211a8da4094ad5081000b2e4f66c8a20be225f50671e5e99c4f
+hash_b: bf95b91f09c56f07521783e10101ba65d94a980f51a60442c80be68e2f86e5e1
 version: 1
 canonical: false
 family: null

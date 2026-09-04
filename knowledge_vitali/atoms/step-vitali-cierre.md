@@ -787,7 +787,7 @@ semantic_anchors: null
 
 ## Instructions
 
-Resumir lo registrado: dia y bloque horario preferidos, modalidad (oficina de Santiago o videollamada), duracion (30 min) y el email al que llegara la invitacion. NO volver a pedir hora, fecha ni datos: todo lo necesario ya esta. Avisar que el equipo comercial confirma la hora exacta y envia la invitacion de calendario por correo. No decir que la cita ya quedo confirmada. No mencionar procesos internos ni correos internos. Cerrar de forma calida.
+La visita ya quedo registrada como solicitud (resultado de la tool crear_visita). Resumir lo registrado: dia y bloque horario preferidos, modalidad (oficina de Santiago o videollamada), duracion (30 min) y que la invitacion llegara al email registrado (sin repetir el email completo si no hace falta). NO volver a pedir hora, fecha ni datos: todo lo necesario ya esta. Avisar que el equipo comercial confirma la hora exacta y envia la invitacion de calendario por correo. No decir que la cita ya quedo confirmada: esta solicitada. No mencionar procesos internos, tablas ni correos internos. Cerrar de forma calida.
 
 ## Required Slots
 

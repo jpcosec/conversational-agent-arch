@@ -41,6 +41,7 @@ from twilio.request_validator import RequestValidator
 from twilio.twiml.messaging_response import MessagingResponse
 
 from kb_agent.models_sql.identity import Users, UserTraits
+from kb_agent.models_sql.leads import Leads, Visitas
 from kb_agent.models_sql.session import ChatHistory, SessionState
 from kb_agent.models_sql.turns import Turns
 from kb_agent.inbound import InboundService, twilio_rest_sender
@@ -193,6 +194,46 @@ LEAD_STATE_LABELS = {
     "con_preferencia": "Con preferencia de visita",
     "datos_completos": "Datos completos",
 }
+
+
+def lead_row_payload(lead: Leads | None) -> dict[str, Any]:
+    """Fila ``leads`` (tool ``registrar_lead``/``crear_visita``) para la bandeja comercial."""
+    if lead is None:
+        return {}
+    out = {f: getattr(lead, f) for f in Leads.EDITABLE_FIELDS if getattr(lead, f)}
+    out["updated_at"] = lead.updated_at.isoformat() if lead.updated_at else None
+    return out
+
+
+def visitas_payload(visitas: Sequence[Visitas]) -> list[dict[str, Any]]:
+    """Visitas solicitadas por la tool ``crear_visita`` (el equipo confirma la hora)."""
+    return [
+        {
+            "id": v.id,
+            "modalidad": v.modalidad,
+            "preferencia": v.preferencia,
+            "titulo": v.titulo,
+            "duracion_min": v.duracion_min,
+            "estado": v.estado,
+            "created_at": v.created_at.isoformat() if v.created_at else None,
+        }
+        for v in visitas
+    ]
+
+
+def merge_lead_into_collected(collected: Mapping[str, Any], lead: Leads | None) -> dict[str, Any]:
+    """Lo capturado del mensaje crudo + lo que la tool persistio en ``leads``.
+
+    La fila ``leads`` es la fuente mas confiable (la escribio una tool con
+    argumentos ya validados), pero ``collected`` puede traer datos que
+    todavia no pasaron por una tool: se unen, con la fila ganando.
+    """
+    out = dict(collected)
+    if lead is not None:
+        for slot, field in (("email", "email"), ("telefono", "telefono")):
+            if getattr(lead, field):
+                out[slot] = getattr(lead, field)
+    return out
 
 
 def lead_state(collected: Mapping[str, Any] | None, traits: Sequence[Any] = ()) -> str:
@@ -773,7 +814,9 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             for u in s.query(Users).order_by(Users.id).all():
                 state_row = s.get(SessionState, u.id)
                 slots = state_row.flow_slots if state_row is not None and isinstance(state_row.flow_slots, dict) else {}
-                collected = dict(slots.get("collected") or {})
+                lead_row = s.query(Leads).filter(Leads.user_id == u.id).one_or_none()
+                visitas = s.query(Visitas).filter(Visitas.user_id == u.id).order_by(Visitas.id.desc()).all()
+                collected = merge_lead_into_collected(dict(slots.get("collected") or {}), lead_row)
                 trait_ids = [
                     r[0] for r in s.query(UserTraits.trait_id).filter(UserTraits.user_id == u.id)
                     .order_by(UserTraits.trait_id).all()
@@ -796,6 +839,9 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                     "paso": state_row.flow_node if state_row is not None else None,
                     "traits": traits,
                     "collected": collected,
+                    "lead": lead_row_payload(lead_row),
+                    "visitas": visitas_payload(visitas),
+                    "visita_solicitada": any(v.estado == "solicitada" for v in visitas),
                     "falta": [k for k in ("preferencia_visita", "modalidad", "email", "telefono") if not collected.get(k)],
                     "n_turnos": sum(c["n_turns"] for c in conversations),
                     "last_active": conversations[0]["last_active"] if conversations else None,
@@ -805,8 +851,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         counts = {k: sum(1 for l in out if l["estado"] == k) for k in LEAD_STATES}
         # Cola: pidio visita (dijo cuando o como). Los que ya tienen todos los
         # datos van primero -- se pueden confirmar sin volver a escribirles.
-        queue = [l for l in out if l["estado"] in ("con_preferencia", "datos_completos")]
-        queue.sort(key=lambda l: (l["estado"] != "datos_completos", l["last_active"] or ""))
+        queue = [l for l in out if l["estado"] in ("con_preferencia", "datos_completos") or l["visita_solicitada"]]
+        queue.sort(key=lambda l: (not l["visita_solicitada"], l["estado"] != "datos_completos", l["last_active"] or ""))
         return JSONResponse({"leads": out, "queue": queue, "counts": counts})
 
     @app.get("/api/lead")
@@ -829,14 +875,21 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         active: str | None = None
         collected: dict[str, Any] = {}
         trait_ids: list[str] = []
+        lead_payload: dict[str, Any] = {}
+        visitas_list: list[dict[str, Any]] = []
         with orch.SessionLocal() as s:
             user = s.query(Users).filter(Users.external_id == ext).first()
             if user is not None:
                 state = s.get(SessionState, user.id)
+                lead_row = s.query(Leads).filter(Leads.user_id == user.id).one_or_none()
+                lead_payload = lead_row_payload(lead_row)
+                visitas_list = visitas_payload(
+                    s.query(Visitas).filter(Visitas.user_id == user.id).order_by(Visitas.id.desc()).all()
+                )
                 if state is not None:
                     active = state.flow_node
                     slots = state.flow_slots if isinstance(state.flow_slots, dict) else {}
-                    collected = dict(slots.get("collected") or {})
+                    collected = merge_lead_into_collected(dict(slots.get("collected") or {}), lead_row)
                 trait_ids = [
                     r[0] for r in s.query(UserTraits.trait_id).filter(UserTraits.user_id == user.id)
                     .order_by(UserTraits.trait_id).all()
@@ -854,6 +907,8 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             "steps": steps,
             "traits": traits,
             "collected": collected,
+            "lead": lead_payload,
+            "visitas": visitas_list,
         })
 
     @app.get("/api/history")

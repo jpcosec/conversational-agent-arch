@@ -19,6 +19,8 @@ tags:
   - strategy-vitali-respond-first
   agent:gate:
   - agent-vitali-gate
+  agent:orchestrator:
+  - agent-vitali-orchestrator
   agent:router:
   - agent-vitali-router
   constraint:customer-facing:
@@ -35,10 +37,13 @@ tags:
   - step-vitali-agendar-visita
   conversation:steps.calificacion:
   - step-vitali-calificacion
+  - tool-vitali-registrar-lead
   conversation:steps.cierre:
   - step-vitali-cierre
   conversation:steps.datos_contacto:
   - step-vitali-datos-contacto
+  - tool-vitali-crear-visita
+  - tool-vitali-registrar-lead
   conversation:steps.saludo:
   - step-vitali-saludo
   conversation:strategy:
@@ -95,10 +100,14 @@ tags:
   - boundary-vitali-customer-facing
   self:style:
   - style-vitali
+  self:tools:
+  - tool-vitali-crear-visita
+  - tool-vitali-registrar-lead
   self:whoami:
   - self-vitali
   system:vitali:
   - agent-vitali-gate
+  - agent-vitali-orchestrator
   - agent-vitali-router
   - boundary-vitali-customer-facing
   - dom-company-history
@@ -154,6 +163,8 @@ tags:
   - strategy-vitali-respond-first
   - strategy-vitali-slot-presentation
   - style-vitali
+  - tool-vitali-crear-visita
+  - tool-vitali-registrar-lead
   - trait-vitali-con-cita
   - trait-vitali-edad-45-59
   - trait-vitali-edad-60-69
@@ -177,6 +188,7 @@ tags:
   - trait-vitali-sin-cita
   type.knowledge.agent:
   - agent-vitali-gate
+  - agent-vitali-orchestrator
   - agent-vitali-router
   type.knowledge.boundary:
   - boundary-vitali-customer-facing
@@ -241,6 +253,9 @@ tags:
   - strategy-vitali-slot-presentation
   type.knowledge.style:
   - style-vitali
+  type.knowledge.tool:
+  - tool-vitali-crear-visita
+  - tool-vitali-registrar-lead
   type.knowledge.trait:
   - trait-vitali-con-cita
   - trait-vitali-edad-45-59
@@ -307,6 +322,7 @@ tags:
   - trait-vitali-sin-cita
   workspace.knowledge:
   - agent-vitali-gate
+  - agent-vitali-orchestrator
   - agent-vitali-router
   - boundary-vitali-customer-facing
   - dom-company-history
@@ -362,6 +378,8 @@ tags:
   - strategy-vitali-respond-first
   - strategy-vitali-slot-presentation
   - style-vitali
+  - tool-vitali-crear-visita
+  - tool-vitali-registrar-lead
   - trait-vitali-con-cita
   - trait-vitali-edad-45-59
   - trait-vitali-edad-60-69
@@ -721,6 +739,25 @@ documents:
     - system:vitali
     - type.knowledge.rule
     - workspace.knowledge
+  tool-vitali-registrar-lead:
+    model: ToolAtom
+    path: atoms/tool-vitali-registrar-lead.md
+    tags:
+    - conversation:steps.calificacion
+    - conversation:steps.datos_contacto
+    - self:tools
+    - system:vitali
+    - type.knowledge.tool
+    - workspace.knowledge
+  tool-vitali-crear-visita:
+    model: ToolAtom
+    path: atoms/tool-vitali-crear-visita.md
+    tags:
+    - conversation:steps.datos_contacto
+    - self:tools
+    - system:vitali
+    - type.knowledge.tool
+    - workspace.knowledge
   trait-vitali-con-cita:
     model: TraitAtom
     path: atoms/trait-vitali-con-cita.md
@@ -1015,6 +1052,14 @@ documents:
     path: atoms/agent-vitali-router.md
     tags:
     - agent:router
+    - system:vitali
+    - type.knowledge.agent
+    - workspace.knowledge
+  agent-vitali-orchestrator:
+    model: AgentFraming
+    path: atoms/agent-vitali-orchestrator.md
+    tags:
+    - agent:orchestrator
     - system:vitali
     - type.knowledge.agent
     - workspace.knowledge

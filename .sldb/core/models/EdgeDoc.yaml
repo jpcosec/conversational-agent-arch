@@ -3,7 +3,7 @@ model_ref: deskops.models:EdgeDoc
 path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/edge.py
 documents_index: .sldb/core/documents/EdgeDoc.yaml
 sections_index: .sldb/runtime/sections/EdgeDoc.yaml
-hash_b: 621bb430ce3a2d6810f91ccadac88ed2cad79124596baf5ab403d9a59c87b977
+hash_b: dcef2a62ed1b4dd05350409f5d119b230de93c1f8377b2ec5e5765de22c72f06
 version: 1
 canonical: false
 family: null
