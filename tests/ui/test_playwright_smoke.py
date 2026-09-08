@@ -83,7 +83,7 @@ def test_chat_dashboard_runs_a_turn_and_shows_atomic_context(page, base_url: str
     # 'tN' viejo): basta con que exista y sea no vacio.
     page.wait_for_function("typeof selectedTurnId!=='undefined' && !!selectedTurnId && selectedTurnId.length>0", timeout=20000)
     page.wait_for_timeout(500)
-    assert "Carta Don Peppe" in page.content()  # atom real del contexto del turno (KB de prueba)
+    assert "Domain Menu" in page.content()  # atom real del contexto del turno (KB de prueba sembrada, negocio_kb)
 
 
 def test_flow_editor_renders_graph_from_api(page, base_url: str) -> None:
