@@ -18,7 +18,7 @@ ATOMS = [
     {"type": "self", "id": "self-bot", "title": "Bot Identity", "tags": ["self:whoami", "system:test"], "fields": {"statement": "Soy un bot de prueba para el sistema de conocimiento."}},
     {"type": "style", "id": "style-bot", "title": "Bot Style", "tags": ["self:estilo", "system:test"], "fields": {"tone": "Amable y conciso.", "language_register": "Formal, trato de usted.", "phrase_preferences": "", "length_guidelines": ""}},
     {"type": "boundary", "id": "boundary-bot", "title": "Bot Limits", "tags": ["self:limites", "system:test"], "fields": {"restriction": "No puedo dar consejo legal.", "conditions": "", "escalation": "Derivar a un abogado."}},
-    {"type": "domain", "id": "atom-carta", "title": "Carta", "tags": ["domain:catalogo", "system:test"], "five_wh": "what", "domain_ref": "test-biz", "fields": {"answer": "Pizza Margherita 8900, Napolitana 9800."}},
+    {"type": "domain", "id": "atom-carta", "title": "Carta", "tags": ["domain:catalogo", "system:test"], "five_wh": "what", "domain_ref": "test-biz", "fields": {"answer": "Pizza margarita 8900, Napolitana 9800."}},
     {"type": "trait", "id": "trait-vegetariano", "title": "Vegetariano", "tags": ["user:traits.vegetariano", "system:test"], "category": "dietary", "fields": {"description": "Cliente que no consume carne."}},
     {"type": "step", "id": "step-onboarding", "title": "Onboarding", "kind": "interaccion_simple", "tags": ["conversation:steps.onboarding", "system:test"], "domain_ref": "test-biz",
      "fields": {"instructions": "Dar la bienvenida.", "required_slots": "nombre", "allowed_transitions": "conversation:steps.booking", "grounding_atoms": "atom-carta", "completion_condition": "Usuario saludado."}},
@@ -244,7 +244,7 @@ def test_derive_path_falls_back_to_flat_atoms_when_only_excluded_tags_exist() ->
 EMBED_ATOMS = [
     {"type": "domain", "id": "atom-carta", "title": "Carta", "summary": "Resumen de la carta del negocio.",
      "tags": ["domain:catalogo", "system:test"], "five_wh": "what", "domain_ref": "test-biz",
-     "fields": {"answer": "Pizza Margherita 8900."}},
+     "fields": {"answer": "Pizza margarita 8900."}},
     {"type": "gate", "id": "gate-corpus", "title": "Gate Corpus", "summary": "Valido que la respuesta use solo el corpus aprobado.",
      "tags": ["gate:corpus", "system:test"],
      "fields": {"criterion": "Usa solo información del corpus.", "approval_condition": "Cita el corpus.", "rejection_action": "Encola revisión humana."}},

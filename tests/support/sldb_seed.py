@@ -268,3 +268,90 @@ def minimal_business_atoms(*, with_fallback: bool = True, with_tool: bool = True
             },
         })
     return atoms
+
+
+def test_business_atoms() -> list[dict[str, Any]]:
+    """El negocio de prueba del repo (``test_kb_root``): el minimo mas un diagrama de
+    conversacion de dos pasos (onboarding <-> booking), traits, estrategia y limites.
+    Contenido generico de una pizzeria; no es ninguna KB real."""
+    atoms = minimal_business_atoms()
+    for atom in atoms:
+        if atom["id"] == "tool-reserva":
+            atom["tags"] = ["self:tools", "domain:pizzeria", "conversation:steps.booking", "system:negocio"]
+            atom["fields"]["description"] = (
+                "Crea una reserva de mesa. Llamar solo con fecha, hora y cantidad de personas confirmados."
+            )
+            atom["fields"]["parameters"] = (
+                '{"name": "crear_reserva", "parameters": {"type": "object", "properties": '
+                '{"fecha": {"type": "string"}, "hora": {"type": "string"}, "personas": {"type": "integer"}, '
+                '"nombre": {"type": "string"}}, "required": ["fecha", "hora", "personas"]}}'
+            )
+    atoms += [
+        {
+            "type": "domain", "id": "domain-promos", "title": "Domain Promos",
+            "tags": ["domain:promociones", "conversation:steps.booking", "system:negocio"], "five_wh": "what",
+            "fields": {"answer": "Martes y miércoles: 2x1 en pizzas margarita. Las promociones no son acumulables."},
+        },
+        {
+            "type": "domain", "id": "domain-ubicacion", "title": "Domain Ubicacion",
+            "tags": ["domain:ubicacion", "system:negocio"], "five_wh": "where",
+            "fields": {"answer": "Estamos en Avenida Principal 123."},
+        },
+        {
+            "type": "strategy", "id": "strategy-negocio", "title": "Estrategia",
+            "tags": ["conversation:strategy", "system:negocio"],
+            "fields": {
+                "goal": "Resolver la consulta de la persona y facilitar reservas de mesa cuando lo pida.",
+                "approach": "Responder primero lo que la persona pregunto con datos de la base.",
+                "priorities": "Exactitud, brevedad, reserva cuando hay intencion.",
+            },
+        },
+        {
+            "type": "boundary", "id": "boundary-negocio", "title": "Limites",
+            "tags": ["self:limites", "system:negocio"],
+            "fields": {
+                "restriction": "No invento datos que no esten en la base. No proceso pagos.",
+                "conditions": "",
+                "escalation": "Derivar al local para lo que no puedo resolver.",
+            },
+        },
+        {
+            "type": "trait", "id": "trait-vegetariano", "title": "Cliente vegetariano",
+            "tags": ["user:traits.vegetariano", "system:negocio"], "category": "dietary",
+            "fields": {"description": "La persona es vegetariana: no consume carne. Priorizar pizzas sin carne."},
+        },
+        {
+            "type": "trait", "id": "trait-sin-gluten", "title": "Cliente sin gluten",
+            "tags": ["user:traits.sin_gluten", "system:negocio"], "category": "dietary",
+            "fields": {"description": "La persona evita el gluten. Ofrecer masa sin gluten."},
+        },
+        {
+            "type": "step", "id": "step-onboarding", "title": "Onboarding — atencion general",
+            "kind": "interaccion_simple",
+            "tags": ["conversation:steps.onboarding", "system:negocio"],
+            "fields": {
+                "instructions": "Saludar una vez, responder consultas de menu, horarios, ubicacion y promociones; pasar a reserva si hay intencion.",
+                "required_slots": "consulta de la persona",
+                "handout_target": "no aplica",
+                "tool_ref": "no aplica",
+                "allowed_transitions": "conversation:steps.booking",
+                "grounding_atoms": "domain-menu, domain-horarios, domain-ubicacion, domain-promos, self-negocio",
+                "completion_condition": "La persona recibio respuesta, o expreso intencion de reservar.",
+            },
+        },
+        {
+            "type": "step", "id": "step-booking", "title": "Reserva de mesa",
+            "kind": "llamado_tool",
+            "tags": ["conversation:steps.booking", "system:negocio"],
+            "fields": {
+                "instructions": "Recolectar fecha, hora y cantidad de personas una pregunta a la vez, confirmar y ejecutar la tool crear_reserva.",
+                "required_slots": "fecha, hora, personas, nombre",
+                "handout_target": "no aplica",
+                "tool_ref": "crear_reserva",
+                "allowed_transitions": "conversation:steps.onboarding",
+                "grounding_atoms": "rule-reservas, domain-promos, tool-reserva",
+                "completion_condition": "La reserva fue creada con la tool, o la persona decide no continuar.",
+            },
+        },
+    ]
+    return atoms

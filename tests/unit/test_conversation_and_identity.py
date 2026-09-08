@@ -19,8 +19,8 @@ from tests.support.fakes import FakeTraitMapper, offline_orchestrator
 # ── entidad conversacion ───────────────────────────────────────────────────
 
 
-def test_turns_and_history_are_linked_to_a_conversation(donpeppe_kb: Path, tmp_db_url: str) -> None:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+def test_turns_and_history_are_linked_to_a_conversation(negocio_kb: Path, tmp_db_url: str) -> None:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
     try:
         turn = o.handle_turn(external_id="wa:+56911112222", message="hola")
         assert turn["conversation_id"] is not None
@@ -38,8 +38,8 @@ def test_turns_and_history_are_linked_to_a_conversation(donpeppe_kb: Path, tmp_d
         o.close()
 
 
-def test_same_conversation_reused_within_ttl(donpeppe_kb: Path, tmp_db_url: str) -> None:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+def test_same_conversation_reused_within_ttl(negocio_kb: Path, tmp_db_url: str) -> None:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
     try:
         a = o.handle_turn(external_id="wa:+56911113333", message="hola")
         b = o.handle_turn(external_id="wa:+56911113333", message="que pizzas hay?")
@@ -50,9 +50,9 @@ def test_same_conversation_reused_within_ttl(donpeppe_kb: Path, tmp_db_url: str)
         o.close()
 
 
-def test_expired_conversation_is_closed_and_a_new_one_opens(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_expired_conversation_is_closed_and_a_new_one_opens(negocio_kb: Path, tmp_db_url: str) -> None:
     # TTL de 1 segundo: forzamos expiracion moviendo last_activity_at al pasado.
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
     o.tuning.conversation_idle_ttl_s = 1
     try:
         first = o.handle_turn(external_id="wa:+56911114444", message="hola")
@@ -72,8 +72,8 @@ def test_expired_conversation_is_closed_and_a_new_one_opens(donpeppe_kb: Path, t
         o.close()
 
 
-def test_prompt_history_does_not_cross_conversation_boundary(donpeppe_kb: Path, tmp_db_url: str) -> None:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+def test_prompt_history_does_not_cross_conversation_boundary(negocio_kb: Path, tmp_db_url: str) -> None:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
     o.tuning.conversation_idle_ttl_s = 1
     try:
         o.handle_turn(external_id="wa:+56911115555", message="mensaje de la conversacion vieja")
@@ -94,8 +94,8 @@ def test_prompt_history_does_not_cross_conversation_boundary(donpeppe_kb: Path, 
 # ── identidad unificada por telefono ───────────────────────────────────────
 
 
-def test_phone_identity_unifies_user_across_channels(donpeppe_kb: Path, tmp_db_url: str) -> None:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper(), identity_key="phone")
+def test_phone_identity_unifies_user_across_channels(negocio_kb: Path, tmp_db_url: str) -> None:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper(), identity_key="phone")
     try:
         wa = o.handle_turn(external_id="whatsapp:+56 9 1234 5678", message="hola por whatsapp")
         web = o.handle_turn(external_id="web:+56912345678", message="hola por web")
@@ -109,9 +109,9 @@ def test_phone_identity_unifies_user_across_channels(donpeppe_kb: Path, tmp_db_u
         o.close()
 
 
-def test_external_id_identity_keeps_channels_separate(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_external_id_identity_keeps_channels_separate(negocio_kb: Path, tmp_db_url: str) -> None:
     # default identity_key='external_id': cada canal es un usuario distinto
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
     try:
         wa = o.handle_turn(external_id="whatsapp:+56912345678", message="hola")
         web = o.handle_turn(external_id="web:+56912345678", message="hola")
@@ -122,8 +122,8 @@ def test_external_id_identity_keeps_channels_separate(donpeppe_kb: Path, tmp_db_
         o.close()
 
 
-def test_phone_identity_ignores_channels_without_phone(donpeppe_kb: Path, tmp_db_url: str) -> None:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper(), identity_key="phone")
+def test_phone_identity_ignores_channels_without_phone(negocio_kb: Path, tmp_db_url: str) -> None:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper(), identity_key="phone")
     try:
         a = o.handle_turn(external_id="ui:sessionA", message="hola")
         b = o.handle_turn(external_id="ui:sessionB", message="hola")

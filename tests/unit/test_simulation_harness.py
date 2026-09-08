@@ -32,8 +32,8 @@ def _scripted_user(messages: list[str]) -> ScriptedJsonLLM:
     return ScriptedJsonLLM(responder)
 
 
-def test_conversation_ends_when_user_is_done_and_records_runtime_state(donpeppe_kb: Path, tmp_path: Path) -> None:
-    orch = offline_orchestrator(donpeppe_kb)
+def test_conversation_ends_when_user_is_done_and_records_runtime_state(negocio_kb: Path, tmp_path: Path) -> None:
+    orch = offline_orchestrator(negocio_kb)
     llm = _scripted_user(["que pizzas tienen?", "soy vegetariano"])
     persona = Persona(name="X", description="d", goal="g")
     t = run_conversation(orch, SimulatedUser(llm, persona), scenario_id="s", external_id="sim:s", max_turns=5)
@@ -55,17 +55,17 @@ def test_conversation_ends_when_user_is_done_and_records_runtime_state(donpeppe_
     orch.close()
 
 
-def test_conversation_stops_at_max_turns(donpeppe_kb: Path) -> None:
-    orch = offline_orchestrator(donpeppe_kb)
+def test_conversation_stops_at_max_turns(negocio_kb: Path) -> None:
+    orch = offline_orchestrator(negocio_kb)
     t = run_conversation(orch, SimulatedUser(_scripted_user(["a", "b", "c", "d"]), Persona("X", "d", "g")), scenario_id="s", external_id="sim:s", max_turns=2)
     assert t.ended_by == "max_turns" and len(t.turns) == 2
     orch.close()
 
 
-def test_opening_message_skips_llm_and_tool_checks_work(donpeppe_kb: Path) -> None:
+def test_opening_message_skips_llm_and_tool_checks_work(negocio_kb: Path) -> None:
     from kb_agent.tools import load_tool_handlers
 
-    orch = offline_orchestrator(donpeppe_kb, tool_handlers=load_tool_handlers({"crear_reserva": "kb_agent.tools.reservas:crear_reserva"}))
+    orch = offline_orchestrator(negocio_kb, tool_handlers=load_tool_handlers({"crear_reserva": "kb_agent.tools.reservas:crear_reserva"}))
     llm = _scripted_user([])
     persona = Persona("R", "d", "g", opening_message="reservar mesa para 4 el viernes a las 20:00 a nombre de Rojas")
     t = run_conversation(orch, SimulatedUser(llm, persona), scenario_id="s", external_id="sim:s", max_turns=3)
@@ -74,9 +74,9 @@ def test_opening_message_skips_llm_and_tool_checks_work(donpeppe_kb: Path) -> No
     orch.close()
 
 
-def test_judge_prompt_and_missing_criteria_are_marked_failed(donpeppe_kb: Path) -> None:
-    truth = kb_truth_text(donpeppe_kb)
-    assert "Margherita 8900" in truth and "LIMITES:" in truth and "crear_reserva" in truth
+def test_judge_prompt_and_missing_criteria_are_marked_failed(negocio_kb: Path) -> None:
+    truth = kb_truth_text(negocio_kb)
+    assert "margarita 8900" in truth and "LIMITES:" in truth and "crear_reserva" in truth
 
     def responder(prompt, schema):
         assert schema is Verdict

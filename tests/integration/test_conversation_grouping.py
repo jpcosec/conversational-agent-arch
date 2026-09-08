@@ -31,7 +31,7 @@ from tests.support.fakes import offline_orchestrator
 
 
 @pytest.fixture()
-def client(tmp_path: Path, donpeppe_kb: Path) -> TestClient:
+def client(tmp_path: Path, negocio_kb: Path) -> TestClient:
     db = tmp_path / "chat.sqlite"
     cfg = load_project_config(mode="test", env={"CHAT_DB": str(db), "PROFILING_DB": str(db)})
     orch = offline_orchestrator(cfg.kb_root, cfg.chat_db_url, tool_handlers=load_tool_handlers(cfg.tool_handlers))

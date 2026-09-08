@@ -14,9 +14,9 @@ DELIVERY = ["¿Hacen delivery?", "hacen delivery?!", "Hacen delivery", "¿hacen 
 
 
 @pytest.fixture()
-def kb_copy(tmp_path: Path, donpeppe_kb: Path) -> Path:
+def kb_copy(tmp_path: Path, negocio_kb: Path) -> Path:
     copied = tmp_path / "knowledge"
-    shutil.copytree(donpeppe_kb, copied, ignore=shutil.ignore_patterns(".embedding_cache"))
+    shutil.copytree(negocio_kb, copied, ignore=shutil.ignore_patterns(".embedding_cache"))
     return copied
 
 

@@ -19,11 +19,11 @@ QUESTION = "que pizzas tienen?"
 
 
 @pytest.fixture()
-def orch_factory(donpeppe_kb: Path, tmp_db_url: str):
+def orch_factory(negocio_kb: Path, tmp_db_url: str):
     made: list[Orchestrator] = []
 
     def _make(gate: FakeGate) -> Orchestrator:
-        o = offline_orchestrator(donpeppe_kb, tmp_db_url, gate=gate)
+        o = offline_orchestrator(negocio_kb, tmp_db_url, gate=gate)
         made.append(o)
         return o
 
@@ -112,6 +112,6 @@ def test_gate_sees_active_step_and_client_statements_as_declared_context(orch_fa
 
     facts = gate.calls[-1]["declared_facts"]
     ids = [f["id"] for f in facts]
-    assert "step-donpeppe-onboarding" in ids or "step-donpeppe-booking" in ids
+    assert "step-onboarding" in ids or "step-booking" in ids
     client = next(f for f in facts if f["id"] == "conversacion-cliente")
     assert "quiero reservar para el jueves" in client["body"] and "somos cuatro personas" in client["body"]

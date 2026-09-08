@@ -20,7 +20,7 @@ TOKEN = "twilio-test-token"
 
 
 @pytest.fixture(scope="module")
-def client(tmp_path_factory: pytest.TempPathFactory, donpeppe_kb: Path) -> TestClient:
+def client(tmp_path_factory: pytest.TempPathFactory, negocio_kb: Path) -> TestClient:
     db = tmp_path_factory.mktemp("api") / "chat.sqlite"
     cfg = load_project_config(mode="test", env={"CHAT_DB": str(db), "PROFILING_DB": str(db)})
     orch = offline_orchestrator(cfg.kb_root, cfg.chat_db_url, tool_handlers=load_tool_handlers(cfg.tool_handlers))
@@ -73,16 +73,16 @@ def test_pages_link_shared_theme_and_nav(client: TestClient, path: str) -> None:
 
 
 def test_atom_endpoint_reads_store(client: TestClient) -> None:
-    atom = client.get("/api/atom/atom-donpeppe-carta").json()
-    assert atom["atom_id"] == "atom-donpeppe-carta" and "Margherita" in atom["body"] and "domain:catalogo" in atom["tags"]
+    atom = client.get("/api/atom/domain-menu").json()
+    assert atom["atom_id"] == "domain-menu" and "margarita" in atom["body"] and "domain:catalogo" in atom["tags"]
     assert client.get("/api/atom/atom-no-existe").status_code == 404
 
 
 def test_flow_graph_exposes_steps_and_transitions(client: TestClient) -> None:
     flow = client.get("/api/flow").json()
     by_id = {n["id"]: n for n in flow["nodes"]}
-    assert by_id["step-donpeppe-onboarding"]["step_tag"] == "conversation:steps.onboarding"
-    assert {"source": "step-donpeppe-onboarding", "target": "step-donpeppe-booking", "relation": "flows_to"} in flow["edges"]
+    assert by_id["step-onboarding"]["step_tag"] == "conversation:steps.onboarding"
+    assert {"source": "step-onboarding", "target": "step-booking", "relation": "flows_to"} in flow["edges"]
 
 
 def test_viz_graph_is_built_from_active_kb(client: TestClient) -> None:
@@ -91,7 +91,7 @@ def test_viz_graph_is_built_from_active_kb(client: TestClient) -> None:
     assert graph["kb"] == cfg.name
     assert graph["nodes"]
     node_ids = {n["id"] for n in graph["nodes"]}
-    assert "atom-donpeppe-carta" in node_ids
+    assert "domain-menu" in node_ids
     assert graph["edges"]
     for edge in graph["edges"]:
         assert edge["source"] in node_ids and edge["target"] in node_ids
@@ -115,7 +115,7 @@ def test_chat_turn_contract_and_session_continuity(client: TestClient) -> None:
     assert turn["context"]["context_id"] == f"ctx-{turn['turn_id']}"
     assert turn["kind"] == "nl" and turn["assistant_message"].startswith("[nl]")
     assert turn["state_trace"] == ["idle", "evaluating_context", "drafting_response", "idle"]
-    assert "atom-donpeppe-carta" in turn["context"]["atom_ids"]
+    assert "domain-menu" in turn["context"]["atom_ids"]
     assert turn["flow_node"] == "conversation:steps.onboarding"
 
     second = client.post("/api/chat", json={"message": "soy vegetariano", "session_id": "s1"}).json()["turn"]
@@ -194,7 +194,7 @@ def test_lead_card_collects_contact_and_visit_preference(client: TestClient) -> 
     lead = client.get("/api/lead", params={"session_id": sid}).json()
     assert lead["collected"] == {"email": "ana@test.cl", "telefono": "+56987654321", "preferencia_visita": "jueves en la tarde"}
     tags = [s["tag"] for s in lead["steps"]]
-    assert tags[0] == "conversation:steps.onboarding"  # raiz del grafo primero (Don Peppe: onboarding -> booking)
+    assert tags[0] == "conversation:steps.onboarding"  # raiz del grafo primero (negocio_kb: onboarding -> booking)
     assert lead["step"] is not None and lead["step"]["tag"] == turn["flow_node"]
     assert {s["state"] for s in lead["steps"]} <= {"done", "active", "pending"}
     assert all({"trait_id", "title", "category"} <= set(t) for t in lead["traits"])

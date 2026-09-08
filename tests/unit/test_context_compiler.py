@@ -109,24 +109,24 @@ def test_scenario_resolution_argument_then_session_then_loader_then_default(busi
     assert compiler.compile(question="", user_id=1, trigger="cron").scenario == "catalogo"
 
 
-def test_kgdb_augments_flow_node_transitions_and_grounding(donpeppe_kb: Path) -> None:
-    reader = KnowledgeOperations(kb_root=donpeppe_kb)
-    compiler = ContextCompiler(knowledge=reader, kgdb=KGDBReader.from_sldb(donpeppe_kb / ".sldb"))
+def test_kgdb_augments_flow_node_transitions_and_grounding(negocio_kb: Path) -> None:
+    reader = KnowledgeOperations(kb_root=negocio_kb)
+    compiler = ContextCompiler(knowledge=reader, kgdb=KGDBReader.from_sldb(negocio_kb / ".sldb"))
 
     fresh = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub())
     assert fresh.flow_node == "conversation:steps.onboarding"  # default: onboarding
     assert fresh.allowed_transitions == ["conversation:steps.booking"]
-    assert "step-donpeppe-onboarding" in fresh.grounding_atoms
+    assert "step-onboarding" in fresh.grounding_atoms
     # El step activo viaja resuelto (instrucciones/slots) para el prompt del Conversador.
-    assert fresh.step["tag"] == "conversation:steps.onboarding" and fresh.step["id"] == "step-donpeppe-onboarding"
+    assert fresh.step["tag"] == "conversation:steps.onboarding" and fresh.step["id"] == "step-onboarding"
     assert fresh.step["instructions"] and "instructions" in fresh.to_dict()["step"]
-    assert compiler.step_context("conversation:steps.booking")["id"] == "step-donpeppe-booking"
+    assert compiler.step_context("conversation:steps.booking")["id"] == "step-booking"
     assert compiler.step_context("conversation:steps.inexistente") is None and compiler.step_context(None) is None
 
     in_booking = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.booking"))
     assert in_booking.flow_node == "conversation:steps.booking"
     assert in_booking.allowed_transitions == ["conversation:steps.onboarding"]
-    assert {"step-donpeppe-booking", "atom-donpeppe-tool-reserva"} <= set(in_booking.grounding_atoms)
+    assert {"step-booking", "tool-reserva"} <= set(in_booking.grounding_atoms)
 
     unknown = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.inexistente"))
     assert unknown.flow_node == "conversation:steps.onboarding"
@@ -163,11 +163,11 @@ def test_entry_step_is_graph_root_when_kb_has_no_onboarding(tmp_path: Path) -> N
     assert compiler.compile(question="q", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.nada")).flow_node == "conversation:steps.saludo"
 
 
-def test_real_donpeppe_kb_compiles_full_business_context(donpeppe_kb: Path) -> None:
-    d = compile_context(question="que pizzas hay?", user_id=None, knowledge=KnowledgeOperations(kb_root=donpeppe_kb)).to_dict()
-    assert {"atom-donpeppe-carta", "atom-donpeppe-horarios", "atom-donpeppe-promos", "atom-donpeppe-ubicacion"} == {f["id"] for f in d["domain_facts"]}
-    assert {r["id"] for r in d["rules"]} == {"atom-donpeppe-regla-reservas"}
-    assert d["persona"]["whoami"].startswith("Soy el asistente virtual de Don Peppe")
+def test_real_negocio_kb_compiles_full_business_context(negocio_kb: Path) -> None:
+    d = compile_context(question="que pizzas hay?", user_id=None, knowledge=KnowledgeOperations(kb_root=negocio_kb)).to_dict()
+    assert {"domain-menu", "domain-horarios", "domain-promos", "domain-ubicacion"} == {f["id"] for f in d["domain_facts"]}
+    assert {r["id"] for r in d["rules"]} == {"rule-reservas"}
+    assert d["persona"]["whoami"].startswith("Soy el asistente de la pizzeria")
     assert d["fallback_text"].startswith("Uy, eso no lo tengo a mano")
     assert [t["name"] for t in d["tools"]] == ["crear_reserva"]
     assert d["is_empty"] is False

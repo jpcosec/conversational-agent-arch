@@ -1,7 +1,7 @@
 """Cableado completo del orquestador SIN red: router -> compilador -> policy -> LLM (fake)
 -> tools (registry) -> SQL -> perfilador (fake).
 
-Usa la KB real de Don Peppe (store SLDB tipado) y SQLite temporal. Los LLM son
+Usa la KB de prueba del repo (negocio_kb, store SLDB tipado) y SQLite temporal. Los LLM son
 fakes inyectados por los puertos ``Conversador``/``TraitMapper``, asi que aqui
 se prueba TODO el runtime salvo la calidad del texto generado (eso vive en e2e).
 """
@@ -38,8 +38,8 @@ NL_TRACE = ["idle", "evaluating_context", "drafting_response", "idle"]
 
 
 @pytest.fixture()
-def orch(donpeppe_kb: Path, tmp_db_url: str) -> Orchestrator:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers=load_tool_handlers(load_project_config(mode="test").tool_handlers))
+def orch(negocio_kb: Path, tmp_db_url: str) -> Orchestrator:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers=load_tool_handlers(load_project_config(mode="test").tool_handlers))
     yield o
     o.close()
 
@@ -56,24 +56,24 @@ def test_nl_turn_is_grounded_in_kb_and_traced(orch: Orchestrator) -> None:
     assert turn["allowed_transitions"] == ["conversation:steps.booking"]
 
     ctx = turn["context"]
-    assert "atom-donpeppe-carta" in ctx["atom_ids"]
-    carta = next(i for i in ctx["items"] if i["atom_id"] == "atom-donpeppe-carta")
-    assert carta["title"] == "Carta Don Peppe" and carta["role"] == "domain_fact" and carta["grounds_step"] is True
+    assert "domain-menu" in ctx["atom_ids"]
+    carta = next(i for i in ctx["items"] if i["atom_id"] == "domain-menu")
+    assert carta["title"] == "Domain Menu" and carta["role"] == "domain_fact" and carta["grounds_step"] is True
     assert "domain:catalogo" in ctx["include_tags"]
 
     # el conversador recibio persona/estrategia/fallback desde la KB, no hardcodeados
     [compiled] = orch.conversador.calls
-    assert compiled["persona"]["whoami"].startswith("Soy el asistente virtual de Don Peppe")
+    assert compiled["persona"]["whoami"].startswith("Soy el asistente de la pizzeria")
     assert compiled["fallback_text"].startswith("Uy, eso no lo tengo a mano")
     assert compiled["question"] == "que pizzas tienen?"
 
-    # Bundle justificado (tarea 1.3): atom-donpeppe-carta entra con motivo de
-    # grounding del step activo (onboarding). atom-donpeppe-regla-reservas
+    # Bundle justificado (tarea 1.3): domain-menu entra con motivo de
+    # grounding del step activo (onboarding). rule-reservas
     # (que solo groundea "booking") ya NO entra "porque estaba todo incluido"
     # como antes de 1.3 -- el contexto es justificado por turno, no total.
     bundle_by_id = {b["doc_id"]: b for b in compiled["bundle"]}
-    assert bundle_by_id["atom-donpeppe-carta"]["motivo"] == "grounding de steps.onboarding"
-    assert "atom-donpeppe-regla-reservas" not in bundle_by_id
+    assert bundle_by_id["domain-menu"]["motivo"] == "grounding de steps.onboarding"
+    assert "rule-reservas" not in bundle_by_id
 
 
 def test_tool_turn_executes_registered_handler_and_persists(orch: Orchestrator) -> None:
@@ -96,8 +96,8 @@ def test_tool_turn_executes_registered_handler_and_persists(orch: Orchestrator) 
         assert row.user_id == turn["user_id"]
 
 
-def test_tool_without_registered_handler_yields_unknown_tool(donpeppe_kb: Path, tmp_db_url: str) -> None:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers={})
+def test_tool_without_registered_handler_yields_unknown_tool(negocio_kb: Path, tmp_db_url: str) -> None:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers={})
     try:
         turn = o.handle_turn(external_id="wa:+1", message=RESERVA_MSG)
         assert turn["kind"] == "tool_call"
@@ -171,9 +171,9 @@ def test_channel_is_derived_from_external_id_unless_explicit(orch: Orchestrator)
     assert channel_from_external_id("local:demo") == "local"
 
 
-def test_chat_history_is_scrubbed_for_user_and_assistant(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_chat_history_is_scrubbed_for_user_and_assistant(negocio_kb: Path, tmp_db_url: str) -> None:
     leaky = FakeConversador(lambda c: "Escribeme a test@example.com o al +56912345678.")
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, conversador=leaky)
+    o = offline_orchestrator(negocio_kb, tmp_db_url, conversador=leaky)
     try:
         turn = o.handle_turn(external_id="wa:+56955555555", message="Soy Juan Pérez, mi correo es juan@example.com")
         with o.SessionLocal() as s:
@@ -186,15 +186,15 @@ def test_chat_history_is_scrubbed_for_user_and_assistant(donpeppe_kb: Path, tmp_
         o.close()
 
 
-def test_state_and_data_survive_orchestrator_restart(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_state_and_data_survive_orchestrator_restart(negocio_kb: Path, tmp_db_url: str) -> None:
     handlers = load_tool_handlers({"crear_reserva": "kb_agent.tools.reservas:crear_reserva"})
-    a = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers=handlers)
+    a = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers=handlers)
     t1 = a.handle_turn(external_id="wa:+56966666666", message="soy vegetariano", scenario="pizzeria")
     a.handle_turn(external_id="wa:+56966666666", message=RESERVA_MSG)
     assert t1["scenario_source"] == "argument" and t1["scenario_effective"] == "pizzeria"
     a.close()
 
-    b = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers=handlers)
+    b = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers=handlers)
     try:
         t3 = b.handle_turn(external_id="wa:+56966666666", message="¿y para hoy?")
         assert t3["scenario_source"] == "session_state" and t3["scenario_effective"] == "pizzeria"
@@ -239,10 +239,10 @@ def test_from_config_wires_business_declared_in_yaml(tmp_db_url: str) -> None:
 # compartido que colisionaba. Estos tests ejercen concurrencia real (threads
 # contra un SQLite de archivo); antes no habia ninguno.
 
-def test_concurrent_first_contact_does_not_lose_turns(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_concurrent_first_contact_does_not_lose_turns(negocio_kb: Path, tmp_db_url: str) -> None:
     import threading
 
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
     n = 8
     results: list[dict] = []
     errors: list[Exception] = []
@@ -281,10 +281,10 @@ def test_concurrent_first_contact_does_not_lose_turns(donpeppe_kb: Path, tmp_db_
         o.close()
 
 
-def test_concurrent_turns_get_unique_turn_ids(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_concurrent_turns_get_unique_turn_ids(negocio_kb: Path, tmp_db_url: str) -> None:
     import threading
 
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
     n = 12
     turn_ids: list[str] = []
     lock = threading.Lock()

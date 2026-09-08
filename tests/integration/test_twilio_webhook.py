@@ -39,7 +39,7 @@ def _patch_twilio(monkeypatch: pytest.MonkeyPatch) -> None:
 
 
 @pytest.fixture
-def fake_twilio_app(tmp_path: Path, donpeppe_kb: Path, monkeypatch: pytest.MonkeyPatch) -> TestClient:
+def fake_twilio_app(tmp_path: Path, negocio_kb: Path, monkeypatch: pytest.MonkeyPatch) -> TestClient:
     """App con Twilio completamente fake — sin instalar ``twilio``.
 
     Parchea sys.modules ANTES de importar app.py para que ``from twilio.xxx

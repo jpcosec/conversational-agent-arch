@@ -22,6 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+TEST_KB = REPO_ROOT / "tests" / "knowledge"  # KB de prueba, sembrada por el fixture negocio_kb
 ANTONIA_KB = REPO_ROOT / "knowledge"                  # KB REAL del negocio desplegado
 VITALI_KB = REPO_ROOT / "knowledge_vitali"            # KB REAL de Vitali Suites
 
@@ -77,6 +78,25 @@ def repo_root() -> Path:
 @pytest.fixture(scope="session")
 def antonia_kb() -> Path:
     return ANTONIA_KB
+
+
+@pytest.fixture(scope="session", autouse=True)
+def negocio_kb() -> Path:
+    """KB de prueba del repo (``project.test_kb_root`` = ``tests/knowledge``).
+
+    Se siembra desde cero en cada sesion con ``tests.support.sldb_seed``
+    (negocio generico de pizzeria con un diagrama onboarding <-> booking); no
+    se versiona. Es ``autouse`` porque ``load_project_config(mode="test")``
+    apunta ahi y hay tests que lo usan sin pedir el fixture.
+    """
+    import shutil
+
+    from tests.support.sldb_seed import seed_store, test_business_atoms
+
+    if TEST_KB.exists():
+        shutil.rmtree(TEST_KB)
+    seed_store(TEST_KB, test_business_atoms())
+    return TEST_KB
 
 
 @pytest.fixture(scope="session")
