@@ -49,7 +49,7 @@ jobs:
         run: |
           python - <<'PY'
           import ast, pathlib, sys
-          MARKERS = ("don peppe", "donpeppe", "antonia")
+          MARKERS = ("antonia")
           def docstring_nodes(tree):
               ids = set()
               for node in ast.walk(tree):

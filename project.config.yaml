@@ -21,7 +21,7 @@ project:
   #   test_kb_root -> store de PRUEBA del repo, usado bajo pytest (auto) o
   #                   con mode="test". Mantiene los tests aislados del real.
   kb_root: knowledge                # KB REAL del negocio desplegado (Antonia)
-  test_kb_root: tests/knowledge     # KB de prueba del repo (Don Peppe, atoms tipados)
+  test_kb_root: tests/knowledge     # KB de prueba del repo
 
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
 
@@ -46,7 +46,7 @@ project:
   # Tools del negocio: {nombre declarado en el ToolAtom: "modulo:funcion"}.
   # El ToolAtom de la KB define el schema; aqui se registra quien lo ejecuta.
   # Un handler registrado pero no declarado por la KB activa simplemente no se
-  # usa (Don Peppe declara crear_reserva; Antonia declara agendar_recordatorio).
+  # agendar_recordatorio (Antonia), registrar_enrolamiento. crear_reserva se queda por si.
   tools:
     agendar_recordatorio: kb_agent.tools.recordatorios:agendar_recordatorio
     crear_reserva: kb_agent.tools.reservas:crear_reserva
@@ -90,4 +90,4 @@ project:
     serve_timeout_s: 600
 
   # Demo mode - habilita el orquestador ligero y LLM sin carga de producción
-  demo_mode: true
+  demo_mode: false

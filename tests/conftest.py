@@ -22,7 +22,6 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-DONPEPPE_KB = REPO_ROOT / "tests" / "knowledge"       # KB de prueba (atoms tipados)
 ANTONIA_KB = REPO_ROOT / "knowledge"                  # KB REAL del negocio desplegado
 VITALI_KB = REPO_ROOT / "knowledge_vitali"            # KB REAL de Vitali Suites
 
@@ -73,11 +72,6 @@ def _isolate_runtime_dbs(tmp_path_factory: pytest.TempPathFactory) -> None:
 @pytest.fixture(scope="session")
 def repo_root() -> Path:
     return REPO_ROOT
-
-
-@pytest.fixture(scope="session")
-def donpeppe_kb() -> Path:
-    return DONPEPPE_KB
 
 
 @pytest.fixture(scope="session")

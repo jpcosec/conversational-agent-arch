@@ -160,9 +160,8 @@ image = (
     # knowledge/, Vitali -> knowledge_vitali/).
     .add_local_dir(str(REPO_ROOT / KB_REL), f"{REMOTE_APP_DIR}/{KB_REL}", copy=True,
                     ignore=[*_PYCACHE_IGNORE, ".embedding_cache", ".embedding_cache/**", ".knowledge.db"])
-    # KB de prueba (Don Peppe), incluida por si se apunta ahi con PROJECT_CONFIG/KB_ROOT
-    .add_local_dir(str(REPO_ROOT / "tests" / "knowledge"), f"{REMOTE_APP_DIR}/tests/knowledge", copy=True,
-                    ignore=[*_PYCACHE_IGNORE, ".embedding_cache", ".embedding_cache/**", "desk", "desk/**"])
+    # KB servida (según project.config.yaml: kb_root)
+
     # Migraciones: el volumen /data persiste el sqlite entre deploys, asi que
     # el esquema hay que MIGRARLO (create_all() no altera tablas existentes).
     .add_local_dir(str(REPO_ROOT / "alembic"), f"{REMOTE_APP_DIR}/alembic", copy=True,

@@ -12,4 +12,4 @@ provenance: architecture-audit
 
 ## Answer
 
-El sistema soporta múltiples negocios aislados. Actualmente conviven dos KBs principales: 'Antonia' (asistente clínico, producción) que vive en `knowledge/`, y 'Don Peppe' (pizzería, pruebas) que vive en `tests/knowledge/`. El archivo `project.config.yaml` actúa como el switch que define cuál está activo.
+El sistema soporta múltiples negocios aislados. Actualmente la KB activa es 'Antonia' (asistente clínico, producción) en `knowledge/`.`project.config.yaml` como switch.

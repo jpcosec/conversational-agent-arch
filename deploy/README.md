@@ -10,9 +10,8 @@ que corre localmente.
 
 - **Código**: `kb_agent/`, `frontends/`, `knowledge_base/`, `project.config.yaml`.
 - **KB servida**: `knowledge/` (Antonia — la KB REAL que apunta
-  `project.config.yaml: kb_root`), más `tests/knowledge` (Don Peppe, KB de
-  prueba, incluida por si se quiere apuntar ahí).
-  **No** se copia `tests/knowledge/.embedding_cache` (~600 MB de blobs de un
+  `project.config.yaml: kb_root`).
+  **No** se copia `.embedding_cache` (~600 MB de blobs de un
   modelo de embeddings): `/api/viz/graph` sólo lee embeddings ya calculados
   del frontmatter de cada atom, nunca los recalcula en vivo.
 - **Paquetes locales** (no publicados en PyPI, viven en
