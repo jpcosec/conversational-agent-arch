@@ -109,13 +109,21 @@ data:
       kind: core
       contains:
         - KnowCompiler
-        - KnowKgdbReader
+        - KnowWorld
+        - KnowFlow
+        - KnowEmbedder
         - KnowCompiledDocument
     KnowCompiler:
       label: "knowledge.compiler (ContextCompiler, SessionStateLike)"
       kind: core
-    KnowKgdbReader:
-      label: "knowledge.kgdb_reader (KGDBReader)"
+    KnowWorld:
+      label: "knowledge.world (open_world / refresh_world: un pron.World por proceso)"
+      kind: core
+    KnowFlow:
+      label: "knowledge.flow (ConversationFlow sobre el grafo tipado de kgdb)"
+      kind: core
+    KnowEmbedder:
+      label: "knowledge.embedder (FastembedEmbedder: Embedder de pron)"
       kind: core
     KnowCompiledDocument:
       label: "knowledge.compiled_document (CompiledDocument)"
@@ -407,7 +415,7 @@ data:
       relation: uses
       label: docs_by_type / doc
     - from: KnowCompiler
-      to: KnowKgdbReader
+      to: KnowFlow
       relation: uses
       label: navega grafo
     - from: KnowCompiler
@@ -418,10 +426,10 @@ data:
       to: SqlIdentity
       relation: reads
       label: trait_ids del usuario
-    - from: KnowKgdbReader
+    - from: KnowFlow
       to: ExtKgdb
       relation: reads
-      label: neighborhood/ingest
+      label: edges_from/edges_to (pron.Graph sobre el grafo persistido)
 
     # Hub -> perfilador async
     - from: Orchestrator

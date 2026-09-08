@@ -64,7 +64,7 @@ data:
       kind: sync
     - from: ContextCompiler
       to: ContextCompiler
-      message: Recupera KB tipada (10 tipos via _MODEL_TYPES) KnowledgeOperations/KGDBReader + traits + step
+      message: Recupera KB tipada (10 tipos via _MODEL_TYPES) KnowledgeOperations (pron.Store) + traits + step activo y transiciones (ConversationFlow sobre el grafo de kgdb)
     - from: ContextCompiler
       to: Ruteador
       message: route(question, candidatos, traits, step) [RouterAgent]

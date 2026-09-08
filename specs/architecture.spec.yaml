@@ -94,12 +94,24 @@ data:
     class_knowledge_compiler_ContextCompiler:
       label: ContextCompiler
       kind: class
-    module_knowledge_kgdb_reader:
-      label: knowledge.kgdb_reader
+    module_knowledge_embedder:
+      label: knowledge.embedder
       kind: module
-    class_knowledge_kgdb_reader_KGDBReader:
-      label: KGDBReader
+    class_knowledge_embedder_FastembedEmbedder:
+      label: FastembedEmbedder
       kind: class
+    module_knowledge_flow:
+      label: knowledge.flow
+      kind: module
+    class_knowledge_flow_FlowStep:
+      label: FlowStep
+      kind: class
+    class_knowledge_flow_ConversationFlow:
+      label: ConversationFlow
+      kind: class
+    module_knowledge_world:
+      label: knowledge.world
+      kind: module
     module_lead_slots:
       label: lead_slots
       kind: module
@@ -231,6 +243,18 @@ data:
       kind: class
     class_models_sql_inbound_InboundMessage:
       label: InboundMessage
+      kind: class
+    module_models_sql_leads:
+      label: models_sql.leads
+      kind: module
+    class_models_sql_leads_Leads:
+      label: Leads
+      kind: class
+    class_models_sql_leads_VisitaEstado:
+      label: VisitaEstado
+      kind: class
+    class_models_sql_leads_Visitas:
+      label: Visitas
       kind: class
     module_models_sql_recordatorios:
       label: models_sql.recordatorios
@@ -376,11 +400,17 @@ data:
     module_tools_enrolamiento:
       label: tools.enrolamiento
       kind: module
+    module_tools_leads:
+      label: tools.leads
+      kind: module
     module_tools_recordatorios:
       label: tools.recordatorios
       kind: module
     module_tools_reservas:
       label: tools.reservas
+      kind: module
+    module_tools_visitas:
+      label: tools.visitas
       kind: module
     module___future__:
       label: ''
@@ -466,23 +496,20 @@ data:
     module_compiled_document:
       label: document
       kind: external
-    module_kgdb_reader:
-      label: reader
+    module_flow:
+      label: flow
       kind: external
-    module_kgdb_graph:
+    module_fastembed:
+      label: fastembed
+      kind: external
+    module_pron_graph:
       label: graph
       kind: external
-    module_kgdb_ingest_sldb:
-      label: sldb
+    module_kgdb_world:
+      label: world
       kind: external
-    module_kgdb_query_neighborhood:
-      label: neighborhood
-      kind: external
-    module_sldb_cli_model_utils:
-      label: utils
-      kind: external
-    module_sldb_store_export:
-      label: export
+    module_pron_world:
+      label: world
       kind: external
     module_kb_agent_perfilador_extractor:
       label: extractor
@@ -535,9 +562,6 @@ data:
     module_kb_agent_knowledge_compiler:
       label: compiler
       kind: external
-    module_kb_agent_knowledge_kgdb_reader:
-      label: reader
-      kind: external
     module_kb_agent_perfilador_listener:
       label: listener
       kind: external
@@ -571,20 +595,14 @@ data:
     module_deskops_atom_tags:
       label: tags
       kind: external
-    module_sldb_runtime_validation:
-      label: validation
-      kind: external
-    module_sldb_store_io:
-      label: io
-      kind: external
-    module_sldb_store_layout:
-      label: layout
-      kind: external
-    module_sldb_store_ops:
-      label: ops
-      kind: external
     module_kb_agent_reflector_reader:
       label: reader
+      kind: external
+    module_kb_agent_models_sql_leads:
+      label: leads
+      kind: external
+    module_kb_agent_tools_leads:
+      label: leads
       kind: external
   edges:
   - from: module_agent
@@ -828,7 +846,7 @@ data:
     to: module_compiled_document
     relation: imports
   - from: module_knowledge_compiler
-    to: module_kgdb_reader
+    to: module_flow
     relation: imports
   - from: module_knowledge_compiler
     to: module_knowledge_base_operations
@@ -836,32 +854,47 @@ data:
   - from: module_knowledge_compiler
     to: module_kb_agent_agents_router
     relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: class_knowledge_kgdb_reader_KGDBReader
+  - from: module_knowledge_embedder
+    to: class_knowledge_embedder_FastembedEmbedder
     relation: defines
-  - from: module_knowledge_kgdb_reader
+  - from: module_knowledge_embedder
     to: module___future__
     relation: imports
-  - from: module_knowledge_kgdb_reader
+  - from: module_knowledge_embedder
     to: module_pathlib
     relation: imports
-  - from: module_knowledge_kgdb_reader
+  - from: module_knowledge_embedder
     to: module_typing
     relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: module_kgdb_graph
+  - from: module_knowledge_embedder
+    to: module_fastembed
     relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: module_kgdb_ingest_sldb
+  - from: module_knowledge_flow
+    to: class_knowledge_flow_FlowStep
+    relation: defines
+  - from: module_knowledge_flow
+    to: class_knowledge_flow_ConversationFlow
+    relation: defines
+  - from: module_knowledge_flow
+    to: module___future__
     relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: module_kgdb_query_neighborhood
+  - from: module_knowledge_flow
+    to: module_dataclasses
     relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: module_sldb_cli_model_utils
+  - from: module_knowledge_flow
+    to: module_pron_graph
     relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: module_sldb_store_export
+  - from: module_knowledge_world
+    to: module___future__
+    relation: imports
+  - from: module_knowledge_world
+    to: module_pathlib
+    relation: imports
+  - from: module_knowledge_world
+    to: module_kgdb_world
+    relation: imports
+  - from: module_knowledge_world
+    to: module_pron_world
     relation: imports
   - from: module_lead_slots
     to: module___future__
@@ -1187,6 +1220,33 @@ data:
   - from: module_models_sql_inbound
     to: module_identity
     relation: imports
+  - from: module_models_sql_leads
+    to: class_models_sql_leads_Leads
+    relation: defines
+  - from: module_models_sql_leads
+    to: class_models_sql_leads_VisitaEstado
+    relation: defines
+  - from: module_models_sql_leads
+    to: class_models_sql_leads_Visitas
+    relation: defines
+  - from: module_models_sql_leads
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_leads
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_leads
+    to: module_enum
+    relation: imports
+  - from: module_models_sql_leads
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_leads
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_leads
+    to: module_identity
+    relation: imports
   - from: module_models_sql_recordatorios
     to: class_models_sql_recordatorios_Recordatorios
     relation: defines
@@ -1350,9 +1410,6 @@ data:
     to: module_kb_agent_knowledge_compiler
     relation: imports
   - from: module_orchestrator
-    to: module_kb_agent_knowledge_kgdb_reader
-    relation: imports
-  - from: module_orchestrator
     to: module_kb_agent_perfilador_extractor
     relation: imports
   - from: module_orchestrator
@@ -1414,9 +1471,6 @@ data:
     relation: imports
   - from: module_perfilador_extractor
     to: module_kb_agent_perfilador_traits_store
-    relation: imports
-  - from: module_perfilador_extractor
-    to: module_knowledge_base_operations
     relation: imports
   - from: module_perfilador_extractor
     to: module_knowledge_base_operations
@@ -1539,21 +1593,6 @@ data:
     to: module_deskops_atom_tags
     relation: imports
   - from: module_reflector_generator
-    to: module_sldb_cli_model_utils
-    relation: imports
-  - from: module_reflector_generator
-    to: module_sldb_runtime_validation
-    relation: imports
-  - from: module_reflector_generator
-    to: module_sldb_store_io
-    relation: imports
-  - from: module_reflector_generator
-    to: module_sldb_store_layout
-    relation: imports
-  - from: module_reflector_generator
-    to: module_sldb_store_ops
-    relation: imports
-  - from: module_reflector_generator
     to: module_knowledge_base_operations
     relation: imports
   - from: module_reflector_generator
@@ -1637,6 +1676,21 @@ data:
   - from: module_tools_enrolamiento
     to: module_kb_agent_models_sql_identity
     relation: imports
+  - from: module_tools_leads
+    to: module___future__
+    relation: imports
+  - from: module_tools_leads
+    to: module_typing
+    relation: imports
+  - from: module_tools_leads
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_leads
+    to: module_kb_agent_models_sql_leads
+    relation: imports
+  - from: module_tools_leads
+    to: module_kb_agent_models_sql_session
+    relation: imports
   - from: module_tools_recordatorios
     to: module___future__
     relation: imports
@@ -1660,4 +1714,19 @@ data:
     relation: imports
   - from: module_tools_reservas
     to: module_kb_agent_models_sql_reservas
+    relation: imports
+  - from: module_tools_visitas
+    to: module___future__
+    relation: imports
+  - from: module_tools_visitas
+    to: module_typing
+    relation: imports
+  - from: module_tools_visitas
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_visitas
+    to: module_kb_agent_models_sql_leads
+    relation: imports
+  - from: module_tools_visitas
+    to: module_kb_agent_tools_leads
     relation: imports

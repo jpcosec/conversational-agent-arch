@@ -25,7 +25,7 @@ data:
         - UI
 
     Conftest:
-      label: "conftest (gating llm/ui, aislamiento CHAT_DB/PROFILING_DB, fixtures donpeppe_kb/antonia_kb)"
+      label: "conftest (gating llm/ui, aislamiento CHAT_DB/PROFILING_DB, fixtures negocio_kb (KB sembrada en tests/knowledge) / antonia_kb)"
       kind: boundary
 
     Support:
@@ -38,7 +38,7 @@ data:
       label: "support.fakes (FakeConversador, FakeGate, FakeOrchestratorAgent, FakeRouterAgent, FakeTraitMapper, RecordingToolHandler, FakeEmbedder)"
       kind: core
     SupportSeed:
-      label: "support.sldb_seed (seed_store, minimal_business_atoms)"
+      label: "support.sldb_seed (seed_store con relations=RelationDoc, minimal_business_atoms, test_business_atoms)"
       kind: core
 
     Unit:
@@ -61,7 +61,7 @@ data:
       label: "test_turn_policy (decide_turn, fallback determinístico)"
       kind: core
     UnitCompiler:
-      label: "test_context_compiler / test_knowledge_store_access / test_kgdb_reader"
+      label: "test_context_compiler / test_knowledge_store_access / test_flow"
       kind: core
     UnitStateMachine:
       label: "test_state_machine (RouterStateMachine)"

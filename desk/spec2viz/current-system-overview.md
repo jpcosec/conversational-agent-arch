@@ -34,7 +34,7 @@ piezas. Secuencia real:
    - `tool_call` → el modelo pide una tool con args válidos contra el schema del `ToolAtom`.
    - `fallback` → contexto vacío / sin rules ni domain.
    - `nl` → responder en lenguaje natural.
-   `apply_transition_guard` (código, no prompt) veta cualquier `step_target` fuera de `allowed_transitions`. Si el LLM falla, `kb_agent/agent.py::decide_turn` (keywords) es el fallback determinístico.
+   `apply_transition_guard` (código, no prompt) veta cualquier `step_target` sin arista `transitions_to` desde el step activo (las `allowed_transitions` del contexto salen del grafo). Si el LLM falla, `kb_agent/agent.py::decide_turn` (keywords) es el fallback determinístico.
 7. **Ejecución de tool** (si `tool_call`) — el router pausa (`DRAFTING_RESPONSE → WAITING_TOOL`); el orquestador ejecuta `execute_tool(...)` (handler de `kb_agent/tools/`, declarado en `project.config.yaml`), arma el **System Turn** (JSON) y reanuda: `handle_tool_result` → `WAITING_TOOL → DRAFTING_RESPONSE`.
 8. **Conversador** — `kb_agent/llm.py::GeminiConversador.draft_nl` redacta el NL desde el contexto (persona + grounding + traits + system_turn si hubo tool). Nunca alucina: sin grounding, cae al fallback.
 8b. **Gate** — si `kind == nl`, `GateAgent.evaluate` (`kb_agent/agents/gate.py`) juzga la respuesta redactada contra los `GateCriterion` de la KB (`knowledge/atoms/gate-antonia-*.md`, renderizados en su static_instruction) → `GateVerdict`. Rechazo ⇒ `kind = derived` y texto de derivación; error del LLM ⇒ fail-open. El encuadre de negocio de Ruteador/Orquestador/Gate viene de la KB (`AgentFraming` por `AgentRole`, p. ej. `agent-antonia-{gate,router}.md`); el código queda neutral.
@@ -53,8 +53,8 @@ ya scrubbeada, detecta patrones recurrentes (≥5 turnos), y propone atoms nuevo
 | Capa | Qué guarda | Lectura |
 |---|---|---|
 | **SQL** | identidad (`Users`), traits aprendidos (`UserTraits`), estado vivo (`SessionState`), historial (`ChatHistory`), reservas/recordatorios. | SQLAlchemy `kb_agent/models_sql/` |
-| **SLDB** | conocimiento tipado: los 12 modelos (ver abajo). | `knowledge_base/operations.py` (tools del Ruteador) |
-| **KGDB** | grafo de flujo conversacional: `ConversationStep` + relaciones (`flows_to`, `grounded_by`, `uses_tool`, ...). | `knowledge/kgdb_reader.py` |
+| **SLDB** | conocimiento tipado: los 12 modelos (ver abajo) + `RelationDoc`/`RelationTypeDoc` de kgdb. | `pron.Store` (un `World` por proceso, `kb_agent/knowledge/world.py`) envuelto por `knowledge_base/operations.py` (tools del Ruteador) |
+| **KGDB** | grafo tipado del store: `ConversationStep` + `RelationDoc` (`transitions_to`, `grounded_by`, `uses_tool`) más las aristas estructurales (`tagged_as`, `semantic_parent`, ...). Derivado en `knowledge/.pron/graph.nx.json` por `pron.World.refresh`. | `kb_agent/knowledge/flow.py` (`ConversationFlow` sobre `pron.Graph`) |
 
 **Los 12 modelos tipados** (`kb_agent/models/knowledge/`), agrupados por `__family__`:
 
