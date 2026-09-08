@@ -10,6 +10,7 @@ tags:
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   build:
@@ -94,6 +95,7 @@ tags:
   - atom-router-state-machine
   - atom-ruteador-de-contexto-como-agente
   - atom-tool-handlers-registry
+  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
   loop:
   - seed-mas-subagentes-al-loop
   pill:
@@ -139,6 +141,9 @@ tags:
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready
@@ -202,6 +207,11 @@ tags:
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
@@ -290,6 +300,12 @@ tags:
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close
@@ -342,6 +358,9 @@ tags:
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing
@@ -362,6 +381,7 @@ tags:
   - routine-task-recomponer-la-base-de-spec2viz-y-atoms
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   role:background:
@@ -386,6 +406,7 @@ tags:
   - "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
   - atom-router-state-machine
   - atom-tool-handlers-registry
+  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
   - atom-topologia-de-despliegue
   role:data:
   - "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
@@ -538,6 +559,7 @@ tags:
   - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
+  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
   - atom-topologia-de-despliegue
   type.workflow.board:
   - Board
@@ -572,6 +594,9 @@ tags:
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready
@@ -623,6 +648,11 @@ tags:
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
@@ -693,6 +723,12 @@ tags:
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close
@@ -736,6 +772,9 @@ tags:
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing
@@ -767,6 +806,7 @@ tags:
   - routine-task-recomponer-la-base-de-spec2viz-y-atoms
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   type.workflow.step:
@@ -835,6 +875,7 @@ tags:
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   type:composition:
@@ -922,6 +963,7 @@ tags:
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   - testing
@@ -969,6 +1011,7 @@ tags:
   - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
+  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
   - atom-topologia-de-despliegue
   workspace.desk.inbox:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
@@ -1010,6 +1053,9 @@ tags:
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready
   - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready
   - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready
@@ -1060,6 +1106,11 @@ tags:
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation
   - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
   - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
@@ -1129,6 +1180,12 @@ tags:
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout
   - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete
   - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close
@@ -1171,6 +1228,9 @@ tags:
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close
   - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close
   - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing
@@ -1188,6 +1248,7 @@ tags:
   - routine-task-recomponer-la-base-de-spec2viz-y-atoms
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   workspace.docs.faq:
@@ -1211,6 +1272,7 @@ tags:
   - routine-task-recomponer-la-base-de-spec2viz-y-atoms
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   - task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
@@ -1223,6 +1285,7 @@ tags:
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   - testing
@@ -1362,6 +1425,14 @@ documents:
   task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali:
     model: TaskDoc
     path: desk/tasks/task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql:
+    model: TaskDoc
+    path: desk/tasks/task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
     tags:
     - artifact:task
     - type.workflow.task
@@ -2221,6 +2292,14 @@ documents:
     - topic:twilio
     - type.knowledge.atom
     - workspace.desk.atoms
+  "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas":
+    model: AtomDoc
+    path: "desk/atoms/atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas.md"
+    tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
   current-system-overview:
     model: FAQDoc
     path: desk/spec2viz/current-system-overview.md
@@ -2412,6 +2491,27 @@ documents:
   checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready:
     model: ChecklistDoc
     path: desk/primitives/checklists/checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready.md
     tags:
     - primitive:checklist
     - type.workflow.checklist
@@ -2699,6 +2799,41 @@ documents:
   condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout:
     model: ConditionDoc
     path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout.md
     tags:
     - primitive:condition
     - type.workflow.condition
@@ -3081,6 +3216,48 @@ documents:
     - primitive:edge
     - type.workflow.edge
     - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
   operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate:
     model: OperatorDoc
     path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate.md
@@ -3270,6 +3447,27 @@ documents:
     - primitive:operator
     - type.workflow.operator
     - workspace.desk.primitives
+  operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
   routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools:
     model: RoutineDoc
     path: desk/routines/routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
@@ -3337,6 +3535,14 @@ documents:
   routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali:
     model: RoutineDoc
     path: desk/routines/routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql:
+    model: RoutineDoc
+    path: desk/routines/routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
     tags:
     - primitive:routine
     - type.workflow.routine

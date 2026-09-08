@@ -1,0 +1,22 @@
+documents:
+- name: tool-vitali-registrar-lead
+  path: atoms/tool-vitali-registrar-lead.md
+  hash_c: f40111c23ba76f500044a9aacc652d9b22b7cd65e928b0a34f905d005d769a04
+  hash_d: 4884aa4466b857abbdbe12b168ec8973b2d748eec7b9397d5b9805b78ff3f42b
+  semantic_tags:
+  - conversation:steps.calificacion
+  - conversation:steps.datos_contacto
+  - self:tools
+  - system:vitali
+  - type.knowledge.tool
+  - workspace.knowledge
+- name: tool-vitali-crear-visita
+  path: atoms/tool-vitali-crear-visita.md
+  hash_c: 897f5b7efd04401121bb7b9cbf8eb8dfaed209d7897f7840c4ba10d22891a6cb
+  hash_d: a9dcb389dfa8b9110353afcec3deeef460cdd385c1c56ed036cb62f86bbff575
+  semantic_tags:
+  - conversation:steps.datos_contacto
+  - self:tools
+  - system:vitali
+  - type.knowledge.tool
+  - workspace.knowledge

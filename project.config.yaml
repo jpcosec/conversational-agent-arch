@@ -89,5 +89,7 @@ project:
     min_containers: 1
     serve_timeout_s: 600
 
-  # Demo mode - habilita el orquestador ligero y LLM sin carga de producción
+  # Demo mode: sin orquestador ni LLM, sirve datos de demo_data en vez de
+  # producción. Se lee de esta clave; DEMO_MODE=1 en el entorno también lo
+  # fuerza a true. Nunca activo en modo test.
   demo_mode: false

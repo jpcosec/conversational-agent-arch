@@ -1,0 +1,946 @@
+documents:
+- doc_name: trait-vitali-con-cita
+  sections:
+  - path: con-visita-agendada
+    title: Con visita agendada
+    breadcrumbs:
+    - Con visita agendada
+    about:
+    - Con visita agendada
+    - con visita agendada
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.con_cita
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.con_cita
+    - workspace.knowledge
+    slug: con-visita-agendada
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: con-visita-agendada/description
+    title: Description
+    breadcrumbs:
+    - Con visita agendada
+    - Description
+    about:
+    - Con visita agendada
+    - con visita agendada
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.con_cita
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.con_cita
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-edad-45-59
+  sections:
+  - path: rango-etario-45-a-59
+    title: 'Rango etario: 45 a 59'
+    breadcrumbs:
+    - 'Rango etario: 45 a 59'
+    about:
+    - 'Rango etario: 45 a 59'
+    - rango etario 45 a 59
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_45_59
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_45_59
+    - workspace.knowledge
+    slug: rango-etario-45-a-59
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: rango-etario-45-a-59/description
+    title: Description
+    breadcrumbs:
+    - 'Rango etario: 45 a 59'
+    - Description
+    about:
+    - 'Rango etario: 45 a 59'
+    - rango etario 45 a 59
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_45_59
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_45_59
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-edad-60-69
+  sections:
+  - path: rango-etario-60-a-69
+    title: 'Rango etario: 60 a 69'
+    breadcrumbs:
+    - 'Rango etario: 60 a 69'
+    about:
+    - 'Rango etario: 60 a 69'
+    - rango etario 60 a 69
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_60_69
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_60_69
+    - workspace.knowledge
+    slug: rango-etario-60-a-69
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: rango-etario-60-a-69/description
+    title: Description
+    breadcrumbs:
+    - 'Rango etario: 60 a 69'
+    - Description
+    about:
+    - 'Rango etario: 60 a 69'
+    - rango etario 60 a 69
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_60_69
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_60_69
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-edad-70-mas
+  sections:
+  - path: rango-etario-70-o-mas
+    title: 'Rango etario: 70 o mas'
+    breadcrumbs:
+    - 'Rango etario: 70 o mas'
+    about:
+    - 'Rango etario: 70 o mas'
+    - rango etario 70 o mas
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_70_mas
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_70_mas
+    - workspace.knowledge
+    slug: rango-etario-70-o-mas
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: rango-etario-70-o-mas/description
+    title: Description
+    breadcrumbs:
+    - 'Rango etario: 70 o mas'
+    - Description
+    about:
+    - 'Rango etario: 70 o mas'
+    - rango etario 70 o mas
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_70_mas
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_70_mas
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-edad-menos-45
+  sections:
+  - path: rango-etario-menos-de-45
+    title: 'Rango etario: menos de 45'
+    breadcrumbs:
+    - 'Rango etario: menos de 45'
+    about:
+    - 'Rango etario: menos de 45'
+    - rango etario menos de 45
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_menos_45
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_menos_45
+    - workspace.knowledge
+    slug: rango-etario-menos-de-45
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: rango-etario-menos-de-45/description
+    title: Description
+    breadcrumbs:
+    - 'Rango etario: menos de 45'
+    - Description
+    about:
+    - 'Rango etario: menos de 45'
+    - rango etario menos de 45
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_menos_45
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.edad_menos_45
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-horizonte-decision
+  sections:
+  - path: horizonte-de-decision
+    title: Horizonte de decision
+    breadcrumbs:
+    - Horizonte de decision
+    about:
+    - Horizonte de decision
+    - horizonte de decision
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.horizonte_decision
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.horizonte_decision
+    - workspace.knowledge
+    slug: horizonte-de-decision
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: horizonte-de-decision/description
+    title: Description
+    breadcrumbs:
+    - Horizonte de decision
+    - Description
+    about:
+    - Horizonte de decision
+    - horizonte de decision
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.horizonte_decision
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.horizonte_decision
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-onboarding-pendiente
+  sections:
+  - path: onboarding-incompleto
+    title: Onboarding incompleto
+    breadcrumbs:
+    - Onboarding incompleto
+    about:
+    - Onboarding incompleto
+    - onboarding incompleto
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.onboarding_pendiente
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.onboarding_pendiente
+    - workspace.knowledge
+    slug: onboarding-incompleto
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: onboarding-incompleto/description
+    title: Description
+    breadcrumbs:
+    - Onboarding incompleto
+    - Description
+    about:
+    - Onboarding incompleto
+    - onboarding incompleto
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.onboarding_pendiente
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.onboarding_pendiente
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-pais-bolivia
+  sections:
+  - path: ubicado-en-bolivia
+    title: Ubicado en Bolivia
+    breadcrumbs:
+    - Ubicado en Bolivia
+    about:
+    - Ubicado en Bolivia
+    - ubicado en bolivia
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_bolivia
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_bolivia
+    - workspace.knowledge
+    slug: ubicado-en-bolivia
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: ubicado-en-bolivia/description
+    title: Description
+    breadcrumbs:
+    - Ubicado en Bolivia
+    - Description
+    about:
+    - Ubicado en Bolivia
+    - ubicado en bolivia
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_bolivia
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_bolivia
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-pais-chile
+  sections:
+  - path: ubicado-en-chile
+    title: Ubicado en Chile
+    breadcrumbs:
+    - Ubicado en Chile
+    about:
+    - Ubicado en Chile
+    - ubicado en chile
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_chile
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_chile
+    - workspace.knowledge
+    slug: ubicado-en-chile
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: ubicado-en-chile/description
+    title: Description
+    breadcrumbs:
+    - Ubicado en Chile
+    - Description
+    about:
+    - Ubicado en Chile
+    - ubicado en chile
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_chile
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_chile
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-pais-colombia
+  sections:
+  - path: ubicado-en-colombia
+    title: Ubicado en Colombia
+    breadcrumbs:
+    - Ubicado en Colombia
+    about:
+    - Ubicado en Colombia
+    - ubicado en colombia
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_colombia
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_colombia
+    - workspace.knowledge
+    slug: ubicado-en-colombia
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: ubicado-en-colombia/description
+    title: Description
+    breadcrumbs:
+    - Ubicado en Colombia
+    - Description
+    about:
+    - Ubicado en Colombia
+    - ubicado en colombia
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_colombia
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_colombia
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-pais-mexico
+  sections:
+  - path: ubicado-en-mexico
+    title: Ubicado en Mexico
+    breadcrumbs:
+    - Ubicado en Mexico
+    about:
+    - Ubicado en Mexico
+    - ubicado en mexico
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_mexico
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_mexico
+    - workspace.knowledge
+    slug: ubicado-en-mexico
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: ubicado-en-mexico/description
+    title: Description
+    breadcrumbs:
+    - Ubicado en Mexico
+    - Description
+    about:
+    - Ubicado en Mexico
+    - ubicado en mexico
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_mexico
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_mexico
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-pais-usa
+  sections:
+  - path: ubicado-en-usa
+    title: Ubicado en USA
+    breadcrumbs:
+    - Ubicado en USA
+    about:
+    - Ubicado en USA
+    - ubicado en usa
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_usa
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_usa
+    - workspace.knowledge
+    slug: ubicado-en-usa
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: ubicado-en-usa/description
+    title: Description
+    breadcrumbs:
+    - Ubicado en USA
+    - Description
+    about:
+    - Ubicado en USA
+    - ubicado en usa
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_usa
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.pais_usa
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-para-familiar
+  sections:
+  - path: busca-para-un-familiar
+    title: Busca para un familiar
+    breadcrumbs:
+    - Busca para un familiar
+    about:
+    - Busca para un familiar
+    - busca para un familiar
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_familiar
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_familiar
+    - workspace.knowledge
+    slug: busca-para-un-familiar
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: busca-para-un-familiar/description
+    title: Description
+    breadcrumbs:
+    - Busca para un familiar
+    - Description
+    about:
+    - Busca para un familiar
+    - busca para un familiar
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_familiar
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_familiar
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-para-inversion
+  sections:
+  - path: busca-como-inversion
+    title: Busca como inversion
+    breadcrumbs:
+    - Busca como inversion
+    about:
+    - Busca como inversion
+    - busca como inversion
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_inversion
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_inversion
+    - workspace.knowledge
+    slug: busca-como-inversion
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: busca-como-inversion/description
+    title: Description
+    breadcrumbs:
+    - Busca como inversion
+    - Description
+    about:
+    - Busca como inversion
+    - busca como inversion
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_inversion
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_inversion
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-para-mi
+  sections:
+  - path: busca-para-si-mismo
+    title: Busca para si mismo
+    breadcrumbs:
+    - Busca para si mismo
+    about:
+    - Busca para si mismo
+    - busca para si mismo
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_mi
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_mi
+    - workspace.knowledge
+    slug: busca-para-si-mismo
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: busca-para-si-mismo/description
+    title: Description
+    breadcrumbs:
+    - Busca para si mismo
+    - Description
+    about:
+    - Busca para si mismo
+    - busca para si mismo
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_mi
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.para_mi
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-persona-juridica
+  sections:
+  - path: persona-juridica
+    title: Persona juridica
+    breadcrumbs:
+    - Persona juridica
+    about:
+    - Persona juridica
+    - persona juridica
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.persona_juridica
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.persona_juridica
+    - workspace.knowledge
+    slug: persona-juridica
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: persona-juridica/description
+    title: Description
+    breadcrumbs:
+    - Persona juridica
+    - Description
+    about:
+    - Persona juridica
+    - persona juridica
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.persona_juridica
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.persona_juridica
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-proyecto-interes
+  sections:
+  - path: proyecto-de-interes-declarado
+    title: Proyecto de interes declarado
+    breadcrumbs:
+    - Proyecto de interes declarado
+    about:
+    - Proyecto de interes declarado
+    - proyecto de interes declarado
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.proyecto_interes
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.proyecto_interes
+    - workspace.knowledge
+    slug: proyecto-de-interes-declarado
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: proyecto-de-interes-declarado/description
+    title: Description
+    breadcrumbs:
+    - Proyecto de interes declarado
+    - Description
+    about:
+    - Proyecto de interes declarado
+    - proyecto de interes declarado
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.proyecto_interes
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.proyecto_interes
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-segmento-broker
+  sections:
+  - path: interesado-en-ser-broker
+    title: Interesado en ser Broker
+    breadcrumbs:
+    - Interesado en ser Broker
+    about:
+    - Interesado en ser Broker
+    - interesado en ser broker
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_broker
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_broker
+    - workspace.knowledge
+    slug: interesado-en-ser-broker
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: interesado-en-ser-broker/description
+    title: Description
+    breadcrumbs:
+    - Interesado en ser Broker
+    - Description
+    about:
+    - Interesado en ser Broker
+    - interesado en ser broker
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_broker
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_broker
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-segmento-franquicia
+  sections:
+  - path: interesado-en-franquicia
+    title: Interesado en Franquicia
+    breadcrumbs:
+    - Interesado en Franquicia
+    about:
+    - Interesado en Franquicia
+    - interesado en franquicia
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_franquicia
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_franquicia
+    - workspace.knowledge
+    slug: interesado-en-franquicia
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: interesado-en-franquicia/description
+    title: Description
+    breadcrumbs:
+    - Interesado en Franquicia
+    - Description
+    about:
+    - Interesado en Franquicia
+    - interesado en franquicia
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_franquicia
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_franquicia
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-segmento-suite
+  sections:
+  - path: interesado-en-suite
+    title: Interesado en Suite
+    breadcrumbs:
+    - Interesado en Suite
+    about:
+    - Interesado en Suite
+    - interesado en suite
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_suite
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_suite
+    - workspace.knowledge
+    slug: interesado-en-suite
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: interesado-en-suite/description
+    title: Description
+    breadcrumbs:
+    - Interesado en Suite
+    - Description
+    about:
+    - Interesado en Suite
+    - interesado en suite
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_suite
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.segmento_suite
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+- doc_name: trait-vitali-sin-cita
+  sections:
+  - path: sin-visita-agendada
+    title: Sin visita agendada
+    breadcrumbs:
+    - Sin visita agendada
+    about:
+    - Sin visita agendada
+    - sin visita agendada
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.sin_cita
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.sin_cita
+    - workspace.knowledge
+    slug: sin-visita-agendada
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: sin-visita-agendada/description
+    title: Description
+    breadcrumbs:
+    - Sin visita agendada
+    - Description
+    about:
+    - Sin visita agendada
+    - sin visita agendada
+    - Description
+    - description
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.sin_cita
+    - workspace.knowledge
+    semantic_tags:
+    - system:vitali
+    - type.knowledge.trait
+    - user:traits.sin_cita
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787

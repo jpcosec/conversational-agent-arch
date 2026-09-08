@@ -423,3 +423,12 @@ documents:
   - topic:twilio
   - type.knowledge.atom
   - workspace.desk.atoms
+- name: "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
+  path: "desk/atoms/atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas.md"
+  hash_c: 11cb2d15b6a7d638d568127a42678ea5bfe7e5dae438e819de5f437062dc5b40
+  hash_d: b89cf7515aab5462e75a9b09e687bcf30aabf198954a8b1df0cfac40e8f5db9b
+  semantic_tags:
+  - layer:runtime
+  - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms

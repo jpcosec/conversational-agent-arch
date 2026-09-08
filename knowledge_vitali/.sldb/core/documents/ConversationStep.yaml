@@ -1,0 +1,51 @@
+documents:
+- name: step-vitali-saludo
+  path: atoms/step-vitali-saludo.md
+  hash_c: c324349111c58efc10b31ce4980c6acfa8e5a2d215f5b8978e30866893391808
+  hash_d: 0b5202fbbfbad70d6b41d76da984a9c32f75d9c5f07e7c3773c2db4af46e337c
+  semantic_tags:
+  - agent:conversation-rule
+  - conversation:steps.saludo
+  - system:vitali
+  - type.knowledge.step
+  - workspace.knowledge
+- name: step-vitali-calificacion
+  path: atoms/step-vitali-calificacion.md
+  hash_c: da06b039fd0c291a6b3f4dd907913c9d6a99a089e1cf59b32c9cb5636a70208b
+  hash_d: 6535825a197dba591a5ee48010c869c56eb3707702c1c765b388773ce76861f8
+  semantic_tags:
+  - agent:conversation-rule
+  - conversation:steps.calificacion
+  - system:vitali
+  - type.knowledge.step
+  - workspace.knowledge
+- name: step-vitali-agendar-visita
+  path: atoms/step-vitali-agendar-visita.md
+  hash_c: 08d7defbeb0f0b61f7b9f4067bd9fa808b0c23ee2b2aafb3419cf5c3e2903a9d
+  hash_d: 879891af9f8952f1adcac78b3617667fb357302d29bdae05b48f82001bbef34c
+  semantic_tags:
+  - agent:booking-workflow
+  - conversation:steps.agendar_visita
+  - system:vitali
+  - type.knowledge.step
+  - workspace.knowledge
+- name: step-vitali-datos-contacto
+  path: atoms/step-vitali-datos-contacto.md
+  hash_c: d6b439d99c2eb6190bdd59ba352864728c678c421d53c63e2251927a887e4746
+  hash_d: 1feaa70a7fa4c7e4d94d1f04c4585f323a760f81c18186fa020457bd0637cd33
+  semantic_tags:
+  - agent:booking-workflow
+  - conversation:steps.datos_contacto
+  - system:vitali
+  - type.knowledge.step
+  - workspace.knowledge
+- name: step-vitali-cierre
+  path: atoms/step-vitali-cierre.md
+  hash_c: 38d4fa5efc463c318101bebaf8e4520711dac26e14d41ebf27ca2b988aa457c1
+  hash_d: 7d3adb163a39deb017cd21298168b821a94416efe3e5554b0d12afafad294bea
+  semantic_tags:
+  - agent:booking-workflow
+  - conversation:steps.cierre
+  - system:vitali
+  - type.knowledge.step
+  - workspace.knowledge

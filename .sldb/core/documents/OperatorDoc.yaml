@@ -287,3 +287,27 @@ documents:
   - primitive:operator
   - type.workflow.operator
   - workspace.desk.primitives
+- name: operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate.md
+  hash_c: 307b540c90f32e020b5863fc101d0a1ed149425d50e95ee1713ecceaf9e57377
+  hash_d: 9c577f038fc10df752fa7e16a65253791278c68604e4ec25959aa6fd96a94c99
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
+  path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing.md
+  hash_c: 496f7d2c250ae186041153c7b4c4f79fe9578edf27131ded7a3cff7791af9b65
+  hash_d: e4a05eace87e07867644e07637aef96f483d16ea9a360417e4292dc743cefdd9
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close.md
+  hash_c: da30e2865f4198a6118240b7b870075a591d6ae8a387c8c5275a61bfa897769b
+  hash_d: ddb9ba5c8467a9ccdbc1480c7c29a27031f2b51151a8c305d8c7ba29c64fcbb9
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives

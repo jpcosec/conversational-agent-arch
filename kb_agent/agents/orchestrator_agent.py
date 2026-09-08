@@ -157,7 +157,9 @@ def render_orchestrator_flow(
         "- 'kind': 'tool_call' SOLO si el contexto dinamico del turno "
         "(pregunta + tools declaradas + grounding) deja claro que hay que "
         "EJECUTAR una tool y tenes TODOS sus argumentos requeridos (no "
-        "inventes valores que el usuario no dio). 'fallback' si no hay "
+        "inventes valores que el usuario no dio; los 'datos_capturados' del "
+        "contexto dinamico SI son valores que el usuario dio en turnos "
+        "anteriores y podes usarlos como argumentos). 'fallback' si no hay "
         "contexto (grounding) para responder. 'nl' en cualquier otro caso.\n"
         "- 'tool_call': obligatorio si kind='tool_call', null en cualquier "
         "otro caso. {name, args} EXACTOS de una tool de la lista "
@@ -271,6 +273,10 @@ class OrchestratorAgent:
             "step_actual": compiled_context.get("flow_node"),
             "allowed_transitions": allowed_transitions,
             "tools_disponibles": function_declarations,
+            # Datos que la persona YA dio (capturados de mensajes anteriores,
+            # ver kb_agent/lead_slots.py): cuentan como argumentos disponibles
+            # para una tool aunque no esten en la pregunta de este turno.
+            "datos_capturados": dict(compiled_context.get("collected_slots") or {}),
             "domain_facts": compiled_context.get("domain_facts", []),
             "rules": compiled_context.get("rules", []),
             "user_traits": compiled_context.get("user_traits", []),

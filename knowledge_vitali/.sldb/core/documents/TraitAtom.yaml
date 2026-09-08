@@ -1,0 +1,190 @@
+documents:
+- name: trait-vitali-con-cita
+  path: atoms/trait-vitali-con-cita.md
+  hash_c: 02a482c93cfd76f5d78243675ae321bb60d0b4051148fec3079b4bbe7787ff55
+  hash_d: eba474356191d01e59804d1c9f3b297839650e21089b548de029f57558d06b45
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.con_cita
+  - workspace.knowledge
+- name: trait-vitali-edad-45-59
+  path: atoms/trait-vitali-edad-45-59.md
+  hash_c: 633707c1bba2f73bef20c1c1f54573ce064f179b9f675deb1bfec26fefa547ed
+  hash_d: c46a7cf3297d8b6ae997fa0515f0afd7d552230125b35f821bcbe849f38889e7
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.edad_45_59
+  - workspace.knowledge
+- name: trait-vitali-edad-60-69
+  path: atoms/trait-vitali-edad-60-69.md
+  hash_c: 66f8e55fea70d6cf0bd0d5d11337512a67242683c8a556349a3ba0728998c17e
+  hash_d: 962bf0ca862a11456e9ae460206bf8fe249592f0419d1a94e2831c8b60bb3c6b
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.edad_60_69
+  - workspace.knowledge
+- name: trait-vitali-edad-70-mas
+  path: atoms/trait-vitali-edad-70-mas.md
+  hash_c: 8af5a6078fd15857702b22e4f5a140be91ecfa3176a433e51eaf5a2f51250fc4
+  hash_d: f845850173b84dd022b2a917916cc04ec55609238f502d049ce789213ad891f5
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.edad_70_mas
+  - workspace.knowledge
+- name: trait-vitali-edad-menos-45
+  path: atoms/trait-vitali-edad-menos-45.md
+  hash_c: 15bdd19a5f239019347dcdb823b554a559f10369f549327422951ab6e97fb818
+  hash_d: 5ca4d39d4871e0092cb85d40b3516f17ae7ac0513286a8a83b5edd3af88bedb8
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.edad_menos_45
+  - workspace.knowledge
+- name: trait-vitali-horizonte-decision
+  path: atoms/trait-vitali-horizonte-decision.md
+  hash_c: 672fa988b37c0a6ac027ebd4080e307439811bc505ace466fcc8769f60a1b059
+  hash_d: 0ff11f1caa759138dc0612472d6269c75db3122aca38fae1904644d3aa591abe
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.horizonte_decision
+  - workspace.knowledge
+- name: trait-vitali-onboarding-pendiente
+  path: atoms/trait-vitali-onboarding-pendiente.md
+  hash_c: 2ba4f329855d4ed184d17202d13e67555e1fc985eeb6106c8bdd3acd2eba565d
+  hash_d: d308c3e88ddc4c6329313019ca0281ec6543a34ffc6cdef7c27e35beb833c207
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.onboarding_pendiente
+  - workspace.knowledge
+- name: trait-vitali-pais-bolivia
+  path: atoms/trait-vitali-pais-bolivia.md
+  hash_c: 756dad6322a9ce40ac3ea120e74fefa0606845f45e4648eaa1a81cae9fea2268
+  hash_d: b094fbf12c9903ac94a02ec2e2df87fc317011c502e5d7cf4cf1a36e968a0a3d
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.pais_bolivia
+  - workspace.knowledge
+- name: trait-vitali-pais-chile
+  path: atoms/trait-vitali-pais-chile.md
+  hash_c: bfe79e121d5d9e65a8562d26eb9894e2372361a5cb38117db96253a5bc8aba9f
+  hash_d: 7a4efbdee4332f29798ecc4313e41d9db3d0a1805681ca33496891a617547ed7
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.pais_chile
+  - workspace.knowledge
+- name: trait-vitali-pais-colombia
+  path: atoms/trait-vitali-pais-colombia.md
+  hash_c: f7a4f56d57bc82f555bc91006b5e50a9d54e3780896f60a031aad4f66b706646
+  hash_d: caf3955fe422da6bf29b4d9f3baff0b37a0d5a8ab3a469c1f289b85267c6e700
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.pais_colombia
+  - workspace.knowledge
+- name: trait-vitali-pais-mexico
+  path: atoms/trait-vitali-pais-mexico.md
+  hash_c: 99eac49c1411c4ed2d4a935a09fe971e5c42f675173f81de1f8a68169c2c8d9b
+  hash_d: 05adc5aeeccaa033a269eb9acc402ad71eb2111fe315df9ce71cc5d7a066ce5b
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.pais_mexico
+  - workspace.knowledge
+- name: trait-vitali-pais-usa
+  path: atoms/trait-vitali-pais-usa.md
+  hash_c: 1fb0b3b77fab406d8a7b5bb5701d0e87afb57b24722a3d89f42a34012d8db284
+  hash_d: 431b21933ad8c69d75bebff88a5ffe5c29ed28eff703f157a7c66a3efcb83ab7
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.pais_usa
+  - workspace.knowledge
+- name: trait-vitali-para-familiar
+  path: atoms/trait-vitali-para-familiar.md
+  hash_c: 9d28a325c0ccb873b4e7c318a4200a816e99685e21545dbd1f3de6830ea00cd5
+  hash_d: 470735fc96b669b324bc73f8676f6f4ec6b6577583988370d4d8d77d7d0a98f8
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.para_familiar
+  - workspace.knowledge
+- name: trait-vitali-para-inversion
+  path: atoms/trait-vitali-para-inversion.md
+  hash_c: 0a8e738b819174f8c8d002e437c0d00be6fe8dc83bc4339f0f31b71169d9c3e6
+  hash_d: c6fb95b15f5304234adcc651efecbc1bd6719603b6ac4d437190c934f580f5bc
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.para_inversion
+  - workspace.knowledge
+- name: trait-vitali-para-mi
+  path: atoms/trait-vitali-para-mi.md
+  hash_c: d007c1bd74581f771f066dec49e786f4921b7c704da16338e63b768744c0d9ef
+  hash_d: 7d1f47a2418540cdfb06092c4bb921e1b55fb4981cbf0ad8d478e0f8dd3bd0c4
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.para_mi
+  - workspace.knowledge
+- name: trait-vitali-persona-juridica
+  path: atoms/trait-vitali-persona-juridica.md
+  hash_c: 7c24b7e9e7b121f81f2bc18602794c18f762d16091d1040b12096933998c1ac4
+  hash_d: f42f6610e0ba87fee45fef2eea172c86d605385a330f95f641e1a15b7e5d35e6
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.persona_juridica
+  - workspace.knowledge
+- name: trait-vitali-proyecto-interes
+  path: atoms/trait-vitali-proyecto-interes.md
+  hash_c: 438bf9f5ef42e858ec8929df409a42479dcf646e4a3d02f9bd9f3344c99ff042
+  hash_d: 55287697bbd3eda8362a85167bc660c772f8ef84e9bc4de56e6f2459d24e7cf4
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.proyecto_interes
+  - workspace.knowledge
+- name: trait-vitali-segmento-broker
+  path: atoms/trait-vitali-segmento-broker.md
+  hash_c: 5a5c8cccc62ba2774149d9bbc6aefd4755da62668dc3c5b3d30a4c628ebb76b7
+  hash_d: 88e36bb6b280f063b9db626de249a503f535a4a219f211fdaa21fe393a781ba0
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.segmento_broker
+  - workspace.knowledge
+- name: trait-vitali-segmento-franquicia
+  path: atoms/trait-vitali-segmento-franquicia.md
+  hash_c: b2065b46958e7da5876bcd951d8104a5a7efe6f79321f0389971f9cdb547a446
+  hash_d: 243bd41245559e27acfd56c6f9e320bc35779392882b3f2908b8d85323f45643
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.segmento_franquicia
+  - workspace.knowledge
+- name: trait-vitali-segmento-suite
+  path: atoms/trait-vitali-segmento-suite.md
+  hash_c: efa74ed93b55340016ca57bbbf66d1708ccf7e4025c03930a30414bbb9e129b1
+  hash_d: 7832d30f5e8ca8024cb27c956eb97c835bbe5154e9ae7011e07e71c4cd629b46
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.segmento_suite
+  - workspace.knowledge
+- name: trait-vitali-sin-cita
+  path: atoms/trait-vitali-sin-cita.md
+  hash_c: 2bbd1ae6c70a69f224b4916b6be2a92567f2c0f713b0bfb83c07732ae25088eb
+  hash_d: c9091f79e23bcc4d869b245d95f20e1d53c15ab6366d5e1040e3b598a19689d3
+  semantic_tags:
+  - system:vitali
+  - type.knowledge.trait
+  - user:traits.sin_cita
+  - workspace.knowledge

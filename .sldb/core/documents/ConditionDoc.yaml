@@ -423,3 +423,43 @@ documents:
   - primitive:condition
   - type.workflow.condition
   - workspace.desk.primitives
+- name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path.md
+  hash_c: 05606ca8b4c4c171577b1dd88ec7105f2cb85b8c7b5c5f291e53236efbf596a8
+  hash_d: 867c67308665fb246dc34078e1775aed13cbfe77ca6b9e2542d29870790f7035
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation.md
+  hash_c: 3d85978e3d90dac2cfa0a564fe28cba0e7f5ed2c6aae217a3fa71dc8d81557ff
+  hash_d: ac71ded8d941f3a48b0c7e764547c676891347be5477169ed3302ccb564b2f55
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence.md
+  hash_c: c929e948659beb0b604d516e615e0d93ef86c91bffe857d7e5cabbdfe9d7d610
+  hash_d: 7b03cb6110cca164b966cc54d8f4bd4cbd594d05d25283bcdcb1c0d935d19a36
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated.md
+  hash_c: d3f95719bb93fe970f445f6e7a6c1a9fdbf0d4e08ec22a9119cc80b05f23803b
+  hash_d: 6bd37c91a8780d3088ea08d2193310804bd9d8fadbcba476ddbf33c761510d16
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout.md
+  hash_c: 4ad603f52a581a40b92f2c70a238751ac7de0a51cdf0615dcb7bc8d0cea54319
+  hash_d: 75f3e88bf1c8622cc13c276d0e162736055554154faca3cb7a05204db11bc2bf
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives

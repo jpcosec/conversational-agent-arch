@@ -287,3 +287,27 @@ documents:
   - primitive:checklist
   - type.workflow.checklist
   - workspace.desk.primitives
+- name: checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
+  path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready.md
+  hash_c: 3575fbae248ce6e5cd4b478e6098cdc7970b5a8fe03c63ae25667dccd8128169
+  hash_d: a71e245e304fb80621b120e28c2ab6633a2f9e83cbd52a413a377d4844794a97
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
+  path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready.md
+  hash_c: eac717e09f3593a9ba26afd10b264b3e7625b857b9a97ed2769ac7a6c6268577
+  hash_d: 32f223f84e55e76ed4b946d5e1163b5789b5d29dec924dbfb81a40d7ae2ba482
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+  path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready.md
+  hash_c: 2789b08281701cdc36e535264292e6901f22ee879829e56a84ed9c1232b88371
+  hash_d: aab0bac128fca5f4c06adb36137fcdc6ee377d32a0d39df0f80fc425da5cf09a
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives

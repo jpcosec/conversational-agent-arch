@@ -1,0 +1,10 @@
+documents:
+- name: gate-vitali-grounding
+  path: atoms/gate-vitali-grounding.md
+  hash_c: 716fea0ee73299362fc0eb31208b3330b9a156df7c00867edfa770c11b84827f
+  hash_d: 33c90021a234c40c23b25b44cb0a118c935984e536d7b2fb6d8383548beddbd4
+  semantic_tags:
+  - gate:grounding
+  - system:vitali
+  - type.knowledge.gate
+  - workspace.knowledge

@@ -107,3 +107,12 @@ documents:
   - type.workflow.routine
   - workspace.desk.routines
   - workspace:desk
+- name: routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  path: desk/routines/routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
+  hash_c: d717e986a08a00ec58ced78cc3d5771396b45e134cd19c408ab951ea3416ad0c
+  hash_d: ff2b28323adf96c715b9a6ec46fe84148385455c3e4a8a5c698b0c3c0c3a8cc5
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
