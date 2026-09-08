@@ -36,8 +36,8 @@ tags:
   - atom-embeddings-como-layout-no-vista
   - atom-garantia-cero-alucinaciones
   - atom-gobernanza-deskops
-  - atom-negocios-activos
   - atom-propuesta-de-valor
+  - atom-un-negocio-por-rama
   family:conversation:
   - atom-kgdb-grafo-de-flujo
   family:domain:
@@ -55,8 +55,8 @@ tags:
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
   - atom-garantia-cero-alucinaciones
-  - atom-negocios-activos
   - atom-propuesta-de-valor
+  - atom-un-negocio-por-rama
   layer:frontend:
   - atom-canales-de-entrada
   - atom-dashboard
@@ -543,7 +543,6 @@ tags:
   - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
   - atom-modo-demo
-  - atom-negocios-activos
   - atom-orquestador-hub
   - atom-perfilador-asincrono
   - atom-persistencia-sql
@@ -561,6 +560,7 @@ tags:
   - atom-tool-handlers-registry
   - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
+  - atom-un-negocio-por-rama
   type.workflow.board:
   - Board
   type.workflow.checklist:
@@ -996,7 +996,6 @@ tags:
   - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
   - atom-modo-demo
-  - atom-negocios-activos
   - atom-orquestador-hub
   - atom-perfilador-asincrono
   - atom-persistencia-sql
@@ -1014,6 +1013,7 @@ tags:
   - atom-tool-handlers-registry
   - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
+  - atom-un-negocio-por-rama
   workspace.desk.inbox:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
@@ -2058,14 +2058,6 @@ documents:
     - role:data
     - type.knowledge.atom
     - workspace.desk.atoms
-  atom-negocios-activos:
-    model: AtomDoc
-    path: desk/atoms/atom-negocios-activos.md
-    tags:
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
   atom-orquestador-hub:
     model: AtomDoc
     path: desk/atoms/atom-orquestador-hub.md
@@ -2299,6 +2291,14 @@ documents:
     tags:
     - layer:runtime
     - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-un-negocio-por-rama:
+    model: AtomDoc
+    path: desk/atoms/atom-un-negocio-por-rama.md
+    tags:
+    - family:concepts
+    - layer:business
     - type.knowledge.atom
     - workspace.desk.atoms
   current-system-overview:

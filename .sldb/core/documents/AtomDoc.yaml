@@ -161,15 +161,6 @@ documents:
   - role:data
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: atom-negocios-activos
-  path: desk/atoms/atom-negocios-activos.md
-  hash_c: 94bbab5e7896670203df17701fe2e38ac54e748e57d93fd0d897172632c8a32f
-  hash_d: 1757735d51d25c8a38944d35d71a8f3c4f43b9dfaef2b160de14f32ac8edb657
-  semantic_tags:
-  - family:concepts
-  - layer:business
-  - type.knowledge.atom
-  - workspace.desk.atoms
 - name: atom-orquestador-hub
   path: desk/atoms/atom-orquestador-hub.md
   hash_c: 02e39712c47172b064fd318a722bf88762e718e294febd2b4fd14c4f37783c1e
@@ -430,5 +421,14 @@ documents:
   semantic_tags:
   - layer:runtime
   - role:boundary
+  - type.knowledge.atom
+  - workspace.desk.atoms
+- name: atom-un-negocio-por-rama
+  path: desk/atoms/atom-un-negocio-por-rama.md
+  hash_c: 05922c00bfbf446ffd749019bcffabcf21ca695d30da2c8a41d978af018d8e16
+  hash_d: 7c83edaa666285674aa8d83f4c8e378aae29963fea2414a3b9358c16e8eca9c7
+  semantic_tags:
+  - family:concepts
+  - layer:business
   - type.knowledge.atom
   - workspace.desk.atoms

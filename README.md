@@ -7,8 +7,8 @@ Agente conversacional multi-dominio diseñado para operar en entornos de alta re
 ### Garantía Cero Alucinaciones
 Regla arquitectónica estricta: el LLM tiene prohibido inventar información. Si el Context Compiler (`kb_agent/knowledge`) compila un contexto vacío (sin hechos ni reglas que sustenten la consulta del usuario), la máquina de estados fuerza una transición a un nodo de `BREAKPOINT_MISS`, obligando al agente a usar un mensaje de `fallback` determinista en lugar de alucinar una respuesta.
 
-### Negocios Activos (KBs)
-El sistema soporta múltiples negocios aislados. Actualmente la KB activa es 'Antonia' (asistente clínico, producción) en `knowledge/`. El archivo `project.config.yaml` actúa como el switch que define cuál está activo.
+### Un negocio por rama
+Cada rama del repo es UN solo negocio; no existen negocios activos ni un switch entre ellos. project.config.yaml declara el negocio de la rama (nombre, kb_root, tools, deploy) y knowledge/ es su unica KB. Otro negocio es otra rama con su propia KB y su propio yaml (Antonia en dev/main, Vitali en su worktree); el runtime, kb_agent/, no lleva nada del negocio.
 
 ## Arquitectura y Componentes
 > Ver [Documentación de Arquitectura](docs/ARCHITECTURE.md) y [Catálogo Visual](desk/spec2viz/build/architecture.html) para detalles técnicos.

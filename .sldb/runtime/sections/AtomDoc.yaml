@@ -837,51 +837,6 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: atom-negocios-activos
-  sections:
-  - path: negocios-activos-kbs
-    title: Negocios Activos (KBs)
-    breadcrumbs:
-    - Negocios Activos (KBs)
-    about:
-    - Negocios Activos (KBs)
-    - negocios activos kbs
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: negocios-activos-kbs
-    level: 1
-    line_start: 11
-    line_end: 12
-  - path: negocios-activos-kbs/answer
-    title: Answer
-    breadcrumbs:
-    - Negocios Activos (KBs)
-    - Answer
-    about:
-    - Negocios Activos (KBs)
-    - negocios activos kbs
-    - Answer
-    - answer
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 13
-    line_end: 14
 - doc_name: atom-orquestador-hub
   sections:
   - path: orquestador-hub-central
@@ -2167,6 +2122,51 @@ documents:
     semantic_tags:
     - layer:runtime
     - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-un-negocio-por-rama
+  sections:
+  - path: un-negocio-por-rama
+    title: Un negocio por rama
+    breadcrumbs:
+    - Un negocio por rama
+    about:
+    - Un negocio por rama
+    - un negocio por rama
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: un-negocio-por-rama
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: un-negocio-por-rama/answer
+    title: Answer
+    breadcrumbs:
+    - Un negocio por rama
+    - Answer
+    about:
+    - Un negocio por rama
+    - un negocio por rama
+    - Answer
+    - answer
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer

@@ -13,7 +13,7 @@ provenance: desk/materializations/composition-readme.md
 
 ![[desk/atoms/atom-propuesta-de-valor.md]]
 ![[desk/atoms/atom-garantia-cero-alucinaciones.md]]
-![[desk/atoms/atom-negocios-activos.md]]
+![[desk/atoms/atom-un-negocio-por-rama.md]]
 
 ## Arquitectura y Componentes
 > Ver [Documentación de Arquitectura](docs/ARCHITECTURE.md) y [Catálogo Visual](desk/spec2viz/build/architecture.html) para detalles técnicos.

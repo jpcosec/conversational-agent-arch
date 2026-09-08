@@ -1,8 +1,8 @@
 documents:
 - name: composition-readme
   path: desk/materializations/composition-readme.md
-  hash_c: 7ba3e8e361e5cfe9e140d99174d599b1d5d91ccf053115ad6f75fafc9c7636b1
-  hash_d: deccc927d612ade60d087085fc443046e3835f32351eef4c9cbcad6d464f2418
+  hash_c: b35708601c203693cef27bae738570e7e2ebbd56a94fde47329484ea6ebddae0
+  hash_d: f236c8d1cf23d19843652e1608f0a8f65daef0444e722682b70130f5d4b21e51
   semantic_tags:
   - target:readme
   - type.documentation.composition
@@ -21,8 +21,8 @@ documents:
   - workspace:docs
 - name: composition-glossary
   path: desk/materializations/composition-glossary.md
-  hash_c: 7a1eed4e52f3ea605fdc819dc64f691cb285e906a3cf5ba75878e52848d8e49c
-  hash_d: 15350168ed760b27f992e3ce25e5cd8a27bd65fc0bf08735fb8f9114e5151a54
+  hash_c: dc5a37dae1bea63350135ffaee3131e4ae83e363d7280445af573861d0c0baba
+  hash_d: 29e7ff41b7bc56e661537e8af5c70410c2753cfa48e5de6da5c8a034b5bf619d
   semantic_tags:
   - target:glossary
   - type.documentation.composition
