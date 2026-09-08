@@ -24,9 +24,11 @@ class StepKind(StrEnum):
 class ConversationStep(IndexProxies):
     """Nodo del diagrama de conversación.
 
-    Define un paso en el flujo conversacional: qué debe hacer
-    el agente en este paso, qué slots recolectar, a dónde
-    puede transicionar, y qué átomos groundean este step.
+    Define un paso en el flujo conversacional: qué debe hacer el agente en
+    este paso y qué slots recolectar. A dónde puede transicionar, qué átomos
+    lo groundean y qué tool ejecuta NO son campos: son aristas tipadas de
+    kgdb (``transitions_to``, ``grounded_by``, ``uses_tool``, RelationDoc de
+    la KB) que el runtime lee del grafo (``kb_agent.knowledge.flow``).
     """
 
     __family__ = "conversation"
@@ -61,18 +63,6 @@ semantic_anchors: ⸢optrev•semantic_anchors⸥
 
 ⸢optrev•handout_target⸥
 
-## Tool
-
-⸢optrev•tool_ref⸥
-
-## Allowed Transitions
-
-⸢rev•allowed_transitions⸥
-
-## Grounding Atoms
-
-⸢rev•grounding_atoms⸥
-
 ## Completion Condition
 
 ⸢optrev•completion_condition⸥
@@ -102,18 +92,6 @@ semantic_anchors: ⸢optrev•semantic_anchors⸥
     handout_target: str = Field(
         default="",
         description="For kind=handout: where to escalate/derive (human team, other flow, external service)."
-    )
-    tool_ref: str = Field(
-        default="",
-        description="For kind=llamado_tool: id of the ToolAtom to execute in this step."
-    )
-    allowed_transitions: str = Field(
-        default="",
-        description="List or description of steps that can follow this one (e.g. 'booking', 'onboarding')."
-    )
-    grounding_atoms: str = Field(
-        default="",
-        description="List or description of atom ids that ground this step's instructions."
     )
     tags: list[AtomTag] = Field(
         default_factory=list,

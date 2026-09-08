@@ -1,96 +1,38 @@
 from __future__ import annotations
 
-import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from kb_agent.reflector.generator import ReflectorAtomGenerator
 from kb_agent.reflector.reader import ReflectorHistoryRow
-from tests.support.sldb_seed import REPO_ROOT, run_sldb
+from tests.support.sldb_seed import DEFAULT_NAMESPACES_REGISTRY, minimal_business_atoms, seed_store
 
 
-def test_generator_writes_proposed_reflector_atom_for_recurrent_pattern(tmp_path: Path) -> None:
-    root = _seed_generator_root(tmp_path / "generator_root")
-    generator = ReflectorAtomGenerator(
-        kb_root=root,
-        store_name=".sldb_test",
-        output_dir=root / ".sldb_test" / "generated-atoms",
-    )
+def _generator(tmp_path: Path) -> tuple[ReflectorAtomGenerator, Path]:
+    root = seed_store(tmp_path / "kb", minimal_business_atoms(), namespaces_registry=DEFAULT_NAMESPACES_REGISTRY)
+    return ReflectorAtomGenerator(kb_root=root, registry_root=root), root
 
+
+def test_generator_proposes_a_tracked_domain_atom_for_recurrent_pattern(tmp_path: Path) -> None:
+    generator, root = _generator(tmp_path)
     created = generator.generate(_recurrent_rows())
-
     assert len(created) == 1
     created_path = created[0].path
-    assert created_path.exists()
-    assert ".sldb_test" in str(created_path)
+    assert created_path.exists() and created_path.is_relative_to(root)
     content = created_path.read_text(encoding="utf-8")
-    assert "- source:reflector" in content
-    assert "status: proposed" in content
+    assert "- source:reflector" in content and "- status:proposed" in content
     assert "¿Cuál es el horario de atención?" in content
+    # trackeado en el store: visible por el contrato de runtime, como cualquier DomainAtom
+    proposed = [a for a in generator._knowledge.docs_by_type("domain") if a["id"] == created[0].atom_id]
+    assert proposed and "status:proposed" in proposed[0]["tags"]
 
 
 def test_generator_does_not_duplicate_existing_pattern(tmp_path: Path) -> None:
-    root = _seed_generator_root(tmp_path / "generator_root")
-    generator = ReflectorAtomGenerator(
-        kb_root=root,
-        store_name=".sldb_test",
-        output_dir=root / ".sldb_test" / "generated-atoms",
-    )
-
+    generator, root = _generator(tmp_path)
     first = generator.generate(_recurrent_rows())
     second = generator.generate(_recurrent_rows())
-
-    generated_files = sorted((root / ".sldb_test" / "generated-atoms").glob("*.md"))
-    assert len(first) == 1
-    assert second == []
-    assert len(generated_files) == 1
-
-
-def _seed_generator_root(root: Path) -> Path:
-    root.mkdir(parents=True, exist_ok=True)
-    (root / "desk" / "atoms").mkdir(parents=True, exist_ok=True)
-    (root / "desk" / "atoms" / "tag-namespaces.yaml").write_text(
-        (
-            "namespaces:\n"
-            "  domain:\n"
-            "    meaning: Problem domain or durable area of concern.\n"
-            "    use_when: The atom belongs to a reusable problem domain.\n"
-            "    do_not_use_when: A more specific tag applies.\n"
-            "    examples:\n"
-            "      - domain:knowledge-management\n"
-            "  layer:\n"
-            "    meaning: Architectural layer where the atom applies.\n"
-            "    use_when: The atom is scoped to a layer of the system.\n"
-            "    do_not_use_when: The tag names only a broad topic or system.\n"
-            "    examples:\n"
-            "      - layer:runtime\n"
-            "  source:\n"
-            "    meaning: Provenance channel or producer that originated the atom draft.\n"
-            "    use_when: The atom is machine-generated and needs source attribution.\n"
-            "    do_not_use_when: The tag expresses the atom subject instead of origin.\n"
-            "    examples:\n"
-            "      - source:reflector\n"
-            "  system:\n"
-            "    meaning: System, project, or tool the atom belongs to.\n"
-            "    use_when: The atom is about a specific system.\n"
-            "    do_not_use_when: The tag is only a general topic.\n"
-            "    examples:\n"
-            "      - system:deskops\n"
-            "  topic:\n"
-            "    meaning: Subject area discussed by the atom.\n"
-            "    use_when: The atom is about a conceptual topic.\n"
-            "    do_not_use_when: The atom describes a reusable implementation shape.\n"
-            "    examples:\n"
-            "      - topic:ontology\n"
-            "      - topic:rules\n"
-        ),
-        encoding="utf-8",
-    )
-
-    run_sldb("stores", "init", "--path", str(root))
-    os.rename(root / ".sldb", root / ".sldb_test")
-    run_sldb("models", "add", "deskops.models:AtomDoc", "--store", str(root / ".sldb_test"), "--pythonpath", str(REPO_ROOT))
-    return root
+    assert len(first) == 1 and second == []
+    assert len([p for p in root.rglob("*.md") if "source:reflector" in p.read_text(encoding="utf-8")]) == 1
 
 
 def _recurrent_rows() -> list[ReflectorHistoryRow]:

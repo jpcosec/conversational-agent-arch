@@ -21,7 +21,7 @@ ATOMS = [
     {"type": "domain", "id": "atom-carta", "title": "Carta", "tags": ["domain:catalogo", "system:test"], "five_wh": "what", "domain_ref": "test-biz", "fields": {"answer": "Pizza margarita 8900, Napolitana 9800."}},
     {"type": "trait", "id": "trait-vegetariano", "title": "Vegetariano", "tags": ["user:traits.vegetariano", "system:test"], "category": "dietary", "fields": {"description": "Cliente que no consume carne."}},
     {"type": "step", "id": "step-onboarding", "title": "Onboarding", "kind": "interaccion_simple", "tags": ["conversation:steps.onboarding", "system:test"], "domain_ref": "test-biz",
-     "fields": {"instructions": "Dar la bienvenida.", "required_slots": "nombre", "allowed_transitions": "conversation:steps.booking", "grounding_atoms": "atom-carta", "completion_condition": "Usuario saludado."}},
+     "fields": {"instructions": "Dar la bienvenida.", "required_slots": "nombre", "completion_condition": "Usuario saludado."}},
 ]
 
 
@@ -31,6 +31,7 @@ def kb_store(tmp_path_factory: pytest.TempPathFactory) -> Path:
         tmp_path_factory.mktemp("kb") / "store",
         ATOMS,
         namespaces_registry=DEFAULT_NAMESPACES_REGISTRY,
+        relations=[{"type": "grounded_by", "source": "step-onboarding", "target": "atom-carta"}],
     )
 
 
@@ -90,37 +91,6 @@ def test_show_returns_typed_document_or_none(kb_store: Path) -> None:
     assert ops.show("does-not-exist") is None
 
 
-# ── step next ─────────────────────────────────────────────────────────────────
-
-def test_step_next_reads_flow_node_and_slots_from_sql(kb_store: Path, seeded_db: str) -> None:
-    result = _ops(kb_store, seeded_db).step_next(USER)
-    assert result["flow_node"] == "conversation:steps.onboarding"
-    assert result["missing_slots"] == ["nombre"]
-
-
-@pytest.mark.parametrize(
-    "db_kwargs",
-    [
-        pytest.param({"flow_node": None}, id="flow_node-None"),
-        pytest.param({"flow_slots": None}, id="flow_slots-None"),
-    ],
-)
-def test_step_next_tolerates_null_session_fields(kb_store: Path, tmp_path: Path, db_kwargs: dict) -> None:
-    url = f"sqlite:///{tmp_path / 'edge.db'}"
-    _seed_db(url, **db_kwargs)
-    result = _ops(kb_store, url).step_next(USER)
-    assert result["flow_node"] is not None  # None -> fallback a busqueda semantica
-    assert isinstance(result["missing_slots"], list)
-
-
-@pytest.mark.parametrize("db_url", [None, "sqlite:///{tmp}/noexiste.db"], ids=["sin-db", "db-inexistente"])
-def test_step_next_and_traits_degrade_gracefully_without_sql(kb_store: Path, tmp_path: Path, db_url: str | None) -> None:
-    url = db_url.format(tmp=tmp_path) if db_url else None
-    ops = _ops(kb_store, url)
-    assert ops.step_next("unknown-user")["flow_node"] is not None
-    assert ops.traits("unknown-user") == []
-
-
 # ── traits / self / context ───────────────────────────────────────────────────
 
 def test_traits_resolve_sql_rows_against_trait_atoms(kb_store: Path, seeded_db: str) -> None:
@@ -134,13 +104,6 @@ def test_self_context_compiles_identity_style_boundaries(kb_store: Path) -> None
     assert result["identity"][0]["id"] == "self-bot"
     assert result["style"][0]["tone"] == "Amable y conciso."
     assert "consejo legal" in result["boundaries"][0]["restriction"]
-
-
-def test_context_aggregates_step_traits_self(kb_store: Path, seeded_db: str) -> None:
-    result = _ops(kb_store, seeded_db).context(USER)
-    assert set(result) == {"step", "traits", "self"}
-    assert result["step"]["flow_node"] == "conversation:steps.onboarding"
-    assert len(result["traits"]) == 1 and len(result["self"]["identity"]) == 1
 
 
 # ── propose / reflect ─────────────────────────────────────────────────────────

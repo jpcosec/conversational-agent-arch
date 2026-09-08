@@ -40,14 +40,6 @@ def main(argv: list[str] | None = None) -> int:
             _print_json(result)
             return 0
 
-        if args.command == "step":
-            if args.step_command == "next":
-                result = ops.step_next(args.user)
-                _print_json(result)
-                return 0
-            print(f"Unknown step subcommand: {args.step_command}", file=sys.stderr)
-            return 1
-
         if args.command == "traits":
             results = ops.traits(args.user)
             _print_json(results)
@@ -55,11 +47,6 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "self":
             result = ops.self_context()
-            _print_json(result)
-            return 0
-
-        if args.command == "context":
-            result = ops.context(args.user)
             _print_json(result)
             return 0
 
@@ -79,10 +66,6 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"Embeddings: {result['processed']} processed, {result['skipped']} skipped, {result['errors']} errors")
                 if result.get("store_update_error"):
                     print(f"Warning: store update failed (embeddings already written): {result['store_update_error']}", file=sys.stderr)
-                return 0
-            if args.index_command == "hierarchy":
-                result = ops.index_hierarchy()
-                print(f"Hierarchy: {result.get('tags', 0)} tags, {result.get('new_parent_relations', 0)} new relations")
                 return 0
             if args.index_command == "audit":
                 result = ops.audit_embeddings()

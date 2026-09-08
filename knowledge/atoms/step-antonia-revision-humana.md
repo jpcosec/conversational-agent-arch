@@ -796,18 +796,6 @@ ninguno
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.despedida
-
-## Grounding Atoms
-
-atom-antonia-farmacovigilancia, atom-antonia-medinfo
-
 ## Completion Condition
 
 La persona sabe que su ticket quedó pendiente de revisión humana y que el equipo del programa tomará contacto.

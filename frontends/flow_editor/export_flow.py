@@ -1,7 +1,7 @@
-"""Exporta los ConversationStep de un store SLDB a flow.json para la UI.
+"""Exporta el diagrama de conversacion de una KB a flow.json para la UI.
 
 Nodos  = ConversationStep (con sus campos)
-Aristas = allowed_transitions (tag conversation:steps.<x> -> step id)
+Aristas = ``transitions_to`` del grafo tipado de kgdb (RelationDoc de la KB)
 
 Uso:
     PYTHONPATH=. python frontends/flow_editor/export_flow.py [kb_root] [out.json]
@@ -18,41 +18,29 @@ from knowledge_base.operations import KnowledgeOperations
 def _split(v: str) -> list[str]:
     if not v:
         return []
-    parts = [p.strip() for p in v.replace("\n", ",").split(",")]
-    return [p for p in parts if p and p.lower() not in ("ninguno", "ninguna", "ninguna (paso terminal)")]
+    return [p.strip() for p in v.replace("\n", ",").split(",") if p.strip()]
 
 
 def export(kb_root: str) -> dict:
-    steps = KnowledgeOperations(kb_root=kb_root).docs_by_type("step")
-
-    # tag conversation:steps.<name> -> step id
-    tag_to_id: dict[str, str] = {}
-    for s in steps:
-        for t in s.get("tags", []):
-            if t.startswith("conversation:steps."):
-                tag_to_id[t] = s["id"]
-
+    ops = KnowledgeOperations(kb_root=kb_root)
+    flow = ops.flow
     nodes = []
-    edges = []
-    for s in steps:
-        step_tag = next((t for t in s.get("tags", []) if t.startswith("conversation:steps.")), None)
+    for s in ops.docs_by_type("step"):
+        step = flow.by_id(s["id"])
         nodes.append({
             "id": s["id"],
-            "step_tag": step_tag,
+            "step_tag": step.tag if step else None,
             "title": s.get("title", s["id"]),
             "kind": s.get("kind", "interaccion_simple"),
             "instructions": s.get("instructions", ""),
             "required_slots": _split(s.get("required_slots", "")),
-            "allowed_transitions": _split(s.get("allowed_transitions", "")),
-            "grounding_atoms": _split(s.get("grounding_atoms", "")),
+            "allowed_transitions": list(step.transitions) if step else [],
+            "grounding_atoms": list(step.grounding) if step else [],
+            "tool": step.tool if step else None,
             "completion_condition": s.get("completion_condition", "") or "",
             "domain_ref": s.get("domain_ref"),
         })
-        for tag in _split(s.get("allowed_transitions", "")):
-            target = tag_to_id.get(tag)
-            if target:
-                edges.append({"source": s["id"], "target": target, "relation": "flows_to"})
-
+    edges = [{"source": src, "target": dst, "relation": "transitions_to"} for src, dst in flow.edges()]
     return {"nodes": nodes, "edges": edges}
 
 
@@ -61,12 +49,7 @@ if __name__ == "__main__":
 
     kb = sys.argv[1] if len(sys.argv) > 1 else str(load_project_config().flow_kb_root)
     data = json.dumps(export(kb), indent=2, ensure_ascii=False)
-    if len(sys.argv) > 2:
-        with open(sys.argv[2], "w", encoding="utf-8") as f:
-            f.write(data)
-        print(f"wrote {sys.argv[2]}")
-    else:
-        default_out = "frontends/flow_editor/flow.json"
-        with open(default_out, "w", encoding="utf-8") as f:
-            f.write(data)
-        print(f"wrote {default_out}")
+    out = sys.argv[2] if len(sys.argv) > 2 else "frontends/flow_editor/flow.json"
+    with open(out, "w", encoding="utf-8") as f:
+        f.write(data)
+    print(f"wrote {out}")

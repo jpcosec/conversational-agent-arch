@@ -136,7 +136,8 @@ def render_orchestrator_flow(
         title = str(step.get("title") or step_id)
         kind = str(step.get("kind") or "")
         instructions = str(step.get("instructions") or "")
-        transitions = str(step.get("allowed_transitions") or "").strip()
+        raw_transitions = step.get("allowed_transitions") or ""
+        transitions = ", ".join(str(t) for t in raw_transitions) if isinstance(raw_transitions, (list, tuple)) else str(raw_transitions).strip()
         blocks.append(
             f"### {step_id} — {title} (kind={kind})\n"
             f"Instrucciones: {instructions}\n"

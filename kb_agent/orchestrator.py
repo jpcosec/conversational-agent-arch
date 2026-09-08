@@ -44,7 +44,6 @@ from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
 from kb_agent.models_sql.turns import Turns, TurnKind
 from kb_agent.models_sql.conversation import Conversation, ConversationStatus
 from kb_agent.knowledge.compiler import ContextCompiler
-from kb_agent.knowledge.kgdb_reader import KGDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, TurnClosedEvent
 from kb_agent.lead_slots import extract_lead_slots, merge_lead_slots
@@ -150,10 +149,6 @@ class Orchestrator:
         self.knowledge_ops = KnowledgeOperations(
             kb_root=self.kb_root, db_url=db_url, pythonpath=str(self.repo_root),
         )
-        try:
-            self.kgdb = KGDBReader.from_sldb(self.kb_root / ".sldb")
-        except Exception:
-            self.kgdb = None
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
 
         # LLM: solo se crea el cliente real si no inyectaron los 5 puertos
@@ -338,7 +333,6 @@ class Orchestrator:
 
             compiler = ContextCompiler(
                 knowledge=self.knowledge_ops,
-                kgdb=self.kgdb,
                 identity_session=session,
                 knowledge_ops=self.knowledge_ops,
                 router_agent=self.router_agent,
@@ -601,7 +595,8 @@ class Orchestrator:
             return []
 
     def _load_step_atoms(self) -> list[dict[str, Any]]:
-        """Carga los ``ConversationStep`` (``type.knowledge.step``) para el ``OrchestratorAgent``.
+        """Carga los ``ConversationStep`` (``type.knowledge.step``) para el ``OrchestratorAgent``,
+        cada uno con sus ``allowed_transitions`` resueltas del grafo (aristas ``transitions_to``).
 
         Fail-open a lista vacia: si la KB no tiene el diagrama de flujo o el
         reader falla, ``OrchestratorAgent`` (ver ``render_orchestrator_flow``)
@@ -609,7 +604,12 @@ class Orchestrator:
         falle la construccion del orquestador.
         """
         try:
-            return self.knowledge_ops.docs_by_type("step")
+            flow = self.knowledge_ops.flow
+            steps = []
+            for doc in self.knowledge_ops.docs_by_type("step"):
+                step = flow.by_id(doc["id"])
+                steps.append({**doc, "allowed_transitions": list(step.transitions) if step else []})
+            return steps
         except Exception:
             return []
 
@@ -964,10 +964,8 @@ class Orchestrator:
         reader = ReflectorBatchReaderJob(self.SessionLocal, self._reflector_checkpoint_store)
         rows = reader.run(trigger="cron")
         generator = ReflectorAtomGenerator(
-            kb_root=self.repo_root,
-            store_name=str(self.kb_root / ".sldb"),
-            output_dir=self.kb_root / "atoms",
-            pythonpath=self.repo_root,
+            kb_root=self.kb_root, pythonpath=self.repo_root, knowledge=self.knowledge_ops,
+            registry_root=self.repo_root,
         )
         generated = generator.generate(rows)
         return [

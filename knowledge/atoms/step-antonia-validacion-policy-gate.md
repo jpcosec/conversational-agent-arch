@@ -796,18 +796,6 @@ ninguno
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.revision_humana
-
-## Grounding Atoms
-
-gate-antonia-dosis, gate-antonia-diagnostico, gate-antonia-corpus, gate-antonia-derivacion, gate-antonia-promesas
-
 ## Completion Condition
 
 La respuesta redactada cumple todos los criterios del gate o el caso fue derivado a revisión humana por rechazo.

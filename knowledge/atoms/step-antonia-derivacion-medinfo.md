@@ -797,18 +797,6 @@ consulta médica reportada, confirmación de contacto para seguimiento
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.revision_humana, conversation:steps.despedida
-
-## Grounding Atoms
-
-rule-antonia-clasificacion-medinfo, atom-antonia-medinfo, boundary-antonia-clinico
-
 ## Completion Condition
 
 La consulta quedó registrada como ticket MedInfo y la persona entendió que un profesional del programa la contactará sin que yo responda el contenido clínico.

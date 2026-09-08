@@ -1,4 +1,4 @@
-"""Knowledge: SLDB (modelos tipados) + SQL (traits) + KGDB (flujo) -> CompiledDocument."""
+"""Knowledge: SLDB (modelos tipados) + SQL (traits) + grafo tipado de kgdb (flujo) -> CompiledDocument."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -10,7 +10,6 @@ from sqlalchemy.orm import Session
 
 from kb_agent.models_sql.identity import Base, UserTraits, Users
 from kb_agent.knowledge.compiler import ContextCompiler, compile_context
-from kb_agent.knowledge.kgdb_reader import KGDBReader
 from knowledge_base.operations import KnowledgeOperations
 from tests.support.sldb_seed import minimal_business_atoms, seed_store
 
@@ -86,7 +85,7 @@ def test_compile_selects_by_typed_model_and_structures_by_semantic_role(business
     assert [t["trait_id"] for t in d["user_traits"]] == ["trait-prefiere-borde-relleno", "trait-vegetariano"]
     assert all({"trait_id", "title", "description", "category", "confidence", "source"} <= set(t) for t in d["user_traits"])
     assert d["is_empty"] is False
-    assert d["flow_node"] is None  # sin KGDB no hay flujo
+    assert d["flow_node"] is None  # sin ConversationStep no hay flujo
 
 
 def test_compile_marks_empty_when_no_domain_or_rule_atoms(tmp_path: Path) -> None:
@@ -109,9 +108,8 @@ def test_scenario_resolution_argument_then_session_then_loader_then_default(busi
     assert compiler.compile(question="", user_id=1, trigger="cron").scenario == "catalogo"
 
 
-def test_kgdb_augments_flow_node_transitions_and_grounding(negocio_kb: Path) -> None:
-    reader = KnowledgeOperations(kb_root=negocio_kb)
-    compiler = ContextCompiler(knowledge=reader, kgdb=KGDBReader.from_sldb(negocio_kb / ".sldb"))
+def test_graph_resolves_flow_node_transitions_and_grounding(negocio_kb: Path) -> None:
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=negocio_kb))
 
     fresh = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub())
     assert fresh.flow_node == "conversation:steps.onboarding"  # default: onboarding
@@ -132,12 +130,16 @@ def test_kgdb_augments_flow_node_transitions_and_grounding(negocio_kb: Path) -> 
     assert unknown.flow_node == "conversation:steps.onboarding"
 
 
-def _step(step_id: str, tag: str, transitions: str) -> dict:
+def _step(step_id: str, tag: str) -> dict:
     return {
         "type": "step", "id": step_id, "title": step_id, "kind": "interaccion_simple",
         "tags": [f"conversation:steps.{tag}", "system:test"], "domain_ref": "test-biz",
-        "fields": {"instructions": "x", "required_slots": "ninguno", "handout_target": "", "tool_ref": "", "allowed_transitions": transitions, "grounding_atoms": "atom-carta", "completion_condition": "x"},
+        "fields": {"instructions": "x", "required_slots": "ninguno", "handout_target": "", "completion_condition": ""},
     }
+
+
+def _edge(src: str, dst: str) -> dict:
+    return {"type": "transitions_to", "source": src, "target": dst}
 
 
 def test_entry_step_is_graph_root_when_kb_has_no_onboarding(tmp_path: Path) -> None:
@@ -145,14 +147,14 @@ def test_entry_step_is_graph_root_when_kb_has_no_onboarding(tmp_path: Path) -> N
     # van antes que 'saludo': el step de entrada tiene que salir del grafo, no
     # del orden de los tags (bug real de Vitali: arrancaba en agendar_visita).
     atoms = [a for a in minimal_business_atoms() if a["type"] == "domain"] + [
-        _step("step-saludo", "saludo", "conversation:steps.calificacion, conversation:steps.agendar"),
-        _step("step-calificacion", "calificacion", "conversation:steps.agendar"),
-        _step("step-agendar", "agendar", "conversation:steps.cierre"),
-        _step("step-cierre", "cierre", "(ninguna, paso terminal)"),
+        _step("step-saludo", "saludo"), _step("step-calificacion", "calificacion"),
+        _step("step-agendar", "agendar"), _step("step-cierre", "cierre"),
     ]
-    root = seed_store(tmp_path / "flujo", atoms)
-    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=root), kgdb=KGDBReader.from_sldb(root / ".sldb"))
-
+    root = seed_store(tmp_path / "flujo", atoms, relations=[
+        _edge("step-saludo", "step-calificacion"), _edge("step-saludo", "step-agendar"),
+        _edge("step-calificacion", "step-agendar"), _edge("step-agendar", "step-cierre"),
+    ])
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=root))
     fresh = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub())
     assert fresh.flow_node == "conversation:steps.saludo"
     assert fresh.allowed_transitions == ["conversation:steps.agendar", "conversation:steps.calificacion"] or \

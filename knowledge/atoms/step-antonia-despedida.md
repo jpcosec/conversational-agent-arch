@@ -796,18 +796,6 @@ ninguno (paso terminal)
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-ninguna (paso terminal)
-
-## Grounding Atoms
-
-self-antonia, style-antonia
-
 ## Completion Condition
 
 La persona se despidio sabiendo que puede volver a escribir cuando lo necesite.

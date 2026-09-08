@@ -54,7 +54,7 @@ from kb_agent.models_sql.session import ChatHistory
 logger = logging.getLogger(__name__)
 
 from .compiled_document import CompiledDocument
-from .kgdb_reader import KGDBReader
+from .flow import ConversationFlow
 
 if TYPE_CHECKING:
     from knowledge_base.operations import KnowledgeOperations
@@ -80,7 +80,6 @@ class ContextCompiler:
     #: traits por SQL" -- lo que los tests unitarios dejan en None a proposito
     #: para no pagar el modelo de embeddings.
     knowledge: "KnowledgeOperations"
-    kgdb: KGDBReader | None = None
     identity_session: Session | None = None
     session_state_loader: Callable[[int], SessionStateLike | None] | None = None
     #: Capa knowledge_base (SLDB+KGDB+SQL) para resolver traits contra su
@@ -128,10 +127,10 @@ class ContextCompiler:
             session_state=session_state,
         )
 
-        # KGDB primero: el bundle necesita el grounding del step activo antes
-        # de armarse. current_step viene del estado de sesion persistido en SQL.
+        # El diagrama primero: el bundle necesita el grounding del step activo
+        # antes de armarse. current_step viene del estado de sesion persistido en SQL.
         current_step = getattr(session_state, "flow_node", None)
-        active_step, allowed_transitions, grounding_ids = self._resolve_kgdb_active_step(current_step)
+        active_step, allowed_transitions, grounding_ids = self._resolve_active_step(current_step)
 
         tools = self._find_tools()
         user_traits = self._load_user_traits(user_id)
@@ -713,48 +712,28 @@ class ContextCompiler:
                 return None
         return None
 
-    # ── enriquecimiento KGDB ────────────────────────────────────
-
-    #: placeholders del texto libre "Allowed Transitions" que significan
-    #: "sin salida" (step terminal), ver p.ej. step-antonia-despedida.
-    _NO_TRANSITION_PLACEHOLDERS = {"ninguno", "ninguna", "ninguna (paso terminal)"}
-
-    @classmethod
-    def _split_declared_transitions(cls, text: str) -> list[str]:
-        """Parsea el campo libre ``ConversationStep.allowed_transitions``.
-
-        Mismo criterio que ``frontends/flow_editor/export_flow.py`` (unica
-        otra lectora de este campo hoy): coma o salto de linea como
-        separador, placeholders de "sin transicion" descartados.
-        """
-        if not text:
-            return []
-        parts = [p.strip() for p in text.replace("\n", ",").split(",")]
-        return [p for p in parts if p and p.lower() not in cls._NO_TRANSITION_PLACEHOLDERS]
-
-    def _find_step_by_tag(self, tag: str) -> dict[str, Any] | None:
-        for step in self._find_by_model("step"):
-            if tag in (step.get("tags") or []):
-                return step
-        return None
+    # ── diagrama de conversacion (grafo tipado de kgdb via pron) ─────────
+    @property
+    def flow(self) -> ConversationFlow:
+        """Vista del diagrama sobre el grafo de la KB (``kb_agent.knowledge.flow``)."""
+        return self.knowledge.flow
 
     _STEP_CONTEXT_FIELDS = ("id", "title", "kind", "instructions", "required_slots", "completion_condition")
 
     def step_context(self, tag: str | None) -> dict[str, Any] | None:
         """Proyeccion del ``ConversationStep`` de ``tag`` para el prompt del Conversador.
 
-        Deterministico (lectura SLDB, sin LLM): sirve tanto para el step
+        Deterministico (lectura del store, sin LLM): sirve tanto para el step
         activo al compilar como para RE-APUNTAR el borrador al step destino
         cuando el Orquestador decide una transicion en el mismo turno (ver
         ``Orchestrator.handle_turn``): sin esto el Conversador redactaba con
         las instrucciones del step viejo y la respuesta iba un turno atrasada
         respecto del estado (pedia otra vez lo que el step anterior pedia).
         """
-        if not tag:
+        step = self.flow.step(tag)
+        if step is None:
             return None
-        doc = self._find_step_by_tag(tag)
-        if not doc:
-            return None
+        doc = self.knowledge.doc(step.id) or {}
         out: dict[str, Any] = {"tag": tag}
         for key in self._STEP_CONTEXT_FIELDS:
             out[key] = str(doc.get(key) or "").strip()
@@ -783,7 +762,7 @@ class ContextCompiler:
         present_facts = {str(f.get("id") or "") for f in facts}
         present_rules = {str(r.get("id") or "") for r in rules}
         grounding = list(compiled.get("grounding_atoms") or [])
-        for doc_id in self._step_grounding_ids(target):
+        for doc_id in self.flow.grounding(target):
             if doc_id not in grounding:
                 grounding.append(doc_id)
             doc = self.knowledge.doc(doc_id)
@@ -808,106 +787,29 @@ class ContextCompiler:
         compiled["grounding_atoms"] = grounding
         return True
 
-    def _entry_step(self, steps: list[str]) -> str:
-        """Step de entrada del diagrama para una sesion sin step valido.
-
-        Orden de preferencia:
-          1. ``.onboarding`` si la KB lo declara (convencion historica, Don Peppe).
-          2. La raiz del grafo de ``Allowed Transitions``: el step al que
-             ningun otro transiciona. Si hay varias raices, la primera en
-             orden alfabetico.
-          3. El primer step del diagrama (alfabetico).
-
-        Antes se caia directo a ``steps[0]``: en una KB sin onboarding eso
-        era el primero por orden alfabetico, no el inicio del flujo (Vitali
-        arrancaba en ``agendar_visita`` en vez de ``saludo`` y el primer
-        "hola" caia en el step equivocado).
-        """
-        onboarding = next((s for s in steps if s.endswith(".onboarding")), None)
-        if onboarding:
-            return onboarding
-        targets: set[str] = set()
-        for step in steps:
-            doc = self._find_step_by_tag(step)
-            if doc:
-                targets.update(self._split_declared_transitions(doc.get("allowed_transitions", "")))
-        roots = [s for s in steps if s not in targets]
-        return roots[0] if roots else steps[0]
-
-    def _resolve_kgdb_active_step(
+    def _resolve_active_step(
         self, current_step: str | None = None
     ) -> tuple[str | None, list[str], list[str]]:
-        """Resuelve el diagrama de conversacion del KGDB para el step activo.
+        """Step activo, sus transiciones permitidas y su grounding, desde el grafo.
 
-        El grafo generado desde SLDB es tag-centrico: el diagrama de conversacion
-        vive en la jerarquia ``conversation:steps.*``. Esta funcion:
-          1. determina el step actual (viene del SessionState via ``current_step``,
-             o cae al onboarding si existe, o al primer step disponible),
-          2. expone SOLO las transiciones que el step activo declara en su
-             propia seccion "Allowed Transitions" (no todos los hermanos),
-          3. resuelve los documentos que groundean el step contra SLDB.
+        1. el step actual viene del SessionState (``current_step``); si no
+           esta en el diagrama, el de entrada (``ConversationFlow.entry``:
+           ``.onboarding`` o una raiz del grafo de ``transitions_to``);
+        2. las transiciones son SOLO las aristas ``transitions_to`` que salen
+           del step activo (kgdb ya valido que apuntan a steps existentes);
+        3. el grounding es la union de los documentos que llevan el tag del
+           step y los que el step declara con ``grounded_by``.
 
         Se resuelve ANTES de armar el bundle (``_build_bundle`` necesita el
-        grounding del step activo con motivo "grounding de <step>"), a
-        diferencia del ``_augment_from_kgdb`` original que corria al final y
-        mutaba el ``CompiledDocument`` directamente.
-
-        Nota: ``KGDBReader.get_next_transitions``/``get_grounding_atoms``
-        leen aristas ``flows_to``/``grounded_by`` que el pipeline de ingest
-        SLDB->KGDB (``kgdb.ingest.sldb``) nunca produce -- el grafo que arma
-        ``KGDBReader.from_sldb`` es puramente tag-centrico (``tagged_as``,
-        ``semantic_parent``). Por eso las transiciones se leen del campo
-        tipado ``ConversationStep.allowed_transitions`` via ``knowledge``, que es
-        la fuente real que ya declara cada step (y que ya usa, por el mismo
-        motivo, ``frontends/flow_editor/export_flow.py``).
-
+        grounding del step activo con motivo "grounding de <step>").
         Devuelve ``(active_step, allowed_transitions, grounding_atom_ids)``,
-        o ``(None, [], [])`` sin KGDB o sin diagrama.
+        o ``(None, [], [])`` sin diagrama.
         """
-        if self.kgdb is None:
-            return None, [], []
-
-        steps = self.kgdb.steps_under("conversation:steps")
-        if not steps:
-            return None, [], []
-
-        # Step actual: el que trae la sesion, si es valido; si no, el step de
-        # entrada del diagrama (ver ``_entry_step``).
-        active = current_step if current_step in steps else None
+        flow = self.flow
+        active = flow.resolve_active(current_step)
         if active is None:
-            active = self._entry_step(steps)
-
-        # Transiciones permitidas: SOLO las declaradas por el step activo,
-        # filtradas contra el universo real de steps del diagrama (defensivo
-        # ante typos o referencias colgantes en el campo libre).
-        step_doc = self._find_step_by_tag(active)
-        declared = self._split_declared_transitions(step_doc.get("allowed_transitions", "")) if step_doc else []
-        allowed_transitions = [t for t in declared if t in steps]
-        grounding_atoms = self._step_grounding_ids(active, step_doc)
-        return active, allowed_transitions, grounding_atoms
-
-    def _step_grounding_ids(self, tag: str, step_doc: dict[str, Any] | None = None) -> list[str]:
-        """Ids que groundean el step ``tag``: union sin duplicados de
-
-          a) los documentos etiquetados con el tag del step (KGDB, p.ej. el
-             propio ConversationStep y los ToolAtom del step), y
-          b) los ids que el step DECLARA en su campo libre ``grounding_atoms``
-             ("Grounding Atoms", separados por coma), validados contra el
-             la KB (un id que no existe se descarta).
-
-        Hasta ahora solo entraba (a): la lista que la KB escribe a mano en
-        cada step (reglas de horario, oficinas, modalidad...) no llegaba ni
-        al Conversador ni al gate, que rechazaba datos correctos por "no
-        declarados en el contexto".
-        """
-        ids: list[str] = list(self.kgdb.docs_for_tag(tag)) if self.kgdb is not None else []
-        if step_doc is None:
-            step_doc = self._find_step_by_tag(tag)
-        declared = self._split_declared_transitions(str((step_doc or {}).get("grounding_atoms") or ""))
-        for doc_id in declared:
-            if doc_id not in ids and self.knowledge.doc(doc_id) is not None:
-                ids.append(doc_id)
-        return ids
+            return None, [], []
+        return active, flow.transitions(active), flow.grounding(active)
 
     def _load_user_traits(self, user_id: int | None) -> list[dict[str, Any]]:
         """Traits del usuario resueltos contra su TraitAtom (no solo el id).
@@ -996,7 +898,6 @@ def compile_context(
     session_state: SessionStateLike | None = None,
     identity_session: Session | None = None,
     session_state_loader: Callable[[int], SessionStateLike | None] | None = None,
-    kgdb: KGDBReader | None = None,
     knowledge_ops: "KnowledgeOperations | None" = None,
     router_agent: "RouterAgent | None" = None,
 ) -> CompiledDocument:
@@ -1005,7 +906,6 @@ def compile_context(
         knowledge=knowledge,
         identity_session=identity_session,
         session_state_loader=session_state_loader,
-        kgdb=kgdb,
         knowledge_ops=knowledge_ops,
         router_agent=router_agent,
     )

@@ -796,18 +796,6 @@ stock restante
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.despedida
-
-## Grounding Atoms
-
-atom-antonia-recompra
-
 ## Completion Condition
 
 La persona sabe cuando recomprar o renovar receta y quedo lista para la despedida.

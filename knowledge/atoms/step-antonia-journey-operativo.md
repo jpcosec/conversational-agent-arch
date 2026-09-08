@@ -796,18 +796,6 @@ intención operativa identificada
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.registro_estado, conversation:steps.despedida
-
-## Grounding Atoms
-
-rule-antonia-clasificacion-operacional, atom-antonia-journeys, atom-antonia-recompra
-
 ## Completion Condition
 
 La persona recibió el contenido operativo preaprobado que correspondía y la conversación quedó lista para seguir con registro de estado o cerrar.

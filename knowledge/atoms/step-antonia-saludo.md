@@ -796,18 +796,6 @@ si la persona ya esta registrada
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.onboarding, conversation:steps.registro_estado, conversation:steps.journey_operativo, conversation:steps.derivacion_medinfo, conversation:steps.enrolamiento
-
-## Grounding Atoms
-
-self-antonia, style-antonia
-
 ## Completion Condition
 
 Se determino si la persona es nueva (onboarding) o ya registrada (registro de estado).

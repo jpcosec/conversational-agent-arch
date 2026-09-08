@@ -796,18 +796,6 @@ nombre de la persona, teléfono de contacto, correo electrónico
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.derivacion_medinfo, conversation:steps.onboarding
-
-## Grounding Atoms
-
-self-antonia, style-antonia, boundary-antonia-clinico, rule-antonia-derivar-clinico
-
 ## Completion Condition
 
 La tool registrar_enrolamiento se ejecutó con nombre, teléfono y correo confirmados, o la persona fue derivada a un profesional del programa sin completar la inscripción.

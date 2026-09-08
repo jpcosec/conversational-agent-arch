@@ -796,18 +796,6 @@ semana de tratamiento, si aplico la dosis, como se ha sentido
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.evento_adverso, conversation:steps.agendar_recordatorio, conversation:steps.derivacion_medinfo
-
-## Grounding Atoms
-
-atom-antonia-aplicacion, atom-antonia-primeras-semanas, rule-antonia-eventos-adversos
-
 ## Completion Condition
 
 Quedo registrado el estado y se determino si hay un sintoma a derivar o si se avanza a agendar.

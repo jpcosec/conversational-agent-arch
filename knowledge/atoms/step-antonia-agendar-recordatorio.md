@@ -796,18 +796,6 @@ dia de recordatorio, hora de recordatorio
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.recompra
-
-## Grounding Atoms
-
-atom-antonia-aplicacion
-
 ## Completion Condition
 
 La tool se ejecuto correctamente y la persona sabe cuando recibira su recordatorio.

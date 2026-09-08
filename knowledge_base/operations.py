@@ -1,7 +1,10 @@
-"""Core operations for the knowledge CLI.
+"""Capa de negocio sobre la KB: lo que sldb/kgdb/pron NO deciden.
 
-Wraps SLDB (atom access), KGDB (graph traversal), and SQL (session state, traits)
-into semantic commands for agent consumption.
+El acceso al store y al grafo es de pron (``World``/``Store``/``Graph``); aca
+viven el contrato de runtime de los documentos (``doc``/``docs_by_type``/
+``docs_by_tag``), el cruce con SQL (traits), la exploracion que usa el
+ruteador, y las operaciones offline de mantenimiento de la KB (propose,
+promote, organize, reflect).
 """
 from __future__ import annotations
 
@@ -17,7 +20,11 @@ logger = logging.getLogger(__name__)
 import yaml
 from sldb.cli.model_utils import resolve_model_ref
 from sldb.runtime.validation import render_model_markdown
-from sldb.store.query import load_runtime_documents
+from pron.graph import Graph, bare, kind, tag_id
+from pron.world import World
+
+from kb_agent.knowledge.flow import ConversationFlow
+from kb_agent.knowledge.world import open_world, refresh_world
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
@@ -26,7 +33,6 @@ from kb_agent.models.knowledge import ConversationStep, SelfDeclaration, StyleGu
 from kb_agent.models.knowledge import CapabilityBoundary, StrategyRule, FallbackRule
 from kb_agent.models.knowledge import GateCriterion
 from kb_agent.models_sql.identity import Base, Users, UserTraits
-from kb_agent.models_sql.session import SessionState
 
 MODEL_MAP = {
     "domain": DomainAtom,
@@ -118,32 +124,36 @@ class KnowledgeOperations:
     vez de instanciarla por request.
     """
 
-    def __init__(self, kb_root: str | Path, db_url: str | None = None, pythonpath: str | None = None, store_name: str = ".sldb") -> None:
+    def __init__(self, kb_root: str | Path, db_url: str | None = None, pythonpath: str | None = None, *, world: World | None = None) -> None:
         self._kb_root = Path(kb_root).resolve()
-        # ``store_name`` admite tanto un nombre relativo (".sldb", ".sldb_test")
-        # como una ruta ABSOLUTA, en cuyo caso gana sobre ``kb_root`` (semantica
-        # de ``Path.__truediv__``). El reflector usa las dos formas; era la
-        # firma del ``SLDBReader`` que esta clase absorbio.
-        self._store_path = self._kb_root / store_name
         self._pythonpath = pythonpath or str(self._kb_root.parent)
-
+        #: El mundo de pron: UNICA puerta al store (documentos) y al grafo
+        #: tipado (aristas de kgdb). Se abre una vez por proceso; el grafo se
+        #: reconstruye solo cuando cambian los hashes de los modelos.
+        self.world: World = world or open_world(self._kb_root, self._pythonpath)
+        self._store_path = self.world.store.sp
         # SQL session for user traits and session state
         self._db_url = db_url
         self._engine: Any = None
         self._SessionLocal: Any = None
-
-        # Cache por INSTANCIA de records/docs del store (ver `_find_records`,
-        # `_read_doc` y `_invalidate_cache`). Sin esto, cada llamada a
-        # `_read_doc` volvía a llamar a `_find_records()` (un rescan
-        # completo del store desde disco), y `semantic_search`/
-        # `_fuzzy_search` llaman a `_read_doc` una vez por documento dentro
-        # de su loop: O(n²) de I/O que en la KB real (71 docs) tardaba ~4
-        # minutos por consulta.
-        self._records_cache: list[_DocRecord] | None = None
-        self._doc_cache: dict[str, dict[str, Any] | None] = {}
-
+        self._flow: ConversationFlow | None = None
         # Se pone en True tras avisar (una vez) que la KB no tiene embeddings.
         self._warned_no_embeddings = False
+
+    @property
+    def graph(self) -> Graph:
+        """El grafo tipado de la KB, fresco (se reconstruye si los modelos cambiaron)."""
+        if refresh_world(self.world):
+            self._flow = None
+        return self.world.graph
+
+    @property
+    def flow(self) -> ConversationFlow:
+        """Vista del diagrama de conversacion sobre ``graph``."""
+        graph = self.graph
+        if self._flow is None or self._flow.graph is not graph:
+            self._flow = ConversationFlow(graph)
+        return self._flow
 
     # ── helpers ────────────────────────────────────────────────
 
@@ -156,51 +166,23 @@ class KnowledgeOperations:
         self._SessionLocal = sessionmaker(bind=self._engine)
 
     def _invalidate_cache(self) -> None:
-        """Invalida el cache de records/docs de esta instancia.
-
-        Debe llamarse al final de toda operación que ESCRIBE documentos al
-        store (`propose`, `promote`, `organize`, `index_embeddings`), para
-        que una lectura posterior en el MISMO proceso (`explore`,
-        `explore_multi`, `show`, `traits`, ...) vea los cambios en vez de
-        datos cacheados stale. `index_hierarchy` NO necesita invalidar: solo
-        escribe `semantic_dag.yaml`, que `load_runtime_documents` no lee (los
-        RuntimeDocument se arman desde `store_index.yaml` + los `.md` de
-        cada doc); y `_kgdb()` construye un `KGDBReader` nuevo en cada
-        llamada, no está cacheado, así que ya ve el DAG actualizado sin
-        necesidad de invalidar nada acá.
-        """
-        self._records_cache = None
-        self._doc_cache = {}
+        """Toda operacion que ESCRIBE documentos (``propose``, ``promote``,
+        ``organize``) invalida la lectura cacheada del store de pron y la vista
+        del diagrama, para que una lectura posterior en el MISMO proceso vea
+        los cambios."""
+        self.world.store.invalidate()
+        self._flow = None
 
     def _find_records(self) -> list[_DocRecord]:
-        """Devuelve TODOS los documentos trackeados del store, resueltos.
-
-        Usa la capa de librería real de SLDB (``sldb.store.query``), NO la
-        reimplementación de búsqueda de ``sldb.cli.commands.find`` (pensada
-        para un proceso de un solo disparo: reescanea el store completo en
-        cada llamada). ``load_runtime_documents`` ya deja cada documento con
-        su ``payload`` completamente extraído (``extract_model_data`` corrido
-        una sola vez adentro), así que ni `_read_doc` ni `index_embeddings`
-        necesitan releer/reparsear el ``.md`` por su cuenta. Se envuelve cada
-        ``RuntimeDocument`` en ``_DocRecord`` para no romper callers externos
-        que llaman a este método "privado" directamente esperando la forma
-        del viejo ``SearchRecord`` (ver `_DocRecord`).
-
-        Cacheado por instancia en `self._records_cache` (ver
-        `_invalidate_cache`).
-        """
-        if self._records_cache is None:
-            docs = load_runtime_documents(
-                self._store_path, resolve_model_ref, pythonpath=self._pythonpath,
+        """Todos los documentos trackeados del store, resueltos, via ``pron.Store``
+        (que cachea ``load_runtime_documents`` e invalida en cada escritura)."""
+        return [
+            _DocRecord(
+                kind="doc", name=d.name, model_name=d.model_name, path=d.path,
+                semantic=list(d.semantic_tags or []), payload=d.payload,
             )
-            self._records_cache = [
-                _DocRecord(
-                    kind="doc", name=d.name, model_name=d.model_name, path=d.path,
-                    semantic=list(d.semantic_tags or []), payload=d.payload,
-                )
-                for d in docs
-            ]
-        return self._records_cache
+            for d in self.world.store.docs()
+        ]
 
     # ── runtime: acceso al store (unico dueno) ─────────────────
     #
@@ -276,51 +258,21 @@ class KnowledgeOperations:
         return None
 
     def _read_doc(self, atom_id: str) -> dict[str, Any] | None:
-        """Read a complete document by id from any model.
-
-        Memoizado por `atom_id` en `self._doc_cache` (ver `_invalidate_cache`).
-        `_find_records()` ya trae el payload resuelto de CADA documento (via
-        `load_runtime_documents`), así que esto es una búsqueda en memoria +
-        el agregado de `_model`/`_path`, sin I/O propio.
-
-        Devuelve un dict NUEVO en cada llamada (copia superficial del
-        cacheado), no la referencia guardada en `self._doc_cache`: callers
-        como `promote()` reasignan claves del payload devuelto
-        (``payload["tags"] = new_tags``) antes de escribirlo a disco, y si
-        devolviéramos el objeto cacheado por referencia esa mutación
-        corregiría el cache por accidente, encubriendo un `_invalidate_cache`
-        faltante.
-        """
-        if atom_id in self._doc_cache:
-            cached = self._doc_cache[atom_id]
-            return dict(cached) if cached is not None else None
-
-        result: dict[str, Any] | None = None
-        docs = self._find_records()
-        for doc in docs:
-            if doc.name == atom_id:
-                doc_path = self._kb_root / doc.path
-
-                model_name = (doc.model_name or "").lower()
-                model_cls = MODEL_MAP.get(model_name)
-                if model_cls is None:
-                    # try nested lookup
-                    for m_name, m_cls in MODEL_MAP.items():
-                        if m_cls.__name__.lower() == model_name:
-                            model_cls = m_cls
-                            break
-                if model_cls is None:
-                    result = {"id": atom_id, "raw_path": str(doc_path)}
-                    break
-
-                payload = dict(doc.payload)
-                payload["_model"] = model_cls.__name__
-                payload["_path"] = str(doc_path)
-                result = payload
-                break
-
-        self._doc_cache[atom_id] = result
-        return result
+        """Payload completo de un documento por id, contrato de EDICION (tags crudos
+        del frontmatter), mas ``_model``/``_path``. Devuelve un dict NUEVO: los
+        callers (``promote``) lo mutan antes de reescribirlo."""
+        for doc in self._find_records():
+            if doc.name != atom_id:
+                continue
+            doc_path = self._kb_root / doc.path
+            model_cls = next((m for m in ALL_MODELS if m.__name__ == doc.model_name), None)
+            if model_cls is None:
+                return {"id": atom_id, "raw_path": str(doc_path)}
+            payload = dict(doc.payload)
+            payload["_model"] = model_cls.__name__
+            payload["_path"] = str(doc_path)
+            return payload
+        return None
 
     # ── offline: index embeddings ───────────────────────────────
 
@@ -421,7 +373,10 @@ class KnowledgeOperations:
         with_embedding = 0
         by_design = 0
         missing: list[dict[str, str]] = []
+        embeddable = {m.__name__ for m in ALL_MODELS}
         for r in self._find_records():
+            if r.model_name not in embeddable:
+                continue
             total += 1
             doc = self._read_doc(r.name)
             emb = doc.get("embedding") if doc else None
@@ -441,82 +396,6 @@ class KnowledgeOperations:
             "missing": missing,
             "ok": not missing,
         }
-
-    # ── offline: index hierarchy ────────────────────────────────
-
-    def index_hierarchy(self) -> dict[str, Any]:
-        """Construye jerarquía enciclopédica en el semantic DAG.
-
-        Para cada tag con namespacing por puntos (ej. conversation:steps.onboarding),
-        deriva el padre (conversation:steps) y añade relación semantic_parent
-        si el padre existe como tag.
-        """
-        from sldb.store.io import load_store_index, save_store_index, load_models_index, save_models_index
-        from sldb.store.layout import store_exists
-        import yaml
-
-        if not store_exists(self._store_path):
-            return {"error": "No store at " + str(self._store_path)}
-
-        store_idx = load_store_index(self._store_path)
-        root = self._store_path.parent
-
-        # Leer semantic_dag actual
-        dag_path = self._store_path / "runtime" / "semantic_dag.yaml"
-        if not dag_path.exists():
-            return {"error": "semantic_dag.yaml not found"}
-
-        raw = yaml.safe_load(dag_path.read_text(encoding="utf-8")) or {}
-        nodes = raw.get("nodes", []) or []
-        equivalences = raw.get("equivalences", {}) or {}
-
-        # Colectar todos los tags existentes
-        existing_tags = set()
-        for node in nodes:
-            nid = str(node.get("id", "")).strip()
-            if nid and nid.startswith("sldb://semantic_tag/"):
-                existing_tags.add(nid)
-
-        # Derivar jerarquía: si un tag tiene puntos, truncar al último
-        # conversation:steps.onboarding → conversation:steps
-        new_edges = 0
-        for tag_node in sorted(existing_tags):
-            tag = tag_node.replace("sldb://semantic_tag/", "", 1)
-            parts = tag.split(":", 1)
-            if len(parts) != 2:
-                continue
-            namespace, value = parts[0], parts[1]
-            if "." not in value:
-                continue
-
-            # Parent: truncar último segmento
-            parent_value = value.rsplit(".", 1)[0]
-            parent_tag = f"{namespace}:{parent_value}"
-            parent_node = f"sldb://semantic_tag/{parent_tag}"
-
-            if parent_node not in existing_tags:
-                continue
-
-            # Verificar si ya existe la relación semantic_parent
-            already = False
-            for node in nodes:
-                if str(node.get("id", "")).strip() == tag_node:
-                    if parent_node in [str(p).strip() for p in (node.get("parents", []) or [])]:
-                        already = True
-                    break
-
-            if not already:
-                for node in nodes:
-                    if str(node.get("id", "")).strip() == tag_node:
-                        node.setdefault("parents", []).append(parent_node)
-                        new_edges += 1
-                        break
-
-        if new_edges > 0:
-            raw["nodes"] = nodes
-            dag_path.write_text(yaml.safe_dump(raw, allow_unicode=True, sort_keys=False), encoding="utf-8")
-
-        return {"tags": len(existing_tags), "new_parent_relations": new_edges}
 
     # ── offline: promote ────────────────────────────────────────
 
@@ -574,10 +453,8 @@ class KnowledgeOperations:
         rows = reader.run()
 
         generator = ReflectorAtomGenerator(
-            kb_root=self._kb_root,
-            store_name=".sldb",
-            output_dir=self._kb_root / "atoms",
-            pythonpath=self._pythonpath,
+            kb_root=self._kb_root, pythonpath=self._pythonpath, knowledge=self,
+            registry_root=Path(self._pythonpath),
         )
         generated = generator.generate(rows)
 
@@ -892,16 +769,8 @@ class KnowledgeOperations:
         merged.sort(key=lambda x: x["score"], reverse=True)
         merged = merged[:max_results]
 
-        kgdb_enriched = []
-        try:
-            kgdb = self._kgdb()
-            for item in merged:
-                siblings = kgdb.sibling_docs(item["id"])[:3]
-                item["siblings"] = siblings
-                kgdb_enriched.append(item)
-        except Exception:
-            kgdb_enriched = merged
-
+        for item in merged:
+            item["siblings"] = self.siblings(item["id"])[:3]
         top_score = merged[0]["score"] if merged else 0.0
         return {
             "query": query,
@@ -912,59 +781,67 @@ class KnowledgeOperations:
         }
 
 
-    def _kgdb(self):
-        """Lazy KGDB reader."""
-        from kb_agent.knowledge.kgdb_reader import KGDBReader
-        return KGDBReader.from_sldb(self._store_path, pythonpath=self._pythonpath)
+    # ── navegacion del grafo (aristas tagged_as / semantic_parent de kgdb) ──
+    #: ejes demasiado amplios para navegar (todo documento los lleva).
+    _META_TAG_PREFIXES = ("type.", "workspace.")
+
+    def _doc_node(self, atom_id: str) -> str | None:
+        for r in self._find_records():
+            if r.name == atom_id:
+                return f"sldb://document/{r.model_name}:{atom_id}"
+        return None
+
+    @staticmethod
+    def _doc_name(node_id: str) -> str:
+        b = bare(node_id)
+        return b.split(":", 1)[1] if ":" in b else b
+
+    def tags_for_doc(self, atom_id: str, include_meta: bool = False) -> list[str]:
+        node = self._doc_node(atom_id)
+        if node is None:
+            return []
+        tags = [bare(t) for t in self.graph.targets(node, "tagged_as")]
+        return sorted(t for t in tags if include_meta or not t.startswith(self._META_TAG_PREFIXES))
+
+    def docs_for_tag(self, tag: str) -> list[str]:
+        return sorted(self._doc_name(n) for n in self.graph.sources(tag_id(tag), "tagged_as") if kind(n) == "document")
+
+    def siblings(self, atom_id: str) -> list[str]:
+        """Documentos que comparten al menos un tag semantico (no meta) con este."""
+        node = self._doc_node(atom_id)
+        if node is None:
+            return []
+        return [self._doc_name(n) for n in self.graph.neighbors_via(node, "tagged_as", exclude_prefixes=self._META_TAG_PREFIXES)]
 
     def explore(
         self,
         tag: str | None = None,
         atom: str | None = None,
     ) -> dict[str, Any]:
-        """Navigate the KB via the KGDB graph.
+        """Navegacion de la KB por el grafo tipado (tool del ruteador).
 
         Modes:
           - no args:      entry points (root tags + counts)
           - --tag <t>:    expand a tag (parent, children, docs)
           - --atom <id>:  neighborhood of a doc (its tags + sibling docs)
-
-        Returns a navigation view for the agent to walk the graph.
         """
-        try:
-            kgdb = self._kgdb()
-        except Exception as exc:
-            return {"error": f"KGDB unavailable: {exc}"}
-
+        graph = self.graph
         if atom is not None:
-            return {
-                "mode": "atom",
-                "atom": atom,
-                "tags": kgdb.tags_for_doc(atom),
-                "siblings": kgdb.sibling_docs(atom),
-            }
-
+            return {"mode": "atom", "atom": atom, "tags": self.tags_for_doc(atom), "siblings": self.siblings(atom)}
         if tag is not None:
+            node = tag_id(tag)
+            parent = graph.parent(node)
             return {
-                "mode": "tag",
-                "tag": tag,
-                "parent": kgdb.parent_tag(tag),
-                "children": kgdb.child_tags(tag),
-                "docs": kgdb.docs_for_tag(tag),
+                "mode": "tag", "tag": tag,
+                "parent": bare(parent) if parent else None,
+                "children": sorted(bare(c) for c in graph.children(node)),
+                "docs": self.docs_for_tag(tag),
             }
-
-        # entry points: root tags with doc counts
         roots = []
-        for root in kgdb.root_tags():
-            roots.append({
-                "tag": root,
-                "children": kgdb.child_tags(root),
-                "docs": kgdb.docs_for_tag(root),
-            })
-        return {
-            "mode": "root",
-            "root_tags": roots,
-        }
+        for root in graph.roots("semantic_tag", "semantic_parent"):
+            name = bare(root)
+            roots.append({"tag": name, "children": sorted(bare(c) for c in graph.children(root)), "docs": self.docs_for_tag(name)})
+        return {"mode": "root", "root_tags": roots}
 
     def show(self, atom_id: str) -> dict[str, Any] | None:
         """Show a complete atom by id."""
@@ -972,61 +849,6 @@ class KnowledgeOperations:
         if payload is None:
             return None
         return payload
-
-    def step_next(self, user_id: str) -> dict[str, Any]:
-        """Get next valid conversation step from session state + KGDB.
-
-        Reads flow_node from SQL SessionState, resolves against KGDB.
-        Returns current_step, allowed_transitions, grounding_atoms, missing_slots.
-        Gracefully handles missing SQL tables.
-        """
-        flow_node = None
-        allowed_transitions = []
-        grounding_atoms = []
-        missing_slots = []
-
-        # Try SQL session state
-        try:
-            self._lazy_sql()
-            session = self._SessionLocal()
-            try:
-                user = session.query(Users).filter_by(external_id=user_id).first()
-                if user is not None:
-                    ss = session.query(SessionState).filter_by(user_id=user.id).first()
-                    if ss is not None:
-                        flow_node = ss.flow_node
-                        if ss.flow_slots:
-                            missing_slots = ss.flow_slots.get("missing_slots", [])
-            finally:
-                session.close()
-        except Exception:
-            # SQL not available, continue with KGDB-only
-            pass
-
-        # Try KGDB for transitions
-        try:
-            from kb_agent.knowledge.kgdb_reader import KGDBReader
-
-            kgdb = KGDBReader.from_sldb(self._store_path, pythonpath=self._pythonpath)
-
-            if flow_node and kgdb.graph.has_node(flow_node):
-                transitions = kgdb.get_next_transitions(flow_node)
-                allowed_transitions = [t["to"] for t in transitions]
-                grounding_atoms = kgdb.get_grounding_atoms(flow_node)
-        except Exception:
-            pass
-
-        if flow_node is None:
-            steps = self.docs_by_tag("conversation:steps")
-            if steps:
-                flow_node = steps[0]["id"]
-
-        return {
-            "flow_node": flow_node,
-            "allowed_transitions": allowed_transitions,
-            "grounding_atoms": grounding_atoms,
-            "missing_slots": missing_slots,
-        }
 
     def traits(self, user_id: str) -> list[dict[str, Any]]:
         """Load user traits from SQL and resolve against TraitAtom in SLDB.
@@ -1100,45 +922,24 @@ class KnowledgeOperations:
 
         return results
 
-    def context(self, user_id: str) -> dict[str, Any]:
-        """Full current session context: steps + traits + self.
-
-        One-shot for the Compiler agent to get everything it needs.
-        """
-        return {
-            "step": self.step_next(user_id),
-            "traits": self.traits(user_id),
-            "self": self.self_context(),
-        }
-
-    def propose(self, model_name: str, body_yaml: str) -> dict[str, Any]:
-        """Create a proposed atom (for the Reflector agent).
-
-        Writes the atom with status: proposed metadata in frontmatter.
-        Returns the created atom info.
-        """
+    def propose(self, model_name: str, body_yaml: str | dict[str, Any]) -> dict[str, Any]:
+        """Crea un atom PROPUESTO (tags ``status:proposed`` + ``source:reflector``):
+        una escritura de sldb por libreria (``Store.create``: render, roundtrip,
+        track), en la ruta que derivan sus tags (``derive_path``)."""
         model_cls = MODEL_MAP.get(model_name)
         if model_cls is None:
             raise ValueError(f"Unknown model '{model_name}'. Valid: {', '.join(MODEL_MAP.keys())}")
-
-        payload = yaml.safe_load(body_yaml) if isinstance(body_yaml, str) else body_yaml
+        payload = yaml.safe_load(body_yaml) if isinstance(body_yaml, str) else dict(body_yaml)
         if not isinstance(payload, dict):
             raise ValueError("body must be a YAML/JSON dict")
-
         payload.setdefault("tags", [])
-        if "status:proposed" not in payload["tags"]:
-            payload["tags"].append("status:proposed")
-        if "source:reflector" not in payload["tags"]:
-            payload["tags"].append("source:reflector")
-
+        for tag in ("status:proposed", "source:reflector"):
+            if tag not in payload["tags"]:
+                payload["tags"].append(tag)
         doc_id = payload.get("id", f"proposed-{model_name}")
         atom_path = derive_path(self._kb_root, doc_id, list(payload.get("tags") or []))
-
-        md = render_model_markdown(model_cls, payload)
-        atom_path.parent.mkdir(parents=True, exist_ok=True)
-        atom_path.write_text(md + "\n", encoding="utf-8")
+        self.world.store.create(model_cls.__name__, doc_id, payload, atom_path)
         self._invalidate_cache()
-
         return {
             "id": doc_id,
             "model": model_name,

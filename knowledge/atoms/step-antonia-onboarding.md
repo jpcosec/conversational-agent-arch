@@ -796,18 +796,6 @@ nombre de la persona, dia de aplicacion, si es primera vez
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.registro_estado
-
-## Grounding Atoms
-
-atom-antonia-bienvenida, atom-antonia-primeras-semanas, self-antonia
-
 ## Completion Condition
 
 La persona entendio el acompanamiento y quedaron registrados su nombre y dia de aplicacion.

@@ -44,7 +44,7 @@ METEO = [
 @pytest.fixture(scope="module")
 def roots(tmp_path_factory: pytest.TempPathFactory) -> tuple[Path, Path]:
     base = tmp_path_factory.mktemp("kbs")
-    return seed_store(base / "clinica", CLINICA), seed_store(base / "meteo", METEO, store_name=".sldb_custom")
+    return seed_store(base / "clinica", CLINICA), seed_store(base / "meteo", METEO)
 
 
 def test_fetch_tool_returns_only_tool_atoms_with_schema(roots: tuple[Path, Path]) -> None:
@@ -53,9 +53,9 @@ def test_fetch_tool_returns_only_tool_atoms_with_schema(roots: tuple[Path, Path]
     assert '"name": "calendar"' in atoms[0]["parameters"]
 
 
-def test_kb_root_and_store_name_swap_isolate_businesses(roots: tuple[Path, Path]) -> None:
+def test_two_kb_roots_isolate_businesses(roots: tuple[Path, Path]) -> None:
     ids_a = {a["id"] for a in KnowledgeOperations(kb_root=roots[0]).docs_by_type("tool")}
-    ids_b = {a["id"] for a in KnowledgeOperations(kb_root=roots[1], store_name=".sldb_custom").docs_by_type("tool")}
+    ids_b = {a["id"] for a in KnowledgeOperations(kb_root=roots[1]).docs_by_type("tool")}
     assert (ids_a, ids_b) == ({"atom-tool-calendar"}, {"atom-tool-weather"})
 
 

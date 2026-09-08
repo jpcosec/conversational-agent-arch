@@ -1,7 +1,6 @@
 from .generator import (
     PATTERN_MIN_COUNT,
     GeneratedAtom,
-    PROPOSED_STATUS,
     ReflectorAtomGenerator,
     RecurrentPattern,
     normalize_text,
@@ -21,7 +20,6 @@ __all__ = [
     "GeneratedAtom",
     "InMemoryCheckpointStore",
     "PATTERN_MIN_COUNT",
-    "PROPOSED_STATUS",
     "ReaderCheckpoint",
     "ReflectorAtomGenerator",
     "ReflectorBatchReaderJob",

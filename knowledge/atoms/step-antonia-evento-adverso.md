@@ -796,18 +796,6 @@ descripcion del sintoma, si es urgente
 
 
 
-## Tool
-
-
-
-## Allowed Transitions
-
-conversation:steps.despedida
-
-## Grounding Atoms
-
-rule-antonia-eventos-adversos, boundary-antonia-clinico
-
 ## Completion Condition
 
 El evento quedo registrado para derivacion y la persona sabe que el equipo la contactara.

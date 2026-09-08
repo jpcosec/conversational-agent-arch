@@ -82,7 +82,7 @@ def test_flow_graph_exposes_steps_and_transitions(client: TestClient) -> None:
     flow = client.get("/api/flow").json()
     by_id = {n["id"]: n for n in flow["nodes"]}
     assert by_id["step-onboarding"]["step_tag"] == "conversation:steps.onboarding"
-    assert {"source": "step-onboarding", "target": "step-booking", "relation": "flows_to"} in flow["edges"]
+    assert {"source": "step-onboarding", "target": "step-booking", "relation": "transitions_to"} in flow["edges"]
 
 
 def test_viz_graph_is_built_from_active_kb(client: TestClient) -> None:

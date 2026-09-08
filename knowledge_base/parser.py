@@ -6,22 +6,19 @@ import argparse
 
 EPILOG = """
 Commands:
-  explore                Entry points: tags raíz del grafo KGDB
+  explore                Entry points: tags raíz del grafo tipado
   explore --tag <t>      Expande un tag: padre + hijos + docs
   explore --atom <id>    Vecindario de un doc: tags + hermanos
   explore <query>        Búsqueda multi-estrategia: embeddings + fuzzy + KGDB
   show <atom_id>         Muestra un atom completo por su id
-  step next --user <id>  Siguiente paso conversacional desde sesión + KGDB
   traits --user <id>     Traits del usuario resueltos contra SLDB
   self                   Identidad + estilo + límites del agente
-  context --user <id>    Estado completo de la sesión (todo-en-uno)
   propose --model <m>    Propuesta de atom (para el Reflector)
          --body <yaml>
   organize --kb <path>   Reorganiza atoms planos según tags semánticos
 
 Offline (fortalecimiento de la KB):
   index embeddings       Calcula embeddings para DomainAtom y RuleAtom
-  index hierarchy        Construye jerarquía enciclopédica en semantic DAG
   reflect --db <sql>     Reflector: propone atoms desde ChatHistory
   promote <atom_id>      Promueve un atom propuesto a activo
 """
@@ -50,22 +47,12 @@ def build_parser() -> argparse.ArgumentParser:
     p = subparsers.add_parser("show", help="Muestra un atom completo")
     p.add_argument("atom_id", help="Id del atom (ej. self-antonia)")
 
-    # step next
-    p = subparsers.add_parser("step", help="Navegación del diagrama de conversación")
-    s = p.add_subparsers(dest="step_command", required=True)
-    pn = s.add_parser("next", help="Siguiente paso válido desde el estado de sesión")
-    pn.add_argument("--user", required=True, help="External user id (ej. wa:+56900000000)")
-
     # traits
     p = subparsers.add_parser("traits", help="Traits del usuario resueltos")
     p.add_argument("--user", required=True, help="External user id")
 
     # self
     subparsers.add_parser("self", help="Identidad + estilo + límites del agente")
-
-    # context
-    p = subparsers.add_parser("context", help="Estado completo de la sesión (todo-en-uno)")
-    p.add_argument("--user", required=True, help="External user id")
 
     # propose
     p = subparsers.add_parser("propose", help="Propuesta de atom (para el Reflector)")
@@ -89,7 +76,6 @@ def _add_index_commands(subparsers: argparse._SubParsersAction) -> None:
     pe = s.add_parser("embeddings", help="Calcula embeddings offline para DomainAtom y RuleAtom")
     pe.add_argument("--model", default=None, help="Modelo de embeddings (default: KnowledgeOperations.EMBED_MODEL)")
 
-    s.add_parser("hierarchy", help="Construye jerarquía enciclopédica en el semantic DAG")
 
     s.add_parser(
         "audit",
