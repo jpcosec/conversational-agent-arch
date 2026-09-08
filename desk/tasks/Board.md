@@ -12,7 +12,6 @@ tasks:
 - desk/tasks/task-metricas-reales-en-el-dashboard-desde-el-sqlite.md
 - desk/tasks/task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
 - desk/tasks/task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
-- desk/tasks/task-mover-logica-reimplementada-a-kgdb-sldb-pron.md
 # List of pill-xxx paths
 pills:
 - desk/contexts/pills.md
@@ -52,4 +51,3 @@ _Generated from the task references above._
 - Metricas reales en el dashboard desde el sqlite [ready_for_testing] - Endpoint /api/metrics y dashboard con conversaciones por dia, porcentaje de turnos en fallback, porcentaje derivados por el gate, leads con datos de contacto, latencia media por turno; chip 'Datos de ejemplo' eliminado.
 - Chat de producto sin inspector para el equipo de Vitali [ready_for_testing] - Ruta /chat con solo la conversacion: brand del negocio, sin inspector ni badges, boton Nueva conversacion, formulario inicial opcional de nombre y telefono que fija external_id por telefono (identity_key phone), diseño movil primero, indicador de escribiendo. Navegacion en tres grupos: Chat, Operacion (Leads, Metricas), Desarrollo (Inspector, Flow, Mindmap), etiquetas en espanol desde el yaml.
 - Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL [ready_for_testing] - Dos tablas SQL simples (leads, visitas) y dos tools con semantica de negocio (registrar_lead upsert parcial, crear_visita crea el evento en estado solicitada y deja el contacto), cableadas en project.vitali.yaml y en la KB como ToolAtom y steps.
-- Mover logica reimplementada a kgdb/sldb/pron [draft] - gemini_test deja de reimplementar diagrama de conversacion, navegacion de grafo, embeddings y escrituras al store; usa kgdb (relaciones tipadas), sldb (store) y pron (World/Store/Graph/Matcher). Lo que falte en esas libs se agrega alla.
