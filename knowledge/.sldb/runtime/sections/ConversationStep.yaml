@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: onboarding-primera-interaccion
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: onboarding-primera-interaccion/instructions
     title: Instructions
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: onboarding-primera-interaccion/required-slots
     title: Required Slots
     breadcrumbs:
@@ -65,8 +65,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: onboarding-primera-interaccion/handout-target
     title: Handout Target
     breadcrumbs:
@@ -88,8 +88,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: onboarding-primera-interaccion/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -111,8 +111,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-agendar-recordatorio
   sections:
   - path: agendar-recordatorio-de-aplicacion
@@ -133,8 +133,8 @@ documents:
     - workspace.knowledge
     slug: agendar-recordatorio-de-aplicacion
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: agendar-recordatorio-de-aplicacion/instructions
     title: Instructions
     breadcrumbs:
@@ -156,8 +156,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: agendar-recordatorio-de-aplicacion/required-slots
     title: Required Slots
     breadcrumbs:
@@ -179,8 +179,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: agendar-recordatorio-de-aplicacion/handout-target
     title: Handout Target
     breadcrumbs:
@@ -202,8 +202,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: agendar-recordatorio-de-aplicacion/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -225,8 +225,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-despedida
   sections:
   - path: despedida
@@ -247,8 +247,8 @@ documents:
     - workspace.knowledge
     slug: despedida
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: despedida/instructions
     title: Instructions
     breadcrumbs:
@@ -270,8 +270,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: despedida/required-slots
     title: Required Slots
     breadcrumbs:
@@ -293,8 +293,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: despedida/handout-target
     title: Handout Target
     breadcrumbs:
@@ -316,8 +316,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: despedida/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -339,8 +339,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-evento-adverso
   sections:
   - path: evento-adverso-derivacion
@@ -361,8 +361,8 @@ documents:
     - workspace.knowledge
     slug: evento-adverso-derivacion
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: evento-adverso-derivacion/instructions
     title: Instructions
     breadcrumbs:
@@ -384,8 +384,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: evento-adverso-derivacion/required-slots
     title: Required Slots
     breadcrumbs:
@@ -407,8 +407,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: evento-adverso-derivacion/handout-target
     title: Handout Target
     breadcrumbs:
@@ -430,8 +430,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: evento-adverso-derivacion/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -453,8 +453,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-recompra
   sections:
   - path: seguimiento-de-recompra-y-receta
@@ -475,8 +475,8 @@ documents:
     - workspace.knowledge
     slug: seguimiento-de-recompra-y-receta
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: seguimiento-de-recompra-y-receta/instructions
     title: Instructions
     breadcrumbs:
@@ -498,8 +498,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: seguimiento-de-recompra-y-receta/required-slots
     title: Required Slots
     breadcrumbs:
@@ -521,8 +521,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: seguimiento-de-recompra-y-receta/handout-target
     title: Handout Target
     breadcrumbs:
@@ -544,8 +544,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: seguimiento-de-recompra-y-receta/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -567,8 +567,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-registro-estado
   sections:
   - path: registro-de-estado-como-va-el-tratamiento
@@ -589,8 +589,8 @@ documents:
     - workspace.knowledge
     slug: registro-de-estado-como-va-el-tratamiento
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: registro-de-estado-como-va-el-tratamiento/instructions
     title: Instructions
     breadcrumbs:
@@ -612,8 +612,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: registro-de-estado-como-va-el-tratamiento/required-slots
     title: Required Slots
     breadcrumbs:
@@ -635,8 +635,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: registro-de-estado-como-va-el-tratamiento/handout-target
     title: Handout Target
     breadcrumbs:
@@ -658,8 +658,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: registro-de-estado-como-va-el-tratamiento/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -681,8 +681,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-saludo
   sections:
   - path: saludo-inicial
@@ -703,8 +703,8 @@ documents:
     - workspace.knowledge
     slug: saludo-inicial
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: saludo-inicial/instructions
     title: Instructions
     breadcrumbs:
@@ -726,8 +726,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: saludo-inicial/required-slots
     title: Required Slots
     breadcrumbs:
@@ -749,8 +749,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: saludo-inicial/handout-target
     title: Handout Target
     breadcrumbs:
@@ -772,8 +772,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: saludo-inicial/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -795,8 +795,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-derivacion-medinfo
   sections:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa
@@ -817,8 +817,8 @@ documents:
     - workspace.knowledge
     slug: derivaci-n-medinfo-consulta-m-dica-del-programa
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/instructions
     title: Instructions
     breadcrumbs:
@@ -840,8 +840,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
@@ -863,8 +863,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 792
-    line_end: 793
+    line_start: 21
+    line_end: 22
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
@@ -886,8 +886,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 796
-    line_end: 797
+    line_start: 25
+    line_end: 26
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -909,8 +909,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 800
-    line_end: 801
+    line_start: 29
+    line_end: 30
 - doc_name: step-antonia-revision-humana
   sections:
   - path: revisi-n-humana-ticket-pendiente
@@ -931,8 +931,8 @@ documents:
     - workspace.knowledge
     slug: revisi-n-humana-ticket-pendiente
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: revisi-n-humana-ticket-pendiente/instructions
     title: Instructions
     breadcrumbs:
@@ -954,8 +954,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: revisi-n-humana-ticket-pendiente/required-slots
     title: Required Slots
     breadcrumbs:
@@ -977,8 +977,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: revisi-n-humana-ticket-pendiente/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1000,8 +1000,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: revisi-n-humana-ticket-pendiente/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1023,8 +1023,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-journey-operativo
   sections:
   - path: journey-operativo-contenido-preaprobado-del-programa
@@ -1045,8 +1045,8 @@ documents:
     - workspace.knowledge
     slug: journey-operativo-contenido-preaprobado-del-programa
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: journey-operativo-contenido-preaprobado-del-programa/instructions
     title: Instructions
     breadcrumbs:
@@ -1068,8 +1068,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: journey-operativo-contenido-preaprobado-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1091,8 +1091,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: journey-operativo-contenido-preaprobado-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1114,8 +1114,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: journey-operativo-contenido-preaprobado-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1137,8 +1137,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-validacion-policy-gate
   sections:
   - path: validaci-n-policy-gate-autochequeo-post-draft
@@ -1159,8 +1159,8 @@ documents:
     - workspace.knowledge
     slug: validaci-n-policy-gate-autochequeo-post-draft
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: validaci-n-policy-gate-autochequeo-post-draft/instructions
     title: Instructions
     breadcrumbs:
@@ -1182,8 +1182,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: validaci-n-policy-gate-autochequeo-post-draft/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1205,8 +1205,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: validaci-n-policy-gate-autochequeo-post-draft/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1228,8 +1228,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: validaci-n-policy-gate-autochequeo-post-draft/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1251,8 +1251,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29
 - doc_name: step-antonia-enrolamiento
   sections:
   - path: enrolamiento-inscripci-n-al-programa
@@ -1273,8 +1273,8 @@ documents:
     - workspace.knowledge
     slug: enrolamiento-inscripci-n-al-programa
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: enrolamiento-inscripci-n-al-programa/instructions
     title: Instructions
     breadcrumbs:
@@ -1296,8 +1296,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: enrolamiento-inscripci-n-al-programa/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1319,8 +1319,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: enrolamiento-inscripci-n-al-programa/handout-target
     title: Handout Target
     breadcrumbs:
@@ -1342,8 +1342,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
+    line_start: 24
+    line_end: 25
   - path: enrolamiento-inscripci-n-al-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1365,5 +1365,5 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 799
-    line_end: 800
+    line_start: 28
+    line_end: 29

@@ -102,74 +102,64 @@ def test_skips_llm_when_no_user_or_empty_turn(kb_root: Path, session: tuple[Sess
 # ── pre-filtro semantico (top-k) ──────────────────────────────────────────
 
 
-class _FakeEmbedder:
-    """Embedder deterministico: mapea textos a vectores fijos por keyword."""
-
-    def __init__(self, vectors: dict[str, list[float]]) -> None:
-        self._vectors = vectors
-
-    def embed(self, texts):
-        out = []
-        for t in texts:
-            key = next((k for k in self._vectors if k in t), None)
-            out.append(self._vectors.get(key, [0.0, 0.0, 1.0]))
-        return out
-
-
 class _FakeKnowledgeOps:
-    def __init__(self, embedder) -> None:
-        self._embedder_obj = embedder
+    """Doble de ``KnowledgeOperations`` para el ranking: ``rank_among`` devuelve los
+    scores fijos que le dieron y ``document_index().keys()`` los ids con vector."""
 
-    def _embedder(self):
-        return self._embedder_obj
+    def __init__(self, scores: dict[str, float]) -> None:
+        self._scores = scores
+
+    def rank_among(self, query, ids, k=None, threshold=0.0):
+        hits = sorted(
+            ((cid, self._scores[cid]) for cid in ids if cid in self._scores and self._scores[cid] >= threshold),
+            key=lambda pair: -pair[1],
+        )
+        return hits[:k] if k is not None else hits
+
+    def document_index(self):
+        scores = self._scores
+
+        class _Index:
+            def keys(self):
+                return sorted(scores)
+
+        return _Index()
 
 
-def _cand(cid: str, vec):
+def _cand(cid: str):
     from kb_agent.perfilador.extractor import TraitCandidate
 
-    return TraitCandidate(id=cid, body=cid, embedding=tuple(vec) if vec else None)
+    return TraitCandidate(id=cid, body=cid)
 
 
 def test_rank_candidates_keeps_only_topk_by_similarity(kb_root: Path, session: tuple[Session, int]) -> None:
     s, _ = session
-    embedder = _FakeEmbedder({"quiero suite": [1.0, 0.0, 0.0]})
-    ops = _FakeKnowledgeOps(embedder)
     extractor = TraitExtractor(
         knowledge=KnowledgeOperations(kb_root=kb_root),
         identity_session=s,
         llm_mapper=ScriptedMapper([]),
-        knowledge_ops=ops,
+        knowledge_ops=_FakeKnowledgeOps({"trait-cerca": 1.0, "trait-lejos": 0.0}),
         top_k=1,
     )
-    cands = [
-        _cand("trait-cerca", [1.0, 0.0, 0.0]),   # coseno 1.0 con la query
-        _cand("trait-lejos", [0.0, 1.0, 0.0]),   # coseno 0.0 -> bajo el piso
-    ]
-    ranked = extractor._rank_candidates("quiero suite", cands)
+    ranked = extractor._rank_candidates("quiero suite", [_cand("trait-cerca"), _cand("trait-lejos")])
     assert [c.id for c in ranked] == ["trait-cerca"]
 
 
 def test_rank_candidates_always_keeps_traits_without_embedding(kb_root: Path, session: tuple[Session, int]) -> None:
     s, _ = session
-    embedder = _FakeEmbedder({"hola": [1.0, 0.0, 0.0]})
-    ops = _FakeKnowledgeOps(embedder)
     extractor = TraitExtractor(
         knowledge=KnowledgeOperations(kb_root=kb_root),
         identity_session=s,
         llm_mapper=ScriptedMapper([]),
-        knowledge_ops=ops,
+        knowledge_ops=_FakeKnowledgeOps({"trait-emb": 1.0}),   # trait-declarativo no esta en el indice
         top_k=1,
     )
-    cands = [
-        _cand("trait-emb", [1.0, 0.0, 0.0]),
-        _cand("trait-declarativo", None),   # sin embedding -> siempre incluido
-    ]
-    ranked = extractor._rank_candidates("hola", cands)
+    ranked = extractor._rank_candidates("hola", [_cand("trait-emb"), _cand("trait-declarativo")])
     assert set(c.id for c in ranked) == {"trait-emb", "trait-declarativo"}
 
 
 def test_rank_candidates_falls_back_to_all_without_knowledge_ops(kb_root: Path, session: tuple[Session, int]) -> None:
     s, _ = session
     extractor = _extractor(kb_root, s, ScriptedMapper([]))  # knowledge_ops=None
-    cands = [_cand("a", [1.0, 0.0, 0.0]), _cand("b", [0.0, 1.0, 0.0])]
+    cands = [_cand("a"), _cand("b")]
     assert extractor._rank_candidates("x", cands) == cands

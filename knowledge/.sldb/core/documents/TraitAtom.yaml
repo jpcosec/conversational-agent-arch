@@ -1,8 +1,8 @@
 documents:
 - name: trait-antonia-primera-vez
   path: atoms/trait-antonia-primera-vez.md
-  hash_c: 8f0779dd243fe89fe2fa9ac2aed5c160dde500e7a2b4920de3d78a1a0cd92c2d
-  hash_d: 7681d8f861521a28f7061d88d48a60e4206b0268b95af2acb507b6284ad09892
+  hash_c: b51cf5b15bbdba5a9be2b5c9d4560e980743b8db748e1d39872d39adca3e0b0b
+  hash_d: f04dc8b1566abcc5a9514d57276c7309591e69c7b93368bdc1c9246e5422558e
   semantic_tags:
   - system:laboratorio-chile
   - type.knowledge.trait
@@ -10,8 +10,8 @@ documents:
   - workspace.knowledge
 - name: trait-antonia-ansioso-aplicacion
   path: atoms/trait-antonia-ansioso-aplicacion.md
-  hash_c: 83da59bec1fb0081bc2dea7ae1f687b9a50b3c0180f05db72bd761dfd085c617
-  hash_d: e1350eb018c95f2b52c9f8689f2e330319e569d358847c9fd2b7f1c2f08ce070
+  hash_c: 47a87314020f72afc0d0a097daacf764f933c0e9bc1418d5ff617dde113c26e0
+  hash_d: ba7d6dd5d28755f9bf78487f9b9d0290be82841280069fcf10f1449019c4971e
   semantic_tags:
   - system:laboratorio-chile
   - type.knowledge.trait
@@ -19,8 +19,8 @@ documents:
   - workspace.knowledge
 - name: trait-antonia-buena-adherencia
   path: atoms/trait-antonia-buena-adherencia.md
-  hash_c: 05981ef2a9fa7babc2a0173074e5b657e09658cf8f7e6edb8f4e3e2b2bef2b22
-  hash_d: 4e3be3e6cd988869c404894184c4db9167424c562f9cbc88d0a19d943be7e6ac
+  hash_c: ea289bbef049e3b88b871bca61e6b9869eb8dc28499bafe1ca9868b989554d7f
+  hash_d: a05822c2ecef1fa845239202809800a7784979c3d1dbbb8027b251584a1bba7d
   semantic_tags:
   - system:laboratorio-chile
   - type.knowledge.trait
@@ -28,8 +28,8 @@ documents:
   - workspace.knowledge
 - name: trait-antonia-dudas-efectos
   path: atoms/trait-antonia-dudas-efectos.md
-  hash_c: 4857173a22ba6ead6fed3b69ca6db6f946a5b46e619f56a6b5bc7a41b62004b5
-  hash_d: 65b571531743ce030f34d3043c53146765e1b5a165bb1d83ee19b211b5984cb8
+  hash_c: 54389c6e0a14ba7e60c05451ca2b4349a8ac2c924ccf04747bbd219518cc6293
+  hash_d: 5e2a1c6a48300fbb348f7a80edad12d7d1ddd2776b1df5c038bb4733ad62a5c4
   semantic_tags:
   - system:laboratorio-chile
   - type.knowledge.trait
@@ -37,8 +37,8 @@ documents:
   - workspace.knowledge
 - name: trait-antonia-prefiere-recordatorios
   path: atoms/trait-antonia-prefiere-recordatorios.md
-  hash_c: d6f832a884d501c7d82a026c5eaff58857e806fb285e3fbb631b36c3287846ac
-  hash_d: 0d75a199725f236a63c9cc31ec08003cef8ed172f7991ced0c01b04a7fc14550
+  hash_c: 5cc0a20033a5f40e1c556d2940a990bbefa3ec0288eb387e9bb5dea0561fd5a6
+  hash_d: 9bddf73fe6b641d41306e93e7d1ec92db58374b1fa48eb115bc60758fcdae0b0
   semantic_tags:
   - system:laboratorio-chile
   - type.knowledge.trait

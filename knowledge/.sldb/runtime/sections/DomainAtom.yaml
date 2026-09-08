@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: bienvenida-al-programa
     level: 1
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
   - path: bienvenida-al-programa/answer
     title: Answer
     breadcrumbs:
@@ -46,8 +46,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 790
-    line_end: 791
+    line_start: 19
+    line_end: 20
 - doc_name: atom-antonia-aplicacion
   sections:
   - path: administraci-n-de-selfix
@@ -70,8 +70,8 @@ documents:
     - workspace.knowledge
     slug: administraci-n-de-selfix
     level: 1
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: administraci-n-de-selfix/answer
     title: Answer
     breadcrumbs:
@@ -95,8 +95,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 789
-    line_end: 790
+    line_start: 18
+    line_end: 19
 - doc_name: atom-antonia-primeras-semanas
   sections:
   - path: qu-esperar-las-primeras-semanas
@@ -119,8 +119,8 @@ documents:
     - workspace.knowledge
     slug: qu-esperar-las-primeras-semanas
     level: 1
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: qu-esperar-las-primeras-semanas/answer
     title: Answer
     breadcrumbs:
@@ -144,8 +144,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 789
-    line_end: 790
+    line_start: 18
+    line_end: 19
 - doc_name: atom-antonia-recompra
   sections:
   - path: recompra-y-renovaci-n-de-receta
@@ -168,8 +168,8 @@ documents:
     - workspace.knowledge
     slug: recompra-y-renovaci-n-de-receta
     level: 1
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: recompra-y-renovaci-n-de-receta/answer
     title: Answer
     breadcrumbs:
@@ -193,8 +193,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 789
-    line_end: 790
+    line_start: 18
+    line_end: 19
 - doc_name: atom-antonia-medinfo
   sections:
   - path: gesti-n-de-informaci-n-m-dica-del-programa
@@ -215,8 +215,8 @@ documents:
     - workspace.knowledge
     slug: gesti-n-de-informaci-n-m-dica-del-programa
     level: 1
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: gesti-n-de-informaci-n-m-dica-del-programa/answer
     title: Answer
     breadcrumbs:
@@ -238,8 +238,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 789
-    line_end: 790
+    line_start: 18
+    line_end: 19
 - doc_name: atom-antonia-farmacovigilancia
   sections:
   - path: proceso-de-farmacovigilancia-del-programa
@@ -260,8 +260,8 @@ documents:
     - workspace.knowledge
     slug: proceso-de-farmacovigilancia-del-programa
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: proceso-de-farmacovigilancia-del-programa/answer
     title: Answer
     breadcrumbs:
@@ -283,8 +283,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-journeys
   sections:
   - path: journeys-operativos-del-programa
@@ -305,8 +305,8 @@ documents:
     - workspace.knowledge
     slug: journeys-operativos-del-programa
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: journeys-operativos-del-programa/answer
     title: Answer
     breadcrumbs:
@@ -328,8 +328,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-titulacion
   sections:
   - path: titulaci-n-del-programa-selfix
@@ -350,8 +350,8 @@ documents:
     - workspace.knowledge
     slug: titulaci-n-del-programa-selfix
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: titulaci-n-del-programa-selfix/answer
     title: Answer
     breadcrumbs:
@@ -373,8 +373,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-molecula
   sections:
   - path: mol-cula-de-selfix
@@ -395,8 +395,8 @@ documents:
     - workspace.knowledge
     slug: mol-cula-de-selfix
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: mol-cula-de-selfix/answer
     title: Answer
     breadcrumbs:
@@ -418,8 +418,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-meddra
   sections:
   - path: meddra-diccionario-m-dico-regulatorio
@@ -440,8 +440,8 @@ documents:
     - workspace.knowledge
     slug: meddra-diccionario-m-dico-regulatorio
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: meddra-diccionario-m-dico-regulatorio/answer
     title: Answer
     breadcrumbs:
@@ -463,8 +463,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-ea
   sections:
   - path: efecto-adverso-definici-n
@@ -485,8 +485,8 @@ documents:
     - workspace.knowledge
     slug: efecto-adverso-definici-n
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: efecto-adverso-definici-n/answer
     title: Answer
     breadcrumbs:
@@ -508,8 +508,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-ea-administracion
   sections:
   - path: aplicaci-n-correcta-y-mala-praxis
@@ -530,8 +530,8 @@ documents:
     - workspace.knowledge
     slug: aplicaci-n-correcta-y-mala-praxis
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: aplicaci-n-correcta-y-mala-praxis/answer
     title: Answer
     breadcrumbs:
@@ -553,8 +553,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-ea-esperados
   sections:
   - path: efectos-esperados-de-selfix
@@ -575,8 +575,8 @@ documents:
     - workspace.knowledge
     slug: efectos-esperados-de-selfix
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: efectos-esperados-de-selfix/answer
     title: Answer
     breadcrumbs:
@@ -598,8 +598,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-gamp5
   sections:
   - path: gamp-5-validaci-n-de-software-pharma
@@ -620,8 +620,8 @@ documents:
     - workspace.knowledge
     slug: gamp-5-validaci-n-de-software-pharma
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: gamp-5-validaci-n-de-software-pharma/answer
     title: Answer
     breadcrumbs:
@@ -643,8 +643,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-gamp5-agile
   sections:
   - path: gamp-5-acepta-pruebas-automatizadas
@@ -665,8 +665,8 @@ documents:
     - workspace.knowledge
     slug: gamp-5-acepta-pruebas-automatizadas
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: gamp-5-acepta-pruebas-automatizadas/answer
     title: Answer
     breadcrumbs:
@@ -688,8 +688,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-gamp5-alcoa
   sections:
   - path: integridad-de-datos-alcoa
@@ -710,8 +710,8 @@ documents:
     - workspace.knowledge
     slug: integridad-de-datos-alcoa
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: integridad-de-datos-alcoa/answer
     title: Answer
     breadcrumbs:
@@ -733,8 +733,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-ime
   sections:
   - path: ime-eventos-m-dicos-importantes
@@ -755,8 +755,8 @@ documents:
     - workspace.knowledge
     slug: ime-eventos-m-dicos-importantes
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: ime-eventos-m-dicos-importantes/answer
     title: Answer
     breadcrumbs:
@@ -778,8 +778,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-ime-catalogo
   sections:
   - path: se-ales-de-alarma-tipo-ime
@@ -800,8 +800,8 @@ documents:
     - workspace.knowledge
     slug: se-ales-de-alarma-tipo-ime
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: se-ales-de-alarma-tipo-ime/answer
     title: Answer
     breadcrumbs:
@@ -823,8 +823,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-ime-grave-automatico
   sections:
   - path: ime-grave-autom-tico
@@ -845,8 +845,8 @@ documents:
     - workspace.knowledge
     slug: ime-grave-autom-tico
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: ime-grave-autom-tico/answer
     title: Answer
     breadcrumbs:
@@ -868,8 +868,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-meddra-alcance
   sections:
   - path: por-qu-no-codifico-meddra
@@ -890,8 +890,8 @@ documents:
     - workspace.knowledge
     slug: por-qu-no-codifico-meddra
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: por-qu-no-codifico-meddra/answer
     title: Answer
     breadcrumbs:
@@ -913,8 +913,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-meddra-jerarquia
   sections:
   - path: niveles-meddra-llt-pt-soc
@@ -935,8 +935,8 @@ documents:
     - workspace.knowledge
     slug: niveles-meddra-llt-pt-soc
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: niveles-meddra-llt-pt-soc/answer
     title: Answer
     breadcrumbs:
@@ -958,8 +958,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-meddra-verbatim
   sections:
   - path: verbatim-la-palabra-cruda-del-paciente
@@ -980,8 +980,8 @@ documents:
     - workspace.knowledge
     slug: verbatim-la-palabra-cruda-del-paciente
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: verbatim-la-palabra-cruda-del-paciente/answer
     title: Answer
     breadcrumbs:
@@ -1003,8 +1003,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-triage
   sections:
   - path: triage-ordenar-por-urgencia
@@ -1025,8 +1025,8 @@ documents:
     - workspace.knowledge
     slug: triage-ordenar-por-urgencia
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: triage-ordenar-por-urgencia/answer
     title: Answer
     breadcrumbs:
@@ -1048,8 +1048,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-triage-colas
   sections:
   - path: las-3-colas-de-clasificaci-n
@@ -1070,8 +1070,8 @@ documents:
     - workspace.knowledge
     slug: las-3-colas-de-clasificaci-n
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: las-3-colas-de-clasificaci-n/answer
     title: Answer
     breadcrumbs:
@@ -1093,8 +1093,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-triage-limites
   sections:
   - path: lo-que-el-triage-no-hace
@@ -1115,8 +1115,8 @@ documents:
     - workspace.knowledge
     slug: lo-que-el-triage-no-hace
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: lo-que-el-triage-no-hace/answer
     title: Answer
     breadcrumbs:
@@ -1138,8 +1138,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
 - doc_name: atom-antonia-triage-validez
   sections:
   - path: los-4-criterios-de-validez-de-un-reporte
@@ -1160,8 +1160,8 @@ documents:
     - workspace.knowledge
     slug: los-4-criterios-de-validez-de-un-reporte
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: los-4-criterios-de-validez-de-un-reporte/answer
     title: Answer
     breadcrumbs:
@@ -1183,5 +1183,5 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18

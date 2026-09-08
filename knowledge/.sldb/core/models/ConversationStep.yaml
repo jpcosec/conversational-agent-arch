@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:ConversationStep
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/step.py
 documents_index: .sldb/core/documents/ConversationStep.yaml
 sections_index: .sldb/runtime/sections/ConversationStep.yaml
-hash_b: acb8ab85991014102a401cb066e18adc8cf37fa3ccf4e2b7ee1f864fbe1ff40b
+hash_b: 679e7918cedd838015dffb738aadb5b8ba611b3d00254c10fe8e24de7f723f65
 version: 1
 canonical: false
 family: null

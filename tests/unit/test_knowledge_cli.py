@@ -213,31 +213,21 @@ EMBED_ATOMS = [
      "fields": {"criterion": "Usa solo información del corpus.", "approval_condition": "Cita el corpus.", "rejection_action": "Encola revisión humana."}},
 ]
 
-EMBED_DIM = 768
+EMBED_DIM = 16
 
 
 class _FakeEmbedder:
-    """Embedder determinista para tests: evita la descarga del modelo real.
+    """``pron.embedder.Embedder`` determinista: evita la descarga del modelo real."""
 
-    Reproduce el contrato de fastembed.TextEmbedding.embed(): recibe una lista
-    de textos y devuelve un iterable de vectores (uno por texto).
-    """
+    def id(self) -> str:
+        return "fake:test"
 
-    def __init__(self, dim: int = EMBED_DIM) -> None:
-        self._dim = dim
-
-    def embed(self, texts: list[str]):
+    def embed(self, texts):
+        out = []
         for i, text in enumerate(texts):
             seed = (len(text) + i) % 7 + 1
-            yield [float(seed) * 0.001 * (j + 1) for j in range(self._dim)]
-
-
-def _embedding_line(doc_path: Path) -> list[float]:
-    import yaml
-
-    parts = doc_path.read_text(encoding="utf-8").split("---", 2)
-    data = yaml.safe_load(parts[1]) or {}
-    return data.get("embedding")
+            out.append([float(seed) * 0.001 * (j + 1) for j in range(EMBED_DIM)])
+        return out
 
 
 @pytest.fixture()
@@ -249,37 +239,30 @@ def embed_kb(tmp_path: Path) -> Path:
     )
 
 
-def test_index_embeddings_persists_vectors_to_frontmatter(embed_kb: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    ops = _ops(embed_kb)
-    monkeypatch.setattr(ops, "_embedder", lambda: _FakeEmbedder())
-    # Evitar dependencia de `sldb stores update` subprocess en el aserto de persistencia.
-    monkeypatch.setattr(ops, "_run_sldb", lambda *args: None)
+def _ops_embed(kb: Path) -> KnowledgeOperations:
+    return KnowledgeOperations(kb, None, pythonpath=str(REPO_ROOT), embedder=_FakeEmbedder())
 
-    domain_path = embed_kb / "atoms" / "atom-carta.md"
-    gate_path = embed_kb / "atoms" / "gate-corpus.md"
-    # Partimos sin embedding en disco.
-    assert _embedding_line(domain_path) is None
-    assert _embedding_line(gate_path) is None
 
+def test_index_embeddings_persists_vectors_in_the_derived_index(embed_kb: Path) -> None:
+    ops = _ops_embed(embed_kb)
     stats = ops.index_embeddings()
-
-    # Procesa TODOS los tipos, incluido gate (Bug 1).
-    assert stats["processed"] == 2
-    assert stats["errors"] == 0
-    assert stats["dimension"] == EMBED_DIM
-
-    # Persiste realmente al .md (Bug 2): vectores no vacíos de dimensión esperada.
-    domain_vec = _embedding_line(domain_path)
-    gate_vec = _embedding_line(gate_path)
-    assert isinstance(domain_vec, list) and len(domain_vec) == EMBED_DIM
-    assert isinstance(gate_vec, list) and len(gate_vec) == EMBED_DIM
-    assert any(v != 0.0 for v in gate_vec)
+    # Procesa TODOS los tipos, incluido gate.
+    assert stats["embedded"] == 2 and stats["total"] == 2 and stats["embedder"] == "fake:test"
+    # El vector vive en el indice derivado (<kb>/.pron/), no en el .md.
+    vectors = ops.document_vectors()
+    assert set(vectors) == {"atom-carta", "gate-corpus"}
+    assert all(len(v) == EMBED_DIM for v in vectors.values())
+    assert "embedding" not in (embed_kb / "atoms" / "gate-corpus.md").read_text(encoding="utf-8")
+    assert list((embed_kb / ".pron").glob("docs.*.json"))
+    # Re-indexar sin cambios no vuelve a embeber nada.
+    again = ops.index_embeddings()
+    assert again["embedded"] == 0 and again["reused"] == 2
 
 
 def test_audit_embeddings_flags_missing_vectors(embed_kb: Path) -> None:
-    """KB recien sembrada (sin vectores): el audit los reporta como faltantes
+    """KB recien sembrada (sin indice): el audit los reporta como faltantes
     y devuelve ok=False -- el defecto deja de ser invisible."""
-    ops = _ops(embed_kb)
+    ops = _ops_embed(embed_kb)
     report = ops.audit_embeddings()
     assert report["ok"] is False
     assert report["with_embedding"] == 0
@@ -287,16 +270,22 @@ def test_audit_embeddings_flags_missing_vectors(embed_kb: Path) -> None:
     assert {"atom-carta", "gate-corpus"} <= missing_ids
 
 
-def test_audit_embeddings_passes_after_indexing(embed_kb: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    ops = _ops(embed_kb)
-    monkeypatch.setattr(ops, "_embedder", lambda: _FakeEmbedder())
-    monkeypatch.setattr(ops, "_run_sldb", lambda *args: None)
+def test_audit_embeddings_passes_after_indexing(embed_kb: Path) -> None:
+    ops = _ops_embed(embed_kb)
     ops.index_embeddings()
-    ops._invalidate_cache()
     report = ops.audit_embeddings()
     assert report["ok"] is True
     assert report["missing"] == []
     assert report["with_embedding"] == report["total"]
+
+
+def test_index_reembeds_only_changed_documents(embed_kb: Path) -> None:
+    ops = _ops_embed(embed_kb)
+    ops.index_embeddings()
+    ops.world.store.update_field("DomainAtom", "atom-carta", "summary", "Otra carta.")
+    ops._invalidate_cache()
+    stats = ops.index_embeddings()
+    assert stats["embedded"] == 1 and stats["reused"] == 1
 
 
 def test_audit_embeddings_excludes_agent_framing_by_design() -> None:
@@ -314,19 +303,3 @@ def test_audit_embeddings_excludes_agent_framing_by_design() -> None:
     assert report["embeddingless_by_design"] == 2
 
 
-def test_index_embeddings_survives_store_update_failure(embed_kb: Path, monkeypatch: pytest.MonkeyPatch) -> None:
-    ops = _ops(embed_kb)
-    monkeypatch.setattr(ops, "_embedder", lambda: _FakeEmbedder())
-
-    def _boom(*args: str) -> None:
-        raise RuntimeError("returned non-zero exit status 1")
-
-    monkeypatch.setattr(ops, "_run_sldb", _boom)
-
-    stats = ops.index_embeddings()
-
-    # Un fallo del store NO aborta el pipeline ni descarta lo ya escrito.
-    assert stats["processed"] == 2
-    assert "store_update_error" in stats
-    gate_vec = _embedding_line(embed_kb / "atoms" / "gate-corpus.md")
-    assert isinstance(gate_vec, list) and len(gate_vec) == EMBED_DIM

@@ -1,12 +1,12 @@
-"""Exporta atoms + embeddings a un grafo 2D para visualizar con ReactFlow.
+"""Exporta atoms + vectores del indice de documentos a un grafo 2D para ReactFlow.
 
-Proyecta los embeddings 768-dim a 2D via PCA (numpy puro, sin sklearn),
-colorea por familia semantica y crea edges entre pares con alta similitud
-coseno. Escribe un JSON consumido por el HTML de ReactFlow.
+Proyecta los vectores a 2D via PCA (numpy puro, sin sklearn), colorea por
+familia semantica y crea edges entre pares con alta similitud coseno. Los
+vectores salen del ``DocumentIndex`` de pron que mantiene
+``KnowledgeOperations`` (``<kb>/.pron/``), nunca del frontmatter.
 
 El runtime lo consume en vivo via ``GET /api/viz/graph`` (ver
-``frontends/chat/app.py``); este CLI queda para exportar un JSON offline
-(debug, artefactos, ci) sin depender del servidor.
+``frontends/chat/app.py``); este CLI queda para exportar un JSON offline.
 
 Uso:
     python -m frontends.viz.export_graph --out frontends/viz/graph.json
@@ -21,9 +21,7 @@ from pathlib import Path
 
 import numpy as np
 
-from knowledge_base.operations import ALL_MODELS
-from sldb.cli.model_utils import resolve_model_ref
-from sldb.store.query import load_runtime_documents
+from knowledge_base.operations import ALL_MODELS, KnowledgeOperations
 
 # Paleta alineada con kb-ui (taxonomy_explorer).
 FAMILY_COLORS = {
@@ -39,43 +37,25 @@ DEFAULT_EDGE_THRESHOLD = 0.55
 DEFAULT_MAX_EDGES_PER_NODE = 3
 
 
-def _load_atoms(kb: str, pythonpath: str) -> list[dict]:
-    """Carga atoms + embeddings vía la capa de librería de SLDB.
-
-    Antes llamaba a ``KnowledgeOperations._find_records()`` (un método
-    "privado" de otro módulo) y después volvía a leer/parsear cada ``.md``
-    con ``extract_model_data`` -- un segundo parseo redundante, porque
-    ``_find_records()`` ya trae el payload resuelto por documento (vía
-    ``load_runtime_documents`` internamente). ``KnowledgeOperations`` no
-    expone una API pública que devuelva "todos los docs de todos los
-    modelos con su payload" (sus métodos públicos son búsquedas puntuales:
-    ``show``, ``explore_multi``, ``fetch``-equivalentes por tipo), así que
-    en vez de forzar ese caso por una API pensada para otra cosa, esto usa
-    directamente la misma capa de librería que ``KnowledgeOperations``
-    usa por dentro (``sldb.store.query.load_runtime_documents``), sin pasar
-    por ``knowledge_base`` en absoluto.
-    """
-    by_class = {cls.__name__.lower(): cls for cls in ALL_MODELS}
-    store_path = Path(kb).resolve() / ".sldb"
-    docs = load_runtime_documents(store_path, resolve_model_ref, pythonpath=pythonpath)
-
+def _load_atoms(ops: KnowledgeOperations) -> list[dict]:
+    """Atoms con vector: el payload del store y el vector del indice de documentos."""
+    by_class = {cls.__name__: cls for cls in ALL_MODELS}
+    vectors = ops.document_vectors()
     atoms = []
-    for d in docs:
-        model_cls = by_class.get((d.model_name or "").lower())
-        if model_cls is None:
+    for record in ops._find_records():
+        model_cls = by_class.get(record.model_name or "")
+        vec = vectors.get(record.name)
+        if model_cls is None or not vec:
             continue
-        emb = d.payload.get("embedding")
-        if not emb:
-            continue
-        family = model_cls.family()
+        payload = record.payload or {}
         atoms.append({
-            "id": d.name,
-            "title": d.payload.get("title", d.name),
-            "summary": d.payload.get("summary", ""),
+            "id": record.name,
+            "title": payload.get("title", record.name),
+            "summary": payload.get("summary", ""),
             "model": model_cls.__name__,
-            "family": family,
-            "tags": d.payload.get("tags", []),
-            "embedding": np.asarray(emb, dtype=np.float64),
+            "family": model_cls.family(),
+            "tags": list(record.semantic or []),
+            "embedding": np.asarray(vec, dtype=np.float64),
         })
     return atoms
 
@@ -104,8 +84,8 @@ def _cosine_sim_matrix(mat: np.ndarray) -> np.ndarray:
     return unit @ unit.T
 
 
-def build_graph(kb: str, pythonpath: str, edge_threshold: float, max_edges_per_node: int) -> dict:
-    atoms = _load_atoms(kb, pythonpath)
+def build_graph(ops: KnowledgeOperations, edge_threshold: float, max_edges_per_node: int) -> dict:
+    atoms = _load_atoms(ops)
     if not atoms:
         return {"nodes": [], "edges": [], "meta": {"count": 0}}
 
@@ -172,7 +152,7 @@ def build_graph(kb: str, pythonpath: str, edge_threshold: float, max_edges_per_n
             "count": n,
             "edge_threshold": edge_threshold,
             "families": sorted({(a["family"] or "none") for a in atoms}),
-            "kb": kb,
+            "kb": str(ops.kb_root),
         },
     }
 
@@ -192,7 +172,8 @@ def main() -> None:
 
         kb = str(load_project_config().kb_root)
 
-    graph = build_graph(kb, args.pythonpath, args.edge_threshold, args.max_edges_per_node)
+    ops = KnowledgeOperations(kb_root=kb, pythonpath=args.pythonpath)
+    graph = build_graph(ops, args.edge_threshold, args.max_edges_per_node)
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(graph, ensure_ascii=False, indent=2), encoding="utf-8")

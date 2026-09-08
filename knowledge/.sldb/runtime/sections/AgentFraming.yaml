@@ -17,8 +17,8 @@ documents:
     - workspace.knowledge
     slug: encuadre-del-gate-antonia
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 12
+    line_end: 13
   - path: encuadre-del-gate-antonia/framing
     title: Framing
     breadcrumbs:
@@ -38,8 +38,8 @@ documents:
     - workspace.knowledge
     slug: framing
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 14
+    line_end: 15
   - path: encuadre-del-gate-antonia/examples
     title: Examples
     breadcrumbs:
@@ -59,8 +59,8 @@ documents:
     - workspace.knowledge
     slug: examples
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 18
+    line_end: 19
 - doc_name: agent-antonia-router
   sections:
   - path: encuadre-del-ruteador-antonia
@@ -79,8 +79,8 @@ documents:
     - workspace.knowledge
     slug: encuadre-del-ruteador-antonia
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 12
+    line_end: 13
   - path: encuadre-del-ruteador-antonia/framing
     title: Framing
     breadcrumbs:
@@ -100,8 +100,8 @@ documents:
     - workspace.knowledge
     slug: framing
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 14
+    line_end: 15
   - path: encuadre-del-ruteador-antonia/examples
     title: Examples
     breadcrumbs:
@@ -121,5 +121,5 @@ documents:
     - workspace.knowledge
     slug: examples
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 18
+    line_end: 19

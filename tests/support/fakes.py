@@ -6,6 +6,12 @@ llamadas para que los tests afirmen sobre lo que el runtime le pidio al LLM.
 """
 from __future__ import annotations
 
+import re
+
+import random
+
+import hashlib
+
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -241,35 +247,40 @@ VEGETARIAN_MATCH = {"vegetarian": [{"trait_id": "trait-vegetariano", "confidence
 
 
 class FakeEmbedder:
-    """Doble barato de ``fastembed.TextEmbedding`` para tests offline.
+    """Doble barato del ``Embedder`` de pron para tests offline.
 
-    El compilador (``ContextCompiler._semantic_candidates``) y el perfilador
-    (``TraitExtractor._rank_candidates``) piden el embedder de
-    ``knowledge_ops`` (``knowledge_ops._embedder()``) para embeder texto por
-    turno -- y ``Orchestrator.__init__`` SIEMPRE crea una instancia real de
-    ``KnowledgeOperations``. Cargar el embedder real (jina-embeddings-v2)
-    puede tomar bastante en frio (ver ``KnowledgeOperations._embedder``), y
-    cada test que arma un ``Orchestrator`` via ``offline_orchestrator`` crea
-    una instancia nueva. Sin este doble, la suite entera pagaria ese costo
-    por cada test -- se lo inyecta directo en ``_embedder_cache`` (mismo
-    mecanismo de cacheo por instancia que usa el codigo real, ver su
-    docstring).
+    ``Orchestrator.__init__`` SIEMPRE crea una ``KnowledgeOperations``, y su
+    ``DocumentIndex`` embebe con el modelo real (jina, ~1 min en frio) salvo que
+    se le inyecte otro puerto; ``offline_orchestrator`` inyecta este.
 
-    Determinista y DISCRIMINANTE por contenido: deriva un vector pseudo-
-    aleatorio estable del texto (hash -> semilla). Textos distintos dan
-    vectores distintos y no colineales, asi que la similitud coseno separa
-    de verdad (un doble que devuelve el MISMO vector para todo colapsa el
-    ranking y esconde bugs). Mismo largo que ``jina-embeddings-v2-base-es``
-    (768), norma no nula.
+    Determinista y DISCRIMINANTE por contenido: bolsa de palabras hasheadas
+    (cada palabra de 3+ letras aporta un vector pseudoaleatorio estable), asi
+    que dos textos se parecen en proporcion a las palabras que comparten y
+    textos sin palabras en comun quedan ~ortogonales. Un doble que devuelve el
+    MISMO vector para todo colapsa el ranking y esconde bugs.
     """
 
     _DIM = 768
 
+    def id(self) -> str:
+        return "fake:word-hash"
+
+    @classmethod
+    def _word_vector(cls, word: str) -> list[float]:
+        seed = int(hashlib.sha256(word.encode("utf-8")).hexdigest(), 16) & 0xFFFFFFFF
+        rng = random.Random(seed)
+        return [rng.uniform(-1.0, 1.0) for _ in range(cls._DIM)]
+
     @classmethod
     def _vector(cls, text: str) -> list[float]:
-        from tests.support.sldb_seed import hash_vector
-
-        return hash_vector(text, cls._DIM)
+        words = {w for w in re.findall(r"[a-z0-9áéíóúñü]+", str(text).lower()) if len(w) >= 3}
+        acc = [0.0] * cls._DIM
+        for w in sorted(words):
+            for i, v in enumerate(cls._word_vector(w)):
+                acc[i] += v
+        if not words:
+            acc[0] = 1.0
+        return acc
 
     def embed(self, texts: Any) -> list[list[float]]:
         return [self._vector(str(t)) for t in texts]

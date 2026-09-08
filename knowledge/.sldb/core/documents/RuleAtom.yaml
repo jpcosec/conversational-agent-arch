@@ -1,8 +1,8 @@
 documents:
 - name: rule-antonia-anti-alucinacion
   path: atoms/rule-antonia-anti-alucinacion.md
-  hash_c: f4d924500062fe0254d3f8785eda1f164a5c03a2b68e92b3ace013caecd20870
-  hash_d: 1042b410291d35815eac2c5e2b427a3c220bd1de324e289f37562c99c255c0bc
+  hash_c: 627dc810233c0b721c66de01da9cb24c23ef4631e9388f7bf3667652ec2f0d00
+  hash_d: dbf0a65b1919a14c613439be784f28162ac74f85733feca2bd38af9022908132
   semantic_tags:
   - conversation:fallback
   - conversation:security
@@ -11,8 +11,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-eventos-adversos
   path: atoms/rule-antonia-eventos-adversos.md
-  hash_c: 304cd7e62db36f3c37d624c0020cb96d4cc8922591d8d701743ddc039157cb52
-  hash_d: 42744bb6fb06e99fd39f25ff55497112276582b24179c7ad586cff704f0d933e
+  hash_c: 597eea793fe2f4128179f5293252321ec1c87cec6c6054dc302f03d192e2c7fe
+  hash_d: 13f2a43803c021b0fb66f0e94fad10df36c7b413f486fa59bc12d0a49b4f69e6
   semantic_tags:
   - conversation:pharmacovigilance
   - domain:seguridad
@@ -21,8 +21,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-clasificacion-operacional
   path: atoms/rule-antonia-clasificacion-operacional.md
-  hash_c: 3ac07ba56dc1cd0694c523b6e6b61bc5a5b4841d385270cc96200616fa8800c4
-  hash_d: 985f4ed89573d7654f46c18e586e94fc4e0e6c7eb03a3e7cb96c31b71c5a3f8b
+  hash_c: 1a97c1d61bcef7e745d8b6939415a705d739ad0637ebb1f5bb1f7705a8520e1b
+  hash_d: ae909fd7a45d9e09b3afe9a65c766994b9cb2f54cfd0d4e0deed9bec62c664d9
   semantic_tags:
   - conversation:classification
   - system:laboratorio-chile
@@ -30,8 +30,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-clasificacion-medinfo
   path: atoms/rule-antonia-clasificacion-medinfo.md
-  hash_c: fdfc0c9e0bffe6f43d5c7bf1d242afac728317dc625b3d3d62e8205f6be13d74
-  hash_d: ca42de232cbc07c46d672c863960fcb47a0e9c4a84fad99f123d574c0918af75
+  hash_c: f0ee0f602ae1601958fc8890ff535310b6db7f1024bbf9ea69b2d553ff8cc0d8
+  hash_d: b6117a0a1bf86c10a9e5f7cf08e5fc060eff5ac76d04f53d058149aab3c7db63
   semantic_tags:
   - conversation:classification
   - system:laboratorio-chile
@@ -39,8 +39,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-clasificacion-tratamiento
   path: atoms/rule-antonia-clasificacion-tratamiento.md
-  hash_c: 7e038bedd9e716bbdcf013a6b2e7b18cd62f4201c3c33da80ad18f1b206d384a
-  hash_d: 41801e855b78539f36ebc1291a2d210861d02df8b391cb6687021268ddb80cf6
+  hash_c: 34a22609973d44995dc2f0c342637391cd168adc6fe9d8b1e22f93b8e29a8138
+  hash_d: aec0e110f2041f975ad0ddb11871a7feff494a8e7cf41a93350966e14cc91b60
   semantic_tags:
   - conversation:classification
   - system:laboratorio-chile
@@ -48,8 +48,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-no-contraindicaciones
   path: atoms/rule-antonia-no-contraindicaciones.md
-  hash_c: 7d08f6143c49b298318cb9543882fc1ec5264a46c95f5a86685aab3edf3d3d53
-  hash_d: 8304b4fd216481e0fdf30949b42056c2a3c5bfd67266992253d5729ac21e95d1
+  hash_c: ac4f0343947210a5c9344dc0e0369cb756ff9c36ded480b30a2dd38723fe83a3
+  hash_d: 7d09079691d763436e0278413a51e50fbe94afbd7c8d3d4552e6af966f8eef15
   semantic_tags:
   - conversation:security
   - system:laboratorio-chile
@@ -57,8 +57,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-no-deducir
   path: atoms/rule-antonia-no-deducir.md
-  hash_c: f7bf1d5c7ed8517ebf556bf4902c23bba1434d5c028f268aa7d90ee9663b9db6
-  hash_d: 99a33ecf57b086565128a6c2006e574f6729d52ab72f5531262c19c8ed8087da
+  hash_c: 520397903dd1615398d3a3596039a6098d98eb7d90b7d445bfe929e4efbecc4a
+  hash_d: f2f0c4fb857104728dcb581bb5576af82c1a873d9075be8c52d18aa48a985e56
   semantic_tags:
   - conversation:security
   - system:laboratorio-chile
@@ -66,8 +66,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-no-extrapolar
   path: atoms/rule-antonia-no-extrapolar.md
-  hash_c: ae2af2699ceaf436a62dbda55771ffd27aca7c3dd83e2f71d633340ee7b028c8
-  hash_d: 3806d04bf71aa417350ed81a4ad886b2adcf162a91c5112272f0f1ca9da87cf7
+  hash_c: faed7e3a3984efdff6ebf276ef4550806005fc362e7beb3a7de7aa0bebb9ef84
+  hash_d: d994bd8b9c7939fb741e5506cc0e2adc6f5a145d9901ff985cacb02d50fd89bc
   semantic_tags:
   - conversation:security
   - system:laboratorio-chile
@@ -75,8 +75,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-no-farmacologia
   path: atoms/rule-antonia-no-farmacologia.md
-  hash_c: 155a6a730d1d54ca0a712832ad8f52c7062289126d82e674c6eaaed04f7f7b2b
-  hash_d: 7b3c3444068803a1b2d9f7080fc2043e5e1806e4c8090d787aa1a1ac245672fd
+  hash_c: 2e62fefe470983f6c8143b99ad1135088ee6b7ac5ff3efd5c83e79f67ca579c3
+  hash_d: e6c381f6bfc02c33381cf6878958a47df6351f6d7379ad285534bfe84bc45042
   semantic_tags:
   - conversation:security
   - system:laboratorio-chile
@@ -84,8 +84,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-no-inventar
   path: atoms/rule-antonia-no-inventar.md
-  hash_c: 22caaf9028cc325f6411d8112419a72058784295555cbdca1c30fa03f12048d9
-  hash_d: 499ca46290badd1585e960c788b1cef4b10c2c907760d930e31106ff3635a1f8
+  hash_c: f5c971206b4105bdb8954f92dc63ac42d120e1bc583b234ff98ccc6bdf4ee2a1
+  hash_d: 32116c43aa9acc71aece002b695dce66b0a9ab651a3f45c368106cd8263e4dd5
   semantic_tags:
   - conversation:security
   - system:laboratorio-chile
@@ -93,8 +93,8 @@ documents:
   - workspace.knowledge
 - name: rule-antonia-derivar-clinico
   path: atoms/rule-antonia-derivar-clinico.md
-  hash_c: 3c6b1341b181a190d35b56395841b0c7835a18bb11d640c36f969cd786aee883
-  hash_d: 336244ce8ec9d35af572ed11ca2e058d48d8af66a24a34d53a7e85f9930ae5c4
+  hash_c: 7d29d157dace1f03d807f6367d491b9f3287a3e68cba0e2022113e056917da2a
+  hash_d: f88b617f5ba73b609629b3bcd4d5d7d7690c07441fdb1d504a905c2cb4d8962e
   semantic_tags:
   - conversation:fallback
   - system:laboratorio-chile
@@ -102,8 +102,8 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-regla-clasificar
   path: atoms/atom-antonia-regla-clasificar.md
-  hash_c: e2524f7e153913984aec29992081e6cbb1845144502809d6eec7f7e288c2f807
-  hash_d: 6bf3e4fc0b9ede29b51b96b11e3df360b0622d1fa827d37967000ddb01922542
+  hash_c: 3bdfb6d9ece0d5abb26d192893562e428214847901956ea6bf0f74f1f361c6e7
+  hash_d: 8843957b54a45f5fa581b8a475924203e6fbeb8f143028efa81ed783d2ca536e
   semantic_tags:
   - domain:seguridad.triage
   - system:laboratorio-chile
@@ -112,8 +112,8 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-regla-escalar-ime
   path: atoms/atom-antonia-regla-escalar-ime.md
-  hash_c: 37b96d1409673924163c6146c4783f2ee642561c44b386e12bda6779ed9df8b0
-  hash_d: 2f60c5419bf1e31110cb9ff8ac214f9f77f3b8fa2e6967b4638cf612d8cff319
+  hash_c: ddba2c5d9ad7c38e75afbfeb439516fc62741d9c8bb30bc58f3efc1106bd3252
+  hash_d: 268bd9c580c19134a2819406b3ec00511dfa1966a238b9af09bd6ed8c6c3b38e
   semantic_tags:
   - domain:seguridad.ime
   - system:laboratorio-chile
@@ -122,8 +122,8 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-regla-integridad
   path: atoms/atom-antonia-regla-integridad.md
-  hash_c: 8e6feab5862522722ea0de55490c57d263c0b99ada3063f4109edc3956e88ebd
-  hash_d: f91c02267f846d887cf43cd828d825172b219053302cbfc7de4670e82f2e330d
+  hash_c: 64c9980cdae14fe9009d17d56f9a08c69dcbc09258dfbfba7a95afc38f049fd0
+  hash_d: 4c11d53f4827ca6bd7b38ccff8d02a7a6ed6fcbb948549b16721bd28ef87a263
   semantic_tags:
   - domain:seguridad.compliance
   - system:laboratorio-chile
@@ -132,8 +132,8 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-regla-no-codificar
   path: atoms/atom-antonia-regla-no-codificar.md
-  hash_c: f0b76895a8fb5904289b1e7d4046165ebbc24f1b59b239c158b238c272bfe500
-  hash_d: 8ac65e21207b8b25293158d39f0aa8f4ef6aa7c9b69abb52bfd5a97e72093054
+  hash_c: 719b56f17c36728a234d7af7be466e6f9cb37ccd75acb007d9d22e4b0471a76c
+  hash_d: c6b07fc162a13dafd0e7fe8cac86ac4ea643103f1e160acc3bfff52c9340b9b9
   semantic_tags:
   - domain:seguridad.meddra
   - system:laboratorio-chile
@@ -142,8 +142,8 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-regla-no-diagnosticar
   path: atoms/atom-antonia-regla-no-diagnosticar.md
-  hash_c: abb33e339dfbd2401ad9b3b4acf37e9facf82b63a8a5fe2b0695e64e5d4adc40
-  hash_d: bbbd307f819fd5307ae4e12cc290d1cda59359714ec128f87ca9d90e5d63a7bc
+  hash_c: f4fc60ba0c4673448f4eb2fb0c728d1971e110c77268c38b2bfd9e0fdfc5adb4
+  hash_d: 1d7e8f67fb01d1ec1ffe239b6b725a791a580df21ff6439792d617c66e040e73
   semantic_tags:
   - domain:seguridad.triage
   - system:laboratorio-chile
@@ -152,8 +152,8 @@ documents:
   - workspace.knowledge
 - name: atom-antonia-regla-validez
   path: atoms/atom-antonia-regla-validez.md
-  hash_c: 3f37190113f64c84344f79b380ce2b8ec43e34a4df658aa239715f503d11efbe
-  hash_d: 286f6b34f2f48f8b58744de84eb79f9643b20f54bc58c23bc9dff52236e687f0
+  hash_c: 7ff30cd5703ad37217484823f7c69f69a08d5b440d4d7947ebd5d667de751f52
+  hash_d: 1886197de489e6ce91e492a63d8134022f4337ca565dfec0af64ee6fe06b1408
   semantic_tags:
   - domain:seguridad.triage
   - system:laboratorio-chile

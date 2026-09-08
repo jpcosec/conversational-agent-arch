@@ -7,9 +7,6 @@ tags:
 - agent:router
 provenance: null
 summary: Encuadre de negocio del Ruteador para el PSP de Antonia.
-embedding: null
-parent: null
-semantic_anchors: null
 ---
 
 # Encuadre del Ruteador — Antonia

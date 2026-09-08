@@ -86,7 +86,9 @@ def test_flow_graph_exposes_steps_and_transitions(client: TestClient) -> None:
 
 
 def test_viz_graph_is_built_from_active_kb(client: TestClient) -> None:
-    graph = client.get("/api/viz/graph").json()
+    # El umbral bajo es a proposito: el embedder fake separa por palabras compartidas
+    # y aca se prueba el contrato del grafo, no el umbral de produccion.
+    graph = client.get("/api/viz/graph", params={"edge_threshold": 0.05}).json()
     cfg = client.app.state.cfg
     assert graph["kb"] == cfg.name
     assert graph["nodes"]
@@ -96,7 +98,7 @@ def test_viz_graph_is_built_from_active_kb(client: TestClient) -> None:
     for edge in graph["edges"]:
         assert edge["source"] in node_ids and edge["target"] in node_ids
 
-    limited = client.get("/api/viz/graph", params={"max_edges_per_node": 1}).json()
+    limited = client.get("/api/viz/graph", params={"edge_threshold": 0.05, "max_edges_per_node": 1}).json()
     counts: dict[str, int] = {}
     for edge in limited["edges"]:
         counts[edge["source"]] = counts.get(edge["source"], 0) + 1

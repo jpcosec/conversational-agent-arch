@@ -13,16 +13,18 @@ import logging
 import shutil
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Sequence
 
 logger = logging.getLogger(__name__)
 
 import yaml
 from sldb.cli.model_utils import resolve_model_ref
-from sldb.runtime.validation import render_model_markdown
+from pron.embedder import DocumentIndex, Embedder, Matcher
 from pron.graph import Graph, bare, kind, tag_id
 from pron.world import World
+from sldb.store.io import load_documents_index
 
+from kb_agent.knowledge.embedder import default_embedder
 from kb_agent.knowledge.flow import ConversationFlow
 from kb_agent.knowledge.world import open_world, refresh_world
 from sqlalchemy import create_engine
@@ -50,19 +52,6 @@ MODEL_MAP = {
 
 ALL_MODELS = list(MODEL_MAP.values())
 EXCLUDED_ROUTE_NAMESPACES = {"type", "workspace", "source"}
-MODEL_NAME_BY_ATOM_TYPE = {
-    "domain": "DomainAtom",
-    "rule": "RuleAtom",
-    "tool": "ToolAtom",
-    "trait": "TraitAtom",
-    "step": "ConversationStep",
-    "self": "SelfDeclaration",
-    "style": "StyleGuide",
-    "boundary": "CapabilityBoundary",
-    "strategy": "StrategyRule",
-    "fallback": "FallbackRule",
-    "gate": "GateCriterion",
-}
 
 
 @dataclass(frozen=True)
@@ -124,7 +113,10 @@ class KnowledgeOperations:
     vez de instanciarla por request.
     """
 
-    def __init__(self, kb_root: str | Path, db_url: str | None = None, pythonpath: str | None = None, *, world: World | None = None) -> None:
+    def __init__(
+        self, kb_root: str | Path, db_url: str | None = None, pythonpath: str | None = None, *,
+        world: World | None = None, embedder: Embedder | None = None, embed_model: str | None = None,
+    ) -> None:
         self._kb_root = Path(kb_root).resolve()
         self._pythonpath = pythonpath or str(self._kb_root.parent)
         #: El mundo de pron: UNICA puerta al store (documentos) y al grafo
@@ -137,8 +129,17 @@ class KnowledgeOperations:
         self._engine: Any = None
         self._SessionLocal: Any = None
         self._flow: ConversationFlow | None = None
+        #: Puerto de embeddings (``pron.embedder.Embedder``). Inyectable (tests);
+        #: si no, fastembed en espanol, cargado perezosamente en ``_embedder``.
+        self._embedder_cache: Embedder | None = embedder
+        self._embed_model = embed_model
+        self._doc_index: DocumentIndex | None = None
         # Se pone en True tras avisar (una vez) que la KB no tiene embeddings.
         self._warned_no_embeddings = False
+
+    @property
+    def kb_root(self) -> Path:
+        return self._kb_root
 
     @property
     def graph(self) -> Graph:
@@ -172,6 +173,7 @@ class KnowledgeOperations:
         los cambios."""
         self.world.store.invalidate()
         self._flow = None
+        self._doc_index = None
 
     def _find_records(self) -> list[_DocRecord]:
         """Todos los documentos trackeados del store, resueltos, via ``pron.Store``
@@ -274,124 +276,84 @@ class KnowledgeOperations:
             return payload
         return None
 
-    # ── offline: index embeddings ───────────────────────────────
-
-    EMBED_MODEL = "jinaai/jina-embeddings-v2-base-es"  # español, 768 dim
-
+    # ── embeddings: pron.DocumentIndex (vectores en <kb>/.pron/, fuera de git) ──
     # Campos de texto por modelo, en orden de preferencia tras 'summary'.
     _EMBED_TEXT_FIELDS = (
         "summary", "answer", "statement", "description",
         "instructions", "restriction", "fallback_message",
         "tone", "goal", "title",
     )
-
-    def index_embeddings(self, model: str | None = None) -> dict[str, Any]:
-        """Calcula embeddings offline para TODOS los modelos de la KB.
-
-        Lee cada atom, computa embedding del summary (o el primer campo de texto
-        disponible según el modelo) y escribe el vector al frontmatter.
-        ``model`` reemplaza ``EMBED_MODEL``.
-        """
-        if model:
-            self.EMBED_MODEL = model
-            self._embedder_cache = None
-        embedder = self._embedder()
-
-        docs = self._find_records()
-        stats = {"processed": 0, "skipped": 0, "errors": 0}
-        vector: list[float] = []
-
-        # Resolver model_cls por nombre de clase (case-insensitive).
-        by_class = {cls.__name__.lower(): cls for cls in ALL_MODELS}
-
-        for doc in docs:
-            model_cls = by_class.get((doc.model_name or "").lower())
-            if model_cls is None:
-                continue
-
-            doc_path = self._kb_root / doc.path
-            payload = dict(doc.payload)
-
-            # Texto a embedder: summary primero, luego el primer campo con contenido.
-            text = ""
-            for field in self._EMBED_TEXT_FIELDS:
-                val = payload.get(field)
-                if isinstance(val, str) and val.strip():
-                    text = val.strip()
-                    break
-            if not text:
-                stats["skipped"] += 1
-                continue
-
-            try:
-                emb_list = list(embedder.embed([text]))
-                if not emb_list:
-                    stats["errors"] += 1
-                    continue
-                vector = [round(float(v), 6) for v in emb_list[0]]
-            except Exception:
-                stats["errors"] += 1
-                continue
-
-            # Escribir embedding al frontmatter
-            payload["embedding"] = vector
-            md = render_model_markdown(model_cls, payload)
-            doc_path.write_text(md + "\n", encoding="utf-8")
-            stats["processed"] += 1
-
-        # Actualizar store. Los embeddings ya quedaron persistidos en los .md;
-        # una falla del store (p.ej. store raíz mal configurado) NO debe abortar
-        # el pipeline ni descartar el reporte de lo ya escrito.
-        if stats["processed"]:
-            try:
-                self._run_sldb("stores", "update")
-            except Exception as exc:
-                stats["store_update_error"] = str(exc)
-
-        if stats["processed"]:
-            self._invalidate_cache()
-
-        stats["dimension"] = len(vector) if vector else 0
-        return stats
-
     #: Modelos que NO llevan embedding por diseno: el encuadre de los agentes
     #: (``AgentFraming``, rol router/gate) no se recupera por similitud, se
     #: carga por rol. Contarlos como "sin vector" seria un falso positivo.
     _EMBEDDINGLESS_BY_DESIGN = {"AgentFraming"}
 
-    def audit_embeddings(self) -> dict[str, Any]:
-        """Cuenta atoms sin vector en la KB, separando los que faltan de los que
-        no llevan por diseno (``_EMBEDDINGLESS_BY_DESIGN``).
+    def _embedder(self) -> Embedder | None:
+        """El puerto de embeddings del proceso, cargado una vez por instancia.
+        ``None`` si fastembed no esta instalado: el indice cae a difflib."""
+        if self._embedder_cache is None:
+            try:
+                import fastembed  # noqa: F401
+            except ImportError:
+                logger.warning("fastembed no disponible: la similitud cae a difflib (pron.DocumentIndex)")
+                return None
+            self._embedder_cache = default_embedder(self._kb_root, self._embed_model)
+        return self._embedder_cache
 
-        Es la guarda para el defecto invisible: una KB entera sin vectores
-        sigue respondiendo por fuzzy literal, asi que nada falla desde afuera
-        (paso con knowledge_vitali, 50/50 atoms sin embedding). Devuelve
-        ``ok=False`` si hay atoms que DEBERIAN tener vector y no lo tienen;
-        pensado para un chequeo de arranque o job de CI (ver ``cli.py``).
-        """
-        total = 0
-        with_embedding = 0
-        by_design = 0
-        missing: list[dict[str, str]] = []
-        embeddable = {m.__name__ for m in ALL_MODELS}
-        for r in self._find_records():
-            if r.model_name not in embeddable:
-                continue
-            total += 1
-            doc = self._read_doc(r.name)
-            emb = doc.get("embedding") if doc else None
-            has_emb = bool(emb) and isinstance(emb, list) and len(emb) >= 2
-            if has_emb:
-                with_embedding += 1
-                continue
-            if r.model_name in self._EMBEDDINGLESS_BY_DESIGN:
-                by_design += 1
-                continue
-            missing.append({"id": r.name, "model": r.model_name})
+    def document_index(self) -> DocumentIndex:
+        """El indice de documentos de la KB, en ``<kb>/.pron/docs.<embedder>.json``."""
+        if self._doc_index is None:
+            matcher = Matcher(self._embedder())
+            safe_id = matcher.id().replace("/", "_").replace(":", "_")
+            self._doc_index = DocumentIndex(matcher, self.world.derived_dir / f"docs.{safe_id}.json")
+        return self._doc_index
+
+    def _embed_text(self, payload: dict[str, Any]) -> str:
+        for field in self._EMBED_TEXT_FIELDS:
+            val = payload.get(field)
+            if isinstance(val, str) and val.strip():
+                return val.strip()
+        return ""
+
+    def _embeddable_records(self) -> list[_DocRecord]:
+        names = {m.__name__ for m in ALL_MODELS} - self._EMBEDDINGLESS_BY_DESIGN
+        return [r for r in self._find_records() if r.model_name in names]
+
+    def _embed_items(self) -> list[tuple[str, str, str]]:
+        """``(id, hash_c, texto)`` por documento embebible; el hash viene del indice de
+        documentos de sldb, asi un re-indexado solo embebe lo que cambio."""
+        hashes: dict[str, str] = {}
+        store = self.world.store
+        for model in {r.model_name for r in self._embeddable_records()}:
+            m_idx = store.models_index(model)
+            for d in load_documents_index(store.project_root / m_idx.documents_index).documents:
+                hashes[d.name] = d.hash_c
+        items = []
+        for r in self._embeddable_records():
+            text = self._embed_text(r.payload or {})
+            if text:
+                items.append((r.name, hashes.get(r.name, ""), text))
+        return items
+
+    def index_embeddings(self) -> dict[str, Any]:
+        """(Re)indexa la KB: embebe solo los documentos cuyo hash cambio."""
+        stats = dict(self.document_index().index(self._embed_items()))
+        stats["embedder"] = self.document_index().embedder_id
+        stats["total"] = len(self.document_index().keys())
+        return stats
+
+    def audit_embeddings(self) -> dict[str, Any]:
+        """Documentos embebibles que faltan en el indice (``ok=False`` si hay alguno).
+        Es la guarda para el defecto invisible: una KB sin indice sigue
+        respondiendo (difflib) sin que nada falle desde afuera."""
+        indexed = set(self.document_index().keys())
+        records = self._embeddable_records()
+        missing = [{"id": r.name, "model": r.model_name} for r in records if r.name not in indexed]
+        by_design = sum(1 for r in self._find_records() if r.model_name in self._EMBEDDINGLESS_BY_DESIGN)
         return {
             "kb": self._kb_root.name,
-            "total": total,
-            "with_embedding": with_embedding,
+            "total": len(records),
+            "with_embedding": len(records) - len(missing),
             "embeddingless_by_design": by_design,
             "missing": missing,
             "ok": not missing,
@@ -418,14 +380,9 @@ class KnowledgeOperations:
         new_tags = [t for t in tags if t != "status:proposed"]
         if "status:active" not in new_tags:
             new_tags.append("status:active")
-        payload["tags"] = new_tags
-
-        doc_path = Path(payload["_path"])
-        md = render_model_markdown(model_cls, payload)
-        doc_path.write_text(md + "\n", encoding="utf-8")
+        self.world.store.update_field(model_name, atom_id, "tags", new_tags)
         self._invalidate_cache()
-
-        return {"id": atom_id, "status": "active", "old_tags": tags, "new_tags": payload["tags"]}
+        return {"id": atom_id, "status": "active", "old_tags": tags, "new_tags": new_tags}
 
 # ── offline: reflect ────────────────────────────────────────
 
@@ -469,29 +426,6 @@ class KnowledgeOperations:
             for atom in generated
         ]
 
-    # ── helper: sldb subprocess call ────────────────────────────
-
-    def _run_sldb(self, *args: str) -> None:
-        """Corre un comando sldb con el store y pythonpath correctos."""
-        import subprocess
-        from pathlib import Path
-        # pythonpath debe apuntar al project root, no al parent del kb
-        project_root = Path(__file__).resolve().parents[1]
-        cmd = ["sldb", *args, "--store", str(self._store_path), "--pythonpath", str(project_root)]
-        subprocess.run(cmd, check=True, capture_output=True, text=True, timeout=60, cwd=project_root)
-
-    def _load_frontmatter(self, doc_path: Path) -> dict[str, Any]:
-        text = doc_path.read_text(encoding="utf-8")
-        if not text.startswith("---"):
-            raise ValueError(f"Document '{doc_path}' does not start with YAML frontmatter")
-        parts = text.split("---", 2)
-        if len(parts) < 3:
-            raise ValueError(f"Document '{doc_path}' has invalid YAML frontmatter")
-        data = yaml.safe_load(parts[1]) or {}
-        if not isinstance(data, dict):
-            raise ValueError(f"Document '{doc_path}' frontmatter must be a mapping")
-        return data
-
     def organize(self, dry_run: bool = False) -> dict[str, Any]:
         """Organize flat KB atoms into semantic directories derived from tags."""
         atoms_dir = self._kb_root / "atoms"
@@ -499,14 +433,15 @@ class KnowledgeOperations:
             return {"kb_root": str(self._kb_root), "dry_run": dry_run, "moves": [], "processed": 0}
 
         moves: list[dict[str, Any]] = []
+        store = self.world.store
+        records = {str(r.path): r for r in self._find_records() if r.path}
         for doc_path in sorted(atoms_dir.glob("*.md")):
-            frontmatter = self._load_frontmatter(doc_path)
-            atom_id = str(frontmatter.get("id") or doc_path.stem)
-            tags = list(frontmatter.get("tags") or [])
-            atom_type = str(frontmatter.get("atom_type") or "").strip().lower()
-            model_name = MODEL_NAME_BY_ATOM_TYPE.get(atom_type)
-            if model_name is None:
-                raise ValueError(f"Unknown atom_type '{atom_type}' in {doc_path}")
+            record = records.get(str(doc_path.relative_to(self._kb_root)))
+            if record is None:
+                raise ValueError(f"Document '{doc_path}' is not tracked in the store")
+            atom_id = record.name
+            tags = list((record.payload or {}).get("tags") or [])
+            model_name = record.model_name
 
             destination = derive_path(self._kb_root, atom_id, tags)
             action = "move" if destination != doc_path else "keep"
@@ -524,12 +459,12 @@ class KnowledgeOperations:
                 continue
 
             destination.parent.mkdir(parents=True, exist_ok=True)
+            store.untrack(atom_id)
             shutil.move(str(doc_path), str(destination))
-            self._run_sldb("docs", "untrack", atom_id)
-            self._run_sldb("docs", "track", str(destination), "--model", model_name)
+            store.track(destination, model_name, atom_id)
 
         if not dry_run and any(move["action"] == "move" for move in moves):
-            self._run_sldb("stores", "update")
+            self.world.refresh()
             self._invalidate_cache()
 
         return {
@@ -540,236 +475,69 @@ class KnowledgeOperations:
         }
 
 
-    # ── runtime: embedder ─────────────────────────────────────────
-
-    _embedder_cache: Any = None
-
-    def _embedder(self):
-        """Lazy embedder (fastembed, español), cacheado a nivel de INSTANCIA.
-
-        Cargar ``jinaai/jina-embeddings-v2-base-es`` tarda ~1 minuto en frío.
-        ``_embedder_cache`` se guarda en ``self`` (no es un singleton de
-        módulo/clase: la asignación de abajo crea un atributo de instancia
-        que oculta el ``None`` de clase), así que el costo de carga se paga
-        una sola vez POR INSTANCIA de ``KnowledgeOperations``. El
-        orquestador/runtime debe crear UNA instancia y reutilizarla para
-        todas las llamadas a explore/explore_multi/index_embeddings dentro
-        del mismo proceso; crear una instancia nueva por request vuelve a
-        pagar el minuto de carga.
-        """
-        if self._embedder_cache is None:
-            from fastembed import TextEmbedding
-            # El modelo pesa ~615MB. Por defecto se cachea junto a la KB, pero
-            # en un despliegue con almacenamiento efimero (Modal: la imagen es
-            # inmutable y .embedding_cache esta excluido a proposito) hay que
-            # apuntarlo a un volumen persistente o se re-descarga en cada
-            # arranque en frio. EMBEDDING_CACHE_DIR permite eso sin tocar la KB.
-            import os
-
-            cache_dir = os.environ.get("EMBEDDING_CACHE_DIR") or str(
-                self._kb_root / ".embedding_cache"
-            )
-            self._embedder_cache = TextEmbedding(
-                model_name=self.EMBED_MODEL,
-                cache_dir=cache_dir,
-            )
-        return self._embedder_cache
-
-    @staticmethod
-    def _cosine_sim(a: list[float], b: list[float]) -> float:
-        dot = sum(x * y for x, y in zip(a, b))
-        na = sum(x * x for x in a) ** 0.5
-        nb = sum(y * y for y in b) ** 0.5
-        return dot / (na * nb) if na and nb else 0.0
-
+    # ── runtime: similitud ─────────────────────────────────────────
     # Por debajo de este score, un resultado semántico se marca "weak": el
     # llamador (ruteador) decide si lo usa o no, en vez de que un corte
     # absoluto lo descarte antes de que compita en el ranking.
     WEAK_SCORE_THRESHOLD = 0.25
 
-    def semantic_search(self, query: str, threshold: float = 0.05) -> list[dict[str, Any]]:
-        """Busca por similitud coseno entre la query y los embeddings de TODOS los
-        documentos, sin filtrar por modelo.
-
-        El ruteador puede meter cualquier documento al bundle si lo justifica
-        (traits, steps, tools, no solo domain/rule). Con el filtro anterior a
-        DomainAtom/RuleAtom, "me da miedo la aguja" devolvia dos IME a 0.30 y
-        descartaba trait-antonia-ansioso-aplicacion (0.396) y
-        trait-antonia-primera-vez (0.349), que rankean #1 y #2.
-
-        ``threshold`` ya NO es un corte semántico duro: es un piso absoluto
-        muy bajo (ruido de embedding, default 0.05) para no arrastrar
-        documentos sin ninguna relación. El ranking real (qué tan relevante
-        es un resultado) lo decide el orden por score + el flag ``weak``,
-        no este umbral. Ver ``explore_multi`` para el top-k relativo.
-        """
-        embedder = self._embedder()
-        query_emb = list(embedder.embed([query]))[0]
-        qv = [float(v) for v in query_emb]
-
-        docs = self._find_records()
-        results = []
-        seen_any_embedding = False
-        for r in docs:
-            # El payload ya viene resuelto en el record (``_find_records`` lo
-            # trae de ``load_runtime_documents``). Esto llamaba a
-            # ``self._read_doc(r.name)``, que vuelve a escanear TODOS los
-            # records por cada documento del loop: O(n^2) con cache fria, ~4
-            # min sobre la KB real. ``embedding`` y ``title`` son lo unico que
-            # se usaba de ahi, y los dos estan en ``r.payload``.
-            payload = r.payload or {}
-            emb = payload.get("embedding")
-            if not emb or not isinstance(emb, list) or len(emb) < 2:
-                continue
-            seen_any_embedding = True
-            score = self._cosine_sim(qv, [float(v) for v in emb])
-            if score < threshold:
-                continue
-            results.append({
-                "id": r.name,
-                "model": r.model_name,
-                "score": round(score, 4),
-                "tags": list(r.semantic or []),
-                "path": r.path,
-                "title": payload.get("title", ""),
-            })
-        # Degradacion muda: si HABIA documentos pero NINGUNO tenia embedding,
-        # el retrieval semantico no puede funcionar y el sistema cae al fuzzy
-        # literal sin que nadie se entere (fue exactamente lo que paso con
-        # knowledge_vitali: 50/50 atoms sin vector). Avisar una sola vez por
-        # instancia -- no en cada consulta -- para no inundar el log.
-        if docs and not seen_any_embedding and not self._warned_no_embeddings:
-            self._warned_no_embeddings = True
-            logger.warning(
-                "KB en %s: ninguno de los %d documentos tiene embedding; el "
-                "retrieval semantico esta degradado a fuzzy literal. Corre "
-                "'python -m knowledge_base --kb %s index embeddings'.",
-                self._kb_root,
-                len(docs),
-                self._kb_root.name,
-            )
-        return sorted(results, key=lambda x: x["score"], reverse=True)
-
-    _FUZZY_STOPWORDS = {
-        "me", "da", "es", "la", "de", "que", "en", "y", "el", "un",
-        "una", "por", "con", "mi", "tu", "su", "lo", "se", "te", "le",
-        "sus", "mis", "tus", "del", "al", "no", "si", "ya", "muy",
-    }
-    _FUZZY_ACCENTS = str.maketrans("áéíóúüñ", "aeiouun")
-
-    @classmethod
-    def _tokenize_query(cls, query: str) -> list[str]:
-        """Tokeniza una query en español: minúsculas, sin tildes, sin stopwords cortas."""
-        import re
-
-        normalized = query.lower().translate(cls._FUZZY_ACCENTS)
-        raw_tokens = re.findall(r"[a-z0-9]+", normalized)
-        return [
-            t for t in raw_tokens
-            if len(t) >= 4 and t not in cls._FUZZY_STOPWORDS
-        ]
-
-    def _fuzzy_search(self, query: str) -> list[dict[str, Any]]:
-        """Busca por fracción de tokens de la query presentes en title/tags/summary/answer.
-
-        Tokeniza la query (minúsculas, sin tildes, sin stopwords cortas) y puntúa
-        cada documento como (# tokens que matchean) / (# tokens de la query), en
-        rango 0..1, comparable con el score semántico.
-        """
-        tokens = self._tokenize_query(query)
-        if not tokens:
+    def _ranked(self, query: str, threshold: float) -> list[tuple[str, float]]:
+        """``[(id, score)]`` mejor primero, con el indice al dia (embebe solo lo que cambio)."""
+        index = self.document_index()
+        index.index(self._embed_items())
+        if not index.keys():
+            if not self._warned_no_embeddings:
+                self._warned_no_embeddings = True
+                logger.warning("KB en %s: indice de documentos vacio; no hay retrieval semantico.", self._kb_root)
             return []
+        return index.rank(query, threshold=threshold)
 
-        docs = self._find_records()
+    def semantic_search(self, query: str, threshold: float = 0.05) -> list[dict[str, Any]]:
+        """Similitud entre la query y TODOS los documentos embebibles, sin filtrar por
+        modelo: el ruteador puede meter cualquier documento al bundle si lo justifica.
+
+        ``threshold`` no es un corte semántico duro: es un piso absoluto muy bajo
+        (ruido de embedding, default 0.05). El ranking real lo decide el orden por
+        score + el flag ``weak`` de ``explore_multi``.
+        """
+        by_name = {r.name: r for r in self._find_records()}
         results = []
-        seen = set()
-        for r in docs:
-            if r.name in seen:
+        for name, score in self._ranked(query, threshold):
+            r = by_name.get(name)
+            if r is None:
                 continue
-            seen.add(r.name)
-
-            tags = [t.lower().translate(self._FUZZY_ACCENTS) for t in (r.semantic or [])]
-            tags_blob = " ".join(tags)
-
-            doc = self._read_doc(r.name) or {}
-            title = str(doc.get("title", "")).lower().translate(self._FUZZY_ACCENTS)
-            summary = str(doc.get("summary", "")).lower().translate(self._FUZZY_ACCENTS)
-            answer = str(doc.get("answer", "")).lower().translate(self._FUZZY_ACCENTS)
-            anchors = [str(a).lower().translate(self._FUZZY_ACCENTS) for a in (doc.get("semantic_anchors") or [])]
-            anchors_blob = " ".join(anchors)
-
-            matched_where: set[str] = set()
-            matched_tokens = 0
-            for tok in tokens:
-                hit = False
-                if tok in tags_blob or tok in anchors_blob:
-                    matched_where.add("semantic_tag")
-                    hit = True
-                if tok in title:
-                    matched_where.add("title")
-                    hit = True
-                if tok in summary:
-                    matched_where.add("summary")
-                    hit = True
-                if tok in answer:
-                    matched_where.add("answer")
-                    hit = True
-                if hit:
-                    matched_tokens += 1
-
-            if matched_tokens == 0:
-                continue
-
-            score = matched_tokens / len(tokens)
             results.append({
-                "id": r.name,
-                "model": r.model_name,
-                "score": round(score, 4),
-                "match": "+".join(sorted(matched_where)),
-                "tags": list(r.semantic or []),
-                "path": r.path,
+                "id": name, "model": r.model_name, "score": round(score, 4),
+                "tags": list(r.semantic or []), "path": r.path,
+                "title": (r.payload or {}).get("title", ""),
             })
         return results
 
-    # ── runtime: explore multi-estrategia ─────────────────────────
+    def rank_among(self, query: str, ids: Sequence[str], k: int | None = None, threshold: float = 0.05) -> list[tuple[str, float]]:
+        """``[(id, score)]`` solo para ``ids`` (p.ej. los TraitAtom candidatos del perfilador),
+        mejor primero; los ids sin vector no aparecen."""
+        wanted = set(ids)
+        hits = [(name, score) for name, score in self._ranked(query, threshold) if name in wanted]
+        return hits[:k] if k is not None else hits
 
+    # ── runtime: explore multi-estrategia ─────────────────────────
     def explore_multi(
         self,
         query: str,
         semantic_threshold: float = 0.05,
         max_results: int = 10,
     ) -> dict[str, Any]:
-        """Explore multi-estrategia: embeds query, busca por similitud + fuzzy + KGDB.
+        """Explore del ruteador: similitud contra la KB + hermanos por tag en el grafo.
 
         Devuelve el top-k (``max_results``) ordenado por score, SIN descartar
-        por umbral absoluto: ``semantic_threshold`` es solo un piso mínimo muy
-        bajo para filtrar ruido de embedding (default 0.05), se mantiene en la
-        firma por compatibilidad. Cada resultado trae ``weak: bool``
-        (score < ``WEAK_SCORE_THRESHOLD``, hoy 0.25) para que el llamador
-        (el ruteador) decida si lo usa, en vez de que un corte duro lo
-        descarte antes de competir en el ranking.
+        por umbral absoluto: ``semantic_threshold`` es solo un piso mínimo de
+        ruido. Cada resultado trae ``weak: bool`` (score < ``WEAK_SCORE_THRESHOLD``)
+        para que el llamador decida si lo usa, y ``siblings`` (documentos que
+        comparten un tag semantico, via el grafo).
         """
-        semantic = self.semantic_search(query, threshold=semantic_threshold)
-        fuzzy = self._fuzzy_search(query)
-
-        seen = set()
-        merged = []
-        for item in semantic:
-            seen.add(item["id"])
-            merged.append(item)
-        for item in fuzzy:
-            if item["id"] not in seen:
-                seen.add(item["id"])
-                item["score"] = round(item["score"] * 0.85, 4)
-                merged.append(item)
-
+        merged = self.semantic_search(query, threshold=semantic_threshold)[:max_results]
         for item in merged:
             item["weak"] = item["score"] < self.WEAK_SCORE_THRESHOLD
-
-        merged.sort(key=lambda x: x["score"], reverse=True)
-        merged = merged[:max_results]
-
-        for item in merged:
             item["siblings"] = self.siblings(item["id"])[:3]
         top_score = merged[0]["score"] if merged else 0.0
         return {
@@ -780,6 +548,11 @@ class KnowledgeOperations:
             "is_empty": top_score == 0.0 or len(merged) == 0,
         }
 
+    def document_vectors(self) -> dict[str, list[float]]:
+        """``{id: vector}`` del indice al dia (para el visualizador)."""
+        index = self.document_index()
+        index.index(self._embed_items())
+        return index.vectors()
 
     # ── navegacion del grafo (aristas tagged_as / semantic_parent de kgdb) ──
     #: ejes demasiado amplios para navegar (todo documento los lleva).

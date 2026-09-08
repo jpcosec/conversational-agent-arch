@@ -97,10 +97,8 @@ def negocio_kb() -> Path:
 
     if TEST_KB.exists():
         shutil.rmtree(TEST_KB)
-    # ``embed=True``: vectores deterministas escritos al sembrar, ANTES de que
-    # cualquier lectura cachee los documentos (sldb memoiza en proceso).
     seed_store(
-        TEST_KB, test_business_atoms(), namespaces_registry=DEFAULT_NAMESPACES_REGISTRY, embed=True,
+        TEST_KB, test_business_atoms(), namespaces_registry=DEFAULT_NAMESPACES_REGISTRY,
         relations=test_business_relations(),
     )
     return TEST_KB

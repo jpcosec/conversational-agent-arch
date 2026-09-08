@@ -28,7 +28,6 @@ DEFAULT_TRAIT_NOISE_FLOOR = 0.05
 class TraitCandidate:
     id: str
     body: str
-    embedding: tuple[float, ...] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -106,77 +105,42 @@ class TraitExtractor:
         return self.persist(user_id=user_id, matches=self.analyze(user_id=user_id, turn_text=turn_text))
 
     def _load_candidates(self) -> list[TraitCandidate]:
-        """Carga los trait atoms desde SLDB (dict o objeto), con su embedding."""
-        traits = self.knowledge.docs_by_type("trait")
+        """Carga los trait atoms desde la KB (dict o objeto)."""
         result = []
-        for t in traits:
+        for t in self.knowledge.docs_by_type("trait"):
             if isinstance(t, dict):
                 # TraitAtom tipado usa ``description``; fallback a ``answer``.
-                body = t.get("description") or t.get("answer", "")
-                emb = t.get("embedding")
-                result.append(
-                    TraitCandidate(
-                        id=t["id"],
-                        body=body,
-                        embedding=tuple(float(v) for v in emb) if emb else None,
-                    )
-                )
+                result.append(TraitCandidate(id=t["id"], body=t.get("description") or t.get("answer", "")))
             else:
-                emb = getattr(t, "embedding", None)
-                result.append(
-                    TraitCandidate(
-                        id=t.id,
-                        body=getattr(t, "body", ""),
-                        embedding=tuple(float(v) for v in emb) if emb else None,
-                    )
-                )
+                result.append(TraitCandidate(id=t.id, body=getattr(t, "body", "")))
         return result
 
     def _rank_candidates(
         self, turn_text: str, candidates: list[TraitCandidate]
     ) -> list[TraitCandidate]:
-        """Pre-filtra los candidatos por similitud coseno turno-vs-trait y deja
-        top-k, en vez de mandar TODOS los traits al LLM cada turno.
+        """Pre-filtra los candidatos por similitud turno-vs-trait y deja top-k,
+        en vez de mandar TODOS los traits al LLM cada turno.
 
-        Reusa el embedder cacheado del proceso (``knowledge_ops._embedder``) y
-        el coseno de ``KnowledgeOperations`` -- mismo patron que
-        ``ContextCompiler._semantic_candidates``. Fail-open: sin knowledge_ops,
-        sin traits con embedding, o si el embedder falla, devuelve TODOS los
-        candidatos (comportamiento previo). Los traits sin embedding nunca se
-        pierden: se anexan siempre fuera del ranking.
+        La similitud la da el indice de documentos de la KB
+        (``KnowledgeOperations.rank_among`` -> ``pron.DocumentIndex``), el
+        mismo que usa el compilador. Fail-open: sin knowledge_ops, con un
+        catalogo que ya cabe en el top-k, o si el indice falla, devuelve
+        TODOS los candidatos. Un trait sin vector en el indice no compite:
+        se anexa siempre fuera del ranking.
         """
-        # Si el catalogo ya cabe en el top-k, no tiene sentido rankear: se
-        # pasan todos (evita descartar traits por un embedder degenerado y
-        # ahorra el embed de la query cuando hay pocos candidatos).
         if self.knowledge_ops is None or len(candidates) <= self.top_k:
             return candidates
-
-        embeddable = [c for c in candidates if c.embedding]
-        non_embeddable = [c for c in candidates if not c.embedding]
-        if not embeddable:
-            return candidates
-
+        by_id = {c.id: c for c in candidates}
         try:
-            from knowledge_base.operations import KnowledgeOperations
-
-            embedder = self.knowledge_ops._embedder()
-            query_vec = [float(v) for v in list(embedder.embed([turn_text]))[0]]
+            ranked = self.knowledge_ops.rank_among(
+                turn_text, list(by_id), k=self.top_k, threshold=self.noise_floor,
+            )
         except Exception:
             return candidates
-
-        scored: list[tuple[float, TraitCandidate]] = []
-        for cand in embeddable:
-            score = KnowledgeOperations._cosine_sim(
-                query_vec, [float(v) for v in cand.embedding]
-            )
-            if score < self.noise_floor:
-                continue
-            scored.append((score, cand))
-
-        scored.sort(key=lambda pair: pair[0], reverse=True)
-        top = [cand for _, cand in scored[: self.top_k]]
-        # Traits sin embedding se incluyen SIEMPRE (no compiten por similitud).
-        return top + non_embeddable
+        indexed = set(self.knowledge_ops.document_index().keys())
+        top = [by_id[cid] for cid, _ in ranked if cid in by_id]
+        unindexed = [c for c in candidates if c.id not in indexed and c not in top]
+        return top + unindexed
 
     def _upsert_trait(self, *, user_id: int, match: TraitMatch) -> None:
         upsert_user_trait(

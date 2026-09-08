@@ -44,9 +44,6 @@ kind: ⸢rev•kind⸥
 tags: ⸢rev•tags⸥
 domain_ref: ⸢optrev•domain_ref⸥
 summary: ⸢rev•summary⸥
-embedding: ⸢optrev•embedding⸥
-parent: ⸢optrev•parent⸥
-semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

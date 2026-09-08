@@ -5,7 +5,7 @@ Empaqueta:
   - El codigo de este repo (``kb_agent``, ``frontends``, ``knowledge_base``,
     ``project.config.yaml`` y la KB de prueba ``tests/knowledge``) dentro de la imagen.
   - Los tres paquetes locales (no publicados en PyPI) de los que depende el
-    runtime: ``sldb``, ``kgdb``, ``deskops`` (viven en
+    runtime: ``sldb``, ``kgdb``, ``deskops`` y ``pron`` (viven en
     ``hum-ecosystem/tools/*``), instalados via ``pip install`` de su
     directorio local dentro de la imagen.
 
@@ -40,6 +40,8 @@ import modal
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TOOLS_ROOT = Path("/home/jp/proyectos/hum-ecosystem/tools")
+#: pron (World/Store/Graph/DocumentIndex sobre sldb+kgdb) vive en otro checkout.
+PRON_ROOT = Path(str(REPO_ROOT.parent / "legos" / "pron"))
 
 #: Infra de despliegue centralizada en ``project.config.yaml`` (bloque
 #: ``deploy``), leida via ``ProjectConfig``. Antes estos valores vivian
@@ -145,7 +147,8 @@ image = (
     .add_local_dir(str(TOOLS_ROOT / "sldb"), "/root/tools/sldb", copy=True, ignore=_TOOL_IGNORE)
     .add_local_dir(str(TOOLS_ROOT / "kgdb"), "/root/tools/kgdb", copy=True, ignore=_TOOL_IGNORE)
     .add_local_dir(str(TOOLS_ROOT / "deskops"), "/root/tools/deskops", copy=True, ignore=_TOOL_IGNORE)
-    .run_commands("pip install /root/tools/sldb /root/tools/kgdb /root/tools/deskops")
+    .add_local_dir(str(PRON_ROOT), "/root/tools/pron", copy=True, ignore=_TOOL_IGNORE)
+    .run_commands("pip install /root/tools/sldb /root/tools/kgdb /root/tools/deskops /root/tools/pron")
     # Codigo + KB de este repo. Copias selectivas (en vez de todo el repo) para
     # no arrastrar desk/, runs/, .sldb raiz, ni el cache de embeddings (~600MB
     # de blobs de modelo que el runtime no necesita: /api/viz/graph lee

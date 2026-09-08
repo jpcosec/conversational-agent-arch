@@ -29,9 +29,6 @@ tags: ⸢rev•tags⸥
 applies_to: ⸢optrev•applies_to⸥
 provenance: ⸢optrev•provenance⸥
 summary: ⸢rev•summary⸥
-embedding: ⸢optrev•embedding⸥
-parent: ⸢optrev•parent⸥
-semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

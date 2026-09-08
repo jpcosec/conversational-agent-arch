@@ -15,3 +15,7 @@ pydantic==2.13.4
 httpx
 pytest
 pytest-asyncio
+
+# Capa de conocimiento del ecosistema (editables desde los checkouts locales):
+# pip install -e ../hum-ecosystem/tools/sldb -e ../hum-ecosystem/tools/kgdb -e ../legos/pron
+# sldb, kgdb, pron

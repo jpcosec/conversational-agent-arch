@@ -620,7 +620,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
         key = (str(cfg.kb_root), threshold, max_edges)
         graph = cache.get(key)
         if graph is None:
-            graph = build_graph(str(cfg.kb_root), pythonpath=str(PROJECT_ROOT), edge_threshold=threshold, max_edges_per_node=max_edges)
+            graph = build_graph(_orch().knowledge_ops, edge_threshold=threshold, max_edges_per_node=max_edges)
             cache[key] = graph
             app.state.viz_cache = cache
 
