@@ -19,3 +19,5 @@ desk/spec2viz/build/
 
 # estado local de deploy/launch_twilio_local.sh (pids, webhooks previos)
 runs/logs/twilio_local/
+.sldb/runtime/cache/
+knowledge/.sldb/runtime/cache/
