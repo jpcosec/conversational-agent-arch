@@ -3,7 +3,7 @@ model_ref: repo_docs_models:CompositionDoc
 path: repo_docs_models/composition.py
 documents_index: .sldb/core/documents/CompositionDoc.yaml
 sections_index: .sldb/runtime/sections/CompositionDoc.yaml
-hash_b: a747ab051683cdbc30777f82b101be91b53fb7f9d0c0423385b4685221afe7de
+hash_b: 3c60b83d7c4476a098688f38cd409ef1400fcfec430f9158e7a3a8e889253cf7
 version: 1
 canonical: false
 family: null

@@ -2,11 +2,11 @@ documents:
 - doc_name: current-system-overview
   sections:
   - path: c-mo-funciona-el-sistema-visi-n-general
-    title: "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    title: Cómo funciona el sistema — visión general
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
     - type.documentation.faq
     - workspace.docs.faq
@@ -20,10 +20,10 @@ documents:
   - path: c-mo-funciona-el-sistema-visi-n-general/1-los-tres-subsistemas
     title: 1. Los tres subsistemas
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - 1. Los tres subsistemas
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
     - 1. Los tres subsistemas
     - 1 los tres subsistemas
@@ -39,10 +39,10 @@ documents:
   - path: c-mo-funciona-el-sistema-visi-n-general/2-el-flujo-de-un-turno-runtime
     title: 2. El flujo de un turno (Runtime)
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - 2. El flujo de un turno (Runtime)
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
     - 2. El flujo de un turno (Runtime)
     - 2 el flujo de un turno runtime
@@ -58,10 +58,10 @@ documents:
   - path: c-mo-funciona-el-sistema-visi-n-general/3-las-capas-de-datos-knowledge
     title: 3. Las capas de datos (Knowledge)
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - 3. Las capas de datos (Knowledge)
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
     - 3. Las capas de datos (Knowledge)
     - 3 las capas de datos knowledge
@@ -75,14 +75,14 @@ documents:
     line_start: 51
     line_end: 52
   - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14
-    title: "4. \xCDndice de vistas del cat\xE1logo (14)"
+    title: 4. Índice de vistas del catálogo (14)
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4. Índice de vistas del catálogo (14)
     - 4 ndice de vistas del cat logo 14
     - type.documentation.faq
     - workspace.docs.faq
@@ -94,17 +94,17 @@ documents:
     line_start: 74
     line_end: 75
   - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/backend-runtime-el-motor
-    title: "Backend \xB7 Runtime (el motor)"
+    title: Backend · Runtime (el motor)
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
-    - "Backend \xB7 Runtime (el motor)"
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
+    - Backend · Runtime (el motor)
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4. Índice de vistas del catálogo (14)
     - 4 ndice de vistas del cat logo 14
-    - "Backend \xB7 Runtime (el motor)"
+    - Backend · Runtime (el motor)
     - backend runtime el motor
     - type.documentation.faq
     - workspace.docs.faq
@@ -116,17 +116,17 @@ documents:
     line_start: 80
     line_end: 81
   - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/backend-knowledge-el-conocimiento
-    title: "Backend \xB7 Knowledge (el conocimiento)"
+    title: Backend · Knowledge (el conocimiento)
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
-    - "Backend \xB7 Knowledge (el conocimiento)"
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
+    - Backend · Knowledge (el conocimiento)
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4. Índice de vistas del catálogo (14)
     - 4 ndice de vistas del cat logo 14
-    - "Backend \xB7 Knowledge (el conocimiento)"
+    - Backend · Knowledge (el conocimiento)
     - backend knowledge el conocimiento
     - type.documentation.faq
     - workspace.docs.faq
@@ -140,13 +140,13 @@ documents:
   - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/frontend-las-uis
     title: Frontend (las UIs)
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
     - Frontend (las UIs)
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
-    - "4. \xCDndice de vistas del cat\xE1logo (14)"
+    - 4. Índice de vistas del catálogo (14)
     - 4 ndice de vistas del cat logo 14
     - Frontend (las UIs)
     - frontend las uis
@@ -159,22 +159,41 @@ documents:
     level: 3
     line_start: 104
     line_end: 105
-  - path: c-mo-funciona-el-sistema-visi-n-general/5-c-mo-regenerar
-    title: "5. C\xF3mo regenerar"
+  - path: c-mo-funciona-el-sistema-visi-n-general/5-mapeo-specs-atoms-de-la-desk-desk-atoms
+    title: 5. Mapeo specs → atoms de la desk (desk/atoms/)
     breadcrumbs:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
-    - "5. C\xF3mo regenerar"
+    - Cómo funciona el sistema — visión general
+    - 5. Mapeo specs → atoms de la desk (desk/atoms/)
     about:
-    - "C\xF3mo funciona el sistema \u2014 visi\xF3n general"
+    - Cómo funciona el sistema — visión general
     - c mo funciona el sistema visi n general
-    - "5. C\xF3mo regenerar"
-    - 5 c mo regenerar
+    - 5. Mapeo specs → atoms de la desk (desk/atoms/)
+    - 5 mapeo specs atoms de la desk desk atoms
     - type.documentation.faq
     - workspace.docs.faq
     semantic_tags:
     - type.documentation.faq
     - workspace.docs.faq
-    slug: 5-c-mo-regenerar
+    slug: 5-mapeo-specs-atoms-de-la-desk-desk-atoms
     level: 2
     line_start: 114
     line_end: 115
+  - path: c-mo-funciona-el-sistema-visi-n-general/6-c-mo-regenerar
+    title: 6. Cómo regenerar
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 6. Cómo regenerar
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 6. Cómo regenerar
+    - 6 c mo regenerar
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 6-c-mo-regenerar
+    level: 2
+    line_start: 139
+    line_end: 140

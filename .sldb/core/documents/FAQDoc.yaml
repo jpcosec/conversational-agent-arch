@@ -1,8 +1,8 @@
 documents:
 - name: current-system-overview
   path: desk/spec2viz/current-system-overview.md
-  hash_c: be3af097720cf2471eeea3e541a05c9c47f0f041576b90dbaeebf3aba6cd03c4
-  hash_d: 1a8514783fa826c8ee75b2f989be87c9bd4809b57cf1b652b7b104e10ad49cc9
+  hash_c: 532711b87fa040789d46223354fd2398e2baa4aeafcbe7df1a90907b5b27ff53
+  hash_d: ed49b4b5297c081cd8ea8ccecba147304496acf61ce90dcb79a6b4c1f48f4f6e
   semantic_tags:
   - type.documentation.faq
   - workspace.docs.faq

@@ -11,8 +11,8 @@ documents:
   - workspace:docs
 - name: composition-architecture
   path: desk/materializations/composition-architecture.md
-  hash_c: 56d0b6a2bcbae63f3b39027b7e85f11664e1c7f8c06e764c558758a1172a87ce
-  hash_d: 902887ef599295a916dc925393ccb8fb6f55174713e9a68395302661dcdcbad9
+  hash_c: 0b2c60e860a50f00969af9a3cca3ba39a579ede903d9668a095b942c7c912968
+  hash_d: 4c9ddd882227de254eaa3f8a725e6221ba143a98844f3cff4085409a902e816b
   semantic_tags:
   - target:architecture
   - type.documentation.composition

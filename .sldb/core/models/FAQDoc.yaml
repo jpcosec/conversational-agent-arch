@@ -3,7 +3,7 @@ model_ref: deskops.models:FAQDoc
 path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/faq.py
 documents_index: .sldb/core/documents/FAQDoc.yaml
 sections_index: .sldb/runtime/sections/FAQDoc.yaml
-hash_b: 6d3a9afc279a9f98bed9e789447ebcc103dda2b3057dbe927e512a0d7f622f45
+hash_b: b6ebf5c45d4940e5c69c538a0270fcad2d8b1d44cfde99416856e8cb5a640fc0
 version: 1
 canonical: false
 family: null

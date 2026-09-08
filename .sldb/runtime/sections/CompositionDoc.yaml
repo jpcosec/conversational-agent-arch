@@ -99,14 +99,14 @@ documents:
     line_start: 24
     line_end: 25
   - path: kb-agent-runtime/configuraci-n-kb-vs-yaml-y-montar-otro-negocio
-    title: "Configuraci\xF3n (KB vs YAML) y montar otro negocio"
+    title: Configuración (KB vs YAML) y montar otro negocio
     breadcrumbs:
     - KB Agent Runtime
-    - "Configuraci\xF3n (KB vs YAML) y montar otro negocio"
+    - Configuración (KB vs YAML) y montar otro negocio
     about:
     - KB Agent Runtime
     - kb agent runtime
-    - "Configuraci\xF3n (KB vs YAML) y montar otro negocio"
+    - Configuración (KB vs YAML) y montar otro negocio
     - configuraci n kb vs yaml y montar otro negocio
     - target:readme
     - type.documentation.composition
@@ -198,14 +198,14 @@ documents:
     line_start: 12
     line_end: 13
   - path: arquitectura-del-sistema/el-motor-conversacional-s-ncrono-runtime
-    title: "El Motor Conversacional S\xEDncrono (Runtime)"
+    title: El Motor Conversacional Síncrono (Runtime)
     breadcrumbs:
     - Arquitectura del Sistema
-    - "El Motor Conversacional S\xEDncrono (Runtime)"
+    - El Motor Conversacional Síncrono (Runtime)
     about:
     - Arquitectura del Sistema
     - arquitectura del sistema
-    - "El Motor Conversacional S\xEDncrono (Runtime)"
+    - El Motor Conversacional Síncrono (Runtime)
     - el motor conversacional s ncrono runtime
     - target:architecture
     - type.documentation.composition
@@ -223,14 +223,14 @@ documents:
     line_start: 18
     line_end: 19
   - path: arquitectura-del-sistema/procesos-offline-y-as-ncronos
-    title: "Procesos Offline y As\xEDncronos"
+    title: Procesos Offline y Asíncronos
     breadcrumbs:
     - Arquitectura del Sistema
-    - "Procesos Offline y As\xEDncronos"
+    - Procesos Offline y Asíncronos
     about:
     - Arquitectura del Sistema
     - arquitectura del sistema
-    - "Procesos Offline y As\xEDncronos"
+    - Procesos Offline y Asíncronos
     - procesos offline y as ncronos
     - target:architecture
     - type.documentation.composition
@@ -245,8 +245,8 @@ documents:
     - workspace:docs
     slug: procesos-offline-y-as-ncronos
     level: 2
-    line_start: 34
-    line_end: 35
+    line_start: 35
+    line_end: 36
   - path: arquitectura-del-sistema/capas-de-datos-y-conocimiento
     title: Capas de Datos y Conocimiento
     breadcrumbs:
@@ -270,8 +270,8 @@ documents:
     - workspace:docs
     slug: capas-de-datos-y-conocimiento
     level: 2
-    line_start: 39
-    line_end: 40
+    line_start: 40
+    line_end: 41
   - path: arquitectura-del-sistema/frontends
     title: Frontends
     breadcrumbs:
@@ -295,8 +295,8 @@ documents:
     - workspace:docs
     slug: frontends
     level: 2
-    line_start: 45
-    line_end: 46
+    line_start: 46
+    line_end: 47
 - doc_name: composition-glossary
   sections:
   - path: glosario-de-conceptos
@@ -346,14 +346,14 @@ documents:
     line_start: 12
     line_end: 13
   - path: operaciones-testing-y-gobernanza/testing-y-verificaci-n
-    title: "Testing y verificaci\xF3n"
+    title: Testing y verificación
     breadcrumbs:
     - Operaciones, Testing y Gobernanza
-    - "Testing y verificaci\xF3n"
+    - Testing y verificación
     about:
     - Operaciones, Testing y Gobernanza
     - operaciones testing y gobernanza
-    - "Testing y verificaci\xF3n"
+    - Testing y verificación
     - testing y verificaci n
     - target:operations
     - type.documentation.composition
@@ -396,14 +396,14 @@ documents:
     line_start: 18
     line_end: 19
   - path: operaciones-testing-y-gobernanza/configuraci-n-y-despliegue
-    title: "Configuraci\xF3n y despliegue"
+    title: Configuración y despliegue
     breadcrumbs:
     - Operaciones, Testing y Gobernanza
-    - "Configuraci\xF3n y despliegue"
+    - Configuración y despliegue
     about:
     - Operaciones, Testing y Gobernanza
     - operaciones testing y gobernanza
-    - "Configuraci\xF3n y despliegue"
+    - Configuración y despliegue
     - configuraci n y despliegue
     - target:operations
     - type.documentation.composition

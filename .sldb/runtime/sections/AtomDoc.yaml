@@ -240,14 +240,14 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+- doc_name: atom-clasificación-de-4-ramas-del-flujo-psp
   sections:
   - path: clasificaci-n-de-4-ramas-del-flujo-psp
-    title: "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    title: Clasificación de 4 ramas del flujo PSP
     breadcrumbs:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     about:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     - clasificaci n de 4 ramas del flujo psp
     - domain:psp
     - system:antonia
@@ -267,10 +267,10 @@ documents:
   - path: clasificaci-n-de-4-ramas-del-flujo-psp/answer
     title: Answer
     breadcrumbs:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     - Answer
     about:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     - clasificaci n de 4 ramas del flujo psp
     - Answer
     - answer
@@ -338,14 +338,14 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+- doc_name: atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   sections:
   - path: decisi-n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
-    title: "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    title: 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     breadcrumbs:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     about:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     - decisi n familia gate con modelo gatecriterion para el policy gate
     - domain:psp
     - system:antonia
@@ -367,10 +367,10 @@ documents:
   - path: decisi-n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate/answer
     title: Answer
     breadcrumbs:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     - Answer
     about:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     - decisi n familia gate con modelo gatecriterion para el policy gate
     - Answer
     - answer
@@ -439,11 +439,11 @@ documents:
 - doc_name: atom-concepto-atomo-semantico
   sections:
   - path: tomo-sem-ntico-sldb
-    title: "\xC1tomo Sem\xE1ntico (SLDB)"
+    title: Átomo Semántico (SLDB)
     breadcrumbs:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     about:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     - tomo sem ntico sldb
     - family:concepts
     - layer:business
@@ -461,10 +461,10 @@ documents:
   - path: tomo-sem-ntico-sldb/answer
     title: Answer
     breadcrumbs:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     - Answer
     about:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     - tomo sem ntico sldb
     - Answer
     - answer
@@ -529,11 +529,11 @@ documents:
 - doc_name: atom-embeddings-como-layout-no-vista
   sections:
   - path: decisi-n
-    title: "Decisi\xF3n"
+    title: Decisión
     breadcrumbs:
-    - "Decisi\xF3n"
+    - Decisión
     about:
-    - "Decisi\xF3n"
+    - Decisión
     - decisi n
     - family:concepts
     - layer:frontend
@@ -549,11 +549,11 @@ documents:
     line_start: 11
     line_end: 12
   - path: por-qu
-    title: "Por qu\xE9"
+    title: Por qué
     breadcrumbs:
-    - "Por qu\xE9"
+    - Por qué
     about:
-    - "Por qu\xE9"
+    - Por qué
     - por qu
     - family:concepts
     - layer:frontend
@@ -656,11 +656,11 @@ documents:
 - doc_name: atom-garantia-cero-alucinaciones
   sections:
   - path: garant-a-cero-alucinaciones
-    title: "Garant\xEDa Cero Alucinaciones"
+    title: Garantía Cero Alucinaciones
     breadcrumbs:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     about:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     - garant a cero alucinaciones
     - family:concepts
     - layer:business
@@ -678,10 +678,10 @@ documents:
   - path: garant-a-cero-alucinaciones/answer
     title: Answer
     breadcrumbs:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     - Answer
     about:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     - garant a cero alucinaciones
     - Answer
     - answer
@@ -1065,11 +1065,11 @@ documents:
 - doc_name: atom-project-config
   sections:
   - path: configuraci-n-del-negocio
-    title: "Configuraci\xF3n del Negocio"
+    title: Configuración del Negocio
     breadcrumbs:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     about:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     - configuraci n del negocio
     - layer:knowledge
     - role:boundary
@@ -1087,10 +1087,10 @@ documents:
   - path: configuraci-n-del-negocio/answer
     title: Answer
     breadcrumbs:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     - Answer
     about:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     - configuraci n del negocio
     - Answer
     - answer
@@ -1290,11 +1290,11 @@ documents:
 - doc_name: atom-topologia-de-despliegue
   sections:
   - path: topolog-a-de-despliegue-modal
-    title: "Topolog\xEDa de Despliegue (Modal)"
+    title: Topología de Despliegue (Modal)
     breadcrumbs:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     about:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     - topolog a de despliegue modal
     - layer:ops
     - role:boundary
@@ -1312,10 +1312,10 @@ documents:
   - path: topolog-a-de-despliegue-modal/answer
     title: Answer
     breadcrumbs:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     - Answer
     about:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     - topolog a de despliegue modal
     - Answer
     - answer
@@ -1483,14 +1483,14 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
-- doc_name: "atom-configuraci\xF3n-por-capas-y-tuning"
+- doc_name: atom-configuración-por-capas-y-tuning
   sections:
   - path: configuraci-n-por-capas-y-tuning
-    title: "Configuraci\xF3n por capas y tuning"
+    title: Configuración por capas y tuning
     breadcrumbs:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     about:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     - configuraci n por capas y tuning
     - layer:ops
     - role:boundary
@@ -1510,10 +1510,10 @@ documents:
   - path: configuraci-n-por-capas-y-tuning/answer
     title: Answer
     breadcrumbs:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     - Answer
     about:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     - configuraci n por capas y tuning
     - Answer
     - answer
@@ -1679,14 +1679,14 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: "atom-capas-de-verificaci\xF3n-y-release"
+- doc_name: atom-capas-de-verificación-y-release
   sections:
   - path: capas-de-verificaci-n-y-release
-    title: "Capas de verificaci\xF3n y release"
+    title: Capas de verificación y release
     breadcrumbs:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     about:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     - capas de verificaci n y release
     - layer:ops
     - role:boundary
@@ -1706,10 +1706,10 @@ documents:
   - path: capas-de-verificaci-n-y-release/answer
     title: Answer
     breadcrumbs:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     - Answer
     about:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     - capas de verificaci n y release
     - Answer
     - answer
@@ -1920,14 +1920,14 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
-- doc_name: "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
+- doc_name: atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   sections:
   - path: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
-    title: "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    title: Por qué la respuesta a Twilio sale por REST y no en el TwiML
     breadcrumbs:
-    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
     about:
-    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
     - por qu la respuesta a twilio sale por rest y no en el twiml
     - layer:runtime
     - role:boundary
@@ -1949,10 +1949,10 @@ documents:
   - path: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml/answer
     title: Answer
     breadcrumbs:
-    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
     - Answer
     about:
-    - "Por qu\xE9 la respuesta a Twilio sale por REST y no en el TwiML"
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
     - por qu la respuesta a twilio sale por rest y no en el twiml
     - Answer
     - answer
@@ -1973,14 +1973,14 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
-- doc_name: "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+- doc_name: atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   sections:
   - path: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
-    title: "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    title: Cómo se resuelve canal y persona desde el remitente de Twilio
     breadcrumbs:
-    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
     about:
-    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
     - c mo se resuelve canal y persona desde el remitente de twilio
     - family:user
     - layer:runtime
@@ -2002,10 +2002,10 @@ documents:
   - path: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio/answer
     title: Answer
     breadcrumbs:
-    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
     - Answer
     about:
-    - "C\xF3mo se resuelve canal y persona desde el remitente de Twilio"
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
     - c mo se resuelve canal y persona desde el remitente de twilio
     - Answer
     - answer
@@ -2026,14 +2026,14 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
-- doc_name: "atom-c\xF3mo-conectar-twilio-al-runtime-local"
+- doc_name: atom-cómo-conectar-twilio-al-runtime-local
   sections:
   - path: c-mo-conectar-twilio-al-runtime-local
-    title: "C\xF3mo conectar Twilio al runtime local"
+    title: Cómo conectar Twilio al runtime local
     breadcrumbs:
-    - "C\xF3mo conectar Twilio al runtime local"
+    - Cómo conectar Twilio al runtime local
     about:
-    - "C\xF3mo conectar Twilio al runtime local"
+    - Cómo conectar Twilio al runtime local
     - c mo conectar twilio al runtime local
     - layer:ops
     - role:boundary
@@ -2055,10 +2055,10 @@ documents:
   - path: c-mo-conectar-twilio-al-runtime-local/answer
     title: Answer
     breadcrumbs:
-    - "C\xF3mo conectar Twilio al runtime local"
+    - Cómo conectar Twilio al runtime local
     - Answer
     about:
-    - "C\xF3mo conectar Twilio al runtime local"
+    - Cómo conectar Twilio al runtime local
     - c mo conectar twilio al runtime local
     - Answer
     - answer
@@ -2079,14 +2079,14 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
-- doc_name: "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
+- doc_name: atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   sections:
   - path: qu-no-hacer-con-credenciales-y-firma-de-twilio
-    title: "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    title: Qué no hacer con credenciales y firma de Twilio
     breadcrumbs:
-    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    - Qué no hacer con credenciales y firma de Twilio
     about:
-    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    - Qué no hacer con credenciales y firma de Twilio
     - qu no hacer con credenciales y firma de twilio
     - layer:ops
     - role:boundary
@@ -2106,10 +2106,10 @@ documents:
   - path: qu-no-hacer-con-credenciales-y-firma-de-twilio/answer
     title: Answer
     breadcrumbs:
-    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    - Qué no hacer con credenciales y firma de Twilio
     - Answer
     about:
-    - "Qu\xE9 no hacer con credenciales y firma de Twilio"
+    - Qué no hacer con credenciales y firma de Twilio
     - qu no hacer con credenciales y firma de twilio
     - Answer
     - answer
@@ -2128,3 +2128,48 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
+- doc_name: atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
+  sections:
+  - path: tools-de-vitali-wrapper-sem-ntico-sobre-leads-y-visitas
+    title: 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    breadcrumbs:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    about:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    - tools de vitali wrapper sem ntico sobre leads y visitas
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: tools-de-vitali-wrapper-sem-ntico-sobre-leads-y-visitas
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: tools-de-vitali-wrapper-sem-ntico-sobre-leads-y-visitas/answer
+    title: Answer
+    breadcrumbs:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    - Answer
+    about:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    - tools de vitali wrapper sem ntico sobre leads y visitas
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14

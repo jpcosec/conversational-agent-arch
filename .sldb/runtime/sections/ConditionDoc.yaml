@@ -3575,602 +3575,6 @@ documents:
     level: 2
     line_start: 19
     line_end: 20
-- doc_name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
-  sections:
-  - path: condition-xxx
-    title: condition-xxx
-    breadcrumbs:
-    - condition-xxx
-    about:
-    - condition-xxx
-    - condition xxx
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: condition-xxx
-    level: 1
-    line_start: 2
-    line_end: 3
-  - path: active-archived
-    title: active | archived
-    breadcrumbs:
-    - active | archived
-    about:
-    - active | archived
-    - active archived
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: active-archived
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: payload-path-the-condition-reads
-    title: Payload path the condition reads
-    breadcrumbs:
-    - Payload path the condition reads
-    about:
-    - Payload path the condition reads
-    - payload path the condition reads
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: payload-path-the-condition-reads
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: predicate-applied-to-the-value-e-g-eq-contains
-    title: Predicate applied to the value (e.g., eq, contains)
-    breadcrumbs:
-    - Predicate applied to the value (e.g., eq, contains)
-    about:
-    - Predicate applied to the value (e.g., eq, contains)
-    - predicate applied to the value e g eq contains
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: predicate-applied-to-the-value-e-g-eq-contains
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: expected-value-used-by-the-predicate
-    title: Expected value used by the predicate
-    breadcrumbs:
-    - Expected value used by the predicate
-    about:
-    - Expected value used by the predicate
-    - expected value used by the predicate
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: expected-value-used-by-the-predicate
-    level: 1
-    line_start: 10
-    line_end: 11
-  - path: e-g-system-deskops
-    title: e.g., system:deskops
-    breadcrumbs:
-    - e.g., system:deskops
-    about:
-    - e.g., system:deskops
-    - e g system deskops
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: e-g-system-deskops
-    level: 1
-    line_start: 12
-    line_end: 13
-  - path: durable-evidence-is-verified
-    title: Durable evidence is verified
-    breadcrumbs:
-    - Durable evidence is verified
-    about:
-    - Durable evidence is verified
-    - durable evidence is verified
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: durable-evidence-is-verified
-    level: 1
-    line_start: 17
-    line_end: 18
-  - path: durable-evidence-is-verified/summary
-    title: Summary
-    breadcrumbs:
-    - Durable evidence is verified
-    - Summary
-    about:
-    - Durable evidence is verified
-    - durable evidence is verified
-    - Summary
-    - summary
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: summary
-    level: 2
-    line_start: 19
-    line_end: 20
-- doc_name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
-  sections:
-  - path: condition-xxx
-    title: condition-xxx
-    breadcrumbs:
-    - condition-xxx
-    about:
-    - condition-xxx
-    - condition xxx
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: condition-xxx
-    level: 1
-    line_start: 2
-    line_end: 3
-  - path: active-archived
-    title: active | archived
-    breadcrumbs:
-    - active | archived
-    about:
-    - active | archived
-    - active archived
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: active-archived
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: payload-path-the-condition-reads
-    title: Payload path the condition reads
-    breadcrumbs:
-    - Payload path the condition reads
-    about:
-    - Payload path the condition reads
-    - payload path the condition reads
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: payload-path-the-condition-reads
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: predicate-applied-to-the-value-e-g-eq-contains
-    title: Predicate applied to the value (e.g., eq, contains)
-    breadcrumbs:
-    - Predicate applied to the value (e.g., eq, contains)
-    about:
-    - Predicate applied to the value (e.g., eq, contains)
-    - predicate applied to the value e g eq contains
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: predicate-applied-to-the-value-e-g-eq-contains
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: expected-value-used-by-the-predicate
-    title: Expected value used by the predicate
-    breadcrumbs:
-    - Expected value used by the predicate
-    about:
-    - Expected value used by the predicate
-    - expected value used by the predicate
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: expected-value-used-by-the-predicate
-    level: 1
-    line_start: 10
-    line_end: 11
-  - path: e-g-system-deskops
-    title: e.g., system:deskops
-    breadcrumbs:
-    - e.g., system:deskops
-    about:
-    - e.g., system:deskops
-    - e g system deskops
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: e-g-system-deskops
-    level: 1
-    line_start: 12
-    line_end: 13
-  - path: implementation-path-exists
-    title: Implementation path exists
-    breadcrumbs:
-    - Implementation path exists
-    about:
-    - Implementation path exists
-    - implementation path exists
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: implementation-path-exists
-    level: 1
-    line_start: 17
-    line_end: 18
-  - path: implementation-path-exists/summary
-    title: Summary
-    breadcrumbs:
-    - Implementation path exists
-    - Summary
-    about:
-    - Implementation path exists
-    - implementation path exists
-    - Summary
-    - summary
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: summary
-    level: 2
-    line_start: 19
-    line_end: 20
-- doc_name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
-  sections:
-  - path: condition-xxx
-    title: condition-xxx
-    breadcrumbs:
-    - condition-xxx
-    about:
-    - condition-xxx
-    - condition xxx
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: condition-xxx
-    level: 1
-    line_start: 2
-    line_end: 3
-  - path: active-archived
-    title: active | archived
-    breadcrumbs:
-    - active | archived
-    about:
-    - active | archived
-    - active archived
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: active-archived
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: payload-path-the-condition-reads
-    title: Payload path the condition reads
-    breadcrumbs:
-    - Payload path the condition reads
-    about:
-    - Payload path the condition reads
-    - payload path the condition reads
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: payload-path-the-condition-reads
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: predicate-applied-to-the-value-e-g-eq-contains
-    title: Predicate applied to the value (e.g., eq, contains)
-    breadcrumbs:
-    - Predicate applied to the value (e.g., eq, contains)
-    about:
-    - Predicate applied to the value (e.g., eq, contains)
-    - predicate applied to the value e g eq contains
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: predicate-applied-to-the-value-e-g-eq-contains
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: expected-value-used-by-the-predicate
-    title: Expected value used by the predicate
-    breadcrumbs:
-    - Expected value used by the predicate
-    about:
-    - Expected value used by the predicate
-    - expected value used by the predicate
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: expected-value-used-by-the-predicate
-    level: 1
-    line_start: 10
-    line_end: 11
-  - path: e-g-system-deskops
-    title: e.g., system:deskops
-    breadcrumbs:
-    - e.g., system:deskops
-    about:
-    - e.g., system:deskops
-    - e g system deskops
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: e-g-system-deskops
-    level: 1
-    line_start: 12
-    line_end: 13
-  - path: validation-exists
-    title: Validation exists
-    breadcrumbs:
-    - Validation exists
-    about:
-    - Validation exists
-    - validation exists
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: validation-exists
-    level: 1
-    line_start: 17
-    line_end: 18
-  - path: validation-exists/summary
-    title: Summary
-    breadcrumbs:
-    - Validation exists
-    - Summary
-    about:
-    - Validation exists
-    - validation exists
-    - Summary
-    - summary
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: summary
-    level: 2
-    line_start: 19
-    line_end: 20
-- doc_name: condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout
-  sections:
-  - path: condition-xxx
-    title: condition-xxx
-    breadcrumbs:
-    - condition-xxx
-    about:
-    - condition-xxx
-    - condition xxx
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: condition-xxx
-    level: 1
-    line_start: 2
-    line_end: 3
-  - path: active-archived
-    title: active | archived
-    breadcrumbs:
-    - active | archived
-    about:
-    - active | archived
-    - active archived
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: active-archived
-    level: 1
-    line_start: 4
-    line_end: 5
-  - path: payload-path-the-condition-reads
-    title: Payload path the condition reads
-    breadcrumbs:
-    - Payload path the condition reads
-    about:
-    - Payload path the condition reads
-    - payload path the condition reads
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: payload-path-the-condition-reads
-    level: 1
-    line_start: 6
-    line_end: 7
-  - path: predicate-applied-to-the-value-e-g-eq-contains
-    title: Predicate applied to the value (e.g., eq, contains)
-    breadcrumbs:
-    - Predicate applied to the value (e.g., eq, contains)
-    about:
-    - Predicate applied to the value (e.g., eq, contains)
-    - predicate applied to the value e g eq contains
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: predicate-applied-to-the-value-e-g-eq-contains
-    level: 1
-    line_start: 8
-    line_end: 9
-  - path: expected-value-used-by-the-predicate
-    title: Expected value used by the predicate
-    breadcrumbs:
-    - Expected value used by the predicate
-    about:
-    - Expected value used by the predicate
-    - expected value used by the predicate
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: expected-value-used-by-the-predicate
-    level: 1
-    line_start: 10
-    line_end: 11
-  - path: e-g-system-deskops
-    title: e.g., system:deskops
-    breadcrumbs:
-    - e.g., system:deskops
-    about:
-    - e.g., system:deskops
-    - e g system deskops
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: e-g-system-deskops
-    level: 1
-    line_start: 12
-    line_end: 13
-  - path: ready-for-closeout
-    title: Ready for closeout
-    breadcrumbs:
-    - Ready for closeout
-    about:
-    - Ready for closeout
-    - ready for closeout
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: ready-for-closeout
-    level: 1
-    line_start: 17
-    line_end: 18
-  - path: ready-for-closeout/summary
-    title: Summary
-    breadcrumbs:
-    - Ready for closeout
-    - Summary
-    about:
-    - Ready for closeout
-    - ready for closeout
-    - Summary
-    - summary
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    semantic_tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-    slug: summary
-    level: 2
-    line_start: 19
-    line_end: 20
 - doc_name: condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-closeout-evidence
   sections:
   - path: condition-xxx
@@ -4768,6 +4172,4476 @@ documents:
     line_start: 19
     line_end: 20
 - doc_name: condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-closeout
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: ready-for-closeout
+    title: Ready for closeout
+    breadcrumbs:
+    - Ready for closeout
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: ready-for-closeout
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: ready-for-closeout/summary
+    title: Summary
+    breadcrumbs:
+    - Ready for closeout
+    - Summary
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: implementation-path-exists
+    title: Implementation path exists
+    breadcrumbs:
+    - Implementation path exists
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: implementation-path-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: implementation-path-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Implementation path exists
+    - Summary
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: validation-exists
+    title: Validation exists
+    breadcrumbs:
+    - Validation exists
+    about:
+    - Validation exists
+    - validation exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: validation-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: validation-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Validation exists
+    - Summary
+    about:
+    - Validation exists
+    - validation exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: durable-evidence-is-verified
+    title: Durable evidence is verified
+    breadcrumbs:
+    - Durable evidence is verified
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: durable-evidence-is-verified
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: durable-evidence-is-verified/summary
+    title: Summary
+    breadcrumbs:
+    - Durable evidence is verified
+    - Summary
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: pill-knowledge-is-graduated-when-required
+    title: Pill knowledge is graduated when required
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: pill-knowledge-is-graduated-when-required
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: pill-knowledge-is-graduated-when-required/summary
+    title: Summary
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    - Summary
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: ready-for-closeout
+    title: Ready for closeout
+    breadcrumbs:
+    - Ready for closeout
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: ready-for-closeout
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: ready-for-closeout/summary
+    title: Summary
+    breadcrumbs:
+    - Ready for closeout
+    - Summary
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: implementation-path-exists
+    title: Implementation path exists
+    breadcrumbs:
+    - Implementation path exists
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: implementation-path-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: implementation-path-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Implementation path exists
+    - Summary
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: validation-exists
+    title: Validation exists
+    breadcrumbs:
+    - Validation exists
+    about:
+    - Validation exists
+    - validation exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: validation-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: validation-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Validation exists
+    - Summary
+    about:
+    - Validation exists
+    - validation exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: durable-evidence-is-verified
+    title: Durable evidence is verified
+    breadcrumbs:
+    - Durable evidence is verified
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: durable-evidence-is-verified
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: durable-evidence-is-verified/summary
+    title: Summary
+    breadcrumbs:
+    - Durable evidence is verified
+    - Summary
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: pill-knowledge-is-graduated-when-required
+    title: Pill knowledge is graduated when required
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: pill-knowledge-is-graduated-when-required
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: pill-knowledge-is-graduated-when-required/summary
+    title: Summary
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    - Summary
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: ready-for-closeout
+    title: Ready for closeout
+    breadcrumbs:
+    - Ready for closeout
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: ready-for-closeout
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: ready-for-closeout/summary
+    title: Summary
+    breadcrumbs:
+    - Ready for closeout
+    - Summary
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: implementation-path-exists
+    title: Implementation path exists
+    breadcrumbs:
+    - Implementation path exists
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: implementation-path-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: implementation-path-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Implementation path exists
+    - Summary
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: validation-exists
+    title: Validation exists
+    breadcrumbs:
+    - Validation exists
+    about:
+    - Validation exists
+    - validation exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: validation-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: validation-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Validation exists
+    - Summary
+    about:
+    - Validation exists
+    - validation exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: durable-evidence-is-verified
+    title: Durable evidence is verified
+    breadcrumbs:
+    - Durable evidence is verified
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: durable-evidence-is-verified
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: durable-evidence-is-verified/summary
+    title: Summary
+    breadcrumbs:
+    - Durable evidence is verified
+    - Summary
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: pill-knowledge-is-graduated-when-required
+    title: Pill knowledge is graduated when required
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: pill-knowledge-is-graduated-when-required
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: pill-knowledge-is-graduated-when-required/summary
+    title: Summary
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    - Summary
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: ready-for-closeout
+    title: Ready for closeout
+    breadcrumbs:
+    - Ready for closeout
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: ready-for-closeout
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: ready-for-closeout/summary
+    title: Summary
+    breadcrumbs:
+    - Ready for closeout
+    - Summary
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: implementation-path-exists
+    title: Implementation path exists
+    breadcrumbs:
+    - Implementation path exists
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: implementation-path-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: implementation-path-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Implementation path exists
+    - Summary
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: validation-exists
+    title: Validation exists
+    breadcrumbs:
+    - Validation exists
+    about:
+    - Validation exists
+    - validation exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: validation-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: validation-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Validation exists
+    - Summary
+    about:
+    - Validation exists
+    - validation exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: durable-evidence-is-verified
+    title: Durable evidence is verified
+    breadcrumbs:
+    - Durable evidence is verified
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: durable-evidence-is-verified
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: durable-evidence-is-verified/summary
+    title: Summary
+    breadcrumbs:
+    - Durable evidence is verified
+    - Summary
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: pill-knowledge-is-graduated-when-required
+    title: Pill knowledge is graduated when required
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: pill-knowledge-is-graduated-when-required
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: pill-knowledge-is-graduated-when-required/summary
+    title: Summary
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    - Summary
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: ready-for-closeout
+    title: Ready for closeout
+    breadcrumbs:
+    - Ready for closeout
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: ready-for-closeout
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: ready-for-closeout/summary
+    title: Summary
+    breadcrumbs:
+    - Ready for closeout
+    - Summary
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: implementation-path-exists
+    title: Implementation path exists
+    breadcrumbs:
+    - Implementation path exists
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: implementation-path-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: implementation-path-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Implementation path exists
+    - Summary
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: validation-exists
+    title: Validation exists
+    breadcrumbs:
+    - Validation exists
+    about:
+    - Validation exists
+    - validation exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: validation-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: validation-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Validation exists
+    - Summary
+    about:
+    - Validation exists
+    - validation exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: durable-evidence-is-verified
+    title: Durable evidence is verified
+    breadcrumbs:
+    - Durable evidence is verified
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: durable-evidence-is-verified
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: durable-evidence-is-verified/summary
+    title: Summary
+    breadcrumbs:
+    - Durable evidence is verified
+    - Summary
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: pill-knowledge-is-graduated-when-required
+    title: Pill knowledge is graduated when required
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: pill-knowledge-is-graduated-when-required
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: pill-knowledge-is-graduated-when-required/summary
+    title: Summary
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    - Summary
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: ready-for-closeout
+    title: Ready for closeout
+    breadcrumbs:
+    - Ready for closeout
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: ready-for-closeout
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: ready-for-closeout/summary
+    title: Summary
+    breadcrumbs:
+    - Ready for closeout
+    - Summary
+    about:
+    - Ready for closeout
+    - ready for closeout
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: implementation-path-exists
+    title: Implementation path exists
+    breadcrumbs:
+    - Implementation path exists
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: implementation-path-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: implementation-path-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Implementation path exists
+    - Summary
+    about:
+    - Implementation path exists
+    - implementation path exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: validation-exists
+    title: Validation exists
+    breadcrumbs:
+    - Validation exists
+    about:
+    - Validation exists
+    - validation exists
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: validation-exists
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: validation-exists/summary
+    title: Summary
+    breadcrumbs:
+    - Validation exists
+    - Summary
+    about:
+    - Validation exists
+    - validation exists
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: durable-evidence-is-verified
+    title: Durable evidence is verified
+    breadcrumbs:
+    - Durable evidence is verified
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: durable-evidence-is-verified
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: durable-evidence-is-verified/summary
+    title: Summary
+    breadcrumbs:
+    - Durable evidence is verified
+    - Summary
+    about:
+    - Durable evidence is verified
+    - durable evidence is verified
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated
+  sections:
+  - path: condition-xxx
+    title: condition-xxx
+    breadcrumbs:
+    - condition-xxx
+    about:
+    - condition-xxx
+    - condition xxx
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: condition-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: active-archived
+    title: active | archived
+    breadcrumbs:
+    - active | archived
+    about:
+    - active | archived
+    - active archived
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: active-archived
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: payload-path-the-condition-reads
+    title: Payload path the condition reads
+    breadcrumbs:
+    - Payload path the condition reads
+    about:
+    - Payload path the condition reads
+    - payload path the condition reads
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: payload-path-the-condition-reads
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: predicate-applied-to-the-value-e-g-eq-contains
+    title: Predicate applied to the value (e.g., eq, contains)
+    breadcrumbs:
+    - Predicate applied to the value (e.g., eq, contains)
+    about:
+    - Predicate applied to the value (e.g., eq, contains)
+    - predicate applied to the value e g eq contains
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: predicate-applied-to-the-value-e-g-eq-contains
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: expected-value-used-by-the-predicate
+    title: Expected value used by the predicate
+    breadcrumbs:
+    - Expected value used by the predicate
+    about:
+    - Expected value used by the predicate
+    - expected value used by the predicate
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: expected-value-used-by-the-predicate
+    level: 1
+    line_start: 10
+    line_end: 11
+  - path: e-g-system-deskops
+    title: e.g., system:deskops
+    breadcrumbs:
+    - e.g., system:deskops
+    about:
+    - e.g., system:deskops
+    - e g system deskops
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: e-g-system-deskops
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: pill-knowledge-is-graduated-when-required
+    title: Pill knowledge is graduated when required
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: pill-knowledge-is-graduated-when-required
+    level: 1
+    line_start: 17
+    line_end: 18
+  - path: pill-knowledge-is-graduated-when-required/summary
+    title: Summary
+    breadcrumbs:
+    - Pill knowledge is graduated when required
+    - Summary
+    about:
+    - Pill knowledge is graduated when required
+    - pill knowledge is graduated when required
+    - Summary
+    - summary
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    semantic_tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+    slug: summary
+    level: 2
+    line_start: 19
+    line_end: 20
+- doc_name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout
   sections:
   - path: condition-xxx
     title: condition-xxx

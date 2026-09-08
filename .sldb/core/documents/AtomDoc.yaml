@@ -40,16 +40,16 @@ documents:
   - workspace.desk.atoms
 - name: atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   path: desk/atoms/atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia.md
-  hash_c: 18da8f47057e4acef78372fbac550a63706c5e473f5c352713f3659098d52058
-  hash_d: 407225dd9d4a321dc5c4d5d2524f04bc910148bbd79845af4de356b0f4b6d704
+  hash_c: f8b04c1024c2ef7f3fb0238089d172313dce866f79ec04329680fb6d055ef03d
+  hash_d: 8c71906742ebe3d1c335d776e504c63a2df2d4b0f91bef8db0935472946dbf95
   semantic_tags:
   - domain:psp
   - system:antonia
   - topic:arquitectura
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  path: "desk/atoms/atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp.md"
+- name: atom-clasificación-de-4-ramas-del-flujo-psp
+  path: desk/atoms/atom-clasificación-de-4-ramas-del-flujo-psp.md
   hash_c: c5c74b85254f74fe819f5c6624259d378afadd540e9bf11e06cf292430a478d7
   hash_d: cab915ed1bea621a110e4f9d8afcc22aef7adbfdccbf5473495996c7f3791357
   semantic_tags:
@@ -60,16 +60,16 @@ documents:
   - workspace.desk.atoms
 - name: atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   path: desk/atoms/atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas.md
-  hash_c: a93a24110fa24f3f0707f8cb491e805ae822092608b4be4f550667b6f858b012
-  hash_d: 3fa7340ddcadf33fd83430cbf15422d5501fe5136a5d9b30a65c88599424bcba
+  hash_c: 60d8eba3b7ba5e3c5f6e379b2c3942abb2b69c1f707f2442b4f6cdfd1597205b
+  hash_d: 20c9fa3e432ab18624a95647e98d5137496a0d6478bfa90a962cc0cdb769fd46
   semantic_tags:
   - domain:psp
   - system:antonia
   - topic:flujo-conversacional
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
-  path: "desk/atoms/atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md"
+- name: atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
+  path: desk/atoms/atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md
   hash_c: 60c2b9b6bff6c351fc30d6325e24aa4a65409caaa64226fcf4ef8af2090a8cdf
   hash_d: b65b831c7c7d1a3d33592d9e22785bb26da8ffbb31fc3771d2bafee380a27c03
   semantic_tags:
@@ -163,8 +163,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-negocios-activos
   path: desk/atoms/atom-negocios-activos.md
-  hash_c: 18b35a430ef0d7ee025c2ede6d311a77145dd29e169b8e62f3342138bf1f3c58
-  hash_d: 7db75b67a23cecdcdf0a6f5fea0815479924dc03e541d79d4b7726b18402ace9
+  hash_c: 94bbab5e7896670203df17701fe2e38ac54e748e57d93fd0d897172632c8a32f
+  hash_d: 1757735d51d25c8a38944d35d71a8f3c4f43b9dfaef2b160de14f32ac8edb657
   semantic_tags:
   - family:concepts
   - layer:business
@@ -244,8 +244,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-tool-handlers-registry
   path: desk/atoms/atom-tool-handlers-registry.md
-  hash_c: 4dd23003300bc8cd72d76219e2d35da76be10252fa156ebcee50d22431cb9014
-  hash_d: 9c6833f2c484d71a30ffb3f136fd938878776dd14a493f2e66124542a860a202
+  hash_c: 8d48277594a2eca6151741372931983920fbb585c2c1311faa951b82f75d3c97
+  hash_d: 6d2ce7b82ca720e13629432b610749af09fd8f308df82676d46af6fe0975925f
   semantic_tags:
   - layer:runtime
   - role:boundary
@@ -262,8 +262,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-modo-demo
   path: desk/atoms/atom-modo-demo.md
-  hash_c: 2af16dd4d031fc2cc3e51fe60e0ee5a6a35f8041730346c15abb941af7809377
-  hash_d: e51b707bd26b334d5b9d3f9f8638cd459937b4bb57ecf800ca0230cad65030bd
+  hash_c: c4ef25c0eb7acb60d578f33db304303834200b72cf83e5a13d0f493d89c7549e
+  hash_d: bcab8f8450b0026e9df1b022b14b638eb71abdd01b0e0cda6733ba78746bda74
   semantic_tags:
   - layer:frontend
   - role:boundary
@@ -291,8 +291,8 @@ documents:
   - topic:agent-framing
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-configuraci\xF3n-por-capas-y-tuning"
-  path: "desk/atoms/atom-configuraci\xF3n-por-capas-y-tuning.md"
+- name: atom-configuración-por-capas-y-tuning
+  path: desk/atoms/atom-configuración-por-capas-y-tuning.md
   hash_c: 81e9938e9950be0b5f38a032071f9e8626fe60ac288ff3a20e17a7f299bbf8b0
   hash_d: ac83f250ea204926ca8bbc1510bc0f5e27d809448a45b9e76854a75bcb6b3515
   semantic_tags:
@@ -331,8 +331,8 @@ documents:
   - topic:git-flow
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-capas-de-verificaci\xF3n-y-release"
-  path: "desk/atoms/atom-capas-de-verificaci\xF3n-y-release.md"
+- name: atom-capas-de-verificación-y-release
+  path: desk/atoms/atom-capas-de-verificación-y-release.md
   hash_c: 5224944002047b91a0d5d8288cedf963130b0b6ce5ca845017307970f44beaf2
   hash_d: 5d7975a13f9f77b4c0eaaedd48af5e65ad54fb565351e13b23bf9415989d7e82
   semantic_tags:
@@ -362,8 +362,8 @@ documents:
   - workspace.desk.atoms
 - name: atom-context-compiler-knowledge
   path: desk/atoms/atom-context-compiler-knowledge.md
-  hash_c: aa383d19e0d38383f822ce845bfcb7052865b204a87dc142f041bc881e7a0215
-  hash_d: 6d295f9ab5f6d61369f7cfa76b7941586fd7815fd7d62b78a35ba674b2f05b0d
+  hash_c: 1d8f9dee8ef74ec957e9c74273138ca910e77e3f6a39dcb41fc15a892a669b63
+  hash_d: 2735ee5512b6124a4f072de43225a30985edd9cac7979ae42a83d06500f757d3
   semantic_tags:
   - layer:runtime
   - role:engine
@@ -380,8 +380,8 @@ documents:
   - topic:twilio
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
-  path: "desk/atoms/atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml.md"
+- name: atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+  path: desk/atoms/atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml.md
   hash_c: 9c6ad30dac1ab7e516776966838026bda067f386f7afdb644cccc236648e9c4e
   hash_d: ad46cfc18984b2310d2a9b9ef7461298ff25d3d4e426a653f1389ddc827a1ba4
   semantic_tags:
@@ -391,8 +391,8 @@ documents:
   - topic:twilio
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
-  path: "desk/atoms/atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio.md"
+- name: atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
+  path: desk/atoms/atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio.md
   hash_c: 62da028bafcec096cade273cf208ff50a83a2709433c64027422606ed1223a96
   hash_d: 8189e81a5ca58aa606e7411c5b63d8e27a991b8b145101c35a5059c38a3e9fb8
   semantic_tags:
@@ -402,8 +402,8 @@ documents:
   - topic:canales
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-c\xF3mo-conectar-twilio-al-runtime-local"
-  path: "desk/atoms/atom-c\xF3mo-conectar-twilio-al-runtime-local.md"
+- name: atom-cómo-conectar-twilio-al-runtime-local
+  path: desk/atoms/atom-cómo-conectar-twilio-al-runtime-local.md
   hash_c: 9061c0a9a67bc02de2360dc8ee5db7a2b0fa37ce1155deaffa8eb2a9a5091a30
   hash_d: cf9b5d1812e94f96fd1a96103ee97de65f9cb32779cbc8d3484d3e1065747df3
   semantic_tags:
@@ -413,8 +413,8 @@ documents:
   - topic:twilio
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
-  path: "desk/atoms/atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio.md"
+- name: atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
+  path: desk/atoms/atom-qué-no-hacer-con-credenciales-y-firma-de-twilio.md
   hash_c: 59b0fb8a5eded0643da2f9a907342f550af8d4fb72b6636e522efa38fbeee1d5
   hash_d: c27914b58abf3321a1774002e7a4d5df9aea7b5560ab365e2a7a5bd8b7bfa6c0
   semantic_tags:
@@ -423,8 +423,8 @@ documents:
   - topic:twilio
   - type.knowledge.atom
   - workspace.desk.atoms
-- name: "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
-  path: "desk/atoms/atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas.md"
+- name: atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
+  path: desk/atoms/atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas.md
   hash_c: 11cb2d15b6a7d638d568127a42678ea5bfe7e5dae438e819de5f437062dc5b40
   hash_d: b89cf7515aab5462e75a9b09e687bcf30aabf198954a8b1df0cfac40e8f5db9b
   semantic_tags:

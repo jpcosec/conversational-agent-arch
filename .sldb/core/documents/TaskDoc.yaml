@@ -108,8 +108,8 @@ documents:
   - workspace:desk
 - name: task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
   path: desk/tasks/task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo.md
-  hash_c: 09dac6f8a8a7893951a5bbdc1aa1e7db799ab5ca8034f2f399a3e2e03d2516c8
-  hash_d: ac0c303d97d842fcbbc8d1115ef3fddbd1e026d7369d90cb7bc35f67325d79ca
+  hash_c: 6296745be2265bfc54384027c0f7b86eedb3e4171b0159b40ff0cd43a2629fca
+  hash_d: 3c5847f7a605e3054d6d32106f133a34e90e9aa13dbb8579d48e31f6c82b7149
   semantic_tags:
   - artifact:task
   - type.workflow.task
@@ -117,8 +117,8 @@ documents:
   - workspace:desk
 - name: task-vista-leads-con-cola-de-visitas-por-confirmar
   path: desk/tasks/task-vista-leads-con-cola-de-visitas-por-confirmar.md
-  hash_c: 4a14a07d847fd440b3793f9b5379f3db761799827f32a258240081e2ea39a6e8
-  hash_d: 4f3e13b73a82d3ee7e3898d6b1dfd355eb5183729eb979cad2a9f9e567d7d342
+  hash_c: ef58e29cdabaccf6fae3d68b0657a0602252ecc0d6140c26f58278c37198ff94
+  hash_d: 1b626f2ae13602ba3d8c752f9c05184ab83bc817758b79ccc24581dc3e98ad92
   semantic_tags:
   - artifact:task
   - type.workflow.task
@@ -126,8 +126,8 @@ documents:
   - workspace:desk
 - name: task-metricas-reales-en-el-dashboard-desde-el-sqlite
   path: desk/tasks/task-metricas-reales-en-el-dashboard-desde-el-sqlite.md
-  hash_c: 894eed75afd3218efa9d9b2e4dcb7739d185c7426a76023320c29023aba1fb46
-  hash_d: f8670f51193e6a0fcabb0c0c792905fe327b6e4f90fccff99d8c14c6a7585a39
+  hash_c: b999d6781691350cc1fa4d93467d5c441dd119047acf296f7da3582f5a35d0d9
+  hash_d: 52a942cb9901c9ba4cf9bc01e924172642edc2e4d22e6fde88ef641ef35c2a99
   semantic_tags:
   - artifact:task
   - type.workflow.task
@@ -135,8 +135,8 @@ documents:
   - workspace:desk
 - name: task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
   path: desk/tasks/task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
-  hash_c: 073871e61613d8bdaec323f99f4a6ca94cca18f4653fa3b47833ceb6b52dadc8
-  hash_d: bb5672439487bd8baeba1adb9119d1a2994948031dffa51f80ba41b7fef272b8
+  hash_c: f7748c3b8962b1f4e4053a98120875bac8ca88055c2ac6c05c90ee45c670f463
+  hash_d: a10d5f0766ed1c3feca7b5791afad0a2edea63008081b208980428d72fd47411
   semantic_tags:
   - artifact:task
   - type.workflow.task
@@ -153,8 +153,8 @@ documents:
   - workspace:desk
 - name: task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
   path: desk/tasks/task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
-  hash_c: a9947648759af0742e747e9513dfdb1b2194ff560dc1b89f81c985561bfd0e56
-  hash_d: 25b1081f306801bbced5d3bb5f78eb7b58a99a97ea82ea1b44a3d74982c2f367
+  hash_c: 41b549973e9e8742b1b8049e67e4364a01dcaa6ed01f3686ade603e7663d8697
+  hash_d: c8f13db12090d83bc389ebbce912765ee4e5a00cd084b312c0af843b1977ae47
   semantic_tags:
   - artifact:task
   - type.workflow.task

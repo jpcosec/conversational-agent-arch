@@ -7698,11 +7698,11 @@ documents:
     line_start: 27
     line_end: 28
   - path: routine-for-organizaci-n-autom-tica-de-tomos-en-la-kb
-    title: "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    title: Routine for Organización automática de átomos en la KB
     breadcrumbs:
-    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Routine for Organización automática de átomos en la KB
     about:
-    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Routine for Organización automática de átomos en la KB
     - routine for organizaci n autom tica de tomos en la kb
     - primitive:routine
     - type.workflow.step
@@ -7720,10 +7720,10 @@ documents:
   - path: routine-for-organizaci-n-autom-tica-de-tomos-en-la-kb/summary
     title: Summary
     breadcrumbs:
-    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Routine for Organización automática de átomos en la KB
     - Summary
     about:
-    - "Routine for Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Routine for Organización automática de átomos en la KB
     - routine for organizaci n autom tica de tomos en la kb
     - Summary
     - summary
