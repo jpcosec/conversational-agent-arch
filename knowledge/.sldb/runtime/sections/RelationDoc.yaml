@@ -1,0 +1,3673 @@
+documents:
+- doc_name: transitions_to--step-antonia-onboarding--step-antonia-registro-estado
+  sections:
+  - path: source-id-conversationstep-step-antonia-onboarding-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia onboarding target id conversationstep
+      step antonia registro estado relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-onboarding-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-onboarding-transitions-to-step-antonia-registro-estado
+    title: step-antonia-onboarding transitions_to step-antonia-registro-estado
+    breadcrumbs:
+    - step-antonia-onboarding transitions_to step-antonia-registro-estado
+    about:
+    - step-antonia-onboarding transitions_to step-antonia-registro-estado
+    - step antonia onboarding transitions to step antonia registro estado
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-onboarding-transitions-to-step-antonia-registro-estado
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-onboarding-transitions-to-step-antonia-registro-estado/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-onboarding transitions_to step-antonia-registro-estado
+    - Notes
+    about:
+    - step-antonia-onboarding transitions_to step-antonia-registro-estado
+    - step antonia onboarding transitions to step antonia registro estado
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-onboarding--atom-antonia-bienvenida
+  sections:
+  - path: source-id-conversationstep-step-antonia-onboarding-target-id-domainatom-atom-antonia-bienvenida-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: DomainAtom:atom-antonia-bienvenida
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: DomainAtom:atom-antonia-bienvenida
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: DomainAtom:atom-antonia-bienvenida
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia onboarding target id domainatom atom
+      antonia bienvenida relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-onboarding-target-id-domainatom-atom-antonia-bienvenida-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-onboarding-grounded-by-atom-antonia-bienvenida
+    title: step-antonia-onboarding grounded_by atom-antonia-bienvenida
+    breadcrumbs:
+    - step-antonia-onboarding grounded_by atom-antonia-bienvenida
+    about:
+    - step-antonia-onboarding grounded_by atom-antonia-bienvenida
+    - step antonia onboarding grounded by atom antonia bienvenida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-onboarding-grounded-by-atom-antonia-bienvenida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-onboarding-grounded-by-atom-antonia-bienvenida/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-onboarding grounded_by atom-antonia-bienvenida
+    - Notes
+    about:
+    - step-antonia-onboarding grounded_by atom-antonia-bienvenida
+    - step antonia onboarding grounded by atom antonia bienvenida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-onboarding--atom-antonia-primeras-semanas
+  sections:
+  - path: source-id-conversationstep-step-antonia-onboarding-target-id-domainatom-atom-antonia-primeras-semanas-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: DomainAtom:atom-antonia-primeras-semanas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: DomainAtom:atom-antonia-primeras-semanas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: DomainAtom:atom-antonia-primeras-semanas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia onboarding target id domainatom atom
+      antonia primeras semanas relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-onboarding-target-id-domainatom-atom-antonia-primeras-semanas-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-onboarding-grounded-by-atom-antonia-primeras-semanas
+    title: step-antonia-onboarding grounded_by atom-antonia-primeras-semanas
+    breadcrumbs:
+    - step-antonia-onboarding grounded_by atom-antonia-primeras-semanas
+    about:
+    - step-antonia-onboarding grounded_by atom-antonia-primeras-semanas
+    - step antonia onboarding grounded by atom antonia primeras semanas
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-onboarding-grounded-by-atom-antonia-primeras-semanas
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-onboarding-grounded-by-atom-antonia-primeras-semanas/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-onboarding grounded_by atom-antonia-primeras-semanas
+    - Notes
+    about:
+    - step-antonia-onboarding grounded_by atom-antonia-primeras-semanas
+    - step antonia onboarding grounded by atom antonia primeras semanas
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-onboarding--self-antonia
+  sections:
+  - path: source-id-conversationstep-step-antonia-onboarding-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia onboarding target id selfdeclaration
+      self antonia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-onboarding-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-onboarding-grounded-by-self-antonia
+    title: step-antonia-onboarding grounded_by self-antonia
+    breadcrumbs:
+    - step-antonia-onboarding grounded_by self-antonia
+    about:
+    - step-antonia-onboarding grounded_by self-antonia
+    - step antonia onboarding grounded by self antonia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-onboarding-grounded-by-self-antonia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-onboarding-grounded-by-self-antonia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-onboarding grounded_by self-antonia
+    - Notes
+    about:
+    - step-antonia-onboarding grounded_by self-antonia
+    - step antonia onboarding grounded by self antonia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra
+  sections:
+  - path: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-conversationstep-step-antonia-recompra-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-recompra
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-recompra
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-recompra
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia agendar recordatorio target id conversationstep
+      step antonia recompra relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-conversationstep-step-antonia-recompra-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-agendar-recordatorio-transitions-to-step-antonia-recompra
+    title: step-antonia-agendar-recordatorio transitions_to step-antonia-recompra
+    breadcrumbs:
+    - step-antonia-agendar-recordatorio transitions_to step-antonia-recompra
+    about:
+    - step-antonia-agendar-recordatorio transitions_to step-antonia-recompra
+    - step antonia agendar recordatorio transitions to step antonia recompra
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-agendar-recordatorio-transitions-to-step-antonia-recompra
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-agendar-recordatorio-transitions-to-step-antonia-recompra/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-agendar-recordatorio transitions_to step-antonia-recompra
+    - Notes
+    about:
+    - step-antonia-agendar-recordatorio transitions_to step-antonia-recompra
+    - step antonia agendar recordatorio transitions to step antonia recompra
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-agendar-recordatorio--atom-antonia-aplicacion
+  sections:
+  - path: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-domainatom-atom-antonia-aplicacion-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: DomainAtom:atom-antonia-aplicacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: DomainAtom:atom-antonia-aplicacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: DomainAtom:atom-antonia-aplicacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia agendar recordatorio target id domainatom
+      atom antonia aplicacion relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-domainatom-atom-antonia-aplicacion-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-agendar-recordatorio-grounded-by-atom-antonia-aplicacion
+    title: step-antonia-agendar-recordatorio grounded_by atom-antonia-aplicacion
+    breadcrumbs:
+    - step-antonia-agendar-recordatorio grounded_by atom-antonia-aplicacion
+    about:
+    - step-antonia-agendar-recordatorio grounded_by atom-antonia-aplicacion
+    - step antonia agendar recordatorio grounded by atom antonia aplicacion
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-agendar-recordatorio-grounded-by-atom-antonia-aplicacion
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-agendar-recordatorio-grounded-by-atom-antonia-aplicacion/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-agendar-recordatorio grounded_by atom-antonia-aplicacion
+    - Notes
+    about:
+    - step-antonia-agendar-recordatorio grounded_by atom-antonia-aplicacion
+    - step antonia agendar recordatorio grounded by atom antonia aplicacion
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-despedida--self-antonia
+  sections:
+  - path: source-id-conversationstep-step-antonia-despedida-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia despedida target id selfdeclaration
+      self antonia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-despedida-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-despedida-grounded-by-self-antonia
+    title: step-antonia-despedida grounded_by self-antonia
+    breadcrumbs:
+    - step-antonia-despedida grounded_by self-antonia
+    about:
+    - step-antonia-despedida grounded_by self-antonia
+    - step antonia despedida grounded by self antonia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-despedida-grounded-by-self-antonia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-despedida-grounded-by-self-antonia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-despedida grounded_by self-antonia
+    - Notes
+    about:
+    - step-antonia-despedida grounded_by self-antonia
+    - step antonia despedida grounded by self antonia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-despedida--style-antonia
+  sections:
+  - path: source-id-conversationstep-step-antonia-despedida-target-id-styleguide-style-antonia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia despedida target id styleguide style
+      antonia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-despedida-target-id-styleguide-style-antonia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-despedida-grounded-by-style-antonia
+    title: step-antonia-despedida grounded_by style-antonia
+    breadcrumbs:
+    - step-antonia-despedida grounded_by style-antonia
+    about:
+    - step-antonia-despedida grounded_by style-antonia
+    - step antonia despedida grounded by style antonia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-despedida-grounded-by-style-antonia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-despedida-grounded-by-style-antonia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-despedida grounded_by style-antonia
+    - Notes
+    about:
+    - step-antonia-despedida grounded_by style-antonia
+    - step antonia despedida grounded by style antonia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-evento-adverso--step-antonia-despedida
+  sections:
+  - path: source-id-conversationstep-step-antonia-evento-adverso-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia evento adverso target id conversationstep
+      step antonia despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-evento-adverso-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-evento-adverso-transitions-to-step-antonia-despedida
+    title: step-antonia-evento-adverso transitions_to step-antonia-despedida
+    breadcrumbs:
+    - step-antonia-evento-adverso transitions_to step-antonia-despedida
+    about:
+    - step-antonia-evento-adverso transitions_to step-antonia-despedida
+    - step antonia evento adverso transitions to step antonia despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-evento-adverso-transitions-to-step-antonia-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-evento-adverso-transitions-to-step-antonia-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-evento-adverso transitions_to step-antonia-despedida
+    - Notes
+    about:
+    - step-antonia-evento-adverso transitions_to step-antonia-despedida
+    - step antonia evento adverso transitions to step antonia despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-evento-adverso--rule-antonia-eventos-adversos
+  sections:
+  - path: source-id-conversationstep-step-antonia-evento-adverso-target-id-ruleatom-rule-antonia-eventos-adversos-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: RuleAtom:rule-antonia-eventos-adversos
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: RuleAtom:rule-antonia-eventos-adversos
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: RuleAtom:rule-antonia-eventos-adversos
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia evento adverso target id ruleatom rule
+      antonia eventos adversos relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-evento-adverso-target-id-ruleatom-rule-antonia-eventos-adversos-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-evento-adverso-grounded-by-rule-antonia-eventos-adversos
+    title: step-antonia-evento-adverso grounded_by rule-antonia-eventos-adversos
+    breadcrumbs:
+    - step-antonia-evento-adverso grounded_by rule-antonia-eventos-adversos
+    about:
+    - step-antonia-evento-adverso grounded_by rule-antonia-eventos-adversos
+    - step antonia evento adverso grounded by rule antonia eventos adversos
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-evento-adverso-grounded-by-rule-antonia-eventos-adversos
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-evento-adverso-grounded-by-rule-antonia-eventos-adversos/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-evento-adverso grounded_by rule-antonia-eventos-adversos
+    - Notes
+    about:
+    - step-antonia-evento-adverso grounded_by rule-antonia-eventos-adversos
+    - step antonia evento adverso grounded by rule antonia eventos adversos
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-evento-adverso--boundary-antonia-clinico
+  sections:
+  - path: source-id-conversationstep-step-antonia-evento-adverso-target-id-capabilityboundary-boundary-antonia-clinico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia evento adverso target id capabilityboundary
+      boundary antonia clinico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-evento-adverso-target-id-capabilityboundary-boundary-antonia-clinico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-evento-adverso-grounded-by-boundary-antonia-clinico
+    title: step-antonia-evento-adverso grounded_by boundary-antonia-clinico
+    breadcrumbs:
+    - step-antonia-evento-adverso grounded_by boundary-antonia-clinico
+    about:
+    - step-antonia-evento-adverso grounded_by boundary-antonia-clinico
+    - step antonia evento adverso grounded by boundary antonia clinico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-evento-adverso-grounded-by-boundary-antonia-clinico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-evento-adverso-grounded-by-boundary-antonia-clinico/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-evento-adverso grounded_by boundary-antonia-clinico
+    - Notes
+    about:
+    - step-antonia-evento-adverso grounded_by boundary-antonia-clinico
+    - step antonia evento adverso grounded by boundary antonia clinico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-recompra--step-antonia-despedida
+  sections:
+  - path: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia recompra target id conversationstep
+      step antonia despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-recompra-transitions-to-step-antonia-despedida
+    title: step-antonia-recompra transitions_to step-antonia-despedida
+    breadcrumbs:
+    - step-antonia-recompra transitions_to step-antonia-despedida
+    about:
+    - step-antonia-recompra transitions_to step-antonia-despedida
+    - step antonia recompra transitions to step antonia despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-recompra-transitions-to-step-antonia-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-recompra-transitions-to-step-antonia-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-recompra transitions_to step-antonia-despedida
+    - Notes
+    about:
+    - step-antonia-recompra transitions_to step-antonia-despedida
+    - step antonia recompra transitions to step antonia despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-recompra--atom-antonia-recompra
+  sections:
+  - path: source-id-conversationstep-step-antonia-recompra-target-id-domainatom-atom-antonia-recompra-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: DomainAtom:atom-antonia-recompra
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: DomainAtom:atom-antonia-recompra
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: DomainAtom:atom-antonia-recompra
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia recompra target id domainatom atom antonia
+      recompra relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-recompra-target-id-domainatom-atom-antonia-recompra-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-recompra-grounded-by-atom-antonia-recompra
+    title: step-antonia-recompra grounded_by atom-antonia-recompra
+    breadcrumbs:
+    - step-antonia-recompra grounded_by atom-antonia-recompra
+    about:
+    - step-antonia-recompra grounded_by atom-antonia-recompra
+    - step antonia recompra grounded by atom antonia recompra
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-recompra-grounded-by-atom-antonia-recompra
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-recompra-grounded-by-atom-antonia-recompra/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-recompra grounded_by atom-antonia-recompra
+    - Notes
+    about:
+    - step-antonia-recompra grounded_by atom-antonia-recompra
+    - step antonia recompra grounded by atom antonia recompra
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso
+  sections:
+  - path: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia registro estado target id conversationstep
+      step antonia evento adverso relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-registro-estado-transitions-to-step-antonia-evento-adverso
+    title: step-antonia-registro-estado transitions_to step-antonia-evento-adverso
+    breadcrumbs:
+    - step-antonia-registro-estado transitions_to step-antonia-evento-adverso
+    about:
+    - step-antonia-registro-estado transitions_to step-antonia-evento-adverso
+    - step antonia registro estado transitions to step antonia evento adverso
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-registro-estado-transitions-to-step-antonia-evento-adverso
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-registro-estado-transitions-to-step-antonia-evento-adverso/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-registro-estado transitions_to step-antonia-evento-adverso
+    - Notes
+    about:
+    - step-antonia-registro-estado transitions_to step-antonia-evento-adverso
+    - step antonia registro estado transitions to step antonia evento adverso
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio
+  sections:
+  - path: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia registro estado target id conversationstep
+      step antonia agendar recordatorio relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-registro-estado-transitions-to-step-antonia-agendar-recordatorio
+    title: step-antonia-registro-estado transitions_to step-antonia-agendar-recordatorio
+    breadcrumbs:
+    - step-antonia-registro-estado transitions_to step-antonia-agendar-recordatorio
+    about:
+    - step-antonia-registro-estado transitions_to step-antonia-agendar-recordatorio
+    - step antonia registro estado transitions to step antonia agendar recordatorio
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-registro-estado-transitions-to-step-antonia-agendar-recordatorio
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-registro-estado-transitions-to-step-antonia-agendar-recordatorio/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-registro-estado transitions_to step-antonia-agendar-recordatorio
+    - Notes
+    about:
+    - step-antonia-registro-estado transitions_to step-antonia-agendar-recordatorio
+    - step antonia registro estado transitions to step antonia agendar recordatorio
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia registro estado target id conversationstep
+      step antonia derivacion medinfo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-registro-estado-transitions-to-step-antonia-derivacion-medinfo
+    title: step-antonia-registro-estado transitions_to step-antonia-derivacion-medinfo
+    breadcrumbs:
+    - step-antonia-registro-estado transitions_to step-antonia-derivacion-medinfo
+    about:
+    - step-antonia-registro-estado transitions_to step-antonia-derivacion-medinfo
+    - step antonia registro estado transitions to step antonia derivacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-registro-estado-transitions-to-step-antonia-derivacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-registro-estado-transitions-to-step-antonia-derivacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-registro-estado transitions_to step-antonia-derivacion-medinfo
+    - Notes
+    about:
+    - step-antonia-registro-estado transitions_to step-antonia-derivacion-medinfo
+    - step antonia registro estado transitions to step antonia derivacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-registro-estado--atom-antonia-aplicacion
+  sections:
+  - path: source-id-conversationstep-step-antonia-registro-estado-target-id-domainatom-atom-antonia-aplicacion-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: DomainAtom:atom-antonia-aplicacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: DomainAtom:atom-antonia-aplicacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: DomainAtom:atom-antonia-aplicacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia registro estado target id domainatom
+      atom antonia aplicacion relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-registro-estado-target-id-domainatom-atom-antonia-aplicacion-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-registro-estado-grounded-by-atom-antonia-aplicacion
+    title: step-antonia-registro-estado grounded_by atom-antonia-aplicacion
+    breadcrumbs:
+    - step-antonia-registro-estado grounded_by atom-antonia-aplicacion
+    about:
+    - step-antonia-registro-estado grounded_by atom-antonia-aplicacion
+    - step antonia registro estado grounded by atom antonia aplicacion
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-registro-estado-grounded-by-atom-antonia-aplicacion
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-registro-estado-grounded-by-atom-antonia-aplicacion/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-registro-estado grounded_by atom-antonia-aplicacion
+    - Notes
+    about:
+    - step-antonia-registro-estado grounded_by atom-antonia-aplicacion
+    - step antonia registro estado grounded by atom antonia aplicacion
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-registro-estado--atom-antonia-primeras-semanas
+  sections:
+  - path: source-id-conversationstep-step-antonia-registro-estado-target-id-domainatom-atom-antonia-primeras-semanas-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: DomainAtom:atom-antonia-primeras-semanas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: DomainAtom:atom-antonia-primeras-semanas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: DomainAtom:atom-antonia-primeras-semanas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia registro estado target id domainatom
+      atom antonia primeras semanas relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-registro-estado-target-id-domainatom-atom-antonia-primeras-semanas-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-registro-estado-grounded-by-atom-antonia-primeras-semanas
+    title: step-antonia-registro-estado grounded_by atom-antonia-primeras-semanas
+    breadcrumbs:
+    - step-antonia-registro-estado grounded_by atom-antonia-primeras-semanas
+    about:
+    - step-antonia-registro-estado grounded_by atom-antonia-primeras-semanas
+    - step antonia registro estado grounded by atom antonia primeras semanas
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-registro-estado-grounded-by-atom-antonia-primeras-semanas
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-registro-estado-grounded-by-atom-antonia-primeras-semanas/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-registro-estado grounded_by atom-antonia-primeras-semanas
+    - Notes
+    about:
+    - step-antonia-registro-estado grounded_by atom-antonia-primeras-semanas
+    - step antonia registro estado grounded by atom antonia primeras semanas
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-registro-estado--rule-antonia-eventos-adversos
+  sections:
+  - path: source-id-conversationstep-step-antonia-registro-estado-target-id-ruleatom-rule-antonia-eventos-adversos-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: RuleAtom:rule-antonia-eventos-adversos
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: RuleAtom:rule-antonia-eventos-adversos
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: RuleAtom:rule-antonia-eventos-adversos
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia registro estado target id ruleatom rule
+      antonia eventos adversos relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-registro-estado-target-id-ruleatom-rule-antonia-eventos-adversos-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-registro-estado-grounded-by-rule-antonia-eventos-adversos
+    title: step-antonia-registro-estado grounded_by rule-antonia-eventos-adversos
+    breadcrumbs:
+    - step-antonia-registro-estado grounded_by rule-antonia-eventos-adversos
+    about:
+    - step-antonia-registro-estado grounded_by rule-antonia-eventos-adversos
+    - step antonia registro estado grounded by rule antonia eventos adversos
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-registro-estado-grounded-by-rule-antonia-eventos-adversos
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-registro-estado-grounded-by-rule-antonia-eventos-adversos/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-registro-estado grounded_by rule-antonia-eventos-adversos
+    - Notes
+    about:
+    - step-antonia-registro-estado grounded_by rule-antonia-eventos-adversos
+    - step antonia registro estado grounded by rule antonia eventos adversos
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-saludo--step-antonia-onboarding
+  sections:
+  - path: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-onboarding-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-onboarding
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-onboarding
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-onboarding
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia saludo target id conversationstep step
+      antonia onboarding relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-onboarding-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-saludo-transitions-to-step-antonia-onboarding
+    title: step-antonia-saludo transitions_to step-antonia-onboarding
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-onboarding
+    about:
+    - step-antonia-saludo transitions_to step-antonia-onboarding
+    - step antonia saludo transitions to step antonia onboarding
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-saludo-transitions-to-step-antonia-onboarding
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-saludo-transitions-to-step-antonia-onboarding/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-onboarding
+    - Notes
+    about:
+    - step-antonia-saludo transitions_to step-antonia-onboarding
+    - step antonia saludo transitions to step antonia onboarding
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-saludo--step-antonia-registro-estado
+  sections:
+  - path: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia saludo target id conversationstep step
+      antonia registro estado relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-saludo-transitions-to-step-antonia-registro-estado
+    title: step-antonia-saludo transitions_to step-antonia-registro-estado
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-registro-estado
+    about:
+    - step-antonia-saludo transitions_to step-antonia-registro-estado
+    - step antonia saludo transitions to step antonia registro estado
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-saludo-transitions-to-step-antonia-registro-estado
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-saludo-transitions-to-step-antonia-registro-estado/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-registro-estado
+    - Notes
+    about:
+    - step-antonia-saludo transitions_to step-antonia-registro-estado
+    - step antonia saludo transitions to step antonia registro estado
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-saludo--step-antonia-journey-operativo
+  sections:
+  - path: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-journey-operativo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-journey-operativo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-journey-operativo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-journey-operativo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia saludo target id conversationstep step
+      antonia journey operativo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-journey-operativo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-saludo-transitions-to-step-antonia-journey-operativo
+    title: step-antonia-saludo transitions_to step-antonia-journey-operativo
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-journey-operativo
+    about:
+    - step-antonia-saludo transitions_to step-antonia-journey-operativo
+    - step antonia saludo transitions to step antonia journey operativo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-saludo-transitions-to-step-antonia-journey-operativo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-saludo-transitions-to-step-antonia-journey-operativo/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-journey-operativo
+    - Notes
+    about:
+    - step-antonia-saludo transitions_to step-antonia-journey-operativo
+    - step antonia saludo transitions to step antonia journey operativo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia saludo target id conversationstep step
+      antonia derivacion medinfo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-saludo-transitions-to-step-antonia-derivacion-medinfo
+    title: step-antonia-saludo transitions_to step-antonia-derivacion-medinfo
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-derivacion-medinfo
+    about:
+    - step-antonia-saludo transitions_to step-antonia-derivacion-medinfo
+    - step antonia saludo transitions to step antonia derivacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-saludo-transitions-to-step-antonia-derivacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-saludo-transitions-to-step-antonia-derivacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-derivacion-medinfo
+    - Notes
+    about:
+    - step-antonia-saludo transitions_to step-antonia-derivacion-medinfo
+    - step antonia saludo transitions to step antonia derivacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-saludo--step-antonia-enrolamiento
+  sections:
+  - path: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-enrolamiento-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia saludo target id conversationstep step
+      antonia enrolamiento relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-saludo-target-id-conversationstep-step-antonia-enrolamiento-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-saludo-transitions-to-step-antonia-enrolamiento
+    title: step-antonia-saludo transitions_to step-antonia-enrolamiento
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-enrolamiento
+    about:
+    - step-antonia-saludo transitions_to step-antonia-enrolamiento
+    - step antonia saludo transitions to step antonia enrolamiento
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-saludo-transitions-to-step-antonia-enrolamiento
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-saludo-transitions-to-step-antonia-enrolamiento/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-saludo transitions_to step-antonia-enrolamiento
+    - Notes
+    about:
+    - step-antonia-saludo transitions_to step-antonia-enrolamiento
+    - step antonia saludo transitions to step antonia enrolamiento
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-saludo--self-antonia
+  sections:
+  - path: source-id-conversationstep-step-antonia-saludo-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia saludo target id selfdeclaration self
+      antonia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-saludo-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-saludo-grounded-by-self-antonia
+    title: step-antonia-saludo grounded_by self-antonia
+    breadcrumbs:
+    - step-antonia-saludo grounded_by self-antonia
+    about:
+    - step-antonia-saludo grounded_by self-antonia
+    - step antonia saludo grounded by self antonia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-saludo-grounded-by-self-antonia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-saludo-grounded-by-self-antonia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-saludo grounded_by self-antonia
+    - Notes
+    about:
+    - step-antonia-saludo grounded_by self-antonia
+    - step antonia saludo grounded by self antonia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-saludo--style-antonia
+  sections:
+  - path: source-id-conversationstep-step-antonia-saludo-target-id-styleguide-style-antonia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-saludo
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia saludo target id styleguide style antonia
+      relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-saludo-target-id-styleguide-style-antonia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-saludo-grounded-by-style-antonia
+    title: step-antonia-saludo grounded_by style-antonia
+    breadcrumbs:
+    - step-antonia-saludo grounded_by style-antonia
+    about:
+    - step-antonia-saludo grounded_by style-antonia
+    - step antonia saludo grounded by style antonia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-saludo-grounded-by-style-antonia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-saludo-grounded-by-style-antonia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-saludo grounded_by style-antonia
+    - Notes
+    about:
+    - step-antonia-saludo grounded_by style-antonia
+    - step antonia saludo grounded by style antonia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-revision-humana-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id conversationstep
+      step antonia revision humana relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-revision-humana-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-derivacion-medinfo-transitions-to-step-antonia-revision-humana
+    title: step-antonia-derivacion-medinfo transitions_to step-antonia-revision-humana
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-revision-humana
+    about:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-revision-humana
+    - step antonia derivacion medinfo transitions to step antonia revision humana
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-derivacion-medinfo-transitions-to-step-antonia-revision-humana
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-derivacion-medinfo-transitions-to-step-antonia-revision-humana/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-revision-humana
+    - Notes
+    about:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-revision-humana
+    - step antonia derivacion medinfo transitions to step antonia revision humana
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id conversationstep
+      step antonia despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-derivacion-medinfo-transitions-to-step-antonia-despedida
+    title: step-antonia-derivacion-medinfo transitions_to step-antonia-despedida
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-despedida
+    about:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-despedida
+    - step antonia derivacion medinfo transitions to step antonia despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-derivacion-medinfo-transitions-to-step-antonia-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-derivacion-medinfo-transitions-to-step-antonia-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-despedida
+    - Notes
+    about:
+    - step-antonia-derivacion-medinfo transitions_to step-antonia-despedida
+    - step antonia derivacion medinfo transitions to step antonia despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-derivacion-medinfo--rule-antonia-clasificacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-ruleatom-rule-antonia-clasificacion-medinfo-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: RuleAtom:rule-antonia-clasificacion-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: RuleAtom:rule-antonia-clasificacion-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: RuleAtom:rule-antonia-clasificacion-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id ruleatom
+      rule antonia clasificacion medinfo relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-ruleatom-rule-antonia-clasificacion-medinfo-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-derivacion-medinfo-grounded-by-rule-antonia-clasificacion-medinfo
+    title: step-antonia-derivacion-medinfo grounded_by rule-antonia-clasificacion-medinfo
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo grounded_by rule-antonia-clasificacion-medinfo
+    about:
+    - step-antonia-derivacion-medinfo grounded_by rule-antonia-clasificacion-medinfo
+    - step antonia derivacion medinfo grounded by rule antonia clasificacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-derivacion-medinfo-grounded-by-rule-antonia-clasificacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-derivacion-medinfo-grounded-by-rule-antonia-clasificacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo grounded_by rule-antonia-clasificacion-medinfo
+    - Notes
+    about:
+    - step-antonia-derivacion-medinfo grounded_by rule-antonia-clasificacion-medinfo
+    - step antonia derivacion medinfo grounded by rule antonia clasificacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-derivacion-medinfo--atom-antonia-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-domainatom-atom-antonia-medinfo-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: DomainAtom:atom-antonia-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: DomainAtom:atom-antonia-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: DomainAtom:atom-antonia-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id domainatom
+      atom antonia medinfo relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-domainatom-atom-antonia-medinfo-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-derivacion-medinfo-grounded-by-atom-antonia-medinfo
+    title: step-antonia-derivacion-medinfo grounded_by atom-antonia-medinfo
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo grounded_by atom-antonia-medinfo
+    about:
+    - step-antonia-derivacion-medinfo grounded_by atom-antonia-medinfo
+    - step antonia derivacion medinfo grounded by atom antonia medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-derivacion-medinfo-grounded-by-atom-antonia-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-derivacion-medinfo-grounded-by-atom-antonia-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo grounded_by atom-antonia-medinfo
+    - Notes
+    about:
+    - step-antonia-derivacion-medinfo grounded_by atom-antonia-medinfo
+    - step antonia derivacion medinfo grounded by atom antonia medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-derivacion-medinfo--boundary-antonia-clinico
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-capabilityboundary-boundary-antonia-clinico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id capabilityboundary
+      boundary antonia clinico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-capabilityboundary-boundary-antonia-clinico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-derivacion-medinfo-grounded-by-boundary-antonia-clinico
+    title: step-antonia-derivacion-medinfo grounded_by boundary-antonia-clinico
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo grounded_by boundary-antonia-clinico
+    about:
+    - step-antonia-derivacion-medinfo grounded_by boundary-antonia-clinico
+    - step antonia derivacion medinfo grounded by boundary antonia clinico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-derivacion-medinfo-grounded-by-boundary-antonia-clinico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-derivacion-medinfo-grounded-by-boundary-antonia-clinico/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-derivacion-medinfo grounded_by boundary-antonia-clinico
+    - Notes
+    about:
+    - step-antonia-derivacion-medinfo grounded_by boundary-antonia-clinico
+    - step antonia derivacion medinfo grounded by boundary antonia clinico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-revision-humana--step-antonia-despedida
+  sections:
+  - path: source-id-conversationstep-step-antonia-revision-humana-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia revision humana target id conversationstep
+      step antonia despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-revision-humana-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-revision-humana-transitions-to-step-antonia-despedida
+    title: step-antonia-revision-humana transitions_to step-antonia-despedida
+    breadcrumbs:
+    - step-antonia-revision-humana transitions_to step-antonia-despedida
+    about:
+    - step-antonia-revision-humana transitions_to step-antonia-despedida
+    - step antonia revision humana transitions to step antonia despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-revision-humana-transitions-to-step-antonia-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-revision-humana-transitions-to-step-antonia-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-revision-humana transitions_to step-antonia-despedida
+    - Notes
+    about:
+    - step-antonia-revision-humana transitions_to step-antonia-despedida
+    - step antonia revision humana transitions to step antonia despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-revision-humana--atom-antonia-farmacovigilancia
+  sections:
+  - path: source-id-conversationstep-step-antonia-revision-humana-target-id-domainatom-atom-antonia-farmacovigilancia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: DomainAtom:atom-antonia-farmacovigilancia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: DomainAtom:atom-antonia-farmacovigilancia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: DomainAtom:atom-antonia-farmacovigilancia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia revision humana target id domainatom
+      atom antonia farmacovigilancia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-revision-humana-target-id-domainatom-atom-antonia-farmacovigilancia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-revision-humana-grounded-by-atom-antonia-farmacovigilancia
+    title: step-antonia-revision-humana grounded_by atom-antonia-farmacovigilancia
+    breadcrumbs:
+    - step-antonia-revision-humana grounded_by atom-antonia-farmacovigilancia
+    about:
+    - step-antonia-revision-humana grounded_by atom-antonia-farmacovigilancia
+    - step antonia revision humana grounded by atom antonia farmacovigilancia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-revision-humana-grounded-by-atom-antonia-farmacovigilancia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-revision-humana-grounded-by-atom-antonia-farmacovigilancia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-revision-humana grounded_by atom-antonia-farmacovigilancia
+    - Notes
+    about:
+    - step-antonia-revision-humana grounded_by atom-antonia-farmacovigilancia
+    - step antonia revision humana grounded by atom antonia farmacovigilancia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-revision-humana--atom-antonia-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-revision-humana-target-id-domainatom-atom-antonia-medinfo-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: DomainAtom:atom-antonia-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: DomainAtom:atom-antonia-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: DomainAtom:atom-antonia-medinfo
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia revision humana target id domainatom
+      atom antonia medinfo relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-revision-humana-target-id-domainatom-atom-antonia-medinfo-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-revision-humana-grounded-by-atom-antonia-medinfo
+    title: step-antonia-revision-humana grounded_by atom-antonia-medinfo
+    breadcrumbs:
+    - step-antonia-revision-humana grounded_by atom-antonia-medinfo
+    about:
+    - step-antonia-revision-humana grounded_by atom-antonia-medinfo
+    - step antonia revision humana grounded by atom antonia medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-revision-humana-grounded-by-atom-antonia-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-revision-humana-grounded-by-atom-antonia-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-revision-humana grounded_by atom-antonia-medinfo
+    - Notes
+    about:
+    - step-antonia-revision-humana grounded_by atom-antonia-medinfo
+    - step antonia revision humana grounded by atom antonia medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado
+  sections:
+  - path: source-id-conversationstep-step-antonia-journey-operativo-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia journey operativo target id conversationstep
+      step antonia registro estado relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-journey-operativo-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-journey-operativo-transitions-to-step-antonia-registro-estado
+    title: step-antonia-journey-operativo transitions_to step-antonia-registro-estado
+    breadcrumbs:
+    - step-antonia-journey-operativo transitions_to step-antonia-registro-estado
+    about:
+    - step-antonia-journey-operativo transitions_to step-antonia-registro-estado
+    - step antonia journey operativo transitions to step antonia registro estado
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-journey-operativo-transitions-to-step-antonia-registro-estado
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-journey-operativo-transitions-to-step-antonia-registro-estado/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-journey-operativo transitions_to step-antonia-registro-estado
+    - Notes
+    about:
+    - step-antonia-journey-operativo transitions_to step-antonia-registro-estado
+    - step antonia journey operativo transitions to step antonia registro estado
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-journey-operativo--step-antonia-despedida
+  sections:
+  - path: source-id-conversationstep-step-antonia-journey-operativo-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: ConversationStep:step-antonia-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia journey operativo target id conversationstep
+      step antonia despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-journey-operativo-target-id-conversationstep-step-antonia-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-journey-operativo-transitions-to-step-antonia-despedida
+    title: step-antonia-journey-operativo transitions_to step-antonia-despedida
+    breadcrumbs:
+    - step-antonia-journey-operativo transitions_to step-antonia-despedida
+    about:
+    - step-antonia-journey-operativo transitions_to step-antonia-despedida
+    - step antonia journey operativo transitions to step antonia despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-journey-operativo-transitions-to-step-antonia-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-journey-operativo-transitions-to-step-antonia-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-journey-operativo transitions_to step-antonia-despedida
+    - Notes
+    about:
+    - step-antonia-journey-operativo transitions_to step-antonia-despedida
+    - step antonia journey operativo transitions to step antonia despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-journey-operativo--rule-antonia-clasificacion-operacional
+  sections:
+  - path: source-id-conversationstep-step-antonia-journey-operativo-target-id-ruleatom-rule-antonia-clasificacion-operacional-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: RuleAtom:rule-antonia-clasificacion-operacional
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: RuleAtom:rule-antonia-clasificacion-operacional
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: RuleAtom:rule-antonia-clasificacion-operacional
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia journey operativo target id ruleatom
+      rule antonia clasificacion operacional relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-journey-operativo-target-id-ruleatom-rule-antonia-clasificacion-operacional-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-journey-operativo-grounded-by-rule-antonia-clasificacion-operacional
+    title: step-antonia-journey-operativo grounded_by rule-antonia-clasificacion-operacional
+    breadcrumbs:
+    - step-antonia-journey-operativo grounded_by rule-antonia-clasificacion-operacional
+    about:
+    - step-antonia-journey-operativo grounded_by rule-antonia-clasificacion-operacional
+    - step antonia journey operativo grounded by rule antonia clasificacion operacional
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-journey-operativo-grounded-by-rule-antonia-clasificacion-operacional
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-journey-operativo-grounded-by-rule-antonia-clasificacion-operacional/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-journey-operativo grounded_by rule-antonia-clasificacion-operacional
+    - Notes
+    about:
+    - step-antonia-journey-operativo grounded_by rule-antonia-clasificacion-operacional
+    - step antonia journey operativo grounded by rule antonia clasificacion operacional
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-journey-operativo--atom-antonia-journeys
+  sections:
+  - path: source-id-conversationstep-step-antonia-journey-operativo-target-id-domainatom-atom-antonia-journeys-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: DomainAtom:atom-antonia-journeys
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: DomainAtom:atom-antonia-journeys
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: DomainAtom:atom-antonia-journeys
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia journey operativo target id domainatom
+      atom antonia journeys relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-journey-operativo-target-id-domainatom-atom-antonia-journeys-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-journey-operativo-grounded-by-atom-antonia-journeys
+    title: step-antonia-journey-operativo grounded_by atom-antonia-journeys
+    breadcrumbs:
+    - step-antonia-journey-operativo grounded_by atom-antonia-journeys
+    about:
+    - step-antonia-journey-operativo grounded_by atom-antonia-journeys
+    - step antonia journey operativo grounded by atom antonia journeys
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-journey-operativo-grounded-by-atom-antonia-journeys
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-journey-operativo-grounded-by-atom-antonia-journeys/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-journey-operativo grounded_by atom-antonia-journeys
+    - Notes
+    about:
+    - step-antonia-journey-operativo grounded_by atom-antonia-journeys
+    - step antonia journey operativo grounded by atom antonia journeys
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-journey-operativo--atom-antonia-recompra
+  sections:
+  - path: source-id-conversationstep-step-antonia-journey-operativo-target-id-domainatom-atom-antonia-recompra-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: DomainAtom:atom-antonia-recompra
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: DomainAtom:atom-antonia-recompra
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-journey-operativo
+
+      target_id: DomainAtom:atom-antonia-recompra
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia journey operativo target id domainatom
+      atom antonia recompra relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-journey-operativo-target-id-domainatom-atom-antonia-recompra-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-journey-operativo-grounded-by-atom-antonia-recompra
+    title: step-antonia-journey-operativo grounded_by atom-antonia-recompra
+    breadcrumbs:
+    - step-antonia-journey-operativo grounded_by atom-antonia-recompra
+    about:
+    - step-antonia-journey-operativo grounded_by atom-antonia-recompra
+    - step antonia journey operativo grounded by atom antonia recompra
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-journey-operativo-grounded-by-atom-antonia-recompra
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-journey-operativo-grounded-by-atom-antonia-recompra/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-journey-operativo grounded_by atom-antonia-recompra
+    - Notes
+    about:
+    - step-antonia-journey-operativo grounded_by atom-antonia-recompra
+    - step antonia journey operativo grounded by atom antonia recompra
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
+  sections:
+  - path: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-conversationstep-step-antonia-revision-humana-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: ConversationStep:step-antonia-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: ConversationStep:step-antonia-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: ConversationStep:step-antonia-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia validacion policy gate target id conversationstep
+      step antonia revision humana relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-conversationstep-step-antonia-revision-humana-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-validacion-policy-gate-transitions-to-step-antonia-revision-humana
+    title: step-antonia-validacion-policy-gate transitions_to step-antonia-revision-humana
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate transitions_to step-antonia-revision-humana
+    about:
+    - step-antonia-validacion-policy-gate transitions_to step-antonia-revision-humana
+    - step antonia validacion policy gate transitions to step antonia revision humana
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-validacion-policy-gate-transitions-to-step-antonia-revision-humana
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-validacion-policy-gate-transitions-to-step-antonia-revision-humana/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate transitions_to step-antonia-revision-humana
+    - Notes
+    about:
+    - step-antonia-validacion-policy-gate transitions_to step-antonia-revision-humana
+    - step antonia validacion policy gate transitions to step antonia revision humana
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis
+  sections:
+  - path: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-dosis-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-dosis
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-dosis
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-dosis
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia validacion policy gate target id gatecriterion
+      gate antonia dosis relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-dosis-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-dosis
+    title: step-antonia-validacion-policy-gate grounded_by gate-antonia-dosis
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-dosis
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-dosis
+    - step antonia validacion policy gate grounded by gate antonia dosis
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-dosis
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-dosis/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-dosis
+    - Notes
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-dosis
+    - step antonia validacion policy gate grounded by gate antonia dosis
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico
+  sections:
+  - path: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-diagnostico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-diagnostico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-diagnostico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-diagnostico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia validacion policy gate target id gatecriterion
+      gate antonia diagnostico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-diagnostico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-diagnostico
+    title: step-antonia-validacion-policy-gate grounded_by gate-antonia-diagnostico
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-diagnostico
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-diagnostico
+    - step antonia validacion policy gate grounded by gate antonia diagnostico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-diagnostico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-diagnostico/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-diagnostico
+    - Notes
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-diagnostico
+    - step antonia validacion policy gate grounded by gate antonia diagnostico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-corpus
+  sections:
+  - path: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-corpus-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-corpus
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-corpus
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-corpus
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia validacion policy gate target id gatecriterion
+      gate antonia corpus relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-corpus-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-corpus
+    title: step-antonia-validacion-policy-gate grounded_by gate-antonia-corpus
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-corpus
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-corpus
+    - step antonia validacion policy gate grounded by gate antonia corpus
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-corpus
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-corpus/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-corpus
+    - Notes
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-corpus
+    - step antonia validacion policy gate grounded by gate antonia corpus
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-derivacion
+  sections:
+  - path: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-derivacion-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-derivacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-derivacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-derivacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia validacion policy gate target id gatecriterion
+      gate antonia derivacion relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-derivacion-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-derivacion
+    title: step-antonia-validacion-policy-gate grounded_by gate-antonia-derivacion
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-derivacion
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-derivacion
+    - step antonia validacion policy gate grounded by gate antonia derivacion
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-derivacion
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-derivacion/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-derivacion
+    - Notes
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-derivacion
+    - step antonia validacion policy gate grounded by gate antonia derivacion
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas
+  sections:
+  - path: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-promesas-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-promesas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-promesas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-validacion-policy-gate
+
+      target_id: GateCriterion:gate-antonia-promesas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia validacion policy gate target id gatecriterion
+      gate antonia promesas relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-validacion-policy-gate-target-id-gatecriterion-gate-antonia-promesas-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-promesas
+    title: step-antonia-validacion-policy-gate grounded_by gate-antonia-promesas
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-promesas
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-promesas
+    - step antonia validacion policy gate grounded by gate antonia promesas
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-promesas
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-validacion-policy-gate-grounded-by-gate-antonia-promesas/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-promesas
+    - Notes
+    about:
+    - step-antonia-validacion-policy-gate grounded_by gate-antonia-promesas
+    - step antonia validacion policy gate grounded by gate antonia promesas
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-enrolamiento-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia enrolamiento target id conversationstep
+      step antonia derivacion medinfo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-enrolamiento-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-enrolamiento-transitions-to-step-antonia-derivacion-medinfo
+    title: step-antonia-enrolamiento transitions_to step-antonia-derivacion-medinfo
+    breadcrumbs:
+    - step-antonia-enrolamiento transitions_to step-antonia-derivacion-medinfo
+    about:
+    - step-antonia-enrolamiento transitions_to step-antonia-derivacion-medinfo
+    - step antonia enrolamiento transitions to step antonia derivacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-enrolamiento-transitions-to-step-antonia-derivacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-enrolamiento-transitions-to-step-antonia-derivacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-enrolamiento transitions_to step-antonia-derivacion-medinfo
+    - Notes
+    about:
+    - step-antonia-enrolamiento transitions_to step-antonia-derivacion-medinfo
+    - step antonia enrolamiento transitions to step antonia derivacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-enrolamiento--step-antonia-onboarding
+  sections:
+  - path: source-id-conversationstep-step-antonia-enrolamiento-target-id-conversationstep-step-antonia-onboarding-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: ConversationStep:step-antonia-onboarding
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: ConversationStep:step-antonia-onboarding
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: ConversationStep:step-antonia-onboarding
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia enrolamiento target id conversationstep
+      step antonia onboarding relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-enrolamiento-target-id-conversationstep-step-antonia-onboarding-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-enrolamiento-transitions-to-step-antonia-onboarding
+    title: step-antonia-enrolamiento transitions_to step-antonia-onboarding
+    breadcrumbs:
+    - step-antonia-enrolamiento transitions_to step-antonia-onboarding
+    about:
+    - step-antonia-enrolamiento transitions_to step-antonia-onboarding
+    - step antonia enrolamiento transitions to step antonia onboarding
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-enrolamiento-transitions-to-step-antonia-onboarding
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-enrolamiento-transitions-to-step-antonia-onboarding/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-enrolamiento transitions_to step-antonia-onboarding
+    - Notes
+    about:
+    - step-antonia-enrolamiento transitions_to step-antonia-onboarding
+    - step antonia enrolamiento transitions to step antonia onboarding
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-enrolamiento--self-antonia
+  sections:
+  - path: source-id-conversationstep-step-antonia-enrolamiento-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: SelfDeclaration:self-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia enrolamiento target id selfdeclaration
+      self antonia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-enrolamiento-target-id-selfdeclaration-self-antonia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-enrolamiento-grounded-by-self-antonia
+    title: step-antonia-enrolamiento grounded_by self-antonia
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by self-antonia
+    about:
+    - step-antonia-enrolamiento grounded_by self-antonia
+    - step antonia enrolamiento grounded by self antonia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-enrolamiento-grounded-by-self-antonia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-enrolamiento-grounded-by-self-antonia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by self-antonia
+    - Notes
+    about:
+    - step-antonia-enrolamiento grounded_by self-antonia
+    - step antonia enrolamiento grounded by self antonia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-enrolamiento--style-antonia
+  sections:
+  - path: source-id-conversationstep-step-antonia-enrolamiento-target-id-styleguide-style-antonia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: StyleGuide:style-antonia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia enrolamiento target id styleguide style
+      antonia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-enrolamiento-target-id-styleguide-style-antonia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-enrolamiento-grounded-by-style-antonia
+    title: step-antonia-enrolamiento grounded_by style-antonia
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by style-antonia
+    about:
+    - step-antonia-enrolamiento grounded_by style-antonia
+    - step antonia enrolamiento grounded by style antonia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-enrolamiento-grounded-by-style-antonia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-enrolamiento-grounded-by-style-antonia/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by style-antonia
+    - Notes
+    about:
+    - step-antonia-enrolamiento grounded_by style-antonia
+    - step antonia enrolamiento grounded by style antonia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-enrolamiento--boundary-antonia-clinico
+  sections:
+  - path: source-id-conversationstep-step-antonia-enrolamiento-target-id-capabilityboundary-boundary-antonia-clinico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: CapabilityBoundary:boundary-antonia-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia enrolamiento target id capabilityboundary
+      boundary antonia clinico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-enrolamiento-target-id-capabilityboundary-boundary-antonia-clinico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-enrolamiento-grounded-by-boundary-antonia-clinico
+    title: step-antonia-enrolamiento grounded_by boundary-antonia-clinico
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by boundary-antonia-clinico
+    about:
+    - step-antonia-enrolamiento grounded_by boundary-antonia-clinico
+    - step antonia enrolamiento grounded by boundary antonia clinico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-enrolamiento-grounded-by-boundary-antonia-clinico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-enrolamiento-grounded-by-boundary-antonia-clinico/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by boundary-antonia-clinico
+    - Notes
+    about:
+    - step-antonia-enrolamiento grounded_by boundary-antonia-clinico
+    - step antonia enrolamiento grounded by boundary antonia clinico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico
+  sections:
+  - path: source-id-conversationstep-step-antonia-enrolamiento-target-id-ruleatom-rule-antonia-derivar-clinico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: RuleAtom:rule-antonia-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: RuleAtom:rule-antonia-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-enrolamiento
+
+      target_id: RuleAtom:rule-antonia-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step antonia enrolamiento target id ruleatom rule
+      antonia derivar clinico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-enrolamiento-target-id-ruleatom-rule-antonia-derivar-clinico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-antonia-enrolamiento-grounded-by-rule-antonia-derivar-clinico
+    title: step-antonia-enrolamiento grounded_by rule-antonia-derivar-clinico
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by rule-antonia-derivar-clinico
+    about:
+    - step-antonia-enrolamiento grounded_by rule-antonia-derivar-clinico
+    - step antonia enrolamiento grounded by rule antonia derivar clinico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-antonia-enrolamiento-grounded-by-rule-antonia-derivar-clinico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-antonia-enrolamiento-grounded-by-rule-antonia-derivar-clinico/notes
+    title: Notes
+    breadcrumbs:
+    - step-antonia-enrolamiento grounded_by rule-antonia-derivar-clinico
+    - Notes
+    about:
+    - step-antonia-enrolamiento grounded_by rule-antonia-derivar-clinico
+    - step antonia enrolamiento grounded by rule antonia derivar clinico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11

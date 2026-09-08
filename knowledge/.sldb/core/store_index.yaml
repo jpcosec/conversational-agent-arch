@@ -96,6 +96,26 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: RelationTypeDoc
+  model_ref: kgdb.models:RelationTypeDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/kgdb/src/kgdb/models/relation_type_doc.py
+  models_index: .sldb/core/models/RelationTypeDoc.yaml
+  version: 1
+  canonical: false
+  family: relation
+  semantics:
+  - layer.topology
+  - type.relation.type
+- name: RelationDoc
+  model_ref: kgdb.models:RelationDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/kgdb/src/kgdb/models/relation_doc.py
+  models_index: .sldb/core/models/RelationDoc.yaml
+  version: 1
+  canonical: false
+  family: relation
+  semantics:
+  - layer.topology
+  - type.relation.instance
 predicates:
 - name: is_solved_by
   axis: HOW
@@ -118,4 +138,42 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: 035d860fa293ae609d27592a0b9847617c91a4de281da84684120ddca4fa62b4
+- name: has_model
+  axis: WHAT
+  description: The store registers this model.
+- name: has_document
+  axis: WHAT
+  description: The model has this document as an instance.
+- name: has_section
+  axis: WHERE
+  description: The document contains this section.
+- name: tagged_as
+  axis: WHAT
+  description: The model, document or section carries this semantic tag.
+- name: semantic_parent
+  axis: WHAT
+  description: This tag is a child of that tag in the semantic DAG.
+- name: semantic_equivalent
+  axis: WHAT
+  description: This local tag maps to that global tag across linked stores.
+- name: has_field
+  axis: WHAT
+  description: The model declares this field; the field node carries its type and
+    description.
+- name: extends
+  axis: WHAT
+  description: The model inherits from that model (base_models); instances of the
+    source are instances of the target.
+- name: applies_to_source
+  axis: WHAT
+  description: 'Instances of this model may be the source of edges of this relation
+    type: the verbs a class can be subject of.'
+- name: applies_to_target
+  axis: WHAT
+  description: Instances of this model may be the target of edges of this relation
+    type.
+- name: names
+  axis: WHAT
+  description: The anchor (an alias word) names this model, field, relation type or
+    document.
+hash_a: 21a07c64a1e110047fb1976fc26cecc03f3935bd29a5e5140e4e1e8814193603

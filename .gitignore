@@ -22,3 +22,5 @@ runs/logs/twilio_local/
 .sldb/runtime/cache/
 knowledge/.sldb/runtime/cache/
 tests/knowledge/
+knowledge/.pron/
+**/.pron/

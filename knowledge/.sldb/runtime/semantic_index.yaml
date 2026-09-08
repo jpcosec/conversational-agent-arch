@@ -112,6 +112,72 @@ tags:
   - gate-antonia-diagnostico
   gate:regulatorio.dosis:
   - gate-antonia-dosis
+  layer.topology:
+  - grounded_by--step-antonia-agendar-recordatorio--atom-antonia-aplicacion
+  - grounded_by--step-antonia-derivacion-medinfo--atom-antonia-medinfo
+  - grounded_by--step-antonia-derivacion-medinfo--boundary-antonia-clinico
+  - grounded_by--step-antonia-derivacion-medinfo--rule-antonia-clasificacion-medinfo
+  - grounded_by--step-antonia-despedida--self-antonia
+  - grounded_by--step-antonia-despedida--style-antonia
+  - grounded_by--step-antonia-enrolamiento--boundary-antonia-clinico
+  - grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico
+  - grounded_by--step-antonia-enrolamiento--self-antonia
+  - grounded_by--step-antonia-enrolamiento--style-antonia
+  - grounded_by--step-antonia-evento-adverso--boundary-antonia-clinico
+  - grounded_by--step-antonia-evento-adverso--rule-antonia-eventos-adversos
+  - grounded_by--step-antonia-journey-operativo--atom-antonia-journeys
+  - grounded_by--step-antonia-journey-operativo--atom-antonia-recompra
+  - grounded_by--step-antonia-journey-operativo--rule-antonia-clasificacion-operacional
+  - grounded_by--step-antonia-onboarding--atom-antonia-bienvenida
+  - grounded_by--step-antonia-onboarding--atom-antonia-primeras-semanas
+  - grounded_by--step-antonia-onboarding--self-antonia
+  - grounded_by--step-antonia-recompra--atom-antonia-recompra
+  - grounded_by--step-antonia-registro-estado--atom-antonia-aplicacion
+  - grounded_by--step-antonia-registro-estado--atom-antonia-primeras-semanas
+  - grounded_by--step-antonia-registro-estado--rule-antonia-eventos-adversos
+  - grounded_by--step-antonia-revision-humana--atom-antonia-farmacovigilancia
+  - grounded_by--step-antonia-revision-humana--atom-antonia-medinfo
+  - grounded_by--step-antonia-saludo--self-antonia
+  - grounded_by--step-antonia-saludo--style-antonia
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-corpus
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-derivacion
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas
+  - reltype-applies_to_source
+  - reltype-applies_to_target
+  - reltype-extends
+  - reltype-has_document
+  - reltype-has_field
+  - reltype-has_model
+  - reltype-has_section
+  - reltype-names
+  - reltype-semantic_equivalent
+  - reltype-semantic_parent
+  - reltype-tagged_as
+  - rt-grounded_by
+  - rt-transitions_to
+  - rt-uses_tool
+  - transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana
+  - transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-enrolamiento--step-antonia-onboarding
+  - transitions_to--step-antonia-evento-adverso--step-antonia-despedida
+  - transitions_to--step-antonia-journey-operativo--step-antonia-despedida
+  - transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado
+  - transitions_to--step-antonia-onboarding--step-antonia-registro-estado
+  - transitions_to--step-antonia-recompra--step-antonia-despedida
+  - transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso
+  - transitions_to--step-antonia-revision-humana--step-antonia-despedida
+  - transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-saludo--step-antonia-enrolamiento
+  - transitions_to--step-antonia-saludo--step-antonia-journey-operativo
+  - transitions_to--step-antonia-saludo--step-antonia-onboarding
+  - transitions_to--step-antonia-saludo--step-antonia-registro-estado
+  - transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
   self:estilo:
   - style-antonia
   self:limites:
@@ -290,6 +356,73 @@ tags:
   - trait-antonia-dudas-efectos
   - trait-antonia-prefiere-recordatorios
   - trait-antonia-primera-vez
+  type.relation.instance:
+  - grounded_by--step-antonia-agendar-recordatorio--atom-antonia-aplicacion
+  - grounded_by--step-antonia-derivacion-medinfo--atom-antonia-medinfo
+  - grounded_by--step-antonia-derivacion-medinfo--boundary-antonia-clinico
+  - grounded_by--step-antonia-derivacion-medinfo--rule-antonia-clasificacion-medinfo
+  - grounded_by--step-antonia-despedida--self-antonia
+  - grounded_by--step-antonia-despedida--style-antonia
+  - grounded_by--step-antonia-enrolamiento--boundary-antonia-clinico
+  - grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico
+  - grounded_by--step-antonia-enrolamiento--self-antonia
+  - grounded_by--step-antonia-enrolamiento--style-antonia
+  - grounded_by--step-antonia-evento-adverso--boundary-antonia-clinico
+  - grounded_by--step-antonia-evento-adverso--rule-antonia-eventos-adversos
+  - grounded_by--step-antonia-journey-operativo--atom-antonia-journeys
+  - grounded_by--step-antonia-journey-operativo--atom-antonia-recompra
+  - grounded_by--step-antonia-journey-operativo--rule-antonia-clasificacion-operacional
+  - grounded_by--step-antonia-onboarding--atom-antonia-bienvenida
+  - grounded_by--step-antonia-onboarding--atom-antonia-primeras-semanas
+  - grounded_by--step-antonia-onboarding--self-antonia
+  - grounded_by--step-antonia-recompra--atom-antonia-recompra
+  - grounded_by--step-antonia-registro-estado--atom-antonia-aplicacion
+  - grounded_by--step-antonia-registro-estado--atom-antonia-primeras-semanas
+  - grounded_by--step-antonia-registro-estado--rule-antonia-eventos-adversos
+  - grounded_by--step-antonia-revision-humana--atom-antonia-farmacovigilancia
+  - grounded_by--step-antonia-revision-humana--atom-antonia-medinfo
+  - grounded_by--step-antonia-saludo--self-antonia
+  - grounded_by--step-antonia-saludo--style-antonia
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-corpus
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-derivacion
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis
+  - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas
+  - transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana
+  - transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-enrolamiento--step-antonia-onboarding
+  - transitions_to--step-antonia-evento-adverso--step-antonia-despedida
+  - transitions_to--step-antonia-journey-operativo--step-antonia-despedida
+  - transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado
+  - transitions_to--step-antonia-onboarding--step-antonia-registro-estado
+  - transitions_to--step-antonia-recompra--step-antonia-despedida
+  - transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso
+  - transitions_to--step-antonia-revision-humana--step-antonia-despedida
+  - transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-saludo--step-antonia-enrolamiento
+  - transitions_to--step-antonia-saludo--step-antonia-journey-operativo
+  - transitions_to--step-antonia-saludo--step-antonia-onboarding
+  - transitions_to--step-antonia-saludo--step-antonia-registro-estado
+  - transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
+  type.relation.type:
+  - reltype-applies_to_source
+  - reltype-applies_to_target
+  - reltype-extends
+  - reltype-has_document
+  - reltype-has_field
+  - reltype-has_model
+  - reltype-has_section
+  - reltype-names
+  - reltype-semantic_equivalent
+  - reltype-semantic_parent
+  - reltype-tagged_as
+  - rt-grounded_by
+  - rt-transitions_to
+  - rt-uses_tool
   user:traits.ansioso_aplicacion:
   - trait-antonia-ansioso-aplicacion
   user:traits.buena_adherencia:
@@ -993,3 +1126,393 @@ documents:
     - agent:router
     - type.knowledge.agent
     - workspace.knowledge
+  reltype-has_model:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_model.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-has_document:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_document.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-has_section:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_section.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-tagged_as:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/tagged_as.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-semantic_parent:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/semantic_parent.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-semantic_equivalent:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/semantic_equivalent.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-has_field:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_field.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-extends:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/extends.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-applies_to_source:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/applies_to_source.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-applies_to_target:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/applies_to_target.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-names:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/names.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  rt-transitions_to:
+    model: RelationTypeDoc
+    path: relations/types/transitions_to.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  rt-grounded_by:
+    model: RelationTypeDoc
+    path: relations/types/grounded_by.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  rt-uses_tool:
+    model: RelationTypeDoc
+    path: relations/types/uses_tool.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  transitions_to--step-antonia-onboarding--step-antonia-registro-estado:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-onboarding--step-antonia-registro-estado.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-onboarding--atom-antonia-bienvenida:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-onboarding--atom-antonia-bienvenida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-onboarding--atom-antonia-primeras-semanas:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-onboarding--atom-antonia-primeras-semanas.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-onboarding--self-antonia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-onboarding--self-antonia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-agendar-recordatorio--atom-antonia-aplicacion:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-agendar-recordatorio--atom-antonia-aplicacion.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-despedida--self-antonia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-despedida--self-antonia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-despedida--style-antonia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-despedida--style-antonia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-evento-adverso--step-antonia-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-evento-adverso--step-antonia-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-evento-adverso--rule-antonia-eventos-adversos:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-evento-adverso--rule-antonia-eventos-adversos.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-evento-adverso--boundary-antonia-clinico:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-evento-adverso--boundary-antonia-clinico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-recompra--step-antonia-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-recompra--step-antonia-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-recompra--atom-antonia-recompra:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-recompra--atom-antonia-recompra.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-registro-estado--atom-antonia-aplicacion:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-registro-estado--atom-antonia-aplicacion.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-registro-estado--atom-antonia-primeras-semanas:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-registro-estado--atom-antonia-primeras-semanas.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-registro-estado--rule-antonia-eventos-adversos:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-registro-estado--rule-antonia-eventos-adversos.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-saludo--step-antonia-onboarding:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-saludo--step-antonia-onboarding.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-saludo--step-antonia-registro-estado:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-saludo--step-antonia-registro-estado.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-saludo--step-antonia-journey-operativo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-saludo--step-antonia-journey-operativo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-saludo--step-antonia-enrolamiento:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-saludo--step-antonia-enrolamiento.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-saludo--self-antonia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-saludo--self-antonia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-saludo--style-antonia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-saludo--style-antonia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-derivacion-medinfo--rule-antonia-clasificacion-medinfo:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-derivacion-medinfo--rule-antonia-clasificacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-derivacion-medinfo--atom-antonia-medinfo:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-derivacion-medinfo--atom-antonia-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-derivacion-medinfo--boundary-antonia-clinico:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-derivacion-medinfo--boundary-antonia-clinico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-revision-humana--step-antonia-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-revision-humana--step-antonia-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-revision-humana--atom-antonia-farmacovigilancia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-revision-humana--atom-antonia-farmacovigilancia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-revision-humana--atom-antonia-medinfo:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-revision-humana--atom-antonia-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-journey-operativo--step-antonia-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-journey-operativo--step-antonia-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-journey-operativo--rule-antonia-clasificacion-operacional:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-journey-operativo--rule-antonia-clasificacion-operacional.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-journey-operativo--atom-antonia-journeys:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-journey-operativo--atom-antonia-journeys.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-journey-operativo--atom-antonia-recompra:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-journey-operativo--atom-antonia-recompra.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-validacion-policy-gate--gate-antonia-corpus:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-corpus.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-validacion-policy-gate--gate-antonia-derivacion:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-derivacion.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-enrolamiento--step-antonia-onboarding:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-enrolamiento--step-antonia-onboarding.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-enrolamiento--self-antonia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-enrolamiento--self-antonia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-enrolamiento--style-antonia:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-enrolamiento--style-antonia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-enrolamiento--boundary-antonia-clinico:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-enrolamiento--boundary-antonia-clinico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico:
+    model: RelationDoc
+    path: relations/grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico.md
+    tags:
+    - layer.topology
+    - type.relation.instance

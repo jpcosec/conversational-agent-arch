@@ -2,11 +2,11 @@ documents:
 - doc_name: agendar_recordatorio
   sections:
   - path: tool-agendar-recordatorio-de-aplicaci-n
-    title: "Tool agendar recordatorio de aplicaci\xF3n"
+    title: Tool agendar recordatorio de aplicación
     breadcrumbs:
-    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Tool agendar recordatorio de aplicación
     about:
-    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Tool agendar recordatorio de aplicación
     - tool agendar recordatorio de aplicaci n
     - conversation:steps.agendar_recordatorio
     - self:tools
@@ -26,10 +26,10 @@ documents:
   - path: tool-agendar-recordatorio-de-aplicaci-n/description
     title: Description
     breadcrumbs:
-    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Tool agendar recordatorio de aplicación
     - Description
     about:
-    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Tool agendar recordatorio de aplicación
     - tool agendar recordatorio de aplicaci n
     - Description
     - description
@@ -51,10 +51,10 @@ documents:
   - path: tool-agendar-recordatorio-de-aplicaci-n/parameters
     title: Parameters
     breadcrumbs:
-    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Tool agendar recordatorio de aplicación
     - Parameters
     about:
-    - "Tool agendar recordatorio de aplicaci\xF3n"
+    - Tool agendar recordatorio de aplicación
     - tool agendar recordatorio de aplicaci n
     - Parameters
     - parameters

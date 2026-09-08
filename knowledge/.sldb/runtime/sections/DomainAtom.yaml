@@ -51,11 +51,11 @@ documents:
 - doc_name: atom-antonia-aplicacion
   sections:
   - path: administraci-n-de-selfix
-    title: "Administraci\xF3n de Selfix"
+    title: Administración de Selfix
     breadcrumbs:
-    - "Administraci\xF3n de Selfix"
+    - Administración de Selfix
     about:
-    - "Administraci\xF3n de Selfix"
+    - Administración de Selfix
     - administraci n de selfix
     - conversation:steps.recompra
     - domain:tratamiento
@@ -75,10 +75,10 @@ documents:
   - path: administraci-n-de-selfix/answer
     title: Answer
     breadcrumbs:
-    - "Administraci\xF3n de Selfix"
+    - Administración de Selfix
     - Answer
     about:
-    - "Administraci\xF3n de Selfix"
+    - Administración de Selfix
     - administraci n de selfix
     - Answer
     - answer
@@ -100,11 +100,11 @@ documents:
 - doc_name: atom-antonia-primeras-semanas
   sections:
   - path: qu-esperar-las-primeras-semanas
-    title: "Qu\xE9 esperar las primeras semanas"
+    title: Qué esperar las primeras semanas
     breadcrumbs:
-    - "Qu\xE9 esperar las primeras semanas"
+    - Qué esperar las primeras semanas
     about:
-    - "Qu\xE9 esperar las primeras semanas"
+    - Qué esperar las primeras semanas
     - qu esperar las primeras semanas
     - conversation:steps.onboarding
     - domain:tratamiento
@@ -124,10 +124,10 @@ documents:
   - path: qu-esperar-las-primeras-semanas/answer
     title: Answer
     breadcrumbs:
-    - "Qu\xE9 esperar las primeras semanas"
+    - Qué esperar las primeras semanas
     - Answer
     about:
-    - "Qu\xE9 esperar las primeras semanas"
+    - Qué esperar las primeras semanas
     - qu esperar las primeras semanas
     - Answer
     - answer
@@ -149,11 +149,11 @@ documents:
 - doc_name: atom-antonia-recompra
   sections:
   - path: recompra-y-renovaci-n-de-receta
-    title: "Recompra y renovaci\xF3n de receta"
+    title: Recompra y renovación de receta
     breadcrumbs:
-    - "Recompra y renovaci\xF3n de receta"
+    - Recompra y renovación de receta
     about:
-    - "Recompra y renovaci\xF3n de receta"
+    - Recompra y renovación de receta
     - recompra y renovaci n de receta
     - conversation:steps.recompra
     - domain:logistica
@@ -173,10 +173,10 @@ documents:
   - path: recompra-y-renovaci-n-de-receta/answer
     title: Answer
     breadcrumbs:
-    - "Recompra y renovaci\xF3n de receta"
+    - Recompra y renovación de receta
     - Answer
     about:
-    - "Recompra y renovaci\xF3n de receta"
+    - Recompra y renovación de receta
     - recompra y renovaci n de receta
     - Answer
     - answer
@@ -198,11 +198,11 @@ documents:
 - doc_name: atom-antonia-medinfo
   sections:
   - path: gesti-n-de-informaci-n-m-dica-del-programa
-    title: "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    title: Gestión de información médica del programa
     breadcrumbs:
-    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    - Gestión de información médica del programa
     about:
-    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    - Gestión de información médica del programa
     - gesti n de informaci n m dica del programa
     - domain:medinfo
     - system:laboratorio-chile
@@ -220,10 +220,10 @@ documents:
   - path: gesti-n-de-informaci-n-m-dica-del-programa/answer
     title: Answer
     breadcrumbs:
-    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    - Gestión de información médica del programa
     - Answer
     about:
-    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
+    - Gestión de información médica del programa
     - gesti n de informaci n m dica del programa
     - Answer
     - answer
@@ -333,11 +333,11 @@ documents:
 - doc_name: atom-antonia-titulacion
   sections:
   - path: titulaci-n-del-programa-selfix
-    title: "Titulaci\xF3n del programa Selfix"
+    title: Titulación del programa Selfix
     breadcrumbs:
-    - "Titulaci\xF3n del programa Selfix"
+    - Titulación del programa Selfix
     about:
-    - "Titulaci\xF3n del programa Selfix"
+    - Titulación del programa Selfix
     - titulaci n del programa selfix
     - domain:tratamiento
     - system:laboratorio-chile
@@ -355,10 +355,10 @@ documents:
   - path: titulaci-n-del-programa-selfix/answer
     title: Answer
     breadcrumbs:
-    - "Titulaci\xF3n del programa Selfix"
+    - Titulación del programa Selfix
     - Answer
     about:
-    - "Titulaci\xF3n del programa Selfix"
+    - Titulación del programa Selfix
     - titulaci n del programa selfix
     - Answer
     - answer
@@ -378,11 +378,11 @@ documents:
 - doc_name: atom-antonia-molecula
   sections:
   - path: mol-cula-de-selfix
-    title: "Mol\xE9cula de Selfix"
+    title: Molécula de Selfix
     breadcrumbs:
-    - "Mol\xE9cula de Selfix"
+    - Molécula de Selfix
     about:
-    - "Mol\xE9cula de Selfix"
+    - Molécula de Selfix
     - mol cula de selfix
     - domain:tratamiento
     - system:laboratorio-chile
@@ -400,10 +400,10 @@ documents:
   - path: mol-cula-de-selfix/answer
     title: Answer
     breadcrumbs:
-    - "Mol\xE9cula de Selfix"
+    - Molécula de Selfix
     - Answer
     about:
-    - "Mol\xE9cula de Selfix"
+    - Molécula de Selfix
     - mol cula de selfix
     - Answer
     - answer
@@ -423,11 +423,11 @@ documents:
 - doc_name: atom-antonia-meddra
   sections:
   - path: meddra-diccionario-m-dico-regulatorio
-    title: "MedDRA: diccionario m\xE9dico regulatorio"
+    title: 'MedDRA: diccionario médico regulatorio'
     breadcrumbs:
-    - "MedDRA: diccionario m\xE9dico regulatorio"
+    - 'MedDRA: diccionario médico regulatorio'
     about:
-    - "MedDRA: diccionario m\xE9dico regulatorio"
+    - 'MedDRA: diccionario médico regulatorio'
     - meddra diccionario m dico regulatorio
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -445,10 +445,10 @@ documents:
   - path: meddra-diccionario-m-dico-regulatorio/answer
     title: Answer
     breadcrumbs:
-    - "MedDRA: diccionario m\xE9dico regulatorio"
+    - 'MedDRA: diccionario médico regulatorio'
     - Answer
     about:
-    - "MedDRA: diccionario m\xE9dico regulatorio"
+    - 'MedDRA: diccionario médico regulatorio'
     - meddra diccionario m dico regulatorio
     - Answer
     - answer
@@ -468,11 +468,11 @@ documents:
 - doc_name: atom-antonia-ea
   sections:
   - path: efecto-adverso-definici-n
-    title: "Efecto adverso: definici\xF3n"
+    title: 'Efecto adverso: definición'
     breadcrumbs:
-    - "Efecto adverso: definici\xF3n"
+    - 'Efecto adverso: definición'
     about:
-    - "Efecto adverso: definici\xF3n"
+    - 'Efecto adverso: definición'
     - efecto adverso definici n
     - domain:seguridad.evento
     - system:laboratorio-chile
@@ -490,10 +490,10 @@ documents:
   - path: efecto-adverso-definici-n/answer
     title: Answer
     breadcrumbs:
-    - "Efecto adverso: definici\xF3n"
+    - 'Efecto adverso: definición'
     - Answer
     about:
-    - "Efecto adverso: definici\xF3n"
+    - 'Efecto adverso: definición'
     - efecto adverso definici n
     - Answer
     - answer
@@ -513,11 +513,11 @@ documents:
 - doc_name: atom-antonia-ea-administracion
   sections:
   - path: aplicaci-n-correcta-y-mala-praxis
-    title: "Aplicaci\xF3n correcta y mala praxis"
+    title: Aplicación correcta y mala praxis
     breadcrumbs:
-    - "Aplicaci\xF3n correcta y mala praxis"
+    - Aplicación correcta y mala praxis
     about:
-    - "Aplicaci\xF3n correcta y mala praxis"
+    - Aplicación correcta y mala praxis
     - aplicaci n correcta y mala praxis
     - domain:seguridad.evento
     - system:laboratorio-chile
@@ -535,10 +535,10 @@ documents:
   - path: aplicaci-n-correcta-y-mala-praxis/answer
     title: Answer
     breadcrumbs:
-    - "Aplicaci\xF3n correcta y mala praxis"
+    - Aplicación correcta y mala praxis
     - Answer
     about:
-    - "Aplicaci\xF3n correcta y mala praxis"
+    - Aplicación correcta y mala praxis
     - aplicaci n correcta y mala praxis
     - Answer
     - answer
@@ -603,11 +603,11 @@ documents:
 - doc_name: atom-antonia-gamp5
   sections:
   - path: gamp-5-validaci-n-de-software-pharma
-    title: "GAMP 5: validaci\xF3n de software pharma"
+    title: 'GAMP 5: validación de software pharma'
     breadcrumbs:
-    - "GAMP 5: validaci\xF3n de software pharma"
+    - 'GAMP 5: validación de software pharma'
     about:
-    - "GAMP 5: validaci\xF3n de software pharma"
+    - 'GAMP 5: validación de software pharma'
     - gamp 5 validaci n de software pharma
     - domain:seguridad.compliance
     - system:laboratorio-chile
@@ -625,10 +625,10 @@ documents:
   - path: gamp-5-validaci-n-de-software-pharma/answer
     title: Answer
     breadcrumbs:
-    - "GAMP 5: validaci\xF3n de software pharma"
+    - 'GAMP 5: validación de software pharma'
     - Answer
     about:
-    - "GAMP 5: validaci\xF3n de software pharma"
+    - 'GAMP 5: validación de software pharma'
     - gamp 5 validaci n de software pharma
     - Answer
     - answer
@@ -738,11 +738,11 @@ documents:
 - doc_name: atom-antonia-ime
   sections:
   - path: ime-eventos-m-dicos-importantes
-    title: "IME: eventos m\xE9dicos importantes"
+    title: 'IME: eventos médicos importantes'
     breadcrumbs:
-    - "IME: eventos m\xE9dicos importantes"
+    - 'IME: eventos médicos importantes'
     about:
-    - "IME: eventos m\xE9dicos importantes"
+    - 'IME: eventos médicos importantes'
     - ime eventos m dicos importantes
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -760,10 +760,10 @@ documents:
   - path: ime-eventos-m-dicos-importantes/answer
     title: Answer
     breadcrumbs:
-    - "IME: eventos m\xE9dicos importantes"
+    - 'IME: eventos médicos importantes'
     - Answer
     about:
-    - "IME: eventos m\xE9dicos importantes"
+    - 'IME: eventos médicos importantes'
     - ime eventos m dicos importantes
     - Answer
     - answer
@@ -783,11 +783,11 @@ documents:
 - doc_name: atom-antonia-ime-catalogo
   sections:
   - path: se-ales-de-alarma-tipo-ime
-    title: "Se\xF1ales de alarma tipo IME"
+    title: Señales de alarma tipo IME
     breadcrumbs:
-    - "Se\xF1ales de alarma tipo IME"
+    - Señales de alarma tipo IME
     about:
-    - "Se\xF1ales de alarma tipo IME"
+    - Señales de alarma tipo IME
     - se ales de alarma tipo ime
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -805,10 +805,10 @@ documents:
   - path: se-ales-de-alarma-tipo-ime/answer
     title: Answer
     breadcrumbs:
-    - "Se\xF1ales de alarma tipo IME"
+    - Señales de alarma tipo IME
     - Answer
     about:
-    - "Se\xF1ales de alarma tipo IME"
+    - Señales de alarma tipo IME
     - se ales de alarma tipo ime
     - Answer
     - answer
@@ -828,11 +828,11 @@ documents:
 - doc_name: atom-antonia-ime-grave-automatico
   sections:
   - path: ime-grave-autom-tico
-    title: "IME = grave autom\xE1tico"
+    title: IME = grave automático
     breadcrumbs:
-    - "IME = grave autom\xE1tico"
+    - IME = grave automático
     about:
-    - "IME = grave autom\xE1tico"
+    - IME = grave automático
     - ime grave autom tico
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -850,10 +850,10 @@ documents:
   - path: ime-grave-autom-tico/answer
     title: Answer
     breadcrumbs:
-    - "IME = grave autom\xE1tico"
+    - IME = grave automático
     - Answer
     about:
-    - "IME = grave autom\xE1tico"
+    - IME = grave automático
     - ime grave autom tico
     - Answer
     - answer
@@ -873,11 +873,11 @@ documents:
 - doc_name: atom-antonia-meddra-alcance
   sections:
   - path: por-qu-no-codifico-meddra
-    title: "Por qu\xE9 NO codifico MedDRA"
+    title: Por qué NO codifico MedDRA
     breadcrumbs:
-    - "Por qu\xE9 NO codifico MedDRA"
+    - Por qué NO codifico MedDRA
     about:
-    - "Por qu\xE9 NO codifico MedDRA"
+    - Por qué NO codifico MedDRA
     - por qu no codifico meddra
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -895,10 +895,10 @@ documents:
   - path: por-qu-no-codifico-meddra/answer
     title: Answer
     breadcrumbs:
-    - "Por qu\xE9 NO codifico MedDRA"
+    - Por qué NO codifico MedDRA
     - Answer
     about:
-    - "Por qu\xE9 NO codifico MedDRA"
+    - Por qué NO codifico MedDRA
     - por qu no codifico meddra
     - Answer
     - answer
@@ -918,11 +918,11 @@ documents:
 - doc_name: atom-antonia-meddra-jerarquia
   sections:
   - path: niveles-meddra-llt-pt-soc
-    title: "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    title: Niveles MedDRA (LLT→PT→SOC)
     breadcrumbs:
-    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    - Niveles MedDRA (LLT→PT→SOC)
     about:
-    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    - Niveles MedDRA (LLT→PT→SOC)
     - niveles meddra llt pt soc
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -940,10 +940,10 @@ documents:
   - path: niveles-meddra-llt-pt-soc/answer
     title: Answer
     breadcrumbs:
-    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    - Niveles MedDRA (LLT→PT→SOC)
     - Answer
     about:
-    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
+    - Niveles MedDRA (LLT→PT→SOC)
     - niveles meddra llt pt soc
     - Answer
     - answer
@@ -1053,11 +1053,11 @@ documents:
 - doc_name: atom-antonia-triage-colas
   sections:
   - path: las-3-colas-de-clasificaci-n
-    title: "Las 3 colas de clasificaci\xF3n"
+    title: Las 3 colas de clasificación
     breadcrumbs:
-    - "Las 3 colas de clasificaci\xF3n"
+    - Las 3 colas de clasificación
     about:
-    - "Las 3 colas de clasificaci\xF3n"
+    - Las 3 colas de clasificación
     - las 3 colas de clasificaci n
     - domain:seguridad.triage
     - system:laboratorio-chile
@@ -1075,10 +1075,10 @@ documents:
   - path: las-3-colas-de-clasificaci-n/answer
     title: Answer
     breadcrumbs:
-    - "Las 3 colas de clasificaci\xF3n"
+    - Las 3 colas de clasificación
     - Answer
     about:
-    - "Las 3 colas de clasificaci\xF3n"
+    - Las 3 colas de clasificación
     - las 3 colas de clasificaci n
     - Answer
     - answer

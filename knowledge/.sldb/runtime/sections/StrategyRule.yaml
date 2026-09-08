@@ -2,11 +2,11 @@ documents:
 - doc_name: strategy-antonia
   sections:
   - path: estrategia-de-acompa-amiento
-    title: "Estrategia de acompa\xF1amiento"
+    title: Estrategia de acompañamiento
     breadcrumbs:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     about:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     - estrategia de acompa amiento
     - conversation:strategy
     - system:laboratorio-chile
@@ -24,10 +24,10 @@ documents:
   - path: estrategia-de-acompa-amiento/goal
     title: Goal
     breadcrumbs:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     - Goal
     about:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     - estrategia de acompa amiento
     - Goal
     - goal
@@ -47,10 +47,10 @@ documents:
   - path: estrategia-de-acompa-amiento/approach
     title: Approach
     breadcrumbs:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     - Approach
     about:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     - estrategia de acompa amiento
     - Approach
     - approach
@@ -70,10 +70,10 @@ documents:
   - path: estrategia-de-acompa-amiento/priorities
     title: Priorities
     breadcrumbs:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     - Priorities
     about:
-    - "Estrategia de acompa\xF1amiento"
+    - Estrategia de acompañamiento
     - estrategia de acompa amiento
     - Priorities
     - priorities

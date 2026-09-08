@@ -2,11 +2,11 @@ documents:
 - doc_name: agent-antonia-gate
   sections:
   - path: encuadre-del-gate-antonia
-    title: "Encuadre del Gate \u2014 Antonia"
+    title: Encuadre del Gate — Antonia
     breadcrumbs:
-    - "Encuadre del Gate \u2014 Antonia"
+    - Encuadre del Gate — Antonia
     about:
-    - "Encuadre del Gate \u2014 Antonia"
+    - Encuadre del Gate — Antonia
     - encuadre del gate antonia
     - agent:gate
     - type.knowledge.agent
@@ -22,10 +22,10 @@ documents:
   - path: encuadre-del-gate-antonia/framing
     title: Framing
     breadcrumbs:
-    - "Encuadre del Gate \u2014 Antonia"
+    - Encuadre del Gate — Antonia
     - Framing
     about:
-    - "Encuadre del Gate \u2014 Antonia"
+    - Encuadre del Gate — Antonia
     - encuadre del gate antonia
     - Framing
     - framing
@@ -43,10 +43,10 @@ documents:
   - path: encuadre-del-gate-antonia/examples
     title: Examples
     breadcrumbs:
-    - "Encuadre del Gate \u2014 Antonia"
+    - Encuadre del Gate — Antonia
     - Examples
     about:
-    - "Encuadre del Gate \u2014 Antonia"
+    - Encuadre del Gate — Antonia
     - encuadre del gate antonia
     - Examples
     - examples
@@ -64,11 +64,11 @@ documents:
 - doc_name: agent-antonia-router
   sections:
   - path: encuadre-del-ruteador-antonia
-    title: "Encuadre del Ruteador \u2014 Antonia"
+    title: Encuadre del Ruteador — Antonia
     breadcrumbs:
-    - "Encuadre del Ruteador \u2014 Antonia"
+    - Encuadre del Ruteador — Antonia
     about:
-    - "Encuadre del Ruteador \u2014 Antonia"
+    - Encuadre del Ruteador — Antonia
     - encuadre del ruteador antonia
     - agent:router
     - type.knowledge.agent
@@ -84,10 +84,10 @@ documents:
   - path: encuadre-del-ruteador-antonia/framing
     title: Framing
     breadcrumbs:
-    - "Encuadre del Ruteador \u2014 Antonia"
+    - Encuadre del Ruteador — Antonia
     - Framing
     about:
-    - "Encuadre del Ruteador \u2014 Antonia"
+    - Encuadre del Ruteador — Antonia
     - encuadre del ruteador antonia
     - Framing
     - framing
@@ -105,10 +105,10 @@ documents:
   - path: encuadre-del-ruteador-antonia/examples
     title: Examples
     breadcrumbs:
-    - "Encuadre del Ruteador \u2014 Antonia"
+    - Encuadre del Ruteador — Antonia
     - Examples
     about:
-    - "Encuadre del Ruteador \u2014 Antonia"
+    - Encuadre del Ruteador — Antonia
     - encuadre del ruteador antonia
     - Examples
     - examples

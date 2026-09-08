@@ -2,11 +2,11 @@ documents:
 - doc_name: fallback-antonia
   sections:
   - path: fallback-sin-contexto-suficiente
-    title: "Fallback \u2014 sin contexto suficiente"
+    title: Fallback — sin contexto suficiente
     breadcrumbs:
-    - "Fallback \u2014 sin contexto suficiente"
+    - Fallback — sin contexto suficiente
     about:
-    - "Fallback \u2014 sin contexto suficiente"
+    - Fallback — sin contexto suficiente
     - fallback sin contexto suficiente
     - conversation:fallback
     - system:laboratorio-chile
@@ -24,10 +24,10 @@ documents:
   - path: fallback-sin-contexto-suficiente/fallback-message
     title: Fallback Message
     breadcrumbs:
-    - "Fallback \u2014 sin contexto suficiente"
+    - Fallback — sin contexto suficiente
     - Fallback Message
     about:
-    - "Fallback \u2014 sin contexto suficiente"
+    - Fallback — sin contexto suficiente
     - fallback sin contexto suficiente
     - Fallback Message
     - fallback message
@@ -47,10 +47,10 @@ documents:
   - path: fallback-sin-contexto-suficiente/conditions
     title: Conditions
     breadcrumbs:
-    - "Fallback \u2014 sin contexto suficiente"
+    - Fallback — sin contexto suficiente
     - Conditions
     about:
-    - "Fallback \u2014 sin contexto suficiente"
+    - Fallback — sin contexto suficiente
     - fallback sin contexto suficiente
     - Conditions
     - conditions

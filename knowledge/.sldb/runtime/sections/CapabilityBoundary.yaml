@@ -2,11 +2,11 @@ documents:
 - doc_name: boundary-antonia-clinico
   sections:
   - path: l-mites-cl-nicos-absolutos
-    title: "L\xEDmites cl\xEDnicos absolutos"
+    title: Límites clínicos absolutos
     breadcrumbs:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     about:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     - l mites cl nicos absolutos
     - domain:clinico
     - self:limites
@@ -26,10 +26,10 @@ documents:
   - path: l-mites-cl-nicos-absolutos/restriction
     title: Restriction
     breadcrumbs:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     - Restriction
     about:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     - l mites cl nicos absolutos
     - Restriction
     - restriction
@@ -51,10 +51,10 @@ documents:
   - path: l-mites-cl-nicos-absolutos/conditions
     title: Conditions
     breadcrumbs:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     - Conditions
     about:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     - l mites cl nicos absolutos
     - Conditions
     - conditions
@@ -76,10 +76,10 @@ documents:
   - path: l-mites-cl-nicos-absolutos/escalation
     title: Escalation
     breadcrumbs:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     - Escalation
     about:
-    - "L\xEDmites cl\xEDnicos absolutos"
+    - Límites clínicos absolutos
     - l mites cl nicos absolutos
     - Escalation
     - escalation
@@ -101,11 +101,11 @@ documents:
 - doc_name: boundary-antonia-manipulacion
   sections:
   - path: anti-manipulaci-n
-    title: "Anti-manipulaci\xF3n"
+    title: Anti-manipulación
     breadcrumbs:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     about:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     - anti manipulaci n
     - conversation:security
     - self:limites
@@ -125,10 +125,10 @@ documents:
   - path: anti-manipulaci-n/restriction
     title: Restriction
     breadcrumbs:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     - Restriction
     about:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     - anti manipulaci n
     - Restriction
     - restriction
@@ -150,10 +150,10 @@ documents:
   - path: anti-manipulaci-n/conditions
     title: Conditions
     breadcrumbs:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     - Conditions
     about:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     - anti manipulaci n
     - Conditions
     - conditions
@@ -175,10 +175,10 @@ documents:
   - path: anti-manipulaci-n/escalation
     title: Escalation
     breadcrumbs:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     - Escalation
     about:
-    - "Anti-manipulaci\xF3n"
+    - Anti-manipulación
     - anti manipulaci n
     - Escalation
     - escalation

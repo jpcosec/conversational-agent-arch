@@ -1,0 +1,358 @@
+documents:
+- name: transitions_to--step-antonia-onboarding--step-antonia-registro-estado
+  path: relations/transitions_to--step-antonia-onboarding--step-antonia-registro-estado.md
+  hash_c: f779d2eba17b524cadd17ce166ea2af4ecf34e406a2c740232d0ac6646ef22e0
+  hash_d: ae90751cca3ef2d4c5a736ad272c06634484efe4c081368379bf1b5e26aefda6
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-onboarding--atom-antonia-bienvenida
+  path: relations/grounded_by--step-antonia-onboarding--atom-antonia-bienvenida.md
+  hash_c: 2b754170dfed00f61dce0de8f777e73b1d6c34d1a31a80b92e78257ebe02c1dd
+  hash_d: 5906861d2dbfe1eafe67b45471e71925da1669e6c649e1a330febd98fb43a2ff
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-onboarding--atom-antonia-primeras-semanas
+  path: relations/grounded_by--step-antonia-onboarding--atom-antonia-primeras-semanas.md
+  hash_c: b43cc23c48394bf1bb80261cfdb8f14b812e171332d6c7d9097d041798c372ce
+  hash_d: 07764f2013b6b696f5b11b4bd889296bea0c68cd23d383b646f2ca039076ef6e
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-onboarding--self-antonia
+  path: relations/grounded_by--step-antonia-onboarding--self-antonia.md
+  hash_c: 18068dae746af1995ab22910402a7227b7782e5ae9a6465a7e5585ca9129e2d6
+  hash_d: 702db822ab03aad843d598a936fbbab8bd8828bd0cc431454244a671a1b98e22
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra
+  path: relations/transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra.md
+  hash_c: 6af692d9c991f777cb9ac697e02888bdb2384571e3f841d5329f13addffd83d1
+  hash_d: 45893e0d13945b8c9904561c17e7f1b0c879eafba58189677e72eaa883f90f4f
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-agendar-recordatorio--atom-antonia-aplicacion
+  path: relations/grounded_by--step-antonia-agendar-recordatorio--atom-antonia-aplicacion.md
+  hash_c: f766a6697fb8caa5d76147c71efef6710e030c835f27d7b585ec2a43c5f22780
+  hash_d: 22862fe180cd61643e222fd68e58b1b3bd2c5c0dc4bf022417df4f22acde9773
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-despedida--self-antonia
+  path: relations/grounded_by--step-antonia-despedida--self-antonia.md
+  hash_c: b38bb7652bc2da6ec7a364685309c6bb5308be136285d626cd5bfd19767c21e6
+  hash_d: b8dc0d32906ae341ad60eb5fb1e9decbc535228fa28ffae9098306467789e4be
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-despedida--style-antonia
+  path: relations/grounded_by--step-antonia-despedida--style-antonia.md
+  hash_c: 28f1661b7304b28d9c52e42d73269fcdd39b8e76d0f3ad0d905466e7f3861256
+  hash_d: d6385d62a22acfadec86d65eb1d7a6cf2fa24a6f0cc8f4e55613fa6e96bb3c28
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-evento-adverso--step-antonia-despedida
+  path: relations/transitions_to--step-antonia-evento-adverso--step-antonia-despedida.md
+  hash_c: 2d1ad89008caa6aa771fe7ffa74e5fb2b59977e9f126a8077ab2d1533386b9e3
+  hash_d: de4120ebeb16bc189daf047dddbeb28ee7d0d2a3356b87df7f24843d79d444a4
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-evento-adverso--rule-antonia-eventos-adversos
+  path: relations/grounded_by--step-antonia-evento-adverso--rule-antonia-eventos-adversos.md
+  hash_c: 7ffac98e5a32f60b7631a3d8cacd3aafaca0b383d135675b3b1945cbf3602b76
+  hash_d: 25b72afdf65421917c14e0ed3578605450b04b39c780471ba494234baea61fa0
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-evento-adverso--boundary-antonia-clinico
+  path: relations/grounded_by--step-antonia-evento-adverso--boundary-antonia-clinico.md
+  hash_c: 59a6f075f985bfb8a3f863c47bc34cad1e45d11b2a3f9ea1185000345aca573b
+  hash_d: 36b0e752986452347f43fd6e4d79bac437e2455a7614133ddbfd392de044c2ed
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-recompra--step-antonia-despedida
+  path: relations/transitions_to--step-antonia-recompra--step-antonia-despedida.md
+  hash_c: b57217b728a2a5a3605569909cce8f2b5590727f99bc796d3dafbb6c48d65f18
+  hash_d: 782ca358505ed79ad3d0bd7f9bfe0f071efd3e16a0a150cae63f251971e3862d
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-recompra--atom-antonia-recompra
+  path: relations/grounded_by--step-antonia-recompra--atom-antonia-recompra.md
+  hash_c: f0b848d91116f96511c9d4bf4f2ab46366ae8cc2f82c8151cb090a22f46aecbd
+  hash_d: fc7e837c5b17b6ee1ad93c243439eba29f5f5ff3b646bfee4879b0ae04c706c0
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso
+  path: relations/transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso.md
+  hash_c: f4095c21fc5bf96b9f72cfc72d8b9005e4c25362e582e2fd713bc10ccb51df4f
+  hash_d: 77095a74112fa0c5b54432569b34fae153f874de496cd0a6908a278a9544ca22
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio
+  path: relations/transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio.md
+  hash_c: fdbb43cc156481a3ce5b205aa4865a7cd04402e08bd435fcd93a4e352ab5de08
+  hash_d: fa90037aaa8ec0728378bcd47a414553ed5763efdd567d7f339201a7dae501a9
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo
+  path: relations/transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo.md
+  hash_c: 55cb6f4a593550c5a48c29827e9cb874acd6a5c5c4d10e7f377173b7ded7abb2
+  hash_d: a9e95f57bc28b651787b26bf0db19f786baa4a290dec653c2c4e3f1ef22a17d4
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-registro-estado--atom-antonia-aplicacion
+  path: relations/grounded_by--step-antonia-registro-estado--atom-antonia-aplicacion.md
+  hash_c: e97699967914f238756b59620b9bbdb610fb90f4afa371790b308ab2665c52a9
+  hash_d: b096445c95425a2a8d52e7b3bc9ba6f9d8365e113f5becc332743f74f74a6f08
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-registro-estado--atom-antonia-primeras-semanas
+  path: relations/grounded_by--step-antonia-registro-estado--atom-antonia-primeras-semanas.md
+  hash_c: 9784a545aa4ec32df194d06105dd2db3672c9c3f5dadfee8607d27a5723e26fe
+  hash_d: 1e234cabdd1394d8bfd6724548c9559b18066eaa6d3f6238fc69daf773bf5bdb
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-registro-estado--rule-antonia-eventos-adversos
+  path: relations/grounded_by--step-antonia-registro-estado--rule-antonia-eventos-adversos.md
+  hash_c: a853eae17d858cb2b2c502d73c0ab536d29eed79f77910ac50b14c7717b8fffc
+  hash_d: 4e3705b8c3674f9f5e4aae7bfd3ea097173f226e579a2d2989f8727d305a4f99
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-saludo--step-antonia-onboarding
+  path: relations/transitions_to--step-antonia-saludo--step-antonia-onboarding.md
+  hash_c: 0304fe4b9c3a281c73c0d5ec04566dffc9d06a217a253ac3d432416184d8f3b6
+  hash_d: 7464f09a6ae6bc1647d1543651ad06aeca8d45a65db64d3d4164dd09bafba582
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-saludo--step-antonia-registro-estado
+  path: relations/transitions_to--step-antonia-saludo--step-antonia-registro-estado.md
+  hash_c: 73d3b5eb1f8f83ecf056add22cf413d5245d081805874f38ae8e21b414f9b8a1
+  hash_d: 8e2a4bd1309251571f5fefe4b227b8c2c3474ed9849284ce589a50fd18046060
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-saludo--step-antonia-journey-operativo
+  path: relations/transitions_to--step-antonia-saludo--step-antonia-journey-operativo.md
+  hash_c: 082dc920cd1bb553737b327c6eb0cacc5b80419be3592fd1a57fda6fa1275cea
+  hash_d: 2cb07f0251ea2275f6d2526cd74ca4e60817b97171cef02183dd1fd323709843
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo
+  path: relations/transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo.md
+  hash_c: 871908d7dffdcae2a053406d3fe3ac2853d7ec4228e24dc41ac554b49edd92bd
+  hash_d: 59d5d58fad8b0d0cb60557022af31afce5e331cb2ef502d16cd3bd29dd0db801
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-saludo--step-antonia-enrolamiento
+  path: relations/transitions_to--step-antonia-saludo--step-antonia-enrolamiento.md
+  hash_c: 1f5c39d711d2154c397eb617b28b39adf7674c262a3e34508c964284925ba35c
+  hash_d: f0c561d7c07c02554cb4e39ea7ac582f7026fdda1b63267f164fd8750c78777d
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-saludo--self-antonia
+  path: relations/grounded_by--step-antonia-saludo--self-antonia.md
+  hash_c: 1bb61f864acf062a92c913a2e64b9d1746ac9056124b44182c5d1d5f703cd024
+  hash_d: e8fd615256a96880ad68752181d4e23ede877bfb4d50ed5c6f0b766e73516c1c
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-saludo--style-antonia
+  path: relations/grounded_by--step-antonia-saludo--style-antonia.md
+  hash_c: 473132d9b4bc424dc6477c2ed99555539024d793f9d76727f867d96e79b39298
+  hash_d: e0b8e1bf35a69e53226c4ac2fb922ddc43de7ebf4b8c3098fa34c52f6244b961
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana
+  path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana.md
+  hash_c: 82f9d8b6c95df2e7824ea43bcc1d041d7148954156e22f86019777cde8b19307
+  hash_d: 67efd5c695fa0a298cfc15eec080fbb5111aeea88e4ffd6d89b812df95e4c252
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida
+  path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida.md
+  hash_c: 17e8287ecd00eb3e27641d4d7e7fe0ed2ac6aecf1ed705183bf65c7061ec490d
+  hash_d: dec57a877606980e3b12b9abab6ba31ba57136f1f39ef6edbb86d9294129e137
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-derivacion-medinfo--rule-antonia-clasificacion-medinfo
+  path: relations/grounded_by--step-antonia-derivacion-medinfo--rule-antonia-clasificacion-medinfo.md
+  hash_c: 93c46684c3e44b4a603685effe43cf6c8c63637369870904d7f46e8b7f8476e4
+  hash_d: cab32a219ab10baa3af2c72d1f89468fa10abf1ef990c78093fdd896c0fb929e
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-derivacion-medinfo--atom-antonia-medinfo
+  path: relations/grounded_by--step-antonia-derivacion-medinfo--atom-antonia-medinfo.md
+  hash_c: 67e84793467d1c1a811ffa1bda1f4aa63e5ffc4673b44d0c43b5b169a524a2af
+  hash_d: 2e3b92cdffc0ab2753828be343d93d7263330dfdc562c879b6b17da4300a3b0d
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-derivacion-medinfo--boundary-antonia-clinico
+  path: relations/grounded_by--step-antonia-derivacion-medinfo--boundary-antonia-clinico.md
+  hash_c: 88fdd60238f646cda405625bddfd4bf43b920474e0d8977484984fb3c0d4243f
+  hash_d: aa345eebfa1974da13bae25a7990e0f920abcf141a0af20c327180b545d0800e
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-revision-humana--step-antonia-despedida
+  path: relations/transitions_to--step-antonia-revision-humana--step-antonia-despedida.md
+  hash_c: 0f46e500a892d680d27717db75159ed17678556b44a0573c1a4f67ac2268b174
+  hash_d: 586530178d7078dc1837c2b066ca496a62d1aac21b62a8e02c758e890f21755a
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-revision-humana--atom-antonia-farmacovigilancia
+  path: relations/grounded_by--step-antonia-revision-humana--atom-antonia-farmacovigilancia.md
+  hash_c: c33e6faf1d4edda9115ca4b7ce16fd797d3da5f71a2978c6006bbefafde822ea
+  hash_d: 7424a5e7f443d94c23a5ef1e2d8c0cded246117c7ea1e82738dedfb08f997d65
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-revision-humana--atom-antonia-medinfo
+  path: relations/grounded_by--step-antonia-revision-humana--atom-antonia-medinfo.md
+  hash_c: 380da175e86d934a7aec03905858175719d211b96adfbcaed3cc91229a30dba0
+  hash_d: fa2f2b908d024859b8018485a38bcdb49a3057d967e78f9a5d91bdd88b7f98d6
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado
+  path: relations/transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado.md
+  hash_c: f2906a6c5d8a26f285bdce0c35bfcec10e8e136f77a45bd100da666952c8c851
+  hash_d: c81cd5bbce3eb8f118f69656d7238a1a69937cd35a5fb182e54279b7e647ba95
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-journey-operativo--step-antonia-despedida
+  path: relations/transitions_to--step-antonia-journey-operativo--step-antonia-despedida.md
+  hash_c: 9b13ed514a16b74b9d56ce57e0ce21b88392827ce36100879a280f1446974b3c
+  hash_d: 75b51aa7c8ce91e301445106cd072c236d8403aa3c1b2d505a7c8407f3048dd1
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-journey-operativo--rule-antonia-clasificacion-operacional
+  path: relations/grounded_by--step-antonia-journey-operativo--rule-antonia-clasificacion-operacional.md
+  hash_c: 194c6258c800e58619ee831d408f03fea5c87cc209dba88da976511952b0cec5
+  hash_d: afaf314d5d4f753be9b83a3b5b295f3bc170b1e030e70fc38c0075b1c7d10ccf
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-journey-operativo--atom-antonia-journeys
+  path: relations/grounded_by--step-antonia-journey-operativo--atom-antonia-journeys.md
+  hash_c: 991abeb03320fa905a13903a5fa2abd6b96876232b5593607a64395de0755bbf
+  hash_d: a301bf6f8c08e68402db4d23bc25e5589e005221cbaf566d494e75af1ea31b14
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-journey-operativo--atom-antonia-recompra
+  path: relations/grounded_by--step-antonia-journey-operativo--atom-antonia-recompra.md
+  hash_c: d07eb50b6239c0533b77e7969ca1c703fff0bd0df16ccb0f74b8297bd1fa5f03
+  hash_d: 1373714a60f800731e7ca85d0a226b9204782739940448fc293c694f7d762f61
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
+  path: relations/transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana.md
+  hash_c: 1c2c2d151e64c059f3986a888316d586009cddf13cd1dd5d48ec884657f6c804
+  hash_d: 730836ca8dcf4a99ed0d8edec29486b050b2d227a1101c0dde602fbc49a62a64
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis
+  path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis.md
+  hash_c: ed17675ca86d5909e454284ef981abd137328ac85b72ea5e91bdc542aa478efa
+  hash_d: d6425d7437253a3df4e3291666bf8f61b948830840c85bfe25d0e8c1d093096c
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico
+  path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico.md
+  hash_c: 0bf46b230cccbb4c999860b9beae2d77ac1c03de3cec9b40eade835abec1ef83
+  hash_d: d709b70cb8222c3ce7be7c6b51134892391866e947dd44fcc987100f24aa9e2a
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-corpus
+  path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-corpus.md
+  hash_c: e011cab4f4536a789a9434b5a4baa0ccaf913663d8a8beb6a8c96cca58140c97
+  hash_d: 203d630c5014f278a8fe61ecc8a9caef02257865f52ec8aba581face6df70abe
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-derivacion
+  path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-derivacion.md
+  hash_c: ce612f3e913499547e7c2a11bddc24392c626bcb331cbf96bb9948674c1fa8f3
+  hash_d: d4f27c973c7554bb59887b34346ed65f6d4907e8a1dc644684922d3e34909437
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas
+  path: relations/grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas.md
+  hash_c: 344b28967a8556e2d429d1f0c0a808c752e0bb22200a64615363bf82ee57e109
+  hash_d: 1ee980dfce931f779b8fe8c407b85ad326609435599ff2e679af1902e5f89477
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo
+  path: relations/transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo.md
+  hash_c: f2bc543271c0d123037e9925a581515f99d26772b206979aa00ec2e33b59e172
+  hash_d: 170742b409f75e0822a242631c4e97a8c3e77210f125a5f4efe55994fc9d229c
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-enrolamiento--step-antonia-onboarding
+  path: relations/transitions_to--step-antonia-enrolamiento--step-antonia-onboarding.md
+  hash_c: 46f35bf248ca280d45740bb738d9452e6ea0b9e64d98a775baf16f18230d6c8d
+  hash_d: bcd6e8eb2856ac8da87709a43b4991bd1b9fecc61b10650a16ffe90bdce79ac2
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-enrolamiento--self-antonia
+  path: relations/grounded_by--step-antonia-enrolamiento--self-antonia.md
+  hash_c: 497c53e2dd499c9db6e796800287f595f8dbb7282866e007c86051e74fc4c48c
+  hash_d: 26393f16c29f2c44a921b1b47a0657e3e3bf3afbb1a1bc33875feea205fa82b0
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-enrolamiento--style-antonia
+  path: relations/grounded_by--step-antonia-enrolamiento--style-antonia.md
+  hash_c: ffcf87da340090a91c56290f8899d0539cff70c61f91d1226f411587ee5bcd64
+  hash_d: dc8a8dbd10189799e46c80f1c6fc2c9b32a44106c992843ac02aa1a45b004a0a
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-enrolamiento--boundary-antonia-clinico
+  path: relations/grounded_by--step-antonia-enrolamiento--boundary-antonia-clinico.md
+  hash_c: 4af4dd0bec1ee209152ee7157fa98ff15a516fe2fb5d79d227190b61d84f2f7c
+  hash_d: f194fed154160a9a6853463a271d59b58652368b34b86aea291d69652ba213c0
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico
+  path: relations/grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico.md
+  hash_c: 53ba89b93e996c96354a559350fc5ad1355be10083e26b7bd434abdc02b05fc0
+  hash_d: afc930a50c3bfe48ee1c443d05c834c841ca310e282f9510220a2b83e50d3c63
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
