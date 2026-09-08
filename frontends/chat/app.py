@@ -465,7 +465,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
 
     @app.get("/api/config")
     def config() -> JSONResponse:
-        """Config publica del negocio activo (marca, greeting, modelo) para las UIs."""
+        """Config publica del negocio de la rama (marca, greeting, modelo) para las UIs."""
         return JSONResponse(demo_config() if app.state.demo_mode else cfg.to_public_dict())
 
     @app.get("/")

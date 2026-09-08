@@ -1,4 +1,4 @@
-"""project.config.yaml -> ProjectConfig: unica fuente de verdad del negocio activo."""
+"""project.config.yaml -> ProjectConfig: unica fuente de verdad del negocio de la rama."""
 from __future__ import annotations
 
 from pathlib import Path

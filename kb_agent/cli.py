@@ -1,4 +1,4 @@
-"""CLI local para conversar con el agente del negocio activo (project.config.yaml).
+"""CLI local para conversar con el agente del negocio de la rama (project.config.yaml).
 
 Uso:
   python -m kb_agent.cli

@@ -1,4 +1,4 @@
-"""Config del proyecto/negocio activo del runtime.
+"""Config del negocio de la rama (un negocio por rama; project.config.yaml lo declara).
 
 Centraliza QUÉ negocio corre (KB, DB, modelo, marca, tools, server) para no
 hardcodear nombres ni paths en el código ni en las UIs. Fuente única de verdad:

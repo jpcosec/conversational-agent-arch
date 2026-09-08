@@ -1,4 +1,4 @@
-# Configuración del proyecto/negocio activo del runtime.
+# Configuración del negocio de esta rama (un negocio por rama; el runtime no lleva nada del negocio).
 #
 # Doctrina: una KB = un negocio. Este archivo define QUÉ negocio corre el
 # runtime y sus rutas/marca/tools, para no hardcodear nombres ni paths en el
