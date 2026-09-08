@@ -463,3 +463,43 @@ documents:
   - primitive:condition
   - type.workflow.condition
   - workspace.desk.primitives
+- name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path
+  path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path.md
+  hash_c: ee56ed736ab15bf15049233c73dbf57e6daef1925ca0f1530220e12edc3b03b7
+  hash_d: b12f79b2844a34af3d89281962371d223e4ccc2416d6d7b2e614fdabbbc32f36
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation
+  path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation.md
+  hash_c: 3827c602eec72e72a43dde84886a720092d8c96ef2ce4e99fd9013e170a506ac
+  hash_d: bba363a17afe42d3c7893af01317364fe97e29a080cef1a14826803c7c013477
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence
+  path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence.md
+  hash_c: d99b1e78b77fa3bb9d281438ddb228959778f6cacecea3555a1cb2086a2ffb0f
+  hash_d: c629201cd60bc8f8730f09457619d4a54e241a54d2904e8249a35884157c3872
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated
+  path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated.md
+  hash_c: 93ffce4b338ecd97d89623381abc0a6806dfe06050b9318a64ca6195cd41d032
+  hash_d: 05f97b45381bd3d29fac3b7bc5b7de194f4334984bc9e79a70f89fe9bdfad4c1
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives
+- name: condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout
+  path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout.md
+  hash_c: afae83f93be1773fa07c8d065afa804aee3ceff8d89f20a9d56e4a3acf10e03d
+  hash_d: 46d0a264942282a3bbc8c878b26430bfd0489544308ac8d6526f6f49193f26e4
+  semantic_tags:
+  - primitive:condition
+  - type.workflow.condition
+  - workspace.desk.primitives

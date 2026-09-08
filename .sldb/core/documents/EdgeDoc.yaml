@@ -623,3 +623,51 @@ documents:
   - primitive:edge
   - type.workflow.edge
   - workspace.desk.primitives
+- name: edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-to-activate
+  path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-to-activate.md
+  hash_c: 719728b0857c7bda0761cb93d200ea35b55f9c7d132a8b6534a6b925f85bb825
+  hash_d: 161b5e7b81bf165627a9c2cd7147955d0ef669e0576d5b2773ced6a3c7948ad7
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate-to-testing
+  path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate-to-testing.md
+  hash_c: d04d51a9ca95a88a895bb6aeb1bac3a8f51afc198e1917856683551eb9c1cd12
+  hash_d: c47a3f38507ac7097aeedb26d5339d479b51a42b4dbdf6945103511ea7c7cd5c
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-to-ready
+  path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-to-ready.md
+  hash_c: 2cce31e12b5cdfc29ee2a2e9f02b0cf32ff014623270f5d29a33efd463ee6230
+  hash_d: 4be534396453bccb62cecf10aadcabd46c47e783267100f87778e781a96f11a1
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-to-closeout
+  path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-to-closeout.md
+  hash_c: 60d6867d3a6342cd113572aa2c781d68cb1b8e5786c999d8769bb759f20d5ef6
+  hash_d: 68b65c9df94f2baf0454821fd898f3c8399e249385617d6dbdf29f36b79719f2
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-to-close
+  path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-to-close.md
+  hash_c: 178506ec2c1436829488d66cbdc62b52697bb4cd0f01083c6db36e4a61d3e77d
+  hash_d: 90f6a79808d18ad150ef897577f39c7c6a72238bac24483adcd5b551fab936e5
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives
+- name: edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close-to-complete
+  path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close-to-complete.md
+  hash_c: 0fd01c46c05f958b21f8d64e5939848d0defefb41f08a479ab5de06c4da596bf
+  hash_d: 90317967c6475e7dadf7d485ad23aa5f7a5709dd080743935c7dcc869b8ba711
+  semantic_tags:
+  - primitive:edge
+  - type.workflow.edge
+  - workspace.desk.primitives

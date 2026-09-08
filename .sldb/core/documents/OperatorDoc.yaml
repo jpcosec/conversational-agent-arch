@@ -311,3 +311,27 @@ documents:
   - primitive:operator
   - type.workflow.operator
   - workspace.desk.primitives
+- name: operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate
+  path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate.md
+  hash_c: c52932bafcb2b98db0d88594310a88b854c89c26e131f55dd81caad50d139ffe
+  hash_d: 4367382c1ed65a644243349a0180f54825ffc52ae6dc5aaaa19b83002526cdf2
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing
+  path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing.md
+  hash_c: 01001d6c9d8adf7803cd331d07aa5b5f750c2d36a820a8d8f9a0a404db98ad35
+  hash_d: b8f3b9df9066da0c01ba4e9e41bfa92e0156cc4d85d0a46391979cd7c8c59db3
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close
+  path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close.md
+  hash_c: 3b997d7e1d51a6cf3d344387c2999f0149b326b7d1ec216bfc32f281b72bbdb1
+  hash_d: 7d42562588924c325cd5d07d3fdfb5bcf09fe1726b3bff2bc345f1f58d206a1c
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives

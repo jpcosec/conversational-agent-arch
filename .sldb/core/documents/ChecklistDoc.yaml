@@ -311,3 +311,27 @@ documents:
   - primitive:checklist
   - type.workflow.checklist
   - workspace.desk.primitives
+- name: checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready
+  path: desk/primitives/checklists/checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready.md
+  hash_c: 574dd3f2ff29b2bd35961e9daa1bfb2d12aa182435424227e21f58bd514a75ea
+  hash_d: 83167b0fcacb032f18f9803167921d9208f968a327d38b92828400b8231ed689
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready
+  path: desk/primitives/checklists/checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready.md
+  hash_c: 1b74df38bf01e81ed62cc091c2731fbfa150aa1e72aa3ccf5e6a6aa465e5e234
+  hash_d: df770428eaf7eb4473d14fbc31cd76317db17b19a8fcb3ed80475281eb71a327
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives
+- name: checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-ready
+  path: desk/primitives/checklists/checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-ready.md
+  hash_c: 88313bfe6231ad14b3beebed84e82bb4f8e0566adc769ecff19c34dbd748ec19
+  hash_d: 30bf532e9a36f299f333d4fb5f9487c99f8b20380d39ea11a474cde860baa1f7
+  semantic_tags:
+  - primitive:checklist
+  - type.workflow.checklist
+  - workspace.desk.primitives

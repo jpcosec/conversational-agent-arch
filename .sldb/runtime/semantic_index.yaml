@@ -6,12 +6,12 @@ tags:
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-metricas-reales-en-el-dashboard-desde-el-sqlite
   - task-modo-editor-de-atoms-en-la-ui
+  - task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   build:
   - pill-ui-no-build-cdn
@@ -20,14 +20,14 @@ tags:
   diagramas:
   - seed-dividir-current-kb-agent
   domain:psp:
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-clasificación-de-4-ramas-del-flujo-psp
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
   family:agent:
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
   family:concepts:
@@ -43,7 +43,7 @@ tags:
   family:domain:
   - atom-reflector-batch
   family:user:
-  - "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-perfilador-asincrono
   frontend:
   - pill-ui-estilo-flow-editor
@@ -69,33 +69,33 @@ tags:
   - atom-project-config
   - atom-sldb-knowledge-base
   layer:ops:
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
-  - "atom-c\xF3mo-conectar-twilio-al-runtime-local"
+  - atom-capas-de-verificación-y-release
+  - atom-configuración-por-capas-y-tuning
+  - atom-cómo-conectar-twilio-al-runtime-local
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-estrategia-de-testing
   - atom-gobernanza-deskops
   - atom-migraciones-alembic-del-volumen
   - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
-  - "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-topologia-de-despliegue
   layer:runtime:
   - atom-agente-conversador
   - atom-context-compiler-knowledge
-  - "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-in-process-event-bus
   - atom-mensajes-entrantes-inboundservice-e-inbound-messages
   - atom-orquestador-hub
   - atom-perfilador-asincrono
   - atom-pii-scrubber
   - atom-policy-decide-turn
-  - "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-reflector-batch
   - atom-router-state-machine
   - atom-ruteador-de-contexto-como-agente
   - atom-tool-handlers-registry
-  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   loop:
   - seed-mas-subagentes-al-loop
   pill:
@@ -120,6 +120,9 @@ tags:
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
@@ -144,9 +147,6 @@ tags:
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready
@@ -178,6 +178,11 @@ tags:
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
@@ -212,10 +217,6 @@ tags:
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
@@ -258,6 +259,12 @@ tags:
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate-to-testing
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close-to-complete
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-to-close
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-to-activate
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-to-closeout
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-to-ready
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
@@ -306,12 +313,6 @@ tags:
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-to-activate
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-to-closeout
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-to-ready
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close
@@ -337,6 +338,9 @@ tags:
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
@@ -361,9 +365,6 @@ tags:
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
@@ -374,6 +375,7 @@ tags:
   - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
   - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
@@ -382,16 +384,15 @@ tags:
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   role:background:
   - atom-perfilador-asincrono
   - atom-reflector-batch
   role:boundary:
   - atom-canales-de-entrada
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
-  - "atom-c\xF3mo-conectar-twilio-al-runtime-local"
+  - atom-capas-de-verificación-y-release
+  - atom-configuración-por-capas-y-tuning
+  - atom-cómo-conectar-twilio-al-runtime-local
   - atom-dashboard
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-estrategia-de-testing
@@ -401,15 +402,15 @@ tags:
   - atom-modo-demo
   - atom-orquestador-hub
   - atom-pii-scrubber
-  - "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-project-config
-  - "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-router-state-machine
   - atom-tool-handlers-registry
-  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
   role:data:
-  - "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-kgdb-grafo-de-flujo
   - atom-migraciones-alembic-del-volumen
   - atom-persistencia-sql
@@ -433,7 +434,6 @@ tags:
   source:drawer:
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
-  - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   source:inbox:
   - task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
   spec2viz:
@@ -443,14 +443,14 @@ tags:
   subagentes:
   - seed-mas-subagentes-al-loop
   system:antonia:
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-clasificación-de-4-ramas-del-flujo-psp
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
   target:architecture:
   - composition-architecture
   target:glossary:
@@ -467,18 +467,18 @@ tags:
   topic:arquitectura:
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   topic:canales:
-  - "atom-c\xF3mo-conectar-twilio-al-runtime-local"
-  - "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+  - atom-cómo-conectar-twilio-al-runtime-local
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-mensajes-entrantes-inboundservice-e-inbound-messages
-  - "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   topic:ci-release:
-  - "atom-capas-de-verificaci\xF3n-y-release"
+  - atom-capas-de-verificación-y-release
   topic:clasificacion:
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-clasificación-de-4-ramas-del-flujo-psp
   topic:compliance:
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
   topic:configuration:
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-configuración-por-capas-y-tuning
   topic:dashboard:
   - atom-dashboard
   topic:demo:
@@ -486,24 +486,24 @@ tags:
   topic:deploy:
   - atom-deploy-dev-y-mantenimiento-del-volumen
   topic:doctrina:
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
   topic:flujo-conversacional:
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   topic:git-flow:
   - atom-modelo-de-ramas
   topic:modelacion:
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
   topic:policy-gate:
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   topic:router:
   - atom-ruteador-de-contexto-como-agente
   topic:twilio:
-  - "atom-c\xF3mo-conectar-twilio-al-runtime-local"
+  - atom-cómo-conectar-twilio-al-runtime-local
   - atom-mensajes-entrantes-inboundservice-e-inbound-messages
-  - "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
-  - "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   type.desk.inbox-note:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
@@ -518,16 +518,16 @@ tags:
   type.knowledge.atom:
   - atom-agente-conversador
   - atom-canales-de-entrada
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-capas-de-verificación-y-release
+  - atom-clasificación-de-4-ramas-del-flujo-psp
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-configuración-por-capas-y-tuning
   - atom-context-compiler-knowledge
-  - "atom-c\xF3mo-conectar-twilio-al-runtime-local"
-  - "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+  - atom-cómo-conectar-twilio-al-runtime-local
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-dashboard
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-embeddings-como-layout-no-vista
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
@@ -550,16 +550,16 @@ tags:
   - atom-pii-scrubber
   - atom-policy-decide-turn
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  - "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-project-config
   - atom-propuesta-de-valor
-  - "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-reflector-batch
   - atom-router-state-machine
   - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
-  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
   type.workflow.board:
   - Board
@@ -579,6 +579,9 @@ tags:
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
@@ -597,9 +600,6 @@ tags:
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready
@@ -627,6 +627,11 @@ tags:
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
@@ -653,10 +658,6 @@ tags:
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
@@ -693,6 +694,12 @@ tags:
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate-to-testing
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close-to-complete
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-to-close
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-to-activate
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-to-closeout
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-to-ready
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
@@ -729,12 +736,6 @@ tags:
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-to-activate
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-to-closeout
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-to-ready
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close
@@ -757,6 +758,9 @@ tags:
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
@@ -775,18 +779,15 @@ tags:
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
   type.workflow.pill:
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
   - pill-conversador-jamas-alucina-sin-contexto
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
   - pill-maquina-de-estados-pausa-en-tool-calling
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
   - pill-ui-estilo-flow-editor
   - pill-ui-no-build-cdn
   - pills
@@ -801,13 +802,13 @@ tags:
   - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
   - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
   - routine-task-recomponer-la-base-de-spec2viz-y-atoms
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   type.workflow.step:
   - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
@@ -871,12 +872,12 @@ tags:
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-metricas-reales-en-el-dashboard-desde-el-sqlite
   - task-modo-editor-de-atoms-en-la-ui
+  - task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   type:composition:
   - composition-architecture
@@ -939,11 +940,11 @@ tags:
   - operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
   - operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
   - phase
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
   - pill-conversador-jamas-alucina-sin-contexto
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
   - pill-maquina-de-estados-pausa-en-tool-calling
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
   - pill-ui-estilo-flow-editor
   - pill-ui-no-build-cdn
   - pills
@@ -959,27 +960,27 @@ tags:
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-metricas-reales-en-el-dashboard-desde-el-sqlite
   - task-modo-editor-de-atoms-en-la-ui
+  - task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   - testing
   workspace.desk.atoms:
   - atom-agente-conversador
   - atom-canales-de-entrada
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-capas-de-verificación-y-release
+  - atom-clasificación-de-4-ramas-del-flujo-psp
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-configuración-por-capas-y-tuning
   - atom-context-compiler-knowledge
-  - "atom-c\xF3mo-conectar-twilio-al-runtime-local"
-  - "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio"
+  - atom-cómo-conectar-twilio-al-runtime-local
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-dashboard
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-embeddings-como-layout-no-vista
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
@@ -1002,16 +1003,16 @@ tags:
   - atom-pii-scrubber
   - atom-policy-decide-turn
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  - "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml"
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-project-config
   - atom-propuesta-de-valor
-  - "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio"
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-reflector-batch
   - atom-router-state-machine
   - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
-  - "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas"
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
   workspace.desk.inbox:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
@@ -1038,6 +1039,9 @@ tags:
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
   - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready
+  - checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
   - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
@@ -1056,9 +1060,6 @@ tags:
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
   - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready
-  - checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
   - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready
@@ -1085,6 +1086,11 @@ tags:
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
   - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated
+  - condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
   - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
@@ -1111,10 +1117,6 @@ tags:
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
   - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation
-  - condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
   - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
@@ -1150,6 +1152,12 @@ tags:
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout
   - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate-to-testing
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close-to-complete
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-to-close
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-to-activate
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-to-closeout
+  - edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-to-ready
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
   - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
@@ -1186,12 +1194,6 @@ tags:
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
   - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-to-activate
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-to-closeout
-  - edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-to-ready
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete
   - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close
@@ -1213,6 +1215,9 @@ tags:
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
   - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close
+  - operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
   - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
@@ -1231,9 +1236,6 @@ tags:
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
   - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close
-  - operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
@@ -1243,13 +1245,13 @@ tags:
   - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
   - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
   - routine-task-recomponer-la-base-de-spec2viz-y-atoms
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   workspace.docs.faq:
   - current-system-overview
@@ -1265,6 +1267,7 @@ tags:
   - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
   - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
@@ -1273,7 +1276,6 @@ tags:
   - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   - task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
   - task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
@@ -1281,12 +1283,12 @@ tags:
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
   - task-metricas-reales-en-el-dashboard-desde-el-sqlite
   - task-modo-editor-de-atoms-en-la-ui
+  - task-mover-logica-reimplementada-a-kgdb-sldb-pron
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
   - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
   - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
   - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
-  - task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
   - task-vista-leads-con-cola-de-visitas-por-confirmar
   - testing
   workspace:docs:
@@ -1381,15 +1383,6 @@ documents:
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-  task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente:
-    model: TaskDoc
-    path: desk/tasks/task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
-    tags:
-    - artifact:task
-    - source:drawer
-    - type.workflow.task
-    - workspace.desk
-    - workspace:desk
   task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime:
     model: TaskDoc
     path: desk/tasks/task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime.md
@@ -1438,6 +1431,14 @@ documents:
     - type.workflow.task
     - workspace.desk
     - workspace:desk
+  task-mover-logica-reimplementada-a-kgdb-sldb-pron:
+    model: TaskDoc
+    path: desk/tasks/task-mover-logica-reimplementada-a-kgdb-sldb-pron.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
   pill-maquina-de-estados-pausa-en-tool-calling:
     model: PillDoc
     path: desk/drawer/pills/pill-maquina-de-estados-pausa-en-tool-calling.md
@@ -1452,27 +1453,27 @@ documents:
     - rule:execution
     - type.workflow.pill
     - workspace.desk
-  "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia":
+  pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia:
     model: PillDoc
-    path: "desk/contexts/pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia.md"
+    path: desk/contexts/pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia.md
     tags:
     - domain:psp
     - system:antonia
     - topic:compliance
     - type.workflow.pill
     - workspace.desk
-  "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible":
+  pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible:
     model: PillDoc
-    path: "desk/contexts/pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible.md"
+    path: desk/contexts/pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible.md
     tags:
     - domain:psp
     - system:antonia
     - topic:doctrina
     - type.workflow.pill
     - workspace.desk
-  "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes":
+  pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes:
     model: PillDoc
-    path: "desk/contexts/pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes.md"
+    path: desk/contexts/pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes.md
     tags:
     - domain:psp
     - system:antonia
@@ -1623,15 +1624,15 @@ documents:
     - primitive:checklist
     - type.workflow.checklist
     - workspace.desk.primitives
-  ? condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
-  : model: ConditionDoc
+  condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence:
+    model: ConditionDoc
     path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence.md
     tags:
     - primitive:condition
     - type.workflow.condition
     - workspace.desk.primitives
-  ? condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
-  : model: ConditionDoc
+  condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path:
+    model: ConditionDoc
     path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path.md
     tags:
     - primitive:condition
@@ -1956,9 +1957,9 @@ documents:
     - topic:arquitectura
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp":
+  atom-clasificación-de-4-ramas-del-flujo-psp:
     model: AtomDoc
-    path: "desk/atoms/atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp.md"
+    path: desk/atoms/atom-clasificación-de-4-ramas-del-flujo-psp.md
     tags:
     - domain:psp
     - system:antonia
@@ -1974,9 +1975,9 @@ documents:
     - topic:flujo-conversacional
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate":
+  atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate:
     model: AtomDoc
-    path: "desk/atoms/atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md"
+    path: desk/atoms/atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md
     tags:
     - domain:psp
     - system:antonia
@@ -2173,9 +2174,9 @@ documents:
     - topic:agent-framing
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-configuraci\xF3n-por-capas-y-tuning":
+  atom-configuración-por-capas-y-tuning:
     model: AtomDoc
-    path: "desk/atoms/atom-configuraci\xF3n-por-capas-y-tuning.md"
+    path: desk/atoms/atom-configuración-por-capas-y-tuning.md
     tags:
     - layer:ops
     - role:boundary
@@ -2209,9 +2210,9 @@ documents:
     - topic:git-flow
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-capas-de-verificaci\xF3n-y-release":
+  atom-capas-de-verificación-y-release:
     model: AtomDoc
-    path: "desk/atoms/atom-capas-de-verificaci\xF3n-y-release.md"
+    path: desk/atoms/atom-capas-de-verificación-y-release.md
     tags:
     - layer:ops
     - role:boundary
@@ -2253,9 +2254,9 @@ documents:
     - topic:twilio
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml":
+  atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml:
     model: AtomDoc
-    path: "desk/atoms/atom-por-qu\xE9-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml.md"
+    path: desk/atoms/atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml.md
     tags:
     - layer:runtime
     - role:boundary
@@ -2263,9 +2264,9 @@ documents:
     - topic:twilio
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio":
+  atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio:
     model: AtomDoc
-    path: "desk/atoms/atom-c\xF3mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio.md"
+    path: desk/atoms/atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio.md
     tags:
     - family:user
     - layer:runtime
@@ -2273,9 +2274,9 @@ documents:
     - topic:canales
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-c\xF3mo-conectar-twilio-al-runtime-local":
+  atom-cómo-conectar-twilio-al-runtime-local:
     model: AtomDoc
-    path: "desk/atoms/atom-c\xF3mo-conectar-twilio-al-runtime-local.md"
+    path: desk/atoms/atom-cómo-conectar-twilio-al-runtime-local.md
     tags:
     - layer:ops
     - role:boundary
@@ -2283,18 +2284,18 @@ documents:
     - topic:twilio
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio":
+  atom-qué-no-hacer-con-credenciales-y-firma-de-twilio:
     model: AtomDoc
-    path: "desk/atoms/atom-qu\xE9-no-hacer-con-credenciales-y-firma-de-twilio.md"
+    path: desk/atoms/atom-qué-no-hacer-con-credenciales-y-firma-de-twilio.md
     tags:
     - layer:ops
     - role:boundary
     - topic:twilio
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas":
+  atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas:
     model: AtomDoc
-    path: "desk/atoms/atom-tools-de-vitali-wrapper-sem\xE1ntico-sobre-leads-y-visitas.md"
+    path: desk/atoms/atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas.md
     tags:
     - layer:runtime
     - role:boundary
@@ -2365,27 +2366,6 @@ documents:
   checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready:
     model: ChecklistDoc
     path: desk/primitives/checklists/checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready.md
-    tags:
-    - primitive:checklist
-    - type.workflow.checklist
-    - workspace.desk.primitives
-  checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready:
-    model: ChecklistDoc
-    path: desk/primitives/checklists/checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-ready.md
-    tags:
-    - primitive:checklist
-    - type.workflow.checklist
-    - workspace.desk.primitives
-  checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready:
-    model: ChecklistDoc
-    path: desk/primitives/checklists/checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-ready.md
-    tags:
-    - primitive:checklist
-    - type.workflow.checklist
-    - workspace.desk.primitives
-  checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready:
-    model: ChecklistDoc
-    path: desk/primitives/checklists/checklist-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-ready.md
     tags:
     - primitive:checklist
     - type.workflow.checklist
@@ -2516,6 +2496,27 @@ documents:
     - primitive:checklist
     - type.workflow.checklist
     - workspace.desk.primitives
+  checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
   condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence:
     model: ConditionDoc
     path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence.md
@@ -2596,34 +2597,6 @@ documents:
   condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout:
     model: ConditionDoc
     path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout.md
-    tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-  condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence:
-    model: ConditionDoc
-    path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-closeout-evidence.md
-    tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-  condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path:
-    model: ConditionDoc
-    path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-implementation-path.md
-    tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-  condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation:
-    model: ConditionDoc
-    path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-has-validation.md
-    tags:
-    - primitive:condition
-    - type.workflow.condition
-    - workspace.desk.primitives
-  condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout:
-    model: ConditionDoc
-    path: desk/primitives/conditions/condition-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-closeout.md
     tags:
     - primitive:condition
     - type.workflow.condition
@@ -2838,6 +2811,41 @@ documents:
     - primitive:condition
     - type.workflow.condition
     - workspace.desk.primitives
+  condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
   edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing:
     model: EdgeDoc
     path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing.md
@@ -2960,48 +2968,6 @@ documents:
   edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready:
     model: EdgeDoc
     path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready.md
-    tags:
-    - primitive:edge
-    - type.workflow.edge
-    - workspace.desk.primitives
-  edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing:
-    model: EdgeDoc
-    path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate-to-testing.md
-    tags:
-    - primitive:edge
-    - type.workflow.edge
-    - workspace.desk.primitives
-  edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete:
-    model: EdgeDoc
-    path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close-to-complete.md
-    tags:
-    - primitive:edge
-    - type.workflow.edge
-    - workspace.desk.primitives
-  edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close:
-    model: EdgeDoc
-    path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-closeout-to-close.md
-    tags:
-    - primitive:edge
-    - type.workflow.edge
-    - workspace.desk.primitives
-  edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-to-activate:
-    model: EdgeDoc
-    path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-execution-to-activate.md
-    tags:
-    - primitive:edge
-    - type.workflow.edge
-    - workspace.desk.primitives
-  edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-to-closeout:
-    model: EdgeDoc
-    path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-to-closeout.md
-    tags:
-    - primitive:edge
-    - type.workflow.edge
-    - workspace.desk.primitives
-  edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-to-ready:
-    model: EdgeDoc
-    path: desk/primitives/edges/edge-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-testing-to-ready.md
     tags:
     - primitive:edge
     - type.workflow.edge
@@ -3258,6 +3224,48 @@ documents:
     - primitive:edge
     - type.workflow.edge
     - workspace.desk.primitives
+  edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
   operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate:
     model: OperatorDoc
     path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate.md
@@ -3317,27 +3325,6 @@ documents:
   operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing:
     model: OperatorDoc
     path: desk/primitives/operators/operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing.md
-    tags:
-    - primitive:operator
-    - type.workflow.operator
-    - workspace.desk.primitives
-  operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate:
-    model: OperatorDoc
-    path: desk/primitives/operators/operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate.md
-    tags:
-    - primitive:operator
-    - type.workflow.operator
-    - workspace.desk.primitives
-  operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close:
-    model: OperatorDoc
-    path: desk/primitives/operators/operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close.md
-    tags:
-    - primitive:operator
-    - type.workflow.operator
-    - workspace.desk.primitives
-  operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing:
-    model: OperatorDoc
-    path: desk/primitives/operators/operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing.md
     tags:
     - primitive:operator
     - type.workflow.operator
@@ -3468,6 +3455,27 @@ documents:
     - primitive:operator
     - type.workflow.operator
     - workspace.desk.primitives
+  operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
   routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools:
     model: RoutineDoc
     path: desk/routines/routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
@@ -3487,14 +3495,6 @@ documents:
   routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica:
     model: RoutineDoc
     path: desk/routines/routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica.md
-    tags:
-    - primitive:routine
-    - type.workflow.routine
-    - workspace.desk.routines
-    - workspace:desk
-  routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente:
-    model: RoutineDoc
-    path: desk/routines/routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
     tags:
     - primitive:routine
     - type.workflow.routine
@@ -3543,6 +3543,14 @@ documents:
   routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql:
     model: RoutineDoc
     path: desk/routines/routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron:
+    model: RoutineDoc
+    path: desk/routines/routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron.md
     tags:
     - primitive:routine
     - type.workflow.routine

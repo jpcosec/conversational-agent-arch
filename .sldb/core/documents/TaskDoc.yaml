@@ -160,3 +160,12 @@ documents:
   - type.workflow.task
   - workspace.desk
   - workspace:desk
+- name: task-mover-logica-reimplementada-a-kgdb-sldb-pron
+  path: desk/tasks/task-mover-logica-reimplementada-a-kgdb-sldb-pron.md
+  hash_c: c4b5c771838fabfefdd51b429cd34b34169c4648982aa03f162404b218206f8e
+  hash_d: 7d3224582aa09e315a3beaef243e34e051b02654856eb3e7c992fd03c0f928de
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk

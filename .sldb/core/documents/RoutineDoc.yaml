@@ -116,3 +116,12 @@ documents:
   - type.workflow.routine
   - workspace.desk.routines
   - workspace:desk
+- name: routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron
+  path: desk/routines/routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron.md
+  hash_c: aa56b42750bd3f8acf5bb4bdb3aa48da201dca7b0fa3077ab0638cf50f47825e
+  hash_d: 21aab8c11479c5cf761b0b14fe489b8f301fcd2ba5efbffb4b403a27273777bd
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
