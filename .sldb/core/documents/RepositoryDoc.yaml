@@ -1,1 +1,8 @@
-documents: []
+documents:
+- name: repo-gemini-test
+  path: desk/registry/repo-gemini-test.md
+  hash_c: de218abbe896922b2adf55e9568d8d0a04e80b80c7301d1d0ba3609730b5d2a2
+  hash_d: 452f4df981f5898631e8e69a0e63802e1fe02391a85bcf2926765ab390853b32
+  semantic_tags:
+  - type.desk.repository
+  - workspace.desk.registry

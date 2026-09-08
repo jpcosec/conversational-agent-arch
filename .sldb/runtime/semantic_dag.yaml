@@ -7,6 +7,9 @@ nodes:
 - id: type.desk.inbox-note
   parents:
   - type.desk
+- id: type.desk.repository
+  parents:
+  - type.desk
 - id: type.documentation
   parents:
   - type
@@ -70,6 +73,9 @@ nodes:
   parents:
   - workspace.desk
 - id: workspace.desk.primitives
+  parents:
+  - workspace.desk
+- id: workspace.desk.registry
   parents:
   - workspace.desk
 - id: workspace.desk.routines

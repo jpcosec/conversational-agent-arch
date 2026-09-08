@@ -508,6 +508,8 @@ tags:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   - 20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills
+  type.desk.repository:
+  - repo-gemini-test
   type.documentation.composition:
   - composition-architecture
   - composition-glossary
@@ -1239,6 +1241,8 @@ tags:
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
   - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
+  workspace.desk.registry:
+  - repo-gemini-test
   workspace.desk.routines:
   - routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
   - routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
@@ -1553,6 +1557,12 @@ documents:
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox
+  repo-gemini-test:
+    model: RepositoryDoc
+    path: desk/registry/repo-gemini-test.md
+    tags:
+    - type.desk.repository
+    - workspace.desk.registry
   checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready:
     model: ChecklistDoc
     path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready.md
