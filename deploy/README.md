@@ -1,7 +1,7 @@
 # Deploy a Modal
 
 Despliega el runtime completo (chat UI `/`, editor de flujo `/flow`, mindmap
-`/mindmap` con layout de embeddings, `/users`, `/dashboard`, perfilado y
+`/mindmap` con layout del índice de embeddings, `/users`, `/dashboard`, perfilado y
 webhook Twilio) como una app serverless en
 [Modal](https://modal.com), sirviendo el mismo `frontends.chat.app:create_app`
 que corre localmente.
@@ -12,11 +12,16 @@ que corre localmente.
 - **KB servida**: `knowledge/` (Antonia — la KB REAL que apunta
   `project.config.yaml: kb_root`).
   **No** se copia `.embedding_cache` (~600 MB de blobs de un
-  modelo de embeddings): `/api/viz/graph` sólo lee embeddings ya calculados
-  del frontmatter de cada atom, nunca los recalcula en vivo.
-- **Paquetes locales** (no publicados en PyPI, viven en
-  `hum-ecosystem/tools/`): `sldb`, `kgdb`, `deskops`. Se copian y se instalan
-  con `pip install /root/tools/<paquete>` dentro de la imagen.
+  modelo de embeddings). Los vectores viven en el índice derivado
+  `knowledge/.pron/docs.<embedder>.json` (`DocumentIndex` de pron, fuera de
+  git): si existe localmente se copia con la KB y `/api/viz/graph` lo lee;
+  si falta, el runtime lo reconstruye con `fastembed` al primer uso (y
+  necesita `EMBEDDING_CACHE_DIR` en un volumen para no re-descargar el
+  modelo en cada arranque en frío).
+- **Paquetes locales** (no publicados en PyPI): `sldb`, `kgdb`, `deskops`
+  (viven en `hum-ecosystem/tools/`) y `pron` (`legos/pron`, `PRON_ROOT` en
+  `deploy/modal_app.py`). Se copian y se instalan con
+  `pip install /root/tools/<paquete>` dentro de la imagen.
 - El resto del repo (`desk/`, `runs/`, `.sldb` raíz, `.env`, tests de código,
   etc.) se queda fuera: no lo necesita el runtime para servir.
 
@@ -156,7 +161,7 @@ URL=https://<workspace>--kb-agent-runtime-serve.modal.run
 
 curl -s "$URL/api/health"                  # {"status":"ok","kb_root":".../knowledge",...}
 curl -s "$URL/api/config"                  # {"name":"Antonia",...}
-curl -s "$URL/api/viz/graph" | head -c 200 # nodes/edges del grafo de embeddings
+curl -s "$URL/api/viz/graph" | head -c 200 # nodes/edges del grafo de similitud (DocumentIndex)
 curl -s "$URL/api/flow" | head -c 200      # grafo de ConversationStep
 curl -s -X POST "$URL/api/chat" \
   -H "Content-Type: application/json" \
@@ -181,12 +186,12 @@ destructivo).
 
 - `python_version="3.12"` (el código usa sintaxis 3.10+).
 - Versiones de dependencias pineadas a lo que corrió la suite local
-  (`pip show sldb kgdb deskops`, `pip freeze`).
+  (`pip show sldb kgdb deskops pron`, `pip freeze`).
 - `sldb` usa `markdown-it-py` con la regla `linkify` habilitada, que requiere
   **`linkify-it-py`** como dependencia de import (no está en el
   `pyproject.toml` de `sldb`, pero falla en runtime sin ella con
   `ModuleNotFoundError: Linkify enabled but not installed.`). Se agregó
   explícitamente a `pip_install(...)` en `deploy/modal_app.py`.
-- `fastembed`/`torch` **no** son necesarios: el runtime nunca calcula
-  embeddings en vivo (ni para chat ni para `/api/viz/graph`), sólo lee los ya
-  guardados en el frontmatter de los atoms.
+- `fastembed` sí está en la imagen: el `DocumentIndex` de pron embebe en
+  vivo los documentos cuyo hash cambió (y todos, si el índice derivado no
+  viajó con la KB). El modelo se descarga a `EMBEDDING_CACHE_DIR`.

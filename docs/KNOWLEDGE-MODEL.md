@@ -5,7 +5,37 @@ Escrito a mano. Complementa `AGENT-CONTRACTS.md` (qué recibe cada agente);
 este documento cubre **qué son los documentos, cómo se relacionan entre sí,
 y cómo se conectan con los agentes y con SQL**.
 
-Todo lo que dice "hoy" está verificado contra `dev @ 0586fad` (§9).
+Todo lo que dice "hoy" está verificado contra `dev @ 0586fad` (§9), salvo
+lo que corrige el bloque siguiente.
+
+> **Estado 2026-09-08 (migración a kgdb/sldb/pron, commits `e400b6b`,
+> `a5d2622`, `10e75d0`).** Lo que este documento describía como
+> inconsistencias 1, 2, 3 y 9 de §8 ya no existe, porque la capa que las
+> producía se reemplazó por las librerías del ecosistema:
+>
+> - **El flujo conversacional es un grafo tipado de kgdb.** Las transiciones,
+>   el grounding y la tool de cada step son `RelationDoc`
+>   (`knowledge/relations/*.md`: `transitions_to`, `grounded_by`, `uses_tool`),
+>   con sus tipos en `knowledge/relations/types/` y los 11 estructurales en
+>   `knowledge/kgdb/relation_types/`. `ConversationStep` ya no tiene
+>   `allowed_transitions`, `grounding_atoms` ni `tool_ref`. El ingest tipado
+>   rechaza referencias colgantes. Migración: `scripts/migrate_step_relations.py`.
+> - **Un `pron.World` por proceso** (`kb_agent/knowledge/world.py`) abre el
+>   store y refresca el grafo cuando cambian los hashes; `ConversationFlow`
+>   (`kb_agent/knowledge/flow.py`) es la vista del diagrama que consumen el
+>   compilador, el orquestador y `export_flow`. `SLDBReader` y `KGDBReader`
+>   no existen más.
+> - **Los embeddings no van en el frontmatter.** `IndexProxies` perdió
+>   `embedding`, `parent` y `semantic_anchors`; los vectores viven en el
+>   `DocumentIndex` de pron (`<kb>/.pron/docs.<embedder>.json`, keyed por
+>   `hash_c`, fuera de git). `knowledge index embeddings` lo (re)construye
+>   embebiendo solo lo que cambió; `index hierarchy` desapareció (la jerarquía
+>   la deriva sldb y kgdb la expone como `semantic_parent`).
+> - **Toda escritura al store pasa por `pron.Store`** (`propose`, `promote`,
+>   `organize`, reflector): sin subprocess al CLI de sldb.
+>
+> Las secciones §1, §1.1, §2, §4.2 y §7 se actualizaron abajo; el resto del
+> análisis (familias, nombres, namespaces, SQL) sigue vigente.
 
 ---
 
@@ -29,9 +59,6 @@ tags:
 domain_ref: psp-selfix
 provenance: null
 summary: Cómo administrar Selfix correctamente; ...
-embedding: [-0.022079, ...]  # 768d, jina-embeddings-v2-base-es
-parent: null
-semantic_anchors: null
 ---
 
 # Administración de Selfix
@@ -41,8 +68,9 @@ semantic_anchors: null
 Recordar la aplicación semanal según el día y hora de la persona. ...
 ```
 
-El tipo lo da `atom_type` en el frontmatter, **no la carpeta**: los 71
-documentos viven planos en `knowledge/atoms/`. El nombre de archivo sigue
+El tipo lo da `atom_type` en el frontmatter, **no la carpeta**: los
+documentos viven planos en `knowledge/atoms/` (75 hoy), y las relaciones
+tipadas entre ellos en `knowledge/relations/` (`RelationDoc` de kgdb). El nombre de archivo sigue
 la convención `<prefijo>-antonia-<slug>.md` donde el prefijo coincide con el
 tipo (`atom-`, `rule-`, `step-`, `trait-`, `gate-`, ...), pero eso es
 convención, no lo que lee el sistema.
@@ -56,8 +84,8 @@ flowchart LR
     MD["knowledge/atoms/*.md<br/>71 instancias"]
     IDX["knowledge/.sldb/core/documents/*.yaml<br/>índice por modelo (hash, path)"]
     RT["knowledge/.sldb/runtime/<br/>sections/, semantic_index.yaml,<br/>semantic_dag.yaml"]
-    SLDB["SLDBReader<br/>find / find_fields / fetch / get_doc"]
-    KGDB["KGDBReader<br/>grafo networkx: docs + tags + aristas"]
+    SLDB["pron.Store<br/>docs() / find / payload / create / update_field"]
+    KGDB["pron.Graph<br/>grafo tipado de kgdb (.pron/graph.nx.json):<br/>tagged_as, semantic_parent, transitions_to, grounded_by, uses_tool"]
 
     PY -->|"sldb bootstrap"| REG
     MD -->|"sldb docs track<br/>(valida contra la clase)"| IDX
@@ -77,7 +105,7 @@ flowchart LR
 - **Runtime**: `semantic_index.yaml` (búsqueda por semantics/tags),
   `semantic_dag.yaml` (jerarquía de tags: `conversation:steps` →
   `conversation:steps.onboarding`, ...), `sections/` (cuerpo por sección).
-- **Readers**: `SLDBReader` busca por término semántico; `KGDBReader`
+- **Readers**: `pron.Store` lee y escribe documentos por la librería de sldb; `pron.Graph`
   construye un grafo dirigido con documentos y tags como nodos.
 
 **Hoy — deuda:** los `path:` en `core/models/*.yaml` apuntan a
@@ -97,9 +125,9 @@ compartidos (`*` = obligatorio):
 | `title` * | str | nombre legible; se renderiza como `# título` | ok |
 | `tags` | `list[ns:valor]` | **relación horizontal principal**; búsqueda | ok, 71/71 |
 | `summary` * | str | resumen corto para índice y listados | ok, 71/71 |
-| `embedding` | `list[float]` | vector 768d para similitud contra la query | poblado 71/71, **nadie lo lee** |
-| `parent` | str (id) | jerarquía | 23/71 con padre, sin lector |
-| `semantic_anchors` | `list[str]` | anclas semánticas explícitas | **vacío en 71/71** |
+| ~~`embedding`~~ | — | **quitado** (2026-09-08): el vector vive en el `DocumentIndex` de pron, keyed por `hash_c` | — |
+| ~~`parent`~~ | — | **quitado**: la jerarquía es `semantic_parent` en el grafo, derivada de los tags | — |
+| ~~`semantic_anchors`~~ | — | **quitado**: nunca se pobló | — |
 | `provenance` | str | de dónde salió (`source:reflector`, sesión, etc.) | 60/71 |
 
 `domain_ref` (37/71) y `five_wh_one_plus` (43/71) son de algunos modelos,
@@ -119,7 +147,7 @@ Ordenado por **familia** (§3.1), que es el eje que organiza todo lo demás.
 | `self` | `tool` | `ToolAtom` | 1 | `description`*, `parameters`* | Description, Parameters | declaración de una tool para el LLM |
 | `domain` | `domain` | `DomainAtom` | 32 | `five_wh_one_plus`*, `answer`*, `domain_ref` | Answer | hecho del negocio; grounding de respuestas |
 | `domain` | `rule` | `RuleAtom` | 11 | `five_wh_one_plus`*, `answer`*, `conditions`, `applies_to` | Answer, Conditions | regla condicional (clasificación, seguridad, anti-alucinación) |
-| `conversation` | `step` | `ConversationStep` | 11 | `kind`, `instructions`*, `required_slots`, `handout_target`, `tool_ref`, `allowed_transitions`, `grounding_atoms`, `completion_condition`, `domain_ref` | Instructions, Required Slots, Handout Target, Tool, Allowed Transitions, Grounding Atoms, Completion Condition | nodo del flujo conversacional |
+| `conversation` | `step` | `ConversationStep` | 12 | `kind`, `instructions`*, `required_slots`, `handout_target`, `completion_condition`, `domain_ref`; transiciones, grounding y tool son **aristas** (`transitions_to`, `grounded_by`, `uses_tool`) | Instructions, Required Slots, Handout Target, Tool, Allowed Transitions, Grounding Atoms, Completion Condition | nodo del flujo conversacional |
 | `conversation` | `strategy` | `StrategyRule` | 1 | `goal`*, `approach`*, `priorities` | Goal, Approach, Priorities | estrategia conversacional |
 | `conversation` | `fallback` | `FallbackRule` | 1 | `fallback_message`*, `conditions` | Fallback Message, Conditions | qué decir cuando no hay corpus |
 | `user` | `trait` | `TraitAtom` | 5 | `description`*, `category` | Description | rasgo aprendible del usuario; candidato para el perfilador |
@@ -173,14 +201,14 @@ Dos cosas que la familia resuelve y el `atom_type` no:
 
 Nota: `ToolAtom` es familia `self`, no `conversation`. Las tools son
 capacidades del agente, no pasos del flujo — el step las *referencia*
-(`tool_ref`), no las posee.
+(arista `uses_tool`), no las posee.
 
 **Hoy — la familia se declara una vez y se pierde en cada consumidor:**
 
 | Consumidor | Cómo obtiene la familia | Resultado |
 |---|---|---|
 | registro del store (`core/models/*.yaml`) | campo `family:` de SLDB | **`null` en los 11** — `bootstrap` no lee `__family__` |
-| `KGDBReader` (`kgdb_reader.py:140`) | `m.family` del registro | `null` en el grafo |
+| grafo tipado de kgdb (`node_type` = nombre del modelo) | `has_model` / `extends` desde el registro | la familia sigue solo en la clase (`__family__`) |
 | índices runtime (`semantic_index`, `semantic_dag`) | — | 0 menciones |
 | `/api/taxonomy` (`frontends/chat/app.py:224`) | `MODEL_MAP` **hardcodeado** | duplica `__family__` a mano (y ya divergió: hubo que agregar `gate` por separado) |
 | `Orchestrator._semantic_role` (`orchestrator.py:384`) | **prefijo del tag** (`self:` > `domain:` > `conversation:`) | un `RuleAtom` (familia `domain`) con tags `conversation:security` sale como `conversation.security` |
@@ -221,7 +249,7 @@ documentos estructurados de otra naturaleza, que comparten base
 | carpeta `knowledge/atoms/` | contiene los 71 | son documentos; 43 son átomos |
 | campo `atom_type: step` / `gate` / `style` | un step "es un tipo de átomo" | es un tipo de **documento** (`doc_type`) |
 | clases `TraitAtom`, `ToolAtom` | son átomos | no tienen pregunta ni respuesta |
-| `grounding_atoms` del step | lista `step-antonia-onboarding` y `self-antonia` | son documentos de grounding, no átomos |
+| aristas `grounded_by` del step | apuntan a `self-antonia`, `style-antonia`, reglas... | son documentos de grounding, no átomos |
 | `gate_atoms` (`orchestrator.py:277`) | los criterios del gate son átomos | son `GateCriterion` |
 | "71 atoms", `_find_atoms`, `atom_ids` | todo documento es un átomo | — |
 | `knowledge/tag-namespaces.yaml` (antes `knowledge/desk/atoms/tag-namespaces.yaml`) | era una copia del vocabulario de deskops (`layer`, `source`, `system:deskops`, `topic:atoms`) | hoy define el vocabulario de **esta** KB (§4.1) |
@@ -242,8 +270,7 @@ usan). Ya no existe: lo reemplazó `knowledge/tag-namespaces.yaml`.
   documento con pregunta y respuesta (`DomainAtom`, `RuleAtom`). "Átomo"
   queda reservado para eso; el resto se nombra por lo que es.
 - **Renombrar lo que miente**: `atom_type` → `doc_type`; `TraitAtom` →
-  `UserTrait`; `ToolAtom` → `ToolDeclaration`; `grounding_atoms` →
-  `grounding_docs`; `_find_atoms` → `_find_docs`; `knowledge/atoms/` →
+  `UserTrait`; `ToolAtom` → `ToolDeclaration`; `_find_atoms` → `_find_docs`; `knowledge/atoms/` →
   `knowledge/docs/` (o una carpeta por familia). Es un rename mecánico,
   pero toca modelos, 71 frontmatters, readers y UI; hacerlo de una vez y
   con `sldb docs track --force` para reindexar.
@@ -270,10 +297,9 @@ doc) y **tipadas** (declaradas por un modelo concreto, con semántica propia).
 
 | Relación | Mecanismo | Aristas en KGDB | Lector hoy |
 |---|---|---|---|
-| comparte tag | `tags` | `doc → tag`, `tag → tag` (`semantic_parent`) | `docs_for_tag`, `siblings`, `steps_under` |
-| jerarquía | `parent` | — | ninguno |
-| ancla semántica | `semantic_anchors` | — | ninguno (y está vacío) |
-| similitud | `embedding` | — | ninguno |
+| comparte tag | `tags` | `tagged_as`, `semantic_parent` | `pron.Graph` (`sources`, `children`, `neighbors_via`) vía `KnowledgeOperations.explore` |
+| flujo | `RelationDoc` | `transitions_to`, `grounded_by`, `uses_tool` | `ConversationFlow` (`kb_agent/knowledge/flow.py`) |
+| similitud | `DocumentIndex` (`.pron/`, fuera del documento) | — | `KnowledgeOperations.semantic_search` / `rank_among` |
 
 #### Namespaces de tags
 
@@ -300,29 +326,35 @@ que es el eje del flujo. El archivo de namespaces describe otra KB (la de
 
 ### 4.2 Tipadas: el flujo conversacional
 
-`ConversationStep` declara tres relaciones con semántica propia. `KGDBReader`
-tiene métodos para leerlas como aristas tipadas… **pero esas aristas no
-existen en el grafo**:
+Desde 2026-09-08 el flujo es un **grafo tipado de kgdb**. Cada relación es
+un documento `RelationDoc` del store (`knowledge/relations/*.md`) con
+`source_id`/`target_id` en formato `Modelo:nombre`, y cada tipo un
+`RelationTypeDoc` (`knowledge/relations/types/`) que fija qué clases pueden
+ser sujeto y objeto, cardinalidad, eje y condición por defecto:
 
-| Campo del step | Apunta a | Arista que el lector espera | Método lector | ¿Funciona? |
+| Relación | Sujeto → objeto | Cardinalidad | Eje | Aristas hoy |
 |---|---|---|---|---|
-| `allowed_transitions` | otros steps (por tag) | `REL_FLOWS_TO` | `get_next_transitions(node)` | **no**, devuelve `[]` |
-| `grounding_atoms` | ids de `domain`/`self`/... | `REL_GROUNDED_BY` | `get_grounding_atoms(node)` | **no**, devuelve `[]` |
-| `tool_ref` | id de `tool` | — | `get_tools_for_node(node)` | no verificado |
+| `transitions_to` | `ConversationStep` → `ConversationStep` | many_to_many | WHEN | 20 |
+| `grounded_by` | `ConversationStep` → cualquier documento | many_to_many | WHY | 31 |
+| `uses_tool` | `ConversationStep` → `ToolAtom` | many_to_one | HOW | 0 |
 
-El ingest SLDB→KGDB (`kgdb.ingest.sldb`, en `hum-ecosystem/tools/kgdb`) sólo
-produce un grafo **tag-céntrico**: `tagged_as` y `semantic_parent`. Nunca
-emite `flows_to` ni `grounded_by`. Comprobado llamando
-`get_next_transitions()` sobre los 11 steps de `knowledge/.sldb`: `[]` en
-todos.
+`kgdb ingest --store` (lo corre `World.refresh_if_stale` al arrancar el
+runtime y tras cada escritura) valida cada arista contra su tipo: una
+transición a un step que no existe, o con un sujeto que no es
+`ConversationStep`, es un **error de ensamblaje**, no un typo silencioso.
+Antes las transiciones eran texto libre en `## Allowed Transitions`
+(partido por coma, con placeholders como "ninguna (paso terminal)") y el
+compilador filtraba a mano las referencias colgantes.
 
-Por eso la **única fuente real** de las transiciones es el campo tipado
-`ConversationStep.allowed_transitions` leído directamente del documento
-(texto libre: `"conversation:steps.registro_estado"`, o placeholders como
-`"ninguna (paso terminal)"`). Hasta la fase 1.1 sólo lo leía
-`frontends/flow_editor/export_flow.py` para dibujar el editor de flujo.
+Quién las lee: `ConversationFlow` (`kb_agent/knowledge/flow.py`) sobre
+`pron.Graph`: `transitions(tag)`, `grounding(tag)` (aristas `grounded_by`
+más los documentos que llevan el tag del step), `entry()` (raíz del grafo
+por `transitions_to`, prefiriendo `.onboarding`), `resolve_active(current)`.
+El compilador, el orquestador (`allowed_transitions` del contexto del
+turno, que la guardia `apply_transition_guard` sigue vetando por código) y
+`frontends/flow_editor/export_flow.py` usan esa vista.
 
-Y el grafo declarado en los 11 steps, tal como está en los documentos:
+El grafo declarado en los 12 steps de Antonia:
 
 ```mermaid
 flowchart LR
@@ -330,6 +362,9 @@ flowchart LR
     saludo --> registro_estado
     saludo --> journey_operativo
     saludo --> derivacion_medinfo
+    saludo --> enrolamiento
+    enrolamiento --> derivacion_medinfo
+    enrolamiento --> onboarding
     onboarding --> registro_estado
     journey_operativo --> registro_estado
     journey_operativo --> despedida
@@ -347,24 +382,8 @@ flowchart LR
     classDef terminal stroke-dasharray: 4 4
 ```
 
-Es un flujo real, con entrada (`saludo`), salida (`despedida`, terminal) y
-ramas de seguridad (`evento_adverso`, `derivacion_medinfo` →
-`revision_humana`). `validacion_policy_gate` no tiene entrada declarada
-desde ningún step: es el nodo al que el gate debería saltar, pero nadie
-transiciona a él.
-
-**Resuelto en fase 1.1** (commit `c82764c`): `_augment_from_kgdb` parsea el
-campo declarado del step vía `SLDBReader`, y `allowed_transitions` pasa a ser
-lo que el step declara. `grounding_atoms` sigue por `docs_for_tag` (esa vía
-sí funciona, es tag-céntrica). El texto que sigue describe el estado previo,
-que era éste:
-
-**Antes — el bug de cableado:** el compilador no usa ninguna de estas
-aristas. `_augment_from_kgdb` (`compiler.py:274-316`) llama a
-`steps_under()` y expone como transiciones permitidas *todos los hermanos*,
-y usa `docs_for_tag()` en vez de `get_grounding_atoms()`. Resultado: desde
-`despedida` (terminal) el runtime cree que puede ir a cualquiera de los
-otros 10 steps. El grafo declarado y sus lectores existen; falta llamarlos.
+`validacion_policy_gate` sigue sin entrada declarada: es el checkpoint
+post-draft, no un nodo del flujo del usuario.
 
 ---
 
@@ -467,56 +486,62 @@ mientras dura.
 
 ## 7. Cómo se busca (los readers)
 
-### SLDBReader — búsqueda por semántica
+Tres librerías del ecosistema y una capa de negocio encima. Nada en el
+runtime abre un `.md` ni arma un grafo por su cuenta.
 
-```python
-reader.find("type.knowledge.domain")      # todos los DomainAtom
-reader.find("conversation:steps.onboarding")  # docs con ese tag
-reader.fetch("trait")                      # azúcar de find("type.knowledge.trait")
-reader.find_fields(term)                   # también secciones y campos, no solo docs
-reader.get_doc(doc_id)                     # campos resueltos de un doc
-```
+### pron.World / pron.Store — el store
 
-El eje `type.knowledge.<tipo>` sale del `semantics` de la clase, no de un
-tag. Por eso `atom_type` es campo del modelo y no tag.
+`kb_agent/knowledge/world.py::open_world(kb_root)` abre **un `World` por
+proceso**: corre `kgdb init` si el store nunca lo tuvo y
+`refresh_if_stale()` (sldb `stores update` + ingest tipado de kgdb a
+`<kb>/.pron/graph.nx.json`) cuando cambiaron los hashes de los modelos.
+`world.store` es la única puerta a sldb: `docs()`, `find(scope, where)`,
+`payload(model, name)`, `create`, `update_field`, `track`/`untrack`, con
+roundtrip y paths relativos a la raíz de la KB.
 
-**Hoy:** estas funciones son internas. No están expuestas como tools al
-LLM, así que ningún agente puede *buscar*; sólo el compilador *carga*.
+### pron.Graph — el grafo tipado de kgdb
 
-### KGDBReader — grafo
+Lee el grafo persistido sin networkx: `edges_from/edges_to`, `targets/
+sources`, `nodes_of_type`, `roots`, `children/parent/descendants`,
+`neighbors_via`. Nodos: documentos (`sldb://document/Modelo:nombre`, con
+`node_type` = modelo), tags (`sldb://semantic_tag/<tag>`), modelos, campos,
+secciones y tipos de relación. Aristas estructurales (`tagged_as`,
+`semantic_parent`, `has_model`, `has_field`, `extends`, ...) y autoradas
+(`transitions_to`, `grounded_by`, `uses_tool`).
 
-Nodos: documentos y tags (`tag:<ns>:<valor>`). Aristas: `doc → tag`,
-`tag → tag` (`semantic_parent`, desde `semantic_dag.yaml`), y las tipadas
-del step (`REL_FLOWS_TO`, `REL_GROUNDED_BY`). Métodos: `steps_under`,
-`docs_for_tag`, `siblings`, `get_next_transitions`, `get_grounding_atoms`,
-`get_tools_for_node`.
+### pron.embedder.DocumentIndex — similitud
 
-### KnowledgeOperations — herramientas por agente (`knowledge_base/`)
+`KnowledgeOperations.document_index()`: vectores en
+`<kb>/.pron/docs.<embedder>.json`, keyed por `hash_c` del documento, así
+que re-indexar embebe solo lo que cambió. El `Embedder` es un puerto
+inyectable; el runtime usa `kb_agent/knowledge/embedder.py::FastembedEmbedder`
+(`jinaai/jina-embeddings-v2-base-es`, 768d); sin fastembed cae a difflib
+avisando una vez. Consumidores: `semantic_search` (compilador y ruteador),
+`rank_among` (perfilador, top-k de traits), `document_vectors`
+(`/api/viz/graph`).
 
-Tercera capa, la de más alto nivel: envuelve SLDB + KGDB + SQL en
-operaciones con semántica de agente. CLI: `python -m knowledge_base --kb
-knowledge <cmd>`. Subcomandos: `explore show step traits self context
-propose organize index embeddings hierarchy promote reflect`.
+### KnowledgeOperations — la capa de negocio (`knowledge_base/`)
+
+Lo que las librerías no saben del negocio: cruce con SQL (`traits`),
+contrato de runtime de los documentos (`doc`, `docs_by_type`,
+`docs_by_tag`), curación (`propose`, `promote`, `organize`, `reflect`) y el
+índice de embeddings. CLI: `python -m knowledge_base --kb knowledge <cmd>`.
+Subcomandos: `explore show traits self propose organize index embeddings
+index audit promote reflect`.
 
 | Operación | Agente | Devuelve |
 |---|---|---|
-| `explore_multi(query, threshold=0.3, max=10)` | ruteador | docs rankeados: similitud de embeddings + fuzzy (×0.85) + 3 vecinos KGDB por doc, `top_score`, `is_empty` |
+| `explore_multi(query, max=10)` | ruteador | docs rankeados por el `DocumentIndex` (`weak` bajo 0.25) + hermanos por tag en el grafo, `top_score`, `is_empty` |
 | `explore(tag= / atom=)` | ruteador | navegación del grafo: raíces, hijos, vecinos |
-| `step_next(user_id)` | orquestador | `flow_node` (SQL) + `allowed_transitions` y `grounding_atoms` por aristas tipadas + `missing_slots` |
 | `traits(user_id)` | ruteador / conversador | traits del usuario **resueltos contra el `TraitAtom`** (título, descripción, categoría, confianza) |
 | `self_context()` | conversador | identidad, estilo, límites |
-| `context(user_id)` | ruteador | bundle por usuario |
 | `show(atom_id)` | cualquiera | un documento resuelto |
-| `index_embeddings()`, `index_hierarchy()` | offline | escribe `embedding` (jina-v2-base-es, 768d) y `parent` |
+| `index_embeddings()`, `audit_embeddings()` | offline | (re)construye el `DocumentIndex` y reporta documentos sin vector |
 | `propose`, `promote`, `reflect`, `organize` | reflector / curación | alta y promoción de documentos |
 
-**Hoy:** `kb_agent` **no importa `knowledge_base`** (el único consumidor,
-`frontends/viz/export_graph.py`, fue eliminado). La dependencia va en un
-solo sentido: `knowledge_base → kb_agent.models`. Está más reciente en git
-que el ontologizador y sus 21 tests pasan. Es la capa que pobló los
-embeddings y la única que los lee. El runtime tiene, en paralelo, una
-versión más pobre de lo mismo (§5.1): carga todo, hermanos en vez de
-transiciones, traits como id.
+**Hoy:** `Orchestrator` crea **una** `KnowledgeOperations` por proceso
+(sobre el `World` único) y la inyecta al compilador, al `RouterAgent`
+(tools `explore_multi`/`explore`/`show`) y al perfilador.
 
 ---
 
@@ -537,19 +562,13 @@ Por orden de impacto sobre el comportamiento:
    dentro de `knowledge/desk/` hasta que lo reemplazó
    `knowledge/tag-namespaces.yaml`, ya derivado de las familias). Queda el
    rename mecánico.
-0c. **Dos capas de acceso a knowledge, y el runtime usa la peor** (§7).
-   `knowledge_base.KnowledgeOperations` resuelve transiciones por el grafo
-   tipado, traits como documento y búsqueda con score; el ontologizador
-   del runtime hace lo contrario en los tres puntos, y nadie llama a la
-   primera. Antes de escribir retrieval nuevo, enchufar la que existe
-   (`AGENT-CONTRACTS.md` §7.4).
-1. **Transiciones y grounding declarados pero no cableados** (§4.2). El
-   flujo está bien modelado en la KB y KGDB lo lee; el compilador usa los
-   métodos genéricos en vez de los tipados. Dos líneas.
-2. **Sin selección de `domain`/`rule`** (§5.1). Se cargan los 43 en cada
-   turno. Los embeddings que resolverían esto están poblados y sin lector.
-3. **`semantic_anchors` vacío en 71/71.** O se puebla o se quita del modelo;
-   como está, es una promesa falsa en el esquema.
+0c. ~~Dos capas de acceso a knowledge~~ **Resuelto**: el runtime usa
+   `KnowledgeOperations` sobre `pron.World`; no hay segundo lector.
+1. ~~Transiciones y grounding declarados pero no cableados~~ **Resuelto
+   2026-09-08**: son aristas tipadas de kgdb (§4.2), validadas en ensamblaje.
+2. ~~Sin selección de `domain`/`rule`~~ **Resuelto**: el `RouterAgent` arma
+   el bundle con `explore_multi` sobre el `DocumentIndex` (§7).
+3. ~~`semantic_anchors` vacío~~ **Resuelto**: quitado del modelo.
 4. **Namespaces de tags desincronizados** (§4.1): `conversation`, `self`,
    `user`, `channel` en uso sin definición; `layer`, `source` definidos sin
    uso. El archivo describe la KB de `desk/`, no ésta.
@@ -560,8 +579,8 @@ Por orden de impacto sobre el comportamiento:
 7. **`domain_ref` y `system:` constantes.** No discriminan nada mientras
    haya un solo negocio por KB; son ruido en cada documento.
 8. **Registro con rutas de un worktree borrado** (§1.1).
-9. **`parent` a medias** (23/71): la jerarquía `farmacovigilancia → {ea,
-   gamp5, ime, meddra, triage}` existe pero nadie la recorre.
+9. ~~`parent` a medias~~ **Resuelto**: quitado del modelo; la jerarquía es
+   `semantic_parent` en el grafo (derivada de los tags por sldb).
 
 ---
 
@@ -570,10 +589,10 @@ Por orden de impacto sobre el comportamiento:
 - Campos por modelo: introspección de `model_fields` de las 11 clases en
   `kb_agent.models.knowledge`.
 - Uso de campos y tags: parseo del frontmatter de los 71 `.md`.
-- Transiciones declaradas: sección `## Allowed Transitions` de los 11
-  `step-*.md`.
+- Transiciones declaradas: `RelationDoc` en `knowledge/relations/` (antes,
+  sección `## Allowed Transitions` de cada `step-*.md`).
 - Consumidores: `grep type.knowledge.<tipo>|fetch("<tipo>")` sobre
-  `kb_agent/`, más lectura de `compiler.py`, `kgdb_reader.py`,
+  `kb_agent/`, más lectura de `compiler.py`, `knowledge/flow.py`,
   `orchestrator.py`, `perfilador/extractor.py`.
 - Namespaces: `knowledge/tag-namespaces.yaml` vs. conteo real.
 - SQL: `kb_agent/models_sql/*.py` y `PRAGMA table_info` sobre

@@ -12,6 +12,20 @@ Cada sección tiene dos partes: **Diseño** (lo que el sistema debe hacer) y
 **Hoy** (lo que el código hace, con referencia a archivo:línea para que se
 pueda verificar y no discutir de memoria).
 
+> **Estado 2026-09-08.** Tras la migración a kgdb/sldb/pron (commits
+> `e400b6b`, `a5d2622`, `10e75d0`) varios "Hoy" de este documento quedaron
+> como historia: `SLDBReader`/`KGDBReader` no existen (un `pron.World` por
+> proceso, `kb_agent/knowledge/world.py`, y `ConversationFlow`,
+> `kb_agent/knowledge/flow.py`); las transiciones y el grounding de los
+> steps son `RelationDoc` de kgdb (`transitions_to`, `grounded_by`,
+> `uses_tool`), no texto en el step; `embedding`/`parent`/`semantic_anchors`
+> se quitaron del frontmatter (los vectores viven en el `DocumentIndex` de
+> pron, `<kb>/.pron/`); `step_next`/`context` de `KnowledgeOperations`
+> desaparecieron (devolvían vacío). Las referencias archivo:línea a
+> `kgdb_reader.py`, `sldb_reader.py` y `_augment_from_kgdb` son de ese
+> momento. El detalle del modelo actual está en `KNOWLEDGE-MODEL.md`
+> (bloque de estado y §4.2, §7).
+
 ---
 
 ## 0. Base del sistema
@@ -60,9 +74,9 @@ rompe en cuanto algo use `path`.
 | Mecanismo | Declarado en | Poblado | Leído por el runtime | Veredicto |
 |---|---|---|---|---|
 | `tags` (8 namespaces) | 71/71 | sí | **sí**, es el único que manda | funciona |
-| `parent` | 71/71 | 23/71 (48 `null`) | no | jerarquía parcial, sin uso |
-| `semantic_anchors` | 71/71 | **0/71** | no | declarado y vacío |
-| `embedding` (768d) | 71/71 | sí | **no** | poblado y nunca leído |
+| `RelationDoc` (`transitions_to`, `grounded_by`, `uses_tool`) | 51 aristas | sí | **sí**, `ConversationFlow` sobre el grafo tipado | funciona (desde 2026-09-08) |
+| `DocumentIndex` (vectores en `.pron/`, fuera del documento) | 73/75 | sí | **sí**, ruteador/compilador/perfilador | funciona (desde 2026-09-08) |
+| ~~`parent`~~, ~~`semantic_anchors`~~, ~~`embedding`~~ en frontmatter | — | — | — | quitados del modelo |
 | `domain_ref` | 37/71 | siempre `psp-selfix` | no | constante, no discrimina |
 
 Namespaces de tags en uso: `system` (71), `domain` (35), `conversation` (31),
@@ -174,16 +188,15 @@ abajo):
 | Operación | Para quién | Qué hace que el compilador no |
 |---|---|---|
 | `explore_multi(query)` | ruteador | embeddings (umbral 0.3) + fuzzy + vecinos KGDB, top-10 **con score** |
-| `step_next(user_id)` | orquestador | `flow_node` de SQL → `get_next_transitions()` + `get_grounding_atoms()`. **Ojo:** esos dos devuelven `[]` porque el grafo no tiene aristas tipadas (§4.2 de KNOWLEDGE-MODEL); la fase 1.1 lee el campo del step en su lugar |
 | `traits(user_id)` | ruteador / conversador | resuelve cada `trait_id` contra su `TraitAtom` (título, descripción, categoría) |
 | `self_context()` | conversador | identidad + estilo + límites como base |
-| `context(user_id)` | ruteador | bundle por usuario |
 | `propose / promote / reflect / organize` | reflector | curación de la KB |
 
-Es la capa que pobló los embeddings (`index embeddings`) y la única que los
-lee. Durante un tiempo el runtime reimplementó una versión más pobre (carga
-todo, sin grafo tipado, traits como id) y la dejó sin consumidor; hoy está
-cableada en tres módulos (`grep -rn knowledge_base kb_agent/ | grep import`):
+Es la capa que mantiene el índice de embeddings (`index embeddings`, hoy
+un `DocumentIndex` de pron) y la única que lo lee. Durante un tiempo el
+runtime reimplementó una versión más pobre (carga todo, sin grafo tipado,
+traits como id) y la dejó sin consumidor; hoy está cableada en tres módulos
+(`grep -rn knowledge_base kb_agent/ | grep import`):
 
 - `kb_agent/orchestrator.py:49` — importa `KnowledgeOperations` y crea la
   **única instancia por proceso** (`self.knowledge_ops`, cachea el embedder
@@ -200,9 +213,9 @@ cableada en tres módulos (`grep -rn knowledge_base kb_agent/ | grep import`):
   `_semantic_candidates`; sin inyección (tests unitarios) resuelve vía
   `reader`.
 
-Lo que sigue pendiente es `step_next` (transiciones tipadas, hoy `[]` por
-falta de aristas en el grafo) y la curación del reflector
-(`propose / promote / reflect / organize`). El mecanismo de hooks está en
+Las transiciones tipadas ya llegan por `ConversationFlow` sobre el grafo de
+kgdb (2026-09-08); lo que sigue pendiente es la curación del reflector
+(`propose / promote / reflect / organize`) como hooks. El mecanismo está en
 §7.4.
 
 - ❌ Selección de conocimiento (`compiler.py:73-74`):
@@ -230,10 +243,10 @@ falta de aristas en el grafo) y la curación del reflector
   turno, el documento de ansiedad no entra hasta que el perfilador lo
   persista *después* del turno. Es exactamente el caso que la regla 2 de
   §2.0 exige cubrir.
-- ❌ No hay herramientas de búsqueda expuestas al LLM. `SLDBReader` tiene
-  `find()`, `find_fields()`, `fetch()` (`sldb_reader.py:31-53`) pero son
-  internas. Las únicas tools registradas para el modelo son
-  `agendar_recordatorio` y `crear_reserva` (`tools/__init__.py`).
+- ✅ (2026-09-08) Las herramientas de búsqueda están expuestas al
+  `RouterAgent` como tools (`explore_multi`/`explore`/`show` sobre
+  `KnowledgeOperations`, que a su vez lee `pron.Store`, `pron.Graph` y el
+  `DocumentIndex`). Antes eran internas de un `SLDBReader` que ya no existe.
 - ⚠️ Lo que **sí** hace bien, y es el patrón a extender: el grounding por
   step. `_augment_from_kgdb` (`compiler.py:274-316`) toma el step actual y
   resuelve `grounding_atoms = kgdb.docs_for_tag(step)` — es decir, para la
@@ -268,15 +281,12 @@ más de lo que el diseño le asigna, y la decisión no es un agente.
   steps if s != active]`): 10 destinos desde cualquier step, incluido el
   terminal.
 
-  **Corrección a lo que este documento afirmaba antes:** decía que
-  `KGDBReader.get_next_transitions()` ya leía esas aristas y que faltaba
-  llamarlo — un "bug de cableado de dos líneas". Es falso. Ese método existe
-  pero devuelve `[]` para los 11 steps: el ingest SLDB→KGDB nunca emite
-  aristas `flows_to`/`grounded_by`, sólo el grafo tag-céntrico (`tagged_as`,
-  `semantic_parent`). Por lo mismo,
-  `KnowledgeOperations.step_next()` (`operations.py:660`) tampoco resuelve
-  transiciones, aunque su forma sea la correcta. Ver `KNOWLEDGE-MODEL.md`
-  §4.2.
+  **Actualización 2026-09-08:** las transiciones dejaron de ser texto en
+  el step. Son `RelationDoc` de kgdb (`transitions_to`) que el ingest
+  tipado valida (una transición a un step inexistente es error de
+  ensamblaje) y que `ConversationFlow` lee del grafo; `KGDBReader` y
+  `step_next` (que devolvían `[]` porque el ingest nunca emitía esas
+  aristas) se borraron. Ver `KNOWLEDGE-MODEL.md` §4.2.
 
   Falta todavía la mitad de la regla: que el orquestador **no pueda** saltar
   fuera de esa lista (guardia `before_tool`, fase 2.4).
@@ -397,8 +407,8 @@ Parte de la confusión documental viene de que los nombres no coinciden.
 
 0. ~~**`knowledge_base` está huérfano del runtime.**~~ Cerrado: el
    orquestador crea la instancia y la inyecta al `RouterAgent` y al
-   `ContextCompiler` (§2.2). Queda `step_next` (sin aristas tipadas) y la
-   curación del reflector.
+   `ContextCompiler` (§2.2). Las transiciones tipadas llegan del grafo de
+   kgdb desde 2026-09-08; queda la curación del reflector.
 1. **No hay ruteador de contexto.** El conversador recibe 60 % de la KB en
    cada turno, sin selección por pregunta. Es la brecha que hace el
    comportamiento impredecible y el coste creciente (cada atom nuevo de
@@ -416,8 +426,8 @@ Parte de la confusión documental viene de que los nombres no coinciden.
 6. **No hay sesión en `chat_history`** ni tabla de eventos.
 7. **No hay enrolamiento.**
 8. **Sin migraciones**: cada cambio de modelo rompe DBs existentes.
-9. Relaciones semánticas muertas: `semantic_anchors` vacío, `embedding` sin
-   lector, `parent` a medias.
+9. ~~Relaciones semánticas muertas~~ resuelto 2026-09-08: `semantic_anchors`
+   y `parent` quitados, los vectores en el `DocumentIndex` con lector real.
 10. Deuda de registro: `path:` del store apunta a un worktree inexistente.
 
 Las brechas 5, 6 y 8 se resuelven con el mismo cambio (una tabla de turnos
@@ -547,9 +557,9 @@ Sobre los cuatro agentes:
 
 | Hook | Agente | Implementación |
 |---|---|---|
-| `before_model` | **Ruteador de contexto** | llama a `knowledge_base`: `self_context()` (base), `step_next(user)` (step + transiciones tipadas + grounding), `traits(user)` (documentos, no ids), `explore_multi(pregunta)` (candidatos con score); arma el bundle `[{doc_id, motivo}]` y lo inyecta en `llm_request`. El motivo va al rastro del turno. |
+| `before_model` | **Ruteador de contexto** | llama a `knowledge_base`: `self_context()` (base), `ConversationFlow` (step + transiciones tipadas + grounding), `traits(user)` (documentos, no ids), `explore_multi(pregunta)` (candidatos con score); arma el bundle `[{doc_id, motivo}]` y lo inyecta en `llm_request`. El motivo va al rastro del turno. |
 | `after_model` | **Gate** | valida `llm_response` contra los `GateCriterion` (contexto fijo, leídos de verdad); si rechaza, devuelve el handoff como `LlmResponse` y registra `gate_rejection`. |
-| `before_tool` | **Orquestador** (guardia) | para la tool `move_step`: veta si el destino no está en las `allowed_transitions` del step activo (las que el compilador ya lee del documento desde la fase 1.1). Ahí se cumple "solo puede avanzar por pasos". |
+| `before_tool` | **Orquestador** (guardia) | para la tool `move_step`: veta si el destino no está en las `allowed_transitions` del step activo (aristas `transitions_to` del grafo tipado). Ahí se cumple "solo puede avanzar por pasos". |
 | `after_tool` | **Orquestador** (persistencia) | escribe `session_state` / `recordatorios` / `reservas` y el rastro de la tool. Ahí se elimina "te agendé" sin tool. |
 
 Esto cambia la recomendación de §7.3 en un punto: los hooks son la razón
