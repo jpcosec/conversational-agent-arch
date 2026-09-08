@@ -1,13 +1,14 @@
 ---
 id: task-mover-logica-reimplementada-a-kgdb-sldb-pron
-status: draft
+status: active
 summary: ''
 tags:
 - workspace:desk
 - artifact:task
 routine: routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron
-current_node: checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-execution-ready
-history: []
+current_node: checklist-task-mover-logica-reimplementada-a-kgdb-sldb-pron-testing-ready
+history:
+- operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate
 references: []
 depends_on: []
 pills: []
@@ -20,6 +21,8 @@ task_type: ''
 inherits_from: []
 inherit_acceptance_context: false
 atoms: []
+closeout_evidence_verified: false
+pill_graduation_verified: true
 ---
 
 # Mover logica reimplementada a kgdb/sldb/pron

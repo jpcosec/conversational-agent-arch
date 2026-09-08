@@ -4,6 +4,18 @@ Fecha: 2026-09-08. Verificado contra el código instalado (sldb y kgdb editables
 desde `hum-ecosystem`, pron desde `legos/pron`, 49 tests de pron en verde) y
 contra este repo en la rama `dev`.
 
+## Estado al cierre (2026-09-08, rama dev)
+
+Ejecutado, no solo diagnosticado:
+
+- `kgdb init` sobre `knowledge/.sldb`; `transitions_to`, `grounded_by` y `uses_tool` como `RelationTypeDoc`, y el diagrama de Antonia como 53 `RelationDoc` (20 transiciones, 31 grounding, 2 tools). Mismos 12 nodos y 20 aristas que exportaba el flow editor antes; kgdb valida referencias colgantes en ensamblaje.
+- `ConversationStep` sin `allowed_transitions`/`grounding_atoms`/`tool_ref`; `IndexProxies` sin `embedding`/`parent`/`semantic_anchors`. `kb_agent/knowledge/kgdb_reader.py` borrado; `kb_agent/knowledge/{world,flow,embedder}.py` son lo extra legítimo (política de arranque, vista del diagrama, adaptador fastembed).
+- Embeddings en `knowledge/.pron/docs.<embedder>.json` (DocumentIndex de pron, por `hash_c`, fuera de git). Antonia indexada: 73/73 con vector.
+- `KnowledgeOperations` sin subprocess a sldb, sin `index_hierarchy`, sin coseno propio; `promote`/`organize`/`propose` y el reflector escriben por `pron.Store`.
+- pron ganó lo que faltaba (commits 230a99f, eb6cce1, bbecea5, d7f9002 en `legos/pron`): fix de paths relativos en `Store.create`, navegación genérica en `Graph`, `DocumentIndex`, `World.refresh_if_stale`.
+- Suite: 310 passed, 5 skipped (Vitali ausente). Antes de empezar estaba en 38 errores por el fixture de Don Peppe borrado.
+- Docs, specs spec2viz y atoms del desk actualizados (commits 7e1ff3a, 72d6a58, 63c8e93).
+
 ## Qué cambia respecto al v1
 
 El v1 apuntaba al lugar equivocado. Decía que `knowledge_base/` era una CLI
