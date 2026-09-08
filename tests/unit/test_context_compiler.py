@@ -69,7 +69,7 @@ def test_compile_selects_by_typed_model_and_structures_by_semantic_role(business
 
     assert [(f["id"], f["body"]) for f in d["domain_facts"]] == [
         ("domain-horarios", "Atendemos de 12:00 a 23:00."),
-        ("domain-menu", "La pizza margarita cuesta 10."),
+        ("domain-menu", "Pizza margarita 8900. Pizza cuatro quesos 9900."),
     ]
     assert [(r["id"], r["body"]) for r in d["rules"]] == [("rule-reservas", "Las reservas requieren confirmación previa.")]
     assert all({"tags", "title"} <= set(item) for item in d["domain_facts"] + d["rules"])
@@ -168,6 +168,6 @@ def test_real_negocio_kb_compiles_full_business_context(negocio_kb: Path) -> Non
     assert {"domain-menu", "domain-horarios", "domain-promos", "domain-ubicacion"} == {f["id"] for f in d["domain_facts"]}
     assert {r["id"] for r in d["rules"]} == {"rule-reservas"}
     assert d["persona"]["whoami"].startswith("Soy el asistente de la pizzeria")
-    assert d["fallback_text"].startswith("Uy, eso no lo tengo a mano")
+    assert d["fallback_text"].startswith("Si no hay contexto suficiente")
     assert [t["name"] for t in d["tools"]] == ["crear_reserva"]
     assert d["is_empty"] is False

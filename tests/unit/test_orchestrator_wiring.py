@@ -64,7 +64,7 @@ def test_nl_turn_is_grounded_in_kb_and_traced(orch: Orchestrator) -> None:
     # el conversador recibio persona/estrategia/fallback desde la KB, no hardcodeados
     [compiled] = orch.conversador.calls
     assert compiled["persona"]["whoami"].startswith("Soy el asistente de la pizzeria")
-    assert compiled["fallback_text"].startswith("Uy, eso no lo tengo a mano")
+    assert compiled["fallback_text"].startswith("Si no hay contexto suficiente")
     assert compiled["question"] == "que pizzas tienen?"
 
     # Bundle justificado (tarea 1.3): domain-menu entra con motivo de

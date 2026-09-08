@@ -91,11 +91,15 @@ def negocio_kb() -> Path:
     """
     import shutil
 
-    from tests.support.sldb_seed import seed_store, test_business_atoms
+    from tests.support.sldb_seed import DEFAULT_NAMESPACES_REGISTRY, run_sldb, seed_store, test_business_atoms
 
     if TEST_KB.exists():
         shutil.rmtree(TEST_KB)
-    seed_store(TEST_KB, test_business_atoms())
+    # ``embed=True``: vectores deterministas escritos al sembrar, ANTES de que
+    # cualquier lectura cachee los documentos (sldb memoiza en proceso).
+    seed_store(TEST_KB, test_business_atoms(), namespaces_registry=DEFAULT_NAMESPACES_REGISTRY, embed=True)
+    # El Reflector materializa propuestas como ``deskops.models:AtomDoc``.
+    run_sldb("models", "add", "deskops.models:AtomDoc", "--store", str(TEST_KB / ".sldb"), "--pythonpath", str(REPO_ROOT))
     return TEST_KB
 
 

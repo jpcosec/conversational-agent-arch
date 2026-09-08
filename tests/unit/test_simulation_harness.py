@@ -51,7 +51,7 @@ def test_conversation_ends_when_user_is_done_and_records_runtime_state(negocio_k
     assert payload["scenario_id"] == "s" and len(payload["turns"]) == 2
     assert "[1] USER > que pizzas tienen?" in t.pretty()
     no_tool_calls(t, orch)
-    mentions_any("margherita")(t, orch)
+    mentions_any("margarita")(t, orch)
     orch.close()
 
 

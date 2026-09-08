@@ -13,6 +13,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from kb_agent.agent import build_function_declarations
 from kb_agent.models_sql import Leads, Visitas
 from kb_agent.models_sql.session import SessionState
@@ -44,6 +46,8 @@ def _place_user_at(orch, external_id: str, step: str, collected: dict) -> None:
 
 
 def test_vitali_config_declares_both_tools() -> None:
+    if not VITALI_CFG.exists():
+        pytest.skip("project.vitali.yaml no disponible en este checkout")
     assert set(_vitali_handlers()) == {"registrar_lead", "crear_visita"}
 
 

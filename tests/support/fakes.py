@@ -6,8 +6,6 @@ llamadas para que los tests afirmen sobre lo que el runtime le pidio al LLM.
 """
 from __future__ import annotations
 
-import hashlib
-import random
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -269,9 +267,9 @@ class FakeEmbedder:
 
     @classmethod
     def _vector(cls, text: str) -> list[float]:
-        seed = int(hashlib.sha256(text.encode("utf-8")).hexdigest(), 16) & 0xFFFFFFFF
-        rng = random.Random(seed)
-        return [rng.uniform(-1.0, 1.0) for _ in range(cls._DIM)]
+        from tests.support.sldb_seed import hash_vector
+
+        return hash_vector(text, cls._DIM)
 
     def embed(self, texts: Any) -> list[list[float]]:
         return [self._vector(str(t)) for t in texts]

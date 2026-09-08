@@ -18,7 +18,9 @@ Cada atom se escribe como markdown segun el template de su modelo tipado
 """
 from __future__ import annotations
 
+import hashlib
 import os
+import random
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -85,11 +87,38 @@ def run_sldb(*args: str, cwd: Path | None = None) -> str:
     return proc.stdout
 
 
+EMBED_DIM = 768
+
+
+def hash_vector(text: str, dim: int = EMBED_DIM) -> list[float]:
+    """Vector pseudo-aleatorio estable derivado del texto (sha256 -> semilla).
+    Textos distintos dan vectores distintos y ~ortogonales. Es el mismo doble
+    que usa ``tests.support.fakes.FakeEmbedder`` para embeder queries."""
+    seed = int(hashlib.sha256(text.encode("utf-8")).hexdigest(), 16) & 0xFFFFFFFF
+    rng = random.Random(seed)
+    return [rng.uniform(-1.0, 1.0) for _ in range(dim)]
+
+
+def fake_embedding(atom: dict[str, Any]) -> list[float]:
+    """Embedding determinista con ESTRUCTURA: 0.8 * vector del namespace del primer
+    tag + 0.6 * vector del id. Dos atoms del mismo namespace (``domain:*``,
+    ``self:*``...) quedan a coseno ~0.64 (por sobre el umbral de aristas del
+    visualizador, 0.55) y atoms de namespaces distintos ~0. Asi la KB de prueba
+    tiene un grafo semantico con aristas sin cargar un modelo real."""
+    tags = atom.get("tags") or []
+    namespace = str(tags[0]).split(":", 1)[0] if tags else "none"
+    a, b = hash_vector(namespace), hash_vector(str(atom["id"]))
+    return [round(0.8 * x + 0.6 * y, 6) for x, y in zip(a, b)]
+
+
 def atom_markdown(atom: dict[str, Any]) -> str:
     tipo = str(atom["type"])
     tags = "\n".join(f"- {tag}" for tag in atom.get("tags", []))
     lines = ["---", f"id: {atom['id']}", f"title: {atom['title']}"]
     lines.append(f"summary: {atom.get('summary') or atom['title']}")
+    if atom.get("embedding"):
+        lines.append("embedding:")
+        lines += [f"- {v}" for v in atom["embedding"]]
     if atom.get("five_wh"):
         lines.append(f"five_wh_one_plus: {atom['five_wh']}")
     lines.append(f"atom_type: {tipo}")
@@ -174,8 +203,12 @@ def seed_store(
     *,
     store_name: str = ".sldb",
     namespaces_registry: str | None = None,
+    embed: bool = False,
 ) -> Path:
     """Crea un store SLDB en ``root`` con los atoms tipados dados. Devuelve ``root``.
+
+    ``embed=True`` escribe en cada atom un embedding determinista con estructura
+    (ver ``fake_embedding``), para tests que necesitan vectores sin modelo real.
 
     ``namespaces_registry`` (opcional): si se entrega, se escribe como
     ``<root>/desk/atoms/tag-namespaces.yaml`` -- requerido por validaciones
@@ -205,6 +238,8 @@ def seed_store(
             )
             registered.add(tipo)
 
+        if embed and not atom.get("embedding"):
+            atom = dict(atom, embedding=fake_embedding(atom))
         out_path = root / "atoms" / f"{atom['id']}.md"
         out_path.parent.mkdir(parents=True, exist_ok=True)
         out_path.write_text(atom_markdown(atom), encoding="utf-8")
@@ -239,7 +274,7 @@ def minimal_business_atoms(*, with_fallback: bool = True, with_tool: bool = True
         {
             "type": "domain", "id": "domain-menu", "title": "Domain Menu",
             "tags": ["domain:catalogo", "system:negocio"], "five_wh": "what",
-            "fields": {"answer": "La pizza margarita cuesta 10."},
+            "fields": {"answer": "Pizza margarita 8900. Pizza cuatro quesos 9900."},
         },
         {
             "type": "domain", "id": "domain-horarios", "title": "Domain Horarios",
@@ -276,6 +311,10 @@ def test_business_atoms() -> list[dict[str, Any]]:
     Contenido generico de una pizzeria; no es ninguna KB real."""
     atoms = minimal_business_atoms()
     for atom in atoms:
+        if atom["id"] == "domain-menu":
+            atom["tags"].insert(1, "conversation:steps.onboarding")
+        if atom["id"] == "rule-reservas":
+            atom["tags"].insert(1, "conversation:steps.booking")
         if atom["id"] == "tool-reserva":
             atom["tags"] = ["self:tools", "domain:pizzeria", "conversation:steps.booking", "system:negocio"]
             atom["fields"]["description"] = (
