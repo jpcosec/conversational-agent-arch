@@ -19,12 +19,10 @@ from pathlib import Path
 from typing import Any
 
 import networkx as nx
-import yaml
 
-from kgdb.graph import add_knowledge_node, load_graph, save_graph
-from kgdb.graph.utils import load_knowledge_node
+from kgdb.graph import add_knowledge_node, load_graph
 from kgdb.ingest.sldb import sldb_semantic_export_to_snapshot
-from kgdb.query.neighborhood import collect_neighborhood, collect_neighborhood_by_direction
+from kgdb.query.neighborhood import collect_neighborhood
 
 # ───────────────── relaciones de flujo conversacional ─────────────────
 REL_FLOWS_TO = "flows_to"
@@ -50,116 +48,35 @@ def _resolve_store_path(store_path: Path) -> Path:
     return store_path
 
 
-def _semantic_dag_path(store_path: Path) -> Path:
-    resolved_store = _resolve_store_path(store_path)
-    return resolved_store / "runtime" / "semantic_dag.yaml"
-
-
-def _load_semantic_dag(store_path: Path) -> dict[str, Any]:
-    semantic_dag_path = _semantic_dag_path(store_path)
-    if not semantic_dag_path.exists():
-        return {"nodes": [], "equivalences": {}}
-
-    raw = yaml.safe_load(semantic_dag_path.read_text(encoding="utf-8")) or {}
-    nodes = []
-    for node in raw.get("nodes", []) or []:
-        if not isinstance(node, dict):
-            continue
-        node_id = str(node.get("id", "")).strip()
-        if not node_id:
-            continue
-        parents = [str(parent) for parent in (node.get("parents", []) or []) if str(parent).strip()]
-        nodes.append({"id": node_id, "parents": parents})
-
-    equivalences = raw.get("equivalences", {}) or {}
-    normalized_equivalences = {
-        str(tag): [str(eq) for eq in equivalents or [] if str(eq).strip()]
-        for tag, equivalents in equivalences.items()
-        if str(tag).strip()
-    }
-    return {"nodes": nodes, "equivalences": normalized_equivalences}
-
-
 class KGDBReader:
     """Navega un grafo KGDB para resolver flujo conversacional."""
 
     def __init__(self, graph: nx.DiGraph) -> None:
         self._graph = graph
+        #: indice perezoso id pelado -> node_id (ver ``_doc_node``)
+        self._doc_nodes: dict[str, str] | None = None
 
     # ── constructores ────────────────────────────────────────────
 
     @classmethod
     def from_sldb(cls, store_path: str | Path, pythonpath: str | None = None) -> KGDBReader:
-        """Construye un grafo desde un store SLDB via el pipeline de ingest."""
-        from sldb.store.io import load_documents_index as _load_didx
-        from sldb.store.io import load_models_index as _load_midx
-        from sldb.store.io import load_store_index
+        """Construye el grafo desde un store SLDB via el pipeline de ingest.
+
+        Usa el exportador de sldb (``export_kgdb_semantic_payload``), que es
+        el productor oficial del contrato ``sldb_kgdb_semantic_export`` que
+        consume ``sldb_semantic_export_to_snapshot``. Antes esto armaba ese
+        payload a mano, caminando ``store_index -> models_index ->
+        documents_index`` con ``hasattr`` a cada campo, y salia lossy:
+        ``"model": "AtomDoc"`` hardcodeado para TODOS los documentos (perdiendo
+        el modelo real de cada uno) y ``"sections": []`` siempre.
+        """
+        from sldb.cli.model_utils import resolve_model_ref
+        from sldb.store.export import export_kgdb_semantic_payload
 
         store_path = _resolve_store_path(Path(store_path))
-        root = store_path.parent
-        store_idx = load_store_index(store_path)
-
-        # Cargar índices de cada modelo
-        documents_rows = []
-        model_rows = []
-        for m in store_idx.models:
-            if not hasattr(m, "models_index"):
-                continue
-            m_idx_path = root / m.models_index
-            if not m_idx_path.exists():
-                continue
-            m_idx = _load_midx(m_idx_path)
-            model_rows.append(m_idx)
-            d_idx_path = root / m_idx.documents_index
-            if d_idx_path.exists():
-                d_idx = _load_didx(d_idx_path)
-                documents_rows.extend(d_idx.documents)
-
-        semantic_dag = _load_semantic_dag(store_path)
-
-        payload = {
-            "contract": {
-                "name": "sldb_kgdb_semantic_export",
-                "version": 1,
-                "generated_at": "now",
-            },
-            "producer": {"name": "sldb", "version": "0.1.0", "command": ["sldb", "semantic", "export", "--format", "kgdb"]},
-            "store": {
-                "root": str(root),
-                "store_path": str(store_path),
-                "hash_a": store_idx.hash_a or "",
-                "runtime_sources": {"semantic_dag": str(_semantic_dag_path(store_path)) if _semantic_dag_path(store_path).exists() else ""},
-            },
-            "models": [
-                {
-                    "name": m.name,
-                    "model_ref": m.model_ref if hasattr(m, "model_ref") else "",
-                    "path": m.path if hasattr(m, "path") else "",
-                    "version": m.version if hasattr(m, "version") else 1,
-                    "canonical": m.canonical if hasattr(m, "canonical") else False,
-                    "family": m.family if hasattr(m, "family") else None,
-                    "semantics": m.semantics if hasattr(m, "semantics") else [],
-                    "base_models": m.base_models if hasattr(m, "base_models") else [],
-                    "hash_b": m.hash_b if hasattr(m, "hash_b") else "",
-                }
-                for m in model_rows
-            ],
-            "documents": [
-                {
-                    "id": d.name,
-                    "name": d.name,
-                    "model": "AtomDoc",
-                    "path": d.path,
-                    "hash_c": d.hash_c or "",
-                    "hash_d": d.hash_d or "",
-                    "semantic_tags": d.semantic_tags or [],
-                }
-                for d in documents_rows
-            ],
-            "sections": [],
-            "semantic_dag": semantic_dag,
-        }
-
+        payload = export_kgdb_semantic_payload(
+            store_path, store_path.parent, resolve_model_ref, pythonpath,
+        )
         snapshot = sldb_semantic_export_to_snapshot(payload)
         graph = nx.DiGraph()
         for node in snapshot.nodes:
@@ -245,7 +162,32 @@ class KGDBReader:
         return node_id[len(self.TAG_PREFIX):] if node_id.startswith(self.TAG_PREFIX) else node_id
 
     def _strip_doc(self, node_id: str) -> str:
-        return node_id[len(self.DOC_PREFIX):] if node_id.startswith(self.DOC_PREFIX) else node_id
+        """node_id del grafo -> id pelado del atom.
+
+        El exportador de sldb namespacea cada documento por su modelo
+        (``DomainAtom:atom-x``) para que dos modelos puedan tener documentos
+        homonimos. El contrato PUBLICO de este reader son ids pelados, porque
+        el compilador los compara contra los ids de la KB (``knowledge.doc``),
+        asi que el namespace se quita aca, en el borde.
+        """
+        bare = node_id[len(self.DOC_PREFIX):] if node_id.startswith(self.DOC_PREFIX) else node_id
+        return bare.split(":", 1)[1] if ":" in bare else bare
+
+    def _doc_node(self, doc_id: str) -> str | None:
+        """id pelado del atom -> node_id del grafo (o ``None`` si no esta).
+
+        Inverso de ``_strip_doc``. El indice se arma una vez por instancia:
+        el grafo es inmutable despues del ingest.
+        """
+        if doc_id.startswith(self.DOC_PREFIX):
+            return doc_id if doc_id in self._graph else None
+        if self._doc_nodes is None:
+            self._doc_nodes = {
+                self._strip_doc(n): n
+                for n in self._graph.nodes
+                if n.startswith(self.DOC_PREFIX)
+            }
+        return self._doc_nodes.get(doc_id)
 
     def list_tags(self) -> list[str]:
         """Lista todos los tags semánticos del grafo (sin prefijo)."""
@@ -310,8 +252,8 @@ class KGDBReader:
         Por defecto excluye meta-tags (type.*, workspace.*) que no sirven
         para navegación semántica.
         """
-        node = doc_id if doc_id.startswith(self.DOC_PREFIX) else f"{self.DOC_PREFIX}{doc_id}"
-        if node not in self._graph:
+        node = self._doc_node(doc_id)
+        if node is None:
             return []
         tags = []
         for _, target, data in self._graph.out_edges(node, data=True):

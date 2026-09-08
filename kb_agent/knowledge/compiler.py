@@ -55,7 +55,6 @@ logger = logging.getLogger(__name__)
 
 from .compiled_document import CompiledDocument
 from .kgdb_reader import KGDBReader
-from .sldb_reader import SLDBReader
 
 if TYPE_CHECKING:
     from knowledge_base.operations import KnowledgeOperations
@@ -68,14 +67,26 @@ class SessionStateLike(Protocol):
 
 @dataclass(slots=True)
 class ContextCompiler:
-    reader: SLDBReader
+    #: Unico dueno del acceso al store de la KB (docs_by_type / doc). Antes
+    #: era un ``SLDBReader`` propio de kb_agent que reimplementaba, con match
+    #: por substring, lo que esta clase ya hacia sobre el MISMO store: dos
+    #: parseos y dos caches por proceso. Ver el bloque "runtime: acceso al
+    #: store" en knowledge_base/operations.py.
+    #:
+    #: Es distinto de ``knowledge_ops`` de abajo, aunque en produccion el
+    #: orquestador inyecta LA MISMA instancia en los dos: este campo pide solo
+    #: lectura del store (barata, sin embedder ni SQL), mientras que
+    #: ``knowledge_ops`` significa "ops cableada para ranking semantico y
+    #: traits por SQL" -- lo que los tests unitarios dejan en None a proposito
+    #: para no pagar el modelo de embeddings.
+    knowledge: "KnowledgeOperations"
     kgdb: KGDBReader | None = None
     identity_session: Session | None = None
     session_state_loader: Callable[[int], SessionStateLike | None] | None = None
     #: Capa knowledge_base (SLDB+KGDB+SQL) para resolver traits contra su
     #: TraitAtom. El orquestador crea UNA instancia (embedder cacheado por
     #: instancia) y la reutiliza en todos los turnos; si no se inyecta (tests
-    #: unitarios del compilador), se resuelve localmente via ``reader``.
+    #: unitarios del compilador), se resuelve localmente via ``knowledge``.
     #: TAMBIEN es la fuente del embedder para la similitud que arma el bundle
     #: del turno (ver ``_build_bundle``/``_semantic_candidates``); sin ella no
     #: hay ranking semantico y el bundle cae al modo legado (todo domain/rule,
@@ -225,7 +236,7 @@ class ContextCompiler:
         """Todos los atoms de la KB (unión de todos los tipos tipados)."""
         seen: dict[str, dict[str, Any]] = {}
         for tipo in self._MODEL_TYPES:
-            for m in self.reader.find(f"type.knowledge.{tipo}"):
+            for m in self.knowledge.docs_by_type(tipo):
                 seen[m["id"]] = m
         return list(seen.values())
 
@@ -235,10 +246,10 @@ class ContextCompiler:
         Devuelve el doc completo (todos los campos del modelo) resuelto contra
         el store, ordenado por id para estabilidad.
         """
-        matched = self.reader.find(f"type.knowledge.{tipo}")
+        matched = self.knowledge.docs_by_type(tipo)
         docs = []
         for m in matched:
-            doc = self.reader.get_doc(m["id"]) or m
+            doc = self.knowledge.doc(m["id"]) or m
             docs.append(doc)
         return sorted(docs, key=lambda d: d.get("id", ""))
 
@@ -307,52 +318,36 @@ class ContextCompiler:
     #: que ``KnowledgeOperations.explore_multi``.
     _SEMANTIC_NOISE_FLOOR: ClassVar[float] = 0.05
 
-    @staticmethod
-    def _cosine_sim(a: list[float], b: list[float]) -> float:
-        dot = sum(x * y for x, y in zip(a, b))
-        na = sum(x * x for x in a) ** 0.5
-        nb = sum(y * y for y in b) ** 0.5
-        return dot / (na * nb) if na and nb else 0.0
-
     def _semantic_candidates(self, question: str, max_results: int) -> list[dict[str, Any]]:
         """Top-k por similitud coseno contra la pregunta, cualquier familia.
 
-        Reimplementa el contrato de ``KnowledgeOperations.explore_multi``
-        (misma formula de coseno, mismo piso de ruido) en vez de LLAMARLO:
-        ``explore_multi`` -> ``_semantic_search`` llama ``self._read_doc(id)``
-        por cada doc del loop, y ``_read_doc`` vuelve a escanear TODA la KB
-        (``_find_records()``) en cada llamada -- O(n^2). Medido: ~4 min en la
-        KB real (71 docs), 15-60s incluso en KBs de prueba de ~15 docs. Eso
-        volveria cada turno de produccion (y toda la suite de tests) varios
-        minutos mas lento. ``knowledge_base/operations.py`` esta PROHIBIDO
-        para este cambio, asi que se reimplementa aca con lo que YA es rapido:
-        ``self._records()`` (cacheado UNA vez en memoria por ``SLDBReader``,
-        la misma cache que ya usan ``_find_atoms``/``_find_by_model``) y el
-        embedder cacheado de ``knowledge_ops`` (misma instancia por proceso,
-        sin recargar el modelo). No replica el merge con busqueda fuzzy de
-        ``explore_multi`` (simplificacion deliberada: el top-k semantico solo
-        ya cumple el criterio de exito 1.3).
+        Delega en ``KnowledgeOperations.semantic_search``: misma formula de
+        coseno, mismo piso de ruido, mismo orden por score. Antes esto
+        reimplementaba el loop aca porque ``semantic_search`` llamaba a
+        ``_read_doc`` por cada documento y ese metodo reescanea la KB entera en
+        cada llamada -- O(n^2), ~4 min sobre la KB real. Esa causa ya no
+        existe: ``semantic_search`` lee el payload que el record ya trae.
+
+        El filtro por ``self._records()`` NO es un detalle de implementacion:
+        ``semantic_search`` recorre TODOS los documentos del store, y el
+        compilador solo compila los ``_MODEL_TYPES`` de la doctrina. Sin este
+        filtro entrarian al bundle los atoms de familia ``gate``, que son
+        invisibles al turno a proposito (se consumen post-draft en el policy
+        gate, no como grounding del Conversador).
         """
         if self.knowledge_ops is None or not question:
             return []
         try:
-            embedder = self.knowledge_ops._embedder()
-            query_vec = [float(v) for v in list(embedder.embed([question]))[0]]
+            hits = self.knowledge_ops.semantic_search(
+                question, threshold=self._SEMANTIC_NOISE_FLOOR,
+            )
         except Exception:
             return []
-
-        scored: list[tuple[float, str]] = []
-        for doc in self._records():
-            emb = doc.get("embedding")
-            if not emb or not isinstance(emb, list) or len(emb) < 2:
-                continue
-            score = self._cosine_sim(query_vec, [float(v) for v in emb])
-            if score < self._SEMANTIC_NOISE_FLOOR:
-                continue
-            scored.append((score, doc.get("id", "")))
-
-        scored.sort(key=lambda pair: pair[0], reverse=True)
-        return [{"id": doc_id, "score": round(score, 4)} for score, doc_id in scored[:max_results]]
+        compilables = {d.get("id", "") for d in self._records()}
+        return [
+            {"id": h["id"], "score": h["score"]}
+            for h in hits if h["id"] in compilables
+        ][:max_results]
 
     def _security_floor_ids(self) -> set[str]:
         """Ids de las ``RuleAtom`` con tag ``conversation:security``: el piso
@@ -471,7 +466,7 @@ class ContextCompiler:
         domain_facts: list[dict[str, str]] = []
         rules: list[dict[str, str]] = []
         for doc_id in selected_ids:
-            doc = self.reader.get_doc(doc_id)
+            doc = self.knowledge.doc(doc_id)
             tipo, family = self._tipo_y_family_de_doc(doc)
             entry = candidates[doc_id]
             bundle.append({
@@ -515,7 +510,7 @@ class ContextCompiler:
         decidido, las ``RuleAtom`` de ``conversation:security`` quedan.
 
         Validacion: cualquier ``doc_id`` que el agente devuelva y que NO
-        resuelva contra ``self.reader`` (alucinado, o de una KB vieja) se
+        resuelva contra ``self.knowledge`` (alucinado, o de una KB vieja) se
         descarta silenciosamente -- nunca se propaga un id inventado al
         Conversador/Orquestador.
 
@@ -557,7 +552,7 @@ class ContextCompiler:
         resolved: list[dict[str, Any]] = []
         for entry in merged:
             doc_id = str(entry.get("doc_id") or "")
-            doc = self.reader.get_doc(doc_id) if doc_id else None
+            doc = self.knowledge.doc(doc_id) if doc_id else None
             if doc is None:
                 continue  # id alucinado / inexistente: no entra al bundle
             tipo, family = self._tipo_y_family_de_doc(doc)
@@ -791,7 +786,7 @@ class ContextCompiler:
         for doc_id in self._step_grounding_ids(target):
             if doc_id not in grounding:
                 grounding.append(doc_id)
-            doc = self.reader.get_doc(doc_id)
+            doc = self.knowledge.doc(doc_id)
             if doc is None:
                 continue
             tipo, family = self._tipo_y_family_de_doc(doc)
@@ -862,7 +857,7 @@ class ContextCompiler:
         SLDB->KGDB (``kgdb.ingest.sldb``) nunca produce -- el grafo que arma
         ``KGDBReader.from_sldb`` es puramente tag-centrico (``tagged_as``,
         ``semantic_parent``). Por eso las transiciones se leen del campo
-        tipado ``ConversationStep.allowed_transitions`` via el reader, que es
+        tipado ``ConversationStep.allowed_transitions`` via ``knowledge``, que es
         la fuente real que ya declara cada step (y que ya usa, por el mismo
         motivo, ``frontends/flow_editor/export_flow.py``).
 
@@ -898,7 +893,7 @@ class ContextCompiler:
              propio ConversationStep y los ToolAtom del step), y
           b) los ids que el step DECLARA en su campo libre ``grounding_atoms``
              ("Grounding Atoms", separados por coma), validados contra el
-             reader (un id que no existe se descarta).
+             la KB (un id que no existe se descarta).
 
         Hasta ahora solo entraba (a): la lista que la KB escribe a mano en
         cada step (reglas de horario, oficinas, modalidad...) no llegaba ni
@@ -910,7 +905,7 @@ class ContextCompiler:
             step_doc = self._find_step_by_tag(tag)
         declared = self._split_declared_transitions(str((step_doc or {}).get("grounding_atoms") or ""))
         for doc_id in declared:
-            if doc_id not in ids and self.reader.get_doc(doc_id) is not None:
+            if doc_id not in ids and self.knowledge.doc(doc_id) is not None:
                 ids.append(doc_id)
         return ids
 
@@ -922,7 +917,7 @@ class ContextCompiler:
         sola instancia por proceso, embedder cacheado). Si no hay
         ``knowledge_ops`` (p.ej. tests unitarios del compilador solo), cae a
         la misma resolucion hecha a mano con lo que el compilador ya tiene
-        inyectado (``identity_session`` + ``reader``), sin abrir una conexion
+        inyectado (``identity_session`` + ``knowledge``), sin abrir una conexion
         SQL nueva.
         """
         if user_id is None or self.identity_session is None:
@@ -941,7 +936,7 @@ class ContextCompiler:
         )
         results: list[dict[str, Any]] = []
         for ut in self.identity_session.scalars(statement):
-            trait_doc = self.reader.get_doc(ut.trait_id) or {}
+            trait_doc = self.knowledge.doc(ut.trait_id) or {}
             results.append({
                 "trait_id": ut.trait_id,
                 "title": trait_doc.get("title", ut.trait_id),
@@ -995,7 +990,7 @@ def compile_context(
     question: str,
     user_id: int | None,
     *,
-    reader: SLDBReader,
+    knowledge: "KnowledgeOperations",
     scenario: str | None = None,
     trigger: str = "user",
     session_state: SessionStateLike | None = None,
@@ -1005,9 +1000,9 @@ def compile_context(
     knowledge_ops: "KnowledgeOperations | None" = None,
     router_agent: "RouterAgent | None" = None,
 ) -> CompiledDocument:
-    """Atajo funcional sobre ``ContextCompiler`` (el reader es obligatorio)."""
+    """Atajo funcional sobre ``ContextCompiler`` (``knowledge`` es obligatorio)."""
     compiler = ContextCompiler(
-        reader=reader,
+        knowledge=knowledge,
         identity_session=identity_session,
         session_state_loader=session_state_loader,
         kgdb=kgdb,

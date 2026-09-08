@@ -45,7 +45,6 @@ from kb_agent.models_sql.turns import Turns, TurnKind
 from kb_agent.models_sql.conversation import Conversation, ConversationStatus
 from kb_agent.knowledge.compiler import ContextCompiler
 from kb_agent.knowledge.kgdb_reader import KGDBReader
-from kb_agent.knowledge.sldb_reader import SLDBReader
 from kb_agent.perfilador.extractor import TraitExtractor
 from kb_agent.perfilador.listener import InProcessEventBus, TurnClosedEvent
 from kb_agent.lead_slots import extract_lead_slots, merge_lead_slots
@@ -142,17 +141,19 @@ class Orchestrator:
         Base.metadata.create_all(self.engine)
         self.SessionLocal = sessionmaker(bind=self.engine, future=True)
 
-        self.reader = SLDBReader(kb_root=self.kb_root, store_name=".sldb")
+        # UNICA instancia por proceso y UNICO dueno del acceso al store: el
+        # runtime lee la KB solo por aca (``docs_by_type`` / ``doc``). Antes
+        # convivia con un ``SLDBReader`` propio de kb_agent que parseaba el
+        # MISMO store una segunda vez, con su propio cache que nadie
+        # sincronizaba con este. Ademas cachea el embedder de jina por
+        # INSTANCIA (~1 min en frio), asi que se reutiliza en todos los turnos.
+        self.knowledge_ops = KnowledgeOperations(
+            kb_root=self.kb_root, db_url=db_url, pythonpath=str(self.repo_root),
+        )
         try:
             self.kgdb = KGDBReader.from_sldb(self.kb_root / ".sldb")
         except Exception:
             self.kgdb = None
-        # Una sola instancia por proceso: KnowledgeOperations cachea el
-        # embedder de jina por INSTANCIA (~1 min en frio). Se reutiliza en
-        # todos los turnos, inyectada en el ContextCompiler de cada turno.
-        self.knowledge_ops = KnowledgeOperations(
-            kb_root=self.kb_root, db_url=db_url, pythonpath=str(self.repo_root),
-        )
         self._reflector_checkpoint_store = InMemoryCheckpointStore()
 
         # LLM: solo se crea el cliente real si no inyectaron los 5 puertos
@@ -336,7 +337,7 @@ class Orchestrator:
             session.flush()
 
             compiler = ContextCompiler(
-                reader=self.reader,
+                knowledge=self.knowledge_ops,
                 kgdb=self.kgdb,
                 identity_session=session,
                 knowledge_ops=self.knowledge_ops,
@@ -595,7 +596,7 @@ class Orchestrator:
         vez de que falle la construccion del orquestador.
         """
         try:
-            return self.reader.find("type.knowledge.gate")
+            return self.knowledge_ops.docs_by_type("gate")
         except Exception:
             return []
 
@@ -608,7 +609,7 @@ class Orchestrator:
         falle la construccion del orquestador.
         """
         try:
-            return self.reader.find("type.knowledge.step")
+            return self.knowledge_ops.docs_by_type("step")
         except Exception:
             return []
 
@@ -623,11 +624,11 @@ class Orchestrator:
         no hardcodeado en el codigo del agente.
         """
         try:
-            atoms = self.reader.find("type.knowledge.agent")
+            atoms = self.knowledge_ops.docs_by_type("agent")
         except Exception:
             return None
         for atom in atoms:
-            doc = self.reader.get_doc(atom["id"]) or atom
+            doc = self.knowledge_ops.doc(atom["id"]) or atom
             if str(doc.get("role") or "").strip() != str(role):
                 continue
             framing = str(doc.get("framing") or "").strip()
@@ -931,7 +932,7 @@ class Orchestrator:
         def _analyze() -> None:
             try:
                 extractor = TraitExtractor(
-                    reader=self.reader,
+                    knowledge=self.knowledge_ops,
                     llm_mapper=self.trait_mapper,
                     knowledge_ops=self.knowledge_ops,
                 )
@@ -949,7 +950,7 @@ class Orchestrator:
             return
         try:
             TraitExtractor(
-                reader=self.reader,
+                knowledge=self.knowledge_ops,
                 identity_session=session,
                 llm_mapper=self.trait_mapper,
                 knowledge_ops=self.knowledge_ops,

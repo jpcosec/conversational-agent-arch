@@ -3,12 +3,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from kb_agent.knowledge.sldb_reader import SLDBReader
+from knowledge_base.operations import KnowledgeOperations
 
 
 def test_enrolamiento_step_is_tracked_with_expected_transitions(antonia_kb: Path) -> None:
-    reader = SLDBReader(kb_root=antonia_kb)
-    steps = reader.find("type.knowledge.step")
+    reader = KnowledgeOperations(kb_root=antonia_kb)
+    steps = reader.docs_by_type("step")
 
     assert len(steps) == 12
 
@@ -23,8 +23,8 @@ def test_enrolamiento_step_is_tracked_with_expected_transitions(antonia_kb: Path
 
 
 def test_saludo_step_can_transition_into_enrolamiento(antonia_kb: Path) -> None:
-    reader = SLDBReader(kb_root=antonia_kb)
-    steps = reader.find("type.knowledge.step")
+    reader = KnowledgeOperations(kb_root=antonia_kb)
+    steps = reader.docs_by_type("step")
     by_id = {s["id"]: s for s in steps}
 
     saludo_transitions = {t.strip() for t in by_id["step-antonia-saludo"]["allowed_transitions"].split(",")}
@@ -32,8 +32,8 @@ def test_saludo_step_can_transition_into_enrolamiento(antonia_kb: Path) -> None:
 
 
 def test_registrar_enrolamiento_tool_is_tracked_with_matching_schema(antonia_kb: Path) -> None:
-    reader = SLDBReader(kb_root=antonia_kb)
-    tools = reader.find("type.knowledge.tool")
+    reader = KnowledgeOperations(kb_root=antonia_kb)
+    tools = reader.docs_by_type("tool")
     by_id = {t["id"]: t for t in tools}
 
     assert "registrar_enrolamiento" in by_id

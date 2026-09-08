@@ -15,6 +15,8 @@ body{background:var(--bg-page);color:var(--text);font-family:var(--font-sans);he
 .pc-name{font-size:15px;font-weight:600;line-height:1.2}
 .pc-sub{font-size:11px;color:var(--text-muted)}
 .pc-actions{margin-left:auto}
+.pc-top .app-topbar-logo{height:20px}
+.pc-top .app-topbar-logo[data-testid="topbar-logo-client"]{margin-left:12px}
 .pc-new{font-size:11px;padding:7px 11px;border-radius:9px;border:1px solid var(--border-accent);color:var(--accent);background:transparent;cursor:pointer;font-family:var(--font-sans)}
 .pc-new:hover{background:rgba(212,165,116,.1)}
 .pc-scroll{flex:1;overflow-y:auto;padding:18px 14px 8px}
@@ -59,9 +61,15 @@ body{background:var(--bg-page);color:var(--text);font-family:var(--font-sans);he
 </div>
 
 <header class="pc-top">
+  <img class="app-topbar-logo" data-testid="topbar-logo-brand" alt="Antonia"
+       src="https://pharma.heyantonia.com/_next/image?url=%2Fbrand%2Fantonia-lockup-2027.png&amp;w=384&amp;q=75"
+       onerror="this.remove()">
   <div class="pc-avatar">💬</div>
   <div><div class="pc-name" id="bizName" data-testid="pc-brand">Agente</div><div class="pc-sub" id="bizSub">en línea</div></div>
   <div class="pc-actions"><button class="pc-new" id="pcNew" data-testid="pc-new-session" type="button">Nueva conversación</button></div>
+  <img class="app-topbar-logo" data-testid="topbar-logo-client" alt="Teva · Laboratorio Chile"
+       src="https://www.laboratoriochile.cl/wp-content/themes/teva-lab/assets/img/logo-teva-v2.svg"
+       onerror="this.remove()">
 </header>
 
 <div class="pc-scroll" id="scroll"><div class="pc-thread" id="thread" data-testid="pc-thread"></div></div>

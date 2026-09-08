@@ -147,7 +147,7 @@ data:
       protocol: sqlite3 directo (inspect / delete + seed + commit)
     - from: chat_api
       to: modal_image
-      protocol: lee KB baked-in (SLDBReader/KGDBReader)
+      protocol: lee KB baked-in (KnowledgeOperations/KGDBReader)
     - from: chat_api
       to: vertex_adc_secret
       protocol: credenciales ADC (google-genai Vertex)
@@ -156,7 +156,7 @@ data:
       protocol: generate_content (Conversador/Ruteador/Orquestador/Gate/Perfilador)
     - from: chat_api_local
       to: kb_store_local
-      protocol: lee KB local (SLDBReader/KGDBReader, sin Modal)
+      protocol: lee KB local (KnowledgeOperations/KGDBReader, sin Modal)
     - from: chat_api_local
       to: gemini_llm
       protocol: generate_content (API key o ADC local)

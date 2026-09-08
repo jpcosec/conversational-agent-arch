@@ -113,7 +113,7 @@ data:
 
     # ── Módulos Python auxiliares (proyectan la KB) ─────────────────────
     ExportFlow:
-      label: "flow_editor.export_flow.export (SLDBReader -> ConversationStep)"
+      label: "flow_editor.export_flow.export (KnowledgeOperations -> ConversationStep)"
       kind: core
     ExportGraph:
       label: "viz.export_graph.build_graph (KB + embeddings + PCA; sólo backend)"
@@ -133,8 +133,8 @@ data:
     ProjectConfig:
       label: kb_agent.project_config (load_project_config · demo_mode)
       kind: boundary
-    SLDBReader:
-      label: kb_agent.knowledge.sldb_reader.SLDBReader
+    KnowledgeOps:
+      label: knowledge_base.operations.KnowledgeOperations
       kind: boundary
     ModelsSql:
       label: kb_agent.models_sql (Users, UserTraits, ChatHistory, Turns)
@@ -238,17 +238,17 @@ data:
       relation: uses
       label: build_graph(kb_root)
     - from: ApiTaxonomy
-      to: SLDBReader
+      to: KnowledgeOps
       relation: reads
-      label: reader.find(type.knowledge.*)
+      label: docs_by_tag(type.knowledge)
     - from: ApiTools
-      to: SLDBReader
+      to: KnowledgeOps
       relation: reads
-      label: reader.find(type.knowledge.tool)
+      label: docs_by_type(tool)
     - from: ApiAtom
-      to: SLDBReader
+      to: KnowledgeOps
       relation: reads
-      label: reader.get_doc
+      label: doc(atom_id)
     - from: ApiProfiles
       to: ModelsSql
       relation: reads
@@ -264,9 +264,9 @@ data:
 
     # los proyectores leen la KB real
     - from: ExportFlow
-      to: SLDBReader
+      to: KnowledgeOps
       relation: reads
-      label: ConversationStep
+      label: docs_by_type(step)
     - from: ExportGraph
       to: KnowledgeOps
       relation: reads

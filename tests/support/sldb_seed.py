@@ -11,7 +11,7 @@ Uso::
          "fields": {"description": "Crea una reserva.",
                     "parameters": '{"name": "crear_reserva", "parameters": {...}}'}},
     ])
-    reader = SLDBReader(kb_root=root)
+    reader = KnowledgeOperations(kb_root=root)
 
 Cada atom se escribe como markdown segun el template de su modelo tipado
 (``kb_agent.models.knowledge``) y se trackea con el CLI real de ``sldb``.

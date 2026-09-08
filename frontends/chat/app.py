@@ -1,6 +1,6 @@
 """App factory FastAPI del runtime (chat UI + editor de flujo + perfilado + Twilio).
 
-Cada turno pasa por: SLDBReader -> ContextCompiler (SLDB+KGDB) -> RouterStateMachine
+Cada turno pasa por: KnowledgeOperations -> ContextCompiler (SLDB+KGDB) -> RouterStateMachine
 -> policy decide_turn -> Conversador (LLM) -> Tool dispatcher (registry) -> Perfilador.
 
 Endpoints:
@@ -451,7 +451,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                 "five_wh_one_plus": doc.get("five_wh_one_plus"),
                 "path": doc.get("path"),
             }
-        doc = _orch().reader.get_doc(atom_id)
+        doc = _orch().knowledge_ops.doc(atom_id)
         if doc is None:
             raise HTTPException(status_code=404, detail=f"atom {atom_id} no encontrado")
         return {
@@ -518,11 +518,11 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             "trait": ("trait", "user"),
         }
 
-        reader = _orch().reader
+        knowledge = _orch().knowledge_ops
         families: dict[str, dict] = {f: {"name": f, "children": {}, "orphans": []}
                                      for f in ("self", "domain", "conversation", "gate", "user")}
 
-        for doc in reader.find("type.knowledge."):
+        for doc in knowledge.docs_by_tag("type.knowledge"):
             tags: list[str] = doc.get("tags") or []
             type_tag = next((t for t in tags if t.startswith("type.knowledge.")), None)
             if not type_tag:
@@ -573,9 +573,9 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
     def tools() -> JSONResponse:
         if app.state.demo_mode:
             return JSONResponse(demo_tools())
-        reader = _orch().reader
+        knowledge = _orch().knowledge_ops
         tools_list: list[dict] = []
-        for doc in reader.find("type.knowledge.tool"):
+        for doc in knowledge.docs_by_type("tool"):
             tool_id = doc.get("id")
             if not tool_id:
                 continue
@@ -675,7 +675,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             engine.dispose()
 
         fichas: dict[str, dict] = {}
-        for doc in _orch().reader.find("type.knowledge.trait"):
+        for doc in _orch().knowledge_ops.docs_by_type("trait"):
             tid = doc.get("id")
             if tid is None:
                 continue
@@ -823,7 +823,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
                 ]
                 traits = []
                 for tid in trait_ids:
-                    doc = orch.reader.get_doc(tid) or {}
+                    doc = orch.knowledge_ops.doc(tid) or {}
                     traits.append({"trait_id": tid, "title": doc.get("title") or tid})
                 history_rows = s.query(ChatHistory).filter(
                     ChatHistory.user_id == u.id
@@ -899,7 +899,7 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             st["state"] = "pending" if active_idx is None else ("done" if i < active_idx else "active" if i == active_idx else "pending")
         traits = []
         for tid in trait_ids:
-            doc = orch.reader.get_doc(tid) or {}
+            doc = orch.knowledge_ops.doc(tid) or {}
             traits.append({"trait_id": tid, "title": doc.get("title") or tid, "category": doc.get("category") or ""})
         return JSONResponse({
             "external_id": ext,

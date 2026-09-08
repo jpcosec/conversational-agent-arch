@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 from kb_agent.models_sql.identity import Base, UserTraits, Users
 from kb_agent.knowledge.compiler import ContextCompiler, compile_context
 from kb_agent.knowledge.kgdb_reader import KGDBReader
-from kb_agent.knowledge.sldb_reader import SLDBReader
+from knowledge_base.operations import KnowledgeOperations
 from tests.support.sldb_seed import minimal_business_atoms, seed_store
 
 
@@ -62,7 +62,7 @@ def test_compile_selects_by_typed_model_and_structures_by_semantic_role(business
     d = compile_context(
         question="¿Qué opciones vegetarianas tienen y hasta qué hora atienden?",
         user_id=user_id,
-        reader=SLDBReader(kb_root=business_root),
+        knowledge=KnowledgeOperations(kb_root=business_root),
         identity_session=identity_session,
         session_state=SessionStateStub(),
     ).to_dict()
@@ -91,7 +91,7 @@ def test_compile_selects_by_typed_model_and_structures_by_semantic_role(business
 
 def test_compile_marks_empty_when_no_domain_or_rule_atoms(tmp_path: Path) -> None:
     root = seed_store(tmp_path / "solo_tool", [a for a in minimal_business_atoms() if a["type"] == "tool"])
-    d = compile_context(question="¿Promos?", user_id=None, reader=SLDBReader(kb_root=root), trigger="cron").to_dict()
+    d = compile_context(question="¿Promos?", user_id=None, knowledge=KnowledgeOperations(kb_root=root), trigger="cron").to_dict()
     assert d["domain_facts"] == [] and d["rules"] == []
     assert d["is_empty"] is True
     assert d["user_traits"] == []
@@ -99,8 +99,8 @@ def test_compile_marks_empty_when_no_domain_or_rule_atoms(tmp_path: Path) -> Non
 
 
 def test_scenario_resolution_argument_then_session_then_loader_then_default(business_root: Path) -> None:
-    reader = SLDBReader(kb_root=business_root)
-    compiler = ContextCompiler(reader=reader, session_state_loader=lambda uid: SessionStateStub(active_domain="cargado"))
+    reader = KnowledgeOperations(kb_root=business_root)
+    compiler = ContextCompiler(knowledge=reader, session_state_loader=lambda uid: SessionStateStub(active_domain="cargado"))
 
     assert compiler.compile(question="q", user_id=1, scenario="arg").scenario == "arg"
     assert compiler.compile(question="q", user_id=1, session_state=SessionStateStub(active_domain="sesion")).scenario == "sesion"
@@ -110,8 +110,8 @@ def test_scenario_resolution_argument_then_session_then_loader_then_default(busi
 
 
 def test_kgdb_augments_flow_node_transitions_and_grounding(donpeppe_kb: Path) -> None:
-    reader = SLDBReader(kb_root=donpeppe_kb)
-    compiler = ContextCompiler(reader=reader, kgdb=KGDBReader.from_sldb(donpeppe_kb / ".sldb"))
+    reader = KnowledgeOperations(kb_root=donpeppe_kb)
+    compiler = ContextCompiler(knowledge=reader, kgdb=KGDBReader.from_sldb(donpeppe_kb / ".sldb"))
 
     fresh = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub())
     assert fresh.flow_node == "conversation:steps.onboarding"  # default: onboarding
@@ -151,7 +151,7 @@ def test_entry_step_is_graph_root_when_kb_has_no_onboarding(tmp_path: Path) -> N
         _step("step-cierre", "cierre", "(ninguna, paso terminal)"),
     ]
     root = seed_store(tmp_path / "flujo", atoms)
-    compiler = ContextCompiler(reader=SLDBReader(kb_root=root), kgdb=KGDBReader.from_sldb(root / ".sldb"))
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=root), kgdb=KGDBReader.from_sldb(root / ".sldb"))
 
     fresh = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub())
     assert fresh.flow_node == "conversation:steps.saludo"
@@ -164,7 +164,7 @@ def test_entry_step_is_graph_root_when_kb_has_no_onboarding(tmp_path: Path) -> N
 
 
 def test_real_donpeppe_kb_compiles_full_business_context(donpeppe_kb: Path) -> None:
-    d = compile_context(question="que pizzas hay?", user_id=None, reader=SLDBReader(kb_root=donpeppe_kb)).to_dict()
+    d = compile_context(question="que pizzas hay?", user_id=None, knowledge=KnowledgeOperations(kb_root=donpeppe_kb)).to_dict()
     assert {"atom-donpeppe-carta", "atom-donpeppe-horarios", "atom-donpeppe-promos", "atom-donpeppe-ubicacion"} == {f["id"] for f in d["domain_facts"]}
     assert {r["id"] for r in d["rules"]} == {"atom-donpeppe-regla-reservas"}
     assert d["persona"]["whoami"].startswith("Soy el asistente virtual de Don Peppe")

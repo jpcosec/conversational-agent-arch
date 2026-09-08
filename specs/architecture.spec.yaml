@@ -100,12 +100,9 @@ data:
     class_knowledge_kgdb_reader_KGDBReader:
       label: KGDBReader
       kind: class
-    module_knowledge_sldb_reader:
-      label: knowledge.sldb_reader
+    module_lead_slots:
+      label: lead_slots
       kind: module
-    class_knowledge_sldb_reader_SLDBReader:
-      label: SLDBReader
-      kind: class
     module_llm:
       label: llm
       kind: module
@@ -358,9 +355,6 @@ data:
     class_reflector_reader_ReflectorBatchReaderJob:
       label: ReflectorBatchReaderJob
       kind: class
-    module_seed_demo_users:
-      label: seed_demo_users
-      kind: module
     module_state_machine:
       label: state_machine
       kind: module
@@ -475,14 +469,8 @@ data:
     module_kgdb_reader:
       label: reader
       kind: external
-    module_sldb_reader:
-      label: reader
-      kind: external
     module_kgdb_graph:
       label: graph
-      kind: external
-    module_kgdb_graph_utils:
-      label: utils
       kind: external
     module_kgdb_ingest_sldb:
       label: sldb
@@ -490,17 +478,11 @@ data:
     module_kgdb_query_neighborhood:
       label: neighborhood
       kind: external
-    module_sldb_store_io:
-      label: io
-      kind: external
     module_sldb_cli_model_utils:
       label: utils
       kind: external
-    module_sldb_store_query:
-      label: query
-      kind: external
-    module_sldb_store_query_engine_models:
-      label: models
+    module_sldb_store_export:
+      label: export
       kind: external
     module_kb_agent_perfilador_extractor:
       label: extractor
@@ -520,8 +502,14 @@ data:
     module_identity:
       label: identity
       kind: external
+    module_time:
+      label: time
+      kind: external
     module_uuid:
       label: uuid
+      kind: external
+    module_sqlalchemy_pool:
+      label: pool
       kind: external
     module_kb_agent_agents_gate:
       label: gate
@@ -550,11 +538,11 @@ data:
     module_kb_agent_knowledge_kgdb_reader:
       label: reader
       kind: external
-    module_kb_agent_knowledge_sldb_reader:
-      label: reader
-      kind: external
     module_kb_agent_perfilador_listener:
       label: listener
+      kind: external
+    module_kb_agent_lead_slots:
+      label: slots
       kind: external
     module_kb_agent_pii_scrubber:
       label: scrubber
@@ -585,6 +573,9 @@ data:
       kind: external
     module_sldb_runtime_validation:
       label: validation
+      kind: external
+    module_sldb_store_io:
+      label: io
       kind: external
     module_sldb_store_layout:
       label: layout
@@ -840,9 +831,6 @@ data:
     to: module_kgdb_reader
     relation: imports
   - from: module_knowledge_compiler
-    to: module_sldb_reader
-    relation: imports
-  - from: module_knowledge_compiler
     to: module_knowledge_base_operations
     relation: imports
   - from: module_knowledge_compiler
@@ -864,43 +852,22 @@ data:
     to: module_kgdb_graph
     relation: imports
   - from: module_knowledge_kgdb_reader
-    to: module_kgdb_graph_utils
-    relation: imports
-  - from: module_knowledge_kgdb_reader
     to: module_kgdb_ingest_sldb
     relation: imports
   - from: module_knowledge_kgdb_reader
     to: module_kgdb_query_neighborhood
     relation: imports
   - from: module_knowledge_kgdb_reader
-    to: module_sldb_store_io
-    relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: module_sldb_store_io
-    relation: imports
-  - from: module_knowledge_kgdb_reader
-    to: module_sldb_store_io
-    relation: imports
-  - from: module_knowledge_sldb_reader
-    to: class_knowledge_sldb_reader_SLDBReader
-    relation: defines
-  - from: module_knowledge_sldb_reader
-    to: module___future__
-    relation: imports
-  - from: module_knowledge_sldb_reader
-    to: module_pathlib
-    relation: imports
-  - from: module_knowledge_sldb_reader
-    to: module_typing
-    relation: imports
-  - from: module_knowledge_sldb_reader
     to: module_sldb_cli_model_utils
     relation: imports
-  - from: module_knowledge_sldb_reader
-    to: module_sldb_store_query
+  - from: module_knowledge_kgdb_reader
+    to: module_sldb_store_export
     relation: imports
-  - from: module_knowledge_sldb_reader
-    to: module_sldb_store_query_engine_models
+  - from: module_lead_slots
+    to: module___future__
+    relation: imports
+  - from: module_lead_slots
+    to: module_typing
     relation: imports
   - from: module_llm
     to: class_llm_Conversador
@@ -1314,6 +1281,9 @@ data:
     to: module___future__
     relation: imports
   - from: module_orchestrator
+    to: module_time
+    relation: imports
+  - from: module_orchestrator
     to: module_collections_abc
     relation: imports
   - from: module_orchestrator
@@ -1330,6 +1300,9 @@ data:
     relation: imports
   - from: module_orchestrator
     to: module_sqlalchemy
+    relation: imports
+  - from: module_orchestrator
+    to: module_sqlalchemy_pool
     relation: imports
   - from: module_orchestrator
     to: module_sqlalchemy_exc
@@ -1380,13 +1353,16 @@ data:
     to: module_kb_agent_knowledge_kgdb_reader
     relation: imports
   - from: module_orchestrator
-    to: module_kb_agent_knowledge_sldb_reader
-    relation: imports
-  - from: module_orchestrator
     to: module_kb_agent_perfilador_extractor
     relation: imports
   - from: module_orchestrator
     to: module_kb_agent_perfilador_listener
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_lead_slots
+    relation: imports
+  - from: module_orchestrator
+    to: module_kb_agent_pii_scrubber
     relation: imports
   - from: module_orchestrator
     to: module_kb_agent_pii_scrubber
@@ -1435,9 +1411,6 @@ data:
     relation: imports
   - from: module_perfilador_extractor
     to: module_sqlalchemy_orm
-    relation: imports
-  - from: module_perfilador_extractor
-    to: module_kb_agent_knowledge_sldb_reader
     relation: imports
   - from: module_perfilador_extractor
     to: module_kb_agent_perfilador_traits_store
@@ -1581,7 +1554,7 @@ data:
     to: module_sldb_store_ops
     relation: imports
   - from: module_reflector_generator
-    to: module_kb_agent_knowledge_sldb_reader
+    to: module_knowledge_base_operations
     relation: imports
   - from: module_reflector_generator
     to: module_kb_agent_reflector_reader
@@ -1624,30 +1597,6 @@ data:
     relation: imports
   - from: module_reflector_reader
     to: module_kb_agent_models_sql_session
-    relation: imports
-  - from: module_seed_demo_users
-    to: module___future__
-    relation: imports
-  - from: module_seed_demo_users
-    to: module_datetime
-    relation: imports
-  - from: module_seed_demo_users
-    to: module_sqlalchemy
-    relation: imports
-  - from: module_seed_demo_users
-    to: module_sqlalchemy_orm
-    relation: imports
-  - from: module_seed_demo_users
-    to: module_kb_agent_models_sql_identity
-    relation: imports
-  - from: module_seed_demo_users
-    to: module_kb_agent_models_sql_session
-    relation: imports
-  - from: module_seed_demo_users
-    to: module_kb_agent_models_sql_turns
-    relation: imports
-  - from: module_seed_demo_users
-    to: module_kb_agent_project_config
     relation: imports
   - from: module_state_machine
     to: class_state_machine_RouterNode

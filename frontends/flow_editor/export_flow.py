@@ -12,7 +12,7 @@ from __future__ import annotations
 import json
 import sys
 
-from kb_agent.knowledge.sldb_reader import SLDBReader
+from knowledge_base.operations import KnowledgeOperations
 
 
 def _split(v: str) -> list[str]:
@@ -23,8 +23,7 @@ def _split(v: str) -> list[str]:
 
 
 def export(kb_root: str) -> dict:
-    r = SLDBReader(kb_root=kb_root, store_name=".sldb")
-    steps = r.find("type.knowledge.step")
+    steps = KnowledgeOperations(kb_root=kb_root).docs_by_type("step")
 
     # tag conversation:steps.<name> -> step id
     tag_to_id: dict[str, str] = {}

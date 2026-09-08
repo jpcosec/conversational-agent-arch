@@ -31,8 +31,7 @@ graph TD
     class_knowledge_compiler_ContextCompiler["ContextCompiler"]
     module_knowledge_kgdb_reader["knowledge.kgdb_reader"]
     class_knowledge_kgdb_reader_KGDBReader["KGDBReader"]
-    module_knowledge_sldb_reader["knowledge.sldb_reader"]
-    class_knowledge_sldb_reader_SLDBReader["SLDBReader"]
+    module_lead_slots["lead_slots"]
     module_llm["llm"]
     class_llm_Conversador["Conversador"]
     class_llm_TraitMapper["TraitMapper"]
@@ -117,7 +116,6 @@ graph TD
     class_reflector_reader_CheckpointStore["CheckpointStore"]
     class_reflector_reader_InMemoryCheckpointStore["InMemoryCheckpointStore"]
     class_reflector_reader_ReflectorBatchReaderJob["ReflectorBatchReaderJob"]
-    module_seed_demo_users["seed_demo_users"]
     module_state_machine["state_machine"]
     class_state_machine_RouterNode["RouterNode"]
     class_state_machine_SessionState["SessionState"]
@@ -156,22 +154,20 @@ graph TD
     module_kb_agent_models_sql_session["session"]
     module_compiled_document["document"]
     module_kgdb_reader["reader"]
-    module_sldb_reader["reader"]
     module_kgdb_graph["graph"]
-    module_kgdb_graph_utils["utils"]
     module_kgdb_ingest_sldb["sldb"]
     module_kgdb_query_neighborhood["neighborhood"]
-    module_sldb_store_io["io"]
     module_sldb_cli_model_utils["utils"]
-    module_sldb_store_query["query"]
-    module_sldb_store_query_engine_models["models"]
+    module_sldb_store_export["export"]
     module_kb_agent_perfilador_extractor["extractor"]
     module_google["google"]
     module_sldb["sldb"]
     module_index_proxies["proxies"]
     module_domain["domain"]
     module_identity["identity"]
+    module_time["time"]
     module_uuid["uuid"]
+    module_sqlalchemy_pool["pool"]
     module_kb_agent_agents_gate["gate"]
     module_kb_agent_agents_orchestrator_agent["agent"]
     module_kb_agent_llm["llm"]
@@ -181,8 +177,8 @@ graph TD
     module_kb_agent_models_sql_conversation["conversation"]
     module_kb_agent_knowledge_compiler["compiler"]
     module_kb_agent_knowledge_kgdb_reader["reader"]
-    module_kb_agent_knowledge_sldb_reader["reader"]
     module_kb_agent_perfilador_listener["listener"]
+    module_kb_agent_lead_slots["slots"]
     module_kb_agent_pii_scrubber["scrubber"]
     module_kb_agent_reflector["reflector"]
     module_kb_agent_tools["tools"]
@@ -193,6 +189,7 @@ graph TD
     module_collections["collections"]
     module_deskops_atom_tags["tags"]
     module_sldb_runtime_validation["validation"]
+    module_sldb_store_io["io"]
     module_sldb_store_layout["layout"]
     module_sldb_store_ops["ops"]
     module_kb_agent_reflector_reader["reader"]
@@ -277,7 +274,6 @@ graph TD
     module_knowledge_compiler -->|"imports"| module_kb_agent_models_sql_session
     module_knowledge_compiler -->|"imports"| module_compiled_document
     module_knowledge_compiler -->|"imports"| module_kgdb_reader
-    module_knowledge_compiler -->|"imports"| module_sldb_reader
     module_knowledge_compiler -->|"imports"| module_knowledge_base_operations
     module_knowledge_compiler -->|"imports"| module_kb_agent_agents_router
     module_knowledge_kgdb_reader -->|"defines"| class_knowledge_kgdb_reader_KGDBReader
@@ -285,19 +281,12 @@ graph TD
     module_knowledge_kgdb_reader -->|"imports"| module_pathlib
     module_knowledge_kgdb_reader -->|"imports"| module_typing
     module_knowledge_kgdb_reader -->|"imports"| module_kgdb_graph
-    module_knowledge_kgdb_reader -->|"imports"| module_kgdb_graph_utils
     module_knowledge_kgdb_reader -->|"imports"| module_kgdb_ingest_sldb
     module_knowledge_kgdb_reader -->|"imports"| module_kgdb_query_neighborhood
-    module_knowledge_kgdb_reader -->|"imports"| module_sldb_store_io
-    module_knowledge_kgdb_reader -->|"imports"| module_sldb_store_io
-    module_knowledge_kgdb_reader -->|"imports"| module_sldb_store_io
-    module_knowledge_sldb_reader -->|"defines"| class_knowledge_sldb_reader_SLDBReader
-    module_knowledge_sldb_reader -->|"imports"| module___future__
-    module_knowledge_sldb_reader -->|"imports"| module_pathlib
-    module_knowledge_sldb_reader -->|"imports"| module_typing
-    module_knowledge_sldb_reader -->|"imports"| module_sldb_cli_model_utils
-    module_knowledge_sldb_reader -->|"imports"| module_sldb_store_query
-    module_knowledge_sldb_reader -->|"imports"| module_sldb_store_query_engine_models
+    module_knowledge_kgdb_reader -->|"imports"| module_sldb_cli_model_utils
+    module_knowledge_kgdb_reader -->|"imports"| module_sldb_store_export
+    module_lead_slots -->|"imports"| module___future__
+    module_lead_slots -->|"imports"| module_typing
     module_llm -->|"defines"| class_llm_Conversador
     module_llm -->|"defines"| class_llm_TraitMapper
     module_llm -->|"defines"| class_llm_GeminiConversador
@@ -435,12 +424,14 @@ graph TD
     module_models_sql_turns -->|"imports"| module_identity
     module_orchestrator -->|"defines"| class_orchestrator_Orchestrator
     module_orchestrator -->|"imports"| module___future__
+    module_orchestrator -->|"imports"| module_time
     module_orchestrator -->|"imports"| module_collections_abc
     module_orchestrator -->|"imports"| module_datetime
     module_orchestrator -->|"imports"| module_pathlib
     module_orchestrator -->|"imports"| module_typing
     module_orchestrator -->|"imports"| module_uuid
     module_orchestrator -->|"imports"| module_sqlalchemy
+    module_orchestrator -->|"imports"| module_sqlalchemy_pool
     module_orchestrator -->|"imports"| module_sqlalchemy_exc
     module_orchestrator -->|"imports"| module_sqlalchemy_orm
     module_orchestrator -->|"imports"| module_kb_agent_agent
@@ -457,9 +448,10 @@ graph TD
     module_orchestrator -->|"imports"| module_kb_agent_models_sql_conversation
     module_orchestrator -->|"imports"| module_kb_agent_knowledge_compiler
     module_orchestrator -->|"imports"| module_kb_agent_knowledge_kgdb_reader
-    module_orchestrator -->|"imports"| module_kb_agent_knowledge_sldb_reader
     module_orchestrator -->|"imports"| module_kb_agent_perfilador_extractor
     module_orchestrator -->|"imports"| module_kb_agent_perfilador_listener
+    module_orchestrator -->|"imports"| module_kb_agent_lead_slots
+    module_orchestrator -->|"imports"| module_kb_agent_pii_scrubber
     module_orchestrator -->|"imports"| module_kb_agent_pii_scrubber
     module_orchestrator -->|"imports"| module_kb_agent_project_config
     module_orchestrator -->|"imports"| module_kb_agent_reflector
@@ -476,7 +468,6 @@ graph TD
     module_perfilador_extractor -->|"imports"| module_textwrap
     module_perfilador_extractor -->|"imports"| module_typing
     module_perfilador_extractor -->|"imports"| module_sqlalchemy_orm
-    module_perfilador_extractor -->|"imports"| module_kb_agent_knowledge_sldb_reader
     module_perfilador_extractor -->|"imports"| module_kb_agent_perfilador_traits_store
     module_perfilador_extractor -->|"imports"| module_knowledge_base_operations
     module_perfilador_extractor -->|"imports"| module_knowledge_base_operations
@@ -524,7 +515,7 @@ graph TD
     module_reflector_generator -->|"imports"| module_sldb_store_io
     module_reflector_generator -->|"imports"| module_sldb_store_layout
     module_reflector_generator -->|"imports"| module_sldb_store_ops
-    module_reflector_generator -->|"imports"| module_kb_agent_knowledge_sldb_reader
+    module_reflector_generator -->|"imports"| module_knowledge_base_operations
     module_reflector_generator -->|"imports"| module_kb_agent_reflector_reader
     module_reflector_reader -->|"defines"| class_reflector_reader_ReflectorHistoryRow
     module_reflector_reader -->|"defines"| class_reflector_reader_ReaderCheckpoint
@@ -539,14 +530,6 @@ graph TD
     module_reflector_reader -->|"imports"| module_sqlalchemy
     module_reflector_reader -->|"imports"| module_sqlalchemy_orm
     module_reflector_reader -->|"imports"| module_kb_agent_models_sql_session
-    module_seed_demo_users -->|"imports"| module___future__
-    module_seed_demo_users -->|"imports"| module_datetime
-    module_seed_demo_users -->|"imports"| module_sqlalchemy
-    module_seed_demo_users -->|"imports"| module_sqlalchemy_orm
-    module_seed_demo_users -->|"imports"| module_kb_agent_models_sql_identity
-    module_seed_demo_users -->|"imports"| module_kb_agent_models_sql_session
-    module_seed_demo_users -->|"imports"| module_kb_agent_models_sql_turns
-    module_seed_demo_users -->|"imports"| module_kb_agent_project_config
     module_state_machine -->|"defines"| class_state_machine_RouterNode
     module_state_machine -->|"defines"| class_state_machine_SessionState
     module_state_machine -->|"defines"| class_state_machine_CronTriggerPayload

@@ -55,7 +55,47 @@
     if (input && cfg.input_placeholder) input.placeholder = cfg.input_placeholder;
   }
 
+  //: Logos de marca del piloto HCP: lockup de Antonia a la izquierda (antes
+  //  del brand textual, que los tests siguen leyendo por [data-testid=nav-brand])
+  //  y logo de Teva/Laboratorio Chile a la derecha, despues de los chips.
+  //  Van aca y no en los 6 index.html por la misma razon que el resto de este
+  //  script: una sola copia en vez de seis que se desincronizan.
+  var LOGOS = {
+    brand: {
+      src: 'https://pharma.heyantonia.com/_next/image?url=%2Fbrand%2Fantonia-lockup-2027.png&w=384&q=75',
+      alt: 'Antonia',
+      testid: 'topbar-logo-brand'
+    },
+    client: {
+      src: 'https://www.laboratoriochile.cl/wp-content/themes/teva-lab/assets/img/logo-teva-v2.svg',
+      alt: 'Teva · Laboratorio Chile',
+      testid: 'topbar-logo-client'
+    }
+  };
+
+  function makeLogo(spec) {
+    var img = document.createElement('img');
+    img.className = 'app-topbar-logo';
+    img.src = spec.src;
+    img.alt = spec.alt;
+    img.setAttribute('data-testid', spec.testid);
+    // Un logo que no carga no debe dejar el icono roto en la topbar.
+    img.addEventListener('error', function () { img.remove(); });
+    return img;
+  }
+
+  function mountLogos() {
+    var bar = document.querySelector('.app-topbar');
+    if (!bar || bar.querySelector('.app-topbar-logo')) return;
+    var brand = document.getElementById('appBrand');
+    if (brand) bar.insertBefore(makeLogo(LOGOS.brand), brand);
+    var meta = bar.querySelector('.app-topbar-meta');
+    if (meta) meta.appendChild(makeLogo(LOGOS.client));
+    else bar.appendChild(makeLogo(LOGOS.client));
+  }
+
   function boot() {
+    mountLogos();
     markActive();
     markGroups();
     Promise.all([
