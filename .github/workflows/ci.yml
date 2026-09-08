@@ -3,7 +3,7 @@ name: ci
 # Dos capas:
 #   static  -> gate liviano sin deps (compila, config, docs proyectados, no-hardcode).
 #   suite   -> suite offline real (unit + integration) instalando las 3 deps
-#              locales (sldb, kgdb, deskops) por git. Se pudo habilitar al
+#              locales (sldb, kgdb, deskops, pron) por git. Se pudo habilitar al
 #              publicar kgdb (jpcosec/kgdb); antes no habia remoto y solo
 #              corria el gate estatico.
 #
@@ -88,7 +88,8 @@ jobs:
           pip install \
             "git+https://github.com/jpcosec/sldb.git" \
             "git+https://github.com/jpcosec/kgdb.git" \
-            "git+https://github.com/jpcosec/opsys.git#egg=deskops"
+            "git+https://github.com/jpcosec/opsys.git#egg=deskops" \
+            "git+https://github.com/jpcosec/pron.git"
 
       - name: Instalar deps de runtime
         run: |
