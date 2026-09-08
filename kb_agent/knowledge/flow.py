@@ -109,18 +109,20 @@ class ConversationFlow:
         return list(s.grounding) if s else []
 
     def entry(self) -> str | None:
-        """Step de entrada: ``.onboarding`` si la KB lo declara; si no, una raiz del grafo
-        de transiciones (un step al que ningun otro transiciona; la primera por tag); si
-        no hay raiz (ciclo), el primer step por tag."""
+        """Step de entrada: una raiz del grafo de ``transitions_to`` (un step al que
+        ningun otro transiciona; si hay varias, la primera por tag). Solo cuando el
+        diagrama no tiene raiz (es un ciclo) se cae a ``.onboarding`` si existe, y si
+        no, al primer step por tag. La raiz manda: la KB de Antonia entra por
+        ``saludo`` (que decide si la persona es nueva) aunque tenga un ``onboarding``."""
         tags = self.tags()
         if not tags:
             return None
-        onboarding = next((t for t in tags if t.endswith(".onboarding")), None)
-        if onboarding:
-            return onboarding
         targets = {t for s in self._index().values() for t in s.transitions}
         roots = [t for t in tags if t not in targets]
-        return roots[0] if roots else tags[0]
+        if roots:
+            return roots[0]
+        onboarding = next((t for t in tags if t.endswith(".onboarding")), None)
+        return onboarding or tags[0]
 
     def resolve_active(self, current: str | None) -> str | None:
         """El step de la sesion si existe en el diagrama; si no, el de entrada."""
