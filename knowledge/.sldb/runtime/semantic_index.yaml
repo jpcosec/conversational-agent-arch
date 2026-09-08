@@ -178,6 +178,8 @@ tags:
   - transitions_to--step-antonia-saludo--step-antonia-onboarding
   - transitions_to--step-antonia-saludo--step-antonia-registro-estado
   - transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
+  - uses_tool--step-antonia-agendar-recordatorio--agendar_recordatorio
+  - uses_tool--step-antonia-enrolamiento--registrar_enrolamiento
   self:estilo:
   - style-antonia
   self:limites:
@@ -408,6 +410,8 @@ tags:
   - transitions_to--step-antonia-saludo--step-antonia-onboarding
   - transitions_to--step-antonia-saludo--step-antonia-registro-estado
   - transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
+  - uses_tool--step-antonia-agendar-recordatorio--agendar_recordatorio
+  - uses_tool--step-antonia-enrolamiento--registrar_enrolamiento
   type.relation.type:
   - reltype-applies_to_source
   - reltype-applies_to_target
@@ -1513,6 +1517,18 @@ documents:
   grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico:
     model: RelationDoc
     path: relations/grounded_by--step-antonia-enrolamiento--rule-antonia-derivar-clinico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  uses_tool--step-antonia-agendar-recordatorio--agendar_recordatorio:
+    model: RelationDoc
+    path: relations/uses_tool--step-antonia-agendar-recordatorio--agendar_recordatorio.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  uses_tool--step-antonia-enrolamiento--registrar_enrolamiento:
+    model: RelationDoc
+    path: relations/uses_tool--step-antonia-enrolamiento--registrar_enrolamiento.md
     tags:
     - layer.topology
     - type.relation.instance
