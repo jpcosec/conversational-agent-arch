@@ -122,7 +122,11 @@ def render_gate_criteria(
         f"{_gate_framing(framing)} Juzga la RESPUESTA REDACTADA por el agente "
         "(no la pregunta del usuario) contra CADA UNO de los siguientes "
         "criterios, cargados desde la base de conocimiento. Si la respuesta "
-        "viola alguno, recházala.\n\n"
+        "viola alguno, recházala. Un criterio que declara aplicar SOLO a "
+        "ciertos casos (p.ej. eventos adversos o consultas clinicas) se cumple "
+        "automaticamente cuando la respuesta no trata ninguno de esos casos: "
+        "un saludo, un dato administrativo, un recordatorio o repetirle a la "
+        "persona algo que ella misma dijo no violan un criterio de derivacion.\n\n"
         + "\n\n".join(blocks)
         + "\n\n"
         "Responde en el formato estructurado pedido: "

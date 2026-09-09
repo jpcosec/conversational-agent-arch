@@ -22,4 +22,4 @@ Aprueba cuando la respuesta nombra el destino que corresponde al caso: medico tr
 
 ## Rejection Action
 
-Rechazar la respuesta, no emitirla y encolar a revisión humana con el borrador completo y el motivo de rechazo: omitió una derivación obligatoria o envió el caso a un canal incorrecto.
+Rechazar la respuesta, no emitirla y encolar a revision humana con el borrador completo y el motivo SOLO cuando la respuesta trata un evento adverso, una consulta clinica o una decision de tratamiento y omite la derivacion o la manda a un canal incorrecto. No rechazar por este criterio una respuesta administrativa, un recordatorio, un cierre ni una que repite un dato que la persona dio (su medico, su dia de aplicacion, cuantas plumas le quedan).
