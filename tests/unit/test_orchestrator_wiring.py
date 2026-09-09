@@ -111,6 +111,13 @@ def test_handlers_can_be_injected_for_any_kb(antonia_kb: Path, tmp_db_url: str) 
     handler = RecordingToolHandler("recordatorio")
     o = offline_orchestrator(antonia_kb, tmp_db_url, tool_handlers={"agendar_recordatorio": handler}, trait_mapper=FakeTraitMapper())
     try:
+        # La tool solo es alcanzable desde registro_estado (arista uses_tool del step
+        # agendar_recordatorio, transicion permitida desde ahi): la sesion parte en
+        # ese step, como una persona ya inscrita que acaba de contar como va.
+        with o.SessionLocal() as session:
+            user = o.ensure_user(session, "whatsapp:+56900000001")
+            o._load_or_create_session_state(session, user.id).flow_node = "conversation:steps.registro_estado"
+            session.commit()
         turn = o.handle_turn(external_id="whatsapp:+56900000001", message="quiero agendar un recordatorio los martes a las 9:00")
         assert turn["kind"] == "tool_call"
         assert turn["system_turn"]["status"] == "ok"
