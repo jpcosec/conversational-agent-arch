@@ -1,0 +1,10 @@
+documents:
+- name: style-hcp-tone
+  path: atoms/style-hcp-tone.md
+  hash_c: 350a7f6c2e37a7dbee12f7a47c738af63adfd02caa3d57e8fb544da07ddc4cb5
+  hash_d: f52b49a6d060160175616aae6734ed3653289bc8988e4d26df253a5b2bf9a601
+  semantic_tags:
+  - self:estilo
+  - system:teva-hcp
+  - type.knowledge.style
+  - workspace.knowledge

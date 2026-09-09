@@ -1,0 +1,46 @@
+documents:
+- doc_name: self-hcp-whoami
+  sections:
+  - path: antonia-asistente-para-m-dicos-de-teva
+    title: Antonia — asistente para médicos de Teva
+    breadcrumbs:
+    - Antonia — asistente para médicos de Teva
+    about:
+    - Antonia — asistente para médicos de Teva
+    - antonia asistente para m dicos de teva
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: antonia-asistente-para-m-dicos-de-teva
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: antonia-asistente-para-m-dicos-de-teva/statement
+    title: Statement
+    breadcrumbs:
+    - Antonia — asistente para médicos de Teva
+    - Statement
+    about:
+    - Antonia — asistente para médicos de Teva
+    - antonia asistente para m dicos de teva
+    - Statement
+    - statement
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.self
+    - workspace.knowledge
+    semantic_tags:
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.self
+    - workspace.knowledge
+    slug: statement
+    level: 2
+    line_start: 787
+    line_end: 788

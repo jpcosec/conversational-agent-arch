@@ -1,0 +1,625 @@
+documents:
+- doc_name: rule-hcp-anti-alucinacion
+  sections:
+  - path: anti-alucinaci-n-contexto-estricto
+    title: Anti-alucinación — contexto estricto
+    breadcrumbs:
+    - Anti-alucinación — contexto estricto
+    about:
+    - Anti-alucinación — contexto estricto
+    - anti alucinaci n contexto estricto
+    - conversation:fallback
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: anti-alucinaci-n-contexto-estricto
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: anti-alucinaci-n-contexto-estricto/answer
+    title: Answer
+    breadcrumbs:
+    - Anti-alucinación — contexto estricto
+    - Answer
+    about:
+    - Anti-alucinación — contexto estricto
+    - anti alucinaci n contexto estricto
+    - Answer
+    - answer
+    - conversation:fallback
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: anti-alucinaci-n-contexto-estricto/conditions
+    title: Conditions
+    breadcrumbs:
+    - Anti-alucinación — contexto estricto
+    - Conditions
+    about:
+    - Anti-alucinación — contexto estricto
+    - anti alucinaci n contexto estricto
+    - Conditions
+    - conditions
+    - conversation:fallback
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794
+- doc_name: rule-hcp-derivar-clinico
+  sections:
+  - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
+    title: Derivar al médico cuando no hay contenido aprobado
+    breadcrumbs:
+    - Derivar al médico cuando no hay contenido aprobado
+    about:
+    - Derivar al médico cuando no hay contenido aprobado
+    - derivar al m dico cuando no hay contenido aprobado
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/answer
+    title: Answer
+    breadcrumbs:
+    - Derivar al médico cuando no hay contenido aprobado
+    - Answer
+    about:
+    - Derivar al médico cuando no hay contenido aprobado
+    - derivar al m dico cuando no hay contenido aprobado
+    - Answer
+    - answer
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+  - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/conditions
+    title: Conditions
+    breadcrumbs:
+    - Derivar al médico cuando no hay contenido aprobado
+    - Conditions
+    about:
+    - Derivar al médico cuando no hay contenido aprobado
+    - derivar al m dico cuando no hay contenido aprobado
+    - Conditions
+    - conditions
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 792
+    line_end: 793
+- doc_name: rule-hcp-no-contraindicaciones
+  sections:
+  - path: no-mencionar-contraindicaciones-ni-interacciones
+    title: No mencionar contraindicaciones ni interacciones
+    breadcrumbs:
+    - No mencionar contraindicaciones ni interacciones
+    about:
+    - No mencionar contraindicaciones ni interacciones
+    - no mencionar contraindicaciones ni interacciones
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-mencionar-contraindicaciones-ni-interacciones
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: no-mencionar-contraindicaciones-ni-interacciones/answer
+    title: Answer
+    breadcrumbs:
+    - No mencionar contraindicaciones ni interacciones
+    - Answer
+    about:
+    - No mencionar contraindicaciones ni interacciones
+    - no mencionar contraindicaciones ni interacciones
+    - Answer
+    - answer
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+  - path: no-mencionar-contraindicaciones-ni-interacciones/conditions
+    title: Conditions
+    breadcrumbs:
+    - No mencionar contraindicaciones ni interacciones
+    - Conditions
+    about:
+    - No mencionar contraindicaciones ni interacciones
+    - no mencionar contraindicaciones ni interacciones
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 792
+    line_end: 793
+- doc_name: rule-hcp-no-deducir
+  sections:
+  - path: no-deducir-informaci-n-cl-nica-desde-principios-generales
+    title: No deducir información clínica desde principios generales
+    breadcrumbs:
+    - No deducir información clínica desde principios generales
+    about:
+    - No deducir información clínica desde principios generales
+    - no deducir informaci n cl nica desde principios generales
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-deducir-informaci-n-cl-nica-desde-principios-generales
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/answer
+    title: Answer
+    breadcrumbs:
+    - No deducir información clínica desde principios generales
+    - Answer
+    about:
+    - No deducir información clínica desde principios generales
+    - no deducir informaci n cl nica desde principios generales
+    - Answer
+    - answer
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+  - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/conditions
+    title: Conditions
+    breadcrumbs:
+    - No deducir información clínica desde principios generales
+    - Conditions
+    about:
+    - No deducir información clínica desde principios generales
+    - no deducir informaci n cl nica desde principios generales
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 792
+    line_end: 793
+- doc_name: rule-hcp-no-extrapolar
+  sections:
+  - path: no-extrapolar-desde-otros-medicamentos-similares
+    title: No extrapolar desde otros medicamentos similares
+    breadcrumbs:
+    - No extrapolar desde otros medicamentos similares
+    about:
+    - No extrapolar desde otros medicamentos similares
+    - no extrapolar desde otros medicamentos similares
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-extrapolar-desde-otros-medicamentos-similares
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: no-extrapolar-desde-otros-medicamentos-similares/answer
+    title: Answer
+    breadcrumbs:
+    - No extrapolar desde otros medicamentos similares
+    - Answer
+    about:
+    - No extrapolar desde otros medicamentos similares
+    - no extrapolar desde otros medicamentos similares
+    - Answer
+    - answer
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+  - path: no-extrapolar-desde-otros-medicamentos-similares/conditions
+    title: Conditions
+    breadcrumbs:
+    - No extrapolar desde otros medicamentos similares
+    - Conditions
+    about:
+    - No extrapolar desde otros medicamentos similares
+    - no extrapolar desde otros medicamentos similares
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 792
+    line_end: 793
+- doc_name: rule-hcp-no-farmacologia
+  sections:
+  - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
+    title: No mencionar farmacología ni mecanismo de acción
+    breadcrumbs:
+    - No mencionar farmacología ni mecanismo de acción
+    about:
+    - No mencionar farmacología ni mecanismo de acción
+    - no mencionar farmacolog a ni mecanismo de acci n
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/answer
+    title: Answer
+    breadcrumbs:
+    - No mencionar farmacología ni mecanismo de acción
+    - Answer
+    about:
+    - No mencionar farmacología ni mecanismo de acción
+    - no mencionar farmacolog a ni mecanismo de acci n
+    - Answer
+    - answer
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+  - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/conditions
+    title: Conditions
+    breadcrumbs:
+    - No mencionar farmacología ni mecanismo de acción
+    - Conditions
+    about:
+    - No mencionar farmacología ni mecanismo de acción
+    - no mencionar farmacolog a ni mecanismo de acci n
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 792
+    line_end: 793
+- doc_name: rule-hcp-no-inventar
+  sections:
+  - path: no-inventar-ni-complementar-con-conocimiento-general
+    title: No inventar ni complementar con conocimiento general
+    breadcrumbs:
+    - No inventar ni complementar con conocimiento general
+    about:
+    - No inventar ni complementar con conocimiento general
+    - no inventar ni complementar con conocimiento general
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: no-inventar-ni-complementar-con-conocimiento-general
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: no-inventar-ni-complementar-con-conocimiento-general/answer
+    title: Answer
+    breadcrumbs:
+    - No inventar ni complementar con conocimiento general
+    - Answer
+    about:
+    - No inventar ni complementar con conocimiento general
+    - no inventar ni complementar con conocimiento general
+    - Answer
+    - answer
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+  - path: no-inventar-ni-complementar-con-conocimiento-general/conditions
+    title: Conditions
+    breadcrumbs:
+    - No inventar ni complementar con conocimiento general
+    - Conditions
+    about:
+    - No inventar ni complementar con conocimiento general
+    - no inventar ni complementar con conocimiento general
+    - Conditions
+    - conditions
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 792
+    line_end: 793
+- doc_name: rule-hcp-filtrado-especialidad
+  sections:
+  - path: regla-solo-productos-de-su-especialidad
+    title: Regla — solo productos de su especialidad
+    breadcrumbs:
+    - Regla — solo productos de su especialidad
+    about:
+    - Regla — solo productos de su especialidad
+    - regla solo productos de su especialidad
+    - domain:campanias
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-solo-productos-de-su-especialidad
+    level: 1
+    line_start: 786
+    line_end: 787
+  - path: regla-solo-productos-de-su-especialidad/answer
+    title: Answer
+    breadcrumbs:
+    - Regla — solo productos de su especialidad
+    - Answer
+    about:
+    - Regla — solo productos de su especialidad
+    - regla solo productos de su especialidad
+    - Answer
+    - answer
+    - domain:campanias
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 788
+    line_end: 789
+  - path: regla-solo-productos-de-su-especialidad/conditions
+    title: Conditions
+    breadcrumbs:
+    - Regla — solo productos de su especialidad
+    - Conditions
+    about:
+    - Regla — solo productos de su especialidad
+    - regla solo productos de su especialidad
+    - Conditions
+    - conditions
+    - domain:campanias
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 792
+    line_end: 793
+- doc_name: rule-hcp-solo-pii-profesional
+  sections:
+  - path: regla-sin-datos-de-pacientes
+    title: Regla — sin datos de pacientes
+    breadcrumbs:
+    - Regla — sin datos de pacientes
+    about:
+    - Regla — sin datos de pacientes
+    - regla sin datos de pacientes
+    - conversation:security
+    - domain:datos
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - domain:datos
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: regla-sin-datos-de-pacientes
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: regla-sin-datos-de-pacientes/answer
+    title: Answer
+    breadcrumbs:
+    - Regla — sin datos de pacientes
+    - Answer
+    about:
+    - Regla — sin datos de pacientes
+    - regla sin datos de pacientes
+    - Answer
+    - answer
+    - conversation:security
+    - domain:datos
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - domain:datos
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+  - path: regla-sin-datos-de-pacientes/conditions
+    title: Conditions
+    breadcrumbs:
+    - Regla — sin datos de pacientes
+    - Conditions
+    about:
+    - Regla — sin datos de pacientes
+    - regla sin datos de pacientes
+    - Conditions
+    - conditions
+    - conversation:security
+    - domain:datos
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:security
+    - domain:datos
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 793
+    line_end: 794

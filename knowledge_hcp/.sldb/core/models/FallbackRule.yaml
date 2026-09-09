@@ -1,0 +1,13 @@
+name: FallbackRule
+model_ref: kb_agent.models.knowledge:FallbackRule
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/fallback.py
+documents_index: .sldb/core/documents/FallbackRule.yaml
+sections_index: .sldb/runtime/sections/FallbackRule.yaml
+hash_b: 4d2e1d16db8debd5c623c0d1211c770385eccbb7c96c81ae4ffe40741319d14b
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.fallback
+- workspace.knowledge
+base_models: []

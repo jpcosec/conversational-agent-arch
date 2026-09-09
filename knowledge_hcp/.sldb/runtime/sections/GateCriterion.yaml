@@ -1,0 +1,456 @@
+documents:
+- doc_name: gate-hcp-corpus
+  sections:
+  - path: gate-regulatorio-corpus-aprobado
+    title: Gate regulatorio — corpus aprobado
+    breadcrumbs:
+    - Gate regulatorio — corpus aprobado
+    about:
+    - Gate regulatorio — corpus aprobado
+    - gate regulatorio corpus aprobado
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-corpus-aprobado
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: gate-regulatorio-corpus-aprobado/criterion
+    title: Criterion
+    breadcrumbs:
+    - Gate regulatorio — corpus aprobado
+    - Criterion
+    about:
+    - Gate regulatorio — corpus aprobado
+    - gate regulatorio corpus aprobado
+    - Criterion
+    - criterion
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: gate-regulatorio-corpus-aprobado/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - Gate regulatorio — corpus aprobado
+    - Approval Condition
+    about:
+    - Gate regulatorio — corpus aprobado
+    - gate regulatorio corpus aprobado
+    - Approval Condition
+    - approval condition
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: gate-regulatorio-corpus-aprobado/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - Gate regulatorio — corpus aprobado
+    - Rejection Action
+    about:
+    - Gate regulatorio — corpus aprobado
+    - gate regulatorio corpus aprobado
+    - Rejection Action
+    - rejection action
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 794
+    line_end: 795
+- doc_name: gate-hcp-derivacion
+  sections:
+  - path: gate-regulatorio-derivaci-n-correcta
+    title: Gate regulatorio — derivación correcta
+    breadcrumbs:
+    - Gate regulatorio — derivación correcta
+    about:
+    - Gate regulatorio — derivación correcta
+    - gate regulatorio derivaci n correcta
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-derivaci-n-correcta
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: gate-regulatorio-derivaci-n-correcta/criterion
+    title: Criterion
+    breadcrumbs:
+    - Gate regulatorio — derivación correcta
+    - Criterion
+    about:
+    - Gate regulatorio — derivación correcta
+    - gate regulatorio derivaci n correcta
+    - Criterion
+    - criterion
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: gate-regulatorio-derivaci-n-correcta/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - Gate regulatorio — derivación correcta
+    - Approval Condition
+    about:
+    - Gate regulatorio — derivación correcta
+    - gate regulatorio derivaci n correcta
+    - Approval Condition
+    - approval condition
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: gate-regulatorio-derivaci-n-correcta/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - Gate regulatorio — derivación correcta
+    - Rejection Action
+    about:
+    - Gate regulatorio — derivación correcta
+    - gate regulatorio derivaci n correcta
+    - Rejection Action
+    - rejection action
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 794
+    line_end: 795
+- doc_name: gate-hcp-diagnostico
+  sections:
+  - path: gate-regulatorio-diagn-stico
+    title: Gate regulatorio — diagnóstico
+    breadcrumbs:
+    - Gate regulatorio — diagnóstico
+    about:
+    - Gate regulatorio — diagnóstico
+    - gate regulatorio diagn stico
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-diagn-stico
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: gate-regulatorio-diagn-stico/criterion
+    title: Criterion
+    breadcrumbs:
+    - Gate regulatorio — diagnóstico
+    - Criterion
+    about:
+    - Gate regulatorio — diagnóstico
+    - gate regulatorio diagn stico
+    - Criterion
+    - criterion
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: gate-regulatorio-diagn-stico/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - Gate regulatorio — diagnóstico
+    - Approval Condition
+    about:
+    - Gate regulatorio — diagnóstico
+    - gate regulatorio diagn stico
+    - Approval Condition
+    - approval condition
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: gate-regulatorio-diagn-stico/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - Gate regulatorio — diagnóstico
+    - Rejection Action
+    about:
+    - Gate regulatorio — diagnóstico
+    - gate regulatorio diagn stico
+    - Rejection Action
+    - rejection action
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 794
+    line_end: 795
+- doc_name: gate-hcp-dosis
+  sections:
+  - path: gate-regulatorio-dosis
+    title: Gate regulatorio — dosis
+    breadcrumbs:
+    - Gate regulatorio — dosis
+    about:
+    - Gate regulatorio — dosis
+    - gate regulatorio dosis
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-dosis
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: gate-regulatorio-dosis/criterion
+    title: Criterion
+    breadcrumbs:
+    - Gate regulatorio — dosis
+    - Criterion
+    about:
+    - Gate regulatorio — dosis
+    - gate regulatorio dosis
+    - Criterion
+    - criterion
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: gate-regulatorio-dosis/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - Gate regulatorio — dosis
+    - Approval Condition
+    about:
+    - Gate regulatorio — dosis
+    - gate regulatorio dosis
+    - Approval Condition
+    - approval condition
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: gate-regulatorio-dosis/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - Gate regulatorio — dosis
+    - Rejection Action
+    about:
+    - Gate regulatorio — dosis
+    - gate regulatorio dosis
+    - Rejection Action
+    - rejection action
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 794
+    line_end: 795
+- doc_name: gate-hcp-promesas
+  sections:
+  - path: gate-regulatorio-promesas
+    title: Gate regulatorio — promesas
+    breadcrumbs:
+    - Gate regulatorio — promesas
+    about:
+    - Gate regulatorio — promesas
+    - gate regulatorio promesas
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: gate-regulatorio-promesas
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: gate-regulatorio-promesas/criterion
+    title: Criterion
+    breadcrumbs:
+    - Gate regulatorio — promesas
+    - Criterion
+    about:
+    - Gate regulatorio — promesas
+    - gate regulatorio promesas
+    - Criterion
+    - criterion
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: criterion
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: gate-regulatorio-promesas/approval-condition
+    title: Approval Condition
+    breadcrumbs:
+    - Gate regulatorio — promesas
+    - Approval Condition
+    about:
+    - Gate regulatorio — promesas
+    - gate regulatorio promesas
+    - Approval Condition
+    - approval condition
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: approval-condition
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: gate-regulatorio-promesas/rejection-action
+    title: Rejection Action
+    breadcrumbs:
+    - Gate regulatorio — promesas
+    - Rejection Action
+    about:
+    - Gate regulatorio — promesas
+    - gate regulatorio promesas
+    - Rejection Action
+    - rejection action
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    semantic_tags:
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+    slug: rejection-action
+    level: 2
+    line_start: 794
+    line_end: 795

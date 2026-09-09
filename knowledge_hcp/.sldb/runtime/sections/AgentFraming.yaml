@@ -1,0 +1,46 @@
+documents:
+- doc_name: agent-hcp-router
+  sections:
+  - path: encuadre-del-ruteador-hcp-pilot
+    title: "Encuadre del Ruteador \u2014 HCP Pilot"
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 HCP Pilot"
+    about:
+    - "Encuadre del Ruteador \u2014 HCP Pilot"
+    - encuadre del ruteador hcp pilot
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-ruteador-hcp-pilot
+    level: 1
+    line_start: 16
+    line_end: 17
+  - path: encuadre-del-ruteador-hcp-pilot/framing
+    title: Framing
+    breadcrumbs:
+    - "Encuadre del Ruteador \u2014 HCP Pilot"
+    - Framing
+    about:
+    - "Encuadre del Ruteador \u2014 HCP Pilot"
+    - encuadre del ruteador hcp pilot
+    - Framing
+    - framing
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 18
+    line_end: 19

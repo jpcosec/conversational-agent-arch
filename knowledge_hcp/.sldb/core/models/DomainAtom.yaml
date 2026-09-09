@@ -1,0 +1,13 @@
+name: DomainAtom
+model_ref: kb_agent.models.knowledge:DomainAtom
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/domain.py
+documents_index: .sldb/core/documents/DomainAtom.yaml
+sections_index: .sldb/runtime/sections/DomainAtom.yaml
+hash_b: 5fb0cd54501b88e5ae748747df96ed9daa16eb3bedfa72c7a63bc77a4fbe645c
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.domain
+- workspace.knowledge
+base_models: []

@@ -1,0 +1,92 @@
+documents:
+- doc_name: strategy-hcp-campaign
+  sections:
+  - path: estrategia-informar-sin-presionar
+    title: Estrategia — informar sin presionar
+    breadcrumbs:
+    - Estrategia — informar sin presionar
+    about:
+    - Estrategia — informar sin presionar
+    - estrategia informar sin presionar
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: estrategia-informar-sin-presionar
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: estrategia-informar-sin-presionar/goal
+    title: Goal
+    breadcrumbs:
+    - Estrategia — informar sin presionar
+    - Goal
+    about:
+    - Estrategia — informar sin presionar
+    - estrategia informar sin presionar
+    - Goal
+    - goal
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: goal
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: estrategia-informar-sin-presionar/approach
+    title: Approach
+    breadcrumbs:
+    - Estrategia — informar sin presionar
+    - Approach
+    about:
+    - Estrategia — informar sin presionar
+    - estrategia informar sin presionar
+    - Approach
+    - approach
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: approach
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: estrategia-informar-sin-presionar/priorities
+    title: Priorities
+    breadcrumbs:
+    - Estrategia — informar sin presionar
+    - Priorities
+    about:
+    - Estrategia — informar sin presionar
+    - estrategia informar sin presionar
+    - Priorities
+    - priorities
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+    slug: priorities
+    level: 2
+    line_start: 794
+    line_end: 795

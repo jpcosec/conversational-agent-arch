@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dev Console</title>
+<link rel="stylesheet" href="/static/theme.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html,body{height:100%}
+body{background:var(--bg-page);color:var(--text-primary);font-family:var(--font-sans);display:flex;flex-direction:column;overflow:hidden}
+.wrap{flex:1;overflow-y:auto;padding:28px 32px 60px;max-width:960px;margin:0 auto}
+h1{font-size:22px;font-weight:600;margin-bottom:4px}
+.sub{color:var(--text-muted);font-size:13px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.tool-card{display:flex;flex-direction:column;gap:8px;border:1px solid var(--border-accent);border-radius:14px;padding:18px;background:var(--bg-panel);transition:var(--transition);text-decoration:none;color:inherit}
+.tool-card:hover{border-color:var(--accent);box-shadow:0 8px 28px rgba(212,165,116,.1)}
+.tool-card .icon{font-size:24px;margin-bottom:4px}
+.tool-card .name{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.tool-card .desc{font-size:12px;color:var(--text-muted-2);line-height:1.4}
+.tool-card .tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border-strong);border-radius:6px;padding:2px 7px;align-self:flex-start;margin-top:auto}
+</style>
+</head><body>
+
+<div id="appNavMount"></div>
+
+<div class="wrap">
+  <h1>🧰 Dev Console</h1>
+  <p class="sub">Herramientas técnicas para inspección y depuración del agente.</p>
+
+  <div class="grid" id="toolsGrid">
+    <a class="tool-card" href="/dev/prompts">
+      <div class="icon">📜</div>
+      <div class="name">System Prompts</div>
+      <div class="desc">Prompt completo de cada agente: encuadre de negocio + instrucción estática, criterios del gate, grafo de steps.</div>
+      <div class="tag">Agentes</div>
+    </a>
+    <a class="tool-card" href="/flow">
+      <div class="icon">🔀</div>
+      <div class="name">Flow Editor</div>
+      <div class="desc">Grafo de steps del flujo conversacional con transiciones, grounding y tools.</div>
+      <div class="tag">Flujo</div>
+    </a>
+    <a class="tool-card" href="/mindmap">
+      <div class="icon">🗺️</div>
+      <div class="name">KB Explorer</div>
+      <div class="desc">Mindmap del knowledge store: familias, atoms, relaciones semánticas y embedding PCA 2D.</div>
+      <div class="tag">Knowledge</div>
+    </a>
+    <a class="tool-card" href="/users">
+      <div class="icon">👤</div>
+      <div class="name">Perfiles</div>
+      <div class="desc">Traits de usuario, historial de sesiones, extractor de perfiles por turno.</div>
+      <div class="tag">Usuarios</div>
+    </a>
+  </div>
+</div>
+
+<script src="/static/nav.js"></script>
+</body></html>

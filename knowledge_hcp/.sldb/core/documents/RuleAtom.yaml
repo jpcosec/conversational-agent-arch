@@ -1,0 +1,84 @@
+documents:
+- name: rule-hcp-anti-alucinacion
+  path: atoms/rule-hcp-anti-alucinacion.md
+  hash_c: 2130cf8cdf3d68144ce70f0e0fb060aa231f1226ac0f8a8a55c78373a2fe34bc
+  hash_d: 6704c49b75db81e749f69c808bb4fa8d9f31468bf7e65453590eeb289133e2fc
+  semantic_tags:
+  - conversation:fallback
+  - conversation:security
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-derivar-clinico
+  path: atoms/rule-hcp-derivar-clinico.md
+  hash_c: 11d13dd34329b9a3e7258ff533694c25096536cf423844f6ae1652474f657a8f
+  hash_d: bcf712a70bf7ed79ac4b577eb59f5c0219664b1a1e275fd79e00868504ecb18f
+  semantic_tags:
+  - conversation:fallback
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-no-contraindicaciones
+  path: atoms/rule-hcp-no-contraindicaciones.md
+  hash_c: 3d3e0e472c2f5dde591fe1b511a4033a022c51f0f34fcdae0033c5d94c5197c8
+  hash_d: d61ba7b76ea1769912787dcda21b69517cc54ccf9e42039651f2dff5ce0258e6
+  semantic_tags:
+  - conversation:security
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-no-deducir
+  path: atoms/rule-hcp-no-deducir.md
+  hash_c: aa32ea683e83c0c8390580f225c2aaaf665c83d47c8b53aa6b6406ca0ed4f6d5
+  hash_d: 3153203715b9c78b1d94a7ea86c53df76199dac6618bbb53ecdb265eedc7f267
+  semantic_tags:
+  - conversation:security
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-no-extrapolar
+  path: atoms/rule-hcp-no-extrapolar.md
+  hash_c: 6f918df6955c47657c890fa477ab6efae35e252c1c979fb55d19e8f656d528d4
+  hash_d: 3853be779fc2495d7c5d6d044b39e2600af4672b8b3c7ffea9c0fe34aaa70ed5
+  semantic_tags:
+  - conversation:security
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-no-farmacologia
+  path: atoms/rule-hcp-no-farmacologia.md
+  hash_c: 09ddcaed0bd8d07295d6392fcd5c1be53c8faa2b68bafec7f2c3b8c10ba545f5
+  hash_d: cfbc2e4719ee754a2641e8ff8f5754f06f37fa03c2343806f6aa4e44dce6448b
+  semantic_tags:
+  - conversation:security
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-no-inventar
+  path: atoms/rule-hcp-no-inventar.md
+  hash_c: 3e86a25288cacd0b13712b0984cb1b66a2e50b8924187523f0ace718d01d6300
+  hash_d: 2afcb36f4a003daf1778eeee0840e957ee3da48599c8f69bf93382c0e8f67a03
+  semantic_tags:
+  - conversation:security
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-filtrado-especialidad
+  path: atoms/rule-hcp-filtrado-especialidad.md
+  hash_c: 8ea1b1aaa045ae42447a64976d9f22e3920191f9ce25031fb54b5b7bd7a87c7c
+  hash_d: cfc7979d03a41c80604a67f1da5332fedc2c32dd9531be868ffcad3644d37a77
+  semantic_tags:
+  - domain:campanias
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge
+- name: rule-hcp-solo-pii-profesional
+  path: atoms/rule-hcp-solo-pii-profesional.md
+  hash_c: 9117bb3a4a7f55b35650c2f596899098ed769826c402e79018ce294e543cc797
+  hash_d: bdc0e16d0b9193cc6a8fd92ecfc92749eb8cbfab3829097876aa2eec065333a9
+  semantic_tags:
+  - conversation:security
+  - domain:datos
+  - system:teva-hcp
+  - type.knowledge.rule
+  - workspace.knowledge

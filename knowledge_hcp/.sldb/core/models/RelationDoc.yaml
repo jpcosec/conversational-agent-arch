@@ -1,0 +1,13 @@
+name: RelationDoc
+model_ref: kgdb.models:RelationDoc
+path: /home/jp/proyectos/hum-ecosystem/tools/kgdb/src/kgdb/models/relation_doc.py
+documents_index: .sldb/core/documents/RelationDoc.yaml
+sections_index: ''
+hash_b: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+version: 1
+canonical: false
+family: relation
+semantics:
+- layer.topology
+- type.relation.instance
+base_models: []

@@ -1,0 +1,13 @@
+name: StyleGuide
+model_ref: kb_agent.models.knowledge:StyleGuide
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/style.py
+documents_index: .sldb/core/documents/StyleGuide.yaml
+sections_index: .sldb/runtime/sections/StyleGuide.yaml
+hash_b: e9f30557405ae19bf6e4529a995b39dfd0633c6f9da9e157b8c3094dd6f89f05
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.style
+- workspace.knowledge
+base_models: []

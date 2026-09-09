@@ -1,0 +1,1581 @@
+tags:
+  channel:whatsapp:
+  - step-hcp-contacto-inicial
+  conversation:fallback:
+  - fallback-hcp
+  - rule-hcp-anti-alucinacion
+  - rule-hcp-derivar-clinico
+  conversation:security:
+  - rule-hcp-anti-alucinacion
+  - rule-hcp-no-contraindicaciones
+  - rule-hcp-no-deducir
+  - rule-hcp-no-extrapolar
+  - rule-hcp-no-farmacologia
+  - rule-hcp-no-inventar
+  - rule-hcp-solo-pii-profesional
+  conversation:steps.agendar_recontacto:
+  - step-hcp-agendar-recontacto
+  conversation:steps.contacto_inicial:
+  - step-hcp-contacto-inicial
+  conversation:steps.despedida:
+  - step-hcp-despedida
+  conversation:steps.detalle_medicamento:
+  - step-hcp-detalle-medicamento
+  conversation:steps.handout_especialista:
+  - step-hcp-handout-especialista
+  conversation:steps.optout:
+  - step-hcp-optout
+  conversation:steps.presentar_campania:
+  - step-hcp-presentar-campania
+  conversation:steps.revision_humana:
+  - step-hcp-revision-humana
+  conversation:steps.validacion_policy_gate:
+  - step-hcp-validacion-policy-gate
+  conversation:strategy:
+  - strategy-hcp-campaign
+  domain:campanias:
+  - rule-hcp-filtrado-especialidad
+  domain:campanias.lanzamientos-q4-2026:
+  - domain-hcp-campania-lanzamientos-q4-2026
+  - domain-hcp-febrikid-ficha
+  - domain-hcp-febrikid-indicacion
+  - domain-hcp-febrikid-oferta
+  - domain-hcp-febrikid-presentaciones
+  - domain-hcp-migralen-ficha
+  - domain-hcp-migralen-indicacion
+  - domain-hcp-migralen-oferta
+  - domain-hcp-migralen-presentaciones
+  - domain-hcp-neurox-ficha
+  - domain-hcp-neurox-indicacion
+  - domain-hcp-neurox-oferta
+  - domain-hcp-neurox-presentaciones
+  - domain-hcp-osteovit-ficha
+  - domain-hcp-osteovit-indicacion
+  - domain-hcp-osteovit-oferta
+  - domain-hcp-osteovit-presentaciones
+  - domain-hcp-respirfen-ficha
+  - domain-hcp-respirfen-indicacion
+  - domain-hcp-respirfen-oferta
+  - domain-hcp-respirfen-presentaciones
+  - domain-hcp-tensiolab-ficha
+  - domain-hcp-tensiolab-indicacion
+  - domain-hcp-tensiolab-oferta
+  - domain-hcp-tensiolab-presentaciones
+  domain:campanias.ofertas-invierno-2026:
+  - domain-hcp-amoxikid-ficha
+  - domain-hcp-amoxikid-indicacion
+  - domain-hcp-amoxikid-oferta
+  - domain-hcp-amoxikid-presentaciones
+  - domain-hcp-campania-ofertas-invierno-2026
+  - domain-hcp-cardiplat-ficha
+  - domain-hcp-cardiplat-indicacion
+  - domain-hcp-cardiplat-oferta
+  - domain-hcp-cardiplat-presentaciones
+  - domain-hcp-epilex-ficha
+  - domain-hcp-epilex-indicacion
+  - domain-hcp-epilex-oferta
+  - domain-hcp-epilex-presentaciones
+  - domain-hcp-flexidol-ficha
+  - domain-hcp-flexidol-indicacion
+  - domain-hcp-flexidol-oferta
+  - domain-hcp-flexidol-presentaciones
+  - domain-hcp-gastroprot-ficha
+  - domain-hcp-gastroprot-indicacion
+  - domain-hcp-gastroprot-oferta
+  - domain-hcp-gastroprot-presentaciones
+  - domain-hcp-sedanil-ficha
+  - domain-hcp-sedanil-indicacion
+  - domain-hcp-sedanil-oferta
+  - domain-hcp-sedanil-presentaciones
+  domain:datos:
+  - rule-hcp-solo-pii-profesional
+  domain:farmacovigilancia:
+  - boundary-hcp-ae-safety-net
+  domain:medicamentos.amoxikid.ficha:
+  - domain-hcp-amoxikid-ficha
+  domain:medicamentos.amoxikid.indicacion:
+  - domain-hcp-amoxikid-indicacion
+  domain:medicamentos.amoxikid.oferta:
+  - domain-hcp-amoxikid-oferta
+  domain:medicamentos.amoxikid.presentaciones:
+  - domain-hcp-amoxikid-presentaciones
+  domain:medicamentos.cardiplat.ficha:
+  - domain-hcp-cardiplat-ficha
+  domain:medicamentos.cardiplat.indicacion:
+  - domain-hcp-cardiplat-indicacion
+  domain:medicamentos.cardiplat.oferta:
+  - domain-hcp-cardiplat-oferta
+  domain:medicamentos.cardiplat.presentaciones:
+  - domain-hcp-cardiplat-presentaciones
+  domain:medicamentos.epilex.ficha:
+  - domain-hcp-epilex-ficha
+  domain:medicamentos.epilex.indicacion:
+  - domain-hcp-epilex-indicacion
+  domain:medicamentos.epilex.oferta:
+  - domain-hcp-epilex-oferta
+  domain:medicamentos.epilex.presentaciones:
+  - domain-hcp-epilex-presentaciones
+  domain:medicamentos.febrikid.ficha:
+  - domain-hcp-febrikid-ficha
+  domain:medicamentos.febrikid.indicacion:
+  - domain-hcp-febrikid-indicacion
+  domain:medicamentos.febrikid.oferta:
+  - domain-hcp-febrikid-oferta
+  domain:medicamentos.febrikid.presentaciones:
+  - domain-hcp-febrikid-presentaciones
+  domain:medicamentos.flexidol.ficha:
+  - domain-hcp-flexidol-ficha
+  domain:medicamentos.flexidol.indicacion:
+  - domain-hcp-flexidol-indicacion
+  domain:medicamentos.flexidol.oferta:
+  - domain-hcp-flexidol-oferta
+  domain:medicamentos.flexidol.presentaciones:
+  - domain-hcp-flexidol-presentaciones
+  domain:medicamentos.gastroprot.ficha:
+  - domain-hcp-gastroprot-ficha
+  domain:medicamentos.gastroprot.indicacion:
+  - domain-hcp-gastroprot-indicacion
+  domain:medicamentos.gastroprot.oferta:
+  - domain-hcp-gastroprot-oferta
+  domain:medicamentos.gastroprot.presentaciones:
+  - domain-hcp-gastroprot-presentaciones
+  domain:medicamentos.migralen.ficha:
+  - domain-hcp-migralen-ficha
+  domain:medicamentos.migralen.indicacion:
+  - domain-hcp-migralen-indicacion
+  domain:medicamentos.migralen.oferta:
+  - domain-hcp-migralen-oferta
+  domain:medicamentos.migralen.presentaciones:
+  - domain-hcp-migralen-presentaciones
+  domain:medicamentos.neurox.ficha:
+  - domain-hcp-neurox-ficha
+  domain:medicamentos.neurox.indicacion:
+  - domain-hcp-neurox-indicacion
+  domain:medicamentos.neurox.oferta:
+  - domain-hcp-neurox-oferta
+  domain:medicamentos.neurox.presentaciones:
+  - domain-hcp-neurox-presentaciones
+  domain:medicamentos.osteovit.ficha:
+  - domain-hcp-osteovit-ficha
+  domain:medicamentos.osteovit.indicacion:
+  - domain-hcp-osteovit-indicacion
+  domain:medicamentos.osteovit.oferta:
+  - domain-hcp-osteovit-oferta
+  domain:medicamentos.osteovit.presentaciones:
+  - domain-hcp-osteovit-presentaciones
+  domain:medicamentos.respirfen.ficha:
+  - domain-hcp-respirfen-ficha
+  domain:medicamentos.respirfen.indicacion:
+  - domain-hcp-respirfen-indicacion
+  domain:medicamentos.respirfen.oferta:
+  - domain-hcp-respirfen-oferta
+  domain:medicamentos.respirfen.presentaciones:
+  - domain-hcp-respirfen-presentaciones
+  domain:medicamentos.sedanil.ficha:
+  - domain-hcp-sedanil-ficha
+  domain:medicamentos.sedanil.indicacion:
+  - domain-hcp-sedanil-indicacion
+  domain:medicamentos.sedanil.oferta:
+  - domain-hcp-sedanil-oferta
+  domain:medicamentos.sedanil.presentaciones:
+  - domain-hcp-sedanil-presentaciones
+  domain:medicamentos.tensiolab.ficha:
+  - domain-hcp-tensiolab-ficha
+  domain:medicamentos.tensiolab.indicacion:
+  - domain-hcp-tensiolab-indicacion
+  domain:medicamentos.tensiolab.oferta:
+  - domain-hcp-tensiolab-oferta
+  domain:medicamentos.tensiolab.presentaciones:
+  - domain-hcp-tensiolab-presentaciones
+  gate:corpus:
+  - gate-hcp-corpus
+  gate:derivacion:
+  - gate-hcp-derivacion
+  gate:promesas:
+  - gate-hcp-promesas
+  gate:regulatorio.diagnostico:
+  - gate-hcp-diagnostico
+  gate:regulatorio.dosis:
+  - gate-hcp-dosis
+  layer.topology:
+  - reltype-applies_to_source
+  - reltype-applies_to_target
+  - reltype-extends
+  - reltype-has_document
+  - reltype-has_field
+  - reltype-has_model
+  - reltype-has_section
+  - reltype-names
+  - reltype-semantic_equivalent
+  - reltype-semantic_parent
+  - reltype-tagged_as
+  self:estilo:
+  - style-hcp-tone
+  self:limites:
+  - boundary-hcp-ae-safety-net
+  - boundary-hcp-dsr-erasure
+  - boundary-hcp-optout-campania
+  - boundary-hcp-optout-canal
+  self:tools:
+  - tool-hcp-actualizar-consentimiento
+  - tool-hcp-programar-recontacto
+  self:whoami:
+  - self-hcp-whoami
+  status:placeholder-pending-mlr:
+  - domain-hcp-amoxikid-ficha
+  - domain-hcp-amoxikid-indicacion
+  - domain-hcp-amoxikid-oferta
+  - domain-hcp-amoxikid-presentaciones
+  - domain-hcp-campania-lanzamientos-q4-2026
+  - domain-hcp-campania-ofertas-invierno-2026
+  - domain-hcp-cardiplat-ficha
+  - domain-hcp-cardiplat-indicacion
+  - domain-hcp-cardiplat-oferta
+  - domain-hcp-cardiplat-presentaciones
+  - domain-hcp-epilex-ficha
+  - domain-hcp-epilex-indicacion
+  - domain-hcp-epilex-oferta
+  - domain-hcp-epilex-presentaciones
+  - domain-hcp-febrikid-ficha
+  - domain-hcp-febrikid-indicacion
+  - domain-hcp-febrikid-oferta
+  - domain-hcp-febrikid-presentaciones
+  - domain-hcp-flexidol-ficha
+  - domain-hcp-flexidol-indicacion
+  - domain-hcp-flexidol-oferta
+  - domain-hcp-flexidol-presentaciones
+  - domain-hcp-gastroprot-ficha
+  - domain-hcp-gastroprot-indicacion
+  - domain-hcp-gastroprot-oferta
+  - domain-hcp-gastroprot-presentaciones
+  - domain-hcp-migralen-ficha
+  - domain-hcp-migralen-indicacion
+  - domain-hcp-migralen-oferta
+  - domain-hcp-migralen-presentaciones
+  - domain-hcp-neurox-ficha
+  - domain-hcp-neurox-indicacion
+  - domain-hcp-neurox-oferta
+  - domain-hcp-neurox-presentaciones
+  - domain-hcp-osteovit-ficha
+  - domain-hcp-osteovit-indicacion
+  - domain-hcp-osteovit-oferta
+  - domain-hcp-osteovit-presentaciones
+  - domain-hcp-respirfen-ficha
+  - domain-hcp-respirfen-indicacion
+  - domain-hcp-respirfen-oferta
+  - domain-hcp-respirfen-presentaciones
+  - domain-hcp-sedanil-ficha
+  - domain-hcp-sedanil-indicacion
+  - domain-hcp-sedanil-oferta
+  - domain-hcp-sedanil-presentaciones
+  - domain-hcp-tensiolab-ficha
+  - domain-hcp-tensiolab-indicacion
+  - domain-hcp-tensiolab-oferta
+  - domain-hcp-tensiolab-presentaciones
+  system:teva-hcp:
+  - boundary-hcp-ae-safety-net
+  - boundary-hcp-dsr-erasure
+  - boundary-hcp-optout-campania
+  - boundary-hcp-optout-canal
+  - domain-hcp-amoxikid-ficha
+  - domain-hcp-amoxikid-indicacion
+  - domain-hcp-amoxikid-oferta
+  - domain-hcp-amoxikid-presentaciones
+  - domain-hcp-campania-lanzamientos-q4-2026
+  - domain-hcp-campania-ofertas-invierno-2026
+  - domain-hcp-cardiplat-ficha
+  - domain-hcp-cardiplat-indicacion
+  - domain-hcp-cardiplat-oferta
+  - domain-hcp-cardiplat-presentaciones
+  - domain-hcp-epilex-ficha
+  - domain-hcp-epilex-indicacion
+  - domain-hcp-epilex-oferta
+  - domain-hcp-epilex-presentaciones
+  - domain-hcp-febrikid-ficha
+  - domain-hcp-febrikid-indicacion
+  - domain-hcp-febrikid-oferta
+  - domain-hcp-febrikid-presentaciones
+  - domain-hcp-flexidol-ficha
+  - domain-hcp-flexidol-indicacion
+  - domain-hcp-flexidol-oferta
+  - domain-hcp-flexidol-presentaciones
+  - domain-hcp-gastroprot-ficha
+  - domain-hcp-gastroprot-indicacion
+  - domain-hcp-gastroprot-oferta
+  - domain-hcp-gastroprot-presentaciones
+  - domain-hcp-migralen-ficha
+  - domain-hcp-migralen-indicacion
+  - domain-hcp-migralen-oferta
+  - domain-hcp-migralen-presentaciones
+  - domain-hcp-neurox-ficha
+  - domain-hcp-neurox-indicacion
+  - domain-hcp-neurox-oferta
+  - domain-hcp-neurox-presentaciones
+  - domain-hcp-osteovit-ficha
+  - domain-hcp-osteovit-indicacion
+  - domain-hcp-osteovit-oferta
+  - domain-hcp-osteovit-presentaciones
+  - domain-hcp-respirfen-ficha
+  - domain-hcp-respirfen-indicacion
+  - domain-hcp-respirfen-oferta
+  - domain-hcp-respirfen-presentaciones
+  - domain-hcp-sedanil-ficha
+  - domain-hcp-sedanil-indicacion
+  - domain-hcp-sedanil-oferta
+  - domain-hcp-sedanil-presentaciones
+  - domain-hcp-tensiolab-ficha
+  - domain-hcp-tensiolab-indicacion
+  - domain-hcp-tensiolab-oferta
+  - domain-hcp-tensiolab-presentaciones
+  - fallback-hcp
+  - gate-hcp-corpus
+  - gate-hcp-derivacion
+  - gate-hcp-diagnostico
+  - gate-hcp-dosis
+  - gate-hcp-promesas
+  - rule-hcp-anti-alucinacion
+  - rule-hcp-derivar-clinico
+  - rule-hcp-filtrado-especialidad
+  - rule-hcp-no-contraindicaciones
+  - rule-hcp-no-deducir
+  - rule-hcp-no-extrapolar
+  - rule-hcp-no-farmacologia
+  - rule-hcp-no-inventar
+  - rule-hcp-solo-pii-profesional
+  - self-hcp-whoami
+  - step-hcp-agendar-recontacto
+  - step-hcp-contacto-inicial
+  - step-hcp-despedida
+  - step-hcp-detalle-medicamento
+  - step-hcp-handout-especialista
+  - step-hcp-optout
+  - step-hcp-presentar-campania
+  - step-hcp-revision-humana
+  - step-hcp-validacion-policy-gate
+  - strategy-hcp-campaign
+  - style-hcp-tone
+  - tool-hcp-actualizar-consentimiento
+  - tool-hcp-programar-recontacto
+  - trait-hcp-especialidad
+  - trait-hcp-especialidad-cardiologia
+  - trait-hcp-especialidad-medicina-general
+  - trait-hcp-especialidad-neurologia
+  - trait-hcp-especialidad-pediatria
+  - trait-hcp-especialidad-psiquiatria
+  - trait-hcp-especialidad-traumatologia
+  - trait-hcp-preferencia-contacto
+  type.knowledge.boundary:
+  - boundary-hcp-ae-safety-net
+  - boundary-hcp-dsr-erasure
+  - boundary-hcp-optout-campania
+  - boundary-hcp-optout-canal
+  type.knowledge.domain:
+  - domain-hcp-amoxikid-ficha
+  - domain-hcp-amoxikid-indicacion
+  - domain-hcp-amoxikid-oferta
+  - domain-hcp-amoxikid-presentaciones
+  - domain-hcp-campania-lanzamientos-q4-2026
+  - domain-hcp-campania-ofertas-invierno-2026
+  - domain-hcp-cardiplat-ficha
+  - domain-hcp-cardiplat-indicacion
+  - domain-hcp-cardiplat-oferta
+  - domain-hcp-cardiplat-presentaciones
+  - domain-hcp-epilex-ficha
+  - domain-hcp-epilex-indicacion
+  - domain-hcp-epilex-oferta
+  - domain-hcp-epilex-presentaciones
+  - domain-hcp-febrikid-ficha
+  - domain-hcp-febrikid-indicacion
+  - domain-hcp-febrikid-oferta
+  - domain-hcp-febrikid-presentaciones
+  - domain-hcp-flexidol-ficha
+  - domain-hcp-flexidol-indicacion
+  - domain-hcp-flexidol-oferta
+  - domain-hcp-flexidol-presentaciones
+  - domain-hcp-gastroprot-ficha
+  - domain-hcp-gastroprot-indicacion
+  - domain-hcp-gastroprot-oferta
+  - domain-hcp-gastroprot-presentaciones
+  - domain-hcp-migralen-ficha
+  - domain-hcp-migralen-indicacion
+  - domain-hcp-migralen-oferta
+  - domain-hcp-migralen-presentaciones
+  - domain-hcp-neurox-ficha
+  - domain-hcp-neurox-indicacion
+  - domain-hcp-neurox-oferta
+  - domain-hcp-neurox-presentaciones
+  - domain-hcp-osteovit-ficha
+  - domain-hcp-osteovit-indicacion
+  - domain-hcp-osteovit-oferta
+  - domain-hcp-osteovit-presentaciones
+  - domain-hcp-respirfen-ficha
+  - domain-hcp-respirfen-indicacion
+  - domain-hcp-respirfen-oferta
+  - domain-hcp-respirfen-presentaciones
+  - domain-hcp-sedanil-ficha
+  - domain-hcp-sedanil-indicacion
+  - domain-hcp-sedanil-oferta
+  - domain-hcp-sedanil-presentaciones
+  - domain-hcp-tensiolab-ficha
+  - domain-hcp-tensiolab-indicacion
+  - domain-hcp-tensiolab-oferta
+  - domain-hcp-tensiolab-presentaciones
+  type.knowledge.fallback:
+  - fallback-hcp
+  type.knowledge.gate:
+  - gate-hcp-corpus
+  - gate-hcp-derivacion
+  - gate-hcp-diagnostico
+  - gate-hcp-dosis
+  - gate-hcp-promesas
+  type.knowledge.rule:
+  - rule-hcp-anti-alucinacion
+  - rule-hcp-derivar-clinico
+  - rule-hcp-filtrado-especialidad
+  - rule-hcp-no-contraindicaciones
+  - rule-hcp-no-deducir
+  - rule-hcp-no-extrapolar
+  - rule-hcp-no-farmacologia
+  - rule-hcp-no-inventar
+  - rule-hcp-solo-pii-profesional
+  type.knowledge.self:
+  - self-hcp-whoami
+  type.knowledge.step:
+  - step-hcp-agendar-recontacto
+  - step-hcp-contacto-inicial
+  - step-hcp-despedida
+  - step-hcp-detalle-medicamento
+  - step-hcp-handout-especialista
+  - step-hcp-optout
+  - step-hcp-presentar-campania
+  - step-hcp-revision-humana
+  - step-hcp-validacion-policy-gate
+  type.knowledge.strategy:
+  - strategy-hcp-campaign
+  type.knowledge.style:
+  - style-hcp-tone
+  type.knowledge.tool:
+  - tool-hcp-actualizar-consentimiento
+  - tool-hcp-programar-recontacto
+  type.knowledge.trait:
+  - trait-hcp-especialidad
+  - trait-hcp-especialidad-cardiologia
+  - trait-hcp-especialidad-medicina-general
+  - trait-hcp-especialidad-neurologia
+  - trait-hcp-especialidad-pediatria
+  - trait-hcp-especialidad-psiquiatria
+  - trait-hcp-especialidad-traumatologia
+  - trait-hcp-preferencia-contacto
+  type.relation.type:
+  - reltype-applies_to_source
+  - reltype-applies_to_target
+  - reltype-extends
+  - reltype-has_document
+  - reltype-has_field
+  - reltype-has_model
+  - reltype-has_section
+  - reltype-names
+  - reltype-semantic_equivalent
+  - reltype-semantic_parent
+  - reltype-tagged_as
+  user:specialty.cardiologia:
+  - domain-hcp-cardiplat-ficha
+  - domain-hcp-cardiplat-indicacion
+  - domain-hcp-cardiplat-oferta
+  - domain-hcp-cardiplat-presentaciones
+  - domain-hcp-tensiolab-ficha
+  - domain-hcp-tensiolab-indicacion
+  - domain-hcp-tensiolab-oferta
+  - domain-hcp-tensiolab-presentaciones
+  - trait-hcp-especialidad-cardiologia
+  user:specialty.medicina-general:
+  - domain-hcp-gastroprot-ficha
+  - domain-hcp-gastroprot-indicacion
+  - domain-hcp-gastroprot-oferta
+  - domain-hcp-gastroprot-presentaciones
+  - domain-hcp-respirfen-ficha
+  - domain-hcp-respirfen-indicacion
+  - domain-hcp-respirfen-oferta
+  - domain-hcp-respirfen-presentaciones
+  - trait-hcp-especialidad-medicina-general
+  user:specialty.neurologia:
+  - domain-hcp-epilex-ficha
+  - domain-hcp-epilex-indicacion
+  - domain-hcp-epilex-oferta
+  - domain-hcp-epilex-presentaciones
+  - domain-hcp-migralen-ficha
+  - domain-hcp-migralen-indicacion
+  - domain-hcp-migralen-oferta
+  - domain-hcp-migralen-presentaciones
+  - trait-hcp-especialidad-neurologia
+  user:specialty.pediatria:
+  - domain-hcp-amoxikid-ficha
+  - domain-hcp-amoxikid-indicacion
+  - domain-hcp-amoxikid-oferta
+  - domain-hcp-amoxikid-presentaciones
+  - domain-hcp-febrikid-ficha
+  - domain-hcp-febrikid-indicacion
+  - domain-hcp-febrikid-oferta
+  - domain-hcp-febrikid-presentaciones
+  - trait-hcp-especialidad-pediatria
+  user:specialty.psiquiatria:
+  - domain-hcp-neurox-ficha
+  - domain-hcp-neurox-indicacion
+  - domain-hcp-neurox-oferta
+  - domain-hcp-neurox-presentaciones
+  - domain-hcp-sedanil-ficha
+  - domain-hcp-sedanil-indicacion
+  - domain-hcp-sedanil-oferta
+  - domain-hcp-sedanil-presentaciones
+  - trait-hcp-especialidad-psiquiatria
+  user:specialty.traumatologia:
+  - domain-hcp-flexidol-ficha
+  - domain-hcp-flexidol-indicacion
+  - domain-hcp-flexidol-oferta
+  - domain-hcp-flexidol-presentaciones
+  - domain-hcp-osteovit-ficha
+  - domain-hcp-osteovit-indicacion
+  - domain-hcp-osteovit-oferta
+  - domain-hcp-osteovit-presentaciones
+  - trait-hcp-especialidad-traumatologia
+  user:traits.especialidad:
+  - trait-hcp-especialidad
+  user:traits.preferencia_contacto:
+  - trait-hcp-preferencia-contacto
+  workspace.knowledge:
+  - boundary-hcp-ae-safety-net
+  - boundary-hcp-dsr-erasure
+  - boundary-hcp-optout-campania
+  - boundary-hcp-optout-canal
+  - domain-hcp-amoxikid-ficha
+  - domain-hcp-amoxikid-indicacion
+  - domain-hcp-amoxikid-oferta
+  - domain-hcp-amoxikid-presentaciones
+  - domain-hcp-campania-lanzamientos-q4-2026
+  - domain-hcp-campania-ofertas-invierno-2026
+  - domain-hcp-cardiplat-ficha
+  - domain-hcp-cardiplat-indicacion
+  - domain-hcp-cardiplat-oferta
+  - domain-hcp-cardiplat-presentaciones
+  - domain-hcp-epilex-ficha
+  - domain-hcp-epilex-indicacion
+  - domain-hcp-epilex-oferta
+  - domain-hcp-epilex-presentaciones
+  - domain-hcp-febrikid-ficha
+  - domain-hcp-febrikid-indicacion
+  - domain-hcp-febrikid-oferta
+  - domain-hcp-febrikid-presentaciones
+  - domain-hcp-flexidol-ficha
+  - domain-hcp-flexidol-indicacion
+  - domain-hcp-flexidol-oferta
+  - domain-hcp-flexidol-presentaciones
+  - domain-hcp-gastroprot-ficha
+  - domain-hcp-gastroprot-indicacion
+  - domain-hcp-gastroprot-oferta
+  - domain-hcp-gastroprot-presentaciones
+  - domain-hcp-migralen-ficha
+  - domain-hcp-migralen-indicacion
+  - domain-hcp-migralen-oferta
+  - domain-hcp-migralen-presentaciones
+  - domain-hcp-neurox-ficha
+  - domain-hcp-neurox-indicacion
+  - domain-hcp-neurox-oferta
+  - domain-hcp-neurox-presentaciones
+  - domain-hcp-osteovit-ficha
+  - domain-hcp-osteovit-indicacion
+  - domain-hcp-osteovit-oferta
+  - domain-hcp-osteovit-presentaciones
+  - domain-hcp-respirfen-ficha
+  - domain-hcp-respirfen-indicacion
+  - domain-hcp-respirfen-oferta
+  - domain-hcp-respirfen-presentaciones
+  - domain-hcp-sedanil-ficha
+  - domain-hcp-sedanil-indicacion
+  - domain-hcp-sedanil-oferta
+  - domain-hcp-sedanil-presentaciones
+  - domain-hcp-tensiolab-ficha
+  - domain-hcp-tensiolab-indicacion
+  - domain-hcp-tensiolab-oferta
+  - domain-hcp-tensiolab-presentaciones
+  - fallback-hcp
+  - gate-hcp-corpus
+  - gate-hcp-derivacion
+  - gate-hcp-diagnostico
+  - gate-hcp-dosis
+  - gate-hcp-promesas
+  - rule-hcp-anti-alucinacion
+  - rule-hcp-derivar-clinico
+  - rule-hcp-filtrado-especialidad
+  - rule-hcp-no-contraindicaciones
+  - rule-hcp-no-deducir
+  - rule-hcp-no-extrapolar
+  - rule-hcp-no-farmacologia
+  - rule-hcp-no-inventar
+  - rule-hcp-solo-pii-profesional
+  - self-hcp-whoami
+  - step-hcp-agendar-recontacto
+  - step-hcp-contacto-inicial
+  - step-hcp-despedida
+  - step-hcp-detalle-medicamento
+  - step-hcp-handout-especialista
+  - step-hcp-optout
+  - step-hcp-presentar-campania
+  - step-hcp-revision-humana
+  - step-hcp-validacion-policy-gate
+  - strategy-hcp-campaign
+  - style-hcp-tone
+  - tool-hcp-actualizar-consentimiento
+  - tool-hcp-programar-recontacto
+  - trait-hcp-especialidad
+  - trait-hcp-especialidad-cardiologia
+  - trait-hcp-especialidad-medicina-general
+  - trait-hcp-especialidad-neurologia
+  - trait-hcp-especialidad-pediatria
+  - trait-hcp-especialidad-psiquiatria
+  - trait-hcp-especialidad-traumatologia
+  - trait-hcp-preferencia-contacto
+documents:
+  domain-hcp-osteovit-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/osteovit/domain-hcp-osteovit-presentaciones.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  domain-hcp-respirfen-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/respirfen/domain-hcp-respirfen-ficha.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-respirfen-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/respirfen/domain-hcp-respirfen-indicacion.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-respirfen-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/respirfen/domain-hcp-respirfen-oferta.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-respirfen-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/respirfen/domain-hcp-respirfen-presentaciones.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-sedanil-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/sedanil/domain-hcp-sedanil-ficha.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-sedanil-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/sedanil/domain-hcp-sedanil-indicacion.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-sedanil-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/sedanil/domain-hcp-sedanil-oferta.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-sedanil-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/sedanil/domain-hcp-sedanil-presentaciones.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-tensiolab-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/tensiolab/domain-hcp-tensiolab-ficha.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-tensiolab-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/tensiolab/domain-hcp-tensiolab-indicacion.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-tensiolab-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/tensiolab/domain-hcp-tensiolab-oferta.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-tensiolab-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/tensiolab/domain-hcp-tensiolab-presentaciones.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-campania-lanzamientos-q4-2026:
+    model: DomainAtom
+    path: atoms/campaigns/domain-hcp-campania-lanzamientos-q4-2026.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+  domain-hcp-campania-ofertas-invierno-2026:
+    model: DomainAtom
+    path: atoms/campaigns/domain-hcp-campania-ofertas-invierno-2026.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+  domain-hcp-amoxikid-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/amoxikid/domain-hcp-amoxikid-ficha.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-amoxikid-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/amoxikid/domain-hcp-amoxikid-indicacion.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-amoxikid-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/amoxikid/domain-hcp-amoxikid-oferta.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-amoxikid-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/amoxikid/domain-hcp-amoxikid-presentaciones.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-cardiplat-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/cardiplat/domain-hcp-cardiplat-ficha.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-cardiplat-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/cardiplat/domain-hcp-cardiplat-indicacion.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-cardiplat-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/cardiplat/domain-hcp-cardiplat-oferta.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-cardiplat-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/cardiplat/domain-hcp-cardiplat-presentaciones.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  domain-hcp-epilex-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/epilex/domain-hcp-epilex-ficha.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-epilex-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/epilex/domain-hcp-epilex-indicacion.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-epilex-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/epilex/domain-hcp-epilex-oferta.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-epilex-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/epilex/domain-hcp-epilex-presentaciones.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-febrikid-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/febrikid/domain-hcp-febrikid-ficha.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-febrikid-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/febrikid/domain-hcp-febrikid-indicacion.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-febrikid-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/febrikid/domain-hcp-febrikid-oferta.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-febrikid-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/febrikid/domain-hcp-febrikid-presentaciones.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+  domain-hcp-flexidol-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/flexidol/domain-hcp-flexidol-ficha.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  domain-hcp-flexidol-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/flexidol/domain-hcp-flexidol-indicacion.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  domain-hcp-flexidol-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/flexidol/domain-hcp-flexidol-oferta.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  domain-hcp-flexidol-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/flexidol/domain-hcp-flexidol-presentaciones.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  domain-hcp-gastroprot-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/gastroprot/domain-hcp-gastroprot-ficha.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-gastroprot-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/gastroprot/domain-hcp-gastroprot-indicacion.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-gastroprot-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/gastroprot/domain-hcp-gastroprot-oferta.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-gastroprot-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/gastroprot/domain-hcp-gastroprot-presentaciones.md
+    tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  domain-hcp-migralen-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/migralen/domain-hcp-migralen-ficha.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-migralen-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/migralen/domain-hcp-migralen-indicacion.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-migralen-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/migralen/domain-hcp-migralen-oferta.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-migralen-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/migralen/domain-hcp-migralen-presentaciones.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+  domain-hcp-neurox-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/neurox/domain-hcp-neurox-ficha.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-neurox-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/neurox/domain-hcp-neurox-indicacion.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-neurox-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/neurox/domain-hcp-neurox-oferta.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-neurox-presentaciones:
+    model: DomainAtom
+    path: atoms/medicamentos/neurox/domain-hcp-neurox-presentaciones.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  domain-hcp-osteovit-ficha:
+    model: DomainAtom
+    path: atoms/medicamentos/osteovit/domain-hcp-osteovit-ficha.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  domain-hcp-osteovit-indicacion:
+    model: DomainAtom
+    path: atoms/medicamentos/osteovit/domain-hcp-osteovit-indicacion.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  domain-hcp-osteovit-oferta:
+    model: DomainAtom
+    path: atoms/medicamentos/osteovit/domain-hcp-osteovit-oferta.md
+    tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  rule-hcp-anti-alucinacion:
+    model: RuleAtom
+    path: atoms/rule-hcp-anti-alucinacion.md
+    tags:
+    - conversation:fallback
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-derivar-clinico:
+    model: RuleAtom
+    path: atoms/rule-hcp-derivar-clinico.md
+    tags:
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-no-contraindicaciones:
+    model: RuleAtom
+    path: atoms/rule-hcp-no-contraindicaciones.md
+    tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-no-deducir:
+    model: RuleAtom
+    path: atoms/rule-hcp-no-deducir.md
+    tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-no-extrapolar:
+    model: RuleAtom
+    path: atoms/rule-hcp-no-extrapolar.md
+    tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-no-farmacologia:
+    model: RuleAtom
+    path: atoms/rule-hcp-no-farmacologia.md
+    tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-no-inventar:
+    model: RuleAtom
+    path: atoms/rule-hcp-no-inventar.md
+    tags:
+    - conversation:security
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-filtrado-especialidad:
+    model: RuleAtom
+    path: atoms/rule-hcp-filtrado-especialidad.md
+    tags:
+    - domain:campanias
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  rule-hcp-solo-pii-profesional:
+    model: RuleAtom
+    path: atoms/rule-hcp-solo-pii-profesional.md
+    tags:
+    - conversation:security
+    - domain:datos
+    - system:teva-hcp
+    - type.knowledge.rule
+    - workspace.knowledge
+  tool-hcp-programar-recontacto:
+    model: ToolAtom
+    path: atoms/tool-hcp-programar-recontacto.md
+    tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+  tool-hcp-actualizar-consentimiento:
+    model: ToolAtom
+    path: atoms/tool-hcp-actualizar-consentimiento.md
+    tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+  trait-hcp-especialidad:
+    model: TraitAtom
+    path: atoms/trait-hcp-especialidad.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.especialidad
+    - workspace.knowledge
+  trait-hcp-preferencia-contacto:
+    model: TraitAtom
+    path: atoms/trait-hcp-preferencia-contacto.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.preferencia_contacto
+    - workspace.knowledge
+  trait-hcp-especialidad-cardiologia:
+    model: TraitAtom
+    path: atoms/traits/trait-hcp-especialidad-cardiologia.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.cardiologia
+    - workspace.knowledge
+  trait-hcp-especialidad-medicina-general:
+    model: TraitAtom
+    path: atoms/traits/trait-hcp-especialidad-medicina-general.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.medicina-general
+    - workspace.knowledge
+  trait-hcp-especialidad-neurologia:
+    model: TraitAtom
+    path: atoms/traits/trait-hcp-especialidad-neurologia.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.neurologia
+    - workspace.knowledge
+  trait-hcp-especialidad-pediatria:
+    model: TraitAtom
+    path: atoms/traits/trait-hcp-especialidad-pediatria.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.pediatria
+    - workspace.knowledge
+  trait-hcp-especialidad-psiquiatria:
+    model: TraitAtom
+    path: atoms/traits/trait-hcp-especialidad-psiquiatria.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+  trait-hcp-especialidad-traumatologia:
+    model: TraitAtom
+    path: atoms/traits/trait-hcp-especialidad-traumatologia.md
+    tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.traumatologia
+    - workspace.knowledge
+  step-hcp-validacion-policy-gate:
+    model: ConversationStep
+    path: atoms/step-hcp-validacion-policy-gate.md
+    tags:
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-presentar-campania:
+    model: ConversationStep
+    path: atoms/step-hcp-presentar-campania.md
+    tags:
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-detalle-medicamento:
+    model: ConversationStep
+    path: atoms/step-hcp-detalle-medicamento.md
+    tags:
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-handout-especialista:
+    model: ConversationStep
+    path: atoms/step-hcp-handout-especialista.md
+    tags:
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-agendar-recontacto:
+    model: ConversationStep
+    path: atoms/step-hcp-agendar-recontacto.md
+    tags:
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-optout:
+    model: ConversationStep
+    path: atoms/step-hcp-optout.md
+    tags:
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-contacto-inicial:
+    model: ConversationStep
+    path: atoms/step-hcp-contacto-inicial.md
+    tags:
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-despedida:
+    model: ConversationStep
+    path: atoms/step-hcp-despedida.md
+    tags:
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  step-hcp-revision-humana:
+    model: ConversationStep
+    path: atoms/step-hcp-revision-humana.md
+    tags:
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+  self-hcp-whoami:
+    model: SelfDeclaration
+    path: atoms/self-hcp-whoami.md
+    tags:
+    - self:whoami
+    - system:teva-hcp
+    - type.knowledge.self
+    - workspace.knowledge
+  style-hcp-tone:
+    model: StyleGuide
+    path: atoms/style-hcp-tone.md
+    tags:
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+  boundary-hcp-optout-campania:
+    model: CapabilityBoundary
+    path: atoms/boundary-hcp-optout-campania.md
+    tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+  boundary-hcp-optout-canal:
+    model: CapabilityBoundary
+    path: atoms/boundary-hcp-optout-canal.md
+    tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+  boundary-hcp-dsr-erasure:
+    model: CapabilityBoundary
+    path: atoms/boundary-hcp-dsr-erasure.md
+    tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+  boundary-hcp-ae-safety-net:
+    model: CapabilityBoundary
+    path: atoms/boundary-hcp-ae-safety-net.md
+    tags:
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+  strategy-hcp-campaign:
+    model: StrategyRule
+    path: atoms/strategy-hcp-campaign.md
+    tags:
+    - conversation:strategy
+    - system:teva-hcp
+    - type.knowledge.strategy
+    - workspace.knowledge
+  fallback-hcp:
+    model: FallbackRule
+    path: atoms/fallback-hcp.md
+    tags:
+    - conversation:fallback
+    - system:teva-hcp
+    - type.knowledge.fallback
+    - workspace.knowledge
+  gate-hcp-corpus:
+    model: GateCriterion
+    path: atoms/gate-hcp-corpus.md
+    tags:
+    - gate:corpus
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-hcp-derivacion:
+    model: GateCriterion
+    path: atoms/gate-hcp-derivacion.md
+    tags:
+    - gate:derivacion
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-hcp-diagnostico:
+    model: GateCriterion
+    path: atoms/gate-hcp-diagnostico.md
+    tags:
+    - gate:regulatorio.diagnostico
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-hcp-dosis:
+    model: GateCriterion
+    path: atoms/gate-hcp-dosis.md
+    tags:
+    - gate:regulatorio.dosis
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+  gate-hcp-promesas:
+    model: GateCriterion
+    path: atoms/gate-hcp-promesas.md
+    tags:
+    - gate:promesas
+    - system:teva-hcp
+    - type.knowledge.gate
+    - workspace.knowledge
+  reltype-has_model:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_model.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-has_document:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_document.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-has_section:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_section.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-tagged_as:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/tagged_as.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-semantic_parent:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/semantic_parent.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-semantic_equivalent:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/semantic_equivalent.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-has_field:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/has_field.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-extends:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/extends.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-applies_to_source:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/applies_to_source.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-applies_to_target:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/applies_to_target.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  reltype-names:
+    model: RelationTypeDoc
+    path: kgdb/relation_types/names.md
+    tags:
+    - layer.topology
+    - type.relation.type

@@ -1,0 +1,38 @@
+documents:
+- name: boundary-hcp-optout-campania
+  path: atoms/boundary-hcp-optout-campania.md
+  hash_c: 7904464ab403d6654263ef828fa62210043cd7dfe1f3769268085a5147aa0a56
+  hash_d: 463024f539ba32b44d2d70b25e8ba6c6dcee3c6a774482b29d095059e9f1e429
+  semantic_tags:
+  - self:limites
+  - system:teva-hcp
+  - type.knowledge.boundary
+  - workspace.knowledge
+- name: boundary-hcp-optout-canal
+  path: atoms/boundary-hcp-optout-canal.md
+  hash_c: 30ea826614599da722cba3063b8148cc7b8fa5f6dbf0f5f5d882cea605411028
+  hash_d: 32a476134cebb04e62f31fcd6487a58cc8ee8931cc7ffff3ae000e7676980c26
+  semantic_tags:
+  - self:limites
+  - system:teva-hcp
+  - type.knowledge.boundary
+  - workspace.knowledge
+- name: boundary-hcp-dsr-erasure
+  path: atoms/boundary-hcp-dsr-erasure.md
+  hash_c: 9505c6aba728293260b8a219c461a349e22bb5c88a3491ed330c7a29b35844ec
+  hash_d: a490c3a578299220c48597f1d178a0ddb7234071d5d2b890a117bacdce082949
+  semantic_tags:
+  - self:limites
+  - system:teva-hcp
+  - type.knowledge.boundary
+  - workspace.knowledge
+- name: boundary-hcp-ae-safety-net
+  path: atoms/boundary-hcp-ae-safety-net.md
+  hash_c: f82c78373a74aeb882c1ad64b0f55e897886f14dcd754c0be776a1bbc7aad6f3
+  hash_d: 14a59536399fac292fa7e888e49343b45f5ad036f9dfa6175efbd9e2c6455f88
+  semantic_tags:
+  - domain:farmacovigilancia
+  - self:limites
+  - system:teva-hcp
+  - type.knowledge.boundary
+  - workspace.knowledge

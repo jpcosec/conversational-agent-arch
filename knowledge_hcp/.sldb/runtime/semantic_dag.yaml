@@ -1,0 +1,311 @@
+nodes:
+- id: conversation:steps
+  parents: []
+- id: conversation:steps.agendar_recontacto
+  parents:
+  - conversation:steps
+- id: conversation:steps.contacto_inicial
+  parents:
+  - conversation:steps
+- id: conversation:steps.despedida
+  parents:
+  - conversation:steps
+- id: conversation:steps.detalle_medicamento
+  parents:
+  - conversation:steps
+- id: conversation:steps.handout_especialista
+  parents:
+  - conversation:steps
+- id: conversation:steps.optout
+  parents:
+  - conversation:steps
+- id: conversation:steps.presentar_campania
+  parents:
+  - conversation:steps
+- id: conversation:steps.revision_humana
+  parents:
+  - conversation:steps
+- id: conversation:steps.validacion_policy_gate
+  parents:
+  - conversation:steps
+- id: domain:campanias
+  parents: []
+- id: domain:campanias.lanzamientos-q4-2026
+  parents:
+  - domain:campanias
+- id: domain:campanias.ofertas-invierno-2026
+  parents:
+  - domain:campanias
+- id: domain:medicamentos
+  parents: []
+- id: domain:medicamentos.amoxikid
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.amoxikid.ficha
+  parents:
+  - domain:medicamentos.amoxikid
+- id: domain:medicamentos.amoxikid.indicacion
+  parents:
+  - domain:medicamentos.amoxikid
+- id: domain:medicamentos.amoxikid.oferta
+  parents:
+  - domain:medicamentos.amoxikid
+- id: domain:medicamentos.amoxikid.presentaciones
+  parents:
+  - domain:medicamentos.amoxikid
+- id: domain:medicamentos.cardiplat
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.cardiplat.ficha
+  parents:
+  - domain:medicamentos.cardiplat
+- id: domain:medicamentos.cardiplat.indicacion
+  parents:
+  - domain:medicamentos.cardiplat
+- id: domain:medicamentos.cardiplat.oferta
+  parents:
+  - domain:medicamentos.cardiplat
+- id: domain:medicamentos.cardiplat.presentaciones
+  parents:
+  - domain:medicamentos.cardiplat
+- id: domain:medicamentos.epilex
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.epilex.ficha
+  parents:
+  - domain:medicamentos.epilex
+- id: domain:medicamentos.epilex.indicacion
+  parents:
+  - domain:medicamentos.epilex
+- id: domain:medicamentos.epilex.oferta
+  parents:
+  - domain:medicamentos.epilex
+- id: domain:medicamentos.epilex.presentaciones
+  parents:
+  - domain:medicamentos.epilex
+- id: domain:medicamentos.febrikid
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.febrikid.ficha
+  parents:
+  - domain:medicamentos.febrikid
+- id: domain:medicamentos.febrikid.indicacion
+  parents:
+  - domain:medicamentos.febrikid
+- id: domain:medicamentos.febrikid.oferta
+  parents:
+  - domain:medicamentos.febrikid
+- id: domain:medicamentos.febrikid.presentaciones
+  parents:
+  - domain:medicamentos.febrikid
+- id: domain:medicamentos.flexidol
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.flexidol.ficha
+  parents:
+  - domain:medicamentos.flexidol
+- id: domain:medicamentos.flexidol.indicacion
+  parents:
+  - domain:medicamentos.flexidol
+- id: domain:medicamentos.flexidol.oferta
+  parents:
+  - domain:medicamentos.flexidol
+- id: domain:medicamentos.flexidol.presentaciones
+  parents:
+  - domain:medicamentos.flexidol
+- id: domain:medicamentos.gastroprot
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.gastroprot.ficha
+  parents:
+  - domain:medicamentos.gastroprot
+- id: domain:medicamentos.gastroprot.indicacion
+  parents:
+  - domain:medicamentos.gastroprot
+- id: domain:medicamentos.gastroprot.oferta
+  parents:
+  - domain:medicamentos.gastroprot
+- id: domain:medicamentos.gastroprot.presentaciones
+  parents:
+  - domain:medicamentos.gastroprot
+- id: domain:medicamentos.migralen
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.migralen.ficha
+  parents:
+  - domain:medicamentos.migralen
+- id: domain:medicamentos.migralen.indicacion
+  parents:
+  - domain:medicamentos.migralen
+- id: domain:medicamentos.migralen.oferta
+  parents:
+  - domain:medicamentos.migralen
+- id: domain:medicamentos.migralen.presentaciones
+  parents:
+  - domain:medicamentos.migralen
+- id: domain:medicamentos.neurox
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.neurox.ficha
+  parents:
+  - domain:medicamentos.neurox
+- id: domain:medicamentos.neurox.indicacion
+  parents:
+  - domain:medicamentos.neurox
+- id: domain:medicamentos.neurox.oferta
+  parents:
+  - domain:medicamentos.neurox
+- id: domain:medicamentos.neurox.presentaciones
+  parents:
+  - domain:medicamentos.neurox
+- id: domain:medicamentos.osteovit
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.osteovit.ficha
+  parents:
+  - domain:medicamentos.osteovit
+- id: domain:medicamentos.osteovit.indicacion
+  parents:
+  - domain:medicamentos.osteovit
+- id: domain:medicamentos.osteovit.oferta
+  parents:
+  - domain:medicamentos.osteovit
+- id: domain:medicamentos.osteovit.presentaciones
+  parents:
+  - domain:medicamentos.osteovit
+- id: domain:medicamentos.respirfen
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.respirfen.ficha
+  parents:
+  - domain:medicamentos.respirfen
+- id: domain:medicamentos.respirfen.indicacion
+  parents:
+  - domain:medicamentos.respirfen
+- id: domain:medicamentos.respirfen.oferta
+  parents:
+  - domain:medicamentos.respirfen
+- id: domain:medicamentos.respirfen.presentaciones
+  parents:
+  - domain:medicamentos.respirfen
+- id: domain:medicamentos.sedanil
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.sedanil.ficha
+  parents:
+  - domain:medicamentos.sedanil
+- id: domain:medicamentos.sedanil.indicacion
+  parents:
+  - domain:medicamentos.sedanil
+- id: domain:medicamentos.sedanil.oferta
+  parents:
+  - domain:medicamentos.sedanil
+- id: domain:medicamentos.sedanil.presentaciones
+  parents:
+  - domain:medicamentos.sedanil
+- id: domain:medicamentos.tensiolab
+  parents:
+  - domain:medicamentos
+- id: domain:medicamentos.tensiolab.ficha
+  parents:
+  - domain:medicamentos.tensiolab
+- id: domain:medicamentos.tensiolab.indicacion
+  parents:
+  - domain:medicamentos.tensiolab
+- id: domain:medicamentos.tensiolab.oferta
+  parents:
+  - domain:medicamentos.tensiolab
+- id: domain:medicamentos.tensiolab.presentaciones
+  parents:
+  - domain:medicamentos.tensiolab
+- id: gate:regulatorio
+  parents: []
+- id: gate:regulatorio.diagnostico
+  parents:
+  - gate:regulatorio
+- id: gate:regulatorio.dosis
+  parents:
+  - gate:regulatorio
+- id: layer
+  parents: []
+- id: layer.topology
+  parents:
+  - layer
+- id: type
+  parents: []
+- id: type.knowledge
+  parents:
+  - type
+- id: type.knowledge.boundary
+  parents:
+  - type.knowledge
+- id: type.knowledge.domain
+  parents:
+  - type.knowledge
+- id: type.knowledge.fallback
+  parents:
+  - type.knowledge
+- id: type.knowledge.gate
+  parents:
+  - type.knowledge
+- id: type.knowledge.rule
+  parents:
+  - type.knowledge
+- id: type.knowledge.self
+  parents:
+  - type.knowledge
+- id: type.knowledge.step
+  parents:
+  - type.knowledge
+- id: type.knowledge.strategy
+  parents:
+  - type.knowledge
+- id: type.knowledge.style
+  parents:
+  - type.knowledge
+- id: type.knowledge.tool
+  parents:
+  - type.knowledge
+- id: type.knowledge.trait
+  parents:
+  - type.knowledge
+- id: type.relation
+  parents:
+  - type
+- id: type.relation.type
+  parents:
+  - type.relation
+- id: user:specialty
+  parents: []
+- id: user:specialty.cardiologia
+  parents:
+  - user:specialty
+- id: user:specialty.medicina-general
+  parents:
+  - user:specialty
+- id: user:specialty.neurologia
+  parents:
+  - user:specialty
+- id: user:specialty.pediatria
+  parents:
+  - user:specialty
+- id: user:specialty.psiquiatria
+  parents:
+  - user:specialty
+- id: user:specialty.traumatologia
+  parents:
+  - user:specialty
+- id: user:traits
+  parents: []
+- id: user:traits.especialidad
+  parents:
+  - user:traits
+- id: user:traits.preferencia_contacto
+  parents:
+  - user:traits
+- id: workspace
+  parents: []
+- id: workspace.knowledge
+  parents:
+  - workspace
+equivalences: {}

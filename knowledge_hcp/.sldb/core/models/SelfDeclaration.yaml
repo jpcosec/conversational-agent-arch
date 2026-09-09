@@ -1,0 +1,13 @@
+name: SelfDeclaration
+model_ref: kb_agent.models.knowledge:SelfDeclaration
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/self_declaration.py
+documents_index: .sldb/core/documents/SelfDeclaration.yaml
+sections_index: .sldb/runtime/sections/SelfDeclaration.yaml
+hash_b: 631e0a0549c5df789e7155cc27deacf0abaf8e45bc73d3558f40429cb8c950ab
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.self
+- workspace.knowledge
+base_models: []

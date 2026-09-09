@@ -30,6 +30,7 @@ from kb_agent.knowledge.world import open_world, refresh_world
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
+from kb_agent.models.knowledge import AgentFraming
 from kb_agent.models.knowledge import DomainAtom, RuleAtom, ToolAtom, TraitAtom
 from kb_agent.models.knowledge import ConversationStep, SelfDeclaration, StyleGuide
 from kb_agent.models.knowledge import CapabilityBoundary, StrategyRule, FallbackRule
@@ -48,6 +49,7 @@ MODEL_MAP = {
     "strategy": StrategyRule,
     "fallback": FallbackRule,
     "gate": GateCriterion,
+    "agent": AgentFraming,
 }
 
 ALL_MODELS = list(MODEL_MAP.values())

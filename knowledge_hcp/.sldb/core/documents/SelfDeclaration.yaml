@@ -1,0 +1,10 @@
+documents:
+- name: self-hcp-whoami
+  path: atoms/self-hcp-whoami.md
+  hash_c: bd62944bef0c387105162846ab3955e502a5af72b079e65229048c355b8fb8f3
+  hash_d: 7b2583643a7d1c7cd59dc3c4ae57fe64eae604c24f062ec7f2b72bf8b4b87b18
+  semantic_tags:
+  - self:whoami
+  - system:teva-hcp
+  - type.knowledge.self
+  - workspace.knowledge

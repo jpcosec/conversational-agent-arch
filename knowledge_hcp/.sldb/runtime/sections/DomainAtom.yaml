@@ -1,0 +1,2849 @@
+documents:
+- doc_name: domain-hcp-osteovit-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-osteovit
+    title: '[PENDIENTE MLR] Presentaciones de OsteoVit'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de OsteoVit'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de OsteoVit'
+    - pendiente mlr presentaciones de osteovit
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-osteovit
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-osteovit/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de OsteoVit'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de OsteoVit'
+    - pendiente mlr presentaciones de osteovit
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-respirfen-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-respirfen-desloratadina-para-medicina-general
+    title: '[PENDIENTE MLR] Ficha de Respirfen (desloratadina) para medicina general'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Respirfen (desloratadina) para medicina general'
+    about:
+    - '[PENDIENTE MLR] Ficha de Respirfen (desloratadina) para medicina general'
+    - pendiente mlr ficha de respirfen desloratadina para medicina general
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-respirfen-desloratadina-para-medicina-general
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-respirfen-desloratadina-para-medicina-general/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Respirfen (desloratadina) para medicina general'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Respirfen (desloratadina) para medicina general'
+    - pendiente mlr ficha de respirfen desloratadina para medicina general
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-respirfen-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-respirfen
+    title: '[PENDIENTE MLR] Indicación aprobada de Respirfen'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Respirfen'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Respirfen'
+    - pendiente mlr indicaci n aprobada de respirfen
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-respirfen
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-respirfen/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Respirfen'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Respirfen'
+    - pendiente mlr indicaci n aprobada de respirfen
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-respirfen-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-respirfen-campa-a-lanzamientos-q4-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Respirfen — campaña Lanzamientos Q4
+      2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Respirfen — campaña Lanzamientos Q4 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Respirfen — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de respirfen campa a lanzamientos q4 2026
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-respirfen-campa-a-lanzamientos-q4-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-respirfen-campa-a-lanzamientos-q4-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Respirfen — campaña Lanzamientos Q4 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Respirfen — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de respirfen campa a lanzamientos q4 2026
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-respirfen-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-respirfen
+    title: '[PENDIENTE MLR] Presentaciones de Respirfen'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Respirfen'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Respirfen'
+    - pendiente mlr presentaciones de respirfen
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-respirfen
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-respirfen/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Respirfen'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Respirfen'
+    - pendiente mlr presentaciones de respirfen
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.respirfen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-sedanil-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-sedanil-quetiapina-liberaci-n-prolongada-para-psiquiatr-a
+    title: '[PENDIENTE MLR] Ficha de Sedanil (quetiapina liberación prolongada) para
+      psiquiatría'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Sedanil (quetiapina liberación prolongada) para psiquiatría'
+    about:
+    - '[PENDIENTE MLR] Ficha de Sedanil (quetiapina liberación prolongada) para psiquiatría'
+    - pendiente mlr ficha de sedanil quetiapina liberaci n prolongada para psiquiatr
+      a
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-sedanil-quetiapina-liberaci-n-prolongada-para-psiquiatr-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-sedanil-quetiapina-liberaci-n-prolongada-para-psiquiatr-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Sedanil (quetiapina liberación prolongada) para psiquiatría'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Sedanil (quetiapina liberación prolongada) para psiquiatría'
+    - pendiente mlr ficha de sedanil quetiapina liberaci n prolongada para psiquiatr
+      a
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-sedanil-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-sedanil
+    title: '[PENDIENTE MLR] Indicación aprobada de Sedanil'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Sedanil'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Sedanil'
+    - pendiente mlr indicaci n aprobada de sedanil
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-sedanil
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-sedanil/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Sedanil'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Sedanil'
+    - pendiente mlr indicaci n aprobada de sedanil
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-sedanil-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-sedanil-campa-a-ofertas-invierno-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Sedanil — campaña Ofertas invierno 2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Sedanil — campaña Ofertas invierno 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Sedanil — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de sedanil campa a ofertas invierno 2026
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-sedanil-campa-a-ofertas-invierno-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-sedanil-campa-a-ofertas-invierno-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Sedanil — campaña Ofertas invierno 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Sedanil — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de sedanil campa a ofertas invierno 2026
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-sedanil-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-sedanil
+    title: '[PENDIENTE MLR] Presentaciones de Sedanil'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Sedanil'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Sedanil'
+    - pendiente mlr presentaciones de sedanil
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-sedanil
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-sedanil/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Sedanil'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Sedanil'
+    - pendiente mlr presentaciones de sedanil
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.sedanil.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-tensiolab-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-tensiolab-losart-n-hidroclorotiazida-para-cardiolog-a
+    title: '[PENDIENTE MLR] Ficha de Tensiolab (losartán + hidroclorotiazida) para
+      cardiología'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Tensiolab (losartán + hidroclorotiazida) para cardiología'
+    about:
+    - '[PENDIENTE MLR] Ficha de Tensiolab (losartán + hidroclorotiazida) para cardiología'
+    - pendiente mlr ficha de tensiolab losart n hidroclorotiazida para cardiolog a
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-tensiolab-losart-n-hidroclorotiazida-para-cardiolog-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-tensiolab-losart-n-hidroclorotiazida-para-cardiolog-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Tensiolab (losartán + hidroclorotiazida) para cardiología'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Tensiolab (losartán + hidroclorotiazida) para cardiología'
+    - pendiente mlr ficha de tensiolab losart n hidroclorotiazida para cardiolog a
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-tensiolab-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-tensiolab
+    title: '[PENDIENTE MLR] Indicación aprobada de Tensiolab'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Tensiolab'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Tensiolab'
+    - pendiente mlr indicaci n aprobada de tensiolab
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-tensiolab
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-tensiolab/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Tensiolab'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Tensiolab'
+    - pendiente mlr indicaci n aprobada de tensiolab
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-tensiolab-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-tensiolab-campa-a-lanzamientos-q4-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Tensiolab — campaña Lanzamientos Q4
+      2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Tensiolab — campaña Lanzamientos Q4 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Tensiolab — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de tensiolab campa a lanzamientos q4 2026
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-tensiolab-campa-a-lanzamientos-q4-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-tensiolab-campa-a-lanzamientos-q4-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Tensiolab — campaña Lanzamientos Q4 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Tensiolab — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de tensiolab campa a lanzamientos q4 2026
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-tensiolab-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-tensiolab
+    title: '[PENDIENTE MLR] Presentaciones de Tensiolab'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Tensiolab'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Tensiolab'
+    - pendiente mlr presentaciones de tensiolab
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-tensiolab
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-tensiolab/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Tensiolab'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Tensiolab'
+    - pendiente mlr presentaciones de tensiolab
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.tensiolab.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-campania-lanzamientos-q4-2026
+  sections:
+  - path: campa-a-lanzamientos-q4-2026
+    title: Campaña — Lanzamientos Q4 2026
+    breadcrumbs:
+    - Campaña — Lanzamientos Q4 2026
+    about:
+    - Campaña — Lanzamientos Q4 2026
+    - campa a lanzamientos q4 2026
+    - domain:campanias.lanzamientos-q4-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: campa-a-lanzamientos-q4-2026
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: campa-a-lanzamientos-q4-2026/answer
+    title: Answer
+    breadcrumbs:
+    - Campaña — Lanzamientos Q4 2026
+    - Answer
+    about:
+    - Campaña — Lanzamientos Q4 2026
+    - campa a lanzamientos q4 2026
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+- doc_name: domain-hcp-campania-ofertas-invierno-2026
+  sections:
+  - path: campa-a-ofertas-invierno-2026
+    title: Campaña — Ofertas invierno 2026
+    breadcrumbs:
+    - Campaña — Ofertas invierno 2026
+    about:
+    - Campaña — Ofertas invierno 2026
+    - campa a ofertas invierno 2026
+    - domain:campanias.ofertas-invierno-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: campa-a-ofertas-invierno-2026
+    level: 1
+    line_start: 787
+    line_end: 788
+  - path: campa-a-ofertas-invierno-2026/answer
+    title: Answer
+    breadcrumbs:
+    - Campaña — Ofertas invierno 2026
+    - Answer
+    about:
+    - Campaña — Ofertas invierno 2026
+    - campa a ofertas invierno 2026
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 789
+    line_end: 790
+- doc_name: domain-hcp-amoxikid-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-amoxikid-amoxicilina-cido-clavul-nico-para-pediatr-a
+    title: '[PENDIENTE MLR] Ficha de Amoxikid (amoxicilina + ácido clavulánico) para
+      pediatría'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Amoxikid (amoxicilina + ácido clavulánico) para pediatría'
+    about:
+    - '[PENDIENTE MLR] Ficha de Amoxikid (amoxicilina + ácido clavulánico) para pediatría'
+    - pendiente mlr ficha de amoxikid amoxicilina cido clavul nico para pediatr a
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-amoxikid-amoxicilina-cido-clavul-nico-para-pediatr-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-amoxikid-amoxicilina-cido-clavul-nico-para-pediatr-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Amoxikid (amoxicilina + ácido clavulánico) para pediatría'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Amoxikid (amoxicilina + ácido clavulánico) para pediatría'
+    - pendiente mlr ficha de amoxikid amoxicilina cido clavul nico para pediatr a
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-amoxikid-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-amoxikid
+    title: '[PENDIENTE MLR] Indicación aprobada de Amoxikid'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Amoxikid'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Amoxikid'
+    - pendiente mlr indicaci n aprobada de amoxikid
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-amoxikid
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-amoxikid/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Amoxikid'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Amoxikid'
+    - pendiente mlr indicaci n aprobada de amoxikid
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-amoxikid-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-amoxikid-campa-a-ofertas-invierno-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Amoxikid — campaña Ofertas invierno
+      2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Amoxikid — campaña Ofertas invierno 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Amoxikid — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de amoxikid campa a ofertas invierno 2026
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-amoxikid-campa-a-ofertas-invierno-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-amoxikid-campa-a-ofertas-invierno-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Amoxikid — campaña Ofertas invierno 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Amoxikid — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de amoxikid campa a ofertas invierno 2026
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-amoxikid-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-amoxikid
+    title: '[PENDIENTE MLR] Presentaciones de Amoxikid'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Amoxikid'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Amoxikid'
+    - pendiente mlr presentaciones de amoxikid
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-amoxikid
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-amoxikid/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Amoxikid'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Amoxikid'
+    - pendiente mlr presentaciones de amoxikid
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.amoxikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-cardiplat-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-cardiplat-clopidogrel-para-cardiolog-a
+    title: '[PENDIENTE MLR] Ficha de Cardiplat (clopidogrel) para cardiología'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Cardiplat (clopidogrel) para cardiología'
+    about:
+    - '[PENDIENTE MLR] Ficha de Cardiplat (clopidogrel) para cardiología'
+    - pendiente mlr ficha de cardiplat clopidogrel para cardiolog a
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-cardiplat-clopidogrel-para-cardiolog-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-cardiplat-clopidogrel-para-cardiolog-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Cardiplat (clopidogrel) para cardiología'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Cardiplat (clopidogrel) para cardiología'
+    - pendiente mlr ficha de cardiplat clopidogrel para cardiolog a
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-cardiplat-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-cardiplat
+    title: '[PENDIENTE MLR] Indicación aprobada de Cardiplat'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Cardiplat'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Cardiplat'
+    - pendiente mlr indicaci n aprobada de cardiplat
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-cardiplat
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-cardiplat/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Cardiplat'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Cardiplat'
+    - pendiente mlr indicaci n aprobada de cardiplat
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-cardiplat-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-cardiplat-campa-a-ofertas-invierno-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Cardiplat — campaña Ofertas invierno
+      2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Cardiplat — campaña Ofertas invierno 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Cardiplat — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de cardiplat campa a ofertas invierno 2026
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-cardiplat-campa-a-ofertas-invierno-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-cardiplat-campa-a-ofertas-invierno-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Cardiplat — campaña Ofertas invierno 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Cardiplat — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de cardiplat campa a ofertas invierno 2026
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-cardiplat-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-cardiplat
+    title: '[PENDIENTE MLR] Presentaciones de Cardiplat'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Cardiplat'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Cardiplat'
+    - pendiente mlr presentaciones de cardiplat
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-cardiplat
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-cardiplat/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Cardiplat'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Cardiplat'
+    - pendiente mlr presentaciones de cardiplat
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.cardiplat.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-epilex-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-epilex-levetiracetam-para-neurolog-a
+    title: '[PENDIENTE MLR] Ficha de Epilex (levetiracetam) para neurología'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Epilex (levetiracetam) para neurología'
+    about:
+    - '[PENDIENTE MLR] Ficha de Epilex (levetiracetam) para neurología'
+    - pendiente mlr ficha de epilex levetiracetam para neurolog a
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-epilex-levetiracetam-para-neurolog-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-epilex-levetiracetam-para-neurolog-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Epilex (levetiracetam) para neurología'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Epilex (levetiracetam) para neurología'
+    - pendiente mlr ficha de epilex levetiracetam para neurolog a
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-epilex-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-epilex
+    title: '[PENDIENTE MLR] Indicación aprobada de Epilex'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Epilex'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Epilex'
+    - pendiente mlr indicaci n aprobada de epilex
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-epilex
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-epilex/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Epilex'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Epilex'
+    - pendiente mlr indicaci n aprobada de epilex
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-epilex-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-epilex-campa-a-ofertas-invierno-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Epilex — campaña Ofertas invierno 2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Epilex — campaña Ofertas invierno 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Epilex — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de epilex campa a ofertas invierno 2026
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-epilex-campa-a-ofertas-invierno-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-epilex-campa-a-ofertas-invierno-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Epilex — campaña Ofertas invierno 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Epilex — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de epilex campa a ofertas invierno 2026
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-epilex-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-epilex
+    title: '[PENDIENTE MLR] Presentaciones de Epilex'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Epilex'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Epilex'
+    - pendiente mlr presentaciones de epilex
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-epilex
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-epilex/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Epilex'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Epilex'
+    - pendiente mlr presentaciones de epilex
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.epilex.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-febrikid-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-febrikid-ibuprofeno-suspensi-n-para-pediatr-a
+    title: '[PENDIENTE MLR] Ficha de Febrikid (ibuprofeno suspensión) para pediatría'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Febrikid (ibuprofeno suspensión) para pediatría'
+    about:
+    - '[PENDIENTE MLR] Ficha de Febrikid (ibuprofeno suspensión) para pediatría'
+    - pendiente mlr ficha de febrikid ibuprofeno suspensi n para pediatr a
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-febrikid-ibuprofeno-suspensi-n-para-pediatr-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-febrikid-ibuprofeno-suspensi-n-para-pediatr-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Febrikid (ibuprofeno suspensión) para pediatría'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Febrikid (ibuprofeno suspensión) para pediatría'
+    - pendiente mlr ficha de febrikid ibuprofeno suspensi n para pediatr a
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-febrikid-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-febrikid
+    title: '[PENDIENTE MLR] Indicación aprobada de Febrikid'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Febrikid'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Febrikid'
+    - pendiente mlr indicaci n aprobada de febrikid
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-febrikid
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-febrikid/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Febrikid'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Febrikid'
+    - pendiente mlr indicaci n aprobada de febrikid
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-febrikid-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-febrikid-campa-a-lanzamientos-q4-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Febrikid — campaña Lanzamientos Q4 2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Febrikid — campaña Lanzamientos Q4 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Febrikid — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de febrikid campa a lanzamientos q4 2026
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-febrikid-campa-a-lanzamientos-q4-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-febrikid-campa-a-lanzamientos-q4-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Febrikid — campaña Lanzamientos Q4 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Febrikid — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de febrikid campa a lanzamientos q4 2026
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-febrikid-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-febrikid
+    title: '[PENDIENTE MLR] Presentaciones de Febrikid'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Febrikid'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Febrikid'
+    - pendiente mlr presentaciones de febrikid
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-febrikid
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-febrikid/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Febrikid'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Febrikid'
+    - pendiente mlr presentaciones de febrikid
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.febrikid.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-flexidol-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-flexidol-celecoxib-para-traumatolog-a
+    title: '[PENDIENTE MLR] Ficha de Flexidol (celecoxib) para traumatología'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Flexidol (celecoxib) para traumatología'
+    about:
+    - '[PENDIENTE MLR] Ficha de Flexidol (celecoxib) para traumatología'
+    - pendiente mlr ficha de flexidol celecoxib para traumatolog a
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-flexidol-celecoxib-para-traumatolog-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-flexidol-celecoxib-para-traumatolog-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Flexidol (celecoxib) para traumatología'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Flexidol (celecoxib) para traumatología'
+    - pendiente mlr ficha de flexidol celecoxib para traumatolog a
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-flexidol-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-flexidol
+    title: '[PENDIENTE MLR] Indicación aprobada de Flexidol'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Flexidol'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Flexidol'
+    - pendiente mlr indicaci n aprobada de flexidol
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-flexidol
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-flexidol/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Flexidol'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Flexidol'
+    - pendiente mlr indicaci n aprobada de flexidol
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-flexidol-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-flexidol-campa-a-ofertas-invierno-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Flexidol — campaña Ofertas invierno
+      2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Flexidol — campaña Ofertas invierno 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Flexidol — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de flexidol campa a ofertas invierno 2026
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-flexidol-campa-a-ofertas-invierno-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-flexidol-campa-a-ofertas-invierno-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Flexidol — campaña Ofertas invierno 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Flexidol — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de flexidol campa a ofertas invierno 2026
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-flexidol-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-flexidol
+    title: '[PENDIENTE MLR] Presentaciones de Flexidol'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Flexidol'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Flexidol'
+    - pendiente mlr presentaciones de flexidol
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-flexidol
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-flexidol/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Flexidol'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Flexidol'
+    - pendiente mlr presentaciones de flexidol
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.flexidol.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-gastroprot-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-gastroprot-esomeprazol-para-medicina-general
+    title: '[PENDIENTE MLR] Ficha de Gastroprot (esomeprazol) para medicina general'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Gastroprot (esomeprazol) para medicina general'
+    about:
+    - '[PENDIENTE MLR] Ficha de Gastroprot (esomeprazol) para medicina general'
+    - pendiente mlr ficha de gastroprot esomeprazol para medicina general
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-gastroprot-esomeprazol-para-medicina-general
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-gastroprot-esomeprazol-para-medicina-general/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Gastroprot (esomeprazol) para medicina general'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Gastroprot (esomeprazol) para medicina general'
+    - pendiente mlr ficha de gastroprot esomeprazol para medicina general
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-gastroprot-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-gastroprot
+    title: '[PENDIENTE MLR] Indicación aprobada de Gastroprot'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Gastroprot'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Gastroprot'
+    - pendiente mlr indicaci n aprobada de gastroprot
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-gastroprot
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-gastroprot/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Gastroprot'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Gastroprot'
+    - pendiente mlr indicaci n aprobada de gastroprot
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-gastroprot-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-gastroprot-campa-a-ofertas-invierno-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Gastroprot — campaña Ofertas invierno
+      2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Gastroprot — campaña Ofertas invierno 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Gastroprot — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de gastroprot campa a ofertas invierno 2026
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-gastroprot-campa-a-ofertas-invierno-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-gastroprot-campa-a-ofertas-invierno-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Gastroprot — campaña Ofertas invierno 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Gastroprot — campaña Ofertas invierno 2026'
+    - pendiente mlr oferta vigente de gastroprot campa a ofertas invierno 2026
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-gastroprot-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-gastroprot
+    title: '[PENDIENTE MLR] Presentaciones de Gastroprot'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Gastroprot'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Gastroprot'
+    - pendiente mlr presentaciones de gastroprot
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-gastroprot
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-gastroprot/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Gastroprot'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Gastroprot'
+    - pendiente mlr presentaciones de gastroprot
+    - Answer
+    - answer
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.ofertas-invierno-2026
+    - domain:medicamentos.gastroprot.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-migralen-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-migralen-sumatript-n-para-neurolog-a
+    title: '[PENDIENTE MLR] Ficha de Migralen (sumatriptán) para neurología'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Migralen (sumatriptán) para neurología'
+    about:
+    - '[PENDIENTE MLR] Ficha de Migralen (sumatriptán) para neurología'
+    - pendiente mlr ficha de migralen sumatript n para neurolog a
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-migralen-sumatript-n-para-neurolog-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-migralen-sumatript-n-para-neurolog-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de Migralen (sumatriptán) para neurología'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de Migralen (sumatriptán) para neurología'
+    - pendiente mlr ficha de migralen sumatript n para neurolog a
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-migralen-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-migralen
+    title: '[PENDIENTE MLR] Indicación aprobada de Migralen'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Migralen'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Migralen'
+    - pendiente mlr indicaci n aprobada de migralen
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-migralen
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-migralen/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de Migralen'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de Migralen'
+    - pendiente mlr indicaci n aprobada de migralen
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-migralen-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-migralen-campa-a-lanzamientos-q4-2026
+    title: '[PENDIENTE MLR] Oferta vigente de Migralen — campaña Lanzamientos Q4 2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Migralen — campaña Lanzamientos Q4 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Migralen — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de migralen campa a lanzamientos q4 2026
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-migralen-campa-a-lanzamientos-q4-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-migralen-campa-a-lanzamientos-q4-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de Migralen — campaña Lanzamientos Q4 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de Migralen — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de migralen campa a lanzamientos q4 2026
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-migralen-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-migralen
+    title: '[PENDIENTE MLR] Presentaciones de Migralen'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Migralen'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Migralen'
+    - pendiente mlr presentaciones de migralen
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-migralen
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-migralen/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de Migralen'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de Migralen'
+    - pendiente mlr presentaciones de migralen
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.migralen.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-neurox-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-neurox-escitalopram-para-psiquiatr-a
+    title: '[PENDIENTE MLR] Ficha de NeuroX (escitalopram) para psiquiatría'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de NeuroX (escitalopram) para psiquiatría'
+    about:
+    - '[PENDIENTE MLR] Ficha de NeuroX (escitalopram) para psiquiatría'
+    - pendiente mlr ficha de neurox escitalopram para psiquiatr a
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-neurox-escitalopram-para-psiquiatr-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-neurox-escitalopram-para-psiquiatr-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de NeuroX (escitalopram) para psiquiatría'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de NeuroX (escitalopram) para psiquiatría'
+    - pendiente mlr ficha de neurox escitalopram para psiquiatr a
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-neurox-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-neurox
+    title: '[PENDIENTE MLR] Indicación aprobada de NeuroX'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de NeuroX'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de NeuroX'
+    - pendiente mlr indicaci n aprobada de neurox
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-neurox
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-neurox/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de NeuroX'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de NeuroX'
+    - pendiente mlr indicaci n aprobada de neurox
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-neurox-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-neurox-campa-a-lanzamientos-q4-2026
+    title: '[PENDIENTE MLR] Oferta vigente de NeuroX — campaña Lanzamientos Q4 2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de NeuroX — campaña Lanzamientos Q4 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de NeuroX — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de neurox campa a lanzamientos q4 2026
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-neurox-campa-a-lanzamientos-q4-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-neurox-campa-a-lanzamientos-q4-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de NeuroX — campaña Lanzamientos Q4 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de NeuroX — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de neurox campa a lanzamientos q4 2026
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-neurox-presentaciones
+  sections:
+  - path: pendiente-mlr-presentaciones-de-neurox
+    title: '[PENDIENTE MLR] Presentaciones de NeuroX'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de NeuroX'
+    about:
+    - '[PENDIENTE MLR] Presentaciones de NeuroX'
+    - pendiente mlr presentaciones de neurox
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: pendiente-mlr-presentaciones-de-neurox
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-presentaciones-de-neurox/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Presentaciones de NeuroX'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Presentaciones de NeuroX'
+    - pendiente mlr presentaciones de neurox
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.neurox.presentaciones
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-osteovit-ficha
+  sections:
+  - path: pendiente-mlr-ficha-de-osteovit-alendronato-colecalciferol-para-traumatolog-a
+    title: '[PENDIENTE MLR] Ficha de OsteoVit (alendronato + colecalciferol) para
+      traumatología'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de OsteoVit (alendronato + colecalciferol) para traumatología'
+    about:
+    - '[PENDIENTE MLR] Ficha de OsteoVit (alendronato + colecalciferol) para traumatología'
+    - pendiente mlr ficha de osteovit alendronato colecalciferol para traumatolog
+      a
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-ficha-de-osteovit-alendronato-colecalciferol-para-traumatolog-a
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-ficha-de-osteovit-alendronato-colecalciferol-para-traumatolog-a/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Ficha de OsteoVit (alendronato + colecalciferol) para traumatología'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Ficha de OsteoVit (alendronato + colecalciferol) para traumatología'
+    - pendiente mlr ficha de osteovit alendronato colecalciferol para traumatolog
+      a
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.ficha
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-osteovit-indicacion
+  sections:
+  - path: pendiente-mlr-indicaci-n-aprobada-de-osteovit
+    title: '[PENDIENTE MLR] Indicación aprobada de OsteoVit'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de OsteoVit'
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de OsteoVit'
+    - pendiente mlr indicaci n aprobada de osteovit
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-indicaci-n-aprobada-de-osteovit
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-indicaci-n-aprobada-de-osteovit/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Indicación aprobada de OsteoVit'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Indicación aprobada de OsteoVit'
+    - pendiente mlr indicaci n aprobada de osteovit
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.indicacion
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: domain-hcp-osteovit-oferta
+  sections:
+  - path: pendiente-mlr-oferta-vigente-de-osteovit-campa-a-lanzamientos-q4-2026
+    title: '[PENDIENTE MLR] Oferta vigente de OsteoVit — campaña Lanzamientos Q4 2026'
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de OsteoVit — campaña Lanzamientos Q4 2026'
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de OsteoVit — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de osteovit campa a lanzamientos q4 2026
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: pendiente-mlr-oferta-vigente-de-osteovit-campa-a-lanzamientos-q4-2026
+    level: 1
+    line_start: 789
+    line_end: 790
+  - path: pendiente-mlr-oferta-vigente-de-osteovit-campa-a-lanzamientos-q4-2026/answer
+    title: Answer
+    breadcrumbs:
+    - '[PENDIENTE MLR] Oferta vigente de OsteoVit — campaña Lanzamientos Q4 2026'
+    - Answer
+    about:
+    - '[PENDIENTE MLR] Oferta vigente de OsteoVit — campaña Lanzamientos Q4 2026'
+    - pendiente mlr oferta vigente de osteovit campa a lanzamientos q4 2026
+    - Answer
+    - answer
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - domain:campanias.lanzamientos-q4-2026
+    - domain:medicamentos.osteovit.oferta
+    - status:placeholder-pending-mlr
+    - system:teva-hcp
+    - type.knowledge.domain
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: answer
+    level: 2
+    line_start: 791
+    line_end: 792

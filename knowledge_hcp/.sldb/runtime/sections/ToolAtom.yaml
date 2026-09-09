@@ -1,0 +1,137 @@
+documents:
+- doc_name: tool-hcp-programar-recontacto
+  sections:
+  - path: tool-programar-recontacto
+    title: Tool — programar recontacto
+    breadcrumbs:
+    - Tool — programar recontacto
+    about:
+    - Tool — programar recontacto
+    - tool programar recontacto
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: tool-programar-recontacto
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: tool-programar-recontacto/description
+    title: Description
+    breadcrumbs:
+    - Tool — programar recontacto
+    - Description
+    about:
+    - Tool — programar recontacto
+    - tool programar recontacto
+    - Description
+    - description
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: tool-programar-recontacto/parameters
+    title: Parameters
+    breadcrumbs:
+    - Tool — programar recontacto
+    - Parameters
+    about:
+    - Tool — programar recontacto
+    - tool programar recontacto
+    - Parameters
+    - parameters
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: parameters
+    level: 2
+    line_start: 790
+    line_end: 791
+- doc_name: tool-hcp-actualizar-consentimiento
+  sections:
+  - path: tool-actualizar-consentimiento
+    title: Tool — actualizar consentimiento
+    breadcrumbs:
+    - Tool — actualizar consentimiento
+    about:
+    - Tool — actualizar consentimiento
+    - tool actualizar consentimiento
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: tool-actualizar-consentimiento
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: tool-actualizar-consentimiento/description
+    title: Description
+    breadcrumbs:
+    - Tool — actualizar consentimiento
+    - Description
+    about:
+    - Tool — actualizar consentimiento
+    - tool actualizar consentimiento
+    - Description
+    - description
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: tool-actualizar-consentimiento/parameters
+    title: Parameters
+    breadcrumbs:
+    - Tool — actualizar consentimiento
+    - Parameters
+    about:
+    - Tool — actualizar consentimiento
+    - tool actualizar consentimiento
+    - Parameters
+    - parameters
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - self:tools
+    - system:teva-hcp
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: parameters
+    level: 2
+    line_start: 790
+    line_end: 791
