@@ -489,3 +489,17 @@ documents:
   semantic_tags:
   - layer.topology
   - type.relation.instance
+- name: uses_tool--step-antonia-derivacion-medinfo--registrar_consulta
+  path: relations/uses_tool--step-antonia-derivacion-medinfo--registrar_consulta.md
+  hash_c: 0e6477268f50c6213ccbc111e13775a3dab73320fe255891fb88c5a7bb5559ee
+  hash_d: eae2b5918090920ac9c4dc3ce99a16ec2823d91d9ea075b5cd8f355679675650
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: uses_tool--step-antonia-evento-adverso--registrar_consulta
+  path: relations/uses_tool--step-antonia-evento-adverso--registrar_consulta.md
+  hash_c: 65e12ad3b3c4d76e52ea7546d6cfb1bdd59af859b09bc81953fb40cd480374ef
+  hash_d: efcd2504fff6b6c8f85add6ad85298ce9d4634b65a07ee8e5d73b5de6daa2382
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance

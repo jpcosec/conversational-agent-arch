@@ -5039,3 +5039,147 @@ documents:
     level: 2
     line_start: 10
     line_end: 11
+- doc_name: uses_tool--step-antonia-derivacion-medinfo--registrar_consulta
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-toolatom-registrar-consulta-relation-type-uses-tool-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ToolAtom:registrar_consulta
+
+      relation_type: uses_tool
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ToolAtom:registrar_consulta
+
+      relation_type: uses_tool
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ToolAtom:registrar_consulta
+
+      relation_type: uses_tool
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id toolatom
+      registrar consulta relation type uses tool condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-toolatom-registrar-consulta-relation-type-uses-tool-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: derivacion-medinfo-uses-tool-registrar-consulta
+    title: derivacion-medinfo uses_tool registrar_consulta
+    breadcrumbs:
+    - derivacion-medinfo uses_tool registrar_consulta
+    about:
+    - derivacion-medinfo uses_tool registrar_consulta
+    - derivacion medinfo uses tool registrar consulta
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: derivacion-medinfo-uses-tool-registrar-consulta
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: derivacion-medinfo-uses-tool-registrar-consulta/notes
+    title: Notes
+    breadcrumbs:
+    - derivacion-medinfo uses_tool registrar_consulta
+    - Notes
+    about:
+    - derivacion-medinfo uses_tool registrar_consulta
+    - derivacion medinfo uses tool registrar consulta
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: uses_tool--step-antonia-evento-adverso--registrar_consulta
+  sections:
+  - path: source-id-conversationstep-step-antonia-evento-adverso-target-id-toolatom-registrar-consulta-relation-type-uses-tool-condition
+    title: 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ToolAtom:registrar_consulta
+
+      relation_type: uses_tool
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ToolAtom:registrar_consulta
+
+      relation_type: uses_tool
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ToolAtom:registrar_consulta
+
+      relation_type: uses_tool
+
+      condition: '''''
+    - source id conversationstep step antonia evento adverso target id toolatom registrar
+      consulta relation type uses tool condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-evento-adverso-target-id-toolatom-registrar-consulta-relation-type-uses-tool-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: evento-adverso-uses-tool-registrar-consulta
+    title: evento-adverso uses_tool registrar_consulta
+    breadcrumbs:
+    - evento-adverso uses_tool registrar_consulta
+    about:
+    - evento-adverso uses_tool registrar_consulta
+    - evento adverso uses tool registrar consulta
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: evento-adverso-uses-tool-registrar-consulta
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: evento-adverso-uses-tool-registrar-consulta/notes
+    title: Notes
+    breadcrumbs:
+    - evento-adverso uses_tool registrar_consulta
+    - Notes
+    about:
+    - evento-adverso uses_tool registrar_consulta
+    - evento adverso uses tool registrar consulta
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11

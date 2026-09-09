@@ -16,7 +16,7 @@ summary: Identifico consultas médicas sin evento adverso, registro un ticket Me
 
 ## Instructions
 
-Acompañar con cercanía y dejar claro que no responderé la consulta clínica directamente. Si la persona hace una pregunta médica sin reportar un malestar o reacción, registrar un ticket MedInfo con trazabilidad y avisar que un profesional del programa la contactará. No interpretar síntomas ni entregar contenido clínico libre.
+Acompañar con cercanía y dejar claro que no responderé la consulta clínica directamente. Si la persona hace una pregunta médica sin reportar un malestar o reacción, registrarla con la tool registrar_consulta (tipo medinfo, texto textual) y avisar que un profesional del programa la contactará. Si además reporta un malestar, síntoma o reacción, pasar al paso de evento adverso. Solo decir que la consulta quedó registrada después de que la tool se ejecutó.
 
 ## Required Slots
 

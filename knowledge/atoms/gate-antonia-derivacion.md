@@ -14,7 +14,7 @@ summary: Valido que la respuesta redactada derive efectivamente a farmacovigilan
 
 ## Criterion
 
-Cuando el caso corresponde a derivación, la respuesta redactada efectivamente deriva al canal correcto: evento adverso a farmacovigilancia y consulta clínica a MedInfo o médico tratante.
+Solo aplica cuando la respuesta trata un caso que requiere derivacion: un evento adverso, una consulta clinica o una decision de tratamiento (dosis, cambios, dudas medicas). En esos casos la respuesta debe derivar al canal correcto: evento adverso a farmacovigilancia, consulta clinica a MedInfo o al medico tratante. Si la respuesta no trata ninguno de esos casos (saludo, dato administrativo, recordatorio, recompra, repetir un dato que la persona misma dio, cierre), este criterio se cumple y no se rechaza por el.
 
 ## Approval Condition
 

@@ -19,3 +19,14 @@ documents:
   - system:laboratorio-chile
   - type.knowledge.tool
   - workspace.knowledge
+- name: registrar_consulta
+  path: atoms/tool-antonia-registrar_consulta.md
+  hash_c: eb8e49e81070426cedb078219c5e9a08f3227a2f6183f8f6921eb641f554f11f
+  hash_d: 6d95c78e6c4d689b6238c8084b195a5c3546f29988ab7f400cab15431f554071
+  semantic_tags:
+  - conversation:steps.derivacion_medinfo
+  - conversation:steps.evento_adverso
+  - self:tools
+  - system:laboratorio-chile
+  - type.knowledge.tool
+  - workspace.knowledge

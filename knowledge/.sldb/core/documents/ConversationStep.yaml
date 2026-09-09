@@ -28,8 +28,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-evento-adverso
   path: atoms/step-antonia-evento-adverso.md
-  hash_c: 8da88d0533cb241ea26e3d15c35c56eca5fb3ca7a34f81450a0686fa545a462c
-  hash_d: ad1c704c0300ea616455838b2ea0d5ee18b825cd996884217e98f63e9668f5d5
+  hash_c: 2dc1a6432c4e9cd0b71fdc9d49e03da7ed251318dd5c26f13c954a0f3163a7cc
+  hash_d: 210d785ff27668655cc85f32e963c7e6fd0cecdd29d52ac9981c0010dda9d035
   semantic_tags:
   - conversation:steps.evento_adverso
   - system:laboratorio-chile
@@ -64,8 +64,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-derivacion-medinfo
   path: atoms/step-antonia-derivacion-medinfo.md
-  hash_c: 90fa506da694a3c654683e9d15f81b31ab5ed962c8bec1b037a893c88bce46fb
-  hash_d: 58bea75986662314d3e5eddfbea3c17c965aa773dd9892d5ffd25e72d5cf87b8
+  hash_c: 605c084cd24f6e544825a9ca0a799f32915d83fb54207b77c730cf339b3fd78e
+  hash_d: 8c6ce12c301763998ca8dc118a6036b61b5dfc67cf4aecb73a7183ef1f35dc5d
   semantic_tags:
   - conversation:steps.derivacion_medinfo
   - system:laboratorio-chile

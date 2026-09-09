@@ -15,7 +15,7 @@ summary: Responde con calidez ante un evento adverso, registra el reporte textua
 
 ## Instructions
 
-Responder con calidez y sin alarmar. No interpretar la gravedad ni dar indicaciones clinicas. Registrar internamente el evento con fecha, hora y texto textual para derivacion a farmacovigilancia. Indicar que un profesional la contactara y que si es urgente acuda a su medico o urgencia.
+Responder con calidez y sin alarmar. No interpretar la gravedad ni dar indicaciones clínicas. Registrar el evento con la tool registrar_consulta (tipo evento_adverso, texto textual de lo que dijo la persona, urgente si ella lo dice o describe algo grave) para derivación a farmacovigilancia. Indicar que un profesional del programa se contactará en menos de 24 horas y que si es urgente acuda a su médico o a urgencias. Solo decir que quedó registrado después de que la tool se ejecutó.
 
 ## Required Slots
 

@@ -27,6 +27,7 @@ tags:
   - agendar_recordatorio
   - step-antonia-agendar-recordatorio
   conversation:steps.derivacion_medinfo:
+  - registrar_consulta
   - step-antonia-derivacion-medinfo
   conversation:steps.despedida:
   - step-antonia-despedida
@@ -34,6 +35,7 @@ tags:
   - registrar_enrolamiento
   - step-antonia-enrolamiento
   conversation:steps.evento_adverso:
+  - registrar_consulta
   - step-antonia-evento-adverso
   conversation:steps.journey_operativo:
   - step-antonia-journey-operativo
@@ -196,7 +198,9 @@ tags:
   - transitions_to--step-antonia-saludo--step-antonia-registro-estado
   - transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
   - uses_tool--step-antonia-agendar-recordatorio--agendar_recordatorio
+  - uses_tool--step-antonia-derivacion-medinfo--registrar_consulta
   - uses_tool--step-antonia-enrolamiento--registrar_enrolamiento
+  - uses_tool--step-antonia-evento-adverso--registrar_consulta
   self:estilo:
   - style-antonia
   self:limites:
@@ -204,6 +208,7 @@ tags:
   - boundary-antonia-manipulacion
   self:tools:
   - agendar_recordatorio
+  - registrar_consulta
   - registrar_enrolamiento
   self:whoami:
   - self-antonia
@@ -249,6 +254,7 @@ tags:
   - gate-antonia-diagnostico
   - gate-antonia-dosis
   - gate-antonia-promesas
+  - registrar_consulta
   - registrar_enrolamiento
   - rule-antonia-anti-alucinacion
   - rule-antonia-clasificacion-medinfo
@@ -368,6 +374,7 @@ tags:
   - style-antonia
   type.knowledge.tool:
   - agendar_recordatorio
+  - registrar_consulta
   - registrar_enrolamiento
   type.knowledge.trait:
   - trait-antonia-ansioso-aplicacion
@@ -445,7 +452,9 @@ tags:
   - transitions_to--step-antonia-saludo--step-antonia-registro-estado
   - transitions_to--step-antonia-validacion-policy-gate--step-antonia-revision-humana
   - uses_tool--step-antonia-agendar-recordatorio--agendar_recordatorio
+  - uses_tool--step-antonia-derivacion-medinfo--registrar_consulta
   - uses_tool--step-antonia-enrolamiento--registrar_enrolamiento
+  - uses_tool--step-antonia-evento-adverso--registrar_consulta
   type.relation.type:
   - reltype-applies_to_source
   - reltype-applies_to_target
@@ -515,6 +524,7 @@ tags:
   - gate-antonia-diagnostico
   - gate-antonia-dosis
   - gate-antonia-promesas
+  - registrar_consulta
   - registrar_enrolamiento
   - rule-antonia-anti-alucinacion
   - rule-antonia-clasificacion-medinfo
@@ -918,6 +928,16 @@ documents:
     path: atoms/tool-antonia-registrar-enrolamiento.md
     tags:
     - conversation:steps.enrolamiento
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+  registrar_consulta:
+    model: ToolAtom
+    path: atoms/tool-antonia-registrar_consulta.md
+    tags:
+    - conversation:steps.derivacion_medinfo
+    - conversation:steps.evento_adverso
     - self:tools
     - system:laboratorio-chile
     - type.knowledge.tool
@@ -1665,6 +1685,18 @@ documents:
   transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio:
     model: RelationDoc
     path: relations/transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  uses_tool--step-antonia-derivacion-medinfo--registrar_consulta:
+    model: RelationDoc
+    path: relations/uses_tool--step-antonia-derivacion-medinfo--registrar_consulta.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  uses_tool--step-antonia-evento-adverso--registrar_consulta:
+    model: RelationDoc
+    path: relations/uses_tool--step-antonia-evento-adverso--registrar_consulta.md
     tags:
     - layer.topology
     - type.relation.instance

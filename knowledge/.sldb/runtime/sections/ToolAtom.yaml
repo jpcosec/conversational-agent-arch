@@ -147,3 +147,83 @@ documents:
     level: 2
     line_start: 20
     line_end: 21
+- doc_name: registrar_consulta
+  sections:
+  - path: tool-registrar-consulta-medinfo-evento-adverso
+    title: Tool registrar consulta MedInfo / evento adverso
+    breadcrumbs:
+    - Tool registrar consulta MedInfo / evento adverso
+    about:
+    - Tool registrar consulta MedInfo / evento adverso
+    - tool registrar consulta medinfo evento adverso
+    - conversation:steps.derivacion_medinfo
+    - conversation:steps.evento_adverso
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - conversation:steps.evento_adverso
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: tool-registrar-consulta-medinfo-evento-adverso
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: tool-registrar-consulta-medinfo-evento-adverso/description
+    title: Description
+    breadcrumbs:
+    - Tool registrar consulta MedInfo / evento adverso
+    - Description
+    about:
+    - Tool registrar consulta MedInfo / evento adverso
+    - tool registrar consulta medinfo evento adverso
+    - Description
+    - description
+    - conversation:steps.derivacion_medinfo
+    - conversation:steps.evento_adverso
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - conversation:steps.evento_adverso
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: tool-registrar-consulta-medinfo-evento-adverso/parameters
+    title: Parameters
+    breadcrumbs:
+    - Tool registrar consulta MedInfo / evento adverso
+    - Parameters
+    about:
+    - Tool registrar consulta MedInfo / evento adverso
+    - tool registrar consulta medinfo evento adverso
+    - Parameters
+    - parameters
+    - conversation:steps.derivacion_medinfo
+    - conversation:steps.evento_adverso
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - conversation:steps.evento_adverso
+    - self:tools
+    - system:laboratorio-chile
+    - type.knowledge.tool
+    - workspace.knowledge
+    slug: parameters
+    level: 2
+    line_start: 21
+    line_end: 22
