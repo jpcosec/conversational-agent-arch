@@ -173,3 +173,30 @@ def test_real_negocio_kb_compiles_full_business_context(negocio_kb: Path) -> Non
     assert d["fallback_text"].startswith("Si no hay contexto suficiente")
     assert [t["name"] for t in d["tools"]] == ["crear_reserva"]
     assert d["is_empty"] is False
+
+
+def test_tools_are_scoped_by_uses_tool_edges_of_the_reachable_steps(tmp_path: Path) -> None:
+    """saludo -> calificacion -> cierre; solo calificacion usa la tool. Desde saludo la
+    tool entra (calificacion es transicion permitida); desde cierre (terminal) no.
+    Medido en el REPL: sin este alcance, el orquestador llamaba agendar_recordatorio
+    desde despedida, un step terminal sin transiciones."""
+    atoms = minimal_business_atoms(with_tool=True) + [
+        _step("step-saludo", "saludo"), _step("step-calificacion", "calificacion"), _step("step-cierre", "cierre"),
+    ]
+    root = seed_store(tmp_path / "scoped", atoms, relations=[
+        _edge("step-saludo", "step-calificacion"), _edge("step-calificacion", "step-cierre"),
+        {"type": "uses_tool", "source": "step-calificacion", "target": "tool-reserva"},
+    ])
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=root))
+    at_saludo = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.saludo"))
+    assert [t["name"] for t in at_saludo.tools] == ["crear_reserva"]
+    at_cierre = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.cierre"))
+    assert at_cierre.tools == []
+
+
+def test_tools_stay_unscoped_when_the_kb_declares_no_uses_tool(tmp_path: Path) -> None:
+    atoms = minimal_business_atoms(with_tool=True) + [_step("step-saludo", "saludo"), _step("step-cierre", "cierre")]
+    root = seed_store(tmp_path / "unscoped", atoms, relations=[_edge("step-saludo", "step-cierre")])
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=root))
+    at_cierre = compiler.compile(question="hola", user_id=None, session_state=SessionStateStub(flow_node="conversation:steps.cierre"))
+    assert [t["name"] for t in at_cierre.tools] == ["crear_reserva"]

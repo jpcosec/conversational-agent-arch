@@ -30,7 +30,7 @@ from __future__ import annotations
 import logging
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any, Callable, ClassVar, Protocol
+from typing import TYPE_CHECKING, Any, Callable, ClassVar, Protocol, Sequence
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -132,7 +132,7 @@ class ContextCompiler:
         current_step = getattr(session_state, "flow_node", None)
         active_step, allowed_transitions, grounding_ids = self._resolve_active_step(current_step)
 
-        tools = self._find_tools()
+        tools = self._find_tools(active_step, allowed_transitions)
         user_traits = self._load_user_traits(user_id)
         history = self._load_history(user_id, conversation_id=conversation_id)
 
@@ -689,10 +689,27 @@ class ContextCompiler:
             return ""
         return fallbacks[0].get("fallback_message", "")
 
-    def _find_tools(self) -> list[dict[str, Any]]:
-        """Selecciona los ToolAtom y devuelve su schema JSON (campo parameters)."""
+    def _find_tools(self, active_step: str | None = None, allowed_transitions: Sequence[str] = ()) -> list[dict[str, Any]]:
+        """Los ToolAtom que el turno puede llamar, como schema JSON (campo ``parameters``).
+
+        Alcance por el diagrama: si la KB declara aristas ``uses_tool`` (step ->
+        ToolAtom), solo entran las tools del step activo y de los steps a los que
+        puede transicionar en este turno. Medido en el REPL sin este filtro: desde
+        ``despedida`` (terminal, sin transiciones) el orquestador igual llamaba
+        ``agendar_recordatorio``, porque veia todas las tools de la KB. Una KB
+        sin ``uses_tool`` conserva el comportamiento previo: todas las tools.
+        """
+        flow = self.flow
+        declared = {s.tool for s in flow.steps() if s.tool}
+        if declared:
+            reachable = [active_step, *allowed_transitions]
+            allowed_ids = {t for tag in reachable if tag and (t := (flow.step(tag).tool if flow.step(tag) else None))}
+        else:
+            allowed_ids = None
         tools = []
         for d in self._find_by_model("tool"):
+            if allowed_ids is not None and d.get("id") not in allowed_ids:
+                continue
             schema = d.get("parameters")
             if isinstance(schema, str):
                 schema = self._parse_tool_schema(schema)

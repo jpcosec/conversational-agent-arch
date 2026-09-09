@@ -79,7 +79,7 @@ project:
   # ROUTER_MAX_RESULTS, TOOL_TIMEOUT_MS.
   tuning:
     max_bundle_size: 12       # tope de documentos en el bundle del turno
-    history_limit: 6          # mensajes recientes que entran al contexto
+    history_limit: 20         # mensajes recientes que entran al contexto (con 6, a los 3 turnos el modelo ya no sabia el nombre del medico ni el dia de aplicacion)
     router_max_results: 10    # default de explore_multi del ruteador
     tool_timeout_ms: 15000    # timeout de una tool call
 
