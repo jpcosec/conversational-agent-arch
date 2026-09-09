@@ -2,11 +2,11 @@ documents:
 - doc_name: gate-antonia-dosis
   sections:
   - path: gate-regulatorio-dosis
-    title: Gate regulatorio — dosis
+    title: "Gate regulatorio \u2014 dosis"
     breadcrumbs:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     about:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     - gate regulatorio dosis
     - gate:regulatorio.dosis
     - system:laboratorio-chile
@@ -19,15 +19,15 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-dosis
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-dosis/criterion
     title: Criterion
     breadcrumbs:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     - Criterion
     about:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     - gate regulatorio dosis
     - Criterion
     - criterion
@@ -42,15 +42,15 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-dosis/approval-condition
     title: Approval Condition
     breadcrumbs:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     - Approval Condition
     about:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     - gate regulatorio dosis
     - Approval Condition
     - approval condition
@@ -65,15 +65,15 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-dosis/rejection-action
     title: Rejection Action
     breadcrumbs:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     - Rejection Action
     about:
-    - Gate regulatorio — dosis
+    - "Gate regulatorio \u2014 dosis"
     - gate regulatorio dosis
     - Rejection Action
     - rejection action
@@ -88,16 +88,16 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-diagnostico
   sections:
   - path: gate-regulatorio-diagn-stico
-    title: Gate regulatorio — diagnóstico
+    title: "Gate regulatorio \u2014 diagn\xF3stico"
     breadcrumbs:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     about:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     - gate regulatorio diagn stico
     - gate:regulatorio.diagnostico
     - system:laboratorio-chile
@@ -110,15 +110,15 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-diagn-stico
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-diagn-stico/criterion
     title: Criterion
     breadcrumbs:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     - Criterion
     about:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     - gate regulatorio diagn stico
     - Criterion
     - criterion
@@ -133,15 +133,15 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-diagn-stico/approval-condition
     title: Approval Condition
     breadcrumbs:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     - Approval Condition
     about:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     - gate regulatorio diagn stico
     - Approval Condition
     - approval condition
@@ -156,15 +156,15 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-diagn-stico/rejection-action
     title: Rejection Action
     breadcrumbs:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     - Rejection Action
     about:
-    - Gate regulatorio — diagnóstico
+    - "Gate regulatorio \u2014 diagn\xF3stico"
     - gate regulatorio diagn stico
     - Rejection Action
     - rejection action
@@ -179,16 +179,16 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-corpus
   sections:
   - path: gate-regulatorio-corpus-aprobado
-    title: Gate regulatorio — corpus aprobado
+    title: "Gate regulatorio \u2014 corpus aprobado"
     breadcrumbs:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     about:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     - gate regulatorio corpus aprobado
     - gate:corpus
     - system:laboratorio-chile
@@ -201,15 +201,15 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-corpus-aprobado
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-corpus-aprobado/criterion
     title: Criterion
     breadcrumbs:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     - Criterion
     about:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     - gate regulatorio corpus aprobado
     - Criterion
     - criterion
@@ -224,15 +224,15 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-corpus-aprobado/approval-condition
     title: Approval Condition
     breadcrumbs:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     - Approval Condition
     about:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     - gate regulatorio corpus aprobado
     - Approval Condition
     - approval condition
@@ -247,15 +247,15 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-corpus-aprobado/rejection-action
     title: Rejection Action
     breadcrumbs:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     - Rejection Action
     about:
-    - Gate regulatorio — corpus aprobado
+    - "Gate regulatorio \u2014 corpus aprobado"
     - gate regulatorio corpus aprobado
     - Rejection Action
     - rejection action
@@ -270,16 +270,16 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-derivacion
   sections:
   - path: gate-regulatorio-derivaci-n-correcta
-    title: Gate regulatorio — derivación correcta
+    title: "Gate regulatorio \u2014 derivaci\xF3n correcta"
     breadcrumbs:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     about:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     - gate regulatorio derivaci n correcta
     - gate:derivacion
     - system:laboratorio-chile
@@ -292,15 +292,15 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-derivaci-n-correcta
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-derivaci-n-correcta/criterion
     title: Criterion
     breadcrumbs:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     - Criterion
     about:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     - gate regulatorio derivaci n correcta
     - Criterion
     - criterion
@@ -315,15 +315,15 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-derivaci-n-correcta/approval-condition
     title: Approval Condition
     breadcrumbs:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     - Approval Condition
     about:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     - gate regulatorio derivaci n correcta
     - Approval Condition
     - approval condition
@@ -338,15 +338,15 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-derivaci-n-correcta/rejection-action
     title: Rejection Action
     breadcrumbs:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     - Rejection Action
     about:
-    - Gate regulatorio — derivación correcta
+    - "Gate regulatorio \u2014 derivaci\xF3n correcta"
     - gate regulatorio derivaci n correcta
     - Rejection Action
     - rejection action
@@ -361,16 +361,16 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 794
+    line_end: 795
 - doc_name: gate-antonia-promesas
   sections:
   - path: gate-regulatorio-promesas
-    title: Gate regulatorio — promesas
+    title: "Gate regulatorio \u2014 promesas"
     breadcrumbs:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     about:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     - gate regulatorio promesas
     - gate:promesas
     - system:laboratorio-chile
@@ -383,15 +383,15 @@ documents:
     - workspace.knowledge
     slug: gate-regulatorio-promesas
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 784
+    line_end: 785
   - path: gate-regulatorio-promesas/criterion
     title: Criterion
     breadcrumbs:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     - Criterion
     about:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     - gate regulatorio promesas
     - Criterion
     - criterion
@@ -406,15 +406,15 @@ documents:
     - workspace.knowledge
     slug: criterion
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: gate-regulatorio-promesas/approval-condition
     title: Approval Condition
     breadcrumbs:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     - Approval Condition
     about:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     - gate regulatorio promesas
     - Approval Condition
     - approval condition
@@ -429,15 +429,15 @@ documents:
     - workspace.knowledge
     slug: approval-condition
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 790
+    line_end: 791
   - path: gate-regulatorio-promesas/rejection-action
     title: Rejection Action
     breadcrumbs:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     - Rejection Action
     about:
-    - Gate regulatorio — promesas
+    - "Gate regulatorio \u2014 promesas"
     - gate regulatorio promesas
     - Rejection Action
     - rejection action
@@ -452,5 +452,5 @@ documents:
     - workspace.knowledge
     slug: rejection-action
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 794
+    line_end: 795

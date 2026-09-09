@@ -21,8 +21,8 @@ documents:
     - workspace.knowledge
     slug: bienvenida-al-programa
     level: 1
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: bienvenida-al-programa/answer
     title: Answer
     breadcrumbs:
@@ -46,16 +46,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 790
+    line_end: 791
 - doc_name: atom-antonia-aplicacion
   sections:
   - path: administraci-n-de-selfix
-    title: Administración de Selfix
+    title: "Administraci\xF3n de Selfix"
     breadcrumbs:
-    - Administración de Selfix
+    - "Administraci\xF3n de Selfix"
     about:
-    - Administración de Selfix
+    - "Administraci\xF3n de Selfix"
     - administraci n de selfix
     - conversation:steps.recompra
     - domain:tratamiento
@@ -70,15 +70,15 @@ documents:
     - workspace.knowledge
     slug: administraci-n-de-selfix
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: administraci-n-de-selfix/answer
     title: Answer
     breadcrumbs:
-    - Administración de Selfix
+    - "Administraci\xF3n de Selfix"
     - Answer
     about:
-    - Administración de Selfix
+    - "Administraci\xF3n de Selfix"
     - administraci n de selfix
     - Answer
     - answer
@@ -95,16 +95,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
 - doc_name: atom-antonia-primeras-semanas
   sections:
   - path: qu-esperar-las-primeras-semanas
-    title: Qué esperar las primeras semanas
+    title: "Qu\xE9 esperar las primeras semanas"
     breadcrumbs:
-    - Qué esperar las primeras semanas
+    - "Qu\xE9 esperar las primeras semanas"
     about:
-    - Qué esperar las primeras semanas
+    - "Qu\xE9 esperar las primeras semanas"
     - qu esperar las primeras semanas
     - conversation:steps.onboarding
     - domain:tratamiento
@@ -119,15 +119,15 @@ documents:
     - workspace.knowledge
     slug: qu-esperar-las-primeras-semanas
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: qu-esperar-las-primeras-semanas/answer
     title: Answer
     breadcrumbs:
-    - Qué esperar las primeras semanas
+    - "Qu\xE9 esperar las primeras semanas"
     - Answer
     about:
-    - Qué esperar las primeras semanas
+    - "Qu\xE9 esperar las primeras semanas"
     - qu esperar las primeras semanas
     - Answer
     - answer
@@ -144,16 +144,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
 - doc_name: atom-antonia-recompra
   sections:
   - path: recompra-y-renovaci-n-de-receta
-    title: Recompra y renovación de receta
+    title: "Recompra y renovaci\xF3n de receta"
     breadcrumbs:
-    - Recompra y renovación de receta
+    - "Recompra y renovaci\xF3n de receta"
     about:
-    - Recompra y renovación de receta
+    - "Recompra y renovaci\xF3n de receta"
     - recompra y renovaci n de receta
     - conversation:steps.recompra
     - domain:logistica
@@ -168,15 +168,15 @@ documents:
     - workspace.knowledge
     slug: recompra-y-renovaci-n-de-receta
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: recompra-y-renovaci-n-de-receta/answer
     title: Answer
     breadcrumbs:
-    - Recompra y renovación de receta
+    - "Recompra y renovaci\xF3n de receta"
     - Answer
     about:
-    - Recompra y renovación de receta
+    - "Recompra y renovaci\xF3n de receta"
     - recompra y renovaci n de receta
     - Answer
     - answer
@@ -193,16 +193,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
 - doc_name: atom-antonia-medinfo
   sections:
   - path: gesti-n-de-informaci-n-m-dica-del-programa
-    title: Gestión de información médica del programa
+    title: "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
     breadcrumbs:
-    - Gestión de información médica del programa
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
     about:
-    - Gestión de información médica del programa
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
     - gesti n de informaci n m dica del programa
     - domain:medinfo
     - system:laboratorio-chile
@@ -215,15 +215,15 @@ documents:
     - workspace.knowledge
     slug: gesti-n-de-informaci-n-m-dica-del-programa
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: gesti-n-de-informaci-n-m-dica-del-programa/answer
     title: Answer
     breadcrumbs:
-    - Gestión de información médica del programa
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
     - Answer
     about:
-    - Gestión de información médica del programa
+    - "Gesti\xF3n de informaci\xF3n m\xE9dica del programa"
     - gesti n de informaci n m dica del programa
     - Answer
     - answer
@@ -238,8 +238,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
 - doc_name: atom-antonia-farmacovigilancia
   sections:
   - path: proceso-de-farmacovigilancia-del-programa
@@ -260,8 +260,8 @@ documents:
     - workspace.knowledge
     slug: proceso-de-farmacovigilancia-del-programa
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: proceso-de-farmacovigilancia-del-programa/answer
     title: Answer
     breadcrumbs:
@@ -283,8 +283,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-journeys
   sections:
   - path: journeys-operativos-del-programa
@@ -305,8 +305,8 @@ documents:
     - workspace.knowledge
     slug: journeys-operativos-del-programa
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: journeys-operativos-del-programa/answer
     title: Answer
     breadcrumbs:
@@ -328,16 +328,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-titulacion
   sections:
   - path: titulaci-n-del-programa-selfix
-    title: Titulación del programa Selfix
+    title: "Titulaci\xF3n del programa Selfix"
     breadcrumbs:
-    - Titulación del programa Selfix
+    - "Titulaci\xF3n del programa Selfix"
     about:
-    - Titulación del programa Selfix
+    - "Titulaci\xF3n del programa Selfix"
     - titulaci n del programa selfix
     - domain:tratamiento
     - system:laboratorio-chile
@@ -350,15 +350,15 @@ documents:
     - workspace.knowledge
     slug: titulaci-n-del-programa-selfix
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: titulaci-n-del-programa-selfix/answer
     title: Answer
     breadcrumbs:
-    - Titulación del programa Selfix
+    - "Titulaci\xF3n del programa Selfix"
     - Answer
     about:
-    - Titulación del programa Selfix
+    - "Titulaci\xF3n del programa Selfix"
     - titulaci n del programa selfix
     - Answer
     - answer
@@ -373,16 +373,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-molecula
   sections:
   - path: mol-cula-de-selfix
-    title: Molécula de Selfix
+    title: "Mol\xE9cula de Selfix"
     breadcrumbs:
-    - Molécula de Selfix
+    - "Mol\xE9cula de Selfix"
     about:
-    - Molécula de Selfix
+    - "Mol\xE9cula de Selfix"
     - mol cula de selfix
     - domain:tratamiento
     - system:laboratorio-chile
@@ -395,15 +395,15 @@ documents:
     - workspace.knowledge
     slug: mol-cula-de-selfix
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: mol-cula-de-selfix/answer
     title: Answer
     breadcrumbs:
-    - Molécula de Selfix
+    - "Mol\xE9cula de Selfix"
     - Answer
     about:
-    - Molécula de Selfix
+    - "Mol\xE9cula de Selfix"
     - mol cula de selfix
     - Answer
     - answer
@@ -418,16 +418,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-meddra
   sections:
   - path: meddra-diccionario-m-dico-regulatorio
-    title: 'MedDRA: diccionario médico regulatorio'
+    title: "MedDRA: diccionario m\xE9dico regulatorio"
     breadcrumbs:
-    - 'MedDRA: diccionario médico regulatorio'
+    - "MedDRA: diccionario m\xE9dico regulatorio"
     about:
-    - 'MedDRA: diccionario médico regulatorio'
+    - "MedDRA: diccionario m\xE9dico regulatorio"
     - meddra diccionario m dico regulatorio
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -440,15 +440,15 @@ documents:
     - workspace.knowledge
     slug: meddra-diccionario-m-dico-regulatorio
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: meddra-diccionario-m-dico-regulatorio/answer
     title: Answer
     breadcrumbs:
-    - 'MedDRA: diccionario médico regulatorio'
+    - "MedDRA: diccionario m\xE9dico regulatorio"
     - Answer
     about:
-    - 'MedDRA: diccionario médico regulatorio'
+    - "MedDRA: diccionario m\xE9dico regulatorio"
     - meddra diccionario m dico regulatorio
     - Answer
     - answer
@@ -463,16 +463,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-ea
   sections:
   - path: efecto-adverso-definici-n
-    title: 'Efecto adverso: definición'
+    title: "Efecto adverso: definici\xF3n"
     breadcrumbs:
-    - 'Efecto adverso: definición'
+    - "Efecto adverso: definici\xF3n"
     about:
-    - 'Efecto adverso: definición'
+    - "Efecto adverso: definici\xF3n"
     - efecto adverso definici n
     - domain:seguridad.evento
     - system:laboratorio-chile
@@ -485,15 +485,15 @@ documents:
     - workspace.knowledge
     slug: efecto-adverso-definici-n
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: efecto-adverso-definici-n/answer
     title: Answer
     breadcrumbs:
-    - 'Efecto adverso: definición'
+    - "Efecto adverso: definici\xF3n"
     - Answer
     about:
-    - 'Efecto adverso: definición'
+    - "Efecto adverso: definici\xF3n"
     - efecto adverso definici n
     - Answer
     - answer
@@ -508,16 +508,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-ea-administracion
   sections:
   - path: aplicaci-n-correcta-y-mala-praxis
-    title: Aplicación correcta y mala praxis
+    title: "Aplicaci\xF3n correcta y mala praxis"
     breadcrumbs:
-    - Aplicación correcta y mala praxis
+    - "Aplicaci\xF3n correcta y mala praxis"
     about:
-    - Aplicación correcta y mala praxis
+    - "Aplicaci\xF3n correcta y mala praxis"
     - aplicaci n correcta y mala praxis
     - domain:seguridad.evento
     - system:laboratorio-chile
@@ -530,15 +530,15 @@ documents:
     - workspace.knowledge
     slug: aplicaci-n-correcta-y-mala-praxis
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: aplicaci-n-correcta-y-mala-praxis/answer
     title: Answer
     breadcrumbs:
-    - Aplicación correcta y mala praxis
+    - "Aplicaci\xF3n correcta y mala praxis"
     - Answer
     about:
-    - Aplicación correcta y mala praxis
+    - "Aplicaci\xF3n correcta y mala praxis"
     - aplicaci n correcta y mala praxis
     - Answer
     - answer
@@ -553,8 +553,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-ea-esperados
   sections:
   - path: efectos-esperados-de-selfix
@@ -575,8 +575,8 @@ documents:
     - workspace.knowledge
     slug: efectos-esperados-de-selfix
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: efectos-esperados-de-selfix/answer
     title: Answer
     breadcrumbs:
@@ -598,16 +598,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-gamp5
   sections:
   - path: gamp-5-validaci-n-de-software-pharma
-    title: 'GAMP 5: validación de software pharma'
+    title: "GAMP 5: validaci\xF3n de software pharma"
     breadcrumbs:
-    - 'GAMP 5: validación de software pharma'
+    - "GAMP 5: validaci\xF3n de software pharma"
     about:
-    - 'GAMP 5: validación de software pharma'
+    - "GAMP 5: validaci\xF3n de software pharma"
     - gamp 5 validaci n de software pharma
     - domain:seguridad.compliance
     - system:laboratorio-chile
@@ -620,15 +620,15 @@ documents:
     - workspace.knowledge
     slug: gamp-5-validaci-n-de-software-pharma
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: gamp-5-validaci-n-de-software-pharma/answer
     title: Answer
     breadcrumbs:
-    - 'GAMP 5: validación de software pharma'
+    - "GAMP 5: validaci\xF3n de software pharma"
     - Answer
     about:
-    - 'GAMP 5: validación de software pharma'
+    - "GAMP 5: validaci\xF3n de software pharma"
     - gamp 5 validaci n de software pharma
     - Answer
     - answer
@@ -643,8 +643,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-gamp5-agile
   sections:
   - path: gamp-5-acepta-pruebas-automatizadas
@@ -665,8 +665,8 @@ documents:
     - workspace.knowledge
     slug: gamp-5-acepta-pruebas-automatizadas
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: gamp-5-acepta-pruebas-automatizadas/answer
     title: Answer
     breadcrumbs:
@@ -688,8 +688,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-gamp5-alcoa
   sections:
   - path: integridad-de-datos-alcoa
@@ -710,8 +710,8 @@ documents:
     - workspace.knowledge
     slug: integridad-de-datos-alcoa
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: integridad-de-datos-alcoa/answer
     title: Answer
     breadcrumbs:
@@ -733,16 +733,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-ime
   sections:
   - path: ime-eventos-m-dicos-importantes
-    title: 'IME: eventos médicos importantes'
+    title: "IME: eventos m\xE9dicos importantes"
     breadcrumbs:
-    - 'IME: eventos médicos importantes'
+    - "IME: eventos m\xE9dicos importantes"
     about:
-    - 'IME: eventos médicos importantes'
+    - "IME: eventos m\xE9dicos importantes"
     - ime eventos m dicos importantes
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -755,15 +755,15 @@ documents:
     - workspace.knowledge
     slug: ime-eventos-m-dicos-importantes
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: ime-eventos-m-dicos-importantes/answer
     title: Answer
     breadcrumbs:
-    - 'IME: eventos médicos importantes'
+    - "IME: eventos m\xE9dicos importantes"
     - Answer
     about:
-    - 'IME: eventos médicos importantes'
+    - "IME: eventos m\xE9dicos importantes"
     - ime eventos m dicos importantes
     - Answer
     - answer
@@ -778,16 +778,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-ime-catalogo
   sections:
   - path: se-ales-de-alarma-tipo-ime
-    title: Señales de alarma tipo IME
+    title: "Se\xF1ales de alarma tipo IME"
     breadcrumbs:
-    - Señales de alarma tipo IME
+    - "Se\xF1ales de alarma tipo IME"
     about:
-    - Señales de alarma tipo IME
+    - "Se\xF1ales de alarma tipo IME"
     - se ales de alarma tipo ime
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -800,15 +800,15 @@ documents:
     - workspace.knowledge
     slug: se-ales-de-alarma-tipo-ime
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: se-ales-de-alarma-tipo-ime/answer
     title: Answer
     breadcrumbs:
-    - Señales de alarma tipo IME
+    - "Se\xF1ales de alarma tipo IME"
     - Answer
     about:
-    - Señales de alarma tipo IME
+    - "Se\xF1ales de alarma tipo IME"
     - se ales de alarma tipo ime
     - Answer
     - answer
@@ -823,16 +823,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-ime-grave-automatico
   sections:
   - path: ime-grave-autom-tico
-    title: IME = grave automático
+    title: "IME = grave autom\xE1tico"
     breadcrumbs:
-    - IME = grave automático
+    - "IME = grave autom\xE1tico"
     about:
-    - IME = grave automático
+    - "IME = grave autom\xE1tico"
     - ime grave autom tico
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -845,15 +845,15 @@ documents:
     - workspace.knowledge
     slug: ime-grave-autom-tico
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: ime-grave-autom-tico/answer
     title: Answer
     breadcrumbs:
-    - IME = grave automático
+    - "IME = grave autom\xE1tico"
     - Answer
     about:
-    - IME = grave automático
+    - "IME = grave autom\xE1tico"
     - ime grave autom tico
     - Answer
     - answer
@@ -868,16 +868,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-meddra-alcance
   sections:
   - path: por-qu-no-codifico-meddra
-    title: Por qué NO codifico MedDRA
+    title: "Por qu\xE9 NO codifico MedDRA"
     breadcrumbs:
-    - Por qué NO codifico MedDRA
+    - "Por qu\xE9 NO codifico MedDRA"
     about:
-    - Por qué NO codifico MedDRA
+    - "Por qu\xE9 NO codifico MedDRA"
     - por qu no codifico meddra
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -890,15 +890,15 @@ documents:
     - workspace.knowledge
     slug: por-qu-no-codifico-meddra
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: por-qu-no-codifico-meddra/answer
     title: Answer
     breadcrumbs:
-    - Por qué NO codifico MedDRA
+    - "Por qu\xE9 NO codifico MedDRA"
     - Answer
     about:
-    - Por qué NO codifico MedDRA
+    - "Por qu\xE9 NO codifico MedDRA"
     - por qu no codifico meddra
     - Answer
     - answer
@@ -913,16 +913,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-meddra-jerarquia
   sections:
   - path: niveles-meddra-llt-pt-soc
-    title: Niveles MedDRA (LLT→PT→SOC)
+    title: "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
     breadcrumbs:
-    - Niveles MedDRA (LLT→PT→SOC)
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
     about:
-    - Niveles MedDRA (LLT→PT→SOC)
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
     - niveles meddra llt pt soc
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -935,15 +935,15 @@ documents:
     - workspace.knowledge
     slug: niveles-meddra-llt-pt-soc
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: niveles-meddra-llt-pt-soc/answer
     title: Answer
     breadcrumbs:
-    - Niveles MedDRA (LLT→PT→SOC)
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
     - Answer
     about:
-    - Niveles MedDRA (LLT→PT→SOC)
+    - "Niveles MedDRA (LLT\u2192PT\u2192SOC)"
     - niveles meddra llt pt soc
     - Answer
     - answer
@@ -958,8 +958,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-meddra-verbatim
   sections:
   - path: verbatim-la-palabra-cruda-del-paciente
@@ -980,8 +980,8 @@ documents:
     - workspace.knowledge
     slug: verbatim-la-palabra-cruda-del-paciente
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: verbatim-la-palabra-cruda-del-paciente/answer
     title: Answer
     breadcrumbs:
@@ -1003,8 +1003,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-triage
   sections:
   - path: triage-ordenar-por-urgencia
@@ -1025,8 +1025,8 @@ documents:
     - workspace.knowledge
     slug: triage-ordenar-por-urgencia
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: triage-ordenar-por-urgencia/answer
     title: Answer
     breadcrumbs:
@@ -1048,16 +1048,16 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-triage-colas
   sections:
   - path: las-3-colas-de-clasificaci-n
-    title: Las 3 colas de clasificación
+    title: "Las 3 colas de clasificaci\xF3n"
     breadcrumbs:
-    - Las 3 colas de clasificación
+    - "Las 3 colas de clasificaci\xF3n"
     about:
-    - Las 3 colas de clasificación
+    - "Las 3 colas de clasificaci\xF3n"
     - las 3 colas de clasificaci n
     - domain:seguridad.triage
     - system:laboratorio-chile
@@ -1070,15 +1070,15 @@ documents:
     - workspace.knowledge
     slug: las-3-colas-de-clasificaci-n
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: las-3-colas-de-clasificaci-n/answer
     title: Answer
     breadcrumbs:
-    - Las 3 colas de clasificación
+    - "Las 3 colas de clasificaci\xF3n"
     - Answer
     about:
-    - Las 3 colas de clasificación
+    - "Las 3 colas de clasificaci\xF3n"
     - las 3 colas de clasificaci n
     - Answer
     - answer
@@ -1093,8 +1093,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-triage-limites
   sections:
   - path: lo-que-el-triage-no-hace
@@ -1115,8 +1115,8 @@ documents:
     - workspace.knowledge
     slug: lo-que-el-triage-no-hace
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: lo-que-el-triage-no-hace/answer
     title: Answer
     breadcrumbs:
@@ -1138,8 +1138,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
 - doc_name: atom-antonia-triage-validez
   sections:
   - path: los-4-criterios-de-validez-de-un-reporte
@@ -1160,8 +1160,8 @@ documents:
     - workspace.knowledge
     slug: los-4-criterios-de-validez-de-un-reporte
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: los-4-criterios-de-validez-de-un-reporte/answer
     title: Answer
     breadcrumbs:
@@ -1183,5 +1183,5 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789

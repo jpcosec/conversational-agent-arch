@@ -2,11 +2,11 @@ documents:
 - doc_name: rule-antonia-anti-alucinacion
   sections:
   - path: anti-alucinaci-n-contexto-estricto
-    title: Anti-alucinación — contexto estricto
+    title: "Anti-alucinaci\xF3n \u2014 contexto estricto"
     breadcrumbs:
-    - Anti-alucinación — contexto estricto
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
     about:
-    - Anti-alucinación — contexto estricto
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
     - anti alucinaci n contexto estricto
     - conversation:fallback
     - conversation:security
@@ -21,15 +21,15 @@ documents:
     - workspace.knowledge
     slug: anti-alucinaci-n-contexto-estricto
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: anti-alucinaci-n-contexto-estricto/answer
     title: Answer
     breadcrumbs:
-    - Anti-alucinación — contexto estricto
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
     - Answer
     about:
-    - Anti-alucinación — contexto estricto
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
     - anti alucinaci n contexto estricto
     - Answer
     - answer
@@ -46,15 +46,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: anti-alucinaci-n-contexto-estricto/conditions
     title: Conditions
     breadcrumbs:
-    - Anti-alucinación — contexto estricto
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
     - Conditions
     about:
-    - Anti-alucinación — contexto estricto
+    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
     - anti alucinaci n contexto estricto
     - Conditions
     - conditions
@@ -71,16 +71,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794
 - doc_name: rule-antonia-eventos-adversos
   sections:
   - path: detecci-n-de-eventos-adversos
-    title: Detección de eventos adversos
+    title: "Detecci\xF3n de eventos adversos"
     breadcrumbs:
-    - Detección de eventos adversos
+    - "Detecci\xF3n de eventos adversos"
     about:
-    - Detección de eventos adversos
+    - "Detecci\xF3n de eventos adversos"
     - detecci n de eventos adversos
     - conversation:pharmacovigilance
     - domain:seguridad
@@ -95,15 +95,15 @@ documents:
     - workspace.knowledge
     slug: detecci-n-de-eventos-adversos
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: detecci-n-de-eventos-adversos/answer
     title: Answer
     breadcrumbs:
-    - Detección de eventos adversos
+    - "Detecci\xF3n de eventos adversos"
     - Answer
     about:
-    - Detección de eventos adversos
+    - "Detecci\xF3n de eventos adversos"
     - detecci n de eventos adversos
     - Answer
     - answer
@@ -120,15 +120,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: detecci-n-de-eventos-adversos/conditions
     title: Conditions
     breadcrumbs:
-    - Detección de eventos adversos
+    - "Detecci\xF3n de eventos adversos"
     - Conditions
     about:
-    - Detección de eventos adversos
+    - "Detecci\xF3n de eventos adversos"
     - detecci n de eventos adversos
     - Conditions
     - conditions
@@ -145,16 +145,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794
 - doc_name: rule-antonia-clasificacion-operacional
   sections:
   - path: clasificaci-n-operacional-del-programa
-    title: Clasificación operacional del programa
+    title: "Clasificaci\xF3n operacional del programa"
     breadcrumbs:
-    - Clasificación operacional del programa
+    - "Clasificaci\xF3n operacional del programa"
     about:
-    - Clasificación operacional del programa
+    - "Clasificaci\xF3n operacional del programa"
     - clasificaci n operacional del programa
     - conversation:classification
     - system:laboratorio-chile
@@ -167,15 +167,15 @@ documents:
     - workspace.knowledge
     slug: clasificaci-n-operacional-del-programa
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: clasificaci-n-operacional-del-programa/answer
     title: Answer
     breadcrumbs:
-    - Clasificación operacional del programa
+    - "Clasificaci\xF3n operacional del programa"
     - Answer
     about:
-    - Clasificación operacional del programa
+    - "Clasificaci\xF3n operacional del programa"
     - clasificaci n operacional del programa
     - Answer
     - answer
@@ -190,15 +190,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: clasificaci-n-operacional-del-programa/conditions
     title: Conditions
     breadcrumbs:
-    - Clasificación operacional del programa
+    - "Clasificaci\xF3n operacional del programa"
     - Conditions
     about:
-    - Clasificación operacional del programa
+    - "Clasificaci\xF3n operacional del programa"
     - clasificaci n operacional del programa
     - Conditions
     - conditions
@@ -213,16 +213,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-clasificacion-medinfo
   sections:
   - path: clasificaci-n-de-consulta-m-dica-medinfo
-    title: Clasificación de consulta médica MedInfo
+    title: "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
     breadcrumbs:
-    - Clasificación de consulta médica MedInfo
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
     about:
-    - Clasificación de consulta médica MedInfo
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
     - clasificaci n de consulta m dica medinfo
     - conversation:classification
     - system:laboratorio-chile
@@ -235,15 +235,15 @@ documents:
     - workspace.knowledge
     slug: clasificaci-n-de-consulta-m-dica-medinfo
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: clasificaci-n-de-consulta-m-dica-medinfo/answer
     title: Answer
     breadcrumbs:
-    - Clasificación de consulta médica MedInfo
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
     - Answer
     about:
-    - Clasificación de consulta médica MedInfo
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
     - clasificaci n de consulta m dica medinfo
     - Answer
     - answer
@@ -258,15 +258,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: clasificaci-n-de-consulta-m-dica-medinfo/conditions
     title: Conditions
     breadcrumbs:
-    - Clasificación de consulta médica MedInfo
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
     - Conditions
     about:
-    - Clasificación de consulta médica MedInfo
+    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
     - clasificaci n de consulta m dica medinfo
     - Conditions
     - conditions
@@ -281,16 +281,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-clasificacion-tratamiento
   sections:
   - path: clasificaci-n-de-dudas-de-tratamiento
-    title: Clasificación de dudas de tratamiento
+    title: "Clasificaci\xF3n de dudas de tratamiento"
     breadcrumbs:
-    - Clasificación de dudas de tratamiento
+    - "Clasificaci\xF3n de dudas de tratamiento"
     about:
-    - Clasificación de dudas de tratamiento
+    - "Clasificaci\xF3n de dudas de tratamiento"
     - clasificaci n de dudas de tratamiento
     - conversation:classification
     - system:laboratorio-chile
@@ -303,15 +303,15 @@ documents:
     - workspace.knowledge
     slug: clasificaci-n-de-dudas-de-tratamiento
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: clasificaci-n-de-dudas-de-tratamiento/answer
     title: Answer
     breadcrumbs:
-    - Clasificación de dudas de tratamiento
+    - "Clasificaci\xF3n de dudas de tratamiento"
     - Answer
     about:
-    - Clasificación de dudas de tratamiento
+    - "Clasificaci\xF3n de dudas de tratamiento"
     - clasificaci n de dudas de tratamiento
     - Answer
     - answer
@@ -326,15 +326,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: clasificaci-n-de-dudas-de-tratamiento/conditions
     title: Conditions
     breadcrumbs:
-    - Clasificación de dudas de tratamiento
+    - "Clasificaci\xF3n de dudas de tratamiento"
     - Conditions
     about:
-    - Clasificación de dudas de tratamiento
+    - "Clasificaci\xF3n de dudas de tratamiento"
     - clasificaci n de dudas de tratamiento
     - Conditions
     - conditions
@@ -349,8 +349,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-contraindicaciones
   sections:
   - path: no-mencionar-contraindicaciones-ni-interacciones
@@ -371,8 +371,8 @@ documents:
     - workspace.knowledge
     slug: no-mencionar-contraindicaciones-ni-interacciones
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: no-mencionar-contraindicaciones-ni-interacciones/answer
     title: Answer
     breadcrumbs:
@@ -394,8 +394,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: no-mencionar-contraindicaciones-ni-interacciones/conditions
     title: Conditions
     breadcrumbs:
@@ -417,16 +417,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-deducir
   sections:
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales
-    title: No deducir información clínica desde principios generales
+    title: "No deducir informaci\xF3n cl\xEDnica desde principios generales"
     breadcrumbs:
-    - No deducir información clínica desde principios generales
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
     about:
-    - No deducir información clínica desde principios generales
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
     - no deducir informaci n cl nica desde principios generales
     - conversation:security
     - system:laboratorio-chile
@@ -439,15 +439,15 @@ documents:
     - workspace.knowledge
     slug: no-deducir-informaci-n-cl-nica-desde-principios-generales
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/answer
     title: Answer
     breadcrumbs:
-    - No deducir información clínica desde principios generales
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
     - Answer
     about:
-    - No deducir información clínica desde principios generales
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
     - no deducir informaci n cl nica desde principios generales
     - Answer
     - answer
@@ -462,15 +462,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/conditions
     title: Conditions
     breadcrumbs:
-    - No deducir información clínica desde principios generales
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
     - Conditions
     about:
-    - No deducir información clínica desde principios generales
+    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
     - no deducir informaci n cl nica desde principios generales
     - Conditions
     - conditions
@@ -485,8 +485,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-extrapolar
   sections:
   - path: no-extrapolar-desde-otros-medicamentos-similares
@@ -507,8 +507,8 @@ documents:
     - workspace.knowledge
     slug: no-extrapolar-desde-otros-medicamentos-similares
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: no-extrapolar-desde-otros-medicamentos-similares/answer
     title: Answer
     breadcrumbs:
@@ -530,8 +530,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: no-extrapolar-desde-otros-medicamentos-similares/conditions
     title: Conditions
     breadcrumbs:
@@ -553,16 +553,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-farmacologia
   sections:
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
-    title: No mencionar farmacología ni mecanismo de acción
+    title: "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
     breadcrumbs:
-    - No mencionar farmacología ni mecanismo de acción
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
     about:
-    - No mencionar farmacología ni mecanismo de acción
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
     - no mencionar farmacolog a ni mecanismo de acci n
     - conversation:security
     - system:laboratorio-chile
@@ -575,15 +575,15 @@ documents:
     - workspace.knowledge
     slug: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/answer
     title: Answer
     breadcrumbs:
-    - No mencionar farmacología ni mecanismo de acción
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
     - Answer
     about:
-    - No mencionar farmacología ni mecanismo de acción
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
     - no mencionar farmacolog a ni mecanismo de acci n
     - Answer
     - answer
@@ -598,15 +598,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/conditions
     title: Conditions
     breadcrumbs:
-    - No mencionar farmacología ni mecanismo de acción
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
     - Conditions
     about:
-    - No mencionar farmacología ni mecanismo de acción
+    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
     - no mencionar farmacolog a ni mecanismo de acci n
     - Conditions
     - conditions
@@ -621,8 +621,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-no-inventar
   sections:
   - path: no-inventar-ni-complementar-con-conocimiento-general
@@ -643,8 +643,8 @@ documents:
     - workspace.knowledge
     slug: no-inventar-ni-complementar-con-conocimiento-general
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: no-inventar-ni-complementar-con-conocimiento-general/answer
     title: Answer
     breadcrumbs:
@@ -666,8 +666,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: no-inventar-ni-complementar-con-conocimiento-general/conditions
     title: Conditions
     breadcrumbs:
@@ -689,16 +689,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: rule-antonia-derivar-clinico
   sections:
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
-    title: Derivar al médico cuando no hay contenido aprobado
+    title: "Derivar al m\xE9dico cuando no hay contenido aprobado"
     breadcrumbs:
-    - Derivar al médico cuando no hay contenido aprobado
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
     about:
-    - Derivar al médico cuando no hay contenido aprobado
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
     - derivar al m dico cuando no hay contenido aprobado
     - conversation:fallback
     - system:laboratorio-chile
@@ -711,15 +711,15 @@ documents:
     - workspace.knowledge
     slug: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/answer
     title: Answer
     breadcrumbs:
-    - Derivar al médico cuando no hay contenido aprobado
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
     - Answer
     about:
-    - Derivar al médico cuando no hay contenido aprobado
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
     - derivar al m dico cuando no hay contenido aprobado
     - Answer
     - answer
@@ -734,15 +734,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/conditions
     title: Conditions
     breadcrumbs:
-    - Derivar al médico cuando no hay contenido aprobado
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
     - Conditions
     about:
-    - Derivar al médico cuando no hay contenido aprobado
+    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
     - derivar al m dico cuando no hay contenido aprobado
     - Conditions
     - conditions
@@ -757,8 +757,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
 - doc_name: atom-antonia-regla-clasificar
   sections:
   - path: clasificar-cada-mensaje-entrante
@@ -781,8 +781,8 @@ documents:
     - workspace.knowledge
     slug: clasificar-cada-mensaje-entrante
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: clasificar-cada-mensaje-entrante/answer
     title: Answer
     breadcrumbs:
@@ -806,8 +806,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: clasificar-cada-mensaje-entrante/conditions
     title: Conditions
     breadcrumbs:
@@ -831,16 +831,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794
 - doc_name: atom-antonia-regla-escalar-ime
   sections:
   - path: escalar-de-inmediato-ante-s-ntoma-ime
-    title: Escalar de inmediato ante síntoma IME
+    title: "Escalar de inmediato ante s\xEDntoma IME"
     breadcrumbs:
-    - Escalar de inmediato ante síntoma IME
+    - "Escalar de inmediato ante s\xEDntoma IME"
     about:
-    - Escalar de inmediato ante síntoma IME
+    - "Escalar de inmediato ante s\xEDntoma IME"
     - escalar de inmediato ante s ntoma ime
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -855,15 +855,15 @@ documents:
     - workspace.knowledge
     slug: escalar-de-inmediato-ante-s-ntoma-ime
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: escalar-de-inmediato-ante-s-ntoma-ime/answer
     title: Answer
     breadcrumbs:
-    - Escalar de inmediato ante síntoma IME
+    - "Escalar de inmediato ante s\xEDntoma IME"
     - Answer
     about:
-    - Escalar de inmediato ante síntoma IME
+    - "Escalar de inmediato ante s\xEDntoma IME"
     - escalar de inmediato ante s ntoma ime
     - Answer
     - answer
@@ -880,15 +880,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: escalar-de-inmediato-ante-s-ntoma-ime/conditions
     title: Conditions
     breadcrumbs:
-    - Escalar de inmediato ante síntoma IME
+    - "Escalar de inmediato ante s\xEDntoma IME"
     - Conditions
     about:
-    - Escalar de inmediato ante síntoma IME
+    - "Escalar de inmediato ante s\xEDntoma IME"
     - escalar de inmediato ante s ntoma ime
     - Conditions
     - conditions
@@ -905,8 +905,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794
 - doc_name: atom-antonia-regla-integridad
   sections:
   - path: preservar-integridad-del-verbatim
@@ -929,8 +929,8 @@ documents:
     - workspace.knowledge
     slug: preservar-integridad-del-verbatim
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: preservar-integridad-del-verbatim/answer
     title: Answer
     breadcrumbs:
@@ -954,8 +954,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: preservar-integridad-del-verbatim/conditions
     title: Conditions
     breadcrumbs:
@@ -979,16 +979,16 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794
 - doc_name: atom-antonia-regla-no-codificar
   sections:
   - path: no-traducir-a-t-rminos-m-dicos
-    title: No traducir a términos médicos
+    title: "No traducir a t\xE9rminos m\xE9dicos"
     breadcrumbs:
-    - No traducir a términos médicos
+    - "No traducir a t\xE9rminos m\xE9dicos"
     about:
-    - No traducir a términos médicos
+    - "No traducir a t\xE9rminos m\xE9dicos"
     - no traducir a t rminos m dicos
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -1003,15 +1003,15 @@ documents:
     - workspace.knowledge
     slug: no-traducir-a-t-rminos-m-dicos
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: no-traducir-a-t-rminos-m-dicos/answer
     title: Answer
     breadcrumbs:
-    - No traducir a términos médicos
+    - "No traducir a t\xE9rminos m\xE9dicos"
     - Answer
     about:
-    - No traducir a términos médicos
+    - "No traducir a t\xE9rminos m\xE9dicos"
     - no traducir a t rminos m dicos
     - Answer
     - answer
@@ -1028,15 +1028,15 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: no-traducir-a-t-rminos-m-dicos/conditions
     title: Conditions
     breadcrumbs:
-    - No traducir a términos médicos
+    - "No traducir a t\xE9rminos m\xE9dicos"
     - Conditions
     about:
-    - No traducir a términos médicos
+    - "No traducir a t\xE9rminos m\xE9dicos"
     - no traducir a t rminos m dicos
     - Conditions
     - conditions
@@ -1053,8 +1053,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794
 - doc_name: atom-antonia-regla-no-diagnosticar
   sections:
   - path: nunca-diagnosticar-ni-indicar-tratamiento
@@ -1077,8 +1077,8 @@ documents:
     - workspace.knowledge
     slug: nunca-diagnosticar-ni-indicar-tratamiento
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: nunca-diagnosticar-ni-indicar-tratamiento/answer
     title: Answer
     breadcrumbs:
@@ -1102,8 +1102,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: nunca-diagnosticar-ni-indicar-tratamiento/conditions
     title: Conditions
     breadcrumbs:
@@ -1127,8 +1127,8 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794
 - doc_name: atom-antonia-regla-validez
   sections:
   - path: confirmar-los-4-criterios-antes-de-escalar
@@ -1151,8 +1151,8 @@ documents:
     - workspace.knowledge
     slug: confirmar-los-4-criterios-antes-de-escalar
     level: 1
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: confirmar-los-4-criterios-antes-de-escalar/answer
     title: Answer
     breadcrumbs:
@@ -1176,8 +1176,8 @@ documents:
     - workspace.knowledge
     slug: answer
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 789
+    line_end: 790
   - path: confirmar-los-4-criterios-antes-de-escalar/conditions
     title: Conditions
     breadcrumbs:
@@ -1201,5 +1201,5 @@ documents:
     - workspace.knowledge
     slug: conditions
     level: 2
-    line_start: 22
-    line_end: 23
+    line_start: 793
+    line_end: 794

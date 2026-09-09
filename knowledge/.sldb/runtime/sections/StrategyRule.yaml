@@ -2,11 +2,11 @@ documents:
 - doc_name: strategy-antonia
   sections:
   - path: estrategia-de-acompa-amiento
-    title: Estrategia de acompañamiento
+    title: "Estrategia de acompa\xF1amiento"
     breadcrumbs:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     about:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     - estrategia de acompa amiento
     - conversation:strategy
     - system:laboratorio-chile
@@ -19,15 +19,15 @@ documents:
     - workspace.knowledge
     slug: estrategia-de-acompa-amiento
     level: 1
-    line_start: 13
-    line_end: 14
+    line_start: 784
+    line_end: 785
   - path: estrategia-de-acompa-amiento/goal
     title: Goal
     breadcrumbs:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     - Goal
     about:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     - estrategia de acompa amiento
     - Goal
     - goal
@@ -42,15 +42,15 @@ documents:
     - workspace.knowledge
     slug: goal
     level: 2
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: estrategia-de-acompa-amiento/approach
     title: Approach
     breadcrumbs:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     - Approach
     about:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     - estrategia de acompa amiento
     - Approach
     - approach
@@ -65,15 +65,15 @@ documents:
     - workspace.knowledge
     slug: approach
     level: 2
-    line_start: 19
-    line_end: 20
+    line_start: 790
+    line_end: 791
   - path: estrategia-de-acompa-amiento/priorities
     title: Priorities
     breadcrumbs:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     - Priorities
     about:
-    - Estrategia de acompañamiento
+    - "Estrategia de acompa\xF1amiento"
     - estrategia de acompa amiento
     - Priorities
     - priorities
@@ -88,5 +88,5 @@ documents:
     - workspace.knowledge
     slug: priorities
     level: 2
-    line_start: 23
-    line_end: 24
+    line_start: 794
+    line_end: 795

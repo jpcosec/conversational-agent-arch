@@ -1,8 +1,8 @@
 documents:
 - name: step-antonia-onboarding
   path: atoms/step-antonia-onboarding.md
-  hash_c: 058801693b40bee720afbdfb511378496e51aedd38b2a6131080aaef6552c38a
-  hash_d: 60aac182ecdddc14867090facdacb2718efc9283846edd6450f4bb2f14136492
+  hash_c: 0cec1b5eab466d0cdd29b236ea158186e43741dad5b80b55f77d008e0286f934
+  hash_d: ebe189bee66f49ed86806603cf9afb496739d532169c8fcaca6622ddc38e4a54
   semantic_tags:
   - conversation:steps.onboarding
   - system:laboratorio-chile
@@ -10,8 +10,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-agendar-recordatorio
   path: atoms/step-antonia-agendar-recordatorio.md
-  hash_c: 52c19dae6b19ec6d35529e0ea61a924af4e2d1ba19d780e0114e44e71b247d57
-  hash_d: a4615fc17c6c3e17943886f6f88bdbd1ba2fd932a53f382a4a1c0237e9aede59
+  hash_c: 12f36644721ef84bc4d493f53b88bdaf738e9d4aa7c21b5cf9bf2a8e73edda7c
+  hash_d: 873a75366e729a620f95009046ba39795f7b5c539108fc7a0c7f9b26fb1c58ce
   semantic_tags:
   - conversation:steps.agendar_recordatorio
   - system:laboratorio-chile
@@ -19,8 +19,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-despedida
   path: atoms/step-antonia-despedida.md
-  hash_c: da3d24f5dc36cce547475b4c783b6512892750074f13f287172021b138fa1ee4
-  hash_d: 48d0b83f03285987932b50538f71ca6f867f1085fb03911e97a8b7b122292942
+  hash_c: 94a49c5ddc4653fcfc7f0989b2c08317370a912f00a146ae5d8c3cf336df9a7b
+  hash_d: 14cf1317da0af12b369e1ef95c7a2785a1aa28a862b2dbc2dd3b3b62e0e80066
   semantic_tags:
   - conversation:steps.despedida
   - system:laboratorio-chile
@@ -28,8 +28,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-evento-adverso
   path: atoms/step-antonia-evento-adverso.md
-  hash_c: 8da88d0533cb241ea26e3d15c35c56eca5fb3ca7a34f81450a0686fa545a462c
-  hash_d: ad1c704c0300ea616455838b2ea0d5ee18b825cd996884217e98f63e9668f5d5
+  hash_c: 0fdfd34f9c927e6a9a6e370bf60496d828c727a9acb46d6b0ce87796542a5a78
+  hash_d: 64c02028f6fd9409f862b18e641c0d3159e786b5fb9d371056f5d85de35b9c2c
   semantic_tags:
   - conversation:steps.evento_adverso
   - system:laboratorio-chile
@@ -37,8 +37,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-recompra
   path: atoms/step-antonia-recompra.md
-  hash_c: dc4d63ba9d5dc4c6b873ed3b0885466031890aa4005a040dc48b23d7534ab1bf
-  hash_d: 66989c5b5e09745e22ed62b273294cf6519a0b877025bd1974e0f63198cb7e99
+  hash_c: 0c76f85a636f98f6182f805660e3ed430bd489b28c6f220f27ab112aac7f47b5
+  hash_d: 7ff6ea2fbf98ab921a72d930ad2750b4b977108365c11eeb601189f2d907eaae
   semantic_tags:
   - conversation:steps.recompra
   - system:laboratorio-chile
@@ -46,8 +46,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-registro-estado
   path: atoms/step-antonia-registro-estado.md
-  hash_c: b322d88930bb7c4b389261f809e321489cf05b1c759fdc702749a0fea631bb5b
-  hash_d: 1fb4791f98537f1816bd4d6f12ace6432838550075b35af70b0e33651f8f80c9
+  hash_c: a094c72ac0db25c1e615fd87ba7f5be1ae40aa8b00289abcf997850b2ffbea9c
+  hash_d: bf2cd1a20689cd984e8839c38cb9153ecd24155f8536555439c011fbca8492e9
   semantic_tags:
   - conversation:steps.registro_estado
   - system:laboratorio-chile
@@ -55,8 +55,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-saludo
   path: atoms/step-antonia-saludo.md
-  hash_c: d1012f88e2bbe2f212d31716c9429490542aa031101b19d23f6820793a1395b3
-  hash_d: f396a36fd173c6f6d9d6b0a88fb1fa4b3179c4e696ae2cf4d634be3aefc6d77a
+  hash_c: c210691b5c8773dac24cc8be92d7937e576e8418aaa7278f68f4e4fc6335dcf2
+  hash_d: deab23e26778e3f2dc5418d5a7f03bef9692d06015b774d253a0b64e4fd0f5f4
   semantic_tags:
   - conversation:steps.saludo
   - system:laboratorio-chile
@@ -64,8 +64,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-derivacion-medinfo
   path: atoms/step-antonia-derivacion-medinfo.md
-  hash_c: 90fa506da694a3c654683e9d15f81b31ab5ed962c8bec1b037a893c88bce46fb
-  hash_d: 58bea75986662314d3e5eddfbea3c17c965aa773dd9892d5ffd25e72d5cf87b8
+  hash_c: 165456901bdc1f428e069627dfc60a6d2f8a5e39a6e4ba18687e275d8301308d
+  hash_d: 9f778ffa7c851ea93e80bb784eec50ca9554edf525e27cf4faf905bdceb5a6ac
   semantic_tags:
   - conversation:steps.derivacion_medinfo
   - system:laboratorio-chile
@@ -73,8 +73,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-revision-humana
   path: atoms/step-antonia-revision-humana.md
-  hash_c: c084a370c4453780d6489dabdd143c2844a2cdcfafa092cc6a35bcfb4a5348e3
-  hash_d: b9da66560e53e2147e0f4d0eb0df7521ad397f5868f169210296278d2204fe24
+  hash_c: 154537010e3a29f3fc3bdb4f74389a8d6adc50d0df3d21b1142712ff8eee8741
+  hash_d: 271085021052ca2dfa6743b9daf36c9428f2e4f6650361b1ff1fe42a6e544af8
   semantic_tags:
   - conversation:steps.revision_humana
   - system:laboratorio-chile
@@ -82,8 +82,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-journey-operativo
   path: atoms/step-antonia-journey-operativo.md
-  hash_c: 80e27bf0741b69a20418b3166582575bce4da51d2b3f8178d83619aaefdd2c66
-  hash_d: 894fadd8607d7ca2df6ff993cfdc2b955d92ba128c65e26c8d70e5ae53377da9
+  hash_c: 20e6ea8ec711dc202e719ea4f0a43e2a1ce6ea7faefba75c4ef503e662fb5fbf
+  hash_d: fcad40e169741fa943271b110d90d908e1eab288d20ae6182fd283e7f08437ae
   semantic_tags:
   - conversation:steps.journey_operativo
   - system:laboratorio-chile
@@ -91,8 +91,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-validacion-policy-gate
   path: atoms/step-antonia-validacion-policy-gate.md
-  hash_c: 454691aea76cf5a314c8f3f518b75e9bdbbb5d0e643dd9df497f7dbedcd58e9e
-  hash_d: 5d8cd17381ba76c95da8d433db2b4eed387517c7ea55abf4f1b711ca234319a1
+  hash_c: a0d0b2ccb2a7e4bbfdb079c3b51e14662785ca397bf5234db3f5004c82ecb41c
+  hash_d: 46c318705f6b794f2b00bab341943f583d036bfead7a99c449e19a7b96654f1b
   semantic_tags:
   - conversation:steps.validacion_policy_gate
   - system:laboratorio-chile
@@ -100,8 +100,8 @@ documents:
   - workspace.knowledge
 - name: step-antonia-enrolamiento
   path: atoms/step-antonia-enrolamiento.md
-  hash_c: e1c3375e9e0543d3e1669d206ce8483e395a29d2e029117dd63dd29a3c508962
-  hash_d: 147653ef47f171ecfbe5c924888073368e8dc22bf728776194c23f7e2e771cf6
+  hash_c: 0215a6b05daef966404e0b9cb9c6ab930449e368cd1b4fca31ac1bb1fba790cc
+  hash_d: 6d687e4b985f6506ac9bca5f1831088c226c3d2825f4e8f136d67df201bace64
   semantic_tags:
   - conversation:steps.enrolamiento
   - system:laboratorio-chile

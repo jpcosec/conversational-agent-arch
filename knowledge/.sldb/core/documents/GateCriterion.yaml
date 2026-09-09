@@ -1,8 +1,8 @@
 documents:
 - name: gate-antonia-dosis
   path: atoms/gate-antonia-dosis.md
-  hash_c: 5d9bf3c78fe9aa015840bcd78ed876f341171c62b5fc7018fd7f369cab9f63eb
-  hash_d: 6a3c044b768881a74f4340ef23b136f01b7542c24576bbc3922257d99ca832aa
+  hash_c: 15324eacfa64e8c85c35ae18d1f6bba60fd05028406336cb636843815fb020d7
+  hash_d: 5a1f7f2f9dae267b5ec0be9b8fc1dd579026d996c07f490d0931347be074db0c
   semantic_tags:
   - gate:regulatorio.dosis
   - system:laboratorio-chile
@@ -10,8 +10,8 @@ documents:
   - workspace.knowledge
 - name: gate-antonia-diagnostico
   path: atoms/gate-antonia-diagnostico.md
-  hash_c: 4fad870165af86e8307955b737de732b5d6540ff6bb947758e04950da64f8a89
-  hash_d: a307805ed69db73731ae25610a5a8892d858e15f482265de1067a9833a478e15
+  hash_c: 691108e4570734be85ecc5d91c1f4d8fd01831e6e1d3ea954734e97703c06682
+  hash_d: ea836d7150413b557d9e61f271eaa37944042a90bab8f2142bd57867c94b5542
   semantic_tags:
   - gate:regulatorio.diagnostico
   - system:laboratorio-chile
@@ -19,8 +19,8 @@ documents:
   - workspace.knowledge
 - name: gate-antonia-corpus
   path: atoms/gate-antonia-corpus.md
-  hash_c: d1f9927a6f6a6726954817ed9fafd09ae04b068ca4cb3673f5c51d0dd110d7ca
-  hash_d: 074fa107cefc0f6100bcb42c2d1d17b854dfba5c6f59d13df2cc88329a1431c3
+  hash_c: 1b65ea53f02cff226e1859d902f7cc7b401fb1f582be2e9f0b41e4c34ba7008c
+  hash_d: 4af21b6c65f96b1b6d0200eeb5fd167a053f32f47da23164ca9abb31d307a763
   semantic_tags:
   - gate:corpus
   - system:laboratorio-chile
@@ -28,8 +28,8 @@ documents:
   - workspace.knowledge
 - name: gate-antonia-derivacion
   path: atoms/gate-antonia-derivacion.md
-  hash_c: 3f48abb9347870b324f930e6d99c9f4fd8ae55ef1a385149aa34eef51289b366
-  hash_d: 962624826ec117194d4da39dd0921b2ae2613f1ced8068bda3076ca3e9852a01
+  hash_c: 36eed6c1ced4ee1367ac54ae20db3a301729380cec6bb351e91f9e591832d7b0
+  hash_d: 6230d0a6ae1702fe1005f0bf03f17f508aaa61156f55d51aaffe292f6148c87e
   semantic_tags:
   - gate:derivacion
   - system:laboratorio-chile
@@ -37,8 +37,8 @@ documents:
   - workspace.knowledge
 - name: gate-antonia-promesas
   path: atoms/gate-antonia-promesas.md
-  hash_c: 98e08a0980a1ea54743333181bf779ce72c05899563f08cf306cce876c96cb77
-  hash_d: f63ddcf00449c0db468aded4a95f76e260e645de80f2d66a050c894fef39aba0
+  hash_c: afbeec57a49bb6b44879fffc8c033ee7a24a50ce1aa2e80a3f9c7453ba36259d
+  hash_d: 0b72f02e304b7767466a0a60de65285c8e802083a9f370b85d9e9f8da738b070
   semantic_tags:
   - gate:promesas
   - system:laboratorio-chile

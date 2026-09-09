@@ -2,11 +2,11 @@ documents:
 - doc_name: step-antonia-onboarding
   sections:
   - path: onboarding-primera-interaccion
-    title: Onboarding — primera interaccion
+    title: "Onboarding \u2014 primera interaccion"
     breadcrumbs:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     about:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - onboarding primera interaccion
     - conversation:steps.onboarding
     - system:laboratorio-chile
@@ -19,15 +19,15 @@ documents:
     - workspace.knowledge
     slug: onboarding-primera-interaccion
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: onboarding-primera-interaccion/instructions
     title: Instructions
     breadcrumbs:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - Instructions
     about:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - onboarding primera interaccion
     - Instructions
     - instructions
@@ -42,15 +42,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: onboarding-primera-interaccion/required-slots
     title: Required Slots
     breadcrumbs:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - Required Slots
     about:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - onboarding primera interaccion
     - Required Slots
     - required slots
@@ -65,15 +65,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: onboarding-primera-interaccion/handout-target
     title: Handout Target
     breadcrumbs:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - Handout Target
     about:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - onboarding primera interaccion
     - Handout Target
     - handout target
@@ -88,15 +88,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: onboarding-primera-interaccion/tool
+    title: Tool
+    breadcrumbs:
+    - "Onboarding \u2014 primera interaccion"
+    - Tool
+    about:
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
+    - Tool
+    - tool
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: onboarding-primera-interaccion/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Onboarding \u2014 primera interaccion"
+    - Allowed Transitions
+    about:
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: onboarding-primera-interaccion/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Onboarding \u2014 primera interaccion"
+    - Grounding Atoms
+    about:
+    - "Onboarding \u2014 primera interaccion"
+    - onboarding primera interaccion
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.onboarding
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: onboarding-primera-interaccion/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - Completion Condition
     about:
-    - Onboarding — primera interaccion
+    - "Onboarding \u2014 primera interaccion"
     - onboarding primera interaccion
     - Completion Condition
     - completion condition
@@ -111,8 +180,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-agendar-recordatorio
   sections:
   - path: agendar-recordatorio-de-aplicacion
@@ -133,8 +202,8 @@ documents:
     - workspace.knowledge
     slug: agendar-recordatorio-de-aplicacion
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: agendar-recordatorio-de-aplicacion/instructions
     title: Instructions
     breadcrumbs:
@@ -156,8 +225,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: agendar-recordatorio-de-aplicacion/required-slots
     title: Required Slots
     breadcrumbs:
@@ -179,8 +248,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: agendar-recordatorio-de-aplicacion/handout-target
     title: Handout Target
     breadcrumbs:
@@ -202,8 +271,77 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: agendar-recordatorio-de-aplicacion/tool
+    title: Tool
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Tool
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Tool
+    - tool
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: agendar-recordatorio-de-aplicacion/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Allowed Transitions
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: agendar-recordatorio-de-aplicacion/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Agendar recordatorio de aplicacion
+    - Grounding Atoms
+    about:
+    - Agendar recordatorio de aplicacion
+    - agendar recordatorio de aplicacion
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recordatorio
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: agendar-recordatorio-de-aplicacion/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -225,8 +363,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-despedida
   sections:
   - path: despedida
@@ -247,8 +385,8 @@ documents:
     - workspace.knowledge
     slug: despedida
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: despedida/instructions
     title: Instructions
     breadcrumbs:
@@ -270,8 +408,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: despedida/required-slots
     title: Required Slots
     breadcrumbs:
@@ -293,8 +431,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: despedida/handout-target
     title: Handout Target
     breadcrumbs:
@@ -316,8 +454,77 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: despedida/tool
+    title: Tool
+    breadcrumbs:
+    - Despedida
+    - Tool
+    about:
+    - Despedida
+    - despedida
+    - Tool
+    - tool
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: despedida/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Despedida
+    - Allowed Transitions
+    about:
+    - Despedida
+    - despedida
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: despedida/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Despedida
+    - Grounding Atoms
+    about:
+    - Despedida
+    - despedida
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: despedida/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -339,16 +546,16 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-evento-adverso
   sections:
   - path: evento-adverso-derivacion
-    title: Evento adverso — derivacion
+    title: "Evento adverso \u2014 derivacion"
     breadcrumbs:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     about:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - evento adverso derivacion
     - conversation:steps.evento_adverso
     - system:laboratorio-chile
@@ -361,15 +568,15 @@ documents:
     - workspace.knowledge
     slug: evento-adverso-derivacion
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: evento-adverso-derivacion/instructions
     title: Instructions
     breadcrumbs:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - Instructions
     about:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - evento adverso derivacion
     - Instructions
     - instructions
@@ -384,15 +591,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: evento-adverso-derivacion/required-slots
     title: Required Slots
     breadcrumbs:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - Required Slots
     about:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - evento adverso derivacion
     - Required Slots
     - required slots
@@ -407,15 +614,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: evento-adverso-derivacion/handout-target
     title: Handout Target
     breadcrumbs:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - Handout Target
     about:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - evento adverso derivacion
     - Handout Target
     - handout target
@@ -430,15 +637,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: evento-adverso-derivacion/tool
+    title: Tool
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Tool
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Tool
+    - tool
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: evento-adverso-derivacion/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Allowed Transitions
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: evento-adverso-derivacion/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Evento adverso \u2014 derivacion"
+    - Grounding Atoms
+    about:
+    - "Evento adverso \u2014 derivacion"
+    - evento adverso derivacion
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.evento_adverso
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: evento-adverso-derivacion/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - Completion Condition
     about:
-    - Evento adverso — derivacion
+    - "Evento adverso \u2014 derivacion"
     - evento adverso derivacion
     - Completion Condition
     - completion condition
@@ -453,8 +729,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-recompra
   sections:
   - path: seguimiento-de-recompra-y-receta
@@ -475,8 +751,8 @@ documents:
     - workspace.knowledge
     slug: seguimiento-de-recompra-y-receta
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: seguimiento-de-recompra-y-receta/instructions
     title: Instructions
     breadcrumbs:
@@ -498,8 +774,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: seguimiento-de-recompra-y-receta/required-slots
     title: Required Slots
     breadcrumbs:
@@ -521,8 +797,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: seguimiento-de-recompra-y-receta/handout-target
     title: Handout Target
     breadcrumbs:
@@ -544,8 +820,77 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: seguimiento-de-recompra-y-receta/tool
+    title: Tool
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Tool
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Tool
+    - tool
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: seguimiento-de-recompra-y-receta/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Allowed Transitions
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: seguimiento-de-recompra-y-receta/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Seguimiento de recompra y receta
+    - Grounding Atoms
+    about:
+    - Seguimiento de recompra y receta
+    - seguimiento de recompra y receta
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.recompra
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: seguimiento-de-recompra-y-receta/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -567,16 +912,16 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-registro-estado
   sections:
   - path: registro-de-estado-como-va-el-tratamiento
-    title: Registro de estado — como va el tratamiento
+    title: "Registro de estado \u2014 como va el tratamiento"
     breadcrumbs:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     about:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - registro de estado como va el tratamiento
     - conversation:steps.registro_estado
     - system:laboratorio-chile
@@ -589,15 +934,15 @@ documents:
     - workspace.knowledge
     slug: registro-de-estado-como-va-el-tratamiento
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: registro-de-estado-como-va-el-tratamiento/instructions
     title: Instructions
     breadcrumbs:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - Instructions
     about:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - registro de estado como va el tratamiento
     - Instructions
     - instructions
@@ -612,15 +957,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: registro-de-estado-como-va-el-tratamiento/required-slots
     title: Required Slots
     breadcrumbs:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - Required Slots
     about:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - registro de estado como va el tratamiento
     - Required Slots
     - required slots
@@ -635,15 +980,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: registro-de-estado-como-va-el-tratamiento/handout-target
     title: Handout Target
     breadcrumbs:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - Handout Target
     about:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - registro de estado como va el tratamiento
     - Handout Target
     - handout target
@@ -658,15 +1003,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: registro-de-estado-como-va-el-tratamiento/tool
+    title: Tool
+    breadcrumbs:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - Tool
+    about:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
+    - Tool
+    - tool
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: registro-de-estado-como-va-el-tratamiento/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - Allowed Transitions
+    about:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: registro-de-estado-como-va-el-tratamiento/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - Grounding Atoms
+    about:
+    - "Registro de estado \u2014 como va el tratamiento"
+    - registro de estado como va el tratamiento
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.registro_estado
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: registro-de-estado-como-va-el-tratamiento/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - Completion Condition
     about:
-    - Registro de estado — como va el tratamiento
+    - "Registro de estado \u2014 como va el tratamiento"
     - registro de estado como va el tratamiento
     - Completion Condition
     - completion condition
@@ -681,8 +1095,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-saludo
   sections:
   - path: saludo-inicial
@@ -703,8 +1117,8 @@ documents:
     - workspace.knowledge
     slug: saludo-inicial
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: saludo-inicial/instructions
     title: Instructions
     breadcrumbs:
@@ -726,8 +1140,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: saludo-inicial/required-slots
     title: Required Slots
     breadcrumbs:
@@ -749,8 +1163,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: saludo-inicial/handout-target
     title: Handout Target
     breadcrumbs:
@@ -772,8 +1186,77 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: saludo-inicial/tool
+    title: Tool
+    breadcrumbs:
+    - Saludo inicial
+    - Tool
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Tool
+    - tool
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: saludo-inicial/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - Saludo inicial
+    - Allowed Transitions
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: saludo-inicial/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - Saludo inicial
+    - Grounding Atoms
+    about:
+    - Saludo inicial
+    - saludo inicial
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.saludo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: saludo-inicial/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -795,16 +1278,16 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-derivacion-medinfo
   sections:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa
-    title: Derivación MedInfo — consulta médica del programa
+    title: "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     breadcrumbs:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     about:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - derivaci n medinfo consulta m dica del programa
     - conversation:steps.derivacion_medinfo
     - system:laboratorio-chile
@@ -817,15 +1300,15 @@ documents:
     - workspace.knowledge
     slug: derivaci-n-medinfo-consulta-m-dica-del-programa
     level: 1
-    line_start: 15
-    line_end: 16
+    line_start: 786
+    line_end: 787
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/instructions
     title: Instructions
     breadcrumbs:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - Instructions
     about:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - derivaci n medinfo consulta m dica del programa
     - Instructions
     - instructions
@@ -840,15 +1323,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 17
-    line_end: 18
+    line_start: 788
+    line_end: 789
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - Required Slots
     about:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - derivaci n medinfo consulta m dica del programa
     - Required Slots
     - required slots
@@ -863,15 +1346,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 21
-    line_end: 22
+    line_start: 792
+    line_end: 793
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - Handout Target
     about:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - derivaci n medinfo consulta m dica del programa
     - Handout Target
     - handout target
@@ -886,15 +1369,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 25
-    line_end: 26
+    line_start: 796
+    line_end: 797
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/tool
+    title: Tool
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Tool
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Tool
+    - tool
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 800
+    line_end: 801
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Allowed Transitions
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 804
+    line_end: 805
+  - path: derivaci-n-medinfo-consulta-m-dica-del-programa/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Grounding Atoms
+    about:
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - derivaci n medinfo consulta m dica del programa
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.derivacion_medinfo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 808
+    line_end: 809
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - Completion Condition
     about:
-    - Derivación MedInfo — consulta médica del programa
+    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
     - derivaci n medinfo consulta m dica del programa
     - Completion Condition
     - completion condition
@@ -909,16 +1461,16 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 29
-    line_end: 30
+    line_start: 812
+    line_end: 813
 - doc_name: step-antonia-revision-humana
   sections:
   - path: revisi-n-humana-ticket-pendiente
-    title: Revisión humana — ticket pendiente
+    title: "Revisi\xF3n humana \u2014 ticket pendiente"
     breadcrumbs:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     about:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - revisi n humana ticket pendiente
     - conversation:steps.revision_humana
     - system:laboratorio-chile
@@ -931,15 +1483,15 @@ documents:
     - workspace.knowledge
     slug: revisi-n-humana-ticket-pendiente
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: revisi-n-humana-ticket-pendiente/instructions
     title: Instructions
     breadcrumbs:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - Instructions
     about:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - revisi n humana ticket pendiente
     - Instructions
     - instructions
@@ -954,15 +1506,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: revisi-n-humana-ticket-pendiente/required-slots
     title: Required Slots
     breadcrumbs:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - Required Slots
     about:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - revisi n humana ticket pendiente
     - Required Slots
     - required slots
@@ -977,15 +1529,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: revisi-n-humana-ticket-pendiente/handout-target
     title: Handout Target
     breadcrumbs:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - Handout Target
     about:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - revisi n humana ticket pendiente
     - Handout Target
     - handout target
@@ -1000,15 +1552,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: revisi-n-humana-ticket-pendiente/tool
+    title: Tool
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Tool
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Tool
+    - tool
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: revisi-n-humana-ticket-pendiente/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Allowed Transitions
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: revisi-n-humana-ticket-pendiente/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Grounding Atoms
+    about:
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - revisi n humana ticket pendiente
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: revisi-n-humana-ticket-pendiente/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - Completion Condition
     about:
-    - Revisión humana — ticket pendiente
+    - "Revisi\xF3n humana \u2014 ticket pendiente"
     - revisi n humana ticket pendiente
     - Completion Condition
     - completion condition
@@ -1023,16 +1644,16 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-journey-operativo
   sections:
   - path: journey-operativo-contenido-preaprobado-del-programa
-    title: Journey operativo — contenido preaprobado del programa
+    title: "Journey operativo \u2014 contenido preaprobado del programa"
     breadcrumbs:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     about:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - journey operativo contenido preaprobado del programa
     - conversation:steps.journey_operativo
     - system:laboratorio-chile
@@ -1045,15 +1666,15 @@ documents:
     - workspace.knowledge
     slug: journey-operativo-contenido-preaprobado-del-programa
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: journey-operativo-contenido-preaprobado-del-programa/instructions
     title: Instructions
     breadcrumbs:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - Instructions
     about:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - journey operativo contenido preaprobado del programa
     - Instructions
     - instructions
@@ -1068,15 +1689,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: journey-operativo-contenido-preaprobado-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - Required Slots
     about:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - journey operativo contenido preaprobado del programa
     - Required Slots
     - required slots
@@ -1091,15 +1712,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: journey-operativo-contenido-preaprobado-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - Handout Target
     about:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - journey operativo contenido preaprobado del programa
     - Handout Target
     - handout target
@@ -1114,15 +1735,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: journey-operativo-contenido-preaprobado-del-programa/tool
+    title: Tool
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Tool
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Tool
+    - tool
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: journey-operativo-contenido-preaprobado-del-programa/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Allowed Transitions
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: journey-operativo-contenido-preaprobado-del-programa/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Grounding Atoms
+    about:
+    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - journey operativo contenido preaprobado del programa
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.journey_operativo
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: journey-operativo-contenido-preaprobado-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - Completion Condition
     about:
-    - Journey operativo — contenido preaprobado del programa
+    - "Journey operativo \u2014 contenido preaprobado del programa"
     - journey operativo contenido preaprobado del programa
     - Completion Condition
     - completion condition
@@ -1137,16 +1827,16 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-validacion-policy-gate
   sections:
   - path: validaci-n-policy-gate-autochequeo-post-draft
-    title: Validación policy gate — autochequeo post-draft
+    title: "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     about:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - validaci n policy gate autochequeo post draft
     - conversation:steps.validacion_policy_gate
     - system:laboratorio-chile
@@ -1159,15 +1849,15 @@ documents:
     - workspace.knowledge
     slug: validaci-n-policy-gate-autochequeo-post-draft
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: validaci-n-policy-gate-autochequeo-post-draft/instructions
     title: Instructions
     breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - Instructions
     about:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - validaci n policy gate autochequeo post draft
     - Instructions
     - instructions
@@ -1182,15 +1872,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: validaci-n-policy-gate-autochequeo-post-draft/required-slots
     title: Required Slots
     breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - Required Slots
     about:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - validaci n policy gate autochequeo post draft
     - Required Slots
     - required slots
@@ -1205,15 +1895,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: validaci-n-policy-gate-autochequeo-post-draft/handout-target
     title: Handout Target
     breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - Handout Target
     about:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - validaci n policy gate autochequeo post draft
     - Handout Target
     - handout target
@@ -1228,15 +1918,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: validaci-n-policy-gate-autochequeo-post-draft/tool
+    title: Tool
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Tool
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Tool
+    - tool
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: validaci-n-policy-gate-autochequeo-post-draft/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Allowed Transitions
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: validaci-n-policy-gate-autochequeo-post-draft/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Grounding Atoms
+    about:
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - validaci n policy gate autochequeo post draft
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: validaci-n-policy-gate-autochequeo-post-draft/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - Completion Condition
     about:
-    - Validación policy gate — autochequeo post-draft
+    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
     - validaci n policy gate autochequeo post draft
     - Completion Condition
     - completion condition
@@ -1251,16 +2010,16 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812
 - doc_name: step-antonia-enrolamiento
   sections:
   - path: enrolamiento-inscripci-n-al-programa
-    title: Enrolamiento — inscripción al programa
+    title: "Enrolamiento \u2014 inscripci\xF3n al programa"
     breadcrumbs:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     about:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - enrolamiento inscripci n al programa
     - conversation:steps.enrolamiento
     - system:laboratorio-chile
@@ -1273,15 +2032,15 @@ documents:
     - workspace.knowledge
     slug: enrolamiento-inscripci-n-al-programa
     level: 1
-    line_start: 14
-    line_end: 15
+    line_start: 785
+    line_end: 786
   - path: enrolamiento-inscripci-n-al-programa/instructions
     title: Instructions
     breadcrumbs:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - Instructions
     about:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - enrolamiento inscripci n al programa
     - Instructions
     - instructions
@@ -1296,15 +2055,15 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 16
-    line_end: 17
+    line_start: 787
+    line_end: 788
   - path: enrolamiento-inscripci-n-al-programa/required-slots
     title: Required Slots
     breadcrumbs:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - Required Slots
     about:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - enrolamiento inscripci n al programa
     - Required Slots
     - required slots
@@ -1319,15 +2078,15 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 20
-    line_end: 21
+    line_start: 791
+    line_end: 792
   - path: enrolamiento-inscripci-n-al-programa/handout-target
     title: Handout Target
     breadcrumbs:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - Handout Target
     about:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - enrolamiento inscripci n al programa
     - Handout Target
     - handout target
@@ -1342,15 +2101,84 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 24
-    line_end: 25
+    line_start: 795
+    line_end: 796
+  - path: enrolamiento-inscripci-n-al-programa/tool
+    title: Tool
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Tool
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Tool
+    - tool
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: tool
+    level: 2
+    line_start: 799
+    line_end: 800
+  - path: enrolamiento-inscripci-n-al-programa/allowed-transitions
+    title: Allowed Transitions
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Allowed Transitions
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Allowed Transitions
+    - allowed transitions
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: allowed-transitions
+    level: 2
+    line_start: 803
+    line_end: 804
+  - path: enrolamiento-inscripci-n-al-programa/grounding-atoms
+    title: Grounding Atoms
+    breadcrumbs:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Grounding Atoms
+    about:
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - enrolamiento inscripci n al programa
+    - Grounding Atoms
+    - grounding atoms
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.enrolamiento
+    - system:laboratorio-chile
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: grounding-atoms
+    level: 2
+    line_start: 807
+    line_end: 808
   - path: enrolamiento-inscripci-n-al-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - Completion Condition
     about:
-    - Enrolamiento — inscripción al programa
+    - "Enrolamiento \u2014 inscripci\xF3n al programa"
     - enrolamiento inscripci n al programa
     - Completion Condition
     - completion condition
@@ -1365,5 +2193,5 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 28
-    line_end: 29
+    line_start: 811
+    line_end: 812

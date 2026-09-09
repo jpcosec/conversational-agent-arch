@@ -2,11 +2,11 @@ documents:
 - doc_name: agent-antonia-gate
   sections:
   - path: encuadre-del-gate-antonia
-    title: Encuadre del Gate — Antonia
+    title: "Encuadre del Gate \u2014 Antonia"
     breadcrumbs:
-    - Encuadre del Gate — Antonia
+    - "Encuadre del Gate \u2014 Antonia"
     about:
-    - Encuadre del Gate — Antonia
+    - "Encuadre del Gate \u2014 Antonia"
     - encuadre del gate antonia
     - agent:gate
     - type.knowledge.agent
@@ -17,15 +17,15 @@ documents:
     - workspace.knowledge
     slug: encuadre-del-gate-antonia
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 15
+    line_end: 16
   - path: encuadre-del-gate-antonia/framing
     title: Framing
     breadcrumbs:
-    - Encuadre del Gate — Antonia
+    - "Encuadre del Gate \u2014 Antonia"
     - Framing
     about:
-    - Encuadre del Gate — Antonia
+    - "Encuadre del Gate \u2014 Antonia"
     - encuadre del gate antonia
     - Framing
     - framing
@@ -38,15 +38,15 @@ documents:
     - workspace.knowledge
     slug: framing
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 17
+    line_end: 18
   - path: encuadre-del-gate-antonia/examples
     title: Examples
     breadcrumbs:
-    - Encuadre del Gate — Antonia
+    - "Encuadre del Gate \u2014 Antonia"
     - Examples
     about:
-    - Encuadre del Gate — Antonia
+    - "Encuadre del Gate \u2014 Antonia"
     - encuadre del gate antonia
     - Examples
     - examples
@@ -59,16 +59,16 @@ documents:
     - workspace.knowledge
     slug: examples
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 21
+    line_end: 22
 - doc_name: agent-antonia-router
   sections:
   - path: encuadre-del-ruteador-antonia
-    title: Encuadre del Ruteador — Antonia
+    title: "Encuadre del Ruteador \u2014 Antonia"
     breadcrumbs:
-    - Encuadre del Ruteador — Antonia
+    - "Encuadre del Ruteador \u2014 Antonia"
     about:
-    - Encuadre del Ruteador — Antonia
+    - "Encuadre del Ruteador \u2014 Antonia"
     - encuadre del ruteador antonia
     - agent:router
     - type.knowledge.agent
@@ -79,15 +79,15 @@ documents:
     - workspace.knowledge
     slug: encuadre-del-ruteador-antonia
     level: 1
-    line_start: 12
-    line_end: 13
+    line_start: 15
+    line_end: 16
   - path: encuadre-del-ruteador-antonia/framing
     title: Framing
     breadcrumbs:
-    - Encuadre del Ruteador — Antonia
+    - "Encuadre del Ruteador \u2014 Antonia"
     - Framing
     about:
-    - Encuadre del Ruteador — Antonia
+    - "Encuadre del Ruteador \u2014 Antonia"
     - encuadre del ruteador antonia
     - Framing
     - framing
@@ -100,15 +100,15 @@ documents:
     - workspace.knowledge
     slug: framing
     level: 2
-    line_start: 14
-    line_end: 15
+    line_start: 17
+    line_end: 18
   - path: encuadre-del-ruteador-antonia/examples
     title: Examples
     breadcrumbs:
-    - Encuadre del Ruteador — Antonia
+    - "Encuadre del Ruteador \u2014 Antonia"
     - Examples
     about:
-    - Encuadre del Ruteador — Antonia
+    - "Encuadre del Ruteador \u2014 Antonia"
     - encuadre del ruteador antonia
     - Examples
     - examples
@@ -121,5 +121,5 @@ documents:
     - workspace.knowledge
     slug: examples
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 21
+    line_end: 22

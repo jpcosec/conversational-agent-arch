@@ -20,8 +20,8 @@ project:
   #                   Apunta aqui al store externo/productivo del negocio.
   #   test_kb_root -> store de PRUEBA del repo, usado bajo pytest (auto) o
   #                   con mode="test". Mantiene los tests aislados del real.
-  kb_root: knowledge                # KB REAL del negocio desplegado (Antonia)
-  test_kb_root: tests/knowledge     # KB de prueba del repo
+  kb_root: knowledge_hcp            # KB Piloto HCP MX+CL
+  test_kb_root: tests/knowledge     # KB de prueba del repo (Don Peppe, atoms tipados)
 
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
 
@@ -66,13 +66,21 @@ project:
     runtime_title: "Auditable Agent Runtime"
     kb_label: "Antonia · KB"
     input_placeholder: "Escribe tu mensaje..."
-    # Este saludo lo lee la paciente: nada de vocabulario del runtime (atoms,
-    # contexto compilado, auditoría de turnos). La trazabilidad se inspecciona
-    # en el Turn Inspector, que es superficie de desarrollo, no de producto.
+    # Primer mensaje SALIENTE de campaña: no es un asistente esperando
+    # preguntas, es Antonia contactando al médico. Sigue
+    # step-hcp-contacto-inicial: presentarse, motivo en una línea y cerrar
+    # ofreciendo ahora / después / baja (su slot disposicion_contacto, y la
+    # salida inmediata que exige la misión §2.2). El otro slot del step,
+    # hcp_confirmado, NO se pide aquí: preguntar "¿hablo con el médico?" en
+    # frío suena a call center; la identidad se confirma por nombre cuando el
+    # flujo ya tiene la ficha del lead. Nada de vocabulario del runtime
+    # (atoms, contexto compilado, auditoría de turnos): eso vive en el Turn
+    # Inspector, que es superficie de desarrollo.
     greeting: >-
-      Hola. Soy **Antonia**, del Programa de Acompañamiento de Selfix.
-      Pregúntame sobre tu tratamiento, cómo aplicarte o agenda un recordatorio
-      de aplicación. Tu médico tratante sigue siendo tu referente clínico.
+      Hola. Soy **Antonia**, asistente virtual de Teva. Le escribo porque
+      aceptó recibir información de nuestro portafolio y tengo novedades para
+      su especialidad. ¿Se las comparto ahora, prefiere que le escriba en otro
+      momento, o prefiere dejar de recibirlas?
 
   # Parámetros de tuning del runtime (antes hardcodeados en el código).
   # Cada uno admite override por env: MAX_BUNDLE_SIZE, HISTORY_LIMIT,
