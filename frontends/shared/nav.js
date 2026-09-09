@@ -1,30 +1,57 @@
-/* Topbar comun a todas las vistas: marca, etiquetas, health y grupos.
+/* Topbar común a todas las vistas: una sola fuente de verdad.
  *
- * Antes cada pagina llevaba una copia del mismo IIFE (5 copias que se
- * desincronizaban: agregar una vista obligaba a editarlas todas). Los <a>
- * siguen en el HTML de cada pagina -- son parte del contrato de tests
- * (data-testid="nav-chat", "nav-leads", ...) y deben existir sin esperar a
- * /api/config; este script solo los agrupa, los rotula y marca el activo.
+ * Cada página importa theme.css + nav.js y pone <div id="appNavMount"></div>
+ * donde quiera la topbar. Este script inyecta TODO el HTML: brand, nav links,
+ * chips de KB/health, logos. El CSS ya vive en theme.css.
  *
- * Grupos (UI-GUIDE 1): Chat (producto) · Operacion (leads, metricas) ·
- * Desarrollo (inspector, flujo, KB). El grupo se declara por data-nav-group
- * en cada <a>; el separador lo dibuja CSS (.app-nav a[data-group-start]).
+ * Grupos: Chat (producto) · Operación (leads, métricas) · Desarrollo
+ * (inspector, flujo, KB, dev). Los separadores los dibuja theme.css
+ * (.app-nav a[data-group-start]::before y [data-group-label]::after).
  */
 (function () {
-  var GROUPS = { chat: 'Chat', operacion: 'Operación', desarrollo: 'Desarrollo' };
-  var DEFAULT_LABELS = {
-    chat: 'Chat', leads: 'Leads', dashboard: 'Métricas',
-    inspector: 'Inspector', flow: 'Flujo', mindmap: 'KB', users: 'Perfiles'
-  };
+  var LINKS = [
+    { testid: 'nav-chat',      group: 'chat',       href: '/chat',   label: 'Chat' },
+    { testid: 'nav-leads',     group: 'operacion',   href: '/leads',   label: 'Leads' },
+    { testid: 'nav-dashboard', group: 'operacion',   href: '/dashboard', label: 'Métricas' },
+    { testid: 'nav-inspector', group: 'desarrollo',  href: '/',         label: 'Inspector' },
+    { testid: 'nav-flow',      group: 'desarrollo',  href: '/flow',     label: 'Flujo' },
+    { testid: 'nav-mindmap',   group: 'desarrollo',  href: '/mindmap',  label: 'KB' },
+    { testid: 'nav-profiles',  group: 'desarrollo',  href: '/users',    label: 'Perfiles' },
+    { testid: 'nav-prompts',   group: 'desarrollo',  href: '/dev/prompts',label: 'Prompts' },
+    { testid: 'nav-dev',       group: 'desarrollo',  href: '/dev',       label: 'Dev' }
+  ];
+
+  function injectTopbar() {
+    var mount = document.getElementById('appNavMount');
+    if (!mount || mount.dataset._navInjected) return;
+    mount.dataset._navInjected = '1';
+
+    var header = document.createElement('header');
+    header.className = 'app-topbar';
+    header.setAttribute('data-testid', 'nav-topbar');
+
+    header.innerHTML = [
+      '<a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>',
+      '<nav class="app-nav" id="appNav">',
+      LINKS.map(function (l) {
+        return '<a data-testid="' + l.testid + '" data-nav-group="' + l.group + '" href="' + l.href + '">' + l.label + '</a>';
+      }).join(''),
+      '</nav>',
+      '<div class="app-topbar-meta">',
+      '<span class="app-topbar-chip" id="kbLabel">KB</span>',
+      '<span class="app-topbar-chip" id="healthLabel">—</span>',
+      '</div>'
+    ].join('');
+
+    mount.appendChild(header);
+  }
 
   function markActive() {
     var path = location.pathname.replace(/\/$/, '') || '/';
     document.querySelectorAll('#appNav a').forEach(function (a) {
       var href = a.getAttribute('href').replace(/\/$/, '') || '/';
-      var active = href === path;
-      a.classList.toggle('active', active);
-      if (active) a.setAttribute('data-active', 'true');
-      else a.removeAttribute('data-active');
+      a.classList.toggle('active', href === path);
+      a.toggleAttribute('data-active', href === path);
     });
   }
 
@@ -35,9 +62,11 @@
       if (!g || seen[g]) return;
       seen[g] = true;
       a.setAttribute('data-group-start', 'true');
-      if (GROUPS[g]) a.setAttribute('data-group-label', GROUPS[g]);
+      a.setAttribute('data-group-label', GROUPS[g] || '');
     });
   }
+
+  var GROUPS = { chat: 'Chat', operacion: 'Operación', desarrollo: 'Desarrollo' };
 
   function applyConfig(cfg, health) {
     var brand = document.getElementById('appBrand');
@@ -46,30 +75,19 @@
     if (brand) brand.textContent = cfg.name || cfg.runtime_title || 'Agente';
     if (kb) kb.textContent = cfg.kb_label || cfg.name || 'KB';
     if (hl) hl.textContent = health.status || 'unknown';
-    var labels = cfg.nav_labels || {};
-    Object.keys(DEFAULT_LABELS).forEach(function (key) {
-      var el = document.querySelector('[data-testid="nav-' + key + '"]');
-      if (el) el.textContent = labels[key] || DEFAULT_LABELS[key];
-    });
     var input = document.querySelector('[data-testid="chat-input"]');
     if (input && cfg.input_placeholder) input.placeholder = cfg.input_placeholder;
   }
 
-  //: Logos de marca del piloto HCP: lockup de Antonia a la izquierda (antes
-  //  del brand textual, que los tests siguen leyendo por [data-testid=nav-brand])
-  //  y logo de Teva/Laboratorio Chile a la derecha, despues de los chips.
-  //  Van aca y no en los 6 index.html por la misma razon que el resto de este
-  //  script: una sola copia en vez de seis que se desincronizan.
+  // Logos
   var LOGOS = {
     brand: {
       src: 'https://pharma.heyantonia.com/_next/image?url=%2Fbrand%2Fantonia-lockup-2027.png&w=384&q=75',
-      alt: 'Antonia',
-      testid: 'topbar-logo-brand'
+      alt: 'Antonia', testid: 'topbar-logo-brand'
     },
     client: {
       src: 'https://www.laboratoriochile.cl/wp-content/themes/teva-lab/assets/img/logo-teva-v2.svg',
-      alt: 'Teva · Laboratorio Chile',
-      testid: 'topbar-logo-client'
+      alt: 'Teva · Laboratorio Chile', testid: 'topbar-logo-client'
     }
   };
 
@@ -79,7 +97,6 @@
     img.src = spec.src;
     img.alt = spec.alt;
     img.setAttribute('data-testid', spec.testid);
-    // Un logo que no carga no debe dejar el icono roto en la topbar.
     img.addEventListener('error', function () { img.remove(); });
     return img;
   }
@@ -95,6 +112,7 @@
   }
 
   function boot() {
+    injectTopbar();
     mountLogos();
     markActive();
     markGroups();
