@@ -206,6 +206,33 @@ tags:
   gate:regulatorio.dosis:
   - gate-hcp-dosis
   layer.topology:
+  - grounded_by--step-hcp-agendar-recontacto--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-contacto-inicial--SelfDeclaration:self-hcp-whoami
+  - grounded_by--step-hcp-contacto-inicial--StrategyRule:strategy-hcp-campaign
+  - grounded_by--step-hcp-contacto-inicial--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-despedida--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-detalle-medicamento--CapabilityBoundary:boundary-hcp-ae-safety-net
+  - grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-derivar-clinico
+  - grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-deducir
+  - grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-farmacologia
+  - grounded_by--step-hcp-detalle-medicamento--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-handout-especialista--RuleAtom:rule-hcp-derivar-clinico
+  - grounded_by--step-hcp-handout-especialista--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-dsr-erasure
+  - grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-campania
+  - grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-canal
+  - grounded_by--step-hcp-optout--RuleAtom:rule-hcp-solo-pii-profesional
+  - grounded_by--step-hcp-optout--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-presentar-campania--RuleAtom:rule-hcp-filtrado-especialidad
+  - grounded_by--step-hcp-presentar-campania--SelfDeclaration:self-hcp-whoami
+  - grounded_by--step-hcp-presentar-campania--StrategyRule:strategy-hcp-campaign
+  - grounded_by--step-hcp-presentar-campania--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-revision-humana--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-corpus
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-derivacion
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-diagnostico
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-dosis
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-promesas
   - reltype-applies_to_source
   - reltype-applies_to_target
   - reltype-extends
@@ -217,6 +244,31 @@ tags:
   - reltype-semantic_equivalent
   - reltype-semantic_parent
   - reltype-tagged_as
+  - rt-grounded_by
+  - rt-transitions_to
+  - rt-uses_tool
+  - transitions_to--step-hcp-agendar-recontacto--step-hcp-despedida
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-agendar-recontacto
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-handout-especialista
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-optout
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-presentar-campania
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-agendar-recontacto
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-despedida
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-detalle-medicamento
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-handout-especialista
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-optout
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-presentar-campania
+  - transitions_to--step-hcp-handout-especialista--step-hcp-despedida
+  - transitions_to--step-hcp-optout--step-hcp-despedida
+  - transitions_to--step-hcp-presentar-campania--step-hcp-agendar-recontacto
+  - transitions_to--step-hcp-presentar-campania--step-hcp-despedida
+  - transitions_to--step-hcp-presentar-campania--step-hcp-detalle-medicamento
+  - transitions_to--step-hcp-presentar-campania--step-hcp-handout-especialista
+  - transitions_to--step-hcp-presentar-campania--step-hcp-optout
+  - transitions_to--step-hcp-revision-humana--step-hcp-despedida
+  - transitions_to--step-hcp-validacion-policy-gate--step-hcp-revision-humana
+  - uses_tool--step-hcp-agendar-recontacto--tool-hcp-programar-recontacto
+  - uses_tool--step-hcp-optout--tool-hcp-actualizar-consentimiento
   self:estilo:
   - style-hcp-tone
   self:limites:
@@ -479,6 +531,56 @@ tags:
   - trait-hcp-especialidad-psiquiatria
   - trait-hcp-especialidad-traumatologia
   - trait-hcp-preferencia-contacto
+  type.relation.instance:
+  - grounded_by--step-hcp-agendar-recontacto--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-contacto-inicial--SelfDeclaration:self-hcp-whoami
+  - grounded_by--step-hcp-contacto-inicial--StrategyRule:strategy-hcp-campaign
+  - grounded_by--step-hcp-contacto-inicial--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-despedida--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-detalle-medicamento--CapabilityBoundary:boundary-hcp-ae-safety-net
+  - grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-derivar-clinico
+  - grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-deducir
+  - grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-farmacologia
+  - grounded_by--step-hcp-detalle-medicamento--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-handout-especialista--RuleAtom:rule-hcp-derivar-clinico
+  - grounded_by--step-hcp-handout-especialista--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-dsr-erasure
+  - grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-campania
+  - grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-canal
+  - grounded_by--step-hcp-optout--RuleAtom:rule-hcp-solo-pii-profesional
+  - grounded_by--step-hcp-optout--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-presentar-campania--RuleAtom:rule-hcp-filtrado-especialidad
+  - grounded_by--step-hcp-presentar-campania--SelfDeclaration:self-hcp-whoami
+  - grounded_by--step-hcp-presentar-campania--StrategyRule:strategy-hcp-campaign
+  - grounded_by--step-hcp-presentar-campania--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-revision-humana--StyleGuide:style-hcp-tone
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-corpus
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-derivacion
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-diagnostico
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-dosis
+  - grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-promesas
+  - transitions_to--step-hcp-agendar-recontacto--step-hcp-despedida
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-agendar-recontacto
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-handout-especialista
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-optout
+  - transitions_to--step-hcp-contacto-inicial--step-hcp-presentar-campania
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-agendar-recontacto
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-despedida
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-detalle-medicamento
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-handout-especialista
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-optout
+  - transitions_to--step-hcp-detalle-medicamento--step-hcp-presentar-campania
+  - transitions_to--step-hcp-handout-especialista--step-hcp-despedida
+  - transitions_to--step-hcp-optout--step-hcp-despedida
+  - transitions_to--step-hcp-presentar-campania--step-hcp-agendar-recontacto
+  - transitions_to--step-hcp-presentar-campania--step-hcp-despedida
+  - transitions_to--step-hcp-presentar-campania--step-hcp-detalle-medicamento
+  - transitions_to--step-hcp-presentar-campania--step-hcp-handout-especialista
+  - transitions_to--step-hcp-presentar-campania--step-hcp-optout
+  - transitions_to--step-hcp-revision-humana--step-hcp-despedida
+  - transitions_to--step-hcp-validacion-policy-gate--step-hcp-revision-humana
+  - uses_tool--step-hcp-agendar-recontacto--tool-hcp-programar-recontacto
+  - uses_tool--step-hcp-optout--tool-hcp-actualizar-consentimiento
   type.relation.type:
   - reltype-applies_to_source
   - reltype-applies_to_target
@@ -491,6 +593,9 @@ tags:
   - reltype-semantic_equivalent
   - reltype-semantic_parent
   - reltype-tagged_as
+  - rt-grounded_by
+  - rt-transitions_to
+  - rt-uses_tool
   user:specialty.cardiologia:
   - domain-hcp-cardiplat-ficha
   - domain-hcp-cardiplat-indicacion
@@ -1624,3 +1729,315 @@ documents:
     tags:
     - layer.topology
     - type.relation.type
+  rt-grounded_by:
+    model: RelationTypeDoc
+    path: relations/types/grounded_by.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  rt-transitions_to:
+    model: RelationTypeDoc
+    path: relations/types/transitions_to.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  rt-uses_tool:
+    model: RelationTypeDoc
+    path: relations/types/uses_tool.md
+    tags:
+    - layer.topology
+    - type.relation.type
+  grounded_by--step-hcp-agendar-recontacto--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-agendar-recontacto--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-contacto-inicial--SelfDeclaration:self-hcp-whoami:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-contacto-inicial--SelfDeclaration:self-hcp-whoami.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-contacto-inicial--StrategyRule:strategy-hcp-campaign:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-contacto-inicial--StrategyRule:strategy-hcp-campaign.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-contacto-inicial--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-contacto-inicial--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-despedida--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-despedida--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-detalle-medicamento--CapabilityBoundary:boundary-hcp-ae-safety-net:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-detalle-medicamento--CapabilityBoundary:boundary-hcp-ae-safety-net.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-derivar-clinico:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-derivar-clinico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-deducir:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-deducir.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-farmacologia:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-farmacologia.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-detalle-medicamento--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-detalle-medicamento--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-handout-especialista--RuleAtom:rule-hcp-derivar-clinico:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-handout-especialista--RuleAtom:rule-hcp-derivar-clinico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-handout-especialista--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-handout-especialista--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-dsr-erasure:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-dsr-erasure.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-campania:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-campania.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-canal:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-canal.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-optout--RuleAtom:rule-hcp-solo-pii-profesional:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-optout--RuleAtom:rule-hcp-solo-pii-profesional.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-optout--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-optout--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-presentar-campania--RuleAtom:rule-hcp-filtrado-especialidad:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-presentar-campania--RuleAtom:rule-hcp-filtrado-especialidad.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-presentar-campania--SelfDeclaration:self-hcp-whoami:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-presentar-campania--SelfDeclaration:self-hcp-whoami.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-presentar-campania--StrategyRule:strategy-hcp-campaign:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-presentar-campania--StrategyRule:strategy-hcp-campaign.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-presentar-campania--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-presentar-campania--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-revision-humana--StyleGuide:style-hcp-tone:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-revision-humana--StyleGuide:style-hcp-tone.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-corpus:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-corpus.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-derivacion:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-derivacion.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-diagnostico:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-diagnostico.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-dosis:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-dosis.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-promesas:
+    model: RelationDoc
+    path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-promesas.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-agendar-recontacto--step-hcp-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-agendar-recontacto--step-hcp-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-contacto-inicial--step-hcp-agendar-recontacto:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-agendar-recontacto.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-contacto-inicial--step-hcp-handout-especialista:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-handout-especialista.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-contacto-inicial--step-hcp-optout:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-optout.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-contacto-inicial--step-hcp-presentar-campania:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-presentar-campania.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-detalle-medicamento--step-hcp-agendar-recontacto:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-agendar-recontacto.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-detalle-medicamento--step-hcp-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-detalle-medicamento--step-hcp-detalle-medicamento:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-detalle-medicamento.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-detalle-medicamento--step-hcp-handout-especialista:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-handout-especialista.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-detalle-medicamento--step-hcp-optout:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-optout.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-detalle-medicamento--step-hcp-presentar-campania:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-presentar-campania.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-handout-especialista--step-hcp-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-handout-especialista--step-hcp-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-optout--step-hcp-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-optout--step-hcp-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-presentar-campania--step-hcp-agendar-recontacto:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-agendar-recontacto.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-presentar-campania--step-hcp-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-presentar-campania--step-hcp-detalle-medicamento:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-detalle-medicamento.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-presentar-campania--step-hcp-handout-especialista:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-handout-especialista.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-presentar-campania--step-hcp-optout:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-optout.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-revision-humana--step-hcp-despedida:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-revision-humana--step-hcp-despedida.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-hcp-validacion-policy-gate--step-hcp-revision-humana:
+    model: RelationDoc
+    path: relations/transitions_to--step-hcp-validacion-policy-gate--step-hcp-revision-humana.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  uses_tool--step-hcp-agendar-recontacto--tool-hcp-programar-recontacto:
+    model: RelationDoc
+    path: relations/uses_tool--step-hcp-agendar-recontacto--tool-hcp-programar-recontacto.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  uses_tool--step-hcp-optout--tool-hcp-actualizar-consentimiento:
+    model: RelationDoc
+    path: relations/uses_tool--step-hcp-optout--tool-hcp-actualizar-consentimiento.md
+    tags:
+    - layer.topology
+    - type.relation.instance

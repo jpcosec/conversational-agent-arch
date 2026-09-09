@@ -24,3 +24,4 @@ knowledge/.sldb/runtime/cache/
 tests/knowledge/
 knowledge/.pron/
 **/.pron/
+knowledge_hcp/.sldb/runtime/cache/

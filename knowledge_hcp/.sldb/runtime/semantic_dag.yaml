@@ -275,6 +275,9 @@ nodes:
 - id: type.relation
   parents:
   - type
+- id: type.relation.instance
+  parents:
+  - type.relation
 - id: type.relation.type
   parents:
   - type.relation

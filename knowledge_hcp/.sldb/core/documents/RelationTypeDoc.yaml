@@ -76,3 +76,24 @@ documents:
   semantic_tags:
   - layer.topology
   - type.relation.type
+- name: rt-grounded_by
+  path: relations/types/grounded_by.md
+  hash_c: 84fbb3f19e70948a59d6565bc491bd110603f1c822f2871a9d5f60413110c81d
+  hash_d: d0e4706a05ffd902f0044df89cba98c48f70710bd5b3247911aca03be7ef8d3b
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: rt-transitions_to
+  path: relations/types/transitions_to.md
+  hash_c: 0f4a6b1c6ac8280386e1f5f28ae80bbf6c854eb27f6067fa51d01cd41f3692f2
+  hash_d: 956b8ddd887e5dd3d3c6521b48b657860f3100bfe90e5ba5da83ba059a487613
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: rt-uses_tool
+  path: relations/types/uses_tool.md
+  hash_c: c6f7ddb7650d89db0d0ff8f9e92fa5d5deef20de887aa052e5f0dc20ee359f76
+  hash_d: 2f4ccffc96a821635be4c22971a4421dd23c12082eb26bb4b8b7edfaf497b73f
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
