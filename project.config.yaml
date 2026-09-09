@@ -55,6 +55,7 @@ project:
     agendar_recordatorio: kb_agent.tools.recordatorios:agendar_recordatorio
     crear_reserva: kb_agent.tools.reservas:crear_reserva
     registrar_enrolamiento: kb_agent.tools.enrolamiento:registrar_enrolamiento
+    registrar_consulta: kb_agent.tools.consultas:registrar_consulta
 
   # Servidor HTTP (frontends/chat)
   server:

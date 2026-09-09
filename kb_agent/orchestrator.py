@@ -40,6 +40,7 @@ from kb_agent.llm import Conversador, GeminiConversador, GeminiTraitMapper, Trai
 from kb_agent.models_sql.identity import Base, Users, UserTraits
 from kb_agent.models_sql.reservas import Reservas  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.recordatorios import Recordatorios  # noqa: F401  (registra la tabla en Base)
+from kb_agent.models_sql.consultas import Consultas  # noqa: F401  (registra la tabla en Base)
 from kb_agent.models_sql.session import ChatHistory, SessionNode, SessionState
 from kb_agent.models_sql.turns import Turns, TurnKind
 from kb_agent.models_sql.conversation import Conversation, ConversationStatus
@@ -787,6 +788,17 @@ class Orchestrator:
                 "id": str(step.get("id") or step.get("tag") or "step-actual"),
                 "title": f"Paso actual de la conversacion: {step.get('title') or step.get('tag') or ''}".strip(),
                 "body": body,
+            })
+        collected = compiled.get("collected_slots")
+        if isinstance(collected, Mapping) and any(v for v in collected.values()):
+            # Lo que la persona ya dijo de si misma (nombre, dia de aplicacion,
+            # medico, semana...), persistido en flow_slots aunque haya salido de
+            # la ventana de historial: repetirselo no es inventar. Medido: el
+            # gate rechazaba "tu medica es la doctora Soto" que ella misma dijo.
+            extra.append({
+                "id": "datos-que-la-persona-dio",
+                "title": "Datos que la persona dio en la conversacion",
+                "body": "; ".join(f"{k}: {v}" for k, v in collected.items() if v),
             })
         said: list[str] = []
         for turn in compiled.get("history") or []:
