@@ -127,3 +127,12 @@ def test_nl_prompt_includes_active_step_block_and_omits_it_without_step() -> Non
     assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola"})
     assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola", "step": None})
     assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola", "step": {"tag": "x", "instructions": ""}})
+
+
+def test_nl_prompt_lists_the_data_the_person_already_gave() -> None:
+    from kb_agent.llm import build_nl_prompt
+
+    prompt = build_nl_prompt({"question": "q", "collected_slots": {"nombre": "Pedro", "medico": "doctora Soto", "email": ""}})
+    assert "DATOS QUE LA PERSONA YA DIO" in prompt
+    assert "- nombre: Pedro" in prompt and "- medico: doctora Soto" in prompt and "email" not in prompt
+    assert "DATOS QUE LA PERSONA YA DIO" not in build_nl_prompt({"question": "q"})

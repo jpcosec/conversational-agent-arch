@@ -63,6 +63,9 @@ def test_expired_conversation_is_closed_and_a_new_one_opens(negocio_kb: Path, tm
 
         second = o.handle_turn(external_id="wa:+56911114444", message="volvi")
         assert second["conversation_id"] != first["conversation_id"]
+        # La conversacion nueva arranca el diagrama desde su entrada, no a mitad
+        # del flujo de la conversacion vieja.
+        assert second["decisions"]["step"]["before"] is None
         with o.SessionLocal() as s:
             old = s.get(Conversation, first["conversation_id"])
             new = s.get(Conversation, second["conversation_id"])

@@ -352,3 +352,38 @@ def test_turn_holds_no_write_lock_during_the_llm_phase(negocio_kb: Path, tmp_db_
         assert conversador.other_writes == 1
     finally:
         o.close()
+
+
+def test_captured_slots_persist_and_reach_the_conversador(negocio_kb: Path, tmp_db_url: str) -> None:
+    """Lo que la persona dice (nombre, dia, medico) lo captura el OrchestratorAgent
+    en ``captured_slots``; se persiste en session_state.flow_slots["collected"] y
+    el Conversador lo ve en el turno siguiente aunque el historial sea corto."""
+    from tests.support.fakes import FakeConversador, FakeOrchestratorAgent
+
+    seen: list[dict] = []
+
+    class RecordingConversador(FakeConversador):
+        def draft_nl(self, compiled):  # type: ignore[override]
+            seen.append(dict(compiled.get("collected_slots") or {}))
+            return super().draft_nl(compiled)
+
+    def decide(ctx: dict) -> dict:
+        if "doctora Soto" in ctx.get("question", ""):
+            return {"kind": "nl", "reason": "captura", "captured_slots": {"medico": "doctora Soto", "dia_aplicacion": "jueves"}}
+        return {"kind": "nl", "reason": "nada nuevo"}
+
+    o = offline_orchestrator(
+        negocio_kb, tmp_db_url, conversador=RecordingConversador(),
+        orchestrator_agent=FakeOrchestratorAgent(decide), trait_mapper=FakeTraitMapper(),
+    )
+    try:
+        o.handle_turn(external_id="wa:+56911117777", message="mi medico es la doctora Soto y me aplico los jueves")
+        assert seen[-1]["medico"] == "doctora Soto"
+        with o.SessionLocal() as s:
+            user = o.ensure_user(s, "wa:+56911117777")
+            state = o._load_or_create_session_state(s, user.id)
+            assert state.flow_slots["collected"]["dia_aplicacion"] == "jueves"
+        o.handle_turn(external_id="wa:+56911117777", message="hola de nuevo")
+        assert seen[-1]["medico"] == "doctora Soto" and seen[-1]["dia_aplicacion"] == "jueves"
+    finally:
+        o.close()
