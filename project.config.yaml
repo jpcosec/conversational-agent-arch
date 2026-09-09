@@ -42,6 +42,10 @@ project:
 
   # Mensaje a la paciente cuando el policy gate rechaza el borrador (voz de Antonia).
   gate_handoff_message: "He preparado una respuesta pero prefiero que un profesional del programa la revise antes de enviarla. Alguien del equipo te contactará a la brevedad."
+  # Terminos que el scrubber de PII del historial nunca enmascara (la marca, el
+  # nombre del asistente, el programa). Sin esto "Soy Antonia" o "Programa Selfix"
+  # se guardaban como <NAME_n> y el historial que ve el modelo perdia sentido.
+  pii_allowlist: [Antonia, Selfix, Programa Selfix, Laboratorio Chile, Programa de Acompañamiento, MedInfo]
 
   # Tools del negocio: {nombre declarado en el ToolAtom: "modulo:funcion"}.
   # El ToolAtom de la KB define el schema; aqui se registra quien lo ejecuta.

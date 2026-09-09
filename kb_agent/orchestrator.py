@@ -104,6 +104,7 @@ class Orchestrator:
         tool_handlers: Mapping[str, ToolHandler] | None = None,
         fallback_message: str | None = None,
         gate_handoff_message: str | None = None,
+        pii_allowlist: Sequence[str] = (),
         tuning: TuningConfig | None = None,
         identity_key: str = "external_id",
         conversador: Conversador | None = None,
@@ -122,6 +123,9 @@ class Orchestrator:
         #: "derived"). Es voz del negocio, no del runtime: viene del yaml
         #: (``gate_handoff_message``); el default es neutro.
         self.gate_handoff_message = gate_handoff_message or DEFAULT_GATE_HANDOFF_MESSAGE
+        #: Terminos que el scrubber de PII deja intactos en el historial (marca,
+        #: nombre del asistente): vienen del yaml del negocio (``pii_allowlist``).
+        self.pii_allowlist: tuple[str, ...] = tuple(pii_allowlist)
         #: Parametros de tuning del runtime (bundle/historial/router). Antes
         #: eran constantes en el codigo; ahora llegan del yaml via ProjectConfig.
         self.tuning: TuningConfig = tuning or TuningConfig()
@@ -212,6 +216,7 @@ class Orchestrator:
             "tool_handlers": load_tool_handlers(cfg.tool_handlers),
             "fallback_message": cfg.fallback_message,
             "gate_handoff_message": cfg.gate_handoff_message,
+            "pii_allowlist": cfg.pii_allowlist,
             "tuning": cfg.tuning,
             "identity_key": cfg.identity_key,
         }
@@ -937,7 +942,7 @@ class Orchestrator:
         # scrub inline antes de que el perfilador vea nada (regla PII). El
         # evento se construye directo (no pasa por la cola compartida del
         # bus: con turnos concurrentes cada hilo consumia el evento de otro).
-        event = TurnClosedEvent(user_id=user_id, turn_text_scrubbed=scrub(turn_text))
+        event = TurnClosedEvent(user_id=user_id, turn_text_scrubbed=scrub(turn_text, allowlist=self.pii_allowlist))
         sink: list = []
 
         def _analyze() -> None:
@@ -1066,7 +1071,7 @@ class Orchestrator:
         row = ChatHistory(
             user_id=user_id,
             role=role,
-            content=scrub(content),
+            content=scrub(content, allowlist=self.pii_allowlist),
             pii_scrubbed=True,
             conversation_id=conversation_id,
         )

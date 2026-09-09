@@ -99,6 +99,8 @@ class ProjectConfig:
     fallback_message: str | None = None
     #: Mensaje al usuario cuando el policy gate rechaza el borrador. None => constante neutra del runtime.
     gate_handoff_message: str | None = None
+    #: Terminos que el scrubber de PII nunca enmascara (marca, nombre del asistente, programa).
+    pii_allowlist: list[str] = field(default_factory=list)
     #: {tool_name: "modulo:funcion"} — handlers que ejecutan los ToolAtom de la KB.
     tool_handlers: dict[str, str] = field(default_factory=dict)
     host: str = DEFAULT_HOST
@@ -199,6 +201,8 @@ def load_project_config(
         cfg.fallback_message = str(data["fallback_message"]).strip()
     if data.get("gate_handoff_message"):
         cfg.gate_handoff_message = str(data["gate_handoff_message"]).strip()
+    if data.get("pii_allowlist"):
+        cfg.pii_allowlist = [str(x).strip() for x in data["pii_allowlist"] if str(x).strip()]
     if data.get("demo_mode") is not None:
         cfg.demo_mode = bool(data["demo_mode"])
     cfg.tool_handlers = {str(k): str(v) for k, v in tools.items() if v}
