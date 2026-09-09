@@ -19,8 +19,8 @@ documents:
     - workspace.knowledge
     slug: validaci-n-policy-gate-autochequeo-post-draft
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: validaci-n-policy-gate-autochequeo-post-draft/instructions
     title: Instructions
     breadcrumbs:
@@ -42,8 +42,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: validaci-n-policy-gate-autochequeo-post-draft/required-slots
     title: Required Slots
     breadcrumbs:
@@ -65,100 +65,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
-  - path: validaci-n-policy-gate-autochequeo-post-draft/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
-    - Handout Target
-    about:
-    - Validación policy gate — autochequeo post-draft
-    - validaci n policy gate autochequeo post draft
-    - Handout Target
-    - handout target
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 795
-    line_end: 796
-  - path: validaci-n-policy-gate-autochequeo-post-draft/tool
-    title: Tool
-    breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
-    - Tool
-    about:
-    - Validación policy gate — autochequeo post-draft
-    - validaci n policy gate autochequeo post draft
-    - Tool
-    - tool
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 799
-    line_end: 800
-  - path: validaci-n-policy-gate-autochequeo-post-draft/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
-    - Allowed Transitions
-    about:
-    - Validación policy gate — autochequeo post-draft
-    - validaci n policy gate autochequeo post draft
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 803
-    line_end: 804
-  - path: validaci-n-policy-gate-autochequeo-post-draft/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Validación policy gate — autochequeo post-draft
-    - Grounding Atoms
-    about:
-    - Validación policy gate — autochequeo post-draft
-    - validaci n policy gate autochequeo post draft
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.validacion_policy_gate
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 807
-    line_end: 808
+    line_start: 20
+    line_end: 21
   - path: validaci-n-policy-gate-autochequeo-post-draft/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -180,8 +88,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 811
-    line_end: 812
+    line_start: 24
+    line_end: 25
 - doc_name: step-hcp-presentar-campania
   sections:
   - path: presentar-campa-a
@@ -202,8 +110,8 @@ documents:
     - workspace.knowledge
     slug: presentar-campa-a
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: presentar-campa-a/instructions
     title: Instructions
     breadcrumbs:
@@ -225,8 +133,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: presentar-campa-a/required-slots
     title: Required Slots
     breadcrumbs:
@@ -248,100 +156,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
-  - path: presentar-campa-a/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Presentar campaña
-    - Handout Target
-    about:
-    - Presentar campaña
-    - presentar campa a
-    - Handout Target
-    - handout target
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 795
-    line_end: 796
-  - path: presentar-campa-a/tool
-    title: Tool
-    breadcrumbs:
-    - Presentar campaña
-    - Tool
-    about:
-    - Presentar campaña
-    - presentar campa a
-    - Tool
-    - tool
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 799
-    line_end: 800
-  - path: presentar-campa-a/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Presentar campaña
-    - Allowed Transitions
-    about:
-    - Presentar campaña
-    - presentar campa a
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 803
-    line_end: 804
-  - path: presentar-campa-a/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Presentar campaña
-    - Grounding Atoms
-    about:
-    - Presentar campaña
-    - presentar campa a
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.presentar_campania
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 807
-    line_end: 808
+    line_start: 20
+    line_end: 21
   - path: presentar-campa-a/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -363,8 +179,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 811
-    line_end: 812
+    line_start: 24
+    line_end: 25
 - doc_name: step-hcp-detalle-medicamento
   sections:
   - path: detalle-de-medicamento-y-dudas
@@ -385,8 +201,8 @@ documents:
     - workspace.knowledge
     slug: detalle-de-medicamento-y-dudas
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: detalle-de-medicamento-y-dudas/instructions
     title: Instructions
     breadcrumbs:
@@ -408,8 +224,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: detalle-de-medicamento-y-dudas/required-slots
     title: Required Slots
     breadcrumbs:
@@ -431,100 +247,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
-  - path: detalle-de-medicamento-y-dudas/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Detalle de medicamento y dudas
-    - Handout Target
-    about:
-    - Detalle de medicamento y dudas
-    - detalle de medicamento y dudas
-    - Handout Target
-    - handout target
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 795
-    line_end: 796
-  - path: detalle-de-medicamento-y-dudas/tool
-    title: Tool
-    breadcrumbs:
-    - Detalle de medicamento y dudas
-    - Tool
-    about:
-    - Detalle de medicamento y dudas
-    - detalle de medicamento y dudas
-    - Tool
-    - tool
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 799
-    line_end: 800
-  - path: detalle-de-medicamento-y-dudas/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Detalle de medicamento y dudas
-    - Allowed Transitions
-    about:
-    - Detalle de medicamento y dudas
-    - detalle de medicamento y dudas
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 803
-    line_end: 804
-  - path: detalle-de-medicamento-y-dudas/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Detalle de medicamento y dudas
-    - Grounding Atoms
-    about:
-    - Detalle de medicamento y dudas
-    - detalle de medicamento y dudas
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.detalle_medicamento
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 807
-    line_end: 808
+    line_start: 20
+    line_end: 21
   - path: detalle-de-medicamento-y-dudas/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -546,8 +270,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 811
-    line_end: 812
+    line_start: 24
+    line_end: 25
 - doc_name: step-hcp-handout-especialista
   sections:
   - path: conectar-con-especialista
@@ -568,8 +292,8 @@ documents:
     - workspace.knowledge
     slug: conectar-con-especialista
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: conectar-con-especialista/instructions
     title: Instructions
     breadcrumbs:
@@ -591,8 +315,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: conectar-con-especialista/required-slots
     title: Required Slots
     breadcrumbs:
@@ -614,8 +338,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
+    line_start: 20
+    line_end: 21
   - path: conectar-con-especialista/handout-target
     title: Handout Target
     breadcrumbs:
@@ -637,77 +361,8 @@ documents:
     - workspace.knowledge
     slug: handout-target
     level: 2
-    line_start: 795
-    line_end: 796
-  - path: conectar-con-especialista/tool
-    title: Tool
-    breadcrumbs:
-    - Conectar con especialista
-    - Tool
-    about:
-    - Conectar con especialista
-    - conectar con especialista
-    - Tool
-    - tool
-    - conversation:steps.handout_especialista
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.handout_especialista
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 799
-    line_end: 800
-  - path: conectar-con-especialista/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Conectar con especialista
-    - Allowed Transitions
-    about:
-    - Conectar con especialista
-    - conectar con especialista
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.handout_especialista
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.handout_especialista
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 803
-    line_end: 804
-  - path: conectar-con-especialista/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Conectar con especialista
-    - Grounding Atoms
-    about:
-    - Conectar con especialista
-    - conectar con especialista
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.handout_especialista
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.handout_especialista
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 807
-    line_end: 808
+    line_start: 24
+    line_end: 25
   - path: conectar-con-especialista/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -729,8 +384,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 811
-    line_end: 812
+    line_start: 28
+    line_end: 29
 - doc_name: step-hcp-agendar-recontacto
   sections:
   - path: agendar-recontacto
@@ -751,8 +406,8 @@ documents:
     - workspace.knowledge
     slug: agendar-recontacto
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: agendar-recontacto/instructions
     title: Instructions
     breadcrumbs:
@@ -774,8 +429,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: agendar-recontacto/required-slots
     title: Required Slots
     breadcrumbs:
@@ -797,100 +452,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
-  - path: agendar-recontacto/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Agendar recontacto
-    - Handout Target
-    about:
-    - Agendar recontacto
-    - agendar recontacto
-    - Handout Target
-    - handout target
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 796
-    line_end: 797
-  - path: agendar-recontacto/tool
-    title: Tool
-    breadcrumbs:
-    - Agendar recontacto
-    - Tool
-    about:
-    - Agendar recontacto
-    - agendar recontacto
-    - Tool
-    - tool
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 800
-    line_end: 801
-  - path: agendar-recontacto/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Agendar recontacto
-    - Allowed Transitions
-    about:
-    - Agendar recontacto
-    - agendar recontacto
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 804
-    line_end: 805
-  - path: agendar-recontacto/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Agendar recontacto
-    - Grounding Atoms
-    about:
-    - Agendar recontacto
-    - agendar recontacto
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.agendar_recontacto
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 808
-    line_end: 809
+    line_start: 20
+    line_end: 21
   - path: agendar-recontacto/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -912,8 +475,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 812
-    line_end: 813
+    line_start: 24
+    line_end: 25
 - doc_name: step-hcp-optout
   sections:
   - path: ejecutar-baja
@@ -934,8 +497,8 @@ documents:
     - workspace.knowledge
     slug: ejecutar-baja
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: ejecutar-baja/instructions
     title: Instructions
     breadcrumbs:
@@ -957,8 +520,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: ejecutar-baja/required-slots
     title: Required Slots
     breadcrumbs:
@@ -980,100 +543,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
-  - path: ejecutar-baja/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Ejecutar baja
-    - Handout Target
-    about:
-    - Ejecutar baja
-    - ejecutar baja
-    - Handout Target
-    - handout target
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 795
-    line_end: 796
-  - path: ejecutar-baja/tool
-    title: Tool
-    breadcrumbs:
-    - Ejecutar baja
-    - Tool
-    about:
-    - Ejecutar baja
-    - ejecutar baja
-    - Tool
-    - tool
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 799
-    line_end: 800
-  - path: ejecutar-baja/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Ejecutar baja
-    - Allowed Transitions
-    about:
-    - Ejecutar baja
-    - ejecutar baja
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 803
-    line_end: 804
-  - path: ejecutar-baja/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Ejecutar baja
-    - Grounding Atoms
-    about:
-    - Ejecutar baja
-    - ejecutar baja
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.optout
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 807
-    line_end: 808
+    line_start: 20
+    line_end: 21
   - path: ejecutar-baja/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1095,8 +566,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 811
-    line_end: 812
+    line_start: 24
+    line_end: 25
 - doc_name: step-hcp-contacto-inicial
   sections:
   - path: contacto-inicial-abrir-campa-a
@@ -1119,8 +590,8 @@ documents:
     - workspace.knowledge
     slug: contacto-inicial-abrir-campa-a
     level: 1
-    line_start: 786
-    line_end: 787
+    line_start: 15
+    line_end: 16
   - path: contacto-inicial-abrir-campa-a/instructions
     title: Instructions
     breadcrumbs:
@@ -1144,8 +615,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 788
-    line_end: 789
+    line_start: 17
+    line_end: 18
   - path: contacto-inicial-abrir-campa-a/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1169,108 +640,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 792
-    line_end: 793
-  - path: contacto-inicial-abrir-campa-a/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Contacto inicial — abrir campaña
-    - Handout Target
-    about:
-    - Contacto inicial — abrir campaña
-    - contacto inicial abrir campa a
-    - Handout Target
-    - handout target
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 797
-    line_end: 798
-  - path: contacto-inicial-abrir-campa-a/tool
-    title: Tool
-    breadcrumbs:
-    - Contacto inicial — abrir campaña
-    - Tool
-    about:
-    - Contacto inicial — abrir campaña
-    - contacto inicial abrir campa a
-    - Tool
-    - tool
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 801
-    line_end: 802
-  - path: contacto-inicial-abrir-campa-a/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Contacto inicial — abrir campaña
-    - Allowed Transitions
-    about:
-    - Contacto inicial — abrir campaña
-    - contacto inicial abrir campa a
-    - Allowed Transitions
-    - allowed transitions
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 805
-    line_end: 806
-  - path: contacto-inicial-abrir-campa-a/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Contacto inicial — abrir campaña
-    - Grounding Atoms
-    about:
-    - Contacto inicial — abrir campaña
-    - contacto inicial abrir campa a
-    - Grounding Atoms
-    - grounding atoms
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - channel:whatsapp
-    - conversation:steps.contacto_inicial
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 809
-    line_end: 810
+    line_start: 21
+    line_end: 22
   - path: contacto-inicial-abrir-campa-a/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1294,8 +665,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 813
-    line_end: 814
+    line_start: 26
+    line_end: 27
 - doc_name: step-hcp-despedida
   sections:
   - path: despedida
@@ -1316,8 +687,8 @@ documents:
     - workspace.knowledge
     slug: despedida
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: despedida/instructions
     title: Instructions
     breadcrumbs:
@@ -1339,8 +710,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: despedida/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1362,100 +733,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
-  - path: despedida/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Despedida
-    - Handout Target
-    about:
-    - Despedida
-    - despedida
-    - Handout Target
-    - handout target
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 795
-    line_end: 796
-  - path: despedida/tool
-    title: Tool
-    breadcrumbs:
-    - Despedida
-    - Tool
-    about:
-    - Despedida
-    - despedida
-    - Tool
-    - tool
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 799
-    line_end: 800
-  - path: despedida/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Despedida
-    - Allowed Transitions
-    about:
-    - Despedida
-    - despedida
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 803
-    line_end: 804
-  - path: despedida/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Despedida
-    - Grounding Atoms
-    about:
-    - Despedida
-    - despedida
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.despedida
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 807
-    line_end: 808
+    line_start: 20
+    line_end: 21
   - path: despedida/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1477,8 +756,8 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 811
-    line_end: 812
+    line_start: 24
+    line_end: 25
 - doc_name: step-hcp-revision-humana
   sections:
   - path: revisi-n-humana
@@ -1499,8 +778,8 @@ documents:
     - workspace.knowledge
     slug: revisi-n-humana
     level: 1
-    line_start: 785
-    line_end: 786
+    line_start: 14
+    line_end: 15
   - path: revisi-n-humana/instructions
     title: Instructions
     breadcrumbs:
@@ -1522,8 +801,8 @@ documents:
     - workspace.knowledge
     slug: instructions
     level: 2
-    line_start: 787
-    line_end: 788
+    line_start: 16
+    line_end: 17
   - path: revisi-n-humana/required-slots
     title: Required Slots
     breadcrumbs:
@@ -1545,100 +824,8 @@ documents:
     - workspace.knowledge
     slug: required-slots
     level: 2
-    line_start: 791
-    line_end: 792
-  - path: revisi-n-humana/handout-target
-    title: Handout Target
-    breadcrumbs:
-    - Revisión humana
-    - Handout Target
-    about:
-    - Revisión humana
-    - revisi n humana
-    - Handout Target
-    - handout target
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: handout-target
-    level: 2
-    line_start: 795
-    line_end: 796
-  - path: revisi-n-humana/tool
-    title: Tool
-    breadcrumbs:
-    - Revisión humana
-    - Tool
-    about:
-    - Revisión humana
-    - revisi n humana
-    - Tool
-    - tool
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: tool
-    level: 2
-    line_start: 799
-    line_end: 800
-  - path: revisi-n-humana/allowed-transitions
-    title: Allowed Transitions
-    breadcrumbs:
-    - Revisión humana
-    - Allowed Transitions
-    about:
-    - Revisión humana
-    - revisi n humana
-    - Allowed Transitions
-    - allowed transitions
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: allowed-transitions
-    level: 2
-    line_start: 803
-    line_end: 804
-  - path: revisi-n-humana/grounding-atoms
-    title: Grounding Atoms
-    breadcrumbs:
-    - Revisión humana
-    - Grounding Atoms
-    about:
-    - Revisión humana
-    - revisi n humana
-    - Grounding Atoms
-    - grounding atoms
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    semantic_tags:
-    - conversation:steps.revision_humana
-    - system:teva-hcp
-    - type.knowledge.step
-    - workspace.knowledge
-    slug: grounding-atoms
-    level: 2
-    line_start: 807
-    line_end: 808
+    line_start: 20
+    line_end: 21
   - path: revisi-n-humana/completion-condition
     title: Completion Condition
     breadcrumbs:
@@ -1660,5 +847,5 @@ documents:
     - workspace.knowledge
     slug: completion-condition
     level: 2
-    line_start: 811
-    line_end: 812
+    line_start: 24
+    line_end: 25

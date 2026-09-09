@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:AgentFraming
 path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/agent_framing.py
 documents_index: .sldb/core/documents/AgentFraming.yaml
 sections_index: .sldb/runtime/sections/AgentFraming.yaml
-hash_b: 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+hash_b: 4cdc2cd1897aa84be2b8c0f61b72db941e18f0e71c2e631dbf7c8d901086324c
 version: 1
 canonical: false
 family: null

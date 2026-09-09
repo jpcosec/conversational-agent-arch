@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:ToolAtom
 path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/tool.py
 documents_index: .sldb/core/documents/ToolAtom.yaml
 sections_index: .sldb/runtime/sections/ToolAtom.yaml
-hash_b: a0d98845d3ea7863c50be08b4b6b072970f45c1e987a5b4b33a35c6d85a9a3da
+hash_b: 845354f4d6bca3d533a9d56d8b56bd856d56ad0f2958cee51068e58de864a5a9
 version: 1
 canonical: false
 family: null

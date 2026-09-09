@@ -1,46 +1,165 @@
 documents:
-- doc_name: agent-hcp-router
+- doc_name: agent-hcp-conversador
   sections:
-  - path: encuadre-del-ruteador-hcp-pilot
-    title: "Encuadre del Ruteador \u2014 HCP Pilot"
+  - path: encuadre-del-conversador-hcp-teva
+    title: Encuadre del Conversador — HCP Teva
     breadcrumbs:
-    - "Encuadre del Ruteador \u2014 HCP Pilot"
+    - Encuadre del Conversador — HCP Teva
     about:
-    - "Encuadre del Ruteador \u2014 HCP Pilot"
-    - encuadre del ruteador hcp pilot
-    - self:whoami
-    - system:teva-hcp
+    - Encuadre del Conversador — HCP Teva
+    - encuadre del conversador hcp teva
+    - agent:conversador
     - type.knowledge.agent
     - workspace.knowledge
     semantic_tags:
-    - self:whoami
-    - system:teva-hcp
+    - agent:conversador
     - type.knowledge.agent
     - workspace.knowledge
-    slug: encuadre-del-ruteador-hcp-pilot
+    slug: encuadre-del-conversador-hcp-teva
     level: 1
-    line_start: 16
-    line_end: 17
-  - path: encuadre-del-ruteador-hcp-pilot/framing
+    line_start: 13
+    line_end: 14
+  - path: encuadre-del-conversador-hcp-teva/framing
     title: Framing
     breadcrumbs:
-    - "Encuadre del Ruteador \u2014 HCP Pilot"
+    - Encuadre del Conversador — HCP Teva
     - Framing
     about:
-    - "Encuadre del Ruteador \u2014 HCP Pilot"
-    - encuadre del ruteador hcp pilot
+    - Encuadre del Conversador — HCP Teva
+    - encuadre del conversador hcp teva
     - Framing
     - framing
-    - self:whoami
-    - system:teva-hcp
+    - agent:conversador
     - type.knowledge.agent
     - workspace.knowledge
     semantic_tags:
-    - self:whoami
-    - system:teva-hcp
+    - agent:conversador
     - type.knowledge.agent
     - workspace.knowledge
     slug: framing
     level: 2
-    line_start: 18
-    line_end: 19
+    line_start: 15
+    line_end: 16
+- doc_name: agent-hcp-gate
+  sections:
+  - path: encuadre-del-gate-hcp-teva
+    title: Encuadre del Gate — HCP Teva
+    breadcrumbs:
+    - Encuadre del Gate — HCP Teva
+    about:
+    - Encuadre del Gate — HCP Teva
+    - encuadre del gate hcp teva
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-gate-hcp-teva
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: encuadre-del-gate-hcp-teva/framing
+    title: Framing
+    breadcrumbs:
+    - Encuadre del Gate — HCP Teva
+    - Framing
+    about:
+    - Encuadre del Gate — HCP Teva
+    - encuadre del gate hcp teva
+    - Framing
+    - framing
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: agent-hcp-orchestrator
+  sections:
+  - path: encuadre-del-orquestador-hcp-teva
+    title: Encuadre del Orquestador — HCP Teva
+    breadcrumbs:
+    - Encuadre del Orquestador — HCP Teva
+    about:
+    - Encuadre del Orquestador — HCP Teva
+    - encuadre del orquestador hcp teva
+    - agent:orchestrator
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:orchestrator
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-orquestador-hcp-teva
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: encuadre-del-orquestador-hcp-teva/framing
+    title: Framing
+    breadcrumbs:
+    - Encuadre del Orquestador — HCP Teva
+    - Framing
+    about:
+    - Encuadre del Orquestador — HCP Teva
+    - encuadre del orquestador hcp teva
+    - Framing
+    - framing
+    - agent:orchestrator
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:orchestrator
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: agent-hcp-router
+  sections:
+  - path: encuadre-del-ruteador-hcp-teva
+    title: Encuadre del Ruteador — HCP Teva
+    breadcrumbs:
+    - Encuadre del Ruteador — HCP Teva
+    about:
+    - Encuadre del Ruteador — HCP Teva
+    - encuadre del ruteador hcp teva
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: encuadre-del-ruteador-hcp-teva
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: encuadre-del-ruteador-hcp-teva/framing
+    title: Framing
+    breadcrumbs:
+    - Encuadre del Ruteador — HCP Teva
+    - Framing
+    about:
+    - Encuadre del Ruteador — HCP Teva
+    - encuadre del ruteador hcp teva
+    - Framing
+    - framing
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    semantic_tags:
+    - agent:router
+    - type.knowledge.agent
+    - workspace.knowledge
+    slug: framing
+    level: 2
+    line_start: 15
+    line_end: 16

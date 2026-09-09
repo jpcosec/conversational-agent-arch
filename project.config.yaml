@@ -50,11 +50,15 @@ project:
   # Tools del negocio: {nombre declarado en el ToolAtom: "modulo:funcion"}.
   # El ToolAtom de la KB define el schema; aqui se registra quien lo ejecuta.
   # Un handler registrado pero no declarado por la KB activa simplemente no se
-  # agendar_recordatorio (Antonia), registrar_enrolamiento. crear_reserva se queda por si.
+  # usa. Los de esta KB (knowledge_hcp) son programar_recontacto y
+  # actualizar_consentimiento; agendar_recordatorio (Antonia),
+  # registrar_enrolamiento y crear_reserva se quedan por si.
   tools:
     agendar_recordatorio: kb_agent.tools.recordatorios:agendar_recordatorio
     crear_reserva: kb_agent.tools.reservas:crear_reserva
     registrar_enrolamiento: kb_agent.tools.enrolamiento:registrar_enrolamiento
+    programar_recontacto: kb_agent.tools.hcp:programar_recontacto
+    actualizar_consentimiento: kb_agent.tools.hcp:actualizar_consentimiento
 
   # Servidor HTTP (frontends/chat)
   server:

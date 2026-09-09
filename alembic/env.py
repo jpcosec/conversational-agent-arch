@@ -27,6 +27,7 @@ from kb_agent.models_sql import session as _session_models  # noqa: E402,F401
 from kb_agent.models_sql import reservas as _reservas_models  # noqa: E402,F401
 from kb_agent.models_sql import recordatorios as _recordatorios_models  # noqa: E402,F401
 from kb_agent.models_sql import leads as _leads_models  # noqa: E402,F401
+from kb_agent.models_sql import hcp as _hcp_models  # noqa: E402,F401
 
 target_metadata = Base.metadata
 

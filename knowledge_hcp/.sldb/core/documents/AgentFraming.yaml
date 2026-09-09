@@ -1,32 +1,32 @@
 documents:
-- hash_c: d3bc79694552c650ac57ba6acb0d42cd3315901a4a6f599067df5cc521296e34
-  hash_d: d3bc79694552c650ac57ba6acb0d42cd3315901a4a6f599067df5cc521296e34
-  name: agent-hcp-conversador
+- name: agent-hcp-conversador
   path: atoms/agent-hcp-conversador.md
+  hash_c: d3bc79694552c650ac57ba6acb0d42cd3315901a4a6f599067df5cc521296e34
+  hash_d: 032065a7e9eef64ecf2e752664c6bb83ec1ec0dc060bd71806b71972a7b3f2e6
   semantic_tags:
   - agent:conversador
   - type.knowledge.agent
   - workspace.knowledge
-- hash_c: f25a25e9ef4da2bb42d5c41ceeda1b62ad5bd64c0098aadc3dc4c5e5072849c4
-  hash_d: f25a25e9ef4da2bb42d5c41ceeda1b62ad5bd64c0098aadc3dc4c5e5072849c4
-  name: agent-hcp-gate
+- name: agent-hcp-gate
   path: atoms/agent-hcp-gate.md
+  hash_c: f25a25e9ef4da2bb42d5c41ceeda1b62ad5bd64c0098aadc3dc4c5e5072849c4
+  hash_d: f00ec5d5075233a236ab54d563d61f8bb4cce6e4908b8eeb6e4122cef0d689e4
   semantic_tags:
   - agent:gate
   - type.knowledge.agent
   - workspace.knowledge
-- hash_c: be0befdd8780a2b52a2faaa723821f16d33463914f5ce9502117986daa1e51dc
-  hash_d: be0befdd8780a2b52a2faaa723821f16d33463914f5ce9502117986daa1e51dc
-  name: agent-hcp-orchestrator
+- name: agent-hcp-orchestrator
   path: atoms/agent-hcp-orchestrator.md
+  hash_c: be0befdd8780a2b52a2faaa723821f16d33463914f5ce9502117986daa1e51dc
+  hash_d: ed53c8fbd1db2b2dea69770553013992c6d23dafd0a63ed959823f264f775ec9
   semantic_tags:
   - agent:orchestrator
   - type.knowledge.agent
   - workspace.knowledge
-- hash_c: 25d10c0b0a8438ed618c10e13737675699c03d2a53c862c4a0ec72cb8ddab946
-  hash_d: 25d10c0b0a8438ed618c10e13737675699c03d2a53c862c4a0ec72cb8ddab946
-  name: agent-hcp-router
+- name: agent-hcp-router
   path: atoms/agent-hcp-router.md
+  hash_c: 25d10c0b0a8438ed618c10e13737675699c03d2a53c862c4a0ec72cb8ddab946
+  hash_d: a2decae274e74ce6aa76cf73db827c6a45d687459b3468a1b8848527fe54e785
   semantic_tags:
   - agent:router
   - type.knowledge.agent

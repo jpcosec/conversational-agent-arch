@@ -1,8 +1,8 @@
 documents:
 - name: step-hcp-validacion-policy-gate
   path: atoms/step-hcp-validacion-policy-gate.md
-  hash_c: d4238ff024205abfa1b1ce57464b3e3cdf7933bb5367bd4fadd359f38f42425f
-  hash_d: e3a995a33cb8a4a9ceea4af33a3b9b677d7f9c331695af7f24269374b5cdff30
+  hash_c: 5c9fc043ce5f28e248b78793c984b525541bcd855fe9cdcb4f2822016f846f8f
+  hash_d: 559847f6d48e5d752fa8a4255eb39015ffe60c648ee63c8f4317bcda612073af
   semantic_tags:
   - conversation:steps.validacion_policy_gate
   - system:teva-hcp
@@ -10,7 +10,7 @@ documents:
   - workspace.knowledge
 - name: step-hcp-presentar-campania
   path: atoms/step-hcp-presentar-campania.md
-  hash_c: c60590136caf5283b61e3e3acf846620eefafd44befaeb8a3478ee4b5bb04f10
+  hash_c: 4561f2004ccc6718b1f47ea96b41707c1d99944b2f98eacaf7221b02f39914e4
   hash_d: 7f1c25b867191bcf8746b8503354ff0fe9c7027327e21285341d7867f9c67e99
   semantic_tags:
   - conversation:steps.presentar_campania
@@ -19,7 +19,7 @@ documents:
   - workspace.knowledge
 - name: step-hcp-detalle-medicamento
   path: atoms/step-hcp-detalle-medicamento.md
-  hash_c: bf51ce50df438767bdd6cab74e609984ddcc17953321bd279a8267784487c1fc
+  hash_c: d8050bbaeebe33f0c6696a1b6f09487308485fc68eb2238cfb35237a7d58d340
   hash_d: 7721b17786d6fdcff2eaf63408a4f5171b58a40bd3940ff8832f597f163fd537
   semantic_tags:
   - conversation:steps.detalle_medicamento
@@ -28,8 +28,8 @@ documents:
   - workspace.knowledge
 - name: step-hcp-handout-especialista
   path: atoms/step-hcp-handout-especialista.md
-  hash_c: 4996049636a46b7c3e9a165540fc017ec79680a0d0194457efd9f1d830ae6e57
-  hash_d: 252b8cca8b6041c89f1aa6e5714ccd053f6a76b5d7a2b45ac293e9a06e7a07a5
+  hash_c: 898ee991ed16c44dce2ac1b8685f261a086f5e5c7ea3a5f04d789fa1735c5b38
+  hash_d: 85d9dc8059b61975e4f23d7dd2e6a437958d41f8fa3d91d67dd2e55f3d78965e
   semantic_tags:
   - conversation:steps.handout_especialista
   - system:teva-hcp
@@ -37,8 +37,8 @@ documents:
   - workspace.knowledge
 - name: step-hcp-agendar-recontacto
   path: atoms/step-hcp-agendar-recontacto.md
-  hash_c: 2dcfbd192b44f2ac7a3cce48f2a237589ea66b6ffd647123a47b98262c410c82
-  hash_d: dc6985db0e5c8250c026b55d70719231c49871a150b596249fd72fb2bb7658f5
+  hash_c: fb71b0101acba6cf4e507d4d02aa7ebc0b7aa86216d7e5cc30f2a34b109db1f5
+  hash_d: 925b8ca4e486b6fb60fca19784f35402c26137e4d6b8b49b4a8dd25fb558f01c
   semantic_tags:
   - conversation:steps.agendar_recontacto
   - system:teva-hcp
@@ -46,8 +46,8 @@ documents:
   - workspace.knowledge
 - name: step-hcp-optout
   path: atoms/step-hcp-optout.md
-  hash_c: 5d9297275b746e97fad7976e44aa4dfbdc264d535de215a67ee8cf6bde3ea7bc
-  hash_d: 2045a74245ac280fcf2533a8d69e8e8ef5139eb8666e542bf9960fcc0a282bd4
+  hash_c: 5affb7606fba5abbbf1bf98bd0fb46102cd2f7cc9e9c18fc3e02613e91266d16
+  hash_d: bf2397fe38b8a89106d8d427e69a095f28f4fd1bcc4265ebafd546889c1bbdec
   semantic_tags:
   - conversation:steps.optout
   - system:teva-hcp
@@ -55,7 +55,7 @@ documents:
   - workspace.knowledge
 - name: step-hcp-contacto-inicial
   path: atoms/step-hcp-contacto-inicial.md
-  hash_c: 86b2e0989281ccecc86b26039438ac1d3f22a1d8cf8567d099f159fec8a3618d
+  hash_c: b3db8a1d29060a007909b7b93173ef7b0bf28e8c5c31103f31d356102dd1144f
   hash_d: 0df475d67b1c0e384b38c90483e59d01677f38c4d5835317fc173ad9e22f2910
   semantic_tags:
   - channel:whatsapp
@@ -65,7 +65,7 @@ documents:
   - workspace.knowledge
 - name: step-hcp-despedida
   path: atoms/step-hcp-despedida.md
-  hash_c: 55418cb245b7f3d2cf8a26aacbf6248e0a12dc1faf5a02d3b222acb73f14215c
+  hash_c: 69d9bc985ce34f3370fe5f13e312af8e98a78dba62c0986402eec6ac39917891
   hash_d: 7e6d9adb71adb239e493669810956f55765ef5117aae07ea4bbf07d8ccd33c04
   semantic_tags:
   - conversation:steps.despedida
@@ -74,7 +74,7 @@ documents:
   - workspace.knowledge
 - name: step-hcp-revision-humana
   path: atoms/step-hcp-revision-humana.md
-  hash_c: da61814c1750f5386466727563b1ee4c63ab8fdaa255aba3381c14dba0a4af54
+  hash_c: d51212d772cd0bbdf0e41dae184f7030a645b9c37daf2c059099d62283d10828
   hash_d: 1fcb4086f4345d37e8bd607da966d259c66a085510be461d9e8af0edbf12449f
   semantic_tags:
   - conversation:steps.revision_humana

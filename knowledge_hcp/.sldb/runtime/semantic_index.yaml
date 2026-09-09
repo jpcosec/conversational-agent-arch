@@ -1,4 +1,12 @@
 tags:
+  agent:conversador:
+  - agent-hcp-conversador
+  agent:gate:
+  - agent-hcp-gate
+  agent:orchestrator:
+  - agent-hcp-orchestrator
+  agent:router:
+  - agent-hcp-router
   channel:whatsapp:
   - step-hcp-contacto-inicial
   conversation:fallback:
@@ -364,6 +372,11 @@ tags:
   - trait-hcp-especialidad-psiquiatria
   - trait-hcp-especialidad-traumatologia
   - trait-hcp-preferencia-contacto
+  type.knowledge.agent:
+  - agent-hcp-conversador
+  - agent-hcp-gate
+  - agent-hcp-orchestrator
+  - agent-hcp-router
   type.knowledge.boundary:
   - boundary-hcp-ae-safety-net
   - boundary-hcp-dsr-erasure
@@ -543,6 +556,10 @@ tags:
   user:traits.preferencia_contacto:
   - trait-hcp-preferencia-contacto
   workspace.knowledge:
+  - agent-hcp-conversador
+  - agent-hcp-gate
+  - agent-hcp-orchestrator
+  - agent-hcp-router
   - boundary-hcp-ae-safety-net
   - boundary-hcp-dsr-erasure
   - boundary-hcp-optout-campania
@@ -1512,6 +1529,34 @@ documents:
     - gate:promesas
     - system:teva-hcp
     - type.knowledge.gate
+    - workspace.knowledge
+  agent-hcp-conversador:
+    model: AgentFraming
+    path: atoms/agent-hcp-conversador.md
+    tags:
+    - agent:conversador
+    - type.knowledge.agent
+    - workspace.knowledge
+  agent-hcp-gate:
+    model: AgentFraming
+    path: atoms/agent-hcp-gate.md
+    tags:
+    - agent:gate
+    - type.knowledge.agent
+    - workspace.knowledge
+  agent-hcp-orchestrator:
+    model: AgentFraming
+    path: atoms/agent-hcp-orchestrator.md
+    tags:
+    - agent:orchestrator
+    - type.knowledge.agent
+    - workspace.knowledge
+  agent-hcp-router:
+    model: AgentFraming
+    path: atoms/agent-hcp-router.md
+    tags:
+    - agent:router
+    - type.knowledge.agent
     - workspace.knowledge
   reltype-has_model:
     model: RelationTypeDoc
