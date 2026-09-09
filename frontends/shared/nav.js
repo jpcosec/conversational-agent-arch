@@ -50,8 +50,12 @@
     var path = location.pathname.replace(/\/$/, '') || '/';
     document.querySelectorAll('#appNav a').forEach(function (a) {
       var href = a.getAttribute('href').replace(/\/$/, '') || '/';
-      a.classList.toggle('active', href === path);
-      a.toggleAttribute('data-active', href === path);
+      var active = href === path;
+      a.classList.toggle('active', active);
+      // data-active="true" explicito: toggleAttribute deja el valor vacio y
+      // los tests (y el CSS a[data-active='true']) esperan la cadena.
+      if (active) a.setAttribute('data-active', 'true');
+      else a.removeAttribute('data-active');
     });
   }
 

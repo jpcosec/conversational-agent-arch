@@ -1,88 +1,25 @@
-<!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leads</title>
 <link rel="stylesheet" href="/static/theme.css">
-<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg-page);color:var(--text);font-family:var(--font-sans);height:100vh;overflow:hidden;display:flex;flex-direction:column}
-.wrap{flex:1;overflow-y:auto;padding:24px 28px 40px}
-.counts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-.count-card{flex:1;min-width:150px;border:1px solid var(--border-accent);border-radius:14px;padding:14px 16px;background:var(--bg-panel)}
-.count-label{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:6px}
-.count-value{font-size:30px;font-weight:300;line-height:1}
-h2.section{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin:0 0 4px}
-.section-sub{font-size:12px;color:var(--text-muted);margin-bottom:14px}
-.lead-card{border:1px solid var(--border-accent);border-radius:14px;padding:14px 16px;background:var(--bg-panel);margin-bottom:10px;display:flex;gap:18px;align-items:flex-start;cursor:pointer;transition:var(--transition);text-decoration:none;color:inherit}
-.lead-card:hover{border-color:var(--accent);background:rgba(212,165,116,.05)}
-.lead-main{flex:1;min-width:0}
-.lead-who{font-size:14px;font-weight:600;margin-bottom:2px;word-break:break-all}
-.lead-first{font-size:12px;color:var(--text-muted);margin-bottom:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.lead-facts{display:flex;flex-wrap:wrap;gap:6px}
-.fact{font-family:var(--font-mono);font-size:10px;padding:3px 8px;border-radius:999px;border:1px solid var(--border-accent);color:var(--text)}
-.fact.missing{color:var(--text-muted);border-style:dashed}
-.lead-side{text-align:right;flex-shrink:0;min-width:150px}
-.badge{display:inline-block;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;padding:4px 9px;border-radius:999px;border:1px solid;margin-bottom:6px}
-.badge.nuevo{color:var(--text-muted);border-color:var(--border-accent)}
-.badge.calificado{color:#7fb3d5;border-color:rgba(127,179,213,.4)}
-.badge.con_preferencia{color:#e6a85c;border-color:rgba(230,168,92,.45)}
-.badge.datos_completos{color:#7cba7c;border-color:rgba(124,186,124,.45)}
-.lead-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);line-height:1.5}
-.empty{color:var(--text-muted);font-size:13px;padding:26px 0;text-align:center;border:1px dashed var(--border-accent);border-radius:12px}
-.queue{border:1px solid rgba(230,168,92,.35);border-radius:16px;padding:16px;background:rgba(230,168,92,.04);margin-bottom:30px}</style>
-</head><body>
-<header class="app-topbar" data-testid='nav-topbar'>
-<a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
-<nav class="app-nav" id="appNav">
-<a data-testid="nav-chat" data-nav-group="chat" href="/chat">Chat</a><a data-testid="nav-leads" data-nav-group="operacion" href="/leads">Leads</a><a data-testid="nav-dashboard" data-nav-group="operacion" href="/dashboard">Métricas</a><a data-testid="nav-inspector" data-nav-group="desarrollo" href="/">Inspector</a><a data-testid="nav-flow" data-nav-group="desarrollo" href="/flow">Flujo</a><a data-testid="nav-mindmap" data-nav-group="desarrollo" href="/mindmap">KB</a><a data-testid="nav-users" data-nav-group="desarrollo" href="/users">Perfiles</a>
-</nav>
-<div class="app-topbar-meta"><span class="app-topbar-chip" id="kbLabel">KB</span><span class="app-topbar-chip" id="healthLabel">—</span></div></header>
-<script src="/static/nav.js"></script>
+</head><body class="page-leads">
+<div id="appNavMount"></div>
+<main class="wrap">
+  <div class="cards" id="counts" data-testid="leads-counts"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
 
-<div class="wrap">
-  <div class="counts" id="counts" data-testid="leads-counts"></div>
-
-  <div class="queue" data-testid="leads-queue">
-    <h2 class="section">Visitas por confirmar</h2>
+  <section class="block leads-queue" data-testid="leads-queue">
+    <h2 class="section-title">Visitas por confirmar</h2>
     <div class="section-sub">Pidieron reunión. El equipo confirma la hora y envía la invitación; el agente nunca la confirma solo.</div>
-    <div id="queue"></div>
-  </div>
+    <div id="queue"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+  </section>
 
-  <h2 class="section">Todos los leads</h2>
+  <h2 class="section-title">Todos los leads</h2>
   <div class="section-sub">Click en un lead abre su conversación en el Inspector.</div>
-  <div id="leads" data-testid="leads-list"></div>
-</div>
-
-<script>
-var esc=function(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')};
-var FIELD_LABEL={nombre:'Nombre',preferencia_visita:'Visita',modalidad:'Modalidad',email:'Email',telefono:'Teléfono'};
-function fecha(iso){if(!iso)return '—';try{var d=new Date(iso);return d.toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit'})}catch(e){return iso.slice(0,16).replace('T',' ')}}
-function facts(lead){
-  var out=[];
-  ['nombre','preferencia_visita','modalidad','email','telefono'].forEach(function(k){
-    var v=(lead.collected||{})[k];
-    out.push('<span class="fact'+(v?'':' missing')+'" data-testid="lead-fact-'+k+'">'+FIELD_LABEL[k]+': '+(v?esc(v):'pendiente')+'</span>');
-  });
-  (lead.traits||[]).forEach(function(t){out.push('<span class="fact" title="'+esc(t.trait_id)+'">'+esc(t.title)+'</span>')});
-  return out.join('');
-}
-function card(lead){
-  return '<a class="lead-card" data-testid="lead-card" data-estado="'+esc(lead.estado)+'" data-external-id="'+esc(lead.external_id)+'" href="/?user='+encodeURIComponent(lead.external_id)+'">'
-    +'<div class="lead-main"><div class="lead-who">'+esc((lead.collected||{}).nombre||lead.external_id)+'</div>'
-    +'<div class="lead-first">'+(lead.primer_mensaje?esc(lead.primer_mensaje):'sin mensajes')+'</div>'
-    +'<div class="lead-facts">'+facts(lead)+'</div></div>'
-    +'<div class="lead-side"><span class="badge '+esc(lead.estado)+'" data-testid="lead-badge">'+esc(lead.estado_label)+'</span>'
-    +'<div class="lead-meta">'+esc(lead.channel||'—')+' · '+lead.n_turnos+' turnos<br>'+fecha(lead.last_active)+'</div></div></a>';
-}
-fetch('/api/leads').then(function(r){return r.json()}).then(function(d){
-  var counts=d.counts||{},order=['nuevo','calificado','con_preferencia','datos_completos'],
-      labels={nuevo:'Nuevos',calificado:'Calificados',con_preferencia:'Con preferencia',datos_completos:'Datos completos'};
-  document.getElementById('counts').innerHTML=order.map(function(k){
-    return '<div class="count-card" data-testid="count-'+k+'"><div class="count-label">'+labels[k]+'</div><div class="count-value">'+(counts[k]||0)+'</div></div>'}).join('');
-  var q=d.queue||[];
-  document.getElementById('queue').innerHTML=q.length?q.map(card).join(''):'<div class="empty">Nadie pidió visita todavía.</div>';
-  var leads=d.leads||[];
-  document.getElementById('leads').innerHTML=leads.length?leads.map(card).join(''):'<div class="empty">Sin leads todavía.</div>';
-}).catch(function(e){document.getElementById('leads').innerHTML='<div class="empty">No se pudo cargar: '+esc(e.message||e)+'</div>'});
-</script>
+  <div id="leads" data-testid="leads-list"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+</main>
+<script src="/static/nav.js"></script>
+<script src="/static/glossary.js"></script>
+<script src="/static/tooltip.js"></script>
+<script src="/static/demo-tour.js"></script>
+<script src="/static/leads.js"></script>
 </body></html>

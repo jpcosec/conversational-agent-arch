@@ -1,91 +1,33 @@
-<!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Métricas</title>
 <link rel="stylesheet" href="/static/theme.css">
-<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg-page);color:var(--text);font-family:var(--font-sans);height:100vh;overflow:hidden;display:flex;flex-direction:column}
-.wrap{flex:1;overflow-y:auto;padding:24px 28px 40px}
-.kpis{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
-.kpi{flex:1;min-width:165px;border:1px solid var(--border-accent);border-radius:14px;padding:15px 17px;background:var(--bg-panel)}
-.kpi-label{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:7px}
-.kpi-value{font-size:30px;font-weight:300;line-height:1}
-.kpi-sub{font-size:11px;color:var(--text-muted);margin-top:5px}
-.kpi.warn .kpi-value{color:#e6a85c}
-.kpi.bad .kpi-value{color:#d46a8c}
-h2.section{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin:0 0 4px}
-.section-sub{font-size:12px;color:var(--text-muted);margin-bottom:14px}
-.panel{border:1px solid var(--border-accent);border-radius:16px;padding:18px;background:var(--bg-panel);margin-bottom:22px}
-.bars{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:10px}
-.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
-.bar{width:100%;max-width:46px;background:linear-gradient(180deg,#d4a574,rgba(212,165,116,.35));border-radius:5px 5px 0 0;min-height:3px}
-.bar-n{font-family:var(--font-mono);font-size:10px;color:var(--text)}
-.bar-d{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);white-space:nowrap}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--border-accent)}
-th{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);font-weight:400}
-td.num{text-align:right;font-family:var(--font-mono)}
-.empty{color:var(--text-muted);font-size:13px;padding:26px 0;text-align:center}</style>
-</head><body>
-<header class="app-topbar" data-testid='nav-topbar'>
-<a class="app-topbar-brand" data-testid="nav-brand" href="/" id="appBrand">Agente</a>
-<nav class="app-nav" id="appNav">
-<a data-testid="nav-chat" data-nav-group="chat" href="/chat">Chat</a><a data-testid="nav-leads" data-nav-group="operacion" href="/leads">Leads</a><a data-testid="nav-dashboard" data-nav-group="operacion" href="/dashboard">Métricas</a><a data-testid="nav-inspector" data-nav-group="desarrollo" href="/">Inspector</a><a data-testid="nav-flow" data-nav-group="desarrollo" href="/flow">Flujo</a><a data-testid="nav-mindmap" data-nav-group="desarrollo" href="/mindmap">KB</a><a data-testid="nav-users" data-nav-group="desarrollo" href="/users">Perfiles</a>
-</nav>
-<div class="app-topbar-meta"><span class="app-topbar-chip" id="kbLabel">KB</span><span class="app-topbar-chip" id="healthLabel">—</span></div></header>
-<script src="/static/nav.js"></script>
+</head><body class="page-dashboard">
+<div id="appNavMount"></div>
+<main class="wrap">
+  <div class="cards" id="kpis" data-testid="metrics-kpis"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
 
-<div class="wrap">
-  <div class="kpis" id="kpis" data-testid="metrics-kpis"></div>
-
-  <div class="panel">
-    <h2 class="section">Turnos por día</h2>
+  <section class="block">
+    <h2 class="section-title">Turnos por día</h2>
     <div class="section-sub">Cada turno es un mensaje del cliente respondido por el agente.</div>
-    <div id="bars" class="bars" data-testid="metrics-bars"></div>
-  </div>
+    <div id="bars" class="dash-bars" data-testid="metrics-bars"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+  </section>
 
-  <div class="panel">
-    <h2 class="section">Tipo de respuesta</h2>
-    <div class="section-sub">Un <em>fallback</em> es "no supe responder"; un turno con el gate en contra se deriva a una persona.</div>
-    <table data-testid="metrics-kinds"><thead><tr><th>Tipo</th><th style="text-align:right">Turnos</th><th style="text-align:right">%</th></tr></thead><tbody id="kinds"></tbody></table>
-  </div>
+  <section class="block">
+    <h2 class="section-title">Tipo de respuesta</h2>
+    <div class="section-sub">Cómo resolvió el agente cada turno: redactó una <span data-tooltip="nl">respuesta libre</span>, <span data-tooltip="tool_call">ejecutó una tool</span>, <span data-tooltip="fallback">no supo responder</span>, o la <span data-tooltip="gate">validación</span> rechazó el borrador y el turno se <span data-tooltip="derivado">derivó a una persona</span>.</div>
+    <table class="data" data-testid="metrics-kinds"><thead><tr><th>Tipo</th><th class="num">Turnos</th><th class="num">%</th></tr></thead><tbody id="kinds"><tr><td colspan="3"><div class="loading"><span class="spinner"></span>Cargando…</div></td></tr></tbody></table>
+  </section>
 
-  <div class="panel">
-    <h2 class="section">Leads por estado</h2>
+  <section class="block">
+    <h2 class="section-title">Leads por estado</h2>
     <div class="section-sub">Mismo criterio que la vista Leads.</div>
-    <table data-testid="metrics-leads"><thead><tr><th>Estado</th><th style="text-align:right">Leads</th></tr></thead><tbody id="leadRows"></tbody></table>
-  </div>
-</div>
-
-<script>
-var esc=function(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')};
-var KIND_LABEL={nl:'Respuesta normal',fallback:'Fallback (no supo)',tool_call:'Llamó una tool',derived:'Derivado a una persona',desconocido:'Sin clasificar'};
-var LEAD_LABEL={nuevo:'Nuevos',calificado:'Calificados',con_preferencia:'Con preferencia de visita',datos_completos:'Datos completos'};
-function ms(v){return v==null?'—':(v>=1000?(v/1000).toFixed(1)+' s':v+' ms')}
-fetch('/api/metrics').then(function(r){return r.json()}).then(function(d){
-  var lat=d.latencia_ms||{};
-  var kpis=[
-    {k:'turnos',label:'Turnos',value:d.turnos,sub:(d.usuarios||0)+' usuarios · '+(d.leads_total||0)+' leads'},
-    {k:'fallback',label:'Fallback',value:(d.fallback_pct||0)+'%',sub:(d.fallback_n||0)+' turnos sin respuesta útil',cls:(d.fallback_pct>20?'bad':d.fallback_pct>5?'warn':'')},
-    {k:'derivados',label:'Derivados por el gate',value:(d.derivados_pct||0)+'%',sub:(d.derivados_n||0)+' borradores no emitidos',cls:(d.derivados_pct>15?'warn':'')},
-    {k:'visitas',label:'Visitas por confirmar',value:d.visitas_por_confirmar||0,sub:'esperan hora del equipo'},
-    {k:'latencia',label:'Latencia mediana',value:ms(lat.mediana),sub:'p90 '+ms(lat.p90)+' · '+(lat.n||0)+' turnos medidos'}
-  ];
-  document.getElementById('kpis').innerHTML=kpis.map(function(x){
-    return '<div class="kpi '+(x.cls||'')+'" data-testid="kpi-'+x.k+'"><div class="kpi-label">'+x.label+'</div><div class="kpi-value">'+esc(x.value)+'</div><div class="kpi-sub">'+esc(x.sub)+'</div></div>'}).join('');
-
-  var dias=d.por_dia||[],max=Math.max.apply(null,dias.map(function(x){return x.turnos}).concat([1]));
-  document.getElementById('bars').innerHTML=dias.length?dias.map(function(x){
-    return '<div class="bar-col" data-testid="metrics-bar"><span class="bar-n">'+x.turnos+'</span><div class="bar" style="height:'+Math.round(100*x.turnos/max)+'%"></div><span class="bar-d">'+esc(x.dia.slice(5))+'</span></div>'}).join(''):'<div class="empty">Sin turnos todavía.</div>';
-
-  var kinds=d.kinds||{},tot=d.turnos||0;
-  document.getElementById('kinds').innerHTML=Object.keys(kinds).sort(function(a,b){return kinds[b]-kinds[a]}).map(function(k){
-    return '<tr><td>'+esc(KIND_LABEL[k]||k)+'</td><td class="num">'+kinds[k]+'</td><td class="num">'+(tot?Math.round(1000*kinds[k]/tot)/10:0)+'%</td></tr>'}).join('')||'<tr><td colspan="3" class="empty">Sin datos.</td></tr>';
-
-  var leads=d.leads||{};
-  document.getElementById('leadRows').innerHTML=['nuevo','calificado','con_preferencia','datos_completos'].map(function(k){
-    return '<tr><td>'+esc(LEAD_LABEL[k])+'</td><td class="num">'+(leads[k]||0)+'</td></tr>'}).join('');
-}).catch(function(e){document.getElementById('kpis').innerHTML='<div class="empty">No se pudo cargar: '+esc(e.message||e)+'</div>'});
-</script>
+    <table class="data" data-testid="metrics-leads"><thead><tr><th>Estado</th><th class="num">Leads</th></tr></thead><tbody id="leadRows"><tr><td colspan="2"><div class="loading"><span class="spinner"></span>Cargando…</div></td></tr></tbody></table>
+  </section>
+</main>
+<script src="/static/nav.js"></script>
+<script src="/static/glossary.js"></script>
+<script src="/static/tooltip.js"></script>
+<script src="/static/demo-tour.js"></script>
+<script src="/static/dashboard.js"></script>
 </body></html>

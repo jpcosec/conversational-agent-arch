@@ -27,8 +27,12 @@
   --text-muted: rgba(245, 240, 232, 0.45);
   --accent: #d4a574;
   --accent-hover: #e6a85c;
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Stacks con respaldo real: si Google Fonts no carga (sandbox de tests, red
+     caida), 'monospace' a secas cae en una fuente sin metricas y el texto se
+     renderiza con altura 0 -- invisible en pantalla y vacio para innerText
+     (ver tests/ui/test_ui_guide.py::_open_first_user). */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
   --radius-card: 14px;
   --radius-tag: 8px;
   --transition: all 0.18s ease;
