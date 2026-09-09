@@ -8,7 +8,7 @@ target_project: ⸢rev•target_project⸥
 # ISO 8601 timestamp
 created_at: '2026-09-08T22:10:00'
 # open | closed
-status: open
+status: closed
 # project identity that acknowledged the note
 acknowledged_by: ⸢rev•acknowledged_by⸥
 # ISO 8601 timestamp, set when acknowledged
