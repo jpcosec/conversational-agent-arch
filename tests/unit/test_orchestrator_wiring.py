@@ -307,3 +307,41 @@ def test_concurrent_turns_get_unique_turn_ids(negocio_kb: Path, tmp_db_url: str)
         assert len(set(turn_ids)) == n  # todos unicos, no colisionan
     finally:
         o.close()
+
+
+def test_turn_holds_no_write_lock_during_the_llm_phase(negocio_kb: Path, tmp_db_url: str) -> None:
+    """Con dos personas escribiendo a la vez (webhook async: un hilo por mensaje),
+    el turno de la segunda moria con "database is locked": handle_turn hacia
+    flush() del session_state antes de la fase LLM y commit recien al final, y
+    SQLite retiene el candado de escritura durante toda la llamada al modelo.
+    El conversador fake escribe desde OTRA conexion en medio de su turno: si el
+    candado siguiera tomado, sqlite3 levanta OperationalError."""
+    import sqlite3
+
+    from tests.support.fakes import FakeConversador
+
+    db_path = tmp_db_url.removeprefix("sqlite:///")
+
+    class WritesFromAnotherConnection(FakeConversador):
+        def __init__(self) -> None:
+            super().__init__()
+            self.other_writes = 0
+
+        def draft_nl(self, compiled):  # type: ignore[override]
+            other = sqlite3.connect(db_path, timeout=0.2)
+            try:
+                other.execute("update users set channel = channel where 1 = 0")
+                other.commit()
+                self.other_writes += 1
+            finally:
+                other.close()
+            return super().draft_nl(compiled)
+
+    conversador = WritesFromAnotherConnection()
+    o = offline_orchestrator(negocio_kb, tmp_db_url, conversador=conversador, trait_mapper=FakeTraitMapper())
+    try:
+        turn = o.handle_turn(external_id="wa:+56911110000", message="hola")
+        assert turn["reply"]
+        assert conversador.other_writes == 1
+    finally:
+        o.close()

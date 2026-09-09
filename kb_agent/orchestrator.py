@@ -131,6 +131,11 @@ class Orchestrator:
         self.identity_key = identity_key
 
         engine_kwargs: dict[str, Any] = {"future": True}
+        if db_url.startswith("sqlite") and not db_url.endswith(":memory:"):
+            # Espera hasta 30 s por un candado ajeno en vez de fallar a los 5 s
+            # (default de sqlite3): dos turnos concurrentes que escriben en
+            # ventanas cortas se serializan en vez de perder un mensaje.
+            engine_kwargs["connect_args"] = {"timeout": 30}
         if db_url.endswith(":memory:"):
             # sqlite en memoria (tests): cada conexion nueva es OTRA base vacia.
             # El perfilador corre en un hilo con sesion propia, asi que todos
@@ -329,7 +334,13 @@ class Orchestrator:
                 extract_lead_slots(message),
             )
             session_state.flow_slots = {**previous_slots, "collected": collected_slots}
-            session.flush()
+            # COMMIT, no flush: lo que sigue es la fase LLM (30-40 s con modelo
+            # real). Un flush deja abierta una transaccion de escritura y SQLite
+            # mantiene el candado RESERVED hasta el commit, asi que el turno de
+            # OTRO usuario que llegue mientras tanto (webhook async: un hilo por
+            # mensaje) muere con "database is locked" a los 5 s. Medido en local
+            # con dos personas escribiendo a la vez.
+            session.commit()
 
             compiler = ContextCompiler(
                 knowledge=self.knowledge_ops,
