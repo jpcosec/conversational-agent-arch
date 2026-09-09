@@ -128,9 +128,20 @@ def build_nl_prompt(compiled: dict[str, Any]) -> str:
         if history_lines:
             history_prompt = "\n\nCONVERSACION PREVIA (mas antiguo primero, NO es el turno actual):\n" + "\n".join(history_lines)
     step_prompt = _step_block(compiled.get("step"))
+    collected = compiled.get("collected_slots")
+    collected_prompt = ""
+    if isinstance(collected, dict) and any(v for v in collected.values()):
+        # Lo que la persona YA dijo en turnos anteriores (nombre, dia de
+        # aplicacion, medico, ...). Persistido en session_state.flow_slots, no
+        # depende de la ventana de historial: sin esto, a los tres turnos el
+        # modelo ya no sabia el nombre del medico que le habian dicho.
+        collected_prompt = "DATOS QUE LA PERSONA YA DIO (usalos, no los vuelvas a pedir):\n" + "\n".join(
+            f"- {k}: {v}" for k, v in collected.items() if v
+        ) + "\n\n"
     return (
         f"{identity}\n\n"
         f"{step_prompt}"
+        f"{collected_prompt}"
         "Responde usando EXCLUSIVAMENTE los datos de abajo. "
         "Si hay traits del cliente, adapta la sugerencia a su perfil. "
         "No inventes nada fuera de estos datos.\n\n"

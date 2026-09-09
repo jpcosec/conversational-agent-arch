@@ -87,6 +87,11 @@ class OrchestratorDecision(BaseModel):
     step_target: str | None = None
     tool_call: ToolCallDecision | None = None
     reason: str
+    #: Datos que la persona dio EN ESTE mensaje y que valen para el resto de la
+    #: conversacion (los required_slots del step, nombre, dia de aplicacion,
+    #: medico tratante, semana...): {slot: valor}. Se persisten en
+    #: session_state.flow_slots["collected"] y vuelven al prompt en cada turno.
+    captured_slots: dict[str, str] | None = None
 
 
 _NO_STEPS_INSTRUCTION = (
@@ -172,6 +177,12 @@ def render_orchestrator_flow(
         "actual, un subconjunto del grafo de arriba). Si ninguna aplica, "
         "dejalo en null -- NUNCA selecciones una transicion que no este en "
         "esa lista, aunque el grafo completo muestre otros steps.\n"
+        "- 'captured_slots': los datos que la persona dio EN ESTE mensaje y "
+        "que sirven para el resto de la conversacion (los required_slots del "
+        "step actual y datos estables como nombre, dia de aplicacion, medico "
+        "tratante, semana de tratamiento), como {slot: valor} con valores "
+        "textuales cortos tal como los dijo. null si no dio ninguno. Nunca "
+        "inventes ni deduzcas valores.\n"
         "- 'reason': por que decidiste esto. Obligatorio, breve y "
         "concreto -- se audita en el rastro del turno."
     )
@@ -288,6 +299,8 @@ class OrchestratorAgent:
     @staticmethod
     def _to_turn_decision(decision: OrchestratorDecision, allowed_transitions: list[str]) -> dict[str, Any]:
         result: dict[str, Any] = {"kind": decision.kind, "reason": decision.reason}
+        if decision.captured_slots:
+            result["captured_slots"] = {str(k): str(v) for k, v in decision.captured_slots.items() if str(v).strip()}
 
         step_target, vetoed = apply_transition_guard(decision.step_target, allowed_transitions)
         if step_target:

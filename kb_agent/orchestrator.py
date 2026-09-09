@@ -298,9 +298,16 @@ class Orchestrator:
             # Conversacion activa (o nueva si la anterior expiro por
             # inactividad). El historial que va al prompt se acota a ESTA
             # conversacion, no a todo el chat_history del usuario.
-            conversation = self._resolve_conversation(
+            conversation, fresh_conversation = self._resolve_conversation(
                 session, user_id=user.id, channel=channel or channel_from_external_id(external_id)
             )
+            if fresh_conversation and session_state.flow_node:
+                # Conversacion nueva (la anterior expiro por inactividad): el
+                # diagrama vuelve a su entrada. Sin esto una persona que volvia
+                # a escribir dias despues arrancaba a mitad del flujo viejo
+                # ("¿a que hora quieres el recordatorio?" como saludo). Lo que
+                # ya dijo (flow_slots["collected"]) se conserva.
+                session_state.flow_node = None
             step_before = session_state.flow_node
             # Perfilador EN PARALELO con el turno (hilo propio, sesion SQL
             # propia): antes corria en serie despues de la respuesta y sumaba
@@ -401,6 +408,12 @@ class Orchestrator:
                 decision = self.orchestrator_agent.decide(compiled_context)
                 # Se conserva para exponer la decision del orquestador en el turno
                 compiled_context["_decision"] = decision
+                captured = decision.get("captured_slots")
+                if isinstance(captured, dict) and captured:
+                    # Lo que la persona dijo en este mensaje entra a los datos
+                    # persistidos del flujo y al contexto del Conversador ya.
+                    collected_slots.update({str(k): str(v) for k, v in captured.items() if str(v).strip()})
+                    compiled_context["collected_slots"] = dict(collected_slots)
                 kind = decision.get("kind")
                 if kind == "tool_call":
                     # El step destino decidido junto con la tool se aplica
@@ -1014,8 +1027,10 @@ class Orchestrator:
 
     def _resolve_conversation(
         self, session: Session, *, user_id: int, channel: str | None
-    ) -> Conversation:
-        """Conversacion activa del usuario, o una nueva si la ultima expiro.
+    ) -> tuple[Conversation, bool]:
+        """Conversacion activa del usuario, o una nueva. El booleano dice si la
+        nueva reemplaza a una que EXPIRO por inactividad (la primera conversacion
+        de una persona no cuenta: no hay flujo viejo que reiniciar).
 
         Criterio de cierre (config ``tuning.conversation_idle_ttl_s``): si la
         conversacion abierta mas reciente lleva mas de ese TTL sin actividad,
@@ -1026,6 +1041,7 @@ class Orchestrator:
         """
         now = datetime.now(timezone.utc)
         ttl = timedelta(seconds=self.tuning.conversation_idle_ttl_s)
+        expired = False
         current = (
             session.query(Conversation)
             .filter(
@@ -1042,11 +1058,12 @@ class Orchestrator:
             if last is None or now - last <= ttl:
                 current.last_activity_at = now
                 session.commit()
-                return current
+                return current, False
             # expiro por inactividad: cerrarla y abrir una nueva
             current.status = ConversationStatus.CLOSED
             current.closed_at = now
             session.commit()
+            expired = True
 
         conv = Conversation(
             user_id=user_id,
@@ -1057,7 +1074,7 @@ class Orchestrator:
         )
         session.add(conv)
         session.commit()
-        return conv
+        return conv, expired
 
     def _persist_chat_history(
         self,

@@ -138,6 +138,8 @@ class FakeOrchestratorAgent:
         result: dict[str, Any] = {"kind": raw.get("kind", "nl"), "reason": raw["reason"]}
         if "function_call" in raw:
             result["function_call"] = raw["function_call"]
+        if raw.get("captured_slots"):
+            result["captured_slots"] = dict(raw["captured_slots"])
         if step_target:
             result["flow_target"] = step_target
         if vetoed:
