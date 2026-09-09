@@ -32,6 +32,31 @@ Base visual: el estilo actual de `frontends/flow_editor/index.html`.
 Reglas: CSS plano (tokens en `frontends/shared/theme.css`); **no** Tailwind en
 markup nuevo; sin build step (CDN only); dark siempre.
 
+### Arquitectura de archivos (cero inline)
+
+Cada vista es un HTML plano que solo lleva markup con clases: **ningún**
+`<style>`, ningún `style=""`, ningún `on*=` y ningún `<script>` inline (única
+excepción: el `<script type="importmap">` de `/flow` y `/mindmap`, que el
+spec no permite externo).
+
+| Qué | Dónde |
+|---|---|
+| Tokens, reset, topbar, primitivos compartidos (`.wrap .kpi .chip .btn .input .tabs .empty-state .spinner table.data .sidebar .hidden`) | `frontends/shared/theme.css` |
+| CSS propio de una vista (selectores prefijados: `.chat-* .pc-* .leads-* .dash-* .flow-* .mm-* .users-* .dev-* .prompts-*` o `body.page-<name>`) | `frontends/shared/<page>.css`, importado por `theme.css` (por ser `@import` va antes en la cascada: para pisar un primitivo se prefija `body.page-<name>`) |
+| Lógica de una vista (una sola copia) | `frontends/shared/<page>.js` (`flow.js` y `mindmap.js` son ES modules) |
+| Topbar | `frontends/shared/nav.js` sobre `<div id="appNavMount">` (todas las vistas salvo `/chat`) |
+| Glosario y tooltips | `glossary.js` + `tooltip.js`: `data-tooltip="<clave del glosario | texto>"` |
+
+Esqueleto: `<link rel="stylesheet" href="/static/theme.css">` en el head;
+`body class="page-<name>"`; al pie `nav.js`, `glossary.js`, `tooltip.js`,
+`demo-tour.js` y `<page>.js`. Tipografía: Inter para todo el texto, JetBrains
+Mono solo en IDs, tags, chips, badges y celdas de datos. Escala de tres
+tamaños: labels 9-10px, cuerpo 12-13px, titulares 14-16px. Espaciado: 24px en
+wrappers, 14px entre cards, 8px de radio en inputs. Estados vacíos con icono
+y frase de qué hacer (`.empty-state`); carga con `.spinner`. Jerga interna
+traducida en labels (documentos, fuente, validación, rasgos, pasos); los
+valores crudos del backend (kind, familia, ids) se muestran como `.chip` mono.
+
 ## 1. Navegación global
 
 **Una sola topbar** (patrón flow_editor), presente en todas las vistas:
