@@ -1,0 +1,10 @@
+#note L psiquiatria CL despedida y reapertura (repeticion)
+#perfil audit:L2 trait-hcp-especialidad-psiquiatria
+#greet audit:L2
+audit:L2|Sí, cuénteme
+audit:L2|Gracias, eso es todo por hoy
+audit:L2|hola
+#expire audit:L2 30000
+audit:L2|Buenas, ¿me habían escrito por algo?
+#dump audit:L2
+/exit
