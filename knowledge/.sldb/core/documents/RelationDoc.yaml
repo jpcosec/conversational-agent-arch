@@ -370,3 +370,122 @@ documents:
   semantic_tags:
   - layer.topology
   - type.relation.instance
+- name: transitions_to--step-antonia-despedida--step-antonia-registro-estado
+  path: relations/transitions_to--step-antonia-despedida--step-antonia-registro-estado.md
+  hash_c: be73582017c9074482d22b02f284e1f7735087728e58db75807cd25886b505df
+  hash_d: 33c68f08d33d92653e08305e8ebba9da27a00ba00f784438f64b440124c49a69
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-registro-estado--step-antonia-enrolamiento
+  path: relations/transitions_to--step-antonia-registro-estado--step-antonia-enrolamiento.md
+  hash_c: 2c34cf908d3f1351920e28ada68ceb451c7c746afb62c601109beda94556a555
+  hash_d: 3091e07153e375322130424602fc62ad1ee3d967b8d682db94f00b0113053470
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-agendar-recordatorio--step-antonia-derivacion-medinfo
+  path: relations/transitions_to--step-antonia-agendar-recordatorio--step-antonia-derivacion-medinfo.md
+  hash_c: e389d22390e005bd2de3152f2bb8674337632d18b3da5921ad4cf3edb0e69933
+  hash_d: ae6fd911994388d443ca66fcdd27b414b921df397b8f75e807cffca0c4ce9909
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-agendar-recordatorio--step-antonia-evento-adverso
+  path: relations/transitions_to--step-antonia-agendar-recordatorio--step-antonia-evento-adverso.md
+  hash_c: 143807b62cd7859a46379d3a9945a99a36d45d1566011838decab58fdcb38510
+  hash_d: aa366f5dac262116d44593822da18ab9ff79507092a6ed4a9593b4116147d8ac
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-recompra--step-antonia-derivacion-medinfo
+  path: relations/transitions_to--step-antonia-recompra--step-antonia-derivacion-medinfo.md
+  hash_c: 6efa78b9c61d627995d7bfec174b0605e0a20a491a7dfab346d8f7c4424e0c98
+  hash_d: 88480a690859f8b9f2487b61ccbf6d8f27e7d01c92c1f0d6b4d0de9961f05e3b
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-recompra--step-antonia-evento-adverso
+  path: relations/transitions_to--step-antonia-recompra--step-antonia-evento-adverso.md
+  hash_c: b122ff923de1d43c0ab0f3e591b7d4519649229e078c4b0ee240cc4d3c455fe9
+  hash_d: f3c721ac93f0c6605a298bda6dce150d14bab648776d97b774564fe0b071a56c
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-recompra--step-antonia-agendar-recordatorio
+  path: relations/transitions_to--step-antonia-recompra--step-antonia-agendar-recordatorio.md
+  hash_c: ca392e30f72fdb905fed603052af9c148015fbdb63971c2d9bdd0c73078e45f7
+  hash_d: 939b2698369a98798aa95acb9e24dc6f167e664a0335b97b4860c629c375eab5
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-evento-adverso--step-antonia-derivacion-medinfo
+  path: relations/transitions_to--step-antonia-evento-adverso--step-antonia-derivacion-medinfo.md
+  hash_c: 1d060c6d4baeee9cd4dc56e19465aa6081451cdf52551d4a62895fec2d2b3080
+  hash_d: 7bda7380880ccd372e027b3198d49503c846267d95eee6ba0de6de0cace7d44e
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-evento-adverso--step-antonia-registro-estado
+  path: relations/transitions_to--step-antonia-evento-adverso--step-antonia-registro-estado.md
+  hash_c: e5d2c7203b81467202d971201d6897b24bf29191d061ed03ee67bef64b01604a
+  hash_d: b991086d7e3bbc25c6ef52c46f51fc2e008eef8f83278a3ea43bc97d0160a1ee
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-registro-estado
+  path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-registro-estado.md
+  hash_c: e9961570e7316c8c92efbe5e30ada4ff2cbeea764ad4514c8d4d52138deba195
+  hash_d: ebd85b334c77831b0ad9e5a9207671af9d62c635b0de4c5e91cc3f7939941e7f
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-agendar-recordatorio
+  path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-agendar-recordatorio.md
+  hash_c: 2e8fe9f8ca93dbd2a2acc746b8fc4641c7c50da9677e0e993b1d11edcdc9e1ac
+  hash_d: 3c234805649839e529acefd6abdd4f11cf1b0c05bf8ea1677609f34cdb7636a2
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-revision-humana--step-antonia-registro-estado
+  path: relations/transitions_to--step-antonia-revision-humana--step-antonia-registro-estado.md
+  hash_c: 560c17bb5f380a9d9a055f385ae1e4a6567e40e9b2667690aa23c267f174fb49
+  hash_d: 6674011ccc25f0452b5c714e8c395d37dba4a28abb6bc28751e60a85ad15578d
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-onboarding--step-antonia-enrolamiento
+  path: relations/transitions_to--step-antonia-onboarding--step-antonia-enrolamiento.md
+  hash_c: 039c0065b3fe03147b6d2b22764330f3619859eab847b65dc840df9ab5f7d026
+  hash_d: 56a4824e9c6eea8b45ea560e74eac2c25caa2a0bc8b1bd06ebe4c469a1a2e35f
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-onboarding--step-antonia-agendar-recordatorio
+  path: relations/transitions_to--step-antonia-onboarding--step-antonia-agendar-recordatorio.md
+  hash_c: 73a1af7751e41f02847fde80088c6e2bf3e23a4cf796700898eb586056fe95dd
+  hash_d: 3e324cfc76d058f13527537532ca6efa2ca894309df4f0d2ea1c26e6c7e83d83
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-despedida--step-antonia-derivacion-medinfo
+  path: relations/transitions_to--step-antonia-despedida--step-antonia-derivacion-medinfo.md
+  hash_c: 22dfc20fedc938143062ab6cf4b07e27dd21ceb77ba8ba9718402a1d4c80b3fa
+  hash_d: d8633210b047831d0df481c80b65236364fe0a09058cf4864b671012c77475d5
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-despedida--step-antonia-evento-adverso
+  path: relations/transitions_to--step-antonia-despedida--step-antonia-evento-adverso.md
+  hash_c: 8c071901c6bec6c1bc90dc5eeec46867cbd0c219f0e1ee039580a9c9909896e5
+  hash_d: 5b5780e909c04e58b9870499ba52a2cd4bedc8b1a007bec7edc9f5cf2255c2c3
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio
+  path: relations/transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio.md
+  hash_c: a9a26b0c0dd5e62a8232d8a519980d43638b2cff7b8bccedb15039d14b161dd5
+  hash_d: cd618b3fe35c0de7500ec512e07298f07770bc5bca10e7be70000132972e91c2
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance

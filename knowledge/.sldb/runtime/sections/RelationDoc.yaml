@@ -3815,3 +3815,1227 @@ documents:
     level: 2
     line_start: 10
     line_end: 11
+- doc_name: transitions_to--step-antonia-despedida--step-antonia-registro-estado
+  sections:
+  - path: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia despedida target id conversationstep
+      step antonia registro estado relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: despedida-transitions-to-registro-estado
+    title: despedida transitions_to registro-estado
+    breadcrumbs:
+    - despedida transitions_to registro-estado
+    about:
+    - despedida transitions_to registro-estado
+    - despedida transitions to registro estado
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: despedida-transitions-to-registro-estado
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: despedida-transitions-to-registro-estado/notes
+    title: Notes
+    breadcrumbs:
+    - despedida transitions_to registro-estado
+    - Notes
+    about:
+    - despedida transitions_to registro-estado
+    - despedida transitions to registro estado
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-registro-estado--step-antonia-enrolamiento
+  sections:
+  - path: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-enrolamiento-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-registro-estado
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia registro estado target id conversationstep
+      step antonia enrolamiento relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-registro-estado-target-id-conversationstep-step-antonia-enrolamiento-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: registro-estado-transitions-to-enrolamiento
+    title: registro-estado transitions_to enrolamiento
+    breadcrumbs:
+    - registro-estado transitions_to enrolamiento
+    about:
+    - registro-estado transitions_to enrolamiento
+    - registro estado transitions to enrolamiento
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: registro-estado-transitions-to-enrolamiento
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: registro-estado-transitions-to-enrolamiento/notes
+    title: Notes
+    breadcrumbs:
+    - registro-estado transitions_to enrolamiento
+    - Notes
+    about:
+    - registro-estado transitions_to enrolamiento
+    - registro estado transitions to enrolamiento
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-agendar-recordatorio--step-antonia-derivacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia agendar recordatorio target id conversationstep
+      step antonia derivacion medinfo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: agendar-recordatorio-transitions-to-derivacion-medinfo
+    title: agendar-recordatorio transitions_to derivacion-medinfo
+    breadcrumbs:
+    - agendar-recordatorio transitions_to derivacion-medinfo
+    about:
+    - agendar-recordatorio transitions_to derivacion-medinfo
+    - agendar recordatorio transitions to derivacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: agendar-recordatorio-transitions-to-derivacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: agendar-recordatorio-transitions-to-derivacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - agendar-recordatorio transitions_to derivacion-medinfo
+    - Notes
+    about:
+    - agendar-recordatorio transitions_to derivacion-medinfo
+    - agendar recordatorio transitions to derivacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-agendar-recordatorio--step-antonia-evento-adverso
+  sections:
+  - path: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia agendar recordatorio target id conversationstep
+      step antonia evento adverso relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-agendar-recordatorio-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: agendar-recordatorio-transitions-to-evento-adverso
+    title: agendar-recordatorio transitions_to evento-adverso
+    breadcrumbs:
+    - agendar-recordatorio transitions_to evento-adverso
+    about:
+    - agendar-recordatorio transitions_to evento-adverso
+    - agendar recordatorio transitions to evento adverso
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: agendar-recordatorio-transitions-to-evento-adverso
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: agendar-recordatorio-transitions-to-evento-adverso/notes
+    title: Notes
+    breadcrumbs:
+    - agendar-recordatorio transitions_to evento-adverso
+    - Notes
+    about:
+    - agendar-recordatorio transitions_to evento-adverso
+    - agendar recordatorio transitions to evento adverso
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-recompra--step-antonia-derivacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia recompra target id conversationstep
+      step antonia derivacion medinfo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: recompra-transitions-to-derivacion-medinfo
+    title: recompra transitions_to derivacion-medinfo
+    breadcrumbs:
+    - recompra transitions_to derivacion-medinfo
+    about:
+    - recompra transitions_to derivacion-medinfo
+    - recompra transitions to derivacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: recompra-transitions-to-derivacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: recompra-transitions-to-derivacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - recompra transitions_to derivacion-medinfo
+    - Notes
+    about:
+    - recompra transitions_to derivacion-medinfo
+    - recompra transitions to derivacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-recompra--step-antonia-evento-adverso
+  sections:
+  - path: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia recompra target id conversationstep
+      step antonia evento adverso relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: recompra-transitions-to-evento-adverso
+    title: recompra transitions_to evento-adverso
+    breadcrumbs:
+    - recompra transitions_to evento-adverso
+    about:
+    - recompra transitions_to evento-adverso
+    - recompra transitions to evento adverso
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: recompra-transitions-to-evento-adverso
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: recompra-transitions-to-evento-adverso/notes
+    title: Notes
+    breadcrumbs:
+    - recompra transitions_to evento-adverso
+    - Notes
+    about:
+    - recompra transitions_to evento-adverso
+    - recompra transitions to evento adverso
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-recompra--step-antonia-agendar-recordatorio
+  sections:
+  - path: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-recompra
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia recompra target id conversationstep
+      step antonia agendar recordatorio relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-recompra-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: recompra-transitions-to-agendar-recordatorio
+    title: recompra transitions_to agendar-recordatorio
+    breadcrumbs:
+    - recompra transitions_to agendar-recordatorio
+    about:
+    - recompra transitions_to agendar-recordatorio
+    - recompra transitions to agendar recordatorio
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: recompra-transitions-to-agendar-recordatorio
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: recompra-transitions-to-agendar-recordatorio/notes
+    title: Notes
+    breadcrumbs:
+    - recompra transitions_to agendar-recordatorio
+    - Notes
+    about:
+    - recompra transitions_to agendar-recordatorio
+    - recompra transitions to agendar recordatorio
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-evento-adverso--step-antonia-derivacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-evento-adverso-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia evento adverso target id conversationstep
+      step antonia derivacion medinfo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-evento-adverso-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: evento-adverso-transitions-to-derivacion-medinfo
+    title: evento-adverso transitions_to derivacion-medinfo
+    breadcrumbs:
+    - evento-adverso transitions_to derivacion-medinfo
+    about:
+    - evento-adverso transitions_to derivacion-medinfo
+    - evento adverso transitions to derivacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: evento-adverso-transitions-to-derivacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: evento-adverso-transitions-to-derivacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - evento-adverso transitions_to derivacion-medinfo
+    - Notes
+    about:
+    - evento-adverso transitions_to derivacion-medinfo
+    - evento adverso transitions to derivacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-evento-adverso--step-antonia-registro-estado
+  sections:
+  - path: source-id-conversationstep-step-antonia-evento-adverso-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-evento-adverso
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia evento adverso target id conversationstep
+      step antonia registro estado relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-evento-adverso-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: evento-adverso-transitions-to-registro-estado
+    title: evento-adverso transitions_to registro-estado
+    breadcrumbs:
+    - evento-adverso transitions_to registro-estado
+    about:
+    - evento-adverso transitions_to registro-estado
+    - evento adverso transitions to registro estado
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: evento-adverso-transitions-to-registro-estado
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: evento-adverso-transitions-to-registro-estado/notes
+    title: Notes
+    breadcrumbs:
+    - evento-adverso transitions_to registro-estado
+    - Notes
+    about:
+    - evento-adverso transitions_to registro-estado
+    - evento adverso transitions to registro estado
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-registro-estado
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id conversationstep
+      step antonia registro estado relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: derivacion-medinfo-transitions-to-registro-estado
+    title: derivacion-medinfo transitions_to registro-estado
+    breadcrumbs:
+    - derivacion-medinfo transitions_to registro-estado
+    about:
+    - derivacion-medinfo transitions_to registro-estado
+    - derivacion medinfo transitions to registro estado
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: derivacion-medinfo-transitions-to-registro-estado
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: derivacion-medinfo-transitions-to-registro-estado/notes
+    title: Notes
+    breadcrumbs:
+    - derivacion-medinfo transitions_to registro-estado
+    - Notes
+    about:
+    - derivacion-medinfo transitions_to registro-estado
+    - derivacion medinfo transitions to registro estado
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-derivacion-medinfo--step-antonia-agendar-recordatorio
+  sections:
+  - path: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia derivacion medinfo target id conversationstep
+      step antonia agendar recordatorio relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-derivacion-medinfo-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: derivacion-medinfo-transitions-to-agendar-recordatorio
+    title: derivacion-medinfo transitions_to agendar-recordatorio
+    breadcrumbs:
+    - derivacion-medinfo transitions_to agendar-recordatorio
+    about:
+    - derivacion-medinfo transitions_to agendar-recordatorio
+    - derivacion medinfo transitions to agendar recordatorio
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: derivacion-medinfo-transitions-to-agendar-recordatorio
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: derivacion-medinfo-transitions-to-agendar-recordatorio/notes
+    title: Notes
+    breadcrumbs:
+    - derivacion-medinfo transitions_to agendar-recordatorio
+    - Notes
+    about:
+    - derivacion-medinfo transitions_to agendar-recordatorio
+    - derivacion medinfo transitions to agendar recordatorio
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-revision-humana--step-antonia-registro-estado
+  sections:
+  - path: source-id-conversationstep-step-antonia-revision-humana-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-revision-humana
+
+      target_id: ConversationStep:step-antonia-registro-estado
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia revision humana target id conversationstep
+      step antonia registro estado relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-revision-humana-target-id-conversationstep-step-antonia-registro-estado-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: revision-humana-transitions-to-registro-estado
+    title: revision-humana transitions_to registro-estado
+    breadcrumbs:
+    - revision-humana transitions_to registro-estado
+    about:
+    - revision-humana transitions_to registro-estado
+    - revision humana transitions to registro estado
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: revision-humana-transitions-to-registro-estado
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: revision-humana-transitions-to-registro-estado/notes
+    title: Notes
+    breadcrumbs:
+    - revision-humana transitions_to registro-estado
+    - Notes
+    about:
+    - revision-humana transitions_to registro-estado
+    - revision humana transitions to registro estado
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-onboarding--step-antonia-enrolamiento
+  sections:
+  - path: source-id-conversationstep-step-antonia-onboarding-target-id-conversationstep-step-antonia-enrolamiento-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-enrolamiento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia onboarding target id conversationstep
+      step antonia enrolamiento relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-onboarding-target-id-conversationstep-step-antonia-enrolamiento-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: onboarding-transitions-to-enrolamiento
+    title: onboarding transitions_to enrolamiento
+    breadcrumbs:
+    - onboarding transitions_to enrolamiento
+    about:
+    - onboarding transitions_to enrolamiento
+    - onboarding transitions to enrolamiento
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: onboarding-transitions-to-enrolamiento
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: onboarding-transitions-to-enrolamiento/notes
+    title: Notes
+    breadcrumbs:
+    - onboarding transitions_to enrolamiento
+    - Notes
+    about:
+    - onboarding transitions_to enrolamiento
+    - onboarding transitions to enrolamiento
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-onboarding--step-antonia-agendar-recordatorio
+  sections:
+  - path: source-id-conversationstep-step-antonia-onboarding-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-onboarding
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia onboarding target id conversationstep
+      step antonia agendar recordatorio relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-onboarding-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: onboarding-transitions-to-agendar-recordatorio
+    title: onboarding transitions_to agendar-recordatorio
+    breadcrumbs:
+    - onboarding transitions_to agendar-recordatorio
+    about:
+    - onboarding transitions_to agendar-recordatorio
+    - onboarding transitions to agendar recordatorio
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: onboarding-transitions-to-agendar-recordatorio
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: onboarding-transitions-to-agendar-recordatorio/notes
+    title: Notes
+    breadcrumbs:
+    - onboarding transitions_to agendar-recordatorio
+    - Notes
+    about:
+    - onboarding transitions_to agendar-recordatorio
+    - onboarding transitions to agendar recordatorio
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-despedida--step-antonia-derivacion-medinfo
+  sections:
+  - path: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-derivacion-medinfo
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia despedida target id conversationstep
+      step antonia derivacion medinfo relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-derivacion-medinfo-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: despedida-transitions-to-derivacion-medinfo
+    title: despedida transitions_to derivacion-medinfo
+    breadcrumbs:
+    - despedida transitions_to derivacion-medinfo
+    about:
+    - despedida transitions_to derivacion-medinfo
+    - despedida transitions to derivacion medinfo
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: despedida-transitions-to-derivacion-medinfo
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: despedida-transitions-to-derivacion-medinfo/notes
+    title: Notes
+    breadcrumbs:
+    - despedida transitions_to derivacion-medinfo
+    - Notes
+    about:
+    - despedida transitions_to derivacion-medinfo
+    - despedida transitions to derivacion medinfo
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-despedida--step-antonia-evento-adverso
+  sections:
+  - path: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-evento-adverso
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia despedida target id conversationstep
+      step antonia evento adverso relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-evento-adverso-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: despedida-transitions-to-evento-adverso
+    title: despedida transitions_to evento-adverso
+    breadcrumbs:
+    - despedida transitions_to evento-adverso
+    about:
+    - despedida transitions_to evento-adverso
+    - despedida transitions to evento adverso
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: despedida-transitions-to-evento-adverso
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: despedida-transitions-to-evento-adverso/notes
+    title: Notes
+    breadcrumbs:
+    - despedida transitions_to evento-adverso
+    - Notes
+    about:
+    - despedida transitions_to evento-adverso
+    - despedida transitions to evento adverso
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio
+  sections:
+  - path: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-antonia-despedida
+
+      target_id: ConversationStep:step-antonia-agendar-recordatorio
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step antonia despedida target id conversationstep
+      step antonia agendar recordatorio relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-antonia-despedida-target-id-conversationstep-step-antonia-agendar-recordatorio-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: despedida-transitions-to-agendar-recordatorio
+    title: despedida transitions_to agendar-recordatorio
+    breadcrumbs:
+    - despedida transitions_to agendar-recordatorio
+    about:
+    - despedida transitions_to agendar-recordatorio
+    - despedida transitions to agendar recordatorio
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: despedida-transitions-to-agendar-recordatorio
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: despedida-transitions-to-agendar-recordatorio/notes
+    title: Notes
+    breadcrumbs:
+    - despedida transitions_to agendar-recordatorio
+    - Notes
+    about:
+    - despedida transitions_to agendar-recordatorio
+    - despedida transitions to agendar recordatorio
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11

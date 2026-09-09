@@ -28,8 +28,8 @@ documents:
   - workspace.knowledge
 - name: gate-antonia-derivacion
   path: atoms/gate-antonia-derivacion.md
-  hash_c: 3f48abb9347870b324f930e6d99c9f4fd8ae55ef1a385149aa34eef51289b366
-  hash_d: 962624826ec117194d4da39dd0921b2ae2613f1ced8068bda3076ca3e9852a01
+  hash_c: 13450d91f70a2cd33c9e33d345902b0e2e32442c51fc7323f7dc8d33af98e7cd
+  hash_d: fb1fcc84222ccc528a87c2004a4fde4c6b9d4c00a0f421dd959dd7e1b07ab240
   semantic_tags:
   - gate:derivacion
   - system:laboratorio-chile

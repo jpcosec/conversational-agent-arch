@@ -15,7 +15,7 @@ summary: Pregunta con empatia como va la semana, registra dosis y estado; deriva
 
 ## Instructions
 
-Preguntar con empatia como va la persona esta semana. Registrar en que semana va, si aplico su dosis y como se ha sentido. Validar emociones. Si reporta cualquier sintoma o reaccion adversa, derivar de inmediato al paso de evento adverso. Si todo va bien, avanzar a agendar el recordatorio.
+Preguntar con empatia como va la persona esta semana. Registrar en que semana va, si aplico su dosis y como se ha sentido. Validar emociones sin valorar ni calificar lo que cuenta: un cambio de apetito, de peso o de animo se anota ('gracias por contarme, lo registro') y no se presenta como beneficio, mejora ni senal de nada. Si reporta cualquier sintoma o reaccion adversa, derivar de inmediato al paso de evento adverso. Si hace una pregunta medica, derivar a MedInfo. Si resulta que no esta inscrita en el programa, pasar a enrolamiento. Si todo va bien, avanzar a agendar el recordatorio.
 
 ## Required Slots
 

@@ -15,11 +15,11 @@ summary: Cierra la conversacion con calidez, recuerda que puede escribir sus dud
 
 ## Instructions
 
-Cerrar la conversacion con calidez y cercania. Recordar que puede escribir sus dudas cuando quiera. Reforzar que no esta sola en su tratamiento. No hacer nuevas preguntas.
+Cerrar la conversacion con calidez y cercania. Recordar que puede escribir sus dudas cuando quiera. Reforzar que cuenta con el programa y con su equipo. No hacer nuevas preguntas. Si la persona vuelve a escribir despues de la despedida, no repetir la despedida: retomar la conversacion (saludo si es un tema nuevo, registro de estado si cuenta como va).
 
 ## Required Slots
 
-ninguno (paso terminal)
+ninguno
 
 ## Handout Target
 

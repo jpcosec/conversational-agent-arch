@@ -158,20 +158,37 @@ tags:
   - rt-grounded_by
   - rt-transitions_to
   - rt-uses_tool
+  - transitions_to--step-antonia-agendar-recordatorio--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-agendar-recordatorio--step-antonia-evento-adverso
   - transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-agendar-recordatorio
   - transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-registro-estado
   - transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana
+  - transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-despedida--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-despedida--step-antonia-evento-adverso
+  - transitions_to--step-antonia-despedida--step-antonia-registro-estado
   - transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-enrolamiento--step-antonia-onboarding
+  - transitions_to--step-antonia-evento-adverso--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-evento-adverso--step-antonia-despedida
+  - transitions_to--step-antonia-evento-adverso--step-antonia-registro-estado
   - transitions_to--step-antonia-journey-operativo--step-antonia-despedida
   - transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado
+  - transitions_to--step-antonia-onboarding--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-onboarding--step-antonia-enrolamiento
   - transitions_to--step-antonia-onboarding--step-antonia-registro-estado
+  - transitions_to--step-antonia-recompra--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-recompra--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-recompra--step-antonia-despedida
+  - transitions_to--step-antonia-recompra--step-antonia-evento-adverso
   - transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio
   - transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-registro-estado--step-antonia-enrolamiento
   - transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso
   - transitions_to--step-antonia-revision-humana--step-antonia-despedida
+  - transitions_to--step-antonia-revision-humana--step-antonia-registro-estado
   - transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-saludo--step-antonia-enrolamiento
   - transitions_to--step-antonia-saludo--step-antonia-journey-operativo
@@ -390,20 +407,37 @@ tags:
   - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-diagnostico
   - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-dosis
   - grounded_by--step-antonia-validacion-policy-gate--gate-antonia-promesas
+  - transitions_to--step-antonia-agendar-recordatorio--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-agendar-recordatorio--step-antonia-evento-adverso
   - transitions_to--step-antonia-agendar-recordatorio--step-antonia-recompra
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-agendar-recordatorio
   - transitions_to--step-antonia-derivacion-medinfo--step-antonia-despedida
+  - transitions_to--step-antonia-derivacion-medinfo--step-antonia-registro-estado
   - transitions_to--step-antonia-derivacion-medinfo--step-antonia-revision-humana
+  - transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-despedida--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-despedida--step-antonia-evento-adverso
+  - transitions_to--step-antonia-despedida--step-antonia-registro-estado
   - transitions_to--step-antonia-enrolamiento--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-enrolamiento--step-antonia-onboarding
+  - transitions_to--step-antonia-evento-adverso--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-evento-adverso--step-antonia-despedida
+  - transitions_to--step-antonia-evento-adverso--step-antonia-registro-estado
   - transitions_to--step-antonia-journey-operativo--step-antonia-despedida
   - transitions_to--step-antonia-journey-operativo--step-antonia-registro-estado
+  - transitions_to--step-antonia-onboarding--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-onboarding--step-antonia-enrolamiento
   - transitions_to--step-antonia-onboarding--step-antonia-registro-estado
+  - transitions_to--step-antonia-recompra--step-antonia-agendar-recordatorio
+  - transitions_to--step-antonia-recompra--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-recompra--step-antonia-despedida
+  - transitions_to--step-antonia-recompra--step-antonia-evento-adverso
   - transitions_to--step-antonia-registro-estado--step-antonia-agendar-recordatorio
   - transitions_to--step-antonia-registro-estado--step-antonia-derivacion-medinfo
+  - transitions_to--step-antonia-registro-estado--step-antonia-enrolamiento
   - transitions_to--step-antonia-registro-estado--step-antonia-evento-adverso
   - transitions_to--step-antonia-revision-humana--step-antonia-despedida
+  - transitions_to--step-antonia-revision-humana--step-antonia-registro-estado
   - transitions_to--step-antonia-saludo--step-antonia-derivacion-medinfo
   - transitions_to--step-antonia-saludo--step-antonia-enrolamiento
   - transitions_to--step-antonia-saludo--step-antonia-journey-operativo
@@ -1529,6 +1563,108 @@ documents:
   uses_tool--step-antonia-enrolamiento--registrar_enrolamiento:
     model: RelationDoc
     path: relations/uses_tool--step-antonia-enrolamiento--registrar_enrolamiento.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-despedida--step-antonia-registro-estado:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-despedida--step-antonia-registro-estado.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-registro-estado--step-antonia-enrolamiento:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-registro-estado--step-antonia-enrolamiento.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-agendar-recordatorio--step-antonia-derivacion-medinfo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-agendar-recordatorio--step-antonia-derivacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-agendar-recordatorio--step-antonia-evento-adverso:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-agendar-recordatorio--step-antonia-evento-adverso.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-recompra--step-antonia-derivacion-medinfo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-recompra--step-antonia-derivacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-recompra--step-antonia-evento-adverso:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-recompra--step-antonia-evento-adverso.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-recompra--step-antonia-agendar-recordatorio:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-recompra--step-antonia-agendar-recordatorio.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-evento-adverso--step-antonia-derivacion-medinfo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-evento-adverso--step-antonia-derivacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-evento-adverso--step-antonia-registro-estado:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-evento-adverso--step-antonia-registro-estado.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-derivacion-medinfo--step-antonia-registro-estado:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-registro-estado.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-derivacion-medinfo--step-antonia-agendar-recordatorio:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-derivacion-medinfo--step-antonia-agendar-recordatorio.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-revision-humana--step-antonia-registro-estado:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-revision-humana--step-antonia-registro-estado.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-onboarding--step-antonia-enrolamiento:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-onboarding--step-antonia-enrolamiento.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-onboarding--step-antonia-agendar-recordatorio:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-onboarding--step-antonia-agendar-recordatorio.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-despedida--step-antonia-derivacion-medinfo:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-despedida--step-antonia-derivacion-medinfo.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-despedida--step-antonia-evento-adverso:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-despedida--step-antonia-evento-adverso.md
+    tags:
+    - layer.topology
+    - type.relation.instance
+  transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio:
+    model: RelationDoc
+    path: relations/transitions_to--step-antonia-despedida--step-antonia-agendar-recordatorio.md
     tags:
     - layer.topology
     - type.relation.instance

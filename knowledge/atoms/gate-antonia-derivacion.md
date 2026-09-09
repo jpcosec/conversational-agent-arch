@@ -18,7 +18,7 @@ Cuando el caso corresponde a derivación, la respuesta redactada efectivamente d
 
 ## Approval Condition
 
-Aprueba cuando la respuesta deja explícito el destino de derivación que corresponde y evita resolver por sí misma casos que deben pasar a farmacovigilancia, MedInfo, revisión humana o médico tratante.
+Aprueba cuando la respuesta nombra el destino que corresponde al caso: medico tratante para decisiones clinicas (dosis, cambios, dudas de tratamiento), MedInfo para consultas medicas del programa, farmacovigilancia para eventos adversos, revision humana cuando el caso lo pide. Decir que la dosis o el tratamiento los decide el medico tratante YA ES una derivacion explicita, aunque no se ofrezca registrar la consulta. Rechaza solo si la respuesta resuelve por si misma un caso que debia derivarse o lo manda a un canal equivocado.
 
 ## Rejection Action
 

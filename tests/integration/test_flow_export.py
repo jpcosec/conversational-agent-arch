@@ -19,13 +19,22 @@ def test_negocio_flow_nodes_edges_and_step_tags(negocio_kb: Path) -> None:
     }
 
 
-def test_antonia_flow_is_a_graph_with_terminal_step(antonia_kb: Path) -> None:
+def test_antonia_flow_has_no_dead_end_and_enters_by_saludo(antonia_kb: Path) -> None:
     flow = export(str(antonia_kb))
     by_id = {n["id"]: n for n in flow["nodes"]}
     # 12 steps: los 11 previos + step-antonia-enrolamiento (fase 4, enrolamiento
     # de pacientes no inscritos).
     assert len(by_id) == 12
-    assert by_id["step-antonia-despedida"]["allowed_transitions"] == []  # "ninguna (paso terminal)"
+    # despedida ya no es un callejon sin salida: medido en el REPL, toda
+    # conversacion real caia ahi en pocos turnos y quedaba muerta.
+    assert {"conversation:steps.registro_estado", "conversation:steps.derivacion_medinfo"} <= set(
+        by_id["step-antonia-despedida"]["allowed_transitions"]
+    )
+    # saludo sigue siendo la unica entrada real (raiz con salidas); una consulta
+    # medica o un sintoma se pueden derivar desde cualquier step de seguimiento.
+    for step in ("step-antonia-agendar-recordatorio", "step-antonia-recompra", "step-antonia-evento-adverso"):
+        assert "conversation:steps.derivacion_medinfo" in by_id[step]["allowed_transitions"]
+    assert "conversation:steps.enrolamiento" in by_id["step-antonia-registro-estado"]["allowed_transitions"]
     assert all(n["step_tag"] and n["step_tag"].startswith("conversation:steps.") for n in flow["nodes"])
     targets = {e["source"] for e in flow["edges"] if e["target"] == "step-antonia-despedida"}
     assert {

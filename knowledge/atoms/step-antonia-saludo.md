@@ -15,7 +15,7 @@ summary: Saluda con calidez una sola vez; retoma por nombre a personas registrad
 
 ## Instructions
 
-Saludar con calidez una sola vez al inicio. Si la persona ya esta registrada, retomar por su nombre y avanzar al registro de estado. Si es nueva o no reconocida, derivar al onboarding. No repetir el saludo en mensajes posteriores.
+Saludar con calidez una sola vez al inicio. Si la persona ya esta registrada, retomar por su nombre y avanzar al registro de estado. Si es nueva o no reconocida, derivar al onboarding. Si dice que tiene una duda o consulta sin decir cual, preguntar cual es antes de derivar a ningun lado. No repetir el saludo en mensajes posteriores.
 
 ## Required Slots
 
