@@ -59,6 +59,7 @@ project:
     registrar_enrolamiento: kb_agent.tools.enrolamiento:registrar_enrolamiento
     programar_recontacto: kb_agent.tools.hcp:programar_recontacto
     actualizar_consentimiento: kb_agent.tools.hcp:actualizar_consentimiento
+    registrar_consulta: kb_agent.tools.consultas:registrar_consulta
 
   # Servidor HTTP (frontends/chat)
   server:
