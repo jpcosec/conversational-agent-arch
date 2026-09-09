@@ -664,7 +664,9 @@ def test_topbar_groups_views_by_audience(page, base_url: str):
     groups = page.eval_on_selector_all(
         "#appNav a", "els => els.map(e => e.dataset.navGroup)"
     )
-    assert groups == ["chat", "operacion", "operacion", "desarrollo", "desarrollo", "desarrollo", "desarrollo"]
+    # 9 vistas: a las 7 originales se sumaron Prompts y Dev, ambas del grupo
+    # Desarrollo (la Dev Console y el visor de prompts de cada agente).
+    assert groups == ["chat", "operacion", "operacion"] + ["desarrollo"] * 6
     assert page.locator("[data-testid='nav-leads'][data-active='true']").count() == 1
     assert not page.errors, page.errors
 

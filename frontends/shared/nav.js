@@ -16,7 +16,7 @@
     { testid: 'nav-inspector', group: 'desarrollo',  href: '/',         label: 'Inspector' },
     { testid: 'nav-flow',      group: 'desarrollo',  href: '/flow',     label: 'Flujo' },
     { testid: 'nav-mindmap',   group: 'desarrollo',  href: '/mindmap',  label: 'KB' },
-    { testid: 'nav-profiles',  group: 'desarrollo',  href: '/users',    label: 'Perfiles' },
+    { testid: 'nav-users',     group: 'desarrollo',  href: '/users',    label: 'Perfiles' },
     { testid: 'nav-prompts',   group: 'desarrollo',  href: '/dev/prompts',label: 'Prompts' },
     { testid: 'nav-dev',       group: 'desarrollo',  href: '/dev',       label: 'Dev' }
   ];

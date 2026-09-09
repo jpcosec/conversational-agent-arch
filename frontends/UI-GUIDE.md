@@ -85,6 +85,8 @@ las cinco copias del mismo IIFE que había en cada página):
 | Desarrollo | flujo | `/flow` | `nav-flow` |
 | Desarrollo | KB (mindmap) | `/mindmap` | `nav-mindmap` |
 | Desarrollo | perfiles | `/users` | `nav-users` |
+| Desarrollo | prompts de los agentes | `/dev/prompts` | `nav-prompts` |
+| Desarrollo | consola de desarrollo | `/dev` | `nav-dev` |
 
 `/dashboard` sirve `frontends/dashboard/index.html`: un mock estático con el
 chip "Datos de ejemplo", enlazado desde la topbar de todas las vistas

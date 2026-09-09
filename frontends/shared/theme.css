@@ -452,7 +452,10 @@ table.data .num{text-align:right;font-family:var(--font-mono)}
 .rf-root{display:flex;flex:1;min-height:0;width:100%;position:relative}
 .rf-canvas{flex:1;position:relative;overflow:hidden}
 .rf-toolbar{position:absolute;top:14px;right:14px;z-index:10;display:flex;gap:8px;flex-wrap:wrap}
-.rf-toolbar .btn{background:rgba(18,18,26,.85);backdrop-filter:blur(8px)}
+/* :not(.btn-primary) -- si no, esta regla (mas especifica) pisa el fondo
+   accent del boton primario y su texto oscuro queda sobre fondo oscuro. */
+.rf-toolbar .btn:not(.btn-primary){background:rgba(18,18,26,.85)}
+.rf-toolbar .btn{backdrop-filter:blur(8px)}
 .rf-node-toolbar{display:flex;gap:4px;background:rgba(10,10,15,.96);border:1px solid rgba(212,165,116,.3);border-radius:8px;padding:5px 6px;backdrop-filter:blur(8px);box-shadow:0 4px 18px rgba(0,0,0,.4)}
 .rf-drag-handle{position:absolute;top:-6px;right:6px;cursor:grab;font-size:10px;color:rgba(245,240,232,.3);user-select:none}
 .rf-drag-handle:hover,.react-flow__node.selected .rf-drag-handle{opacity:1;color:var(--accent)}

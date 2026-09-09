@@ -3,7 +3,9 @@
    chip del tipo crudo en la tabla. */
 .dash-bars{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:10px}
 .dash-bars>.empty-state,.dash-bars>.loading{flex:1;align-self:stretch;justify-content:center}
-.dash-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+/* La columna ocupa toda la altura del grafico: la barra se dimensiona con un
+   porcentaje y sin una altura resuelta en el padre colapsaba a su min-height. */
+.dash-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;min-width:0;height:100%}
 .dash-bar{width:100%;max-width:46px;background:linear-gradient(180deg,var(--accent),rgba(212,165,116,.35));border-radius:5px 5px 0 0;min-height:3px}
 .dash-bar-n{font-family:var(--font-mono);font-size:10px;color:var(--text-primary)}
 .dash-bar-d{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);white-space:nowrap}
