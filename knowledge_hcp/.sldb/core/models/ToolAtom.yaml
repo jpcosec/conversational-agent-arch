@@ -1,0 +1,13 @@
+name: ToolAtom
+model_ref: kb_agent.models.knowledge:ToolAtom
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/tool.py
+documents_index: .sldb/core/documents/ToolAtom.yaml
+sections_index: .sldb/runtime/sections/ToolAtom.yaml
+hash_b: 845354f4d6bca3d533a9d56d8b56bd856d56ad0f2958cee51068e58de864a5a9
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.tool
+- workspace.knowledge
+base_models: []

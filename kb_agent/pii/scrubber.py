@@ -61,15 +61,55 @@ class _PlaceholderRegistry:
         return placeholder
 
 
-def scrub(text: str) -> str:
-    """Mask supported PII categories with stable placeholders."""
+#: Palabras que van con mayuscula solo por abrir la oracion y que el patron de
+#: NAME tomaba como nombre propio ("Hola Carla", "Soy Antonia", "Gracias Pedro").
+#: Se descartan del principio del match; lo que queda se evalua de nuevo.
+_SENTENCE_STARTERS = frozenset({
+    "hola", "soy", "gracias", "buenos", "buenas", "muchas", "entiendo", "claro", "perfecto",
+    "que", "qué", "estoy", "para", "puedes", "recuerda", "cuéntame", "cuentame", "ya", "ok",
+    "listo", "bien", "genial", "excelente", "ahora", "hoy", "chao", "chau", "adios", "adiós",
+    "oye", "mira", "bueno", "dale", "vale", "si", "sí", "no", "me", "mi", "tu", "te",
+})
+
+
+def scrub(text: str, *, allowlist: Iterable[str] = ()) -> str:
+    """Mask supported PII categories with stable placeholders.
+
+    ``allowlist``: terminos que nunca son PII aunque parezcan un nombre (la marca,
+    el nombre del asistente, el programa). Los declara el negocio en
+    ``project.config.yaml`` (``pii_allowlist``); el runtime no sabe cuales son.
+    """
     scrubbed = text
     registry = _PlaceholderRegistry(text)
-
+    allowed = {a.strip().lower() for a in allowlist if a and a.strip()}
     for kind, pattern in _PATTERNS:
-        scrubbed = pattern.sub(lambda match, pii_kind=kind: _replace(match, pii_kind, registry), scrubbed)
-
+        if kind == "NAME":
+            scrubbed = pattern.sub(lambda match: _replace_name(match, registry, allowed), scrubbed)
+        else:
+            scrubbed = pattern.sub(lambda match, pii_kind=kind: _replace(match, pii_kind, registry), scrubbed)
     return scrubbed
+
+
+def _replace_name(match: re.Match[str], registry: _PlaceholderRegistry, allowed: set[str]) -> str:
+    """Un match de NAME menos sus palabras de arranque y los terminos permitidos.
+
+    "Hola Carla Rojas" -> "Hola <NAME_1>"; "Soy Antonia" -> intacto (arranque +
+    una sola palabra); "Programa Selfix" permitido -> intacto; "Carla Rojas" ->
+    "<NAME_1>". Un nombre solo (una palabra) nunca se enmascara: tampoco antes.
+    """
+    value = match.group(0)
+    if value.startswith("<") and value.endswith(">"):
+        return value
+    if value.lower() in allowed:
+        return value
+    words = value.split()
+    prefix: list[str] = []
+    while words and (words[0].lower() in _SENTENCE_STARTERS or words[0].lower() in allowed):
+        prefix.append(words.pop(0))
+    if len(words) < 2 or any(w.lower() in allowed for w in words):
+        return value
+    head = (" ".join(prefix) + " ") if prefix else ""
+    return head + registry.placeholder_for("NAME", " ".join(words))
 
 
 def scrub_unscrubbed_chat_history(session: Session, *, batch_size: int = 100) -> int:

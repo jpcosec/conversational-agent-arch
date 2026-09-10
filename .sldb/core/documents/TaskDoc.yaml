@@ -20,22 +20,152 @@ documents:
   - workspace:desk
 - name: task-recomponer-la-base-de-spec2viz-y-atoms
   path: desk/tasks/task-recomponer-la-base-de-spec2viz-y-atoms.md
-  hash_c: 887934579047eeea5e78cbf324a465b882eedaefe90b964bac96f066444b199c
-  hash_d: b4fa2686c399efdb741ad5eb6a42617d1aa78a6da2a1302b997a7b5fe3dec87b
+  hash_c: 1a078c3bf01d98eb6ddbea8bb1a22a8f7e8b1864e4ec0a470a632d95edf275fc
+  hash_d: d4cf1875d9e773ebed1ff781933abf0bf0d4983d31e7d935e6c8d5256a23fbc6
   semantic_tags:
   - artifact:task
   - source:drawer
   - type.workflow.task
   - workspace.desk
   - workspace:desk
-- name: task-ui-foundations
-  path: desk/tasks/task-ui-foundations.md
-  hash_c: ec7dac4aeaf3a09a57218b41392d248a83f863588eeceda3ba2636f2db78976b
-  hash_d: 1cc3d8ef751f74ab52b791990333418b5f89b3ed7c94c5b13ad6b575d28e0e57
+- name: seed-dividir-current-kb-agent
+  path: desk/drawer/tasks/seed-dividir-current-kb-agent.md
+  hash_c: 0592dc36870b79d10ab8d203227b76c3e1e71eeb17137fe9676e930393bcc7ea
+  hash_d: f167f5391dfd1cf056c9ea64e223eb38424ea69071a16df66f1d4fe06288ba91
   semantic_tags:
-  - foundation
-  - hotkeys
-  - navigation
+  - diagramas
+  - seed
+  - spec2viz
   - type.workflow.task
-  - ui
   - workspace.desk
+- name: seed-mas-subagentes-al-loop
+  path: desk/drawer/tasks/seed-mas-subagentes-al-loop.md
+  hash_c: bb65bbcf4bf870f270a6f563962ec87d0eb12993dfeccf8dd1ea92f7d62d0ce8
+  hash_d: 60b2de03f65ba27c1f97948e9feed29a3a6211bc7464b55443127fcd95f3f99a
+  semantic_tags:
+  - loop
+  - seed
+  - subagentes
+  - type.workflow.task
+  - workspace.desk
+- name: seed-profundizar-la-kb
+  path: desk/drawer/tasks/seed-profundizar-la-kb.md
+  hash_c: dc0d1dfe757c99f21b66fe44796b7ad899959fdc54017f0f29d0fbb58fdac09a
+  hash_d: 837118065ba4c9e8c562f3a2b8c43a76c8183ef238fc5289fe1401a8b7770d2b
+  semantic_tags:
+  - kb
+  - knowledge
+  - seed
+  - type.workflow.task
+  - workspace.desk
+- name: task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
+  path: desk/drawer/tasks/task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento.md
+  hash_c: ba66b9ac1106006f5f3d4600f03a6855e19a7f0496a22860c65f6344b9d03614
+  hash_d: aa44bcd31e8f7e447bec7e3a0a92fc61ba4575d2e84ac6d2b3443694f98da401
+  semantic_tags:
+  - artifact:task
+  - source:inbox
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  path: desk/drawer/tasks/task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
+  hash_c: 9cf2968c8679284d4a91b6c9488e046afcfe2f48e9de534166a124be14476f5e
+  hash_d: d4e2fc7afece573e986ea7bd05e424dd975f964caa91b25153e9ed1589b3b826
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-modo-editor-de-atoms-en-la-ui
+  path: desk/drawer/tasks/task-modo-editor-de-atoms-en-la-ui.md
+  hash_c: ccdc828f5b35569114e069b5bd58b5f03fc9ad63b7cbcc9e95dcd8729c768653
+  hash_d: 2717fcc9de8ced70f9516609f848fe677cf2cf30322bd9880a7010dea1b9e463
+  semantic_tags:
+  - artifact:task
+  - source:decision
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
+  path: desk/tasks/task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
+  hash_c: 5937076afaa778e95e077236a8e852859dafb2c9411439695addb42f1e748afc
+  hash_d: aa12922927a99bc0b4e6344159acf2e66400d7a9bd329826640b1b1decac9d07
+  semantic_tags:
+  - artifact:task
+  - source:drawer
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  path: desk/tasks/task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime.md
+  hash_c: b2570731a2577a1acc3da20ced847c8af4a41d297302c1cc7404e5bfcd1e8290
+  hash_d: 7d2bd7050160d47c87d8f5c2078f235c2e8bfca8e9212ec7cc472ad6bbd385e3
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  path: desk/tasks/task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo.md
+  hash_c: 6296745be2265bfc54384027c0f7b86eedb3e4171b0159b40ff0cd43a2629fca
+  hash_d: 3c5847f7a605e3054d6d32106f133a34e90e9aa13dbb8579d48e31f6c82b7149
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-vista-leads-con-cola-de-visitas-por-confirmar
+  path: desk/tasks/task-vista-leads-con-cola-de-visitas-por-confirmar.md
+  hash_c: ef58e29cdabaccf6fae3d68b0657a0602252ecc0d6140c26f58278c37198ff94
+  hash_d: 1b626f2ae13602ba3d8c752f9c05184ab83bc817758b79ccc24581dc3e98ad92
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  path: desk/tasks/task-metricas-reales-en-el-dashboard-desde-el-sqlite.md
+  hash_c: b999d6781691350cc1fa4d93467d5c441dd119047acf296f7da3582f5a35d0d9
+  hash_d: 52a942cb9901c9ba4cf9bc01e924172642edc2e4d22e6fde88ef641ef35c2a99
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  path: desk/tasks/task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
+  hash_c: f7748c3b8962b1f4e4053a98120875bac8ca88055c2ac6c05c90ee45c670f463
+  hash_d: a10d5f0766ed1c3feca7b5791afad0a2edea63008081b208980428d72fd47411
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-x-tmp
+  path: desk/tasks/task-x-tmp.md
+  hash_c: 624cc67eb00dc64e44d4e29f51fb936ca7d2105dd8f77011022c81744d33f236
+  hash_d: 6b945093bbe20986a38ddf422b5e6977acf0e6e8f68ac66ba7783cd0f8301c0d
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  path: desk/tasks/task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
+  hash_c: 41b549973e9e8742b1b8049e67e4364a01dcaa6ed01f3686ade603e7663d8697
+  hash_d: c8f13db12090d83bc389ebbce912765ee4e5a00cd084b312c0af843b1977ae47
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk
+- name: task-mover-logica-reimplementada-a-kgdb-sldb-pron
+  path: desk/tasks/task-mover-logica-reimplementada-a-kgdb-sldb-pron.md
+  hash_c: c4b5c771838fabfefdd51b429cd34b34169c4648982aa03f162404b218206f8e
+  hash_d: 7d3224582aa09e315a3beaef243e34e051b02654856eb3e7c992fd03c0f928de
+  semantic_tags:
+  - artifact:task
+  - type.workflow.task
+  - workspace.desk
+  - workspace:desk

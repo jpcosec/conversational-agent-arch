@@ -4,6 +4,18 @@ type: component
 version: "3.0"
 metadata:
   author: antonIA
+  atoms:
+    - atom-orquestador-hub
+    - atom-ruteador-de-contexto-como-agente
+    - atom-agente-conversador
+    - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+    - atom-policy-decide-turn
+    - atom-context-compiler-knowledge
+    - atom-in-process-event-bus
+    - atom-pii-scrubber
+    - atom-topologia-de-despliegue
+    - atom-router-state-machine
+    - atom-canales-de-entrada
   description: >-
     Modelo lógico del runtime, más alto nivel que el código pero fiel al
     cableado real (cada edge verificado contra el código). Estado actual del
@@ -21,6 +33,9 @@ metadata:
     Reflector escribe atoms 'proposed' directo vía sldb. Incluye KGDB,
     scrubber PII, EventBus, Gemini como servicio externo y los 3 canales de
     entrada (chat UI, webhook Twilio, CLI).
+    La capa de compilación de contexto (knowledge.*) se llama
+    ``Context Compiler`` en este diagrama, reflejando su módulo real
+    ``kb_agent.knowledge.*`` (no ``ontologizador``).
 style:
   kinds:
     engine:
@@ -54,10 +69,10 @@ data:
         - state_machine
         - scrubber
     layer_engines:
-      label: "Agentes LLM del turno (base común agents.base.Agent)"
+      label: "Agentes LLM del turno (base común agents.base.Agent · context_compiler en knowledge.*)"
       kind: boundary
       contains:
-        - ontologizador
+        - context_compiler
         - router_agent
         - orchestrator_agent
         - policy_decide_turn
@@ -130,8 +145,8 @@ data:
     scrubber:
       label: "PII Scrubber (scrub antes de persistir y de perfilar)"
       kind: boundary
-    ontologizador:
-      label: "Ontologizador (ContextCompiler: KB tipada + traits + paso de flujo; delega el bundle al Ruteador)"
+    context_compiler:
+      label: "Context Compiler (knowledge.compiler: ContextCompiler + KnowledgeOperations + ConversationFlow sobre el grafo tipado de kgdb; delega el bundle al Ruteador)"
       kind: engine
     router_agent:
       label: "Ruteador de contexto (RouterAgent.route: bundle justificado [{doc_id, motivo}] con tools explore_multi/explore/show; cualquier familia, justificada)"
@@ -167,7 +182,7 @@ data:
       label: "apply_security_floor (RuleAtom conversation:security SIEMPRE en el bundle)"
       kind: boundary
     guard_transitions:
-      label: "apply_transition_guard (step_target fuera de allowed_transitions => vetado)"
+      label: "apply_transition_guard (step_target sin arista transitions_to desde el step activo => vetado)"
       kind: boundary
     tool_registry:
       label: "execute_tool (recibe handlers ya resueltos; tool_timeout_ms)"
@@ -208,16 +223,16 @@ data:
     - {from: sldb_kb, to: orchestrator, label: "AgentFraming por AgentRole (router/orchestrator/gate)"}
     # hub ↔ router técnico
     - {from: orchestrator, to: state_machine, label: "handle_user_message"}
-    - {from: state_machine, to: ontologizador, label: "compile_context (inyectado)"}
+    - {from: state_machine, to: context_compiler, label: "compile_context (inyectado)"}
     - {from: state_machine, to: orchestrator_agent, label: "draft (closure del orquestador)"}
     # ontologizador → ruteador → datos
-    - {from: ontologizador, to: router_agent, label: "route(question, candidatos, traits, step)"}
+    - {from: context_compiler, to: router_agent, label: "route(question, candidatos, traits, step)"}
     - {from: router_agent, to: knowledge_ops, label: "tools explore_multi / explore / show"}
     - {from: router_agent, to: guard_security_floor, label: "bundle del modelo"}
-    - {from: guard_security_floor, to: ontologizador, label: "bundle + piso (fallback: _build_bundle determinístico)"}
-    - {from: ontologizador, to: sldb_kb, label: "atoms tipados"}
-    - {from: ontologizador, to: kgdb_graph, label: "flow_node, transiciones, grounding"}
-    - {from: ontologizador, to: sql_db, label: "UserTraits"}
+    - {from: guard_security_floor, to: context_compiler, label: "bundle + piso (fallback: _build_bundle determinístico)"}
+    - {from: context_compiler, to: sldb_kb, label: "atoms tipados"}
+    - {from: context_compiler, to: kgdb_graph, label: "flow_node, transiciones, grounding"}
+    - {from: context_compiler, to: sql_db, label: "UserTraits"}
     # el orquestador-agente DECIDE; el hub EJECUTA
     - {from: orchestrator_agent, to: guard_transitions, label: "step_target propuesto"}
     - {from: guard_transitions, to: orchestrator, label: "kind: tool_call | fallback | nl (+ flow_target válido)"}

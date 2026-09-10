@@ -1,0 +1,57 @@
+{
+  "scenario_id": "donpeppe_fuera_de_alcance",
+  "external_id": "sim:donpeppe_fuera_de_alcance",
+  "saved_at": "2026-08-27T19:32:18.428333+00:00",
+  "ended_by": "user_done",
+  "end_reason": "Ya hice las tres preguntas y recibí respuesta para cada una.",
+  "turns": [
+    {
+      "user": "Hola, quisiera pedir delivery a mi casa.",
+      "user_reason": "Aun no he hecho las tres preguntas. Esta es la primera.",
+      "assistant": "¡Hola! Entiendo que quieres pedir delivery, pero yo soy tu asistente virtual y no puedo tomar pedidos. Te sugiero contactar directamente a Don Peppe para ver las opciones de reparto que tienen. ¡Gracias!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "¿Tienen sushi?",
+      "user_reason": "El asistente no puede tomar pedidos, ahora pregunto por el sushi.",
+      "assistant": "¡Hola! Gracias por tu pregunta. En Don Peppe nos especializamos en las pizzas, así que no tenemos sushi en nuestro menú.\n\nPero te aseguro que nuestras pizzas son una delicia, ¡como la clásica Margherita o la sabrosa Pepperoni!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "¿Tienen sucursal en Valparaíso?",
+      "user_reason": "Aun me falta preguntar por la sucursal en Valparaíso.",
+      "assistant": "¡Hola! Qué buena pregunta. Yo solo tengo la información de nuestro local en Av. Italia 1234, Providencia, aquí en Santiago. No tengo datos sobre una sucursal en Valparaíso. ¡Saludos!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

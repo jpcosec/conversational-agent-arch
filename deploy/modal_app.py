@@ -5,7 +5,7 @@ Empaqueta:
   - El codigo de este repo (``kb_agent``, ``frontends``, ``knowledge_base``,
     ``project.config.yaml`` y la KB de prueba ``tests/knowledge``) dentro de la imagen.
   - Los tres paquetes locales (no publicados en PyPI) de los que depende el
-    runtime: ``sldb``, ``kgdb``, ``deskops`` (viven en
+    runtime: ``sldb``, ``kgdb``, ``deskops`` y ``pron`` (viven en
     ``hum-ecosystem/tools/*``), instalados via ``pip install`` de su
     directorio local dentro de la imagen.
 
@@ -25,6 +25,12 @@ App/volumen separados (dev), sin copiar este archivo: el nombre de la app sale
 de ``MODAL_APP_NAME`` y el volumen es ``<app>-data``.
     MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py
     modal app logs kb-agent-runtime-dev
+
+Otro negocio (otra KB) en su propio endpoint: ``PROJECT_CONFIG`` elige el yaml
+(debe vivir en la raiz del repo). De ahi salen app/volumen (``deploy.modal_app_name``)
+y la KB que se copia a la imagen (``kb_root``).
+    PROJECT_CONFIG=project.vitali.yaml modal deploy deploy/modal_app.py
+    modal app logs vitali-runtime
 """
 from __future__ import annotations
 
@@ -34,6 +40,8 @@ import modal
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TOOLS_ROOT = Path("/home/jp/proyectos/hum-ecosystem/tools")
+#: pron (World/Store/Graph/DocumentIndex sobre sldb+kgdb) vive en otro checkout.
+PRON_ROOT = Path(str(REPO_ROOT.parent / "legos" / "pron"))
 
 #: Infra de despliegue centralizada en ``project.config.yaml`` (bloque
 #: ``deploy``), leida via ``ProjectConfig``. Antes estos valores vivian
@@ -53,7 +61,18 @@ if str(_CFG_ROOT) not in _sys.path:
     _sys.path.insert(0, str(_CFG_ROOT))
 from kb_agent.project_config import load_project_config as _load_cfg  # noqa: E402
 
-_DEPLOY_CFG = _load_cfg(_CFG_ROOT / "project.config.yaml", mode="serving").deploy
+#: Yaml del negocio: ``PROJECT_CONFIG`` (solo el nombre; vive en la raiz) o
+#: project.config.yaml (Antonia). Se resuelve contra ``_CFG_ROOT`` para que
+#: valga en el deploy y dentro del contenedor (donde el env ya trae la ruta
+#: remota, ver ``.env()`` de la imagen).
+import os as _os
+
+CFG_NAME = Path(_os.environ.get("PROJECT_CONFIG") or "project.config.yaml").name
+_CFG = _load_cfg(_CFG_ROOT / CFG_NAME, mode="serving")
+_DEPLOY_CFG = _CFG.deploy
+#: KB servida, relativa a la raiz (ej. ``knowledge`` o ``knowledge_vitali``):
+#: es lo que se copia a la imagen y lo que el yaml apunta como ``kb_root``.
+KB_REL = _CFG.kb_root.resolve().relative_to(_CFG_ROOT)
 
 APP_NAME = _DEPLOY_CFG.modal_app_name
 VOLUME_NAME = f"{APP_NAME}-data"
@@ -128,7 +147,8 @@ image = (
     .add_local_dir(str(TOOLS_ROOT / "sldb"), "/root/tools/sldb", copy=True, ignore=_TOOL_IGNORE)
     .add_local_dir(str(TOOLS_ROOT / "kgdb"), "/root/tools/kgdb", copy=True, ignore=_TOOL_IGNORE)
     .add_local_dir(str(TOOLS_ROOT / "deskops"), "/root/tools/deskops", copy=True, ignore=_TOOL_IGNORE)
-    .run_commands("pip install /root/tools/sldb /root/tools/kgdb /root/tools/deskops")
+    .add_local_dir(str(PRON_ROOT), "/root/tools/pron", copy=True, ignore=_TOOL_IGNORE)
+    .run_commands("pip install /root/tools/sldb /root/tools/kgdb /root/tools/deskops /root/tools/pron")
     # Codigo + KB de este repo. Copias selectivas (en vez de todo el repo) para
     # no arrastrar desk/, runs/, .sldb raiz, ni el cache de embeddings (~600MB
     # de blobs de modelo que el runtime no necesita: /api/viz/graph lee
@@ -139,21 +159,21 @@ image = (
                     ignore=_PYCACHE_IGNORE)
     .add_local_dir(str(REPO_ROOT / "knowledge_base"), f"{REMOTE_APP_DIR}/knowledge_base", copy=True,
                     ignore=_PYCACHE_IGNORE)
-    # KB REAL servida en produccion (Antonia): project.config.yaml -> kb_root: knowledge
-    .add_local_dir(str(REPO_ROOT / "knowledge"), f"{REMOTE_APP_DIR}/knowledge", copy=True,
+    # KB REAL servida: la que apunta ``kb_root`` del yaml elegido (Antonia ->
+    # knowledge/, Vitali -> knowledge_vitali/).
+    .add_local_dir(str(REPO_ROOT / KB_REL), f"{REMOTE_APP_DIR}/{KB_REL}", copy=True,
                     ignore=[*_PYCACHE_IGNORE, ".embedding_cache", ".embedding_cache/**", ".knowledge.db"])
-    # KB de prueba (Don Peppe), incluida por si se apunta ahi con PROJECT_CONFIG/KB_ROOT
-    .add_local_dir(str(REPO_ROOT / "tests" / "knowledge"), f"{REMOTE_APP_DIR}/tests/knowledge", copy=True,
-                    ignore=[*_PYCACHE_IGNORE, ".embedding_cache", ".embedding_cache/**", "desk", "desk/**"])
+    # KB servida (según project.config.yaml: kb_root)
+
     # Migraciones: el volumen /data persiste el sqlite entre deploys, asi que
     # el esquema hay que MIGRARLO (create_all() no altera tablas existentes).
     .add_local_dir(str(REPO_ROOT / "alembic"), f"{REMOTE_APP_DIR}/alembic", copy=True,
                     ignore=_PYCACHE_IGNORE)
     .add_local_file(str(REPO_ROOT / "alembic.ini"), f"{REMOTE_APP_DIR}/alembic.ini", copy=True)
-    .add_local_file(str(REPO_ROOT / "project.config.yaml"), f"{REMOTE_APP_DIR}/project.config.yaml", copy=True)
-    # El override MODAL_APP_NAME del deploy viaja a la imagen: el contenedor
-    # re-importa este modulo y debe resolver el MISMO app/volumen.
-    .env({"MODAL_APP_NAME": APP_NAME})
+    .add_local_file(str(REPO_ROOT / CFG_NAME), f"{REMOTE_APP_DIR}/{CFG_NAME}", copy=True)
+    # MODAL_APP_NAME y PROJECT_CONFIG del deploy viajan a la imagen: el
+    # contenedor re-importa este modulo y debe resolver el MISMO app/volumen/yaml.
+    .env({"MODAL_APP_NAME": APP_NAME, "PROJECT_CONFIG": f"{REMOTE_APP_DIR}/{CFG_NAME}"})
 )
 
 app = modal.App(APP_NAME)
@@ -194,7 +214,7 @@ def serve():
             fh.write(adc_json)
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = adc_path
 
-    os.environ["PROJECT_CONFIG"] = f"{REMOTE_APP_DIR}/project.config.yaml"
+    os.environ["PROJECT_CONFIG"] = f"{REMOTE_APP_DIR}/{CFG_NAME}"
     os.environ["CHAT_DB"] = "/data/ui-chat.sqlite"
     os.environ["PROFILING_DB"] = "/data/ui-chat.sqlite"
     os.environ["PYTHONPATH"] = REMOTE_APP_DIR
@@ -325,7 +345,7 @@ def clean_and_seed() -> None:
     if REMOTE_APP_DIR not in sys.path:
         sys.path.insert(0, REMOTE_APP_DIR)
     os.chdir(REMOTE_APP_DIR)
-    os.environ["PROJECT_CONFIG"] = f"{REMOTE_APP_DIR}/project.config.yaml"
+    os.environ["PROJECT_CONFIG"] = f"{REMOTE_APP_DIR}/{CFG_NAME}"
 
     con = _connect()
     try:
@@ -343,7 +363,7 @@ def clean_and_seed() -> None:
     finally:
         con.close()
 
-    from kb_agent.seed_demo_users import seed
+    from frontends.chat.seed_demo_users import seed
 
     stats = seed(DB_PATH)
     print("sembrado:", stats)

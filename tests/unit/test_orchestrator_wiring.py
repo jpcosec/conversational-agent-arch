@@ -1,7 +1,7 @@
 """Cableado completo del orquestador SIN red: router -> compilador -> policy -> LLM (fake)
 -> tools (registry) -> SQL -> perfilador (fake).
 
-Usa la KB real de Don Peppe (store SLDB tipado) y SQLite temporal. Los LLM son
+Usa la KB de prueba del repo (negocio_kb, store SLDB tipado) y SQLite temporal. Los LLM son
 fakes inyectados por los puertos ``Conversador``/``TraitMapper``, asi que aqui
 se prueba TODO el runtime salvo la calidad del texto generado (eso vive en e2e).
 """
@@ -38,8 +38,8 @@ NL_TRACE = ["idle", "evaluating_context", "drafting_response", "idle"]
 
 
 @pytest.fixture()
-def orch(donpeppe_kb: Path, tmp_db_url: str) -> Orchestrator:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers=load_tool_handlers(load_project_config(mode="test").tool_handlers))
+def orch(negocio_kb: Path, tmp_db_url: str) -> Orchestrator:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers=load_tool_handlers(load_project_config(mode="test").tool_handlers))
     yield o
     o.close()
 
@@ -56,24 +56,24 @@ def test_nl_turn_is_grounded_in_kb_and_traced(orch: Orchestrator) -> None:
     assert turn["allowed_transitions"] == ["conversation:steps.booking"]
 
     ctx = turn["context"]
-    assert "atom-donpeppe-carta" in ctx["atom_ids"]
-    carta = next(i for i in ctx["items"] if i["atom_id"] == "atom-donpeppe-carta")
-    assert carta["title"] == "Carta Don Peppe" and carta["role"] == "domain_fact" and carta["grounds_step"] is True
+    assert "domain-menu" in ctx["atom_ids"]
+    carta = next(i for i in ctx["items"] if i["atom_id"] == "domain-menu")
+    assert carta["title"] == "Domain Menu" and carta["role"] == "domain_fact" and carta["grounds_step"] is True
     assert "domain:catalogo" in ctx["include_tags"]
 
     # el conversador recibio persona/estrategia/fallback desde la KB, no hardcodeados
     [compiled] = orch.conversador.calls
-    assert compiled["persona"]["whoami"].startswith("Soy el asistente virtual de Don Peppe")
-    assert compiled["fallback_text"].startswith("Uy, eso no lo tengo a mano")
+    assert compiled["persona"]["whoami"].startswith("Soy el asistente de la pizzeria")
+    assert compiled["fallback_text"].startswith("Si no hay contexto suficiente")
     assert compiled["question"] == "que pizzas tienen?"
 
-    # Bundle justificado (tarea 1.3): atom-donpeppe-carta entra con motivo de
-    # grounding del step activo (onboarding). atom-donpeppe-regla-reservas
+    # Bundle justificado (tarea 1.3): domain-menu entra con motivo de
+    # grounding del step activo (onboarding). rule-reservas
     # (que solo groundea "booking") ya NO entra "porque estaba todo incluido"
     # como antes de 1.3 -- el contexto es justificado por turno, no total.
     bundle_by_id = {b["doc_id"]: b for b in compiled["bundle"]}
-    assert bundle_by_id["atom-donpeppe-carta"]["motivo"] == "grounding de steps.onboarding"
-    assert "atom-donpeppe-regla-reservas" not in bundle_by_id
+    assert bundle_by_id["domain-menu"]["motivo"] == "grounding de steps.onboarding"
+    assert "rule-reservas" not in bundle_by_id
 
 
 def test_tool_turn_executes_registered_handler_and_persists(orch: Orchestrator) -> None:
@@ -96,8 +96,8 @@ def test_tool_turn_executes_registered_handler_and_persists(orch: Orchestrator) 
         assert row.user_id == turn["user_id"]
 
 
-def test_tool_without_registered_handler_yields_unknown_tool(donpeppe_kb: Path, tmp_db_url: str) -> None:
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers={})
+def test_tool_without_registered_handler_yields_unknown_tool(negocio_kb: Path, tmp_db_url: str) -> None:
+    o = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers={})
     try:
         turn = o.handle_turn(external_id="wa:+1", message=RESERVA_MSG)
         assert turn["kind"] == "tool_call"
@@ -111,6 +111,13 @@ def test_handlers_can_be_injected_for_any_kb(antonia_kb: Path, tmp_db_url: str) 
     handler = RecordingToolHandler("recordatorio")
     o = offline_orchestrator(antonia_kb, tmp_db_url, tool_handlers={"agendar_recordatorio": handler}, trait_mapper=FakeTraitMapper())
     try:
+        # La tool solo es alcanzable desde registro_estado (arista uses_tool del step
+        # agendar_recordatorio, transicion permitida desde ahi): la sesion parte en
+        # ese step, como una persona ya inscrita que acaba de contar como va.
+        with o.SessionLocal() as session:
+            user = o.ensure_user(session, "whatsapp:+56900000001")
+            o._load_or_create_session_state(session, user.id).flow_node = "conversation:steps.registro_estado"
+            session.commit()
         turn = o.handle_turn(external_id="whatsapp:+56900000001", message="quiero agendar un recordatorio los martes a las 9:00")
         assert turn["kind"] == "tool_call"
         assert turn["system_turn"]["status"] == "ok"
@@ -171,9 +178,9 @@ def test_channel_is_derived_from_external_id_unless_explicit(orch: Orchestrator)
     assert channel_from_external_id("local:demo") == "local"
 
 
-def test_chat_history_is_scrubbed_for_user_and_assistant(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_chat_history_is_scrubbed_for_user_and_assistant(negocio_kb: Path, tmp_db_url: str) -> None:
     leaky = FakeConversador(lambda c: "Escribeme a test@example.com o al +56912345678.")
-    o = offline_orchestrator(donpeppe_kb, tmp_db_url, conversador=leaky)
+    o = offline_orchestrator(negocio_kb, tmp_db_url, conversador=leaky)
     try:
         turn = o.handle_turn(external_id="wa:+56955555555", message="Soy Juan Pérez, mi correo es juan@example.com")
         with o.SessionLocal() as s:
@@ -186,15 +193,15 @@ def test_chat_history_is_scrubbed_for_user_and_assistant(donpeppe_kb: Path, tmp_
         o.close()
 
 
-def test_state_and_data_survive_orchestrator_restart(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_state_and_data_survive_orchestrator_restart(negocio_kb: Path, tmp_db_url: str) -> None:
     handlers = load_tool_handlers({"crear_reserva": "kb_agent.tools.reservas:crear_reserva"})
-    a = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers=handlers)
+    a = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers=handlers)
     t1 = a.handle_turn(external_id="wa:+56966666666", message="soy vegetariano", scenario="pizzeria")
     a.handle_turn(external_id="wa:+56966666666", message=RESERVA_MSG)
     assert t1["scenario_source"] == "argument" and t1["scenario_effective"] == "pizzeria"
     a.close()
 
-    b = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers=handlers)
+    b = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers=handlers)
     try:
         t3 = b.handle_turn(external_id="wa:+56966666666", message="¿y para hoy?")
         assert t3["scenario_source"] == "session_state" and t3["scenario_effective"] == "pizzeria"
@@ -226,5 +233,157 @@ def test_from_config_wires_business_declared_in_yaml(tmp_db_url: str) -> None:
         assert o.model == cfg.model
         assert set(o.tool_handlers) == set(cfg.tool_handlers)
         assert o.handle_turn(external_id="ui:cfg", message=RESERVA_MSG)["system_turn"]["status"] == "ok"
+    finally:
+        o.close()
+
+
+# ── concurrencia: SELECT-then-INSERT sin lock (regresion) ──────────────────
+#
+# Antes: dos requests simultaneas de un usuario NUEVO pasaban ambas el SELECT
+# de ensure_user/_load_or_create_session_state y el segundo INSERT reventaba
+# con IntegrityError (UNIQUE users.external_id / PK session_state.user_id),
+# perdiendo el turno con un 500. Ademas el turn_id lo daba un contador
+# compartido que colisionaba. Estos tests ejercen concurrencia real (threads
+# contra un SQLite de archivo); antes no habia ninguno.
+
+def test_concurrent_first_contact_does_not_lose_turns(negocio_kb: Path, tmp_db_url: str) -> None:
+    import threading
+
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    n = 8
+    results: list[dict] = []
+    errors: list[Exception] = []
+    barrier = threading.Barrier(n)
+
+    def worker(i: int) -> None:
+        try:
+            barrier.wait()  # maximizar el solapamiento
+            turn = o.handle_turn(external_id="wa:+concurrent-new", message=f"hola {i}")
+            results.append(turn)
+        except Exception as exc:  # noqa: BLE001 -- el test decide si fallar
+            errors.append(exc)
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(n)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    try:
+        assert errors == [], f"requests concurrentes fallaron: {errors!r}"
+        assert len(results) == n
+        with o.SessionLocal() as s:
+            users = s.scalars(select(Users).where(Users.external_id == "wa:+concurrent-new")).all()
+            assert len(users) == 1  # un solo usuario, no N
+            states = s.scalars(
+                select(SessionState).where(SessionState.user_id == users[0].id)
+            ).all()
+            assert len(states) == 1  # un solo estado de sesion
+            msgs = s.scalars(
+                select(ChatHistory).where(ChatHistory.user_id == users[0].id)
+            ).all()
+            # cada turno persiste user+assistant: N turnos -> 2N mensajes
+            assert len(msgs) == 2 * n
+    finally:
+        o.close()
+
+
+def test_concurrent_turns_get_unique_turn_ids(negocio_kb: Path, tmp_db_url: str) -> None:
+    import threading
+
+    o = offline_orchestrator(negocio_kb, tmp_db_url, trait_mapper=FakeTraitMapper())
+    n = 12
+    turn_ids: list[str] = []
+    lock = threading.Lock()
+    barrier = threading.Barrier(n)
+
+    def worker(i: int) -> None:
+        barrier.wait()
+        turn = o.handle_turn(external_id="wa:+concurrent-ids", message=f"hola {i}")
+        with lock:
+            turn_ids.append(turn["turn_id"])
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(n)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    try:
+        assert len(turn_ids) == n
+        assert len(set(turn_ids)) == n  # todos unicos, no colisionan
+    finally:
+        o.close()
+
+
+def test_turn_holds_no_write_lock_during_the_llm_phase(negocio_kb: Path, tmp_db_url: str) -> None:
+    """Con dos personas escribiendo a la vez (webhook async: un hilo por mensaje),
+    el turno de la segunda moria con "database is locked": handle_turn hacia
+    flush() del session_state antes de la fase LLM y commit recien al final, y
+    SQLite retiene el candado de escritura durante toda la llamada al modelo.
+    El conversador fake escribe desde OTRA conexion en medio de su turno: si el
+    candado siguiera tomado, sqlite3 levanta OperationalError."""
+    import sqlite3
+
+    from tests.support.fakes import FakeConversador
+
+    db_path = tmp_db_url.removeprefix("sqlite:///")
+
+    class WritesFromAnotherConnection(FakeConversador):
+        def __init__(self) -> None:
+            super().__init__()
+            self.other_writes = 0
+
+        def draft_nl(self, compiled):  # type: ignore[override]
+            other = sqlite3.connect(db_path, timeout=0.2)
+            try:
+                other.execute("update users set channel = channel where 1 = 0")
+                other.commit()
+                self.other_writes += 1
+            finally:
+                other.close()
+            return super().draft_nl(compiled)
+
+    conversador = WritesFromAnotherConnection()
+    o = offline_orchestrator(negocio_kb, tmp_db_url, conversador=conversador, trait_mapper=FakeTraitMapper())
+    try:
+        turn = o.handle_turn(external_id="wa:+56911110000", message="hola")
+        assert turn["reply"]
+        assert conversador.other_writes == 1
+    finally:
+        o.close()
+
+
+def test_captured_slots_persist_and_reach_the_conversador(negocio_kb: Path, tmp_db_url: str) -> None:
+    """Lo que la persona dice (nombre, dia, medico) lo captura el OrchestratorAgent
+    en ``captured_slots``; se persiste en session_state.flow_slots["collected"] y
+    el Conversador lo ve en el turno siguiente aunque el historial sea corto."""
+    from tests.support.fakes import FakeConversador, FakeOrchestratorAgent
+
+    seen: list[dict] = []
+
+    class RecordingConversador(FakeConversador):
+        def draft_nl(self, compiled):  # type: ignore[override]
+            seen.append(dict(compiled.get("collected_slots") or {}))
+            return super().draft_nl(compiled)
+
+    def decide(ctx: dict) -> dict:
+        if "doctora Soto" in ctx.get("question", ""):
+            return {"kind": "nl", "reason": "captura", "captured_slots": {"medico": "doctora Soto", "dia_aplicacion": "jueves"}}
+        return {"kind": "nl", "reason": "nada nuevo"}
+
+    o = offline_orchestrator(
+        negocio_kb, tmp_db_url, conversador=RecordingConversador(),
+        orchestrator_agent=FakeOrchestratorAgent(decide), trait_mapper=FakeTraitMapper(),
+    )
+    try:
+        o.handle_turn(external_id="wa:+56911117777", message="mi medico es la doctora Soto y me aplico los jueves")
+        assert seen[-1]["medico"] == "doctora Soto"
+        with o.SessionLocal() as s:
+            user = o.ensure_user(s, "wa:+56911117777")
+            state = o._load_or_create_session_state(s, user.id)
+            assert state.flow_slots["collected"]["dia_aplicacion"] == "jueves"
+        o.handle_turn(external_id="wa:+56911117777", message="hola de nuevo")
+        assert seen[-1]["medico"] == "doctora Soto" and seen[-1]["dia_aplicacion"] == "jueves"
     finally:
         o.close()

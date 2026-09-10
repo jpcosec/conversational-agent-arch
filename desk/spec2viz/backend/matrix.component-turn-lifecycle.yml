@@ -4,6 +4,10 @@ type: component_view_matrix
 version: "0.2"
 metadata:
   author: antonIA
+  atoms:
+    - atom-concepto-turno-extendido
+    - atom-clasificación-de-4-ramas-del-flujo-psp
+    - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   description: >-
     Matriz vistas×stages que ubica cada componente del runtime en las etapas
     en que participa. Dos vistas: el turno síncrono (idle → respuesta) y los
@@ -74,14 +78,14 @@ data:
             turn: [context, decide, gate, reply]
             async: [extract, batch, thicken]
           children:
-            - name: Ontologizador
+            - name: ContextCompiler
               kind: engine
-              label: Ontologizador (Context Compiler)
+              label: "Context Compiler (knowledge.compiler: KB tipada + traits + paso de flujo; delega bundle al Ruteador)"
               stages:
                 turn: [context]
             - name: Ruteador
               kind: decision_engine
-              label: "Ruteador (RouterAgent: bundle justificado + piso de seguridad)"
+              label: "Ruteador (RouterAgent.route: bundle justificado + piso de seguridad)"
               stages:
                 turn: [context]
             - name: Orquestador

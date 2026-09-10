@@ -1,0 +1,179 @@
+stores: []
+models:
+- name: DomainAtom
+  model_ref: kb_agent.models.knowledge:DomainAtom
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/domain.py
+  models_index: .sldb/core/models/DomainAtom.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: RuleAtom
+  model_ref: kb_agent.models.knowledge:RuleAtom
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/rule.py
+  models_index: .sldb/core/models/RuleAtom.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: ToolAtom
+  model_ref: kb_agent.models.knowledge:ToolAtom
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/tool.py
+  models_index: .sldb/core/models/ToolAtom.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: TraitAtom
+  model_ref: kb_agent.models.knowledge:TraitAtom
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/trait.py
+  models_index: .sldb/core/models/TraitAtom.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: ConversationStep
+  model_ref: kb_agent.models.knowledge:ConversationStep
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/step.py
+  models_index: .sldb/core/models/ConversationStep.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: SelfDeclaration
+  model_ref: kb_agent.models.knowledge:SelfDeclaration
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/self_declaration.py
+  models_index: .sldb/core/models/SelfDeclaration.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: StyleGuide
+  model_ref: kb_agent.models.knowledge:StyleGuide
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/style.py
+  models_index: .sldb/core/models/StyleGuide.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: CapabilityBoundary
+  model_ref: kb_agent.models.knowledge:CapabilityBoundary
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/boundary.py
+  models_index: .sldb/core/models/CapabilityBoundary.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: StrategyRule
+  model_ref: kb_agent.models.knowledge:StrategyRule
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/strategy.py
+  models_index: .sldb/core/models/StrategyRule.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: FallbackRule
+  model_ref: kb_agent.models.knowledge:FallbackRule
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/fallback.py
+  models_index: .sldb/core/models/FallbackRule.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: GateCriterion
+  model_ref: kb_agent.models.knowledge:GateCriterion
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/gate.py
+  models_index: .sldb/core/models/GateCriterion.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: AgentFraming
+  model_ref: kb_agent.models.knowledge:AgentFraming
+  path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/agent_framing.py
+  models_index: .sldb/core/models/AgentFraming.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: RelationTypeDoc
+  model_ref: kgdb.models:RelationTypeDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/kgdb/src/kgdb/models/relation_type_doc.py
+  models_index: .sldb/core/models/RelationTypeDoc.yaml
+  version: 1
+  canonical: false
+  family: relation
+  semantics:
+  - layer.topology
+  - type.relation.type
+- name: RelationDoc
+  model_ref: kgdb.models:RelationDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/kgdb/src/kgdb/models/relation_doc.py
+  models_index: .sldb/core/models/RelationDoc.yaml
+  version: 1
+  canonical: false
+  family: relation
+  semantics:
+  - layer.topology
+  - type.relation.instance
+predicates:
+- name: is_solved_by
+  axis: HOW
+  description: Identifies how the source is solved.
+- name: implements
+  axis: HOW
+  description: Identifies what the source implements.
+- name: mathematically_proves
+  axis: WHY
+  description: Provides a mathematical proof.
+- name: explains_failure_of
+  axis: WHY
+  description: Explains why the target fails.
+- name: grounded_by
+  axis: PROVENANCE
+  description: Identifies supporting provenance.
+- name: restricts
+  axis: WHEN_WHERE
+  description: Restricts the target context.
+- name: defines
+  axis: WHAT
+  description: Defines the target concept.
+- name: has_model
+  axis: WHAT
+  description: The store registers this model.
+- name: has_document
+  axis: WHAT
+  description: The model has this document as an instance.
+- name: has_section
+  axis: WHERE
+  description: The document contains this section.
+- name: tagged_as
+  axis: WHAT
+  description: The model, document or section carries this semantic tag.
+- name: semantic_parent
+  axis: WHAT
+  description: This tag is a child of that tag in the semantic DAG.
+- name: semantic_equivalent
+  axis: WHAT
+  description: This local tag maps to that global tag across linked stores.
+- name: has_field
+  axis: WHAT
+  description: The model declares this field; the field node carries its type and
+    description.
+- name: extends
+  axis: WHAT
+  description: The model inherits from that model (base_models); instances of the
+    source are instances of the target.
+- name: applies_to_source
+  axis: WHAT
+  description: 'Instances of this model may be the source of edges of this relation
+    type: the verbs a class can be subject of.'
+- name: applies_to_target
+  axis: WHAT
+  description: Instances of this model may be the target of edges of this relation
+    type.
+- name: names
+  axis: WHAT
+  description: The anchor (an alias word) names this model, field, relation type or
+    document.
+hash_a: 443d4dee1c03bc3437c2c35a0c9a89282cd49871d465712e4bb1d6fa7b242306

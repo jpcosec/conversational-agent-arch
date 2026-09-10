@@ -1,0 +1,115 @@
+documents:
+- doc_name: style-hcp-tone
+  sections:
+  - path: estilo-registro-m-dico-profesional
+    title: Estilo — registro médico profesional
+    breadcrumbs:
+    - Estilo — registro médico profesional
+    about:
+    - Estilo — registro médico profesional
+    - estilo registro m dico profesional
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: estilo-registro-m-dico-profesional
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: estilo-registro-m-dico-profesional/tone
+    title: Tone
+    breadcrumbs:
+    - Estilo — registro médico profesional
+    - Tone
+    about:
+    - Estilo — registro médico profesional
+    - estilo registro m dico profesional
+    - Tone
+    - tone
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: tone
+    level: 2
+    line_start: 14
+    line_end: 15
+  - path: estilo-registro-m-dico-profesional/language-register
+    title: Language Register
+    breadcrumbs:
+    - Estilo — registro médico profesional
+    - Language Register
+    about:
+    - Estilo — registro médico profesional
+    - estilo registro m dico profesional
+    - Language Register
+    - language register
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: language-register
+    level: 2
+    line_start: 18
+    line_end: 19
+  - path: estilo-registro-m-dico-profesional/phrase-preferences
+    title: Phrase Preferences
+    breadcrumbs:
+    - Estilo — registro médico profesional
+    - Phrase Preferences
+    about:
+    - Estilo — registro médico profesional
+    - estilo registro m dico profesional
+    - Phrase Preferences
+    - phrase preferences
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: phrase-preferences
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: estilo-registro-m-dico-profesional/length-guidelines
+    title: Length Guidelines
+    breadcrumbs:
+    - Estilo — registro médico profesional
+    - Length Guidelines
+    about:
+    - Estilo — registro médico profesional
+    - estilo registro m dico profesional
+    - Length Guidelines
+    - length guidelines
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    semantic_tags:
+    - self:estilo
+    - system:teva-hcp
+    - type.knowledge.style
+    - workspace.knowledge
+    slug: length-guidelines
+    level: 2
+    line_start: 26
+    line_end: 27

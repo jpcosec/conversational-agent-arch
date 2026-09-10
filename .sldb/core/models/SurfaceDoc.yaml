@@ -1,0 +1,13 @@
+name: SurfaceDoc
+model_ref: sldb.models.knowledge_surface:SurfaceDoc
+path: /home/jp/proyectos/hum-ecosystem/tools/sldb/src/sldb/models/knowledge_surface.py
+documents_index: .sldb/core/documents/SurfaceDoc.yaml
+sections_index: .sldb/runtime/sections/SurfaceDoc.yaml
+hash_b: 0bf3150a61d94bba656525bc6481f776f2417c88f68c5e32c6b8a521b2e453ab
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.surface
+- workspace.knowledge.surfaces
+base_models: []

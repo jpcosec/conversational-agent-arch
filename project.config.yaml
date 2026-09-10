@@ -1,4 +1,4 @@
-# Configuración del proyecto/negocio activo del runtime.
+# Configuración del negocio de esta rama (un negocio por rama; el runtime no lleva nada del negocio).
 #
 # Doctrina: una KB = un negocio. Este archivo define QUÉ negocio corre el
 # runtime y sus rutas/marca/tools, para no hardcodear nombres ni paths en el
@@ -20,10 +20,17 @@ project:
   #                   Apunta aqui al store externo/productivo del negocio.
   #   test_kb_root -> store de PRUEBA del repo, usado bajo pytest (auto) o
   #                   con mode="test". Mantiene los tests aislados del real.
-  kb_root: knowledge                # KB REAL del negocio desplegado (Antonia)
+  kb_root: knowledge_hcp            # KB Piloto HCP MX+CL
   test_kb_root: tests/knowledge     # KB de prueba del repo (Don Peppe, atoms tipados)
 
   chat_db: runs/ui-chat.sqlite      # SQLite del orquestador (sesión + traits)
+
+  # Clave canónica de identidad de persona (kb_agent/orchestrator.py::ensure_user).
+  #   external_id -> cada par canal:id es un usuario distinto.
+  #   phone       -> el mismo teléfono por WhatsApp y SMS es la MISMA persona;
+  #                  el external_id nuevo queda como alias del usuario existente.
+  # Antonia: pacientes que pueden escribir por WhatsApp o SMS => phone.
+  identity_key: phone
   profiling_db: runs/ui-chat.sqlite # SQLite que lee el visualizador de perfiles
 
   # Modelo LLM (Conversador + Perfilador)
@@ -33,14 +40,26 @@ project:
   # (La KB de Antonia SI lo declara: fallback-antonia. Esto solo aplica si falta.)
   # fallback_message: "No tengo esa información a mano."
 
+  # Mensaje a la paciente cuando el policy gate rechaza el borrador (voz de Antonia).
+  gate_handoff_message: "He preparado una respuesta pero prefiero que un profesional del programa la revise antes de enviarla. Alguien del equipo te contactará a la brevedad."
+  # Terminos que el scrubber de PII del historial nunca enmascara (la marca, el
+  # nombre del asistente, el programa). Sin esto "Soy Antonia" o "Programa Selfix"
+  # se guardaban como <NAME_n> y el historial que ve el modelo perdia sentido.
+  pii_allowlist: [Antonia, Selfix, Programa Selfix, Laboratorio Chile, Programa de Acompañamiento, MedInfo]
+
   # Tools del negocio: {nombre declarado en el ToolAtom: "modulo:funcion"}.
   # El ToolAtom de la KB define el schema; aqui se registra quien lo ejecuta.
   # Un handler registrado pero no declarado por la KB activa simplemente no se
-  # usa (Don Peppe declara crear_reserva; Antonia declara agendar_recordatorio).
+  # usa. Los de esta KB (knowledge_hcp) son programar_recontacto y
+  # actualizar_consentimiento; agendar_recordatorio (Antonia),
+  # registrar_enrolamiento y crear_reserva se quedan por si.
   tools:
     agendar_recordatorio: kb_agent.tools.recordatorios:agendar_recordatorio
     crear_reserva: kb_agent.tools.reservas:crear_reserva
     registrar_enrolamiento: kb_agent.tools.enrolamiento:registrar_enrolamiento
+    programar_recontacto: kb_agent.tools.hcp:programar_recontacto
+    actualizar_consentimiento: kb_agent.tools.hcp:actualizar_consentimiento
+    registrar_consulta: kb_agent.tools.consultas:registrar_consulta
 
   # Servidor HTTP (frontends/chat)
   server:
@@ -52,20 +71,28 @@ project:
     runtime_title: "Auditable Agent Runtime"
     kb_label: "Antonia · KB"
     input_placeholder: "Escribe tu mensaje..."
-    # Este saludo lo lee la paciente: nada de vocabulario del runtime (atoms,
-    # contexto compilado, auditoría de turnos). La trazabilidad se inspecciona
-    # en el Turn Inspector, que es superficie de desarrollo, no de producto.
+    # Primer mensaje SALIENTE de campaña: no es un asistente esperando
+    # preguntas, es Antonia contactando al médico. Sigue
+    # step-hcp-contacto-inicial: presentarse, motivo en una línea y cerrar
+    # ofreciendo ahora / después / baja (su slot disposicion_contacto, y la
+    # salida inmediata que exige la misión §2.2). El otro slot del step,
+    # hcp_confirmado, NO se pide aquí: preguntar "¿hablo con el médico?" en
+    # frío suena a call center; la identidad se confirma por nombre cuando el
+    # flujo ya tiene la ficha del lead. Nada de vocabulario del runtime
+    # (atoms, contexto compilado, auditoría de turnos): eso vive en el Turn
+    # Inspector, que es superficie de desarrollo.
     greeting: >-
-      Hola. Soy **Antonia**, del Programa de Acompañamiento de Selfix.
-      Pregúntame sobre tu tratamiento, cómo aplicarte o agenda un recordatorio
-      de aplicación. Tu médico tratante sigue siendo tu referente clínico.
+      Hola. Soy **Antonia**, asistente virtual de Teva. Le escribo porque
+      aceptó recibir información de nuestro portafolio y tengo novedades para
+      su especialidad. ¿Se las comparto ahora, prefiere que le escriba en otro
+      momento, o prefiere dejar de recibirlas?
 
   # Parámetros de tuning del runtime (antes hardcodeados en el código).
   # Cada uno admite override por env: MAX_BUNDLE_SIZE, HISTORY_LIMIT,
   # ROUTER_MAX_RESULTS, TOOL_TIMEOUT_MS.
   tuning:
     max_bundle_size: 12       # tope de documentos en el bundle del turno
-    history_limit: 6          # mensajes recientes que entran al contexto
+    history_limit: 20         # mensajes recientes que entran al contexto (con 6, a los 3 turnos el modelo ya no sabia el nombre del medico ni el dia de aplicacion)
     router_max_results: 10    # default de explore_multi del ruteador
     tool_timeout_ms: 15000    # timeout de una tool call
 
@@ -78,3 +105,8 @@ project:
     twilio_secret_name: null                # Secret con TWILIO_AUTH_TOKEN (si existe)
     min_containers: 1
     serve_timeout_s: 600
+
+  # Demo mode: sin orquestador ni LLM, sirve datos de demo_data en vez de
+  # producción. Se lee de esta clave; DEMO_MODE=1 en el entorno también lo
+  # fuerza a true. Nunca activo en modo test.
+  demo_mode: false

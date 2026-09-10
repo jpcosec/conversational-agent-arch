@@ -1,0 +1,19 @@
+documents:
+- name: tool-hcp-programar-recontacto
+  path: atoms/tool-hcp-programar-recontacto.md
+  hash_c: 500feeb2beae07d264e82465176c86d0c390d2ba383317fac1f905ab50097f32
+  hash_d: d421830e22c8829e9ed6473a6707e076fe99ceaa381848fe8c9dc6cd4f48e3ae
+  semantic_tags:
+  - self:tools
+  - system:teva-hcp
+  - type.knowledge.tool
+  - workspace.knowledge
+- name: tool-hcp-actualizar-consentimiento
+  path: atoms/tool-hcp-actualizar-consentimiento.md
+  hash_c: d49c1d24bb35e3409bc9e9e2e0d4682e4385d39b314d3c6ab62d85f6c05c30a2
+  hash_d: 4cbcfde9ea40b7ac173d00e52423bbb71c39c696d8433c8798e2b462266e5cc5
+  semantic_tags:
+  - self:tools
+  - system:teva-hcp
+  - type.knowledge.tool
+  - workspace.knowledge

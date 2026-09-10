@@ -26,9 +26,6 @@ atom_type: strategy
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
 summary: ⸢rev•summary⸥
-embedding: ⸢optrev•embedding⸥
-parent: ⸢optrev•parent⸥
-semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

@@ -1,0 +1,10 @@
+Task: task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
+Title: Renombrar kb_agent/ontologizador a kb_agent/knowledge
+Status: draft
+Current node: checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-execution-ready
+Task type: implementation
+Routine: routine-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge
+Checklist status:
+- checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-execution-ready: complete
+- checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-testing-ready: complete
+- checklist-task-renombrar-kb-agent-ontologizador-a-kb-agent-knowledge-closeout-ready: pending

@@ -7,10 +7,28 @@ nodes:
 - id: type.desk.inbox-note
   parents:
   - type.desk
+- id: type.desk.repository
+  parents:
+  - type.desk
+- id: type.documentation
+  parents:
+  - type
+- id: type.documentation.composition
+  parents:
+  - type.documentation
+- id: type.documentation.faq
+  parents:
+  - type.documentation
 - id: type.knowledge
   parents:
   - type
 - id: type.knowledge.atom
+  parents:
+  - type.knowledge
+- id: type.knowledge.cli_command
+  parents:
+  - type.knowledge
+- id: type.knowledge.surface
   parents:
   - type.knowledge
 - id: type.workflow
@@ -19,7 +37,28 @@ nodes:
 - id: type.workflow.board
   parents:
   - type.workflow
+- id: type.workflow.checklist
+  parents:
+  - type.workflow
+- id: type.workflow.condition
+  parents:
+  - type.workflow
+- id: type.workflow.edge
+  parents:
+  - type.workflow
+- id: type.workflow.operator
+  parents:
+  - type.workflow
 - id: type.workflow.pill
+  parents:
+  - type.workflow
+- id: type.workflow.ritual
+  parents:
+  - type.workflow
+- id: type.workflow.routine
+  parents:
+  - type.workflow
+- id: type.workflow.step
   parents:
   - type.workflow
 - id: type.workflow.task
@@ -36,4 +75,31 @@ nodes:
 - id: workspace.desk.inbox
   parents:
   - workspace.desk
+- id: workspace.desk.materializations
+  parents:
+  - workspace.desk
+- id: workspace.desk.primitives
+  parents:
+  - workspace.desk
+- id: workspace.desk.registry
+  parents:
+  - workspace.desk
+- id: workspace.desk.routines
+  parents:
+  - workspace.desk
+- id: workspace.docs
+  parents:
+  - workspace
+- id: workspace.docs.faq
+  parents:
+  - workspace.docs
+- id: workspace.knowledge
+  parents:
+  - workspace
+- id: workspace.knowledge.commands
+  parents:
+  - workspace.knowledge
+- id: workspace.knowledge.surfaces
+  parents:
+  - workspace.knowledge
 equivalences: {}

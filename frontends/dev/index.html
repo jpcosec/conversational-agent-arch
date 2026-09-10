@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev Console</title>
+<link rel="stylesheet" href="/static/theme.css">
+</head><body class="page-dev">
+<div id="appNavMount"></div>
+<main class="wrap">
+  <div class="wrap-narrow">
+    <h1 class="page-title">🧰 Dev Console</h1>
+    <p class="page-sub">Herramientas técnicas para inspección y depuración del agente.</p>
+
+    <div class="dev-grid" id="toolsGrid">
+      <a class="dev-card" href="/dev/prompts">
+        <div class="dev-card-icon">📜</div>
+        <div class="dev-card-name">Prompts de los agentes</div>
+        <div class="dev-card-desc">Prompt completo de cada agente: encuadre de negocio + instrucción estática, criterios de <span data-tooltip="gate">validación</span>, grafo de <span data-tooltip="step">pasos</span>.</div>
+        <span class="chip chip-muted chip-square dev-card-tag">Agentes</span>
+      </a>
+      <a class="dev-card" href="/flow">
+        <div class="dev-card-icon">🔀</div>
+        <div class="dev-card-name">Editor de flujo</div>
+        <div class="dev-card-desc">Grafo de <span data-tooltip="step">pasos</span> del flujo conversacional con transiciones, <span data-tooltip="grounding">fuentes</span> y <span data-tooltip="tool">tools</span>.</div>
+        <span class="chip chip-muted chip-square dev-card-tag">Flujo</span>
+      </a>
+      <a class="dev-card" href="/mindmap">
+        <div class="dev-card-icon">🗺️</div>
+        <div class="dev-card-name">Mapa de la KB</div>
+        <div class="dev-card-desc">Mindmap del knowledge store: <span data-tooltip="familia">familias</span>, <span data-tooltip="documento">documentos</span>, relaciones semánticas y <span data-tooltip="embeddings">embedding</span> PCA 2D.</div>
+        <span class="chip chip-muted chip-square dev-card-tag">Knowledge</span>
+      </a>
+      <a class="dev-card" href="/users">
+        <div class="dev-card-icon">👤</div>
+        <div class="dev-card-name">Perfiles</div>
+        <div class="dev-card-desc"><span data-tooltip="trait">Rasgos de la persona</span>, historial de sesiones, extractor de perfiles por turno.</div>
+        <span class="chip chip-muted chip-square dev-card-tag">Usuarios</span>
+      </a>
+    </div>
+  </div>
+</main>
+<script src="/static/nav.js"></script>
+<script src="/static/glossary.js"></script>
+<script src="/static/tooltip.js"></script>
+<script src="/static/demo-tour.js"></script>
+<script src="/static/dev.js"></script>
+</body></html>

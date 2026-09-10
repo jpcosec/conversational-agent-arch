@@ -58,6 +58,32 @@ def _describe_trait(trait: Any) -> str:
     return label or description or str(trait.get("trait_id", ""))
 
 
+def _step_block(step: Any) -> str:
+    """Bloque PASO ACTUAL del prompt: instrucciones y datos a reunir del step.
+
+    ``compiled["step"]`` lo resuelve ``ContextCompiler.step_context`` (y el
+    Orquestador lo re-apunta al step destino cuando decide avanzar). Vacio
+    si la KB no tiene diagrama de conversacion.
+    """
+    if not isinstance(step, dict):
+        return ""
+    title = str(step.get("title") or step.get("id") or step.get("tag") or "").strip()
+    instructions = str(step.get("instructions") or "").strip()
+    slots = str(step.get("required_slots") or "").strip()
+    done = str(step.get("completion_condition") or "").strip()
+    if not (instructions or slots):
+        return ""
+    lines = [f"PASO ACTUAL DE LA CONVERSACION: {title}" if title else "PASO ACTUAL DE LA CONVERSACION:"]
+    if instructions:
+        lines.append(f"Instrucciones del paso: {instructions}")
+    if slots:
+        lines.append(f"Datos que este paso debe reunir: {slots}")
+    if done:
+        lines.append(f"El paso se completa cuando: {done}")
+    lines.append("Sigue las instrucciones del paso: pide solo lo que falta y no repitas lo que el cliente ya respondio.")
+    return "\n".join(lines) + "\n\n"
+
+
 def build_nl_prompt(compiled: dict[str, Any]) -> str:
     """Prompt del Conversador. Todo lo del negocio sale del Contexto Compilado."""
     persona = compiled.get("persona", {}) or {}
@@ -101,8 +127,21 @@ def build_nl_prompt(compiled: dict[str, Any]) -> str:
         ]
         if history_lines:
             history_prompt = "\n\nCONVERSACION PREVIA (mas antiguo primero, NO es el turno actual):\n" + "\n".join(history_lines)
+    step_prompt = _step_block(compiled.get("step"))
+    collected = compiled.get("collected_slots")
+    collected_prompt = ""
+    if isinstance(collected, dict) and any(v for v in collected.values()):
+        # Lo que la persona YA dijo en turnos anteriores (nombre, dia de
+        # aplicacion, medico, ...). Persistido en session_state.flow_slots, no
+        # depende de la ventana de historial: sin esto, a los tres turnos el
+        # modelo ya no sabia el nombre del medico que le habian dicho.
+        collected_prompt = "DATOS QUE LA PERSONA YA DIO (usalos, no los vuelvas a pedir):\n" + "\n".join(
+            f"- {k}: {v}" for k, v in collected.items() if v
+        ) + "\n\n"
     return (
         f"{identity}\n\n"
+        f"{step_prompt}"
+        f"{collected_prompt}"
         "Responde usando EXCLUSIVAMENTE los datos de abajo. "
         "Si hay traits del cliente, adapta la sugerencia a su perfil. "
         "No inventes nada fuera de estos datos.\n\n"

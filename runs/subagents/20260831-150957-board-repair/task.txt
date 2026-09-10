@@ -1,0 +1,10 @@
+Task: task-recomponer-la-base-de-spec2viz-y-atoms
+Title: Recomponer la base de spec2viz y atoms
+Status: complete
+Current node: checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+Task type: 
+Routine: routine-task-recomponer-la-base-de-spec2viz-y-atoms
+Checklist status:
+- checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready: complete
+- checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready: pending
+- checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready: pending

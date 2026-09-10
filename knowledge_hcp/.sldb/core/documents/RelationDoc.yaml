@@ -1,0 +1,344 @@
+documents:
+- name: grounded_by--step-hcp-agendar-recontacto--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-agendar-recontacto--StyleGuide:style-hcp-tone.md
+  hash_c: 7b037874d1da37a9bd0c6fa0ad8cd1c9ece84c744a66042a15d6b4e545bc995b
+  hash_d: 8dd2abf37d661b5f292976c6a971df57b739f1cfc31d7b88b1b9d9fdc16980f3
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-contacto-inicial--SelfDeclaration:self-hcp-whoami
+  path: relations/grounded_by--step-hcp-contacto-inicial--SelfDeclaration:self-hcp-whoami.md
+  hash_c: 1c2fec926ae23ddf0ca430b5fd31314d9aa20d563435b73cd0a8af1a481e9386
+  hash_d: 83f4cae8c1efa5823fe21f6eff37267bbb28ae41025ff838a5aaa82a09c2c781
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-contacto-inicial--StrategyRule:strategy-hcp-campaign
+  path: relations/grounded_by--step-hcp-contacto-inicial--StrategyRule:strategy-hcp-campaign.md
+  hash_c: c4c886d5dea3ffbbc41f5af106bc424e6b18124519feb6fec749f580404b4074
+  hash_d: 028c02a83d0a82d6452af984381d83063e60afb50e2af5e54d0b38908d3c6244
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-contacto-inicial--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-contacto-inicial--StyleGuide:style-hcp-tone.md
+  hash_c: 683ef6d7e7b0256a07e7372875949d14bc784b8c9b5d8dbba643896f4de90cb6
+  hash_d: e9037c3ebd9eb17c1ad79193368c5f805b07d1e08f92eea1710191205937d2cf
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-despedida--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-despedida--StyleGuide:style-hcp-tone.md
+  hash_c: f9a8ee546e83916b0c48acc1084716bf59e7534e6b82cd62dd7130c0c99defc5
+  hash_d: f8191e5e8043d52b835daf9bada39e03efa75d226cf0054ffebb43d2c61fd6b0
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-detalle-medicamento--CapabilityBoundary:boundary-hcp-ae-safety-net
+  path: relations/grounded_by--step-hcp-detalle-medicamento--CapabilityBoundary:boundary-hcp-ae-safety-net.md
+  hash_c: 2eae36d6ba4dd178aca638be8e6d1ad5795de3a32cbbfe4acad35459e7fcae17
+  hash_d: b32f296e9b27ae8062348d470c415f9ebaa4ca7bfb17b376d3f5a176be69bbdd
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-derivar-clinico
+  path: relations/grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-derivar-clinico.md
+  hash_c: 0e7a1efc85bdacf77a63e5c992d4b7ec6367870bcf9e7168bd31082e4ad66651
+  hash_d: 41106799bd7d1111238289db71aedecf2587df7816cf90fbc71536dee6603f99
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-deducir
+  path: relations/grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-deducir.md
+  hash_c: 448eed900f16b238ca46eed3ca7ec644fb917bd30faa3a2e4e066d14203b3b33
+  hash_d: fc778b61b0a38513dcdd55b73ac79284397c62df9ed6b4827ebf9d7d368d1bfe
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-farmacologia
+  path: relations/grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-farmacologia.md
+  hash_c: 95eadcaf0c5ea8acee19f6c0b7d7d5652892ab4d9059bf3df9e4cebc2c52748f
+  hash_d: d464d4801248fb7771f29e69d6c6877eedd0eaf32b6d093ecec527f345545676
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-detalle-medicamento--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-detalle-medicamento--StyleGuide:style-hcp-tone.md
+  hash_c: a29f68b247508418209f2c7f5513ec3800c86e184347098707d7af3202a47a39
+  hash_d: 772a62aff298e0e289bafaf31a16946bd7879c46a86443c7573e488406dd2216
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-handout-especialista--RuleAtom:rule-hcp-derivar-clinico
+  path: relations/grounded_by--step-hcp-handout-especialista--RuleAtom:rule-hcp-derivar-clinico.md
+  hash_c: fc497d0b12a9efd85f8f59822a7a4e5a52d27bd651b0ec6c7278d11123f91447
+  hash_d: f1ab7e65a76fa2b23975548c4ac8ab7286aa7eb6755e1eae95ee416b27cafda3
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-handout-especialista--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-handout-especialista--StyleGuide:style-hcp-tone.md
+  hash_c: 09e2f92cf15950834c7fbfa7cbe6ecaeca89414a15d79fb366dccaa9f010e9b6
+  hash_d: 6acf86833d3dc6f183775fbe6c1755699f6437bcfe9af578b0620b204aa4f489
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-dsr-erasure
+  path: relations/grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-dsr-erasure.md
+  hash_c: aa04447746a5a717e953d6e2e503e557c0c1b23033c94ee0bbd6bb5495e26856
+  hash_d: b4f9a994b9ea11a7dcc2e2376a3669343203791a9a44e2c9869b0f930c6d1415
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-campania
+  path: relations/grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-campania.md
+  hash_c: 8cea88e862998959ea9083056458a45b68623aa4847cc235d8ee9ab301828381
+  hash_d: f33e43a459946fd4536cda947415a09f25c4b8b4fa8d0649aec7165ba67a78be
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-canal
+  path: relations/grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-canal.md
+  hash_c: 7288f20fa9ccbcdcaf1e9dcc2a6def49d1d713cf14d1643cc60d00d72a31d9cf
+  hash_d: 033d7358a4f2210a97a42753a10efdf68f05bea1c8b1b2a1e1d093a755bf1292
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-optout--RuleAtom:rule-hcp-solo-pii-profesional
+  path: relations/grounded_by--step-hcp-optout--RuleAtom:rule-hcp-solo-pii-profesional.md
+  hash_c: f3e32830dce70516a021aa2eb014fa354e88fc94e6e2d1a53667af20e8b15e30
+  hash_d: 4fc88e63809a288e46bdcc35169df29c87d93d0ede277c5398d4bb9197cf18a4
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-optout--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-optout--StyleGuide:style-hcp-tone.md
+  hash_c: 96d80f0b931213cd1e351738c6826870e290d8e2091832521a8ea5517982fa8c
+  hash_d: 52828d695b61427dc5c6928b17c5c640d79fe89e7f02873957e1906ca1d594e6
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-presentar-campania--RuleAtom:rule-hcp-filtrado-especialidad
+  path: relations/grounded_by--step-hcp-presentar-campania--RuleAtom:rule-hcp-filtrado-especialidad.md
+  hash_c: 7a06a9699dbb6f03f4133c5fdea1354fc6192af46031699c400ee13509b9f37d
+  hash_d: 01cf6dfded11b3b8b9234a5d05e098a5ea005eaf12e594c5f42f93307c9f0815
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-presentar-campania--SelfDeclaration:self-hcp-whoami
+  path: relations/grounded_by--step-hcp-presentar-campania--SelfDeclaration:self-hcp-whoami.md
+  hash_c: b275bcce676b8b9b421d56c874ade33b84d8de07606eaab5071b06989c2e111b
+  hash_d: 5d1bf58b55a06979bc12295cb7c5882d328803d7f3d34bd8fbce6bbf22fa5ec1
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-presentar-campania--StrategyRule:strategy-hcp-campaign
+  path: relations/grounded_by--step-hcp-presentar-campania--StrategyRule:strategy-hcp-campaign.md
+  hash_c: f269ae11763bb93f92f473f7f2d802489c9fab951ddc577339aa2c37ff03c114
+  hash_d: a26722f0483681302e401b6f11da195b5ce590a0256fa5841e5573330655c7c3
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-presentar-campania--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-presentar-campania--StyleGuide:style-hcp-tone.md
+  hash_c: 42206410d5d5bfd542950b5d6a389930686f5a8935fc472fbf3cd735a3b56ba8
+  hash_d: 72e32fc3b43107321b9f4004bbb14d573b3873b0caf3075edcd03e6169efcaf7
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-revision-humana--StyleGuide:style-hcp-tone
+  path: relations/grounded_by--step-hcp-revision-humana--StyleGuide:style-hcp-tone.md
+  hash_c: 6a04ad1294bf7c7431c462c8b53758c2560e43b035d6092f9df8e9c945d1b1a1
+  hash_d: 2b4b9e38ec5e5623842e89eeaf00279e15ed9933cff75bb0617ed2ec006a4d74
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-corpus
+  path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-corpus.md
+  hash_c: d4fd9c3fba0e433cf96ee3b100246ac04965f2048651642331202665bfb93fd1
+  hash_d: e0e0e8e9fac17497e4c6399371a63a9c34dde312dd41c9501d658b2f8bf87efb
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-derivacion
+  path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-derivacion.md
+  hash_c: 233e65142e0687bb63cb70a24146814b296e051b3363a0eadab503539cb8548b
+  hash_d: 9517962deb9bf56b4e5eea6a4e971b902cb8680ba460542a40ba0778f6944474
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-diagnostico
+  path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-diagnostico.md
+  hash_c: 9e43ab701efcc25b05813e11275031d2dea0c6761086f29d370ae3c79fdb3742
+  hash_d: edeece588431d5aa61cbc828b06add047ba0881291ffd8b1ec30a7d25d595429
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-dosis
+  path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-dosis.md
+  hash_c: 74bdc648eb58096538641437703c323270a33525235654e3fb3d4d132335bfa4
+  hash_d: c83650a7488f50dc1d18fafeed29be1f8156bdc04a424bd65c62e2c39ca2f3ab
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-promesas
+  path: relations/grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-promesas.md
+  hash_c: f9eefc92aff21a2ee23be1d74451b3b82f87caefd13e4235c2fe01741d0c6bb5
+  hash_d: ff193244e61706db676171ac7d6e7f1c47a0ccdedbbf17d4882a544162c252ac
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-agendar-recontacto--step-hcp-despedida
+  path: relations/transitions_to--step-hcp-agendar-recontacto--step-hcp-despedida.md
+  hash_c: f6197c2814bdee9c191549dcc9c190a23edafb23c9063097f1aea8061af2de35
+  hash_d: 4aa017c5d73619a82aa8f63636fdd1a2a789463a7c707246b32d080d17c25b38
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-contacto-inicial--step-hcp-agendar-recontacto
+  path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-agendar-recontacto.md
+  hash_c: 02111ccc1e117a28cca764a03d30f54c6b823fbfce5af0795e4b96858137c16f
+  hash_d: 7f2bf5e33d21415bc15a08342b27171e3868fd5553151f7a74d200ae3c1af4ce
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-contacto-inicial--step-hcp-handout-especialista
+  path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-handout-especialista.md
+  hash_c: 72c5986d08c2e92a1254c38e4c97fac61be91addfbf8f582dfe3d1406457f7e4
+  hash_d: d119fd6289bdea2dfa3249cb3e3ba33ea29863a8432efb45d9154a94349564eb
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-contacto-inicial--step-hcp-optout
+  path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-optout.md
+  hash_c: 0dc89cd62c099992b5fc50fd2bca46d3d5182a75f18177f7f3aac118bda7aad8
+  hash_d: 3c9bfa9358fa6227037943ab12d60d26d021490b45b3746793214b652806886f
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-contacto-inicial--step-hcp-presentar-campania
+  path: relations/transitions_to--step-hcp-contacto-inicial--step-hcp-presentar-campania.md
+  hash_c: a8031e47bc02e2f36fa42377896eb5dfd300a903e4f0639a90a80aa85377e32c
+  hash_d: 85555468e1e05c9550a9c4c803acd1bce039af4d7de66c31c8b29c28d8270b0e
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-detalle-medicamento--step-hcp-agendar-recontacto
+  path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-agendar-recontacto.md
+  hash_c: 2a035a722ae9fd949cae28657c26165dd137518fb8acfe9e7be5dec28f1ece49
+  hash_d: b8b6b49fc48fdf68200502a5930c49556c951c91d46b613f688b74027902131e
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-detalle-medicamento--step-hcp-despedida
+  path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-despedida.md
+  hash_c: f5cf140d6eb3dfbc555b50aabdf3c2ee383bb8eece13601292a2419c3b6fb984
+  hash_d: 8157d782929aa9be715b1079034f00e0e37c17cfa154443921480836e45d5755
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-detalle-medicamento--step-hcp-detalle-medicamento
+  path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-detalle-medicamento.md
+  hash_c: 57dd58ddde776b234f37bf3dcb76b07a127cbad0338af6627bb6066f26e88d51
+  hash_d: 49803699dd4d69975f1dd939b7a52baee13a788d51ae568a19eb4d2bcfbd7700
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-detalle-medicamento--step-hcp-handout-especialista
+  path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-handout-especialista.md
+  hash_c: bf31e285b91f25328ae4b0eb0f605e8bc6fc0b71930db1dd650c85ab408441fb
+  hash_d: 02edc6302f1223661d30e51e5b0aa70c50a0f972960ade5c7dcbf503920b2141
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-detalle-medicamento--step-hcp-optout
+  path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-optout.md
+  hash_c: 6bfdb405545b58286d58a3b0054a29b5e8f167f2d9092cfcde9606463c6a8831
+  hash_d: e4ec9a05cb0b07f308d0cf14b23b42399c3383c8e5d3c4308ff03cc3eaab92e1
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-detalle-medicamento--step-hcp-presentar-campania
+  path: relations/transitions_to--step-hcp-detalle-medicamento--step-hcp-presentar-campania.md
+  hash_c: c58cbe9cce4865886335efc2aa338b73b3ba05c6289b340ed902c4b3d8112620
+  hash_d: fff77197589022b8f88a8d77aee448f99b9db2e769eabb1491110403537debd2
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-handout-especialista--step-hcp-despedida
+  path: relations/transitions_to--step-hcp-handout-especialista--step-hcp-despedida.md
+  hash_c: a65bcd7ddaa6cdd897deb8bf0672396e1ecc7319df81ea1666a0c400d0773108
+  hash_d: 9b41cc1354118792da2f2bed465513bc4b71bce55a8806f7a56acc7c113a6136
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-optout--step-hcp-despedida
+  path: relations/transitions_to--step-hcp-optout--step-hcp-despedida.md
+  hash_c: 97ff7ba11cfb53e1a828c501127f2a0d2919ec6198692a70a710d1185c875b65
+  hash_d: 476c53dac3c4fddfa9629b57569c2fefdc7fefea55da6fcb32483a488484001b
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-presentar-campania--step-hcp-agendar-recontacto
+  path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-agendar-recontacto.md
+  hash_c: 808eac0793f8cc797264cebbbdacc7473c9172879d2149833baa5e9e6ec16014
+  hash_d: b7ef4019edda63b8b57e89b702648e37be5d974435c0e16d719bab6cdd557939
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-presentar-campania--step-hcp-despedida
+  path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-despedida.md
+  hash_c: b5a34457439f292e50912eb38f02bd9020a0db2dbab488d92b8bf6c2b1c83fb6
+  hash_d: 444de09196e4071847b331638a44f97ca25a7b31c6a9f2feb548b04106287392
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-presentar-campania--step-hcp-detalle-medicamento
+  path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-detalle-medicamento.md
+  hash_c: b4db5da07b4a472cb65df1b61af2ca98a212f150129748902e58d0d74d697895
+  hash_d: d49d35712a657517c3fa20fd0e9de2828e0e3207a369b7a4ee682fa1d3863f9f
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-presentar-campania--step-hcp-handout-especialista
+  path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-handout-especialista.md
+  hash_c: c8bf25df396450dc7609e3fd5ccbaa79451c2aae89f765c0e216b8140e70dd0b
+  hash_d: a3a4b619f9dd84e2fab86626e69ddf93d6bc8538b7c563f2bb5a8e3988da47ec
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-presentar-campania--step-hcp-optout
+  path: relations/transitions_to--step-hcp-presentar-campania--step-hcp-optout.md
+  hash_c: 75f31e7c0ac35f0c528042fe4657c3adf3f9618d0f539b44b4f583e74d7b7185
+  hash_d: 4a5cb537fdb366e98ceea8944e63b332b96f819759449800b2598d922cdb5694
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-revision-humana--step-hcp-despedida
+  path: relations/transitions_to--step-hcp-revision-humana--step-hcp-despedida.md
+  hash_c: fcf6d9be3271f307a6025e2a70866116d7f8a28f9bc66e059265f78977d78f77
+  hash_d: 7b5aeb4e6bb2aa8a912ef56c6b58d0fafdbcb214097a09e9c58e21462b274d8e
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: transitions_to--step-hcp-validacion-policy-gate--step-hcp-revision-humana
+  path: relations/transitions_to--step-hcp-validacion-policy-gate--step-hcp-revision-humana.md
+  hash_c: 837ab2b3db81f5728ebdc3145e2e4d72dfb7a7f96e82cafa525989e1cecd2f8e
+  hash_d: 78c3f974a4a2486857bf919e10d8e91e5135725bd3e47fbb53db3b1166a7623f
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: uses_tool--step-hcp-agendar-recontacto--tool-hcp-programar-recontacto
+  path: relations/uses_tool--step-hcp-agendar-recontacto--tool-hcp-programar-recontacto.md
+  hash_c: 91d2c9d7add9668c9b352cb4b651a57be229436dd6cf6e2ef2c9e70ebecc1060
+  hash_d: ff6e51f625ad82d0dbca17fa182c1d096ac1ea7b54c1f812b4d1321e2f4e02c0
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance
+- name: uses_tool--step-hcp-optout--tool-hcp-actualizar-consentimiento
+  path: relations/uses_tool--step-hcp-optout--tool-hcp-actualizar-consentimiento.md
+  hash_c: a91dc803ca9a8014ae8042d7112a125f3245bee9576872c43baeca12f4330197
+  hash_d: 1897c9070c6349ac8fd50bdac7183440304fb7cb12dfefb38e423af59ca730e7
+  semantic_tags:
+  - layer.topology
+  - type.relation.instance

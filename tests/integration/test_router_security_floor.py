@@ -21,8 +21,8 @@ from pathlib import Path
 
 import pytest
 
-from kb_agent.ontologizador.compiler import ContextCompiler
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.knowledge.compiler import ContextCompiler
+from knowledge_base.operations import KnowledgeOperations
 from tests.support.fakes import FakeRouterAgent, offline_orchestrator
 
 SECURITY_RULE_IDS = {
@@ -37,7 +37,7 @@ SECURITY_RULE_IDS = {
 
 @pytest.fixture()
 def compiler(antonia_kb: Path) -> ContextCompiler:
-    return ContextCompiler(reader=SLDBReader(kb_root=antonia_kb))
+    return ContextCompiler(knowledge=KnowledgeOperations(kb_root=antonia_kb))
 
 
 # ── 1) piso de seguridad: no negociable, aunque el agente no lo pida ─────
@@ -115,13 +115,38 @@ def test_compiling_without_any_router_agent_uses_deterministic_bundle(antonia_kb
     """Sin ``router_agent`` inyectado (p.ej. ``ContextCompiler`` standalone,
     como en ``tests/unit/test_context_compiler.py``) el compilador nunca
     intenta llamar a un agente -- va directo al fallback."""
-    compiler = ContextCompiler(reader=SLDBReader(kb_root=antonia_kb))
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=antonia_kb))
 
     doc = compiler.compile(question="hola", user_id=None)
 
     assert doc.bundle_source == "deterministic"
     bundle_ids = {b["doc_id"] for b in doc.bundle}
     assert SECURITY_RULE_IDS <= bundle_ids
+
+
+# ── piso de seguridad de Vitali: la KB de Vitali tambien tiene su piso ───
+VITALI_SECURITY_RULE_IDS = {
+    "rule-vitali-anti-alucinacion",
+    "rule-vitali-no-precios-sin-fuente",
+    "rule-vitali-datos-sensibles-adulto-mayor",
+    "rule-vitali-no-prometer-disponibilidad",
+}
+
+
+def test_vitali_bundle_includes_security_floor(vitali_kb: Path) -> None:
+    """knowledge_vitali no tenia ninguna RuleAtom conversation:security: el
+    compilador metia un piso vacio. Ahora el piso existe y entra al bundle."""
+    compiler = ContextCompiler(knowledge=KnowledgeOperations(kb_root=vitali_kb))
+
+    doc = compiler.compile(question="cuanto cuesta una suite?", user_id=None)
+
+    bundle_ids = {b["doc_id"] for b in doc.bundle}
+    # al menos un RuleAtom conversation:security entra (de hecho, los 4)
+    assert VITALI_SECURITY_RULE_IDS & bundle_ids
+    assert VITALI_SECURITY_RULE_IDS <= bundle_ids
+    for entry in doc.bundle:
+        if entry["doc_id"] in VITALI_SECURITY_RULE_IDS:
+            assert entry["motivo"].startswith("piso de seguridad")
 
 
 # ── cableado end-to-end: el turno completo no se rompe y audita la fuente ─

@@ -1,0 +1,48 @@
+template: template.html
+html_artifact: kb_agent_runtime.html
+vistas:
+- id: vista01
+  category: Arquitectura
+  nav: "01 · Arquitectura AST"
+  lbl: Vista 01
+  title: "KB Agent Runtime · Arquitectura (AST scan)"
+  desc: "Diagrama de componentes generado automáticamente desde el código fuente (spec2viz diagram generate sobre kb_agent/): módulos, paquetes y dependencias reales del runtime agéntico."
+  specs:
+  - kb-agent-runtime
+  mmd: ../../rendered/architecture.spec.mmd
+- id: vista02
+  category: Arquitectura
+  nav: "02 · Estado de sesión"
+  lbl: Vista 02
+  title: "RouterStateMachine · Estados de sesión"
+  desc: "Máquina de estados del router conversacional (kb_agent.state_machine / models_sql.session.SessionState): idle, buffering (debounce), evaluación de contexto, drafting, espera de tool y breakpoint miss."
+  specs:
+  - kb-agent-state
+  mmd: ../../rendered/state_router.spec.mmd
+- id: vista03
+  category: Arquitectura
+  nav: "03 · Secuencia de turno"
+  lbl: Vista 03
+  title: "Turno conversacional · Secuencia"
+  desc: "Flujo de un turno: API (chat/Twilio) -> Orchestrator -> RouterStateMachine -> LLM -> persistencia (SQL + SLDB), con tool calls y flow_node."
+  specs:
+  - kb-agent-turn
+  mmd: ../../rendered/sequence_turn.spec.mmd
+- id: vista04
+  category: Arquitectura
+  nav: "04 · Despliegue"
+  lbl: Vista 04
+  title: "Despliegue runtime"
+  desc: "Topología: dispositivos (WhatsApp/SMS vía Twilio, chat web) -> uvicorn (FastAPI, Orchestrator, RouterStateMachine, Perfilador) -> PostgreSQL + SLDB store, y proveedor LLM."
+  specs:
+  - kb-agent-deployment
+  mmd: ../../rendered/deployment_runtime.spec.mmd
+- id: vista05
+  category: Conocimiento
+  nav: "05 · Modelo conocimiento"
+  lbl: Vista 05
+  title: "Modelo de conocimiento (atoms SLDB)"
+  desc: "Jerarquía de clases: StructuredNLDoc -> IndexProxies -> familias de atoms (ConversationStep, DomainAtom, GateCriterion, ToolAtom, etc.) y sus aristas kgdb (transitions_to, grounded_by, uses_tool)."
+  specs:
+  - kb-agent-knowledge
+  mmd: ../../rendered/class_knowledge.spec.mmd

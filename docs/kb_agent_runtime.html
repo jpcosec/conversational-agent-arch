@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teva AWS Migration · Vistas de Arquitectura</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,400&family=Manrope:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.12.1/mermaid.min.js"></script>
+<style>
+  :root{--bg:#0a0a0f;--amber:#d4a574;--bone:#f5f0e8;--bone-dim:rgba(245,240,232,.6);--line:rgba(212,165,116,.25);--card:#12121a;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--bone);font-family:'Manrope',sans-serif;}
+  header{padding:48px 6% 28px;border-bottom:1px solid var(--line);}
+  .brand{font-family:'Fraunces',serif;font-size:20px;}
+  .brand span{color:var(--amber);font-style:italic;}
+  h1{font-family:'Fraunces',serif;font-weight:300;font-size:34px;margin-top:14px;}
+  h1 em{color:var(--amber);}
+  .sub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim);margin-top:10px;}
+  nav{display:flex;flex-wrap:wrap;gap:16px;padding:18px 6%;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,10,15,.95);backdrop-filter:blur(8px);z-index:10;align-items:center;}
+  .nav-category {display:flex;gap:8px;align-items:center;}
+  .nav-category span {font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--amber);margin-right:6px;text-transform:uppercase;}
+  nav a{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-dim);text-decoration:none;border:1px solid var(--line);border-radius:20px;padding:7px 14px;transition:.2s;}
+  nav a:hover{color:var(--amber);border-color:var(--amber);}
+  .macro-separator {padding:44px 6% 0px; border-bottom: none;}
+  .macro-separator h2 {font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--amber);text-align:center;letter-spacing:0.1em;text-transform:uppercase;}
+  section{padding:44px 6%;border-bottom:1px solid rgba(245,240,232,.06);}
+  .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;}
+  h2{font-family:'Fraunces',serif;font-weight:400;font-size:24px;margin-bottom:8px;}
+  .desc{color:var(--bone-dim);font-weight:300;font-size:14px;line-height:1.6;max-width:820px;margin-bottom:22px;}
+  .board{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;overflow-x:auto;}
+  .mermaid{display:flex;justify-content:center;min-width:600px;}
+  .puml-board svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+  .gap-notes{margin-top:14px;border:1px solid var(--line);border-radius:10px;padding:16px 20px;background:rgba(227,76,76,0.05);}
+  .gap-notes strong{color:#e07a6a;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;}
+  .gap-notes ul{margin:10px 0 0 18px;color:var(--bone-dim);font-size:14px;line-height:1.6;}
+  footer{padding:34px 6%;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--bone-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  .mermaid .cluster-label foreignObject { overflow: visible !important; }
+  .mermaid .cluster-label span,
+  .mermaid .cluster-label div {
+    background-color: rgba(10, 10, 15, 0.85) !important;
+    padding: 4px 10px !important;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(10, 10, 15, 0.9);
+    display: table;
+    white-space: nowrap !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .board { position: relative; }
+  .fs-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(18, 18, 26, 0.7);
+    border: 1px solid var(--line);
+    color: var(--bone-dim);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: 0.2s;
+    z-index: 10;
+  }
+  .fs-btn:hover { color: var(--amber); border-color: var(--amber); background: rgba(18,18,26,.95); }
+  .board:fullscreen {
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 20px;
+  }
+  .board:fullscreen .fs-btn { opacity: 0.3; position: fixed; }
+  .board:fullscreen .fs-btn:hover { opacity: 1; }
+  .board:fullscreen .mermaid { min-width: unset; }
+
+  /* anotaciones (planning-only) */
+  body.anno-mode .mermaid g.node:hover,
+  body.anno-mode .mermaid g.classGroup:hover,
+  body.anno-mode .mermaid g.stateGroup:hover,
+  body.anno-mode .mermaid rect.actor:hover {
+    filter: drop-shadow(0 0 5px var(--amber));
+    cursor: crosshair;
+  }
+  body.anno-mode .mermaid g.cluster:hover > rect {
+    stroke: var(--amber);
+    stroke-width: 1.5px;
+    cursor: crosshair;
+  }
+  .anno-marked { filter: drop-shadow(0 0 7px var(--amber)); }
+  /* ---------- UI y W5H1 Atoms ---------- */
+  .atom-tooltip {
+    position: fixed; z-index: 100;
+    width: 320px; max-height: 400px; overflow-y: auto;
+    background: rgba(18, 18, 26, 0.95); border: 1px solid var(--amber); border-radius: 8px;
+    padding: 14px; font-size: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .atom-tooltip.interactive { pointer-events: auto; }
+  .atom-tooltip h4 { color: var(--amber); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; }
+  .atom-tooltip .atom-entry { margin-bottom: 12px; }
+  .atom-tooltip .atom-q { color: var(--bone); font-family: 'JetBrains Mono', monospace; font-size: 10px; margin-bottom: 4px; border-bottom: 1px solid var(--line); padding-bottom: 2px; text-transform: uppercase; }
+  .atom-tooltip .atom-b { color: var(--bone-dim); font-size: 11.5px; line-height: 1.5; white-space: pre-wrap; }
+  .atom-tooltip .missing { color: #e34c4c; font-size: 10px; font-family: 'JetBrains Mono', monospace; margin-top: 8px; }
+  
+  .tracker-modal {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 80%; max-width: 600px; max-height: 80vh; overflow-y: auto;
+    background: var(--card); border: 1px solid var(--amber); border-radius: 12px;
+    padding: 24px; z-index: 200; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    display: none;
+  }
+  .tracker-modal h3 { color: var(--amber); font-family: 'Fraunces', serif; margin-bottom: 16px; font-size: 22px; }
+  .tracker-modal .close-btn { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--bone-dim); cursor: pointer; font-size: 20px; }
+  .tracker-modal .close-btn:hover { color: var(--amber); }
+  .tracker-item { margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--bone-dim); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
+  .tracker-item strong { color: var(--bone); }
+  .tracker-item .miss { color: #e34c4c; }
+
+  #floating-controls { position: fixed; bottom: 20px; right: 20px; z-index: 90; display: flex; gap: 10px; }
+  .float-btn {
+    background: var(--card); border: 1px solid var(--line); color: var(--bone-dim);
+    padding: 10px 16px; border-radius: 20px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .float-btn:hover { color: var(--amber); border-color: var(--amber); }
+  .float-btn.on { background: var(--amber); color: var(--bg); border-color: var(--amber); font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">teva <span>aws migration</span></div>
+  <h1>Vistas de <em>Arquitectura</em></h1>
+  <div class="sub">GENERADO · fuentes: specs/*.yml + rendered/*.mmd + vistas.yml · no editar a mano</div>
+</header>
+<nav>
+<div class="nav-category"><span>Arquitectura</span><a href="#vista01-17cfb044">01 · Arquitectura AST</a><a href="#vista02-17cfb044">02 · Estado de sesión</a><a href="#vista03-17cfb044">03 · Secuencia de turno</a><a href="#vista04-17cfb044">04 · Despliegue</a></div>
+<div class="nav-category"><span>Conocimiento</span><a href="#vista05-17cfb044">05 · Modelo conocimiento</a></div>
+</nav>
+<div class="catalog-toolbar"><div class="catalog-toolbar-row"><label>Tipo<select data-filter="tipo"><option value="">Todos</option><option value="class">class</option><option value="component">component</option><option value="deployment">deployment</option><option value="sequence">sequence</option><option value="state">state</option></select></label><label>Proyecto<select data-filter="proyecto"><option value="">Todos</option></select></label><label>Categoría<select data-filter="categoría"><option value="">Todos</option><option value="Arquitectura">Arquitectura</option><option value="Conocimiento">Conocimiento</option></select></label><label>Búsqueda<input type="search" id="catalog-search" placeholder="Título, tag o descripción"></label></div><div class="catalog-tags"><button type="button" class="tag-chip" data-tag="type:class">type:class</button><button type="button" class="tag-chip" data-tag="type:component">type:component</button><button type="button" class="tag-chip" data-tag="type:deployment">type:deployment</button><button type="button" class="tag-chip" data-tag="type:sequence">type:sequence</button><button type="button" class="tag-chip" data-tag="type:state">type:state</button></div></div><div class="category-block" data-category-block="Arquitectura"><div class="macro-separator"><h2>— Arquitectura —</h2></div><section id="vista01-17cfb044" data-spec="kb-agent-runtime" data-type="component" data-project="" data-category="Arquitectura" data-tags="type:component" data-view-id="vista01" class="catalog-item">
+  <div class="lbl">Vista 01</div>
+  <h2>KB Agent Runtime · Arquitectura (AST scan)</h2>
+  <p class="desc">Diagrama de componentes generado automáticamente desde el código fuente (spec2viz diagram generate sobre kb_agent/): módulos, paquetes y dependencias reales del runtime agéntico.</p>
+  <div class="section-meta"><span class="meta-badge">component</span><span class="meta-badge subtle">type:component</span></div>
+  <div class="board">
+    <pre class="mermaid">
+      graph TD
+          module_agent[&quot;agent&quot;]
+          module_agents_base[&quot;agents.base&quot;]
+          class_agents_base_AgentRole[&quot;AgentRole&quot;]
+          class_agents_base_ToolCall[&quot;ToolCall&quot;]
+          class_agents_base_LlmRequest[&quot;LlmRequest&quot;]
+          class_agents_base_LlmResponse[&quot;LlmResponse&quot;]
+          class_agents_base_Tool[&quot;Tool&quot;]
+          class_agents_base_Agent[&quot;Agent&quot;]
+          module_agents_gate[&quot;agents.gate&quot;]
+          class_agents_gate_GateVerdict[&quot;GateVerdict&quot;]
+          class_agents_gate_GateAgent[&quot;GateAgent&quot;]
+          module_agents_orchestrator_agent[&quot;agents.orchestrator_agent&quot;]
+          class_agents_orchestrator_agent_ToolCallDecision[&quot;ToolCallDecision&quot;]
+          class_agents_orchestrator_agent_OrchestratorDecision[&quot;OrchestratorDecision&quot;]
+          class_agents_orchestrator_agent_OrchestratorAgent[&quot;OrchestratorAgent&quot;]
+          module_agents_router[&quot;agents.router&quot;]
+          class_agents_router_BundleEntry[&quot;BundleEntry&quot;]
+          class_agents_router_RouterDecision[&quot;RouterDecision&quot;]
+          class_agents_router_RouterAgent[&quot;RouterAgent&quot;]
+          module_cli[&quot;cli&quot;]
+          module_db_check[&quot;db_check&quot;]
+          class_db_check_DbRevisionStatus[&quot;DbRevisionStatus&quot;]
+          module_inbound[&quot;inbound&quot;]
+          class_inbound_InboundResult[&quot;InboundResult&quot;]
+          class_inbound_InboundService[&quot;InboundService&quot;]
+          module_knowledge_compiled_document[&quot;knowledge.compiled_document&quot;]
+          class_knowledge_compiled_document_CompiledDocument[&quot;CompiledDocument&quot;]
+          module_knowledge_compiler[&quot;knowledge.compiler&quot;]
+          class_knowledge_compiler_SessionStateLike[&quot;SessionStateLike&quot;]
+          class_knowledge_compiler_ContextCompiler[&quot;ContextCompiler&quot;]
+          module_knowledge_embedder[&quot;knowledge.embedder&quot;]
+          class_knowledge_embedder_FastembedEmbedder[&quot;FastembedEmbedder&quot;]
+          module_knowledge_flow[&quot;knowledge.flow&quot;]
+          class_knowledge_flow_FlowStep[&quot;FlowStep&quot;]
+          class_knowledge_flow_ConversationFlow[&quot;ConversationFlow&quot;]
+          module_knowledge_world[&quot;knowledge.world&quot;]
+          module_lead_slots[&quot;lead_slots&quot;]
+          module_llm[&quot;llm&quot;]
+          class_llm_Conversador[&quot;Conversador&quot;]
+          class_llm_TraitMapper[&quot;TraitMapper&quot;]
+          class_llm_GeminiConversador[&quot;GeminiConversador&quot;]
+          class_llm_GeminiTraitMapper[&quot;GeminiTraitMapper&quot;]
+          module_models_knowledge_agent_framing[&quot;models.knowledge.agent_framing&quot;]
+          class_models_knowledge_agent_framing_AgentFraming[&quot;AgentFraming&quot;]
+          module_models_knowledge_boundary[&quot;models.knowledge.boundary&quot;]
+          class_models_knowledge_boundary_CapabilityBoundary[&quot;CapabilityBoundary&quot;]
+          module_models_knowledge_domain[&quot;models.knowledge.domain&quot;]
+          class_models_knowledge_domain_AtomQuestion[&quot;AtomQuestion&quot;]
+          class_models_knowledge_domain_DomainAtom[&quot;DomainAtom&quot;]
+          module_models_knowledge_fallback[&quot;models.knowledge.fallback&quot;]
+          class_models_knowledge_fallback_FallbackRule[&quot;FallbackRule&quot;]
+          module_models_knowledge_gate[&quot;models.knowledge.gate&quot;]
+          class_models_knowledge_gate_GateCriterion[&quot;GateCriterion&quot;]
+          module_models_knowledge_index_proxies[&quot;models.knowledge.index_proxies&quot;]
+          class_models_knowledge_index_proxies_IndexProxies[&quot;IndexProxies&quot;]
+          module_models_knowledge_rule[&quot;models.knowledge.rule&quot;]
+          class_models_knowledge_rule_RuleAtom[&quot;RuleAtom&quot;]
+          module_models_knowledge_self_declaration[&quot;models.knowledge.self_declaration&quot;]
+          class_models_knowledge_self_declaration_SelfDeclaration[&quot;SelfDeclaration&quot;]
+          module_models_knowledge_step[&quot;models.knowledge.step&quot;]
+          class_models_knowledge_step_StepKind[&quot;StepKind&quot;]
+          class_models_knowledge_step_ConversationStep[&quot;ConversationStep&quot;]
+          module_models_knowledge_strategy[&quot;models.knowledge.strategy&quot;]
+          class_models_knowledge_strategy_StrategyRule[&quot;StrategyRule&quot;]
+          module_models_knowledge_style[&quot;models.knowledge.style&quot;]
+          class_models_knowledge_style_StyleGuide[&quot;StyleGuide&quot;]
+          module_models_knowledge_tool[&quot;models.knowledge.tool&quot;]
+          class_models_knowledge_tool_ToolAtom[&quot;ToolAtom&quot;]
+          module_models_knowledge_trait[&quot;models.knowledge.trait&quot;]
+          class_models_knowledge_trait_TraitAtom[&quot;TraitAtom&quot;]
+          module_models_sql_consultas[&quot;models_sql.consultas&quot;]
+          class_models_sql_consultas_Consultas[&quot;Consultas&quot;]
+          module_models_sql_conversation[&quot;models_sql.conversation&quot;]
+          class_models_sql_conversation_ConversationStatus[&quot;ConversationStatus&quot;]
+          class_models_sql_conversation_Conversation[&quot;Conversation&quot;]
+          module_models_sql_hcp[&quot;models_sql.hcp&quot;]
+          class_models_sql_hcp_Recontactos[&quot;Recontactos&quot;]
+          class_models_sql_hcp_Consentimientos[&quot;Consentimientos&quot;]
+          module_models_sql_identity[&quot;models_sql.identity&quot;]
+          class_models_sql_identity_Base[&quot;Base&quot;]
+          class_models_sql_identity_Users[&quot;Users&quot;]
+          class_models_sql_identity_UserTraits[&quot;UserTraits&quot;]
+          module_models_sql_inbound[&quot;models_sql.inbound&quot;]
+          class_models_sql_inbound_InboundStatus[&quot;InboundStatus&quot;]
+          class_models_sql_inbound_InboundMessage[&quot;InboundMessage&quot;]
+          module_models_sql_leads[&quot;models_sql.leads&quot;]
+          class_models_sql_leads_Leads[&quot;Leads&quot;]
+          class_models_sql_leads_VisitaEstado[&quot;VisitaEstado&quot;]
+          class_models_sql_leads_Visitas[&quot;Visitas&quot;]
+          module_models_sql_recordatorios[&quot;models_sql.recordatorios&quot;]
+          class_models_sql_recordatorios_Recordatorios[&quot;Recordatorios&quot;]
+          module_models_sql_reservas[&quot;models_sql.reservas&quot;]
+          class_models_sql_reservas_Reservas[&quot;Reservas&quot;]
+          module_models_sql_session[&quot;models_sql.session&quot;]
+          class_models_sql_session_SessionNode[&quot;SessionNode&quot;]
+          class_models_sql_session_SessionState[&quot;SessionState&quot;]
+          class_models_sql_session_ChatHistory[&quot;ChatHistory&quot;]
+          module_models_sql_turns[&quot;models_sql.turns&quot;]
+          class_models_sql_turns_TurnKind[&quot;TurnKind&quot;]
+          class_models_sql_turns_Turns[&quot;Turns&quot;]
+          module_orchestrator[&quot;orchestrator&quot;]
+          class_orchestrator_Orchestrator[&quot;Orchestrator&quot;]
+          module_perfilador_extractor[&quot;perfilador.extractor&quot;]
+          class_perfilador_extractor_TraitCandidate[&quot;TraitCandidate&quot;]
+          class_perfilador_extractor_TraitMatch[&quot;TraitMatch&quot;]
+          class_perfilador_extractor_StructuredTraitMapper[&quot;StructuredTraitMapper&quot;]
+          class_perfilador_extractor_TraitExtractor[&quot;TraitExtractor&quot;]
+          module_perfilador_form_ingestion[&quot;perfilador.form_ingestion&quot;]
+          module_perfilador_listener[&quot;perfilador.listener&quot;]
+          class_perfilador_listener_TurnClosedEvent[&quot;TurnClosedEvent&quot;]
+          class_perfilador_listener_EventBus[&quot;EventBus&quot;]
+          class_perfilador_listener_InProcessEventBus[&quot;InProcessEventBus&quot;]
+          class_perfilador_listener_AsyncProfilingListener[&quot;AsyncProfilingListener&quot;]
+          module_perfilador_traits_store[&quot;perfilador.traits_store&quot;]
+          module_pii_scrubber[&quot;pii.scrubber&quot;]
+          class_pii_scrubber__PlaceholderRegistry[&quot;_PlaceholderRegistry&quot;]
+          module_project_config[&quot;project_config&quot;]
+          class_project_config_TuningConfig[&quot;TuningConfig&quot;]
+          class_project_config_DeployConfig[&quot;DeployConfig&quot;]
+          class_project_config_ProjectConfig[&quot;ProjectConfig&quot;]
+          module_reflector_generator[&quot;reflector.generator&quot;]
+          class_reflector_generator_RecurrentPattern[&quot;RecurrentPattern&quot;]
+          class_reflector_generator_GeneratedAtom[&quot;GeneratedAtom&quot;]
+          class_reflector_generator_ReflectorAtomGenerator[&quot;ReflectorAtomGenerator&quot;]
+          module_reflector_reader[&quot;reflector.reader&quot;]
+          class_reflector_reader_ReflectorHistoryRow[&quot;ReflectorHistoryRow&quot;]
+          class_reflector_reader_ReaderCheckpoint[&quot;ReaderCheckpoint&quot;]
+          class_reflector_reader_CheckpointStore[&quot;CheckpointStore&quot;]
+          class_reflector_reader_InMemoryCheckpointStore[&quot;InMemoryCheckpointStore&quot;]
+          class_reflector_reader_ReflectorBatchReaderJob[&quot;ReflectorBatchReaderJob&quot;]
+          module_state_machine[&quot;state_machine&quot;]
+          class_state_machine_RouterNode[&quot;RouterNode&quot;]
+          class_state_machine_SessionState[&quot;SessionState&quot;]
+          class_state_machine_CronTriggerPayload[&quot;CronTriggerPayload&quot;]
+          class_state_machine_RouterTurnResult[&quot;RouterTurnResult&quot;]
+          class_state_machine_RouterStateMachine[&quot;RouterStateMachine&quot;]
+          module_tools_consultas[&quot;tools.consultas&quot;]
+          module_tools_enrolamiento[&quot;tools.enrolamiento&quot;]
+          module_tools_hcp[&quot;tools.hcp&quot;]
+          module_tools_leads[&quot;tools.leads&quot;]
+          module_tools_recordatorios[&quot;tools.recordatorios&quot;]
+          module_tools_reservas[&quot;tools.reservas&quot;]
+          module_tools_visitas[&quot;tools.visitas&quot;]
+          module___future__[&quot;module___future__&quot;]
+          module_collections_abc[&quot;abc&quot;]
+          module_typing[&quot;typing&quot;]
+          module_dataclasses[&quot;dataclasses&quot;]
+          module_enum[&quot;enum&quot;]
+          module_pydantic[&quot;pydantic&quot;]
+          module_kb_agent_agents_base[&quot;base&quot;]
+          module_kb_agent_agent[&quot;agent&quot;]
+          module_knowledge_base_operations[&quot;operations&quot;]
+          module_pathlib[&quot;pathlib&quot;]
+          module_dotenv[&quot;dotenv&quot;]
+          module_kb_agent_db_check[&quot;check&quot;]
+          module_kb_agent_orchestrator[&quot;orchestrator&quot;]
+          module_kb_agent_project_config[&quot;config&quot;]
+          module_sqlalchemy[&quot;sqlalchemy&quot;]
+          module_alembic_config[&quot;config&quot;]
+          module_alembic_runtime_migration[&quot;migration&quot;]
+          module_alembic_script[&quot;script&quot;]
+          module_datetime[&quot;datetime&quot;]
+          module_sqlalchemy_exc[&quot;exc&quot;]
+          module_kb_agent_models_sql_inbound[&quot;inbound&quot;]
+          module_twilio_rest[&quot;rest&quot;]
+          module_sqlalchemy_orm[&quot;orm&quot;]
+          module_kb_agent_agents_router[&quot;router&quot;]
+          module_kb_agent_models_knowledge[&quot;knowledge&quot;]
+          module_kb_agent_models_sql_identity[&quot;identity&quot;]
+          module_kb_agent_models_sql_session[&quot;session&quot;]
+          module_compiled_document[&quot;document&quot;]
+          module_flow[&quot;flow&quot;]
+          module_fastembed[&quot;fastembed&quot;]
+          module_pron_graph[&quot;graph&quot;]
+          module_kgdb_world[&quot;world&quot;]
+          module_pron_world[&quot;world&quot;]
+          module_kb_agent_perfilador_extractor[&quot;extractor&quot;]
+          module_google[&quot;google&quot;]
+          module_sldb[&quot;sldb&quot;]
+          module_index_proxies[&quot;proxies&quot;]
+          module_domain[&quot;domain&quot;]
+          module_identity[&quot;identity&quot;]
+          module_time[&quot;time&quot;]
+          module_uuid[&quot;uuid&quot;]
+          module_sqlalchemy_pool[&quot;pool&quot;]
+          module_kb_agent_agents_gate[&quot;gate&quot;]
+          module_kb_agent_agents_orchestrator_agent[&quot;agent&quot;]
+          module_kb_agent_llm[&quot;llm&quot;]
+          module_kb_agent_models_sql_reservas[&quot;reservas&quot;]
+          module_kb_agent_models_sql_recordatorios[&quot;recordatorios&quot;]
+          module_kb_agent_models_sql_consultas[&quot;consultas&quot;]
+          module_kb_agent_models_sql_turns[&quot;turns&quot;]
+          module_kb_agent_models_sql_conversation[&quot;conversation&quot;]
+          module_kb_agent_knowledge_compiler[&quot;compiler&quot;]
+          module_kb_agent_perfilador_listener[&quot;listener&quot;]
+          module_kb_agent_lead_slots[&quot;slots&quot;]
+          module_kb_agent_pii_scrubber[&quot;scrubber&quot;]
+          module_kb_agent_reflector[&quot;reflector&quot;]
+          module_kb_agent_tools[&quot;tools&quot;]
+          module_kb_agent_state_machine[&quot;machine&quot;]
+          module_textwrap[&quot;textwrap&quot;]
+          module_kb_agent_perfilador_traits_store[&quot;store&quot;]
+          module_abc[&quot;abc&quot;]
+          module_collections[&quot;collections&quot;]
+          module_deskops_atom_tags[&quot;tags&quot;]
+          module_kb_agent_reflector_reader[&quot;reader&quot;]
+          module_kb_agent_models_sql_hcp[&quot;hcp&quot;]
+          module_kb_agent_models_sql_leads[&quot;leads&quot;]
+          module_kb_agent_tools_leads[&quot;leads&quot;]
+          module_agent --&gt;|&quot;imports&quot;| module___future__
+          module_agent --&gt;|&quot;imports&quot;| module_collections_abc
+          module_agent --&gt;|&quot;imports&quot;| module_typing
+          module_agents_base --&gt;|&quot;defines&quot;| class_agents_base_AgentRole
+          module_agents_base --&gt;|&quot;defines&quot;| class_agents_base_ToolCall
+          module_agents_base --&gt;|&quot;defines&quot;| class_agents_base_LlmRequest
+          module_agents_base --&gt;|&quot;defines&quot;| class_agents_base_LlmResponse
+          module_agents_base --&gt;|&quot;defines&quot;| class_agents_base_Tool
+          module_agents_base --&gt;|&quot;defines&quot;| class_agents_base_Agent
+          module_agents_base --&gt;|&quot;imports&quot;| module___future__
+          module_agents_base --&gt;|&quot;imports&quot;| module_collections_abc
+          module_agents_base --&gt;|&quot;imports&quot;| module_dataclasses
+          module_agents_base --&gt;|&quot;imports&quot;| module_enum
+          module_agents_base --&gt;|&quot;imports&quot;| module_typing
+          module_agents_base --&gt;|&quot;imports&quot;| module_pydantic
+          module_agents_gate --&gt;|&quot;defines&quot;| class_agents_gate_GateVerdict
+          module_agents_gate --&gt;|&quot;defines&quot;| class_agents_gate_GateAgent
+          module_agents_gate --&gt;|&quot;imports&quot;| module___future__
+          module_agents_gate --&gt;|&quot;imports&quot;| module_collections_abc
+          module_agents_gate --&gt;|&quot;imports&quot;| module_typing
+          module_agents_gate --&gt;|&quot;imports&quot;| module_pydantic
+          module_agents_gate --&gt;|&quot;imports&quot;| module_kb_agent_agents_base
+          module_agents_orchestrator_agent --&gt;|&quot;defines&quot;| class_agents_orchestrator_agent_ToolCallDecision
+          module_agents_orchestrator_agent --&gt;|&quot;defines&quot;| class_agents_orchestrator_agent_OrchestratorDecision
+          module_agents_orchestrator_agent --&gt;|&quot;defines&quot;| class_agents_orchestrator_agent_OrchestratorAgent
+          module_agents_orchestrator_agent --&gt;|&quot;imports&quot;| module___future__
+          module_agents_orchestrator_agent --&gt;|&quot;imports&quot;| module_collections_abc
+          module_agents_orchestrator_agent --&gt;|&quot;imports&quot;| module_typing
+          module_agents_orchestrator_agent --&gt;|&quot;imports&quot;| module_pydantic
+          module_agents_orchestrator_agent --&gt;|&quot;imports&quot;| module_kb_agent_agent
+          module_agents_orchestrator_agent --&gt;|&quot;imports&quot;| module_kb_agent_agents_base
+          module_agents_router --&gt;|&quot;defines&quot;| class_agents_router_BundleEntry
+          module_agents_router --&gt;|&quot;defines&quot;| class_agents_router_RouterDecision
+          module_agents_router --&gt;|&quot;defines&quot;| class_agents_router_RouterAgent
+          module_agents_router --&gt;|&quot;imports&quot;| module___future__
+          module_agents_router --&gt;|&quot;imports&quot;| module_collections_abc
+          module_agents_router --&gt;|&quot;imports&quot;| module_typing
+          module_agents_router --&gt;|&quot;imports&quot;| module_pydantic
+          module_agents_router --&gt;|&quot;imports&quot;| module_kb_agent_agents_base
+          module_agents_router --&gt;|&quot;imports&quot;| module_knowledge_base_operations
+          module_cli --&gt;|&quot;imports&quot;| module___future__
+          module_cli --&gt;|&quot;imports&quot;| module_pathlib
+          module_cli --&gt;|&quot;imports&quot;| module_dotenv
+          module_cli --&gt;|&quot;imports&quot;| module_kb_agent_db_check
+          module_cli --&gt;|&quot;imports&quot;| module_kb_agent_orchestrator
+          module_cli --&gt;|&quot;imports&quot;| module_kb_agent_project_config
+          module_db_check --&gt;|&quot;defines&quot;| class_db_check_DbRevisionStatus
+          module_db_check --&gt;|&quot;imports&quot;| module___future__
+          module_db_check --&gt;|&quot;imports&quot;| module_dataclasses
+          module_db_check --&gt;|&quot;imports&quot;| module_pathlib
+          module_db_check --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_db_check --&gt;|&quot;imports&quot;| module_alembic_config
+          module_db_check --&gt;|&quot;imports&quot;| module_alembic_runtime_migration
+          module_db_check --&gt;|&quot;imports&quot;| module_alembic_script
+          module_inbound --&gt;|&quot;defines&quot;| class_inbound_InboundResult
+          module_inbound --&gt;|&quot;defines&quot;| class_inbound_InboundService
+          module_inbound --&gt;|&quot;imports&quot;| module___future__
+          module_inbound --&gt;|&quot;imports&quot;| module_dataclasses
+          module_inbound --&gt;|&quot;imports&quot;| module_datetime
+          module_inbound --&gt;|&quot;imports&quot;| module_typing
+          module_inbound --&gt;|&quot;imports&quot;| module_sqlalchemy_exc
+          module_inbound --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_inbound
+          module_inbound --&gt;|&quot;imports&quot;| module_kb_agent_orchestrator
+          module_inbound --&gt;|&quot;imports&quot;| module_twilio_rest
+          module_knowledge_compiled_document --&gt;|&quot;defines&quot;| class_knowledge_compiled_document_CompiledDocument
+          module_knowledge_compiled_document --&gt;|&quot;imports&quot;| module___future__
+          module_knowledge_compiled_document --&gt;|&quot;imports&quot;| module_dataclasses
+          module_knowledge_compiled_document --&gt;|&quot;imports&quot;| module_typing
+          module_knowledge_compiler --&gt;|&quot;defines&quot;| class_knowledge_compiler_SessionStateLike
+          module_knowledge_compiler --&gt;|&quot;defines&quot;| class_knowledge_compiler_ContextCompiler
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module___future__
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_dataclasses
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_typing
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_kb_agent_agents_router
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_kb_agent_models_knowledge
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_identity
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_session
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_compiled_document
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_flow
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_knowledge_base_operations
+          module_knowledge_compiler --&gt;|&quot;imports&quot;| module_kb_agent_agents_router
+          module_knowledge_embedder --&gt;|&quot;defines&quot;| class_knowledge_embedder_FastembedEmbedder
+          module_knowledge_embedder --&gt;|&quot;imports&quot;| module___future__
+          module_knowledge_embedder --&gt;|&quot;imports&quot;| module_pathlib
+          module_knowledge_embedder --&gt;|&quot;imports&quot;| module_typing
+          module_knowledge_embedder --&gt;|&quot;imports&quot;| module_fastembed
+          module_knowledge_flow --&gt;|&quot;defines&quot;| class_knowledge_flow_FlowStep
+          module_knowledge_flow --&gt;|&quot;defines&quot;| class_knowledge_flow_ConversationFlow
+          module_knowledge_flow --&gt;|&quot;imports&quot;| module___future__
+          module_knowledge_flow --&gt;|&quot;imports&quot;| module_dataclasses
+          module_knowledge_flow --&gt;|&quot;imports&quot;| module_pron_graph
+          module_knowledge_world --&gt;|&quot;imports&quot;| module___future__
+          module_knowledge_world --&gt;|&quot;imports&quot;| module_pathlib
+          module_knowledge_world --&gt;|&quot;imports&quot;| module_kgdb_world
+          module_knowledge_world --&gt;|&quot;imports&quot;| module_pron_world
+          module_lead_slots --&gt;|&quot;imports&quot;| module___future__
+          module_lead_slots --&gt;|&quot;imports&quot;| module_typing
+          module_llm --&gt;|&quot;defines&quot;| class_llm_Conversador
+          module_llm --&gt;|&quot;defines&quot;| class_llm_TraitMapper
+          module_llm --&gt;|&quot;defines&quot;| class_llm_GeminiConversador
+          module_llm --&gt;|&quot;defines&quot;| class_llm_GeminiTraitMapper
+          module_llm --&gt;|&quot;imports&quot;| module___future__
+          module_llm --&gt;|&quot;imports&quot;| module_collections_abc
+          module_llm --&gt;|&quot;imports&quot;| module_typing
+          module_llm --&gt;|&quot;imports&quot;| module_kb_agent_perfilador_extractor
+          module_llm --&gt;|&quot;imports&quot;| module_google
+          module_models_knowledge_agent_framing --&gt;|&quot;defines&quot;| class_models_knowledge_agent_framing_AgentFraming
+          module_models_knowledge_agent_framing --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_agent_framing --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_agent_framing --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_agent_framing --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_boundary --&gt;|&quot;defines&quot;| class_models_knowledge_boundary_CapabilityBoundary
+          module_models_knowledge_boundary --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_boundary --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_boundary --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_boundary --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_domain --&gt;|&quot;defines&quot;| class_models_knowledge_domain_AtomQuestion
+          module_models_knowledge_domain --&gt;|&quot;defines&quot;| class_models_knowledge_domain_DomainAtom
+          module_models_knowledge_domain --&gt;|&quot;imports&quot;| module_enum
+          module_models_knowledge_domain --&gt;|&quot;imports&quot;| module_typing
+          module_models_knowledge_domain --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_domain --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_domain --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_fallback --&gt;|&quot;defines&quot;| class_models_knowledge_fallback_FallbackRule
+          module_models_knowledge_fallback --&gt;|&quot;imports&quot;| module_typing
+          module_models_knowledge_fallback --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_fallback --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_fallback --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_fallback --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_gate --&gt;|&quot;defines&quot;| class_models_knowledge_gate_GateCriterion
+          module_models_knowledge_gate --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_gate --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_gate --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_gate --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_index_proxies --&gt;|&quot;defines&quot;| class_models_knowledge_index_proxies_IndexProxies
+          module_models_knowledge_index_proxies --&gt;|&quot;imports&quot;| module___future__
+          module_models_knowledge_index_proxies --&gt;|&quot;imports&quot;| module_typing
+          module_models_knowledge_index_proxies --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_index_proxies --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_rule --&gt;|&quot;defines&quot;| class_models_knowledge_rule_RuleAtom
+          module_models_knowledge_rule --&gt;|&quot;imports&quot;| module_typing
+          module_models_knowledge_rule --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_rule --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_rule --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_rule --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_self_declaration --&gt;|&quot;defines&quot;| class_models_knowledge_self_declaration_SelfDeclaration
+          module_models_knowledge_self_declaration --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_self_declaration --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_self_declaration --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_self_declaration --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_step --&gt;|&quot;defines&quot;| class_models_knowledge_step_StepKind
+          module_models_knowledge_step --&gt;|&quot;defines&quot;| class_models_knowledge_step_ConversationStep
+          module_models_knowledge_step --&gt;|&quot;imports&quot;| module_enum
+          module_models_knowledge_step --&gt;|&quot;imports&quot;| module_typing
+          module_models_knowledge_step --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_step --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_step --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_step --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_strategy --&gt;|&quot;defines&quot;| class_models_knowledge_strategy_StrategyRule
+          module_models_knowledge_strategy --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_strategy --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_strategy --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_strategy --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_style --&gt;|&quot;defines&quot;| class_models_knowledge_style_StyleGuide
+          module_models_knowledge_style --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_style --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_style --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_style --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_tool --&gt;|&quot;defines&quot;| class_models_knowledge_tool_ToolAtom
+          module_models_knowledge_tool --&gt;|&quot;imports&quot;| module_typing
+          module_models_knowledge_tool --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_tool --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_tool --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_tool --&gt;|&quot;imports&quot;| module_domain
+          module_models_knowledge_trait --&gt;|&quot;defines&quot;| class_models_knowledge_trait_TraitAtom
+          module_models_knowledge_trait --&gt;|&quot;imports&quot;| module_typing
+          module_models_knowledge_trait --&gt;|&quot;imports&quot;| module_pydantic
+          module_models_knowledge_trait --&gt;|&quot;imports&quot;| module_sldb
+          module_models_knowledge_trait --&gt;|&quot;imports&quot;| module_index_proxies
+          module_models_knowledge_trait --&gt;|&quot;imports&quot;| module_domain
+          module_models_sql_consultas --&gt;|&quot;defines&quot;| class_models_sql_consultas_Consultas
+          module_models_sql_consultas --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_consultas --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_consultas --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_consultas --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_consultas --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_conversation --&gt;|&quot;defines&quot;| class_models_sql_conversation_ConversationStatus
+          module_models_sql_conversation --&gt;|&quot;defines&quot;| class_models_sql_conversation_Conversation
+          module_models_sql_conversation --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_conversation --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_conversation --&gt;|&quot;imports&quot;| module_enum
+          module_models_sql_conversation --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_conversation --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_conversation --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_hcp --&gt;|&quot;defines&quot;| class_models_sql_hcp_Recontactos
+          module_models_sql_hcp --&gt;|&quot;defines&quot;| class_models_sql_hcp_Consentimientos
+          module_models_sql_hcp --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_hcp --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_hcp --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_hcp --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_hcp --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_identity --&gt;|&quot;defines&quot;| class_models_sql_identity_Base
+          module_models_sql_identity --&gt;|&quot;defines&quot;| class_models_sql_identity_Users
+          module_models_sql_identity --&gt;|&quot;defines&quot;| class_models_sql_identity_UserTraits
+          module_models_sql_identity --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_identity --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_identity --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_identity --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_inbound --&gt;|&quot;defines&quot;| class_models_sql_inbound_InboundStatus
+          module_models_sql_inbound --&gt;|&quot;defines&quot;| class_models_sql_inbound_InboundMessage
+          module_models_sql_inbound --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_inbound --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_inbound --&gt;|&quot;imports&quot;| module_enum
+          module_models_sql_inbound --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_inbound --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_inbound --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_leads --&gt;|&quot;defines&quot;| class_models_sql_leads_Leads
+          module_models_sql_leads --&gt;|&quot;defines&quot;| class_models_sql_leads_VisitaEstado
+          module_models_sql_leads --&gt;|&quot;defines&quot;| class_models_sql_leads_Visitas
+          module_models_sql_leads --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_leads --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_leads --&gt;|&quot;imports&quot;| module_enum
+          module_models_sql_leads --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_leads --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_leads --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_recordatorios --&gt;|&quot;defines&quot;| class_models_sql_recordatorios_Recordatorios
+          module_models_sql_recordatorios --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_recordatorios --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_recordatorios --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_recordatorios --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_recordatorios --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_reservas --&gt;|&quot;defines&quot;| class_models_sql_reservas_Reservas
+          module_models_sql_reservas --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_reservas --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_reservas --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_reservas --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_reservas --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_session --&gt;|&quot;defines&quot;| class_models_sql_session_SessionNode
+          module_models_sql_session --&gt;|&quot;defines&quot;| class_models_sql_session_SessionState
+          module_models_sql_session --&gt;|&quot;defines&quot;| class_models_sql_session_ChatHistory
+          module_models_sql_session --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_session --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_session --&gt;|&quot;imports&quot;| module_enum
+          module_models_sql_session --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_session --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_session --&gt;|&quot;imports&quot;| module_identity
+          module_models_sql_turns --&gt;|&quot;defines&quot;| class_models_sql_turns_TurnKind
+          module_models_sql_turns --&gt;|&quot;defines&quot;| class_models_sql_turns_Turns
+          module_models_sql_turns --&gt;|&quot;imports&quot;| module___future__
+          module_models_sql_turns --&gt;|&quot;imports&quot;| module_datetime
+          module_models_sql_turns --&gt;|&quot;imports&quot;| module_enum
+          module_models_sql_turns --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_models_sql_turns --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_models_sql_turns --&gt;|&quot;imports&quot;| module_identity
+          module_orchestrator --&gt;|&quot;defines&quot;| class_orchestrator_Orchestrator
+          module_orchestrator --&gt;|&quot;imports&quot;| module___future__
+          module_orchestrator --&gt;|&quot;imports&quot;| module_time
+          module_orchestrator --&gt;|&quot;imports&quot;| module_collections_abc
+          module_orchestrator --&gt;|&quot;imports&quot;| module_datetime
+          module_orchestrator --&gt;|&quot;imports&quot;| module_pathlib
+          module_orchestrator --&gt;|&quot;imports&quot;| module_typing
+          module_orchestrator --&gt;|&quot;imports&quot;| module_uuid
+          module_orchestrator --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_orchestrator --&gt;|&quot;imports&quot;| module_sqlalchemy_pool
+          module_orchestrator --&gt;|&quot;imports&quot;| module_sqlalchemy_exc
+          module_orchestrator --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_agent
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_agents_base
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_agents_gate
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_agents_orchestrator_agent
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_agents_router
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_llm
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_identity
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_reservas
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_recordatorios
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_consultas
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_session
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_turns
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_conversation
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_knowledge_compiler
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_perfilador_extractor
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_perfilador_listener
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_lead_slots
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_pii_scrubber
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_pii_scrubber
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_project_config
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_reflector
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_tools
+          module_orchestrator --&gt;|&quot;imports&quot;| module_kb_agent_state_machine
+          module_orchestrator --&gt;|&quot;imports&quot;| module_knowledge_base_operations
+          module_perfilador_extractor --&gt;|&quot;defines&quot;| class_perfilador_extractor_TraitCandidate
+          module_perfilador_extractor --&gt;|&quot;defines&quot;| class_perfilador_extractor_TraitMatch
+          module_perfilador_extractor --&gt;|&quot;defines&quot;| class_perfilador_extractor_StructuredTraitMapper
+          module_perfilador_extractor --&gt;|&quot;defines&quot;| class_perfilador_extractor_TraitExtractor
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module___future__
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module_collections_abc
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module_dataclasses
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module_textwrap
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module_typing
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module_kb_agent_perfilador_traits_store
+          module_perfilador_extractor --&gt;|&quot;imports&quot;| module_knowledge_base_operations
+          module_perfilador_form_ingestion --&gt;|&quot;imports&quot;| module___future__
+          module_perfilador_form_ingestion --&gt;|&quot;imports&quot;| module_collections_abc
+          module_perfilador_form_ingestion --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_perfilador_form_ingestion --&gt;|&quot;imports&quot;| module_kb_agent_perfilador_traits_store
+          module_perfilador_listener --&gt;|&quot;defines&quot;| class_perfilador_listener_TurnClosedEvent
+          module_perfilador_listener --&gt;|&quot;defines&quot;| class_perfilador_listener_EventBus
+          module_perfilador_listener --&gt;|&quot;defines&quot;| class_perfilador_listener_InProcessEventBus
+          module_perfilador_listener --&gt;|&quot;defines&quot;| class_perfilador_listener_AsyncProfilingListener
+          module_perfilador_listener --&gt;|&quot;imports&quot;| module___future__
+          module_perfilador_listener --&gt;|&quot;imports&quot;| module_abc
+          module_perfilador_listener --&gt;|&quot;imports&quot;| module_collections_abc
+          module_perfilador_listener --&gt;|&quot;imports&quot;| module_dataclasses
+          module_perfilador_listener --&gt;|&quot;imports&quot;| module_typing
+          module_perfilador_listener --&gt;|&quot;imports&quot;| module_kb_agent_pii_scrubber
+          module_perfilador_traits_store --&gt;|&quot;imports&quot;| module___future__
+          module_perfilador_traits_store --&gt;|&quot;imports&quot;| module_typing
+          module_perfilador_traits_store --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_perfilador_traits_store --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_identity
+          module_pii_scrubber --&gt;|&quot;defines&quot;| class_pii_scrubber__PlaceholderRegistry
+          module_pii_scrubber --&gt;|&quot;imports&quot;| module___future__
+          module_pii_scrubber --&gt;|&quot;imports&quot;| module_collections_abc
+          module_pii_scrubber --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_pii_scrubber --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_pii_scrubber --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_session
+          module_project_config --&gt;|&quot;defines&quot;| class_project_config_TuningConfig
+          module_project_config --&gt;|&quot;defines&quot;| class_project_config_DeployConfig
+          module_project_config --&gt;|&quot;defines&quot;| class_project_config_ProjectConfig
+          module_project_config --&gt;|&quot;imports&quot;| module___future__
+          module_project_config --&gt;|&quot;imports&quot;| module_dataclasses
+          module_project_config --&gt;|&quot;imports&quot;| module_pathlib
+          module_project_config --&gt;|&quot;imports&quot;| module_typing
+          module_reflector_generator --&gt;|&quot;defines&quot;| class_reflector_generator_RecurrentPattern
+          module_reflector_generator --&gt;|&quot;defines&quot;| class_reflector_generator_GeneratedAtom
+          module_reflector_generator --&gt;|&quot;defines&quot;| class_reflector_generator_ReflectorAtomGenerator
+          module_reflector_generator --&gt;|&quot;imports&quot;| module___future__
+          module_reflector_generator --&gt;|&quot;imports&quot;| module_collections
+          module_reflector_generator --&gt;|&quot;imports&quot;| module_dataclasses
+          module_reflector_generator --&gt;|&quot;imports&quot;| module_pathlib
+          module_reflector_generator --&gt;|&quot;imports&quot;| module_typing
+          module_reflector_generator --&gt;|&quot;imports&quot;| module_deskops_atom_tags
+          module_reflector_generator --&gt;|&quot;imports&quot;| module_knowledge_base_operations
+          module_reflector_generator --&gt;|&quot;imports&quot;| module_kb_agent_reflector_reader
+          module_reflector_reader --&gt;|&quot;defines&quot;| class_reflector_reader_ReflectorHistoryRow
+          module_reflector_reader --&gt;|&quot;defines&quot;| class_reflector_reader_ReaderCheckpoint
+          module_reflector_reader --&gt;|&quot;defines&quot;| class_reflector_reader_CheckpointStore
+          module_reflector_reader --&gt;|&quot;defines&quot;| class_reflector_reader_InMemoryCheckpointStore
+          module_reflector_reader --&gt;|&quot;defines&quot;| class_reflector_reader_ReflectorBatchReaderJob
+          module_reflector_reader --&gt;|&quot;imports&quot;| module___future__
+          module_reflector_reader --&gt;|&quot;imports&quot;| module_collections_abc
+          module_reflector_reader --&gt;|&quot;imports&quot;| module_dataclasses
+          module_reflector_reader --&gt;|&quot;imports&quot;| module_datetime
+          module_reflector_reader --&gt;|&quot;imports&quot;| module_typing
+          module_reflector_reader --&gt;|&quot;imports&quot;| module_sqlalchemy
+          module_reflector_reader --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_reflector_reader --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_session
+          module_state_machine --&gt;|&quot;defines&quot;| class_state_machine_RouterNode
+          module_state_machine --&gt;|&quot;defines&quot;| class_state_machine_SessionState
+          module_state_machine --&gt;|&quot;defines&quot;| class_state_machine_CronTriggerPayload
+          module_state_machine --&gt;|&quot;defines&quot;| class_state_machine_RouterTurnResult
+          module_state_machine --&gt;|&quot;defines&quot;| class_state_machine_RouterStateMachine
+          module_state_machine --&gt;|&quot;imports&quot;| module___future__
+          module_state_machine --&gt;|&quot;imports&quot;| module_dataclasses
+          module_state_machine --&gt;|&quot;imports&quot;| module_enum
+          module_state_machine --&gt;|&quot;imports&quot;| module_typing
+          module_tools_consultas --&gt;|&quot;imports&quot;| module___future__
+          module_tools_consultas --&gt;|&quot;imports&quot;| module_typing
+          module_tools_consultas --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_tools_consultas --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_consultas
+          module_tools_enrolamiento --&gt;|&quot;imports&quot;| module___future__
+          module_tools_enrolamiento --&gt;|&quot;imports&quot;| module_typing
+          module_tools_enrolamiento --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_tools_enrolamiento --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_identity
+          module_tools_hcp --&gt;|&quot;imports&quot;| module___future__
+          module_tools_hcp --&gt;|&quot;imports&quot;| module_typing
+          module_tools_hcp --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_tools_hcp --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_hcp
+          module_tools_leads --&gt;|&quot;imports&quot;| module___future__
+          module_tools_leads --&gt;|&quot;imports&quot;| module_typing
+          module_tools_leads --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_tools_leads --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_leads
+          module_tools_leads --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_session
+          module_tools_recordatorios --&gt;|&quot;imports&quot;| module___future__
+          module_tools_recordatorios --&gt;|&quot;imports&quot;| module_typing
+          module_tools_recordatorios --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_tools_recordatorios --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_recordatorios
+          module_tools_reservas --&gt;|&quot;imports&quot;| module___future__
+          module_tools_reservas --&gt;|&quot;imports&quot;| module_typing
+          module_tools_reservas --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_tools_reservas --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_reservas
+          module_tools_visitas --&gt;|&quot;imports&quot;| module___future__
+          module_tools_visitas --&gt;|&quot;imports&quot;| module_typing
+          module_tools_visitas --&gt;|&quot;imports&quot;| module_sqlalchemy_orm
+          module_tools_visitas --&gt;|&quot;imports&quot;| module_kb_agent_models_sql_leads
+          module_tools_visitas --&gt;|&quot;imports&quot;| module_kb_agent_tools_leads
+    </pre>
+  </div>
+</section><section id="vista02-17cfb044" data-spec="kb-agent-state" data-type="state" data-project="" data-category="Arquitectura" data-tags="type:state" data-view-id="vista02" class="catalog-item">
+  <div class="lbl">Vista 02</div>
+  <h2>RouterStateMachine · Estados de sesión</h2>
+  <p class="desc">Máquina de estados del router conversacional (kb_agent.state_machine / models_sql.session.SessionState): idle, buffering (debounce), evaluación de contexto, drafting, espera de tool y breakpoint miss.</p>
+  <div class="section-meta"><span class="meta-badge">state</span><span class="meta-badge subtle">type:state</span></div>
+  <div class="board">
+    <pre class="mermaid">
+      stateDiagram-v2
+          state &quot;Idle&quot; as idle
+          state &quot;Buffering (debounce)&quot; as buffering
+          state &quot;Evaluating Context&quot; as evaluating_context
+          state &quot;Drafting Response&quot; as drafting_response
+          state &quot;Waiting Tool&quot; as waiting_tool
+          state &quot;Breakpoint Miss&quot; as breakpoint_miss
+          [*] --&gt; idle
+          idle --&gt; evaluating_context : handle_user_message
+          buffering --&gt; evaluating_context : debounce_fire
+          evaluating_context --&gt; drafting_response : compile_context
+          evaluating_context --&gt; breakpoint_miss : no_breakpoint
+          drafting_response --&gt; waiting_tool : tool_call [tool target definido]
+          drafting_response --&gt; idle : turn_closed
+          waiting_tool --&gt; evaluating_context : tool_result [timeout no alcanzado (TOOL_TIMEOUT_MS)]
+          waiting_tool --&gt; evaluating_context : tool_timeout
+          breakpoint_miss --&gt; idle : turn_closed
+    </pre>
+  </div>
+</section><section id="vista03-17cfb044" data-spec="kb-agent-turn" data-type="sequence" data-project="" data-category="Arquitectura" data-tags="type:sequence" data-view-id="vista03" class="catalog-item">
+  <div class="lbl">Vista 03</div>
+  <h2>Turno conversacional · Secuencia</h2>
+  <p class="desc">Flujo de un turno: API (chat/Twilio) -&gt; Orchestrator -&gt; RouterStateMachine -&gt; LLM -&gt; persistencia (SQL + SLDB), con tool calls y flow_node.</p>
+  <div class="section-meta"><span class="meta-badge">sequence</span><span class="meta-badge subtle">type:sequence</span></div>
+  <div class="board">
+    <pre class="mermaid">
+      sequenceDiagram
+          actor Usuario
+          participant API
+          participant Orchestrator
+          participant RouterStateMachine
+          participant KB
+          participant LLM
+          participant SQLDB
+          Usuario-&gt;&gt;API: POST /api/chat · /webhooks/twilio
+          API-&gt;&gt;Orchestrator: handle_turn
+          Orchestrator-&gt;&gt;KB: compilar contexto (steps, gates, atoms, framing)
+          Orchestrator-&gt;&gt;RouterStateMachine: compile_context + draft_response (estados router)
+          RouterStateMachine-&gt;&gt;LLM: draft con framing + atoms groundeados
+          LLM--&gt;&gt;RouterStateMachine: respuesta + flow_node + tool_call
+          RouterStateMachine-&gt;&gt;SQLDB: persistir turn, flow_node, session_state
+          Orchestrator--&gt;&gt;API: turno enriquecido (system_turn, trace)
+          API--&gt;&gt;Usuario: respuesta (JSON / TwiML)
+    </pre>
+  </div>
+</section><section id="vista04-17cfb044" data-spec="kb-agent-deployment" data-type="deployment" data-project="" data-category="Arquitectura" data-tags="type:deployment" data-view-id="vista04" class="catalog-item">
+  <div class="lbl">Vista 04</div>
+  <h2>Despliegue runtime</h2>
+  <p class="desc">Topología: dispositivos (WhatsApp/SMS vía Twilio, chat web) -&gt; uvicorn (FastAPI, Orchestrator, RouterStateMachine, Perfilador) -&gt; PostgreSQL + SLDB store, y proveedor LLM.</p>
+  <div class="section-meta"><span class="meta-badge">deployment</span><span class="meta-badge subtle">type:deployment</span></div>
+  <div class="board">
+    <pre class="mermaid">
+      graph TD
+          subgraph user_device [&quot;Dispositivo usuario&quot;]
+              whatsapp[&quot;WhatsApp/SMS&quot;]
+              webchat[&quot;Chat UI (frontends/chat)&quot;]
+          end
+          subgraph app_host [&quot;Servidor app (uvicorn)&quot;]
+              fastapi_app[&quot;FastAPI (frontends.chat.app)&quot;]
+              orchestrator[&quot;kb_agent.orchestrator&quot;]
+              state_machine[&quot;kb_agent.state_machine&quot;]
+              profiler[&quot;kb_agent.perfilador&quot;]
+          end
+          subgraph data_host [&quot;Capa de datos&quot;]
+              postgres[&quot;PostgreSQL (models_sql)&quot;]
+              sldb_store[&quot;SLDB store (.sldb)&quot;]
+          end
+          subgraph external [&quot;Servicios externos&quot;]
+              llm_provider[&quot;LLM provider&quot;]
+              twilio[&quot;Twilio API&quot;]
+          end
+          whatsapp --&gt;|&quot;WhatsApp/SMS&quot;| twilio
+          twilio --&gt;|&quot;HTTPS webhook (firma validada)&quot;| fastapi_app
+          webchat --&gt;|&quot;HTTPS /api/chat&quot;| fastapi_app
+          fastapi_app --&gt;|&quot;in-process&quot;| orchestrator
+          orchestrator --&gt;|&quot;SQLAlchemy&quot;| postgres
+          orchestrator --&gt;|&quot;SLDB&quot;| sldb_store
+          orchestrator --&gt;|&quot;HTTPS (framing + atoms)&quot;| llm_provider
+          profiler --&gt;|&quot;HTTPS (análisis asíncrono)&quot;| llm_provider
+    </pre>
+  </div>
+</section></div>
+<div class="category-block" data-category-block="Conocimiento"><div class="macro-separator"><h2>— Conocimiento —</h2></div><section id="vista05-17cfb044" data-spec="kb-agent-knowledge" data-type="class" data-project="" data-category="Conocimiento" data-tags="type:class" data-view-id="vista05" class="catalog-item">
+  <div class="lbl">Vista 05</div>
+  <h2>Modelo de conocimiento (atoms SLDB)</h2>
+  <p class="desc">Jerarquía de clases: StructuredNLDoc -&gt; IndexProxies -&gt; familias de atoms (ConversationStep, DomainAtom, GateCriterion, ToolAtom, etc.) y sus aristas kgdb (transitions_to, grounded_by, uses_tool).</p>
+  <div class="section-meta"><span class="meta-badge">class</span><span class="meta-badge subtle">type:class</span></div>
+  <div class="board">
+    <pre class="mermaid">
+      classDiagram
+          direction LR
+          class StructuredNLDoc[&quot;StructuredNLDoc&quot;]
+          class StructuredNLDoc {
+              &lt;&lt;protocol&gt;&gt;
+              +str id
+              +str title
+              +list[str] tags
+          }
+          class IndexProxies[&quot;IndexProxies&quot;]
+          class IndexProxies {
+              &lt;&lt;protocol&gt;&gt;
+              +str INDEX_PROXY_TEMPLATE
+          }
+          class DomainAtom[&quot;DomainAtom&quot;]
+          class DomainAtom {
+              &lt;&lt;record&gt;&gt;
+              +AtomQuestion question
+          }
+          class ConversationStep[&quot;ConversationStep&quot;]
+          class ConversationStep {
+              &lt;&lt;record&gt;&gt;
+              +StepKind kind
+              +str instructions
+              +list[str] required_slots
+          }
+          class GateCriterion[&quot;GateCriterion&quot;]
+          class GateCriterion {
+              &lt;&lt;record&gt;&gt;
+          }
+          class RuleAtom[&quot;RuleAtom&quot;]
+          class RuleAtom {
+              &lt;&lt;record&gt;&gt;
+          }
+          class ToolAtom[&quot;ToolAtom&quot;]
+          class ToolAtom {
+              &lt;&lt;record&gt;&gt;
+          }
+          class StyleGuide[&quot;StyleGuide&quot;]
+          class StyleGuide {
+              &lt;&lt;record&gt;&gt;
+          }
+          class FallbackRule[&quot;FallbackRule&quot;]
+          class FallbackRule {
+              &lt;&lt;record&gt;&gt;
+          }
+          class AgentFraming[&quot;AgentFraming&quot;]
+          class AgentFraming {
+              &lt;&lt;record&gt;&gt;
+          }
+          class CapabilityBoundary[&quot;CapabilityBoundary&quot;]
+          class CapabilityBoundary {
+              &lt;&lt;record&gt;&gt;
+          }
+          class SelfDeclaration[&quot;SelfDeclaration&quot;]
+          class SelfDeclaration {
+              &lt;&lt;record&gt;&gt;
+          }
+          class StrategyRule[&quot;StrategyRule&quot;]
+          class StrategyRule {
+              &lt;&lt;record&gt;&gt;
+          }
+          IndexProxies ..|&gt; StructuredNLDoc
+          ConversationStep ..|&gt; IndexProxies
+          DomainAtom ..|&gt; IndexProxies
+          GateCriterion ..|&gt; IndexProxies
+          RuleAtom ..|&gt; IndexProxies
+          ToolAtom ..|&gt; IndexProxies
+          StyleGuide ..|&gt; IndexProxies
+          FallbackRule ..|&gt; IndexProxies
+          AgentFraming ..|&gt; IndexProxies
+          CapabilityBoundary ..|&gt; IndexProxies
+          SelfDeclaration ..|&gt; IndexProxies
+          StrategyRule ..|&gt; IndexProxies
+          ConversationStep ..&gt; GateCriterion : gated_by (kgdb)
+          ConversationStep ..&gt; DomainAtom : grounded_by (kgdb)
+          ConversationStep ..&gt; ToolAtom : uses_tool (kgdb)
+          ConversationStep ..&gt; ConversationStep : transitions_to (kgdb)
+    </pre>
+  </div>
+</section></div>
+<footer>
+  <div>PSP SELFIX · ARCHITECTURE TEMPLATE</div>
+  <div>spec2viz + mermaid projection</div>
+</footer>
+
+<div id="floating-controls">
+  <button id="btn-tracker" class="float-btn">🎯 Track que nos falta</button>
+  <button id="anno-btn" class="float-btn">✎ Marcar (Overlay)</button>
+</div>
+
+<div id="tracker-modal" class="tracker-modal">
+  <button class="close-btn" onclick="document.getElementById('tracker-modal').style.display='none'">✕</button>
+  <h3>Track de Átomos Faltantes (W5H1)</h3>
+  <div id="tracker-list"></div>
+</div>
+
+<script>
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'loose',
+    theme: 'dark',
+    themeVariables: {
+      primaryColor: '#12121a', primaryBorderColor: '#d4a574', primaryTextColor: '#f5f0e8', lineColor: '#d4a574',
+      secondaryColor: '#0a0a0f', tertiaryColor: '#12121a', fontFamily: 'Manrope, sans-serif',
+      clusterBkg: 'rgba(212,165,116,0.05)', clusterBorder: 'rgba(212,165,116,0.25)',
+      edgeLabelBackground: '#0a0a0f', actorBkg: '#12121a', actorBorder: '#d4a574', actorTextColor: '#f5f0e8',
+      signalColor: '#d4a574', signalTextColor: '#f5f0e8', noteBkgColor: 'rgba(212,165,116,0.12)',
+      noteBorderColor: '#d4a574', noteTextColor: '#f5f0e8'
+    },
+    flowchart: { htmlLabels: true, curve: 'basis', subGraphTitleMargin: { top: 0, bottom: 32 } }
+  });
+
+  function bindBoards() {
+    document.querySelectorAll('.board').forEach(board => {
+      if (board.querySelector('.fs-btn')) return;
+      let scale = 1, translateX = 0, translateY = 0, isDragging = false, startX, startY;
+      const getSvg = () => board.querySelector('svg');
+
+      board.addEventListener('wheel', (e) => {
+        if (!document.fullscreenElement) return;
+        e.preventDefault();
+        const svg = getSvg();
+        if (!svg) return;
+        scale += e.deltaY * -0.001;
+        scale = Math.max(0.3, Math.min(scale, 10));
+        svg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      });
+
+      board.addEventListener('mousedown', (e) => {
+        if (!document.fullscreenElement) return;
+        if (e.target.closest('.fs-btn')) return;
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        board.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mouseup', () => {
+        isDragging = false;
+        board.style.cursor = '';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging || !document.fullscreenElement) return;
+        e.preventDefault();
+        const svg = getSvg();
+        if (!svg) return;
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        svg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      });
+
+      const btn = document.createElement('button');
+      btn.className = 'fs-btn';
+      btn.title = 'Fullscreen & Zoom';
+      btn.innerHTML = '⛶';
+      btn.onclick = () => {
+        if (!document.fullscreenElement) {
+          board.requestFullscreen().catch(err => console.error(err));
+        } else {
+          document.exitFullscreen();
+        }
+      };
+
+      board.addEventListener('fullscreenchange', () => {
+        const svg = getSvg();
+        if (!document.fullscreenElement) {
+          scale = 1; translateX = 0; translateY = 0;
+          if (svg) svg.style.transform = '';
+        } else {
+          if (svg) svg.style.transition = 'none';
+        }
+      });
+
+      board.appendChild(btn);
+    });
+  }
+
+  /* ---------- anotaciones (planning-only) ---------- */
+  let annoMode = false, annoCache = [];
+  const ANNO_SEL = 'g.node, g.classGroup, g.stateGroup, rect.actor, g.cluster';
+  const W5H1 = ['what', 'why', 'how', 'how_not', 'when', 'where', 'for_whom']; // Expected atoms
+
+  function annoLabel(el) {
+    if (el.matches('g.cluster')) {
+      return (el.querySelector('.cluster-label')?.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80) || el.id;
+    }
+    if (el.matches('rect.actor')) {
+      const t = el.parentElement.querySelector('text.actor');
+      if (t) return t.textContent.replace(/\s+/g, ' ').trim().slice(0, 80);
+    }
+    const t = el.querySelector('.label, foreignObject, text');
+    return (t ? t.textContent : el.textContent).replace(/\s+/g, ' ').trim().slice(0, 80);
+  }
+  function annoVista(el) { return el.closest('section')?.id || 'unknown'; }
+
+  async function annoLoad() {
+    try {
+      const r = await fetch('/annotations');
+      annoCache = await r.json();
+      annoRender();
+    } catch { console.warn('annotate_server no activo'); }
+  }
+  function annoRender() {
+    document.querySelectorAll('.anno-marked').forEach(el => el.classList.remove('anno-marked'));
+    annoCache.forEach(a => {
+      const sec = document.getElementById(a.vista);
+      if (!sec) return;
+      sec.querySelectorAll(ANNO_SEL).forEach(el => {
+        if (annoLabel(el) === a.label) el.classList.add('anno-marked');
+      });
+    });
+  }
+  function annoClose() { document.getElementById('anno-popup')?.remove(); }
+  function annoPopup(el, x, y) {
+    annoClose();
+    const vista = annoVista(el), label = annoLabel(el);
+    const prev = annoCache.filter(a => a.vista === vista && a.label === label);
+    const div = document.createElement('div');
+    div.className = 'anno-popup'; div.id = 'anno-popup';
+    div.style.left = Math.min(x, innerWidth - 320) + 'px';
+    div.style.top = Math.min(y, innerHeight - 240) + 'px';
+    div.innerHTML =
+      `<div class="who">${vista} · ${label}</div>` +
+      prev.map(a => `<div class="prev">“${a.comentario}”<span>${a.ts.slice(0, 10)}</span></div>`).join('') +
+      `<textarea placeholder="comentario…"></textarea>
+       <div class="row">
+         <button data-act="save">guardar</button>
+         ${prev.length ? '<button data-act="del">borrar</button>' : ''}
+         <button data-act="x">✕</button>
+       </div>`;
+    div.addEventListener('click', async e => {
+      const act = e.target.dataset?.act;
+      if (!act) return;
+      if (act === 'x') return annoClose();
+      if (act === 'del') {
+        await fetch('/annotate', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ vista, label }) });
+        annoClose(); return annoLoad();
+      }
+      const comentario = div.querySelector('textarea').value.trim();
+      if (!comentario) return;
+      await fetch('/annotate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ vista, label, comentario }) });
+      annoClose(); annoLoad();
+    });
+    document.body.appendChild(div);
+    div.querySelector('textarea').focus();
+  }
+
+  function initAnnotations() {
+    const btn = document.getElementById('anno-btn');
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      annoMode = !annoMode;
+      document.body.classList.toggle('anno-mode', annoMode);
+      btn.classList.toggle('on', annoMode);
+      if (!annoMode) annoClose();
+    });
+    document.addEventListener('click', e => {
+      if (!annoMode || e.target.closest('.anno-popup, #floating-controls')) return;
+      const el = e.target.closest(ANNO_SEL);
+      if (!el) return;
+      e.preventDefault(); e.stopPropagation();
+      annoPopup(el, e.clientX, e.clientY);
+    }, true);
+    annoLoad();
+  }
+
+  /* ---------- Atoms W5H1 Hover & Tracker ---------- */
+  let tooltipEl = null;
+  function showAtomTooltip(el, e, label, data) {
+    if (annoMode) return;
+    if (!tooltipEl) {
+      tooltipEl = document.createElement('div');
+      tooltipEl.className = 'atom-tooltip';
+      document.body.appendChild(tooltipEl);
+      
+      tooltipEl.addEventListener('mouseenter', () => tooltipEl.classList.add('interactive'));
+      tooltipEl.addEventListener('mouseleave', () => tooltipEl.style.opacity = '0');
+    }
+    
+    let html = `<h4>Atom: ${data ? data.title : label}</h4>`;
+    let missing = [...W5H1];
+    if (data && data.atoms) {
+      for (const [q, atom] of Object.entries(data.atoms)) {
+        missing = missing.filter(m => m !== q);
+        html += `<div class="atom-entry"><div class="atom-q">${q}</div><div class="atom-b">${atom.body}</div></div>`;
+      }
+    }
+    if (missing.length > 0) {
+      html += `<div class="missing">⚠️ Falta W5H1: ${missing.join(', ')}</div>`;
+    }
+    
+    tooltipEl.innerHTML = html;
+    tooltipEl.style.opacity = '1';
+    
+    // Position
+    const rect = el.getBoundingClientRect();
+    let left = e.clientX + 15;
+    let top = e.clientY + 15;
+    if (left + 320 > window.innerWidth) left = e.clientX - 335;
+    if (top + tooltipEl.offsetHeight > window.innerHeight) top = window.innerHeight - tooltipEl.offsetHeight - 15;
+    tooltipEl.style.left = left + 'px';
+    tooltipEl.style.top = top + 'px';
+  }
+
+  function initAtomsUI() {
+    const byView = window.ATOMS_BY_VIEW || {};
+    const db = Object.assign({}, window.ATOMS_DB || {}, ...Object.values(byView));
+    const lookup = (label) => {
+      const norm = label.toLowerCase().replace(/[^\w\s\u00C0-\u017F]+/g, ' ').replace(/\s+/g, ' ').trim();
+      if (db[norm]) return db[norm];
+      for (const entry of Object.values(db)) {
+        if (entry.aliases && entry.aliases.includes(norm)) return entry;
+      }
+      // fallback: label contains the canonical title (longest match wins)
+      let best;
+      for (const [key, entry] of Object.entries(db)) {
+        if (norm.includes(key) && (!best || key.length > best.key.length)) best = { key, entry };
+      }
+      return best ? best.entry : undefined;
+    };
+    const missingNodes = new Set();
+    
+    // Bind Hover & check missing
+    document.querySelectorAll(ANNO_SEL).forEach(el => {
+      const label = annoLabel(el).toLowerCase();
+      // Only care about nodes that have text/label
+      if (!label || label.length < 2) return;
+      
+      const data = lookup(label);
+      const foundCount = data && data.atoms ? Object.keys(data.atoms).length : 0;
+      
+      if (foundCount < W5H1.length) {
+        missingNodes.add(label);
+        // Add warning icon visually if it's a node
+        if (el.matches('g.node, rect.actor')) {
+           const warn = document.createElementNS("http://www.w3.org/2000/svg", "text");
+           warn.textContent = "⚠️";
+           warn.setAttribute("fill", "#e34c4c");
+           warn.setAttribute("font-size", "14");
+           warn.style.pointerEvents = "none";
+           const bbox = el.getBBox ? el.getBBox() : {x:0, y:0};
+           warn.setAttribute("x", bbox.x - 5);
+           warn.setAttribute("y", bbox.y + 10);
+           el.appendChild(warn);
+        }
+      }
+      
+      el.addEventListener('mouseenter', e => showAtomTooltip(el, e, label, data));
+      el.addEventListener('mousemove', e => {
+        if (tooltipEl && tooltipEl.style.opacity === '1' && !tooltipEl.classList.contains('interactive')) {
+           let left = e.clientX + 15;
+           let top = e.clientY + 15;
+           if (left + 320 > window.innerWidth) left = e.clientX - 335;
+           if (top + tooltipEl.offsetHeight > window.innerHeight) top = window.innerHeight - tooltipEl.offsetHeight - 15;
+           tooltipEl.style.left = left + 'px';
+           tooltipEl.style.top = top + 'px';
+        }
+      });
+      el.addEventListener('mouseleave', () => {
+        if (tooltipEl && !tooltipEl.classList.contains('interactive')) {
+          tooltipEl.style.opacity = '0';
+        }
+      });
+    });
+
+    // Setup Tracker
+    const trackerBtn = document.getElementById('btn-tracker');
+    trackerBtn.addEventListener('click', () => {
+      const modal = document.getElementById('tracker-modal');
+      const list = document.getElementById('tracker-list');
+      if (missingNodes.size === 0) {
+        list.innerHTML = '<div style="color:var(--amber)">🎉 Todos los componentes tienen sus W5H1 completos.</div>';
+      } else {
+        list.innerHTML = Array.from(missingNodes).sort().map(lbl => {
+          const d = lookup(lbl);
+          let miss = [...W5H1];
+          if (d && d.atoms) {
+             miss = miss.filter(m => !Object.keys(d.atoms).includes(m));
+          }
+          return `<div class="tracker-item"><strong>${lbl}</strong>: <span class="miss">faltan ${miss.join(', ')}</span></div>`;
+        }).join('');
+      }
+      modal.style.display = 'block';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await document.fonts.ready;
+      await mermaid.run({ querySelector: '.mermaid' });
+      document.querySelectorAll('.mermaid svg').forEach(svg => {
+        svg.querySelectorAll('g.cluster-label').forEach(lbl => {
+          let t = lbl.getAttribute('transform') || '';
+          for (let n = lbl.parentElement; n && n !== svg; n = n.parentElement)
+            t = ((n.getAttribute('transform') || '') + ' ' + t).trim();
+          lbl.setAttribute('transform', t);
+          lbl.style.pointerEvents = 'none';
+          svg.appendChild(lbl);
+        });
+      });
+    } catch (err) {
+      console.error('mermaid render failed:', err);
+    } finally {
+      bindBoards();
+      // initAnnotations(); // Deshabilitado para no lanzar 404 en consola
+      setTimeout(initAtomsUI, 500); // Allow some time for DOM bounds
+    }
+  });</script>
+
+<script>window.ATOMS_DB = {"modelo de ramas": {"title": "Modelo de ramas", "aliases": ["modelo de ramas", "modelo", "ramas", "modelo ramas", "ops", "boundary", "git flow", "git", "flow"], "atoms": {"how": {"id": "atom-modelo-de-ramas", "body": "# Modelo de ramas\n\n## Answer\n\nCuatro tipos de rama (README.md, sección \"Ramas, CI y releases\"). `dev` es integración y la única rama donde se mergea — recibe `merge --no-ff` desde ramas de feature con la suite verde. `main` es estable — avanza sólo por fast-forward desde `dev` cuando pasa la suite completa, incluida la capa LLM. `production` es lo desplegado en Modal — la mueve únicamente `deploy/release.sh`, con tag `release-YYYYMMDD-<sha>`. Las features (`vitali`, `apoe`, …) viven como worktrees en `../_worktrees/<nombre>` — nacen de `dev`, se rebasean sobre `dev` mientras viven, vuelven con `--no-ff`, y al mergear se borran worktree y rama. Reglas — nada se commitea directo en `main` ni `production`; `main` nunca se mergea hacia `dev` (todo nace en `dev`); cero stashes (todo cambio probado se commitea); lo legacy se borra, no se archiva (el archivo es el historial de git). Ciclo completo de una feature — `git worktree add ../_worktrees/vitali -b vitali dev`; commits en el worktree; `git -C ../_worktrees/vitali rebase dev`; `git checkout dev && git merge --no-ff vitali`; `git worktree remove ../_worktrees/vitali && git branch -d vitali`; `git checkout main && git merge --ff-only dev`; `git push origin dev main`."}}}, "policy pura decide_turn ": {"title": "Policy Pura (decide_turn)", "aliases": ["policy pura decide_turn ", "policy", "pura", "decide_turn", "policy pura", "pura decide_turn", "runtime", "engine"], "atoms": {"what": {"id": "atom-policy-decide-turn", "body": "# Policy Pura (decide_turn)\n\n## Answer\n\nFunción de evaluación pura (`decide_turn`) sin estado ni I/O. Analiza el contexto compilado y determina estrictamente la acción a seguir devolviendo un `kind`: `tool_call` (si hay intención y parámetros válidos), `fallback` (si falta grounding o el contexto está vacío), o `nl` (lenguaje natural)."}}}, "mapeo cadena de agentes psp sobre el runtime antonia": {"title": "Mapeo cadena de agentes PSP sobre el runtime Antonia", "aliases": ["mapeo cadena de agentes psp sobre el runtime antonia", "mapeo", "cadena", "agentes", "psp", "sobre", "runtime", "antonia", "mapeo cadena", "cadena agentes", "agentes psp", "psp sobre", "sobre runtime", "runtime antonia", "arquitectura"], "atoms": {"what": {"id": "atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia", "body": "# Mapeo cadena de agentes PSP sobre el runtime Antonia\n\n## Answer\n\nLa cadena PSP de 5 etapas se absorbe asi en el runtime actual. (1) Sanitizacion de entrada -> PII scrubber existente (kb_agent/pii/scrubber.py) + RouterStateMachine. (2) Agente clasificador -> OrchestratorAgent (kb_agent/agents/orchestrator_agent.py) con decide_turn (kb_agent/agent.py) como fallback deterministico; clasifica el tipo de turno. (3) Agentes de dominio -> ContextCompiler (seleccion de atoms por modelo tipado) + RouterAgent (bundle justificado) + Conversador (draft_nl con LLM). (4) Agentes supervisores -> el mismo OrchestratorAgent; decide sin redactar y gobierna el turno leyendo flow_node, las transiciones permitidas (aristas transitions_to del grafo tipado de kgdb, vetadas por codigo en apply_transition_guard), scenario y user_traits del compiled_context. (5) Agente regulatorio / policy gate -> GateAgent (kb_agent/agents/gate.py) con los GateCriterion de la KB; valida la respuesta redactada ANTES de emitirla. Restricciones; una KB = un negocio; no meter roles del pipeline como sub-especialidades en la familia self (self se colapsa a [0] en compiler.py); __family__ no rutea seleccion."}}}, "turno extendido": {"title": "Turno Extendido", "aliases": ["turno extendido", "turno", "extendido", "business", "concepts"], "atoms": {"what": {"id": "atom-concepto-turno-extendido", "body": "# Turno Extendido\n\n## Answer\n\nEl ciclo de vida completo de un mensaje de usuario. A diferencia de un request/response tradicional, el turno extendido incluye pausas en la ejecución síncrona para ejecutar herramientas externas (tools) y procesos asíncronos posteriores a la respuesta (como la extracción de perfiles y la reflexión en batch). Cada turno se persiste con un `id` autoincremental como PK real (auditable e inequívoco); el `turn_id` que emite el runtime (p.ej. \"t1\", \"t2\") es un contador por-sesión y NO es globalmente único, por lo que solo es único dentro de su `session_id` (UniqueConstraint `session_id`+`turn_id`) y sirve para localizar un turno puntual en el Turn Inspector. El turno pertenece además a una Conversation (`conversation_id`), la unidad que acota qué historial entra al prompt."}}}, "context compiler knowledge ": {"title": "Context Compiler (knowledge)", "aliases": ["context compiler knowledge ", "context", "compiler", "knowledge", "context compiler", "compiler knowledge", "runtime", "engine"], "atoms": {"what": {"id": "atom-context-compiler-knowledge", "body": "# Context Compiler (knowledge)\n\n## Answer\n\nMotor de compilacion determinista del paquete kb_agent/knowledge. La clase ContextCompiler lee la base de conocimiento tipada desde el store por KnowledgeOperations (un pron.World por proceso, kb_agent/knowledge/world.py) y resuelve el step activo, sus transiciones (aristas transitions_to) y su grounding (aristas grounded_by + documentos con el tag del step) con ConversationFlow (kb_agent/knowledge/flow.py) sobre el grafo tipado de kgdb, para ensamblar el CompiledDocument del turno. La seleccion semantica de atoms (_semantic_candidates) rankea con el DocumentIndex de pron (vectores por hash_c en <kb>/.pron/, fuera del frontmatter); el mismo indice lo reusa el Perfilador (rank_among) para su pre-filtro top-k."}}}, "sldb base de conocimiento": {"title": "SLDB: Base de Conocimiento", "aliases": ["sldb base de conocimiento", "sldb", "base", "conocimiento", "sldb base", "base conocimiento", "knowledge", "data"], "atoms": {"what": {"id": "atom-sldb-knowledge-base", "body": "# SLDB: Base de Conocimiento\n\n## Answer\n\nStore de documentos semánticos. Hospeda los 10 modelos tipados del negocio, organizados en 4 familias (self, domain, conversation, user). Permite el intercambio de átomos para transformar o re-proponer al agente conversacional. Cuenta con una guarda contra el defecto invisible: `KnowledgeOperations.audit_embeddings` cuenta los atoms sin vector separando los que faltan de los que no llevan por diseño (`AgentFraming`, que se carga por rol y no se recupera por similitud) y devuelve `ok=False` si hay atoms que deberían tener embedding y no lo tienen. Sin esa auditoría una KB entera sin vectores sigue respondiendo por fuzzy literal y nada falla desde afuera (pasó con una KB al 50% sin embedding); el chequeo está expuesto en el CLI (`kb index audit`) para arranque o CI."}}}, "mensajes entrantes inboundservice e inbound_messages": {"title": "Mensajes entrantes: InboundService e inbound_messages", "aliases": ["mensajes entrantes inboundservice e inbound_messages", "mensajes", "entrantes", "inboundservice", "inbound_messages", "mensajes entrantes", "entrantes inboundservice", "inboundservice inbound_messages", "runtime", "boundary", "canales", "twilio"], "atoms": {"what": {"id": "atom-mensajes-entrantes-inboundservice-e-inbound-messages", "body": "# Mensajes entrantes: InboundService e inbound_messages\n\n## Answer\n\nCapa entre el webhook HTTP y `Orchestrator.handle_turn` para todo mensaje que entra por un proveedor externo (`kb_agent/inbound.py`, clase `InboundService`). Por cada mensaje: normaliza el remitente a un `external_id` con prefijo de canal (`normalize_sender`), persiste una fila `InboundMessage` en la tabla `inbound_messages` (`kb_agent/models_sql/inbound.py`, migración `d4e5f6a7b8c9`), resuelve el usuario con `ensure_user` y corre el turno; al terminar deja en la misma fila el `user_id`, `conversation_id`, `turn_id`, el texto de la respuesta y el estado (`received`/`replied`/`failed`, con `error` si falló). La fila es el *source* del turno: proveedor (`twilio`), `provider_message_id` (el `MessageSid`), canal, teléfono canónico, destino (`to`), cuerpo, `profile_name`, `num_media` y el `payload` crudo del webhook, para auditar de dónde salió cada turno y conservar campos que hoy no se usan (media, `WaId`). `UNIQUE(provider, provider_message_id)` da idempotencia: un reintento del proveedor con el mismo id no corre un segundo turno, devuelve la respuesta ya guardada (o vacío si el turno original sigue corriendo). El webhook `POST /webhooks/twilio` en `frontends/chat/app.py` queda como capa fina: valida la firma y delega. Dos modos de respuesta: `sync` (el webhook espera el turno y responde TwiML con el texto) y `async` (persiste, responde `<Response/>` al instante, corre el turno en un background task de FastAPI y manda la respuesta por REST con un `Sender` inyectable — `twilio_rest_sender` en producción, un callable falso en tests — y guarda el sid saliente en `reply_provider_message_id`). El modo se elige con `TWILIO_REPLY_MODE=sync|async`; sin override, `async` si existe `TWILIO_ACCOUNT_SID` y `sync` si no. Los turnos de la UI (`POST /api/chat`) no pasan por aquí: su source es la sesión del navegador (`ui:<session>`)."}}}, "agente conversador": {"title": "Agente Conversador", "aliases": ["agente conversador", "agente", "conversador", "runtime", "engine"], "atoms": {"what": {"id": "atom-agente-conversador", "body": "# Agente Conversador\n\n## Answer\n\nMotor generativo de lenguaje natural (`GeminiConversador`). Recibe el contexto validado (y el resultado de una tool si la hubo) y redacta la respuesta final usando el LLM externo. No alucina ni toma decisiones de flujo; obedece la identidad, estilo y límites provistos por el Context Compiler (paquete `kb_agent/knowledge`)."}}}, "un negocio por rama": {"title": "Un negocio por rama", "aliases": ["un negocio por rama", "negocio", "por", "rama", "negocio por", "por rama", "business", "concepts"], "atoms": {"what": {"id": "atom-un-negocio-por-rama", "body": "# Un negocio por rama\n\n## Answer\n\nCada rama del repo es UN solo negocio; no existen negocios activos ni un switch entre ellos. project.config.yaml declara el negocio de la rama (nombre, kb_root, tools, deploy) y knowledge/ es su unica KB. Otro negocio es otra rama con su propia KB y su propio yaml (Antonia en dev/main, Vitali en su worktree); el runtime, kb_agent/, no lleva nada del negocio."}}}, "router state machine": {"title": "Router State Machine", "aliases": ["router state machine", "router", "state", "machine", "router state", "state machine", "runtime", "boundary"], "atoms": {"what": {"id": "atom-router-state-machine", "body": "# Router State Machine\n\n## Answer\n\nMáquina de estados técnica (`RouterStateMachine`) con 6 nodos (IDLE, BUFFERING, EVALUATING_CONTEXT, DRAFTING_RESPONSE, WAITING_TOOL, BREAKPOINT_MISS). Rutea la petición hacia el Context Compiler (`kb_agent/knowledge`) y pausa la ejecución síncrona en `WAITING_TOOL` mientras el Orquestador ejecuta una herramienta."}}}, "modo demo": {"title": "Modo demo", "aliases": ["modo demo", "modo", "demo", "frontend", "boundary"], "atoms": {"what": {"id": "atom-modo-demo", "body": "# Modo demo\n\n## Answer\n\nModo opt-in del runtime que sirve las 4 vistas sin orquestador ni LLM. Se activa con la clave `demo_mode` del yaml del negocio, o forzandolo con la env `DEMO_MODE=1` (la env gana si el yaml dice false); lo resuelve `ProjectConfig.demo_mode` (kb_agent/project_config.py) — nunca se enciende en modo test (`resolved_mode != \"test\"`) ni en produccion, donde `project.config.yaml` lo declara en `false`. Con el flag activo, `create_app` (frontends/chat/app.py) no exige Orchestrator y todos los `/api/*` responden datos prefabricados de `frontends/chat/demo_data.py` (config, atoms, flow, usuarios, perfiles); el chat usa `DemoStateMachineConversador`, una maquina de estados determinista (saludo -> consulta -> obtencion_datos -> tool_call) que imita al Conversador. Sobre las 4 vistas corre `frontends/shared/demo-tour.js`, un unico recorrido guiado con cuadros que apuntan a elementos por `data-testid`, navega solo de vista en vista y guarda el progreso en localStorage (`demo-tour-idx`, `demo-tour-done`). Lo verifica tests/ui/test_demo_e2e.py (Playwright, marker `ui`, sin credenciales)."}}}, "configuración por capas y tuning": {"title": "Configuración por capas y tuning", "aliases": ["configuración por capas y tuning", "configuración", "por", "capas", "tuning", "configuración por", "por capas", "capas tuning", "ops", "boundary", "configuration"], "atoms": {"what": {"id": "atom-configuración-por-capas-y-tuning", "body": "# Configuración por capas y tuning\n\n## Answer\n\nLa configuración vive en tres capas, no en el código (docs/CONFIGURATION.md). (1) KB (`knowledge/`, store `.sldb`) — todo texto que lee o escribe un LLM (hechos, reglas, identidad, flujo, encuadre de agentes). (2) YAML (`project.config.yaml`, bloque `project:`) — valores y parámetros, con override por variable de entorno; además de identidad, `kb_root`, DBs, `model`, `tools`, `server` y `ui`, tiene dos bloques nuevos cargados por `load_project_config` (kb_agent/project_config.py). `tuning` (`TuningConfig`) — `max_bundle_size` (tope del bundle en ContextCompiler), `history_limit` (mensajes recientes en el contexto), `router_max_results` (default de `explore_multi` del ruteador) y `tool_timeout_ms` (timeout de una tool call), antes constantes hardcodeadas; overrides `MAX_BUNDLE_SIZE`, `HISTORY_LIMIT`, `ROUTER_MAX_RESULTS`, `TOOL_TIMEOUT_MS`. `deploy` (`DeployConfig`) — `modal_app_name` (nombre de la app y del volumen `<app>-data`; `MODAL_APP_NAME` tiene prioridad), `gcp_secret_name` (Secret con el ADC de Vertex), `twilio_secret_name` (null => `/webhooks/twilio` responde 503), `min_containers` y `serve_timeout_s`, leídos por deploy/modal_app.py al importar. (3) Runtime (`kb_agent/`) — mecánica fija (11 tipos de documento, máquina de estados, tag `conversation:security`); no es config."}}}, "tool handlers y registry": {"title": "Tool Handlers y Registry", "aliases": ["tool handlers y registry", "tool", "handlers", "registry", "tool handlers", "handlers registry", "runtime", "boundary"], "atoms": {"what": {"id": "atom-tool-handlers-registry", "body": "# Tool Handlers y Registry\n\n## Answer\n\nMecanismo de ejecución de acciones. Las tools son funciones locales de Python mapeadas en el yaml del negocio (sección `tools`, p.ej. `crear_reserva`, `agendar_recordatorio` en Antonia; `registrar_lead`, `crear_visita` en Vitali). Un `ToolAtom` de la KB declara el schema que ve el LLM (`function_declarations`); el yaml declara quién lo ejecuta (`modulo:funcion`). Cuando el orquestador decide un `tool_call`, `execute_tool` llama al handler con `(session, user_id, args)`; el handler típicamente muta estado relacional (tablas SQL de negocio) y devuelve un dict que se agrega como System Turn al contexto para que el Conversador redacte con el resultado real. El step destino decidido junto con el tool_call se aplica sólo si la tool devolvió `status: ok`; con `faltan_datos` el flujo se queda en el step actual. Los handlers devuelven su propia clave `args` con booleanos 'vino informado' para que la PII no quede en claro en `turns.tool`."}}}, "orquestador hub central ": {"title": "Orquestador (Hub Central)", "aliases": ["orquestador hub central ", "orquestador", "hub", "central", "orquestador hub", "hub central", "runtime", "boundary"], "atoms": {"what": {"id": "atom-orquestador-hub", "body": "# Orquestador (Hub Central)\n\n## Answer\n\nPunto de entrada unificado (`Orchestrator.handle_turn`). Instancia la sesión SQL, resuelve el usuario (`ensure_user`) y la conversación activa (`_resolve_conversation`), inicializa el RouterStateMachine, delega la decisión a la policy pura, ejecuta las tool calls locales, delega la redacción al Conversador, aplica el policy gate al borrador antes de emitir, persiste el historial purgado y el trail del turno en SQL (con `conversation_id`), y dispara asíncronamente al Perfilador a través del Event Bus. `ensure_user` unifica identidad por teléfono cuando `identity_key='phone'` y tolera la carrera SELECT-then-INSERT de requests concurrentes del mismo usuario nuevo (dos pestañas, doble tap, reintento de webhook): si el INSERT viola el UNIQUE de `external_id`, hace rollback y re-SELECT del ganador en vez de reventar el turno con un 500. `_resolve_conversation` reusa la conversación abierta más reciente o abre una nueva cuando la anterior superó el TTL de inactividad (`tuning.conversation_idle_ttl_s`), de modo que el historial inyectado al prompt (filtrado por `conversation_id`) no cruza el límite de una conversación vieja."}}}, "decisión familia gate con modelo gatecriterion para el policy gate": {"title": "Decisión: familia gate con modelo GateCriterion para el policy gate", "aliases": ["decisión familia gate con modelo gatecriterion para el policy gate", "decisión", "familia", "gate", "con", "modelo", "gatecriterion", "para", "policy", "decisión familia", "familia gate", "gate con", "con modelo", "modelo gatecriterion", "gatecriterion para", "para policy", "policy gate", "antonia", "psp", "modelacion"], "atoms": {"why": {"id": "atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate", "body": "# Decisión: familia gate con modelo GateCriterion para el policy gate\n\n## Answer\n\nSe define una familia nueva 'gate' con un único modelo GateCriterion (atom_type: gate, __family__='gate', __semantics__ type:[knowledge,gate]). Justificación: (1) el gate tiene un eje de activación que ninguna familia cubre — se activa POST-DRAFT sobre la respuesta redactada, no sobre la pregunta (domain), ni el estado (conversation), ni siempre (self), ni la identidad (user); es un sexto eje en retrieval-architecture §2. (2) Precedente: la familia user tiene un solo modelo (TraitAtom); familia = eje de activación, no cantidad de modelos. (3) Ningún modelo existente sirve: RuleAtom es familia domain y entraría a rules en todos los turnos contaminando el contexto del Conversador; CapabilityBoundary es familia self y _extract_persona usa boundaries[0], con riesgo de desplazar boundary-antonia-clinico; ConversationStep modela el paso del flujo, no los criterios. (4) Seguridad: el compilador itera _MODEL_TYPES literales y 'gate' no está — los átomos gate son invisibles al runtime actual: cero regresión, cero colisión con persona. El código futuro del gate los selecciona con reader.find('type.knowledge.gate'). Campos del modelo: criterion (qué evaluar en la respuesta redactada), approval_condition (cuándo pasa), rejection_action (qué hacer al rechazar: derivar + motivo), tags con namespace gate:* (gate:regulatorio.dosis, gate:corpus, gate:derivacion). Costo: 1 archivo kb_agent/models/knowledge/gate.py + export en __init__.py + sldb models add + namespace gate:* en tag-namespaces. Es operación de modelación KB (ciclo de vida modelation-guide pasos 1-6), no código de runtime."}}}, "migraciones alembic en local": {"title": "Migraciones alembic en local", "aliases": ["migraciones alembic en local", "migraciones", "alembic", "local", "migraciones alembic", "alembic local", "ops"], "atoms": {"how": {"id": "atom-migraciones-alembic-en-local", "body": "# Migraciones alembic en local\n\n## Answer\n\nEl schema SQL vive en `kb_agent/models_sql/` (una sola `Base` declarativa — `identity.py` la define; `session.py`, `reservas.py` y `recordatorios.py` la importan). El `Orchestrator` corre `Base.metadata.create_all()` al arrancar, y eso crea tablas que faltan pero nunca altera una tabla existente — si un modelo gana o cambia una columna, una base vieja se queda atrás en silencio y explota recién en el primer INSERT/SELECT real con un `OperationalError` de `no such column` opaco (así se descubrió el problema — en `runs/local-chat.sqlite` faltaban `flow_node`/`flow_slots` de `SessionState`). Por eso el schema se versiona con Alembic (`alembic/`, `alembic.ini`). `alembic/env.py` no hardcodea la URL de la base — la resuelve en runtime con la misma precedencia que kb_agent/project_config.py, `DATABASE_URL` (env, URL completa) > `CHAT_DB` (env, path a sqlite) > `project.config.yaml` / defaults de `ProjectConfig`; expone el `target_metadata` combinado (importa `identity`, `session`, `reservas` y `recordatorios` para que sus tablas queden en la única `Base.metadata`) y habilita `render_as_batch=True`, imprescindible porque SQLite no soporta `ALTER COLUMN` nativo (Alembic lo emula recreando la tabla). Crear una migración nueva (después de tocar un modelo en `kb_agent/models_sql/`) — `DATABASE_URL=\"sqlite:////ruta/a/una/base/vacia/o/de/prueba.sqlite\" python -m alembic revision --autogenerate -m \"descripción corta\"`; nunca apuntar el autogenerate a `runs/local-chat.sqlite` ni a ninguna base con datos reales (compara el modelo contra ESA base, conviene que arranque vacía o ya al día), y siempre revisar a mano el archivo generado en `alembic/versions/` antes de commitear (el autogenerate a veces mete constraints o índices que no corresponden). Aplicar migraciones pendientes — `CHAT_DB=runs/local-chat.sqlite python -m alembic upgrade head` (o `DATABASE_URL=sqlite:///runs/local-chat.sqlite ...`; sin ninguna de las dos, toma la base resuelta por `project.config.yaml`). Base preexistente que ya tiene el esquema al día (creada con `create_all()` antes de que existieran las migraciones, como `runs/local-chat.sqlite`) — no correr `upgrade` (sin `alembic_version` intentaría recrear tablas que ya existen y fallaría); marcarla como al día sin ejecutar DDL con `CHAT_DB=runs/local-chat.sqlite python -m alembic stamp head`. Chequeo automático al arrancar — `kb_agent/cli.py` llama a `kb_agent.db_check.check_db_revision()` antes de crear el `Orchestrator` y, si la base no está en `head` (o no tiene `alembic_version`), imprime un `[WARNING]` con el diagnóstico y el comando a correr; nunca frena el arranque ni lanza excepción. Caso híbrido (visto el 2026-09-02 en `runs/ui-chat.sqlite`): una base creada con `create_all()` por un runtime más nuevo que la baseline tiene tablas de migraciones posteriores (`conversations`, `turns`) pero no las columnas que esas migraciones agregan a tablas viejas (`users.phone`, `users.enrolled`); ni `stamp head` (mentiría) ni `stamp baseline` + `upgrade` (falla al recrear `conversations`) la arreglan. En local, sin datos que cuidar, se respalda como `.bak-<timestamp>` y se recrea con `upgrade head`; es lo que hace `deploy/launch_twilio_local.sh` cuando falta `alembic_version`."}}}, "cómo conectar twilio al runtime local": {"title": "Cómo conectar Twilio al runtime local", "aliases": ["cómo conectar twilio al runtime local", "cómo", "conectar", "twilio", "runtime", "local", "cómo conectar", "conectar twilio", "twilio runtime", "runtime local", "ops", "boundary", "canales"], "atoms": {"how": {"id": "atom-cómo-conectar-twilio-al-runtime-local", "body": "# Cómo conectar Twilio al runtime local\n\n## Answer\n\n`deploy/launch_twilio_local.sh` empaqueta la prueba local del canal con tres subcomandos. `up`: carga `.env` (exige `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` y al menos uno de `TWILIO_SMS_FROM` / `TWILIO_WHATSAPP_FROM`), lleva el sqlite a `head` con alembic (si la base no tiene `alembic_version` la respalda como `.bak-<timestamp>` y la recrea, porque una base híbrida de `create_all()` no se migra de forma confiable), levanta uvicorn con `frontends.chat.server:app` si el puerto está libre, hace un POST firmado de smoke contra `/webhooks/twilio` (sin `To`, para que en modo async no intente enviar nada por REST), abre `ngrok http 8000` y apunta los webhooks al túnel: el de SMS vive en el número (`IncomingPhoneNumber.sms_url`, se actualiza por API) y el de WhatsApp vive en el *sender* (Messaging v2 Channels Senders, se actualiza por API si la cuenta lo permite). `down` restaura los webhooks originales guardados en `runs/logs/twilio_local/prev_webhooks.json` y mata uvicorn/ngrok; `status` muestra procesos, túnel, cuenta, sender y últimos mensajes. Cuentas: la cuenta Full \"Laboratorios Chile\" es dueña del número chileno +56229149113 con SMS y voz, sin sender de WhatsApp registrado; registrar el número como WhatsApp Sender requiere Meta Business y verificación en Console > Messaging > Senders. La cuenta Trial \"My First Twilio Account\" trae un sender WhatsApp de prueba (+17372212163, la persona se une mandando `join twilio-trial`), pero en Trial la API de senders, Content y balance responde 401 y el webhook sólo se configura a mano en la consola (Messaging > Try it out > Send a WhatsApp message > Sandbox settings > \"When a message comes in\"); el script detecta ese caso e imprime la URL a pegar. `.env` mantiene los dos perfiles y sólo uno activo. Verificado de punta a punta el 2026-09-02: POST firmado vía ngrok con URL `https` → 200, y la firma valida porque uvicorn honra `X-Forwarded-Proto` desde 127.0.0.1, que es donde corre el agente de ngrok. En Modal no hay túnel: el webhook es `https://<app>.modal.run/webhooks/twilio` fijo y las credenciales van en el secret `kb-agent-runtime-twilio`."}}}, "grafo de steps actual de antonia y extensiones psp requeridas": {"title": "Grafo de steps actual de Antonia y extensiones PSP requeridas", "aliases": ["grafo de steps actual de antonia y extensiones psp requeridas", "grafo", "steps", "actual", "antonia", "extensiones", "psp", "requeridas", "grafo steps", "steps actual", "actual antonia", "antonia extensiones", "extensiones psp", "psp requeridas", "flujo conversacional", "flujo", "conversacional"], "atoms": {"where": {"id": "atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas", "body": "# Grafo de steps actual de Antonia y extensiones PSP requeridas\n\n## Answer\n\nGrafo de Antonia como aristas tipadas de kgdb (RelationDoc transitions_to en knowledge/relations/, tipos en knowledge/relations/types/, migrado el 2026-09-08 desde el texto libre allowed_transitions). saludo -> {onboarding, registro_estado, journey_operativo, derivacion_medinfo, enrolamiento}; enrolamiento -> {derivacion_medinfo, onboarding}; onboarding -> registro_estado; registro_estado -> {evento_adverso, agendar_recordatorio, derivacion_medinfo}; evento_adverso -> despedida; agendar_recordatorio -> recompra; recompra -> despedida; journey_operativo -> {registro_estado, despedida}; derivacion_medinfo -> {revision_humana, despedida}; revision_humana -> despedida; validacion_policy_gate -> revision_humana (sin entradas; es el checkpoint post-draft, no un nodo del flujo del usuario); despedida es terminal. Un step nuevo necesita instructions, required_slots, handout_target, completion_condition, tag conversation:steps.<nombre>, y sus relaciones como RelationDoc (transitions_to hacia los steps destino, grounded_by hacia las reglas/domain atoms que lo sustentan, uses_tool si ejecuta una tool). El ingest tipado (World.refresh) rechaza una arista hacia un documento inexistente, asi que no puede quedar una transicion colgante."}}}, "inprocess event bus": {"title": "InProcess Event Bus", "aliases": ["inprocess event bus", "inprocess", "event", "bus", "inprocess event", "event bus", "runtime", "boundary"], "atoms": {"what": {"id": "atom-in-process-event-bus", "body": "# InProcess Event Bus\n\n## Answer\n\nCanal de mensajería in-memory que desacopla el cierre del turno síncrono del perfilado asíncrono. El Orquestador publica el turno aquí (`publish_turn_closed`), momento en el cual se aplica el enmascaramiento de PII antes de encolarlo."}}}, "tools de vitali wrapper semántico sobre leads y visitas": {"title": "Tools de Vitali: wrapper semántico sobre leads y visitas", "aliases": ["tools de vitali wrapper semántico sobre leads y visitas", "tools", "vitali", "wrapper", "semántico", "sobre", "leads", "visitas", "tools vitali", "vitali wrapper", "wrapper semántico", "semántico sobre", "sobre leads", "leads visitas", "runtime", "boundary"], "atoms": {"how": {"id": "atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas", "body": "# Tools de Vitali: wrapper semántico sobre leads y visitas\n\n## Answer\n\n\"Dos tablas SQL planas sin semántica de negocio (`kb_agent/models_sql/leads.py`, migración `f6a7b8c9d0e2`): `leads` (una fila por `users.id`: nombre, email, teléfono, segmento, para quién, rango de edad, ciudad, país, propósito, notas) y `visitas` (modalidad, preferencia de día y bloque tal como la dijo la persona, título, duración 30 min, estado `solicitada`/`confirmada`/`cancelada`). Encima, dos tools que son wrappers semánticos: `registrar_lead` (`kb_agent/tools/leads.py`) hace upsert parcial (sólo pisa los campos informados) y devuelve qué se conoce y qué falta para agendar; `crear_visita` (`kb_agent/tools/visitas.py`) registra el contacto en `leads`, crea la visita en estado `solicitada` (el agente no ve la agenda, el equipo confirma la hora) y es idempotente ante la misma modalidad y preferencia; si faltan modalidad, preferencia, email o teléfono no crea nada y devuelve `status: faltan_datos` con la lista. Ambos handlers completan los argumentos que el modelo no pasó con los slots que el orquestador capturó del mensaje crudo (`session_state.flow_slots.collected`, ver `kb_agent/lead_slots.py`); para eso el orquestador calcula esos slots ANTES de compilar el contexto y los expone al `OrchestratorAgent` como `datos_capturados`. El schema que ve el LLM vive en la KB (`tool-vitali-registrar-lead`, `tool-vitali-crear-visita`) y los steps `calificacion` y `datos_contacto` los referencian en `tool_ref`; `project.vitali.yaml` mapea el nombre al handler. La bandeja `/api/leads` y la ficha `/api/lead` exponen la fila `leads` y las `visitas` del usuario.\""}}}, "migraciones alembic del volumen": {"title": "Migraciones alembic del volumen", "aliases": ["migraciones alembic del volumen", "migraciones", "alembic", "del", "volumen", "migraciones alembic", "alembic del", "del volumen", "ops", "data"], "atoms": {"how": {"id": "atom-migraciones-alembic-del-volumen", "body": "# Migraciones alembic del volumen\n\n## Answer\n\n`_migrate_data_volume()` en deploy/modal_app.py corre al arrancar `serve()`, antes de importar la app. Motivo — el Volume `/data` persiste el sqlite entre deploys, así que una base creada por un deploy viejo conserva el esquema viejo, y `create_all()` crea tablas que faltan pero NUNCA altera una existente (el primer turno tras un cambio de modelo reventaba con \"no such column\"). La función usa las migraciones de `alembic/` (versiones en `alembic/versions/`, config en `alembic.ini` copiados a la imagen, `DATABASE_URL` apuntando a `CHAT_DB`) y distingue tres casos — la base no existe => `upgrade head` la crea completa; existe sin tabla `alembic_version` (creada con `create_all()` antes de que hubiera migraciones) => `command.stamp(cfg, BASELINE_REVISION)` con la primera revisión (`b77575dcdf9b`, baseline del esquema) y después `upgrade head`; existe versionada => `upgrade head`. Si falla no frena el arranque — loguea la excepción y el turno fallará de forma visible. En local, `kb_agent/db_check.py` (`check_db_revision`) compara la revisión de la base contra HEAD de forma no bloqueante."}}}, "qué no hacer con credenciales y firma de twilio": {"title": "Qué no hacer con credenciales y firma de Twilio", "aliases": ["qué no hacer con credenciales y firma de twilio", "qué", "hacer", "con", "credenciales", "firma", "twilio", "qué hacer", "hacer con", "con credenciales", "credenciales firma", "firma twilio", "ops", "boundary"], "atoms": {"how_not": {"id": "atom-qué-no-hacer-con-credenciales-y-firma-de-twilio", "body": "# Qué no hacer con credenciales y firma de Twilio\n\n## Answer\n\nNo mezclar credenciales de cuentas Twilio distintas. `X-Twilio-Signature` se calcula con el Auth Token de la cuenta que dispara el webhook, así que `TWILIO_AUTH_TOKEN` en `.env` o en el secret de Modal tiene que ser el de la cuenta dueña del número o sender; con el token de otra cuenta todo entra como 403 \"invalid twilio signature\". Pasó el 2026-09-02: una API Key `SK...` generada desde el flujo de WhatsApp pertenecía a una cuenta Trial creada ese día, no a la cuenta del número; verificar siempre a qué cuenta pertenece una credencial con `GET /2010-04-01/Accounts.json` autenticando con ella antes de usarla. No usar una API Key para validar firmas: la firma sólo se verifica con el Auth Token; la key sirve para REST. No exponer el runtime detrás de un proxy que no propague `X-Forwarded-Proto`: la firma se calcula sobre la URL pública exacta (`https://...`) y si uvicorn reconstruye `http://` el 403 es inmediato (en AWS detrás de ALB o API Gateway, `--proxy-headers --forwarded-allow-ips='*'`). No responder el webhook en modo `sync` en producción: un turno tarda más que los 15 s que Twilio espera. No dejar el `TWILIO_ACCOUNT_SID` fuera del secret si se quiere modo async: sin él el runtime cae a `sync`. No commitear `.env`: está en `.gitignore` y contiene los tokens de ambas cuentas."}}}, "estrategia de testing de 4 capas": {"title": "Estrategia de Testing de 4 Capas", "aliases": ["estrategia de testing de 4 capas", "estrategia", "testing", "capas", "estrategia testing", "testing capas", "ops", "boundary"], "atoms": {"what": {"id": "atom-estrategia-de-testing", "body": "# Estrategia de Testing de 4 Capas\n\n## Answer\n\nSuite de pruebas dividida en Unit (lógica pura y orquestador con LLM inyectado fake), Integration (API y flujos), E2E (smoke tests con Gemini real y harness de simulación Agente-vs-Agente) y UI (Playwright). Como capas de verificación se ejecutan por separado — `suite` = unit + integration sin LLM (`SKIP_LLM_TESTS=1 python -m pytest tests/unit tests/integration`, también en CI); `ui` = `python -m pytest tests/ui` con Chromium contra la app in-process (marker `ui`, se salta sin Playwright; incluye tests/ui/test_demo_e2e.py del modo demo); `llm` / `simulation` = `tests/e2e` con credenciales Vertex del `.env` (marker `llm`, se salta solo sin credenciales o con `SKIP_LLM_TESTS=1`, tests/conftest.py), smoke + simulaciones agente-vs-usuario con juez LLM (tests/e2e/simulation). Los escenarios con `known_gap` documentan un defecto conocido del runtime como xfail estricto — al arreglarse el test exige quitar la marca; sólo cuando el resultado del gap varía con el LLM se declara `known_gap_strict=False` con el motivo obligatorio en `known_gap_variance` (tests/e2e/simulation/scenarios.py). Todo test aísla el estado usando la KB de pruebas y una base SQL efímera."}}}, "garantía cero alucinaciones": {"title": "Garantía Cero Alucinaciones", "aliases": ["garantía cero alucinaciones", "garantía", "cero", "alucinaciones", "garantía cero", "cero alucinaciones", "business", "concepts"], "atoms": {"what": {"id": "atom-garantia-cero-alucinaciones", "body": "# Garantía Cero Alucinaciones\n\n## Answer\n\nRegla arquitectónica estricta: el LLM tiene prohibido inventar información. Si el Context Compiler (`kb_agent/knowledge`) compila un contexto vacío (sin hechos ni reglas que sustenten la consulta del usuario), la máquina de estados fuerza una transición a un nodo de `BREAKPOINT_MISS`, obligando al agente a usar un mensaje de `fallback` determinista en lugar de alucinar una respuesta."}}}, "policy gate como agente separado con rama kb propia": {"title": "Policy gate como agente separado con rama KB propia", "aliases": ["policy gate como agente separado con rama kb propia", "policy", "gate", "como", "agente", "separado", "con", "rama", "propia", "policy gate", "gate como", "como agente", "agente separado", "separado con", "con rama", "rama propia", "antonia", "psp"], "atoms": {"how": {"id": "atom-policy-gate-como-agente-separado-con-rama-kb-propia", "body": "# Policy gate como agente separado con rama KB propia\n\n## Answer\n\nEl policy gate (etapa 5 PSP, compuerta regulatoria final) es un agente separado del orquestador con rama KB propia — `GateAgent` en kb_agent/agents/gate.py, sobre `kb_agent.agents.base.Agent` con rol `AgentRole.GATE`, `include_contents=False` y salida tipada `GateVerdict {approved, reasons, action, criterion_ids}`. Interviene DESPUÉS del draft del Conversador y ANTES de emitir al paciente (`Orchestrator._policy_gate`) — juzga la respuesta redactada contra los `GateCriterion` de la KB (familia `gate`, campos `criterion`, `approval_condition`, `rejection_action`), renderizados una vez en `static_instruction` por `render_gate_criteria` con el encuadre de negocio que llega de un `AgentFraming` de rol `gate` (knowledge/atoms/agent-antonia-gate.md); agregar un criterio a la KB cambia el juez sin tocar código (test de gobernanza en tests/unit/test_gate_agent.py). El veredicto es `approved` true sólo si TODOS los criterios se cumplen, con `action` `pass` | `handoff` (derivar la revisión a un humano con el borrador y el motivo) | `protocol` (aplicar un protocolo específico, p.ej. farmacovigilancia) y los `criterion_ids` violados. La única parte no gobernada por la KB es el pre-filtro determinista `response_claims_completed_action` (criterio sintético `gate-integridad-accion-no-ejecutada`) que rechaza respuestas que afirman una acción sin tool ejecutada en el turno ni en la sesión. Sin criterios en la KB o si el LLM falla, el gate aprueba (fail-open). El orquestador (decide_turn) sigue sin KB propia — su lógica es determinista y testeable."}}}, "dashboard": {"title": "Dashboard", "aliases": ["dashboard", "frontend", "boundary"], "atoms": {"what": {"id": "atom-dashboard", "body": "# Dashboard\n\n## Answer\n\nVista `/dashboard` servida por `create_app` (frontends/chat/app.py) desde `frontends/dashboard/index.html`. Es un mock estático transcrito del diseño de referencia `docs/dashboard-reference.png` — KPIs, series y listas son sintéticos y la página lo declara con el chip \"Datos de ejemplo\" (`data-testid=\"dashboard-mock-chip\"`). Está enlazada en la topbar de todas las vistas (`nav-dashboard`, etiqueta `nav_labels.dashboard`) y sólo consulta `/api/config` (marca, kb_label, labels de nav) y `/api/health` (estado); no lee métricas del runtime."}}}, "cómo se resuelve canal y persona desde el remitente de twilio": {"title": "Cómo se resuelve canal y persona desde el remitente de Twilio", "aliases": ["cómo se resuelve canal y persona desde el remitente de twilio", "cómo", "resuelve", "canal", "persona", "desde", "remitente", "twilio", "cómo resuelve", "resuelve canal", "canal persona", "persona desde", "desde remitente", "remitente twilio", "runtime", "data", "canales", "user"], "atoms": {"how": {"id": "atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio", "body": "# Cómo se resuelve canal y persona desde el remitente de Twilio\n\n## Answer\n\nTwilio manda el remitente de dos formas: `From=whatsapp:+569...` para WhatsApp y `From=+569...` pelado para SMS. `normalize_sender` (`kb_agent/inbound.py`) produce siempre un `external_id` con prefijo de canal — `whatsapp:+56912345678`, `sms:+56912345678` — y el canal (`whatsapp`, `sms`; otros prefijos como `messenger:` se respetan tal cual). Antes el webhook pasaba el `From` crudo y `channel_from_external_id` del orquestador no reconocía el SMS pelado: el usuario quedaba con canal `unknown` y sin teléfono. La parte de teléfono se canoniza con `canonical_phone` (`kb_agent/orchestrator.py`): quita espacios, guiones y paréntesis y exige formato E.164 (`+` opcional y 7 a 15 dígitos); si el id no parece un teléfono devuelve None. Esa exigencia corrige un bug real: la versión anterior extraía los dígitos que hubiera, así que `ui:devsession-1` daba `+1`, y con `identity_key='phone'` dos sesiones de UI distintas terminadas en 1 se habrían unificado como la misma persona. La misma regla se usa en `Orchestrator._canonical_phone` (unificación en `ensure_user`), en `InboundMessage.phone` y en el backfill de la migración `d4e5f6a7b8c9`. Antonia usa `identity_key: phone` en `project.config.yaml` (decisión de negocio: la paciente puede escribir por WhatsApp o SMS y es una sola persona), así que `sms:+569X` y `whatsapp:+569X` comparten un `Users` y el segundo `external_id` queda como alias. Como los usuarios creados antes del cambio tenían `Users.phone` NULL y no se unificaban, la migración rellena `phone` desde el `external_id` en las filas con prefijo de canal y teléfono E.164; los ids sin prefijo o sin teléfono (`ui:`, `web-anon-*`) quedan NULL. Lo que la migración no hace es fusionar dos `Users` que ya existían separados para el mismo teléfono: `ensure_user` busca primero por `external_id` exacto, así que esas parejas históricas siguen siendo dos filas."}}}, "por qué la respuesta a twilio sale por rest y no en el twiml": {"title": "Por qué la respuesta a Twilio sale por REST y no en el TwiML", "aliases": ["por qué la respuesta a twilio sale por rest y no en el twiml", "por", "qué", "respuesta", "twilio", "sale", "rest", "twiml", "por qué", "qué respuesta", "respuesta twilio", "twilio sale", "sale por", "por rest", "rest twiml", "runtime", "boundary", "canales"], "atoms": {"why": {"id": "atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml", "body": "# Por qué la respuesta a Twilio sale por REST y no en el TwiML\n\n## Answer\n\nTwilio espera la respuesta del webhook a lo sumo 15 segundos; pasado ese plazo descarta la respuesta y reintenta el POST con el mismo `MessageSid`. Un turno completo del runtime (ruteo con embeddings, compilación de contexto, Conversador con Gemini, gate) tardó entre 24 y 36 segundos medido en local el 2026-09-02 contra Vertex AI, y no baja de 15 de forma confiable. Con el modo `sync` original pasaban dos cosas: el usuario nunca recibía el texto (Twilio ya había cortado cuando llegó el TwiML) y cada reintento creaba un turno nuevo con el mismo mensaje, contaminando historial, traits y conversación. Por eso el modo por defecto con credenciales es `async`: el webhook persiste el mensaje y responde `<Response/>` en decenas de milisegundos, el turno corre en background y la respuesta se envía con `client.messages.create` desde el mismo sender al que escribió la persona. La idempotencia por `MessageSid` cubre el caso en que Twilio reintente igual. Consecuencia operativa: para responder por REST hacen falta `TWILIO_ACCOUNT_SID` y `TWILIO_AUTH_TOKEN` de la cuenta dueña del sender (en Modal, ambos en el secret que declara `deploy.twilio_secret_name`), y el background task vive en el contenedor que recibió el webhook: con `min_containers: 1` no es problema, pero si el runtime escalara a cero habría que mover ese trabajo a una función Modal aparte (`.spawn`) para que no muera con el contenedor."}}}, "perfilador asincrono": {"title": "Perfilador Asincrono", "aliases": ["perfilador asincrono", "perfilador", "asincrono", "runtime", "background", "user"], "atoms": {"what": {"id": "atom-perfilador-asincrono", "body": "# Perfilador Asincrono\n\n## Answer\n\nBackground worker (`TraitExtractor`) que consume eventos de turno cerrado desde el EventBus. Antes de llamar al LLM aplica un pre-filtro semántico: rankea los `TraitAtom` candidatos por similitud coseno turno-vs-trait (reusa el embedder cacheado del proceso, mismo patrón que `ContextCompiler`) y pasa solo el top-k al LLM en vez de TODOS los traits cada turno; es fail-open (sin embedder, sin traits con vector o si el catalogo cabe en el top-k, pasan todos) y los traits sin embedding se anexan siempre fuera del ranking. El LLM infiere las características y se hace upsert en SQL `UserTraits` con precedencia por fuente: `form` (datos duros declarados en el formulario/registro, `confidence=1.0`, vía `ingest_form_traits`) gana sobre `perfilador` (inferencia LLM); el upsert respeta siempre el `source` de mayor autoridad. Opera fuera del tiempo de respuesta del usuario."}}}, "sql identidad y estado": {"title": "SQL: Identidad y Estado", "aliases": ["sql identidad y estado", "sql", "identidad", "estado", "sql identidad", "identidad estado", "knowledge", "data"], "atoms": {"what": {"id": "atom-persistencia-sql", "body": "# SQL: Identidad y Estado\n\n## Answer\n\nCapa de persistencia relacional transaccional (vía SQLAlchemy). Almacena los `Users`, la máquina de estados persistente (`SessionState`), el `ChatHistory` (ya scrubbeado de PII), los mapeos relacionales de `UserTraits`, y las tablas de negocio como Reservas. La identidad se unifica por teléfono cuando el proyecto usa `identity_key='phone'` (Antonia lo usa): `Users.phone` (E.164 normalizado, indexado) es la clave canónica de persona y el mismo teléfono en otro canal reusa el mismo `Users`; el `external_id` sigue único por canal y queda como alias. La entidad `Conversation` (estados `open`/`closed`) agrupa los turnos de un usuario en un tramo temporal acotado: un `Users` tiene una lista de conversaciones, cada `Conversation` una lista de turnos, y el historial que va al prompt no cruza el límite de una conversación cerrada (antes se infería \"conversación\" por día calendario y se mezclaba todo el `chat_history` del usuario). La tabla `Turns` guarda el trail auditable de cada turno (decision, bundle, draft, gate, tool) con PK `id` autoincremental, `turn_id` único solo dentro de `session_id`, `conversation_id` y `kind` (`TurnKind`: `user`/`agent`/`override`). La tabla `InboundMessage` (`inbound_messages`) es el source de cada turno que entra por un proveedor externo: proveedor, id del mensaje en el proveedor (UNIQUE por proveedor, idempotencia), canal, teléfono, payload crudo, `user_id`, `conversation_id`, `turn_id`, respuesta, id del mensaje saliente y estado `received`/`replied`/`failed`."}}}, "kgdb grafo de flujo": {"title": "KGDB: Grafo de Flujo", "aliases": ["kgdb grafo de flujo", "kgdb", "grafo", "flujo", "kgdb grafo", "grafo flujo", "knowledge", "data", "conversation"], "atoms": {"what": {"id": "atom-kgdb-grafo-de-flujo", "body": "# KGDB: Grafo de Flujo\n\n## Answer\n\nCapa de base de datos de grafo en memoria (NetworkX persistido). Indexa las relaciones semánticas entre los nodos de `ConversationStep` (ej. `flows_to`, `grounded_by`), permitiendo al Context Compiler (`kb_agent/knowledge`) trazar la ruta de la conversación de forma programática."}}}, "clasificación de 4 ramas del flujo psp": {"title": "Clasificación de 4 ramas del flujo PSP", "aliases": ["clasificación de 4 ramas del flujo psp", "clasificación", "ramas", "del", "flujo", "psp", "clasificación ramas", "ramas del", "del flujo", "flujo psp", "antonia", "clasificacion"], "atoms": {"what": {"id": "atom-clasificación-de-4-ramas-del-flujo-psp", "body": "# Clasificación de 4 ramas del flujo PSP\n\n## Answer\n\nEl spec psp-flujo-atencion-chatbot.yml define sistema_clasifica como decisión con 4 ramas: (a) 'Intención Operativa F0' -> ejecuta_journey (responder con contenido preaprobado, sin generación libre); (b) 'Posible EA o FV' -> deriva_fv (genera ticket de farmacovigilancia, revisión humana <24h, registro con timestamp y texto textual del paciente); (c) 'Consulta Médica MedInfo' -> deriva_medinfo (genera ticket MedInfo, revisión humana; distinta de EA: es una pregunta clínica sin reporte de reacción); (d) 'Duda de Tratamiento F1' -> evalua_respuesta_ia (el LLM redacta y el Policy Gate aprueba o rechaza; si rechaza -> deriva_revision_general -> revisión humana). El runtime hoy clasifica solo en 3 (tool_call/fallback/nl) con heurística léxica; la KB de Antonia solo modela la rama EA (rule-antonia-eventos-adversos + step-antonia-evento-adverso). Faltan en KB: reglas clasificadoras para las otras 3 ramas, steps de MedInfo, revisión humana y journey operativo."}}}, "ruteador de contexto como agente": {"title": "Ruteador de contexto como agente", "aliases": ["ruteador de contexto como agente", "ruteador", "contexto", "como", "agente", "ruteador contexto", "contexto como", "como agente", "runtime", "engine", "router"], "atoms": {"what": {"id": "atom-ruteador-de-contexto-como-agente", "body": "# Ruteador de contexto como agente\n\n## Answer\n\n`RouterAgent` (kb_agent/agents/router.py, commit f4fcf50) es el cuarto agente LLM del diseño (Conversador, Ruteador, Orquestador, Gate), construido sobre `kb_agent.agents.base.Agent` con rol `AgentRole.ROUTER`. Decide QUÉ documentos de la KB entran al bundle de contexto del turno y lo justifica — salida tipada `RouterDecision` con `BundleEntry {doc_id, motivo, family?, score?}`, motivo OBLIGATORIO por documento (contrato de auditoría, visible en el rastro y el Turn Inspector). Regla de oro — cualquier documento de cualquier familia puede entrar si el motivo lo justifica; la familia es carga base, no límite de selección. Tiene tools reales sobre la instancia única de `knowledge_base.operations.KnowledgeOperations` del proceso — `explore_multi` (similitud semántica + fuzzy con score, default `tuning.router_max_results`), `explore` (navegar el grafo) y `show` (leer un documento antes de decidir). Su `static_instruction` (`render_router_instruction`) es doctrina del sistema, no de la KB, con el encuadre de negocio como lead-in opcional (`AgentFraming` rol `router`). Dos garantías que no dependen del modelo — `apply_security_floor` (función pura) fuerza las `RuleAtom` con tag `conversation:security` siempre, y cada `doc_id` devuelto se valida contra el reader (alucinaciones descartadas). Sin RouterAgent inyectado o si falla, `ContextCompiler._build_bundle` sigue como fallback determinista (fail-open, igual que el gate); `decisions.ruteador.source` dice cuál de los dos produjo el bundle."}}}, "reflector batch": {"title": "Reflector Batch", "aliases": ["reflector batch", "reflector", "batch", "runtime", "background", "domain"], "atoms": {"what": {"id": "atom-reflector-batch", "body": "# Reflector Batch\n\n## Answer\n\nJob offline (`ReflectorAtomGenerator`) disparado por cron. Lee el `ChatHistory` ya scrubbeado de SQL, detecta patrones que se repiten >= 5 veces, e infiere nuevos átomos (`domain` o `rule`). Escribe directamente en SLDB usando `sldb docs create` e inyecta el tag de estado `proposed`."}}}, "configuración del negocio": {"title": "Configuración del Negocio", "aliases": ["configuración del negocio", "configuración", "del", "negocio", "configuración del", "del negocio", "knowledge", "boundary"], "atoms": {"what": {"id": "atom-project-config", "body": "# Configuración del Negocio\n\n## Answer\n\nArchivo `project.config.yaml`. Separa el código duro del dominio del negocio. Configura dinámicamente la identidad visible del bot (name, slug), la ruta al store SLDB (`kb_root`), el modelo LLM subyacente y el mapeo de los handlers de tools permitidos."}}}, "gobernanza deskops": {"title": "Gobernanza Deskops", "aliases": ["gobernanza deskops", "gobernanza", "deskops", "ops", "concepts"], "atoms": {"what": {"id": "atom-gobernanza-deskops", "body": "# Gobernanza Deskops\n\n## Answer\n\nEl repositorio se gobierna a sí mismo utilizando el directorio `desk/`. Las tareas, rituales (ej. closeout, handoff), y la arquitectura visual (spec2viz) se documentan como átomos de estado, permitiendo a subagentes LLM leer y operar sobre el repositorio de forma autónoma y determinista."}}}, "topología de despliegue modal ": {"title": "Topología de Despliegue (Modal)", "aliases": ["topología de despliegue modal ", "topología", "despliegue", "modal", "topología despliegue", "despliegue modal", "ops", "boundary"], "atoms": {"what": {"id": "atom-topologia-de-despliegue", "body": "# Topología de Despliegue (Modal)\n\n## Answer\n\nDespliegue serverless en Modal (`deploy/modal_app.py`). El runtime completo (ASGI de FastAPI sirviendo las 5 UIs — `/`, `/flow`, `/mindmap`, `/users`, `/dashboard` — y los endpoints webhooks) se empaqueta junto con la Base de Conocimiento activa y se expone a internet, escalando desde cero. La infra sale del bloque `deploy` de project.config.yaml (`ProjectConfig.deploy` — `modal_app_name`, `gcp_secret_name`, `twilio_secret_name`, `min_containers`, `serve_timeout_s`), con `MODAL_APP_NAME` como override — así existe un endpoint dev separado (`MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py`) sin copiar el archivo. El secret que nombra `twilio_secret_name` lleva `TWILIO_AUTH_TOKEN` (firma del webhook) y `TWILIO_ACCOUNT_SID` (respuesta por REST en modo async); con `null` la ruta `/webhooks/twilio` responde 503, y el webhook público fijo es `https://<app>.modal.run/webhooks/twilio`. El Volume `<app>-data` (montado en `/data`) persiste el sqlite de sesiones, historial y UserTraits entre deploys; al arrancar `serve()` corre `_migrate_data_volume()` (alembic `upgrade head`, con stamp del baseline para bases pre-migraciones). Mantenimiento del volumen con `modal run deploy/modal_app.py::inspect_db` (sólo lectura) y `::clean_and_seed` (borra conversaciones y resiembra usuarios demo). La rama `production` + tag `release-YYYYMMDD-<sha>` registran lo desplegado (`deploy/release.sh`)."}}}, "pii scrubber": {"title": "PII Scrubber", "aliases": ["pii scrubber", "pii", "scrubber", "runtime", "boundary"], "atoms": {"what": {"id": "atom-pii-scrubber", "body": "# PII Scrubber\n\n## Answer\n\nCapa de interceptación de privacidad. El Orquestador lo invoca para enmascarar (scrub) todo contenido antes de persistirlo en el historial SQL (`ChatHistory`) y antes de publicarlo en el EventBus, asegurando aislamiento absoluto de datos personales."}}}, "propuesta de valor": {"title": "Propuesta de Valor", "aliases": ["propuesta de valor", "propuesta", "valor", "propuesta valor", "business", "concepts"], "atoms": {"what": {"id": "atom-propuesta-de-valor", "body": "# Propuesta de Valor\n\n## Answer\n\nAgente conversacional multi-dominio diseñado para operar en entornos de alta restricción. Su núcleo no depende de prompts hardcodeados, sino de la inyección dinámica de conocimiento estructurado (Átomos Semánticos), permitiendo cambiar de negocio (ej. de una clínica a una pizzería) simplemente cambiando la base de datos subyacente."}}}, "encuadre de agentes desde la kb agentframing ": {"title": "Encuadre de agentes desde la KB (AgentFraming)", "aliases": ["encuadre de agentes desde la kb agentframing ", "encuadre", "agentes", "desde", "agentframing", "encuadre agentes", "agentes desde", "desde agentframing", "knowledge", "engine", "agent", "agent framing", "framing"], "atoms": {"why": {"id": "atom-encuadre-de-agentes-desde-la-kb-agentframing", "body": "# Encuadre de agentes desde la KB (AgentFraming)\n\n## Answer\n\nPorque una KB = un negocio y el código no puede hardcodear el dominio. Cada agente LLM arma su prompt en dos capas — la doctrina (mecánica fija del runtime — familias, regla de oro, formato de salida) vive en las funciones `render_*` de `kb_agent/agents/` (`render_gate_criteria`, `render_router_instruction`, `render_orchestrator_flow`) y se mantiene business-neutral; el encuadre (quién es este agente EN ESTE negocio, más ejemplos de dominio) vive en la KB como documento tipado `AgentFraming` (kb_agent/models/knowledge/agent_framing.py, familia `agent`, campos `role`, `framing`, `examples`). Los roles válidos son el enum `AgentRole` de kb_agent/agents/base.py (`conversador` | `router` | `orchestrator` | `gate`), único punto de verdad de qué agentes existen. El Orquestador carga el encuadre por rol en `Orchestrator._load_agent_framing(role)` y lo inyecta como lead-in al `render_*` correspondiente; sin `AgentFraming` para un rol, el agente cae a un encuadre genérico neutro. Ejemplos en la KB de Antonia — knowledge/atoms/agent-antonia-gate.md (gate regulatorio de farmacovigilancia) y agent-antonia-router.md (ejemplos clínicos del ruteador). Detalle en docs/CONFIGURATION.md."}}}, "deploy dev y mantenimiento del volumen": {"title": "Deploy dev y mantenimiento del volumen", "aliases": ["deploy dev y mantenimiento del volumen", "deploy", "dev", "mantenimiento", "del", "volumen", "deploy dev", "dev mantenimiento", "mantenimiento del", "del volumen", "ops", "boundary"], "atoms": {"how": {"id": "atom-deploy-dev-y-mantenimiento-del-volumen", "body": "# Deploy dev y mantenimiento del volumen\n\n## Answer\n\nPara un endpoint de desarrollo separado no se copia deploy/modal_app.py — el nombre de la app sale de la variable `MODAL_APP_NAME` (prioridad sobre `deploy.modal_app_name` del yaml) y el volumen es `<app>-data`. `MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py` crea la app `kb-agent-runtime-dev` y el Volume `kb-agent-runtime-dev-data` (montado en `/data`, con el sqlite `ui-chat.sqlite` de sesiones, historial y UserTraits), con el mismo secret GCP; logs con `modal app logs kb-agent-runtime-dev`. El override viaja a la imagen (`.env({\"MODAL_APP_NAME\": APP_NAME})`) porque el contenedor re-importa el módulo y debe resolver el mismo app/volumen; modal_app.py resuelve la raíz del repo también dentro del contenedor (`_CFG_ROOT` cae a `REMOTE_APP_DIR=/root/app` cuando no encuentra `kb_agent/` al lado). Mantenimiento del sqlite del volumen con funciones que viven en el mismo archivo (Modal no monta deploy/ como paquete) — `modal run deploy/modal_app.py::inspect_db` (sólo lectura — tablas, usuarios, primeros mensajes) y `modal run deploy/modal_app.py::clean_and_seed` (BORRA conversaciones y resiembra los usuarios demo; el esquema lo deja alembic al arrancar `serve`). Detalle de secrets, imagen y qué se empaqueta en deploy/README.md."}}}, "embeddings layout de mindmap no vista separada": {"title": "Embeddings: layout de Mindmap, no vista separada", "aliases": ["embeddings layout de mindmap no vista separada", "embeddings", "layout", "mindmap", "vista", "separada", "embeddings layout", "layout mindmap", "mindmap vista", "vista separada", "frontend", "concepts"], "atoms": {"why": {"id": "atom-embeddings-como-layout-no-vista", "body": "## Decisión\n\nEmbeddings (ex `frontends/viz/`) NO es una vista separada. Es un **layout más**\ndentro de Mindmap (`/mindmap`), seleccionable por hotkey 3 o botón.\n\n## Por qué\n\n- React Flow es la base común de ambas: taxonomy (árbol jerárquico) y viz\n  (grafo PCA 2D) ya usan `@xyflow/react` + `htm` + `dagre` con importmap\n  idéntico. Fusionarlas es trivial: cambiar `nodes` y `edges` dinámicamente\n  según el layout activo.\n- La vista embeddings se beneficia de la infraestructura de mindmap (sidebar\n  filtro, node search, node toolbar, collapse, drag-handle) sin duplicar.\n- El usuario puede cambiar de layout sin cambiar de ruta — explorar la misma\n  KB en forma jerárquica o por similitud semántica sin perder contexto.\n- cross-family links se ven naturalmente en embeddings por la proximidad PCA.\n\n## Alternativas descartadas\n\n- **Vista separada `/embeddings`**: duplica infraestructura (sidebar, search,\n  toolbar, hotkeys). El usuario pierde contexto al cambiar de vista para ver\n  la misma data desde otro ángulo.\n- **Toggle overlay sobre árbol**: complejidad técnica (posiciones PCA no\n  alineadas con dagre), confusión visual al superponer dos sistemas de\n  coordenadas.\n\n## Referencias\n\n- UI-GUIDE.md §4.1 (tres layouts: tree, topdown, embeddings)\n- seed-ui-correcciones-y-vistas.md §6 (fusión taxonomía+embeddings)\n- frontends/viz/ (README.md y export_graph.py se mantienen como módulo de backend)"}}}, "canales de entrada": {"title": "Canales de Entrada", "aliases": ["canales de entrada", "canales", "entrada", "canales entrada", "frontend", "boundary"], "atoms": {"what": {"id": "atom-canales-de-entrada", "body": "# Canales de Entrada\n\n## Answer\n\nMúltiples interfaces de conexión que convergen en el Orquestador. Incluyen el endpoint principal FastAPI (`POST /api/chat`), el webhook de WhatsApp/SMS de Twilio (`POST /webhooks/twilio`) y el intérprete local interactivo CLI. Todo canal expone un `external_id` con prefijo de canal (`ui:<session>`, `whatsapp:+569...`, `sms:+569...`), del que el orquestador deriva `channel`. El webhook de Twilio no llama al orquestador directo: valida la firma `X-Twilio-Signature` con el Auth Token de la cuenta y delega en `InboundService` (`kb_agent/inbound.py`), que normaliza el remitente, persiste el mensaje como `InboundMessage` con su `MessageSid` (source del turno e idempotencia frente a reintentos) y corre el turno en modo `sync` (TwiML con el texto) o `async` (`<Response/>` inmediato, turno en background y respuesta por la API REST de Twilio, porque Twilio corta el webhook a los 15 s). Sin `TWILIO_AUTH_TOKEN` la ruta responde 503."}}}, "átomo semántico sldb ": {"title": "Átomo Semántico (SLDB)", "aliases": ["átomo semántico sldb ", "átomo", "semántico", "sldb", "átomo semántico", "semántico sldb", "business", "concepts"], "atoms": {"what": {"id": "atom-concepto-atomo-semantico", "body": "# Átomo Semántico (SLDB)\n\n## Answer\n\nUnidad mínima de conocimiento y gobernanza. Técnicamente es un archivo Markdown con frontmatter YAML (formato SLDB). Todo en el sistema es un átomo: las reglas de negocio, los perfiles de usuario, los pasos del flujo, e incluso la propia documentación de arquitectura."}}}, "capas de verificación y release": {"title": "Capas de verificación y release", "aliases": ["capas de verificación y release", "capas", "verificación", "release", "capas verificación", "verificación release", "ops", "boundary", "ci release"], "atoms": {"how": {"id": "atom-capas-de-verificación-y-release", "body": "# Capas de verificación y release\n\n## Answer\n\nCinco capas de verificación con su comando (README.md, sección \"Ramas, CI y releases\"). `static` (CI, job `static` de .github/workflows/ci.yml, sin deps) — `compileall`, `project.config.yaml` válido con negocio activo, sin hardcodes de negocio en string-literals vivos de `kb_agent/`, y los docs proyectados sin drift (`python desk/materializations/materialize.py --check`). `suite` (CI y local) — unit + integration sin LLM, `SKIP_LLM_TESTS=1 python -m pytest tests/unit tests/integration`; en CI instala `sldb`/`kgdb`/`deskops` por git. `ui` (local) — Playwright + Chromium contra la app in-process, `python -m pytest tests/ui` (marker `ui`, se salta sin Playwright). `llm` / `simulation` (local con `.env`, Vertex ADC vía `GOOGLE_GENAI_USE_VERTEXAI` + `GOOGLE_CLOUD_PROJECT`) — `set -a; source .env; set +a; python -m pytest tests/e2e`, smoke + simulaciones agente-vs-usuario con juez LLM. Release gate (local) — `deploy/release.sh`, preflight + suite offline + deploy + tag + `production`, fuente de verdad de qué hay arriba. CI corre en push a `main`, `dev` y `production` y en cada PR; los tests con marker `llm` se saltan solos sin credenciales o con `SKIP_LLM_TESTS=1` (tests/conftest.py). `known_gap` es un xfail estricto que documenta un defecto conocido del runtime y exige quitar la marca al arreglarse. Release — desde `main` limpio (el script rechaza working tree sucio), `deploy/release.sh [tag]` (sin tag, `release-YYYYMMDD-<sha>`; `SKIP_DEPLOY=1` sólo gate + tag). Secuencia — suite offline => `modal deploy deploy/modal_app.py` (app `kb-agent-runtime`, secret `kb-agent-runtime-gcp`, volumen `kb-agent-runtime-data`; alembic migra al arrancar el contenedor) => `production` = SHA desplegado + tag; no hace push, lo imprime — `git push origin production && git push origin <tag>`. Antes de producción se prueba en el endpoint dev (app y volumen propios, mismo secret) — `MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py`. Mantenimiento del sqlite del volumen — `modal run deploy/modal_app.py::inspect_db` (sólo lectura) y `modal run deploy/modal_app.py::clean_and_seed` (borra conversaciones y resiembra usuarios demo). `DEMO_MODE=1` (modo demo sin LLM, datos de `frontends/chat/demo_data.py`) es opt-in y nunca se setea en producción."}}}}; window.ATOMS_BY_VIEW = {"vista01-17cfb044": {}, "vista02-17cfb044": {}, "vista03-17cfb044": {}, "vista04-17cfb044": {}, "vista05-17cfb044": {}}; window.COVERAGE_BY_VIEW = {"vista01-17cfb044": {"view_id": "vista01-17cfb044", "view_node_id": null, "diagram_type": "component", "title": "KB Agent Runtime \u00b7 Arquitectura (AST scan)", "source_ref": "", "scope": "", "summary": {"total_elements": 0, "elements_fully_covered": 0, "avg_coverage_ratio": 0.0, "expected_facet_count": 0, "covered_facet_count": 0, "missing_facet_count": 0}, "elements": []}, "vista02-17cfb044": {"view_id": "vista02-17cfb044", "view_node_id": null, "diagram_type": "state", "title": "RouterStateMachine \u00b7 Estados de sesi\u00f3n", "source_ref": "", "scope": "", "summary": {"total_elements": 0, "elements_fully_covered": 0, "avg_coverage_ratio": 0.0, "expected_facet_count": 0, "covered_facet_count": 0, "missing_facet_count": 0}, "elements": []}, "vista03-17cfb044": {"view_id": "vista03-17cfb044", "view_node_id": null, "diagram_type": "sequence", "title": "Turno conversacional \u00b7 Secuencia", "source_ref": "", "scope": "", "summary": {"total_elements": 0, "elements_fully_covered": 0, "avg_coverage_ratio": 0.0, "expected_facet_count": 0, "covered_facet_count": 0, "missing_facet_count": 0}, "elements": []}, "vista04-17cfb044": {"view_id": "vista04-17cfb044", "view_node_id": null, "diagram_type": "deployment", "title": "Despliegue runtime", "source_ref": "", "scope": "", "summary": {"total_elements": 0, "elements_fully_covered": 0, "avg_coverage_ratio": 0.0, "expected_facet_count": 0, "covered_facet_count": 0, "missing_facet_count": 0}, "elements": []}, "vista05-17cfb044": {"view_id": "vista05-17cfb044", "view_node_id": null, "diagram_type": "class", "title": "Modelo de conocimiento (atoms SLDB)", "source_ref": "", "scope": "", "summary": {"total_elements": 0, "elements_fully_covered": 0, "avg_coverage_ratio": 0.0, "expected_facet_count": 0, "covered_facet_count": 0, "missing_facet_count": 0}, "elements": []}}; window.SPEC2VIZ_ATOM_WARNINGS = [{"scope": "/home/jp/proyectos/_worktrees/hcp/.sldb", "message": "Failed to load atoms through SLDB: Failed to import module 'deskops.models'."}]; window.SPEC2VIZ_COVERAGE_WARNINGS = [{"scope": "kgdb", "message": "KGDB snapshot not found; coverage projection is empty."}]; window.SPEC2VIZ_CATALOG = {"title": "spec2viz Catalog", "brand_name": "spec2viz Catalog", "brand_subtitle": "Visor transversal de diagramas de spec2viz", "project_name": "spec2viz", "item_count": 5};</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+documents:
+- name: reltype-has_model
+  path: kgdb/relation_types/has_model.md
+  hash_c: 4d020a92bb01bd3ef1e712e3b8edbe1c35bb51e414fd401bb37bce53716f19ec
+  hash_d: 3b2d51c8d50e9383e5aab83ad84084ac81f4e43722a61585d6a4b0301246faaa
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-has_document
+  path: kgdb/relation_types/has_document.md
+  hash_c: 310eead53c52dd80f006fd4e3c36fab7dca71aefa06f355dc943a76fee957723
+  hash_d: 2fc92ed4f313315b5806aceb98a4f0bd99dc4d01f1868cce7b8068161b683761
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-has_section
+  path: kgdb/relation_types/has_section.md
+  hash_c: c982b6ad78924ee59157c388069451f5631f82d81b2568eb28d80b60e51c8e0c
+  hash_d: 449bb563fb84964ea6318b2ee4f8baa5de1b1f841544c0ef0ee13d91263632e5
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-tagged_as
+  path: kgdb/relation_types/tagged_as.md
+  hash_c: c387f850d87e22f4c341fbb021373ea836a8722f48bb882140f959771e0a50fb
+  hash_d: 79e628547a7e90b85324bc73b6ccfa8ae3c3bd5ccbb2fd5877b2c9a01788364d
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-semantic_parent
+  path: kgdb/relation_types/semantic_parent.md
+  hash_c: 43e3da1698c526ca065582e98f48c249730808321ef036a41fbff12dd395996a
+  hash_d: 5efd68d7ec47bf5bacdae572a31debb851abe036153d00b44d658c3ddb9e2c5c
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-semantic_equivalent
+  path: kgdb/relation_types/semantic_equivalent.md
+  hash_c: 663157b5f9803d451665ca0f2a3318527cb40fa5f98f0c968dd1cfc7b8ae37f4
+  hash_d: c6fea86a1830d497d1fd580382c258997a72f06d4fa86f7b1774fc436c618c07
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-has_field
+  path: kgdb/relation_types/has_field.md
+  hash_c: 0b993475af6138e3aaa4dcabbf23b537a404f5eb5e7cbaf98374d459eccd872d
+  hash_d: d9f05817118af43485b5821ae34b2d0d04a6fb7739856a33e3eaee8a8e31fcc5
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-extends
+  path: kgdb/relation_types/extends.md
+  hash_c: b8afd042eec8642deb7a4bddf948a36889905ba28c9402062b58207854042b77
+  hash_d: 6b4611a3b93a0ba70b089cd35aa6bc47788c57ac20184022ff0231ae09041906
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-applies_to_source
+  path: kgdb/relation_types/applies_to_source.md
+  hash_c: 710d071df8cc9867fdc007ce1b1506e02085669b5d548b812e750119e4b3877b
+  hash_d: 76163cb41f82534a41d3abd15493f3330acdb83c361611797177367803ae2283
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-applies_to_target
+  path: kgdb/relation_types/applies_to_target.md
+  hash_c: 30a85970a383ecb55f95bed4ce2f3d4cb7e7569fef3309b5d2e5ba4334fa64cc
+  hash_d: d4d63693b589103d6cbfc445f52e11a3698b3ba50fb573be0b0d93c45b2a68c0
+  semantic_tags:
+  - layer.topology
+  - type.relation.type
+- name: reltype-names
+  path: kgdb/relation_types/names.md
+  hash_c: 2166f9e353e9726713148eb93362cb79bcac0a02528f852580b82e0405559832
+  hash_d: 73b524d5cbe0ff6160ef9f59354912aa48c38e16875677388be20a9ab3559035
+  semantic_tags:
+  - layer.topology
+  - type.relation.type

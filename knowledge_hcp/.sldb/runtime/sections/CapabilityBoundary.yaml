@@ -1,0 +1,373 @@
+documents:
+- doc_name: boundary-hcp-optout-campania
+  sections:
+  - path: l-mite-baja-de-una-campa-a
+    title: Límite — baja de una campaña
+    breadcrumbs:
+    - Límite — baja de una campaña
+    about:
+    - Límite — baja de una campaña
+    - l mite baja de una campa a
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: l-mite-baja-de-una-campa-a
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: l-mite-baja-de-una-campa-a/restriction
+    title: Restriction
+    breadcrumbs:
+    - Límite — baja de una campaña
+    - Restriction
+    about:
+    - Límite — baja de una campaña
+    - l mite baja de una campa a
+    - Restriction
+    - restriction
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: l-mite-baja-de-una-campa-a/conditions
+    title: Conditions
+    breadcrumbs:
+    - Límite — baja de una campaña
+    - Conditions
+    about:
+    - Límite — baja de una campaña
+    - l mite baja de una campa a
+    - Conditions
+    - conditions
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: l-mite-baja-de-una-campa-a/escalation
+    title: Escalation
+    breadcrumbs:
+    - Límite — baja de una campaña
+    - Escalation
+    about:
+    - Límite — baja de una campaña
+    - l mite baja de una campa a
+    - Escalation
+    - escalation
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 794
+    line_end: 795
+- doc_name: boundary-hcp-optout-canal
+  sections:
+  - path: l-mite-baja-total-de-comunicaciones
+    title: Límite — baja total de comunicaciones
+    breadcrumbs:
+    - Límite — baja total de comunicaciones
+    about:
+    - Límite — baja total de comunicaciones
+    - l mite baja total de comunicaciones
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: l-mite-baja-total-de-comunicaciones
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: l-mite-baja-total-de-comunicaciones/restriction
+    title: Restriction
+    breadcrumbs:
+    - Límite — baja total de comunicaciones
+    - Restriction
+    about:
+    - Límite — baja total de comunicaciones
+    - l mite baja total de comunicaciones
+    - Restriction
+    - restriction
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: l-mite-baja-total-de-comunicaciones/conditions
+    title: Conditions
+    breadcrumbs:
+    - Límite — baja total de comunicaciones
+    - Conditions
+    about:
+    - Límite — baja total de comunicaciones
+    - l mite baja total de comunicaciones
+    - Conditions
+    - conditions
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: l-mite-baja-total-de-comunicaciones/escalation
+    title: Escalation
+    breadcrumbs:
+    - Límite — baja total de comunicaciones
+    - Escalation
+    about:
+    - Límite — baja total de comunicaciones
+    - l mite baja total de comunicaciones
+    - Escalation
+    - escalation
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 794
+    line_end: 795
+- doc_name: boundary-hcp-dsr-erasure
+  sections:
+  - path: l-mite-solicitud-sobre-datos-personales
+    title: Límite — solicitud sobre datos personales
+    breadcrumbs:
+    - Límite — solicitud sobre datos personales
+    about:
+    - Límite — solicitud sobre datos personales
+    - l mite solicitud sobre datos personales
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: l-mite-solicitud-sobre-datos-personales
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: l-mite-solicitud-sobre-datos-personales/restriction
+    title: Restriction
+    breadcrumbs:
+    - Límite — solicitud sobre datos personales
+    - Restriction
+    about:
+    - Límite — solicitud sobre datos personales
+    - l mite solicitud sobre datos personales
+    - Restriction
+    - restriction
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: l-mite-solicitud-sobre-datos-personales/conditions
+    title: Conditions
+    breadcrumbs:
+    - Límite — solicitud sobre datos personales
+    - Conditions
+    about:
+    - Límite — solicitud sobre datos personales
+    - l mite solicitud sobre datos personales
+    - Conditions
+    - conditions
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 790
+    line_end: 791
+  - path: l-mite-solicitud-sobre-datos-personales/escalation
+    title: Escalation
+    breadcrumbs:
+    - Límite — solicitud sobre datos personales
+    - Escalation
+    about:
+    - Límite — solicitud sobre datos personales
+    - l mite solicitud sobre datos personales
+    - Escalation
+    - escalation
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 794
+    line_end: 795
+- doc_name: boundary-hcp-ae-safety-net
+  sections:
+  - path: l-mite-sospecha-de-evento-adverso
+    title: Límite — sospecha de evento adverso
+    breadcrumbs:
+    - Límite — sospecha de evento adverso
+    about:
+    - Límite — sospecha de evento adverso
+    - l mite sospecha de evento adverso
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: l-mite-sospecha-de-evento-adverso
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: l-mite-sospecha-de-evento-adverso/restriction
+    title: Restriction
+    breadcrumbs:
+    - Límite — sospecha de evento adverso
+    - Restriction
+    about:
+    - Límite — sospecha de evento adverso
+    - l mite sospecha de evento adverso
+    - Restriction
+    - restriction
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: restriction
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: l-mite-sospecha-de-evento-adverso/conditions
+    title: Conditions
+    breadcrumbs:
+    - Límite — sospecha de evento adverso
+    - Conditions
+    about:
+    - Límite — sospecha de evento adverso
+    - l mite sospecha de evento adverso
+    - Conditions
+    - conditions
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: conditions
+    level: 2
+    line_start: 791
+    line_end: 792
+  - path: l-mite-sospecha-de-evento-adverso/escalation
+    title: Escalation
+    breadcrumbs:
+    - Límite — sospecha de evento adverso
+    - Escalation
+    about:
+    - Límite — sospecha de evento adverso
+    - l mite sospecha de evento adverso
+    - Escalation
+    - escalation
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    semantic_tags:
+    - domain:farmacovigilancia
+    - self:limites
+    - system:teva-hcp
+    - type.knowledge.boundary
+    - workspace.knowledge
+    slug: escalation
+    level: 2
+    line_start: 795
+    line_end: 796

@@ -1,17 +1,99 @@
 tags:
   artifact:task:
+  - task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - task-modo-editor-de-atoms-en-la-ui
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
+  - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - task-vista-leads-con-cola-de-visitas-por-confirmar
+  build:
+  - pill-ui-no-build-cdn
+  constraints:
+  - pill-ui-no-build-cdn
+  diagramas:
+  - seed-dividir-current-kb-agent
   domain:psp:
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-clasificación-de-4-ramas-del-flujo-psp
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
+  domain:system_architecture:
+  - cmd-pron-check
+  - cmd-pron-docs
+  - cmd-pron-init
+  - cmd-pron-lexicon
+  - cmd-pron-refresh
+  - cmd-pron-repl
+  - cmd-pron-say
+  - cmd-pron-serve
+  - surface-pron-cli-main
+  - surface-pron-cli-repl
+  - surface-pron-client
+  - surface-pron-dialogue
+  - surface-pron-display
+  - surface-pron-docs
+  - surface-pron-embedder
+  - surface-pron-graph
+  - surface-pron-ids
+  - surface-pron-kernel
+  - surface-pron-ledger
+  - surface-pron-lexicon
+  - surface-pron-lints
+  - surface-pron-resolve
+  - surface-pron-response
+  - surface-pron-serve
+  - surface-pron-session
+  - surface-pron-store
+  - surface-pron-surface-dates
+  - surface-pron-surface-interpret
+  - surface-pron-surface-nouns
+  - surface-pron-surface-tokens
+  - surface-pron-verbs
+  - surface-pron-world
+  entity:cli_command:
+  - cmd-pron-check
+  - cmd-pron-docs
+  - cmd-pron-init
+  - cmd-pron-lexicon
+  - cmd-pron-refresh
+  - cmd-pron-repl
+  - cmd-pron-say
+  - cmd-pron-serve
+  entity:module:
+  - surface-pron-cli-main
+  - surface-pron-cli-repl
+  - surface-pron-client
+  - surface-pron-dialogue
+  - surface-pron-display
+  - surface-pron-docs
+  - surface-pron-embedder
+  - surface-pron-graph
+  - surface-pron-ids
+  - surface-pron-kernel
+  - surface-pron-ledger
+  - surface-pron-lexicon
+  - surface-pron-lints
+  - surface-pron-resolve
+  - surface-pron-response
+  - surface-pron-serve
+  - surface-pron-session
+  - surface-pron-store
+  - surface-pron-surface-dates
+  - surface-pron-surface-interpret
+  - surface-pron-surface-nouns
+  - surface-pron-surface-tokens
+  - surface-pron-verbs
+  - surface-pron-world
   family:agent:
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
   family:concepts:
@@ -20,24 +102,93 @@ tags:
   - atom-embeddings-como-layout-no-vista
   - atom-garantia-cero-alucinaciones
   - atom-gobernanza-deskops
-  - atom-negocios-activos
   - atom-propuesta-de-valor
+  - atom-un-negocio-por-rama
   family:conversation:
   - atom-kgdb-grafo-de-flujo
   family:domain:
   - atom-reflector-batch
   family:user:
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-perfilador-asincrono
-  foundation:
-  - task-ui-foundations
-  hotkeys:
-  - task-ui-foundations
+  frontend:
+  - pill-ui-estilo-flow-editor
+  impl:here:
+  - cmd-pron-check
+  - cmd-pron-docs
+  - cmd-pron-init
+  - cmd-pron-lexicon
+  - cmd-pron-refresh
+  - cmd-pron-repl
+  - cmd-pron-say
+  - cmd-pron-serve
+  - surface-pron-cli-main
+  - surface-pron-cli-repl
+  - surface-pron-client
+  - surface-pron-dialogue
+  - surface-pron-display
+  - surface-pron-docs
+  - surface-pron-embedder
+  - surface-pron-graph
+  - surface-pron-ids
+  - surface-pron-kernel
+  - surface-pron-ledger
+  - surface-pron-lexicon
+  - surface-pron-lints
+  - surface-pron-resolve
+  - surface-pron-response
+  - surface-pron-serve
+  - surface-pron-session
+  - surface-pron-store
+  - surface-pron-surface-dates
+  - surface-pron-surface-interpret
+  - surface-pron-surface-nouns
+  - surface-pron-surface-tokens
+  - surface-pron-verbs
+  - surface-pron-world
+  kb:
+  - seed-profundizar-la-kb
+  kind:software:
+  - cmd-pron-check
+  - cmd-pron-docs
+  - cmd-pron-init
+  - cmd-pron-lexicon
+  - cmd-pron-refresh
+  - cmd-pron-repl
+  - cmd-pron-say
+  - cmd-pron-serve
+  - surface-pron-cli-main
+  - surface-pron-cli-repl
+  - surface-pron-client
+  - surface-pron-dialogue
+  - surface-pron-display
+  - surface-pron-docs
+  - surface-pron-embedder
+  - surface-pron-graph
+  - surface-pron-ids
+  - surface-pron-kernel
+  - surface-pron-ledger
+  - surface-pron-lexicon
+  - surface-pron-lints
+  - surface-pron-resolve
+  - surface-pron-response
+  - surface-pron-serve
+  - surface-pron-session
+  - surface-pron-store
+  - surface-pron-surface-dates
+  - surface-pron-surface-interpret
+  - surface-pron-surface-nouns
+  - surface-pron-surface-tokens
+  - surface-pron-verbs
+  - surface-pron-world
+  knowledge:
+  - seed-profundizar-la-kb
   layer:business:
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
   - atom-garantia-cero-alucinaciones
-  - atom-negocios-activos
   - atom-propuesta-de-valor
+  - atom-un-negocio-por-rama
   layer:frontend:
   - atom-canales-de-entrada
   - atom-dashboard
@@ -50,75 +201,411 @@ tags:
   - atom-project-config
   - atom-sldb-knowledge-base
   layer:ops:
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-capas-de-verificación-y-release
+  - atom-configuración-por-capas-y-tuning
+  - atom-cómo-conectar-twilio-al-runtime-local
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-estrategia-de-testing
   - atom-gobernanza-deskops
   - atom-migraciones-alembic-del-volumen
   - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-topologia-de-despliegue
   layer:runtime:
   - atom-agente-conversador
+  - atom-context-compiler-knowledge
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-in-process-event-bus
-  - atom-ontologizador-context-compiler
+  - atom-mensajes-entrantes-inboundservice-e-inbound-messages
   - atom-orquestador-hub
   - atom-perfilador-asincrono
   - atom-pii-scrubber
   - atom-policy-decide-turn
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-reflector-batch
   - atom-router-state-machine
   - atom-ruteador-de-contexto-como-agente
   - atom-tool-handlers-registry
-  navigation:
-  - task-ui-foundations
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
+  loop:
+  - seed-mas-subagentes-al-loop
+  pill:
+  - pill-ui-estilo-flow-editor
+  - pill-ui-no-build-cdn
+  primitive:checklist:
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready
+  primitive:condition:
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-closeout-evidence
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-implementation-path
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-validation
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-closeout
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-closeout-evidence
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-implementation-path
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-validation
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-closeout-evidence
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-implementation-path
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-validation
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-pill-knowledge-graduated
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-closeout
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout
+  primitive:edge:
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate-to-testing
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close-to-complete
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-to-close
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-to-activate
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-to-closeout
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-to-ready
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate-to-testing
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close-to-complete
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-to-close
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-to-activate
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-to-closeout
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-to-ready
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate-to-testing
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close-to-complete
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-to-close
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-to-activate
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-to-closeout
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-to-ready
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate-to-testing
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close-to-complete
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-to-close
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate-to-testing
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close-to-complete
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-to-close
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-to-activate
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-to-closeout
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate-to-testing
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close-to-complete
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-to-close
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-to-activate
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-to-closeout
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-to-ready
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close-to-complete
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-to-close
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-to-activate
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-to-closeout
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-to-ready
+  primitive:operator:
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-testing
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-testing
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
+  primitive:routine:
+  - routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+  - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
   role:background:
   - atom-perfilador-asincrono
   - atom-reflector-batch
   role:boundary:
   - atom-canales-de-entrada
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-capas-de-verificación-y-release
+  - atom-configuración-por-capas-y-tuning
+  - atom-cómo-conectar-twilio-al-runtime-local
   - atom-dashboard
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-estrategia-de-testing
   - atom-in-process-event-bus
+  - atom-mensajes-entrantes-inboundservice-e-inbound-messages
   - atom-modelo-de-ramas
   - atom-modo-demo
   - atom-orquestador-hub
   - atom-pii-scrubber
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-project-config
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-router-state-machine
   - atom-tool-handlers-registry
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
   role:data:
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-kgdb-grafo-de-flujo
   - atom-migraciones-alembic-del-volumen
   - atom-persistencia-sql
   - atom-sldb-knowledge-base
   role:engine:
   - atom-agente-conversador
+  - atom-context-compiler-knowledge
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
-  - atom-ontologizador-context-compiler
   - atom-policy-decide-turn
   - atom-ruteador-de-contexto-como-agente
   rule:execution:
   - pill-conversador-jamas-alucina-sin-contexto
   rule:state-machine:
   - pill-maquina-de-estados-pausa-en-tool-calling
+  seed:
+  - seed-dividir-current-kb-agent
+  - seed-mas-subagentes-al-loop
+  - seed-profundizar-la-kb
+  source:decision:
+  - task-modo-editor-de-atoms-en-la-ui
   source:drawer:
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
+  source:inbox:
+  - task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
+  spec2viz:
+  - seed-dividir-current-kb-agent
+  style:
+  - pill-ui-estilo-flow-editor
+  subagentes:
+  - seed-mas-subagentes-al-loop
   system:antonia:
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-clasificación-de-4-ramas-del-flujo-psp
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
+  system:pron:
+  - cmd-pron-check
+  - cmd-pron-docs
+  - cmd-pron-init
+  - cmd-pron-lexicon
+  - cmd-pron-refresh
+  - cmd-pron-repl
+  - cmd-pron-say
+  - cmd-pron-serve
+  - surface-pron-cli-main
+  - surface-pron-cli-repl
+  - surface-pron-client
+  - surface-pron-dialogue
+  - surface-pron-display
+  - surface-pron-docs
+  - surface-pron-embedder
+  - surface-pron-graph
+  - surface-pron-ids
+  - surface-pron-kernel
+  - surface-pron-ledger
+  - surface-pron-lexicon
+  - surface-pron-lints
+  - surface-pron-resolve
+  - surface-pron-response
+  - surface-pron-serve
+  - surface-pron-session
+  - surface-pron-store
+  - surface-pron-surface-dates
+  - surface-pron-surface-interpret
+  - surface-pron-surface-nouns
+  - surface-pron-surface-tokens
+  - surface-pron-verbs
+  - surface-pron-world
+  target:architecture:
+  - composition-architecture
+  target:glossary:
+  - composition-glossary
+  target:operations:
+  - composition-operations
+  target:readme:
+  - composition-readme
   topic:agent-framing:
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
   topic:alembic:
@@ -126,14 +613,19 @@ tags:
   - atom-migraciones-alembic-en-local
   topic:arquitectura:
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  topic:canales:
+  - atom-cómo-conectar-twilio-al-runtime-local
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
+  - atom-mensajes-entrantes-inboundservice-e-inbound-messages
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   topic:ci-release:
-  - "atom-capas-de-verificaci\xF3n-y-release"
+  - atom-capas-de-verificación-y-release
   topic:clasificacion:
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-clasificación-de-4-ramas-del-flujo-psp
   topic:compliance:
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
   topic:configuration:
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-configuración-por-capas-y-tuning
   topic:dashboard:
   - atom-dashboard
   topic:demo:
@@ -141,33 +633,50 @@ tags:
   topic:deploy:
   - atom-deploy-dev-y-mantenimiento-del-volumen
   topic:doctrina:
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
   topic:flujo-conversacional:
   - atom-grafo-de-steps-actual-de-antonia-y-extensiones-psp-requeridas
   topic:git-flow:
   - atom-modelo-de-ramas
   topic:modelacion:
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
   topic:policy-gate:
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
   topic:router:
   - atom-ruteador-de-contexto-como-agente
+  topic:twilio:
+  - atom-cómo-conectar-twilio-al-runtime-local
+  - atom-mensajes-entrantes-inboundservice-e-inbound-messages
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   type.desk.inbox-note:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   - 20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills
+  type.desk.repository:
+  - repo-gemini-test
+  type.documentation.composition:
+  - composition-architecture
+  - composition-glossary
+  - composition-operations
+  - composition-readme
+  type.documentation.faq:
+  - current-system-overview
   type.knowledge.atom:
   - atom-agente-conversador
   - atom-canales-de-entrada
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-capas-de-verificación-y-release
+  - atom-clasificación-de-4-ramas-del-flujo-psp
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-configuración-por-capas-y-tuning
+  - atom-context-compiler-knowledge
+  - atom-cómo-conectar-twilio-al-runtime-local
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-dashboard
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-embeddings-como-layout-no-vista
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
@@ -178,62 +687,463 @@ tags:
   - atom-in-process-event-bus
   - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-mensajes-entrantes-inboundservice-e-inbound-messages
   - atom-migraciones-alembic-del-volumen
   - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
   - atom-modo-demo
-  - atom-negocios-activos
-  - atom-ontologizador-context-compiler
   - atom-orquestador-hub
   - atom-perfilador-asincrono
   - atom-persistencia-sql
   - atom-pii-scrubber
   - atom-policy-decide-turn
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-project-config
   - atom-propuesta-de-valor
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-reflector-batch
   - atom-router-state-machine
   - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
+  - atom-un-negocio-por-rama
+  type.knowledge.cli_command:
+  - cmd-pron-check
+  - cmd-pron-docs
+  - cmd-pron-init
+  - cmd-pron-lexicon
+  - cmd-pron-refresh
+  - cmd-pron-repl
+  - cmd-pron-say
+  - cmd-pron-serve
+  type.knowledge.surface:
+  - surface-pron-cli-main
+  - surface-pron-cli-repl
+  - surface-pron-client
+  - surface-pron-dialogue
+  - surface-pron-display
+  - surface-pron-docs
+  - surface-pron-embedder
+  - surface-pron-graph
+  - surface-pron-ids
+  - surface-pron-kernel
+  - surface-pron-ledger
+  - surface-pron-lexicon
+  - surface-pron-lints
+  - surface-pron-resolve
+  - surface-pron-response
+  - surface-pron-serve
+  - surface-pron-session
+  - surface-pron-store
+  - surface-pron-surface-dates
+  - surface-pron-surface-interpret
+  - surface-pron-surface-nouns
+  - surface-pron-surface-tokens
+  - surface-pron-verbs
+  - surface-pron-world
   type.workflow.board:
   - Board
+  type.workflow.checklist:
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready
+  type.workflow.condition:
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-closeout-evidence
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-implementation-path
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-validation
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-closeout
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-closeout-evidence
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-implementation-path
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-validation
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-closeout-evidence
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-implementation-path
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-validation
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-pill-knowledge-graduated
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-closeout
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout
+  type.workflow.edge:
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate-to-testing
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close-to-complete
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-to-close
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-to-activate
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-to-closeout
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-to-ready
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate-to-testing
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close-to-complete
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-to-close
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-to-activate
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-to-closeout
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-to-ready
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate-to-testing
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close-to-complete
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-to-close
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-to-activate
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-to-closeout
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-to-ready
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate-to-testing
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close-to-complete
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-to-close
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate-to-testing
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close-to-complete
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-to-close
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-to-activate
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-to-closeout
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate-to-testing
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close-to-complete
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-to-close
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-to-activate
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-to-closeout
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-to-ready
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close-to-complete
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-to-close
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-to-activate
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-to-closeout
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-to-ready
+  type.workflow.operator:
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-testing
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-testing
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
   type.workflow.pill:
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
   - pill-conversador-jamas-alucina-sin-contexto
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
   - pill-maquina-de-estados-pausa-en-tool-calling
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
+  - pill-ui-estilo-flow-editor
+  - pill-ui-no-build-cdn
+  - pills
+  type.workflow.ritual:
+  - closeout
+  - execution
+  - phase
+  - testing
+  type.workflow.routine:
+  - routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+  - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
+  type.workflow.step:
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
   type.workflow.task:
+  - seed-dividir-current-kb-agent
+  - seed-mas-subagentes-al-loop
+  - seed-profundizar-la-kb
+  - task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - task-modo-editor-de-atoms-en-la-ui
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
-  - task-ui-foundations
+  - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - task-vista-leads-con-cola-de-visitas-por-confirmar
+  type:composition:
+  - composition-architecture
+  - composition-glossary
+  - composition-operations
+  - composition-readme
   ui:
-  - task-ui-foundations
+  - pill-ui-estilo-flow-editor
+  - pill-ui-no-build-cdn
   workspace.desk:
   - Board
-  - "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia"
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  - closeout
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  - execution
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  - phase
+  - pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia
   - pill-conversador-jamas-alucina-sin-contexto
-  - "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible"
+  - pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible
   - pill-maquina-de-estados-pausa-en-tool-calling
-  - "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes"
+  - pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes
+  - pill-ui-estilo-flow-editor
+  - pill-ui-no-build-cdn
+  - pills
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  - seed-dividir-current-kb-agent
+  - seed-mas-subagentes-al-loop
+  - seed-profundizar-la-kb
+  - task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - task-modo-editor-de-atoms-en-la-ui
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
-  - task-ui-foundations
+  - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - task-vista-leads-con-cola-de-visitas-por-confirmar
+  - testing
   workspace.desk.atoms:
   - atom-agente-conversador
   - atom-canales-de-entrada
-  - "atom-capas-de-verificaci\xF3n-y-release"
-  - "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+  - atom-capas-de-verificación-y-release
+  - atom-clasificación-de-4-ramas-del-flujo-psp
   - atom-concepto-atomo-semantico
   - atom-concepto-turno-extendido
-  - "atom-configuraci\xF3n-por-capas-y-tuning"
+  - atom-configuración-por-capas-y-tuning
+  - atom-context-compiler-knowledge
+  - atom-cómo-conectar-twilio-al-runtime-local
+  - atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
   - atom-dashboard
-  - "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+  - atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   - atom-deploy-dev-y-mantenimiento-del-volumen
   - atom-embeddings-como-layout-no-vista
   - atom-encuadre-de-agentes-desde-la-kb-agentframing
@@ -244,35 +1154,327 @@ tags:
   - atom-in-process-event-bus
   - atom-kgdb-grafo-de-flujo
   - atom-mapeo-cadena-de-agentes-psp-sobre-el-runtime-antonia
+  - atom-mensajes-entrantes-inboundservice-e-inbound-messages
   - atom-migraciones-alembic-del-volumen
   - atom-migraciones-alembic-en-local
   - atom-modelo-de-ramas
   - atom-modo-demo
-  - atom-negocios-activos
-  - atom-ontologizador-context-compiler
   - atom-orquestador-hub
   - atom-perfilador-asincrono
   - atom-persistencia-sql
   - atom-pii-scrubber
   - atom-policy-decide-turn
   - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+  - atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
   - atom-project-config
   - atom-propuesta-de-valor
+  - atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
   - atom-reflector-batch
   - atom-router-state-machine
   - atom-ruteador-de-contexto-como-agente
   - atom-sldb-knowledge-base
   - atom-tool-handlers-registry
+  - atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
   - atom-topologia-de-despliegue
+  - atom-un-negocio-por-rama
   workspace.desk.inbox:
   - 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   - 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   - 20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills
+  workspace.desk.materializations:
+  - composition-architecture
+  - composition-glossary
+  - composition-operations
+  - composition-readme
+  workspace.desk.primitives:
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready
+  - checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready
+  - checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready
+  - checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-ready
+  - checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready
+  - checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready
+  - checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-ready
+  - checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready
+  - checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-ready
+  - checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready
+  - checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready
+  - checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready
+  - checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated
+  - condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated
+  - condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation
+  - condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-closeout-evidence
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-implementation-path
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-validation
+  - condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-closeout
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated
+  - condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation
+  - condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-closeout-evidence
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-implementation-path
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-validation
+  - condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation
+  - condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-closeout-evidence
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-implementation-path
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-validation
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-pill-knowledge-graduated
+  - condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-closeout
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation
+  - condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated
+  - condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated
+  - condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate-to-testing
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close-to-complete
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-to-close
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-to-activate
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-to-closeout
+  - edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-to-ready
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate-to-testing
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close-to-complete
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-to-close
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-to-activate
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-to-closeout
+  - edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-to-ready
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout
+  - edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate-to-testing
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close-to-complete
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-to-close
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-to-activate
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-to-closeout
+  - edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-to-ready
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate-to-testing
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close-to-complete
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-to-close
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout
+  - edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout
+  - edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate-to-testing
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close-to-complete
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-to-close
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-to-activate
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-to-closeout
+  - edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout
+  - edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate-to-testing
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close-to-complete
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-to-close
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-to-activate
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-to-closeout
+  - edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-to-ready
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close-to-complete
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-to-close
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout
+  - edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout
+  - edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-to-activate
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-to-closeout
+  - edge-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-to-ready
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close
+  - operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close
+  - operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  - operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close
+  - operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-testing
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
+  - operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  - operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close
+  - operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  - operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close
+  - operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-testing
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close
+  - operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  - operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
+  - operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
+  workspace.desk.registry:
+  - repo-gemini-test
+  workspace.desk.routines:
+  - routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+  - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
+  workspace.docs.faq:
+  - current-system-overview
+  workspace.knowledge.commands:
+  - cmd-pron-check
+  - cmd-pron-docs
+  - cmd-pron-init
+  - cmd-pron-lexicon
+  - cmd-pron-refresh
+  - cmd-pron-repl
+  - cmd-pron-say
+  - cmd-pron-serve
+  workspace.knowledge.surfaces:
+  - surface-pron-cli-main
+  - surface-pron-cli-repl
+  - surface-pron-client
+  - surface-pron-dialogue
+  - surface-pron-display
+  - surface-pron-docs
+  - surface-pron-embedder
+  - surface-pron-graph
+  - surface-pron-ids
+  - surface-pron-kernel
+  - surface-pron-ledger
+  - surface-pron-lexicon
+  - surface-pron-lints
+  - surface-pron-resolve
+  - surface-pron-response
+  - surface-pron-serve
+  - surface-pron-session
+  - surface-pron-store
+  - surface-pron-surface-dates
+  - surface-pron-surface-interpret
+  - surface-pron-surface-nouns
+  - surface-pron-surface-tokens
+  - surface-pron-verbs
+  - surface-pron-world
   workspace:desk:
   - Board
+  - closeout
+  - execution
+  - phase
+  - pills
+  - routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+  - routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  - routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  - routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  - routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - routine-task-vista-leads-con-cola-de-visitas-por-confirmar
+  - task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  - task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  - task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
   - task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  - task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  - task-modo-editor-de-atoms-en-la-ui
   - task-organizaci-n-autom-tica-de-tomos-en-la-kb
   - task-recomponer-la-base-de-spec2viz-y-atoms
+  - task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  - task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  - task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  - task-vista-leads-con-cola-de-visitas-por-confirmar
+  - testing
+  workspace:docs:
+  - composition-architecture
+  - composition-glossary
+  - composition-operations
+  - composition-readme
 documents:
   Board:
     model: BoardDoc
@@ -307,16 +1509,107 @@ documents:
     - type.workflow.task
     - workspace.desk
     - workspace:desk
-  task-ui-foundations:
+  seed-dividir-current-kb-agent:
     model: TaskDoc
-    path: desk/tasks/task-ui-foundations.md
+    path: desk/drawer/tasks/seed-dividir-current-kb-agent.md
     tags:
-    - foundation
-    - hotkeys
-    - navigation
+    - diagramas
+    - seed
+    - spec2viz
     - type.workflow.task
-    - ui
     - workspace.desk
+  seed-mas-subagentes-al-loop:
+    model: TaskDoc
+    path: desk/drawer/tasks/seed-mas-subagentes-al-loop.md
+    tags:
+    - loop
+    - seed
+    - subagentes
+    - type.workflow.task
+    - workspace.desk
+  seed-profundizar-la-kb:
+    model: TaskDoc
+    path: desk/drawer/tasks/seed-profundizar-la-kb.md
+    tags:
+    - kb
+    - knowledge
+    - seed
+    - type.workflow.task
+    - workspace.desk
+  task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento:
+    model: TaskDoc
+    path: desk/drawer/tasks/task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento.md
+    tags:
+    - artifact:task
+    - source:inbox
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools:
+    model: TaskDoc
+    path: desk/drawer/tasks/task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-modo-editor-de-atoms-en-la-ui:
+    model: TaskDoc
+    path: desk/drawer/tasks/task-modo-editor-de-atoms-en-la-ui.md
+    tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime:
+    model: TaskDoc
+    path: desk/tasks/task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo:
+    model: TaskDoc
+    path: desk/tasks/task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-vista-leads-con-cola-de-visitas-por-confirmar:
+    model: TaskDoc
+    path: desk/tasks/task-vista-leads-con-cola-de-visitas-por-confirmar.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-metricas-reales-en-el-dashboard-desde-el-sqlite:
+    model: TaskDoc
+    path: desk/tasks/task-metricas-reales-en-el-dashboard-desde-el-sqlite.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali:
+    model: TaskDoc
+    path: desk/tasks/task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+  task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql:
+    model: TaskDoc
+    path: desk/tasks/task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
+    tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
   pill-maquina-de-estados-pausa-en-tool-calling:
     model: PillDoc
     path: desk/drawer/pills/pill-maquina-de-estados-pausa-en-tool-calling.md
@@ -331,33 +1624,88 @@ documents:
     - rule:execution
     - type.workflow.pill
     - workspace.desk
-  "pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia":
+  pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia:
     model: PillDoc
-    path: "desk/contexts/pill-adr-compliance-farmac\xE9utico-en-el-contenido-de-la-kb-antonia.md"
+    path: desk/contexts/pill-adr-compliance-farmacéutico-en-el-contenido-de-la-kb-antonia.md
     tags:
     - domain:psp
     - system:antonia
     - topic:compliance
     - type.workflow.pill
     - workspace.desk
-  "pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible":
+  pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible:
     model: PillDoc
-    path: "desk/contexts/pill-guardrail-extensi\xF3n-kb-first-c\xF3digo-solo-si-es-imprescindible.md"
+    path: desk/contexts/pill-guardrail-extensión-kb-first-código-solo-si-es-imprescindible.md
     tags:
     - domain:psp
     - system:antonia
     - topic:doctrina
     - type.workflow.pill
     - workspace.desk
-  "pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes":
+  pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes:
     model: PillDoc
-    path: "desk/contexts/pill-pattern-modelaci\xF3n-de-\xE1tomos-psp-con-los-10-modelos-existentes.md"
+    path: desk/contexts/pill-pattern-modelación-de-átomos-psp-con-los-10-modelos-existentes.md
     tags:
     - domain:psp
     - system:antonia
     - topic:modelacion
     - type.workflow.pill
     - workspace.desk
+  pills:
+    model: PillDoc
+    path: desk/contexts/pills.md
+    tags:
+    - type.workflow.pill
+    - workspace.desk
+    - workspace:desk
+  pill-ui-estilo-flow-editor:
+    model: PillDoc
+    path: desk/drawer/pills/pill-ui-estilo-flow-editor.md
+    tags:
+    - frontend
+    - pill
+    - style
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+  pill-ui-no-build-cdn:
+    model: PillDoc
+    path: desk/drawer/pills/pill-ui-no-build-cdn.md
+    tags:
+    - build
+    - constraints
+    - pill
+    - type.workflow.pill
+    - ui
+    - workspace.desk
+  execution:
+    model: RitualDoc
+    path: desk/rituals/execution.md
+    tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+  closeout:
+    model: RitualDoc
+    path: desk/rituals/closeout.md
+    tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+  testing:
+    model: RitualDoc
+    path: desk/rituals/testing.md
+    tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
+  phase:
+    model: RitualDoc
+    path: desk/rituals/phase.md
+    tags:
+    - type.workflow.ritual
+    - workspace.desk
+    - workspace:desk
   20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer:
     model: InboxNoteDoc
     path: desk/inbox/20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer.md
@@ -376,17 +1724,375 @@ documents:
     tags:
     - type.desk.inbox-note
     - workspace.desk.inbox
+  repo-gemini-test:
+    model: RepositoryDoc
+    path: desk/registry/repo-gemini-test.md
+    tags:
+    - type.desk.repository
+    - workspace.desk.registry
+  checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  routine-task-recomponer-la-base-de-spec2viz-y-atoms:
+    model: RoutineDoc
+    path: desk/routines/routine-task-recomponer-la-base-de-spec2viz-y-atoms.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-recomponer-la-base-de-spec2viz-y-atoms-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-organizaci-n-autom-tica-de-tomos-en-la-kb-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-recomponer-la-base-de-spec2viz-y-atoms-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-recomponer-la-base-de-spec2viz-y-atoms-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp:
+    model: RoutineDoc
+    path: desk/routines/routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb:
+    model: RoutineDoc
+    path: desk/routines/routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
   atom-agente-conversador:
     model: AtomDoc
     path: desk/atoms/atom-agente-conversador.md
-    tags:
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-ontologizador-context-compiler:
-    model: AtomDoc
-    path: desk/atoms/atom-ontologizador-context-compiler.md
     tags:
     - layer:runtime
     - role:engine
@@ -428,9 +2134,9 @@ documents:
     - topic:arquitectura
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp":
+  atom-clasificación-de-4-ramas-del-flujo-psp:
     model: AtomDoc
-    path: "desk/atoms/atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp.md"
+    path: desk/atoms/atom-clasificación-de-4-ramas-del-flujo-psp.md
     tags:
     - domain:psp
     - system:antonia
@@ -446,9 +2152,9 @@ documents:
     - topic:flujo-conversacional
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate":
+  atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate:
     model: AtomDoc
-    path: "desk/atoms/atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md"
+    path: desk/atoms/atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate.md
     tags:
     - domain:psp
     - system:antonia
@@ -527,14 +2233,6 @@ documents:
     - family:conversation
     - layer:knowledge
     - role:data
-    - type.knowledge.atom
-    - workspace.desk.atoms
-  atom-negocios-activos:
-    model: AtomDoc
-    path: desk/atoms/atom-negocios-activos.md
-    tags:
-    - family:concepts
-    - layer:business
     - type.knowledge.atom
     - workspace.desk.atoms
   atom-orquestador-hub:
@@ -645,9 +2343,9 @@ documents:
     - topic:agent-framing
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-configuraci\xF3n-por-capas-y-tuning":
+  atom-configuración-por-capas-y-tuning:
     model: AtomDoc
-    path: "desk/atoms/atom-configuraci\xF3n-por-capas-y-tuning.md"
+    path: desk/atoms/atom-configuración-por-capas-y-tuning.md
     tags:
     - layer:ops
     - role:boundary
@@ -681,9 +2379,9 @@ documents:
     - topic:git-flow
     - type.knowledge.atom
     - workspace.desk.atoms
-  "atom-capas-de-verificaci\xF3n-y-release":
+  atom-capas-de-verificación-y-release:
     model: AtomDoc
-    path: "desk/atoms/atom-capas-de-verificaci\xF3n-y-release.md"
+    path: desk/atoms/atom-capas-de-verificación-y-release.md
     tags:
     - layer:ops
     - role:boundary
@@ -707,3 +2405,1592 @@ documents:
     - topic:alembic
     - type.knowledge.atom
     - workspace.desk.atoms
+  atom-context-compiler-knowledge:
+    model: AtomDoc
+    path: desk/atoms/atom-context-compiler-knowledge.md
+    tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-mensajes-entrantes-inboundservice-e-inbound-messages:
+    model: AtomDoc
+    path: desk/atoms/atom-mensajes-entrantes-inboundservice-e-inbound-messages.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml:
+    model: AtomDoc
+    path: desk/atoms/atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio:
+    model: AtomDoc
+    path: desk/atoms/atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio.md
+    tags:
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-cómo-conectar-twilio-al-runtime-local:
+    model: AtomDoc
+    path: desk/atoms/atom-cómo-conectar-twilio-al-runtime-local.md
+    tags:
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-qué-no-hacer-con-credenciales-y-firma-de-twilio:
+    model: AtomDoc
+    path: desk/atoms/atom-qué-no-hacer-con-credenciales-y-firma-de-twilio.md
+    tags:
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas:
+    model: AtomDoc
+    path: desk/atoms/atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas.md
+    tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  atom-un-negocio-por-rama:
+    model: AtomDoc
+    path: desk/atoms/atom-un-negocio-por-rama.md
+    tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+  current-system-overview:
+    model: FAQDoc
+    path: desk/spec2viz/current-system-overview.md
+    tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+  checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready:
+    model: ChecklistDoc
+    path: desk/primitives/checklists/checklist-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-ready.md
+    tags:
+    - primitive:checklist
+    - type.workflow.checklist
+    - workspace.desk.primitives
+  condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-implementation-path.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-validation.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-has-closeout-evidence.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-pill-knowledge-graduated.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout:
+    model: ConditionDoc
+    path: desk/primitives/conditions/condition-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-closeout.md
+    tags:
+    - primitive:condition
+    - type.workflow.condition
+    - workspace.desk.primitives
+  edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-vista-leads-con-cola-de-visitas-por-confirmar-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-execution-to-activate.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate-to-testing.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-testing-to-ready.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-to-closeout.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-closeout-to-close.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete:
+    model: EdgeDoc
+    path: desk/primitives/edges/edge-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close-to-complete.md
+    tags:
+    - primitive:edge
+    - type.workflow.edge
+    - workspace.desk.primitives
+  operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close:
+    model: OperatorDoc
+    path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close.md
+    tags:
+    - primitive:operator
+    - type.workflow.operator
+    - workspace.desk.primitives
+  routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools:
+    model: RoutineDoc
+    path: desk/routines/routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form:
+    model: RoutineDoc
+    path: desk/routines/routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica:
+    model: RoutineDoc
+    path: desk/routines/routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime:
+    model: RoutineDoc
+    path: desk/routines/routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo:
+    model: RoutineDoc
+    path: desk/routines/routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-vista-leads-con-cola-de-visitas-por-confirmar:
+    model: RoutineDoc
+    path: desk/routines/routine-task-vista-leads-con-cola-de-visitas-por-confirmar.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite:
+    model: RoutineDoc
+    path: desk/routines/routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali:
+    model: RoutineDoc
+    path: desk/routines/routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql:
+    model: RoutineDoc
+    path: desk/routines/routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
+    tags:
+    - primitive:routine
+    - type.workflow.routine
+    - workspace.desk.routines
+    - workspace:desk
+  composition-readme:
+    model: CompositionDoc
+    path: desk/materializations/composition-readme.md
+    tags:
+    - target:readme
+    - type.documentation.composition
+    - type:composition
+    - workspace.desk.materializations
+    - workspace:docs
+  composition-architecture:
+    model: CompositionDoc
+    path: desk/materializations/composition-architecture.md
+    tags:
+    - target:architecture
+    - type.documentation.composition
+    - type:composition
+    - workspace.desk.materializations
+    - workspace:docs
+  composition-glossary:
+    model: CompositionDoc
+    path: desk/materializations/composition-glossary.md
+    tags:
+    - target:glossary
+    - type.documentation.composition
+    - type:composition
+    - workspace.desk.materializations
+    - workspace:docs
+  composition-operations:
+    model: CompositionDoc
+    path: desk/materializations/composition-operations.md
+    tags:
+    - target:operations
+    - type.documentation.composition
+    - type:composition
+    - workspace.desk.materializations
+    - workspace:docs
+  cmd-pron-init:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-init.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  cmd-pron-refresh:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-refresh.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  cmd-pron-lexicon:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-lexicon.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  cmd-pron-say:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-say.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  cmd-pron-repl:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-repl.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  cmd-pron-serve:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-serve.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  cmd-pron-check:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-check.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  cmd-pron-docs:
+    model: CliCommandDoc
+    path: knowledge/commands/cmd-pron-docs.md
+    tags:
+    - domain:system_architecture
+    - entity:cli_command
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.cli_command
+    - workspace.knowledge.commands
+  surface-pron-world:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-world.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-store:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-store.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-graph:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-graph.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-lexicon:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-lexicon.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-embedder:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-embedder.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-resolve:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-resolve.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-verbs:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-verbs.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-kernel:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-kernel.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-dialogue:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-dialogue.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-ledger:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-ledger.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-display:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-display.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-session:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-session.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-docs:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-docs.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-lints:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-lints.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-surface-tokens:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-surface-tokens.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-surface-dates:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-surface-dates.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-surface-nouns:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-surface-nouns.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-surface-interpret:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-surface-interpret.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-cli-main:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-cli-main.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-cli-repl:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-cli-repl.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-response:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-response.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-client:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-client.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-serve:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-serve.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces
+  surface-pron-ids:
+    model: SurfaceDoc
+    path: knowledge/surfaces/surface-pron-ids.md
+    tags:
+    - domain:system_architecture
+    - entity:module
+    - impl:here
+    - kind:software
+    - system:pron
+    - type.knowledge.surface
+    - workspace.knowledge.surfaces

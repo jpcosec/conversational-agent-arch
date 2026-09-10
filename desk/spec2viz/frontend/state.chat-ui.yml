@@ -4,6 +4,8 @@ type: state
 version: '1.1'
 metadata:
   author: antonIA
+  atoms:
+    - atom-dashboard
   description: >-
     Estados de la interacción en frontends/chat/index.html: envío, espera de
     respuesta, selección de turno para inspeccionar su mesa y modales.

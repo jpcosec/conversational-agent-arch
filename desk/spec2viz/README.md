@@ -22,7 +22,7 @@ desk/spec2viz/
 - **Backend** = Python: `kb_agent` (los 4 agentes LLM de `kb_agent/agents/` — Ruteador,
   Orquestador, Gate sobre `agents.base.Agent`, más el Conversador en `llm.py`; `decide_turn` en
   `agent.py` queda como fallback determinístico —, `Orchestrator` que cablea
-  SLDBReader/KGDBReader/ContextCompiler/RouterStateMachine/tool registry/Perfilador/Reflector),
+  KnowledgeOperations sobre pron.World/ConversationFlow/ContextCompiler/RouterStateMachine/tool registry/Perfilador/Reflector),
   desplegado en Modal (`deploy/modal_app.py`) o local vía uvicorn.
 - **Frontend** = HTML/JS estático sin build bajo `frontends/`: seis vistas servidas por el mismo
   FastAPI app factory (`frontends/chat/app.py create_app`, entrypoint `frontends/chat/server.py`):
@@ -122,6 +122,13 @@ renderer nombra la salida por el stem del archivo del spec, no por su `id`.
 | `deployment` | despliegue (backend/frontend) | plantuml |
 | `component_view_matrix` | matriz vistas×stages | vega |
 | `reflection`/enforcement | artefacto semántico 6D | json |
+
+## Nota sobre nomenclatura
+
+Los specs anteriores a v2.0 usaban ``ontologizador/*`` como nombre del paquete
+(Context Compiler). El directorio real es ``kb_agent/knowledge/*``. Todos los
+specs se actualizaron en la ronda v2.0 para reflejar ``knowledge.*``. El
+nombre semántico ``Context Compiler`` se mantiene en los diagramas lógicos.
 
 ## Limitaciones conocidas
 

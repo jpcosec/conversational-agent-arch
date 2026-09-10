@@ -1,0 +1,3531 @@
+documents:
+- doc_name: grounded_by--step-hcp-agendar-recontacto--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-agendar-recontacto-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp agendar recontacto target id styleguide
+      style hcp tone relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-agendar-recontacto-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-agendar-recontacto-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-agendar-recontacto grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-agendar-recontacto grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-agendar-recontacto grounded_by StyleGuide:style-hcp-tone
+    - step hcp agendar recontacto grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-agendar-recontacto-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-agendar-recontacto-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-agendar-recontacto grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-agendar-recontacto grounded_by StyleGuide:style-hcp-tone
+    - step hcp agendar recontacto grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-contacto-inicial--SelfDeclaration:self-hcp-whoami
+  sections:
+  - path: source-id-conversationstep-step-hcp-contacto-inicial-target-id-selfdeclaration-self-hcp-whoami-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: SelfDeclaration:self-hcp-whoami
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: SelfDeclaration:self-hcp-whoami
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: SelfDeclaration:self-hcp-whoami
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp contacto inicial target id selfdeclaration
+      self hcp whoami relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-contacto-inicial-target-id-selfdeclaration-self-hcp-whoami-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-contacto-inicial-grounded-by-selfdeclaration-self-hcp-whoami
+    title: step-hcp-contacto-inicial grounded_by SelfDeclaration:self-hcp-whoami
+    breadcrumbs:
+    - step-hcp-contacto-inicial grounded_by SelfDeclaration:self-hcp-whoami
+    about:
+    - step-hcp-contacto-inicial grounded_by SelfDeclaration:self-hcp-whoami
+    - step hcp contacto inicial grounded by selfdeclaration self hcp whoami
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-contacto-inicial-grounded-by-selfdeclaration-self-hcp-whoami
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-contacto-inicial-grounded-by-selfdeclaration-self-hcp-whoami/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-contacto-inicial grounded_by SelfDeclaration:self-hcp-whoami
+    - Notes
+    about:
+    - step-hcp-contacto-inicial grounded_by SelfDeclaration:self-hcp-whoami
+    - step hcp contacto inicial grounded by selfdeclaration self hcp whoami
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-contacto-inicial--StrategyRule:strategy-hcp-campaign
+  sections:
+  - path: source-id-conversationstep-step-hcp-contacto-inicial-target-id-strategyrule-strategy-hcp-campaign-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: StrategyRule:strategy-hcp-campaign
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: StrategyRule:strategy-hcp-campaign
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: StrategyRule:strategy-hcp-campaign
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp contacto inicial target id strategyrule
+      strategy hcp campaign relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-contacto-inicial-target-id-strategyrule-strategy-hcp-campaign-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-contacto-inicial-grounded-by-strategyrule-strategy-hcp-campaign
+    title: step-hcp-contacto-inicial grounded_by StrategyRule:strategy-hcp-campaign
+    breadcrumbs:
+    - step-hcp-contacto-inicial grounded_by StrategyRule:strategy-hcp-campaign
+    about:
+    - step-hcp-contacto-inicial grounded_by StrategyRule:strategy-hcp-campaign
+    - step hcp contacto inicial grounded by strategyrule strategy hcp campaign
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-contacto-inicial-grounded-by-strategyrule-strategy-hcp-campaign
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-contacto-inicial-grounded-by-strategyrule-strategy-hcp-campaign/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-contacto-inicial grounded_by StrategyRule:strategy-hcp-campaign
+    - Notes
+    about:
+    - step-hcp-contacto-inicial grounded_by StrategyRule:strategy-hcp-campaign
+    - step hcp contacto inicial grounded by strategyrule strategy hcp campaign
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-contacto-inicial--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-contacto-inicial-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp contacto inicial target id styleguide style
+      hcp tone relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-contacto-inicial-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-contacto-inicial-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-contacto-inicial grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-contacto-inicial grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-contacto-inicial grounded_by StyleGuide:style-hcp-tone
+    - step hcp contacto inicial grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-contacto-inicial-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-contacto-inicial-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-contacto-inicial grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-contacto-inicial grounded_by StyleGuide:style-hcp-tone
+    - step hcp contacto inicial grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-despedida--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-despedida-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-despedida
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-despedida
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-despedida
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp despedida target id styleguide style hcp
+      tone relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-despedida-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-despedida-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-despedida grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-despedida grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-despedida grounded_by StyleGuide:style-hcp-tone
+    - step hcp despedida grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-despedida-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-despedida-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-despedida grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-despedida grounded_by StyleGuide:style-hcp-tone
+    - step hcp despedida grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-detalle-medicamento--CapabilityBoundary:boundary-hcp-ae-safety-net
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-capabilityboundary-boundary-hcp-ae-safety-net-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: CapabilityBoundary:boundary-hcp-ae-safety-net
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: CapabilityBoundary:boundary-hcp-ae-safety-net
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: CapabilityBoundary:boundary-hcp-ae-safety-net
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id capabilityboundary
+      boundary hcp ae safety net relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-capabilityboundary-boundary-hcp-ae-safety-net-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-grounded-by-capabilityboundary-boundary-hcp-ae-safety-net
+    title: step-hcp-detalle-medicamento grounded_by CapabilityBoundary:boundary-hcp-ae-safety-net
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by CapabilityBoundary:boundary-hcp-ae-safety-net
+    about:
+    - step-hcp-detalle-medicamento grounded_by CapabilityBoundary:boundary-hcp-ae-safety-net
+    - step hcp detalle medicamento grounded by capabilityboundary boundary hcp ae
+      safety net
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-grounded-by-capabilityboundary-boundary-hcp-ae-safety-net
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-grounded-by-capabilityboundary-boundary-hcp-ae-safety-net/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by CapabilityBoundary:boundary-hcp-ae-safety-net
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento grounded_by CapabilityBoundary:boundary-hcp-ae-safety-net
+    - step hcp detalle medicamento grounded by capabilityboundary boundary hcp ae
+      safety net
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-derivar-clinico
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-ruleatom-rule-hcp-derivar-clinico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id ruleatom rule
+      hcp derivar clinico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-ruleatom-rule-hcp-derivar-clinico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-derivar-clinico
+    title: step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-derivar-clinico
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-derivar-clinico
+    about:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-derivar-clinico
+    - step hcp detalle medicamento grounded by ruleatom rule hcp derivar clinico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-derivar-clinico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-derivar-clinico/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-derivar-clinico
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-derivar-clinico
+    - step hcp detalle medicamento grounded by ruleatom rule hcp derivar clinico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-deducir
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-ruleatom-rule-hcp-no-deducir-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-no-deducir
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-no-deducir
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-no-deducir
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id ruleatom rule
+      hcp no deducir relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-ruleatom-rule-hcp-no-deducir-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-no-deducir
+    title: step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-deducir
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-deducir
+    about:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-deducir
+    - step hcp detalle medicamento grounded by ruleatom rule hcp no deducir
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-no-deducir
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-no-deducir/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-deducir
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-deducir
+    - step hcp detalle medicamento grounded by ruleatom rule hcp no deducir
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-detalle-medicamento--RuleAtom:rule-hcp-no-farmacologia
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-ruleatom-rule-hcp-no-farmacologia-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-no-farmacologia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-no-farmacologia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: RuleAtom:rule-hcp-no-farmacologia
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id ruleatom rule
+      hcp no farmacologia relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-ruleatom-rule-hcp-no-farmacologia-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-no-farmacologia
+    title: step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-farmacologia
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-farmacologia
+    about:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-farmacologia
+    - step hcp detalle medicamento grounded by ruleatom rule hcp no farmacologia
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-no-farmacologia
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-grounded-by-ruleatom-rule-hcp-no-farmacologia/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-farmacologia
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento grounded_by RuleAtom:rule-hcp-no-farmacologia
+    - step hcp detalle medicamento grounded by ruleatom rule hcp no farmacologia
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-detalle-medicamento--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id styleguide
+      style hcp tone relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-detalle-medicamento grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-detalle-medicamento grounded_by StyleGuide:style-hcp-tone
+    - step hcp detalle medicamento grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento grounded_by StyleGuide:style-hcp-tone
+    - step hcp detalle medicamento grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-handout-especialista--RuleAtom:rule-hcp-derivar-clinico
+  sections:
+  - path: source-id-conversationstep-step-hcp-handout-especialista-target-id-ruleatom-rule-hcp-derivar-clinico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: RuleAtom:rule-hcp-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: RuleAtom:rule-hcp-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: RuleAtom:rule-hcp-derivar-clinico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp handout especialista target id ruleatom
+      rule hcp derivar clinico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-handout-especialista-target-id-ruleatom-rule-hcp-derivar-clinico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-handout-especialista-grounded-by-ruleatom-rule-hcp-derivar-clinico
+    title: step-hcp-handout-especialista grounded_by RuleAtom:rule-hcp-derivar-clinico
+    breadcrumbs:
+    - step-hcp-handout-especialista grounded_by RuleAtom:rule-hcp-derivar-clinico
+    about:
+    - step-hcp-handout-especialista grounded_by RuleAtom:rule-hcp-derivar-clinico
+    - step hcp handout especialista grounded by ruleatom rule hcp derivar clinico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-handout-especialista-grounded-by-ruleatom-rule-hcp-derivar-clinico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-handout-especialista-grounded-by-ruleatom-rule-hcp-derivar-clinico/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-handout-especialista grounded_by RuleAtom:rule-hcp-derivar-clinico
+    - Notes
+    about:
+    - step-hcp-handout-especialista grounded_by RuleAtom:rule-hcp-derivar-clinico
+    - step hcp handout especialista grounded by ruleatom rule hcp derivar clinico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-handout-especialista--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-handout-especialista-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp handout especialista target id styleguide
+      style hcp tone relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-handout-especialista-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-handout-especialista-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-handout-especialista grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-handout-especialista grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-handout-especialista grounded_by StyleGuide:style-hcp-tone
+    - step hcp handout especialista grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-handout-especialista-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-handout-especialista-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-handout-especialista grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-handout-especialista grounded_by StyleGuide:style-hcp-tone
+    - step hcp handout especialista grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-dsr-erasure
+  sections:
+  - path: source-id-conversationstep-step-hcp-optout-target-id-capabilityboundary-boundary-hcp-dsr-erasure-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-dsr-erasure
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-dsr-erasure
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-dsr-erasure
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp optout target id capabilityboundary boundary
+      hcp dsr erasure relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-optout-target-id-capabilityboundary-boundary-hcp-dsr-erasure-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-dsr-erasure
+    title: step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-dsr-erasure
+    breadcrumbs:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-dsr-erasure
+    about:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-dsr-erasure
+    - step hcp optout grounded by capabilityboundary boundary hcp dsr erasure
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-dsr-erasure
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-dsr-erasure/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-dsr-erasure
+    - Notes
+    about:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-dsr-erasure
+    - step hcp optout grounded by capabilityboundary boundary hcp dsr erasure
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-campania
+  sections:
+  - path: source-id-conversationstep-step-hcp-optout-target-id-capabilityboundary-boundary-hcp-optout-campania-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-optout-campania
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-optout-campania
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-optout-campania
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp optout target id capabilityboundary boundary
+      hcp optout campania relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-optout-target-id-capabilityboundary-boundary-hcp-optout-campania-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-optout-campania
+    title: step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-campania
+    breadcrumbs:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-campania
+    about:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-campania
+    - step hcp optout grounded by capabilityboundary boundary hcp optout campania
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-optout-campania
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-optout-campania/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-campania
+    - Notes
+    about:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-campania
+    - step hcp optout grounded by capabilityboundary boundary hcp optout campania
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-optout--CapabilityBoundary:boundary-hcp-optout-canal
+  sections:
+  - path: source-id-conversationstep-step-hcp-optout-target-id-capabilityboundary-boundary-hcp-optout-canal-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-optout-canal
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-optout-canal
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: CapabilityBoundary:boundary-hcp-optout-canal
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp optout target id capabilityboundary boundary
+      hcp optout canal relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-optout-target-id-capabilityboundary-boundary-hcp-optout-canal-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-optout-canal
+    title: step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-canal
+    breadcrumbs:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-canal
+    about:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-canal
+    - step hcp optout grounded by capabilityboundary boundary hcp optout canal
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-optout-canal
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-optout-grounded-by-capabilityboundary-boundary-hcp-optout-canal/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-canal
+    - Notes
+    about:
+    - step-hcp-optout grounded_by CapabilityBoundary:boundary-hcp-optout-canal
+    - step hcp optout grounded by capabilityboundary boundary hcp optout canal
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-optout--RuleAtom:rule-hcp-solo-pii-profesional
+  sections:
+  - path: source-id-conversationstep-step-hcp-optout-target-id-ruleatom-rule-hcp-solo-pii-profesional-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: RuleAtom:rule-hcp-solo-pii-profesional
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: RuleAtom:rule-hcp-solo-pii-profesional
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: RuleAtom:rule-hcp-solo-pii-profesional
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp optout target id ruleatom rule hcp solo
+      pii profesional relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-optout-target-id-ruleatom-rule-hcp-solo-pii-profesional-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-optout-grounded-by-ruleatom-rule-hcp-solo-pii-profesional
+    title: step-hcp-optout grounded_by RuleAtom:rule-hcp-solo-pii-profesional
+    breadcrumbs:
+    - step-hcp-optout grounded_by RuleAtom:rule-hcp-solo-pii-profesional
+    about:
+    - step-hcp-optout grounded_by RuleAtom:rule-hcp-solo-pii-profesional
+    - step hcp optout grounded by ruleatom rule hcp solo pii profesional
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-optout-grounded-by-ruleatom-rule-hcp-solo-pii-profesional
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-optout-grounded-by-ruleatom-rule-hcp-solo-pii-profesional/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-optout grounded_by RuleAtom:rule-hcp-solo-pii-profesional
+    - Notes
+    about:
+    - step-hcp-optout grounded_by RuleAtom:rule-hcp-solo-pii-profesional
+    - step hcp optout grounded by ruleatom rule hcp solo pii profesional
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-optout--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-optout-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp optout target id styleguide style hcp tone
+      relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-optout-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-optout-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-optout grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-optout grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-optout grounded_by StyleGuide:style-hcp-tone
+    - step hcp optout grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-optout-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-optout-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-optout grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-optout grounded_by StyleGuide:style-hcp-tone
+    - step hcp optout grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-presentar-campania--RuleAtom:rule-hcp-filtrado-especialidad
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-ruleatom-rule-hcp-filtrado-especialidad-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: RuleAtom:rule-hcp-filtrado-especialidad
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: RuleAtom:rule-hcp-filtrado-especialidad
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: RuleAtom:rule-hcp-filtrado-especialidad
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id ruleatom rule
+      hcp filtrado especialidad relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-ruleatom-rule-hcp-filtrado-especialidad-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-grounded-by-ruleatom-rule-hcp-filtrado-especialidad
+    title: step-hcp-presentar-campania grounded_by RuleAtom:rule-hcp-filtrado-especialidad
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by RuleAtom:rule-hcp-filtrado-especialidad
+    about:
+    - step-hcp-presentar-campania grounded_by RuleAtom:rule-hcp-filtrado-especialidad
+    - step hcp presentar campania grounded by ruleatom rule hcp filtrado especialidad
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-grounded-by-ruleatom-rule-hcp-filtrado-especialidad
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-grounded-by-ruleatom-rule-hcp-filtrado-especialidad/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by RuleAtom:rule-hcp-filtrado-especialidad
+    - Notes
+    about:
+    - step-hcp-presentar-campania grounded_by RuleAtom:rule-hcp-filtrado-especialidad
+    - step hcp presentar campania grounded by ruleatom rule hcp filtrado especialidad
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-presentar-campania--SelfDeclaration:self-hcp-whoami
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-selfdeclaration-self-hcp-whoami-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: SelfDeclaration:self-hcp-whoami
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: SelfDeclaration:self-hcp-whoami
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: SelfDeclaration:self-hcp-whoami
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id selfdeclaration
+      self hcp whoami relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-selfdeclaration-self-hcp-whoami-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-grounded-by-selfdeclaration-self-hcp-whoami
+    title: step-hcp-presentar-campania grounded_by SelfDeclaration:self-hcp-whoami
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by SelfDeclaration:self-hcp-whoami
+    about:
+    - step-hcp-presentar-campania grounded_by SelfDeclaration:self-hcp-whoami
+    - step hcp presentar campania grounded by selfdeclaration self hcp whoami
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-grounded-by-selfdeclaration-self-hcp-whoami
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-grounded-by-selfdeclaration-self-hcp-whoami/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by SelfDeclaration:self-hcp-whoami
+    - Notes
+    about:
+    - step-hcp-presentar-campania grounded_by SelfDeclaration:self-hcp-whoami
+    - step hcp presentar campania grounded by selfdeclaration self hcp whoami
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-presentar-campania--StrategyRule:strategy-hcp-campaign
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-strategyrule-strategy-hcp-campaign-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: StrategyRule:strategy-hcp-campaign
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: StrategyRule:strategy-hcp-campaign
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: StrategyRule:strategy-hcp-campaign
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id strategyrule
+      strategy hcp campaign relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-strategyrule-strategy-hcp-campaign-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-grounded-by-strategyrule-strategy-hcp-campaign
+    title: step-hcp-presentar-campania grounded_by StrategyRule:strategy-hcp-campaign
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by StrategyRule:strategy-hcp-campaign
+    about:
+    - step-hcp-presentar-campania grounded_by StrategyRule:strategy-hcp-campaign
+    - step hcp presentar campania grounded by strategyrule strategy hcp campaign
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-grounded-by-strategyrule-strategy-hcp-campaign
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-grounded-by-strategyrule-strategy-hcp-campaign/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by StrategyRule:strategy-hcp-campaign
+    - Notes
+    about:
+    - step-hcp-presentar-campania grounded_by StrategyRule:strategy-hcp-campaign
+    - step hcp presentar campania grounded by strategyrule strategy hcp campaign
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-presentar-campania--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id styleguide
+      style hcp tone relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-presentar-campania grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-presentar-campania grounded_by StyleGuide:style-hcp-tone
+    - step hcp presentar campania grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-presentar-campania grounded_by StyleGuide:style-hcp-tone
+    - step hcp presentar campania grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-revision-humana--StyleGuide:style-hcp-tone
+  sections:
+  - path: source-id-conversationstep-step-hcp-revision-humana-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-revision-humana
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-revision-humana
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-revision-humana
+
+      target_id: StyleGuide:style-hcp-tone
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp revision humana target id styleguide style
+      hcp tone relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-revision-humana-target-id-styleguide-style-hcp-tone-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-revision-humana-grounded-by-styleguide-style-hcp-tone
+    title: step-hcp-revision-humana grounded_by StyleGuide:style-hcp-tone
+    breadcrumbs:
+    - step-hcp-revision-humana grounded_by StyleGuide:style-hcp-tone
+    about:
+    - step-hcp-revision-humana grounded_by StyleGuide:style-hcp-tone
+    - step hcp revision humana grounded by styleguide style hcp tone
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-revision-humana-grounded-by-styleguide-style-hcp-tone
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-revision-humana-grounded-by-styleguide-style-hcp-tone/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-revision-humana grounded_by StyleGuide:style-hcp-tone
+    - Notes
+    about:
+    - step-hcp-revision-humana grounded_by StyleGuide:style-hcp-tone
+    - step hcp revision humana grounded by styleguide style hcp tone
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-corpus
+  sections:
+  - path: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-corpus-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-corpus
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-corpus
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-corpus
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp validacion policy gate target id gatecriterion
+      gate hcp corpus relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-corpus-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-corpus
+    title: step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-corpus
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-corpus
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-corpus
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp corpus
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-corpus
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-corpus/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-corpus
+    - Notes
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-corpus
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp corpus
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-derivacion
+  sections:
+  - path: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-derivacion-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-derivacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-derivacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-derivacion
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp validacion policy gate target id gatecriterion
+      gate hcp derivacion relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-derivacion-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-derivacion
+    title: step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-derivacion
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-derivacion
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-derivacion
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp derivacion
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-derivacion
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-derivacion/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-derivacion
+    - Notes
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-derivacion
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp derivacion
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-diagnostico
+  sections:
+  - path: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-diagnostico-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-diagnostico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-diagnostico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-diagnostico
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp validacion policy gate target id gatecriterion
+      gate hcp diagnostico relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-diagnostico-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-diagnostico
+    title: step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-diagnostico
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-diagnostico
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-diagnostico
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp diagnostico
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-diagnostico
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-diagnostico/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-diagnostico
+    - Notes
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-diagnostico
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp diagnostico
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-dosis
+  sections:
+  - path: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-dosis-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-dosis
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-dosis
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-dosis
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp validacion policy gate target id gatecriterion
+      gate hcp dosis relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-dosis-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-dosis
+    title: step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-dosis
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-dosis
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-dosis
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp dosis
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-dosis
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-dosis/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-dosis
+    - Notes
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-dosis
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp dosis
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: grounded_by--step-hcp-validacion-policy-gate--GateCriterion:gate-hcp-promesas
+  sections:
+  - path: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-promesas-relation-type-grounded-by-condition
+    title: 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-promesas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-promesas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: GateCriterion:gate-hcp-promesas
+
+      relation_type: grounded_by
+
+      condition: '''''
+    - source id conversationstep step hcp validacion policy gate target id gatecriterion
+      gate hcp promesas relation type grounded by condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-gatecriterion-gate-hcp-promesas-relation-type-grounded-by-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-promesas
+    title: step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-promesas
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-promesas
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-promesas
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp promesas
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-promesas
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-validacion-policy-gate-grounded-by-gatecriterion-gate-hcp-promesas/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-promesas
+    - Notes
+    about:
+    - step-hcp-validacion-policy-gate grounded_by GateCriterion:gate-hcp-promesas
+    - step hcp validacion policy gate grounded by gatecriterion gate hcp promesas
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-agendar-recontacto--step-hcp-despedida
+  sections:
+  - path: source-id-conversationstep-step-hcp-agendar-recontacto-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp agendar recontacto target id conversationstep
+      step hcp despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-agendar-recontacto-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-agendar-recontacto-transitions-to-step-hcp-despedida
+    title: step-hcp-agendar-recontacto transitions_to step-hcp-despedida
+    breadcrumbs:
+    - step-hcp-agendar-recontacto transitions_to step-hcp-despedida
+    about:
+    - step-hcp-agendar-recontacto transitions_to step-hcp-despedida
+    - step hcp agendar recontacto transitions to step hcp despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-agendar-recontacto-transitions-to-step-hcp-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-agendar-recontacto-transitions-to-step-hcp-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-agendar-recontacto transitions_to step-hcp-despedida
+    - Notes
+    about:
+    - step-hcp-agendar-recontacto transitions_to step-hcp-despedida
+    - step hcp agendar recontacto transitions to step hcp despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-contacto-inicial--step-hcp-agendar-recontacto
+  sections:
+  - path: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-agendar-recontacto-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp contacto inicial target id conversationstep
+      step hcp agendar recontacto relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-agendar-recontacto-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-agendar-recontacto
+    title: step-hcp-contacto-inicial transitions_to step-hcp-agendar-recontacto
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-agendar-recontacto
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-agendar-recontacto
+    - step hcp contacto inicial transitions to step hcp agendar recontacto
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-contacto-inicial-transitions-to-step-hcp-agendar-recontacto
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-agendar-recontacto/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-agendar-recontacto
+    - Notes
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-agendar-recontacto
+    - step hcp contacto inicial transitions to step hcp agendar recontacto
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-contacto-inicial--step-hcp-handout-especialista
+  sections:
+  - path: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-handout-especialista-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp contacto inicial target id conversationstep
+      step hcp handout especialista relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-handout-especialista-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-handout-especialista
+    title: step-hcp-contacto-inicial transitions_to step-hcp-handout-especialista
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-handout-especialista
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-handout-especialista
+    - step hcp contacto inicial transitions to step hcp handout especialista
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-contacto-inicial-transitions-to-step-hcp-handout-especialista
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-handout-especialista/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-handout-especialista
+    - Notes
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-handout-especialista
+    - step hcp contacto inicial transitions to step hcp handout especialista
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-contacto-inicial--step-hcp-optout
+  sections:
+  - path: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-optout-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp contacto inicial target id conversationstep
+      step hcp optout relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-optout-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-optout
+    title: step-hcp-contacto-inicial transitions_to step-hcp-optout
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-optout
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-optout
+    - step hcp contacto inicial transitions to step hcp optout
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-contacto-inicial-transitions-to-step-hcp-optout
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-optout/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-optout
+    - Notes
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-optout
+    - step hcp contacto inicial transitions to step hcp optout
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-contacto-inicial--step-hcp-presentar-campania
+  sections:
+  - path: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-presentar-campania-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-presentar-campania
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-presentar-campania
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-contacto-inicial
+
+      target_id: ConversationStep:step-hcp-presentar-campania
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp contacto inicial target id conversationstep
+      step hcp presentar campania relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-contacto-inicial-target-id-conversationstep-step-hcp-presentar-campania-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-presentar-campania
+    title: step-hcp-contacto-inicial transitions_to step-hcp-presentar-campania
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-presentar-campania
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-presentar-campania
+    - step hcp contacto inicial transitions to step hcp presentar campania
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-contacto-inicial-transitions-to-step-hcp-presentar-campania
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-contacto-inicial-transitions-to-step-hcp-presentar-campania/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-contacto-inicial transitions_to step-hcp-presentar-campania
+    - Notes
+    about:
+    - step-hcp-contacto-inicial transitions_to step-hcp-presentar-campania
+    - step hcp contacto inicial transitions to step hcp presentar campania
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-detalle-medicamento--step-hcp-agendar-recontacto
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-agendar-recontacto-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id conversationstep
+      step hcp agendar recontacto relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-agendar-recontacto-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-agendar-recontacto
+    title: step-hcp-detalle-medicamento transitions_to step-hcp-agendar-recontacto
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-agendar-recontacto
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-agendar-recontacto
+    - step hcp detalle medicamento transitions to step hcp agendar recontacto
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-transitions-to-step-hcp-agendar-recontacto
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-agendar-recontacto/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-agendar-recontacto
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-agendar-recontacto
+    - step hcp detalle medicamento transitions to step hcp agendar recontacto
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-detalle-medicamento--step-hcp-despedida
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id conversationstep
+      step hcp despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-despedida
+    title: step-hcp-detalle-medicamento transitions_to step-hcp-despedida
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-despedida
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-despedida
+    - step hcp detalle medicamento transitions to step hcp despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-transitions-to-step-hcp-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-despedida
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-despedida
+    - step hcp detalle medicamento transitions to step hcp despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-detalle-medicamento--step-hcp-detalle-medicamento
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-detalle-medicamento-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-detalle-medicamento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-detalle-medicamento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-detalle-medicamento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id conversationstep
+      step hcp detalle medicamento relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-detalle-medicamento-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-detalle-medicamento
+    title: step-hcp-detalle-medicamento transitions_to step-hcp-detalle-medicamento
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-detalle-medicamento
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-detalle-medicamento
+    - step hcp detalle medicamento transitions to step hcp detalle medicamento
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-transitions-to-step-hcp-detalle-medicamento
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-detalle-medicamento/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-detalle-medicamento
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-detalle-medicamento
+    - step hcp detalle medicamento transitions to step hcp detalle medicamento
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-detalle-medicamento--step-hcp-handout-especialista
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-handout-especialista-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id conversationstep
+      step hcp handout especialista relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-handout-especialista-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-handout-especialista
+    title: step-hcp-detalle-medicamento transitions_to step-hcp-handout-especialista
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-handout-especialista
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-handout-especialista
+    - step hcp detalle medicamento transitions to step hcp handout especialista
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-transitions-to-step-hcp-handout-especialista
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-handout-especialista/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-handout-especialista
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-handout-especialista
+    - step hcp detalle medicamento transitions to step hcp handout especialista
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-detalle-medicamento--step-hcp-optout
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-optout-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id conversationstep
+      step hcp optout relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-optout-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-optout
+    title: step-hcp-detalle-medicamento transitions_to step-hcp-optout
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-optout
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-optout
+    - step hcp detalle medicamento transitions to step hcp optout
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-transitions-to-step-hcp-optout
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-optout/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-optout
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-optout
+    - step hcp detalle medicamento transitions to step hcp optout
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-detalle-medicamento--step-hcp-presentar-campania
+  sections:
+  - path: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-presentar-campania-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-presentar-campania
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-presentar-campania
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-detalle-medicamento
+
+      target_id: ConversationStep:step-hcp-presentar-campania
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp detalle medicamento target id conversationstep
+      step hcp presentar campania relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-detalle-medicamento-target-id-conversationstep-step-hcp-presentar-campania-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-presentar-campania
+    title: step-hcp-detalle-medicamento transitions_to step-hcp-presentar-campania
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-presentar-campania
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-presentar-campania
+    - step hcp detalle medicamento transitions to step hcp presentar campania
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-detalle-medicamento-transitions-to-step-hcp-presentar-campania
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-detalle-medicamento-transitions-to-step-hcp-presentar-campania/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-presentar-campania
+    - Notes
+    about:
+    - step-hcp-detalle-medicamento transitions_to step-hcp-presentar-campania
+    - step hcp detalle medicamento transitions to step hcp presentar campania
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-handout-especialista--step-hcp-despedida
+  sections:
+  - path: source-id-conversationstep-step-hcp-handout-especialista-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-handout-especialista
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp handout especialista target id conversationstep
+      step hcp despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-handout-especialista-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-handout-especialista-transitions-to-step-hcp-despedida
+    title: step-hcp-handout-especialista transitions_to step-hcp-despedida
+    breadcrumbs:
+    - step-hcp-handout-especialista transitions_to step-hcp-despedida
+    about:
+    - step-hcp-handout-especialista transitions_to step-hcp-despedida
+    - step hcp handout especialista transitions to step hcp despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-handout-especialista-transitions-to-step-hcp-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-handout-especialista-transitions-to-step-hcp-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-handout-especialista transitions_to step-hcp-despedida
+    - Notes
+    about:
+    - step-hcp-handout-especialista transitions_to step-hcp-despedida
+    - step hcp handout especialista transitions to step hcp despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-optout--step-hcp-despedida
+  sections:
+  - path: source-id-conversationstep-step-hcp-optout-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp optout target id conversationstep step hcp
+      despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-optout-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-optout-transitions-to-step-hcp-despedida
+    title: step-hcp-optout transitions_to step-hcp-despedida
+    breadcrumbs:
+    - step-hcp-optout transitions_to step-hcp-despedida
+    about:
+    - step-hcp-optout transitions_to step-hcp-despedida
+    - step hcp optout transitions to step hcp despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-optout-transitions-to-step-hcp-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-optout-transitions-to-step-hcp-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-optout transitions_to step-hcp-despedida
+    - Notes
+    about:
+    - step-hcp-optout transitions_to step-hcp-despedida
+    - step hcp optout transitions to step hcp despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-presentar-campania--step-hcp-agendar-recontacto
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-agendar-recontacto-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-agendar-recontacto
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id conversationstep
+      step hcp agendar recontacto relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-agendar-recontacto-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-agendar-recontacto
+    title: step-hcp-presentar-campania transitions_to step-hcp-agendar-recontacto
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-agendar-recontacto
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-agendar-recontacto
+    - step hcp presentar campania transitions to step hcp agendar recontacto
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-transitions-to-step-hcp-agendar-recontacto
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-agendar-recontacto/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-agendar-recontacto
+    - Notes
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-agendar-recontacto
+    - step hcp presentar campania transitions to step hcp agendar recontacto
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-presentar-campania--step-hcp-despedida
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id conversationstep
+      step hcp despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-despedida
+    title: step-hcp-presentar-campania transitions_to step-hcp-despedida
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-despedida
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-despedida
+    - step hcp presentar campania transitions to step hcp despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-transitions-to-step-hcp-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-despedida
+    - Notes
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-despedida
+    - step hcp presentar campania transitions to step hcp despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-presentar-campania--step-hcp-detalle-medicamento
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-detalle-medicamento-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-detalle-medicamento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-detalle-medicamento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-detalle-medicamento
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id conversationstep
+      step hcp detalle medicamento relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-detalle-medicamento-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-detalle-medicamento
+    title: step-hcp-presentar-campania transitions_to step-hcp-detalle-medicamento
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-detalle-medicamento
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-detalle-medicamento
+    - step hcp presentar campania transitions to step hcp detalle medicamento
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-transitions-to-step-hcp-detalle-medicamento
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-detalle-medicamento/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-detalle-medicamento
+    - Notes
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-detalle-medicamento
+    - step hcp presentar campania transitions to step hcp detalle medicamento
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-presentar-campania--step-hcp-handout-especialista
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-handout-especialista-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-handout-especialista
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id conversationstep
+      step hcp handout especialista relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-handout-especialista-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-handout-especialista
+    title: step-hcp-presentar-campania transitions_to step-hcp-handout-especialista
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-handout-especialista
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-handout-especialista
+    - step hcp presentar campania transitions to step hcp handout especialista
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-transitions-to-step-hcp-handout-especialista
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-handout-especialista/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-handout-especialista
+    - Notes
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-handout-especialista
+    - step hcp presentar campania transitions to step hcp handout especialista
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-presentar-campania--step-hcp-optout
+  sections:
+  - path: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-optout-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-presentar-campania
+
+      target_id: ConversationStep:step-hcp-optout
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp presentar campania target id conversationstep
+      step hcp optout relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-presentar-campania-target-id-conversationstep-step-hcp-optout-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-optout
+    title: step-hcp-presentar-campania transitions_to step-hcp-optout
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-optout
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-optout
+    - step hcp presentar campania transitions to step hcp optout
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-presentar-campania-transitions-to-step-hcp-optout
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-presentar-campania-transitions-to-step-hcp-optout/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-presentar-campania transitions_to step-hcp-optout
+    - Notes
+    about:
+    - step-hcp-presentar-campania transitions_to step-hcp-optout
+    - step hcp presentar campania transitions to step hcp optout
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-revision-humana--step-hcp-despedida
+  sections:
+  - path: source-id-conversationstep-step-hcp-revision-humana-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-revision-humana
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-revision-humana
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-revision-humana
+
+      target_id: ConversationStep:step-hcp-despedida
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp revision humana target id conversationstep
+      step hcp despedida relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-revision-humana-target-id-conversationstep-step-hcp-despedida-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-revision-humana-transitions-to-step-hcp-despedida
+    title: step-hcp-revision-humana transitions_to step-hcp-despedida
+    breadcrumbs:
+    - step-hcp-revision-humana transitions_to step-hcp-despedida
+    about:
+    - step-hcp-revision-humana transitions_to step-hcp-despedida
+    - step hcp revision humana transitions to step hcp despedida
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-revision-humana-transitions-to-step-hcp-despedida
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-revision-humana-transitions-to-step-hcp-despedida/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-revision-humana transitions_to step-hcp-despedida
+    - Notes
+    about:
+    - step-hcp-revision-humana transitions_to step-hcp-despedida
+    - step hcp revision humana transitions to step hcp despedida
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: transitions_to--step-hcp-validacion-policy-gate--step-hcp-revision-humana
+  sections:
+  - path: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-conversationstep-step-hcp-revision-humana-relation-type-transitions-to-condition
+    title: 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: ConversationStep:step-hcp-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: ConversationStep:step-hcp-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-validacion-policy-gate
+
+      target_id: ConversationStep:step-hcp-revision-humana
+
+      relation_type: transitions_to
+
+      condition: '''''
+    - source id conversationstep step hcp validacion policy gate target id conversationstep
+      step hcp revision humana relation type transitions to condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-validacion-policy-gate-target-id-conversationstep-step-hcp-revision-humana-relation-type-transitions-to-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-validacion-policy-gate-transitions-to-step-hcp-revision-humana
+    title: step-hcp-validacion-policy-gate transitions_to step-hcp-revision-humana
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate transitions_to step-hcp-revision-humana
+    about:
+    - step-hcp-validacion-policy-gate transitions_to step-hcp-revision-humana
+    - step hcp validacion policy gate transitions to step hcp revision humana
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-validacion-policy-gate-transitions-to-step-hcp-revision-humana
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-validacion-policy-gate-transitions-to-step-hcp-revision-humana/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-validacion-policy-gate transitions_to step-hcp-revision-humana
+    - Notes
+    about:
+    - step-hcp-validacion-policy-gate transitions_to step-hcp-revision-humana
+    - step hcp validacion policy gate transitions to step hcp revision humana
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: uses_tool--step-hcp-agendar-recontacto--tool-hcp-programar-recontacto
+  sections:
+  - path: source-id-conversationstep-step-hcp-agendar-recontacto-target-id-toolatom-tool-hcp-programar-recontacto-relation-type-uses-tool-condition
+    title: 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: ToolAtom:tool-hcp-programar-recontacto
+
+      relation_type: uses_tool
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: ToolAtom:tool-hcp-programar-recontacto
+
+      relation_type: uses_tool
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-agendar-recontacto
+
+      target_id: ToolAtom:tool-hcp-programar-recontacto
+
+      relation_type: uses_tool
+
+      condition: '''''
+    - source id conversationstep step hcp agendar recontacto target id toolatom tool
+      hcp programar recontacto relation type uses tool condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-agendar-recontacto-target-id-toolatom-tool-hcp-programar-recontacto-relation-type-uses-tool-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-agendar-recontacto-uses-tool-tool-hcp-programar-recontacto
+    title: step-hcp-agendar-recontacto uses_tool tool-hcp-programar-recontacto
+    breadcrumbs:
+    - step-hcp-agendar-recontacto uses_tool tool-hcp-programar-recontacto
+    about:
+    - step-hcp-agendar-recontacto uses_tool tool-hcp-programar-recontacto
+    - step hcp agendar recontacto uses tool tool hcp programar recontacto
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-agendar-recontacto-uses-tool-tool-hcp-programar-recontacto
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-agendar-recontacto-uses-tool-tool-hcp-programar-recontacto/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-agendar-recontacto uses_tool tool-hcp-programar-recontacto
+    - Notes
+    about:
+    - step-hcp-agendar-recontacto uses_tool tool-hcp-programar-recontacto
+    - step hcp agendar recontacto uses tool tool hcp programar recontacto
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11
+- doc_name: uses_tool--step-hcp-optout--tool-hcp-actualizar-consentimiento
+  sections:
+  - path: source-id-conversationstep-step-hcp-optout-target-id-toolatom-tool-hcp-actualizar-consentimiento-relation-type-uses-tool-condition
+    title: 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: ToolAtom:tool-hcp-actualizar-consentimiento
+
+      relation_type: uses_tool
+
+      condition: '''''
+    breadcrumbs:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: ToolAtom:tool-hcp-actualizar-consentimiento
+
+      relation_type: uses_tool
+
+      condition: '''''
+    about:
+    - 'source_id: ConversationStep:step-hcp-optout
+
+      target_id: ToolAtom:tool-hcp-actualizar-consentimiento
+
+      relation_type: uses_tool
+
+      condition: '''''
+    - source id conversationstep step hcp optout target id toolatom tool hcp actualizar
+      consentimiento relation type uses tool condition
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: source-id-conversationstep-step-hcp-optout-target-id-toolatom-tool-hcp-actualizar-consentimiento-relation-type-uses-tool-condition
+    level: 2
+    line_start: 2
+    line_end: 7
+  - path: step-hcp-optout-uses-tool-tool-hcp-actualizar-consentimiento
+    title: step-hcp-optout uses_tool tool-hcp-actualizar-consentimiento
+    breadcrumbs:
+    - step-hcp-optout uses_tool tool-hcp-actualizar-consentimiento
+    about:
+    - step-hcp-optout uses_tool tool-hcp-actualizar-consentimiento
+    - step hcp optout uses tool tool hcp actualizar consentimiento
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: step-hcp-optout-uses-tool-tool-hcp-actualizar-consentimiento
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: step-hcp-optout-uses-tool-tool-hcp-actualizar-consentimiento/notes
+    title: Notes
+    breadcrumbs:
+    - step-hcp-optout uses_tool tool-hcp-actualizar-consentimiento
+    - Notes
+    about:
+    - step-hcp-optout uses_tool tool-hcp-actualizar-consentimiento
+    - step hcp optout uses tool tool hcp actualizar consentimiento
+    - Notes
+    - notes
+    - layer.topology
+    - type.relation.instance
+    semantic_tags:
+    - layer.topology
+    - type.relation.instance
+    slug: notes
+    level: 2
+    line_start: 10
+    line_end: 11

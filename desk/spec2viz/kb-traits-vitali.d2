@@ -1,0 +1,89 @@
+# Capa de perfil — Traits de usuario · KB Vitali
+# 21 TraitAtoms. Muestra las 3 categorias, su origen (chat vs form) y como
+# alimentan la conversacion via user_traits (SQL) -> compiler -> bundle.
+# Render: D2_LAYOUT=elk d2 desk/spec2viz/kb-traits-vitali.d2 build/kb-traits-vitali.svg
+
+direction: right
+
+title: |md
+  # KB Vitali — Capa de perfil (traits)
+| {near: top-center}
+
+# ── ORIGENES ──────────────────────────────────────────────
+chat: Conversacion {
+  shape: oval
+  style.fill: "#e8f0ff"
+}
+form: Formulario / registro {
+  shape: oval
+  style.fill: "#fff0e8"
+}
+
+# ── EXTRACTORES ───────────────────────────────────────────
+perfilador: Perfilador (LLM) {
+  tooltip: infiere rasgos EXPLICITOS del texto; source=perfilador
+}
+ingesta: Ingesta declarativa {
+  tooltip: mapea campos del form a trait_id; source=form; confidence=1.0
+  style.stroke-dash: 3
+}
+
+chat -> perfilador
+form -> ingesta
+
+# ── CATALOGO DE TRAITS (KB · TraitAtoms) ──────────────────
+catalog: KB · TraitAtoms (21) {
+  behavior: behavior · inferibles del chat {
+    segmento-suite; segmento-broker; segmento-franquicia
+    sin-cita; con-cita; onboarding-pendiente
+    horizonte-decision
+  }
+  demographic: demographic · declarados en form {
+    para-mi; para-familiar; para-inversion
+    edad-<45; edad-45-59; edad-60-69; edad-70+
+    pais-chile; pais-mexico; pais-colombia; pais-bolivia; pais-usa
+    persona-juridica
+  }
+  preference: preference {
+    proyecto-interes
+  }
+}
+
+perfilador -> catalog.behavior: matchea {style.stroke-dash: 3}
+perfilador -> catalog.preference: matchea {style.stroke-dash: 3}
+ingesta -> catalog.demographic: siembra {style.stroke-dash: 3}
+
+# ── INSTANCIA (SQL) ───────────────────────────────────────
+sql: user_traits (SQL) {
+  shape: cylinder
+  tooltip: user_id, trait_id, confidence, source
+}
+perfilador -> sql: upsert source=perfilador
+ingesta -> sql: upsert source=form
+
+# ── USO EN EL TURNO ───────────────────────────────────────
+compiler: ContextCompiler {
+  tooltip: _load_user_traits(user_id) resuelve trait_id -> TraitAtom
+}
+bundle: Bundle del turno {
+  shape: hexagon
+}
+agent: Conversador adapta discurso {
+  shape: oval
+}
+
+sql -> compiler: lee traits del user
+catalog -> compiler: resuelve trait_id -> TraitAtom
+compiler -> bundle: traits = contexto OBLIGATORIO
+bundle -> agent
+
+# ── COMO ADAPTA (ejemplos) ────────────────────────────────
+notes: |md
+  ## Como el perfil cambia la conversacion
+  - **para-familiar** -> tono de tranquilidad, seguridad, cuidado
+  - **para-inversion** -> renta gestionada, preservacion de valor
+  - **con-cita** -> habilita flujo recordatorio / reagenda
+  - **onboarding-pendiente** -> retoma donde quedo
+  - **pais-*** -> oficina + timezone + proyecto local
+  - **proyecto-interes** -> ancla fechas/amenidades de ese proyecto
+| {near: bottom-center}

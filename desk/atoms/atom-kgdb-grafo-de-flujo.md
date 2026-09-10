@@ -13,4 +13,4 @@ provenance: architecture-audit
 
 ## Answer
 
-Capa de base de datos de grafo en memoria (NetworkX persistido). Indexa las relaciones semánticas entre los nodos de `ConversationStep` (ej. `flows_to`, `grounded_by`), permitiendo al Ontologizador trazar la ruta de la conversación de forma programática.
+Capa de base de datos de grafo en memoria (NetworkX persistido). Indexa las relaciones semánticas entre los nodos de `ConversationStep` (ej. `flows_to`, `grounded_by`), permitiendo al Context Compiler (`kb_agent/knowledge`) trazar la ruta de la conversación de forma programática.

@@ -1,0 +1,83 @@
+{
+  "scenario_id": "donpeppe_perfil_vegetariano",
+  "external_id": "sim:donpeppe_perfil_vegetariano",
+  "saved_at": "2026-08-27T19:58:52.142515+00:00",
+  "ended_by": "user_done",
+  "end_reason": "Recibí la recomendación de pizza vegetariana y la información sobre la promoción del martes.",
+  "turns": [
+    {
+      "user": "Hola, soy vegetariana, ¿qué pizza me recomiendan?",
+      "user_reason": "mensaje inicial fijo",
+      "assistant": "¡Hola! Qué gusto que nos visites. Entiendo que buscas opciones vegetarianas.\n\nNo tengo la carta con los detalles de cada pizza para recomendarte una específica en este momento.\n\nPero no te preocupes, en Don Peppe siempre pensamos en todos. Te recomiendo que llames directamente a la pizzería para que el personal te guíe con nuestras deliciosas opciones vegetarianas y te cuenten los ingredientes. ¡Seguro encuentras tu favorita!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [
+        "trait-vegetariano"
+      ],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "breakpoint_miss",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "Ah, entiendo. Gracias. ¿Pero hay alguna opción vegetariana que suelan tener o que sea popular, aunque no tengas los detalles?",
+      "user_reason": "Todavía no recibí una recomendación de pizza vegetariana.",
+      "assistant": "¡Claro que sí! Aunque no tengo el detalle de los ingredientes exactos, te puedo asegurar que la **Margherita** y la **Cuatro Quesos** son opciones vegetarianas clásicas y muy populares en Don Peppe. ¡Son deliciosas!\n\nPara los ingredientes específicos, te sugiero llamar directo al local.",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [
+        "trait-vegetariano"
+      ],
+      "used_traits_in_context": [
+        {
+          "trait_id": "trait-vegetariano",
+          "title": "Cliente vegetariano",
+          "description": "La persona es vegetariana: no consume carne. Priorizar pizzas sin ingredientes cárnicos (Margherita, Cuatro Quesos).",
+          "category": "dietary",
+          "confidence": 1.0,
+          "source": "perfilador"
+        }
+      ],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "breakpoint_miss",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "¿Y de esas dos, cuál me conviene más si voy un martes?",
+      "user_reason": "Necesito saber cuál de las pizzas recomendadas conviene más para un martes.",
+      "assistant": "¡Ah, perfecto! Si vas un martes, la que más te conviene es la **Margherita**. Ese día tenemos una promo 2x1 en pizzas Margherita. ¡Así disfrutas doblemente de una clásica y deliciosa opción vegetariana!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [
+        "trait-vegetariano"
+      ],
+      "used_traits_in_context": [
+        {
+          "trait_id": "trait-vegetariano",
+          "title": "Cliente vegetariano",
+          "description": "La persona es vegetariana: no consume carne. Priorizar pizzas sin ingredientes cárnicos (Margherita, Cuatro Quesos).",
+          "category": "dietary",
+          "confidence": 1.0,
+          "source": "perfilador"
+        }
+      ],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leads</title>
+<link rel="stylesheet" href="/static/theme.css">
+</head><body class="page-leads">
+<div id="appNavMount"></div>
+<main class="wrap">
+  <div class="cards" id="counts" data-testid="leads-counts"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+
+  <section class="block leads-queue" data-testid="leads-queue">
+    <h2 class="section-title">Visitas por confirmar</h2>
+    <div class="section-sub">Pidieron reunión. El equipo confirma la hora y envía la invitación; el agente nunca la confirma solo.</div>
+    <div id="queue"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+  </section>
+
+  <h2 class="section-title">Todos los leads</h2>
+  <div class="section-sub">Click en un lead abre su conversación en el Inspector.</div>
+  <div id="leads" data-testid="leads-list"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+</main>
+<script src="/static/nav.js"></script>
+<script src="/static/glossary.js"></script>
+<script src="/static/tooltip.js"></script>
+<script src="/static/demo-tour.js"></script>
+<script src="/static/leads.js"></script>
+</body></html>

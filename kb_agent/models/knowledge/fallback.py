@@ -10,7 +10,7 @@ from .domain import AtomTag
 class FallbackRule(IndexProxies):
     """Regla de fallback: qué hacer cuando no hay contexto suficiente.
 
-    Caso especial de RuleAtom. Cuando el Ontologizador produce
+    Caso especial de RuleAtom. Cuando el Knowledge produce
     un CompiledDocument vacío (is_empty=True), el Conversador
     usa este mensaje en vez de alucinar.
     """
@@ -27,9 +27,6 @@ atom_type: fallback
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
 summary: ⸢rev•summary⸥
-embedding: ⸢optrev•embedding⸥
-parent: ⸢optrev•parent⸥
-semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

@@ -1,0 +1,515 @@
+documents:
+- doc_name: reltype-has_model
+  sections:
+  - path: has-model
+    title: has_model
+    breadcrumbs:
+    - has_model
+    about:
+    - has_model
+    - has model
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: has-model
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: has-model/description
+    title: Description
+    breadcrumbs:
+    - has_model
+    - Description
+    about:
+    - has_model
+    - has model
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: reltype-has_document
+  sections:
+  - path: has-document
+    title: has_document
+    breadcrumbs:
+    - has_document
+    about:
+    - has_document
+    - has document
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: has-document
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: has-document/description
+    title: Description
+    breadcrumbs:
+    - has_document
+    - Description
+    about:
+    - has_document
+    - has document
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: reltype-has_section
+  sections:
+  - path: has-section
+    title: has_section
+    breadcrumbs:
+    - has_section
+    about:
+    - has_section
+    - has section
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: has-section
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: has-section/description
+    title: Description
+    breadcrumbs:
+    - has_section
+    - Description
+    about:
+    - has_section
+    - has section
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: reltype-tagged_as
+  sections:
+  - path: tagged-as
+    title: tagged_as
+    breadcrumbs:
+    - tagged_as
+    about:
+    - tagged_as
+    - tagged as
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: tagged-as
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: tagged-as/description
+    title: Description
+    breadcrumbs:
+    - tagged_as
+    - Description
+    about:
+    - tagged_as
+    - tagged as
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: reltype-semantic_parent
+  sections:
+  - path: semantic-parent
+    title: semantic_parent
+    breadcrumbs:
+    - semantic_parent
+    about:
+    - semantic_parent
+    - semantic parent
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: semantic-parent
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: semantic-parent/description
+    title: Description
+    breadcrumbs:
+    - semantic_parent
+    - Description
+    about:
+    - semantic_parent
+    - semantic parent
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: reltype-semantic_equivalent
+  sections:
+  - path: semantic-equivalent
+    title: semantic_equivalent
+    breadcrumbs:
+    - semantic_equivalent
+    about:
+    - semantic_equivalent
+    - semantic equivalent
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: semantic-equivalent
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: semantic-equivalent/description
+    title: Description
+    breadcrumbs:
+    - semantic_equivalent
+    - Description
+    about:
+    - semantic_equivalent
+    - semantic equivalent
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: reltype-has_field
+  sections:
+  - path: has-field
+    title: has_field
+    breadcrumbs:
+    - has_field
+    about:
+    - has_field
+    - has field
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: has-field
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: has-field/description
+    title: Description
+    breadcrumbs:
+    - has_field
+    - Description
+    about:
+    - has_field
+    - has field
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: reltype-extends
+  sections:
+  - path: extends
+    title: extends
+    breadcrumbs:
+    - extends
+    about:
+    - extends
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: extends
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: extends/description
+    title: Description
+    breadcrumbs:
+    - extends
+    - Description
+    about:
+    - extends
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: reltype-applies_to_source
+  sections:
+  - path: applies-to-source
+    title: applies_to_source
+    breadcrumbs:
+    - applies_to_source
+    about:
+    - applies_to_source
+    - applies to source
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: applies-to-source
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: applies-to-source/description
+    title: Description
+    breadcrumbs:
+    - applies_to_source
+    - Description
+    about:
+    - applies_to_source
+    - applies to source
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: reltype-applies_to_target
+  sections:
+  - path: applies-to-target
+    title: applies_to_target
+    breadcrumbs:
+    - applies_to_target
+    about:
+    - applies_to_target
+    - applies to target
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: applies-to-target
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: applies-to-target/description
+    title: Description
+    breadcrumbs:
+    - applies_to_target
+    - Description
+    about:
+    - applies_to_target
+    - applies to target
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: reltype-names
+  sections:
+  - path: names
+    title: names
+    breadcrumbs:
+    - names
+    about:
+    - names
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: names
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: names/description
+    title: Description
+    breadcrumbs:
+    - names
+    - Description
+    about:
+    - names
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: rt-grounded_by
+  sections:
+  - path: grounded-by
+    title: grounded_by
+    breadcrumbs:
+    - grounded_by
+    about:
+    - grounded_by
+    - grounded by
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: grounded-by
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: grounded-by/description
+    title: Description
+    breadcrumbs:
+    - grounded_by
+    - Description
+    about:
+    - grounded_by
+    - grounded by
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: rt-transitions_to
+  sections:
+  - path: transitions-to
+    title: transitions_to
+    breadcrumbs:
+    - transitions_to
+    about:
+    - transitions_to
+    - transitions to
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: transitions-to
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: transitions-to/description
+    title: Description
+    breadcrumbs:
+    - transitions_to
+    - Description
+    about:
+    - transitions_to
+    - transitions to
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: rt-uses_tool
+  sections:
+  - path: uses-tool
+    title: uses_tool
+    breadcrumbs:
+    - uses_tool
+    about:
+    - uses_tool
+    - uses tool
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: uses-tool
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: uses-tool/description
+    title: Description
+    breadcrumbs:
+    - uses_tool
+    - Description
+    about:
+    - uses_tool
+    - uses tool
+    - Description
+    - description
+    - layer.topology
+    - type.relation.type
+    semantic_tags:
+    - layer.topology
+    - type.relation.type
+    slug: description
+    level: 2
+    line_start: 15
+    line_end: 16

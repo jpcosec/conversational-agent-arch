@@ -14,7 +14,7 @@ namespaces:
   role:
     meaning: "Función del actor dentro de la arquitectura del runtime."
     examples:
-      - role:engine         # Ontologizador, Conversador, Policy
+      - role:engine         # Context Compiler, Conversador, Policy
       - role:background     # Perfilador, Reflector
       - role:boundary       # Orquestador, EventBus, Config, Scrubber
       - role:data           # SQL, SLDB, KGDB

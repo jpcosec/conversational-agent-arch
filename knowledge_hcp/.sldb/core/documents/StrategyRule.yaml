@@ -1,0 +1,10 @@
+documents:
+- name: strategy-hcp-campaign
+  path: atoms/strategy-hcp-campaign.md
+  hash_c: 60918f826e74978afbb57e5ca6cb5cbd8a78c5f2cc630ae00f290694bd945bb8
+  hash_d: 564e2c993421510db22492c258503aa349c1186cb882b8a03244feafe372a313
+  semantic_tags:
+  - conversation:strategy
+  - system:teva-hcp
+  - type.knowledge.strategy
+  - workspace.knowledge

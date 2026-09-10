@@ -39,11 +39,11 @@ class _UncallableClient:
 
 
 @pytest.fixture()
-def orch_factory(donpeppe_kb: Path, tmp_db_url: str):
+def orch_factory(negocio_kb: Path, tmp_db_url: str):
     made: list[Orchestrator] = []
 
     def _make(**kwargs) -> Orchestrator:
-        o = offline_orchestrator(donpeppe_kb, tmp_db_url, **kwargs)
+        o = offline_orchestrator(negocio_kb, tmp_db_url, **kwargs)
         made.append(o)
         return o
 
@@ -60,7 +60,7 @@ def test_step_target_outside_allowed_transitions_is_not_applied(orch_factory) ->
     rastro (``decisions.orquestador.step_target_vetado``).
     """
     def rogue_decision(compiled_context: dict) -> dict:
-        # El unico step permitido desde onboarding (donpeppe_kb) es booking;
+        # El unico step permitido desde onboarding (negocio_kb) es booking;
         # esto imita el bug real: navegar a un step no declarado.
         return {"kind": "nl", "flow_target": "conversation:steps.NO_AUTORIZADO"}
 
@@ -97,8 +97,40 @@ def test_step_target_within_allowed_transitions_is_applied(orch_factory) -> None
     assert turn["decisions"]["orquestador"].get("step_target_vetado") is None
 
 
+def test_draft_uses_target_step_when_orchestrator_advances(orch_factory) -> None:
+    """Bug medido en Vitali: el orquestador decidia avanzar (agendar ->
+    datos_contacto) pero el Conversador redactaba con el step viejo y volvia
+    a pedir lo que el step anterior pedia. El borrador debe ver el step
+    DESTINO (instrucciones/slots), y el compilado original conserva el step
+    activo del turno para el rastro.
+    """
+    def advance(compiled_context: dict) -> dict:
+        return {"kind": "nl", "flow_target": "conversation:steps.booking"}
+
+    conversador = FakeConversador()
+    orch = orch_factory(orchestrator_agent=FakeOrchestratorAgent(advance), conversador=conversador)
+
+    turn = orch.handle_turn(external_id="ui:retarget", message="quiero reservar")
+
+    assert turn["flow_node"] == "conversation:steps.booking"
+    seen = conversador.calls[-1]["step"]
+    assert seen["tag"] == "conversation:steps.booking" and seen["id"] == "step-booking"
+    assert seen["instructions"]
+    # y el grounding del step destino ya esta en el contexto con el que se redacto
+    # (mismo contexto que juzga el gate): el tool atom de reserva entra por el step booking.
+    ctx = conversador.calls[-1]
+    assert "tool-reserva" in ctx["grounding_atoms"]
+    assert any(e["doc_id"] == "tool-reserva" and "grounding de steps.booking" in e["motivo"] for e in ctx["bundle"])
+
+    # Sin transicion, el Conversador ve el step activo (segundo turno ya esta en booking).
+    stay = FakeConversador()
+    orch2 = orch_factory(orchestrator_agent=FakeOrchestratorAgent(lambda c: {"kind": "nl"}), conversador=stay)
+    orch2.handle_turn(external_id="ui:stay", message="hola")
+    assert stay.calls[-1]["step"]["tag"] == "conversation:steps.onboarding"
+
+
 # ── BUG 1: tool_call decidido con contexto completo, no con keywords ────────
-def test_typed_tool_call_executes_even_without_keyword_match(donpeppe_kb: Path, tmp_db_url: str) -> None:
+def test_typed_tool_call_executes_even_without_keyword_match(negocio_kb: Path, tmp_db_url: str) -> None:
     """Reproduce el bug 1: un mensaje SIN ninguna keyword de intencion de tool
     (``decide_turn`` clasificaria esto como 'nl', nunca ejecutaria la tool)
     pero el orquestador (aca, el fake sustituyendo al LLM) SI decide
@@ -116,7 +148,7 @@ def test_typed_tool_call_executes_even_without_keyword_match(donpeppe_kb: Path, 
         }
 
     orch = offline_orchestrator(
-        donpeppe_kb, tmp_db_url,
+        negocio_kb, tmp_db_url,
         orchestrator_agent=FakeOrchestratorAgent(forced_tool_call),
         tool_handlers=RESERVA_HANDLERS,
     )
@@ -124,7 +156,7 @@ def test_typed_tool_call_executes_even_without_keyword_match(donpeppe_kb: Path, 
         # Control: sin forzar la decision, decide_turn (backing default del
         # fake) NO detecta intencion de tool en este mensaje -- confirma que
         # el mensaje elegido de verdad ejercita el camino "sin keywords".
-        control = offline_orchestrator(donpeppe_kb, tmp_db_url, tool_handlers=RESERVA_HANDLERS)
+        control = offline_orchestrator(negocio_kb, tmp_db_url, tool_handlers=RESERVA_HANDLERS)
         try:
             control_turn = control.handle_turn(external_id="ui:control", message=CONFIRMATION_MESSAGE)
             assert control_turn["kind"] != "tool_call"
@@ -146,14 +178,14 @@ def test_typed_tool_call_executes_even_without_keyword_match(donpeppe_kb: Path, 
 
 
 def test_typed_tool_call_without_registered_handler_still_yields_unknown_tool(
-    donpeppe_kb: Path, tmp_db_url: str
+    negocio_kb: Path, tmp_db_url: str
 ) -> None:
     """La guardia de step no reemplaza el manejo existente de tools desconocidas."""
     def forced_tool_call(compiled_context: dict) -> dict:
         return {"kind": "tool_call", "function_call": {"name": "no_existe", "args": {}}}
 
     orch = offline_orchestrator(
-        donpeppe_kb, tmp_db_url, tool_handlers={},
+        negocio_kb, tmp_db_url, tool_handlers={},
         orchestrator_agent=FakeOrchestratorAgent(forced_tool_call),
     )
     try:

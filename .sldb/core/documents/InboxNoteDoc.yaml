@@ -2,21 +2,21 @@ documents:
 - name: 20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer
   path: desk/inbox/20260827-160657-unclear-cli-gaps-inbox-root-promote-deja-notas-tracked-huerfanas-sin-listado-de-drawer.md
   hash_c: 5e7343a6314b7da0551029d040b739b126d1443a186d5a50752e9c24de48949e
-  hash_d: bedf0b5a403ebacdf5c9f66bf9bff58ea3d59f4e078371ca07dab639f7dd0782
+  hash_d: eb27017c81d516d08a828a179f6cc35283ee6e09e0cc46259290cb17c9bec1b1
   semantic_tags:
   - type.desk.inbox-note
   - workspace.desk.inbox
 - name: 20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status
   path: desk/inbox/20260827-164846-unclear-edit-extractor-corre-secciones-vacias-y-advance-to-no-toca-status.md
   hash_c: ddfc92d141ef221af290e86f725742676b184da3a5c6ca94d0b5792effa0aef4
-  hash_d: 563691df91705fa4bbb6f1ea4233d6c74547d11bd15df7de8a0ec8a5f69fe74b
+  hash_d: 0327e93363bb8e464353617ef80fe1259e266ab9447b78412e9e0ba8c277495e
   semantic_tags:
   - type.desk.inbox-note
   - workspace.desk.inbox
 - name: 20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills
   path: desk/inbox/20260827-165024-unclear-pilldoc-sin-slot-status-y-edit-pill-no-alcanza-drawer-pills.md
   hash_c: cb52e3273711bfb99bea67222d26c9d5941fe764d699c8383183ebd89177d297
-  hash_d: d611457915ad106f8eee9f47fce9fc70d3b6e1efb22511eb2bba3d564be76159
+  hash_d: 7220eaab0a409fbc2965cbcf57e665004900004e7c13daf73b8aafbd880817b9
   semantic_tags:
   - type.desk.inbox-note
   - workspace.desk.inbox

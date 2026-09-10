@@ -40,14 +40,6 @@ def main(argv: list[str] | None = None) -> int:
             _print_json(result)
             return 0
 
-        if args.command == "step":
-            if args.step_command == "next":
-                result = ops.step_next(args.user)
-                _print_json(result)
-                return 0
-            print(f"Unknown step subcommand: {args.step_command}", file=sys.stderr)
-            return 1
-
         if args.command == "traits":
             results = ops.traits(args.user)
             _print_json(results)
@@ -55,11 +47,6 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "self":
             result = ops.self_context()
-            _print_json(result)
-            return 0
-
-        if args.command == "context":
-            result = ops.context(args.user)
             _print_json(result)
             return 0
 
@@ -75,15 +62,22 @@ def main(argv: list[str] | None = None) -> int:
 
         if args.command == "index":
             if args.index_command == "embeddings":
-                result = ops.index_embeddings(model=getattr(args, "model", None))
-                print(f"Embeddings: {result['processed']} processed, {result['skipped']} skipped, {result['errors']} errors")
-                if result.get("store_update_error"):
-                    print(f"Warning: store update failed (embeddings already written): {result['store_update_error']}", file=sys.stderr)
+                result = ops.index_embeddings()
+                print(
+                    f"Embeddings [{result['embedder']}]: {result['embedded']} embebidos, "
+                    f"{result['reused']} reutilizados, {result['dropped']} descartados, {result['total']} en el indice"
+                )
                 return 0
-            if args.index_command == "hierarchy":
-                result = ops.index_hierarchy()
-                print(f"Hierarchy: {result.get('tags', 0)} tags, {result.get('new_parent_relations', 0)} new relations")
-                return 0
+            if args.index_command == "audit":
+                result = ops.audit_embeddings()
+                print(
+                    f"Embeddings audit [{result['kb']}]: {result['with_embedding']}/{result['total']} "
+                    f"con vector, {result['embeddingless_by_design']} sin vector por diseño, "
+                    f"{len(result['missing'])} faltantes"
+                )
+                for m in result["missing"]:
+                    print(f"  FALTA: {m['id']} ({m['model']})", file=sys.stderr)
+                return 0 if result["ok"] else 1
 
         if args.command == "promote":
             result = ops.promote(args.atom_id)

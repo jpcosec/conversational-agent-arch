@@ -10,7 +10,7 @@ from .domain import AtomTag
 class ToolAtom(IndexProxies):
     """Esquema JSON de una API o función externa.
 
-    El Ontologizador convierte estos átomos en function_declarations
+    El Knowledge convierte estos átomos en function_declarations
     para el LLM en tiempo real.
     """
 
@@ -26,9 +26,6 @@ atom_type: tool
 tags: ⸢rev•tags⸥
 provenance: ⸢optrev•provenance⸥
 summary: ⸢rev•summary⸥
-embedding: ⸢optrev•embedding⸥
-parent: ⸢optrev•parent⸥
-semantic_anchors: ⸢optrev•semantic_anchors⸥
 ---
 
 # ⸢render•title⸥

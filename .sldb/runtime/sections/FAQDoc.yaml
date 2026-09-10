@@ -1,0 +1,199 @@
+documents:
+- doc_name: current-system-overview
+  sections:
+  - path: c-mo-funciona-el-sistema-visi-n-general
+    title: Cómo funciona el sistema — visión general
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: c-mo-funciona-el-sistema-visi-n-general
+    level: 1
+    line_start: 1
+    line_end: 2
+  - path: c-mo-funciona-el-sistema-visi-n-general/1-los-tres-subsistemas
+    title: 1. Los tres subsistemas
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 1. Los tres subsistemas
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 1. Los tres subsistemas
+    - 1 los tres subsistemas
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 1-los-tres-subsistemas
+    level: 2
+    line_start: 12
+    line_end: 13
+  - path: c-mo-funciona-el-sistema-visi-n-general/2-el-flujo-de-un-turno-runtime
+    title: 2. El flujo de un turno (Runtime)
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 2. El flujo de un turno (Runtime)
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 2. El flujo de un turno (Runtime)
+    - 2 el flujo de un turno runtime
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 2-el-flujo-de-un-turno-runtime
+    level: 2
+    line_start: 22
+    line_end: 23
+  - path: c-mo-funciona-el-sistema-visi-n-general/3-las-capas-de-datos-knowledge
+    title: 3. Las capas de datos (Knowledge)
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 3. Las capas de datos (Knowledge)
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 3. Las capas de datos (Knowledge)
+    - 3 las capas de datos knowledge
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 3-las-capas-de-datos-knowledge
+    level: 2
+    line_start: 51
+    line_end: 52
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14
+    title: 4. Índice de vistas del catálogo (14)
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 4. Índice de vistas del catálogo (14)
+    - 4 ndice de vistas del cat logo 14
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 4-ndice-de-vistas-del-cat-logo-14
+    level: 2
+    line_start: 74
+    line_end: 75
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/backend-runtime-el-motor
+    title: Backend · Runtime (el motor)
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
+    - Backend · Runtime (el motor)
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 4. Índice de vistas del catálogo (14)
+    - 4 ndice de vistas del cat logo 14
+    - Backend · Runtime (el motor)
+    - backend runtime el motor
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: backend-runtime-el-motor
+    level: 3
+    line_start: 80
+    line_end: 81
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/backend-knowledge-el-conocimiento
+    title: Backend · Knowledge (el conocimiento)
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
+    - Backend · Knowledge (el conocimiento)
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 4. Índice de vistas del catálogo (14)
+    - 4 ndice de vistas del cat logo 14
+    - Backend · Knowledge (el conocimiento)
+    - backend knowledge el conocimiento
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: backend-knowledge-el-conocimiento
+    level: 3
+    line_start: 97
+    line_end: 98
+  - path: c-mo-funciona-el-sistema-visi-n-general/4-ndice-de-vistas-del-cat-logo-14/frontend-las-uis
+    title: Frontend (las UIs)
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 4. Índice de vistas del catálogo (14)
+    - Frontend (las UIs)
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 4. Índice de vistas del catálogo (14)
+    - 4 ndice de vistas del cat logo 14
+    - Frontend (las UIs)
+    - frontend las uis
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: frontend-las-uis
+    level: 3
+    line_start: 104
+    line_end: 105
+  - path: c-mo-funciona-el-sistema-visi-n-general/5-mapeo-specs-atoms-de-la-desk-desk-atoms
+    title: 5. Mapeo specs → atoms de la desk (desk/atoms/)
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 5. Mapeo specs → atoms de la desk (desk/atoms/)
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 5. Mapeo specs → atoms de la desk (desk/atoms/)
+    - 5 mapeo specs atoms de la desk desk atoms
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 5-mapeo-specs-atoms-de-la-desk-desk-atoms
+    level: 2
+    line_start: 114
+    line_end: 115
+  - path: c-mo-funciona-el-sistema-visi-n-general/6-c-mo-regenerar
+    title: 6. Cómo regenerar
+    breadcrumbs:
+    - Cómo funciona el sistema — visión general
+    - 6. Cómo regenerar
+    about:
+    - Cómo funciona el sistema — visión general
+    - c mo funciona el sistema visi n general
+    - 6. Cómo regenerar
+    - 6 c mo regenerar
+    - type.documentation.faq
+    - workspace.docs.faq
+    semantic_tags:
+    - type.documentation.faq
+    - workspace.docs.faq
+    slug: 6-c-mo-regenerar
+    level: 2
+    line_start: 139
+    line_end: 140

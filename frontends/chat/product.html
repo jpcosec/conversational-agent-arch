@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chat</title>
+<link rel="stylesheet" href="/static/theme.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head><body class="page-product">
+
+<div class="gate" id="gate" data-testid="pc-gate">
+  <div class="gate-box">
+    <h1 id="gateTitle">Hola</h1>
+    <p id="gateText">Déjanos tu nombre y teléfono para que el equipo pueda retomar la conversación contigo. Es opcional.</p>
+    <label for="gName">Nombre</label>
+    <input class="input" id="gName" data-testid="pc-name" type="text" autocomplete="name" placeholder="Tu nombre">
+    <label for="gPhone">Teléfono</label>
+    <input class="input" id="gPhone" data-testid="pc-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+56 9 1234 5678">
+    <button class="gate-go" id="gateGo" data-testid="pc-start" type="button">Empezar</button>
+    <button class="gate-skip" id="gateSkip" data-testid="pc-skip" type="button">Prefiero no dejarlos</button>
+  </div>
+</div>
+
+<header class="pc-top">
+  <img class="app-topbar-logo" data-testid="topbar-logo-brand" alt="Antonia"
+       src="https://pharma.heyantonia.com/_next/image?url=%2Fbrand%2Fantonia-lockup-2027.png&amp;w=384&amp;q=75">
+  <div class="pc-avatar">💬</div>
+  <div><div class="pc-name" id="bizName" data-testid="pc-brand">Agente</div><div class="pc-sub" id="bizSub">en línea</div></div>
+  <div class="pc-actions"><button class="btn btn-sm pc-new" id="pcNew" data-testid="pc-new-session" type="button">Nueva conversación</button></div>
+  <img class="app-topbar-logo" data-testid="topbar-logo-client" alt="Teva · Laboratorio Chile"
+       src="https://www.laboratoriochile.cl/wp-content/themes/teva-lab/assets/img/logo-teva-v2.svg">
+</header>
+
+<div class="pc-scroll" id="scroll"><div class="pc-thread" id="thread" data-testid="pc-thread"></div></div>
+
+<div class="pc-bar"><div class="pc-bar-inner">
+  <textarea class="pc-input" id="input" data-testid="pc-input" rows="1" placeholder="Escribe tu mensaje..."></textarea>
+  <button class="pc-send" id="send" data-testid="pc-send" type="submit">➤</button>
+</div></div>
+
+<script src="/static/product.js"></script>
+</body></html>

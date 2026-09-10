@@ -1,0 +1,13 @@
+name: GateCriterion
+model_ref: kb_agent.models.knowledge:GateCriterion
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/gate.py
+documents_index: .sldb/core/documents/GateCriterion.yaml
+sections_index: .sldb/runtime/sections/GateCriterion.yaml
+hash_b: a730097c354ca733514d78fcd350956b37d52d3548527fd420abff2063f0bb01
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.gate
+- workspace.knowledge
+base_models: []

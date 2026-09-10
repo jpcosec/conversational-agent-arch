@@ -3,7 +3,7 @@ name: ci
 # Dos capas:
 #   static  -> gate liviano sin deps (compila, config, docs proyectados, no-hardcode).
 #   suite   -> suite offline real (unit + integration) instalando las 3 deps
-#              locales (sldb, kgdb, deskops) por git. Se pudo habilitar al
+#              locales (sldb, kgdb, deskops, pron) por git. Se pudo habilitar al
 #              publicar kgdb (jpcosec/kgdb); antes no habia remoto y solo
 #              corria el gate estatico.
 #
@@ -27,7 +27,7 @@ jobs:
       - name: Sintaxis (todo el arbol compila)
         run: python -m compileall -q kb_agent knowledge_base frontends deploy
 
-      - name: project.config.yaml es YAML valido y declara negocio activo
+      - name: project.config.yaml es YAML valido y declara el negocio de la rama
         run: |
           pip install pyyaml
           python - <<'PY'
@@ -36,20 +36,20 @@ jobs:
           assert cfg.get("name"), "falta project.name"
           assert cfg.get("kb_root"), "falta project.kb_root"
           assert cfg.get("tools"), "falta project.tools"
-          print(f"negocio activo: {cfg['name']} (kb_root={cfg['kb_root']})")
+          print(f"negocio de la rama: {cfg['name']} (kb_root={cfg['kb_root']})")
           PY
 
-      # Los 4 docs de alto nivel son proyecciones de desk/bundles + desk/atoms. El
+      # Los 4 docs de alto nivel son proyecciones de desk/materializations + desk/atoms. El
       # script lee los atoms con stdlib (el store .sldb es la autoridad, pero no hace
       # falta instalar sldb), asi que el drift guard corre en el gate sin deps.
       - name: Docs proyectados sin drift
-        run: python desk/bundles/materialize.py --check
+        run: python desk/materializations/materialize.py --check
 
       - name: No hay hardcodes de negocio en el runtime
         run: |
           python - <<'PY'
           import ast, pathlib, sys
-          MARKERS = ("don peppe", "donpeppe", "antonia")
+          MARKERS = ("antonia")
           def docstring_nodes(tree):
               ids = set()
               for node in ast.walk(tree):
@@ -88,7 +88,8 @@ jobs:
           pip install \
             "git+https://github.com/jpcosec/sldb.git" \
             "git+https://github.com/jpcosec/kgdb.git" \
-            "git+https://github.com/jpcosec/opsys.git#egg=deskops"
+            "git+https://github.com/jpcosec/opsys.git#egg=deskops" \
+            "git+https://github.com/jpcosec/pron.git"
 
       - name: Instalar deps de runtime
         run: |
@@ -96,7 +97,7 @@ jobs:
             "fastapi==0.135.2" "starlette==1.3.1" "uvicorn[standard]==0.42.0" \
             "python-multipart==0.0.26" "twilio==9.10.9" "python-dotenv==1.0.1" \
             "networkx==3.6.1" "numpy==2.1.3" "PyYAML==6.0.3" \
-            "SQLAlchemy==2.0.49" "pydantic==2.13.4" \
+            "SQLAlchemy==2.0.49" "pydantic==2.13.4" "alembic==1.18.4" \
             "httpx" "pytest" "pytest-asyncio"
 
       - name: Suite offline (unit + integration, sin LLM)

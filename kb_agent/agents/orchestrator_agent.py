@@ -87,6 +87,11 @@ class OrchestratorDecision(BaseModel):
     step_target: str | None = None
     tool_call: ToolCallDecision | None = None
     reason: str
+    #: Datos que la persona dio EN ESTE mensaje y que valen para el resto de la
+    #: conversacion (los required_slots del step, nombre, dia de aplicacion,
+    #: medico tratante, semana...): {slot: valor}. Se persisten en
+    #: session_state.flow_slots["collected"] y vuelven al prompt en cada turno.
+    captured_slots: dict[str, str] | None = None
 
 
 _NO_STEPS_INSTRUCTION = (
@@ -136,7 +141,8 @@ def render_orchestrator_flow(
         title = str(step.get("title") or step_id)
         kind = str(step.get("kind") or "")
         instructions = str(step.get("instructions") or "")
-        transitions = str(step.get("allowed_transitions") or "").strip()
+        raw_transitions = step.get("allowed_transitions") or ""
+        transitions = ", ".join(str(t) for t in raw_transitions) if isinstance(raw_transitions, (list, tuple)) else str(raw_transitions).strip()
         blocks.append(
             f"### {step_id} — {title} (kind={kind})\n"
             f"Instrucciones: {instructions}\n"
@@ -157,7 +163,9 @@ def render_orchestrator_flow(
         "- 'kind': 'tool_call' SOLO si el contexto dinamico del turno "
         "(pregunta + tools declaradas + grounding) deja claro que hay que "
         "EJECUTAR una tool y tenes TODOS sus argumentos requeridos (no "
-        "inventes valores que el usuario no dio). 'fallback' si no hay "
+        "inventes valores que el usuario no dio; los 'datos_capturados' del "
+        "contexto dinamico SI son valores que el usuario dio en turnos "
+        "anteriores y podes usarlos como argumentos). 'fallback' si no hay "
         "contexto (grounding) para responder. 'nl' en cualquier otro caso.\n"
         "- 'tool_call': obligatorio si kind='tool_call', null en cualquier "
         "otro caso. {name, args} EXACTOS de una tool de la lista "
@@ -169,6 +177,12 @@ def render_orchestrator_flow(
         "actual, un subconjunto del grafo de arriba). Si ninguna aplica, "
         "dejalo en null -- NUNCA selecciones una transicion que no este en "
         "esa lista, aunque el grafo completo muestre otros steps.\n"
+        "- 'captured_slots': los datos que la persona dio EN ESTE mensaje y "
+        "que sirven para el resto de la conversacion (los required_slots del "
+        "step actual y datos estables como nombre, dia de aplicacion, medico "
+        "tratante, semana de tratamiento), como {slot: valor} con valores "
+        "textuales cortos tal como los dijo. null si no dio ninguno. Nunca "
+        "inventes ni deduzcas valores.\n"
         "- 'reason': por que decidiste esto. Obligatorio, breve y "
         "concreto -- se audita en el rastro del turno."
     )
@@ -271,6 +285,10 @@ class OrchestratorAgent:
             "step_actual": compiled_context.get("flow_node"),
             "allowed_transitions": allowed_transitions,
             "tools_disponibles": function_declarations,
+            # Datos que la persona YA dio (capturados de mensajes anteriores,
+            # ver kb_agent/lead_slots.py): cuentan como argumentos disponibles
+            # para una tool aunque no esten en la pregunta de este turno.
+            "datos_capturados": dict(compiled_context.get("collected_slots") or {}),
             "domain_facts": compiled_context.get("domain_facts", []),
             "rules": compiled_context.get("rules", []),
             "user_traits": compiled_context.get("user_traits", []),
@@ -281,6 +299,8 @@ class OrchestratorAgent:
     @staticmethod
     def _to_turn_decision(decision: OrchestratorDecision, allowed_transitions: list[str]) -> dict[str, Any]:
         result: dict[str, Any] = {"kind": decision.kind, "reason": decision.reason}
+        if decision.captured_slots:
+            result["captured_slots"] = {str(k): str(v) for k, v in decision.captured_slots.items() if str(v).strip()}
 
         step_target, vetoed = apply_transition_guard(decision.step_target, allowed_transitions)
         if step_target:

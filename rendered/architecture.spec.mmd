@@ -1,0 +1,608 @@
+graph TD
+    module_agent["agent"]
+    module_agents_base["agents.base"]
+    class_agents_base_AgentRole["AgentRole"]
+    class_agents_base_ToolCall["ToolCall"]
+    class_agents_base_LlmRequest["LlmRequest"]
+    class_agents_base_LlmResponse["LlmResponse"]
+    class_agents_base_Tool["Tool"]
+    class_agents_base_Agent["Agent"]
+    module_agents_gate["agents.gate"]
+    class_agents_gate_GateVerdict["GateVerdict"]
+    class_agents_gate_GateAgent["GateAgent"]
+    module_agents_orchestrator_agent["agents.orchestrator_agent"]
+    class_agents_orchestrator_agent_ToolCallDecision["ToolCallDecision"]
+    class_agents_orchestrator_agent_OrchestratorDecision["OrchestratorDecision"]
+    class_agents_orchestrator_agent_OrchestratorAgent["OrchestratorAgent"]
+    module_agents_router["agents.router"]
+    class_agents_router_BundleEntry["BundleEntry"]
+    class_agents_router_RouterDecision["RouterDecision"]
+    class_agents_router_RouterAgent["RouterAgent"]
+    module_cli["cli"]
+    module_db_check["db_check"]
+    class_db_check_DbRevisionStatus["DbRevisionStatus"]
+    module_inbound["inbound"]
+    class_inbound_InboundResult["InboundResult"]
+    class_inbound_InboundService["InboundService"]
+    module_knowledge_compiled_document["knowledge.compiled_document"]
+    class_knowledge_compiled_document_CompiledDocument["CompiledDocument"]
+    module_knowledge_compiler["knowledge.compiler"]
+    class_knowledge_compiler_SessionStateLike["SessionStateLike"]
+    class_knowledge_compiler_ContextCompiler["ContextCompiler"]
+    module_knowledge_embedder["knowledge.embedder"]
+    class_knowledge_embedder_FastembedEmbedder["FastembedEmbedder"]
+    module_knowledge_flow["knowledge.flow"]
+    class_knowledge_flow_FlowStep["FlowStep"]
+    class_knowledge_flow_ConversationFlow["ConversationFlow"]
+    module_knowledge_world["knowledge.world"]
+    module_lead_slots["lead_slots"]
+    module_llm["llm"]
+    class_llm_Conversador["Conversador"]
+    class_llm_TraitMapper["TraitMapper"]
+    class_llm_GeminiConversador["GeminiConversador"]
+    class_llm_GeminiTraitMapper["GeminiTraitMapper"]
+    module_models_knowledge_agent_framing["models.knowledge.agent_framing"]
+    class_models_knowledge_agent_framing_AgentFraming["AgentFraming"]
+    module_models_knowledge_boundary["models.knowledge.boundary"]
+    class_models_knowledge_boundary_CapabilityBoundary["CapabilityBoundary"]
+    module_models_knowledge_domain["models.knowledge.domain"]
+    class_models_knowledge_domain_AtomQuestion["AtomQuestion"]
+    class_models_knowledge_domain_DomainAtom["DomainAtom"]
+    module_models_knowledge_fallback["models.knowledge.fallback"]
+    class_models_knowledge_fallback_FallbackRule["FallbackRule"]
+    module_models_knowledge_gate["models.knowledge.gate"]
+    class_models_knowledge_gate_GateCriterion["GateCriterion"]
+    module_models_knowledge_index_proxies["models.knowledge.index_proxies"]
+    class_models_knowledge_index_proxies_IndexProxies["IndexProxies"]
+    module_models_knowledge_rule["models.knowledge.rule"]
+    class_models_knowledge_rule_RuleAtom["RuleAtom"]
+    module_models_knowledge_self_declaration["models.knowledge.self_declaration"]
+    class_models_knowledge_self_declaration_SelfDeclaration["SelfDeclaration"]
+    module_models_knowledge_step["models.knowledge.step"]
+    class_models_knowledge_step_StepKind["StepKind"]
+    class_models_knowledge_step_ConversationStep["ConversationStep"]
+    module_models_knowledge_strategy["models.knowledge.strategy"]
+    class_models_knowledge_strategy_StrategyRule["StrategyRule"]
+    module_models_knowledge_style["models.knowledge.style"]
+    class_models_knowledge_style_StyleGuide["StyleGuide"]
+    module_models_knowledge_tool["models.knowledge.tool"]
+    class_models_knowledge_tool_ToolAtom["ToolAtom"]
+    module_models_knowledge_trait["models.knowledge.trait"]
+    class_models_knowledge_trait_TraitAtom["TraitAtom"]
+    module_models_sql_consultas["models_sql.consultas"]
+    class_models_sql_consultas_Consultas["Consultas"]
+    module_models_sql_conversation["models_sql.conversation"]
+    class_models_sql_conversation_ConversationStatus["ConversationStatus"]
+    class_models_sql_conversation_Conversation["Conversation"]
+    module_models_sql_hcp["models_sql.hcp"]
+    class_models_sql_hcp_Recontactos["Recontactos"]
+    class_models_sql_hcp_Consentimientos["Consentimientos"]
+    module_models_sql_identity["models_sql.identity"]
+    class_models_sql_identity_Base["Base"]
+    class_models_sql_identity_Users["Users"]
+    class_models_sql_identity_UserTraits["UserTraits"]
+    module_models_sql_inbound["models_sql.inbound"]
+    class_models_sql_inbound_InboundStatus["InboundStatus"]
+    class_models_sql_inbound_InboundMessage["InboundMessage"]
+    module_models_sql_leads["models_sql.leads"]
+    class_models_sql_leads_Leads["Leads"]
+    class_models_sql_leads_VisitaEstado["VisitaEstado"]
+    class_models_sql_leads_Visitas["Visitas"]
+    module_models_sql_recordatorios["models_sql.recordatorios"]
+    class_models_sql_recordatorios_Recordatorios["Recordatorios"]
+    module_models_sql_reservas["models_sql.reservas"]
+    class_models_sql_reservas_Reservas["Reservas"]
+    module_models_sql_session["models_sql.session"]
+    class_models_sql_session_SessionNode["SessionNode"]
+    class_models_sql_session_SessionState["SessionState"]
+    class_models_sql_session_ChatHistory["ChatHistory"]
+    module_models_sql_turns["models_sql.turns"]
+    class_models_sql_turns_TurnKind["TurnKind"]
+    class_models_sql_turns_Turns["Turns"]
+    module_orchestrator["orchestrator"]
+    class_orchestrator_Orchestrator["Orchestrator"]
+    module_perfilador_extractor["perfilador.extractor"]
+    class_perfilador_extractor_TraitCandidate["TraitCandidate"]
+    class_perfilador_extractor_TraitMatch["TraitMatch"]
+    class_perfilador_extractor_StructuredTraitMapper["StructuredTraitMapper"]
+    class_perfilador_extractor_TraitExtractor["TraitExtractor"]
+    module_perfilador_form_ingestion["perfilador.form_ingestion"]
+    module_perfilador_listener["perfilador.listener"]
+    class_perfilador_listener_TurnClosedEvent["TurnClosedEvent"]
+    class_perfilador_listener_EventBus["EventBus"]
+    class_perfilador_listener_InProcessEventBus["InProcessEventBus"]
+    class_perfilador_listener_AsyncProfilingListener["AsyncProfilingListener"]
+    module_perfilador_traits_store["perfilador.traits_store"]
+    module_pii_scrubber["pii.scrubber"]
+    class_pii_scrubber__PlaceholderRegistry["_PlaceholderRegistry"]
+    module_project_config["project_config"]
+    class_project_config_TuningConfig["TuningConfig"]
+    class_project_config_DeployConfig["DeployConfig"]
+    class_project_config_ProjectConfig["ProjectConfig"]
+    module_reflector_generator["reflector.generator"]
+    class_reflector_generator_RecurrentPattern["RecurrentPattern"]
+    class_reflector_generator_GeneratedAtom["GeneratedAtom"]
+    class_reflector_generator_ReflectorAtomGenerator["ReflectorAtomGenerator"]
+    module_reflector_reader["reflector.reader"]
+    class_reflector_reader_ReflectorHistoryRow["ReflectorHistoryRow"]
+    class_reflector_reader_ReaderCheckpoint["ReaderCheckpoint"]
+    class_reflector_reader_CheckpointStore["CheckpointStore"]
+    class_reflector_reader_InMemoryCheckpointStore["InMemoryCheckpointStore"]
+    class_reflector_reader_ReflectorBatchReaderJob["ReflectorBatchReaderJob"]
+    module_state_machine["state_machine"]
+    class_state_machine_RouterNode["RouterNode"]
+    class_state_machine_SessionState["SessionState"]
+    class_state_machine_CronTriggerPayload["CronTriggerPayload"]
+    class_state_machine_RouterTurnResult["RouterTurnResult"]
+    class_state_machine_RouterStateMachine["RouterStateMachine"]
+    module_tools_consultas["tools.consultas"]
+    module_tools_enrolamiento["tools.enrolamiento"]
+    module_tools_hcp["tools.hcp"]
+    module_tools_leads["tools.leads"]
+    module_tools_recordatorios["tools.recordatorios"]
+    module_tools_reservas["tools.reservas"]
+    module_tools_visitas["tools.visitas"]
+    module___future__["module___future__"]
+    module_collections_abc["abc"]
+    module_typing["typing"]
+    module_dataclasses["dataclasses"]
+    module_enum["enum"]
+    module_pydantic["pydantic"]
+    module_kb_agent_agents_base["base"]
+    module_kb_agent_agent["agent"]
+    module_knowledge_base_operations["operations"]
+    module_pathlib["pathlib"]
+    module_dotenv["dotenv"]
+    module_kb_agent_db_check["check"]
+    module_kb_agent_orchestrator["orchestrator"]
+    module_kb_agent_project_config["config"]
+    module_sqlalchemy["sqlalchemy"]
+    module_alembic_config["config"]
+    module_alembic_runtime_migration["migration"]
+    module_alembic_script["script"]
+    module_datetime["datetime"]
+    module_sqlalchemy_exc["exc"]
+    module_kb_agent_models_sql_inbound["inbound"]
+    module_twilio_rest["rest"]
+    module_sqlalchemy_orm["orm"]
+    module_kb_agent_agents_router["router"]
+    module_kb_agent_models_knowledge["knowledge"]
+    module_kb_agent_models_sql_identity["identity"]
+    module_kb_agent_models_sql_session["session"]
+    module_compiled_document["document"]
+    module_flow["flow"]
+    module_fastembed["fastembed"]
+    module_pron_graph["graph"]
+    module_kgdb_world["world"]
+    module_pron_world["world"]
+    module_kb_agent_perfilador_extractor["extractor"]
+    module_google["google"]
+    module_sldb["sldb"]
+    module_index_proxies["proxies"]
+    module_domain["domain"]
+    module_identity["identity"]
+    module_time["time"]
+    module_uuid["uuid"]
+    module_sqlalchemy_pool["pool"]
+    module_kb_agent_agents_gate["gate"]
+    module_kb_agent_agents_orchestrator_agent["agent"]
+    module_kb_agent_llm["llm"]
+    module_kb_agent_models_sql_reservas["reservas"]
+    module_kb_agent_models_sql_recordatorios["recordatorios"]
+    module_kb_agent_models_sql_consultas["consultas"]
+    module_kb_agent_models_sql_turns["turns"]
+    module_kb_agent_models_sql_conversation["conversation"]
+    module_kb_agent_knowledge_compiler["compiler"]
+    module_kb_agent_perfilador_listener["listener"]
+    module_kb_agent_lead_slots["slots"]
+    module_kb_agent_pii_scrubber["scrubber"]
+    module_kb_agent_reflector["reflector"]
+    module_kb_agent_tools["tools"]
+    module_kb_agent_state_machine["machine"]
+    module_textwrap["textwrap"]
+    module_kb_agent_perfilador_traits_store["store"]
+    module_abc["abc"]
+    module_collections["collections"]
+    module_deskops_atom_tags["tags"]
+    module_kb_agent_reflector_reader["reader"]
+    module_kb_agent_models_sql_hcp["hcp"]
+    module_kb_agent_models_sql_leads["leads"]
+    module_kb_agent_tools_leads["leads"]
+    module_agent -->|"imports"| module___future__
+    module_agent -->|"imports"| module_collections_abc
+    module_agent -->|"imports"| module_typing
+    module_agents_base -->|"defines"| class_agents_base_AgentRole
+    module_agents_base -->|"defines"| class_agents_base_ToolCall
+    module_agents_base -->|"defines"| class_agents_base_LlmRequest
+    module_agents_base -->|"defines"| class_agents_base_LlmResponse
+    module_agents_base -->|"defines"| class_agents_base_Tool
+    module_agents_base -->|"defines"| class_agents_base_Agent
+    module_agents_base -->|"imports"| module___future__
+    module_agents_base -->|"imports"| module_collections_abc
+    module_agents_base -->|"imports"| module_dataclasses
+    module_agents_base -->|"imports"| module_enum
+    module_agents_base -->|"imports"| module_typing
+    module_agents_base -->|"imports"| module_pydantic
+    module_agents_gate -->|"defines"| class_agents_gate_GateVerdict
+    module_agents_gate -->|"defines"| class_agents_gate_GateAgent
+    module_agents_gate -->|"imports"| module___future__
+    module_agents_gate -->|"imports"| module_collections_abc
+    module_agents_gate -->|"imports"| module_typing
+    module_agents_gate -->|"imports"| module_pydantic
+    module_agents_gate -->|"imports"| module_kb_agent_agents_base
+    module_agents_orchestrator_agent -->|"defines"| class_agents_orchestrator_agent_ToolCallDecision
+    module_agents_orchestrator_agent -->|"defines"| class_agents_orchestrator_agent_OrchestratorDecision
+    module_agents_orchestrator_agent -->|"defines"| class_agents_orchestrator_agent_OrchestratorAgent
+    module_agents_orchestrator_agent -->|"imports"| module___future__
+    module_agents_orchestrator_agent -->|"imports"| module_collections_abc
+    module_agents_orchestrator_agent -->|"imports"| module_typing
+    module_agents_orchestrator_agent -->|"imports"| module_pydantic
+    module_agents_orchestrator_agent -->|"imports"| module_kb_agent_agent
+    module_agents_orchestrator_agent -->|"imports"| module_kb_agent_agents_base
+    module_agents_router -->|"defines"| class_agents_router_BundleEntry
+    module_agents_router -->|"defines"| class_agents_router_RouterDecision
+    module_agents_router -->|"defines"| class_agents_router_RouterAgent
+    module_agents_router -->|"imports"| module___future__
+    module_agents_router -->|"imports"| module_collections_abc
+    module_agents_router -->|"imports"| module_typing
+    module_agents_router -->|"imports"| module_pydantic
+    module_agents_router -->|"imports"| module_kb_agent_agents_base
+    module_agents_router -->|"imports"| module_knowledge_base_operations
+    module_cli -->|"imports"| module___future__
+    module_cli -->|"imports"| module_pathlib
+    module_cli -->|"imports"| module_dotenv
+    module_cli -->|"imports"| module_kb_agent_db_check
+    module_cli -->|"imports"| module_kb_agent_orchestrator
+    module_cli -->|"imports"| module_kb_agent_project_config
+    module_db_check -->|"defines"| class_db_check_DbRevisionStatus
+    module_db_check -->|"imports"| module___future__
+    module_db_check -->|"imports"| module_dataclasses
+    module_db_check -->|"imports"| module_pathlib
+    module_db_check -->|"imports"| module_sqlalchemy
+    module_db_check -->|"imports"| module_alembic_config
+    module_db_check -->|"imports"| module_alembic_runtime_migration
+    module_db_check -->|"imports"| module_alembic_script
+    module_inbound -->|"defines"| class_inbound_InboundResult
+    module_inbound -->|"defines"| class_inbound_InboundService
+    module_inbound -->|"imports"| module___future__
+    module_inbound -->|"imports"| module_dataclasses
+    module_inbound -->|"imports"| module_datetime
+    module_inbound -->|"imports"| module_typing
+    module_inbound -->|"imports"| module_sqlalchemy_exc
+    module_inbound -->|"imports"| module_kb_agent_models_sql_inbound
+    module_inbound -->|"imports"| module_kb_agent_orchestrator
+    module_inbound -->|"imports"| module_twilio_rest
+    module_knowledge_compiled_document -->|"defines"| class_knowledge_compiled_document_CompiledDocument
+    module_knowledge_compiled_document -->|"imports"| module___future__
+    module_knowledge_compiled_document -->|"imports"| module_dataclasses
+    module_knowledge_compiled_document -->|"imports"| module_typing
+    module_knowledge_compiler -->|"defines"| class_knowledge_compiler_SessionStateLike
+    module_knowledge_compiler -->|"defines"| class_knowledge_compiler_ContextCompiler
+    module_knowledge_compiler -->|"imports"| module___future__
+    module_knowledge_compiler -->|"imports"| module_dataclasses
+    module_knowledge_compiler -->|"imports"| module_typing
+    module_knowledge_compiler -->|"imports"| module_sqlalchemy
+    module_knowledge_compiler -->|"imports"| module_sqlalchemy_orm
+    module_knowledge_compiler -->|"imports"| module_kb_agent_agents_router
+    module_knowledge_compiler -->|"imports"| module_kb_agent_models_knowledge
+    module_knowledge_compiler -->|"imports"| module_kb_agent_models_sql_identity
+    module_knowledge_compiler -->|"imports"| module_kb_agent_models_sql_session
+    module_knowledge_compiler -->|"imports"| module_compiled_document
+    module_knowledge_compiler -->|"imports"| module_flow
+    module_knowledge_compiler -->|"imports"| module_knowledge_base_operations
+    module_knowledge_compiler -->|"imports"| module_kb_agent_agents_router
+    module_knowledge_embedder -->|"defines"| class_knowledge_embedder_FastembedEmbedder
+    module_knowledge_embedder -->|"imports"| module___future__
+    module_knowledge_embedder -->|"imports"| module_pathlib
+    module_knowledge_embedder -->|"imports"| module_typing
+    module_knowledge_embedder -->|"imports"| module_fastembed
+    module_knowledge_flow -->|"defines"| class_knowledge_flow_FlowStep
+    module_knowledge_flow -->|"defines"| class_knowledge_flow_ConversationFlow
+    module_knowledge_flow -->|"imports"| module___future__
+    module_knowledge_flow -->|"imports"| module_dataclasses
+    module_knowledge_flow -->|"imports"| module_pron_graph
+    module_knowledge_world -->|"imports"| module___future__
+    module_knowledge_world -->|"imports"| module_pathlib
+    module_knowledge_world -->|"imports"| module_kgdb_world
+    module_knowledge_world -->|"imports"| module_pron_world
+    module_lead_slots -->|"imports"| module___future__
+    module_lead_slots -->|"imports"| module_typing
+    module_llm -->|"defines"| class_llm_Conversador
+    module_llm -->|"defines"| class_llm_TraitMapper
+    module_llm -->|"defines"| class_llm_GeminiConversador
+    module_llm -->|"defines"| class_llm_GeminiTraitMapper
+    module_llm -->|"imports"| module___future__
+    module_llm -->|"imports"| module_collections_abc
+    module_llm -->|"imports"| module_typing
+    module_llm -->|"imports"| module_kb_agent_perfilador_extractor
+    module_llm -->|"imports"| module_google
+    module_models_knowledge_agent_framing -->|"defines"| class_models_knowledge_agent_framing_AgentFraming
+    module_models_knowledge_agent_framing -->|"imports"| module_pydantic
+    module_models_knowledge_agent_framing -->|"imports"| module_sldb
+    module_models_knowledge_agent_framing -->|"imports"| module_index_proxies
+    module_models_knowledge_agent_framing -->|"imports"| module_domain
+    module_models_knowledge_boundary -->|"defines"| class_models_knowledge_boundary_CapabilityBoundary
+    module_models_knowledge_boundary -->|"imports"| module_pydantic
+    module_models_knowledge_boundary -->|"imports"| module_sldb
+    module_models_knowledge_boundary -->|"imports"| module_index_proxies
+    module_models_knowledge_boundary -->|"imports"| module_domain
+    module_models_knowledge_domain -->|"defines"| class_models_knowledge_domain_AtomQuestion
+    module_models_knowledge_domain -->|"defines"| class_models_knowledge_domain_DomainAtom
+    module_models_knowledge_domain -->|"imports"| module_enum
+    module_models_knowledge_domain -->|"imports"| module_typing
+    module_models_knowledge_domain -->|"imports"| module_pydantic
+    module_models_knowledge_domain -->|"imports"| module_sldb
+    module_models_knowledge_domain -->|"imports"| module_index_proxies
+    module_models_knowledge_fallback -->|"defines"| class_models_knowledge_fallback_FallbackRule
+    module_models_knowledge_fallback -->|"imports"| module_typing
+    module_models_knowledge_fallback -->|"imports"| module_pydantic
+    module_models_knowledge_fallback -->|"imports"| module_sldb
+    module_models_knowledge_fallback -->|"imports"| module_index_proxies
+    module_models_knowledge_fallback -->|"imports"| module_domain
+    module_models_knowledge_gate -->|"defines"| class_models_knowledge_gate_GateCriterion
+    module_models_knowledge_gate -->|"imports"| module_pydantic
+    module_models_knowledge_gate -->|"imports"| module_sldb
+    module_models_knowledge_gate -->|"imports"| module_index_proxies
+    module_models_knowledge_gate -->|"imports"| module_domain
+    module_models_knowledge_index_proxies -->|"defines"| class_models_knowledge_index_proxies_IndexProxies
+    module_models_knowledge_index_proxies -->|"imports"| module___future__
+    module_models_knowledge_index_proxies -->|"imports"| module_typing
+    module_models_knowledge_index_proxies -->|"imports"| module_pydantic
+    module_models_knowledge_index_proxies -->|"imports"| module_sldb
+    module_models_knowledge_rule -->|"defines"| class_models_knowledge_rule_RuleAtom
+    module_models_knowledge_rule -->|"imports"| module_typing
+    module_models_knowledge_rule -->|"imports"| module_pydantic
+    module_models_knowledge_rule -->|"imports"| module_sldb
+    module_models_knowledge_rule -->|"imports"| module_index_proxies
+    module_models_knowledge_rule -->|"imports"| module_domain
+    module_models_knowledge_self_declaration -->|"defines"| class_models_knowledge_self_declaration_SelfDeclaration
+    module_models_knowledge_self_declaration -->|"imports"| module_pydantic
+    module_models_knowledge_self_declaration -->|"imports"| module_sldb
+    module_models_knowledge_self_declaration -->|"imports"| module_index_proxies
+    module_models_knowledge_self_declaration -->|"imports"| module_domain
+    module_models_knowledge_step -->|"defines"| class_models_knowledge_step_StepKind
+    module_models_knowledge_step -->|"defines"| class_models_knowledge_step_ConversationStep
+    module_models_knowledge_step -->|"imports"| module_enum
+    module_models_knowledge_step -->|"imports"| module_typing
+    module_models_knowledge_step -->|"imports"| module_pydantic
+    module_models_knowledge_step -->|"imports"| module_sldb
+    module_models_knowledge_step -->|"imports"| module_index_proxies
+    module_models_knowledge_step -->|"imports"| module_domain
+    module_models_knowledge_strategy -->|"defines"| class_models_knowledge_strategy_StrategyRule
+    module_models_knowledge_strategy -->|"imports"| module_pydantic
+    module_models_knowledge_strategy -->|"imports"| module_sldb
+    module_models_knowledge_strategy -->|"imports"| module_index_proxies
+    module_models_knowledge_strategy -->|"imports"| module_domain
+    module_models_knowledge_style -->|"defines"| class_models_knowledge_style_StyleGuide
+    module_models_knowledge_style -->|"imports"| module_pydantic
+    module_models_knowledge_style -->|"imports"| module_sldb
+    module_models_knowledge_style -->|"imports"| module_index_proxies
+    module_models_knowledge_style -->|"imports"| module_domain
+    module_models_knowledge_tool -->|"defines"| class_models_knowledge_tool_ToolAtom
+    module_models_knowledge_tool -->|"imports"| module_typing
+    module_models_knowledge_tool -->|"imports"| module_pydantic
+    module_models_knowledge_tool -->|"imports"| module_sldb
+    module_models_knowledge_tool -->|"imports"| module_index_proxies
+    module_models_knowledge_tool -->|"imports"| module_domain
+    module_models_knowledge_trait -->|"defines"| class_models_knowledge_trait_TraitAtom
+    module_models_knowledge_trait -->|"imports"| module_typing
+    module_models_knowledge_trait -->|"imports"| module_pydantic
+    module_models_knowledge_trait -->|"imports"| module_sldb
+    module_models_knowledge_trait -->|"imports"| module_index_proxies
+    module_models_knowledge_trait -->|"imports"| module_domain
+    module_models_sql_consultas -->|"defines"| class_models_sql_consultas_Consultas
+    module_models_sql_consultas -->|"imports"| module___future__
+    module_models_sql_consultas -->|"imports"| module_datetime
+    module_models_sql_consultas -->|"imports"| module_sqlalchemy
+    module_models_sql_consultas -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_consultas -->|"imports"| module_identity
+    module_models_sql_conversation -->|"defines"| class_models_sql_conversation_ConversationStatus
+    module_models_sql_conversation -->|"defines"| class_models_sql_conversation_Conversation
+    module_models_sql_conversation -->|"imports"| module___future__
+    module_models_sql_conversation -->|"imports"| module_datetime
+    module_models_sql_conversation -->|"imports"| module_enum
+    module_models_sql_conversation -->|"imports"| module_sqlalchemy
+    module_models_sql_conversation -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_conversation -->|"imports"| module_identity
+    module_models_sql_hcp -->|"defines"| class_models_sql_hcp_Recontactos
+    module_models_sql_hcp -->|"defines"| class_models_sql_hcp_Consentimientos
+    module_models_sql_hcp -->|"imports"| module___future__
+    module_models_sql_hcp -->|"imports"| module_datetime
+    module_models_sql_hcp -->|"imports"| module_sqlalchemy
+    module_models_sql_hcp -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_hcp -->|"imports"| module_identity
+    module_models_sql_identity -->|"defines"| class_models_sql_identity_Base
+    module_models_sql_identity -->|"defines"| class_models_sql_identity_Users
+    module_models_sql_identity -->|"defines"| class_models_sql_identity_UserTraits
+    module_models_sql_identity -->|"imports"| module___future__
+    module_models_sql_identity -->|"imports"| module_datetime
+    module_models_sql_identity -->|"imports"| module_sqlalchemy
+    module_models_sql_identity -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_inbound -->|"defines"| class_models_sql_inbound_InboundStatus
+    module_models_sql_inbound -->|"defines"| class_models_sql_inbound_InboundMessage
+    module_models_sql_inbound -->|"imports"| module___future__
+    module_models_sql_inbound -->|"imports"| module_datetime
+    module_models_sql_inbound -->|"imports"| module_enum
+    module_models_sql_inbound -->|"imports"| module_sqlalchemy
+    module_models_sql_inbound -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_inbound -->|"imports"| module_identity
+    module_models_sql_leads -->|"defines"| class_models_sql_leads_Leads
+    module_models_sql_leads -->|"defines"| class_models_sql_leads_VisitaEstado
+    module_models_sql_leads -->|"defines"| class_models_sql_leads_Visitas
+    module_models_sql_leads -->|"imports"| module___future__
+    module_models_sql_leads -->|"imports"| module_datetime
+    module_models_sql_leads -->|"imports"| module_enum
+    module_models_sql_leads -->|"imports"| module_sqlalchemy
+    module_models_sql_leads -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_leads -->|"imports"| module_identity
+    module_models_sql_recordatorios -->|"defines"| class_models_sql_recordatorios_Recordatorios
+    module_models_sql_recordatorios -->|"imports"| module___future__
+    module_models_sql_recordatorios -->|"imports"| module_datetime
+    module_models_sql_recordatorios -->|"imports"| module_sqlalchemy
+    module_models_sql_recordatorios -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_recordatorios -->|"imports"| module_identity
+    module_models_sql_reservas -->|"defines"| class_models_sql_reservas_Reservas
+    module_models_sql_reservas -->|"imports"| module___future__
+    module_models_sql_reservas -->|"imports"| module_datetime
+    module_models_sql_reservas -->|"imports"| module_sqlalchemy
+    module_models_sql_reservas -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_reservas -->|"imports"| module_identity
+    module_models_sql_session -->|"defines"| class_models_sql_session_SessionNode
+    module_models_sql_session -->|"defines"| class_models_sql_session_SessionState
+    module_models_sql_session -->|"defines"| class_models_sql_session_ChatHistory
+    module_models_sql_session -->|"imports"| module___future__
+    module_models_sql_session -->|"imports"| module_datetime
+    module_models_sql_session -->|"imports"| module_enum
+    module_models_sql_session -->|"imports"| module_sqlalchemy
+    module_models_sql_session -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_session -->|"imports"| module_identity
+    module_models_sql_turns -->|"defines"| class_models_sql_turns_TurnKind
+    module_models_sql_turns -->|"defines"| class_models_sql_turns_Turns
+    module_models_sql_turns -->|"imports"| module___future__
+    module_models_sql_turns -->|"imports"| module_datetime
+    module_models_sql_turns -->|"imports"| module_enum
+    module_models_sql_turns -->|"imports"| module_sqlalchemy
+    module_models_sql_turns -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_turns -->|"imports"| module_identity
+    module_orchestrator -->|"defines"| class_orchestrator_Orchestrator
+    module_orchestrator -->|"imports"| module___future__
+    module_orchestrator -->|"imports"| module_time
+    module_orchestrator -->|"imports"| module_collections_abc
+    module_orchestrator -->|"imports"| module_datetime
+    module_orchestrator -->|"imports"| module_pathlib
+    module_orchestrator -->|"imports"| module_typing
+    module_orchestrator -->|"imports"| module_uuid
+    module_orchestrator -->|"imports"| module_sqlalchemy
+    module_orchestrator -->|"imports"| module_sqlalchemy_pool
+    module_orchestrator -->|"imports"| module_sqlalchemy_exc
+    module_orchestrator -->|"imports"| module_sqlalchemy_orm
+    module_orchestrator -->|"imports"| module_kb_agent_agent
+    module_orchestrator -->|"imports"| module_kb_agent_agents_base
+    module_orchestrator -->|"imports"| module_kb_agent_agents_gate
+    module_orchestrator -->|"imports"| module_kb_agent_agents_orchestrator_agent
+    module_orchestrator -->|"imports"| module_kb_agent_agents_router
+    module_orchestrator -->|"imports"| module_kb_agent_llm
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_identity
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_reservas
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_recordatorios
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_consultas
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_session
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_turns
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_conversation
+    module_orchestrator -->|"imports"| module_kb_agent_knowledge_compiler
+    module_orchestrator -->|"imports"| module_kb_agent_perfilador_extractor
+    module_orchestrator -->|"imports"| module_kb_agent_perfilador_listener
+    module_orchestrator -->|"imports"| module_kb_agent_lead_slots
+    module_orchestrator -->|"imports"| module_kb_agent_pii_scrubber
+    module_orchestrator -->|"imports"| module_kb_agent_pii_scrubber
+    module_orchestrator -->|"imports"| module_kb_agent_project_config
+    module_orchestrator -->|"imports"| module_kb_agent_reflector
+    module_orchestrator -->|"imports"| module_kb_agent_tools
+    module_orchestrator -->|"imports"| module_kb_agent_state_machine
+    module_orchestrator -->|"imports"| module_knowledge_base_operations
+    module_perfilador_extractor -->|"defines"| class_perfilador_extractor_TraitCandidate
+    module_perfilador_extractor -->|"defines"| class_perfilador_extractor_TraitMatch
+    module_perfilador_extractor -->|"defines"| class_perfilador_extractor_StructuredTraitMapper
+    module_perfilador_extractor -->|"defines"| class_perfilador_extractor_TraitExtractor
+    module_perfilador_extractor -->|"imports"| module___future__
+    module_perfilador_extractor -->|"imports"| module_collections_abc
+    module_perfilador_extractor -->|"imports"| module_dataclasses
+    module_perfilador_extractor -->|"imports"| module_textwrap
+    module_perfilador_extractor -->|"imports"| module_typing
+    module_perfilador_extractor -->|"imports"| module_sqlalchemy_orm
+    module_perfilador_extractor -->|"imports"| module_kb_agent_perfilador_traits_store
+    module_perfilador_extractor -->|"imports"| module_knowledge_base_operations
+    module_perfilador_form_ingestion -->|"imports"| module___future__
+    module_perfilador_form_ingestion -->|"imports"| module_collections_abc
+    module_perfilador_form_ingestion -->|"imports"| module_sqlalchemy_orm
+    module_perfilador_form_ingestion -->|"imports"| module_kb_agent_perfilador_traits_store
+    module_perfilador_listener -->|"defines"| class_perfilador_listener_TurnClosedEvent
+    module_perfilador_listener -->|"defines"| class_perfilador_listener_EventBus
+    module_perfilador_listener -->|"defines"| class_perfilador_listener_InProcessEventBus
+    module_perfilador_listener -->|"defines"| class_perfilador_listener_AsyncProfilingListener
+    module_perfilador_listener -->|"imports"| module___future__
+    module_perfilador_listener -->|"imports"| module_abc
+    module_perfilador_listener -->|"imports"| module_collections_abc
+    module_perfilador_listener -->|"imports"| module_dataclasses
+    module_perfilador_listener -->|"imports"| module_typing
+    module_perfilador_listener -->|"imports"| module_kb_agent_pii_scrubber
+    module_perfilador_traits_store -->|"imports"| module___future__
+    module_perfilador_traits_store -->|"imports"| module_typing
+    module_perfilador_traits_store -->|"imports"| module_sqlalchemy_orm
+    module_perfilador_traits_store -->|"imports"| module_kb_agent_models_sql_identity
+    module_pii_scrubber -->|"defines"| class_pii_scrubber__PlaceholderRegistry
+    module_pii_scrubber -->|"imports"| module___future__
+    module_pii_scrubber -->|"imports"| module_collections_abc
+    module_pii_scrubber -->|"imports"| module_sqlalchemy
+    module_pii_scrubber -->|"imports"| module_sqlalchemy_orm
+    module_pii_scrubber -->|"imports"| module_kb_agent_models_sql_session
+    module_project_config -->|"defines"| class_project_config_TuningConfig
+    module_project_config -->|"defines"| class_project_config_DeployConfig
+    module_project_config -->|"defines"| class_project_config_ProjectConfig
+    module_project_config -->|"imports"| module___future__
+    module_project_config -->|"imports"| module_dataclasses
+    module_project_config -->|"imports"| module_pathlib
+    module_project_config -->|"imports"| module_typing
+    module_reflector_generator -->|"defines"| class_reflector_generator_RecurrentPattern
+    module_reflector_generator -->|"defines"| class_reflector_generator_GeneratedAtom
+    module_reflector_generator -->|"defines"| class_reflector_generator_ReflectorAtomGenerator
+    module_reflector_generator -->|"imports"| module___future__
+    module_reflector_generator -->|"imports"| module_collections
+    module_reflector_generator -->|"imports"| module_dataclasses
+    module_reflector_generator -->|"imports"| module_pathlib
+    module_reflector_generator -->|"imports"| module_typing
+    module_reflector_generator -->|"imports"| module_deskops_atom_tags
+    module_reflector_generator -->|"imports"| module_knowledge_base_operations
+    module_reflector_generator -->|"imports"| module_kb_agent_reflector_reader
+    module_reflector_reader -->|"defines"| class_reflector_reader_ReflectorHistoryRow
+    module_reflector_reader -->|"defines"| class_reflector_reader_ReaderCheckpoint
+    module_reflector_reader -->|"defines"| class_reflector_reader_CheckpointStore
+    module_reflector_reader -->|"defines"| class_reflector_reader_InMemoryCheckpointStore
+    module_reflector_reader -->|"defines"| class_reflector_reader_ReflectorBatchReaderJob
+    module_reflector_reader -->|"imports"| module___future__
+    module_reflector_reader -->|"imports"| module_collections_abc
+    module_reflector_reader -->|"imports"| module_dataclasses
+    module_reflector_reader -->|"imports"| module_datetime
+    module_reflector_reader -->|"imports"| module_typing
+    module_reflector_reader -->|"imports"| module_sqlalchemy
+    module_reflector_reader -->|"imports"| module_sqlalchemy_orm
+    module_reflector_reader -->|"imports"| module_kb_agent_models_sql_session
+    module_state_machine -->|"defines"| class_state_machine_RouterNode
+    module_state_machine -->|"defines"| class_state_machine_SessionState
+    module_state_machine -->|"defines"| class_state_machine_CronTriggerPayload
+    module_state_machine -->|"defines"| class_state_machine_RouterTurnResult
+    module_state_machine -->|"defines"| class_state_machine_RouterStateMachine
+    module_state_machine -->|"imports"| module___future__
+    module_state_machine -->|"imports"| module_dataclasses
+    module_state_machine -->|"imports"| module_enum
+    module_state_machine -->|"imports"| module_typing
+    module_tools_consultas -->|"imports"| module___future__
+    module_tools_consultas -->|"imports"| module_typing
+    module_tools_consultas -->|"imports"| module_sqlalchemy_orm
+    module_tools_consultas -->|"imports"| module_kb_agent_models_sql_consultas
+    module_tools_enrolamiento -->|"imports"| module___future__
+    module_tools_enrolamiento -->|"imports"| module_typing
+    module_tools_enrolamiento -->|"imports"| module_sqlalchemy_orm
+    module_tools_enrolamiento -->|"imports"| module_kb_agent_models_sql_identity
+    module_tools_hcp -->|"imports"| module___future__
+    module_tools_hcp -->|"imports"| module_typing
+    module_tools_hcp -->|"imports"| module_sqlalchemy_orm
+    module_tools_hcp -->|"imports"| module_kb_agent_models_sql_hcp
+    module_tools_leads -->|"imports"| module___future__
+    module_tools_leads -->|"imports"| module_typing
+    module_tools_leads -->|"imports"| module_sqlalchemy_orm
+    module_tools_leads -->|"imports"| module_kb_agent_models_sql_leads
+    module_tools_leads -->|"imports"| module_kb_agent_models_sql_session
+    module_tools_recordatorios -->|"imports"| module___future__
+    module_tools_recordatorios -->|"imports"| module_typing
+    module_tools_recordatorios -->|"imports"| module_sqlalchemy_orm
+    module_tools_recordatorios -->|"imports"| module_kb_agent_models_sql_recordatorios
+    module_tools_reservas -->|"imports"| module___future__
+    module_tools_reservas -->|"imports"| module_typing
+    module_tools_reservas -->|"imports"| module_sqlalchemy_orm
+    module_tools_reservas -->|"imports"| module_kb_agent_models_sql_reservas
+    module_tools_visitas -->|"imports"| module___future__
+    module_tools_visitas -->|"imports"| module_typing
+    module_tools_visitas -->|"imports"| module_sqlalchemy_orm
+    module_tools_visitas -->|"imports"| module_kb_agent_models_sql_leads
+    module_tools_visitas -->|"imports"| module_kb_agent_tools_leads

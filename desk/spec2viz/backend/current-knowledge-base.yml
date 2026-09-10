@@ -4,6 +4,9 @@ type: component
 version: "1.0"
 metadata:
   author: antonIA
+  atoms:
+    - atom-sldb-knowledge-base
+    - atom-encuadre-de-agentes-desde-la-kb-agentframing
   description: >-
     Componentes reales del paquete knowledge_base/: el CLI (entrypoint + dispatch),
     el parser (11 subcomandos argparse), y la capa de operaciones
@@ -36,10 +39,8 @@ data:
       contains:
         - CmdExplore
         - CmdShow
-        - CmdStep
         - CmdTraits
         - CmdSelf
-        - CmdContext
         - CmdPropose
         - CmdIndex
         - CmdPromote
@@ -51,23 +52,17 @@ data:
     CmdShow:
       label: "show <atom_id>"
       kind: interface
-    CmdStep:
-      label: "step next --user"
-      kind: interface
     CmdTraits:
       label: "traits --user"
       kind: interface
     CmdSelf:
       label: self
       kind: interface
-    CmdContext:
-      label: "context --user"
-      kind: interface
     CmdPropose:
       label: "propose --model --body"
       kind: interface
     CmdIndex:
-      label: "index embeddings / index hierarchy"
+      label: "index embeddings / index audit (DocumentIndex de pron en <kb>/.pron/)"
       kind: interface
     CmdPromote:
       label: "promote <atom_id>"
@@ -90,30 +85,36 @@ data:
         - ModelMap
 
     OpsRetrieval:
-      label: "explore / explore_multi / show (SLDB search)"
+      label: "explore / explore_multi / show (DocumentIndex + pron.Graph)"
       kind: core
     OpsSession:
-      label: "step_next / traits / self_context / context (KGDB + SQL)"
+      label: "traits / self_context (KB + SQL)"
       kind: core
     OpsPropose:
-      label: "propose / promote (proposed -> active atom)"
+      label: "propose / promote (proposed -> active atom, via pron.Store)"
       kind: core
     OpsOrganize:
       label: "organize / derive_path (flat atoms -> tag-derived dirs)"
       kind: core
     OpsIndex:
-      label: "index_embeddings / index_hierarchy (offline)"
+      label: "index_embeddings / audit_embeddings (DocumentIndex, keyed por hash_c)"
       kind: core
     OpsReflect:
       label: "reflect (ChatHistory -> proposed atoms)"
       kind: core
     ModelMap:
-      label: "MODEL_MAP / ALL_MODELS (10 typed KB models)"
+      label: "MODEL_MAP / ALL_MODELS (12 typed KB models)"
       kind: core
 
     # ── dependencias reales (edges de import) ─────────────────────
-    SldbFind:
-      label: "sldb.cli.commands.find (iter_search_records, search_records)"
+    PronWorld:
+      label: "pron.World / pron.Store (un mundo por proceso; lectura y escritura por libreria de sldb)"
+      kind: external
+    PronGraph:
+      label: "pron.Graph (grafo tipado de kgdb en <kb>/.pron/graph.nx.json)"
+      kind: external
+    PronIndex:
+      label: "pron.embedder.DocumentIndex (vectores por hash_c en <kb>/.pron/docs.<embedder>.json)"
       kind: external
     SldbValidation:
       label: "sldb.runtime.validation (extract_model_data, render_model_markdown)"
@@ -127,21 +128,21 @@ data:
     KBSqlModels:
       label: "kb_agent.models_sql (identity: Users/UserTraits · session: SessionState)"
       kind: external
-    KGDBReader:
-      label: "kb_agent.ontologizador.kgdb_reader.KGDBReader"
+    KBFlow:
+      label: "kb_agent.knowledge.flow.ConversationFlow (transitions_to / grounded_by / uses_tool)"
       kind: external
     ReflectorPkg:
       label: "kb_agent.reflector (BatchReaderJob, AtomGenerator, CheckpointStore)"
       kind: external
     FastEmbed:
-      label: "fastembed.TextEmbedding (jina-embeddings-v2-base-es)"
+      label: "kb_agent.knowledge.embedder.FastembedEmbedder (Embedder de pron sobre fastembed, jina es)"
       kind: external
     SqlAlchemy:
       label: "sqlalchemy (create_engine, Session)"
       kind: external
 
     SldbStoreFiles:
-      label: ".sldb store (atoms + semantic indexes)"
+      label: ".sldb store (atoms + relations/ RelationDoc + semantic indexes) y .pron/ derivado"
       kind: database
     KnowledgeDb:
       label: ".knowledge.db (SQLite: users, traits, session)"
@@ -162,9 +163,17 @@ data:
       label: dispatch to KnowledgeOperations
 
     - from: OpsRetrieval
-      to: SldbFind
+      to: PronIndex
       relation: uses
-      label: search records
+      label: rank por similitud
+    - from: OpsRetrieval
+      to: PronGraph
+      relation: uses
+      label: hermanos por tag / navegacion
+    - from: Operations
+      to: PronWorld
+      relation: uses
+      label: store.docs() / payload / create
     - from: OpsRetrieval
       to: SldbValidation
       relation: uses
@@ -173,10 +182,10 @@ data:
       to: KBModels
       relation: uses
       label: typed atom models
-    - from: OpsSession
-      to: KGDBReader
+    - from: Operations
+      to: KBFlow
       relation: uses
-      label: flow graph navigation
+      label: flow (vista del grafo)
     - from: OpsSession
       to: KBSqlModels
       relation: reads

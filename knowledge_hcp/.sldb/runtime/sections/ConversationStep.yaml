@@ -1,0 +1,851 @@
+documents:
+- doc_name: step-hcp-validacion-policy-gate
+  sections:
+  - path: validaci-n-policy-gate-autochequeo-post-draft
+    title: Validación policy gate — autochequeo post-draft
+    breadcrumbs:
+    - Validación policy gate — autochequeo post-draft
+    about:
+    - Validación policy gate — autochequeo post-draft
+    - validaci n policy gate autochequeo post draft
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: validaci-n-policy-gate-autochequeo-post-draft
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: validaci-n-policy-gate-autochequeo-post-draft/instructions
+    title: Instructions
+    breadcrumbs:
+    - Validación policy gate — autochequeo post-draft
+    - Instructions
+    about:
+    - Validación policy gate — autochequeo post-draft
+    - validaci n policy gate autochequeo post draft
+    - Instructions
+    - instructions
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: validaci-n-policy-gate-autochequeo-post-draft/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Validación policy gate — autochequeo post-draft
+    - Required Slots
+    about:
+    - Validación policy gate — autochequeo post-draft
+    - validaci n policy gate autochequeo post draft
+    - Required Slots
+    - required slots
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: validaci-n-policy-gate-autochequeo-post-draft/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Validación policy gate — autochequeo post-draft
+    - Completion Condition
+    about:
+    - Validación policy gate — autochequeo post-draft
+    - validaci n policy gate autochequeo post draft
+    - Completion Condition
+    - completion condition
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.validacion_policy_gate
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 24
+    line_end: 25
+- doc_name: step-hcp-presentar-campania
+  sections:
+  - path: presentar-campa-a
+    title: Presentar campaña
+    breadcrumbs:
+    - Presentar campaña
+    about:
+    - Presentar campaña
+    - presentar campa a
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: presentar-campa-a
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: presentar-campa-a/instructions
+    title: Instructions
+    breadcrumbs:
+    - Presentar campaña
+    - Instructions
+    about:
+    - Presentar campaña
+    - presentar campa a
+    - Instructions
+    - instructions
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: presentar-campa-a/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Presentar campaña
+    - Required Slots
+    about:
+    - Presentar campaña
+    - presentar campa a
+    - Required Slots
+    - required slots
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: presentar-campa-a/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Presentar campaña
+    - Completion Condition
+    about:
+    - Presentar campaña
+    - presentar campa a
+    - Completion Condition
+    - completion condition
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.presentar_campania
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 24
+    line_end: 25
+- doc_name: step-hcp-detalle-medicamento
+  sections:
+  - path: detalle-de-medicamento-y-dudas
+    title: Detalle de medicamento y dudas
+    breadcrumbs:
+    - Detalle de medicamento y dudas
+    about:
+    - Detalle de medicamento y dudas
+    - detalle de medicamento y dudas
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: detalle-de-medicamento-y-dudas
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: detalle-de-medicamento-y-dudas/instructions
+    title: Instructions
+    breadcrumbs:
+    - Detalle de medicamento y dudas
+    - Instructions
+    about:
+    - Detalle de medicamento y dudas
+    - detalle de medicamento y dudas
+    - Instructions
+    - instructions
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: detalle-de-medicamento-y-dudas/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Detalle de medicamento y dudas
+    - Required Slots
+    about:
+    - Detalle de medicamento y dudas
+    - detalle de medicamento y dudas
+    - Required Slots
+    - required slots
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: detalle-de-medicamento-y-dudas/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Detalle de medicamento y dudas
+    - Completion Condition
+    about:
+    - Detalle de medicamento y dudas
+    - detalle de medicamento y dudas
+    - Completion Condition
+    - completion condition
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.detalle_medicamento
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 24
+    line_end: 25
+- doc_name: step-hcp-handout-especialista
+  sections:
+  - path: conectar-con-especialista
+    title: Conectar con especialista
+    breadcrumbs:
+    - Conectar con especialista
+    about:
+    - Conectar con especialista
+    - conectar con especialista
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: conectar-con-especialista
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: conectar-con-especialista/instructions
+    title: Instructions
+    breadcrumbs:
+    - Conectar con especialista
+    - Instructions
+    about:
+    - Conectar con especialista
+    - conectar con especialista
+    - Instructions
+    - instructions
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: conectar-con-especialista/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Conectar con especialista
+    - Required Slots
+    about:
+    - Conectar con especialista
+    - conectar con especialista
+    - Required Slots
+    - required slots
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: conectar-con-especialista/handout-target
+    title: Handout Target
+    breadcrumbs:
+    - Conectar con especialista
+    - Handout Target
+    about:
+    - Conectar con especialista
+    - conectar con especialista
+    - Handout Target
+    - handout target
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: handout-target
+    level: 2
+    line_start: 24
+    line_end: 25
+  - path: conectar-con-especialista/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Conectar con especialista
+    - Completion Condition
+    about:
+    - Conectar con especialista
+    - conectar con especialista
+    - Completion Condition
+    - completion condition
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.handout_especialista
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 28
+    line_end: 29
+- doc_name: step-hcp-agendar-recontacto
+  sections:
+  - path: agendar-recontacto
+    title: Agendar recontacto
+    breadcrumbs:
+    - Agendar recontacto
+    about:
+    - Agendar recontacto
+    - agendar recontacto
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: agendar-recontacto
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: agendar-recontacto/instructions
+    title: Instructions
+    breadcrumbs:
+    - Agendar recontacto
+    - Instructions
+    about:
+    - Agendar recontacto
+    - agendar recontacto
+    - Instructions
+    - instructions
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: agendar-recontacto/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Agendar recontacto
+    - Required Slots
+    about:
+    - Agendar recontacto
+    - agendar recontacto
+    - Required Slots
+    - required slots
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: agendar-recontacto/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Agendar recontacto
+    - Completion Condition
+    about:
+    - Agendar recontacto
+    - agendar recontacto
+    - Completion Condition
+    - completion condition
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.agendar_recontacto
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 24
+    line_end: 25
+- doc_name: step-hcp-optout
+  sections:
+  - path: ejecutar-baja
+    title: Ejecutar baja
+    breadcrumbs:
+    - Ejecutar baja
+    about:
+    - Ejecutar baja
+    - ejecutar baja
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: ejecutar-baja
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: ejecutar-baja/instructions
+    title: Instructions
+    breadcrumbs:
+    - Ejecutar baja
+    - Instructions
+    about:
+    - Ejecutar baja
+    - ejecutar baja
+    - Instructions
+    - instructions
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: ejecutar-baja/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Ejecutar baja
+    - Required Slots
+    about:
+    - Ejecutar baja
+    - ejecutar baja
+    - Required Slots
+    - required slots
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: ejecutar-baja/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Ejecutar baja
+    - Completion Condition
+    about:
+    - Ejecutar baja
+    - ejecutar baja
+    - Completion Condition
+    - completion condition
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.optout
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 24
+    line_end: 25
+- doc_name: step-hcp-contacto-inicial
+  sections:
+  - path: contacto-inicial-abrir-campa-a
+    title: Contacto inicial — abrir campaña
+    breadcrumbs:
+    - Contacto inicial — abrir campaña
+    about:
+    - Contacto inicial — abrir campaña
+    - contacto inicial abrir campa a
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: contacto-inicial-abrir-campa-a
+    level: 1
+    line_start: 15
+    line_end: 16
+  - path: contacto-inicial-abrir-campa-a/instructions
+    title: Instructions
+    breadcrumbs:
+    - Contacto inicial — abrir campaña
+    - Instructions
+    about:
+    - Contacto inicial — abrir campaña
+    - contacto inicial abrir campa a
+    - Instructions
+    - instructions
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 17
+    line_end: 18
+  - path: contacto-inicial-abrir-campa-a/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Contacto inicial — abrir campaña
+    - Required Slots
+    about:
+    - Contacto inicial — abrir campaña
+    - contacto inicial abrir campa a
+    - Required Slots
+    - required slots
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 21
+    line_end: 22
+  - path: contacto-inicial-abrir-campa-a/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Contacto inicial — abrir campaña
+    - Completion Condition
+    about:
+    - Contacto inicial — abrir campaña
+    - contacto inicial abrir campa a
+    - Completion Condition
+    - completion condition
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - channel:whatsapp
+    - conversation:steps.contacto_inicial
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 26
+    line_end: 27
+- doc_name: step-hcp-despedida
+  sections:
+  - path: despedida
+    title: Despedida
+    breadcrumbs:
+    - Despedida
+    about:
+    - Despedida
+    - despedida
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: despedida
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: despedida/instructions
+    title: Instructions
+    breadcrumbs:
+    - Despedida
+    - Instructions
+    about:
+    - Despedida
+    - despedida
+    - Instructions
+    - instructions
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: despedida/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Despedida
+    - Required Slots
+    about:
+    - Despedida
+    - despedida
+    - Required Slots
+    - required slots
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: despedida/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Despedida
+    - Completion Condition
+    about:
+    - Despedida
+    - despedida
+    - Completion Condition
+    - completion condition
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.despedida
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 24
+    line_end: 25
+- doc_name: step-hcp-revision-humana
+  sections:
+  - path: revisi-n-humana
+    title: Revisión humana
+    breadcrumbs:
+    - Revisión humana
+    about:
+    - Revisión humana
+    - revisi n humana
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: revisi-n-humana
+    level: 1
+    line_start: 14
+    line_end: 15
+  - path: revisi-n-humana/instructions
+    title: Instructions
+    breadcrumbs:
+    - Revisión humana
+    - Instructions
+    about:
+    - Revisión humana
+    - revisi n humana
+    - Instructions
+    - instructions
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: instructions
+    level: 2
+    line_start: 16
+    line_end: 17
+  - path: revisi-n-humana/required-slots
+    title: Required Slots
+    breadcrumbs:
+    - Revisión humana
+    - Required Slots
+    about:
+    - Revisión humana
+    - revisi n humana
+    - Required Slots
+    - required slots
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: required-slots
+    level: 2
+    line_start: 20
+    line_end: 21
+  - path: revisi-n-humana/completion-condition
+    title: Completion Condition
+    breadcrumbs:
+    - Revisión humana
+    - Completion Condition
+    about:
+    - Revisión humana
+    - revisi n humana
+    - Completion Condition
+    - completion condition
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    semantic_tags:
+    - conversation:steps.revision_humana
+    - system:teva-hcp
+    - type.knowledge.step
+    - workspace.knowledge
+    slug: completion-condition
+    level: 2
+    line_start: 24
+    line_end: 25

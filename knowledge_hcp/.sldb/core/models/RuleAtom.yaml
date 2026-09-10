@@ -1,0 +1,13 @@
+name: RuleAtom
+model_ref: kb_agent.models.knowledge:RuleAtom
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/rule.py
+documents_index: .sldb/core/documents/RuleAtom.yaml
+sections_index: .sldb/runtime/sections/RuleAtom.yaml
+hash_b: 1a9da1ef49c65d8b4cf9d5307949034f12a5d2c2d5ce7c579157e307c1f162fc
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.rule
+- workspace.knowledge
+base_models: []

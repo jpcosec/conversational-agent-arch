@@ -1,1 +1,33 @@
-documents: []
+documents:
+- name: execution
+  path: desk/rituals/execution.md
+  hash_c: 52e567f63dd4a4ce4e660faea387515bb1025c9307490ad371e999a86fe5867b
+  hash_d: ce6ee54bdc546a66f9c860c0999a38d234bdd7465d2f39337264c5def9382fa4
+  semantic_tags:
+  - type.workflow.ritual
+  - workspace.desk
+  - workspace:desk
+- name: closeout
+  path: desk/rituals/closeout.md
+  hash_c: b7b3acd7d074ae3cee76b48d0df5850f32bc9e663e0fad110bfba6c90b7b1531
+  hash_d: d026aa2e017935d3191ac7bd0b6a34079884a4486f5731054211697df7202a24
+  semantic_tags:
+  - type.workflow.ritual
+  - workspace.desk
+  - workspace:desk
+- name: testing
+  path: desk/rituals/testing.md
+  hash_c: a24964a1f6a4687b3624e4dfaa9e424eeac36e7a23282d83e9e54dbf0f8ade59
+  hash_d: af170fe4fd36cd8a51bb62bec8c9a7d32224451ade8640c94f0c666620baa626
+  semantic_tags:
+  - type.workflow.ritual
+  - workspace.desk
+  - workspace:desk
+- name: phase
+  path: desk/rituals/phase.md
+  hash_c: 3dbfdf37f015ca4b618e8b2c1869402febaea94c4368e6514443edb5a9350eb3
+  hash_d: fc0865c530877dd0deb4cd4aad8cb696a52823be84f8240cb7f9dd495d9c1945
+  semantic_tags:
+  - type.workflow.ritual
+  - workspace.desk
+  - workspace:desk

@@ -64,3 +64,21 @@ def test_worker_rewrites_pending_history_and_marks_rows_scrubbed() -> None:
         assert "+56 9 8765 4321" not in persisted.content
         assert "<EMAIL_1>" in persisted.content
         assert "<PHONE_1>" in persisted.content
+
+
+def test_scrub_keeps_sentence_starters_and_allowlisted_terms() -> None:
+    """El patron de NAME tomaba "Hola Carla" y "Soy Antonia" como nombre propio y el
+    historial que ve el modelo quedaba como "<NAME_1>, tu asistente del <NAME_2>".
+    Las palabras que abren la oracion no son nombre; la marca y el nombre del
+    asistente los declara el negocio (``pii_allowlist``) y no se tocan."""
+    allow = ["Antonia", "Selfix", "Programa Selfix"]
+    assert scrub("Hola Antonia", allowlist=allow) == "Hola Antonia"
+    assert scrub("¡Hola! Soy Antonia, tu asistente del Programa Selfix.", allowlist=allow) == (
+        "¡Hola! Soy Antonia, tu asistente del Programa Selfix."
+    )
+    # un nombre real despues de la palabra de arranque si se enmascara
+    assert scrub("Hola Carla Rojas, ¿cómo estás?", allowlist=allow) == "Hola <NAME_1>, ¿cómo estás?"
+    assert scrub("Me llamo Carla Rojas", allowlist=allow) == "Me llamo <NAME_1>"
+    # sin allowlist, la marca sigue protegida solo si abre la oracion
+    assert scrub("Soy Antonia") == "Soy Antonia"
+    assert "<NAME_1>" in scrub("Contacto: Pedro Soto")

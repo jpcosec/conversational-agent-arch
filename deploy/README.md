@@ -1,7 +1,7 @@
 # Deploy a Modal
 
 Despliega el runtime completo (chat UI `/`, editor de flujo `/flow`, mindmap
-`/mindmap` con layout de embeddings, `/users`, `/dashboard`, perfilado y
+`/mindmap` con layout del índice de embeddings, `/users`, `/dashboard`, perfilado y
 webhook Twilio) como una app serverless en
 [Modal](https://modal.com), sirviendo el mismo `frontends.chat.app:create_app`
 que corre localmente.
@@ -10,14 +10,18 @@ que corre localmente.
 
 - **Código**: `kb_agent/`, `frontends/`, `knowledge_base/`, `project.config.yaml`.
 - **KB servida**: `knowledge/` (Antonia — la KB REAL que apunta
-  `project.config.yaml: kb_root`), más `tests/knowledge` (Don Peppe, KB de
-  prueba, incluida por si se quiere apuntar ahí).
-  **No** se copia `tests/knowledge/.embedding_cache` (~600 MB de blobs de un
-  modelo de embeddings): `/api/viz/graph` sólo lee embeddings ya calculados
-  del frontmatter de cada atom, nunca los recalcula en vivo.
-- **Paquetes locales** (no publicados en PyPI, viven en
-  `hum-ecosystem/tools/`): `sldb`, `kgdb`, `deskops`. Se copian y se instalan
-  con `pip install /root/tools/<paquete>` dentro de la imagen.
+  `project.config.yaml: kb_root`).
+  **No** se copia `.embedding_cache` (~600 MB de blobs de un
+  modelo de embeddings). Los vectores viven en el índice derivado
+  `knowledge/.pron/docs.<embedder>.json` (`DocumentIndex` de pron, fuera de
+  git): si existe localmente se copia con la KB y `/api/viz/graph` lo lee;
+  si falta, el runtime lo reconstruye con `fastembed` al primer uso (y
+  necesita `EMBEDDING_CACHE_DIR` en un volumen para no re-descargar el
+  modelo en cada arranque en frío).
+- **Paquetes locales** (no publicados en PyPI): `sldb`, `kgdb`, `deskops`
+  (viven en `hum-ecosystem/tools/`) y `pron` (`legos/pron`, `PRON_ROOT` en
+  `deploy/modal_app.py`). Se copian y se instalan con
+  `pip install /root/tools/<paquete>` dentro de la imagen.
 - El resto del repo (`desk/`, `runs/`, `.sldb` raíz, `.env`, tests de código,
   etc.) se queda fuera: no lo necesita el runtime para servir.
 
@@ -48,12 +52,48 @@ importar `frontends.chat.app`.
 
 ### Twilio (opcional)
 
-Si más adelante se activa el canal WhatsApp/SMS y existe un
-`TWILIO_AUTH_TOKEN`, crear un segundo secret:
+Para activar el canal WhatsApp/SMS, crear un segundo secret con el Auth Token
+de la cuenta Twilio que dispara el webhook (con él se valida la firma) y su
+Account SID (con él el runtime manda la respuesta por REST: el webhook
+responde `<Response/>` al instante porque Twilio corta a los 15 s y un turno
+con LLM tarda más; ver `kb_agent/inbound.py`):
 
 ```bash
-modal secret create kb-agent-runtime-twilio TWILIO_AUTH_TOKEN=...
+# Antonia (project.config.yaml)
+modal secret create kb-agent-runtime-twilio TWILIO_ACCOUNT_SID=AC... TWILIO_AUTH_TOKEN=...
+# Vitali (project.vitali.yaml)
+modal secret create vitali-runtime-twilio   TWILIO_ACCOUNT_SID=AC... TWILIO_AUTH_TOKEN=...
 ```
+
+Los dos valores salen de la consola de Twilio, en **Account Info** del
+dashboard. El Auth Token es el de la MISMA cuenta que dispara el webhook: con
+él se valida la firma `X-Twilio-Signature` de cada request, así que un token
+de otra subcuenta hace que todo mensaje entrante responda 403.
+
+Después hay que declarar el secret en el yaml del negocio
+(`deploy.twilio_secret_name`) y volver a desplegar; mientras sea `null`,
+`/webhooks/twilio` responde 503 y el resto del runtime funciona igual:
+
+```yaml
+  deploy:
+    twilio_secret_name: vitali-runtime-twilio
+```
+
+Sin `TWILIO_ACCOUNT_SID` el webhook cae a modo sync (TwiML en línea), que sólo
+sirve si el turno cabe en 15 s. `TWILIO_REPLY_MODE=sync|async` fuerza el modo.
+Luego, en la consola de Twilio, apuntar el canal a
+`https://<workspace>--<app>-serve.modal.run/webhooks/twilio` con método
+**POST**. Son dos lugares distintos según el canal (mismo endpoint):
+
+| Canal | Dónde se configura | Campo |
+|---|---|---|
+| SMS | Phone Numbers → Manage → Active numbers → el número | "A message comes in" |
+| WhatsApp (sandbox) | Messaging → Try it out → WhatsApp sandbox settings | "When a message comes in" |
+| WhatsApp (sender propio) | Messaging → Senders → WhatsApp senders → el sender | webhook de entrada |
+
+En el sandbox de WhatsApp cada persona que quiera probar debe enviar antes el
+código de unión (`join <palabra>`) al número del sandbox; si no, Twilio nunca
+entrega el mensaje.
 
 y agregar `modal.Secret.from_name("kb-agent-runtime-twilio")` a la lista
 `secrets=` de la función `serve` en `deploy/modal_app.py`. Hoy no existe y no
@@ -72,6 +112,16 @@ nombre sale de la variable `MODAL_APP_NAME`:
 ```bash
 MODAL_APP_NAME=kb-agent-runtime-dev modal deploy deploy/modal_app.py
 modal app logs kb-agent-runtime-dev
+```
+
+Para **otro negocio** (otra KB) en su propio endpoint, `PROJECT_CONFIG` elige
+el yaml (tiene que vivir en la raíz del repo). De ahí salen el nombre de
+app/volumen (`deploy.modal_app_name`) y la KB que se copia a la imagen
+(`kb_root`); el yaml y la KB de Antonia no viajan. Ej. Vitali:
+
+```bash
+PROJECT_CONFIG=project.vitali.yaml modal deploy deploy/modal_app.py
+modal app logs vitali-runtime
 ```
 
 Esto crea (si no existen) la app `kb-agent-runtime` y el Volume persistente
@@ -111,7 +161,7 @@ URL=https://<workspace>--kb-agent-runtime-serve.modal.run
 
 curl -s "$URL/api/health"                  # {"status":"ok","kb_root":".../knowledge",...}
 curl -s "$URL/api/config"                  # {"name":"Antonia",...}
-curl -s "$URL/api/viz/graph" | head -c 200 # nodes/edges del grafo de embeddings
+curl -s "$URL/api/viz/graph" | head -c 200 # nodes/edges del grafo de similitud (DocumentIndex)
 curl -s "$URL/api/flow" | head -c 200      # grafo de ConversationStep
 curl -s -X POST "$URL/api/chat" \
   -H "Content-Type: application/json" \
@@ -136,12 +186,12 @@ destructivo).
 
 - `python_version="3.12"` (el código usa sintaxis 3.10+).
 - Versiones de dependencias pineadas a lo que corrió la suite local
-  (`pip show sldb kgdb deskops`, `pip freeze`).
+  (`pip show sldb kgdb deskops pron`, `pip freeze`).
 - `sldb` usa `markdown-it-py` con la regla `linkify` habilitada, que requiere
   **`linkify-it-py`** como dependencia de import (no está en el
   `pyproject.toml` de `sldb`, pero falla en runtime sin ella con
   `ModuleNotFoundError: Linkify enabled but not installed.`). Se agregó
   explícitamente a `pip_install(...)` en `deploy/modal_app.py`.
-- `fastembed`/`torch` **no** son necesarios: el runtime nunca calcula
-  embeddings en vivo (ni para chat ni para `/api/viz/graph`), sólo lee los ya
-  guardados en el frontmatter de los atoms.
+- `fastembed` sí está en la imagen: el `DocumentIndex` de pron embebe en
+  vivo los documentos cuyo hash cambió (y todos, si el índice derivado no
+  viajó con la KB). El modelo se descarga a `EMBEDDING_CACHE_DIR`.

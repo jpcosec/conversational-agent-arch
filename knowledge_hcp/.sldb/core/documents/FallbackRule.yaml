@@ -1,0 +1,10 @@
+documents:
+- name: fallback-hcp
+  path: atoms/fallback-hcp.md
+  hash_c: 98a30bf4c171b2831ac4c098223ac9f39f16719bc3708e5e60b8c62af178cee8
+  hash_d: c9af44f731634d461e8041abc841e2ee5c582c6b4169683b0121293ca8e2e247
+  semantic_tags:
+  - conversation:fallback
+  - system:teva-hcp
+  - type.knowledge.fallback
+  - workspace.knowledge

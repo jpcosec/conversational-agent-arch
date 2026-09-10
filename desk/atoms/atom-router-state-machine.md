@@ -12,4 +12,4 @@ provenance: architecture-audit
 
 ## Answer
 
-Máquina de estados técnica (`RouterStateMachine`) con 6 nodos (IDLE, BUFFERING, EVALUATING_CONTEXT, DRAFTING_RESPONSE, WAITING_TOOL, BREAKPOINT_MISS). Rutea la petición hacia el Ontologizador y pausa la ejecución síncrona en `WAITING_TOOL` mientras el Orquestador ejecuta una herramienta.
+Máquina de estados técnica (`RouterStateMachine`) con 6 nodos (IDLE, BUFFERING, EVALUATING_CONTEXT, DRAFTING_RESPONSE, WAITING_TOOL, BREAKPOINT_MISS). Rutea la petición hacia el Context Compiler (`kb_agent/knowledge`) y pausa la ejecución síncrona en `WAITING_TOOL` mientras el Orquestador ejecuta una herramienta.

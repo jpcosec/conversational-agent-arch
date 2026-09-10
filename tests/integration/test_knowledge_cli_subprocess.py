@@ -10,7 +10,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from kb_agent.models_sql.identity import Base, UserTraits, Users
-from kb_agent.models_sql.session import SessionNode, SessionState
 from tests.support.sldb_seed import REPO_ROOT
 
 USER = "wa:+56900000000"
@@ -23,7 +22,7 @@ def _knowledge(kb: Path, *args: str) -> dict | list:
     return json.loads(r.stdout)
 
 
-def test_context_command_joins_sql_and_sldb(antonia_kb: Path, tmp_path: Path) -> None:
+def test_traits_and_self_commands_join_sql_and_sldb(antonia_kb: Path, tmp_path: Path) -> None:
     db_url = f"sqlite:///{tmp_path / 'cli.db'}"
     engine = create_engine(db_url)
     Base.metadata.create_all(engine)
@@ -31,17 +30,14 @@ def test_context_command_joins_sql_and_sldb(antonia_kb: Path, tmp_path: Path) ->
         user = Users(external_id=USER, channel="whatsapp")
         s.add(user)
         s.flush()
-        s.add(SessionState(user_id=user.id, current_node=SessionNode.IDLE, flow_node="conversation:steps.onboarding", flow_slots={"missing_slots": ["nombre"]}))
         s.add(UserTraits(user_id=user.id, trait_id="trait-antonia-primera-vez", confidence=0.9, source="test"))
         s.commit()
     engine.dispose()
-
-    result = _knowledge(antonia_kb, "--db", db_url, "context", "--user", USER)
-    assert set(result) == {"step", "traits", "self"}
-    assert result["step"]["flow_node"] == "conversation:steps.onboarding" and result["step"]["missing_slots"] == ["nombre"]
-    assert [t["trait_id"] for t in result["traits"]] == ["trait-antonia-primera-vez"]
-    assert result["self"]["identity"][0]["id"] == "self-antonia"
-    assert len(result["self"]["boundaries"]) == 2
+    traits = _knowledge(antonia_kb, "--db", db_url, "traits", "--user", USER)
+    assert [t["trait_id"] for t in traits] == ["trait-antonia-primera-vez"]
+    me = _knowledge(antonia_kb, "self")
+    assert me["identity"][0]["id"] == "self-antonia"
+    assert len(me["boundaries"]) == 2
 
 
 def test_show_and_unknown_atom_exit_codes(antonia_kb: Path) -> None:

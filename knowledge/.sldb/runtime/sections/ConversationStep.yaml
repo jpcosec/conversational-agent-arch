@@ -2,11 +2,11 @@ documents:
 - doc_name: step-antonia-onboarding
   sections:
   - path: onboarding-primera-interaccion
-    title: "Onboarding \u2014 primera interaccion"
+    title: Onboarding — primera interaccion
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - conversation:steps.onboarding
     - system:laboratorio-chile
@@ -24,10 +24,10 @@ documents:
   - path: onboarding-primera-interaccion/instructions
     title: Instructions
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - Instructions
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - Instructions
     - instructions
@@ -47,10 +47,10 @@ documents:
   - path: onboarding-primera-interaccion/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - Required Slots
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - Required Slots
     - required slots
@@ -70,10 +70,10 @@ documents:
   - path: onboarding-primera-interaccion/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - Handout Target
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - Handout Target
     - handout target
@@ -93,10 +93,10 @@ documents:
   - path: onboarding-primera-interaccion/tool
     title: Tool
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - Tool
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - Tool
     - tool
@@ -116,10 +116,10 @@ documents:
   - path: onboarding-primera-interaccion/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - Allowed Transitions
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - Allowed Transitions
     - allowed transitions
@@ -139,10 +139,10 @@ documents:
   - path: onboarding-primera-interaccion/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - Grounding Atoms
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - Grounding Atoms
     - grounding atoms
@@ -162,10 +162,10 @@ documents:
   - path: onboarding-primera-interaccion/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - Completion Condition
     about:
-    - "Onboarding \u2014 primera interaccion"
+    - Onboarding — primera interaccion
     - onboarding primera interaccion
     - Completion Condition
     - completion condition
@@ -551,11 +551,11 @@ documents:
 - doc_name: step-antonia-evento-adverso
   sections:
   - path: evento-adverso-derivacion
-    title: "Evento adverso \u2014 derivacion"
+    title: Evento adverso — derivacion
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - conversation:steps.evento_adverso
     - system:laboratorio-chile
@@ -573,10 +573,10 @@ documents:
   - path: evento-adverso-derivacion/instructions
     title: Instructions
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - Instructions
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - Instructions
     - instructions
@@ -596,10 +596,10 @@ documents:
   - path: evento-adverso-derivacion/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - Required Slots
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - Required Slots
     - required slots
@@ -619,10 +619,10 @@ documents:
   - path: evento-adverso-derivacion/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - Handout Target
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - Handout Target
     - handout target
@@ -642,10 +642,10 @@ documents:
   - path: evento-adverso-derivacion/tool
     title: Tool
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - Tool
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - Tool
     - tool
@@ -665,10 +665,10 @@ documents:
   - path: evento-adverso-derivacion/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - Allowed Transitions
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - Allowed Transitions
     - allowed transitions
@@ -688,10 +688,10 @@ documents:
   - path: evento-adverso-derivacion/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - Grounding Atoms
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - Grounding Atoms
     - grounding atoms
@@ -711,10 +711,10 @@ documents:
   - path: evento-adverso-derivacion/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - Completion Condition
     about:
-    - "Evento adverso \u2014 derivacion"
+    - Evento adverso — derivacion
     - evento adverso derivacion
     - Completion Condition
     - completion condition
@@ -917,11 +917,11 @@ documents:
 - doc_name: step-antonia-registro-estado
   sections:
   - path: registro-de-estado-como-va-el-tratamiento
-    title: "Registro de estado \u2014 como va el tratamiento"
+    title: Registro de estado — como va el tratamiento
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - conversation:steps.registro_estado
     - system:laboratorio-chile
@@ -939,10 +939,10 @@ documents:
   - path: registro-de-estado-como-va-el-tratamiento/instructions
     title: Instructions
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - Instructions
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - Instructions
     - instructions
@@ -962,10 +962,10 @@ documents:
   - path: registro-de-estado-como-va-el-tratamiento/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - Required Slots
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - Required Slots
     - required slots
@@ -985,10 +985,10 @@ documents:
   - path: registro-de-estado-como-va-el-tratamiento/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - Handout Target
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - Handout Target
     - handout target
@@ -1008,10 +1008,10 @@ documents:
   - path: registro-de-estado-como-va-el-tratamiento/tool
     title: Tool
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - Tool
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - Tool
     - tool
@@ -1031,10 +1031,10 @@ documents:
   - path: registro-de-estado-como-va-el-tratamiento/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - Allowed Transitions
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - Allowed Transitions
     - allowed transitions
@@ -1054,10 +1054,10 @@ documents:
   - path: registro-de-estado-como-va-el-tratamiento/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - Grounding Atoms
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - Grounding Atoms
     - grounding atoms
@@ -1077,10 +1077,10 @@ documents:
   - path: registro-de-estado-como-va-el-tratamiento/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - Completion Condition
     about:
-    - "Registro de estado \u2014 como va el tratamiento"
+    - Registro de estado — como va el tratamiento
     - registro de estado como va el tratamiento
     - Completion Condition
     - completion condition
@@ -1283,11 +1283,11 @@ documents:
 - doc_name: step-antonia-derivacion-medinfo
   sections:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa
-    title: "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    title: Derivación MedInfo — consulta médica del programa
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - conversation:steps.derivacion_medinfo
     - system:laboratorio-chile
@@ -1305,10 +1305,10 @@ documents:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/instructions
     title: Instructions
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - Instructions
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - Instructions
     - instructions
@@ -1328,10 +1328,10 @@ documents:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - Required Slots
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - Required Slots
     - required slots
@@ -1351,10 +1351,10 @@ documents:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - Handout Target
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - Handout Target
     - handout target
@@ -1374,10 +1374,10 @@ documents:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/tool
     title: Tool
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - Tool
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - Tool
     - tool
@@ -1397,10 +1397,10 @@ documents:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - Allowed Transitions
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - Allowed Transitions
     - allowed transitions
@@ -1420,10 +1420,10 @@ documents:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - Grounding Atoms
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - Grounding Atoms
     - grounding atoms
@@ -1443,10 +1443,10 @@ documents:
   - path: derivaci-n-medinfo-consulta-m-dica-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - Completion Condition
     about:
-    - "Derivaci\xF3n MedInfo \u2014 consulta m\xE9dica del programa"
+    - Derivación MedInfo — consulta médica del programa
     - derivaci n medinfo consulta m dica del programa
     - Completion Condition
     - completion condition
@@ -1466,11 +1466,11 @@ documents:
 - doc_name: step-antonia-revision-humana
   sections:
   - path: revisi-n-humana-ticket-pendiente
-    title: "Revisi\xF3n humana \u2014 ticket pendiente"
+    title: Revisión humana — ticket pendiente
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - conversation:steps.revision_humana
     - system:laboratorio-chile
@@ -1488,10 +1488,10 @@ documents:
   - path: revisi-n-humana-ticket-pendiente/instructions
     title: Instructions
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - Instructions
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - Instructions
     - instructions
@@ -1511,10 +1511,10 @@ documents:
   - path: revisi-n-humana-ticket-pendiente/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - Required Slots
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - Required Slots
     - required slots
@@ -1534,10 +1534,10 @@ documents:
   - path: revisi-n-humana-ticket-pendiente/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - Handout Target
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - Handout Target
     - handout target
@@ -1557,10 +1557,10 @@ documents:
   - path: revisi-n-humana-ticket-pendiente/tool
     title: Tool
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - Tool
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - Tool
     - tool
@@ -1580,10 +1580,10 @@ documents:
   - path: revisi-n-humana-ticket-pendiente/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - Allowed Transitions
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - Allowed Transitions
     - allowed transitions
@@ -1603,10 +1603,10 @@ documents:
   - path: revisi-n-humana-ticket-pendiente/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - Grounding Atoms
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - Grounding Atoms
     - grounding atoms
@@ -1626,10 +1626,10 @@ documents:
   - path: revisi-n-humana-ticket-pendiente/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - Completion Condition
     about:
-    - "Revisi\xF3n humana \u2014 ticket pendiente"
+    - Revisión humana — ticket pendiente
     - revisi n humana ticket pendiente
     - Completion Condition
     - completion condition
@@ -1649,11 +1649,11 @@ documents:
 - doc_name: step-antonia-journey-operativo
   sections:
   - path: journey-operativo-contenido-preaprobado-del-programa
-    title: "Journey operativo \u2014 contenido preaprobado del programa"
+    title: Journey operativo — contenido preaprobado del programa
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - conversation:steps.journey_operativo
     - system:laboratorio-chile
@@ -1671,10 +1671,10 @@ documents:
   - path: journey-operativo-contenido-preaprobado-del-programa/instructions
     title: Instructions
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - Instructions
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - Instructions
     - instructions
@@ -1694,10 +1694,10 @@ documents:
   - path: journey-operativo-contenido-preaprobado-del-programa/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - Required Slots
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - Required Slots
     - required slots
@@ -1717,10 +1717,10 @@ documents:
   - path: journey-operativo-contenido-preaprobado-del-programa/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - Handout Target
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - Handout Target
     - handout target
@@ -1740,10 +1740,10 @@ documents:
   - path: journey-operativo-contenido-preaprobado-del-programa/tool
     title: Tool
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - Tool
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - Tool
     - tool
@@ -1763,10 +1763,10 @@ documents:
   - path: journey-operativo-contenido-preaprobado-del-programa/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - Allowed Transitions
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - Allowed Transitions
     - allowed transitions
@@ -1786,10 +1786,10 @@ documents:
   - path: journey-operativo-contenido-preaprobado-del-programa/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - Grounding Atoms
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - Grounding Atoms
     - grounding atoms
@@ -1809,10 +1809,10 @@ documents:
   - path: journey-operativo-contenido-preaprobado-del-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - Completion Condition
     about:
-    - "Journey operativo \u2014 contenido preaprobado del programa"
+    - Journey operativo — contenido preaprobado del programa
     - journey operativo contenido preaprobado del programa
     - Completion Condition
     - completion condition
@@ -1832,11 +1832,11 @@ documents:
 - doc_name: step-antonia-validacion-policy-gate
   sections:
   - path: validaci-n-policy-gate-autochequeo-post-draft
-    title: "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    title: Validación policy gate — autochequeo post-draft
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - conversation:steps.validacion_policy_gate
     - system:laboratorio-chile
@@ -1854,10 +1854,10 @@ documents:
   - path: validaci-n-policy-gate-autochequeo-post-draft/instructions
     title: Instructions
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - Instructions
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - Instructions
     - instructions
@@ -1877,10 +1877,10 @@ documents:
   - path: validaci-n-policy-gate-autochequeo-post-draft/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - Required Slots
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - Required Slots
     - required slots
@@ -1900,10 +1900,10 @@ documents:
   - path: validaci-n-policy-gate-autochequeo-post-draft/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - Handout Target
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - Handout Target
     - handout target
@@ -1923,10 +1923,10 @@ documents:
   - path: validaci-n-policy-gate-autochequeo-post-draft/tool
     title: Tool
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - Tool
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - Tool
     - tool
@@ -1946,10 +1946,10 @@ documents:
   - path: validaci-n-policy-gate-autochequeo-post-draft/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - Allowed Transitions
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - Allowed Transitions
     - allowed transitions
@@ -1969,10 +1969,10 @@ documents:
   - path: validaci-n-policy-gate-autochequeo-post-draft/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - Grounding Atoms
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - Grounding Atoms
     - grounding atoms
@@ -1992,10 +1992,10 @@ documents:
   - path: validaci-n-policy-gate-autochequeo-post-draft/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - Completion Condition
     about:
-    - "Validaci\xF3n policy gate \u2014 autochequeo post-draft"
+    - Validación policy gate — autochequeo post-draft
     - validaci n policy gate autochequeo post draft
     - Completion Condition
     - completion condition
@@ -2015,11 +2015,11 @@ documents:
 - doc_name: step-antonia-enrolamiento
   sections:
   - path: enrolamiento-inscripci-n-al-programa
-    title: "Enrolamiento \u2014 inscripci\xF3n al programa"
+    title: Enrolamiento — inscripción al programa
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - conversation:steps.enrolamiento
     - system:laboratorio-chile
@@ -2037,10 +2037,10 @@ documents:
   - path: enrolamiento-inscripci-n-al-programa/instructions
     title: Instructions
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - Instructions
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - Instructions
     - instructions
@@ -2060,10 +2060,10 @@ documents:
   - path: enrolamiento-inscripci-n-al-programa/required-slots
     title: Required Slots
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - Required Slots
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - Required Slots
     - required slots
@@ -2083,10 +2083,10 @@ documents:
   - path: enrolamiento-inscripci-n-al-programa/handout-target
     title: Handout Target
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - Handout Target
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - Handout Target
     - handout target
@@ -2106,10 +2106,10 @@ documents:
   - path: enrolamiento-inscripci-n-al-programa/tool
     title: Tool
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - Tool
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - Tool
     - tool
@@ -2129,10 +2129,10 @@ documents:
   - path: enrolamiento-inscripci-n-al-programa/allowed-transitions
     title: Allowed Transitions
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - Allowed Transitions
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - Allowed Transitions
     - allowed transitions
@@ -2152,10 +2152,10 @@ documents:
   - path: enrolamiento-inscripci-n-al-programa/grounding-atoms
     title: Grounding Atoms
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - Grounding Atoms
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - Grounding Atoms
     - grounding atoms
@@ -2175,10 +2175,10 @@ documents:
   - path: enrolamiento-inscripci-n-al-programa/completion-condition
     title: Completion Condition
     breadcrumbs:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - Completion Condition
     about:
-    - "Enrolamiento \u2014 inscripci\xF3n al programa"
+    - Enrolamiento — inscripción al programa
     - enrolamiento inscripci n al programa
     - Completion Condition
     - completion condition

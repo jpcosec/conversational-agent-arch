@@ -4,6 +4,11 @@ type: deployment
 version: '2.1'
 metadata:
   author: antonIA
+  atoms:
+    - atom-topologia-de-despliegue
+    - atom-deploy-dev-y-mantenimiento-del-volumen
+    - atom-migraciones-alembic-del-volumen
+    - atom-project-config
   description: >-
     Separación explícita backend/frontend del runtime kb-agent. El frontend son 5 páginas
     estáticas (HTML/JS sin build: chat, flow, mindmap, users, dashboard) más el tour guiado
@@ -142,7 +147,7 @@ data:
       protocol: sqlite3 directo (inspect / delete + seed + commit)
     - from: chat_api
       to: modal_image
-      protocol: lee KB baked-in (SLDBReader/KGDBReader)
+      protocol: lee KB baked-in (KnowledgeOperations sobre pron.World; grafo e indice en knowledge/.pron)
     - from: chat_api
       to: vertex_adc_secret
       protocol: credenciales ADC (google-genai Vertex)
@@ -151,7 +156,7 @@ data:
       protocol: generate_content (Conversador/Ruteador/Orquestador/Gate/Perfilador)
     - from: chat_api_local
       to: kb_store_local
-      protocol: lee KB local (SLDBReader/KGDBReader, sin Modal)
+      protocol: lee KB local (KnowledgeOperations sobre pron.World, sin Modal)
     - from: chat_api_local
       to: gemini_llm
       protocol: generate_content (API key o ADC local)

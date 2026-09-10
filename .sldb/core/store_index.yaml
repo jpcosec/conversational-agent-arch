@@ -72,6 +72,84 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: ChecklistDoc
+  model_ref: deskops.models:ChecklistDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/checklist.py
+  models_index: .sldb/core/models/ChecklistDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: ConditionDoc
+  model_ref: deskops.models:ConditionDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/condition.py
+  models_index: .sldb/core/models/ConditionDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: EdgeDoc
+  model_ref: deskops.models:EdgeDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/edge.py
+  models_index: .sldb/core/models/EdgeDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: OperatorDoc
+  model_ref: deskops.models:OperatorDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/operator.py
+  models_index: .sldb/core/models/OperatorDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: RoutineDoc
+  model_ref: deskops.models:RoutineDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/deskops/deskops/models/routine.py
+  models_index: .sldb/core/models/RoutineDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: CompositionDoc
+  model_ref: repo_docs_models:CompositionDoc
+  path: repo_docs_models/composition.py
+  models_index: .sldb/core/models/CompositionDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics: []
+- name: CliCommandDoc
+  model_ref: sldb.models.knowledge_surface:CliCommandDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/sldb/src/sldb/models/knowledge_surface.py
+  models_index: .sldb/core/models/CliCommandDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics:
+  - type.knowledge.cli_command
+  - workspace.knowledge.commands
+- name: SurfaceDoc
+  model_ref: sldb.models.knowledge_surface:SurfaceDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/sldb/src/sldb/models/knowledge_surface.py
+  models_index: .sldb/core/models/SurfaceDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics:
+  - type.knowledge.surface
+  - workspace.knowledge.surfaces
+- name: SpecDoc
+  model_ref: pron.models:SpecDoc
+  path: /home/jp/proyectos/legos/pron/src/pron/models/spec.py
+  models_index: .sldb/core/models/SpecDoc.yaml
+  version: 1
+  canonical: false
+  family: knowledge
+  semantics:
+  - type.knowledge.spec
+  - workspace.source.spec
 predicates:
 - name: is_solved_by
   axis: HOW
@@ -94,4 +172,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: a155376ee4efac1750664e51091493f4e86af8b4076d8961bb44f6bbabbe09b1
+hash_a: 4e9b3a6fe245654f94b8a66df5c2ecab7a00b4a4d4e17ce31bef06710290f871

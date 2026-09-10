@@ -1,0 +1,57 @@
+{
+  "scenario_id": "donpeppe_saludo_unico",
+  "external_id": "sim:donpeppe_saludo_unico",
+  "saved_at": "2026-09-08T13:59:22.309608+00:00",
+  "ended_by": "user_done",
+  "end_reason": "Ya obtuve las tres respuestas que necesitaba: horario del sábado, precio de la pizza Pepperoni y si hay estacionamiento.",
+  "turns": [
+    {
+      "user": "Hola, ¿cuál es el horario de atención para el sábado?",
+      "user_reason": "Aun no tengo las tres respuestas que necesito.",
+      "assistant": "¡Hola! Qué gusto saludarte. Te cuento que los sábados en Don Peppe estamos abiertos de 19:00 a 23:30 hrs para que disfrutes de tu pizza favorita.\n\n¿Hay algo más en lo que pueda ayudarte? 😊",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "¿Y cuánto cuesta la pizza Pepperoni?",
+      "user_reason": "Todavía necesito saber el precio de la pizza Pepperoni y si hay estacionamiento.",
+      "assistant": "¡Claro! La pizza Pepperoni en Don Peppe tiene un valor de $10.500. ¡Una opción clásica y deliciosa!\n\n¿Hay algo más en lo que pueda ayudarte? 😊",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "¿Tienen estacionamiento?",
+      "user_reason": "Aun me falta preguntar por el estacionamiento.",
+      "assistant": "¡Así es! En Don Peppe contamos con estacionamiento para clientes. Así llegas más cómodo a disfrutar tu pizza.\n\n¿Necesitas algo más? 😊",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

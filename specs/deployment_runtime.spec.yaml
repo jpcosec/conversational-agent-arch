@@ -1,0 +1,88 @@
+id: kb-agent-deployment
+title: "Despliegue runtime"
+type: deployment
+version: "0.1"
+data:
+  nodes:
+    user_device:
+      label: "Dispositivo usuario"
+      kind: client
+      contains:
+        - whatsapp
+        - webchat
+    app_host:
+      label: "Servidor app (uvicorn)"
+      kind: server
+      contains:
+        - fastapi_app
+        - orchestrator
+        - state_machine
+        - profiler
+    data_host:
+      label: "Capa de datos"
+      kind: server
+      contains:
+        - postgres
+        - sldb_store
+    external:
+      label: "Servicios externos"
+      kind: server
+      contains:
+        - llm_provider
+        - twilio
+  artifacts:
+    whatsapp:
+      label: WhatsApp/SMS
+      kind: channel
+    webchat:
+      label: "Chat UI (frontends/chat)"
+      kind: frontend
+    fastapi_app:
+      label: "FastAPI (frontends.chat.app)"
+      kind: backend
+    orchestrator:
+      label: "kb_agent.orchestrator"
+      kind: backend
+    state_machine:
+      label: "kb_agent.state_machine"
+      kind: backend
+    profiler:
+      label: "kb_agent.perfilador"
+      kind: backend
+    postgres:
+      label: "PostgreSQL (models_sql)"
+      kind: database
+    sldb_store:
+      label: "SLDB store (.sldb)"
+      kind: database
+    llm_provider:
+      label: "LLM provider"
+      kind: external
+    twilio:
+      label: "Twilio API"
+      kind: external
+  connections:
+    - from: whatsapp
+      to: twilio
+      protocol: WhatsApp/SMS
+    - from: twilio
+      to: fastapi_app
+      protocol: "HTTPS webhook (firma validada)"
+    - from: webchat
+      to: fastapi_app
+      protocol: "HTTPS /api/chat"
+    - from: fastapi_app
+      to: orchestrator
+      protocol: in-process
+    - from: orchestrator
+      to: postgres
+      protocol: "SQLAlchemy"
+    - from: orchestrator
+      to: sldb_store
+      protocol: "SLDB"
+    - from: orchestrator
+      to: llm_provider
+      protocol: "HTTPS (framing + atoms)"
+    - from: profiler
+      to: llm_provider
+      protocol: "HTTPS (análisis asíncrono)"

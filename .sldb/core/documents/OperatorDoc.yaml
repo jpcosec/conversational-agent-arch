@@ -1,0 +1,337 @@
+documents:
+- name: operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate
+  path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-activate.md
+  hash_c: d33be2277227fc03f099d18baa6dc4d1d2f4c47ba30792d591fe9bff8354cfe7
+  hash_d: c38fcc32d4aa75e8ca9748b01c2a20698abaf81538efafc02e8613f25518349e
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close
+  path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-close.md
+  hash_c: bfee909f4b0ec95f578246ccd2d76cdfa38128bd0f234433b8dcf0592954bbb2
+  hash_d: 1b5eca04f95660c4ef19fcd826b70c3bf8e5390d30fd67f9cd74e855640128a3
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing
+  path: desk/primitives/operators/operator-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp-ready-for-testing.md
+  hash_c: 9658e4301a733f22bac622444f06ba88a4ccba6694908e31c56aa87d880a5504
+  hash_d: 795f123d19e1c4c0b73a0f00a927e536940821d44149743805783e25e80d87b6
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate
+  path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-activate.md
+  hash_c: 4c60d6aabe0e7b115f61390425313481139695d6b36cd0df19a19d631d282857
+  hash_d: f2c4ddee52d6a506d9baf555654d9aec71ade8f5e1bcfd7e8425fe26bf05e0a4
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close
+  path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-close.md
+  hash_c: d7131061d92190afb082756eb33fa33a6c6e5fd46bb9060182e2bec4e36ea8dc
+  hash_d: 7b00422d4188743aa92be2211793708829efa53708d76d9a42d12e45b63f8214
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing
+  path: desk/primitives/operators/operator-task-organizaci-n-autom-tica-de-tomos-en-la-kb-ready-for-testing.md
+  hash_c: 271bfac66aa51f480f8c3c8921ffd584bf9cb95052836ffd5038a5f19aa2c49d
+  hash_d: 59be2aa2c558996cb09ff72824287af3654680f3a9d2fbcf3da72b4544c80103
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate
+  path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-activate.md
+  hash_c: 8917bfddc8e2e65ee4dab0ce838a4fbb6ace984aadf86acb00bfd647776d7fbb
+  hash_d: 5847044e69f46eb8a804dc21a53715a5fd1c53d1f07e57e2991a51ddd667e818
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-recomponer-la-base-de-spec2viz-y-atoms-close
+  path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-close.md
+  hash_c: 6e8280e3bafcf6dcaa58bb5eb6715311fa8d1dced299404dba314f5517e61026
+  hash_d: 582fbe8d505d67d077a7d4975d37d29092b1179f6f886298f78439b7be5007cc
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing
+  path: desk/primitives/operators/operator-task-recomponer-la-base-de-spec2viz-y-atoms-ready-for-testing.md
+  hash_c: ec514ceeccf15ac8ec09c2eba806df1196f3f4a626ab78644453d8573f1714fc
+  hash_d: 0f301335188fc6f221a8181663d44c5ef46542fac36f44a47760db22bcc522ce
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate
+  path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-activate.md
+  hash_c: 2577a4bb0c90bf8584a4434cadfb18774000183afce239f2fccb5b71085f9bbf
+  hash_d: b529d2c75992e1a7a24be9f367bb7e2e98dd172af4b87ca2cfac87b9e2649e41
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close
+  path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-close.md
+  hash_c: c0eec95731a5504e687cb68d6c9dddb4d9d8cf38776c641366f5a576dde27e3e
+  hash_d: d66727758eb6b4777c52549e300a57e89c813235e8013482ebec00747b0d3cdc
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing
+  path: desk/primitives/operators/operator-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools-ready-for-testing.md
+  hash_c: b9306f515670835e5cf681a80c88cac12660260883657b691e0114b07087ce54
+  hash_d: 88512e21c2da53c46c34f72bda364589db504a8d9628a3e9c8f4f8350c1284a4
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate
+  path: desk/primitives/operators/operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-activate.md
+  hash_c: 7eecf782e533b64f875ec6e404f77d0137f82feb14df649560a767a6bcd28e23
+  hash_d: c9d02c5edd93053fd2485b6684c116218f86a993f87dcfd846243f2145063758
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close
+  path: desk/primitives/operators/operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-close.md
+  hash_c: de306a838cb40106fefe9e82837a3d0e9a3feeabcc446cce296c06b6625cddc5
+  hash_d: 133ca5e2dfeed7f41a240db6b44a01a73e1308685faa89cccaf298afb5a6b62d
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-testing
+  path: desk/primitives/operators/operator-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form-ready-for-testing.md
+  hash_c: d0cbdd318c7e7ee7665d872fe232548e4f8d000b90d21033c4ba682fdd4cd829
+  hash_d: 205db90104de26adb7004ca594de0655f1b1cb1e4a63caedf7ec228dfd89e056
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate
+  path: desk/primitives/operators/operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-activate.md
+  hash_c: cd8ebf6aab5b7c85cd04d29f9e940f1a5fc4cff6f9550919faac0139835a0ac0
+  hash_d: 65e368531769634f204078e1342aa880cf17e9022eecf73339dfe3bbba7d3544
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close
+  path: desk/primitives/operators/operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-close.md
+  hash_c: 5ab08dd9ca43012c98eb1316cc877b6d8b4e21b22ccedbdb8b74cd08eda56e6c
+  hash_d: 7844b4abec5ec135502f193db99a34c2c7b7af32f90bf5e73f761d33059fac87
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing
+  path: desk/primitives/operators/operator-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica-ready-for-testing.md
+  hash_c: bf958a8935d7d60f0c4769fb4a7d5358aeead06f2c25497cf00e704622f4d09d
+  hash_d: b1779d07372bee6de240ba9cd9e582c1d1c2e32c8be48f911fce38a48ee4ba28
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate
+  path: desk/primitives/operators/operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-activate.md
+  hash_c: 830388b86c4d42c3a188946bb0b91eb3da8eec445e4aaee217912cc9dd9d68ef
+  hash_d: 526b081382e55be591bdac0347c6059f0f466672b7adb016b0fa831c460e3840
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close
+  path: desk/primitives/operators/operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-close.md
+  hash_c: c4dd8aadea6eae38ee9ea092d2de6cda8baed12bf465dd85f8edf6a734be239a
+  hash_d: d4584061600bfc78a8a9b16af897e66c2b8c67429323acea3a99b9f144c0d9d6
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing
+  path: desk/primitives/operators/operator-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente-ready-for-testing.md
+  hash_c: ec2cafd4461eb2f0880c02dd6088e1c6e9c38b247728787c0a2739294346a96e
+  hash_d: 377a50c1a73f2cc9a48a003c346b3b05cc5c71e05a0c835d91f8e40119324dfe
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate
+  path: desk/primitives/operators/operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-activate.md
+  hash_c: 1e48e4780bec296b8cea00a30b629905bec71c67eac6af47b6b0a100ae729cfd
+  hash_d: b815f57b1207d74a507d7f361bf7ccca79e4000684b01a27ca2c2018f43f879a
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close
+  path: desk/primitives/operators/operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-close.md
+  hash_c: 4c3ecf15004b6d39b90a67e60d87e693ba8b011c2a560d7f7b0cf9c47d4398a4
+  hash_d: 9e95801ec7fbbcabe01d3bb353bdea99a52dcc9b72ca9ad24c5a0da4c053f081
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-testing
+  path: desk/primitives/operators/operator-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime-ready-for-testing.md
+  hash_c: bb7760ca33e4a3a14bd577769a0e2c5151e81a8e065c7bc60c4143d392d583bd
+  hash_d: 12b20e297cea0007cbcf8d150559df6f51e3cb7a7b78130db2df4f1246a93422
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate
+  path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-activate.md
+  hash_c: 7a0b89a1711de8cbdc268f0d57511e66d810dafa04e3c21ff20868f90793b0c1
+  hash_d: 903f8e335db4ba3d4f9d755d2da84d4507757f7eca77427fc1a10a4bd00cccaf
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing
+  path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-ready-for-testing.md
+  hash_c: d7417f5f09870b715ba218cc906cf8e0084a422efc8dc7415fb6ce8cd9761fff
+  hash_d: 29684266bef30945c3100a7372908a3183d0efd5a7fc627455358c08c2c6bde1
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close
+  path: desk/primitives/operators/operator-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo-close.md
+  hash_c: d603b64456668baede645bdef4fcb2d48d933ad340ff24758abc5fe4c38c42cb
+  hash_d: 173df9713e881c7f4309b217b294f24d21b090f750ff48627cb58ef34c94e82b
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate
+  path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-activate.md
+  hash_c: 91b4bfdf5458f92219424c510b80dda9477eb9b617ff98bf31dcbfe3c2cf58b6
+  hash_d: 20a695218b7157ecd557066157a5c899e983b141a0bbe5ed09a29d2a1a4dc09b
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing
+  path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-ready-for-testing.md
+  hash_c: 7d2358a3b4dcef2aeeb82fe7e50d5170575398b4e8d2c21adb52306a5550ee7e
+  hash_d: e09662504d1ac79471f96674b591935357e85a2b3e67f2d235fe21a1c4650bc0
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close
+  path: desk/primitives/operators/operator-task-vista-leads-con-cola-de-visitas-por-confirmar-close.md
+  hash_c: cf8cc56651b5feda33e6897778455c5d46ce0ee7dea49e1a1bd22be5286efca8
+  hash_d: 80a75069d6e1cbd7bcfe828143ec39e22221b839aa2aa5c9001c17a13195fe5c
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate
+  path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-activate.md
+  hash_c: 81a83263da1c7a8e6a135450010717e64c846f78aac6d2b4be8ef37e8a9447b2
+  hash_d: 28072ee79f210a556c0d0a96654d8445bf55d43a3bcb3af690f8ce4cd2cd0584
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing
+  path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-ready-for-testing.md
+  hash_c: 7e177e7f496890112ea8511a7ea95f96f462b7327cebc64bed345d099ea43dbc
+  hash_d: 00d9eeb63f302156fd941219196db72b329f3c7f97ab67b99b5e3e07b2f3e9e1
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close
+  path: desk/primitives/operators/operator-task-metricas-reales-en-el-dashboard-desde-el-sqlite-close.md
+  hash_c: 5775f9d530dc971cadd24965495e2625723f0a22469da1ab138b5bfdb6e4f19a
+  hash_d: 7d12ca13684a7d357abdd0ee714350b8f546e7a14cc535491e0050ac1b481073
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate
+  path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-activate.md
+  hash_c: 1e0803083c1fbc7c242bf8f0b4d5aa0fa87c1676bbe83801d65d7fbd5838b4f0
+  hash_d: 77f7338935e2b3abbbb916b17e3c384221c0d23e4852664590cd566bba3bb0c7
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing
+  path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-ready-for-testing.md
+  hash_c: d4efeea4647ad81a18602b7aa45447792291d235c6e2ec2e6ac556bd20ca7126
+  hash_d: a83a459e55c5a4ee372a8561197520c8b5cd0401980892228494397e42da61b1
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close
+  path: desk/primitives/operators/operator-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali-close.md
+  hash_c: 2a1f5ea3ed5d68bb238edfe77a4f7b2bdce0a9365965cc94babdb40b3f639916
+  hash_d: 66ea65aa929d22d2835efb491e810b72ce0b4cc3aabea8eb90f64b1b44c6bfa5
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate
+  path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-activate.md
+  hash_c: 307b540c90f32e020b5863fc101d0a1ed149425d50e95ee1713ecceaf9e57377
+  hash_d: 9c577f038fc10df752fa7e16a65253791278c68604e4ec25959aa6fd96a94c99
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing
+  path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-ready-for-testing.md
+  hash_c: 496f7d2c250ae186041153c7b4c4f79fe9578edf27131ded7a3cff7791af9b65
+  hash_d: e4a05eace87e07867644e07637aef96f483d16ea9a360417e4292dc743cefdd9
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close
+  path: desk/primitives/operators/operator-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql-close.md
+  hash_c: da30e2865f4198a6118240b7b870075a591d6ae8a387c8c5275a61bfa897769b
+  hash_d: ddb9ba5c8467a9ccdbc1480c7c29a27031f2b51151a8c305d8c7ba29c64fcbb9
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate
+  path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-activate.md
+  hash_c: c52932bafcb2b98db0d88594310a88b854c89c26e131f55dd81caad50d139ffe
+  hash_d: 4367382c1ed65a644243349a0180f54825ffc52ae6dc5aaaa19b83002526cdf2
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing
+  path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-ready-for-testing.md
+  hash_c: 01001d6c9d8adf7803cd331d07aa5b5f750c2d36a820a8d8f9a0a404db98ad35
+  hash_d: b8f3b9df9066da0c01ba4e9e41bfa92e0156cc4d85d0a46391979cd7c8c59db3
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives
+- name: operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close
+  path: desk/primitives/operators/operator-task-mover-logica-reimplementada-a-kgdb-sldb-pron-close.md
+  hash_c: 3b997d7e1d51a6cf3d344387c2999f0149b326b7d1ec216bfc32f281b72bbdb1
+  hash_d: 7d42562588924c325cd5d07d3fdfb5bcf09fe1726b3bff2bc345f1f58d206a1c
+  semantic_tags:
+  - primitive:operator
+  - type.workflow.operator
+  - workspace.desk.primitives

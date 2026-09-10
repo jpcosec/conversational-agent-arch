@@ -1,0 +1,41 @@
+## vitali...origin/vitali [ahead 3]
+ M .sldb/core/documents/BoardDoc.yaml
+ M .sldb/core/documents/FAQDoc.yaml
+ M .sldb/core/documents/InboxNoteDoc.yaml
+ M .sldb/core/documents/PillDoc.yaml
+ M .sldb/core/documents/RitualDoc.yaml
+ M .sldb/core/documents/StepDoc.yaml
+ M .sldb/core/documents/TaskDoc.yaml
+ M .sldb/core/models/BoardDoc.yaml
+ M .sldb/core/models/FAQDoc.yaml
+ M .sldb/core/models/InboxNoteDoc.yaml
+ M .sldb/core/models/PillDoc.yaml
+ M .sldb/core/models/RitualDoc.yaml
+ M .sldb/core/models/StepDoc.yaml
+ M .sldb/core/models/TaskDoc.yaml
+ M .sldb/core/store_index.yaml
+ M .sldb/runtime/sections/BoardDoc.yaml
+ M .sldb/runtime/sections/PillDoc.yaml
+ M .sldb/runtime/sections/TaskDoc.yaml
+ M .sldb/runtime/semantic_dag.yaml
+ M .sldb/runtime/semantic_index.yaml
+ M desk/drawer/pills/pill-ui-estilo-flow-editor.md
+ M desk/drawer/pills/pill-ui-no-build-cdn.md
+ M desk/drawer/tasks/task-concurrencia-el-turn-id-de-la-ui-colisiona-entre-requests-simultaneas.md
+ M desk/drawer/tasks/task-concurrencia-ensure-user-pierde-el-mensaje-del-primer-contacto.md
+ M desk/drawer/tasks/task-el-turn-id-en-vivo-tn-no-coincide-con-el-persistido-uuid.md
+ M desk/drawer/tasks/task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento.md
+ M desk/drawer/tasks/task-grounding-el-conversador-afirma-atributos-de-productos-que-la-kb-no-declara.md
+ M desk/drawer/tasks/task-identidad-no-unificada-entre-canales-el-mismo-usuario-es-dos-usuarios.md
+ M desk/drawer/tasks/task-la-conversacion-no-existe-como-entidad-en-el-esquema.md
+ M desk/drawer/tasks/task-mindmap-no-hay-escritura-de-atoms-desde-la-ui.md
+ M desk/drawer/tasks/task-una-kb-sin-embeddings-falla-en-silencio-y-nadie-avisa.md
+ M desk/drawer/tasks/task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
+ M desk/drawer/tasks/task-vitali-no-tiene-piso-de-seguridad-ningun-ruleatom-conversation-security.md
+ M desk/tasks/Board.md
+ M desk/tasks/task-recomponer-la-base-de-spec2viz-y-atoms.md
+ D desk/tasks/task-ui-foundations.md
+?? .sldb/runtime/sections/FAQDoc.yaml
+?? .sldb/runtime/sections/RitualDoc.yaml
+?? .sldb/runtime/sections/StepDoc.yaml
+?? deployment-index.md

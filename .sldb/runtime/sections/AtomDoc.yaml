@@ -44,51 +44,6 @@ documents:
     level: 2
     line_start: 13
     line_end: 14
-- doc_name: atom-ontologizador-context-compiler
-  sections:
-  - path: ontologizador-context-compiler
-    title: Ontologizador (Context Compiler)
-    breadcrumbs:
-    - Ontologizador (Context Compiler)
-    about:
-    - Ontologizador (Context Compiler)
-    - ontologizador context compiler
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: ontologizador-context-compiler
-    level: 1
-    line_start: 11
-    line_end: 12
-  - path: ontologizador-context-compiler/answer
-    title: Answer
-    breadcrumbs:
-    - Ontologizador (Context Compiler)
-    - Answer
-    about:
-    - Ontologizador (Context Compiler)
-    - ontologizador context compiler
-    - Answer
-    - answer
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - layer:runtime
-    - role:engine
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 13
-    line_end: 14
 - doc_name: atom-perfilador-asincrono
   sections:
   - path: perfilador-asincrono
@@ -285,14 +240,14 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: "atom-clasificaci\xF3n-de-4-ramas-del-flujo-psp"
+- doc_name: atom-clasificación-de-4-ramas-del-flujo-psp
   sections:
   - path: clasificaci-n-de-4-ramas-del-flujo-psp
-    title: "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    title: Clasificación de 4 ramas del flujo PSP
     breadcrumbs:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     about:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     - clasificaci n de 4 ramas del flujo psp
     - domain:psp
     - system:antonia
@@ -312,10 +267,10 @@ documents:
   - path: clasificaci-n-de-4-ramas-del-flujo-psp/answer
     title: Answer
     breadcrumbs:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     - Answer
     about:
-    - "Clasificaci\xF3n de 4 ramas del flujo PSP"
+    - Clasificación de 4 ramas del flujo PSP
     - clasificaci n de 4 ramas del flujo psp
     - Answer
     - answer
@@ -383,14 +338,14 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: "atom-decisi\xF3n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate"
+- doc_name: atom-decisión-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
   sections:
   - path: decisi-n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate
-    title: "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    title: 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     breadcrumbs:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     about:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     - decisi n familia gate con modelo gatecriterion para el policy gate
     - domain:psp
     - system:antonia
@@ -412,10 +367,10 @@ documents:
   - path: decisi-n-familia-gate-con-modelo-gatecriterion-para-el-policy-gate/answer
     title: Answer
     breadcrumbs:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     - Answer
     about:
-    - "Decisi\xF3n: familia gate con modelo GateCriterion para el policy gate"
+    - 'Decisión: familia gate con modelo GateCriterion para el policy gate'
     - decisi n familia gate con modelo gatecriterion para el policy gate
     - Answer
     - answer
@@ -484,11 +439,11 @@ documents:
 - doc_name: atom-concepto-atomo-semantico
   sections:
   - path: tomo-sem-ntico-sldb
-    title: "\xC1tomo Sem\xE1ntico (SLDB)"
+    title: Átomo Semántico (SLDB)
     breadcrumbs:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     about:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     - tomo sem ntico sldb
     - family:concepts
     - layer:business
@@ -506,10 +461,10 @@ documents:
   - path: tomo-sem-ntico-sldb/answer
     title: Answer
     breadcrumbs:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     - Answer
     about:
-    - "\xC1tomo Sem\xE1ntico (SLDB)"
+    - Átomo Semántico (SLDB)
     - tomo sem ntico sldb
     - Answer
     - answer
@@ -574,11 +529,11 @@ documents:
 - doc_name: atom-embeddings-como-layout-no-vista
   sections:
   - path: decisi-n
-    title: "Decisi\xF3n"
+    title: Decisión
     breadcrumbs:
-    - "Decisi\xF3n"
+    - Decisión
     about:
-    - "Decisi\xF3n"
+    - Decisión
     - decisi n
     - family:concepts
     - layer:frontend
@@ -594,11 +549,11 @@ documents:
     line_start: 11
     line_end: 12
   - path: por-qu
-    title: "Por qu\xE9"
+    title: Por qué
     breadcrumbs:
-    - "Por qu\xE9"
+    - Por qué
     about:
-    - "Por qu\xE9"
+    - Por qué
     - por qu
     - family:concepts
     - layer:frontend
@@ -701,11 +656,11 @@ documents:
 - doc_name: atom-garantia-cero-alucinaciones
   sections:
   - path: garant-a-cero-alucinaciones
-    title: "Garant\xEDa Cero Alucinaciones"
+    title: Garantía Cero Alucinaciones
     breadcrumbs:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     about:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     - garant a cero alucinaciones
     - family:concepts
     - layer:business
@@ -723,10 +678,10 @@ documents:
   - path: garant-a-cero-alucinaciones/answer
     title: Answer
     breadcrumbs:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     - Answer
     about:
-    - "Garant\xEDa Cero Alucinaciones"
+    - Garantía Cero Alucinaciones
     - garant a cero alucinaciones
     - Answer
     - answer
@@ -882,51 +837,6 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: atom-negocios-activos
-  sections:
-  - path: negocios-activos-kbs
-    title: Negocios Activos (KBs)
-    breadcrumbs:
-    - Negocios Activos (KBs)
-    about:
-    - Negocios Activos (KBs)
-    - negocios activos kbs
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: negocios-activos-kbs
-    level: 1
-    line_start: 11
-    line_end: 12
-  - path: negocios-activos-kbs/answer
-    title: Answer
-    breadcrumbs:
-    - Negocios Activos (KBs)
-    - Answer
-    about:
-    - Negocios Activos (KBs)
-    - negocios activos kbs
-    - Answer
-    - answer
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    semantic_tags:
-    - family:concepts
-    - layer:business
-    - type.knowledge.atom
-    - workspace.desk.atoms
-    slug: answer
-    level: 2
-    line_start: 13
-    line_end: 14
 - doc_name: atom-orquestador-hub
   sections:
   - path: orquestador-hub-central
@@ -1110,11 +1020,11 @@ documents:
 - doc_name: atom-project-config
   sections:
   - path: configuraci-n-del-negocio
-    title: "Configuraci\xF3n del Negocio"
+    title: Configuración del Negocio
     breadcrumbs:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     about:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     - configuraci n del negocio
     - layer:knowledge
     - role:boundary
@@ -1132,10 +1042,10 @@ documents:
   - path: configuraci-n-del-negocio/answer
     title: Answer
     breadcrumbs:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     - Answer
     about:
-    - "Configuraci\xF3n del Negocio"
+    - Configuración del Negocio
     - configuraci n del negocio
     - Answer
     - answer
@@ -1335,11 +1245,11 @@ documents:
 - doc_name: atom-topologia-de-despliegue
   sections:
   - path: topolog-a-de-despliegue-modal
-    title: "Topolog\xEDa de Despliegue (Modal)"
+    title: Topología de Despliegue (Modal)
     breadcrumbs:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     about:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     - topolog a de despliegue modal
     - layer:ops
     - role:boundary
@@ -1357,10 +1267,10 @@ documents:
   - path: topolog-a-de-despliegue-modal/answer
     title: Answer
     breadcrumbs:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     - Answer
     about:
-    - "Topolog\xEDa de Despliegue (Modal)"
+    - Topología de Despliegue (Modal)
     - topolog a de despliegue modal
     - Answer
     - answer
@@ -1528,14 +1438,14 @@ documents:
     level: 2
     line_start: 15
     line_end: 16
-- doc_name: "atom-configuraci\xF3n-por-capas-y-tuning"
+- doc_name: atom-configuración-por-capas-y-tuning
   sections:
   - path: configuraci-n-por-capas-y-tuning
-    title: "Configuraci\xF3n por capas y tuning"
+    title: Configuración por capas y tuning
     breadcrumbs:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     about:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     - configuraci n por capas y tuning
     - layer:ops
     - role:boundary
@@ -1555,10 +1465,10 @@ documents:
   - path: configuraci-n-por-capas-y-tuning/answer
     title: Answer
     breadcrumbs:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     - Answer
     about:
-    - "Configuraci\xF3n por capas y tuning"
+    - Configuración por capas y tuning
     - configuraci n por capas y tuning
     - Answer
     - answer
@@ -1724,14 +1634,14 @@ documents:
     level: 2
     line_start: 14
     line_end: 15
-- doc_name: "atom-capas-de-verificaci\xF3n-y-release"
+- doc_name: atom-capas-de-verificación-y-release
   sections:
   - path: capas-de-verificaci-n-y-release
-    title: "Capas de verificaci\xF3n y release"
+    title: Capas de verificación y release
     breadcrumbs:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     about:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     - capas de verificaci n y release
     - layer:ops
     - role:boundary
@@ -1751,10 +1661,10 @@ documents:
   - path: capas-de-verificaci-n-y-release/answer
     title: Answer
     breadcrumbs:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     - Answer
     about:
-    - "Capas de verificaci\xF3n y release"
+    - Capas de verificación y release
     - capas de verificaci n y release
     - Answer
     - answer
@@ -1861,6 +1771,402 @@ documents:
     semantic_tags:
     - layer:ops
     - topic:alembic
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-context-compiler-knowledge
+  sections:
+  - path: context-compiler-knowledge
+    title: Context Compiler (knowledge)
+    breadcrumbs:
+    - Context Compiler (knowledge)
+    about:
+    - Context Compiler (knowledge)
+    - context compiler knowledge
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: context-compiler-knowledge
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: context-compiler-knowledge/answer
+    title: Answer
+    breadcrumbs:
+    - Context Compiler (knowledge)
+    - Answer
+    about:
+    - Context Compiler (knowledge)
+    - context compiler knowledge
+    - Answer
+    - answer
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:engine
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-mensajes-entrantes-inboundservice-e-inbound-messages
+  sections:
+  - path: mensajes-entrantes-inboundservice-e-inbound-messages
+    title: 'Mensajes entrantes: InboundService e inbound_messages'
+    breadcrumbs:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    about:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    - mensajes entrantes inboundservice e inbound messages
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: mensajes-entrantes-inboundservice-e-inbound-messages
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: mensajes-entrantes-inboundservice-e-inbound-messages/answer
+    title: Answer
+    breadcrumbs:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    - Answer
+    about:
+    - 'Mensajes entrantes: InboundService e inbound_messages'
+    - mensajes entrantes inboundservice e inbound messages
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-por-qué-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+  sections:
+  - path: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+    title: Por qué la respuesta a Twilio sale por REST y no en el TwiML
+    breadcrumbs:
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
+    about:
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
+    - por qu la respuesta a twilio sale por rest y no en el twiml
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: por-qu-la-respuesta-a-twilio-sale-por-rest-y-no-en-el-twiml/answer
+    title: Answer
+    breadcrumbs:
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
+    - Answer
+    about:
+    - Por qué la respuesta a Twilio sale por REST y no en el TwiML
+    - por qu la respuesta a twilio sale por rest y no en el twiml
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-cómo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
+  sections:
+  - path: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
+    title: Cómo se resuelve canal y persona desde el remitente de Twilio
+    breadcrumbs:
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
+    about:
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
+    - c mo se resuelve canal y persona desde el remitente de twilio
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: c-mo-se-resuelve-canal-y-persona-desde-el-remitente-de-twilio/answer
+    title: Answer
+    breadcrumbs:
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
+    - Answer
+    about:
+    - Cómo se resuelve canal y persona desde el remitente de Twilio
+    - c mo se resuelve canal y persona desde el remitente de twilio
+    - Answer
+    - answer
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:user
+    - layer:runtime
+    - role:data
+    - topic:canales
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-cómo-conectar-twilio-al-runtime-local
+  sections:
+  - path: c-mo-conectar-twilio-al-runtime-local
+    title: Cómo conectar Twilio al runtime local
+    breadcrumbs:
+    - Cómo conectar Twilio al runtime local
+    about:
+    - Cómo conectar Twilio al runtime local
+    - c mo conectar twilio al runtime local
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: c-mo-conectar-twilio-al-runtime-local
+    level: 1
+    line_start: 13
+    line_end: 14
+  - path: c-mo-conectar-twilio-al-runtime-local/answer
+    title: Answer
+    breadcrumbs:
+    - Cómo conectar Twilio al runtime local
+    - Answer
+    about:
+    - Cómo conectar Twilio al runtime local
+    - c mo conectar twilio al runtime local
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:canales
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: atom-qué-no-hacer-con-credenciales-y-firma-de-twilio
+  sections:
+  - path: qu-no-hacer-con-credenciales-y-firma-de-twilio
+    title: Qué no hacer con credenciales y firma de Twilio
+    breadcrumbs:
+    - Qué no hacer con credenciales y firma de Twilio
+    about:
+    - Qué no hacer con credenciales y firma de Twilio
+    - qu no hacer con credenciales y firma de twilio
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: qu-no-hacer-con-credenciales-y-firma-de-twilio
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: qu-no-hacer-con-credenciales-y-firma-de-twilio/answer
+    title: Answer
+    breadcrumbs:
+    - Qué no hacer con credenciales y firma de Twilio
+    - Answer
+    about:
+    - Qué no hacer con credenciales y firma de Twilio
+    - qu no hacer con credenciales y firma de twilio
+    - Answer
+    - answer
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:ops
+    - role:boundary
+    - topic:twilio
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 14
+    line_end: 15
+- doc_name: atom-tools-de-vitali-wrapper-semántico-sobre-leads-y-visitas
+  sections:
+  - path: tools-de-vitali-wrapper-sem-ntico-sobre-leads-y-visitas
+    title: 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    breadcrumbs:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    about:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    - tools de vitali wrapper sem ntico sobre leads y visitas
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: tools-de-vitali-wrapper-sem-ntico-sobre-leads-y-visitas
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: tools-de-vitali-wrapper-sem-ntico-sobre-leads-y-visitas/answer
+    title: Answer
+    breadcrumbs:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    - Answer
+    about:
+    - 'Tools de Vitali: wrapper semántico sobre leads y visitas'
+    - tools de vitali wrapper sem ntico sobre leads y visitas
+    - Answer
+    - answer
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - layer:runtime
+    - role:boundary
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: answer
+    level: 2
+    line_start: 13
+    line_end: 14
+- doc_name: atom-un-negocio-por-rama
+  sections:
+  - path: un-negocio-por-rama
+    title: Un negocio por rama
+    breadcrumbs:
+    - Un negocio por rama
+    about:
+    - Un negocio por rama
+    - un negocio por rama
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    slug: un-negocio-por-rama
+    level: 1
+    line_start: 11
+    line_end: 12
+  - path: un-negocio-por-rama/answer
+    title: Answer
+    breadcrumbs:
+    - Un negocio por rama
+    - Answer
+    about:
+    - Un negocio por rama
+    - un negocio por rama
+    - Answer
+    - answer
+    - family:concepts
+    - layer:business
+    - type.knowledge.atom
+    - workspace.desk.atoms
+    semantic_tags:
+    - family:concepts
+    - layer:business
     - type.knowledge.atom
     - workspace.desk.atoms
     slug: answer

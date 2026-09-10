@@ -1,0 +1,127 @@
+documents:
+- name: routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp
+  path: desk/routines/routine-task-extender-el-flujo-conversacional-de-la-kb-antonia-para-cumplir-la-cadena-de-agentes-psp.md
+  hash_c: 245660cd71a9bd47c5ab61882af2f2a9f2fbd6a008fbebfd4cbba67ae94839d0
+  hash_d: ddc01b76ce92467db0683bf8bac8314e26bbbb7bc18144985863c073d29bd8e6
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb
+  path: desk/routines/routine-task-organizaci-n-autom-tica-de-tomos-en-la-kb.md
+  hash_c: 939ec0e3e15613f5258395bf36a911fcae1a5697d13ac139c39f6d60c8342e80
+  hash_d: c4b281e3ca6105027beb878ba39c99c81d1957c37a39d1d1d142135714c94ba1
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-recomponer-la-base-de-spec2viz-y-atoms
+  path: desk/routines/routine-task-recomponer-la-base-de-spec2viz-y-atoms.md
+  hash_c: 2d16a9eca2ae27f9288e40365b31959f5eee306bea8b8e168358b44fcfbcbdaa
+  hash_d: 5b473672f79775a9ff5868c8d45f4b5fc75da3e70b1381b80c1b469cb4aea49e
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  path: desk/routines/routine-task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools.md
+  hash_c: 1441ea23a5eef9fd16aba3531dff1276f69e4268c198513454fe44d3ea98da6c
+  hash_d: 3892992bc01c4f6a8742bd2d74f46211bfa72c3bbfdecbf4b2c197db9fbb4c6e
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form
+  path: desk/routines/routine-task-ingestion-declarativa-de-traits-desde-el-formulario-registro-source-form.md
+  hash_c: 90ea090f193184a1615ec20f9bf760f1b5a1e7f64f0d707eb49aa144e541bb97
+  hash_d: af2627e610357ba7ae360d924394794bf5186e0b4d3b153e4c89a30f17dc3423
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica
+  path: desk/routines/routine-task-perfilador-pre-filtrar-traits-candidatos-por-similitud-semantica.md
+  hash_c: 5bf8ac38282b56a1d177c1c25e80a457dd24aa30735d4a370bd7a939fa0a0858
+  hash_d: ae27fa70382a9a0d8ba50bfd166781cf9fb688af4e46355e5650d7d1dd38560c
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente
+  path: desk/routines/routine-task-verificar-si-el-known-gap-donpeppe-saludo-unico-sigue-vigente.md
+  hash_c: 06c53a4650c96ab37a0961c5fb2dc80f16f99b970273cbacee6da3bcdc515aaf
+  hash_d: 561b77b6ef68cb583bd11b05c715cf68b59340a6e02961bd7666d46cb555c772
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  path: desk/routines/routine-task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime.md
+  hash_c: 7fcd4db95e2b6e3acb0adc4ecea7a9530ac553e8db5ec3b1033ada32284661af
+  hash_d: 5b791986314f2a946a278271e7de62e4dd8a5bb53b9366dbd8f9d71b9d29dd39
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  path: desk/routines/routine-task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo.md
+  hash_c: a1bb18bc4a1283227906c3a587dcf88e0abcc2382715565f3f7bf18c0af8ea4c
+  hash_d: 0e9df507b646f162b2c0a3db51d8cee49fc27ac1bbd179e3459c2c8a6e33f4a5
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-vista-leads-con-cola-de-visitas-por-confirmar
+  path: desk/routines/routine-task-vista-leads-con-cola-de-visitas-por-confirmar.md
+  hash_c: 8725e8f1ba35c3261147666b69a5e322707e6ed52944515e76af20a304552e05
+  hash_d: a34413e089a21c892ef84637e0b498186b9f79cd1c771975cecbc54c8eee10e0
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  path: desk/routines/routine-task-metricas-reales-en-el-dashboard-desde-el-sqlite.md
+  hash_c: eb82f412eeb544683f5685a5341be2e12cc444324be77da2515256a410cdb190
+  hash_d: 8a9adfbb709441d09d865d1db93934fe6ea58bc49107c4f108941b345b492749
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  path: desk/routines/routine-task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali.md
+  hash_c: b9ac413e8b227abd8bbc0e37e6c034eb6222275d68d65b0a8d9c972258a13bc3
+  hash_d: 7d32f5734b43b6c5a92cd42461457cc3a24d434b8201d5da8a05915d3a094d1b
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  path: desk/routines/routine-task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql.md
+  hash_c: d717e986a08a00ec58ced78cc3d5771396b45e134cd19c408ab951ea3416ad0c
+  hash_d: ff2b28323adf96c715b9a6ec46fe84148385455c3e4a8a5c698b0c3c0c3a8cc5
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk
+- name: routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron
+  path: desk/routines/routine-task-mover-logica-reimplementada-a-kgdb-sldb-pron.md
+  hash_c: aa56b42750bd3f8acf5bb4bdb3aa48da201dca7b0fa3077ab0638cf50f47825e
+  hash_d: 21aab8c11479c5cf761b0b14fe489b8f301fcd2ba5efbffb4b403a27273777bd
+  semantic_tags:
+  - primitive:routine
+  - type.workflow.routine
+  - workspace.desk.routines
+  - workspace:desk

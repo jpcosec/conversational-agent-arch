@@ -1,0 +1,73 @@
+documents:
+- name: trait-hcp-especialidad
+  path: atoms/trait-hcp-especialidad.md
+  hash_c: a5a191c57b1b4494fd39e17fa4bcdcdf46df790f6bc5160ec7ca6e8fc65c129d
+  hash_d: 72fb62bde559dfed238a6b5df2784baf087c6ba96fd472f5733d48d1aa3239b6
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:traits.especialidad
+  - workspace.knowledge
+- name: trait-hcp-preferencia-contacto
+  path: atoms/trait-hcp-preferencia-contacto.md
+  hash_c: 2b81cbc8f8a7fa5989678d87175e6ee771e0ce464b59dabd8f80e3d3068b8f6a
+  hash_d: b70db732f76f42c48de046cdcaf2365fa9ad3b52933d80f671efdce82fee74a4
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:traits.preferencia_contacto
+  - workspace.knowledge
+- name: trait-hcp-especialidad-cardiologia
+  path: atoms/traits/trait-hcp-especialidad-cardiologia.md
+  hash_c: 9a5e492b182384cda3d549c570659364bc81b17cc0da3892b7f66091cb8b73d7
+  hash_d: ffc6bf1374223bd28d95f6b21dc2a94e916b4284838d09f6277b688781b647b2
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:specialty.cardiologia
+  - workspace.knowledge
+- name: trait-hcp-especialidad-medicina-general
+  path: atoms/traits/trait-hcp-especialidad-medicina-general.md
+  hash_c: 7d78fae74e41702c964d158e53bfec50e7ff7eb8f655bf33df659760d39177a9
+  hash_d: 265abc3de0578be230fb66cba9f3ed5ac80b6b98f31108954ee6edbce7e4e50d
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:specialty.medicina-general
+  - workspace.knowledge
+- name: trait-hcp-especialidad-neurologia
+  path: atoms/traits/trait-hcp-especialidad-neurologia.md
+  hash_c: 9f41eb53e956ff447a3834c202fd99648c0f6f29a0924d84614111544cda58ab
+  hash_d: fc5cc3e80f1713604006e233586a1e0006db4bcc250357b4932e14d5be655344
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:specialty.neurologia
+  - workspace.knowledge
+- name: trait-hcp-especialidad-pediatria
+  path: atoms/traits/trait-hcp-especialidad-pediatria.md
+  hash_c: e7a14f559363426f67f9510b13a23f2e6439e8998ebad7c072182b04a83615b5
+  hash_d: b85da9dc9618a831e284f8f87eb55e6b8b44ca43aabb60f2b3673e92f2006d87
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:specialty.pediatria
+  - workspace.knowledge
+- name: trait-hcp-especialidad-psiquiatria
+  path: atoms/traits/trait-hcp-especialidad-psiquiatria.md
+  hash_c: 42002247a9d87388f0f4aab3be4f42e369cfa7014f0e3fc042be0f9ee98b4c72
+  hash_d: a1ce59767d8e17ee266348c481e17cb22173f771022a98ed196408d9f7db6ec7
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:specialty.psiquiatria
+  - workspace.knowledge
+- name: trait-hcp-especialidad-traumatologia
+  path: atoms/traits/trait-hcp-especialidad-traumatologia.md
+  hash_c: 22d483a5fef17b7fd3ba30b527af3af6cbe6f56ca9e2a80581c940e3c5ead18e
+  hash_d: ac1abd1300935c1f94e114ee99bdc466d6b482437636b96b76fc41c49ea3eca5
+  semantic_tags:
+  - system:teva-hcp
+  - type.knowledge.trait
+  - user:specialty.traumatologia
+  - workspace.knowledge

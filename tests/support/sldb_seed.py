@@ -11,14 +11,16 @@ Uso::
          "fields": {"description": "Crea una reserva.",
                     "parameters": '{"name": "crear_reserva", "parameters": {...}}'}},
     ])
-    reader = SLDBReader(kb_root=root)
+    reader = KnowledgeOperations(kb_root=root)
 
 Cada atom se escribe como markdown segun el template de su modelo tipado
 (``kb_agent.models.knowledge``) y se trackea con el CLI real de ``sldb``.
 """
 from __future__ import annotations
 
+import hashlib
 import os
+import random
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -58,9 +60,6 @@ SECTION_TITLES: dict[str, str] = {
     "instructions": "Instructions",
     "required_slots": "Required Slots",
     "handout_target": "Handout Target",
-    "tool_ref": "Tool",
-    "allowed_transitions": "Allowed Transitions",
-    "grounding_atoms": "Grounding Atoms",
     "completion_condition": "Completion Condition",
     "criterion": "Criterion",
     "approval_condition": "Approval Condition",
@@ -172,10 +171,16 @@ def seed_store(
     root: Path,
     atoms: list[dict[str, Any]],
     *,
-    store_name: str = ".sldb",
     namespaces_registry: str | None = None,
+    relations: list[dict[str, str]] | None = None,
 ) -> Path:
     """Crea un store SLDB en ``root`` con los atoms tipados dados. Devuelve ``root``.
+
+    ``relations``: aristas tipadas del diagrama de conversacion, cada una
+    ``{"type": "transitions_to" | "grounded_by" | "uses_tool", "source": <step_id>,
+    "target": <doc_id>}``. Se declaran como ``RelationDoc`` de kgdb (los tipos se
+    crean con ``scripts.migrate_step_relations.ensure_relation_types``) y el
+    grafo tipado queda construido en ``<root>/.pron/``, como en produccion.
 
     ``namespaces_registry`` (opcional): si se entrega, se escribe como
     ``<root>/desk/atoms/tag-namespaces.yaml`` -- requerido por validaciones
@@ -190,9 +195,6 @@ def seed_store(
         (namespaces_dir / "tag-namespaces.yaml").write_text(namespaces_registry, encoding="utf-8")
     run_sldb("stores", "init", "--path", str(root))
     store = root / ".sldb"
-    if store_name != ".sldb":
-        os.rename(store, root / store_name)
-        store = root / store_name
 
     registered: set[str] = set()
     for atom in atoms:
@@ -214,7 +216,30 @@ def seed_store(
         )
 
     run_sldb("stores", "update", "--store", str(store), "--pythonpath", str(REPO_ROOT))
+    seed_relations(root, relations or [])
     return root
+
+
+def seed_relations(root: Path, relations: list[dict[str, str]]) -> None:
+    """``kgdb init`` + un ``RelationDoc`` por arista, por la libreria de pron; deja el
+    grafo tipado fresco (``open_world`` refresca)."""
+    from kb_agent.knowledge.world import open_world, refresh_world
+    from scripts.migrate_step_relations import ensure_relation_types
+
+    world = open_world(root, REPO_ROOT, refresh=False)
+    refresh_world(world)  # kgdb init si falta + grafo
+    ensure_relation_types(world)
+    by_name = {d.name: d for d in world.store.docs()}
+    for rel in relations:
+        kind, src, dst = rel["type"], rel["source"], rel["target"]
+        target = by_name[dst]
+        name = f"{kind}--{src}--{dst}"
+        payload = {
+            "title": f"{src} {kind} {dst}", "source_id": f"ConversationStep:{src}",
+            "target_id": f"{target.model_name}:{dst}", "relation_type": kind, "condition": "", "notes": "",
+        }
+        world.store.create("RelationDoc", name, payload, Path("relations") / f"{name}.md")
+    world.refresh()
 
 
 # ── un negocio minimo completo (reutilizable) ─────────────────────────────────
@@ -239,7 +264,7 @@ def minimal_business_atoms(*, with_fallback: bool = True, with_tool: bool = True
         {
             "type": "domain", "id": "domain-menu", "title": "Domain Menu",
             "tags": ["domain:catalogo", "system:negocio"], "five_wh": "what",
-            "fields": {"answer": "La pizza margarita cuesta 10."},
+            "fields": {"answer": "Pizza margarita 8900. Pizza cuatro quesos 9900."},
         },
         {
             "type": "domain", "id": "domain-horarios", "title": "Domain Horarios",
@@ -268,3 +293,102 @@ def minimal_business_atoms(*, with_fallback: bool = True, with_tool: bool = True
             },
         })
     return atoms
+
+
+def test_business_atoms() -> list[dict[str, Any]]:
+    """El negocio de prueba del repo (``test_kb_root``): el minimo mas un diagrama de
+    conversacion de dos pasos (onboarding <-> booking), traits, estrategia y limites.
+    Contenido generico de una pizzeria; no es ninguna KB real."""
+    atoms = minimal_business_atoms()
+    for atom in atoms:
+        if atom["id"] == "domain-menu":
+            atom["tags"].insert(1, "conversation:steps.onboarding")
+        if atom["id"] == "rule-reservas":
+            atom["tags"].insert(1, "conversation:steps.booking")
+        if atom["id"] == "tool-reserva":
+            atom["tags"] = ["self:tools", "domain:pizzeria", "conversation:steps.booking", "system:negocio"]
+            atom["fields"]["description"] = (
+                "Crea una reserva de mesa. Llamar solo con fecha, hora y cantidad de personas confirmados."
+            )
+            atom["fields"]["parameters"] = (
+                '{"name": "crear_reserva", "parameters": {"type": "object", "properties": '
+                '{"fecha": {"type": "string"}, "hora": {"type": "string"}, "personas": {"type": "integer"}, '
+                '"nombre": {"type": "string"}}, "required": ["fecha", "hora", "personas"]}}'
+            )
+    atoms += [
+        {
+            "type": "domain", "id": "domain-promos", "title": "Domain Promos",
+            "tags": ["domain:promociones", "conversation:steps.booking", "system:negocio"], "five_wh": "what",
+            "fields": {"answer": "Martes y miércoles: 2x1 en pizzas margarita. Las promociones no son acumulables."},
+        },
+        {
+            "type": "domain", "id": "domain-ubicacion", "title": "Domain Ubicacion",
+            "tags": ["domain:ubicacion", "system:negocio"], "five_wh": "where",
+            "fields": {"answer": "Estamos en Avenida Principal 123."},
+        },
+        {
+            "type": "strategy", "id": "strategy-negocio", "title": "Estrategia",
+            "tags": ["conversation:strategy", "system:negocio"],
+            "fields": {
+                "goal": "Resolver la consulta de la persona y facilitar reservas de mesa cuando lo pida.",
+                "approach": "Responder primero lo que la persona pregunto con datos de la base.",
+                "priorities": "Exactitud, brevedad, reserva cuando hay intencion.",
+            },
+        },
+        {
+            "type": "boundary", "id": "boundary-negocio", "title": "Limites",
+            "tags": ["self:limites", "system:negocio"],
+            "fields": {
+                "restriction": "No invento datos que no esten en la base. No proceso pagos.",
+                "conditions": "",
+                "escalation": "Derivar al local para lo que no puedo resolver.",
+            },
+        },
+        {
+            "type": "trait", "id": "trait-vegetariano", "title": "Cliente vegetariano",
+            "tags": ["user:traits.vegetariano", "system:negocio"], "category": "dietary",
+            "fields": {"description": "La persona es vegetariana: no consume carne. Priorizar pizzas sin carne."},
+        },
+        {
+            "type": "trait", "id": "trait-sin-gluten", "title": "Cliente sin gluten",
+            "tags": ["user:traits.sin_gluten", "system:negocio"], "category": "dietary",
+            "fields": {"description": "La persona evita el gluten. Ofrecer masa sin gluten."},
+        },
+        {
+            "type": "step", "id": "step-onboarding", "title": "Onboarding — atencion general",
+            "kind": "interaccion_simple",
+            "tags": ["conversation:steps.onboarding", "system:negocio"],
+            "fields": {
+                "instructions": "Saludar una vez, responder consultas de menu, horarios, ubicacion y promociones; pasar a reserva si hay intencion.",
+                "required_slots": "consulta de la persona",
+                "handout_target": "no aplica",
+                "completion_condition": "La persona recibio respuesta, o expreso intencion de reservar.",
+            },
+        },
+        {
+            "type": "step", "id": "step-booking", "title": "Reserva de mesa",
+            "kind": "llamado_tool",
+            "tags": ["conversation:steps.booking", "system:negocio"],
+            "fields": {
+                "instructions": "Recolectar fecha, hora y cantidad de personas una pregunta a la vez, confirmar y ejecutar la tool crear_reserva.",
+                "required_slots": "fecha, hora, personas, nombre",
+                "handout_target": "no aplica",
+                "completion_condition": "La reserva fue creada con la tool, o la persona decide no continuar.",
+            },
+        },
+    ]
+    return atoms
+
+
+def test_business_relations() -> list[dict[str, str]]:
+    """Las aristas del diagrama de ``test_business_atoms``: onboarding <-> booking, el
+    grounding de cada step y la tool de booking."""
+    return [
+        {"type": "transitions_to", "source": "step-onboarding", "target": "step-booking"},
+        {"type": "transitions_to", "source": "step-booking", "target": "step-onboarding"},
+        *({"type": "grounded_by", "source": "step-onboarding", "target": t}
+          for t in ("domain-menu", "domain-horarios", "domain-ubicacion", "domain-promos", "self-negocio")),
+        *({"type": "grounded_by", "source": "step-booking", "target": t}
+          for t in ("rule-reservas", "domain-promos", "tool-reserva")),
+        {"type": "uses_tool", "source": "step-booking", "target": "tool-reserva"},
+    ]

@@ -9,10 +9,9 @@ Por escenario:
      limites, adecuacion).
 
 La transcripcion completa se guarda en runs/simulation/<escenario>.json y se
-imprime en el mensaje de fallo. Escenarios con ``known_gap`` son xfail estricto
-(salvo ``known_gap_strict=False``, para gaps cuyo resultado varia con el LLM).
+imprime en el mensaje de fallo.
 
-Correr:  pytest tests/e2e/simulation -m simulation   (o -k donpeppe / -k antonia)
+Correr:  pytest tests/e2e/simulation -v -k antonia
 """
 from __future__ import annotations
 
@@ -22,7 +21,7 @@ import pytest
 
 from kb_agent.orchestrator import Orchestrator
 from kb_agent.project_config import load_project_config
-from tests.conftest import ANTONIA_KB, DONPEPPE_KB
+from tests.conftest import ANTONIA_KB
 
 from .judge import Judge
 from .kb_truth import kb_truth_text
@@ -32,7 +31,7 @@ from .simulated_user import SimulatedUser
 
 pytestmark = [pytest.mark.llm, pytest.mark.simulation]
 
-KB_ROOTS = {"donpeppe": DONPEPPE_KB, "antonia": ANTONIA_KB}
+KB_ROOTS = {"antonia": ANTONIA_KB}
 
 
 def _params() -> list:

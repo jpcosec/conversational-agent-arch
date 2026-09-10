@@ -3,15 +3,25 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from textwrap import dedent
-from typing import Any, Protocol
+from typing import TYPE_CHECKING, Any, Protocol
 
 from sqlalchemy.orm import Session
 
-from kb_agent.models_sql.identity import UserTraits
-from kb_agent.ontologizador.sldb_reader import SLDBReader
+from kb_agent.perfilador.traits_store import SOURCE_PROFILER, upsert_user_trait
+
+if TYPE_CHECKING:
+    from knowledge_base.operations import KnowledgeOperations
 
 TRAIT_MIN_CONFIDENCE = 0.7
-PROFILER_SOURCE = "perfilador"
+#: Reexport por compatibilidad; la fuente canonica vive en ``traits_store``.
+PROFILER_SOURCE = SOURCE_PROFILER
+
+#: Top-k de traits candidatos que se pasan al LLM tras el pre-filtro semantico.
+#: Con la KB creciendo, evita inflar el prompt de extraccion cada turno.
+DEFAULT_TRAIT_TOPK = 10
+#: Piso de ruido de embedding (mismo default que KnowledgeOperations). No es un
+#: corte de relevancia, solo descarta similitud puramente ruidosa.
+DEFAULT_TRAIT_NOISE_FLOOR = 0.05
 
 
 @dataclass(frozen=True, slots=True)
@@ -39,11 +49,28 @@ class StructuredTraitMapper(Protocol):
 
 @dataclass(slots=True)
 class TraitExtractor:
-    reader: SLDBReader
-    identity_session: Session
-    llm_mapper: StructuredTraitMapper
+    knowledge: "KnowledgeOperations"
+    #: Sesion SQL de identidad. Solo la usan ``persist``/``extract``;
+    #: ``analyze`` (embedder + LLM) no toca la base, por eso es opcional:
+    #: el hilo del perfilador construye el extractor sin sesion.
+    identity_session: Session | None = None
+    llm_mapper: StructuredTraitMapper | None = None
+    #: Instancia unica de KnowledgeOperations del proceso (embedder cacheado).
+    #: Si es None (tests unitarios, o KB sin embeddings) el ranking cae al
+    #: comportamiento previo: pasar TODOS los candidatos.
+    knowledge_ops: "KnowledgeOperations | None" = None
+    top_k: int = DEFAULT_TRAIT_TOPK
+    noise_floor: float = DEFAULT_TRAIT_NOISE_FLOOR
 
-    def extract(self, *, user_id: int | None, turn_text: str) -> list[TraitMatch]:
+    def analyze(self, *, user_id: int | None, turn_text: str) -> list[TraitMatch]:
+        """Traits que el turno revela, SIN tocar la base de identidad.
+
+        Es la parte cara (embedder + LLM) y la unica que vale la pena correr
+        en paralelo con el turno. La escritura queda aparte (``persist``)
+        para que la haga el hilo dueno de la sesion SQL: dos hilos escribiendo
+        la misma conexion sqlite se pisan ("cannot commit transaction - SQL
+        statements in progress", medido en la suite).
+        """
         if user_id is None:
             return []
 
@@ -55,52 +82,74 @@ class TraitExtractor:
         if not candidates:
             return []
 
+        candidates = self._rank_candidates(cleaned_turn, candidates)
+
         raw_matches = self.llm_mapper.extract_traits(
             turn_text=cleaned_turn,
             candidates=candidates,
             instructions=build_trait_mapping_instructions(cleaned_turn, candidates),
         )
-        matches = _normalize_matches(raw_matches, candidates)
-        if not matches:
-            return []
+        return _normalize_matches(raw_matches, candidates)
 
+    def persist(self, *, user_id: int | None, matches: Sequence[TraitMatch]) -> list[TraitMatch]:
+        """Escribe en ``user_traits`` los matches de ``analyze``."""
+        if user_id is None or not matches:
+            return []
         for match in matches:
             self._upsert_trait(user_id=user_id, match=match)
-
         self.identity_session.commit()
-        return matches
+        return list(matches)
+
+    def extract(self, *, user_id: int | None, turn_text: str) -> list[TraitMatch]:
+        """analyze + persist en un paso (llamadores que ya tienen la sesion)."""
+        return self.persist(user_id=user_id, matches=self.analyze(user_id=user_id, turn_text=turn_text))
 
     def _load_candidates(self) -> list[TraitCandidate]:
-        """Carga los trait atoms desde SLDB (dict o objeto)."""
-        traits = self.reader.fetch("trait")
+        """Carga los trait atoms desde la KB (dict o objeto)."""
         result = []
-        for t in traits:
+        for t in self.knowledge.docs_by_type("trait"):
             if isinstance(t, dict):
                 # TraitAtom tipado usa ``description``; fallback a ``answer``.
-                body = t.get("description") or t.get("answer", "")
-                result.append(TraitCandidate(id=t["id"], body=body))
+                result.append(TraitCandidate(id=t["id"], body=t.get("description") or t.get("answer", "")))
             else:
                 result.append(TraitCandidate(id=t.id, body=getattr(t, "body", "")))
         return result
 
-    def _upsert_trait(self, *, user_id: int, match: TraitMatch) -> None:
-        persisted = self.identity_session.get(
-            UserTraits,
-            {"user_id": user_id, "trait_id": match.trait_id},
-        )
-        if persisted is None:
-            self.identity_session.add(
-                UserTraits(
-                    user_id=user_id,
-                    trait_id=match.trait_id,
-                    confidence=match.confidence,
-                    source=PROFILER_SOURCE,
-                )
-            )
-            return
+    def _rank_candidates(
+        self, turn_text: str, candidates: list[TraitCandidate]
+    ) -> list[TraitCandidate]:
+        """Pre-filtra los candidatos por similitud turno-vs-trait y deja top-k,
+        en vez de mandar TODOS los traits al LLM cada turno.
 
-        persisted.confidence = max(persisted.confidence, match.confidence)
-        persisted.source = PROFILER_SOURCE
+        La similitud la da el indice de documentos de la KB
+        (``KnowledgeOperations.rank_among`` -> ``pron.DocumentIndex``), el
+        mismo que usa el compilador. Fail-open: sin knowledge_ops, con un
+        catalogo que ya cabe en el top-k, o si el indice falla, devuelve
+        TODOS los candidatos. Un trait sin vector en el indice no compite:
+        se anexa siempre fuera del ranking.
+        """
+        if self.knowledge_ops is None or len(candidates) <= self.top_k:
+            return candidates
+        by_id = {c.id: c for c in candidates}
+        try:
+            ranked = self.knowledge_ops.rank_among(
+                turn_text, list(by_id), k=self.top_k, threshold=self.noise_floor,
+            )
+        except Exception:
+            return candidates
+        indexed = set(self.knowledge_ops.document_index().keys())
+        top = [by_id[cid] for cid, _ in ranked if cid in by_id]
+        unindexed = [c for c in candidates if c.id not in indexed and c not in top]
+        return top + unindexed
+
+    def _upsert_trait(self, *, user_id: int, match: TraitMatch) -> None:
+        upsert_user_trait(
+            self.identity_session,
+            user_id=user_id,
+            trait_id=match.trait_id,
+            confidence=match.confidence,
+            source=SOURCE_PROFILER,
+        )
 
 
 def build_trait_mapping_instructions(turn_text: str, candidates: Sequence[TraitCandidate]) -> str:

@@ -1,0 +1,51 @@
+/* Flow editor page - page-flow */
+.app-main{display:flex;flex:1;min-height:0;width:100%}
+.sidebar{width:280px;min-width:280px;background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));border-right:1px solid rgba(212,165,116,.18);display:flex;flex-direction:column;z-index:20;overflow-y:auto}
+.sidebar-right{width:340px;min-width:340px;border-left:1px solid rgba(212,165,116,.18)}
+.flow-brand{padding:20px 18px 14px;border-bottom:1px solid rgba(212,165,116,.18)}
+.flow-brand-kicker{font-family:var(--font-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.flow-brand-title{font-size:22px;font-weight:300;line-height:1.1}
+.flow-brand-title em{color:var(--accent);font-style:italic}
+.flow-palette{padding:14px;flex:1}
+.flow-palette-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;margin-top:14px}
+.flow-palette-label-gap{margin-top:20px}
+.flow-palette-item{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:6px;border:1px solid var(--border-accent);border-radius:10px;background:rgba(18,18,26,.8);cursor:grab;transition:.2s;user-select:none;font-size:13px}
+.flow-palette-item:hover{border-color:var(--accent);background:rgba(212,165,116,.08)}
+.flow-palette-icon{font-size:14px}
+.flow-palette-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.flow-tools{padding:14px;border-top:1px solid rgba(212,165,116,.1);max-height:200px;overflow-y:auto}
+.flow-tool{display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(212,165,116,.1);border-radius:8px;margin-bottom:4px;font-size:11px;cursor:grab;transition:.15s;background:rgba(18,18,26,.6)}
+.flow-tool:hover{border-color:var(--accent);background:rgba(212,165,116,.08)}
+.flow-tool-name{color:var(--accent);font-weight:600;font-family:var(--font-mono);font-size:10px}
+.flow-tool-desc{color:var(--text-muted);font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.flow-subflow{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid rgba(212,165,116,.1);border-radius:8px;margin-bottom:4px;font-size:11px}
+.flow-subflow-name{flex:1;font-family:var(--font-mono);font-size:10px;color:var(--accent)}
+.flow-canvas{flex:1;position:relative;overflow:hidden}
+.flow-inspector-header{padding:18px;border-bottom:1px solid var(--border-accent);font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted)}
+.flow-inspector-body{padding:18px;flex:1;overflow-y:auto;font-size:13px;line-height:1.6}
+.flow-field{margin-bottom:16px}
+.flow-field-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.flow-field-value{color:var(--text-primary);font-size:13px;line-height:1.55;white-space:pre-wrap}
+.flow-field-value.chips{display:flex;flex-wrap:wrap;gap:6px}
+.flow-field-id{font-family:var(--font-mono);font-size:11px;color:var(--text-muted)}
+.flow-chip-slot{display:inline-block;padding:4px 10px;border:1px solid rgba(212,165,116,.2);border-radius:999px;font-size:11px;color:var(--text-muted-2);background:rgba(212,165,116,.06)}
+.flow-chip-transition{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid rgba(100,220,130,.25);border-radius:999px;font-size:11px;color:rgba(100,220,130,.8);background:rgba(100,220,130,.06)}
+.flow-chip-atom{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid rgba(130,160,255,.25);border-radius:999px;font-size:11px;color:rgba(130,160,255,.8);background:rgba(130,160,255,.06)}
+.rf-toolbar{position:absolute;top:14px;right:14px;z-index:10;display:flex;gap:8px;flex-wrap:wrap}
+.rf-node-toolbar{z-index:50}
+.flow-node{padding:12px 16px;border-radius:10px;min-width:180px;transition:box-shadow .2s;font-size:12px;color:var(--text-primary)}
+.flow-node-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.flow-node-icon{font-size:14px}
+.flow-node-label{font-weight:600;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px}
+.flow-node-kind{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.flow-handle{width:10px!important;height:10px!important;border-radius:50%!important;border:2px solid!important}
+.rf-drag-handle{cursor:grab;opacity:.5;font-size:12px;position:absolute;top:-4px;right:2px;color:var(--text-muted);user-select:none}
+.rf-drag-handle:hover{opacity:1;color:var(--accent)}
+.react-flow__background{background:#0a0a0f!important}
+.react-flow__controls button{background:rgba(18,18,26,.85)!important;border:1px solid var(--border-accent)!important;color:var(--text-muted)!important;fill:var(--text-muted)!important}
+.react-flow__controls button:hover{border-color:var(--accent)!important;color:var(--accent)!important;fill:var(--accent)!important}
+.react-flow__minimap{background:rgba(10,10,15,.9)!important;border:1px solid var(--border-accent)!important;border-radius:8px!important}
+.react-flow__controls{margin:14px!important}
+.react-flow__attribution{display:none!important}
+.react-flow__edge-path{stroke:rgba(212,165,116,.25);stroke-width:2}
+.react-flow__edge.selected .react-flow__edge-path{stroke:var(--accent);stroke-width:2.5}

@@ -1,0 +1,545 @@
+documents:
+- doc_name: trait-hcp-especialidad
+  sections:
+  - path: trait-especialidad-m-dica
+    title: Trait — especialidad médica
+    breadcrumbs:
+    - Trait — especialidad médica
+    about:
+    - Trait — especialidad médica
+    - trait especialidad m dica
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.especialidad
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.especialidad
+    - workspace.knowledge
+    slug: trait-especialidad-m-dica
+    level: 1
+    line_start: 784
+    line_end: 785
+  - path: trait-especialidad-m-dica/description
+    title: Description
+    breadcrumbs:
+    - Trait — especialidad médica
+    - Description
+    about:
+    - Trait — especialidad médica
+    - trait especialidad m dica
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.especialidad
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.especialidad
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 786
+    line_end: 787
+  - path: trait-especialidad-m-dica/category
+    title: Category
+    breadcrumbs:
+    - Trait — especialidad médica
+    - Category
+    about:
+    - Trait — especialidad médica
+    - trait especialidad m dica
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.especialidad
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.especialidad
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 790
+    line_end: 791
+- doc_name: trait-hcp-preferencia-contacto
+  sections:
+  - path: trait-preferencia-de-contacto
+    title: Trait — preferencia de contacto
+    breadcrumbs:
+    - Trait — preferencia de contacto
+    about:
+    - Trait — preferencia de contacto
+    - trait preferencia de contacto
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.preferencia_contacto
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.preferencia_contacto
+    - workspace.knowledge
+    slug: trait-preferencia-de-contacto
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: trait-preferencia-de-contacto/description
+    title: Description
+    breadcrumbs:
+    - Trait — preferencia de contacto
+    - Description
+    about:
+    - Trait — preferencia de contacto
+    - trait preferencia de contacto
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.preferencia_contacto
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.preferencia_contacto
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: trait-preferencia-de-contacto/category
+    title: Category
+    breadcrumbs:
+    - Trait — preferencia de contacto
+    - Category
+    about:
+    - Trait — preferencia de contacto
+    - trait preferencia de contacto
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.preferencia_contacto
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:traits.preferencia_contacto
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: trait-hcp-especialidad-cardiologia
+  sections:
+  - path: trait-m-dico-de-cardiolog-a
+    title: Trait — médico de cardiología
+    breadcrumbs:
+    - Trait — médico de cardiología
+    about:
+    - Trait — médico de cardiología
+    - trait m dico de cardiolog a
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: trait-m-dico-de-cardiolog-a
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: trait-m-dico-de-cardiolog-a/description
+    title: Description
+    breadcrumbs:
+    - Trait — médico de cardiología
+    - Description
+    about:
+    - Trait — médico de cardiología
+    - trait m dico de cardiolog a
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: trait-m-dico-de-cardiolog-a/category
+    title: Category
+    breadcrumbs:
+    - Trait — médico de cardiología
+    - Category
+    about:
+    - Trait — médico de cardiología
+    - trait m dico de cardiolog a
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.cardiologia
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: trait-hcp-especialidad-medicina-general
+  sections:
+  - path: trait-m-dico-de-medicina-general
+    title: Trait — médico de medicina general
+    breadcrumbs:
+    - Trait — médico de medicina general
+    about:
+    - Trait — médico de medicina general
+    - trait m dico de medicina general
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: trait-m-dico-de-medicina-general
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: trait-m-dico-de-medicina-general/description
+    title: Description
+    breadcrumbs:
+    - Trait — médico de medicina general
+    - Description
+    about:
+    - Trait — médico de medicina general
+    - trait m dico de medicina general
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: trait-m-dico-de-medicina-general/category
+    title: Category
+    breadcrumbs:
+    - Trait — médico de medicina general
+    - Category
+    about:
+    - Trait — médico de medicina general
+    - trait m dico de medicina general
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.medicina-general
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: trait-hcp-especialidad-neurologia
+  sections:
+  - path: trait-m-dico-de-neurolog-a
+    title: Trait — médico de neurología
+    breadcrumbs:
+    - Trait — médico de neurología
+    about:
+    - Trait — médico de neurología
+    - trait m dico de neurolog a
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: trait-m-dico-de-neurolog-a
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: trait-m-dico-de-neurolog-a/description
+    title: Description
+    breadcrumbs:
+    - Trait — médico de neurología
+    - Description
+    about:
+    - Trait — médico de neurología
+    - trait m dico de neurolog a
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: trait-m-dico-de-neurolog-a/category
+    title: Category
+    breadcrumbs:
+    - Trait — médico de neurología
+    - Category
+    about:
+    - Trait — médico de neurología
+    - trait m dico de neurolog a
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.neurologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.neurologia
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: trait-hcp-especialidad-pediatria
+  sections:
+  - path: trait-m-dico-de-pediatr-a
+    title: Trait — médico de pediatría
+    breadcrumbs:
+    - Trait — médico de pediatría
+    about:
+    - Trait — médico de pediatría
+    - trait m dico de pediatr a
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: trait-m-dico-de-pediatr-a
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: trait-m-dico-de-pediatr-a/description
+    title: Description
+    breadcrumbs:
+    - Trait — médico de pediatría
+    - Description
+    about:
+    - Trait — médico de pediatría
+    - trait m dico de pediatr a
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: trait-m-dico-de-pediatr-a/category
+    title: Category
+    breadcrumbs:
+    - Trait — médico de pediatría
+    - Category
+    about:
+    - Trait — médico de pediatría
+    - trait m dico de pediatr a
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.pediatria
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.pediatria
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: trait-hcp-especialidad-psiquiatria
+  sections:
+  - path: trait-m-dico-de-psiquiatr-a
+    title: Trait — médico de psiquiatría
+    breadcrumbs:
+    - Trait — médico de psiquiatría
+    about:
+    - Trait — médico de psiquiatría
+    - trait m dico de psiquiatr a
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: trait-m-dico-de-psiquiatr-a
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: trait-m-dico-de-psiquiatr-a/description
+    title: Description
+    breadcrumbs:
+    - Trait — médico de psiquiatría
+    - Description
+    about:
+    - Trait — médico de psiquiatría
+    - trait m dico de psiquiatr a
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: trait-m-dico-de-psiquiatr-a/category
+    title: Category
+    breadcrumbs:
+    - Trait — médico de psiquiatría
+    - Category
+    about:
+    - Trait — médico de psiquiatría
+    - trait m dico de psiquiatr a
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.psiquiatria
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 791
+    line_end: 792
+- doc_name: trait-hcp-especialidad-traumatologia
+  sections:
+  - path: trait-m-dico-de-traumatolog-a
+    title: Trait — médico de traumatología
+    breadcrumbs:
+    - Trait — médico de traumatología
+    about:
+    - Trait — médico de traumatología
+    - trait m dico de traumatolog a
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: trait-m-dico-de-traumatolog-a
+    level: 1
+    line_start: 785
+    line_end: 786
+  - path: trait-m-dico-de-traumatolog-a/description
+    title: Description
+    breadcrumbs:
+    - Trait — médico de traumatología
+    - Description
+    about:
+    - Trait — médico de traumatología
+    - trait m dico de traumatolog a
+    - Description
+    - description
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: description
+    level: 2
+    line_start: 787
+    line_end: 788
+  - path: trait-m-dico-de-traumatolog-a/category
+    title: Category
+    breadcrumbs:
+    - Trait — médico de traumatología
+    - Category
+    about:
+    - Trait — médico de traumatología
+    - trait m dico de traumatolog a
+    - Category
+    - category
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    semantic_tags:
+    - system:teva-hcp
+    - type.knowledge.trait
+    - user:specialty.traumatologia
+    - workspace.knowledge
+    slug: category
+    level: 2
+    line_start: 791
+    line_end: 792

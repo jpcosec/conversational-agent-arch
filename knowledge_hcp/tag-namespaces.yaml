@@ -1,0 +1,36 @@
+namespaces:
+  channel:
+    meaning: Transversal. Canal de comunicación (ej. WhatsApp).
+    examples: ["channel:whatsapp"]
+    use_when: El átomo depende del canal de mensajería.
+    do_not_use_when: El tag describe otra cosa.
+  conversation:
+    meaning: Family. Flujo conversacional (pasos, estrategias, fallbacks).
+    examples: ["conversation:fallback", "conversation:onboarding"]
+    use_when: Define un paso o estrategia de flujo.
+    do_not_use_when: Es una regla de dominio.
+  domain:
+    meaning: Family. Conocimiento del negocio y reglas de dominio (jerárquico).
+    examples: ["domain:hcp", "domain:mlr", "domain:farmacovigilancia"]
+    use_when: Es conocimiento o reglas de negocio (HCP, contenido aprobado, eventos adversos).
+    do_not_use_when: Es un tag del agente o flujo.
+  gate:
+    meaning: Family. Criterios de validación (Policy Gate) sobre la respuesta.
+    examples: ["gate:compliance", "gate:hallucination"]
+    use_when: Define una política de rechazo o validación de seguridad.
+    do_not_use_when: Es conocimiento crudo.
+  self:
+    meaning: Family. Identidad, límites y estilo del asistente.
+    examples: ["self:whoami", "self:estilo"]
+    use_when: Trata sobre la identidad y capacidades del asistente HCP.
+    do_not_use_when: Trata sobre el usuario.
+  system:
+    meaning: Transversal. Sistema u organización.
+    examples: ["system:teva-hcp"]
+    use_when: Atribución organizacional.
+    do_not_use_when: Discriminación interna de negocio.
+  user:
+    meaning: Family. Características del usuario (HCPs).
+    examples: ["user:trait.especialista", "user:trait.opt_in"]
+    use_when: Describe un trait del HCP.
+    do_not_use_when: Describe al agente.

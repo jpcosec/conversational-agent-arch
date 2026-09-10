@@ -139,7 +139,10 @@ def test_chat_nl_turn_populates_inspector(page, server):
     rows = page.locator("[data-testid='agent-row']")
     assert rows.count() == 5, rows.count()
     joined = " ".join(rows.nth(i).inner_text() for i in range(rows.count()))
-    for name in ("Ruteador", "Orquestador", "Conversador", "Gate", "Perfilador"):
+    # El Gate se rotula "Validacion" en la UI: la jerga interna se traduce a
+    # lenguaje de negocio en las etiquetas visibles (ver UI-GUIDE.md §0). El
+    # nombre crudo sigue disponible en el tooltip (data-tooltip="gate").
+    for name in ("Ruteador", "Orquestador", "Conversador", "Validación", "Perfilador"):
         assert name in joined, f"falta agente {name} en el razonamiento: {joined}"
 
 

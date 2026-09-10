@@ -8,9 +8,11 @@
     currentAnchor: null
   };
 
+  // data-tooltip="clave" resuelve contra el glosario; si la clave no existe se
+  // muestra el texto literal (permite tooltips ad hoc en cada vista).
   function getGlossaryEntry(concept) {
     var glossary = globalScope.__glossary || {};
-    return glossary[concept] || '';
+    return glossary[concept] || concept || '';
   }
 
   function ensureOverlay(documentRef) {
@@ -87,6 +89,10 @@
     }
 
     var text = getGlossaryEntry(concept);
+    if (typeof anchor.getAttribute === 'function' && anchor.getAttribute('data-glossary')) {
+      // data-glossary exige clave del glosario (comportamiento original)
+      text = (globalScope.__glossary || {})[concept] || '';
+    }
     if (!text) {
       hideTooltip();
       return;
@@ -110,7 +116,7 @@
       return function noopCleanup() {};
     }
 
-    var resolvedConcept = concept || element.getAttribute('data-glossary') || element.getAttribute('data-tooltip-concept');
+    var resolvedConcept = concept || element.getAttribute('data-glossary') || element.getAttribute('data-tooltip-concept') || element.getAttribute('data-tooltip');
     if (!resolvedConcept) {
       return function noopCleanup() {};
     }
@@ -153,7 +159,13 @@
     }
 
     var scope = root || document;
-    var elements = scope.querySelectorAll('[data-glossary], [data-tooltip-concept]');
+    var elements = scope.querySelectorAll('[data-glossary], [data-tooltip-concept], [data-tooltip]');
+    // Idempotente: initGlossaryTooltips se llama tras cada render.
+    elements = Array.prototype.filter.call(elements, function (element) {
+      if (element.dataset._tooltipBound) return false;
+      element.dataset._tooltipBound = '1';
+      return true;
+    });
     return Array.prototype.map.call(elements, function (element) {
       return attachGlossaryTooltip(element);
     });

@@ -14,9 +14,9 @@ DELIVERY = ["¿Hacen delivery?", "hacen delivery?!", "Hacen delivery", "¿hacen 
 
 
 @pytest.fixture()
-def kb_copy(tmp_path: Path, donpeppe_kb: Path) -> Path:
+def kb_copy(tmp_path: Path, negocio_kb: Path) -> Path:
     copied = tmp_path / "knowledge"
-    shutil.copytree(donpeppe_kb, copied, ignore=shutil.ignore_patterns(".embedding_cache"))
+    shutil.copytree(negocio_kb, copied, ignore=shutil.ignore_patterns(".embedding_cache"))
     return copied
 
 
@@ -29,7 +29,7 @@ def _seed_turns(orch: Orchestrator, external_id: str, messages: list[str]) -> No
 
 
 def _atom_files(root: Path) -> set[Path]:
-    return {p.resolve() for p in (root / "atoms").glob("*.md")}
+    return {p.resolve() for p in root.rglob("*.md") if ".sldb" not in p.parts and "kgdb" not in p.parts}
 
 
 def test_recurrent_pattern_materializes_one_proposed_atom_idempotently(kb_copy: Path, tmp_db_url: str) -> None:
@@ -52,7 +52,7 @@ def test_recurrent_pattern_materializes_one_proposed_atom_idempotently(kb_copy: 
     assert len(first) == 1 and second == [] and len(new_files) == 1
     assert first[0]["count"] == PATTERN_MIN_COUNT
     content = Path(first[0]["path"]).read_text(encoding="utf-8")
-    assert "- source:reflector" in content and "status: proposed" in content
+    assert "- source:reflector" in content and "- status:proposed" in content
     assert Path(first[0]["path"]).resolve() == new_files[0]
 
 

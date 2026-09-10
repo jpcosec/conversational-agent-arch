@@ -4,11 +4,26 @@ type: sequence
 version: '1.3'
 metadata:
   author: antonIA
+  atoms:
+    - atom-concepto-turno-extendido
+    - atom-orquestador-hub
+    - atom-ruteador-de-contexto-como-agente
+    - atom-agente-conversador
+    - atom-policy-gate-como-agente-separado-con-rama-kb-propia
+    - atom-policy-decide-turn
+    - atom-context-compiler-knowledge
+    - atom-tool-handlers-registry
+    - atom-perfilador-asincrono
+    - atom-pii-scrubber
+    - atom-router-state-machine
+    - atom-persistencia-sql
+    - atom-in-process-event-bus
   description: >-
     Traza el flujo de un mensaje (kb_agent/orchestrator.py Orchestrator.handle_turn) desde el
-    RouterStateMachine, la compilación de contexto por el Ontologizador (que delega el bundle
-    justificado en el Ruteador: RouterAgent con tools de KB + piso de seguridad por código), el
-    Orquestador (OrchestratorAgent.decide: salida tipada tool_call/fallback/nl + step_target
+    RouterStateMachine, la compilación de contexto por el Context Compiler
+    (kb_agent.knowledge.compiler, que delega el bundle justificado en el Ruteador:
+    RouterAgent con tools de KB + piso de seguridad por código), el Orquestador
+    (OrchestratorAgent.decide: salida tipada tool_call/fallback/nl + step_target
     filtrado por apply_transition_guard; decide_turn como fallback), el dispatcher de tools
     (registry resuelto desde project.config.yaml), el Conversador (puerto LLM), el re-draft
     post-tool con inyección de system_turn, el Gate (GateAgent.evaluate contra los GateCriterion
@@ -20,7 +35,7 @@ data:
       kind: actor
     - id: Router
       kind: component
-    - id: Ontologizador
+    - id: ContextCompiler
       kind: component
     - id: Ruteador
       kind: decision_engine
@@ -44,13 +59,13 @@ data:
       to: Router
       message: Buffer/Debounce (RouterStateMachine) & Carga SessionState SQL
     - from: Router
-      to: Ontologizador
+      to: ContextCompiler
       message: compile_context(question, user_id, scenario, trigger)
       kind: sync
-    - from: Ontologizador
-      to: Ontologizador
-      message: Recupera KB tipada (10 tipos via _MODEL_TYPES) SLDBReader/KGDBReader + traits + step
-    - from: Ontologizador
+    - from: ContextCompiler
+      to: ContextCompiler
+      message: Recupera KB tipada (10 tipos via _MODEL_TYPES) KnowledgeOperations (pron.Store) + traits + step activo y transiciones (ConversationFlow sobre el grafo de kgdb)
+    - from: ContextCompiler
       to: Ruteador
       message: route(question, candidatos, traits, step) [RouterAgent]
       kind: sync
@@ -58,10 +73,10 @@ data:
       to: Ruteador
       message: "tools explore_multi/explore/show (KnowledgeOperations) -> RouterDecision [{doc_id, motivo}]"
     - from: Ruteador
-      to: Ontologizador
+      to: ContextCompiler
       message: "bundle + apply_security_floor (fallback: _build_bundle determinístico)"
       kind: return
-    - from: Ontologizador
+    - from: ContextCompiler
       to: Router
       message: Contexto Compilado (CompiledDocument.to_dict(), bundle_source agent|deterministic)
       kind: return

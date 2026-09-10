@@ -1,13 +1,16 @@
 ---
 id: pill-ui-no-build-cdn
-title: Sin build step — CDN only
+title: Sin build step CDN only
 status: active
+type: pill
 tags:
 - pill
 - ui
 - build
 - constraints
 ---
+
+# Context
 
 ## Doctrina
 

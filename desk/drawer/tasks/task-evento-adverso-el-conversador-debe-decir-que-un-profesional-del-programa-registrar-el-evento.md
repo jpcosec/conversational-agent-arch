@@ -1,3 +1,25 @@
+---
+id: task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
+status: deferred
+summary: ''
+tags:
+- workspace:desk
+- artifact:task
+- source:inbox
+routine: ''
+current_node: ''
+history: []
+references: []
+depends_on: []
+pills: []
+files: []
+checklists: []
+task_type: ''
+inherits_from: []
+inherit_acceptance_context: false
+atoms: []
+---
+
 # Evento adverso: el conversador debe decir que un profesional del programa registrará el evento
 
 ID: task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento

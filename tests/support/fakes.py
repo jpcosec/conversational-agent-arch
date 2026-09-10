@@ -6,6 +6,12 @@ llamadas para que los tests afirmen sobre lo que el runtime le pidio al LLM.
 """
 from __future__ import annotations
 
+import re
+
+import random
+
+import hashlib
+
 from collections.abc import Callable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -69,6 +75,7 @@ class FakeGate:
         tool_name: str | None = None,
         step: str | None = None,
         session_tools_called: Sequence[str] = (),
+        declared_facts: Sequence[Mapping[str, Any]] = (),
     ) -> dict[str, Any]:
         self.calls.append(
             {
@@ -77,6 +84,7 @@ class FakeGate:
                 "tool_name": tool_name,
                 "step": step,
                 "session_tools_called": list(session_tools_called),
+                "declared_facts": list(declared_facts),
             }
         )
         if self._raises:
@@ -130,6 +138,8 @@ class FakeOrchestratorAgent:
         result: dict[str, Any] = {"kind": raw.get("kind", "nl"), "reason": raw["reason"]}
         if "function_call" in raw:
             result["function_call"] = raw["function_call"]
+        if raw.get("captured_slots"):
+            result["captured_slots"] = dict(raw["captured_slots"])
         if step_target:
             result["flow_target"] = step_target
         if vetoed:
@@ -239,30 +249,43 @@ VEGETARIAN_MATCH = {"vegetarian": [{"trait_id": "trait-vegetariano", "confidence
 
 
 class FakeEmbedder:
-    """Doble barato de ``fastembed.TextEmbedding`` para tests offline.
+    """Doble barato del ``Embedder`` de pron para tests offline.
 
-    El compilador (``ContextCompiler._semantic_candidates``, tarea 1.3) pide
-    el embedder de ``knowledge_ops`` (``knowledge_ops._embedder()``) para
-    embeder la pregunta de cada turno cuando hay ``knowledge_ops`` inyectado
-    -- y ``Orchestrator.__init__`` SIEMPRE crea una instancia real de
-    ``KnowledgeOperations``. Cargar el embedder real (jina-embeddings-v2)
-    puede tomar bastante en frio (ver ``KnowledgeOperations._embedder``), y
-    cada test que arma un ``Orchestrator`` via ``offline_orchestrator`` crea
-    una instancia nueva. Sin este doble, la suite entera pagaria ese costo
-    por cada test -- se lo inyecta directo en ``_embedder_cache`` (mismo
-    mecanismo de cacheo por instancia que usa el codigo real, ver su
-    docstring).
+    ``Orchestrator.__init__`` SIEMPRE crea una ``KnowledgeOperations``, y su
+    ``DocumentIndex`` embebe con el modelo real (jina, ~1 min en frio) salvo que
+    se le inyecte otro puerto; ``offline_orchestrator`` inyecta este.
 
-    Vector fijo (no todo-ceros, para que la similitud coseno no divida por
-    cero) del mismo largo que ``jina-embeddings-v2-base-es`` (768).
-    Determinista: no importa el ranking exacto en estos tests, ninguno
-    afirma sobre el contenido del bundle/domain_facts vía similitud real.
+    Determinista y DISCRIMINANTE por contenido: bolsa de palabras hasheadas
+    (cada palabra de 3+ letras aporta un vector pseudoaleatorio estable), asi
+    que dos textos se parecen en proporcion a las palabras que comparten y
+    textos sin palabras en comun quedan ~ortogonales. Un doble que devuelve el
+    MISMO vector para todo colapsa el ranking y esconde bugs.
     """
 
     _DIM = 768
 
+    def id(self) -> str:
+        return "fake:word-hash"
+
+    @classmethod
+    def _word_vector(cls, word: str) -> list[float]:
+        seed = int(hashlib.sha256(word.encode("utf-8")).hexdigest(), 16) & 0xFFFFFFFF
+        rng = random.Random(seed)
+        return [rng.uniform(-1.0, 1.0) for _ in range(cls._DIM)]
+
+    @classmethod
+    def _vector(cls, text: str) -> list[float]:
+        words = {w for w in re.findall(r"[a-z0-9áéíóúñü]+", str(text).lower()) if len(w) >= 3}
+        acc = [0.0] * cls._DIM
+        for w in sorted(words):
+            for i, v in enumerate(cls._word_vector(w)):
+                acc[i] += v
+        if not words:
+            acc[0] = 1.0
+        return acc
+
     def embed(self, texts: Any) -> list[list[float]]:
-        return [[0.01] * self._DIM for _ in texts]
+        return [self._vector(str(t)) for t in texts]
 
 
 def offline_orchestrator(

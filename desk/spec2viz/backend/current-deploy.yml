@@ -4,6 +4,15 @@ type: component
 version: "1.1"
 metadata:
   author: antonIA
+  atoms:
+    - atom-topologia-de-despliegue
+    - atom-deploy-dev-y-mantenimiento-del-volumen
+    - atom-migraciones-alembic-del-volumen
+    - atom-migraciones-alembic-en-local
+    - atom-configuración-por-capas-y-tuning
+    - atom-estrategia-de-testing
+    - atom-modelo-de-ramas
+    - atom-capas-de-verificación-y-release
   description: >-
     Superficie de despliegue del runtime. deploy/modal_app.py empaqueta el
     código (kb_agent, frontends, knowledge_base, alembic) + la KB real y sirve
@@ -64,7 +73,7 @@ data:
       label: frontends.chat.app.create_app
       kind: boundary
     SeedDemoUsers:
-      label: kb_agent.seed_demo_users.seed
+      label: frontends.chat.seed_demo_users.seed
       kind: boundary
 
     ReleaseGate:

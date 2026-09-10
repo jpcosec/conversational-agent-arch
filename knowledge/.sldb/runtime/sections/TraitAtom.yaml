@@ -47,11 +47,11 @@ documents:
 - doc_name: trait-antonia-ansioso-aplicacion
   sections:
   - path: ansioso-a-con-la-aplicaci-n
-    title: "Ansioso/a con la aplicaci\xF3n"
+    title: Ansioso/a con la aplicación
     breadcrumbs:
-    - "Ansioso/a con la aplicaci\xF3n"
+    - Ansioso/a con la aplicación
     about:
-    - "Ansioso/a con la aplicaci\xF3n"
+    - Ansioso/a con la aplicación
     - ansioso a con la aplicaci n
     - system:laboratorio-chile
     - type.knowledge.trait
@@ -69,10 +69,10 @@ documents:
   - path: ansioso-a-con-la-aplicaci-n/description
     title: Description
     breadcrumbs:
-    - "Ansioso/a con la aplicaci\xF3n"
+    - Ansioso/a con la aplicación
     - Description
     about:
-    - "Ansioso/a con la aplicaci\xF3n"
+    - Ansioso/a con la aplicación
     - ansioso a con la aplicaci n
     - Description
     - description

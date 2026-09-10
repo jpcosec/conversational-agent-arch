@@ -1,0 +1,13 @@
+name: CompositionDoc
+model_ref: repo_docs_models:CompositionDoc
+path: repo_docs_models/composition.py
+documents_index: .sldb/core/documents/CompositionDoc.yaml
+sections_index: .sldb/runtime/sections/CompositionDoc.yaml
+hash_b: eb24a5cc595242a2ce1710e7db26c04c85d41fddcae44150d312b5d67a3ee178
+version: 1
+canonical: false
+family: null
+semantics:
+- type.documentation.composition
+- workspace.desk.materializations
+base_models: []

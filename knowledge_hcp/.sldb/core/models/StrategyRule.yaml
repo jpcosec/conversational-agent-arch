@@ -1,0 +1,13 @@
+name: StrategyRule
+model_ref: kb_agent.models.knowledge:StrategyRule
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/strategy.py
+documents_index: .sldb/core/documents/StrategyRule.yaml
+sections_index: .sldb/runtime/sections/StrategyRule.yaml
+hash_b: 05fa200199f8f9bb8e0e4aedb7ac9285e0940946d8ba463dd556c03d794a91cd
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.strategy
+- workspace.knowledge
+base_models: []

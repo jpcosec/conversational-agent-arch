@@ -1,0 +1,46 @@
+documents:
+- name: gate-hcp-corpus
+  path: atoms/gate-hcp-corpus.md
+  hash_c: 72c784219aba5b3dec159fef202bc127fe32d3a2ed08507d379b3752d1b5c564
+  hash_d: 9f3fde977221cbe8593a73a3d3eb66cae30584996ab6220effcbe34004d4def1
+  semantic_tags:
+  - gate:corpus
+  - system:teva-hcp
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-hcp-derivacion
+  path: atoms/gate-hcp-derivacion.md
+  hash_c: d0b3cdf349cd7944cb40cb2bc2f66d7a67dfe8ab7ee9fc212c88ca276afcda57
+  hash_d: 1dcc79af1203e3abeed73a49efc0b29ed442801edf5ba825c32a4a65a8e89b2a
+  semantic_tags:
+  - gate:derivacion
+  - system:teva-hcp
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-hcp-diagnostico
+  path: atoms/gate-hcp-diagnostico.md
+  hash_c: 18e8129c53479295657105ee4f23b919f801df9888c259fcf19a984821f241f4
+  hash_d: e364aca24deba620fe159ab78a3d9497d94cfbcaa9c08ea0540e73d4ba2f0d44
+  semantic_tags:
+  - gate:regulatorio.diagnostico
+  - system:teva-hcp
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-hcp-dosis
+  path: atoms/gate-hcp-dosis.md
+  hash_c: eae492bdead685a292bdebe24d108855c9e5ddc3a3a585aa750f29b6c643f6cd
+  hash_d: 57641b540afb6f27cb1370fa87245e1f95fab7007332797cc677cbd28d45e273
+  semantic_tags:
+  - gate:regulatorio.dosis
+  - system:teva-hcp
+  - type.knowledge.gate
+  - workspace.knowledge
+- name: gate-hcp-promesas
+  path: atoms/gate-hcp-promesas.md
+  hash_c: bd9ebb68d06fb9d5325d37333f342c48e1fe48819710996b48c43232aff92f7a
+  hash_d: 6f2353f25a797c3896c27bb86092c7ba9fc5b544a23812912ed9a2d2dd618281
+  semantic_tags:
+  - gate:promesas
+  - system:teva-hcp
+  - type.knowledge.gate
+  - workspace.knowledge

@@ -1,0 +1,13 @@
+name: TraitAtom
+model_ref: kb_agent.models.knowledge:TraitAtom
+path: /home/jp/proyectos/_worktrees/hcp/kb_agent/models/knowledge/trait.py
+documents_index: .sldb/core/documents/TraitAtom.yaml
+sections_index: .sldb/runtime/sections/TraitAtom.yaml
+hash_b: 763278855614fd1d2f0beec15e06dcebcb900d6aed80e6d16c96f57cf3709287
+version: 1
+canonical: false
+family: null
+semantics:
+- type.knowledge.trait
+- workspace.knowledge
+base_models: []

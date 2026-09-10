@@ -28,7 +28,7 @@ def test_nl_prompt_uses_kb_persona_strategy_grounding_and_traits() -> None:
         "question": "¿Qué me recomiendan?",
         "persona": {"whoami": "Soy el asistente de X.", "estilo": "Breve.", "limites": "No invento."},
         "strategy": "Primero responder.",
-        "domain_facts": [{"id": "a", "body": "Margherita 8900."}],
+        "domain_facts": [{"id": "a", "body": "margarita 8900."}],
         "rules": [{"id": "r", "body": "Reservas con 1 dia de anticipacion."}],
         "user_traits": [{
             "trait_id": "trait-vegetariano",
@@ -40,7 +40,7 @@ def test_nl_prompt_uses_kb_persona_strategy_grounding_and_traits() -> None:
         }],
     })
     for fragment in ("Soy el asistente de X.", "Estilo: Breve.", "Limites: No invento.", "Estrategia: Primero responder.",
-                     "- Margherita 8900.", "- Reservas con 1 dia de anticipacion.",
+                     "- margarita 8900.", "- Reservas con 1 dia de anticipacion.",
                      "PERFIL DEL CLIENTE (traits): Cliente vegetariano (No consume carne.)",
                      "PREGUNTA: ¿Qué me recomiendan?"):
         assert fragment in prompt
@@ -60,7 +60,7 @@ def test_nl_prompt_falls_back_to_generic_identity_only_without_persona() -> None
 def test_nl_prompt_includes_history_separated_from_context_and_question() -> None:
     prompt = build_nl_prompt({
         "question": "¿y ahora que sigue?",
-        "domain_facts": [{"id": "a", "body": "Margherita 8900."}],
+        "domain_facts": [{"id": "a", "body": "margarita 8900."}],
         "history": [
             {"role": "user", "content": "hola"},
             {"role": "assistant", "content": "¡Hola! ¿En que te ayudo?"},
@@ -104,3 +104,35 @@ def test_gemini_ports_send_configured_model() -> None:
     assert GeminiConversador(client, "modelo-a").draft_nl({"question": "q"}) == '[{"trait_id": "trait-x", "confidence": 0.8}]'
     assert GeminiTraitMapper(client, "modelo-b").extract_traits(turn_text="t", candidates=[TraitCandidate("trait-x", "x")], instructions="") == [{"trait_id": "trait-x", "confidence": 0.8}]
     assert [c["model"] for c in client.calls] == ["modelo-a", "modelo-b"]
+
+
+def test_nl_prompt_includes_active_step_block_and_omits_it_without_step() -> None:
+    prompt = build_nl_prompt({
+        "question": "el jueves en la tarde",
+        "step": {
+            "tag": "conversation:steps.datos_contacto",
+            "title": "Datos de contacto",
+            "instructions": "Pedir email y telefono en un solo mensaje.",
+            "required_slots": "email; telefono",
+            "completion_condition": "Se reunieron email y telefono.",
+        },
+    })
+    assert "PASO ACTUAL DE LA CONVERSACION: Datos de contacto" in prompt
+    assert "Instrucciones del paso: Pedir email y telefono en un solo mensaje." in prompt
+    assert "Datos que este paso debe reunir: email; telefono" in prompt
+    assert "El paso se completa cuando: Se reunieron email y telefono." in prompt
+    # El bloque va ANTES de los datos: el paso encuadra la respuesta.
+    assert prompt.index("PASO ACTUAL") < prompt.index("DATOS:")
+
+    assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola"})
+    assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola", "step": None})
+    assert "PASO ACTUAL" not in build_nl_prompt({"question": "hola", "step": {"tag": "x", "instructions": ""}})
+
+
+def test_nl_prompt_lists_the_data_the_person_already_gave() -> None:
+    from kb_agent.llm import build_nl_prompt
+
+    prompt = build_nl_prompt({"question": "q", "collected_slots": {"nombre": "Pedro", "medico": "doctora Soto", "email": ""}})
+    assert "DATOS QUE LA PERSONA YA DIO" in prompt
+    assert "- nombre: Pedro" in prompt and "- medico: doctora Soto" in prompt and "email" not in prompt
+    assert "DATOS QUE LA PERSONA YA DIO" not in build_nl_prompt({"question": "q"})

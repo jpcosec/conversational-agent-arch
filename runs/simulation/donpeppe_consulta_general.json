@@ -1,0 +1,57 @@
+{
+  "scenario_id": "donpeppe_consulta_general",
+  "external_id": "sim:donpeppe_consulta_general",
+  "saved_at": "2026-09-08T13:58:10.798705+00:00",
+  "ended_by": "user_done",
+  "end_reason": "Ya tengo toda la información que necesitaba: pizzas y precios, horario del domingo y dirección.",
+  "turns": [
+    {
+      "user": "Hola! Qué pizzas tienen y cuáles son sus precios?",
+      "user_reason": "Necesito saber las pizzas y sus precios primero.",
+      "assistant": "¡Hola! ¡Qué gusto que nos escribas! En Don Peppe tenemos estas ricas opciones para ti:\n\n*   **Margherita:** $8.900\n*   **Pepperoni:** $10.500\n*   **Cuatro Quesos:** $11.200\n*   **Napolitana:** $9.800\n\n¿Necesitas algo más? ¡Estoy aquí para ayudarte!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "Gracias! Y los domingos a qué hora abren?",
+      "user_reason": "Aún me falta preguntar por el horario del domingo y la dirección.",
+      "assistant": "¡De nada! Los domingos abrimos de 19:00 a 23:30 hrs. ¡Te esperamos!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    },
+    {
+      "user": "Y dónde queda el local?",
+      "user_reason": "Aún necesito saber la dirección del local.",
+      "assistant": "¡Claro que sí! Don Peppe está en Av. Italia 1234, Providencia, Santiago.\n\nTenemos estacionamiento para clientes y acceso fácil en Metro Santa Isabel. ¡Te esperamos!",
+      "kind": "nl",
+      "system_turn": null,
+      "traits_after": [],
+      "used_traits_in_context": [],
+      "flow_node": "conversation:steps.onboarding",
+      "state_trace": [
+        "idle",
+        "evaluating_context",
+        "drafting_response",
+        "idle"
+      ]
+    }
+  ]
+}

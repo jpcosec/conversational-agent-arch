@@ -74,6 +74,7 @@ variable de entorno.
 | LLM | `model` | `GEMINI_MODEL` |
 | Fallback | `fallback_message` | — |
 | Tools | `tools:` (nombre → `modulo:funcion`) | — |
+| `identity_key` | `external_id` \| `phone` — clave de persona: con `phone` el mismo teléfono por WhatsApp y SMS es un solo `Users` | — |
 | `server` | `host`, `port` | `HOST`, `PORT` |
 | `ui` | `runtime_title`, `kb_label`, `greeting`, `input_placeholder` | — |
 | `tuning` | `max_bundle_size`, `history_limit`, `router_max_results`, `tool_timeout_ms` | `MAX_BUNDLE_SIZE`, `HISTORY_LIMIT`, `ROUTER_MAX_RESULTS`, `TOOL_TIMEOUT_MS` |
@@ -97,8 +98,9 @@ Antes hardcodeada en `deploy/modal_app.py`. Hoy sale del YAML
 - `modal_app_name`: nombre de la app **y** del volumen (`<app>-data`).
   `MODAL_APP_NAME` sigue teniendo prioridad.
 - `gcp_secret_name`: Modal Secret con el ADC de Vertex AI.
-- `twilio_secret_name`: Secret con `TWILIO_AUTH_TOKEN` (o `null` → la ruta
-  `/webhooks/twilio` responde 503 hasta configurarlo).
+- `twilio_secret_name`: Secret con `TWILIO_AUTH_TOKEN` (firma del webhook) y
+  `TWILIO_ACCOUNT_SID` (respuesta por REST en modo async). `null` → la ruta
+  `/webhooks/twilio` responde 503 hasta configurarlo.
 - `min_containers`, `serve_timeout_s`: parámetros del `serve`.
 
 ---

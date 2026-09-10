@@ -1,0 +1,42 @@
+/* Mindmap page - page-mindmap */
+.mm-layout{display:flex;flex:1;min-height:0;width:100%}
+.mm-sidebar{width:220px;min-width:220px;background:linear-gradient(180deg,rgba(18,18,26,.98),rgba(10,10,15,.98));border-right:1px solid var(--border-accent);display:flex;flex-direction:column;z-index:20;padding:14px;overflow-y:auto}
+.mm-sidebar-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px}
+.mm-filter-input{width:100%;background:rgba(10,10,15,.6);border:1px solid var(--border-accent);border-radius:8px;color:var(--text-primary);padding:6px 10px;font-size:12px;margin-bottom:10px}
+.mm-filter-input:focus{outline:none;border-color:var(--accent)}
+.mm-rama{padding:4px 8px;border-radius:6px;cursor:pointer;font-size:11px;color:var(--text-muted);font-family:var(--font-mono);transition:.12s;margin-bottom:1px}
+.mm-rama:hover{background:rgba(212,165,116,.08);color:var(--text-primary)}
+.mm-rama.active{background:rgba(212,165,116,.12);color:var(--accent)}
+.mm-rama-child{padding-left:16px}
+.mm-canvas{flex:1;position:relative;overflow:hidden}
+.mm-topbar{position:absolute;top:0;left:0;right:0;z-index:30;display:flex;gap:8px;padding:8px 16px;background:rgba(10,10,15,.7);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,165,116,.08);align-items:center;pointer-events:none}
+.mm-topbar>*{pointer-events:auto}
+.mm-topbar-btn{background:rgba(18,18,26,.7);border:1px solid var(--border-accent);color:var(--text-muted);padding:4px 12px;border-radius:6px;cursor:pointer;font-size:10px;font-family:var(--font-mono);transition:.15s}
+.mm-topbar-btn:hover{border-color:var(--accent);color:var(--accent)}
+.mm-topbar-btn.active{background:rgba(212,165,116,.15);color:var(--accent);border-color:var(--accent)}
+.mm-topbar-btn.toggle-off{opacity:.5}
+.mm-search{flex:1;max-width:300px;background:rgba(10,10,15,.6);border:1px solid var(--border-accent);border-radius:6px;color:var(--text-primary);padding:4px 10px;font-size:11px}
+.mm-search:focus{outline:none;border-color:var(--accent)}
+.mm-legend{position:fixed;bottom:20px;right:20px;z-index:30;display:flex;gap:8px;padding:8px 14px;background:rgba(10,10,15,.85);border:1px solid var(--border-accent);border-radius:10px}
+.mm-legend-item{display:flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
+.mm-legend-dot{width:8px;height:8px;border-radius:3px}
+.mm-node{padding:8px 12px;border-radius:8px;min-width:100px;font-size:12px;color:var(--text-primary);cursor:pointer;transition:box-shadow .15s}
+.mm-node-root{text-align:center;font-weight:600;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;min-width:120px;padding:6px 12px}
+.mm-node-body{display:flex;flex-direction:column;gap:2px}
+.mm-node-icon{font-size:14px;float:left;margin-right:6px}
+.mm-node-icon-root{font-size:20px;display:block;margin-bottom:2px}
+.mm-node-title{font-weight:600;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.mm-node-title-root{font-size:11px;letter-spacing:.08em}
+.mm-node-type{font-family:var(--font-mono);font-size:8px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.mm-handle{width:8px!important;height:8px!important;border-radius:50%!important;border:2px solid!important}
+.mm-tooltip{position:fixed;z-index:100;background:rgba(18,18,26,.97);border:1px solid var(--border-accent);border-radius:12px;padding:12px 16px;max-width:320px;pointer-events:none;box-shadow:0 8px 28px rgba(0,0,0,.4)}
+.mm-tooltip-id{font-family:var(--font-mono);font-size:9px;color:var(--text-muted);margin-bottom:2px}
+.mm-tooltip-title{font-weight:600;font-size:13px;margin-bottom:6px}
+.mm-tooltip-meta{font-size:11px;color:var(--text-muted-2);margin-bottom:4px}
+.mm-tooltip-wh{font-size:10px;color:var(--accent);display:inline-block;margin-bottom:4px}
+.mm-tooltip-summary{font-size:11px;color:var(--text-muted-2);margin-bottom:4px;line-height:1.4}
+.mm-tooltip-tags{display:flex;flex-wrap:wrap;gap:3px}
+.mm-tooltip-tag{font-family:var(--font-mono);font-size:8px;padding:1px 5px;border-radius:4px;border:1px solid var(--border-strong);color:var(--text-muted)}
+.react-flow__background{background:#0a0a0f!important}
+.react-flow__controls button{background:rgba(18,18,26,.85)!important;border:1px solid var(--border-accent)!important;color:var(--text-muted)!important;fill:var(--text-muted)!important}
+.react-flow__controls button:hover{border-color:var(--accent)!important;color:var(--accent)!important;fill:var(--accent)!important}

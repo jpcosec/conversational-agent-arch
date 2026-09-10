@@ -184,11 +184,11 @@ documents:
 - doc_name: task-organizaci-n-autom-tica-de-tomos-en-la-kb
   sections:
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb
-    title: "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    title: Organización automática de átomos en la KB
     breadcrumbs:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     about:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - organizaci n autom tica de tomos en la kb
     - artifact:task
     - source:drawer
@@ -208,10 +208,10 @@ documents:
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/rationale
     title: Rationale
     breadcrumbs:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - Rationale
     about:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - organizaci n autom tica de tomos en la kb
     - Rationale
     - rationale
@@ -233,10 +233,10 @@ documents:
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/goal
     title: Goal
     breadcrumbs:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - Goal
     about:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - organizaci n autom tica de tomos en la kb
     - Goal
     - goal
@@ -258,10 +258,10 @@ documents:
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/scope
     title: Scope
     breadcrumbs:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - Scope
     about:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - organizaci n autom tica de tomos en la kb
     - Scope
     - scope
@@ -283,10 +283,10 @@ documents:
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/implementation-path
     title: Implementation Path
     breadcrumbs:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - Implementation Path
     about:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - organizaci n autom tica de tomos en la kb
     - Implementation Path
     - implementation path
@@ -308,10 +308,10 @@ documents:
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/validation
     title: Validation
     breadcrumbs:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - Validation
     about:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - organizaci n autom tica de tomos en la kb
     - Validation
     - validation
@@ -333,10 +333,10 @@ documents:
   - path: organizaci-n-autom-tica-de-tomos-en-la-kb/done-when
     title: Done When
     breadcrumbs:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - Done When
     about:
-    - "Organizaci\xF3n autom\xE1tica de \xE1tomos en la KB"
+    - Organización automática de átomos en la KB
     - organizaci n autom tica de tomos en la kb
     - Done When
     - done when
@@ -529,206 +529,1575 @@ documents:
     level: 2
     line_start: 58
     line_end: 59
-- doc_name: task-ui-foundations
+- doc_name: seed-dividir-current-kb-agent
   sections:
-  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales
-    title: "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
+  - path: semilla
+    title: Semilla
     breadcrumbs:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
+    - Semilla
     about:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
-    - foundation
-    - hotkeys
-    - navigation
+    - Semilla
+    - semilla
+    - diagramas
+    - seed
+    - spec2viz
     - type.workflow.task
-    - ui
     - workspace.desk
     semantic_tags:
-    - foundation
-    - hotkeys
-    - navigation
+    - diagramas
+    - seed
+    - spec2viz
     - type.workflow.task
-    - ui
     - workspace.desk
-    slug: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales
-    level: 1
-    line_start: 24
-    line_end: 25
-  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/rationale
-    title: Rationale
-    breadcrumbs:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - Rationale
-    about:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
-    - Rationale
-    - rationale
-    - foundation
-    - hotkeys
-    - navigation
-    - type.workflow.task
-    - ui
-    - workspace.desk
-    semantic_tags:
-    - foundation
-    - hotkeys
-    - navigation
-    - type.workflow.task
-    - ui
-    - workspace.desk
-    slug: rationale
+    slug: semilla
     level: 2
-    line_start: 26
-    line_end: 27
-  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/goal
+    line_start: 11
+    line_end: 12
+  - path: nota
+    title: Nota
+    breadcrumbs:
+    - Nota
+    about:
+    - Nota
+    - nota
+    - diagramas
+    - seed
+    - spec2viz
+    - type.workflow.task
+    - workspace.desk
+    semantic_tags:
+    - diagramas
+    - seed
+    - spec2viz
+    - type.workflow.task
+    - workspace.desk
+    slug: nota
+    level: 2
+    line_start: 29
+    line_end: 30
+- doc_name: seed-mas-subagentes-al-loop
+  sections:
+  - path: semilla
+    title: Semilla
+    breadcrumbs:
+    - Semilla
+    about:
+    - Semilla
+    - semilla
+    - loop
+    - seed
+    - subagentes
+    - type.workflow.task
+    - workspace.desk
+    semantic_tags:
+    - loop
+    - seed
+    - subagentes
+    - type.workflow.task
+    - workspace.desk
+    slug: semilla
+    level: 2
+    line_start: 11
+    line_end: 12
+  - path: nota
+    title: Nota
+    breadcrumbs:
+    - Nota
+    about:
+    - Nota
+    - nota
+    - loop
+    - seed
+    - subagentes
+    - type.workflow.task
+    - workspace.desk
+    semantic_tags:
+    - loop
+    - seed
+    - subagentes
+    - type.workflow.task
+    - workspace.desk
+    slug: nota
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: seed-profundizar-la-kb
+  sections:
+  - path: semilla
+    title: Semilla
+    breadcrumbs:
+    - Semilla
+    about:
+    - Semilla
+    - semilla
+    - kb
+    - knowledge
+    - seed
+    - type.workflow.task
+    - workspace.desk
+    semantic_tags:
+    - kb
+    - knowledge
+    - seed
+    - type.workflow.task
+    - workspace.desk
+    slug: semilla
+    level: 2
+    line_start: 11
+    line_end: 12
+  - path: nota
+    title: Nota
+    breadcrumbs:
+    - Nota
+    about:
+    - Nota
+    - nota
+    - kb
+    - knowledge
+    - seed
+    - type.workflow.task
+    - workspace.desk
+    semantic_tags:
+    - kb
+    - knowledge
+    - seed
+    - type.workflow.task
+    - workspace.desk
+    slug: nota
+    level: 2
+    line_start: 15
+    line_end: 16
+- doc_name: task-evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
+  sections:
+  - path: evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
+    title: 'Evento adverso: el conversador debe decir que un profesional del programa
+      registrará el evento'
+    breadcrumbs:
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
+    about:
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
+    - evento adverso el conversador debe decir que un profesional del programa registrar
+      el evento
+    - artifact:task
+    - source:inbox
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:inbox
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento
+    level: 1
+    line_start: 23
+    line_end: 24
+  - path: evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento/goal
     title: Goal
     breadcrumbs:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
     - Goal
     about:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
+    - evento adverso el conversador debe decir que un profesional del programa registrar
+      el evento
     - Goal
     - goal
-    - foundation
-    - hotkeys
-    - navigation
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
+    - workspace:desk
     semantic_tags:
-    - foundation
-    - hotkeys
-    - navigation
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
+    - workspace:desk
     slug: goal
     level: 2
-    line_start: 32
-    line_end: 33
-  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/scope
+    line_start: 29
+    line_end: 30
+  - path: evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento/scope
     title: Scope
     breadcrumbs:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
     - Scope
     about:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
+    - evento adverso el conversador debe decir que un profesional del programa registrar
+      el evento
     - Scope
     - scope
-    - foundation
-    - hotkeys
-    - navigation
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
+    - workspace:desk
     semantic_tags:
-    - foundation
-    - hotkeys
-    - navigation
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
+    - workspace:desk
     slug: scope
     level: 2
-    line_start: 38
-    line_end: 39
-  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/implementation-path
-    title: Implementation Path
+    line_start: 33
+    line_end: 34
+  - path: evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento/source
+    title: Source
     breadcrumbs:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - Implementation Path
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
+    - Source
     about:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
-    - Implementation Path
-    - implementation path
-    - foundation
-    - hotkeys
-    - navigation
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
+    - evento adverso el conversador debe decir que un profesional del programa registrar
+      el evento
+    - Source
+    - source
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
+    - workspace:desk
     semantic_tags:
-    - foundation
-    - hotkeys
-    - navigation
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
-    slug: implementation-path
+    - workspace:desk
+    slug: source
     level: 2
-    line_start: 44
-    line_end: 45
-  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/validation
-    title: Validation
-    breadcrumbs:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - Validation
-    about:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
-    - Validation
-    - validation
-    - foundation
-    - hotkeys
-    - navigation
-    - type.workflow.task
-    - ui
-    - workspace.desk
-    semantic_tags:
-    - foundation
-    - hotkeys
-    - navigation
-    - type.workflow.task
-    - ui
-    - workspace.desk
-    slug: validation
-    level: 2
-    line_start: 50
-    line_end: 51
-  - path: ui-foundations-navegaci-n-unificada-estilo-flow-editor-hotkeys-globales/done-when
+    line_start: 39
+    line_end: 40
+  - path: evento-adverso-el-conversador-debe-decir-que-un-profesional-del-programa-registrar-el-evento/done-when
     title: Done When
     breadcrumbs:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
     - Done When
     about:
-    - "UI foundations \u2014 navegaci\xF3n unificada, estilo flow-editor, hotkeys\
-      \ globales"
-    - ui foundations navegaci n unificada estilo flow editor hotkeys globales
+    - 'Evento adverso: el conversador debe decir que un profesional del programa registrará
+      el evento'
+    - evento adverso el conversador debe decir que un profesional del programa registrar
+      el evento
     - Done When
     - done when
-    - foundation
-    - hotkeys
-    - navigation
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
+    - workspace:desk
     semantic_tags:
-    - foundation
-    - hotkeys
-    - navigation
+    - artifact:task
+    - source:inbox
     - type.workflow.task
-    - ui
     - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 43
+    line_end: 44
+- doc_name: task-reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+  sections:
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+    title: 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools
+    level: 1
+    line_start: 25
+    line_end: 26
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Rationale
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 27
+    line_end: 28
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/goal
+    title: Goal
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Goal
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 33
+    line_end: 34
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/scope
+    title: Scope
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Scope
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 39
+    line_end: 40
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Implementation Path
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 45
+    line_end: 46
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/validation
+    title: Validation
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Validation
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 51
+    line_end: 52
+  - path: reconstruir-kb-de-vitali-dudas-de-contenido-y-residuo-de-tools/done-when
+    title: Done When
+    breadcrumbs:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - Done When
+    about:
+    - 'Reconstruir KB de Vitali: dudas de contenido y residuo de tools'
+    - reconstruir kb de vitali dudas de contenido y residuo de tools
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 58
+    line_end: 59
+- doc_name: task-modo-editor-de-atoms-en-la-ui
+  sections:
+  - path: modo-editor-de-atoms-en-la-ui-mindmap
+    title: Modo editor de atoms en la UI (mindmap)
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: modo-editor-de-atoms-en-la-ui-mindmap
+    level: 1
+    line_start: 23
+    line_end: 24
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/rationale
+    title: Rationale
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Rationale
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Rationale
+    - rationale
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 25
+    line_end: 26
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/goal
+    title: Goal
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Goal
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Goal
+    - goal
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/scope
+    title: Scope
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Scope
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Scope
+    - scope
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Implementation Path
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 43
+    line_end: 44
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/validation
+    title: Validation
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Validation
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Validation
+    - validation
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: modo-editor-de-atoms-en-la-ui-mindmap/done-when
+    title: Done When
+    breadcrumbs:
+    - Modo editor de atoms en la UI (mindmap)
+    - Done When
+    about:
+    - Modo editor de atoms en la UI (mindmap)
+    - modo editor de atoms en la ui mindmap
+    - Done When
+    - done when
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - source:decision
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
     slug: done-when
     level: 2
     line_start: 56
     line_end: 57
+- doc_name: task-reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+  sections:
+  - path: reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+    title: Reconciliar atoms de arquitectura con el batch runtime
+    breadcrumbs:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    about:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - reconciliar atoms de arquitectura con el batch runtime
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: reconciliar-atoms-de-arquitectura-con-el-batch-runtime
+    level: 1
+    line_start: 25
+    line_end: 26
+  - path: reconciliar-atoms-de-arquitectura-con-el-batch-runtime/rationale
+    title: Rationale
+    breadcrumbs:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - Rationale
+    about:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - reconciliar atoms de arquitectura con el batch runtime
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 27
+    line_end: 28
+  - path: reconciliar-atoms-de-arquitectura-con-el-batch-runtime/goal
+    title: Goal
+    breadcrumbs:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - Goal
+    about:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - reconciliar atoms de arquitectura con el batch runtime
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 33
+    line_end: 34
+  - path: reconciliar-atoms-de-arquitectura-con-el-batch-runtime/scope
+    title: Scope
+    breadcrumbs:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - Scope
+    about:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - reconciliar atoms de arquitectura con el batch runtime
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 39
+    line_end: 40
+  - path: reconciliar-atoms-de-arquitectura-con-el-batch-runtime/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - Implementation Path
+    about:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - reconciliar atoms de arquitectura con el batch runtime
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 45
+    line_end: 46
+  - path: reconciliar-atoms-de-arquitectura-con-el-batch-runtime/validation
+    title: Validation
+    breadcrumbs:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - Validation
+    about:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - reconciliar atoms de arquitectura con el batch runtime
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 51
+    line_end: 52
+  - path: reconciliar-atoms-de-arquitectura-con-el-batch-runtime/done-when
+    title: Done When
+    breadcrumbs:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - Done When
+    about:
+    - Reconciliar atoms de arquitectura con el batch runtime
+    - reconciliar atoms de arquitectura con el batch runtime
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 58
+    line_end: 59
+- doc_name: task-chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+  sections:
+  - path: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+    title: 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    breadcrumbs:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    about:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - chat nueva conversacion ficha del lead y stepper del flujo
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo
+    level: 1
+    line_start: 29
+    line_end: 30
+  - path: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - Rationale
+    about:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - chat nueva conversacion ficha del lead y stepper del flujo
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo/goal
+    title: Goal
+    breadcrumbs:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - Goal
+    about:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - chat nueva conversacion ficha del lead y stepper del flujo
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo/scope
+    title: Scope
+    breadcrumbs:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - Scope
+    about:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - chat nueva conversacion ficha del lead y stepper del flujo
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 43
+    line_end: 44
+  - path: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - Implementation Path
+    about:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - chat nueva conversacion ficha del lead y stepper del flujo
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo/validation
+    title: Validation
+    breadcrumbs:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - Validation
+    about:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - chat nueva conversacion ficha del lead y stepper del flujo
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
+  - path: chat-nueva-conversacion-ficha-del-lead-y-stepper-del-flujo/done-when
+    title: Done When
+    breadcrumbs:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - Done When
+    about:
+    - 'Chat: nueva conversacion, ficha del lead y stepper del flujo'
+    - chat nueva conversacion ficha del lead y stepper del flujo
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 62
+    line_end: 63
+- doc_name: task-vista-leads-con-cola-de-visitas-por-confirmar
+  sections:
+  - path: vista-leads-con-cola-de-visitas-por-confirmar
+    title: Vista Leads con cola de visitas por confirmar
+    breadcrumbs:
+    - Vista Leads con cola de visitas por confirmar
+    about:
+    - Vista Leads con cola de visitas por confirmar
+    - vista leads con cola de visitas por confirmar
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: vista-leads-con-cola-de-visitas-por-confirmar
+    level: 1
+    line_start: 29
+    line_end: 30
+  - path: vista-leads-con-cola-de-visitas-por-confirmar/rationale
+    title: Rationale
+    breadcrumbs:
+    - Vista Leads con cola de visitas por confirmar
+    - Rationale
+    about:
+    - Vista Leads con cola de visitas por confirmar
+    - vista leads con cola de visitas por confirmar
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: vista-leads-con-cola-de-visitas-por-confirmar/goal
+    title: Goal
+    breadcrumbs:
+    - Vista Leads con cola de visitas por confirmar
+    - Goal
+    about:
+    - Vista Leads con cola de visitas por confirmar
+    - vista leads con cola de visitas por confirmar
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: vista-leads-con-cola-de-visitas-por-confirmar/scope
+    title: Scope
+    breadcrumbs:
+    - Vista Leads con cola de visitas por confirmar
+    - Scope
+    about:
+    - Vista Leads con cola de visitas por confirmar
+    - vista leads con cola de visitas por confirmar
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 43
+    line_end: 44
+  - path: vista-leads-con-cola-de-visitas-por-confirmar/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Vista Leads con cola de visitas por confirmar
+    - Implementation Path
+    about:
+    - Vista Leads con cola de visitas por confirmar
+    - vista leads con cola de visitas por confirmar
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: vista-leads-con-cola-de-visitas-por-confirmar/validation
+    title: Validation
+    breadcrumbs:
+    - Vista Leads con cola de visitas por confirmar
+    - Validation
+    about:
+    - Vista Leads con cola de visitas por confirmar
+    - vista leads con cola de visitas por confirmar
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
+  - path: vista-leads-con-cola-de-visitas-por-confirmar/done-when
+    title: Done When
+    breadcrumbs:
+    - Vista Leads con cola de visitas por confirmar
+    - Done When
+    about:
+    - Vista Leads con cola de visitas por confirmar
+    - vista leads con cola de visitas por confirmar
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 62
+    line_end: 63
+- doc_name: task-metricas-reales-en-el-dashboard-desde-el-sqlite
+  sections:
+  - path: metricas-reales-en-el-dashboard-desde-el-sqlite
+    title: Metricas reales en el dashboard desde el sqlite
+    breadcrumbs:
+    - Metricas reales en el dashboard desde el sqlite
+    about:
+    - Metricas reales en el dashboard desde el sqlite
+    - metricas reales en el dashboard desde el sqlite
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: metricas-reales-en-el-dashboard-desde-el-sqlite
+    level: 1
+    line_start: 29
+    line_end: 30
+  - path: metricas-reales-en-el-dashboard-desde-el-sqlite/rationale
+    title: Rationale
+    breadcrumbs:
+    - Metricas reales en el dashboard desde el sqlite
+    - Rationale
+    about:
+    - Metricas reales en el dashboard desde el sqlite
+    - metricas reales en el dashboard desde el sqlite
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: metricas-reales-en-el-dashboard-desde-el-sqlite/goal
+    title: Goal
+    breadcrumbs:
+    - Metricas reales en el dashboard desde el sqlite
+    - Goal
+    about:
+    - Metricas reales en el dashboard desde el sqlite
+    - metricas reales en el dashboard desde el sqlite
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: metricas-reales-en-el-dashboard-desde-el-sqlite/scope
+    title: Scope
+    breadcrumbs:
+    - Metricas reales en el dashboard desde el sqlite
+    - Scope
+    about:
+    - Metricas reales en el dashboard desde el sqlite
+    - metricas reales en el dashboard desde el sqlite
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 43
+    line_end: 44
+  - path: metricas-reales-en-el-dashboard-desde-el-sqlite/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Metricas reales en el dashboard desde el sqlite
+    - Implementation Path
+    about:
+    - Metricas reales en el dashboard desde el sqlite
+    - metricas reales en el dashboard desde el sqlite
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: metricas-reales-en-el-dashboard-desde-el-sqlite/validation
+    title: Validation
+    breadcrumbs:
+    - Metricas reales en el dashboard desde el sqlite
+    - Validation
+    about:
+    - Metricas reales en el dashboard desde el sqlite
+    - metricas reales en el dashboard desde el sqlite
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
+  - path: metricas-reales-en-el-dashboard-desde-el-sqlite/done-when
+    title: Done When
+    breadcrumbs:
+    - Metricas reales en el dashboard desde el sqlite
+    - Done When
+    about:
+    - Metricas reales en el dashboard desde el sqlite
+    - metricas reales en el dashboard desde el sqlite
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 62
+    line_end: 63
+- doc_name: task-chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+  sections:
+  - path: chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+    title: Chat de producto sin inspector para el equipo de Vitali
+    breadcrumbs:
+    - Chat de producto sin inspector para el equipo de Vitali
+    about:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - chat de producto sin inspector para el equipo de vitali
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: chat-de-producto-sin-inspector-para-el-equipo-de-vitali
+    level: 1
+    line_start: 30
+    line_end: 31
+  - path: chat-de-producto-sin-inspector-para-el-equipo-de-vitali/rationale
+    title: Rationale
+    breadcrumbs:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - Rationale
+    about:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - chat de producto sin inspector para el equipo de vitali
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 32
+    line_end: 33
+  - path: chat-de-producto-sin-inspector-para-el-equipo-de-vitali/goal
+    title: Goal
+    breadcrumbs:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - Goal
+    about:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - chat de producto sin inspector para el equipo de vitali
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 38
+    line_end: 39
+  - path: chat-de-producto-sin-inspector-para-el-equipo-de-vitali/scope
+    title: Scope
+    breadcrumbs:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - Scope
+    about:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - chat de producto sin inspector para el equipo de vitali
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 44
+    line_end: 45
+  - path: chat-de-producto-sin-inspector-para-el-equipo-de-vitali/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - Implementation Path
+    about:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - chat de producto sin inspector para el equipo de vitali
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 50
+    line_end: 51
+  - path: chat-de-producto-sin-inspector-para-el-equipo-de-vitali/validation
+    title: Validation
+    breadcrumbs:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - Validation
+    about:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - chat de producto sin inspector para el equipo de vitali
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 56
+    line_end: 57
+  - path: chat-de-producto-sin-inspector-para-el-equipo-de-vitali/done-when
+    title: Done When
+    breadcrumbs:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - Done When
+    about:
+    - Chat de producto sin inspector para el equipo de Vitali
+    - chat de producto sin inspector para el equipo de vitali
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 63
+    line_end: 64
+- doc_name: task-tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+  sections:
+  - path: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+    title: 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    breadcrumbs:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    about:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - tools funcionales de vitali registrar lead y crear visita sobre sql
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql
+    level: 1
+    line_start: 29
+    line_end: 30
+  - path: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql/rationale
+    title: Rationale
+    breadcrumbs:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - Rationale
+    about:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - tools funcionales de vitali registrar lead y crear visita sobre sql
+    - Rationale
+    - rationale
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: rationale
+    level: 2
+    line_start: 31
+    line_end: 32
+  - path: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql/goal
+    title: Goal
+    breadcrumbs:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - Goal
+    about:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - tools funcionales de vitali registrar lead y crear visita sobre sql
+    - Goal
+    - goal
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: goal
+    level: 2
+    line_start: 37
+    line_end: 38
+  - path: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql/scope
+    title: Scope
+    breadcrumbs:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - Scope
+    about:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - tools funcionales de vitali registrar lead y crear visita sobre sql
+    - Scope
+    - scope
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: scope
+    level: 2
+    line_start: 43
+    line_end: 44
+  - path: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql/implementation-path
+    title: Implementation Path
+    breadcrumbs:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - Implementation Path
+    about:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - tools funcionales de vitali registrar lead y crear visita sobre sql
+    - Implementation Path
+    - implementation path
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: implementation-path
+    level: 2
+    line_start: 49
+    line_end: 50
+  - path: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql/validation
+    title: Validation
+    breadcrumbs:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - Validation
+    about:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - tools funcionales de vitali registrar lead y crear visita sobre sql
+    - Validation
+    - validation
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: validation
+    level: 2
+    line_start: 55
+    line_end: 56
+  - path: tools-funcionales-de-vitali-registrar-lead-y-crear-visita-sobre-sql/done-when
+    title: Done When
+    breadcrumbs:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - Done When
+    about:
+    - 'Tools funcionales de Vitali: registrar_lead y crear_visita sobre SQL'
+    - tools funcionales de vitali registrar lead y crear visita sobre sql
+    - Done When
+    - done when
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    semantic_tags:
+    - artifact:task
+    - type.workflow.task
+    - workspace.desk
+    - workspace:desk
+    slug: done-when
+    level: 2
+    line_start: 61
+    line_end: 62

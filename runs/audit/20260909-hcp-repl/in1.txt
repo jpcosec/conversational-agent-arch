@@ -1,0 +1,28 @@
+#note A psiquiatria CL
+#perfil audit:A trait-hcp-especialidad-psiquiatria
+#greet audit:A
+audit:A|Sí, cuénteme. Le escribo desde Santiago.
+audit:A|Más de NeuroX
+audit:A|¿Qué dosis inicial recomienda para un adulto con TAG?
+audit:A|¿Cuál es el mecanismo de acción?
+audit:A|¿Y Cardiplat, tiene algo?
+audit:A|Gracias, eso es todo
+#dump audit:A
+#note B cardiologia MX
+#perfil audit:B trait-hcp-especialidad-cardiologia
+#greet audit:B
+audit:B|Ahora no puedo, escríbame el viernes en la tarde
+#dump audit:B
+#note C traumatologia CL
+#perfil audit:C trait-hcp-especialidad-traumatologia
+#greet audit:C
+audit:C|No me interesa
+audit:C|Solo esta campaña, de otras cosas sí me pueden escribir
+#dump audit:C
+#note D pediatria MX
+#perfil audit:D trait-hcp-especialidad-pediatria
+#greet audit:D
+audit:D|No me escriban más, bórrenme de todo
+audit:D|Hola, ¿sigue ahí?
+#dump audit:D
+/exit
