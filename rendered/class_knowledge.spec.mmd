@@ -1,0 +1,78 @@
+classDiagram
+    direction LR
+    class StructuredNLDoc["StructuredNLDoc"]
+    class StructuredNLDoc {
+        <<protocol>>
+        +str id
+        +str title
+        +list[str] tags
+    }
+    class IndexProxies["IndexProxies"]
+    class IndexProxies {
+        <<protocol>>
+        +str INDEX_PROXY_TEMPLATE
+    }
+    class DomainAtom["DomainAtom"]
+    class DomainAtom {
+        <<record>>
+        +AtomQuestion question
+    }
+    class ConversationStep["ConversationStep"]
+    class ConversationStep {
+        <<record>>
+        +StepKind kind
+        +str instructions
+        +list[str] required_slots
+    }
+    class GateCriterion["GateCriterion"]
+    class GateCriterion {
+        <<record>>
+    }
+    class RuleAtom["RuleAtom"]
+    class RuleAtom {
+        <<record>>
+    }
+    class ToolAtom["ToolAtom"]
+    class ToolAtom {
+        <<record>>
+    }
+    class StyleGuide["StyleGuide"]
+    class StyleGuide {
+        <<record>>
+    }
+    class FallbackRule["FallbackRule"]
+    class FallbackRule {
+        <<record>>
+    }
+    class AgentFraming["AgentFraming"]
+    class AgentFraming {
+        <<record>>
+    }
+    class CapabilityBoundary["CapabilityBoundary"]
+    class CapabilityBoundary {
+        <<record>>
+    }
+    class SelfDeclaration["SelfDeclaration"]
+    class SelfDeclaration {
+        <<record>>
+    }
+    class StrategyRule["StrategyRule"]
+    class StrategyRule {
+        <<record>>
+    }
+    IndexProxies ..|> StructuredNLDoc
+    ConversationStep ..|> IndexProxies
+    DomainAtom ..|> IndexProxies
+    GateCriterion ..|> IndexProxies
+    RuleAtom ..|> IndexProxies
+    ToolAtom ..|> IndexProxies
+    StyleGuide ..|> IndexProxies
+    FallbackRule ..|> IndexProxies
+    AgentFraming ..|> IndexProxies
+    CapabilityBoundary ..|> IndexProxies
+    SelfDeclaration ..|> IndexProxies
+    StrategyRule ..|> IndexProxies
+    ConversationStep ..> GateCriterion : gated_by (kgdb)
+    ConversationStep ..> DomainAtom : grounded_by (kgdb)
+    ConversationStep ..> ToolAtom : uses_tool (kgdb)
+    ConversationStep ..> ConversationStep : transitions_to (kgdb)

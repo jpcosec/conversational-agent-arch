@@ -1,0 +1,57 @@
+id: kb-agent-turn
+title: "Turno conversacional · Orchestrator"
+type: sequence
+version: "0.1"
+data:
+  participants:
+    - id: Usuario
+      kind: actor
+    - id: API
+      kind: boundary
+    - id: Orchestrator
+      kind: component
+    - id: RouterStateMachine
+      kind: component
+    - id: KB
+      kind: boundary
+    - id: LLM
+      kind: external
+    - id: SQLDB
+      kind: database
+  messages:
+    - from: Usuario
+      to: API
+      message: "POST /api/chat · /webhooks/twilio"
+      kind: sync
+    - from: API
+      to: Orchestrator
+      message: handle_turn
+      kind: sync
+    - from: Orchestrator
+      to: KB
+      message: "compilar contexto (steps, gates, atoms, framing)"
+      kind: sync
+    - from: Orchestrator
+      to: RouterStateMachine
+      message: "compile_context + draft_response (estados router)"
+      kind: sync
+    - from: RouterStateMachine
+      to: LLM
+      message: "draft con framing + atoms groundeados"
+      kind: sync
+    - from: LLM
+      to: RouterStateMachine
+      message: "respuesta + flow_node + tool_call"
+      kind: return
+    - from: RouterStateMachine
+      to: SQLDB
+      message: "persistir turn, flow_node, session_state"
+      kind: sync
+    - from: Orchestrator
+      to: API
+      message: turno enriquecido (system_turn, trace)
+      kind: return
+    - from: API
+      to: Usuario
+      message: "respuesta (JSON / TwiML)"
+      kind: return

@@ -1,0 +1,17 @@
+sequenceDiagram
+    actor Usuario
+    participant API
+    participant Orchestrator
+    participant RouterStateMachine
+    participant KB
+    participant LLM
+    participant SQLDB
+    Usuario->>API: POST /api/chat · /webhooks/twilio
+    API->>Orchestrator: handle_turn
+    Orchestrator->>KB: compilar contexto (steps, gates, atoms, framing)
+    Orchestrator->>RouterStateMachine: compile_context + draft_response (estados router)
+    RouterStateMachine->>LLM: draft con framing + atoms groundeados
+    LLM-->>RouterStateMachine: respuesta + flow_node + tool_call
+    RouterStateMachine->>SQLDB: persistir turn, flow_node, session_state
+    Orchestrator-->>API: turno enriquecido (system_turn, trace)
+    API-->>Usuario: respuesta (JSON / TwiML)

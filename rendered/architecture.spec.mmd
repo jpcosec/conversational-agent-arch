@@ -69,9 +69,14 @@ graph TD
     class_models_knowledge_tool_ToolAtom["ToolAtom"]
     module_models_knowledge_trait["models.knowledge.trait"]
     class_models_knowledge_trait_TraitAtom["TraitAtom"]
+    module_models_sql_consultas["models_sql.consultas"]
+    class_models_sql_consultas_Consultas["Consultas"]
     module_models_sql_conversation["models_sql.conversation"]
     class_models_sql_conversation_ConversationStatus["ConversationStatus"]
     class_models_sql_conversation_Conversation["Conversation"]
+    module_models_sql_hcp["models_sql.hcp"]
+    class_models_sql_hcp_Recontactos["Recontactos"]
+    class_models_sql_hcp_Consentimientos["Consentimientos"]
     module_models_sql_identity["models_sql.identity"]
     class_models_sql_identity_Base["Base"]
     class_models_sql_identity_Users["Users"]
@@ -130,7 +135,9 @@ graph TD
     class_state_machine_CronTriggerPayload["CronTriggerPayload"]
     class_state_machine_RouterTurnResult["RouterTurnResult"]
     class_state_machine_RouterStateMachine["RouterStateMachine"]
+    module_tools_consultas["tools.consultas"]
     module_tools_enrolamiento["tools.enrolamiento"]
+    module_tools_hcp["tools.hcp"]
     module_tools_leads["tools.leads"]
     module_tools_recordatorios["tools.recordatorios"]
     module_tools_reservas["tools.reservas"]
@@ -182,6 +189,7 @@ graph TD
     module_kb_agent_llm["llm"]
     module_kb_agent_models_sql_reservas["reservas"]
     module_kb_agent_models_sql_recordatorios["recordatorios"]
+    module_kb_agent_models_sql_consultas["consultas"]
     module_kb_agent_models_sql_turns["turns"]
     module_kb_agent_models_sql_conversation["conversation"]
     module_kb_agent_knowledge_compiler["compiler"]
@@ -197,6 +205,7 @@ graph TD
     module_collections["collections"]
     module_deskops_atom_tags["tags"]
     module_kb_agent_reflector_reader["reader"]
+    module_kb_agent_models_sql_hcp["hcp"]
     module_kb_agent_models_sql_leads["leads"]
     module_kb_agent_tools_leads["leads"]
     module_agent -->|"imports"| module___future__
@@ -381,6 +390,12 @@ graph TD
     module_models_knowledge_trait -->|"imports"| module_sldb
     module_models_knowledge_trait -->|"imports"| module_index_proxies
     module_models_knowledge_trait -->|"imports"| module_domain
+    module_models_sql_consultas -->|"defines"| class_models_sql_consultas_Consultas
+    module_models_sql_consultas -->|"imports"| module___future__
+    module_models_sql_consultas -->|"imports"| module_datetime
+    module_models_sql_consultas -->|"imports"| module_sqlalchemy
+    module_models_sql_consultas -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_consultas -->|"imports"| module_identity
     module_models_sql_conversation -->|"defines"| class_models_sql_conversation_ConversationStatus
     module_models_sql_conversation -->|"defines"| class_models_sql_conversation_Conversation
     module_models_sql_conversation -->|"imports"| module___future__
@@ -389,6 +404,13 @@ graph TD
     module_models_sql_conversation -->|"imports"| module_sqlalchemy
     module_models_sql_conversation -->|"imports"| module_sqlalchemy_orm
     module_models_sql_conversation -->|"imports"| module_identity
+    module_models_sql_hcp -->|"defines"| class_models_sql_hcp_Recontactos
+    module_models_sql_hcp -->|"defines"| class_models_sql_hcp_Consentimientos
+    module_models_sql_hcp -->|"imports"| module___future__
+    module_models_sql_hcp -->|"imports"| module_datetime
+    module_models_sql_hcp -->|"imports"| module_sqlalchemy
+    module_models_sql_hcp -->|"imports"| module_sqlalchemy_orm
+    module_models_sql_hcp -->|"imports"| module_identity
     module_models_sql_identity -->|"defines"| class_models_sql_identity_Base
     module_models_sql_identity -->|"defines"| class_models_sql_identity_Users
     module_models_sql_identity -->|"defines"| class_models_sql_identity_UserTraits
@@ -463,6 +485,7 @@ graph TD
     module_orchestrator -->|"imports"| module_kb_agent_models_sql_identity
     module_orchestrator -->|"imports"| module_kb_agent_models_sql_reservas
     module_orchestrator -->|"imports"| module_kb_agent_models_sql_recordatorios
+    module_orchestrator -->|"imports"| module_kb_agent_models_sql_consultas
     module_orchestrator -->|"imports"| module_kb_agent_models_sql_session
     module_orchestrator -->|"imports"| module_kb_agent_models_sql_turns
     module_orchestrator -->|"imports"| module_kb_agent_models_sql_conversation
@@ -504,6 +527,7 @@ graph TD
     module_perfilador_listener -->|"imports"| module_typing
     module_perfilador_listener -->|"imports"| module_kb_agent_pii_scrubber
     module_perfilador_traits_store -->|"imports"| module___future__
+    module_perfilador_traits_store -->|"imports"| module_typing
     module_perfilador_traits_store -->|"imports"| module_sqlalchemy_orm
     module_perfilador_traits_store -->|"imports"| module_kb_agent_models_sql_identity
     module_pii_scrubber -->|"defines"| class_pii_scrubber__PlaceholderRegistry
@@ -552,10 +576,18 @@ graph TD
     module_state_machine -->|"imports"| module_dataclasses
     module_state_machine -->|"imports"| module_enum
     module_state_machine -->|"imports"| module_typing
+    module_tools_consultas -->|"imports"| module___future__
+    module_tools_consultas -->|"imports"| module_typing
+    module_tools_consultas -->|"imports"| module_sqlalchemy_orm
+    module_tools_consultas -->|"imports"| module_kb_agent_models_sql_consultas
     module_tools_enrolamiento -->|"imports"| module___future__
     module_tools_enrolamiento -->|"imports"| module_typing
     module_tools_enrolamiento -->|"imports"| module_sqlalchemy_orm
     module_tools_enrolamiento -->|"imports"| module_kb_agent_models_sql_identity
+    module_tools_hcp -->|"imports"| module___future__
+    module_tools_hcp -->|"imports"| module_typing
+    module_tools_hcp -->|"imports"| module_sqlalchemy_orm
+    module_tools_hcp -->|"imports"| module_kb_agent_models_sql_hcp
     module_tools_leads -->|"imports"| module___future__
     module_tools_leads -->|"imports"| module_typing
     module_tools_leads -->|"imports"| module_sqlalchemy_orm

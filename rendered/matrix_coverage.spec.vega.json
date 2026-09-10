@@ -1,0 +1,579 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Cobertura de conocimiento por vista",
+  "width": 1220,
+  "height": 396,
+  "padding": 5,
+  "signals": [
+    {
+      "name": "left",
+      "value": 220
+    },
+    {
+      "name": "top",
+      "value": 70
+    },
+    {
+      "name": "cellWidth",
+      "value": 140
+    },
+    {
+      "name": "rowHeight",
+      "value": 34
+    },
+    {
+      "name": "barPadding",
+      "value": 6
+    }
+  ],
+  "data": [
+    {
+      "name": "stages",
+      "values": [
+        {
+          "id": "entrada",
+          "index": 0,
+          "label": "entrada",
+          "view": "Vista Conversaci\u00f3n"
+        },
+        {
+          "id": "compilacion",
+          "index": 1,
+          "label": "compilaci\u00f3n contexto",
+          "view": "Vista Conversaci\u00f3n"
+        },
+        {
+          "id": "respuesta",
+          "index": 2,
+          "label": "respuesta",
+          "view": "Vista Conversaci\u00f3n"
+        },
+        {
+          "id": "persistencia",
+          "index": 3,
+          "label": "persistencia",
+          "view": "Vista Conversaci\u00f3n"
+        },
+        {
+          "id": "definicion",
+          "index": 4,
+          "label": "definici\u00f3n atom",
+          "view": "Vista Conocimiento"
+        },
+        {
+          "id": "indexado",
+          "index": 5,
+          "label": "indexado SLDB",
+          "view": "Vista Conocimiento"
+        },
+        {
+          "id": "grafo",
+          "index": 6,
+          "label": "aristas kgdb",
+          "view": "Vista Conocimiento"
+        }
+      ]
+    },
+    {
+      "name": "views",
+      "source": "stages",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": [
+            "view"
+          ],
+          "fields": [
+            "index",
+            "index"
+          ],
+          "ops": [
+            "min",
+            "max"
+          ],
+          "as": [
+            "minIdx",
+            "maxIdx"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "viewBoundaries",
+      "source": "views",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "[datum.minIdx, datum.maxIdx + 1]",
+          "as": "indices"
+        },
+        {
+          "type": "flatten",
+          "fields": [
+            "indices"
+          ]
+        },
+        {
+          "type": "aggregate",
+          "groupby": [
+            "indices"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stageBoundaries",
+      "values": [
+        {
+          "index": 0
+        },
+        {
+          "index": 1
+        },
+        {
+          "index": 2
+        },
+        {
+          "index": 3
+        },
+        {
+          "index": 4
+        },
+        {
+          "index": 5
+        },
+        {
+          "index": 6
+        },
+        {
+          "index": 7
+        }
+      ]
+    },
+    {
+      "name": "rows",
+      "values": [
+        {
+          "id": "KB Agent Runtime",
+          "label": "KB Agent Runtime",
+          "row": 0,
+          "depth": 0
+        },
+        {
+          "id": "Orchestrator",
+          "label": "Orchestrator",
+          "row": 1,
+          "depth": 1
+        },
+        {
+          "id": "RouterStateMachine",
+          "label": "RouterStateMachine",
+          "row": 2,
+          "depth": 1
+        },
+        {
+          "id": "Perfilador",
+          "label": "Perfilador",
+          "row": 3,
+          "depth": 1
+        },
+        {
+          "id": "Atoms SLDB",
+          "label": "Atoms SLDB",
+          "row": 4,
+          "depth": 1
+        },
+        {
+          "id": "ConversationStep",
+          "label": "ConversationStep",
+          "row": 5,
+          "depth": 2
+        },
+        {
+          "id": "DomainAtom",
+          "label": "DomainAtom",
+          "row": 6,
+          "depth": 2
+        },
+        {
+          "id": "GateCriterion",
+          "label": "GateCriterion",
+          "row": 7,
+          "depth": 2
+        },
+        {
+          "id": "ToolAtom",
+          "label": "ToolAtom",
+          "row": 8,
+          "depth": 2
+        }
+      ]
+    },
+    {
+      "name": "spans",
+      "values": [
+        {
+          "component": "KB Agent Runtime",
+          "row": 0,
+          "start": 0,
+          "end": 4,
+          "kind": "core",
+          "depth": 0
+        },
+        {
+          "component": "KB Agent Runtime",
+          "row": 0,
+          "start": 6,
+          "end": 7,
+          "kind": "core",
+          "depth": 0
+        },
+        {
+          "component": "Orchestrator",
+          "row": 1,
+          "start": 1,
+          "end": 4,
+          "kind": "service",
+          "depth": 1
+        },
+        {
+          "component": "RouterStateMachine",
+          "row": 2,
+          "start": 0,
+          "end": 1,
+          "kind": "service",
+          "depth": 1
+        },
+        {
+          "component": "RouterStateMachine",
+          "row": 2,
+          "start": 2,
+          "end": 3,
+          "kind": "service",
+          "depth": 1
+        },
+        {
+          "component": "Perfilador",
+          "row": 3,
+          "start": 1,
+          "end": 2,
+          "kind": "service",
+          "depth": 1
+        },
+        {
+          "component": "Atoms SLDB",
+          "row": 4,
+          "start": 1,
+          "end": 2,
+          "kind": "database",
+          "depth": 1
+        },
+        {
+          "component": "Atoms SLDB",
+          "row": 4,
+          "start": 4,
+          "end": 6,
+          "kind": "database",
+          "depth": 1
+        },
+        {
+          "component": "ConversationStep",
+          "row": 5,
+          "start": 4,
+          "end": 7,
+          "kind": "core",
+          "depth": 2
+        },
+        {
+          "component": "DomainAtom",
+          "row": 6,
+          "start": 4,
+          "end": 7,
+          "kind": "core",
+          "depth": 2
+        },
+        {
+          "component": "GateCriterion",
+          "row": 7,
+          "start": 4,
+          "end": 7,
+          "kind": "core",
+          "depth": 2
+        },
+        {
+          "component": "ToolAtom",
+          "row": 8,
+          "start": 4,
+          "end": 7,
+          "kind": "core",
+          "depth": 2
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "kindColor",
+      "type": "ordinal",
+      "domain": [
+        "service",
+        "database",
+        "core"
+      ],
+      "range": [
+        "#94A3B8",
+        "#10B981",
+        "#F59E0B"
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "text",
+      "from": {
+        "data": "views"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "left + (datum.minIdx + datum.maxIdx + 1) * cellWidth / 2"
+          },
+          "y": {
+            "value": 15
+          },
+          "text": {
+            "field": "view"
+          },
+          "align": {
+            "value": "center"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fontSize": {
+            "value": 15
+          },
+          "fill": {
+            "value": "#475569"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "stages"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "left + datum.index * cellWidth + cellWidth / 2"
+          },
+          "y": {
+            "value": 40
+          },
+          "text": {
+            "field": "label"
+          },
+          "align": {
+            "value": "center"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fill": {
+            "value": "#475569"
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "stageBoundaries"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "left + datum.index * cellWidth"
+          },
+          "y": {
+            "signal": "top - 20"
+          },
+          "y2": {
+            "signal": "top + 9 * rowHeight + 10"
+          },
+          "stroke": {
+            "value": "#CBD5E1"
+          },
+          "strokeDash": {
+            "value": [
+              4,
+              4
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "viewBoundaries"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "left + datum.indices * cellWidth"
+          },
+          "y": {
+            "signal": "top - 40"
+          },
+          "y2": {
+            "signal": "top + 9 * rowHeight + 20"
+          },
+          "stroke": {
+            "value": "#475569"
+          },
+          "strokeWidth": {
+            "value": 2.5
+          },
+          "strokeOpacity": {
+            "value": 0.6
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "rows"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "value": 0
+          },
+          "x2": {
+            "signal": "width"
+          },
+          "y": {
+            "signal": "top + datum.row * rowHeight"
+          },
+          "height": {
+            "signal": "rowHeight"
+          },
+          "fill": {
+            "signal": "datum.depth === 0 ? (datum.row % 2 === 0 ? '#475569' : '#94A3B8') : (datum.row % 2 === 0 ? '#CBD5E1' : '#E2E8F0')"
+          },
+          "fillOpacity": {
+            "value": 0.15
+          }
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "from": {
+        "data": "rows"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "12 + datum.depth * 18"
+          },
+          "x2": {
+            "signal": "12 + datum.depth * 18"
+          },
+          "y": {
+            "signal": "top + datum.row * rowHeight + 2"
+          },
+          "y2": {
+            "signal": "top + datum.row * rowHeight + rowHeight - 2"
+          },
+          "stroke": {
+            "signal": "datum.depth === 0 ? '#475569' : '#94A3B8'"
+          },
+          "strokeWidth": {
+            "signal": "datum.depth === 0 ? 3 : 1.5"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "rows"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "20 + datum.depth * 18"
+          },
+          "y": {
+            "signal": "top + datum.row * rowHeight + rowHeight / 2"
+          },
+          "text": {
+            "field": "label"
+          },
+          "align": {
+            "value": "left"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fontSize": {
+            "value": 13
+          },
+          "fill": {
+            "value": "#111827"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "spans"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "left + datum.start * cellWidth + 4"
+          },
+          "x2": {
+            "signal": "left + datum.end * cellWidth - 4"
+          },
+          "y": {
+            "signal": "top + datum.row * rowHeight + barPadding"
+          },
+          "height": {
+            "signal": "rowHeight - barPadding * 2"
+          },
+          "cornerRadius": {
+            "value": 7
+          },
+          "fill": {
+            "scale": "kindColor",
+            "field": "kind"
+          },
+          "fillOpacity": {
+            "signal": "max(0.3, 1 - (datum.depth * 0.25))"
+          },
+          "stroke": {
+            "scale": "kindColor",
+            "field": "kind"
+          },
+          "strokeOpacity": {
+            "value": 0.7
+          },
+          "strokeWidth": {
+            "value": 1.5
+          }
+        }
+      }
+    }
+  ]
+}

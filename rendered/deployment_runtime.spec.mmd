@@ -1,0 +1,27 @@
+graph TD
+    subgraph user_device ["Dispositivo usuario"]
+        whatsapp["WhatsApp/SMS"]
+        webchat["Chat UI (frontends/chat)"]
+    end
+    subgraph app_host ["Servidor app (uvicorn)"]
+        fastapi_app["FastAPI (frontends.chat.app)"]
+        orchestrator["kb_agent.orchestrator"]
+        state_machine["kb_agent.state_machine"]
+        profiler["kb_agent.perfilador"]
+    end
+    subgraph data_host ["Capa de datos"]
+        postgres["PostgreSQL (models_sql)"]
+        sldb_store["SLDB store (.sldb)"]
+    end
+    subgraph external ["Servicios externos"]
+        llm_provider["LLM provider"]
+        twilio["Twilio API"]
+    end
+    whatsapp -->|"WhatsApp/SMS"| twilio
+    twilio -->|"HTTPS webhook (firma validada)"| fastapi_app
+    webchat -->|"HTTPS /api/chat"| fastapi_app
+    fastapi_app -->|"in-process"| orchestrator
+    orchestrator -->|"SQLAlchemy"| postgres
+    orchestrator -->|"SLDB"| sldb_store
+    orchestrator -->|"HTTPS (framing + atoms)"| llm_provider
+    profiler -->|"HTTPS (análisis asíncrono)"| llm_provider

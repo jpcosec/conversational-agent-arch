@@ -1,0 +1,62 @@
+id: kb-agent-knowledge
+title: "Modelo de conocimiento (atoms SLDB)"
+type: class
+version: "0.1"
+data:
+  direction: LR
+  classes:
+    StructuredNLDoc:
+      kind: protocol
+      attributes:
+        - {name: id, type: str}
+        - {name: title, type: str}
+        - {name: tags, type: 'list[str]'}
+    IndexProxies:
+      kind: protocol
+      attributes:
+        - {name: INDEX_PROXY_TEMPLATE, type: str}
+    DomainAtom:
+      kind: record
+      attributes:
+        - {name: question, type: AtomQuestion}
+    ConversationStep:
+      kind: record
+      attributes:
+        - {name: kind, type: StepKind}
+        - {name: instructions, type: str}
+        - {name: required_slots, type: 'list[str]'}
+    GateCriterion:
+      kind: record
+    RuleAtom:
+      kind: record
+    ToolAtom:
+      kind: record
+    StyleGuide:
+      kind: record
+    FallbackRule:
+      kind: record
+    AgentFraming:
+      kind: record
+    CapabilityBoundary:
+      kind: record
+    SelfDeclaration:
+      kind: record
+    StrategyRule:
+      kind: record
+  relations:
+    - {from: IndexProxies, to: StructuredNLDoc, relation: realization}
+    - {from: ConversationStep, to: IndexProxies, relation: realization}
+    - {from: DomainAtom, to: IndexProxies, relation: realization}
+    - {from: GateCriterion, to: IndexProxies, relation: realization}
+    - {from: RuleAtom, to: IndexProxies, relation: realization}
+    - {from: ToolAtom, to: IndexProxies, relation: realization}
+    - {from: StyleGuide, to: IndexProxies, relation: realization}
+    - {from: FallbackRule, to: IndexProxies, relation: realization}
+    - {from: AgentFraming, to: IndexProxies, relation: realization}
+    - {from: CapabilityBoundary, to: IndexProxies, relation: realization}
+    - {from: SelfDeclaration, to: IndexProxies, relation: realization}
+    - {from: StrategyRule, to: IndexProxies, relation: realization}
+    - {from: ConversationStep, to: GateCriterion, relation: dependency, label: "gated_by (kgdb)"}
+    - {from: ConversationStep, to: DomainAtom, relation: dependency, label: "grounded_by (kgdb)"}
+    - {from: ConversationStep, to: ToolAtom, relation: dependency, label: "uses_tool (kgdb)"}
+    - {from: ConversationStep, to: ConversationStep, relation: dependency, label: "transitions_to (kgdb)"}

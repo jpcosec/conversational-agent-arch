@@ -214,6 +214,12 @@ data:
     class_models_knowledge_trait_TraitAtom:
       label: TraitAtom
       kind: class
+    module_models_sql_consultas:
+      label: models_sql.consultas
+      kind: module
+    class_models_sql_consultas_Consultas:
+      label: Consultas
+      kind: class
     module_models_sql_conversation:
       label: models_sql.conversation
       kind: module
@@ -222,6 +228,15 @@ data:
       kind: class
     class_models_sql_conversation_Conversation:
       label: Conversation
+      kind: class
+    module_models_sql_hcp:
+      label: models_sql.hcp
+      kind: module
+    class_models_sql_hcp_Recontactos:
+      label: Recontactos
+      kind: class
+    class_models_sql_hcp_Consentimientos:
+      label: Consentimientos
       kind: class
     module_models_sql_identity:
       label: models_sql.identity
@@ -397,8 +412,14 @@ data:
     class_state_machine_RouterStateMachine:
       label: RouterStateMachine
       kind: class
+    module_tools_consultas:
+      label: tools.consultas
+      kind: module
     module_tools_enrolamiento:
       label: tools.enrolamiento
+      kind: module
+    module_tools_hcp:
+      label: tools.hcp
       kind: module
     module_tools_leads:
       label: tools.leads
@@ -553,6 +574,9 @@ data:
     module_kb_agent_models_sql_recordatorios:
       label: recordatorios
       kind: external
+    module_kb_agent_models_sql_consultas:
+      label: consultas
+      kind: external
     module_kb_agent_models_sql_turns:
       label: turns
       kind: external
@@ -597,6 +621,9 @@ data:
       kind: external
     module_kb_agent_reflector_reader:
       label: reader
+      kind: external
+    module_kb_agent_models_sql_hcp:
+      label: hcp
       kind: external
     module_kb_agent_models_sql_leads:
       label: leads
@@ -1151,6 +1178,24 @@ data:
   - from: module_models_knowledge_trait
     to: module_domain
     relation: imports
+  - from: module_models_sql_consultas
+    to: class_models_sql_consultas_Consultas
+    relation: defines
+  - from: module_models_sql_consultas
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_consultas
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_consultas
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_consultas
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_consultas
+    to: module_identity
+    relation: imports
   - from: module_models_sql_conversation
     to: class_models_sql_conversation_ConversationStatus
     relation: defines
@@ -1173,6 +1218,27 @@ data:
     to: module_sqlalchemy_orm
     relation: imports
   - from: module_models_sql_conversation
+    to: module_identity
+    relation: imports
+  - from: module_models_sql_hcp
+    to: class_models_sql_hcp_Recontactos
+    relation: defines
+  - from: module_models_sql_hcp
+    to: class_models_sql_hcp_Consentimientos
+    relation: defines
+  - from: module_models_sql_hcp
+    to: module___future__
+    relation: imports
+  - from: module_models_sql_hcp
+    to: module_datetime
+    relation: imports
+  - from: module_models_sql_hcp
+    to: module_sqlalchemy
+    relation: imports
+  - from: module_models_sql_hcp
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_models_sql_hcp
     to: module_identity
     relation: imports
   - from: module_models_sql_identity
@@ -1398,6 +1464,9 @@ data:
     to: module_kb_agent_models_sql_recordatorios
     relation: imports
   - from: module_orchestrator
+    to: module_kb_agent_models_sql_consultas
+    relation: imports
+  - from: module_orchestrator
     to: module_kb_agent_models_sql_session
     relation: imports
   - from: module_orchestrator
@@ -1519,6 +1588,9 @@ data:
     relation: imports
   - from: module_perfilador_traits_store
     to: module___future__
+    relation: imports
+  - from: module_perfilador_traits_store
+    to: module_typing
     relation: imports
   - from: module_perfilador_traits_store
     to: module_sqlalchemy_orm
@@ -1664,6 +1736,18 @@ data:
   - from: module_state_machine
     to: module_typing
     relation: imports
+  - from: module_tools_consultas
+    to: module___future__
+    relation: imports
+  - from: module_tools_consultas
+    to: module_typing
+    relation: imports
+  - from: module_tools_consultas
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_consultas
+    to: module_kb_agent_models_sql_consultas
+    relation: imports
   - from: module_tools_enrolamiento
     to: module___future__
     relation: imports
@@ -1675,6 +1759,18 @@ data:
     relation: imports
   - from: module_tools_enrolamiento
     to: module_kb_agent_models_sql_identity
+    relation: imports
+  - from: module_tools_hcp
+    to: module___future__
+    relation: imports
+  - from: module_tools_hcp
+    to: module_typing
+    relation: imports
+  - from: module_tools_hcp
+    to: module_sqlalchemy_orm
+    relation: imports
+  - from: module_tools_hcp
+    to: module_kb_agent_models_sql_hcp
     relation: imports
   - from: module_tools_leads
     to: module___future__

@@ -1,0 +1,60 @@
+id: kb-agent-coverage
+title: "Cobertura de conocimiento por vista"
+type: component_view_matrix
+version: "0.1"
+data:
+  views:
+    - id: conversacion
+      label: Vista Conversación
+      stages:
+        - {id: entrada, label: entrada}
+        - {id: compilacion, label: compilación contexto}
+        - {id: respuesta, label: respuesta}
+        - {id: persistencia, label: persistencia}
+    - id: conocimiento
+      label: Vista Conocimiento
+      stages:
+        - {id: definicion, label: definición atom}
+        - {id: indexado, label: indexado SLDB}
+        - {id: grafo, label: aristas kgdb}
+  components:
+    - name: KB Agent Runtime
+      kind: core
+      stages:
+        conversacion: [entrada, compilacion, respuesta, persistencia]
+        conocimiento: [grafo]
+      children:
+        - name: Orchestrator
+          kind: service
+          stages:
+            conversacion: [compilacion, respuesta, persistencia]
+        - name: RouterStateMachine
+          kind: service
+          stages:
+            conversacion: [entrada, respuesta]
+        - name: Perfilador
+          kind: service
+          stages:
+            conversacion: [compilacion]
+        - name: Atoms SLDB
+          kind: database
+          stages:
+            conocimiento: [definicion, indexado]
+            conversacion: [compilacion]
+          children:
+            - name: ConversationStep
+              kind: core
+              stages:
+                conocimiento: [definicion, indexado, grafo]
+            - name: DomainAtom
+              kind: core
+              stages:
+                conocimiento: [definicion, indexado, grafo]
+            - name: GateCriterion
+              kind: core
+              stages:
+                conocimiento: [definicion, indexado, grafo]
+            - name: ToolAtom
+              kind: core
+              stages:
+                conocimiento: [definicion, indexado, grafo]

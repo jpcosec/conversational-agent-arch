@@ -1,0 +1,50 @@
+id: kb-agent-state
+title: "RouterStateMachine · Sesión"
+type: state
+version: "0.1"
+data:
+  entity: SessionState (kb_agent.state_machine / models_sql.session)
+  initial: idle
+  states:
+    - id: idle
+      label: Idle
+    - id: buffering
+      label: Buffering (debounce)
+    - id: evaluating_context
+      label: Evaluating Context
+    - id: drafting_response
+      label: Drafting Response
+    - id: waiting_tool
+      label: Waiting Tool
+    - id: breakpoint_miss
+      label: Breakpoint Miss
+  transitions:
+    - from: idle
+      to: evaluating_context
+      "on": handle_user_message
+    - from: buffering
+      to: evaluating_context
+      "on": debounce_fire
+    - from: evaluating_context
+      to: drafting_response
+      "on": compile_context
+    - from: evaluating_context
+      to: breakpoint_miss
+      "on": no_breakpoint
+    - from: drafting_response
+      to: waiting_tool
+      "on": tool_call
+      guard: tool target definido
+    - from: drafting_response
+      to: idle
+      "on": turn_closed
+    - from: waiting_tool
+      to: evaluating_context
+      "on": tool_result
+      guard: timeout no alcanzado (TOOL_TIMEOUT_MS)
+    - from: waiting_tool
+      to: evaluating_context
+      "on": tool_timeout
+    - from: breakpoint_miss
+      to: idle
+      "on": turn_closed
