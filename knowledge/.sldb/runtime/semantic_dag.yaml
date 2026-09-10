@@ -62,6 +62,11 @@ nodes:
 - id: gate:regulatorio.dosis
   parents:
   - gate:regulatorio
+- id: layer
+  parents: []
+- id: layer.topology
+  parents:
+  - layer
 - id: type
   parents: []
 - id: type.knowledge
@@ -103,6 +108,12 @@ nodes:
 - id: type.knowledge.trait
   parents:
   - type.knowledge
+- id: type.relation
+  parents:
+  - type
+- id: type.relation.type
+  parents:
+  - type.relation
 - id: user:traits
   parents: []
 - id: user:traits.ansioso_aplicacion

@@ -1,30 +1,86 @@
-<!DOCTYPE html><html lang="es"><head>
+<!DOCTYPE html>
+<!-- Metricas reales del runtime (/api/metrics) con el disenio del mock
+     fab8344 (docs/dashboard-reference.png): sidebar, KPI cards con sparkline
+     y charts. Sin CSS ni JS inline: theme.css + dashboard.css / dashboard.js. -->
+<html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Métricas</title>
 <link rel="stylesheet" href="/static/theme.css">
 </head><body class="page-dashboard">
 <div id="appNavMount"></div>
-<main class="wrap">
-  <div class="cards" id="kpis" data-testid="metrics-kpis"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
 
-  <section class="block">
-    <h2 class="section-title">Turnos por día</h2>
-    <div class="section-sub">Cada turno es un mensaje del cliente respondido por el agente.</div>
-    <div id="bars" class="dash-bars" data-testid="metrics-bars"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
-  </section>
+<div class="db-layout">
+ <aside class="sidebar db-sidebar">
+  <div>
+   <div class="sidebar-label">Filtrar rama</div>
+   <div style="margin-top:12px">
+    <div class="db-item active"><span class="db-ico">🧬</span>self</div>
+    <div class="db-item"><span class="db-ico">📖</span>domain</div>
+    <div class="db-item"><span class="db-ico">💬</span>conversation</div>
+    <div class="db-item"><span class="db-ico">🚦</span>gate</div>
+    <div class="db-item"><span class="db-ico">👤</span>user</div>
+   </div>
+  </div>
+  <div>
+   <div class="sidebar-label">Filtrar agente</div>
+   <div class="db-item"><span class="db-dot dot-domain"></span><span class="db-ico">🗣️</span>Conversador</div>
+   <div class="db-item"><span class="db-dot dot-conversation"></span><span class="db-ico">🧭</span>Ruteador</div>
+   <div class="db-item"><span class="db-dot dot-user"></span><span class="db-ico">🎛️</span>Orquestador</div>
+  </div>
+  <div class="sidebar-block db-daterange">
+   <div class="sidebar-label">Ventana</div>
+   <div class="val">📅 <span id="dbWindow">—</span></div>
+   <div class="cmp">Los KPIs cubren los últimos <span id="dbDays">—</span> días de turnos.</div>
+  </div>
+ </aside>
 
-  <section class="block">
-    <h2 class="section-title">Tipo de respuesta</h2>
-    <div class="section-sub">Cómo resolvió el agente cada turno: redactó una <span data-tooltip="nl">respuesta libre</span>, <span data-tooltip="tool_call">ejecutó una tool</span>, <span data-tooltip="fallback">no supo responder</span>, o la <span data-tooltip="gate">validación</span> rechazó el borrador y el turno se <span data-tooltip="derivado">derivó a una persona</span>.</div>
-    <table class="data" data-testid="metrics-kinds"><thead><tr><th>Tipo</th><th class="num">Turnos</th><th class="num">%</th></tr></thead><tbody id="kinds"><tr><td colspan="3"><div class="loading"><span class="spinner"></span>Cargando…</div></td></tr></tbody></table>
-  </section>
+ <main class="db-main">
+  <div class="db-chip" data-testid="dashboard-live-chip" title="Datos reales del runtime, leidos de /api/metrics">● Datos del runtime</div>
+  <div class="db-kpis" id="kpis" data-testid="metrics-kpis"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
 
-  <section class="block">
-    <h2 class="section-title">Leads por estado</h2>
-    <div class="section-sub">Mismo criterio que la vista Leads.</div>
-    <table class="data" data-testid="metrics-leads"><thead><tr><th>Estado</th><th class="num">Leads</th></tr></thead><tbody id="leadRows"><tr><td colspan="2"><div class="loading"><span class="spinner"></span>Cargando…</div></td></tr></tbody></table>
-  </section>
-</main>
+  <div class="db-charts">
+   <div class="db-panel">
+    <div class="db-panel-head">
+     <div class="db-panel-title">Turnos por día</div>
+     <select class="db-select" id="dbGranularity" data-testid="metrics-granularity"><option value="dia">Diaria</option><option value="semana">Semanal</option></select>
+    </div>
+    <div id="chartTurnos" data-testid="metrics-bars"></div>
+    <div class="db-legend">
+     <div class="db-legend-item"><span class="db-legend-line line-user"></span>Turnos respondidos</div>
+    </div>
+   </div>
+   <div class="db-panel">
+    <div class="db-panel-head">
+     <div class="db-panel-title">Tipo de respuesta</div>
+    </div>
+    <div id="kindsPanel" data-testid="metrics-kinds"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+    <div class="db-legend" id="kindsLegend"></div>
+   </div>
+  </div>
+
+  <div class="db-charts">
+   <div class="db-panel">
+    <div class="db-panel-head">
+     <div class="db-panel-title">Leads por estado</div>
+    </div>
+    <div id="leadsPanel" data-testid="metrics-leads"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+    <div class="db-legend" id="leadsLegend"></div>
+   </div>
+   <div class="db-panel">
+    <div class="db-panel-head">
+     <div class="db-panel-title">Latencia</div>
+    </div>
+    <div id="latencyPanel" data-testid="metrics-latency"><div class="loading"><span class="spinner"></span>Cargando…</div></div>
+    <div class="db-legend">
+     <div class="db-legend-item"><span class="db-legend-dot dot-self"></span>Mediana y p90 por turno</div>
+    </div>
+   </div>
+  </div>
+
+  <div class="db-footer">Última actualización: <span id="ts"></span> <span class="db-live"></span></div>
+ </main>
+</div>
+
 <script src="/static/nav.js"></script>
 <script src="/static/glossary.js"></script>
 <script src="/static/tooltip.js"></script>

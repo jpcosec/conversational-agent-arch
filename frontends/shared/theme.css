@@ -8,12 +8,10 @@
    .users-*, .dev-*, .prompts-*) o scopeados a body.page-<name>. */
 @import url('chat.css');
 @import url('product.css');
-@import url('leads.css');
+@import url('pages.css');
 @import url('dashboard.css');
 @import url('flow.css');
 @import url('mindmap.css');
-@import url('users.css');
-@import url('dev.css');
 @import url('prompts.css');
 
 :root {
@@ -391,8 +389,9 @@ a{color:inherit}
 .chip-square{border-radius:var(--radius-tag)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 
-/* sidebar lateral (chat inspector, flow, mindmap) */
-.sidebar{width:280px;min-width:280px;background:var(--bg-panel2);border-right:1px solid var(--border-accent);display:flex;flex-direction:column;overflow-y:auto;z-index:20}
+/* sidebar lateral (chat inspector, flow, mindmap): receta unica para todos
+   los sidebars; las vistas solo agregan su ancho o contenido */
+.sidebar{width:280px;min-width:280px;background:var(--bg-panel2);border-right:1px solid var(--border-accent);display:flex;flex-direction:column;gap:14px;padding:20px 18px;overflow-y:auto;z-index:20}
 .sidebar-right{border-right:0;border-left:1px solid var(--border-accent)}
 .sidebar-block{border:1px solid var(--border-accent);border-radius:10px;padding:12px;background:rgba(18,18,26,.8);transition:var(--transition)}
 .sidebar-block:hover{border-color:var(--accent-hover)}

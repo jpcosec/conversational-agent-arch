@@ -2,11 +2,11 @@ documents:
 - doc_name: rule-antonia-anti-alucinacion
   sections:
   - path: anti-alucinaci-n-contexto-estricto
-    title: "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    title: Anti-alucinación — contexto estricto
     breadcrumbs:
-    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Anti-alucinación — contexto estricto
     about:
-    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Anti-alucinación — contexto estricto
     - anti alucinaci n contexto estricto
     - conversation:fallback
     - conversation:security
@@ -26,10 +26,10 @@ documents:
   - path: anti-alucinaci-n-contexto-estricto/answer
     title: Answer
     breadcrumbs:
-    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Anti-alucinación — contexto estricto
     - Answer
     about:
-    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Anti-alucinación — contexto estricto
     - anti alucinaci n contexto estricto
     - Answer
     - answer
@@ -51,10 +51,10 @@ documents:
   - path: anti-alucinaci-n-contexto-estricto/conditions
     title: Conditions
     breadcrumbs:
-    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Anti-alucinación — contexto estricto
     - Conditions
     about:
-    - "Anti-alucinaci\xF3n \u2014 contexto estricto"
+    - Anti-alucinación — contexto estricto
     - anti alucinaci n contexto estricto
     - Conditions
     - conditions
@@ -76,11 +76,11 @@ documents:
 - doc_name: rule-antonia-eventos-adversos
   sections:
   - path: detecci-n-de-eventos-adversos
-    title: "Detecci\xF3n de eventos adversos"
+    title: Detección de eventos adversos
     breadcrumbs:
-    - "Detecci\xF3n de eventos adversos"
+    - Detección de eventos adversos
     about:
-    - "Detecci\xF3n de eventos adversos"
+    - Detección de eventos adversos
     - detecci n de eventos adversos
     - conversation:pharmacovigilance
     - domain:seguridad
@@ -100,10 +100,10 @@ documents:
   - path: detecci-n-de-eventos-adversos/answer
     title: Answer
     breadcrumbs:
-    - "Detecci\xF3n de eventos adversos"
+    - Detección de eventos adversos
     - Answer
     about:
-    - "Detecci\xF3n de eventos adversos"
+    - Detección de eventos adversos
     - detecci n de eventos adversos
     - Answer
     - answer
@@ -125,10 +125,10 @@ documents:
   - path: detecci-n-de-eventos-adversos/conditions
     title: Conditions
     breadcrumbs:
-    - "Detecci\xF3n de eventos adversos"
+    - Detección de eventos adversos
     - Conditions
     about:
-    - "Detecci\xF3n de eventos adversos"
+    - Detección de eventos adversos
     - detecci n de eventos adversos
     - Conditions
     - conditions
@@ -150,11 +150,11 @@ documents:
 - doc_name: rule-antonia-clasificacion-operacional
   sections:
   - path: clasificaci-n-operacional-del-programa
-    title: "Clasificaci\xF3n operacional del programa"
+    title: Clasificación operacional del programa
     breadcrumbs:
-    - "Clasificaci\xF3n operacional del programa"
+    - Clasificación operacional del programa
     about:
-    - "Clasificaci\xF3n operacional del programa"
+    - Clasificación operacional del programa
     - clasificaci n operacional del programa
     - conversation:classification
     - system:laboratorio-chile
@@ -172,10 +172,10 @@ documents:
   - path: clasificaci-n-operacional-del-programa/answer
     title: Answer
     breadcrumbs:
-    - "Clasificaci\xF3n operacional del programa"
+    - Clasificación operacional del programa
     - Answer
     about:
-    - "Clasificaci\xF3n operacional del programa"
+    - Clasificación operacional del programa
     - clasificaci n operacional del programa
     - Answer
     - answer
@@ -195,10 +195,10 @@ documents:
   - path: clasificaci-n-operacional-del-programa/conditions
     title: Conditions
     breadcrumbs:
-    - "Clasificaci\xF3n operacional del programa"
+    - Clasificación operacional del programa
     - Conditions
     about:
-    - "Clasificaci\xF3n operacional del programa"
+    - Clasificación operacional del programa
     - clasificaci n operacional del programa
     - Conditions
     - conditions
@@ -218,11 +218,11 @@ documents:
 - doc_name: rule-antonia-clasificacion-medinfo
   sections:
   - path: clasificaci-n-de-consulta-m-dica-medinfo
-    title: "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    title: Clasificación de consulta médica MedInfo
     breadcrumbs:
-    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Clasificación de consulta médica MedInfo
     about:
-    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Clasificación de consulta médica MedInfo
     - clasificaci n de consulta m dica medinfo
     - conversation:classification
     - system:laboratorio-chile
@@ -240,10 +240,10 @@ documents:
   - path: clasificaci-n-de-consulta-m-dica-medinfo/answer
     title: Answer
     breadcrumbs:
-    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Clasificación de consulta médica MedInfo
     - Answer
     about:
-    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Clasificación de consulta médica MedInfo
     - clasificaci n de consulta m dica medinfo
     - Answer
     - answer
@@ -263,10 +263,10 @@ documents:
   - path: clasificaci-n-de-consulta-m-dica-medinfo/conditions
     title: Conditions
     breadcrumbs:
-    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Clasificación de consulta médica MedInfo
     - Conditions
     about:
-    - "Clasificaci\xF3n de consulta m\xE9dica MedInfo"
+    - Clasificación de consulta médica MedInfo
     - clasificaci n de consulta m dica medinfo
     - Conditions
     - conditions
@@ -286,11 +286,11 @@ documents:
 - doc_name: rule-antonia-clasificacion-tratamiento
   sections:
   - path: clasificaci-n-de-dudas-de-tratamiento
-    title: "Clasificaci\xF3n de dudas de tratamiento"
+    title: Clasificación de dudas de tratamiento
     breadcrumbs:
-    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Clasificación de dudas de tratamiento
     about:
-    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Clasificación de dudas de tratamiento
     - clasificaci n de dudas de tratamiento
     - conversation:classification
     - system:laboratorio-chile
@@ -308,10 +308,10 @@ documents:
   - path: clasificaci-n-de-dudas-de-tratamiento/answer
     title: Answer
     breadcrumbs:
-    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Clasificación de dudas de tratamiento
     - Answer
     about:
-    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Clasificación de dudas de tratamiento
     - clasificaci n de dudas de tratamiento
     - Answer
     - answer
@@ -331,10 +331,10 @@ documents:
   - path: clasificaci-n-de-dudas-de-tratamiento/conditions
     title: Conditions
     breadcrumbs:
-    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Clasificación de dudas de tratamiento
     - Conditions
     about:
-    - "Clasificaci\xF3n de dudas de tratamiento"
+    - Clasificación de dudas de tratamiento
     - clasificaci n de dudas de tratamiento
     - Conditions
     - conditions
@@ -422,11 +422,11 @@ documents:
 - doc_name: rule-antonia-no-deducir
   sections:
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales
-    title: "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    title: No deducir información clínica desde principios generales
     breadcrumbs:
-    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - No deducir información clínica desde principios generales
     about:
-    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - No deducir información clínica desde principios generales
     - no deducir informaci n cl nica desde principios generales
     - conversation:security
     - system:laboratorio-chile
@@ -444,10 +444,10 @@ documents:
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/answer
     title: Answer
     breadcrumbs:
-    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - No deducir información clínica desde principios generales
     - Answer
     about:
-    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - No deducir información clínica desde principios generales
     - no deducir informaci n cl nica desde principios generales
     - Answer
     - answer
@@ -467,10 +467,10 @@ documents:
   - path: no-deducir-informaci-n-cl-nica-desde-principios-generales/conditions
     title: Conditions
     breadcrumbs:
-    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - No deducir información clínica desde principios generales
     - Conditions
     about:
-    - "No deducir informaci\xF3n cl\xEDnica desde principios generales"
+    - No deducir información clínica desde principios generales
     - no deducir informaci n cl nica desde principios generales
     - Conditions
     - conditions
@@ -558,11 +558,11 @@ documents:
 - doc_name: rule-antonia-no-farmacologia
   sections:
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n
-    title: "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    title: No mencionar farmacología ni mecanismo de acción
     breadcrumbs:
-    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - No mencionar farmacología ni mecanismo de acción
     about:
-    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - No mencionar farmacología ni mecanismo de acción
     - no mencionar farmacolog a ni mecanismo de acci n
     - conversation:security
     - system:laboratorio-chile
@@ -580,10 +580,10 @@ documents:
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/answer
     title: Answer
     breadcrumbs:
-    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - No mencionar farmacología ni mecanismo de acción
     - Answer
     about:
-    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - No mencionar farmacología ni mecanismo de acción
     - no mencionar farmacolog a ni mecanismo de acci n
     - Answer
     - answer
@@ -603,10 +603,10 @@ documents:
   - path: no-mencionar-farmacolog-a-ni-mecanismo-de-acci-n/conditions
     title: Conditions
     breadcrumbs:
-    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - No mencionar farmacología ni mecanismo de acción
     - Conditions
     about:
-    - "No mencionar farmacolog\xEDa ni mecanismo de acci\xF3n"
+    - No mencionar farmacología ni mecanismo de acción
     - no mencionar farmacolog a ni mecanismo de acci n
     - Conditions
     - conditions
@@ -694,11 +694,11 @@ documents:
 - doc_name: rule-antonia-derivar-clinico
   sections:
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado
-    title: "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    title: Derivar al médico cuando no hay contenido aprobado
     breadcrumbs:
-    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Derivar al médico cuando no hay contenido aprobado
     about:
-    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Derivar al médico cuando no hay contenido aprobado
     - derivar al m dico cuando no hay contenido aprobado
     - conversation:fallback
     - system:laboratorio-chile
@@ -716,10 +716,10 @@ documents:
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/answer
     title: Answer
     breadcrumbs:
-    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Derivar al médico cuando no hay contenido aprobado
     - Answer
     about:
-    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Derivar al médico cuando no hay contenido aprobado
     - derivar al m dico cuando no hay contenido aprobado
     - Answer
     - answer
@@ -739,10 +739,10 @@ documents:
   - path: derivar-al-m-dico-cuando-no-hay-contenido-aprobado/conditions
     title: Conditions
     breadcrumbs:
-    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Derivar al médico cuando no hay contenido aprobado
     - Conditions
     about:
-    - "Derivar al m\xE9dico cuando no hay contenido aprobado"
+    - Derivar al médico cuando no hay contenido aprobado
     - derivar al m dico cuando no hay contenido aprobado
     - Conditions
     - conditions
@@ -836,11 +836,11 @@ documents:
 - doc_name: atom-antonia-regla-escalar-ime
   sections:
   - path: escalar-de-inmediato-ante-s-ntoma-ime
-    title: "Escalar de inmediato ante s\xEDntoma IME"
+    title: Escalar de inmediato ante síntoma IME
     breadcrumbs:
-    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Escalar de inmediato ante síntoma IME
     about:
-    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Escalar de inmediato ante síntoma IME
     - escalar de inmediato ante s ntoma ime
     - domain:seguridad.ime
     - system:laboratorio-chile
@@ -860,10 +860,10 @@ documents:
   - path: escalar-de-inmediato-ante-s-ntoma-ime/answer
     title: Answer
     breadcrumbs:
-    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Escalar de inmediato ante síntoma IME
     - Answer
     about:
-    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Escalar de inmediato ante síntoma IME
     - escalar de inmediato ante s ntoma ime
     - Answer
     - answer
@@ -885,10 +885,10 @@ documents:
   - path: escalar-de-inmediato-ante-s-ntoma-ime/conditions
     title: Conditions
     breadcrumbs:
-    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Escalar de inmediato ante síntoma IME
     - Conditions
     about:
-    - "Escalar de inmediato ante s\xEDntoma IME"
+    - Escalar de inmediato ante síntoma IME
     - escalar de inmediato ante s ntoma ime
     - Conditions
     - conditions
@@ -984,11 +984,11 @@ documents:
 - doc_name: atom-antonia-regla-no-codificar
   sections:
   - path: no-traducir-a-t-rminos-m-dicos
-    title: "No traducir a t\xE9rminos m\xE9dicos"
+    title: No traducir a términos médicos
     breadcrumbs:
-    - "No traducir a t\xE9rminos m\xE9dicos"
+    - No traducir a términos médicos
     about:
-    - "No traducir a t\xE9rminos m\xE9dicos"
+    - No traducir a términos médicos
     - no traducir a t rminos m dicos
     - domain:seguridad.meddra
     - system:laboratorio-chile
@@ -1008,10 +1008,10 @@ documents:
   - path: no-traducir-a-t-rminos-m-dicos/answer
     title: Answer
     breadcrumbs:
-    - "No traducir a t\xE9rminos m\xE9dicos"
+    - No traducir a términos médicos
     - Answer
     about:
-    - "No traducir a t\xE9rminos m\xE9dicos"
+    - No traducir a términos médicos
     - no traducir a t rminos m dicos
     - Answer
     - answer
@@ -1033,10 +1033,10 @@ documents:
   - path: no-traducir-a-t-rminos-m-dicos/conditions
     title: Conditions
     breadcrumbs:
-    - "No traducir a t\xE9rminos m\xE9dicos"
+    - No traducir a términos médicos
     - Conditions
     about:
-    - "No traducir a t\xE9rminos m\xE9dicos"
+    - No traducir a términos médicos
     - no traducir a t rminos m dicos
     - Conditions
     - conditions

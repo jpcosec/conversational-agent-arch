@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:GateCriterion
 path: /home/jp/proyectos/_worktrees/gt-psp-kb-flow/kb_agent/models/knowledge/gate.py
 documents_index: .sldb/core/documents/GateCriterion.yaml
 sections_index: .sldb/runtime/sections/GateCriterion.yaml
-hash_b: 298b91f7992fd4e6d2d03d0324af9273f19bf2f1d7cd027ea7c6aa26587cb69d
+hash_b: e9c9c89cdfc4c83a7912c1bed8ba8b98ba32f4bb6591f822b2f41eca106f2576
 version: 1
 canonical: false
 family: null

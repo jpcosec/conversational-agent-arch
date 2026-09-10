@@ -68,6 +68,7 @@ EDITOR_DIR = PROJECT_ROOT / "frontends" / "flow_editor"
 CHAT_DIR = PROJECT_ROOT / "frontends" / "chat"
 PROFILING_DIR = PROJECT_ROOT / "frontends" / "profiling"
 TAXONOMY_DIR = PROJECT_ROOT / "frontends" / "taxonomy"
+DEV_DIR = PROJECT_ROOT / "frontends" / "dev"
 VIZ_DIR = PROJECT_ROOT / "frontends" / "viz"
 DASHBOARD_DIR = PROJECT_ROOT / "frontends" / "dashboard"
 LEADS_DIR = PROJECT_ROOT / "frontends" / "leads"
@@ -988,6 +989,111 @@ def create_app(cfg: ProjectConfig | None = None, orchestrator: Orchestrator | No
             "messages": msgs,
             "turns": turns_out,
         })
+
+    @app.get("/dev")
+    @app.get("/dev/")
+    def dev_console() -> FileResponse:
+        return FileResponse(str(DEV_DIR / "index.html"), media_type="text/html")
+
+    @app.get("/dev/prompts")
+    @app.get("/dev/prompts/")
+    def dev_prompts() -> FileResponse:
+        return FileResponse(str(DEV_DIR / "prompts.html"), media_type="text/html")
+
+    @app.get("/api/system-prompts")
+    def system_prompts() -> JSONResponse:
+        if app.state.demo_mode:
+            return JSONResponse({
+                "agents": {
+                    "conversador": {
+                        "role": "conversador",
+                        "framing": "Eres Antonia, asistente virtual de Teva para profesionales de la salud (HCP).",
+                        "static_instruction": "Eres el CONVERSADOR del sistema. Redactas la respuesta final que ve el usuario.",
+                    },
+                    "router": {
+                        "role": "router",
+                        "framing": "Operas sobre la KB de campañas HCP de Teva.",
+                        "static_instruction": "Eres el RUTEADOR DE CONTEXTO de un agente conversacional...",
+                    },
+                    "orchestrator": {
+                        "role": "orchestrator",
+                        "framing": "Eres el ORQUESTADOR de un agente conversacional.",
+                        "static_instruction": "",
+                    },
+                    "gate": {
+                        "role": "gate",
+                        "framing": "Eres el GATE regulatorio de un programa de soporte a pacientes (farmacovigilancia).",
+                        "static_instruction": "",
+                    },
+                },
+                "kb_root": "demo",
+            })
+
+        try:
+            orch = _orch()
+            ops = orch.knowledge_ops
+            from kb_agent.agents import render_gate_criteria, render_orchestrator_flow, render_router_instruction
+            from kb_agent.models.knowledge import AgentFraming, GateCriterion, ConversationStep
+
+            # Read AgentFraming docs by role parsing raw files directly
+            import yaml as _yaml
+            framing_docs = {}
+            for agent_id in ["agent-hcp-conversador", "agent-hcp-gate", "agent-hcp-orchestrator", "agent-hcp-router"]:
+                agent_path = cfg.kb_root / "atoms" / f"{agent_id}.md"
+                if agent_path.exists():
+                    parts = agent_path.read_text(encoding="utf-8").split("---")
+                    if len(parts) >= 2:
+                        try:
+                            fm = _yaml.safe_load(parts[1])
+                            if fm:
+                                role = (fm.get("role") or "").strip().lower()
+                                if role:
+                                    framing_docs[role] = {"framing": fm.get("framing", ""), "examples": fm.get("examples", "")}
+                        except Exception:
+                            pass
+
+            # Build each agent's system prompt
+            agents = {}
+
+            # Router
+            router_framing = framing_docs.get("router", {}).get("framing")
+            agents["router"] = {
+                "role": "router",
+                "framing": router_framing or "",
+                "static_instruction": render_router_instruction(framing=router_framing or None),
+            }
+
+            # Gate
+            gate_criteria = list(ops.docs_by_type("gate"))
+            gate_framing = framing_docs.get("gate", {}).get("framing")
+            agents["gate"] = {
+                "role": "gate",
+                "framing": gate_framing or "",
+                "static_instruction": render_gate_criteria(gate_criteria, framing=gate_framing or None),
+                "criteria": [{"id": c.get("id"), "criterion": c.get("criterion")} for c in gate_criteria],
+            }
+
+            # Orchestrator
+            steps = list(ops.docs_by_type("step"))
+            orch_framing = framing_docs.get("orchestrator", {}).get("framing")
+            agents["orchestrator"] = {
+                "role": "orchestrator",
+                "framing": orch_framing or "",
+                "static_instruction": render_orchestrator_flow(steps, framing=orch_framing or None),
+                "step_count": len(steps),
+            }
+
+            # Conversador (framing from KB, body hardcoded in orchestrator)
+            conv_framing = framing_docs.get("conversador", {}).get("framing")
+            agents["conversador"] = {
+                "role": "conversador",
+                "framing": conv_framing or "",
+                "static_instruction": conv_framing or "Eres el CONVERSADOR del sistema. Redactas la respuesta final que ve el usuario.",
+            }
+
+            return JSONResponse({"agents": agents, "kb_root": str(cfg.kb_root)})
+        except Exception as e:
+            return JSONResponse({"error": str(e)}, status_code=500)
 
     @app.get("/api/health")
     def health() -> dict:

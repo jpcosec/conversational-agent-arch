@@ -120,6 +120,36 @@ models:
   canonical: false
   family: null
   semantics: []
+- name: CliCommandDoc
+  model_ref: sldb.models.knowledge_surface:CliCommandDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/sldb/src/sldb/models/knowledge_surface.py
+  models_index: .sldb/core/models/CliCommandDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics:
+  - type.knowledge.cli_command
+  - workspace.knowledge.commands
+- name: SurfaceDoc
+  model_ref: sldb.models.knowledge_surface:SurfaceDoc
+  path: /home/jp/proyectos/hum-ecosystem/tools/sldb/src/sldb/models/knowledge_surface.py
+  models_index: .sldb/core/models/SurfaceDoc.yaml
+  version: 1
+  canonical: false
+  family: null
+  semantics:
+  - type.knowledge.surface
+  - workspace.knowledge.surfaces
+- name: SpecDoc
+  model_ref: pron.models:SpecDoc
+  path: /home/jp/proyectos/legos/pron/src/pron/models/spec.py
+  models_index: .sldb/core/models/SpecDoc.yaml
+  version: 1
+  canonical: false
+  family: knowledge
+  semantics:
+  - type.knowledge.spec
+  - workspace.source.spec
 predicates:
 - name: is_solved_by
   axis: HOW
@@ -142,4 +172,4 @@ predicates:
 - name: defines
   axis: WHAT
   description: Defines the target concept.
-hash_a: 56190c0efc51770d252e8956df55135a56a4c25bf1825a5d62936dbc594ffebc
+hash_a: 4e9b3a6fe245654f94b8a66df5c2ecab7a00b4a4d4e17ce31bef06710290f871

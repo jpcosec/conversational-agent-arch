@@ -2,7 +2,7 @@ documents:
 - name: atom-antonia-bienvenida
   path: atoms/atom-antonia-bienvenida.md
   hash_c: 3d3fffd71c0a06ad708efd64b4f95c8082d8547ff6eb9f815258500a17964fcf
-  hash_d: ee348c080931d64378210ec203108685c17e0a046bcd75ebc088074384eee12e
+  hash_d: fc680f2d3286b73f0f6398bb2f614754a8d812badf719e4c289abcfef000e0e4
   semantic_tags:
   - conversation:steps.onboarding
   - domain:programa
@@ -12,7 +12,7 @@ documents:
 - name: atom-antonia-aplicacion
   path: atoms/atom-antonia-aplicacion.md
   hash_c: 5f461dda448303761e01ec73e8206b5b78a4b57a0b36c0f6dce22b93d64a5a4a
-  hash_d: cf166a4e10d00bc03d4781800d7d3b548f52c65db9be3d3a1bb0a9cbbd2751b6
+  hash_d: 272e83a39416d26adb092d4724fc9e42c094fae7c0701af1e0efa94d3c1258ac
   semantic_tags:
   - conversation:steps.recompra
   - domain:tratamiento
@@ -22,7 +22,7 @@ documents:
 - name: atom-antonia-primeras-semanas
   path: atoms/atom-antonia-primeras-semanas.md
   hash_c: f74bb7f037cf4bea36445a5073412fe741c37d2566e1e52856bffe99e93389d1
-  hash_d: 23146629e712d4447d08b6f6ab683bc9dad4c4274da1a8953bdc1952f317bf77
+  hash_d: 56cb90ba32df47fccc1f340c0f336cc143650577c64c0bc069ab665db2602d56
   semantic_tags:
   - conversation:steps.onboarding
   - domain:tratamiento
@@ -32,7 +32,7 @@ documents:
 - name: atom-antonia-recompra
   path: atoms/atom-antonia-recompra.md
   hash_c: 31bc485ee0687d2eeeea0b2c19ffdfac31edc955f1e95aec22cff76b07083e95
-  hash_d: dab7b4e6512ff97f54b36086fba058556fcd55c42ce4d8573fa7f1ef079828ea
+  hash_d: 23e691f1a08dcf66dca5cd7eed9e7a12a96cf752a285080dc797829e41f76d07
   semantic_tags:
   - conversation:steps.recompra
   - domain:logistica
@@ -42,7 +42,7 @@ documents:
 - name: atom-antonia-medinfo
   path: atoms/atom-antonia-medinfo.md
   hash_c: 83f4fbbce5499d089cd1e428bd7eb8312a5f222a4277a924013b65f7998365e4
-  hash_d: 0deb956a33a374f6c217c20abed225f8d627987457c0b11f452d9ca2bc4fd152
+  hash_d: 554f5edc18da333260ca7b060a6661e6a2420eb5b7332b88c5469859703488e2
   semantic_tags:
   - domain:medinfo
   - system:laboratorio-chile
@@ -51,7 +51,7 @@ documents:
 - name: atom-antonia-farmacovigilancia
   path: atoms/atom-antonia-farmacovigilancia.md
   hash_c: b2006bc86f2f39d0c6beecb65b6e45ba94b884d4ea4e3f9b55e0f1225514de2f
-  hash_d: 01397e0b90f0e3389a3d857d925eda504fc55186884e30c9bee49dd21a6d5a4f
+  hash_d: dd01558610727bacd67815e91e3e2f6f733632e2d2ecb1c64db6b246b8379b54
   semantic_tags:
   - domain:seguridad
   - system:laboratorio-chile
@@ -60,7 +60,7 @@ documents:
 - name: atom-antonia-journeys
   path: atoms/atom-antonia-journeys.md
   hash_c: 3f9a9f13845ceef1e59578cae875a6811a174a6207ce44487831dec436ca4a0b
-  hash_d: c325bfc8b5508e302d3baebb8db125aa6dd26e71859ff24a104020633884e53f
+  hash_d: 7b2cf02d1132793ceaff86ca14fbf9811ca6de70779bce504778dea096ebc2c9
   semantic_tags:
   - domain:programa
   - system:laboratorio-chile
@@ -69,7 +69,7 @@ documents:
 - name: atom-antonia-titulacion
   path: atoms/atom-antonia-titulacion.md
   hash_c: 4c6be2b7e44fb082c45bd58de71824bd1ee7706e203e11294c1e777d43cad403
-  hash_d: 960005c294f22ae1411cf979c7ae082da33821e6df4f864caa4d47db05be62bf
+  hash_d: a0795ca651ffdbdf4c948bca72fe62b2fc5305508fa6ed381f9dd9113e2daef3
   semantic_tags:
   - domain:tratamiento
   - system:laboratorio-chile
@@ -78,7 +78,7 @@ documents:
 - name: atom-antonia-molecula
   path: atoms/atom-antonia-molecula.md
   hash_c: c1498ab7a6a93f8885679d9499bab2905f309e8cf56e46f4abe40451adecbd11
-  hash_d: 168f6244a1d235a6a989a2dc60ce2693d6304316792cef27fc5f280e7c8e00b8
+  hash_d: 6f4db712eb96d1fa7c0632083faf73ca76c006cca8dc120a306564736e082250
   semantic_tags:
   - domain:tratamiento
   - system:laboratorio-chile
@@ -87,7 +87,7 @@ documents:
 - name: atom-antonia-meddra
   path: atoms/atom-antonia-meddra.md
   hash_c: 2bb57c077117c236759c0edc0fe0e9b906be09e975b26387d80c8881122b1405
-  hash_d: ec0a80cff995bb4d75481e840d5cd06b06528d2d0b7322336be69112e4dd5fb8
+  hash_d: 09248cbfcdc183da8916a0db7688ed521d8e5a950f7a4e78dc9ad5dc204c1e36
   semantic_tags:
   - domain:seguridad.meddra
   - system:laboratorio-chile
@@ -96,7 +96,7 @@ documents:
 - name: atom-antonia-ea
   path: atoms/atom-antonia-ea.md
   hash_c: 5f1f648d43a863d43245eb2e3481bb6118abf6395d25f7b05a0daae99cdc2985
-  hash_d: bc0a45a81812c4ee471e2ba3e4625b5125f8cb5bf7fb1ce16273dc1ad972b57a
+  hash_d: 6b0f57b73e8d437e5648e4a802a408202ba4e577b0bd905c9023b60de38db5a8
   semantic_tags:
   - domain:seguridad.evento
   - system:laboratorio-chile
@@ -105,7 +105,7 @@ documents:
 - name: atom-antonia-ea-administracion
   path: atoms/atom-antonia-ea-administracion.md
   hash_c: fc51ec9baee543740d12d355433cfd02607af36a1af11795667f14effad31b2e
-  hash_d: 34aab95c7cfa466703238a9d2503099c7aa15518d279b224fe5aade9e6222179
+  hash_d: e6992262be34e888567fdee3953c9cb4a18749d2afc08569abe9ca77a4fa4e91
   semantic_tags:
   - domain:seguridad.evento
   - system:laboratorio-chile
@@ -114,7 +114,7 @@ documents:
 - name: atom-antonia-ea-esperados
   path: atoms/atom-antonia-ea-esperados.md
   hash_c: a8719f1e4fd6a970230f47e75850c030e3797d068ee11ea6488e335e0c17f33e
-  hash_d: 9161332c50801e993adf424f073cba3530ba480a06e755a898a36a7736557916
+  hash_d: 097be52657718d55545affb82b93718c4ccbed202ef44782a793f82ed114ed70
   semantic_tags:
   - domain:seguridad.evento
   - system:laboratorio-chile
@@ -123,7 +123,7 @@ documents:
 - name: atom-antonia-gamp5
   path: atoms/atom-antonia-gamp5.md
   hash_c: 4b95f0d76b83627d9fe2882b93b5a8284966f20af7fe50c65f50bc728e555520
-  hash_d: 697322690d40d742bab55415ac99e540b2c48af21072ed48402bae0123ea0a8b
+  hash_d: 7c2b539da4bc1565bbd0e8d5e150fe5940d350989b06d61fba66d04ead8dfb1f
   semantic_tags:
   - domain:seguridad.compliance
   - system:laboratorio-chile
@@ -132,7 +132,7 @@ documents:
 - name: atom-antonia-gamp5-agile
   path: atoms/atom-antonia-gamp5-agile.md
   hash_c: 0c536ed919b6fe9068c60c8dc55b25990b179679cee634275a112ad86867d922
-  hash_d: e8dde01e46d06946bc59336b90e8d00ac84524e893b23ae33b6ad2c8774f164d
+  hash_d: 8eaf34c5f6b76b5c3091e24d367967eb965700a8ce77ee40eee696a1269bf490
   semantic_tags:
   - domain:seguridad.compliance
   - system:laboratorio-chile
@@ -141,7 +141,7 @@ documents:
 - name: atom-antonia-gamp5-alcoa
   path: atoms/atom-antonia-gamp5-alcoa.md
   hash_c: 301e6664ca22fa0b0c99c57c47eedc8bd3c1bc0b1d198fb5ca1b3986ef9f1d40
-  hash_d: bedd6f6223862ac4eb9c66002e5a7185ca14fecc030e50b9839d17fbf00bdc11
+  hash_d: f9a35854cd07a177959168234f257ba53f908cdebc3aaed91ef74d24b1ec7884
   semantic_tags:
   - domain:seguridad.compliance
   - system:laboratorio-chile
@@ -150,7 +150,7 @@ documents:
 - name: atom-antonia-ime
   path: atoms/atom-antonia-ime.md
   hash_c: 9cf6144133b9b65bda0fd77f96adcde06afc0e944be33b1deb567ae9db236fcd
-  hash_d: 72351b3fd04affa73c9dc543f8cda7bbc116a8845339f9f816af70dafb0363cc
+  hash_d: 7bd2749c25c53e5dfac8988e06912d08ef987057ec09648aa02eaee73c7830f6
   semantic_tags:
   - domain:seguridad.ime
   - system:laboratorio-chile
@@ -159,7 +159,7 @@ documents:
 - name: atom-antonia-ime-catalogo
   path: atoms/atom-antonia-ime-catalogo.md
   hash_c: c6d266bf01044fe2030d71ebc6c9efaa008ae0e89954ac1f56fbd68d8e6fcd14
-  hash_d: 3bec09458cc96250bfba3290bc6ace017304b925e4b533db2052c328fb41e031
+  hash_d: 5520459f5dd6d0f962d34f53a55257c95abd4392ff0855b61b6c13ec2b1a6d6f
   semantic_tags:
   - domain:seguridad.ime
   - system:laboratorio-chile
@@ -168,7 +168,7 @@ documents:
 - name: atom-antonia-ime-grave-automatico
   path: atoms/atom-antonia-ime-grave-automatico.md
   hash_c: 2bfb0ba81057d1811a401f1be213a25f1053855b31dd785b7736b4b9376b9442
-  hash_d: d711ebf3379bb0316d39d61021cbac28626422183e3705cb84a1dcc1f87f337b
+  hash_d: c772fc2b1efa3b58812779d149be1f906bfd1e6b9f12e67ea981c17c965aaecd
   semantic_tags:
   - domain:seguridad.ime
   - system:laboratorio-chile
@@ -177,7 +177,7 @@ documents:
 - name: atom-antonia-meddra-alcance
   path: atoms/atom-antonia-meddra-alcance.md
   hash_c: cd51bc57691d859193b5d5ccf046981ba821bf8968791d67fd6ab2d8ac509de4
-  hash_d: 5580d7f530b8003ab8e8e6321d839629dfcbf03a81f31f7a67989d73ff7dbcd5
+  hash_d: 0a212f5fbefc736b0d00f362638a806c047c70bd80bef05333cbcc126f59007f
   semantic_tags:
   - domain:seguridad.meddra
   - system:laboratorio-chile
@@ -186,7 +186,7 @@ documents:
 - name: atom-antonia-meddra-jerarquia
   path: atoms/atom-antonia-meddra-jerarquia.md
   hash_c: 3903c4df01316948520a20c1d18097e90db9c5387a19ba0a20e7ec08081cd85e
-  hash_d: 6e51cf3afa85b120e0baa7b3629c420b6d89775efeb0112f9652ade66bea66be
+  hash_d: 064a448ca642508fcc525233f63d39acf409b81ddc52a6a465dee5d89f4969a5
   semantic_tags:
   - domain:seguridad.meddra
   - system:laboratorio-chile
@@ -195,7 +195,7 @@ documents:
 - name: atom-antonia-meddra-verbatim
   path: atoms/atom-antonia-meddra-verbatim.md
   hash_c: 252ccf332bc69c9f3679fbd16d31f7bb9cded8c15dfc0f520914623a6b42d82e
-  hash_d: 6c5b8c0c810fb79c01e284cdf89ffd1b5e42b671a1a90b289de845f04a3885e0
+  hash_d: e14b2f8900fb1c6a255d5a6294ee2fb450f582ed58e96349bddd718fe08d7922
   semantic_tags:
   - domain:seguridad.meddra
   - system:laboratorio-chile
@@ -204,7 +204,7 @@ documents:
 - name: atom-antonia-triage
   path: atoms/atom-antonia-triage.md
   hash_c: a768601d3bf7da27d8ef7fbb9f9e9848378d613952fbd8f91599b3b018dc72c7
-  hash_d: ef8ee1fa77f09540d718516395439af7cdb112b229073778f2f07fab1cf8533e
+  hash_d: 4597e421ec9b0dac628d7284b3bbf17c30f199ac89622795212a2ed1c1979217
   semantic_tags:
   - domain:seguridad.triage
   - system:laboratorio-chile
@@ -213,7 +213,7 @@ documents:
 - name: atom-antonia-triage-colas
   path: atoms/atom-antonia-triage-colas.md
   hash_c: 636eced780fbc3afa7f2e33b0073bf75becff1def737abea8837da33148a4c95
-  hash_d: d7928ed2d9cb0d85b096293990bbde0e5590dade4b5ebbf901f568d8c8c33e43
+  hash_d: 92174f22bb68d70d7bf37c257cc34111b26f23a1ee1e7c7f0ea571ed4343de64
   semantic_tags:
   - domain:seguridad.triage
   - system:laboratorio-chile
@@ -222,7 +222,7 @@ documents:
 - name: atom-antonia-triage-limites
   path: atoms/atom-antonia-triage-limites.md
   hash_c: a80df1f287535ed8b263938fb30cbd8a16d6f2ff060b8890b1c36f2c5d6881e7
-  hash_d: 433cd7c0a0d8d886248c57b733677944b6e4ea86d9ae680b00660fb60024e391
+  hash_d: b84aa5e4a91b86a78b5c28cd7bd2a986b86258cf766e3f4041433c8b2f9de5c0
   semantic_tags:
   - domain:seguridad.triage
   - system:laboratorio-chile
@@ -231,7 +231,7 @@ documents:
 - name: atom-antonia-triage-validez
   path: atoms/atom-antonia-triage-validez.md
   hash_c: 1e9d7fbfeb920c214a1a0fd286f008fd6e1dccb71adc1ed86da9a0bed200bbec
-  hash_d: 84cb43809a1209c6633c6c9c18036c21269c91962a6013bc52ff00736e2df243
+  hash_d: 874325e4b0da882b162b224cbe1627d678eeda99000e67ac14dc73f094d1eb41
   semantic_tags:
   - domain:seguridad.triage
   - system:laboratorio-chile

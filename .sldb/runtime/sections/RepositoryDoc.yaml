@@ -1,0 +1,121 @@
+documents:
+- doc_name: repo-gemini-test
+  sections:
+  - path: repo-xxx
+    title: repo-xxx
+    breadcrumbs:
+    - repo-xxx
+    about:
+    - repo-xxx
+    - repo xxx
+    - type.desk.repository
+    - workspace.desk.registry
+    semantic_tags:
+    - type.desk.repository
+    - workspace.desk.registry
+    slug: repo-xxx
+    level: 1
+    line_start: 2
+    line_end: 3
+  - path: relative-path-to-repository
+    title: Relative path to repository
+    breadcrumbs:
+    - Relative path to repository
+    about:
+    - Relative path to repository
+    - relative path to repository
+    - type.desk.repository
+    - workspace.desk.registry
+    semantic_tags:
+    - type.desk.repository
+    - workspace.desk.registry
+    slug: relative-path-to-repository
+    level: 1
+    line_start: 4
+    line_end: 5
+  - path: active-maintenance-archived
+    title: active | maintenance | archived
+    breadcrumbs:
+    - active | maintenance | archived
+    about:
+    - active | maintenance | archived
+    - active maintenance archived
+    - type.desk.repository
+    - workspace.desk.registry
+    semantic_tags:
+    - type.desk.repository
+    - workspace.desk.registry
+    slug: active-maintenance-archived
+    level: 1
+    line_start: 6
+    line_end: 7
+  - path: e-g-type-tool-layer-infra
+    title: e.g., type:tool, layer:infra
+    breadcrumbs:
+    - e.g., type:tool, layer:infra
+    about:
+    - e.g., type:tool, layer:infra
+    - e g type tool layer infra
+    - type.desk.repository
+    - workspace.desk.registry
+    semantic_tags:
+    - type.desk.repository
+    - workspace.desk.registry
+    slug: e-g-type-tool-layer-infra
+    level: 1
+    line_start: 8
+    line_end: 9
+  - path: e-g-type-tool-layer-infra/tags
+    title: 'tags: []'
+    breadcrumbs:
+    - e.g., type:tool, layer:infra
+    - 'tags: []'
+    about:
+    - e.g., type:tool, layer:infra
+    - e g type tool layer infra
+    - 'tags: []'
+    - tags
+    - type.desk.repository
+    - workspace.desk.registry
+    semantic_tags:
+    - type.desk.repository
+    - workspace.desk.registry
+    slug: tags
+    level: 2
+    line_start: 9
+    line_end: 11
+  - path: repository-gemini-test
+    title: 'Repository: gemini_test'
+    breadcrumbs:
+    - 'Repository: gemini_test'
+    about:
+    - 'Repository: gemini_test'
+    - repository gemini test
+    - type.desk.repository
+    - workspace.desk.registry
+    semantic_tags:
+    - type.desk.repository
+    - workspace.desk.registry
+    slug: repository-gemini-test
+    level: 1
+    line_start: 12
+    line_end: 13
+  - path: repository-gemini-test/description
+    title: Description
+    breadcrumbs:
+    - 'Repository: gemini_test'
+    - Description
+    about:
+    - 'Repository: gemini_test'
+    - repository gemini test
+    - Description
+    - description
+    - type.desk.repository
+    - workspace.desk.registry
+    semantic_tags:
+    - type.desk.repository
+    - workspace.desk.registry
+    slug: description
+    level: 2
+    line_start: 14
+    line_end: 15

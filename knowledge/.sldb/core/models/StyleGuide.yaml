@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:StyleGuide
 path: /home/jp/proyectos/_worktrees/gemini_test-kb/kb_agent/models/knowledge/style.py
 documents_index: .sldb/core/documents/StyleGuide.yaml
 sections_index: .sldb/runtime/sections/StyleGuide.yaml
-hash_b: f971c716f0e4ada08e2b06f987550054e90e5a7d73f8440036e13a91f5980914
+hash_b: 36b422a377ba90c8eb741ebc2b6d7d4a9aa8522bfff547b3736b38e50b248228
 version: 1
 canonical: false
 family: null

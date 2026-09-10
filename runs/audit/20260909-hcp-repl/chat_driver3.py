@@ -78,7 +78,7 @@ def greet(log, ext: str) -> None:
     s = orch.SessionLocal()
     try:
         u = orch.ensure_user(s, ext)
-        conv = orch._resolve_conversation(s, user_id=u.id, channel=u.channel)
+        conv, _ = orch._resolve_conversation(s, user_id=u.id, channel=u.channel)
         orch._persist_chat_history(s, user_id=u.id, role="assistant", content=cfg.greeting, conversation_id=conv.id)
         s.commit()
         emit(log, f"\n### greet {ext}: conv {conv.id}\nBot > {cfg.greeting}")

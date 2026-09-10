@@ -362,6 +362,72 @@ class ContextCompiler:
             if self._SECURITY_FLOOR_TAG in (d.get("tags") or [])
         }
 
+    #: Prefijo de los tags de SEGMENTACION: los que describen a QUIEN le
+    #: corresponde un documento (``user:specialty.psiquiatria``,
+    #: ``user:country.mx``). Un documento que los lleva no es de todos: es
+    #: para el perfil que calza. Ver ``_segment_tags_del_usuario``.
+    _SEGMENT_TAG_PREFIX: ClassVar[str] = "user:"
+
+    def _segment_tags_del_usuario(self, user_traits: list[dict[str, Any]]) -> set[str]:
+        """Tags ``user:*`` que declara el perfil, resueltos contra sus TraitAtom.
+
+        El perfil vive en SQL como una lista de ``trait_id``; el segmento vive
+        en los TAGS de esos atoms. Un medico con
+        ``trait-hcp-especialidad-psiquiatria`` queda con el segmento
+        ``user:specialty.psiquiatria``, que es lo que llevan los documentos de
+        su catalogo.
+        """
+        tags: set[str] = set()
+        for trait in user_traits:
+            doc = self.knowledge.doc(str(trait.get("trait_id") or "")) or {}
+            for tag in doc.get("tags") or []:
+                if isinstance(tag, str) and tag.startswith(self._SEGMENT_TAG_PREFIX):
+                    tags.add(tag)
+        return tags
+
+    def _segment_tags_del_doc(self, doc: dict[str, Any] | None) -> set[str]:
+        """Tags de segmentacion de un documento. Los TraitAtom quedan exentos:
+        son el CATALOGO de segmentos, no contenido segmentado (entran al bundle
+        por la via de los traits del usuario, no por calce de perfil)."""
+        if not doc or self._tipo_for_doc(doc) == "trait":
+            return set()
+        return {
+            tag for tag in (doc.get("tags") or [])
+            if isinstance(tag, str) and tag.startswith(self._SEGMENT_TAG_PREFIX)
+        }
+
+    def _doc_calza_con_el_perfil(self, doc: dict[str, Any] | None, segment_tags: set[str]) -> bool:
+        """Guardia de segmentacion: un documento SIN tags de segmentacion es de
+        todos; uno CON tags solo entra si alguno calza con el perfil.
+
+        Es una guardia por CODIGO, del mismo tipo que el piso de seguridad: no
+        importa que haya decidido el ruteador LLM. Medido en la auditoria del
+        2026-09-09: con el filtrado por especialidad delegado al framing del
+        ruteador, a un traumatologo se le presentaron productos inventados y a
+        un psiquiatra le entraron traits de otra rama. Sin perfil (segmento
+        vacio) no entra NINGUN documento segmentado: el agente no tiene con que
+        inventar un catalogo y pregunta o deriva.
+        """
+        doc_tags = self._segment_tags_del_doc(doc)
+        return not doc_tags or bool(doc_tags & segment_tags)
+
+    def _catalogo_del_perfil(self, segment_tags: set[str]) -> list[str]:
+        """Los ``DomainAtom`` que le corresponden al perfil, por calce de tags.
+
+        Sin esto el catalogo solo entraba por similitud con la pregunta, y
+        "Si, cuenteme" no se parece a ninguna ficha de producto: medido en la
+        auditoria, 0 de 10 turnos de presentacion de campana tuvieron un solo
+        atom de producto en el contexto, y el modelo improvisaba los productos
+        leyendo la descripcion del trait.
+        """
+        if not segment_tags:
+            return []
+        ids = [
+            d.get("id", "") for d in self._find_by_model("domain")
+            if self._segment_tags_del_doc(d) & segment_tags
+        ]
+        return sorted(doc_id for doc_id in ids if doc_id)
+
     def _build_bundle(
         self,
         *,
@@ -433,6 +499,15 @@ class ContextCompiler:
             _add(doc_id, "trait del usuario", None)
             mandatory_ids.add(doc_id)
 
+        # c-bis) catalogo del perfil: los DomainAtom cuyos tags de segmentacion
+        # calzan con los del usuario. Obligatorios como los traits -- son el
+        # contenido que el step tiene que presentar, no un candidato por
+        # similitud (ver ``_catalogo_del_perfil``).
+        segment_tags = self._segment_tags_del_usuario(user_traits)
+        for doc_id in self._catalogo_del_perfil(segment_tags):
+            _add(doc_id, "catálogo de su perfil", None)
+            mandatory_ids.add(doc_id)
+
         capped = self.knowledge_ops is not None
         if capped:
             # d) similitud: top-k contra la pregunta, cualquier familia
@@ -466,6 +541,8 @@ class ContextCompiler:
         rules: list[dict[str, str]] = []
         for doc_id in selected_ids:
             doc = self.knowledge.doc(doc_id)
+            if not self._doc_calza_con_el_perfil(doc, segment_tags):
+                continue  # segmentado para otro perfil: no es de este medico
             tipo, family = self._tipo_y_family_de_doc(doc)
             entry = candidates[doc_id]
             bundle.append({
@@ -540,13 +617,22 @@ class ContextCompiler:
         merged = apply_security_floor(raw_bundle, security_ids)
         # Grounding del step activo: obligatorio tambien por la via agente
         # (misma guardia de codigo que el piso de seguridad).
+        present = {str(e.get("doc_id") or "") for e in merged}
         if active_step:
             short_step = active_step.split(":", 1)[-1] if ":" in active_step else active_step
-            present = {str(e.get("doc_id") or "") for e in merged}
             for doc_id in grounding_ids:
                 if doc_id not in present:
                     merged.append({"doc_id": doc_id, "motivo": f"grounding de {short_step}", "family": None, "score": None})
                     present.add(doc_id)
+        # Catalogo del perfil: obligatorio tambien por la via agente, misma
+        # guardia de codigo que el piso de seguridad y el grounding. El
+        # ruteador LLM no lo recupera solo (la pregunta "Si, cuenteme" no se
+        # parece a ninguna ficha).
+        segment_tags = self._segment_tags_del_usuario(user_traits)
+        for doc_id in self._catalogo_del_perfil(segment_tags):
+            if doc_id not in present:
+                merged.append({"doc_id": doc_id, "motivo": "catálogo de su perfil", "family": None, "score": None})
+                present.add(doc_id)
 
         resolved: list[dict[str, Any]] = []
         for entry in merged:
@@ -554,6 +640,8 @@ class ContextCompiler:
             doc = self.knowledge.doc(doc_id) if doc_id else None
             if doc is None:
                 continue  # id alucinado / inexistente: no entra al bundle
+            if not self._doc_calza_con_el_perfil(doc, segment_tags):
+                continue  # segmentado para otro perfil: no es de este medico
             tipo, family = self._tipo_y_family_de_doc(doc)
             resolved.append({
                 "doc_id": doc_id,

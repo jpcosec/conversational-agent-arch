@@ -2,7 +2,7 @@ documents:
 - name: self-antonia
   path: atoms/self-antonia.md
   hash_c: 1147403c7785ebe7de179ce8d5daa1c9c200044f501fbd80f1829443a37302ea
-  hash_d: d3f431ef5976eca0ca174f3ed7a64db5bcb62d9899e5d41065cc1145bdc76a1c
+  hash_d: 2712c9910cb5bae313456c966855fb1f7025015fb610d21b70d423f7e2c09bc6
   semantic_tags:
   - domain:salud
   - self:whoami

@@ -2,11 +2,11 @@ documents:
 - doc_name: self-antonia
   sections:
   - path: antonia-psp-selfix
-    title: "Antonia \u2014 PSP Selfix"
+    title: Antonia — PSP Selfix
     breadcrumbs:
-    - "Antonia \u2014 PSP Selfix"
+    - Antonia — PSP Selfix
     about:
-    - "Antonia \u2014 PSP Selfix"
+    - Antonia — PSP Selfix
     - antonia psp selfix
     - domain:salud
     - self:whoami
@@ -26,10 +26,10 @@ documents:
   - path: antonia-psp-selfix/statement
     title: Statement
     breadcrumbs:
-    - "Antonia \u2014 PSP Selfix"
+    - Antonia — PSP Selfix
     - Statement
     about:
-    - "Antonia \u2014 PSP Selfix"
+    - Antonia — PSP Selfix
     - antonia psp selfix
     - Statement
     - statement

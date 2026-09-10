@@ -3,7 +3,7 @@ model_ref: kb_agent.models.knowledge:AgentFraming
 path: /home/jp/proyectos/_worktrees/vitali/kb_agent/models/knowledge/agent_framing.py
 documents_index: .sldb/core/documents/AgentFraming.yaml
 sections_index: .sldb/runtime/sections/AgentFraming.yaml
-hash_b: 6e41ae42e76b2e4e6fbc201fdcafc3e671782709aa7eaecb635bdd19e3e26354
+hash_b: ae89592ba28d235e9516f6a670b4490561d76b69382e01b3b9af310e6a5fdd24
 version: 1
 canonical: false
 family: null
